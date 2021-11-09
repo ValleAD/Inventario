@@ -8,20 +8,12 @@
     <title>Solicitud de bodega</title>
 </head>
 <body>
-
-      <aside id="left">
-      </aside>
-            
-      <aside id="right">
-      </aside>
-   
-      <aside id="body">
-
-      
-      <h1 align="center">Hospital Nacional Santa Teresa de Zacatecoluca</h1>
-      <h2>Departamento de mantenimiento</h3>      
+  
+    <section id="body">
+      <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
+        <h3>Departamento de mantenimiento</h3>
         
-        <form method="post">
+            <form method="post">
             <div align="right">
                 <label name="orden" style="margin-right: 75px;">O. de T. No.:</label>
                 <br>
@@ -80,6 +72,6 @@
             <br>
             <pre><p>SOLICITA:                                                                                      ENTREGA:</p></pre>
             <p style="margin-left: 210px;">AUTORIZA:</p>
-      </aside>
+    </section>
 </body>
 </html>

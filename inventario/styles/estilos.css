@@ -1,12 +1,15 @@
 body{
-    background-image: linear-gradient(180deg, rgb(0, 129, 151), rgb(0, 248, 215));
+    background-image: linear-gradient(90deg, rgb(17, 59, 114), rgb(42, 136, 136));
     margin: 0%;
+    margin-top: 0%;
 }
 
 #body{
     background: white;
-    margin-left: 160px; 
-    margin-right: 160px;  
+    margin-left: 180px; 
+    margin-right: 180px; 
+    padding-top: 3%; 
+    padding-bottom: 100%; 
 }
 
 #body > form, table, p{
@@ -14,39 +17,27 @@ body{
     margin-right: 30px;
 }
 
-#left{
-    float: left;
-}
-
-#right{
-    float: right;
-}
-
-#log > img{
-    width: 10%;
-    height: 150px;
-    margin-right: 20px;
-    margin-top: 10px;
-    float: left;
-    
-}
-
-#log1 > img{
-    width: 24%;
-    height: 120px;
+h1, h3{
     margin-left: 20px;
-    margin-top: 10px;
-    float: right;
+    margin-top: 0%;
 }
 
 input{
     margin-right: 50px;
 }
 
-h2{
-    font-size: 20px;
+h1, h2, p, label, pre{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-h1, h2, h3, p, label, pre{
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+table{
+    border-collapse: collapse;
+    border: 2px solid;
+}
+
+
+td{
+    text-align: center;
+    border-collapse: collapse;
+    border: 1px solid;
 }
