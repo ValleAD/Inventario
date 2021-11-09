@@ -1,0 +1,52 @@
+body{
+    background-image: linear-gradient(180deg, rgb(0, 129, 151), rgb(0, 248, 215));
+    margin: 0%;
+}
+
+#body{
+    background: white;
+    margin-left: 160px; 
+    margin-right: 160px;  
+}
+
+#body > form, table, p{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+#left{
+    float: left;
+}
+
+#right{
+    float: right;
+}
+
+#log > img{
+    width: 10%;
+    height: 150px;
+    margin-right: 20px;
+    margin-top: 10px;
+    float: left;
+    
+}
+
+#log1 > img{
+    width: 24%;
+    height: 120px;
+    margin-left: 20px;
+    margin-top: 10px;
+    float: right;
+}
+
+input{
+    margin-right: 50px;
+}
+
+h2{
+    font-size: 20px;
+}
+
+h1, h2, h3, p, label, pre{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
