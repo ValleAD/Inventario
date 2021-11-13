@@ -2,10 +2,11 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles/estilos.css" type="text/css">
+  <!--  <link rel="stylesheet" href="styles/estilos.css" type="text/css"> -->
+    <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solicitud de bodega</title>
+    <title>Vale</title>
 </head>
 <body>
   
@@ -15,7 +16,7 @@
         
             <form method="post">
             <div align="right">
-                <label name="orden" style="margin-right: 75px;">O. de T. No.:</label>
+                <label name="orden" style="margin-right: 75px;">Vale No.</label>
                 <br>
                 <input type="number" name="ord" style="margin-right: 10px">
             </div>
@@ -26,52 +27,27 @@
                 <input type="time" name="fech">
                 <label for="">Depto. o Servicio:</label>
                 <input type="text" name="depto">
+                <input type="submit" value="Aceptar">
             </section> 
           
             </form>
-        
-        <br>
-        <table>
-            <tr>
-              <td><strong>Código</strong></td>
-              <td><strong>Descripción</strong></td>
-              <td><strong>U/M</strong></td>
-              <td><strong>Cantidad</strong></td>
-              <td><strong>Costo unitario</strong></td>
-              <td><strong>Total</strong></td>
-            </tr>
-            
-            <tr>
-              <td>1212</td>
-              <td>hola mundo</td>
-              <td>cm</td>
-              <td>15</td>
-              <td>0.50</td>
-              <td>100</td>
-            </tr>
-
-            <tr>
-                <td>1212</td>
-                <td>hola mundo</td>
-                <td>cm</td>
-                <td>15</td>
-                <td>0.50</td>
-                <td>100</td>
-              </tr>
-
-              <tr>
-                <td>1212</td>
-                <td>hola mundo</td>
-                <td>cm</td>
-                <td>15</td>
-                <td>0.50</td>
-                <td>100</td>
-              </tr>
-            </table>
-          
             <br>
-            <pre><p>SOLICITA:                                                                                      ENTREGA:</p></pre>
-            <p style="margin-left: 210px;">AUTORIZA:</p>
+            <form action="select_vale.php" method="post">
+              <label for="" name="cod">CÓDIGO</label>
+              <input type="number"><br>
+              <label for="" name="desc">DESCRIPCIÓN</label>
+              <input type="text"> <br>      
+              <label for="" name="um">U/M</label>
+              <input type="number"><br>
+              <label for="" name="cant">CANTIDAD</label>
+              <input type="number"><br>
+              <label for="" name="cu">COSTO UNITARIO</label>
+              <input type="text"><br>
+              <label for="">Observaciones(en qué se ocupará el bien entregado)</label><br>
+              <textarea></textarea><br>
+              <input type="submit" value="Aceptar">
+            </form>
     </section>
+    
 </body>
 </html>

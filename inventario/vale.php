@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles/estilos.css" type="text/css">
+  <!--  <link rel="stylesheet" href="styles/estilos.css" type="text/css"> -->
+    <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vale</title>
@@ -26,60 +27,25 @@
                 <input type="time" name="fech">
                 <label for="">Depto. o Servicio:</label>
                 <input type="text" name="depto">
+                <input type="submit" value="Aceptar">
             </section> 
           
             </form>
-        
-        <br>
-        <table style="border-bottom: none;">
-            <tbody>
-                <tr>
-                    <td><strong>Código</strong></td>
-                    <td><strong>Descripción</strong></td>
-                    <td><strong>U/M</strong></td>
-                    <td><strong>Cantidad</strong></td>
-                    <td><strong>Costo unitario</strong></td>
-                    <td><strong>Total</strong></td>
-                  </tr>
-                  
-                  <tr>
-                    <td>1212</td>
-                    <td>hola mundo</td>
-                    <td>cm</td>
-                    <td>15</td>
-                    <td>0.50</td>
-                    <td>100</td>
-                  </tr>
-      
-                  <tr>
-                      <td>1212</td>
-                      <td>hola mundo</td>
-                      <td>cm</td>
-                      <td>15</td>
-                      <td>0.50</td>
-                      <td>100</td>
-                    </tr>
-      
-                    <tr>
-                      <td>1212</td>
-                      <td>hola mundo</td>
-                      <td>cm</td>
-                      <td>15</td>
-                      <td>0.50</td>
-                      <td>100</td>
-                    </tr>
-      
-            </tbody>
-            </table>
-
-            
-                <p>Observaciones (En qué se ocupará el bien entregado)</p>
-                <textarea style="margin-left: 30px;" type="text"></textarea>
-            
-          
             <br>
-            <pre><p>SOLICITA:                                                                                      ENTREGA:</p></pre>
-            <p style="margin-left: 210px;">AUTORIZA:</p>
+            <form action="select_vale.php" method="post">
+              <label for="" name="cod" value="cod">CÓDIGO</label>
+              <input type="number"><br>
+              <label for="" name="desc">DESCRIPCIÓN</label>
+              <input type="text"> <br>      
+              <label for="" name="um">U/M</label>
+              <input type="number"><br>
+              <label for="" name="cant">CANTIDAD</label>
+              <input type="number"><br>
+              <label for="" name="cu">COSTO UNITARIO</label>
+              <input type="text"><br>
+              <input type="submit" value="Aceptar">
+            </form>
     </section>
+    
 </body>
 </html>
