@@ -10,7 +10,7 @@
 </head>
 <body>
   
-    <section id="body">
+    <section>
       <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
         <h3>Departamento de mantenimiento</h3>
         
@@ -18,36 +18,50 @@
             <div align="right">
                 <label name="orden" style="margin-right: 75px;">Vale No.</label>
                 <br>
-                <input type="number" name="ord" style="margin-right: 10px">
+                <input type="number" style="margin-right: 10px" required>
             </div>
                 
               <h3 align="center">Solicitud de materiales</h3>
             <section>
                 <label for="">Fecha:</label>
-                <input type="time" name="fech">
+                <input type="datetime" name="fech" required>
                 <label for="">Depto. o Servicio:</label>
-                <input type="text" name="depto">
+                <input type="text" name="depto" required>
                 <input type="submit" value="Aceptar">
             </section> 
           
             </form>
-            <br>
-            <form action="select_vale.php" method="post">
-              <label for="" name="cod">CÓDIGO</label>
-              <input type="number"><br>
-              <label for="" name="desc">DESCRIPCIÓN</label>
-              <input type="text"> <br>      
-              <label for="" name="um">U/M</label>
-              <input type="number"><br>
-              <label for="" name="cant">CANTIDAD</label>
-              <input type="number"><br>
-              <label for="" name="cu">COSTO UNITARIO</label>
-              <input type="text"><br>
-              <label for="">Observaciones(en qué se ocupará el bien entregado)</label><br>
-              <textarea></textarea><br>
-              <input type="submit" value="Aceptar">
-            </form>
+            <br>  
+<?php echo Form_vale();
+?>
+            
     </section>
     
 </body>
 </html>
+
+<?php 
+ 
+  function Form_vale(){
+
+    if(isset($_POST["fech"])){
+
+      $fecha = $_POST['fech'];
+
+      echo'
+      <form action="select_vale.php" method="POST">
+      <label for="cod">CÓDIGO</label>
+      <input type="number" name="cod" id="cod"><br>
+      <label for="desc">DESCRIPCIÓN</label>
+      <input type="text" name="desc"><br>      
+      <label for="um">U/M</label>
+      <input type="text" name="um"><br>
+      <label for="cant">CANTIDAD</label>
+      <input type="number" name="cant"><br>
+      <label for="cu">COSTO UNITARIO</label>
+      <input type="text" name="cu"><br>
+      <input type="submit" value="Aceptar">
+      </form>';
+      }
+ }
+?>
