@@ -20,6 +20,7 @@
     $total = $cost * $cantidad;
 
     echo "saludos";
+    
 }
     
 ?>
