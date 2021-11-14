@@ -65,6 +65,7 @@
             <br>
             <pre><p>SOLICITA:                                                                                      ENTREGA:</p></pre>
             <p style="margin-left: 210px;">AUTORIZA:</p>
+            <a href="form_sol_bodega.php">Volver</a>
     
 </body>
 </html>

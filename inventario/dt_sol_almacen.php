@@ -55,6 +55,7 @@
    
 }
 ?>    
-
+<a href="form_sol_almacen.php">volver</a>
 </body>
+
 </html>
