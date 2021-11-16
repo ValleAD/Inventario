@@ -6,12 +6,19 @@
     <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
     <title>Vale</title>
 </head>
 <body>
 
+    <div id="head">
+
+      <a href="home.php"><button>Volver</button></a>
+
     <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
     <h3>Departamento de mantenimiento</h3>
+    </div>
+    <br>
  
     <div class="container">
     <form action="dt_form_vale.php" method="POST">
@@ -21,7 +28,7 @@
    <h3 align="center">Solicitud de materiales</h3>
 
     <div align="right">
-      <label name="orden" style="margin-right: 100px;">VALE No.</label>
+      <label name="orden" style="margin-right: 135px;">VALE No.</label>
       <br>
       <input type="number" style="margin-right: 10px;" required>
     </div>
@@ -52,10 +59,6 @@
   </form>        
   
   <footer>
-
-      <div id=log>
-        <img src="img/log.png" alt="">
-      </div>   
 
     <div align="center" id="text">
       <p>Derechos reservados 
