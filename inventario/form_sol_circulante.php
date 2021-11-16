@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-     <!--  <link rel="stylesheet" href="styles/estilos.css" type="text/css"> -->
-     <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css">
+     <link rel="stylesheet" href="styles/estilos.css" type="text/css"> 
+     <!-- <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css"> -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solicitud de  Fondo Circulante</title>
@@ -22,7 +22,7 @@
         <h5> Hospital Nacional "Santa Teresa" de Zacatecoluca</h5>
         <br>
     
-        <h5> Atentamente solicito a usteed la compra Urgente de los materiales y/o servicios que se detallan</h5>
+        <h5> Atentamente solicito a usted la compra Urgente de los materiales y/o servicios que se detallan</h5>
         <h5> a continuación, a traves del Fondo Circulante de Monto Fijo</h5>
         <br>
   
