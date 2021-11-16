@@ -1,15 +1,19 @@
 body{
-    background-image: linear-gradient(90deg, rgb(17, 59, 114), rgb(42, 136, 136));
+    background-image: linear-gradient(90deg, rgb(5, 114, 72), rgb(42, 136, 136));
     margin: 0%;
-    margin-top: 0%;
+    margin-bottom: 0px  ;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+h1, h3{
+    text-align: center;
+}
+
 form {
-    margin-left: 180px;
-    margin-right: 180px;
-    margin-top: 0%;
-    height: 600px;
+    margin-left: 160px;
+    margin-right: 160px;
+    border-radius: 14px;
+    height: 800px;
     background-color: white;
 }
 
@@ -17,41 +21,29 @@ section{
     margin-left: 10%;
     margin-right: 10%;
 }
-#grup1{
-    float: left;
-    width: 48%;
-}
-#grup2{
-    float: left;
-    margin-left: 150px;
-}
 
-#grup1 > input{
-    margin-top: 7px;
-    margin-bottom: 20px;
-}
-#grup2 > input{
-    margin-top: 7px;
-    margin-bottom: 20px;
+label {
+    margin-top: 20px;
+    margin-bottom: 5px;
 }
 
 input{
-    width: 220px;
-    height: 20px;
+    width: 310px;
+    height: 30px;
 }
 
 input[type="submit"]{
     width: 250px;
-    height: 30px;
+    height: 35px;
     margin-top: 40px;
-    margin-left: 30%;
+    background: rgb(5, 114, 72);
+    border-style: none;
+    border-radius: 25px;
+    color: white;
+    font-size: 20px;
+    font-family: Cooper Black;
 }   
 
-h1, h3{
-    margin-left: 20px;
-    margin-top: 20px;
-    text-align: center;
-}
 
 table{
     border-collapse: collapse;
@@ -63,4 +55,25 @@ td{
     text-align: center;
     border-collapse: collapse;
     border: 1px solid;
+}
+
+footer {
+    margin-top: 50px;
+    height: 250px;
+    border: rgb(2, 6, 44);
+}
+
+#text{
+    color: white;
+    font-size: 25px;
+}
+
+#log1 > div{
+    float: right;
+    position: absolute relative;
+}
+
+#log{
+    float: left;
+    position: absolute left;
 }
