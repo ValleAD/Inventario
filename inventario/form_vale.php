@@ -17,7 +17,7 @@
    
     <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
     <h3>Departamento de mantenimiento</h3>
-    </div>
+  </div>
     <br>
  
     <div class="container">
@@ -61,7 +61,7 @@
       </form>
     </div>         
   
-<footer style="height: 170px;">
+<footer>
 
   <div align="center">
   <img src="img/log_1.png" alt="" width="320px" height="150px">

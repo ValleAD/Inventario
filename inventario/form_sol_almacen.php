@@ -20,7 +20,7 @@
     <br>
 
   <div class="container">
-    <form action="dt_form_vale.php" method="POST">
+    <form action="dt_form_vale.php" method="POST" style="height: 650px;">
 
       <section>
         <br>

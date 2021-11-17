@@ -2,66 +2,72 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-  <!--  <link rel="stylesheet" href="styles/estilos.css" type="text/css"> -->
+  <link rel="stylesheet" href="styles/style.css" type="text/css">
     <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
     <title>Solicitud Bodega</title>
 </head>
 <body>
   
-    <section>
-      <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
-        <h3>Departamento de mantenimiento</h3>
-        
-            <form action="form_sol_bodega.php" method="POST">
-            <div align="right">
-                <label name="orden" style="margin-right: 75px;">Vale No.</label>
-                <br>
-                <input type="number" style="margin-right: 10px" name="vale" id="vale" required>
-            </div>
-                
-              <h3 align="center">Solicitud de materiales</h3>
-            <section>
-                <label for="fech">Fecha:</label>
-                <input type="datetime" name="fech" id="fech" required>
-                <label for="depto">Depto. o Servicio:</label>
-                <input type="text" name="depto" id="depto" required>
-                <input type="submit" value="Aceptar">
-            </section> 
+  <div id="head">
+
+  <a href="home.php"><button>Volver</button></a> 
+   
+    <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
+    <h3>Departamento de mantenimiento</h3>
+  </div>
+    <br>
+ 
+    <div class="container">
+      <form action="dt_form_vale.php" method="POST">
+
+        <section>
+          <br>
+        <h3 align="center">Solicitud de materiales</h3>
+
+        <div align="right">
+          <label name="orden" style="margin-right: 135px;">VALE No.</label>
+          <br>
+          <input type="number" style="margin-right: 10px;" required>
+        </div>
           
-            </form>
-            <br>  
-<?php echo FormBodega();
-?>
-            
-    </section>
-    
+          <label for="fech">FECHA:</label><br>
+          <input type="datetime" name="fech" id="fech" required><br>
+          <label for="depto">DEPTO. O SERVICIO:</label><br>
+          <input type="text" name="depto" id="depto" required>
+          <br>
+          <label for="cod">CÓDIGO</label><br>
+          <input type="number" name="cod" id="cod" required>
+          <br>
+          <label for="desc">DESCRIPCIÓN</label><br>
+          <input type="text" name="desc" id="desc" required>
+          <br>
+          <label for="cu">COSTO UNITARIO</label><br>
+          <input type="number" name="cu" id="cu" required>
+          <br>
+          <label for="um">U/M</label><br>
+          <input type="text" name="um" id="um" required>
+          <br>
+          <label for="cant">CANTIDAD</label><br>
+          <input type="number" name="cant" id="cant" required><br>
+
+          <div align="center">
+            <input type="submit" value="ACEPTAR">
+          </div>
+      
+        </section>
+      </form>
+    </div>         
+  
+<footer>
+
+  <div align="center">
+  <img src="img/log_1.png" alt="" width="320px" height="150px">
+  </div>
+
+</footer>
+          
 </body>
 </html>
-
-<?php 
- 
-  function FormBodega(){
-
-    if(isset($_POST["fech"])){
-
-      $fecha = $_POST['fech'];
-
-      echo'
-      <form action="dt_sol_bodega.php" method="POST">
-      <label for="cod">CÓDIGO</label>
-      <input type="number" name="cod" id="cod"><br>
-      <label for="desc">DESCRIPCIÓN</label>
-      <input type="text" name="desc"><br>      
-      <label for="um">U/M</label>
-      <input type="text" name="um"><br>
-      <label for="cant">CANTIDAD</label>
-      <input type="number" name="cant"><br>
-      <label for="cu">COSTO UNITARIO</label>
-      <input type="text" name="cu"><br>
-      <input type="submit" value="Aceptar">
-      </form>';
-      }
- }
-?>

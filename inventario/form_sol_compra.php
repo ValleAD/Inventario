@@ -59,7 +59,7 @@
         </form>
     </div>         
 
-<footer style="height: 170px;">
+<footer>
 
     <div align="center">
     <img src="img/log_1.png" alt="" width="320px" height="150px">
