@@ -37,7 +37,7 @@
           <input type="text" name="nombre" id="nombre">
           <br>
           <label for="descr">DESCRIPCIÓN COMPLETA</label><br>
-          <input type="number" name="descr" id="descr" required>
+          <input type="text" name="descr" id="descr" required>
           <br>
           <label for="um">U/M</label><br>
           <input type="text" name="um" id="um" required>
@@ -46,7 +46,7 @@
           <input type="number" name="cant" id="cant" required>
           <br>
           <label for="cu">COSTO UNITARIO</label><br>
-          <input type="text" name="cu" id="cu" required>
+          <input type="number" name="cu" id="cu" required>
           <br>
           <div align="center">
             <input type="submit" value="REGISTRAR">

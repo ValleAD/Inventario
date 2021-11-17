@@ -20,29 +20,24 @@
     <br>
 
   <div class="container">
-    <form action="dt_form_vale.php" method="POST">
+    <form action="dt_form_vale.php" method="POST" style="height: 350px;">
 
       <section>
         <br>
         <h3 align="center">Solicitud de materiales</h3>
 
-          <label for="cod">CÓDIGO</label><br>
-          <input type="number" name="cod" id="cod" required>
-          <br>
-          <label for="um">U/M</label><br>
-          <input type="text" name="um" id="um" required>
-          <br>
-          <label for="nombre">NOMBRE DEL ARTICULO</label><br>
-          <input type="text" name="nombre" id="nombre">
-          <br>
-          <label for="cantSol">CANTIDAD SOLICITADA</label><br>
-          <input type="number" name="cantSol" id="cantSol" required>
-          <br>
-          <label for="cantDes">CANTIDAD DESPACHADA</label><br>
-          <input type="number" name="cantDes" id="cantDes" required>
-          <br>
-          <label for="cu">COSTO UNITARIO</label><br>
-          <input type="number" name="cu" id="cu" required>
+          
+          <input style="width: 220px; margin-top: 30px;" type="number" name="cod" id="cod" placeholder="Código" required>
+         
+          <input style="width: 220px; margin-top: 30px; float: right;" type="text" name="um" id="um" placeholder="U/M" required>
+         
+          <input style="width: 220px; margin-top: 30px;" type="text" name="nombre" id="nombre" placeholder="Nombre del artículo" required>
+         
+          <input style="width: 220px; margin-top: 30px; float: right;" type="number" name="cantSol" id="cantSol" placeholder="cantidad Solicitada" required>
+         
+          <input style="width: 220px; margin-top: 30px;" type="number" name="cantDes" id="cantDes" placeholder="Cantidad Despachada" required>
+         
+          <input style="width: 220px; margin-top: 30px; float: right;" type="number" name="cu" id="cu" placeholder="Costo Unitario" required>
           <br>
           <div align="center">
             <input type="submit" value="ACEPTAR">
@@ -52,7 +47,7 @@
   </div>
        
 
-<footer>
+<footer style="height: 140px">
 
 <aside style="position: absolute;">
   <img src="img/log_1.png" alt="" width="260px" height="100px">

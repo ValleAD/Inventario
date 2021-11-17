@@ -16,42 +16,44 @@
     <a href="home.php"><button style="border-radius: 5px; margin-top: 33px;">Volver</button></a>  
 
     <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
-    <h3>Departamento de mantenimiento</h3>
+    <h3>Unidad de adquisiciones y contrataciones institucional</h3>
     </div>
     <br>
 
     <div class="container">
-        <form action="dt_form_vale.php" method="POST">
+        <form action="dt_form_vale.php" method="POST" style="height: 880px">
 
             <section>
             <br>
-            <h3 align="center">Solicitud de materiales</h3>
-
-            <div align="right">
-                <label name="orden" style="margin-right: 135px;">VALE No.</label>
-                <br>
-                <input type="number" style="margin-right: 10px;" required>
-            </div>
-                
-            <label for="fech">FECHA:</label><br>
-            <input type="datetime" name="fech" id="fech" required><br>
-            <label for="depto">DEPTO. O SERVICIO:</label><br>
+            <h3 align="center">Solicitud de compra</h3>
+            
+            <label for="depto">DEPENDENCIA SOLICITANTE</label><br>
             <input type="text" name="depto" id="depto" required>
+            <br>
+            <label for="sum">SUMINISTRO SOLICITADO</label><br>
+            <input type="text" name="sum" id="sum" required>
             <br>
             <label for="cod">CÓDIGO</label><br>
             <input type="number" name="cod" id="cod" required>
             <br>
+            <label for="codna">CODIFICACIÓN DE CATALOGO DE NU</label><br>
+            <input type="number" name="cdona" id="cdona" required>
+            <br>
             <label for="desc">DESCRIPCIÓN</label><br>
             <input type="text" name="desc" required>
             <br>
-            <label for="cu">COSTO UNITARIO</label><br>
-            <input type="text" name="cu" required>
-            <br>
             <label for="um">U/M</label><br>
-            <input type="text" name="um" required>
+            <input type="text" name="um" id="um" required>
             <br>
             <label for="cant">CANTIDAD</label><br>
-            <input type="number" name="cant" required><br>
+            <input type="number" name="cant" required>
+            <br>
+            <label for="cu">COSTO UNITARIO ESTIMADO</label><br>
+            <input type="number" name="cu" id="cu" required>
+            <br>
+            <label for="total">MONTO TOTAL ESTIMADO</label><br>
+            <input type="number" name="total" id="total" required>
+            <br>
             <div align="center"><input type="submit" value="ACEPTAR">
             </section>
         </form>

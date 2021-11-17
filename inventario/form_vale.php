@@ -42,16 +42,16 @@
           <input type="number" name="cod" id="cod" required>
           <br>
           <label for="desc">DESCRIPCIÓN</label><br>
-          <input type="text" name="desc" required>
+          <input type="text" name="desc" id="desc" required>
           <br>
           <label for="cu">COSTO UNITARIO</label><br>
-          <input type="text" name="cu" required>
+          <input type="number" name="cu" id="cu" required>
           <br>
           <label for="um">U/M</label><br>
-          <input type="text" name="um" required>
+          <input type="text" name="um" id="um" required>
           <br>
           <label for="cant">CANTIDAD</label><br>
-          <input type="number" name="cant" required><br>
+          <input type="number" name="cant" id="cant" required><br>
 
           <div align="center">
             <input type="submit" value="ACEPTAR">
