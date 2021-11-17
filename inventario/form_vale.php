@@ -61,18 +61,12 @@
       </form>
     </div>         
   
-  <footer>
+<footer style="height: 170px;">
 
-    <aside style="position: absolute;">
-        <img src="img/log_1.png" alt="" width="260px" height="100px">
-    </aside>
+  <div align="center">
+  <img src="img/log_1.png" alt="" width="320px" height="150px">
+  </div>
 
-   <center><br>
-        <p>Copyright© 2021<br>
-            <br>Hospital Nacional Santa Teresa de Zacatecoluca</b>
-        </p>   
-    </center>
-    
 </footer>
           
 </body>
