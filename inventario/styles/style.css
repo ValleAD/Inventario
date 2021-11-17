@@ -8,16 +8,19 @@ body{
 button{
     float: left;
     position: absolute;
-    width: 100px;
-    height: 50px    ;
+    width: 80px;
+    height: 30px;
     color: white;
     background: rgb(14, 151, 98);
-    border: none;
+    border-style: none;
 }
 
 #head{
-    background: rgb(2, 44, 41);
+    background: #022c29;
     margin-bottom: 30px;
+    width: 100%;
+    position: fixed;
+    height: 100px;
     color: white;
 }
 
@@ -30,6 +33,7 @@ form {
     margin-right: 160px;
     border-radius: 14px;
     height: 800px;
+    margin-top: 100px;
     background-color: white;
 }
 
@@ -44,7 +48,7 @@ label {
 }
 
 input{
-    width: 310px;
+    width: auto;
     height: 30px;
 }
 
@@ -75,11 +79,8 @@ td{
 
 footer {
     margin-top: 50px;
-    height: 100px;
-    background: rgb(2, 44, 41);
+    background: rgb(145, 143, 143);
+    height: 120px;
+    color: black;
 }
 
-#text{
-    color: white;
-    font-size: 25px;
-}

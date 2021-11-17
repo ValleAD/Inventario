@@ -10,62 +10,70 @@
     <title>Vale</title>
 </head>
 <body>
+  
+  <div id="head">
 
-    <div id="head">
-
-      <a href="home.php"><button>Volver</button></a>
-
+    <a href="home.php"><button style="border-radius: 5px; margin-top: 33px;">Volver</button></a>  
+   
     <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
     <h3>Departamento de mantenimiento</h3>
     </div>
     <br>
  
     <div class="container">
-    <form action="dt_form_vale.php" method="POST">
+      <form action="dt_form_vale.php" method="POST">
 
-   <section>
-     <br>
-   <h3 align="center">Solicitud de materiales</h3>
+        <section>
+          <br>
+        <h3 align="center">Solicitud de materiales</h3>
 
-    <div align="right">
-      <label name="orden" style="margin-right: 135px;">VALE No.</label>
-      <br>
-      <input type="number" style="margin-right: 10px;" required>
-    </div>
+        <div align="right">
+          <label name="orden" style="margin-right: 135px;">VALE No.</label>
+          <br>
+          <input type="number" style="margin-right: 10px;" required>
+        </div>
           
-      <label for="fech">FECHA:</label><br>
-      <input type="datetime" name="fech" id="fech" required><br>
-      <label for="depto">DEPTO. O SERVICIO:</label><br>
-      <input type="text" name="depto" id="depto" required>
-      <br>
-        <label for="cod">CÓDIGO</label><br>
-        <input type="number" name="cod" id="cod" required>
-        <br>
-        <label for="um">U/M</label><br>
-        <input type="text" name="um" required>
-        <br>
-        <label for="cu">COSTO UNITARIO</label><br>
-        <input type="text" name="cu" required>
-        <br>
-        <label for="desc">DESCRIPCIÓN</label><br>
-        <input type="text" name="desc" required>
-        <br>
-        <label for="cant">CANTIDAD</label><br>
-        <input type="number" name="cant" required><br>
-        <div align="center"><input type="submit" value="ACEPTAR">
-      </div>
-    </div> 
-   </section>
-  </form>        
+          <label for="fech">FECHA:</label><br>
+          <input type="datetime" name="fech" id="fech" required><br>
+          <label for="depto">DEPTO. O SERVICIO:</label><br>
+          <input type="text" name="depto" id="depto" required>
+          <br>
+          <label for="cod">CÓDIGO</label><br>
+          <input type="number" name="cod" id="cod" required>
+          <br>
+          <label for="desc">DESCRIPCIÓN</label><br>
+          <input type="text" name="desc" required>
+          <br>
+          <label for="cu">COSTO UNITARIO</label><br>
+          <input type="text" name="cu" required>
+          <br>
+          <label for="um">U/M</label><br>
+          <input type="text" name="um" required>
+          <br>
+          <label for="cant">CANTIDAD</label><br>
+          <input type="number" name="cant" required><br>
+
+          <div align="center">
+            <input type="submit" value="ACEPTAR">
+          </div>
+      
+        </section>
+      </form>
+    </div>         
   
   <footer>
 
-    <div align="center" id="text">
-      <p>Derechos reservados 
-      <br>Hospital Nacional Santa Teresa de Zacatecoluca
-      </p>
-    </div>
-  </footer>
+    <aside style="position: absolute;">
+        <img src="img/log_1.png" alt="" width="260px" height="100px">
+    </aside>
+
+   <center><br>
+        <p>Copyright© 2021<br>
+            <br>Hospital Nacional Santa Teresa de Zacatecoluca</b>
+        </p>   
+    </center>
+    
+</footer>
           
 </body>
 </html>
