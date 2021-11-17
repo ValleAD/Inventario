@@ -12,7 +12,7 @@
   
     <div id="head">
 
-    <a href="home.php"><button style="border-radius: 5px; margin-top: 33px;">Volver</button></a>  
+    <a href="home.php"><button>Volver</button></a> 
 
     <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
     <h3>Almacén de medicamentos, insumos médicos, papelería y otros artículos</h3>
