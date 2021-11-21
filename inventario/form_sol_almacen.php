@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
+<?php
+ Require("menu.php");
+ include("footer.php")?>
 <head>
 <link rel="stylesheet" type="text/css" href="styles/style.css" > 
     <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css">
@@ -12,15 +15,13 @@
   
     <div id="head">
 
-    <a href="home.php"><button>Volver</button></a> 
-
     <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
     <h3>Almacén de medicamentos, insumos médicos, papelería y otros artículos</h3>
     </div>
     <br>
 
-  <div class="container">
-    <form action="dt_form_vale.php" method="POST" style="height: 650px;">
+  <div style="position: all; width: 70%; height: 100%;margin-top: 15%"  class="container">
+    <form style="position: all; width: 70%; height: 100%;margin-top: 15%"  action="dt_sol_almacen.php" method="POST" style="height: 650px;">
 
       <section>
         <br>
@@ -32,8 +33,8 @@
           <label for="um">U/M</label><br>
           <input type="text" name="um" id="um" required>
           <br>
-          <label for="nombre">NOMBRE DEL ARTICULO</label><br>
-          <input type="text" name="nombre" id="nombre">
+          <label for="name">NOMBRE DEL ARTICULO</label><br>
+          <input type="text" name="name" id="name">
           <br>
           <label for="cantSol">CANTIDAD SOLICITADA</label><br>
           <input type="number" name="cantSol" id="cantSol" required>
@@ -45,7 +46,7 @@
           <input type="number" name="cu" id="cu" required>
           <br>
           <div align="center">
-            <input type="submit" value="ACEPTAR">
+            <input  style=" width:35%; margin: 5%; width: 30%; height: 10%;" type="submit" value="Aceptar">
           </div>
       </section>
     </form> 

@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <?php
+ Require("menu.php");
+ include("footer.php")?>
     <meta charset="UTF-8">
      <link rel="stylesheet" href="styles/estilos.css" type="text/css"> 
      <!-- <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css"> -->
@@ -26,7 +29,7 @@
         <h5> a continuación, a traves del Fondo Circulante de Monto Fijo</h5>
         <br>
   
-        <form action="dt_sol_circulante.php" method="POST">
+        <form style="position: all; width: 70%; height: 100%;margin-top: 15%"  action="dt_sol_circulante.php" method="POST">
         <label for="no">No.</label>
         <input type="number" name="cod" id="cod"><br>  
         <label for="desc">Descripcion de los Materiales y/o servicios Solicitados</label>
@@ -37,7 +40,9 @@
         <input type="number" name="cantSol" id="cantSol"><br>
         <label for="cantes">Cantidad Estimada</label>
         <input type="number" name="cantes" id="cantes"><br>
-        <input type="submit" value="Aceptar">
+         <div align="center">
+            <input  style=" width:35%; margin: 5%; width: 30%; height: 10%;" type="submit" value="Aceptar">
+          </div>
         </form>'
         <br>
         <h5> Todo lo anteriormente detallado, es indispensable para desarrollar nuestras funciones.</h5>

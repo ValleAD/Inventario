@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+<?php Require("menu.php")?>
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles/style.css" > 
@@ -11,50 +12,59 @@
 </head>
 <body>
 
-    <div id="head">
-
-    <a href="home.php"><button>Volver</button></a>  
+    <div id="head"> 
 
     <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
     <h3>Unidad de adquisiciones y contrataciones institucional</h3>
     </div>
     <br>
 
-    <div class="container">
-        <form action="dt_form_vale.php" method="POST" style="height: 880px">
+    <div class="container" style="position: all; width: 70%; height: 100%;margin-top: 15%" >
+        <form style="position: all; width: 70%; height: 100%;margin-top: 15%" action="dt_sol_compra.php" method="POST" style="height: 880px">
 
             <section>
             <br>
             <h3 align="center">Solicitud de compra</h3>
             
             <label for="depto">DEPENDENCIA SOLICITANTE</label><br>
-            <input type="text" name="depto" id="depto" required>
+            <input  class="form-control" type="text" name="depto" id="depto" required>
             <br>
             <label for="sum">SUMINISTRO SOLICITADO</label><br>
-            <input type="text" name="sum" id="sum" required>
+            <input  class="form-control" type="text" name="sum" id="sum" required>
             <br>
             <label for="cod">CÓDIGO</label><br>
-            <input type="number" name="cod" id="cod" required>
+            <input  class="form-control" type="number" name="cod" id="cod" required>
             <br>
             <label for="codna">CODIFICACIÓN DE CATALOGO DE NU</label><br>
-            <input type="number" name="cdona" id="cdona" required>
+            <input  class="form-control" type="number" name="cdona" id="cdona" required>
             <br>
             <label for="desc">DESCRIPCIÓN</label><br>
-            <input type="text" name="desc" required>
+            <input  class="form-control" type="text" name="desc" required>
             <br>
-            <label for="um">U/M</label><br>
-            <input type="text" name="um" id="um" required>
+            <div class="col-md-12">
+                <label for="um" class="form-label">U/M</label>
+                <select class="form-select" name="um" id="um" required>
+                  <option selected disabled value="">Selecione Opcion</option>
+                  <option value="U">U</option>
+                  <option value="M">M</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a valid state.
+                </div>
+              </div>
             <br>
             <label for="cant">CANTIDAD</label><br>
-            <input type="number" name="cant" required>
+            <input  class="form-control" type="number" name="cant" required>
             <br>
             <label for="cu">COSTO UNITARIO ESTIMADO</label><br>
-            <input type="number" name="cu" id="cu" required>
+            <input  class="form-control" type="number" name="cu" id="cu" required>
             <br>
             <label for="total">MONTO TOTAL ESTIMADO</label><br>
-            <input type="number" name="total" id="total" required>
+            <input  class="form-control" type="number" name="total" id="total" required>
             <br>
-            <div align="center"><input type="submit" value="ACEPTAR">
+             <div align="center">
+            <input  style=" width:35%; margin: 5%; width: 30%; height: 10%;" type="submit" value="Aceptar">
+          </div>
             </section>
         </form>
     </div>         

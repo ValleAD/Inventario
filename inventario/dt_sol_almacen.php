@@ -18,7 +18,7 @@
         
     $codigo = $_POST['cod'];
     $um = $_POST['um'];
-    $nombre = $_POST['name'];
+    $nombre = $_POST['nombre'];
     $cant_sol = $_POST['cantSol'];
     $cant_des = $_POST['cantDes'];
     $cost = $_POST['cu'];
@@ -37,6 +37,7 @@
       <td><strong>Cantidad despachada</strong></td>
       <td><strong>Costo unitario</strong></td>
       <td><strong>Total</strong></td>
+
     </tr>
     
     <tr>

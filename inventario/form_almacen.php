@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
+<?php
+ Require("menu.php");?>
 <head>
 <link rel="stylesheet" type="text/css" href="styles/style.css" > 
     <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css">
@@ -10,50 +12,86 @@
 </head>
 <body>
   
-    <div id="head">
-
-    <a href="home.php"><button>Volver</button></a> 
-
+    <div id="head"  style="margin-top: 4.1%">
     <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
     <h3>Almacén de medicamentos, insumos médicos, papelería y otros artículos</h3>
     </div>
     <br>
 
-  <div class="container">
-    <form action="dt_form_vale.php" method="POST" style="height: 350px;">
+  <div style="position: all; width: 70%; height: 110%;margin-top: 5%" class="container">
+  <form style="position: all; width: 70%; height: 110%;margin-top: 15%"   action="dt_sol_almacen.php" method="POST" style="height: 50px;">
 
       <section>
         <br>
         <h3 align="center">Solicitud de materiales</h3>
-
-          
-          <input style="width: 220px; margin-top: 30px;" type="number" name="cod" id="cod" placeholder="Código" required>
-         
-          <input style="width: 220px; margin-top: 30px; float: right;" type="text" name="um" id="um" placeholder="U/M" required>
-         
-          <input style="width: 220px; margin-top: 30px;" type="text" name="nombre" id="nombre" placeholder="Nombre del artículo" required>
-         
-          <input style="width: 220px; margin-top: 30px; float: right;" type="number" name="cantSol" id="cantSol" placeholder="cantidad Solicitada" required>
-         
-          <input style="width: 220px; margin-top: 30px;" type="number" name="cantDes" id="cantDes" placeholder="Cantidad Despachada" required>
-         
-          <input style="width: 220px; margin-top: 30px; float: right;" type="number" name="cu" id="cu" placeholder="Costo Unitario" required>
           <br>
-          <div align="center">
-            <input type="submit" value="ACEPTAR">
+
+        <div class="container">
+
+           <div class="row">
+               <div class="col">
+            <div class="col-md-11">
+                <select class="form-select" name="um" id="um" required>
+                  <option selected disabled value="">U/M</option>
+                  <option value="U">U</option>
+                  <option value="M">M</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a valid state.
+                </div>
+              </div>
+    </div>
+   
+    <div class="col-6">
+       <div align="rigth">
+      <div class="col-md-11">
+       <input  class="form-control"  type="number" name="cod" id="cod" placeholder="Código" required>
+      </div>
+  </div>
+</div>
+ </div>
+
+
+  <div class="row">
+    <div class="col-6">
+      <div class="col-md-12">
+       <input  class="form-control" style="width: 220px; margin-top: 30px;" type="text" name="nombre" id="nombre" placeholder="Nombre del artículo" required>
+     </div>
+    </div>
+    <div class="col">
+      <div class="col-md-12">
+     <input  class="form-control" style="width: 220px; margin-top: 30px;" type="number" name="cantSol" id="cantSol" placeholder="cantidad Solicitada" required>
+   </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col">
+          <input  class="form-control" style="width: 220px; margin-top: 30px;" type="number" name="cantDes" id="cantDes" placeholder="Cantidad Despachada" required>
+    </div>
+  
+    <div class="col">
+      <input  class="form-control" style="width: 220px; margin-top: 30px; " type="number" name="cu" id="cu" placeholder="Costo Unitario" required>
+    </div>
+     <div class="col">
+    <div class="col-md-12">
+      <input  class="form-control" style="width: 220px; margin-top: 30px; " type="text" name="depto" id="depto" placeholder="Departamento" required>
+    </div>
+  </div>
+  </div>
+</div> 
+ 
+    
+          <br>
+           <div align="center">
+            <input  style=" width:35%; margin: 5%; width: 30%; height: 10%;" type="submit" value="Aceptar">
           </div>
       </section>
     </form> 
   </div>
        
-
-<footer style="margin-top: 20%;">
-
-  <div align="center">
-  <img src="img/log_1.png" alt="" width="320px" height="150px">
-  </div>
-
-</footer>
+<?php include("footer.php")?>
 
 </body>
 </html>

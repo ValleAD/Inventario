@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
+<?php
+ Require("menu.php");?>
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles/style.css" > 
@@ -11,57 +13,58 @@
 </head>
 <body>
 
-    <div id="head">
-
-    <a href="home.php"><button>Volver</button></a>   
+   <div id="head"  style="margin-top: 4.1%">
 
         <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
 
     </div>
     <br>
 
-<div class="container">
-    <form action="dt_form_vale.php" method="POST" style="height: 740px">
+<div class="container" style="position: all; width: 70%; height: 100%;margin-top: 15%" >
+    <form style="position: all; width: 70%; height: 100%;margin-top: 15%" action="Registro.php" method="POST" style="height: 740px">
 
       <section>
         <br>
         <h3 align="center">Registro de productos</h3>
 
           <label for="cod">CÓDIGO DEL PRODUCTO</label><br>
-          <input type="number" name="cod" id="cod" required>
+          <input  class="form-control"type="number" name="cod" id="cod" required>
           <br>
           <label for="catal">CODIFICACIÓN DE CATALOGO <br>DE NACIONES UNIDAS</label><br>
-          <input type="number" name="catal" id="catal" required>
+          <input  class="form-control" type="number" name="catal" id="catal" required>
           <br>
           <label for="nombre">NOMBRE DEL ARTICULO</label><br>
-          <input type="text" name="nombre" id="nombre">
+          <input  class="form-control" type="text" name="nombre" id="nombre">
           <br>
           <label for="descr">DESCRIPCIÓN COMPLETA</label><br>
-          <input type="text" name="descr" id="descr" required>
+          <input  class="form-control" type="text" name="descr" id="descr" required>
           <br>
-          <label for="um">U/M</label><br>
-          <input type="text" name="um" id="um" required>
+         <div class="col-md-12">
+                <label for="um" class="form-label">U/M</label>
+                <select class="form-select" name="um" id="um" required>
+                  <option selected disabled value="">Selecione Opcion</option>
+                  <option value="U">U</option>
+                  <option value="M">M</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a valid state.
+                </div>
+              </div>
           <br>
           <label for="cant">CANTIDAD</label><br>
-          <input type="number" name="cant" id="cant" required>
+          <input  class="form-control" type="number" name="cant" id="cant" required>
           <br>
           <label for="cu">COSTO UNITARIO</label><br>
-          <input type="number" name="cu" id="cu" required>
+          <input  class="form-control" type="number" name="cu" id="cu" required>
           <br>
-          <div align="center">
-            <input type="submit" value="REGISTRAR">
+           <div align="center">
+            <input  style=" width:35%; margin: 5%; width: 30%; height: 10%;" type="submit" value="Aceptar">
           </div>
       </section>
     </form> 
   </div>
 
-<footer>
-
-  <div align="center">
-  <img src="img/log_1.png" alt="" width="320px" height="150px">
-  </div>
-
-</footer>
+<?php include("footer.php")?>
     
 </body>
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+<?php Require("menu.php")?>
 <head>
     <meta charset="UTF-8">
      <!--  <link rel="stylesheet" href="styles/estilos.css" type="text/css"> -->
@@ -13,20 +14,8 @@
     <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
     <h3>Departamento de mantenimiento</h3>
 
-        <div align="right">
-        <label name="orden" style="margin-right: 75px;">Vale No.</label>
-        <br>
-        <input value="">
-        </div>
-
-        <h3 align="center">Solicitud de materiales</h3>
-            <section>
-                <label>Fecha:</label>
-                <input type="datetime" value="'">
-                <label>Depto. o Servicio:</label>
-                <input type="text" value="">
-            </section> 
-<?php
+      
+     <?php
     if(isset($_POST['cod'])) {
         
     $codigo = $_POST['cod'];
@@ -38,8 +27,28 @@
     $total = $cost * $cantidad;
 
     echo 
-    '<table style="border-collapse: collapse;
-    border: 2px solid;">
+    '
+      <form style="position: all; width: 70%; height: 100%; style="position: all; width: 70%; height: 100%;margin-bottom: 5%;" >
+         <h3 align="center">Solicitud de materiales</h3>
+            <section>
+                <label>Fecha:</label>
+                <input type="datetime" value="">
+                <label>Depto. o Servicio:</label>
+                <input type="text" value="">
+            </section> 
+
+       <section>
+      <div align="right">
+          <label style="margin-right: 135px;">VALE No.</label>
+          <div class="col-md-2">
+          <input name="orden" class="form-control" type="number" style="margin-right: 10px;margin-bottom: -15%;margin-top: -25%;" required>
+        </div>
+        </div>
+        <br>
+         <br>
+
+      <div class="table-responsive">
+  <table class="table">
     <tr>
       <td><strong>Código</strong></td>
       <td><strong>Descripción</strong></td>
@@ -59,14 +68,23 @@
     </tr>
 
     </table>
+     <div class="container">
+  <div class="row">
+    <div class="col">
+    <p>  SOLICITA:  </p>
+    </div>
+    <div class="col-6">
+     <p style="margin-left: 210px;">  ENTREGA:</p>
+    </div>
+      </div>
+</div>
+            <p  style=" width:35%; margin: 5%; width: 30%; height: 10%;margin-top: 15% margin-bottom: 5%;">AUTORIZA:</p>
+     </section>
+          
+    </form>
     ';
 }
-?>            
-            <br>
-            <pre><p>SOLICITA:                                                                                      ENTREGA:</p></pre>
-            <p style="margin-left: 210px;">AUTORIZA:</p>
-            <a href="form_sol_bodega.php">Volver</a>
-    
+?>    
 </body>
 </html>
 
