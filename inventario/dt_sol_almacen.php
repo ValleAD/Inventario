@@ -2,16 +2,22 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-  <!--  <link rel="stylesheet" href="styles/estilos.css" type="text/css"> -->
+<meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="styles/style.css" > 
     <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
     <title>Solicitud de Materiales a Almacen</title>
 </head>
 <body>
   
+     <div id="head" style="height: 17%">
+   <a class="nav-link " href="form_almacen.php"><button >Volver</button></a> 
     <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
-    <h3>Almacen de medicamentos, insumos medicos, papeleria y otros articulos</h3>
+    <h3>Almacen de medicamentos, insumos medicos, papeleria y otros articulos</h3><br>
+</div>
+<br>
 
     <?php
     if(isset($_POST['cod'])) {
@@ -27,8 +33,12 @@
     $total = $cost * $cant_des;
 
     echo 
-    '<table style="border-collapse: collapse;
-    border: 2px solid;">
+    '  <form  style="position: all; width: 70%; height: 100%;margin-bottom: 5%;">
+       <section>
+      
+        
+      <div class="table-responsive">
+  <table class="table">
     <tr>
       <td><strong>Código</strong></td>
       <td><strong>U/M</strong></td>
@@ -56,7 +66,7 @@
    
 }
 ?>    
-<a href="form_sol_almacen.php">volver</a>
+<a class="nav-link" href="form_almacen.php">volver</a>
 </body>
 
 </html>

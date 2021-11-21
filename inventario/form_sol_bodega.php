@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
-<?php
- Require("menu.php");?>
+
 <head>
-    <meta charset="UTF-8">
-  <link rel="stylesheet" href="styles/style.css" type="text/css">
+<meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="styles/style.css" > 
     <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,15 +12,15 @@
 </head>
 <body>
   
-  <div id="head"  style="margin-top: 4.1%">
-   
+  <div id="head">
+    <a href="home.php"><button>Volver</button></a>  
     <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
     <h3>Departamento de mantenimiento</h3>
   </div>
     <br>
  
-    <div class="container" style="position: all; width: 70%; height: 100%;margin-top: 15%" >
-      <form style="position: all; width: 70%; height: 100%;margin-top: 15%" style="position: all; width: 70%; height: 100%;margin-top: 15%"  action="dt_sol_bodega.php" method="POST">
+  <div style="position: all; width: 70%; height: 110%;margin-top: 1%" class="container">
+  <form style="position: all; width: 70%; height: 110%;margin-top: 10%"  style="position: all; width: 70%; height: 100%;margin-top: 15%"  action="dt_sol_bodega.php" method="POST">
 
         <section>
           <br>
@@ -43,8 +42,8 @@
           <label for="cod">CÓDIGO</label><br>
           <input  class="form-control" type="number" name="cod" id="cod" required>
           <br>
-          <label for="desc">DESCRIPCIÓN</label><br>
-          <input  class="form-control" type="text" name="desc" id="desc" required>
+         <label>DESCRIPCION</label>
+            <textarea class="form-control z-depth-1" id="exampleFormControlTextarea345" name="desc" rows="3" placeholder="Write your comment..."></textarea>
           <br>
           <label for="cu">COSTO UNITARIO</label><br>
           <input  class="form-control" type="number" name="cu" id="cu" required>
@@ -72,7 +71,12 @@
       </form>
     </div>         
   
- <?php include("footer.php")?>
-          
+          <footer style="margin-top: 3%;">
+
+  <div align="center">
+  <img src="img/log_1.png" alt="" width="320px" height="150px">
+  </div>
+
+</footer> 
 </body>
 </html>

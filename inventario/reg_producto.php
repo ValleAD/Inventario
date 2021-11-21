@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<?php
- Require("menu.php");?>
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles/style.css" > 
@@ -13,15 +12,14 @@
 </head>
 <body>
 
-   <div id="head"  style="margin-top: 4.1%">
-
+   <div id="head">
+         <a href="home.php"><button>Volver</button></a>  
         <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
 
     </div>
     <br>
-
-<div class="container" style="position: all; width: 70%; height: 100%;margin-top: 15%" >
-    <form style="position: all; width: 70%; height: 100%;margin-top: 15%" action="Registro.php" method="POST" style="height: 740px">
+  <div style="position: all; width: 70%; height: 110%;margin-top: 1%" class="container">
+  <form style="position: all; width: 70%; height: 110%;margin-top: 10%" " action="dt_producto.php" method="POST" style="height: 740px">
 
       <section>
         <br>
@@ -63,8 +61,13 @@
       </section>
     </form> 
   </div>
+    <footer style="margin-top: 3%;">
 
-<?php include("footer.php")?>
-    
+  <div align="center">
+  <img src="img/log_1.png" alt="" width="320px" height="150px">
+  </div>
+
+</footer>
+          
 </body>
 </html>

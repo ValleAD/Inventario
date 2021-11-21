@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <?php
- Require("menu.php");
- include("footer.php")?>
-    <meta charset="UTF-8">
-     <link rel="stylesheet" href="styles/estilos.css" type="text/css"> 
-     <!-- <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css"> -->
+ 
+<meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="styles/style.css" > 
+    <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
     <title>Solicitud de  Fondo Circulante</title>
 </head>
 <body>
-
+ <a href="home.php"><button>Volver</button></a>  
     <h1>Hospital Nacional "Santa Teresa" de Zacatecoluca</h1>
     <h3>Fondo Circulante de Monto Fijo</h3>
 

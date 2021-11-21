@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
-<?php
- Require("menu.php");
- include("footer.php")?>
 <head>
-<link rel="stylesheet" type="text/css" href="styles/style.css" > 
+<meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="styles/style.css" > 
     <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,8 +11,9 @@
 </head>
 <body>
   
-    <div id="head">
-
+   
+<div id="head">
+ <a href="home.php"><button>Volver</button></a>  
     <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
     <h3>Almacén de medicamentos, insumos médicos, papelería y otros artículos</h3>
     </div>

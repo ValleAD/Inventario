@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
-<?php
- Require("menu.php");
-?>
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles/style.css" > 
@@ -14,16 +12,16 @@
 </head>
 <body>
   
-<div id="head"  style="margin-top: 4.1%">
+<div id="head" >
    
+    <a href="home.php"><button>Volver</button></a>  
     <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
     <h3>Departamento de mantenimiento</h3>
   </div>
   </div>
     <br>
- 
-    <div class="container" style="position: all; width: 70%; height: 100%;margin-top: 15%" >
-      <form style="position: all; width: 70%; height: 100%;margin-top: 15%"  action="dt_form_vale.php" method="POST">
+  <div style="position: all; width: 70%; height: 110%;margin-top: 1%" class="container">
+  <form style="position: all; width: 70%; height: 110%;margin-top: 10%"  action="dt_form_vale.php" method="POST">
 
         <section>
           <br>
@@ -38,16 +36,17 @@
         </div>
           
           <label for="fech">FECHA:</label><br>
-          <input  class="form-control" type="datetime" name="fech" id="fech" required><br>
+          <input  class="form-control" type="date" name="fech" id="fech" required><br>
           <label for="depto">DEPTO. O SERVICIO:</label><br>
           <input  class="form-control" type="text" name="depto" id="depto" required>
           <br>
           <label for="cod">CÓDIGO</label><br>
           <input  class="form-control" type="number" name="cod" id="cod" required>
           <br>
-          <label for="desc">DESCRIPCIÓN</label><br>
-          <input  class="form-control" type="text" name="desc" id="desc" required>
-          <br>
+           <br> 
+            <label>DESCRIPCION</label>
+            <textarea class="form-control z-depth-1" id="exampleFormControlTextarea345" name="desc" rows="3" placeholder="Write your comment..."></textarea>
+          
           <label for="cu">COSTO UNITARIO</label><br>
           <input  class="form-control" type="number" name="cu" id="cu" required>
           <br>
@@ -73,7 +72,13 @@
       </form>
     </div>         
   
-<?php include("footer.php")?>
+<footer style="margin-top: 3%;">
+
+  <div align="center">
+  <img src="img/log_1.png" alt="" width="320px" height="150px">
+  </div>
+
+</footer>
           
 </body>
 </html>
