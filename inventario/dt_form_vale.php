@@ -11,95 +11,106 @@
 </head>
 <body>
 
-    <div id="head" style="height: 17%">
-   <a class="nav-link " href="form_vale.php"><button >Volver</button></a> 
-    <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
-    <h3>Departamento de mantenimiento</h3><br>
-</div>
-<br>
+ 
  
 
 <?php
-    if(isset($_POST['cod'])) {
-        $fecha=$_POST['fech'];
-        $Depto=$_POST['depto'];
-        $Vale=$_POST['orden'];
-        $codigo = $_POST['cod'];
-        $des = $_POST['desc'];
-        $um = $_POST['um'];
-        $cantidad = $_POST['cant'];
-        $cost = $_POST['cu'];
+    
+    if ( isset($_POST["cod"]) ) { 
+
+      $fecha=$_POST['fech'];
+      $Depto=$_POST['depto'];
+      $Vale=$_POST['vale'];
+
+      echo 
+      '
+<form  style="position: all; width: 70%; height: 100%;margin-bottom: 5%;">
+         
+      <section>
+        <div class="row">
+          <div class="col-6">
+        
+              <label>Fecha:</label>
+              <input class="form-control" disabled type="text" value="' .$fecha. '">
+      
+          </div>
+          <div class="col">
+        
+              <label>Depto. o Servicio:</label>
+              <input class="form-control" disabled type="text" value="' .$Depto. '">
+    
+          </div>
+        </div>
+              
+                  
+                  
+</section> 
+  
+      <section>
+        <div align="right">
+            <label style="margin-right: 135px;">VALE No.</label>
+            <div class="col-md-2">
+              <input class="form-control" type="number" value="'.$Vale.'" style="margin-right: 10px;margin-bottom: -15%;margin-top: -25%;" required>
+            </div>
+        </div>
+          <br>
+           <br>
+           <div class="table-responsive">
+    <table class="table">
+      <tr>
+        <td><strong>Código</strong></td>
+        <td><strong>Descripción</strong></td>
+        <td><strong>U/M</strong></td>
+        <td><strong>Cantidad</strong></td>
+        <td><strong>Costo unitario</strong></td>
+        <td><strong>Total</strong></td>
+      </tr>';
+
+      for($i = 0; $i < count($_POST['cod']); $i++)
+    {
+       
+        $codigo = $_POST['cod'][$i];
+        $des = $_POST['desc'][$i];
+        $um = $_POST['um'][$i];
+        $cantidad = $_POST['cant'][$i];
+        $cost = $_POST['cu'][$i];
 
     $total = $cost * $cantidad;
-
-    echo 
-    '
-        <form  style="position: all; width: 70%; height: 100%;margin-bottom: 5%;">
-       <section>
-       
-            <section>
-                 <div class="row">
-    <div class="col-6">
       
-       <label>Fecha:</label>
-            <input class="form-control"  type="text" value="' .$fecha. '">
-    
-    </div>
-    <div class="col">
       
-     <label>Depto. o Servicio:</label>
-                <input class="form-control" type="text" value="' .$Depto. '">
-  
-    </div>
-  </div>
+  echo'
 
+      
+      <tr>
+        <td>' .$codigo. '</td>
+        <td>' .$des. '</td>
+        <td>' .$um. '</td>
+        <td>' .$cantidad. '</td>
+        <td>$' .$cost. '</td>
+        <td>$' .$total. '</td>
+      </tr>';
        
-      <div align="right">
-          <label style="margin-right: 135px;">VALE No.</label>
-          <div class="col-md-2">
-          <input  class="form-control" type="number" value="'.$Vale.'" style="margin-right: 10px;margin-bottom: -15%;margin-top: -25%;" required>
-        </div>
-        </div>
-        <br>
-         <br>
-      <div class="table-responsive">
-  <table class="table">
-    <tr>
-      <td><strong>Código</strong></td>
-      <td><strong>Descripción</strong></td>
-      <td><strong>U/M</strong></td>
-      <td><strong>Cantidad</strong></td>
-      <td><strong>Costo unitario</strong></td>
-      <td><strong>Total</strong></td>
-    </tr>
-    
-    <tr>
-      <td>' .$codigo. '</td>
-      <td>' .$des. '</td>
-      <td>' .$um. '</td>
-      <td>' .$cantidad. '</td>
-      <td>$' .$cost. '</td>
-      <td>$' .$total. '</td>
-    </tr>
-    </table>
-    </div>
-  <div class="container">
-  <div class="row">
-    <div class="col">
-    <p>  SOLICITA:  </p>
-    </div>
-    <div class="col-6">
-     <p style="margin-left: 80px;">  ENTREGA:</p>
-    </div>
-      </div>
-</div>
-      <p  style=" width:35%; margin: 5%; width: 30%; height: 10%;margin-top: 15% margin-bottom: 5%;">AUTORIZA:</p>
-     </section>
-          
-    </form>
-    ';
-   
 }
+
+      echo'
+      </table>
+      <div class="container">
+    <div class="row">
+      <div class="col">
+      <p>  SOLICITA:  </p>
+      </div>
+      <div class="col-6">
+       <p style="margin-left: 80px;">  ENTREGA:</p>
+      </div>
+        </div>
+  </div>
+              <p  style=" width:35%; margin: 5%; width: 30%; height: 10%;margin-top: 15% margin-bottom: 5%;">AUTORIZA:</p>
+             
+       </section>
+            
+      </form>
+      ';
+  }
 ?>            
     
 </body>

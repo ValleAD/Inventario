@@ -12,14 +12,14 @@
 </head>
 <body>
   
-  <div id="head">
+  <div  class="container-fluid" id="head">
     <a href="home.php"><button>Volver</button></a>  
     <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
     <h3>Departamento de mantenimiento</h3>
   </div>
     <br>
  
-  <div style="position: all; width: 70%; height: 110%;margin-top: 1%" class="container">
+  <div  class="container-fluid" style="position: all; width: 70%; height: 110%;margin-top: 1%" class="container">
   <form style="position: all; width: 70%; height: 110%;margin-top: 10%"  style="position: all; width: 70%; height: 100%;margin-top: 15%"  action="dt_sol_bodega.php" method="POST">
 
         <section>

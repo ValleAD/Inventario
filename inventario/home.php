@@ -11,7 +11,7 @@
     <title>Inicio</title>
 </head>
 <body>
-    <nav>
+    <nav  class="container-fluid">
         <ul>
             <li><a href="reg_producto.php">Registro de productos</a></li>
             <li><a href="form_almacen.php">Solicitud de materiales a almacen</a></li>

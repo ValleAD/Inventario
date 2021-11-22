@@ -13,13 +13,13 @@
 
 <body>
 
-    <div id="head"> 
+    <div  class="container-fluid" id="head"> 
  <a href="home.php"><button>Volver</button></a>  
     <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
     <h3>Unidad de adquisiciones y contrataciones institucional</h3>
     </div>
     <br>
-  <div style="position: all; width: 70%; height: 110%;margin-top: 1%" class="container">
+  <div  class="container-fluid" style="position: all; width: 70%; height: 110%;margin-top: 1%" class="container">
   <form style="position: all; width: 70%; height: 110%;margin-top: 10%" action="dt_sol_compra.php" method="POST" style="height: 880px">
 
             <section>

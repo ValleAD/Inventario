@@ -12,14 +12,14 @@
 <body>
   
    
-<div id="head">
+<div class="container-fluid" id="head">
  <a href="home.php"><button>Volver</button></a>  
     <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
     <h3>Almacén de medicamentos, insumos médicos, papelería y otros artículos</h3>
     </div>
     <br>
 
-  <div style="position: all; width: 70%; height: 100%;margin-top: 15%"  class="container">
+  <div  class="container-fluid" style="position: all; width: 70%; height: 100%;margin-top: 15%"  class="container">
     <form style="position: all; width: 70%; height: 100%;margin-top: 15%"  action="dt_sol_almacen.php" method="POST" style="height: 650px;">
 
       <section>

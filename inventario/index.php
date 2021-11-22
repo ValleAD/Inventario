@@ -10,7 +10,7 @@ function Header()
     // Logo
 
     // Poner una Imagen que concuerde 
-    $this->Image('baner.png',165,10,40);
+    $this->Image('img/baner.png',165,10,40);
     // Arial bold 15
     $this->SetFont('Arial','B',16);
     // Move to the right
