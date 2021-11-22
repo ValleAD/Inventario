@@ -26,17 +26,17 @@
   <form style="position: all;" action="dt_form_vale.php" method="POST" style="height: 10%;margin-top: -15">
 
     <ol class="breadcrumb">
-  <li><a href="?c=registro">Nuevo Registro</a></li>
-  <li class="active">Registro Múltiple </li>
+  <li><a href="home.php">Inicio</a></li>
+  <li class="active">Vale</li>
 </ol>
 <center>
 <div class="container">
   <div class="row">
     <div class="col-6 col-sm-3">
-       <label>No. Vale</label> 
+       <label>Número de Vale</label> 
       <input class="form-control" type="number" name="vale" id="como1" required=""></div>
     <div class="col-6 col-sm-3">
-      <label>Depto</label>   
+      <label>Departamento</label>   
       <input class="form-control" type="text" name="depto" id="como2" required=""></div>
 
     <!-- Force next columns to break to new line -->
@@ -55,12 +55,12 @@
             <div class="form-group" style="position: all; margin: 2%">
 
                   <label style="color: #000">Codigo</label> 
-                <input type="numbrer" name="cod[]" class="form-control" placeholder="Ingrese No. Vale " required=""/>
+                <input type="numbrer" name="cod[]" class="form-control" placeholder="Ingrese código de producto " required=""/>
             </div>
 
             <div class="form-group">
-                 <label style="color: #000">Descripcion</label>
-                <input type="text" name="desc" class="form-control" placeholder="Ingrese su apellido" required=""/>
+                 <label style="color: #000">Descripción</label>
+                <input type="text" name="desc[]" class="form-control" placeholder="Ingrese la descripción del producto" required=""/>
             </div>
 
             <div class="form-group" >
@@ -71,17 +71,17 @@
                   <option value="M">M</option>
                 </select>
                 <div class="invalid-feedback">
-                  Please select a valid state.
+                  Por favor seleccione una opción.
                 </div>
               </div>
     </div>
   <div class="form-group">
                 <label>Cantidad</label>
-                <input type="text-right" name="cant[]" class="form-control" placeholder="Ingrese la Cantidad" required="" />
+                <input type="number" name="cant[]" class="form-control" placeholder="Ingrese la Cantidad" required="" />
             </div>
             <div class="form-group">
                 <label>Costo Unitario</label>
-               <input class="form-control" type="number" name="cu[]" required=""><br>
+               <input class="form-control" type="number" name="cu[]" placeholder="Costo unitario del producto" required=""><br>
             </div>
 
         
@@ -99,7 +99,7 @@
     <hr />
     
     <div class="text-right">
-        <button class="btn btn-success btn-lg btn-block">Guardar</button>
+        <button  class="btn btn-success btn-lg btn-block">Guardar</button>
     </div>
 </form>
 

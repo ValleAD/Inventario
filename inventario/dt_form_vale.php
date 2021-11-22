@@ -102,9 +102,13 @@
       <div class="col-6">
        <p style="margin-left: 80px;">  ENTREGA:</p>
       </div>
+     
+        </div>
+        <div class="col">
+        <br>
+        <p>  AUTORIZA:  </p>
         </div>
   </div>
-              <p  style=" width:35%; margin: 5%; width: 30%; height: 10%;margin-top: 15% margin-bottom: 5%;">AUTORIZA:</p>
              
        </section>
             
