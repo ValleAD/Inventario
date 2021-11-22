@@ -55,7 +55,7 @@
             <div class="form-group" style="position: all; margin: 2%">
 
                   <label style="color: #000">Codigo</label> 
-                <input type="numbrer" name="cod[]" class="form-control" placeholder="Ingrese código de producto " required=""/>
+                <input type="number" name="cod[]" class="form-control" placeholder="Ingrese código de producto " required=""/>
             </div>
 
             <div class="form-group">
