@@ -44,7 +44,7 @@
 
     <div  class="col-6 col-sm-3"> 
       <label>Fecha</label> 
-      <input class="form-control" type="date" name="fech" id="como3"><br></div>
+      <input class="form-control" type="date" name="fech" id="como3" required><br></div>
    
   </div>
 </div></center>
@@ -54,27 +54,28 @@
         <div class="well well-sm" style="position: all; margin: 5%">
             <div class="form-group" style="position: all; margin: 2%">
 
-                  <label style="color: #000">Codigo</label> 
+                  <label style="color: #000">Código</label> 
                 <input type="number" name="cod[]" class="form-control" placeholder="Ingrese código de producto " required=""/>
             </div>
 
             <div class="form-group">
                  <label style="color: #000">Descripción</label>
                 <input type="text" name="desc[]" class="form-control" placeholder="Ingrese la descripción del producto" required=""/>
-            </div>
+            </div><br>
 
             <div class="form-group" >
-               <div class="col-md-12" >
-                <select  name="um[]" id="um" required>
+               <div class="col-md-16" >
+               <div class="invalid-feedback">
+                  Por favor seleccione una opción.
+                </div>
+                <select  class="form-control" name="um[]" id="um" required>
                   <option selected disabled value="">U/M</option>
                   <option value="U">U</option>
                   <option value="M">M</option>
                 </select>
-                <div class="invalid-feedback">
-                  Por favor seleccione una opción.
-                </div>
+                
               </div>
-    </div>
+            </div>
   <div class="form-group">
                 <label>Cantidad</label>
                 <input type="number" name="cant[]" class="form-control" placeholder="Ingrese la Cantidad" required="" />
@@ -91,7 +92,7 @@
 
 <div class="col-xs-4">
     <div class="well" style="position: all; margin:5%">
-        <button id="btn-agregar" class="btn btn-lg btn-block btn-default" type="button">Agregar</button>                
+        <button id="btn-agregar" class="btn btn-lg btn-block btn-default" type="button">Agregar Producto</button>                
     </div>
 </div>
     </div>
