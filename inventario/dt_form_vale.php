@@ -12,7 +12,16 @@
 <body>
 
  
- 
+<div id="head"  style="position: absolute;
+  height: 17% ;margin-top: -15">
+   <div style="float: left; position: absolute;">
+      <img src="img/log.png" height="110px">
+    </div>
+    <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
+    <h3>Departamento de mantenimiento</h3>
+   
+  </div>
+  <br>
 
 <?php
     
@@ -41,10 +50,7 @@
     
           </div>
         </div>
-              
-                  
-                  
-</section> 
+      </section> 
   
       <section>
         <div align="right">
@@ -53,18 +59,18 @@
               <input class="form-control" type="number" value="'.$Vale.'" style="margin-right: 10px;margin-bottom: -15%;margin-top: -25%;" required>
             </div>
         </div>
-          <br>
-           <br>
-           <div class="table-responsive">
-    <table class="table">
-      <tr>
-        <td><strong>Código</strong></td>
-        <td><strong>Descripción</strong></td>
-        <td><strong>U/M</strong></td>
-        <td><strong>Cantidad</strong></td>
-        <td><strong>Costo unitario</strong></td>
-        <td><strong>Total</strong></td>
-      </tr>';
+        <br>
+        <br>
+        <div class="table-responsive">
+        <table class="table">
+          <tr>
+            <td><strong>Código</strong></td>
+            <td><strong>Descripción</strong></td>
+            <td><strong>U/M</strong></td>
+            <td><strong>Cantidad</strong></td>
+            <td><strong>Costo unitario</strong></td>
+            <td><strong>Total</strong></td>
+          </tr>';
 
       for($i = 0; $i < count($_POST['cod']); $i++)
     {
@@ -78,41 +84,34 @@
     $total = $cost * $cantidad;
       
       
-  echo'
-
-      
-      <tr>
+  echo'  
+      <tr >
         <td>' .$codigo. '</td>
         <td>' .$des. '</td>
         <td>' .$um. '</td>
         <td>' .$cantidad. '</td>
         <td>$' .$cost. '</td>
         <td>$' .$total. '</td>
-      </tr>';
-       
+      </tr>'; 
 }
-
       echo'
       </table>
       <div class="container">
-    <div class="row">
-      <div class="col">
-      <p>  SOLICITA:  </p>
-      </div>
-      <div class="col-6">
-       <p style="margin-left: 80px;">  ENTREGA:</p>
-      </div>
-     
+        <div class="row">
+          <div class="col">
+            <p>  SOLICITA:  </p>
+          </div>
+          <div class="col-6">
+            <p style="margin-left: 80px;">  ENTREGA:</p>
+          </div>
         </div>
-        <div class="col">
+          <div class="col">
         <br>
-        <p>  AUTORIZA:  </p>
+            <p>  AUTORIZA:  </p>
         </div>
-  </div>
-             
-       </section>
-            
-      </form>
+      </div>       
+    </section>
+</form>
       ';
   }
 ?>            

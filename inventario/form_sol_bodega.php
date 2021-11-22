@@ -1,82 +1,138 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <title>Vale</title>
+        
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="styles/style.css" > 
 
-<head>
-<meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="styles/style.css" > 
-    <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
-    <title>Solicitud Bodega</title>
-</head>
-<body>
-  
-  <div  class="container-fluid" id="head">
+        <link rel="stylesheet" href="assets/css/bootstrap.css" />
+        <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css" />
+        <link rel="stylesheet" href="assets/css/style.css" />
+        <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+  </head>
+    <body >
+
+
+  <div id="head"  style="position: absolute;
+  height: 17% ;margin-top: -15">
     <a href="home.php"><button>Volver</button></a>  
     <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
     <h3>Departamento de mantenimiento</h3>
   </div>
     <br>
- 
-  <div  class="container-fluid" style="position: all; width: 70%; height: 110%;margin-top: 1%" class="container">
-  <form style="position: all; width: 70%; height: 110%;margin-top: 10%"  style="position: all; width: 70%; height: 100%;margin-top: 15%"  action="dt_sol_bodega.php" method="POST">
 
-        <section>
-          <br>
-        <h3 align="center">Solicitud de materiales</h3>
 
-        <div align="right">
-          <label style="margin-right: 135px;">VALE No.</label>
-          
-          <div class="col-md-3">
-          <input name="orden" class="form-control" type="number" style="margin-right: 10px;margin-bottom: -15%;margin-top: -25%;" required>
-        </div>
-        </div>
-          
-          <label for="fech">FECHA:</label><br>
-          <input  class="form-control" type="date" name="fech" id="fech" required><br>
-          <label for="depto">DEPTO. O SERVICIO:</label><br>
-          <input  class="form-control" type="text" name="depto" id="depto" required>
-          <br>
-          <label for="cod">CÓDIGO</label><br>
-          <input  class="form-control" type="number" name="cod" id="cod" required>
-          <br>
-         <label>DESCRIPCION</label>
-            <textarea class="form-control z-depth-1" id="exampleFormControlTextarea345" name="desc" rows="3" placeholder="Write your comment..."></textarea>
-          <br>
-          <label for="cu">COSTO UNITARIO</label><br>
-          <input  class="form-control" type="number" name="cu" id="cu" required>
-          <br>
-          <div class="col-md-12">
-                <label for="um" class="form-label">U/M</label>
-                <select class="form-select" name="um" id="um" required>
-                  <option selected disabled value="">Selecione Opcion</option>
+  <form style="position: all;" action="dt_sol_bodega.php" method="POST" style="height: 10%;margin-top: -15">
+
+    <ol class="breadcrumb">
+  <li><a href="home.php">Inicio</a></li>
+  <li class="active">Solicitud de Bodega</li>
+</ol>
+<center>
+<div class="container">
+  <div class="row">
+    <div class="col-6 col-sm-3">
+       <label>O. DE T. No.</label> 
+      <input class="form-control" type="number" name="odt" id="como1" required=""></div>
+    <div class="col-6 col-sm-3">
+      <label>Departamento</label>   
+      <input class="form-control" type="text" name="depto" id="como2" required=""></div>
+
+    <!-- Force next columns to break to new line -->
+    <div class="w-100"></div>
+
+    <div  class="col-6 col-sm-3"> 
+      <label>Fecha</label> 
+      <input class="form-control" type="date" name="fech" id="como3" required><br></div>
+   
+  </div>
+</div></center>
+    <div id="Registro" class="row" style="position: all; m">
+<div id="lo-que-vamos-a-copiar">
+    <div class="col-xs-4">
+        <div class="well well-sm" style="position: all; margin: 5%">
+            <div class="form-group" style="position: all; margin: 2%">
+
+                  <label style="color: #000">Código</label> 
+                <input type="number" name="cod[]" class="form-control" placeholder="Ingrese código de producto " required=""/>
+            </div>
+
+            <div class="form-group">
+                 <label style="color: #000">Descripción</label>
+                <input type="text" name="desc[]" class="form-control" placeholder="Ingrese la descripción del producto" required=""/>
+            </div><br>
+
+            <div class="form-group" >
+               <div class="col-md-16" >
+               <div class="invalid-feedback">
+                  Por favor seleccione una opción.
+                </div>
+                <select  class="form-control" name="um[]" id="um" required>
+                  <option selected disabled value="">U/M</option>
                   <option value="U">U</option>
                   <option value="M">M</option>
                 </select>
-                <div class="invalid-feedback">
-                  Please select a valid state.
-                </div>
+                
               </div>
-          <br>
-          <label for="cant">CANTIDAD</label><br>
-          <input  class="form-control" type="number" name="cant" id="cant" required><br>
+            </div>
+  <div class="form-group">
+                <label>Cantidad</label>
+                <input type="number" name="cant[]" class="form-control" placeholder="Ingrese la Cantidad" required="" />
+            </div>
+            <div class="form-group">
+                <label>Costo Unitario</label>
+               <input class="form-control" type="number" name="cu[]" placeholder="Costo unitario del producto" required=""><br>
+            </div>
 
-          <div align="center">
-            <input  style=" width:35%; margin: 5%; width: 30%; height: 10%;" type="submit" value="Aceptar">
-          </div>
-      
-        </section>
-      </form>
-    </div>         
-  
-          <footer style="margin-top: 3%;">
+        
+        </div>
+    </div>            
+</div>
 
-  <div align="center">
-  <img src="img/log_1.png" alt="" width="320px" height="150px">
-  </div>
+<div class="col-xs-4">
+    <div class="well" style="position: all; margin:5%">
+        <button id="btn-agregar" class="btn btn-lg btn-block btn-default" type="button">Agregar Producto</button>                
+    </div>
+</div>
+    </div>
+    
+    <hr />
+    
+    <div class="text-right">
+        <button  class="btn btn-success btn-lg btn-block">Guardar</button>
+    </div>
+</form>
 
-</footer> 
-</body>
-</html>
+
+<script>
+    $(document).ready(function(){
+        
+        // El formulario que queremos replicar
+        var formulario_registro = $("#lo-que-vamos-a-copiar").html();
+        
+// El encargado de agregar más formularios
+$("#btn-agregar").click(function(){
+    // Agregamos el formulario
+    $("#Registro").prepend(formulario_registro);
+
+    // Agregamos un boton para retirar el formulario
+    $("#Registro .col-xs-4:first .well").append('<button class="btn-danger btn btn-block btn-retirar-registro" type="button">Retirar</button>');
+
+    // Hacemos focus en el primer input del formulario
+    $("#Registro .col-xs-4:first .well input:first").focus();
+
+    // Volvemos a cargar todo los plugins que teníamos, dentro de esta función esta el del datepicker assets/js/ini.js
+    Plugins();
+});
+        
+        // Cuando hacemos click en el boton de retirar
+        $("#Registro").on('click', '.btn-retirar-registro', function(){
+            $(this).closest('.col-xs-4').remove();
+        })
+            
+        $("#frm-registro").submit(function(){
+            return $(this).validate();
+        });
+    })
+</script>

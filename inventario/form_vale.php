@@ -26,9 +26,9 @@
   <form style="position: all;" action="dt_form_vale.php" method="POST" style="height: 10%;margin-top: -15">
 
     <ol class="breadcrumb">
-  <li><a href="home.php">Inicio</a></li>
-  <li class="active">Vale</li>
-</ol>
+      <li><a href="home.php">Inicio</a></li>
+      <li class="active">Vale</li>
+    </ol>
 <center>
 <div class="container">
   <div class="row">

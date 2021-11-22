@@ -1,5 +1,6 @@
 <?php
 require('fpdf/fpdf.php');
+require ('dt_form_vale.php');
 
 class PDF extends FPDF
 {
@@ -42,22 +43,21 @@ function Footer()
 }
 }
 // Tabla con la que se conectara
-require 'conexion.php';
-$consulta="select * from productos";
-$resultado = $mysqli->query($consulta);
+
+
 
 $pdf = new PDF();
 $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->SetFont('Arial','',12);
 
-while  ($row = $resultado->fetch_assoc()){
+
      // Conexion con la descripcion a la tabla que se conectara
-    $pdf->Cell(30,10,$row['codigo'], 1,0,'L',0);
-    $pdf->Cell(67,10,$row['descripcion'], 1,0,'L',0);
-    $pdf->Cell(30,10,$row['precioVenta'], 1,0,'L',0);
-    $pdf->Cell(30,10,$row['precioCompra'], 1,0,'L',0);
-    $pdf->Cell(35,10,$row['existencia'], 1,1,'L',0);;
-}
+    $pdf->Cell(30,10,'cod', 1,0,'L',0);
+    $pdf->Cell(67,10,'desc', 1,0,'L',0);
+    $pdf->Cell(30,10,'um', 1,0,'L',0);
+    $pdf->Cell(30,10,'cant', 1,0,'L',0);
+    $pdf->Cell(35,10,$total, 1,1,'L',0);
+
 
 $pdf->Output();
