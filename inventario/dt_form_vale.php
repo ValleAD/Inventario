@@ -39,14 +39,14 @@
         <div class="row">
           <div class="col-6">
         
-              <label>Fecha:</label>
-              <input class="form-control" disabled type="text" value="' .$fecha. '">
+              <label style="font-weight: bold;">Fecha:</label>
+              <input class="form-control"  type="text" value="' .$fecha. '">
       
           </div>
           <div class="col">
         
-              <label>Depto. o Servicio:</label>
-              <input class="form-control" disabled type="text" value="' .$Depto. '">
+              <label style="font-weight: bold;">Depto. o Servicio:</label>
+              <input class="form-control"  type="text" value="' .$Depto. '">
     
           </div>
         </div>
@@ -54,7 +54,7 @@
   
       <section>
         <div align="right">
-            <label style="margin-right: 135px;">VALE No.</label>
+            <label style="margin-right: 135px; font-weight: bold;">VALE No.</label>
             <div class="col-md-2">
               <input class="form-control" type="number" value="'.$Vale.'" style="margin-right: 10px;margin-bottom: -15%;margin-top: -25%;" required>
             </div>
@@ -99,15 +99,15 @@
       <div class="container">
         <div class="row">
           <div class="col">
-            <p>  SOLICITA:  </p>
+            <p style="font-weight: bold;">  SOLICITA:  </p>
           </div>
           <div class="col-6">
-            <p style="margin-left: 80px;">  ENTREGA:</p>
+            <p style="margin-left: 80px; font-weight: bold;">  ENTREGA:</p>
           </div>
         </div>
           <div class="col">
         <br>
-            <p>  AUTORIZA:  </p>
+            <p style="font-weight: bold;">  AUTORIZA:  </p>
         </div>
       </div>       
     </section>

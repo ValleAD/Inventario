@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
-    <title>Solicitud de materiales a almacen</title>
+    <title>Solicitud de materiales a almacén</title>
 </head>
 <body>
 
@@ -17,7 +17,7 @@
       <img src="img/log.png" height="110px">
     </div>
     <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
-    <h3>Almacen de medicamentos, insumos médicos, papeleria y otros</h3>
+    <h3>Almacén de medicamentos, insumos médicos, papeleria y otros</h3>
    
   </div>
   <br>

@@ -18,7 +18,7 @@
   height: 17% ;margin-top: -15">
     <a href="home.php"><button>Volver</button></a>  
     <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
-    <h3>Solicitud de Materiales a almacen</h3>
+    <h3>Solicitud de Materiales a almacén</h3>
   </div>
     <br>
 
