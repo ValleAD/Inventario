@@ -75,37 +75,27 @@ if (isset($_POST['submit'])) {
 
 		<form action="" method="POST" style="position: all; width: 70%; height: 110%;margin-top: 1%">
 		<center><img src="img/register.png" alt="logo" style="height: 25%;width: 25%;margin-top: 5%"></center>
-
-			<div >
-			<label>Username</label><br>
-				<input class="form-control1" type="text"  name="username" value="<?php echo $username; ?>" required>
+<center>
+			<div style="position: all; width: 70%; height: 110%;margin-top: 1%;">
+			<label style="margin-left: -85%">Username</label><br>
+				<input class="form-control" type="text"  name="username" value="<?php echo $username; ?>" required>
+			
+			<label style="margin-left: -85%">Firstname</label><br>
+				<input class="form-control" type="text"  name="firstname" value="<?php echo $firstname; ?>" required>
+			
+			<label style="margin-left: -85%">Lastname</label><br>
+				<input class="form-control" type="text"  name="lastname" value="<?php echo $lastname; ?>" required>
+			
+			<label style="margin-left: -91%">Email</label><br>
+				<input class="form-control" type="email" name="email" value="<?php echo $email; ?>" required>
+			
+			<label style="margin-left: -85%">Password</label><br>
+				<input class="form-control" type="password"  name="password" value="<?php echo $_POST['password']; ?>" required>
+          
+			<label style="margin-left: -71%">Confirm Password</label><br>
+				<input class="form-control" type="password"  name="cpassword" value="<?php echo $_POST['cpassword']; ?>" required>
 			</div>
-            
-			<div >
-			<label>Firstname</label><br>
-				<input class="form-control1" type="text"  name="firstname" value="<?php echo $firstname; ?>" required>
-			</div>
-
-			<div >
-			<label>Lastname</label><br>
-				<input class="form-control1" type="text"  name="lastname" value="<?php echo $lastname; ?>" required>
-			</div>
-
-			<div >
-			<label>Email</label><br>
-				<input class="form-control1" type="email" name="email" value="<?php echo $email; ?>" required>
-			</div>
-
-			<div >
-			<label>Password</label><br>
-				<input class="form-control1" type="password"  name="password" value="<?php echo $_POST['password']; ?>" required>
-            </div>
-
-            <div >
-			<label >Confirm Password</label><br>
-				<input class="form-control1" type="password"  name="cpassword" value="<?php echo $_POST['cpassword']; ?>" required>
-			</div>
-
+</center>
 			<div>
 			<center><button style="margin-top: 5%;width: 50%;margin-bottom: 5%;border-radius: 15%" class="btn btn-warning" name="submit" class="login">Sign Up</button></center>
 			</div>
