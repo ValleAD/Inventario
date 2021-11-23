@@ -33,13 +33,14 @@ if (isset($_POST['submit'])) {
 				}if (mysqli_num_rows($result)>0) {
 					
 				}*/
-				echo "<script>alert('Wow! User Registration Completed.')</script>";
+				echo "<script>alert('Wow! User Registration Completed.') </script>";
 				$username = "";
 				$firstname = "";
 				$lastname = "";
 				$email = "";
 				$_POST['password'] = "";
 				$_POST['cpassword'] = "";
+ 			header("Location: signin.php");
 			} else {
 				echo "<script>alert('Oops!! something was bad write')</script>";
 			}
@@ -73,7 +74,7 @@ if (isset($_POST['submit'])) {
 <img id="img1" src="img/" alt="vacancy">
 	<div style="position: all; width: 70%; height: 110%;margin-top: 7%" class="container">
 
-		<form action="" method="POST" style="position: all; width: 70%; height: 110%;margin-top: 1%">
+		<form  style="position: all; width: 70%; height: 110%;margin-top: 7%"action="" method="POST" style="position: all; width: 70%; height: 110%;margin-top: 1%">
 		<center><img src="img/register.png" alt="logo" style="height: 25%;width: 25%;margin-top: 5%"></center>
 <center>
 			<div style="position: all; width: 70%; height: 110%;margin-top: 1%;">
@@ -102,7 +103,7 @@ if (isset($_POST['submit'])) {
 			<p class="account text-center">Have an account? <a class="nav-link text-center" href="signin.php">Login Here</a></p>
 		</form>
 	</div>
-	<footer style="margin-top:  4%;">
+	<footer style="margin-top:  14%;">
 
   <div align="center">
   <img src="img/log_1.png" alt="" width="" height="150px">
