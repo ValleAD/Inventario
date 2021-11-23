@@ -59,48 +59,51 @@ if (isset($_POST['submit'])) {
 <head>
 <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.min.js" integrity="sha384-PsUw7Xwds7x08Ew3exXhqzbhuEYmA2xnwc8BuD6SEr+UmEHlX8/MCltYEodzWA4u" crossorigin="anonymous"></script>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="css/style1.css">
-	
+	<link rel="stylesheet" type="text/css" href="styles/log.css" > 
+    <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
 	<title>Register</title>
 </head>
 <body>
-	<img src="img/vacancy1.png" alt="vacancy1" class="img1">
-	<div class="container" >
+<div id="head">  
+        <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
+
+    </div>
+<img id="img1" src="img/" alt="vacancy">
+	<div style="position: all; width: 70%; height: 110%;margin-top: 1%" class="container">
 
 		<form action="" method="POST" class="">
-			<img src="img/logo.png" alt="logo" class="img2">
+			<img src="img/register.png" alt="logo" class="img1">
 
 			<div >
-			<label class="username" >Username</label><br>
-				<input class="username-input" type="text"  name="username" value="<?php echo $username; ?>" required>
+			<label>Username</label><br>
+				<input class="form-control1" type="text"  name="username" value="<?php echo $username; ?>" required>
 			</div>
             
 			<div >
-			<label class="firstname" >Firstname</label><br>
-				<input class="firstname-input" type="text"  name="firstname" value="<?php echo $firstname; ?>" required>
+			<label>Firstname</label><br>
+				<input class="form-control1" type="text"  name="firstname" value="<?php echo $firstname; ?>" required>
 			</div>
 
 			<div >
-			<label class="lastname" >Lastname</label><br>
-				<input class="lastname-input" type="text"  name="lastname" value="<?php echo $lastname; ?>" required>
+			<label>Lastname</label><br>
+				<input class="form-control1" type="text"  name="lastname" value="<?php echo $lastname; ?>" required>
 			</div>
 
 			<div >
-			<label class="email" >Email</label><br>
-				<input class="email-input" type="email" name="email" value="<?php echo $email; ?>" required>
+			<label>Email</label><br>
+				<input class="form-control1" type="email" name="email" value="<?php echo $email; ?>" required>
 			</div>
 
 			<div >
-			<label class="password" >Password</label><br>
-				<input class="password-input" type="password"  name="password" value="<?php echo $_POST['password']; ?>" required>
+			<label>Password</label><br>
+				<input class="form-control1" type="password"  name="password" value="<?php echo $_POST['password']; ?>" required>
             </div>
 
             <div >
-			<label class="cpassword" >Confirm Password</label><br>
-				<input class="cpassword-input" type="password"  name="cpassword" value="<?php echo $_POST['cpassword']; ?>" required>
+			<label >Confirm Password</label><br>
+				<input class="form-control1" type="password"  name="cpassword" value="<?php echo $_POST['cpassword']; ?>" required>
 			</div>
 
 			<div>
@@ -109,5 +112,12 @@ if (isset($_POST['submit'])) {
 			<p class="account">Have an account? <a href="signin.php">Login Here</a></p>
 		</form>
 	</div>
+	<footer style="margin-top:  14%;">
+
+  <div align="center">
+  <img src="img/log_1.png" alt="" width="" height="150px">
+  </div>
+
+</footer>
 </body>
 </html>

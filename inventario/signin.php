@@ -57,7 +57,7 @@ if (isset($_POST['submit'])) {
 			</div>
 			<div>
 			<label for="password">password</label><br>
-				<input  class="form-control" type="password" name="password" value="<?php echo $_POST['password']; ?>" required>
+				<input  class="form-control1" type="password" name="password" value="<?php echo $_POST['password']; ?>" required>
 			</div>
 
             
