@@ -48,24 +48,25 @@ if (isset($_POST['submit'])) {
 <img id="img1" src="img/" alt="vacancy">
 	<div style="position: all; width: 70%; height: 110%;margin-top: 1%" class="container">
 		
-		<form action="" method="POST">
+		<form action="" method="POST" style="position: all; width: 70%; height: 110%;margin-top: 10%">
 			<img class="img" src="img/logo1.png" alt="logo">
 			
 			<div>
-			<label for="username">Username</label><br>
-				<input class="form-control1" type="text" name="username" value="<?php echo $username; ?>" required>
+			<label for="username" style="margin-left:  16%">Username</label><br>
+				<input  method="POST" style="position: all; width: 70%; height: 110%;margin-top:2%;margin-left:  15%" class="form-control1" type="text" name="username" value="<?php echo $username; ?>" required>
 			</div>
 			<div>
-			<label for="password">password</label><br>
-				<input  class="form-control1" type="password" name="password" value="<?php echo $_POST['password']; ?>" required>
-			</div>
+
+			<label for="password" style="margin-left:  16%">Password</label><br>
+				<input  method="POST" style="position: all; width: 70%; height: 110%;margin-top: 2%;margin-left:  15%"  method="POST" class="form-control" type="password" name="password" value="<?php echo $_POST['password']; ?>" required >
+
 
             
 			<div>
 				<button  class= "submit" name="submit">Sign In</button>
 			</div>
             <p class="p">No tienes cuenta ?</p>
-				<a href="signup.php" class="href">Sign Up</a>
+				<a href="signup.php" class="nav-link text-center" style="margin-top:-7.5%;">Sign Up</a>
 				
 			
 		</form>
