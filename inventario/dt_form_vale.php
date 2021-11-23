@@ -43,7 +43,7 @@ die();
    <div id="head"  style="position: relative;
   height: 17% ;margin-top: -15">
    <div style="float: left; position: absolute;">
-      <img src="img/log.png" height="90px">
+     <a href="home.php"><img src="img/log.png" height="90px"></a>
     </div>
     <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
     <h3>Departamento de mantenimiento</h3>

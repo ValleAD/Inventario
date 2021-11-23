@@ -12,15 +12,6 @@ die();
 
     ';
 }
-    
-?><?php 
-
-session_start();
-
-if (!isset($_SESSION['signin']) ) {
-    header("Location: signin.php");
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
