@@ -71,10 +71,10 @@ if (isset($_POST['submit'])) {
 
     </div>
 <img id="img1" src="img/" alt="vacancy">
-	<div style="position: all; width: 70%; height: 110%;margin-top: 1%" class="container">
+	<div style="position: all; width: 70%; height: 110%;margin-top: 7%" class="container">
 
-		<form action="" method="POST" class="">
-			<img src="img/register.png" alt="logo" class="img1">
+		<form action="" method="POST" style="position: all; width: 70%; height: 110%;margin-top: 1%">
+		<center><img src="img/register.png" alt="logo" style="height: 25%;width: 25%;margin-top: 5%"></center>
 
 			<div >
 			<label>Username</label><br>
@@ -107,12 +107,12 @@ if (isset($_POST['submit'])) {
 			</div>
 
 			<div>
-				<button class="login" name="submit" class="login">Sign Up</button>
+			<center><button style="margin-top: 5%;width: 50%;margin-bottom: 5%;border-radius: 15%" class="btn btn-warning" name="submit" class="login">Sign Up</button></center>
 			</div>
-			<p class="account">Have an account? <a href="signin.php">Login Here</a></p>
+			<p class="account text-center">Have an account? <a class="nav-link text-center" href="signin.php">Login Here</a></p>
 		</form>
 	</div>
-	<footer style="margin-top:  14%;">
+	<footer style="margin-top:  4%;">
 
   <div align="center">
   <img src="img/log_1.png" alt="" width="" height="150px">
