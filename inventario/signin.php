@@ -41,14 +41,15 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
 
-<div id="head">  
-        <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
-
-    </div>
-<img id="img1" src="img/" alt="vacancy">
-	<div style="position: all; width: 70%; height: 110%;margin-top: 1%" class="container">
+  <div id="head"  style="position: all;
+  height: 10% ;margin-top: -15"> 
+    <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
+   
+  </div>
+    <br>
+	<div style="position: all; width: 70%; height: 110%;margin-top: 5%" class="container-fluid">
 		
-		<form action="" method="POST" style="position: all; width: 70%; height: 110%;margin-top: 10%">
+		<form action="" method="POST" style="position: all; width: 70%; height: 110%;margin-top: 1%">
 			<img class="img" src="img/logo1.png" alt="logo">
 			
 			<div>
@@ -71,10 +72,11 @@ if (isset($_POST['submit'])) {
 			
 		</form>
 	</div>
-    <footer style="margin-top:  14%;">
+	</div>
+    <footer style="margin-top: 3%;">
 
   <div align="center">
-  <img src="img/log_1.png" alt="" width="" height="150px">
+  <img src="img/log_1.png" alt="" width="320px" height="150px">
   </div>
 
 </footer>
