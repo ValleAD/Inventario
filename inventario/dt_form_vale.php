@@ -1,6 +1,6 @@
 <?php
 session_start();
- if (!isset($_SESSION['username'])>0) {
+ if (!isset($_SESSION['signin'])>0) {
     # code...
     echo '
     <script>
@@ -13,7 +13,8 @@ die();
     ';
 }
     
-?><!doctype html>
+?>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
