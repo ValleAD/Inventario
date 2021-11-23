@@ -19,7 +19,7 @@
     </div>
     <br>
   <div style="position: all; width: 70%; height: 110%;margin-top: 1%" class="container">
-  <form style="position: all; width: 70%; height: 110%;margin-top: 10%" " action="dt_producto.php" method="POST" style="height: 740px">
+  <form style="position: all; width: 70%; height: 110%;margin-top: 10%" action="dt_producto.php" method="POST" style="height: 740px">
 
       <section>
         <br>

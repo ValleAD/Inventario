@@ -15,8 +15,7 @@
 
 
   <div id="head"  style="position: absolute;
-  height: 17% ;margin-top: -15">
-    <a href="home.php"><button>Volver</button></a>  
+  height: 17% ;margin-top: -15"> 
     <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
     <h3>Departamento de mantenimiento</h3>
   </div>

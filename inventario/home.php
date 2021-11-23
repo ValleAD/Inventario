@@ -2,7 +2,7 @@
 
 session_start();
 
-if (!isset($_SESSION['signin']) ) {
+if (!isset($_SESSION['signin'])) {
     header("Location: signin.php");
 }
 
