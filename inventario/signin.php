@@ -53,14 +53,14 @@ if (isset($_POST['submit'])) {
 			
 			<div>
 			<label for="username">Username</label><br>
-				<input type="text" name="username" value="<?php echo $username; ?>" required>
+				<input class="form-control" type="text" name="username" value="<?php echo $username; ?>" required>
 			</div>
 			<div>
 			<label for="password">password</label><br>
-				<input  class="form-control1" type="password" name="password" value="<?php echo $_POST['password']; ?>" required>
+				<input  class="form-control" type="password" name="password" value="<?php echo $_POST['password']; ?>" required>
 			</div>
 			<div>
-				<button name="submit" class="login1">Sign In</button>
+				<button name="submit" class="login1" class="btn btn-default">Sign In</button>
 			</div>
 			
 			<p class="account1">
