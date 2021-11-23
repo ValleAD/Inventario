@@ -60,25 +60,25 @@ if (isset($_POST['submit'])) {
 			<img class="img" src="img/logo1.png" alt="logo">
 			
 			<div>
-			<label for="username" style="margin-left:  16%">Username</label><br>
+			<label for="username" style="margin-left:  16%">Nombre de usuario</label><br>
 				<input  method="POST" style="position: all; width: 70%; height: 110%;margin-top:2%;margin-left:  15%" class="form-control1" type="text" name="username" value="<?php echo $username; ?>" required>
 			</div>
 			<div>
 
-			<label for="password" style="margin-left:  16%">Password</label><br>
+			<label for="password" style="margin-left:  16%">Contraseña</label><br>
 				<input  method="POST" style="position: all; width: 70%; height: 110%;margin-top: 2%;margin-left:  15%"  method="POST" class="form-control" type="password" name="password" value="<?php echo $_POST['password']; ?>" required >
 
 
             
 			<div>
-				<button  class= "submit" name="submit">Sign In</button>
+				<button  class= "submit" name="submit">Ingresar</button>
 			</div>
-            <p class="p">No tienes cuenta ?</p>
-				<a id="a" href="signup.php" class="nav-link text-center" style="margin-top:-7.5%;">Sign Up</a>
+            <p class="p" style="margin-left: 25%;">No tienes cuenta ?</p>
+				<a id="a" href="signup.php" class="nav-link text-center" style="margin-top:-7.5%;">Registrarse</a>
 				<style type="text/css">
 					#a{
 						width: 20%;
-						margin-left: 40%;
+						margin-left: 50%;
 					}
 					#a:hover{
 						text-decoration-line: underline;

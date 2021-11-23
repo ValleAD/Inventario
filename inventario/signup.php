@@ -96,29 +96,29 @@ if (isset($_POST['submit'])) {
 		<center><img src="img/register.png" alt="logo" style="height: 25%;width: 25%;margin-top: 5%"></center>
 <center>
 			<div style="position: all; width: 70%; height: 110%;margin-top: 1%;">
-			<label style="margin-left: -85%">Username</label><br>
+			<label style="margin-left: -68%">Nombre de usuario</label><br>
 				<input class="form-control" type="text"  name="username" value="<?php echo $username; ?>" required>
 			
-			<label style="margin-left: -85%">Firstname</label><br>
+			<label style="margin-left: -85%">Nombre</label><br>
 				<input class="form-control" type="text"  name="firstname" value="<?php echo $firstname; ?>" required>
 			
-			<label style="margin-left: -85%">Lastname</label><br>
+			<label style="margin-left: -85%">Apellido</label><br>
 				<input class="form-control" type="text"  name="lastname" value="<?php echo $lastname; ?>" required>
 			
-			<label style="margin-left: -91%">Email</label><br>
+			<label style="margin-left: -88%">Correo</label><br>
 				<input class="form-control" type="email" name="email" value="<?php echo $email; ?>" required>
 			
-			<label style="margin-left: -85%">Password</label><br>
+			<label style="margin-left: -80%">Contraseña</label><br>
 				<input class="form-control" type="password"  name="password" value="<?php echo $_POST['password']; ?>" required>
           
-			<label style="margin-left: -71%">Confirm Password</label><br>
+			<label style="margin-left: -62%">Confirmar Contraseña</label><br>
 				<input class="form-control" type="password"  name="cpassword" value="<?php echo $_POST['cpassword']; ?>" required>
 			</div>
 </center>
 			<div>
-			<center><button style="margin-top: 5%;width: 50%;margin-bottom: 5%;border-radius: 15%" class="btn btn-warning" name="submit" class="login">Sign Up</button></center>
+			<button style="margin-left: 22.5%; margin-bottom: 5%;" class="submit" name="submit" class="login">Registrarse</button>
 			</div>
-			<p class="account text-center">Have an account? <a id="a" class="nav-link text-center" href="signin.php">Login Here</a></p>
+			<p class="account text-center">¿Ya tienes una cuenta? <a id="a" class="nav-link text-center" href="signin.php">Inicar Sesión</a></p>
 			<style type="text/css">
 					#a{
 						width: 20%;
