@@ -22,7 +22,14 @@ if (isset($_POST['submit'])) {
 		$_SESSION['signin'] = $row['username'];
 		header("Location: home.php");
 	} else {
-		echo "<script>alert('Woops! Email or Password is Wrong.')</script>";
+		 echo '
+    <script>
+        alert("Woops! Email or Password is Wrong.");
+        window.location ="signin.php";
+        session_destroy();  
+                </script>
+	';
+
 	}
 }
 
@@ -67,8 +74,16 @@ if (isset($_POST['submit'])) {
 				<button  class= "submit" name="submit">Sign In</button>
 			</div>
             <p class="p">No tienes cuenta ?</p>
-				<a href="signup.php" class="nav-link text-center" style="margin-top:-7.5%;">Sign Up</a>
-				
+				<a id="a" href="signup.php" class="nav-link text-center" style="margin-top:-7.5%;">Sign Up</a>
+				<style type="text/css">
+					#a{
+						width: 20%;
+						margin-left: 40%;
+					}
+					#a:hover{
+						text-decoration-line: underline;
+					}
+				</style>
 			
 		</form>
 	</div>

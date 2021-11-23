@@ -40,16 +40,34 @@ if (isset($_POST['submit'])) {
 				$email = "";
 				$_POST['password'] = "";
 				$_POST['cpassword'] = "";
- 			header("Location: signin.php");
+ 		header("Location: signin.php");
 			} else {
-				echo "<script>alert('Oops!! something was bad write')</script>";
+				 echo '
+				    <script>
+				        alert("Woops! Email or Password is Wrong.");
+				        window.location ="signup.php";
+				        session_destroy();  
+				                </script>
+	';
 			}
 		} else {
-			echo "<script>alert('Oops!! Email Already Exists.')</script>";
+			 echo '
+    <script>
+        alert("Woops! Email or Password is Wrong.");
+        window.location ="signup.php";
+        session_destroy();  
+                </script>
+	';
 		}
 		
 	} else {
-		echo "<script>alert('Password Not Matched. try again')</script>";
+		 echo '
+    <script>
+        alert("Woops! Email or Password is Wrong.");
+        window.location ="signup.php";
+        session_destroy();  
+                </script>
+	';
 	}
 }
 
@@ -100,7 +118,16 @@ if (isset($_POST['submit'])) {
 			<div>
 			<center><button style="margin-top: 5%;width: 50%;margin-bottom: 5%;border-radius: 15%" class="btn btn-warning" name="submit" class="login">Sign Up</button></center>
 			</div>
-			<p class="account text-center">Have an account? <a class="nav-link text-center" href="signin.php">Login Here</a></p>
+			<p class="account text-center">Have an account? <a id="a" class="nav-link text-center" href="signin.php">Login Here</a></p>
+			<style type="text/css">
+					#a{
+						width: 20%;
+						margin-left: 40%;
+					}
+					#a:hover{
+						text-decoration-line: underline;
+					}
+				</style>
 		</form>
 	</div>
 	<footer style="margin-top:  14%;">
