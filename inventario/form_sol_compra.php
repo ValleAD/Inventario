@@ -1,3 +1,27 @@
+<?php
+session_start();
+ if (!isset($_SESSION['username'])>0) {
+    # code...
+    echo '
+    <script>
+        alert("Por favor debes de iniciar sesión");
+        window.location ="signin.php";
+        session_destroy();  
+                </script>
+die();
+
+    ';
+}
+    
+?><?php 
+
+session_start();
+
+if (!isset($_SESSION['signin']) ) {
+    header("Location: signin.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>

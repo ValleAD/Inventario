@@ -1,4 +1,19 @@
 <?php
+session_start();
+ if (!isset($_SESSION['username'])>0) {
+    # code...
+    echo '
+    <script>
+        alert("Por favor debes de iniciar sesión");
+        window.location ="signin.php";
+        session_destroy();  
+                </script>
+die();
+
+    ';
+}
+    
+?><?php
 include('conexion.php');
         $fecha=$_POST['fech'];
         $Depto=$_POST['depto'];

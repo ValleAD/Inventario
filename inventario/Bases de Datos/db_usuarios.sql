@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-10-2021 a las 07:07:24
+-- Tiempo de generación: 23-11-2021 a las 18:14:14
 -- Versión del servidor: 10.4.21-MariaDB
--- Versión de PHP: 8.0.10
+-- Versión de PHP: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `db_usuarios`
 --
+CREATE DATABASE IF NOT EXISTS `db_usuarios` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `db_usuarios`;
 
 -- --------------------------------------------------------
 
@@ -40,8 +42,9 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `firstname`, `lastname`, `email`, `password`) VALUES
-(6, 'mario', 'alvarado', 'itca@itca.edu', '202cb962ac59075b964b07152d234b70');
+INSERT INTO `usuarios` (`id`, `username`, `firstname`, `lastname`, `email`, `password`) VALUES
+(6, '', 'mario', 'alvarado', 'itca@itca.edu', '202cb962ac59075b964b07152d234b70'),
+(7, 'carlosE', 'carlosdelcid', 'HGJ', 'edudelcid2001@gmail.com', '202cb962ac59075b964b07152d234b70');
 
 --
 -- Índices para tablas volcadas
@@ -61,7 +64,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

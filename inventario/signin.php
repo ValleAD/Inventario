@@ -53,16 +53,24 @@ if (isset($_POST['submit'])) {
 			
 			<div>
 			<label for="username">Username</label><br>
+<<<<<<< HEAD
 				<input class="form-control1" type="text" name="username" value="<?php echo $username; ?>" required>
+=======
+				<input class="form-control" type="text" name="username" value="<?php echo $username; ?>" required>
+>>>>>>> 3b043832f7fa24632fe612e62633ef3d1611fcc8
 			</div>
 			<div>
 			<label for="password">password</label><br>
-				<input  class="form-control1" type="password" name="password" value="<?php echo $_POST['password']; ?>" required>
+				<input  class="form-control" type="password" name="password" value="<?php echo $_POST['password']; ?>" required>
 			</div>
 
             
 			<div>
+<<<<<<< HEAD
 				<button  class= "submit" name="submit">Sign In</button>
+=======
+				<button name="submit" class="login1" class="btn btn-default">Sign In</button>
+>>>>>>> 3b043832f7fa24632fe612e62633ef3d1611fcc8
 			</div>
             <p class="p">No tienes cuenta ?</p>
 				<a href="signup.php" class="href">Sign Up</a>
