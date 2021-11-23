@@ -45,29 +45,28 @@ if (isset($_POST['submit'])) {
         <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
 
     </div>
-<img id="img1" src="img/baner.png" alt="vacancy">
+<img id="img1" src="img/" alt="vacancy">
 	<div style="position: all; width: 70%; height: 110%;margin-top: 1%" class="container">
 		
 		<form action="" method="POST">
-			<img class="img2" src="img/logo.png" alt="logo">
+			<img class="img" src="img/logo1.png" alt="logo">
 			
 			<div>
 			<label for="username">Username</label><br>
-				<input type="text" name="username" value="<?php echo $username; ?>" required>
+				<input class="form-control1" type="text" name="username" value="<?php echo $username; ?>" required>
 			</div>
 			<div>
 			<label for="password">password</label><br>
 				<input  class="form-control1" type="password" name="password" value="<?php echo $_POST['password']; ?>" required>
 			</div>
+
+            
 			<div>
-				<button name="submit" class="login1">Sign In</button>
+				<button  class= "submit" name="submit">Sign In</button>
 			</div>
-			
-			<p class="account1">
-			<b>Forgot your password? </b>
-			</p>
-				<p class="paragrafh">New in "Anuncios Modernos"? </p>
+            <p class="p">No tienes cuenta ?</p>
 				<a href="signup.php" class="href">Sign Up</a>
+				
 			
 		</form>
 	</div>
