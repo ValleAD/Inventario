@@ -102,7 +102,7 @@ die();
             </div>
             <div class="form-group">
                 <label>Costo Unitario</label>
-               <input class="form-control" type="double" name="cu[]" placeholder="Costo unitario del producto" required=""><br>
+               <input class="form-control" type="number" step="0.01" name="cu[]" placeholder="Costo unitario del producto" required=""><br>
             </div>
 
         
