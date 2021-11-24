@@ -45,6 +45,8 @@ die();
       $Depto=$_POST['depto'];
       $odt=$_POST['odt'];
 
+      $final = 0;
+
       echo 
       '
 <form  style="position: all; width: 70%; height: 100%;margin-bottom: 5%;">
@@ -95,7 +97,8 @@ die();
         $cantidad = $_POST['cant'][$i];
         $cost = $_POST['cu'][$i];
 
-    $total = $cost * $cantidad;
+        $total[$i] = $cost * $cantidad;
+        $final = $final + $total[$i];
       
       
   echo'  
@@ -105,10 +108,18 @@ die();
         <td>' .$um. '</td>
         <td>' .$cantidad. '</td>
         <td>$' .$cost. '</td>
-        <td>$' .$total. '</td>
+        <td>$' .$total[$i]. '</td>
       </tr>'; 
 }
       echo'
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><strong>Total</strong></td>
+          <td>$ '.$final.'</td>
+        </tr>
       </table>
       <div class="container">
         <div class="row">

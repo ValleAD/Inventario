@@ -22,7 +22,7 @@ die();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
-    <title>Solicitud de materiales a almacén</title>
+    <title>Solicitud de Compra</title>
 </head>
 <body>
 
@@ -32,7 +32,7 @@ die();
       <img src="img/log.png" height="110px">
     </div>
     <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
-    <h3>Almacén de medicamentos, insumos médicos, papeleria y otros</h3>
+    <h3>Solicitud de Compra</h3>
    
   </div>
   <br>
@@ -41,8 +41,9 @@ die();
     
     if ( isset($_POST["cod"]) ) { 
 
-      $fecha=$_POST['fech'];
-      $Depto=$_POST['depto'];
+      $fecha = $_POST['fech'];
+      $Depto = $_POST['depto'];
+      $solicitud = $_POST['sol'];
 
       $final = 0;
 
@@ -55,48 +56,48 @@ die();
         <table class="table" style="margin-top: 20px;">
           <tr>
             <td><strong>Código</strong></td>
-            <td><strong>Descripción</strong></td>
+            <td><strong>Codificación de Catálogo</strong></td>
+            <td><strong>Descripción Completa</strong></td>
             <td><strong>U/M</strong></td>
-            <td><strong>Cantidad Solicitada</strong></td>
-            <td><strong>Cantidad Despachada</strong></td>
-            <td><strong>Costo unitario</strong></td>
-            <td><strong>Total</strong></td>
+            <td><strong>Cantidad</strong></td>
+            <td><strong>Costo unitario (Estimado)</strong></td>
+            <td><strong>Total (Estimado)</strong></td>
           </tr>';
 
       for($i = 0; $i < count($_POST['cod']); $i++)
     {
        
         $codigo = $_POST['cod'][$i];
-        $nom = $_POST['nom'][$i];
+        $catalogo = $_POST['cat'][$i];
+        $desc = $_POST['desc'][$i];
         $um = $_POST['um'][$i];
-        $cant_sol = $_POST['cant_sol'][$i];
-        $cant_des = $_POST['cant_des'][$i];
+        $cant = $_POST['cant'][$i];
         $cost = $_POST['cu'][$i];
 
-    $total[$i] = $cost * $cant_des;
-    $final = $final + $total[$i];
+        $total[$i] = $cost * $cant;
+        $final = $final + $total[$i];
       
       
   echo'  
-      <tr >
+      <tr>
         <td>' .$codigo. '</td>
+        <td>' .$catalogo. '</td>
+        <td>' .$desc. '</td>
         <td>' .$um. '</td>
-        <td>' .$nom. '</td>
-        <td>' .$cant_sol. '</td>
-        <td>' .$cant_des. '</td>
+        <td>' .$cant. '</td>
         <td>$' .$cost. '</td>
         <td>$' .$total[$i]. '</td>
       </tr>'; 
 }
       echo'
-      <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td><strong>Total</strong></td>
-          <td>$ '.$final.'</td>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><strong>Total</strong></td>
+            <td>$ '.$final.'</td>
         </tr>
       </table>     
     </section>
@@ -106,7 +107,7 @@ die();
 
           <div class="col-4">
             <label style="font-weight: bold;">Departamento que solicita:</label>
-            <input class="form-control" type="text" value="' .$Depto. '">
+            <input class="form-control" type="text" value="' .$solicitud. '">
           </div>
       
           <div class="col-4">

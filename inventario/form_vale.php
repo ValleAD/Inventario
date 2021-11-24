@@ -25,6 +25,8 @@ die();
         <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css" />
         <link rel="stylesheet" href="assets/css/style.css" />
         <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+        
+        <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">  
   </head>
     <body >
 
@@ -48,17 +50,21 @@ die();
   <div class="row">
     <div class="col-6 col-sm-3">
        <label>Número de Vale</label> 
-      <input class="form-control" type="number" name="vale" id="como1" required=""></div>
+      <input class="form-control" type="number" name="vale" id="como1" required="">
+    </div>
     <div class="col-6 col-sm-3">
       <label>Departamento</label>   
-      <input class="form-control" type="text" name="depto" id="como2" required=""></div>
+      <input class="form-control" type="text" name="depto" id="como2" required="">
+    </div>
 
     <!-- Force next columns to break to new line -->
     <div class="w-100"></div>
 
     <div  class="col-6 col-sm-3"> 
       <label>Fecha</label> 
-      <input class="form-control" type="date" name="fech" id="como3" required><br></div>
+      <input class="form-control" type="date" name="fech" id="como3" required>
+      <br>
+    </div>
    
   </div>
 </div></center>
@@ -96,7 +102,7 @@ die();
             </div>
             <div class="form-group">
                 <label>Costo Unitario</label>
-               <input class="form-control" type="number" name="cu[]" placeholder="Costo unitario del producto" required=""><br>
+               <input class="form-control" type="double" name="cu[]" placeholder="Costo unitario del producto" required=""><br>
             </div>
 
         
