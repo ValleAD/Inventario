@@ -15,51 +15,126 @@ die();
     
 ?><!DOCTYPE html>
 <html lang="es">
-<head>
- 
-<meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="styles/style.css" > 
-    <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
-    <title>Solicitud de  Fondo Circulante</title>
+  <head>
+    <title>Solicitud de Fondo Circulante</title>
+        
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="styles/style.css" > 
+
+        <link rel="stylesheet" href="assets/css/bootstrap.css" />
+        <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css" />
+        <link rel="stylesheet" href="assets/css/style.css" />
+        <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+        
+        <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">  
 </head>
-<body>
- <a href="home.php"><button>Volver</button></a>  
-    <h1>Hospital Nacional "Santa Teresa" de Zacatecoluca</h1>
-    <h3>Fondo Circulante de Monto Fijo</h3>
+<body >
 
-        <div>
-        <label name="orden">Solicitud No.:</label>
-            <input value="">
+
+  <div id="head"  style="position: absolute;
+  height: 17% ;margin-top: -15"> 
+    <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
+    <h3>Departamento de mantenimiento</h3>
+  </div>
+  <br>
+
+
+  <form style="position: all;" action="dt_sol_circulante.php" method="POST" style="height: 10%;margin-top: -15">
+
+    <ol class="breadcrumb">
+      <li><a href="home.php">Inicio</a></li>
+      <li class="active">Solicitud de Fondo Circulante</li>
+    </ol>
+  <center>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 col-sm-3">
+                <label>Número de Solicitud</label> 
+                <input class="form-control" type="number" name="sol" id="como1" required="">
+            </div>
         </div>
-<br>
-        <h5> Encargado del Fondo Circulante de Monto Fijo Recursos Propios</h5>
-        <h5> Hospital Nacional "Santa Teresa" de Zacatecoluca</h5>
-        <br>
-    
-        <h5> Atentamente solicito a usted la compra Urgente de los materiales y/o servicios que se detallan</h5>
-        <h5> a continuación, a traves del Fondo Circulante de Monto Fijo</h5>
-        <br>
-  
-        <form style="position: all; width: 70%; height: 100%;margin-top: 15%"  action="dt_sol_circulante.php" method="POST">
-        <label for="no">No.</label>
-        <input type="number" name="cod" id="cod"><br>  
-        <label for="desc">Descripcion de los Materiales y/o servicios Solicitados</label>
-        <input type="text" name="desc"><br>
-        <label for="um">Unidad de Medida</label>
-        <input type="text" name="um" id="um"><br>
-        <label for="cantSol">Cantidad solicitada</label>
-        <input type="number" name="cantSol" id="cantSol"><br>
-        <label for="cantes">Cantidad Estimada</label>
-        <input type="number" name="cantes" id="cantes"><br>
-         <div align="center">
-            <input  style=" width:35%; margin: 5%; width: 30%; height: 10%;" type="submit" value="Aceptar">
-          </div>
-        </form>'
-        <br>
-        <h5> Todo lo anteriormente detallado, es indispensable para desarrollar nuestras funciones.</h5>
+    </div>
+  </center>
+    <div id="Registro" class="row" style="position: all; m">
+        <div id="lo-que-vamos-a-copiar">
+            <div class="col-xs-4">
+                <div class="well well-sm" style="position: all; margin: 5%">
 
-</body>
-</html>
+                    <div class="form-group">
+                    <label style="color: #000">Descripción de material</label>
+                    <input type="text" name="desc[]" class="form-control" placeholder="Ingrese la descripción del material" required=""/>
+                    </div>
+                    <br>
+
+                    <div class="form-group" >
+                        <div class="col-md-16" >
+                            <div class="invalid-feedback">
+                            Por favor seleccione una opción.
+                            </div>
+                        <select  class="form-control" name="um[]" id="um" required>
+                            <option selected disabled value="">Unidad de Medida</option>
+                            <option value="U">U</option>
+                            <option value="M">M</option>
+                        </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Cantidad Solicitada</label>
+                        <input type="number" name="cant[]" class="form-control" placeholder="Ingrese la Cantidad" required="" />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Costo Estimado</label>
+                        <input class="form-control" type="number" step="0.01" name="cu[]" placeholder="Costo unitario del producto" required=""><br>
+                    </div>
+            </div>
+        </div>            
+    </div>
+
+    <div class="col-xs-4">
+        <div class="well" style="position: all; margin:5%">
+            <button id="btn-agregar" class="btn btn-lg btn-block btn-default" type="button">Agregar Producto</button>                
+        </div>
+    </div>
+    </div>
+    
+    <hr>
+    
+    <div class="text-right">
+        <button  class="btn btn-success btn-lg btn-block">Guardar</button>
+    </div>
+</form>
+
+
+<script>
+    $(document).ready(function(){
+        
+        // El formulario que queremos replicar
+        var formulario_registro = $("#lo-que-vamos-a-copiar").html();
+        
+// El encargado de agregar más formularios
+$("#btn-agregar").click(function(){
+    // Agregamos el formulario
+    $("#Registro").prepend(formulario_registro);
+
+    // Agregamos un boton para retirar el formulario
+    $("#Registro .col-xs-4:first .well").append('<button class="btn-danger btn btn-block btn-retirar-registro" type="button">Retirar</button>');
+
+    // Hacemos focus en el primer input del formulario
+    $("#Registro .col-xs-4:first .well input:first").focus();
+
+    // Volvemos a cargar todo los plugins que teníamos, dentro de esta función esta el del datepicker assets/js/ini.js
+    Plugins();
+});
+        
+        // Cuando hacemos click en el boton de retirar
+        $("#Registro").on('click', '.btn-retirar-registro', function(){
+            $(this).closest('.col-xs-4').remove();
+        })
+            
+        $("#frm-registro").submit(function(){
+            return $(this).validate();
+        });
+    })
+</script>
