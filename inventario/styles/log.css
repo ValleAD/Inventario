@@ -9,14 +9,14 @@ body {
 
 .submit{
     
-    margin-left: 130px;
-    width: 350px;
-    height: 46px;
-    margin-top: 50px;
-    border-style: none;
-    background: rgb(14, 151, 98);
-    color: #fff;
-    border-radius: 10px;
+  margin-left: 130px;
+  width: 350px;
+  height: 46px;
+  margin-top: 50px;
+  border-style: none;
+  background: rgb(14, 151, 98);
+  color: #fff;
+  border-radius: 10px;
 }
 .p{
     margin-top: 35px;
