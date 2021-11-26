@@ -21,7 +21,6 @@ die();
         
         <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="styles/style.css" > 
-
         <link rel="stylesheet" href="assets/css/bootstrap.css" />
         <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css" />
         <link rel="stylesheet" href="assets/css/style.css" />

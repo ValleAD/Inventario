@@ -20,8 +20,8 @@ die();
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles/style.css">
-    <link rel="stylesheet" type="text/css" href="styles/estilo_menu.css">  
-    <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css">
+     
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
@@ -30,7 +30,7 @@ die();
 <body>
 
       <center> <h1 style="margin-top: -31%">Bienvenidos al Sistema de Inventario del <br> Hospital Nacional Santa Teresa de Zacatecoluca</h1></center>
-<footer style="margin-top:  11.3%;">
+<footer style="margin-top:  13%;">
 
   <div align="center">
   <img src="img/log_1.png" alt="" width="320px" height="150px">
