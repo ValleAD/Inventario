@@ -14,6 +14,7 @@ die();
 }
     
 ?>
+<?php include ('menu.php')?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -27,15 +28,8 @@ die();
     <title>Registro de Productos</title>
 </head>
 <body>
-
-   <div id="head">
-         <a href="home.php"><button>Volver</button></a>  
-        <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
-
-    </div>
-    <br>
   <div style="position: all; width: 70%; height: 110%;margin-top: 1%" class="container">
-  <form style="position: all; width: 70%; height: 110%;margin-top: 10%" action="dt_producto.php" method="POST" style="height: 740px">
+  <form style="position: all; width: 70%; height: 110%;margin-top: -60%" action="dt_producto.php" method="POST" style="height: 740px">
 
       <section>
         <br>

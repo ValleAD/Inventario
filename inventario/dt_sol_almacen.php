@@ -13,7 +13,9 @@ die();
     ';
 }
     
-?><!DOCTYPE html>
+?>
+<?php include ('menu.php')?>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -26,16 +28,7 @@ die();
 </head>
 <body>
 
-<div id="head"  style="position: absolute;
-  height: 17% ;margin-top: -15">
-   <div style="float: left; position: absolute;">
-      <img src="img/log.png" height="110px">
-    </div>
-    <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
-    <h3>Almacén de medicamentos, insumos médicos, papeleria y otros</h3>
-   
-  </div>
-  <br>
+
  
 <?php
     
@@ -48,7 +41,7 @@ die();
 
       echo 
       '
-<form  style="position: all; width: 70%; height: 100%;margin-bottom: 5%;">
+<form  style="position: all; width: 70%; height: 100%;margin-bottom: 5%;margin-top: -40%;">
          
       <section>
         <div class="table-responsive">

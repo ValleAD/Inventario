@@ -13,7 +13,9 @@ die();
     ';
 }
     
-?><!DOCTYPE html>
+?>
+<?php include ('menu.php')?>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -49,7 +51,7 @@ die();
 
       echo 
       '
-<form  style="position: all; width: 70%; height: 100%;margin-bottom: 5%;">
+<form style="position: all; width: 70%; height: 100%;margin-bottom: 5%;margin-top: -40%;">
          
       <section>
         <div class="table-responsive">

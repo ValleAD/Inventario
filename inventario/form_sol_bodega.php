@@ -11,12 +11,13 @@ session_start();
 die();
 
     ';
-}
-    
-?><!DOCTYPE html>
+}   
+?>
+<?php include ('menu.php')?>
+<!DOCTYPE html>
 <html lang="es">
   <head>
-    <title>Vale</title>
+    <title>Solicitud De Materiales A Bodega</title>
         
         <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="styles/style.css" > 
@@ -31,16 +32,7 @@ die();
     <body >
 
 
-  <div id="head"  style="position: absolute;
-  height: 17% ;margin-top: -15">
-    <a href="home.php"><button>Volver</button></a>  
-    <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
-    <h3>Departamento de mantenimiento</h3>
-  </div>
-    <br>
-
-
-  <form style="position: all;" action="dt_sol_bodega.php" method="POST" style="height: 10%;margin-top: -15">
+  <form style="position: all; width: 70%; height: 100%;margin-bottom: 5%;margin-top: -40%;" action="dt_sol_bodega.php" method="POST">
 
     <ol class="breadcrumb">
   <li><a href="home.php">Inicio</a></li>

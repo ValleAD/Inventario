@@ -14,6 +14,7 @@ die();
 }
     
 ?>
+<?php include ('menu.php')?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -40,16 +41,7 @@ die();
   </head>
     
   <body> 
-   <div id="head"  style="position: relative;
-  height: 17% ;margin-top: -15">
-   <div style="float: left; position: absolute;">
-     <a href="home.php"><img src="img/log.png" height="90px"></a>
-    </div>
-    <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
-    <h3>Departamento de mantenimiento</h3>
-   
-  </div>
-  <br>
+
     <div style="height:70px"></div>
     <?php
     
@@ -61,7 +53,7 @@ die();
 
       echo 
       '
-     <form  style="position: all; width: 70%; height: 100%;margin-bottom: 5%;margin-top: -2%;" method="post" action="db_vale">
+     <form  style="position: all; width: 70%; height: 100%;margin-bottom: 5%;margin-top: -40%;" method="post" action="db_vale">
          <section>
      
         <div class="row">

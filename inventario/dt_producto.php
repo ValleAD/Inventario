@@ -13,7 +13,9 @@ die();
     ';
 }
     
-?><!DOCTYPE html>
+?>
+<?php include ('menu.php')?>
+<!DOCTYPE html>
 <html lang="es">
 <head>
    <meta charset="UTF-8">
@@ -25,12 +27,7 @@ die();
     <title>Vale</title>
 </head>
 <body>
- <div id="head" style="height: 17%">
-   <a class="nav-link " href="reg_producto.php"><button >Volver</button></a> 
-    <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
-    <h3>Departamento de mantenimiento</h3><br>
-</div>
-<br>
+
  
 
 <?php
@@ -47,7 +44,7 @@ die();
     $total = $cost * $cantidad;
 
     echo'
-      <form  style="position: all; width: 70%; height: 100%;margin-bottom: 5%;">
+      <form  style="position: all; width: 70%; height: 100%;margin-bottom: 5%;margin-top: -40%;">
        <section>
       <br>
       <div class="table-responsive">

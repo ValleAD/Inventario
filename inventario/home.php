@@ -14,7 +14,7 @@ die();
 }
     
 ?>
-
+<?php include ('menu.php')?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -28,18 +28,8 @@ die();
     <title>Inicio</title>
 </head>
 <body>
-    <nav  class="container-fluid">
-        <ul>
-            <li><a href="reg_producto.php">Registro de productos</a></li>
-            <li><a href="form_sol_bodega.php">Solicitud de materiales a bodega</a></li>
-            <li><a href="form_vale.php">Vale</a></li>
-            <li><a href="form_sol_almacen.php">Solicitud de materiales a almacen</a></li>
-            <li><a href="form_sol_compra.php">Solicitud de compra</a></li>
-            <li><a href="form_sol_circulante.php">Solicitud de fondo circulante</a></li>
-            <li><a href="logout.php">Cerrar Sesion</a></li>
-        </ul>
-    </nav>
-      <center> <h1 style="margin-top: 11%">Bienvenidos al Sistema de Inventario del <br> Hospital Nacional Santa Teresa de Zacatecoluca</h1></center>
+
+      <center> <h1 style="margin-top: -31%">Bienvenidos al Sistema de Inventario del <br> Hospital Nacional Santa Teresa de Zacatecoluca</h1></center>
 <footer style="margin-top:  14%;">
 
   <div align="center">
