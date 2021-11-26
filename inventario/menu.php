@@ -8,12 +8,12 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <nav style="position: ausolute;">
+    <nav>
         <input type="checkbox" id="check">
         <label for="check" class="checkbtn">
             <i class="fas fa-bars"></i>
         </label>
-        <a href="#" class="enlace">
+        <a href="home.php" class="enlace">
             <img src="img/log.png" alt="" class="logo">
         </a>
         <ul>
@@ -23,7 +23,8 @@
             <li><a href="form_sol_almacen.php">Solicitud de materiales a almacen</a></li>
             <li><a href="form_sol_compra.php">Solicitud de compra</a></li>
             <li><a href="form_sol_circulante.php">Solicitud de fondo circulante</a></li>
-            <li><a href="logout.php">Cerrar Sesion</a></li>
+            <li><a href="logout.php">Cerrar Sesion</a>
+        </li>
         </ul>
     </nav>
     <section></section>

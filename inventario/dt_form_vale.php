@@ -166,6 +166,6 @@ die();
     <!-- código JS propìo-->    
     <script type="text/javascript" src="main.js"></script>  
     
-    
+    <?php include ('footer.php');?>
   </body>
-</html>
+  </html>

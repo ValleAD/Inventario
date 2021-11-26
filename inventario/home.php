@@ -30,7 +30,7 @@ die();
 <body>
 
       <center> <h1 style="margin-top: -31%">Bienvenidos al Sistema de Inventario del <br> Hospital Nacional Santa Teresa de Zacatecoluca</h1></center>
-<footer style="margin-top:  14%;">
+<footer style="margin-top:  11.3%;">
 
   <div align="center">
   <img src="img/log_1.png" alt="" width="320px" height="150px">

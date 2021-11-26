@@ -13,8 +13,7 @@ die();
     ';
 }
     
-?>
-<?php include ('menu.php')?>
+?><?php include ('menu.php')?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -28,8 +27,8 @@ die();
     <title>Registro de Productos</title>
 </head>
 <body>
-  <div style="position: all; width: 70%; height: 110%;margin-top: 1%" class="container">
-  <form style="position: all; width: 70%; height: 110%;margin-top: -60%" action="dt_producto.php" method="POST" style="height: 740px">
+  <div style="position: all; width: 70%; height: 110%;margin-top: 1%" class="container-fluid">
+  <form style="margin-top: -63%;"  action="dt_producto.php" method="POST" ">
 
       <section>
         <br>
@@ -71,13 +70,7 @@ die();
       </section>
     </form> 
   </div>
-    <footer style="margin-top: 3%;">
-
-  <div align="center">
-  <img src="img/log_1.png" alt="" width="320px" height="150px">
-  </div>
-
-</footer>
+  <?php include ('footer.php');?>
           
 </body>
 </html>
