@@ -10,6 +10,7 @@ nav{
     background: #244242;
     height: 80px;
     width: 100%;
+    text-decoration:none ;
 }
 .enlace{
     position: absolute;
