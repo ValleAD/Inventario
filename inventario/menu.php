@@ -29,9 +29,9 @@
 
             <div class="modal">
         <div class="modal-content">
-            <button class="close-modal">
+            <p class="close-modal">
                 <i class="fas fa-times"></i>
-            </button>
+            </p>
             <div class="title">Perfil</div>
             
             
@@ -39,7 +39,6 @@
               
                 <p class="info">Nombre:<br>Apellido:<br>Email:</p>
             <div class="actions">
-                <button class="cancel">Cancel</button>
                 <button><a href="logout.php">Cerrar Sesion</a></button>
             </div>
         </div>
