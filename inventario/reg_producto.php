@@ -1,19 +1,4 @@
-<?php
-session_start();
- if (!isset($_SESSION['signin'])>0) {
-    # code...
-    echo '
-    <script>
-        alert("Por favor debes de iniciar sesión");
-        window.location ="signin.php";
-        session_destroy();  
-                </script>
-die();
 
-    ';
-}
-    
-?><?php include ('menu.php')?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -27,8 +12,9 @@ die();
     <title>Registro de Productos</title>
 </head>
 <body>
+<?php include ('menu.php')?>
   <div style="position: all; width: 70%; height: 110%;margin-top: 1%" class="container-fluid">
-  <form style="margin-top: -63%;"  action="dt_producto.php" method="POST" ">
+  <form style="margin-top: -63%;"  action="dt_producto.php" method="POST">
 
       <section>
         <br>
@@ -62,10 +48,11 @@ die();
           <input  class="form-control" type="number" name="cant" id="cant" required>
           <br>
           <label for="cu">COSTO UNITARIO</label><br>
-          <input  class="form-control" type="number" name="cu" id="cu" required>
+          <input  class="form-control" type="decimal" name="cu" id="cu" required>
           <br>
            <div align="center">
             <input  style=" width:35%; margin: 5%; width: 30%; height: 10%;" type="submit" value="Aceptar">
+            <a href="vistaProductos.php">Ver productos</a>
           </div>
       </section>
     </form> 

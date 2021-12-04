@@ -16,7 +16,7 @@
 $server = "localhost";
 $user = "root";
 $pass = "";
-$database = "db_usuarios";
+$database = "hospital";
 
 $conn = mysqli_connect($server, $user, $pass, $database);
 

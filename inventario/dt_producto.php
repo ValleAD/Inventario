@@ -1,38 +1,9 @@
 <?php
-session_start();
- if (!isset($_SESSION['signin'])>0) {
-    # code...
-    echo '
-    <script>
-        alert("Por favor debes de iniciar sesión");
-        window.location ="signin.php";
-        session_destroy();  
-                </script>
-die();
 
-    ';
-}
-    
-?>
-<?php include ('menu.php')?>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-   <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="styles/style.css" > 
-    <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
-    <title>Vale</title>
-</head>
-<body>
+//CRUD para guardar datos enviados
+// de re_producto.php y se guarde en la tabla tb_producto mysql
+require 'conexion.php';
 
- 
-
-<?php
-    if(isset($_POST['cod'])) {
-        
     $codigo_producto = $_POST['cod'];
     $catalogo=$_POST['catal'];
     $nombre_articulo = $_POST['nombre'];
@@ -41,60 +12,19 @@ die();
     $cantidad = $_POST['cant'];
     $cost=$_POST['cu'];
 
-    $total = $cost * $cantidad;
+    $insert = "INSERT INTO tb_productos (codProductos, catalogo, nombre, descripcion, unidad_medida, stock, precio) VALUES ('$codigo_producto','$catalogo', '$nombre_articulo', '$Descripción', '$u_m', '$cantidad', '$cost')";
+    $query = mysqli_query($conn, $insert);
 
-    echo'
-      <form  style="position: all; width: 70%; height: 100%;margin-bottom: 5%;margin-top: -40%;">
-       <section>
-      <br>
-      <div class="table-responsive">
-  <table class="table">
-    <tr>
-      <td><strong>Código</strong></td>
-      <td><strong>catalogo</strong></td>
-      <td><strong>Nombre Articulo</strong></td>
-      <td><strong>Descripción</strong></td>
-      <td><strong>U/M</strong></td>
-      <td><strong>Cantidad</strong></td>
-      <td><strong>Costo unitario</strong></td>
-      <td><strong>Total</strong></td>
-    </tr>
+    if ($query) {
+      echo "<script> alert('Su producto fue registrado correctamente');
+      location.href = 'reg_producto.php';
+      </script>
+      ";
+    }else {
+      echo "<script> alert('UUPS!! Algo no fue mal escrito');
+      location.href = 'reg_producto.php';
+      </script>
+      ";
+    }
     
-    <tr>
-      <td>' .$codigo_producto. '</td>
-       <td>' .$catalogo. '</td>
-        <td>' .$nombre_articulo. '</td>
-      <td>' .$Descripción. '</td>
-      <td>' .$u_m. '</td>
-      <td>' .$cantidad. '</td>
-      <td>$' .$cost. '</td>
-      <td>$' .$total. '</td>
-    </tr>
-    </table>
-    </div>
-
-
-   <div class="container">
-  <div class="row">
-    <div class="col">
-    <p>  SOLICITA:  </p>
-    </div>
-    <div class="col-6">
-     <p style="margin-left: 80px;">  ENTREGA:</p>
-    </div>
-      </div>
-</div>
-          <p  style=" width:35%; margin: 5%; width: 30%; height: 10%;margin-top: 15% margin-bottom: 5%;">AUTORIZA:</p>
-          
-     </section>
-          
-    </form>
-    ';
-   
-}
-?>            
-<?php include ('footer.php');?>
-  </body>
-  </html>
-
-
+?>
