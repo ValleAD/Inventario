@@ -10,16 +10,17 @@
     <title>Productos</title>
 </head>
 <body>
-    <div class="table-responsive">
-        <table class="table">
+    <div class=" container table-responsive ">
+        <h2 class="text-center mg-t">Resultados de productos</h2>
+        <table class="table table-dark table-hover table-bordered " style="vertical-align: bottom;">
             <tr>
-                <td><strong>Código</strong></td>
-                <td><strong>Codificación de catálogo</strong></td>
-                <td><strong>Nombre</strong></td>
-                <td><strong>Descripción Completa</strong></td>
-                <td><strong>U/M</strong></td>
-                <td><strong>Cantidad</strong></td>
-                <td><strong>Costo unitario</strong></td>
+                <td class="table-info"><strong>Código</strong></td>
+                <td class="table-info"><strong>Codificación de catálogo</strong></td>
+                <td class="table-info"><strong>Nombre</strong></td>
+                <td class="table-info"><strong>Descripción Completa</strong></td>
+                <td class="table-info"><strong>U/M</strong></td>
+                <td class="table-info"><strong>Cantidad</strong></td>
+                <td class="table-info"><strong>Costo unitario</strong></td>
                 
             </tr>
 <?php
