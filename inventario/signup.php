@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
 		$sql = "SELECT * FROM tb_usuarios WHERE username='$username' AND firstname='$firstname' AND lastname='$lastname' AND email='$email' AND password='$password'";
 		$result = mysqli_query($conn, $sql);
 		if (!$result->num_rows > 0) {
-			$sql = "INSERT INTO usuarios (username,firstname,lastname, email, password)
+			$sql = "INSERT INTO tb_usuarios (username,firstname,lastname, email, password)
 					VALUES ('$username','$firstname', '$lastname', '$email', '$password')";
 			$result = mysqli_query($conn, $sql);
 

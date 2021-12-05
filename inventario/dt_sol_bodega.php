@@ -59,9 +59,7 @@ die();
     
           </div>
         </div>
-      </section> 
-  
-      <section>
+   
         <div align="right">
             <label style="font-weight: bold; margin-right: 135px;">O. DE T. No.</label>
             <div class="col-md-2">
@@ -113,21 +111,7 @@ die();
           <td><strong>Total</strong></td>
           <td>$ '.$final.'</td>
         </tr>
-      </table>
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <p style="font-weight: bold;">  SOLICITA:  </p>
-          </div>
-          <div class="col-6">
-            <p style="margin-left: 80px; font-weight: bold;">  ENTREGA:</p>
-          </div>
-        </div>
-          <div class="col">
-        <br>
-            <p style="font-weight: bold;">  AUTORIZA:  </p>
-        </div>
-      </div>       
+      </table>     
     </section>
 </form>
       ';
