@@ -19,12 +19,12 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 
     if ($query) {
       echo "<script> alert('Su producto fue registrado correctamente');
-      location.href = 'reg_producto.php';
+      location.href = 'regi_producto.php';
       </script>
       ";
     }else {
       echo "<script> alert('UUPS!! Algo no fue mal escrito');
-      location.href = 'reg_producto.php';
+      location.href = 'regi_producto.php';
       </script>
       ";
     }
