@@ -20,7 +20,7 @@ die();
     <title>Solicitud de Compra</title>
         
         <meta charset="utf-8" />
-        <link rel="stylesheet" type="text/css" href="styles/styles.css" > 
+        <link rel="stylesheet" type="text/css" href="styles/style.css" > 
 
         <link rel="stylesheet" href="assets/css/bootstrap.css" />
         <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css" />

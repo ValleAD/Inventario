@@ -74,19 +74,6 @@ input[type="button"]{
     font-family: Cooper Black;
 } 
 
-.ver{
-    text-decoration: n;
-    width: 250px;
-    height: 35px;
-    margin-top: 40px;
-    background: rgb(5, 114, 72);
-    border-style: none;
-    border-radius: 25px;
-    color: white;
-    font-size: 20px;
-    font-family: Cooper Black;
-}
-
 input[type="submit"]:hover{
     background-color: rgb(16, 110, 110);
     border: solid rgb(5, 114, 72);

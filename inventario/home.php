@@ -19,7 +19,7 @@ die();
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
      
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
