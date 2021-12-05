@@ -21,7 +21,7 @@
             <img src="img/log.png" alt="" class="logo">
         </a>
         <ul>
-        <li><a href="reg_producto.php">Registro de productos</a></li>
+        <li><a href="regi_producto.php">Registro de productos</a></li>
             <li><a href="form_sol_bodega.php">Solicitud de materiales a bodega</a></li>
             <li><a href="form_vale.php">Vale</a></li>
             <li><a href="form_sol_almacen.php">Solicitud de materiales a almacen</a></li>

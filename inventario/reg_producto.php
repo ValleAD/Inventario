@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="styles/style.css" > 
+    <link rel="stylesheet" type="text/css" href="styles/styles.css" > 
     <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,12 +35,12 @@
          <div class="col-md-12">
                 <label for="um" class="form-label">U/M</label>
                 <select class="form-select" name="um" id="um" required>
-                  <option selected disabled value="">Selecione Opcion</option>
+                  <option selected disabled value="">Selecione Opción</option>
                   <option value="U">U</option>
                   <option value="M">M</option>
                 </select>
                 <div class="invalid-feedback">
-                  Please select a valid state.
+                  Selecciona una opción por favor
                 </div>
               </div>
           <br>
@@ -52,7 +52,6 @@
           <br>
            <div align="center">
             <input  style=" width:35%; margin: 5%; width: 30%; height: 10%;" type="submit" value="Aceptar">
-            <a href="vistaProductos.php">Ver productos</a>
           </div>
       </section>
     </form> 
@@ -60,4 +59,4 @@
   <?php include ('footer.php');?>
           
 </body>
-</html>
+</html><a href="vistaProductos.php"><input type="button" value="ver Productos"></a>
