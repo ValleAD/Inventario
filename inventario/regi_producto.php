@@ -97,9 +97,9 @@ die();
     
     <hr />
     
-    <div class="text-right">
-        <button  class="btn btn-success btn-lg btn-block">Guardar</button>  
-        <button><a class="ver" style=" width:35%; margin: 5%; width: 30%; height: 10%;" href="vistaProductos.php">Ver productos</a></button>
+    <div class="text-center">
+        <button  class="btn btn-success btn-lg" style="margin-bottom: 2%;">Guardar</button>  
+        <button class="btn btn-success btn-lg" style="margin-left: 2%; background: rgb(5, 65, 114); margin-bottom: 2%; border: rgb(5, 65, 114);"><a href="vistaProductos.php" style="text-decoration: none;">Ver productos</a></button>
           
     </div>
 </form>
