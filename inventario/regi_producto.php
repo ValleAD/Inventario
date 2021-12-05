@@ -99,8 +99,18 @@ die();
     
     <div class="text-center">
         <button  class="btn btn-success btn-lg" style="margin-bottom: 2%;">Guardar</button>  
-        <button type="button" class="btn  btn-lg" style="margin-left: 2%; background: rgb(5, 65, 114); margin-bottom: 2%; border: rgb(5, 65, 114);"><a href="vistaProductos.php" style="text-decoration: none;">Ver productos</a></button>
-         
+        <a id="ver" class="btn  btn-lg" href="vistaProductos.php">Ver Productos</a>
+         <style>
+               #ver{
+                margin-left: 2%; 
+                background: rgb(5, 65, 114); 
+                color: #fff; margin-bottom: 2%; 
+                border: rgb(5, 65, 114);
+               }
+               #ver:hover{
+                background: rgb(9, 100, 175);
+               }  
+        </style>
     </div>
 </form>
 
