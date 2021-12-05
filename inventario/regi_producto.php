@@ -109,7 +109,10 @@ die();
                }
                #ver:hover{
                 background: rgb(9, 100, 175);
-               }  
+               } 
+               #ver:active{
+                transform: translateY(5px);
+               } 
         </style>
     </div>
 </form>
