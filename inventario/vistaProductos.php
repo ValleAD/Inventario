@@ -1,11 +1,3 @@
-<?php
-    include 'conexion.php';
-    $sql = "SELECT * FROM tb_productos";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result))
-{
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -30,6 +22,14 @@
                 <td><strong>Costo unitario</strong></td>
                 
             </tr>
+<?php
+    include 'conexion.php';
+    $sql = "SELECT * FROM tb_productos";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result))
+{
+?>
             <tr >
                <td><?php  echo $productos['codProductos']; ?></td>
                <td><?php  echo $productos['catalogo']; ?></td>
