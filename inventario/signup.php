@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
 				}if (mysqli_num_rows($result)>0) {
 					
 				}*/
-				echo "<script>alert('Wow! User Registration Completed.') </script>";
+				echo "<script>alert('Resgitro completado exitosamente.') </script>";
 				$username = "";
 				$firstname = "";
 				$lastname = "";
@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
 			} else {
 				 echo '
 				    <script>
-				        alert("Woops! Email or Password is Wrong.");
+				        alert("!Error¡ Correo o contraseña incorrectos.");
 				        window.location ="signup.php";
 				        session_destroy();  
 				                </script>
@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
 		} else {
 			 echo '
     <script>
-        alert("Woops! Email or Password is Wrong.");
+        alert("!Error¡ Correo o contraseña incorrectos.");
         window.location ="signup.php";
         session_destroy();  
                 </script>
@@ -60,7 +60,7 @@ if (isset($_POST['submit'])) {
 	} else {
 		 echo '
     <script>
-        alert("Woops! Email or Password is Wrong.");
+        alert("!Error¡ Correo o contraseña incorrectos.");
         window.location ="signup.php";
         session_destroy();  
                 </script>
