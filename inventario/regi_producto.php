@@ -99,8 +99,8 @@ die();
     
     <div class="text-center">
         <button  class="btn btn-success btn-lg" style="margin-bottom: 2%;">Guardar</button>  
-        <button class="btn btn-success btn-lg" style="margin-left: 2%; background: rgb(5, 65, 114); margin-bottom: 2%; border: rgb(5, 65, 114);"><a href="vistaProductos.php" style="text-decoration: none;">Ver productos</a></button>
-          
+        <button type="button" class="btn  btn-lg" style="margin-left: 2%; background: rgb(5, 65, 114); margin-bottom: 2%; border: rgb(5, 65, 114);"><a href="vistaProductos.php" style="text-decoration: none;">Ver productos</a></button>
+         
     </div>
 </form>
 
