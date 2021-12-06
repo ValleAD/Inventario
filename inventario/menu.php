@@ -28,7 +28,7 @@ if(!isset($_SESSION['signin'])){
             <img src="img/log.png" alt="" class="logo">
         </a>
         <ul>
-        <li><a href="regi_producto.php">Registro de productos</a></li>
+        <li><a href="vistaProductos.php">Ver Productos</a></li>
             <li><a href="form_sol_bodega.php">Solicitud de materiales a bodega</a></li>
             <li><a href="form_vale.php">Vale</a></li>
             <li><a href="form_sol_almacen.php">Solicitud de materiales a almacen</a></li>
@@ -48,28 +48,26 @@ if(!isset($_SESSION['signin'])){
                 <table id="table">
                     
                 
-                <?php
-             $cliente =$_SESSION['signin'];
-             $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
-             while ($consulta =mysqli_fetch_array($data)) {
-                ?>
+<?php
+    $cliente =$_SESSION['signin'];
+    $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
+    while ($consulta =mysqli_fetch_array($data)) {
+?>
                 <tr>
                     
-                    <p>Usuario: <?php  echo $consulta['username'];?></p>
+                    <p style="color: #fff"><b>Usuario:</b> <?php  echo $consulta['username'];?></p>
                 </tr>
                 <tr>
-                    <p>Nombre: <?php echo $consulta['firstname'];?></p>
+                    <p style="color: #fff"><b>Nombre:</b> <?php echo $consulta['firstname'];?></p>
                 </tr>
                 <tr>
-                    <p>Apellidos: <?php echo $consulta['lastname'];?></p>
+                    <p style="color: #fff"><b>Apellidos:</b> <?php echo $consulta['lastname'];?></p>
                 </tr>
                 <tr>
                     
-                    <p>Email: <?php echo $consulta['email'];?></p>
+                    <p style="color: #fff"><b>Email:</b><?php echo $consulta['email'];?></p>
                 </tr>
-               <?php
-           }
-           ?>
+<?php } ?>
                </table>
           
               </div>

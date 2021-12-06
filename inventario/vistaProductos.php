@@ -1,3 +1,18 @@
+<?php
+session_start();
+ if (!isset($_SESSION['signin'])>0) {
+    # code...
+    echo '
+    <script>
+        alert("Por favor debes de iniciar sesión");
+        window.location ="signin.php";
+        session_destroy();  
+                </script>
+die();
+
+    ';
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -14,7 +29,7 @@
 </head>
 <body>
     <div class=" container table-responsive ">
-        <h2 class="text-center mg-t">Resultados de productos</h2>
+        <h2 class="text-center mg-t" style="color: #fff; margin-top: 2%;">Inventario de productos</h2>
         <table class="table table-dark table-hover table-bordered " style="vertical-align: bottom;">
             <tr>
                 <a href="regi_producto.php" class="text btn btn-info "><i class="bi bi-file-earmark-plus-fill"></i> <span>Nuevo Producto</span> </a><br>
