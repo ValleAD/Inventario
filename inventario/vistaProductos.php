@@ -39,6 +39,8 @@
                <td><?php  echo $productos['unidad_medida']; ?></td>
                <td><?php  echo $productos['stock']; ?></td>
                <td>$<?php  echo $productos['precio']; ?></td>
+               <td> <input type="submit" name="Submit" value="Modificar"/></td>
+       <td><input type="submit" name="Submit" value="Eliminar"/></td>
             </tr>
 </body>
 </html>
