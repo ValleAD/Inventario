@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+
+<?php
+include("conexion.php");
+if(!isset($_SESSION['signin'])){
+    header("location: signin.php");
+}
+
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -29,17 +36,51 @@
             <li><a href="form_sol_circulante.php">Solicitud de fondo circulante</a></li>
             
 
-            <div class="modal">
+         <div class="modal">
         <div class="modal-content">
             <p class="close-modal">
                 <i class="fas fa-times"></i>
             </p>
             <div class="title">Perfil</div>
+             <img src="img/logo1.png" style="width:  25%">
+            <div id="Perfil">
+                
+                <table id="table">
+                    
+                
+                <?php
+             $cliente =$_SESSION['signin'];
+             $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
+             while ($consulta =mysqli_fetch_array($data)) {
+                ?>
+                <tr>
+                    
+                    <p>Usuario: <?php  echo $consulta['username'];?></p>
+                </tr>
+                <tr>
+                    <p>Nombre: <?php echo $consulta['firstname'];?></p>
+                </tr>
+                <tr>
+                    <p>Apellidos: <?php echo $consulta['lastname'];?></p>
+                </tr>
+                <tr>
+                    
+                    <p>Email: <?php echo $consulta['email'];?></p>
+                </tr>
+               <?php
+           }
+           ?>
+               </table>
+          
+              </div>
+            <style type="text/css">
+                #Perfil{
+                    margin-top: -20%;
+                    margin-left: 27%;
+                    color: #000;
+            }
             
-            
-              <img src="img/logo1.png" style="width:  25%">
-              
-                <p class="info">Nombre:<br>Apellido:<br>Email:</p>
+            </style>
             <div class="actions">
                 <button><a href="logout.php">Cerrar Sesion</a></button>
             </div>
