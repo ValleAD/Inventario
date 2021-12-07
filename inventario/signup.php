@@ -15,7 +15,18 @@ if (isset($_POST['submit'])) {
 	$email = $_POST['email'];
 	$password = ($_POST['password']);
 	$cpassword = ($_POST['cpassword']);
+$verificar_usuario =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username ='$username'");
 
+if (mysqli_num_rows($verificar_usuario)>0) {
+	echo '
+		<script>
+		alert("Este Usuario ya esta Registrado, intente con otro diferente");
+		window.location ="signup.php"
+	</script>
+	';
+exit();
+}
+$ejecutar = mysqli_query($conn,$query);
 	if ($password == $cpassword) {
 		$sql = "SELECT * FROM tb_usuarios WHERE firstname='$firstname' AND lastname='$lastname' username='$username' AND email='$email' AND password='$password'";
 		$result = mysqli_query($conn, $sql);
