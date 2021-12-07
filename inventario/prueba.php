@@ -71,7 +71,7 @@ $result = mysqli_query($conn, $sql);
                <td><input type="number" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
                <td><input type="text" readonly name="desc[]" value ="<?php  echo $productos['Descripcion']; ?>"></td>
                <td><input type="text" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
-               <td><input type="number" readonly name="cant[]"></td>
+               <td><input type="number" readonly name="cant[]" required></td>
                <td><input type="number" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td><br>
     </table>
    
