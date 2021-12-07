@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="styles/style.css" > 
+    <link rel="stylesheet" type="text/css" href="styles/estilo.css" > 
     <link rel="stylesheet" href="assets/css/bootstrap.css" />
     <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">
     
@@ -11,10 +11,17 @@
 </head>
 <body>
 
+<section>
 <form action="prueba.php" method="post">
-    <label for="">Cuantos productos desea buscar</label>
-    <input type="number" name="cantidad" value="1">
-    <input type="submit" value="Aceptar" name="aceptar">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 col-sm-3">
+                <label for="">Cuantos productos desea buscar</label>
+                <input class="form-control" type="number" name="cantidad" value="1">       
+                <input type="submit" value="Aceptar" name="aceptar">
+            </div>
+        </div>
+    </div>
 </form>
 <?php
     if(isset($_POST['cantidad'])){
@@ -22,8 +29,14 @@
         for($x = 1; $x <= $cantidad; $x++){
 
             echo'
-            <form action="prueba.php" method="post">
-            <input type="number" name="codigo[]" id="codigo" placeholder="Ingrese el código del Producto">
+            <form action="prueba.php" method="post" style="margin-top: 2%;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6 col-sm-3">
+                    <input class="form-control" type="number" name="codigo[]" id="codigo" style="margin-bottom: 2%;" placeholder="Ingrese el código del Producto">
+                    </div>
+                </div>
+            </div>
             ';
         }
         echo'
@@ -44,19 +57,19 @@ if(isset($_POST['codigo'])){
             <div class="row">
               <div class="col-6 col-sm-3">
                 <label>Departamento</label>   
-                <input class="form-control" type="text" name="depto" id="como2" required>
+                <input class="form-control" type="text" name="depto" required>
             </div>
             <div class="col-6 col-sm-3">
                 <label>Fecha</label> 
-                <input class="form-control" type="date" name="fech" id="como3" required>
+                <input class="form-control" type="date" name="fech" required>
             </div>
         </div>
         
         <br>
-        <section>
+        
         <div class="table-responsive">
         <table class="table">
-           <tr>
+           <tr id="head">
                 <td><strong>Código</strong></td>
                 <td><strong>Descripción</strong></td>
                 <td><strong>U/M</strong></td>
@@ -78,22 +91,24 @@ $result = mysqli_query($conn, $sql);
 
     
             <tr>
-               <td><input type="number" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
-               <td><input type="text" readonly name="desc[]" value ="<?php  echo $productos['Descripcion']; ?>"></td>
-               <td><input type="text" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
-               <td><input type="number" readonly name="cant[]" required></td>
-               <td><input type="number" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
+               <td><input type="number"  class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
+               <td><input type="text"  class="form-control" readonly name="desc[]" value ="<?php  echo $productos['Descripcion']; ?>"></td>
+               <td><input type="text"  class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
+               <td><input type="number"  class="form-control"  name="cant[]" required></td>
+               <td><input type="number"  class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
             </tr>
-    </table>
-</section>
+   
 <?php        }
     }
 
-    echo '<input type="submit" value="Enviar">
+    echo ' 
+    </table>
+    
+    <input type="submit" value="Enviar">
     </form>';
 }
 ?>
-
+</section>
 
 </body>
 </html>
