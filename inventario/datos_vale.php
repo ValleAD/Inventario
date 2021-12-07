@@ -40,20 +40,20 @@ die();
 
       echo 
       '
-<form  style="position: all; width: 70%; height: 100%;margin-bottom: 5%;margin-top: -40%;">
+<form  style="position: all; width: 70%; height: 100%;margin-bottom: 5%;margin-top: -40%;" action="pdf_vale.php">
          
       <section>
         <div class="row">
           <div class="col-6">
         
               <label style="font-weight: bold;">Fecha:</label>
-              <input class="form-control"  type="text" value="' .$fecha. '">
+              <input readonly class="form-control"  type="text" value="' .$fecha. '">
       
           </div>
           <div class="col">
         
               <label style="font-weight: bold;">Depto. o Servicio:</label>
-              <input class="form-control"  type="text" value="' .$Depto. '">
+              <input readonly class="form-control"  type="text" value="' .$Depto. '">
     
           </div>
         </div>
@@ -105,6 +105,7 @@ die();
         </tr>
       </table>   
     </section>
+    <input type="submit" value="Exportar a PDF" name="pdf">
 </form>
       ';
   }
