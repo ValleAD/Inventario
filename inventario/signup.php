@@ -13,15 +13,15 @@ if (isset($_POST['submit'])) {
 	$firstname = $_POST['firstname'];
 	$lastname = $_POST['lastname'];
 	$email = $_POST['email'];
-	$password = md5($_POST['password']);
-	$cpassword = md5($_POST['cpassword']);
+	$password = ($_POST['password']);
+	$cpassword = ($_POST['cpassword']);
 
 	if ($password == $cpassword) {
-		$sql = "SELECT * FROM tb_usuarios WHERE username='$username' AND firstname='$firstname' AND lastname='$lastname' AND email='$email' AND password='$password'";
+		$sql = "SELECT * FROM tb_usuarios WHERE firstname='$firstname' AND lastname='$lastname' username='$username' AND email='$email' AND password='$password'";
 		$result = mysqli_query($conn, $sql);
 		if (!$result->num_rows > 0) {
-			$sql = "INSERT INTO tb_usuarios (username,firstname,lastname, email, password)
-					VALUES ('$username','$firstname', '$lastname', '$email', '$password')";
+			$sql = "INSERT INTO tb_usuarios (firstname,lastname, username, email, password)
+					VALUES ('$firstname', '$lastname', '$username', '$email', '$password')";
 			$result = mysqli_query($conn, $sql);
 
 			if ($result) {

@@ -13,7 +13,7 @@ if (isset($_SESSION['signin'])) {
 if (isset($_POST['submit'])) {
 	$username = $_POST['username'];
 //	$email = $_POST['email'];
-	$password = md5($_POST['password']);
+	$password = ($_POST['password']);
 
 	$sql = "SELECT * FROM tb_usuarios WHERE username='$username' AND password='$password'";
 	$result = mysqli_query($conn, $sql);
