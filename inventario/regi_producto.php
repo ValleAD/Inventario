@@ -99,7 +99,7 @@ die();
     
     <div class="text-center">
         <button  class="btn btn-success btn-lg" style="margin-bottom: 2%;">Guardar</button>  
-        <a id="ver" class="btn  btn-lg" href="vistaProductos.php">Ver Productos</a>
+        <a id="ver" class="btn btn-lg" href="vistaProductos.php">Ver Productos</a>
          <style>
                #ver{
                 margin-left: 2%; 

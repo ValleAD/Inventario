@@ -13,6 +13,7 @@
 
 <section>
 <form action="prueba.php" method="post" style="width:10%">
+<br><br>
     <div class="container">
         <div class="row">
             <div class="col-6 col-sm-3">
@@ -51,7 +52,21 @@
             ';
         }
         echo'
-        <input type="submit" value="Buscar" name="buscar" id="buscar">
+        <input type="submit" class="btn btn-success" value="Buscar" name="buscar" id="buscar" >
+        <style>
+            #buscar{
+            margin-left: 1.5%; 
+            background: rgb(5, 65, 114); 
+            color: #fff; margin-bottom: 2%; 
+            border: rgb(5, 65, 114);
+            }
+            #buscar:hover{
+            background: rgb(9, 100, 175);
+            } 
+            #buscar:active{
+            transform: translateY(5px);
+            } 
+        </style>
         </form>';
     }
 ?>
@@ -115,7 +130,21 @@ $result = mysqli_query($conn, $sql);
     echo ' 
     </table>
     
-    <input type="submit" value="Enviar">
+    <input class="btn btn-lg" type="submit" value="Enviar" id="enviar">
+        <style>
+            #enviar{
+            margin-left: 1.5%; 
+            background: rgb(5, 65, 114); 
+            color: #fff; margin-bottom: 2%; 
+            border: rgb(5, 65, 114);
+            }
+            #enviar:hover{
+            background: rgb(9, 100, 175);
+            } 
+            #enviar:active{
+            transform: translateY(5px);
+            } 
+        </style>
     </form>';
 }
 ?>
