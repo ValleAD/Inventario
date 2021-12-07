@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="styles/style.css" > 
+    <link rel="stylesheet" href="assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">
+    
+    <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">  
     <title>Vale</title>
 </head>
 <body>
@@ -37,22 +40,29 @@ if(isset($_POST['codigo'])){
     <br>
     <form action="datos_vale.php" method="post">
         
-      
-            <label>Departamento</label>   
-            <input class="form-control" type="text" name="depto" id="como2" required>
-  
-    
-            <label>Fecha</label> 
-            <input class="form-control" type="date" name="fech" id="como3" required>
-       
-        <br><br>
-       <table>
+        <div class="container">
+            <div class="row">
+              <div class="col-6 col-sm-3">
+                <label>Departamento</label>   
+                <input class="form-control" type="text" name="depto" id="como2" required>
+            </div>
+            <div class="col-6 col-sm-3">
+                <label>Fecha</label> 
+                <input class="form-control" type="date" name="fech" id="como3" required>
+            </div>
+        </div>
+        
+        <br>
+        <section>
+        <div class="table-responsive">
+        <table class="table">
+           <tr>
                 <td><strong>Código</strong></td>
                 <td><strong>Descripción</strong></td>
                 <td><strong>U/M</strong></td>
                 <td><strong>Cantidad</strong></td>
                 <td><strong>Costo unitario</strong></td>
-              </tr>';
+            </tr>';
 
 
     for($i = 0; $i < count($_POST['codigo']); $i++){
@@ -67,14 +77,15 @@ $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){ ?>
 
     
-    <tr>
+            <tr>
                <td><input type="number" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
                <td><input type="text" readonly name="desc[]" value ="<?php  echo $productos['Descripcion']; ?>"></td>
                <td><input type="text" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
                <td><input type="number" readonly name="cant[]" required></td>
-               <td><input type="number" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td><br>
+               <td><input type="number" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
+            </tr>
     </table>
-   
+</section>
 <?php        }
     }
 
