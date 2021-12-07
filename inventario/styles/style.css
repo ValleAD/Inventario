@@ -21,10 +21,6 @@ button:active {
     color: white;
 }
 
-h1, h3{
-    text-align: center;
-}
-
 form {
     margin-left: 160px;
     margin-right: 160px;

@@ -89,8 +89,8 @@ die();
         <td>$' .$cost. '</td>
         <td>$' .$total[$i]. '</td>
       </tr>'; 
-}
-      echo'
+} ?>
+    
         <tr>
             <td></td>
             <td></td>
@@ -139,7 +139,7 @@ die();
         <br>
       </section>
 </form>
-      ';
+<?php
   }
 ?>            
 <?php include ('footer.php');?>
