@@ -53,17 +53,17 @@ die();
 {
 ?>
             <tr >
-               <td><?php  echo $productos['codProductos']; ?></td>
-               <td><?php  echo $productos['catalogo']; ?></td>
-               <td><?php  echo $productos['nombre']; ?></td>
-               <td><?php  echo $productos['Descripcion']; ?></td>
-               <td><?php  echo $productos['unidad_medida']; ?></td>
-               <td><?php  echo $productos['stock']; ?></td>
-               <td>$<?php  echo $productos['precio']; ?></td>
+               <td class="delete"><?php  echo $productos['codProductos']; ?></td>
+               <td class="delete"><?php  echo $productos['catalogo']; ?></td>
+               <td class="delete"><?php  echo $productos['nombre']; ?></td>
+               <td class="delete"><?php  echo $productos['Descripcion']; ?></td>
+               <td class="delete"><?php  echo $productos['unidad_medida']; ?></td>
+               <td class="delete"><?php  echo $productos['stock']; ?></td>
+               <td class="delete">$<?php  echo $productos['precio']; ?></td>
               
             
                <td> <a  href="Actualizar_productos.php?id=<?php  echo $productos['codProductos']; ?>" style="margin-right: 15%" id="btn_custom"  class="text-primary"><i class="bi bi-pencil-square"></i></a> 
-                <a href="vistaProductos.php?id=<?php  echo $productos['codProductos']; ?>" id="btn1"  class="text-danger"> <i class="fas fa-trash"></i> </a></td>
+                <a href="comfirmacion.php?id=<?php  echo $productos['codProductos']; ?>" id="btn1"  class="text-danger"> <i class="fas fa-trash"></i> </a></td>
             </tr>
             <?php } ?> 
         </table>
@@ -77,5 +77,6 @@ die();
    
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
  <script src="codigo_modal.js"></script>  
+ <script type="text/javascript" src="jquery/comfirmacion.js"></script>
 </body>
 </html>

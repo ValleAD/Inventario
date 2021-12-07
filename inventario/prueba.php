@@ -12,13 +12,24 @@
 <body>
 
 <section>
-<form action="prueba.php" method="post">
+<form action="prueba.php" method="post" style="width:10%">
     <div class="container">
         <div class="row">
             <div class="col-6 col-sm-3">
-                <label for="">Cuantos productos desea buscar</label>
-                <input class="form-control" type="number" name="cantidad" value="1">       
-                <input type="submit" value="Aceptar" name="aceptar">
+                <div class="container">
+ <div class="row">
+    <div class="col">
+     <label for="">Cuantos productos desea buscar</label>
+    </div>
+   <center> <div class="col-xs-6" style="margin-bottom: 1%; center;">
+        <input class="form-control" type="number" name="cantidad" value="1"> 
+      
+    </div></center>  
+   <div class="col-xs-4">
+        <input class="btn btn-success" type="submit" value="Aceptar" name="aceptar"> 
+    </div>
+  </div>
+</div>
             </div>
         </div>
     </div>
