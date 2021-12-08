@@ -1,6 +1,6 @@
 <?php 
 
-include 'conexion.php';
+include 'Model/conexion.php';
 session_start();
 error_reporting(0);
 
@@ -87,7 +87,7 @@ $ejecutar = mysqli_query($conn,$query);
 <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="styles/log.css" > 
-    <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="Plugin/bootstrap/css/bootstrap.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
 	<title>Register</title>

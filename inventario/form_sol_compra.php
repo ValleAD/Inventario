@@ -21,20 +21,17 @@ die();
         
         <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="styles/style.css" > 
-
-        <link rel="stylesheet" href="assets/css/bootstrap.css" />
-        <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css" />
-        <link rel="stylesheet" href="assets/css/style.css" />
+        <link rel="stylesheet" href="Plugin/assets/css/bootstrap.css" />
+        <link rel="stylesheet" href="Plugin/assets/css/bootstrap-theme.min.css" />
+        <link rel="stylesheet" href="Plugin/assets/css/style.css" />
         <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-        
-    <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
+        <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
   </head>
     <body >
 
 
   <form style="position: all; width: 70%; height: 100%;margin-bottom: 5%;margin-top: -40%;" action="dt_sol_compra.php" method="POST" style="height: 30%; margin-top: -15">
-
-    <ol class="breadcrumb">
+<ol class="breadcrumb">
   <li><a href="home.php">Inicio</a></li>
   <li class="active">Solicitud de Compra</li>
 </ol>

@@ -2,7 +2,7 @@
 
 //CRUD para guardar datos enviados
 // de re_producto.php y se guarde en la tabla tb_producto mysql
-require 'conexion.php';
+require 'Model/conexion.php';
 
 for($i = 0; $i < count($_POST['cod']); $i++)
     {

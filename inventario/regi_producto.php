@@ -22,9 +22,9 @@ die();
         <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="styles/style.css" > 
 
-        <link rel="stylesheet" href="assets/css/bootstrap.css" />
-        <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css" />
-        <link rel="stylesheet" href="assets/css/style.css" />
+        <link rel="stylesheet" href="Plugin/assets/css/bootstrap.css" />
+        <link rel="stylesheet" href="Plugin/assets/css/bootstrap-theme.min.css" />
+        <link rel="stylesheet" href="Plugin/assets/css/style.css" />
         <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
         
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">

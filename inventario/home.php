@@ -29,11 +29,13 @@ die();
 </head>
 <body>
 
-      <center> <h1 style="margin-top: -31%">Bienvenidos al Sistema de Inventario del <br> Hospital Nacional Santa Teresa de Zacatecoluca</h1></center>
+      <center> <h1 style="margin-top: -31%">Bienvenidos al Sistema de Inventario del
+       <br> 
+      Hospital Nacional Santa Teresa de Zacatecoluca</h1></center>
 <footer style="margin-top:  13%;">
 
   <div align="center">
-  <img src="img/log_1.png" alt="" width="320px" height="150px">
+  <img src="../img/log_1.png" alt="" width="320px" height="150px">
   </div>
 
 </footer>

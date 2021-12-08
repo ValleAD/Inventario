@@ -45,7 +45,7 @@ die();
                 
             </tr>
 <?php
-    include 'conexion.php';
+    include 'Model/conexion.php';
     $sql = "SELECT * FROM tb_productos";
     $result = mysqli_query($conn, $sql);
 
@@ -61,21 +61,18 @@ die();
                <td class="delete"><?php  echo $productos['stock']; ?></td>
                <td class="delete">$<?php  echo $productos['precio']; ?></td>
               
-            
-               <td> <a  href="Actualizar_productos.php?id=<?php  echo $productos['codProductos']; ?>" style="margin-right: 15%" id="btn_custom"  class="text-primary"><i class="bi bi-pencil-square"></i></a> 
-                <a href="comfirmacion.php?id=<?php  echo $productos['codProductos']; ?>" id="btn1"  class="text-danger"> <i class="fas fa-trash"></i> </a></td>
+            <!--Botones para actualizar y eliminar-->
+               <td><a href="Actualizar_productos.php?id=<?php  echo $productos['codProductos']; ?>" style="margin-right: 15%" id="btn_custom"  class="text-primary"><i class="bi bi-pencil-square"></i></a> 
+                <a href="delete.php" id="btn1"  class="text-danger"> <i class="fas fa-trash"></i> </a></td>
             </tr>
             <?php } ?> 
         </table>
     </div>
 
    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
-   
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
  <script src="codigo_modal.js"></script>  
  <script type="text/javascript" src="jquery/comfirmacion.js"></script>
 </body>
