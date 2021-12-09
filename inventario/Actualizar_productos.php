@@ -103,10 +103,7 @@
                <div class="invalid-feedback">
                   Por favor seleccione una opción.
                 </div>
-                <select  class="form-control" name="um" id="um" required>
-                  <option value="<?php  echo $productos['unidad_medida']; ?>">U</option>
-                  <option value="<?php  echo $productos['unidad_medida']; ?>">M</option>
-                </select>
+                <input  class="form-control" name="um" id="um"  value="<?php  echo $productos['unidad_medida']; ?>"required>
               </div>
             </div>
     </div>
@@ -131,7 +128,7 @@
     </div>
 
     <div class="col">
-      <input class="form-control" name="precio" value="$<?php  echo $productos['precio']; ?>">
+      <input class="form-control" name="precio" value="<?php  echo $productos['precio']; ?>">
     </div>
       </div>
       <div class="form-group">

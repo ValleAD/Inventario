@@ -34,14 +34,14 @@ die();
         <table class="table table-dark table-hover table-bordered " style="vertical-align: bottom;">
             <tr>
                 <a href="regi_producto.php" class="text btn btn-info "><i class="bi bi-file-earmark-plus-fill"></i> <span>Nuevo Producto</span> </a><br>
-                <td class="table-info"><strong>Código</strong></td>
-                <td class="table-info"><strong>Codificación de catálogo</strong></td>
-                <td class="table-info"><strong>Nombre</strong></td>
-                <td class="table-info"><strong>Descripción Completa</strong></td>
-                <td class="table-info"><strong>U/M</strong></td>
-                <td class="table-info"><strong>Cantidad</strong></td>
-                <td class="table-info"><strong>Costo unitario</strong></td>
-                <td class="table-info"><strong>Accion</strong></td>
+                <td class="table-info text-dark"><strong>Código</strong></td>
+                <td class="table-info text-dark"><strong>Codificación de catálogo</strong></td>
+                <td class="table-info text-dark"><strong>Nombre</strong></td>
+                <td class="table-info text-dark"><strong>Descripción Completa</strong></td>
+                <td class="table-info text-dark"><strong>U/M</strong></td>
+                <td class="table-info text-dark"><strong>Cantidad</strong></td>
+                <td class="table-info text-dark"><strong>Costo unitario</strong></td>
+                <td class="table-info text-dark"><strong>Accion</strong></td>
                 
             </tr>
 <?php
