@@ -26,6 +26,9 @@ die();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+      <link rel="stylesheet" href="bootstap-icon/fontawesome.all.min.css">
+      <link rel="stylesheet" type="text/css" href="sweetalert2/sweetalert2.min.css">
     <title>Productos</title>
 </head>
 <body>
@@ -61,9 +64,70 @@ die();
                <td class="delete"><?php  echo $productos['stock']; ?></td>
                <td class="delete">$<?php  echo $productos['precio']; ?></td>
               
+            <script type="text/javascript">
+                function confirmaionDelete(id=<?php  echo $productos['codProductos']; ?>) {
+                 Swal.fire({
+                  title: 'Producto <?php  echo $productos['nombre']; ?>',
+                  text: "Este Registro Registro sera Eliminardo Permanentemente",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Eliminar'
+
+                }).then((result) => {
+                    
+                  if (result.isConfirmed) {
+                   
+                     
+            window.location = 'Controller/Delete_producto.php?id=<?php  echo $productos['codProductos']; ?>'
+        
+                      } else if (
+                        /* Read more about handling dismissals below */
+                        result.dismiss === Swal.DismissReason.cancel
+                      ) {
+                        swalWithBootstrapButtons.fire(
+                          
+                        )
+                      }
+                })
+
+                }
+                 function Update(codProductos=<?php  echo $productos['codProductos']; ?>) {
+                 Swal.fire({
+                  title: 'Producto <?php  echo $productos['nombre']; ?>',
+                  text: "Desas Actualizar este Producto",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Actualizar'
+
+                }).then((result) => {
+                    
+                  if (result.isConfirmed) {
+                   
+                     
+           window.location = 'Controller/Actualizar_productos.php?id=<?php  echo $productos['codProductos']; ?>'
+        
+                      } else if (
+                        /* Read more about handling dismissals below */
+                        result.dismiss === Swal.DismissReason.cancel
+                      ) {
+                        swalWithBootstrapButtons.fire(
+                          
+                        )
+                      }
+                })
+
+                }
+
+</script>
             <!--Botones para actualizar y eliminar-->
-               <td><a href="Actualizar_productos.php?id=<?php  echo $productos['codProductos']; ?>" style="margin-right: 15%" id="btn_custom"  class="text-primary"><i class="bi bi-pencil-square"></i></a> 
-                <a href="delete.php" id="btn1"  class="text-danger"> <i class="fas fa-trash"></i> </a></td>
+               <td><a  href="Actualizar_productos.php?id=<?php  echo $productos['codProductos']; ?>" style="margin-right: 15%" id="btn_custom"  class="text-primary"><i class="far fa-edit"></i></a> 
+
+        
+               <a onclick="return confirmaionDelete(id=<?php  echo $productos['codProductos']; ?>)" class="text-danger"> <i class="fas fa-trash"></i> </a></td>
             </tr>
             <?php } ?> 
         </table>
@@ -75,5 +139,7 @@ die();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
  <script src="codigo_modal.js"></script>  
  <script type="text/javascript" src="jquery/comfirmacion.js"></script>
+  <script src="sweetalert2/sweetalert2.min.js"></script>
+<script src="sweetalert2/sweetalert2.all.min.js"></script>
 </body>
 </html>

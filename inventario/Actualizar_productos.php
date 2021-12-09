@@ -54,7 +54,7 @@
       <div class=""><strong>Codificación de Productos</strong></div>
     </div>
     <div class="col">
-       <input  class="form-control" name="codProducto" value="<?php  echo $productos['codProductos']; ?>">
+       <input disabled  class="form-control" name="codProducto" value="<?php  echo $productos['codProductos']; ?>" ><br>
     </div>
 
 <div class="container">
@@ -63,7 +63,7 @@
       <div class=""><strong>Codificación de catálogo</strong></div>
     </div>
     <div class="col">
-       <input  class="form-control" name="codCatalogo" value="<?php  echo $productos['catalogo']; ?>">
+       <input  class="form-control" name="codCatalogo" value="<?php  echo $productos['catalogo']; ?>"><br>
     </div>
    
   </div>
@@ -74,7 +74,7 @@
        <div class=""><strong>Nombre</strong></div>
     </div>
     <div class="col">
-       <input  class="form-control" name="nombre" value="<?php  echo $productos['nombre']; ?>">
+       <input  class="form-control" name="nombre" value="<?php  echo $productos['nombre']; ?>"><br>
     </div>
    
   </div>
@@ -86,7 +86,7 @@
 
     </div>
     <div class="col">
-      <input  class="form-control" name="descripcion" value="<?php  echo $productos['Descripcion']; ?>">
+      <input  class="form-control" name="descripcion" value="<?php  echo $productos['Descripcion']; ?>"><br>
 
     </div>
    
@@ -103,7 +103,7 @@
                <div class="invalid-feedback">
                   Por favor seleccione una opción.
                 </div>
-                <input  class="form-control" name="um" id="um"  value="<?php  echo $productos['unidad_medida']; ?>"required>
+                <input  class="form-control" name="um" id="um"  value="<?php  echo $productos['unidad_medida']; ?>"required><br>
               </div>
             </div>
     </div>
@@ -116,7 +116,7 @@
        <div class=""><strong>Cantidad</strong></div>
     </div>
     <div class="col">
-<input class="form-control" name="stock"  value="<?php  echo $productos['stock']; ?>">
+<input class="form-control" name="stock"  value="<?php  echo $productos['stock']; ?>"><br>
     </div>
    
   </div>
@@ -128,7 +128,7 @@
     </div>
 
     <div class="col">
-      <input class="form-control" name="precio" value="<?php  echo $productos['precio']; ?>">
+      <input class="form-control" name="precio" value="<?php  echo $productos['precio']; ?>"><br>
     </div>
       </div>
       <div class="form-group">
