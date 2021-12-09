@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="styles/estilo.css" > 
-    <link rel="stylesheet" href="assets/css/bootstrap.css" />
-    <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="Plugin/assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="Plugin/assets/css/bootstrap-theme.min.css">
     
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">  
     <title>Vale</title>
@@ -72,7 +72,7 @@
 ?>
      
 <?php  
-include 'conexion.php';
+include 'Model/conexion.php';
 if(isset($_POST['codigo'])){
 
     echo'
