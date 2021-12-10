@@ -79,7 +79,6 @@ die();
                   title: 'Producto <?php  echo $productos['nombre']; ?>',
                   text: "Este Registro Registro sera Eliminardo Permanentemente",
                   icon: 'warning',
-                  background-color:'hsla( 0.25turn , 100% , 50% , 0.5 );';
                    allowOutsideClick:false,
                    allowEscapeKey:false,
                   showCancelButton: true,
