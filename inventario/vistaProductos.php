@@ -72,7 +72,17 @@ die();
                <td class="delete"><?php  echo $productos['unidad_medida']; ?></td>
                <td class="delete"><?php  echo $productos['stock']; ?></td>
                <td class="delete">$<?php  echo $productos['precio']; ?></td>
-              
+              <style type="text/css">
+                .swal2-styled.swal2-confirm {
+    border: 0;
+    border-radius: .25em;
+    background: initial;
+    background-color: #3085d6;
+    color: #fff;
+    font-size: 1.0625em;
+}
+
+              </style>
             <script type="text/javascript">
                 function confirmaionDelete(id=<?php  echo $productos['codProductos']; ?>) {
                  Swal.fire({
@@ -84,10 +94,12 @@ die();
                   showCancelButton: true,
                   confirmButtonColor: '#3085d6',
                   cancelButtonColor: '#d33',
-                  confirmButtonText: 'Eliminar'
+                  confirmButtonText: 'Eliminar',
 
 
-                }).then((result) => {
+
+                })
+                 .then((result) => {
                     
                   if (result.isConfirmed) {
                    
@@ -137,7 +149,7 @@ die();
 
 </script>
             <!--Botones para actualizar y eliminar-->
-               <td><a href="Actualizar.php?id=<?php  echo $productos['codProductos']; ?>" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" class="text-primary"><i class="far fa-edit"></i></a> 
+               <td><a href="Actualizar.php?id=<?php  echo $productos['codProductos']; ?>" class="btn btn-primary swal2-styled.swal2-confirm" data-toggle="modal" data-target="#exampleModal" class="text-primary"><i class="far fa-edit"></i></a> 
 
         
                <a onclick="return confirmaionDelete(id=<?php  echo $productos['codProductos']; ?>)" class="btn btn-danger" class="text-danger"> <i class="fas fa-trash"></i> </a></td>
@@ -265,8 +277,8 @@ die();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
  <script src="codigo_modal.js"></script>  
  <script type="text/javascript" src="jquery/comfirmacion.js"></script>
-  <script src="sweetalert2/sweetalert2.min.js"></script>
-<script src="sweetalert2/sweetalert2.all.min.js"></script>
+  <script src="sweetalert2/sweetalert2.min.js"></script> 
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script type="text/javascript">
   
