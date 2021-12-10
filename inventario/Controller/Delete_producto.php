@@ -2,7 +2,7 @@
 <?php 
  include '../Model/conexion.php';
 
-$id1 = $_GET['id'];
+$id1 = $_POST['id'];
 $eliminar ="DELETE FROM tb_productos WHERE codProductos='$id1'";
 $result= mysqli_query($conn, $eliminar);
 if ($result) {
@@ -16,7 +16,7 @@ echo '<script>
     echo '
     <script>
         alert("No se pudo Eliminar el Producto");
-       // window.location ="../vistaProductos.php"; 
+        window.location ="../vistaProductos.php"; 
                 </script>
                 ';
 }
