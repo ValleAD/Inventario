@@ -32,7 +32,7 @@ die();
     <body >
 
 
-<form style="position: all; width: 70%; height: 100%;margin-bottom: 5%;margin-top: -40%;" action="dt_producto.php" method="POST" style="height: 30%; margin-top: -15">
+<form style="position: all; width: 70%; height: 100%;margin-bottom: 5%;margin-top: -40%; padding: 1%" action="dt_producto.php" method="POST" style="height: 30%; margin-top: -15">
 <h3>Registro de Productos</h2>
 </center>
     <div id="Registro" class="row" style="position: all;">
