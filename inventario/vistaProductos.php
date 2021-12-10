@@ -53,7 +53,7 @@ die();
                 <td class="table-info text-dark"><strong>U/M</strong></td>
                 <td class="table-info text-dark"><strong>Cantidad</strong></td>
                 <td class="table-info text-dark"><strong>Costo unitario</strong></td>
-                <td class="table-info text-dark"><strong>Accion</strong></td>
+                <td  class="table-info text-dark"><strong>Accion</strong></td>
                 
             </tr>
 <?php
@@ -72,6 +72,13 @@ die();
                <td class="delete"><?php  echo $productos['unidad_medida']; ?></td>
                <td class="delete"><?php  echo $productos['stock']; ?></td>
                <td class="delete">$<?php  echo $productos['precio']; ?></td>
+  <!--Botones para actualizar y eliminar-->
+               <td><a href="Actualizar.php?id=<?php  echo $productos['codProductos']; ?>" class="btn btn-primary swal2-styled.swal2-confirm" data-toggle="modal" data-target="#exampleModal" class="text-primary"><i class="far fa-edit"></i></a> 
+              
+        
+               <a data-toggle="modal" data-target="#delete" class="btn btn-danger" class="text-danger"> <i class="fas fa-trash"></i> </a></td>
+            </tr>
+
               <style type="text/css">
                 .swal2-styled.swal2-confirm {
     border: 0;
@@ -148,13 +155,11 @@ die();
                 }
 
 </script>
-            <!--Botones para actualizar y eliminar-->
-               <td><a href="Actualizar.php?id=<?php  echo $productos['codProductos']; ?>" class="btn btn-primary swal2-styled.swal2-confirm" data-toggle="modal" data-target="#exampleModal" class="text-primary"><i class="far fa-edit"></i></a> 
+          
+<!--######################################################################################################################################-->
 
-        
-               <a onclick="return confirmaionDelete(id=<?php  echo $productos['codProductos']; ?>)" class="btn btn-danger" class="text-danger"> <i class="fas fa-trash"></i> </a></td>
-            </tr>
             <div  class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+              
   <div class="modal-dialog">
     <div class="modal-content" style="background-color: hsla( 0.75turn , 100% , 50% , 0.5 );color: white;">
       <div class="modal-header">
@@ -166,12 +171,7 @@ die();
        <form id="form" action="Actualizar.php?id=<?php  echo $productos['codProductos']; ?>" method="POST">
       <div class="modal-body">
          <div class="row">
-    <div class="col">
-      <div class=""><strong>Codificación de Productos</strong></div>
-    </div>
-    <div class="col">
-       <input   class="form-control" name="codProducto" value="<?php  echo $productos['codProductos']; ?>" style="background-color:rgba(102,255,255,4.5)"><br>
-    </div>
+   <input type="hidden"class="form-control" name="codProducto" value="<?php  echo $productos['codProductos']; ?>" style="background-color:rgba(102,255,255,4.5)"><br>
 
 <div class="container">
   <div class="row">
@@ -261,11 +261,35 @@ die();
     </div>
   </div>
 </div>
+
+
+<!-- Delete -->
+<div class="modal fade" id="delete" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete Member</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">    
+                <p class="text-center">Are you sure you want to Delete</p>
+                <input type="text" name="id" id="delete_id">
+                <h2 class="text-center fullname"></h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                <button type="button" class="btn btn-danger id"><span class="glyphicon glyphicon-trash"></span> Yes</button>
+            </div>
+        </div>
+    </div>
+</div>
  <?php } ?> 
            
         </table>
     </div>
-<!--######################################################################################################################################-->
+
 
 
 <!--######################################################################################################################################-->
@@ -282,7 +306,13 @@ die();
 
 <script type="text/javascript">
   
-$()
+$('id').on('click',function() {
+  $tr=${this}.closest('tr');
+  var datos=$tr.children("td").map(function() {
+    return $(this).text();
+  });
+  $('delete_id').val(datos[0]);
+});
 
 </script>
 
