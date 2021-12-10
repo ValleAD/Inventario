@@ -31,7 +31,16 @@ die();
       <link rel="stylesheet" type="text/css" href="sweetalert2/sweetalert2.min.css">
     <title>Productos</title>
 </head>
+<!--######################################################################################################################################-->
+ <style type="text/css">
+   #form{
+    background: transparent;
+    margin: 0;
+    padding: 0;
+   }
+ </style>
 <body>
+<!--######################################################################################################################################-->
     <div class=" container table-responsive ">
         <h2 class="text-center mg-t" style="color: #fff; margin-top: 2%;">Inventario de productos</h2>
         <table class="table table-dark table-hover table-bordered " style="vertical-align: bottom;">
@@ -70,10 +79,14 @@ die();
                   title: 'Producto <?php  echo $productos['nombre']; ?>',
                   text: "Este Registro Registro sera Eliminardo Permanentemente",
                   icon: 'warning',
+                  background-color:'hsla( 0.25turn , 100% , 50% , 0.5 );';
+                   allowOutsideClick:false,
+                   allowEscapeKey:false,
                   showCancelButton: true,
                   confirmButtonColor: '#3085d6',
                   cancelButtonColor: '#d33',
                   confirmButtonText: 'Eliminar'
+
 
                 }).then((result) => {
                     
@@ -93,23 +106,24 @@ die();
                 })
 
                 }
-                 function Update(codProductos=<?php  echo $productos['codProductos']; ?>) {
+                 function Update(id=<?php  echo $productos['codProductos']; ?>) {
                  Swal.fire({
-                  title: 'Producto <?php  echo $productos['nombre']; ?>',
-                  text: "Desas Actualizar este Producto",
-                  icon: 'warning',
-                  showCancelButton: true,
+                  title: 'El Producto <?php  echo $productos['nombre']; ?> Actualizado',
+                  icon:'success',
+                  iconColor:'#28a745',
+                  textColor:'#fff',
+                   allowOutsideClick:false,
+                   allowEscapeKey:false,
+                   focusConfirm: true,
+                  showCancelButton: false,
                   confirmButtonColor: '#3085d6',
                   cancelButtonColor: '#d33',
-                  confirmButtonText: 'Actualizar'
+                  confirmButtonText: 'Cerrar'
 
                 }).then((result) => {
                     
                   if (result.isConfirmed) {
-                   
-                     
-           window.location = 'Controller/Actualizar_productos.php?id=<?php  echo $productos['codProductos']; ?>'
-        
+                      window.location = 'VistaProductos.php'
                       } else if (
                         /* Read more about handling dismissals below */
                         result.dismiss === Swal.DismissReason.cancel
@@ -124,14 +138,127 @@ die();
 
 </script>
             <!--Botones para actualizar y eliminar-->
-               <td><a  href="Actualizar_productos.php?id=<?php  echo $productos['codProductos']; ?>" style="margin-right: 15%" id="btn_custom"  class="text-primary"><i class="far fa-edit"></i></a> 
+               <td><a href="Actualizar.php?id=<?php  echo $productos['codProductos']; ?>" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" class="text-primary"><i class="far fa-edit"></i></a> 
 
         
-               <a onclick="return confirmaionDelete(id=<?php  echo $productos['codProductos']; ?>)" class="text-danger"> <i class="fas fa-trash"></i> </a></td>
+               <a onclick="return confirmaionDelete(id=<?php  echo $productos['codProductos']; ?>)" class="btn btn-danger" class="text-danger"> <i class="fas fa-trash"></i> </a></td>
             </tr>
-            <?php } ?> 
+            <div  class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog">
+    <div class="modal-content" style="background-color: hsla( 0.75turn , 100% , 50% , 0.5 );color: white;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Actualizar Información</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+       <form id="form" action="Actualizar.php?id=<?php  echo $productos['codProductos']; ?>" method="POST">
+      <div class="modal-body">
+         <div class="row">
+    <div class="col">
+      <div class=""><strong>Codificación de Productos</strong></div>
+    </div>
+    <div class="col">
+       <input   class="form-control" name="codProducto" value="<?php  echo $productos['codProductos']; ?>" style="background-color:rgba(102,255,255,4.5)"><br>
+    </div>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class=""><strong>Codificación de catálogo</strong></div>
+    </div>
+    <div class="col">
+       <input  class="form-control" name="codCatalogo" value="<?php  echo $productos['catalogo']; ?>"style="background-color:rgba(102,255,255,4.5)"><br>
+    </div>
+   
+  </div>
+</div><br>
+<div class="container">
+  <div class="row">
+    <div class="col">
+       <div class=""><strong>Nombre</strong></div>
+    </div>
+    <div class="col">
+       <input  class="form-control" name="nombre" value="<?php  echo $productos['nombre']; ?>"style="background-color:rgba(102,255,255,4.5)"><br>
+    </div>
+   
+  </div>
+</div><br>
+<div class="container">
+  <div class="row">
+    <div class="col">
+        <div class=""><strong>Descripción Completa</strong></div>
+
+    </div>
+    <div class="col">
+      <input  class="form-control" name="descripcion" value="<?php  echo $productos['Descripcion']; ?>"style="background-color:rgba(102,255,255,4.5)"><br>
+
+    </div>
+   
+  </div>
+</div><br>
+<div class="container">
+  <div class="row">
+    <div class="col">
+       <div class=""><strong>Unidad de Medida(U/M)</strong></div>
+    </div>
+    <div class="col">
+          <div class="col-md-16" >
+        <div class="invalid-feedback">
+          Por favor seleccione una opción.
+           </div>
+              <select  class="form-control" name="um" id="um" required style="background-color:rgba(102,255,255,4.5)">
+                <option selected disabled value="">seleccione una opción</option>
+                <option value="U">U</option>
+                <option value="M">M</option>
+              </select>
+                      
+            </div>
+    </div>
+   
+  </div>
+</div><br><br><br>
+<div class="container">
+  <div class="row">
+    <div class="col">
+       <div class=""><strong>Cantidad</strong></div>
+    </div>
+    <div class="col">
+<input class="form-control" name="stock"  value="<?php  echo $productos['stock']; ?>"style="background-color:rgba(102,255,255,4.5)"><br><br>
+    </div>
+   
+  </div>
+</div><br>
+<div class="container">
+    <div class="row">
+    <div class="col">
+      <div class=""><strong>Precio</strong></div>
+    </div>
+
+    <div class="col">
+      <input class="form-control" name="precio" value="<?php  echo $productos['precio']; ?>"style="background-color:rgba(102,255,255,4.5)"><br>
+                  </div>
+            </div>
+        </div>
+    </div>
+  </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button name="" type="submit" id="Update" class="btn btn-primary">Actualizar</button>
+      </div>
+        </form>
+    </div>
+  </div>
+</div>
+ <?php } ?> 
+           
         </table>
     </div>
+<!--######################################################################################################################################-->
+
+
+<!--######################################################################################################################################-->
+
 
    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
@@ -141,5 +268,12 @@ die();
  <script type="text/javascript" src="jquery/comfirmacion.js"></script>
   <script src="sweetalert2/sweetalert2.min.js"></script>
 <script src="sweetalert2/sweetalert2.all.min.js"></script>
+
+<script type="text/javascript">
+  
+$()
+
+</script>
+
 </body>
 </html>

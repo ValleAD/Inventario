@@ -1,7 +1,8 @@
 
 <?php
-    $id = $_GET['id'];
+    
     include 'Model/conexion.php';
+    $id = $_GET['id'];
     $sql = "SELECT * FROM tb_productos WHERE  codProductos='$id' " ;
     $result = mysqli_query($conn, $sql);
    // $productos = $result->fetch_array(MYSQLI_ASSOC);
@@ -54,7 +55,7 @@
       <div class=""><strong>Codificación de Productos</strong></div>
     </div>
     <div class="col">
-       <input disabled  class="form-control" name="codProducto" value="<?php  echo $productos['codProductos']; ?>" ><br>
+       <input   class="form-control" name="codProductos" value="<?php  echo $productos['codProductos']; ?>" ><br>
     </div>
 
 <div class="container">

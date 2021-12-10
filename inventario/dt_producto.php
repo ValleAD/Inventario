@@ -19,7 +19,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 
     if ($query) {
       echo "<script> alert('Su producto fue registrado correctamente');
-      location.href = 'regi_producto.php';
+      location.href = 'VistaProductos.php';
       </script>
       ";
     }else {
