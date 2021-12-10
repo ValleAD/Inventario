@@ -28,5 +28,17 @@ for($i = 0; $i < count($_POST['cod']); $i++)
       </script>
       ";
     }
+    $verificar_codprduct =mysqli_query($conn, "SELECT * FROM tb_productos WHERE codProductos ='$codigo_producto'");
+
+if (mysqli_num_rows($verificar_codprduct)>0) {
+  echo '
+    <script>
+    alert("El Codogo ");
+    window.location ="regi_producto.php"
+  </script>
+  ';
+exit();
+}
+$ejecutar = mysqli_query($conn,$query);
   }
 ?>

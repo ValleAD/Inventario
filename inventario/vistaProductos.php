@@ -18,7 +18,8 @@ die();
 <head>
 <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles/style.css" > 
-    <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="Plugin/bootstrap-5.1.3-dist/css/bootstrap.css">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
@@ -39,6 +40,7 @@ die();
     padding: 0;
    }
  </style>
+
 <body>
 <!--######################################################################################################################################-->
     <div class=" container table-responsive ">
@@ -73,89 +75,28 @@ die();
                <td class="delete"><?php  echo $productos['stock']; ?></td>
                <td class="delete">$<?php  echo $productos['precio']; ?></td>
   <!--Botones para actualizar y eliminar-->
-               <td><a href="Actualizar.php?id=<?php  echo $productos['codProductos']; ?>" class="btn btn-primary swal2-styled.swal2-confirm" data-toggle="modal" data-target="#exampleModal" class="text-primary"><i class="far fa-edit"></i></a> 
+               <td><a class="btn btn-primary swal2-styled.swal2-confirm" data-toggle="modal" data-target="#exampleModal" class="text-primary"><i class="far fa-edit"></i></a> 
               
         
-               <a data-toggle="modal" data-target="#delete" class="btn btn-danger" class="text-danger"> <i class="fas fa-trash"></i> </a></td>
+               <a id="delete" onclick="confirmaion()" href="Controller/Delete_producto.php?id=<?php  echo $productos['codProductos']; ?>" class="btn btn-danger" class="text-danger"> <i class="fas fa-trash"></i> </a></td>
             </tr>
 
-              <style type="text/css">
-                .swal2-styled.swal2-confirm {
-    border: 0;
-    border-radius: .25em;
-    background: initial;
-    background-color: #3085d6;
-    color: #fff;
-    font-size: 1.0625em;
+             <script type="text/javascript">
+  
+function confirmaion(e) {
+
+  if (confirm("¿Esras seguro que deseas Eliminar este Producto?")) {
+        e.preventDefault();
+    return true;
+  } else {
+     e.preventDefault();
+    return false;
+  }
 }
 
-              </style>
-            <script type="text/javascript">
-                function confirmaionDelete(id=<?php  echo $productos['codProductos']; ?>) {
-                 Swal.fire({
-                  title: 'Producto <?php  echo $productos['nombre']; ?>',
-                  text: "Este Registro Registro sera Eliminardo Permanentemente",
-                  icon: 'warning',
-                   allowOutsideClick:false,
-                   allowEscapeKey:false,
-                  showCancelButton: true,
-                  confirmButtonColor: '#3085d6',
-                  cancelButtonColor: '#d33',
-                  confirmButtonText: 'Eliminar',
-
-
-
-                })
-                 .then((result) => {
-                    
-                  if (result.isConfirmed) {
-                   
-                     
-            window.location = 'Controller/Delete_producto.php?id=<?php  echo $productos['codProductos']; ?>'
-        
-                      } else if (
-                        /* Read more about handling dismissals below */
-                        result.dismiss === Swal.DismissReason.cancel
-                      ) {
-                        swalWithBootstrapButtons.fire(
-                          
-                        )
-                      }
-                })
-
-                }
-                 function Update(id=<?php  echo $productos['codProductos']; ?>) {
-                 Swal.fire({
-                  title: 'El Producto <?php  echo $productos['nombre']; ?> Actualizado',
-                  icon:'success',
-                  iconColor:'#28a745',
-                  textColor:'#fff',
-                   allowOutsideClick:false,
-                   allowEscapeKey:false,
-                   focusConfirm: true,
-                  showCancelButton: false,
-                  confirmButtonColor: '#3085d6',
-                  cancelButtonColor: '#d33',
-                  confirmButtonText: 'Cerrar'
-
-                }).then((result) => {
-                    
-                  if (result.isConfirmed) {
-                      window.location = 'VistaProductos.php'
-                      } else if (
-                        /* Read more about handling dismissals below */
-                        result.dismiss === Swal.DismissReason.cancel
-                      ) {
-                        swalWithBootstrapButtons.fire(
-                          
-                        )
-                      }
-                })
-
-                }
-
 </script>
-          
+
+    
 <!--######################################################################################################################################-->
 
             <div  class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
@@ -300,21 +241,13 @@ die();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
  <script src="codigo_modal.js"></script>  
- <script type="text/javascript" src="jquery/comfirmacion.js"></script>
+ <script type="text/javascript" src="Plugin/jquery/comfirmacion.js"></script>
   <script src="sweetalert2/sweetalert2.min.js"></script> 
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script type="text/javascript">
-  
-$('id').on('click',function() {
-  $tr=${this}.closest('tr');
-  var datos=$tr.children("td").map(function() {
-    return $(this).text();
-  });
-  $('delete_id').val(datos[0]);
-});
+  <script src="Plugin/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
+  <script src="Plugin/bootstrap-5.1.3-dist/js/bootstrap.js"></script>
 
-</script>
 
 </body>
 </html>
