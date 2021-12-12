@@ -28,11 +28,11 @@ die();
     <title>Inicio</title>
 </head>
 <body>
-      <center> <h1 style="margin-top: -31%">Bienvenidos al Sistema de Inventario del
+      <center> <h1 style="margin-top: 13%">Bienvenidos al Sistema de Inventario del
        <br> 
       Hospital Nacional Santa Teresa de Zacatecoluca</h1></center>
       
-<footer style="margin-top:  56.5%;">
+<footer style="margin-top:  12.5%;">
 
 <?php include('footer.php') ?>      
 </body>
