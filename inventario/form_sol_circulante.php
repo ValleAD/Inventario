@@ -33,7 +33,7 @@ die();
 <body >
 
 
-  <form style="position: all; width: 70%; height: 100%;margin-bottom: 5%;margin-top: -40%;" action="dt_sol_circulante.php" method="POST">
+  <form style="width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%;" action="dt_sol_circulante.php" method="POST">
 
     <ol class="breadcrumb">
       <li><a href="home.php">Inicio</a></li>

@@ -33,35 +33,4 @@ section{
     margin-right: 10%;
 }
 
-label {
-    margin-top: 20px;
-    margin-bottom: 5px;
-}
-
-input{
-    width: auto;
-    height: 30px;
-}
-
-
-
-table{
-    border-collapse: collapse;
-    border: 2px solid;
-}
-
-
-td{
-    text-align: center;
-    border-collapse: collapse;
-    border: 1px solid;
-}
-
-footer {
-    margin-top: 50px;
-    background: rgb(207, 207, 207);
-    height: 171px;
-    color: black;
-}
-
 

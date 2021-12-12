@@ -5,8 +5,6 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-
-
 button {
     color: #fff;
     border: none;
@@ -128,5 +126,5 @@ button a:hover{
 .info{
     margin-left: 27%;
    margin-top:  -17%;
-   
+  
 }

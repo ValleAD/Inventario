@@ -32,19 +32,19 @@ die();
     <body >
 
 
-<form style="position: all; width: 70%; height: 100%;margin-bottom: 5%;margin-top: -40%; padding: 1%" action="dt_producto.php" method="POST" style="height: 30%; margin-top: -15">
+<form style="width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%; padding: 1%" action="dt_producto.php" method="POST" style="height: 30%; margin-top: -15">
 <h3>Registro de Productos</h2>
 </center>
-    <div id="Registro" class="row" style="position: all;">
+    <div id="Registro" class="row">
       <div id="lo-que-vamos-a-copiar">
-          <div class="col-xs-4">
-              <div class="well well-sm" style="position: all; margin: 5%">
-                  <div class="form-group" style="position: all; margin: 2%">
+          <div class="col-xs-4" style="position: initial">
+              <div class="well well-sm" style="margin: 5%">
+                  <div class="form-group" style="margin: 2%">
                         <label style="color: #000">Código</label> 
                       <input type="number" name="cod[]" class="form-control" placeholder="Ingrese código de producto " required>
                   </div>
 
-                  <div class="form-group" style="position: all; margin: 2%">
+                  <div class="form-group" style="margin: 2%">
                         <label style="color: #000">Codificación de Catálogo</label> 
                       <input type="number" name="catal[]" class="form-control" placeholder="Ingrese código" required>
                   </div>
@@ -75,7 +75,7 @@ die();
                     </div>
                   </div>
             
-            <div class="form-group">
+            <div class="form-group" >
                 <label>Cantidad</label>
                 <input type="number" name="cant[]" class="form-control" placeholder="Ingrese la Cantidad" required>
             </div>
@@ -88,8 +88,8 @@ die();
     </div>            
 </div>
 
-<div class="col-xs-4">
-    <div class="well" style="position: all; margin:5%">
+<div class="col-xs-4" style="position: initial">
+    <div class="well" style="margin:5%">
         <button id="btn-agregar" class="btn btn-lg btn-block btn-default" type="button">Agregar Producto</button>                
     </div>
 </div>

@@ -30,7 +30,7 @@ die();
     <body >
 
 
-  <form style="position: all; width: 70%; height: 100%;margin-bottom: 5%;margin-top: -40%;" action="dt_sol_compra.php" method="POST" style="height: 30%; margin-top: -15">
+  <form style="width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%;" action="dt_sol_compra.php" method="POST" style="height: 30%; margin-top: -15">
 <ol class="breadcrumb">
   <li><a href="home.php">Inicio</a></li>
   <li class="active">Solicitud de Compra</li>
@@ -38,11 +38,11 @@ die();
 <center>
 <div class="container">
 <div class="row">
-    <div class="col-6 col-sm-3">
+    <div class="col-6 col-sm-3" style="position: initial">
        <label>Número de Solicitud</label> 
       <input class="form-control" type="number" name="sol" id="como1" required>
     </div>
-    <div class="col-6 col-sm-3">
+    <div class="col-6 col-sm-3" style="position: initial">
       <label>Dependencia que Solicita</label>   
       <input class="form-control" type="text" name="depto" id="como2" required>
     </div>
@@ -50,7 +50,7 @@ die();
     <!-- Force next columns to break to new line -->
     <div class="w-100"></div>
 
-    <div  class="col-6 col-sm-3"> 
+    <div  class="col-6 col-sm-3" style="position: initial"> 
       <label>Fecha</label> 
       <input class="form-control" type="date" name="fech" id="como3" required>
       <br>
@@ -59,7 +59,7 @@ die();
 </center>
     <div id="Registro" class="row" style="position: all; m">
       <div id="lo-que-vamos-a-copiar">
-          <div class="col-xs-4">
+          <div class="col-xs-4" style="position: initial">
               <div class="well well-sm" style="position: all; margin: 5%">
                   <div class="form-group" style="position: all; margin: 2%">
                         <label style="color: #000">Código</label> 
@@ -78,7 +78,7 @@ die();
 
                   <br>
 
-                  <div class="form-group" >
+                  <div class="form-group" style="position: initial">
                     <div class="col-md-16" >
                     <div class="invalid-feedback">
                         Por favor seleccione una opción.
@@ -105,7 +105,7 @@ die();
     </div>            
 </div>
 
-<div class="col-xs-4">
+<div class="col-xs-4" style="position: initial">
     <div class="well" style="position: all; margin:5%">
         <button id="btn-agregar" class="btn btn-lg btn-block btn-default" type="button">Agregar Producto</button>                
     </div>

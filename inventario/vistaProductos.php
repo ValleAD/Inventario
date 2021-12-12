@@ -32,8 +32,7 @@ die();
       <link rel="stylesheet" type="text/css" href="sweetalert2/sweetalert2.min.css">
     <title>Productos</title>
 </head>
-<!--######################################################################################################################################-->
- <style type="text/css">
+<style type="text/css">
    #form{
     background: transparent;
     margin: 0;
@@ -42,7 +41,6 @@ die();
  </style>
 
 <body>
-<!--######################################################################################################################################-->
     <div class=" container table-responsive ">
         <h2 class="text-center mg-t" style="color: #fff; margin-top: 2%;">Inventario de productos</h2>
         <table class="table table-dark table-hover table-bordered " style="vertical-align: bottom;">
@@ -80,9 +78,6 @@ die();
         
                <a data-toggle="modal" data-target="#delete"  class="btn btn-danger" class="text-danger"> <i class="fas fa-trash"></i> </a></td>
             </tr>
-
-    
-<!--######################################################################################################################################-->
 
             <div  class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
               
@@ -180,7 +175,7 @@ die();
     </div>
   </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
         <button name="" type="submit" id="Update" class="btn btn-primary">Actualizar</button>
       </div>
         </form>
@@ -211,7 +206,7 @@ die();
         
             </div>
             <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
         <button name="" type="submit" id="Update" class="btn btn-danger">Eliminar</button>
       </div>
            </form>
@@ -223,10 +218,6 @@ die();
            
         </table>
     </div>
-
-
-
-<!--######################################################################################################################################-->
 
 
    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
