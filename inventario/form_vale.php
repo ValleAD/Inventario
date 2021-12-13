@@ -1,4 +1,19 @@
+<?php
+session_start();
+ if (!isset($_SESSION['signin'])>0) {
+    # code...
+    echo '
+    <script>
+        alert("Por favor debes de iniciar sesión");
+        window.location ="signin.php";
+        session_destroy();  
+                </script>
+die();
 
+    ';
+}
+?>
+<?php include ('menu.php')?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +28,7 @@
 <body>
 
 <section>
-<form action="prueba.php" method="post" style="width:10%">
+<form action="form_vale.php" method="post" style="width:10%">
 <br><br>
     <div class="container">
         <div class="row">
@@ -21,7 +36,7 @@
                 <div class="container">
  <div class="row">
     <div class="col">
-     <label for="">Cuantos productos desea buscar</label>
+     <label for="">¿Cuántos productos desea solicitar?</label>
     </div>
    <center> <div class="col-xs-6" style="margin-bottom: 1%; center;">
         <input class="form-control" type="number" name="cantidad" value="1"> 
@@ -42,7 +57,7 @@
         for($x = 1; $x <= $cantidad; $x++){
 
             echo'
-            <form action="prueba.php" method="post" style="margin-top: 2%;">
+            <form action="form_vale.php" method="post" style="margin-top: 2%;">
             <div class="container">
                 <div class="row">
                     <div class="col-6 col-sm-3">
@@ -83,17 +98,11 @@ if(isset($_POST['codigo'])){
         <div class="container">
             <div class="row">
               <div class="col-6 col-sm-3">
-                <label>Departamento</label>   
+                <label>Departamento que solicita</label>   
                 <input class="form-control" type="text" name="depto" required>
             </div>
-            <div class="col-6 col-sm-3">
-                <label>Fecha</label> 
-                <input class="form-control" type="date" name="fech" required>
-            </div>
         </div>
-        
         <br>
-        
         <div class="table-responsive">
         <table class="table">
            <tr id="head">

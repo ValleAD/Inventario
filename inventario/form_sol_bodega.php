@@ -11,139 +11,156 @@ session_start();
 die();
 
     ';
-}   
+}
 ?>
 <?php include ('menu.php')?>
 <!DOCTYPE html>
-<html lang="es">
-  <head>
-    <title>Solicitud De Materiales A Bodega</title>
-        
-        <meta charset="utf-8" />
-        <link rel="stylesheet" type="text/css" href="styles/style.css" > 
-        <link rel="stylesheet" href="Plugin/assets/css/bootstrap.css" />
-        <link rel="stylesheet" href="Plugin/assets/css/bootstrap-theme.min.css" />
-        <link rel="stylesheet" href="Plugin/assets/css/style.css" />
-        <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-        
-    <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
-  </head>
-    <body >
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="styles/estilos.css" > 
+    <link rel="stylesheet" href="Plugin/assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="Plugin/assets/css/bootstrap-theme.min.css">
+    
+    <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">  
+    <title>Solicitud a Bodega</title>
+</head>
+<body>
 
-
-  <form style="width: 70%; height: 100%; margin-bottom: 5%;margin-top: 5%;" action="dt_sol_bodega.php" method="POST">
-
-    <ol class="breadcrumb">
-  <li><a href="home.php">Inicio</a></li>
-  <li class="active">Solicitud de Bodega</li>
-</ol>
-<center>
-<div class="container">
-  <div class="row">
-    <div class="col-6 col-sm-3">
-       <label>O. DE T. No.</label> 
-      <input class="form-control" type="number" name="odt" id="como1" required=""></div>
-    <div class="col-6 col-sm-3">
-      <label>Departamento</label>   
-      <input class="form-control" type="text" name="depto" id="como2" required=""></div>
-
-    <!-- Force next columns to break to new line -->
-    <div class="w-100"></div>
-
-    <div  class="col-6 col-sm-3"> 
-      <label>Fecha</label> 
-      <input class="form-control" type="date" name="fech" id="como3" required><br></div>
-   
+<section>
+<form action="form_sol_bodega.php" method="post" style="width:10%">
+<br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 col-sm-3">
+                <div class="container">
+ <div class="row">
+    <div class="col">
+     <label for="">Cuantos productos desea buscar</label>
+    </div>
+   <center> <div class="col-xs-6" style="margin-bottom: 1%; center;">
+        <input class="form-control" type="number" name="cantidad" value="1"> 
+      
+    </div></center>  
+   <div class="col-xs-4">
+        <input class="btn btn-success" type="submit" value="Aceptar" name="aceptar"> 
+    </div>
   </div>
-</div></center>
-    <div id="Registro" class="row" style="position: all; m">
-<div id="lo-que-vamos-a-copiar">
-    <div class="col-xs-4">
-        <div class="well well-sm" style="position: all; margin: 5%">
-            <div class="form-group" style="position: all; margin: 2%">
-
-                  <label style="color: #000">Código</label> 
-                <input type="number" name="cod[]" class="form-control" placeholder="Ingrese código de producto " required=""/>
+</div>
             </div>
-
-            <div class="form-group">
-                 <label style="color: #000">Descripción</label>
-                <input type="text" name="desc[]" class="form-control" placeholder="Ingrese la descripción del producto" required=""/>
-            </div><br>
-
-            <div class="form-group" >
-               <div class="col-md-16" >
-               <div class="invalid-feedback">
-                  Por favor seleccione una opción.
-                </div>
-                <select  class="form-control" name="um[]" id="um" required>
-                  <option selected disabled value="">U/M</option>
-                  <option value="U">U</option>
-                  <option value="M">M</option>
-                </select>
-                
-              </div>
-            </div>
-  <div class="form-group">
-                <label>Cantidad</label>
-                <input type="number" name="cant[]" class="form-control" placeholder="Ingrese la Cantidad" required>
-            </div>
-            <div class="form-group">
-                <label>Costo Unitario</label>
-               <input class="form-control" type="number" step="0.01" name="cu[]" placeholder="Costo unitario del producto" required><br>
-            </div>
-
-        
         </div>
-    </div>            
-</div>
-
-<div class="col-xs-4">
-    <div class="well" style="position: all; margin:5%">
-        <button id="btn-agregar" class="btn btn-lg btn-block btn-default" type="button">Agregar Producto</button>                
-    </div>
-</div>
-    </div>
-    
-    <hr />
-    
-    <div class="text-right">
-        <button  class="btn btn-success btn-lg btn-block">Guardar</button>
     </div>
 </form>
+<?php
+    if(isset($_POST['cantidad'])){
+        $cantidad = $_POST['cantidad'];
+        for($x = 1; $x <= $cantidad; $x++){
 
+            echo'
+            <form action="form_sol_bodega.php" method="post" style="margin-top: 2%;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-6 col-sm-3">
+                    <input class="form-control" type="number" name="codigo[]" id="codigo" style="margin-bottom: 2%;" placeholder="Ingrese el código del Producto">
+                    </div>
+                </div>
+            </div>
+            ';
+        }
+        echo'
+        <input type="submit" class="btn btn-success" value="Buscar" name="buscar" id="buscar" >
+        <style>
+            #buscar{
+            margin-left: 1.5%; 
+            background: rgb(5, 65, 114); 
+            color: #fff; margin-bottom: 2%; 
+            border: rgb(5, 65, 114);
+            }
+            #buscar:hover{
+            background: rgb(9, 100, 175);
+            } 
+            #buscar:active{
+            transform: translateY(5px);
+            } 
+        </style>
+        </form>';
+    }
+?>
+     
+<?php  
+include 'Model/conexion.php';
+if(isset($_POST['codigo'])){
 
-<script>
-    $(document).ready(function(){
+    echo'
+    <br>
+    <form action="dt_sol_bodega.php" method="post">
         
-        // El formulario que queremos replicar
-        var formulario_registro = $("#lo-que-vamos-a-copiar").html();
+        <div class="container">
+            <div class="row">
+              <div class="col-6 col-sm-3">
+                <label>Departamento</label>   
+                <input class="form-control" type="text" name="depto" required>
+            </div>
+        </div>
         
-// El encargado de agregar más formularios
-$("#btn-agregar").click(function(){
-    // Agregamos el formulario
-    $("#Registro").prepend(formulario_registro);
-
-    // Agregamos un boton para retirar el formulario
-    $("#Registro .col-xs-4:first .well").append('<button class="btn-danger btn btn-block btn-retirar-registro" type="button">Retirar</button>');
-
-    // Hacemos focus en el primer input del formulario
-    $("#Registro .col-xs-4:first .well input:first").focus();
-
-    // Volvemos a cargar todo los plugins que teníamos, dentro de esta función esta el del datepicker assets/js/ini.js
-    Plugins();
-});
+        <br>
         
-        // Cuando hacemos click en el boton de retirar
-        $("#Registro").on('click', '.btn-retirar-registro', function(){
-            $(this).closest('.col-xs-4').remove();
-        })
-            
-        $("#frm-registro").submit(function(){
-            return $(this).validate();
-        });
-    })
-</script>
-<?php include ('footer.php');?>
-  </body>
-  </html>
+        <div class="table-responsive">
+        <table class="table">
+           <tr id="head">
+                <td><strong>Código</strong></td>
+                <td><strong>Descripción</strong></td>
+                <td><strong>U/M</strong></td>
+                <td><strong>Cantidad</strong></td>
+                <td><strong>Costo unitario</strong></td>
+            </tr>';
+
+
+    for($i = 0; $i < count($_POST['codigo']); $i++){
+
+    
+    $codigo = $_POST['codigo'][$i];
+    
+$sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
+$result = mysqli_query($conn, $sql);
+
+    
+    while ($productos = mysqli_fetch_array($result)){ ?>
+
+    
+            <tr>
+               <td><input type="number"  class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
+               <td><input type="text"  class="form-control" readonly name="desc[]" value ="<?php  echo $productos['Descripcion']; ?>"></td>
+               <td><input type="text"  class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
+               <td><input type="number"  class="form-control"  name="cant[]" required></td>
+               <td><input type="number"  class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
+            </tr>
+   
+<?php        }
+    }
+
+    echo ' 
+    </table>
+    
+    <input class="btn btn-lg" type="submit" value="Enviar" id="enviar">
+        <style>
+            #enviar{
+            margin-left: 1.5%; 
+            background: rgb(5, 65, 114); 
+            color: #fff; margin-bottom: 2%; 
+            border: rgb(5, 65, 114);
+            }
+            #enviar:hover{
+            background: rgb(9, 100, 175);
+            } 
+            #enviar:active{
+            transform: translateY(5px);
+            } 
+        </style>
+    </form>';
+}
+?>
+</section>
+
+</body>
+</html>

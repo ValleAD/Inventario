@@ -33,7 +33,7 @@ die();
 
 
 <form style="width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%; padding: 1%" action="dt_producto.php" method="POST" style="height: 30%; margin-top: -15">
-<h3>Registro de Productos</h2>
+<h3 style="text-align: center; font-weight: bold">Registro de Productos</h3>
 </center>
     <div id="Registro" class="row">
       <div id="lo-que-vamos-a-copiar">

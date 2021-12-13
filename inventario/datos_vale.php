@@ -28,13 +28,10 @@ die();
 </head>
 <body>
 
- 
-
 <?php
     
     if ( isset($_POST["cod"]) ) { 
 
-      $fecha =$_POST['fech'];
       $Depto =$_POST['depto'];
 
       $final = 0;
@@ -46,13 +43,8 @@ die();
          
       <section>
         <div class="row">
-          <div class="col-6 col-sm-3">
-        
-              <label style="font-weight: bold;">Fecha:</label>
-              <input readonly class="form-control"  type="text" value="' .$fecha. '">
       
-          </div>
-          <div class="col-6 col-sm-3">
+          <div class="col-6 col-sm-3" style="position: initial">
         
               <label style="font-weight: bold;">Depto. o Servicio:</label>
               <input readonly class="form-control"  type="text" value="' .$Depto. '">
@@ -88,12 +80,12 @@ die();
       
   echo'  
       <tr >
-        <td><input class="form-control" value="' .$codigo. '" style="width: 120px;"></td>
-        <td><input class="form-control" value="'.$des. '"></td>
-        <td><input class="form-control" value="'.$um. '" style="width: 60px;"></td>
-        <td><input class="form-control" value="'.$cantidad. '" style="width: 60px;"></td>
-        <td><input class="form-control" value="$'.$cost. '" style="width: 90px;"></td>
-        <td><input class="form-control" value="$'.$total[$i]. '" style="width: 90px;"></td>
+        <td><input value="' .$codigo. '" style="width: 120px; border: none"></td>
+        <td><input value="'.$des. '" style="border: none"></td>
+        <td><input value="'.$um. '" style="width: 60px; border: none"></td>
+        <td><input value="'.$cantidad. '" style="width: 60px; border: none"></td>
+        <td><input value="$'.$cost. '" style="width: 90px; border: none"></td>
+        <td><input value="$'.$total[$i]. '" style="width: 90px; border: none"></td>
       </tr>'; 
 }
       echo'
@@ -103,7 +95,7 @@ die();
           <td></td>
           <td></td>
           <td><strong>Total</strong></td> 
-          <td><input class="form-control" value="$'.$final.'" style="width: 90px;"></td>
+          <td><input value="$'.$final.'" style="width: 90px; border: none"></td>
         </tr>
       </table>   
     <input type="submit" value="Exportar a PDF" name="pdf">
