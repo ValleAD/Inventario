@@ -19,26 +19,12 @@ die();
 <head>
 <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles/style.css" > 
-    <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
     <title>Solicitud de Bodega</title>
 </head>
 <body>
-
-<div id="head"  style="position: absolute;
-  height: 17% ;margin-top: -15">
-   <div style="float: left; position: absolute;">
-      <img src="img/log.png" height="110px">
-    </div>
-    <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
-    <h3>Departamento de mantenimiento</h3>
-  </div>
-  <br>
- 
-
 <?php
     
     if ( isset($_POST["desc"]) ) { 
@@ -49,19 +35,18 @@ die();
 
       echo 
       '
-<form  style="position: all; width: 70%; height: 100%;margin-bottom: 5%;margin-top: -40%;">
-         
-      <section>
+<form  style="position: all; width: 70%; height: 100%;margin-bottom: 5%;margin-top: 1%;background: #54C10F;">
+    <div class="container-fluid" style="margin:1%" >
         <div align="right">
-            <label style="font-weight: bold; margin-right: 135px;">No. de Solicitud</label>
+            <label style="font-weight: bold; margin-right: 20px;">No. de Solicitud</label>
             <div class="col-md-2">
-              <input class="form-control" type="number" value="'.$sol.'" style="margin-right: 10px;margin-bottom: -15%;margin-top: -25%;" required>
+            <input style="background:transparent;"  class="form-control" type="number" value="'.$sol.'" style="margin-right: 10px;margin-bottom: -25%;margin-top: -25%;" required>
             </div>
         </div>
         <br>
         <br>
-        <div class="table-responsive">
-        <table class="table">
+        <div class="table-responsive container-fluid">
+      <table class="table table-bordered">
           <tr>
             <td><strong>Descripción de los materiales</strong></td>
             <td><strong>Unidad de Medida</strong></td>
@@ -100,11 +85,12 @@ die();
           <td>$ '.$final.'</td>
         </tr>
       </table>   
-    </section>
+   </div></div>
 </form>
       ';
   }
-?>            
+?>    
+<p style="margin-top:10.5%"></p>        
 <?php include ('footer.php');?>
   </body>
   </html>

@@ -29,7 +29,7 @@ die();
     <body >
 
 
-  <form style="width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%;" action="" method="POST">
+  <form style="width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%;" action="dt_sol_almacen.php" method="POST">
 
     <ol class="breadcrumb">
   <li><a id="a" href="home.php">Inicio</a></li>/

@@ -42,7 +42,7 @@ die();
 
       echo 
       '
-<form  style="position: all; width: 70%; height: 100%;margin-bottom: 5%;margin-top: -40%;">
+<form  style="position: all; width: 70%; height: 100%;margin-bottom: 5%;margin-top: 1%;">
          
       <section>
         <div class="row">

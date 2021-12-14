@@ -19,7 +19,6 @@ die();
 <head>
 <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles/style.css" > 
-    <link rel="stylesheet" href="Plugin/bootstrap-5.1.3-dist/css/bootstrap.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
@@ -40,11 +39,22 @@ die();
 
       echo 
       '
-<form  style="position: all; width: 70%; height: 100%;margin-bottom: 5%;margin-top: -40%;">
-         
-      <section>
-        <div class="table-responsive">
-        <table class="table" style="margin-top: 20px;">
+<form  style="position: all; width: 70%; height: 100%;margin-bottom: 5%;margin-top:1%; background: #54C10F;">
+<div class="container-fluid" style="margin:1%" >
+        <div class="row">
+
+          <div class="col-4">
+            <label style="font-weight: bold;">Departamento que solicita:</label>
+            <input style="background:transparent;"  class="form-control" type="text" value="' .$Depto. '">
+          </div>
+      
+          <div class="col-4">
+              <label style="font-weight: bold;">Fecha:</label>
+              <input style="background:transparent;"  class="form-control" type="text" value="' .$fecha. '">
+          </div></div><br>
+
+        <div class="table-responsive container-fluid">
+      <table class="table table-bordered">
           <tr>
             <td><strong>Código</strong></td>
             <td><strong>Descripción</strong></td>
@@ -90,24 +100,11 @@ die();
           <td><strong>Total</strong></td>
           <td>$ '.$final.'</td>
         </tr>
-      </table>     
-    </section>
+      </table> 
 
-    <section>
-        <div class="row">
 
-          <div class="col-4">
-            <label style="font-weight: bold;">Departamento que solicita:</label>
-            <input class="form-control" type="text" value="' .$Depto. '">
-          </div>
-      
-          <div class="col-4">
-              <label style="font-weight: bold;">Fecha:</label>
-              <input class="form-control" type="text" value="' .$fecha. '">
-          </div>
-          
-
-          <div class="row">
+<section>
+  <div class="row">
             <div class="col-6">
               <br>
               <label style="font-weight: bold;">FIRMA</label>
@@ -125,9 +122,9 @@ die();
             <label style="font-weight: bold;">AUTORIZA:</label>
             </div>
           </div> 
-        </div> 
+        </div>
         <br>
-      </section>
+</section></div></div>
 </form>
       ';
   }
