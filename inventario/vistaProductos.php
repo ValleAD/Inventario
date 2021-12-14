@@ -18,15 +18,13 @@ die();
 <head>
 <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles/style.css" > 
-    <link rel="stylesheet" href="Plugin/bootstrap-5.1.3-dist/css/bootstrap.css">
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
          <link rel="stylesheet" href="Plugin/bootstap-icon/bootstrap-icons.min.css">
       <link rel="stylesheet" href="Plugin/bootstap-icon/fontawesome.all.min.css">
       <link rel="stylesheet" type="text/css" href="sweetalert2/sweetalert2.min.css">
@@ -45,7 +43,9 @@ die();
         <h2 class="text-center mg-t" style="color: #fff; margin-top: 2%;">Inventario de productos</h2>
         <table class="table table-dark table-hover table-bordered " style="vertical-align: bottom;">
             <tr>
-                <a href="regi_producto.php" class="text btn btn-info "><i class="bi bi-file-earmark-plus-fill"></i> <span>Nuevo Producto</span> </a><br>
+                <a href="form_vale.php"  style="margin-right: 1%;" class="text btn btn-success "> <i class="bi bi-search"></i> <span>Buscar Producto</span> </a>
+                <a href="regi_producto.php" class="text btn btn-info "><i class="bi bi-file-earmark-plus-fill"></i> <span>Nuevo Producto</span> </a>
+
                 <td class="table-info text-dark"><strong>Código</strong></td>
                 <td class="table-info text-dark"><strong>Codificación de catálogo</strong></td>
                 <td class="table-info text-dark"><strong>Nombre</strong></td>
@@ -56,14 +56,20 @@ die();
                 <td  class="table-info text-dark"><strong>Accion</strong></td>
                 
             </tr>
+            <td id="td" colspan="8"><h4>No se encontraron nigun  resutados 😥</h4></td>
+            </tr>
 <?php
     include 'Model/conexion.php';
     $sql = "SELECT * FROM tb_productos";
     $result = mysqli_query($conn, $sql);
 
-    while ($productos = mysqli_fetch_array($result))
-{
-?>
+    while ($productos = mysqli_fetch_array($result)){?>
+        <style type="text/css">
+     #td{
+        display: none;
+    }
+   
+</style>
             <tr >
                <td class="delete"><?php  echo $productos['codProductos']; ?></td>
                <td class="delete"><?php  echo $productos['catalogo']; ?></td>
@@ -187,14 +193,14 @@ die();
 <!-- Delete -->
 <div class="modal fade" id="delete" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">
-        <div class="modal-content" style="background-color: hsla( 0turn , 100% , 50% , 0.5 );color: white;">
+        <div class="modal-content" style="background-color: hsla(0turn , 100% , 50% , 0.5 );color: white;">
             <div class="modal-header">
                 <h5 class="modal-title">Eliminar Productos</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">    
+            
      
            
       <div class="modal-body">

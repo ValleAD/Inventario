@@ -13,7 +13,7 @@ die();
 }
     
 ?><?php
-include('conexion.php');
+include('Model/conexion.php');
         $fecha=$_POST['fech'];
         $Depto=$_POST['depto'];
         $Vale=$_POST['orden'];

@@ -23,3 +23,8 @@ section {
     border-left: solid 1px #fff;
 }
 
+form {
+  border-radius: 14px;
+  background-color: white;
+}
+

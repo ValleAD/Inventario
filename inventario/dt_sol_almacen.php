@@ -19,9 +19,8 @@ die();
 <head>
 <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles/style.css" > 
-    <link rel="stylesheet" href="bootstrap-5.1.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="Plugin/bootstrap-5.1.3-dist/css/bootstrap.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
     <title>Solicitud de materiales a almacén</title>
@@ -71,7 +70,7 @@ die();
       
       
   echo'  
-      <tr >
+      <tr>
         <td>' .$codigo. '</td>
         <td>' .$um. '</td>
         <td>' .$nom. '</td>

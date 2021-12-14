@@ -18,9 +18,7 @@ die();
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="styles/estilos.css" > 
-    <link rel="stylesheet" href="Plugin/assets/css/bootstrap.css" />
-    <link rel="stylesheet" href="Plugin/assets/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/estilo.css" > 
     
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">  
     <title>Vale</title>
@@ -28,28 +26,22 @@ die();
 <body>
 
 <section>
-<form action="form_vale.php" method="post" style="width:10%">
-<br><br>
+<form action="form_vale.php" method="post">
+<br>
     <div class="container">
         <div class="row">
-            <div class="col-6 col-sm-3">
-                <div class="container">
- <div class="row">
     <div class="col">
-     <label for="">¿Cuántos productos desea solicitar?</label>
+     <label>¿Cuántos productos desea solicitar?</label>
     </div>
-   <center> <div class="col-xs-6" style="margin-bottom: 1%; center;">
+   <div style="margin-bottom: 1%;margin-right: 1%;">
         <input class="form-control" type="number" name="cantidad" value="1"> 
       
-    </div></center>  
-   <div class="col-xs-4">
+    </div>
+   <div>
         <input class="btn btn-success" type="submit" value="Aceptar" name="aceptar"> 
     </div>
   </div>
 </div>
-            </div>
-        </div>
-    </div>
 </form>
 <?php
     if(isset($_POST['cantidad'])){
@@ -61,7 +53,7 @@ die();
             <div class="container">
                 <div class="row">
                     <div class="col-6 col-sm-3">
-                    <input class="form-control" type="number" name="codigo[]" id="codigo" style="margin-bottom: 2%;" placeholder="Ingrese el código del Producto">
+                    <input class="form-control" required type="number" name="codigo[]" id="codigo" style="margin-bottom: 2%;" placeholder="Ingrese el código del Producto">
                     </div>
                 </div>
             </div>
@@ -111,6 +103,10 @@ if(isset($_POST['codigo'])){
                 <td><strong>U/M</strong></td>
                 <td><strong>Cantidad</strong></td>
                 <td><strong>Costo unitario</strong></td>
+            </tr>
+              <tr>
+              <center> <td id="td" colspan="5"><h4>No se encontraron ningun resutados 😥</h4></td></center> 
+
             </tr>';
 
 
@@ -124,7 +120,12 @@ $result = mysqli_query($conn, $sql);
 
     
     while ($productos = mysqli_fetch_array($result)){ ?>
+<style type="text/css">
+     #td{
+        display: none;
+    }
 
+</style>
     
             <tr>
                <td><input type="number"  class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>

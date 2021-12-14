@@ -20,10 +20,8 @@ die();
         
         <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="styles/style.css" > 
-
-        <link rel="stylesheet" href="Plugin/assets/css/bootstrap.css" />
-        <link rel="stylesheet" href="Plugin/assets/css/bootstrap-theme.min.css" />
-        <link rel="stylesheet" href="Plugin/assets/css/style.css" />
+        <link rel="stylesheet" type="text/css" href="styles/style.css" > 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
         <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
         
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
@@ -31,42 +29,50 @@ die();
     <body >
 
 
-  <form style="}width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%;">
+  <form style="width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%;" action="" method="POST">
 
     <ol class="breadcrumb">
-  <li><a href="home.php">Inicio</a></li>
+  <li><a id="a" href="home.php">Inicio</a></li>/
   <li class="active">Solicitud de Materiales a almacen</li>
+  <style type="text/css">
+            #a:hover{
+                background: transparent;
+                    
+                }
+                button:hover{
+                    color: white;
+                }
+            
+        </style>
 </ol>
 <center>
 <div class="container">
   <div class="row">
    
-    <div class="col-6 col-sm-3">
+   <div class="col-6 col-sm-4">
       <label>Departamento que solicita</label>   
       <input class="form-control" type="text" name="depto" id="como2" required=""></div>
 
-    <!-- Force next columns to break to new line -->
-    <div class="w-100"></div>
-
-    <div  class="col-6 col-sm-3"> 
+    <div class="col-6 col-sm-4">
       <label>Fecha</label> 
       <input class="form-control" type="date" name="fech" id="como3" required><br></div>
    
   </div>
 </div>
 </center>
-    <div id="Registro" class="row" style="position: all; m">
-      <div id="lo-que-vamos-a-copiar">
-          <div class="col-xs-4">
-              <div class="well well-sm" style="position: all; margin: 5%">
-                  <div class="form-group" style="position: all; margin: 2%">
+       <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
 
-                        <label style="color: #000">Código</label> 
+<div id="lo-que-vamos-a-copiar"  style="background:#FAE2E2;margin-left: 1%;margin-right: 1%;margin-top: 1%">
+    <div class="col-xs-4 "  style="background: #FAE2E2;margin-left: 1;margin-right: 1%;margin-top: 1%" >
+        <div class="well well-sm" style="position: all; margin: 5%">
+            <div class="form-group" style="position: all; margin: 2%">
+                        <label>Código</label> 
                       <input type="number" name="cod[]" class="form-control" placeholder="Ingrese código de producto " required=""/>
                   </div>
-                  <br>
+
 
                   <div class="form-group" >
+                    <label>Unidad de medida (U/M)</label>
                     <div class="col-md-16" >
                     <div class="invalid-feedback">
                         Por favor seleccione una opción.
@@ -76,12 +82,11 @@ die();
                         <option value="U">U</option>
                         <option value="M">M</option>
                       </select>
-                      
                     </div>
                   </div>
 
             <div class="form-group">
-                 <label style="color: #000">Nombre del Artículo</label>
+                 <label>Nombre del Artículo</label>
                 <input type="text" name="nom[]" class="form-control" placeholder="Nombre y descripción del producto" required=""/>
             </div>
 
@@ -106,12 +111,12 @@ die();
 
 <div class="col-xs-4">
     <div class="well" style="position: all; margin:5%">
-        <button id="btn-agregar" class="btn btn-lg btn-block btn-default" type="button">Agregar Producto</button>                
+      <button id="btn-agregar" class="btn btn-block btn-default bg-success" type="button" style="color: white;">Agregar Producto</button>                
     </div>
 </div>
     </div>
     
-    <hr />
+    <hr/>
     
     <div class="text-right">
         <button  class="btn btn-success btn-lg btn-block">Guardar</button>

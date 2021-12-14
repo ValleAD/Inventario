@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="styles/estilos.css" > 
+    <link rel="stylesheet" type="text/css" href="styles/estilo.css" > 
     <link rel="stylesheet" href="Plugin/assets/css/bootstrap.css" />
     <link rel="stylesheet" href="Plugin/assets/css/bootstrap-theme.min.css">
     
@@ -102,6 +102,10 @@ if(isset($_POST['codigo'])){
                 <td><strong>U/M</strong></td>
                 <td><strong>Cantidad</strong></td>
                 <td><strong>Costo unitario</strong></td>
+            </tr>
+              <tr>
+              <center> <td id="td" colspan="5"><h4>No se encontraron ningun resutados 😥</h4></td></center> 
+
             </tr>';
 
 
@@ -115,7 +119,12 @@ $result = mysqli_query($conn, $sql);
 
     
     while ($productos = mysqli_fetch_array($result)){ ?>
-
+<style type="text/css">
+     #td{
+        display: none;
+    }
+   
+</style>
     
             <tr>
                <td><input type="number"  class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>

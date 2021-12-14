@@ -21,11 +21,6 @@ die();
         
         <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="styles/style.css" > 
-
-        <link rel="stylesheet" href="Plugin/assets/css/bootstrap.css" />
-        <link rel="stylesheet" href="Plugin/assets/css/bootstrap-theme.min.css" />
-        <link rel="stylesheet" href="Plugin/assets/css/style.css" />
-        <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
         
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
   </head>
@@ -35,11 +30,12 @@ die();
 <form style="width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%; padding: 1%" action="dt_producto.php" method="POST" style="height: 30%; margin-top: -15">
 <h3 style="text-align: center; font-weight: bold">Registro de Productos</h3>
 </center>
-    <div id="Registro" class="row">
-      <div id="lo-que-vamos-a-copiar">
-          <div class="col-xs-4" style="position: initial">
-              <div class="well well-sm" style="margin: 5%">
-                  <div class="form-group" style="margin: 2%">
+   <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
+
+<div id="lo-que-vamos-a-copiar"  style="background:#FAE2E2;margin-left: 1%;margin-right: 1%;margin-top: 1%">
+    <div class="col-xs-4 "  style="background: #FAE2E2;margin-left: 1;margin-right: 1%;margin-top: 1%" >
+        <div class="well well-sm" style="position: all; margin: 5%">
+            <div class="form-group" style="position: all; margin: 2%">
                         <label style="color: #000">Código</label> 
                       <input type="number" name="cod[]" class="form-control" placeholder="Ingrese código de producto " required>
                   </div>
@@ -59,9 +55,8 @@ die();
                     <input type="text" name="descr[]" class="form-control" placeholder="Descripción con especificaciones" required>
                   </div>
 
-                  <br>
-
                   <div class="form-group" >
+                    <label>Unidad de medida (U/M)</label>
                     <div class="col-md-16" >
                     <div class="invalid-feedback">
                         Por favor seleccione una opción.
@@ -90,7 +85,7 @@ die();
 
 <div class="col-xs-4" style="position: initial">
     <div class="well" style="margin:5%">
-        <button id="btn-agregar" class="btn btn-lg btn-block btn-default" type="button">Agregar Producto</button>                
+      <button id="btn-agregar" class="btn btn-block btn-default bg-success" type="button" style="color: white;">Agregar Producto</button>                
     </div>
 </div>
     </div>
