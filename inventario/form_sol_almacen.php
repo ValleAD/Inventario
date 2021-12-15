@@ -20,9 +20,6 @@ die();
         
         <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="styles/style.css" > 
-        <link rel="stylesheet" type="text/css" href="styles/style.css" > 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-        <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
         
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
   </head>

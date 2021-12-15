@@ -93,38 +93,86 @@ $ejecutar = mysqli_query($conn,$query);
 	<title>Register</title>
 </head>
 <body>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#head{
+		height: 9%;
+		margin-top: -7%;
+	}
+	button{
+		max-width:100%;
+		margin-top:  5%;
+		margin-bottom: 2%;
+		width: 40%;
+	}
+	label{
+		margin-left: 5%;
+	}
+		@media (max-width: 952px){
+	img{
+		min-width: 70%;
+	}
+	
+	#head{
+		height: 5%;
+		margin-top: -7%;
+		
+	}
+    h1{
+    	max-width:100%;
+    	margin-top: 2%;
+        font-size: 80%;
+       
+    }
+button{
+		max-width:100%;
+		margin-top:  5%;
+		margin-bottom: 2%;
+		width: 50%;
+	}
+  .container-fluid{
+  	margin-right: 30%;
+  	margin-top: 15%;
+  }
+  p{
+  	 font-size: 1em;
+  }
+	</style>
 <div id="head">  
         <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
 
     </div>
-<img id="img1" src="img/" alt="vacancy">
-	<div style="position: all; width: 70%; height: 110%;margin-top: 7%" class="container">
 
-		<form  style="position: all; width: 70%; height: 110%;margin-top: 7%"action="" method="POST" style="position: all; width: 70%; height: 110%;margin-top: 1%">
+	<div style="position: all; width: 70%; height: 110%;margin-top: 7%" class="container-fluid">
+
+		<form id="form" style="position: all; width: 70%; height: 110%;margin-top: 7%"action="" method="POST" style="position: all; width: 70%; height: 110%;margin-top: 1%">
 		<center><img src="img/register.png" alt="logo" style="height: 25%;width: 25%;margin-top: 5%"></center>
-<center>
-			<div style="position: all; width: 70%; height: 110%;margin-top: 1%;">
-			<label style="margin-left: -68%">Nombre de usuario</label><br>
+
+			<div class="container" style="position: all;">
+			<label>Nombre de usuario</label><br>
 				<input class="form-control" type="text"  name="username" value="<?php echo $username; ?>" required>
 			
-			<label style="margin-left: -85%">Nombre</label><br>
+			<label>Nombre</label><br>
 				<input class="form-control" type="text"  name="firstname" value="<?php echo $firstname; ?>" required>
 			
-			<label style="margin-left: -85%">Apellido</label><br>
+			<label>Apellido</label><br>
 				<input class="form-control" type="text"  name="lastname" value="<?php echo $lastname; ?>" required>
 			
-			<label style="margin-left: -88%">Correo</label><br>
+			<label>Correo</label><br>
 				<input class="form-control" type="email" name="email" value="<?php echo $email; ?>" required>
 			
-			<label style="margin-left: -80%">Contraseña</label><br>
+			<label>Contraseña</label><br>
 				<input class="form-control" type="password"  name="password" value="<?php echo $_POST['password']; ?>" required>
           
-			<label style="margin-left: -62%">Confirmar Contraseña</label><br>
+			<label>Confirmar Contraseña</label><br>
 				<input class="form-control" type="password"  name="cpassword" value="<?php echo $_POST['cpassword']; ?>" required>
 			</div>
-</center>
+
 			<div>
-			<button style="margin-left: 22.5%; margin-bottom: 5%;" class="submit" name="submit" class="login">Registrarse</button>
+		<center><button name="submit" class="btn btn-secondary">Registrarse</button></center>
 			</div>
 			<p class="account text-center">¿Ya tienes una cuenta? <a id="a" class="nav-link text-center" href="signin.php">Inicar Sesión</a></p>
 			<style type="text/css">

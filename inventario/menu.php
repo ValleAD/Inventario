@@ -22,8 +22,29 @@ if(!isset($_SESSION['signin'])){
                     
                 }
                 
-            
-        </style>
+
+    img{
+        display: flex;
+        max-width:100%;
+        min-width: 35%;
+        align-items: center;
+        padding: 30px;
+        justify-content: center;
+    }
+    
+    @media (max-width: 952px){
+    
+       #Perfil{
+                   margin-top: -15%;
+                    margin-left: 15%;
+                    color: #000;
+            }
+            nav{
+                max-width: 100%;
+            }
+  
+}
+</style>
     <nav>
         <input type="checkbox" id="check">
         <label for="check" class="checkbtn">

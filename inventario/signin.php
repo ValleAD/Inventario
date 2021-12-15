@@ -47,16 +47,49 @@ if (isset($_POST['submit'])) {
 	<title>Sign In </title>
 </head>
 <body>
-
-  <div id="head"  style="position: all;"> 
+<style type="text/css">
+	img{
+		display: flex;
+		max-width:100%;
+		min-width: 10%;
+		align-items: center;
+		padding: 20px;
+		justify-content: center;
+	}
+	button{
+		max-width:100%;
+		margin-top:  5%;
+		width: 40%;
+	}
+	@media (max-width: 952px){
+	
+    h1{
+    	max-width:100%;
+    	margin-top: 8%;
+        font-size: 100%;
+       
+    }
+  .container-fluid{
+  	margin-top: -7%;
+  	margin-right: 30%;
+  }
+  p{
+  	margin-right: -120%;
+  	 font-size: 1em;
+  }
+}
+</style>
+  <div id="head" class="container-fluid"  style="position: all;  margin-bottom: -15%;height: 9%;"> 
     <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
-   
   </div>
     <br>
-	<div style="position: all; width: 70%; height: 110%;margin-top: 5%" class="container-fluid">
+	<div style="position: all; width: 70%; height: 110%;margin-top: 7%" class="container-fluid">
 		
 		<form action="" method="POST" style="position: all; width: 70%; height: 110%;margin-top: 1%">
-			<img style="margin-left:  15%" src="img/logo1.png" alt="logo">
+			<div class="container">
+			<center>	<img src="img/logo1.png" alt="logo"></center>
+			</div>
+			
 			
 			<div>
 			<label for="username" style="margin-left:  16%">Nombre de usuario</label><br>
@@ -70,7 +103,7 @@ if (isset($_POST['submit'])) {
 
             
 			<div>
-				<button style="margin-top:  5%" class="btn btn-primary btn-block"name="submit" >Ingresar</button>
+			<center>	<button  class="btn btn-primary "name="submit" >Ingresar</button></center>
 			</div>
             <p class="p" style="margin-left: 25%;">No tienes cuenta ?</p>
 				<a id="a" href="signup.php" class="nav-link text-center" style="margin-top:-7.5%;">Registrarse</a>
