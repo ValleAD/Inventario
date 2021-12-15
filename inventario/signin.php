@@ -48,8 +48,7 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
 
-  <div id="head"  style="position: all;
-  height: 10% ;margin-top: -15"> 
+  <div id="head"  style="position: all;"> 
     <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
    
   </div>
@@ -57,7 +56,7 @@ if (isset($_POST['submit'])) {
 	<div style="position: all; width: 70%; height: 110%;margin-top: 5%" class="container-fluid">
 		
 		<form action="" method="POST" style="position: all; width: 70%; height: 110%;margin-top: 1%">
-			<img class="img" src="img/logo1.png" alt="logo">
+			<img style="margin-left:  15%" src="img/logo1.png" alt="logo">
 			
 			<div>
 			<label for="username" style="margin-left:  16%">Nombre de usuario</label><br>
@@ -71,7 +70,7 @@ if (isset($_POST['submit'])) {
 
             
 			<div>
-				<button  class= "submit" name="submit">Ingresar</button>
+				<button style="margin-top:  5%" class="btn btn-primary btn-block"name="submit" >Ingresar</button>
 			</div>
             <p class="p" style="margin-left: 25%;">No tienes cuenta ?</p>
 				<a id="a" href="signup.php" class="nav-link text-center" style="margin-top:-7.5%;">Registrarse</a>
