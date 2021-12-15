@@ -36,11 +36,14 @@ die();
                 background: transparent;
                     
                 }
-                button:hover{
-                    color: white;
-                }
             
-        </style>
+    
+        @media (max-width: 952px){
+form{
+    margin-left: 15%;
+}
+
+    </style>
 </ol>
 <center>
 <div class="container">

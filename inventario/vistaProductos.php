@@ -36,12 +36,59 @@ die();
     margin: 0;
     padding: 0;
    }
- </style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #head{
+        height: 9%;
+        margin-top: -7%;
+    }
+    button{
+        max-width:100%;
+        margin-top:  5%;
+        margin-bottom: 2%;
+        width: 40%;
+    }
+    label{
+        margin-left: 5%;
+    }
+        @media (max-width: 952px){
+    img{
+        min-width: 70%;
+    }
+    
+    #head{
+        height: 5%;
+        margin-top: -7%;
+        
+    }
+    h1{
+        max-width:100%;
+        margin-top: 2%;
+        font-size: 80%;
+       
+    }
+button{
+        max-width:100%;
+        margin-top:  5%;
+        margin-bottom: 2%;
+        width: 50%;
+    }
+  .container{
+    margin-right: 30%;
+    margin-top: 15%;
+  }
+  
+  p{
+     font-size: 1em;
+  }
+    </style>
 
 <body>
     <div class=" container table-responsive ">
         <h2 class="text-center mg-t" style="color: #fff; margin-top: 2%;">Inventario de productos</h2>
-        <table class="table table-dark table-hover table-bordered " style="vertical-align: bottom;">
+        <table class="table table-dark table-hover table-bordered container-fluid" style="vertical-align: bottom;">
             <tr>
                 <a href="form_vale.php"  style="margin-right: 1%;" class="text btn btn-success "> <i class="bi bi-search"></i> <span>Buscar Producto</span> </a>
                 <a href="regi_producto.php" class="text btn btn-info "><i class="bi bi-file-earmark-plus-fill"></i> <span>Nuevo Producto</span> </a>

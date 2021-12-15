@@ -36,13 +36,19 @@ die();
       <li><a id="a" href="home.php">Inicio</a></li>/
       <li  class="active">Solicitud de Fondo Circulante</li>
 
-        <style type="text/css">
+         <style type="text/css">
             #a:hover{
                 background: transparent;
                     
                 }
             
-        </style>
+    
+        @media (max-width: 952px){
+form{
+    margin-left: 15%;
+}
+
+    </style>
     </ol>
   <center>
     <div class="container">
