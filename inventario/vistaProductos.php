@@ -36,14 +36,7 @@ die();
     margin: 0;
     padding: 0;
    }
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        #head{
-        height: 9%;
-        margin-top: -7%;
-    }
+
     button{
         max-width:100%;
         margin-top:  5%;
@@ -54,35 +47,11 @@ die();
         margin-left: 5%;
     }
         @media (max-width: 952px){
-    img{
-        min-width: 70%;
+    table{
+        width: 10%;
     }
-    
-    #head{
-        height: 5%;
-        margin-top: -7%;
-        
-    }
-    h1{
-        max-width:100%;
-        margin-top: 2%;
-        font-size: 80%;
-       
-    }
-button{
-        max-width:100%;
-        margin-top:  5%;
-        margin-bottom: 2%;
-        width: 50%;
-    }
-  .container{
-    margin-right: 30%;
-    margin-top: 15%;
-  }
   
-  p{
-     font-size: 1em;
-  }
+ }
     </style>
 
 <body>
