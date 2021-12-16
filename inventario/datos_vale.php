@@ -39,7 +39,7 @@ die();
       echo 
       '
 <section>
-<form method="POST" action="pdf_vale.php">
+<form method="POST" action="pdf_vale.php" target="_blank">
          
       <section>
         <div class="row">
@@ -47,7 +47,7 @@ die();
           <div class="col-6 col-sm-3" style="position: initial">
         
               <label style="font-weight: bold;">Depto. o Servicio:</label>
-              <input readonly class="form-control"  type="text" value="' .$Depto. '">
+              <input readonly class="form-control"  type="text" value="' .$Depto. '" name="depto">
     
           </div>
         </div>
@@ -80,12 +80,12 @@ die();
       
   echo'  
       <tr >
-        <td><input value="' .$codigo. '" style="width: 120px; border: none"></td>
-        <td><input value="'.$des. '" style="border: none"></td>
-        <td><input value="'.$um. '" style="width: 60px; border: none"></td>
-        <td><input value="'.$cantidad. '" style="width: 60px; border: none"></td>
-        <td><input value="$'.$cost. '" style="width: 90px; border: none"></td>
-        <td><input value="$'.$total[$i]. '" style="width: 90px; border: none"></td>
+        <td><input name="cod[]" value="' .$codigo. '" style="width: 120px; border: none"></td>
+        <td><input name="desc[]" value="'.$des. '" style="border: none"></td>
+        <td><input name="um[]" value="'.$um. '" style="width: 60px; border: none"></td>
+        <td><input name="cant[]" value="'.$cantidad. '" style="width: 60px; border: none"></td>
+        <td><input name="cost[]" value="'.$cost. '" style="width: 90px; border: none"></td>
+        <td><input name="tot[]" value="$'.$total[$i]. '" style="width: 90px; border: none"></td>
       </tr>'; 
 }
       echo'
@@ -95,7 +95,7 @@ die();
           <td></td>
           <td></td>
           <td><strong>Total</strong></td> 
-          <td><input value="$'.$final.'" style="width: 90px; border: none"></td>
+          <td><input name="tot_f" value="$'.$final.'" style="width: 90px; border: none"></td>
         </tr>
       </table>   
     <input type="submit" value="Exportar a PDF" name="pdf">
