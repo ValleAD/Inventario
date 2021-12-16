@@ -24,7 +24,7 @@ die();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
-    <title>Solicitud a Bodega</title>
+    <title>Solicitud Bodega</title>
 </head>
 <body>
 
@@ -39,7 +39,7 @@ die();
       echo 
       '
 <section>
-<form method="POST" action="pdf_vale.php">
+<form method="POST" action="pdf_bodega.php" target="_blank">
          
       <section>
         <div class="row">
@@ -47,7 +47,7 @@ die();
           <div class="col-6 col-sm-3" style="position: initial">
         
               <label style="font-weight: bold;">Depto. o Servicio:</label>
-              <input readonly class="form-control"  type="text" value="' .$Depto. '">
+              <input readonly class="form-control"  type="text" value="' .$Depto. '" name="depto">
     
           </div>
         </div>
@@ -80,25 +80,39 @@ die();
       
   echo'  
       <tr >
-        <td><input value="' .$codigo. '" style="width: 120px; border: none"></td>
-        <td><input value="'.$des. '" style="border: none"></td>
-        <td><input value="'.$um. '" style="width: 60px; border: none"></td>
-        <td><input value="'.$cantidad. '" style="width: 60px; border: none"></td>
-        <td><input value="$'.$cost. '" style="width: 90px; border: none"></td>
-        <td><input value="$'.$total[$i]. '" style="width: 90px; border: none"></td>
+        <td><input name="cod[]" value="' .$codigo. '" style="width: 120px; border: none"></td>
+        <td><input name="desc[]" value="'.$des. '" style="border: none"></td>
+        <td><input name="um[]" value="'.$um. '" style="width: 60px; border: none"></td>
+        <td><input name="cant[]" value="'.$cantidad. '" style="width: 60px; border: none"></td>
+        <td><input name="cost[]" value="'.$cost. '" style="width: 90px; border: none"></td>
+        <td><input name="tot[]" value="$'.$total[$i]. '" style="width: 90px; border: none"></td>
       </tr>'; 
 }
       echo'
-        <tr style>
+        <tr>
           <td></td>
           <td></td>
           <td></td>
           <td></td>
           <td><strong>Total</strong></td> 
-          <td><input value="$'.$final.'" style="width: 90px; border: none"></td>
+          <td><input name="tot_f" value="$'.$final.'" style="width: 90px; border: none"></td>
         </tr>
       </table>   
-    <input type="submit" value="Exportar a PDF" name="pdf">
+      <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
+      <style>
+        #pdf{
+        margin-left: 38%; 
+        background: rgb(175, 0, 0); 
+        color: #fff; margin-bottom: 2%; 
+        border: rgb(0, 0, 0);
+        }
+        #pdf:hover{
+        background: rgb(128, 4, 4);
+        } 
+        #pdf:active{
+        transform: translateY(5px);
+        } 
+      </style>
     </section>
 </form>
 </section>
