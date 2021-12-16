@@ -86,10 +86,10 @@ $ejecutar = mysqli_query($conn,$query);
 <head>
 <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="styles/log.css" > 
+	<link rel="stylesheet" type="text/css" href="../styles/log.css" > 
     <link rel="stylesheet" href="Plugin/bootstrap/css/bootstrap.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
+    <link rel="icon" type="image/png" sizes="32x32"  href="../img/log.png">
 	<title>Register</title>
 </head>
 <body>
@@ -140,7 +140,12 @@ button{
   p{
   	 font-size: 1em;
   }
+<<<<<<< HEAD:inventario/signup.php
+  </style>
+=======
 	</style>
+	
+>>>>>>> 2bdd7dad8e1a43f3c89848b191b2ef16ca15e0f6:inventario/log/signup.php
 <div id="head">  
         <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
 
