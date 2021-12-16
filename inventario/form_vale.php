@@ -89,9 +89,13 @@ if(isset($_POST['codigo'])){
         
         <div class="container">
             <div class="row">
-              <div class="col-6 col-sm-3">
+              <div class="col-4 col-sm-4">
                 <label>Departamento que solicita</label>   
-                <input class="form-control" type="text" name="depto" required>
+                <input class="form-control" type="text" name="departamento" required>
+            </div>
+            <div class="col-4 col-sm-4">
+                <label>Orden de trabajo</label>   
+                <input class="form-control" type="text" name="odt" required>
             </div>
         </div>
         <br>
@@ -110,18 +114,20 @@ if(isset($_POST['codigo'])){
             </tr>';
 
 
+           
+
+
     for($i = 0; $i < count($_POST['codigo']); $i++){
 
     
     $codigo = $_POST['codigo'][$i];
-    
-$sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
-$result = mysqli_query($conn, $sql);
+    $sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
+    $result = mysqli_query($conn, $sql);
 
     
-    while ($productos = mysqli_fetch_array($result)){ ?>
-<style type="text/css">
-     #td{
+    while ($productos = mysqli_fetch_array($result)){ ?>    
+        <style type="text/css">
+        #td{
         display: none;
     }
 
@@ -129,19 +135,21 @@ $result = mysqli_query($conn, $sql);
     
             <tr>
                <td><input type="number"  class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
-               <td><input type="text"  class="form-control" readonly name="desc[]" value ="<?php  echo $productos['Descripcion']; ?>"></td>
+               <td><input type="text"  class="form-control" readonly name="desc[]" value ="<?php  echo $productos['descripcion']; ?>"></td>
                <td><input type="text"  class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
                <td><input type="number"  class="form-control"  name="cant[]" required></td>
                <td><input type="number"  class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
             </tr>
    
-<?php        }
+        <?php }
     }
+    
+
 
     echo ' 
     </table>
     
-    <input class="btn btn-lg" type="submit" value="Enviar" id="enviar">
+    <input class="btn btn-lg" type="submit" value="Enviar" id="enviar" name="submits">
         <style>
             #enviar{
             margin-left: 1.5%; 
@@ -157,6 +165,25 @@ $result = mysqli_query($conn, $sql);
             } 
         </style>
     </form>';
+                if (isset($_POST['submit'])) {
+                $departamento = $_POST['departamento'];
+                $odt = $_POST['odt'];
+
+                $insert = "INSERT INTO tb_vale (departamento, odt) VALUES ('$departamento','$odt')";
+                $query = mysqli_query($conn, $insert);
+
+            if ($query) {
+            echo "<script> alert('Su producto fue registrado correctamente');
+        
+            </script>
+            ";
+            }else {
+            echo "<script> alert('UUPS!! Algo no fue mal escrito');
+            location.href = 'form_vale.php';
+            </script>
+            ";
+            }
+                }
 }
 ?>
 </section>

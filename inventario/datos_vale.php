@@ -30,6 +30,10 @@ die();
 
 <?php
     
+    include 'Model/conexion.php';
+    $sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
+    $result = mysqli_query($conn, $sql);
+
     if ( isset($_POST["cod"]) ) { 
 
       $Depto =$_POST['depto'];

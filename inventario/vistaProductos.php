@@ -74,7 +74,7 @@ die();
             </tr>
             <td id="td" colspan="8"><h4>No se encontraron nigun  resutados 😥</h4></td>
             </tr>
-<?php
+    <?php
     include 'Model/conexion.php';
     $sql = "SELECT * FROM tb_productos";
     $result = mysqli_query($conn, $sql);
@@ -90,17 +90,17 @@ die();
                <td class="delete"><?php  echo $productos['codProductos']; ?></td>
                <td class="delete"><?php  echo $productos['catalogo']; ?></td>
                <td class="delete"><?php  echo $productos['nombre']; ?></td>
-               <td class="delete"><?php  echo $productos['Descripcion']; ?></td>
+               <td class="delete"><?php  echo $productos['descripcion']; ?></td>
                <td class="delete"><?php  echo $productos['unidad_medida']; ?></td>
                <td class="delete"><?php  echo $productos['stock']; ?></td>
                <td class="delete">$<?php  echo $productos['precio']; ?></td>
+
+
+<!--**********************************************************************************************************************************************************************************-->
   <!--Botones para actualizar y eliminar-->
                <td><a class="btn btn-primary swal2-styled.swal2-confirm" data-toggle="modal" data-target="#exampleModal" class="text-primary"><i class="far fa-edit"></i></a> 
-              
-        
                <a data-toggle="modal" data-target="#delete"  class="btn btn-danger" class="text-danger"> <i class="fas fa-trash"></i> </a></td>
             </tr>
-
             <div  class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
               
   <div class="modal-dialog">
@@ -111,7 +111,7 @@ die();
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-       <form id="form" action="Actualizar.php?id=<?php  echo $productos['codProductos']; ?>" method="POST">
+       <form id="form" action="Controller/Actualizar.php?id=<?php  echo $productos['codProductos']; ?>" method="POST">
       <div class="modal-body">
          <div class="row">
    <input type="hidden"class="form-control" name="codProducto" value="<?php  echo $productos['codProductos']; ?>" style="background-color:rgba(102,255,255,4.5)"><br>
@@ -145,7 +145,7 @@ die();
 
     </div>
     <div class="col">
-      <input  class="form-control" name="descripcion" value="<?php  echo $productos['Descripcion']; ?>"style="background-color:rgba(102,255,255,4.5)"><br>
+      <input  class="form-control" name="descripcion" value="<?php  echo $productos['descripcion']; ?>"style="background-color:rgba(102,255,255,4.5)"><br>
 
     </div>
    
@@ -206,6 +206,7 @@ die();
 </div>
 
 
+<!--***************************************************************************************************************************-->
 <!-- Delete -->
 <div class="modal fade" id="delete" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">

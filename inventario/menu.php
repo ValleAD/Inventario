@@ -1,7 +1,7 @@
 <?php
 include("Model/conexion.php");
 if(!isset($_SESSION['signin'])){
-    header("location: signin.php");
+    header("location: log/signin.php");
 }
 
 ?><!DOCTYPE html>
@@ -117,7 +117,7 @@ if(!isset($_SESSION['signin'])){
             </div>
             <div class="modal-footer">
         
-        <a href="logout.php" type="submit" id="Update" class="btn btn-danger" >Cerrar Seccion</a>
+        <a href="log/logout.php" type="submit" id="Update" class="btn btn-danger" >Cerrar Seccion</a>
       </div>
            
         </div>

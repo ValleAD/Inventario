@@ -1,5 +1,5 @@
 <?php 
-require 'Model/conexion.php';
+require '../Model/conexion.php';
 
 //conversion
 $id1 =$_POST['codProducto'];
@@ -19,14 +19,14 @@ if ($result) {
 	echo '
     <script>
        alert("Los datos fueron Actualizados");
-        window.location ="vistaProductos.php"; 
+        window.location ="../vistaProductos.php"; 
                 </script>
                 ';
 } else {
 	echo '
     <script>
         alert("No se pudo actualizar");
-        window.location ="vistaProductos.php"; 
+        window.location ="../vistaProductos.php"; 
                 </script>
                 ';
 }
