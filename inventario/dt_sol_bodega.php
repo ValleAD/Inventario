@@ -98,7 +98,21 @@ die();
           <td><input name="tot_f" value="$'.$final.'" style="width: 90px; border: none"></td>
         </tr>
       </table>   
-    <input type="submit" value="Exportar a PDF" name="pdf">
+      <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
+      <style>
+        #pdf{
+        margin-left: 38%; 
+        background: rgb(175, 0, 0); 
+        color: #fff; margin-bottom: 2%; 
+        border: rgb(0, 0, 0);
+        }
+        #pdf:hover{
+        background: rgb(128, 4, 4);
+        } 
+        #pdf:active{
+        transform: translateY(5px);
+        } 
+      </style>
     </section>
 </form>
 </section>
