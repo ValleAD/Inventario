@@ -140,7 +140,7 @@ button{
   p{
   	 font-size: 1em;
   }
-	</style>
+  </style>
 <div id="head">  
         <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
 
