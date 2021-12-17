@@ -17,14 +17,6 @@ button:active {
 	transform: translateY(5px);
 }
 
-#head{
-    background: #022c29;
-    margin-bottom: 30px;
-    width: 100%;
-    position: fixed;
-    height: 100px;
-    color: white;
-}
 
 form {
     margin-left: 160px;

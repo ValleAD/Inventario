@@ -141,15 +141,12 @@ button{
   	 font-size: 1em;
   }
 	</style>
-<div id="head">  
-        <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
-
-    </div>
 
 	<div style="position: all; width: 70%; height: 110%;margin-top: 7%" class="container-fluid">
 
 		<form id="form" style="position: all; width: 70%; height: 110%;margin-top: 7%"action="" method="POST" style="position: all; width: 70%; height: 110%;margin-top: 1%">
-		<center><img src="../img/register.png" alt="logo" style="height: 25%;width: 25%;margin-top: 5%"></center>
+		<center>
+		<h2 align="center">Registro de Usuario</h2><img src="../img/register.png" alt="logo" style="height: 25%;width: 25%;margin-top: 5%"></center>
 
 			<div class="container" style="position: all;">
 			<label>Nombre de usuario</label><br>
@@ -174,7 +171,7 @@ button{
 			<div>
 		<center><button type="submit" name="submit" class="btn btn-secondary">Registrarse</button></center>
 			</div>
-			<p class="account text-center">¿Ya tienes una cuenta? <a id="a" class="nav-link text-center" href="signin.php">Inicar Sesión</a></p>
+			<p class="account text-center">¿Ya tienes una cuenta? <a id="a" href="signin.php" style="margin-left:1%;">Inicar Sesión</a></p>
 			<style type="text/css">
 					#a{
 						width: 20%;
@@ -186,12 +183,6 @@ button{
 				</style>
 		</form>
 	</div>
-	<footer style="margin-top:  14%;">
 
-  <div align="center">
-  <img src="../img/log_1.png" alt="" width="" height="150px">
-  </div>
-
-</footer>
 </body>
 </html>
