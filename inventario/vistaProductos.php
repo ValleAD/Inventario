@@ -101,13 +101,13 @@ die();
                <td><a class="btn btn-primary swal2-styled.swal2-confirm" data-toggle="modal" data-target="#exampleModal" class="text-primary"><i class="far fa-edit"></i></a> 
                <a data-toggle="modal" data-target="#delete"  class="btn btn-danger" class="text-danger"> <i class="fas fa-trash"></i> </a></td>
             </tr>
-            <div  class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+            <div class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
               
   <div class="modal-dialog">
-    <div class="modal-content" style="background-color: hsla( 0.75turn , 100% , 50  % , 0.5 );color: white;">
+    <div class="modal-content" style="background-color: hsl(100% , 50% , 1 );color: #FDF6F0;  background-image: linear-gradient(90deg, rgb(5, 114, 72), rgb(42, 136, 136));">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Actualizar Información</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" style="width: 15%;" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -122,7 +122,7 @@ die();
       <div class=""><strong>Codificación de catálogo</strong></div>
     </div>
     <div class="col">
-       <input  class="form-control" name="codCatalogo" value="<?php  echo $productos['catalogo']; ?>"style="background-color:rgba(102,255,255,4.5)"><br>
+       <input  class="form-control" name="codCatalogo" value="<?php  echo $productos['catalogo']; ?>"style="background-color: #FDF6F0"><br>
     </div>
    
   </div>
@@ -133,7 +133,7 @@ die();
        <div class=""><strong>Nombre</strong></div>
     </div>
     <div class="col">
-       <input  class="form-control" name="nombre" value="<?php  echo $productos['nombre']; ?>"style="background-color:rgba(102,255,255,4.5)"><br>
+       <input  class="form-control" name="nombre" value="<?php  echo $productos['nombre']; ?>"style="background-color: #FDF6F0"><br>
     </div>
    
   </div>
@@ -145,7 +145,7 @@ die();
 
     </div>
     <div class="col">
-      <input  class="form-control" name="descripcion" value="<?php  echo $productos['descripcion']; ?>"style="background-color:rgba(102,255,255,4.5)"><br>
+      <input  class="form-control" name="descripcion" value="<?php  echo $productos['descripcion']; ?>"style="background-color: #FDF6F0"><br>
 
     </div>
    
@@ -161,7 +161,7 @@ die();
         <div class="invalid-feedback">
           Por favor seleccione una opción.
            </div>
-              <select  class="form-control" name="um" id="um" required style="background-color:rgba(102,255,255,4.5)">
+              <select  class="form-control" name="um" id="um" required style="background-color: #FDF6F0">
                 <option selected disabled value="">seleccione una opción</option>
                 <option value="U">U</option>
                 <option value="M">M</option>
@@ -178,7 +178,7 @@ die();
        <div class=""><strong>Cantidad</strong></div>
     </div>
     <div class="col">
-<input class="form-control" name="stock"  value="<?php  echo $productos['stock']; ?>"style="background-color:rgba(102,255,255,4.5)"><br><br>
+<input class="form-control" name="stock"  value="<?php  echo $productos['stock']; ?>"style="background-color: #FDF6F0"><br><br>
     </div>
    
   </div>
@@ -190,16 +190,19 @@ die();
     </div>
 
     <div class="col">
-      <input class="form-control" name="precio" value="<?php  echo $productos['precio']; ?>"style="background-color:rgba(102,255,255,4.5)"><br>
+      <input class="form-control" name="precio" value="<?php  echo $productos['precio']; ?>"style="background-color: #FDF6F0"><br>
                   </div>
             </div>
         </div>
     </div>
   </div>
+  <center>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button name="" type="submit" id="Update" class="btn btn-primary">Actualizar</button>
-      </div>
+       
+        <button type="button" class="btn btn-danger" data-dismiss="modal"  style="margin-right: 15%;">Cancelar</button>
+        <button name="" type="submit" id="Update" class="btn btn-info">Actualizar</button>
+      
+      </div>  </center>
         </form>
     </div>
   </div>
@@ -210,10 +213,10 @@ die();
 <!-- Delete -->
 <div class="modal fade" id="delete" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">
-        <div class="modal-content" style="background-color: hsla(0turn , 100% , 50% , 0.5 );color: white;">
+        <div class="modal-content"  style="background-color: hsl(100% , 50% , 1 );color: #FDF6F0;  background-image: linear-gradient(90deg, rgb(5, 114, 72), rgb(42, 136, 136));">
             <div class="modal-header">
-                <h5 class="modal-title">Eliminar Productos</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <h5 class="modal-title" >Eliminar Productos</h5>
+                <button type="button"  class="close"   style="width: 15%;"data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                 </button>
             </div>
@@ -229,7 +232,7 @@ die();
         
             </div>
             <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-info" data-dismiss="modal" style="margin-right: 15%;">Cancelar</button>
         <button name="" type="submit" id="Update" class="btn btn-danger">Eliminar</button>
       </div>
            </form>
