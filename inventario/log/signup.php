@@ -1,6 +1,6 @@
 <?php 
 
-include 'Model/conexion.php';
+include '../Model/conexion.php';
 session_start();
 error_reporting(0);
 
@@ -87,7 +87,7 @@ $ejecutar = mysqli_query($conn,$query);
 <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="../styles/log.css" > 
-    <link rel="stylesheet" href="Plugin/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../Plugin/bootstrap/css/bootstrap.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" type="image/png" sizes="32x32"  href="../img/log.png">
 	<title>Register</title>
@@ -140,12 +140,7 @@ button{
   p{
   	 font-size: 1em;
   }
-<<<<<<< HEAD:inventario/signup.php
-  </style>
-=======
 	</style>
-	
->>>>>>> 2bdd7dad8e1a43f3c89848b191b2ef16ca15e0f6:inventario/log/signup.php
 <div id="head">  
         <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
 
@@ -154,7 +149,7 @@ button{
 	<div style="position: all; width: 70%; height: 110%;margin-top: 7%" class="container-fluid">
 
 		<form id="form" style="position: all; width: 70%; height: 110%;margin-top: 7%"action="" method="POST" style="position: all; width: 70%; height: 110%;margin-top: 1%">
-		<center><img src="img/register.png" alt="logo" style="height: 25%;width: 25%;margin-top: 5%"></center>
+		<center><img src="../img/register.png" alt="logo" style="height: 25%;width: 25%;margin-top: 5%"></center>
 
 			<div class="container" style="position: all;">
 			<label>Nombre de usuario</label><br>
@@ -177,7 +172,7 @@ button{
 			</div>
 
 			<div>
-		<center><button name="submit" class="btn btn-secondary">Registrarse</button></center>
+		<center><button type="submit" name="submit" class="btn btn-secondary">Registrarse</button></center>
 			</div>
 			<p class="account text-center">¿Ya tienes una cuenta? <a id="a" class="nav-link text-center" href="signin.php">Inicar Sesión</a></p>
 			<style type="text/css">
@@ -194,7 +189,7 @@ button{
 	<footer style="margin-top:  14%;">
 
   <div align="center">
-  <img src="img/log_1.png" alt="" width="" height="150px">
+  <img src="../img/log_1.png" alt="" width="" height="150px">
   </div>
 
 </footer>

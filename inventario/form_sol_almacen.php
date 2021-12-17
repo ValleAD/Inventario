@@ -5,7 +5,7 @@ session_start();
     echo '
     <script>
         alert("Por favor debes de iniciar sesión");
-        window.location ="signin.php";
+         window.location ="log/signin.php";
         session_destroy();  
                 </script>
 die();
@@ -49,11 +49,11 @@ form{
 <div class="container">
   <div class="row">
    
-   <div class="col-6 col-sm-4">
+   <div class="col-6 col-sm-4"  style="position: initial">
       <label>Departamento que solicita</label>   
       <input class="form-control" type="text" name="depto" id="como2" required=""></div>
 
-    <div class="col-6 col-sm-4">
+    <div class="col-6 col-sm-4"  style="position: initial">
       <label>Fecha</label> 
       <input class="form-control" type="date" name="fech" id="como3" required><br></div>
    

@@ -5,7 +5,7 @@ session_start();
     echo '
     <script>
         alert("Por favor debes de iniciar sesión");
-        window.location ="signin.php";
+        window.location ="log/signin.php";
         session_destroy();  
                 </script>
 die();
@@ -104,7 +104,7 @@ die();
             <div  class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
               
   <div class="modal-dialog">
-    <div class="modal-content" style="background-color: hsla( 0.75turn , 100% , 50% , 0.5 );color: white;">
+    <div class="modal-content" style="background-color: hsla( 0.75turn , 100% , 50  % , 0.5 );color: white;">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Actualizar Información</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">

@@ -23,15 +23,7 @@ if(!isset($_SESSION['signin'])){
                 }
                 
 
-    img{
-        display: flex;
-        max-width:100%;
-        min-width: 35%;
-        align-items: center;
-        padding: 30px;
-        justify-content: center;
-    }
-    
+
     @media (max-width: 952px){
     
        #Perfil{
