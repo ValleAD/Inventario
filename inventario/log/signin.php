@@ -79,9 +79,6 @@ if (isset($_POST['submit'])) {
   }
 }
 </style>
-  <div id="head" class="container-fluid"  style="position: all;  margin-bottom: -15%;height: 9%;"> 
-    <h1>Hospital Nacional Santa Teresa de Zacatecoluca</h1>
-  </div>
     <br>
 	<div style="position: all; width: 70%; height: 110%;margin-top: 7%" class="container-fluid">
 		
@@ -121,12 +118,6 @@ if (isset($_POST['submit'])) {
 		</form>
 	</div>
 	</div>
-    <footer style="margin-top: 3%;">
-
-  <div align="center">
-  <img src="../img/log_1.png" alt="" width="320px" height="150px">
-  </div>
-
-</footer>
+   
 </body>
 </html>
