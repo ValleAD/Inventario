@@ -31,6 +31,7 @@ USE `hospital` ;
 CREATE TABLE `detalle_bodega` (
   `coddetallebodega` int(11) NOT NULL,
   `codigo` int(15) NOT NULL,
+  `nombre` int(15) NOT NULL,
   `descripcion` varchar(50) NOT NULL,
   `unidadmedida` varchar(11) NOT NULL DEFAULT 'U',
   `stock` int(11) NOT NULL,
@@ -48,6 +49,7 @@ CREATE TABLE `detalle_bodega` (
 CREATE TABLE `detalle_vale` (
   `coddetallevale` int(11) NOT NULL,
   `codigo` int(15) NOT NULL,
+  `nombre` int(15) NOT NULL,
   `descripcion` varchar(50) NOT NULL,
   `unidadmedida` varchar(11) NOT NULL DEFAULT 'U',
   `stock` int(11) NOT NULL,
@@ -78,10 +80,11 @@ CREATE TABLE `tb_bodega` (
 CREATE TABLE `tb_compra` (
   `codCompra` int(11) NOT NULL,
   `codCatalogo` int(20) NOT NULL,
+  `nombre` int(15) NOT NULL,
+  `descripcion` varchar(200) NOT NULL,
   `stock` int(200) NOT NULL,
   `unidad_medida` varchar(2) NOT NULL DEFAULT 'U',
   `precio` decimal(6,2) NOT NULL,
-  `descripcion` varchar(200) NOT NULL,
   `fecha_registro` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -93,7 +96,9 @@ CREATE TABLE `tb_compra` (
 
 CREATE TABLE `tb_productos` (
   `codProductos` int(11) NOT NULL,
-  `descripcion` varchar(200) NOT NULL,
+  `catalogo` varchar(25) NOT NULL,
+  `nombre` varchar(75) NOT NULL,
+  `descripcion` varchar(150) NOT NULL,
   `unidad_medida` varchar(10) NOT NULL DEFAULT 'U',
   `stock` int(11) NOT NULL,
   `precio` decimal(6,2) NOT NULL,

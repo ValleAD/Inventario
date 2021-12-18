@@ -27,15 +27,15 @@ if (mysqli_num_rows($verificar_usuario)>0) {
 exit();
 }
 $ejecutar = mysqli_query($conn,$query);
-	if ($password == $cpassword) {
-		$sql = "SELECT * FROM tb_usuarios WHERE firstname='$firstname' AND lastname='$lastname' username='$username' AND email='$email' AND password='$password'";
+if ($password == $cpassword) {
+	$sql = "SELECT * FROM tb_usuarios WHERE username='$username' AND firstname='$firstname' AND lastname='$lastname' AND email='$email' AND password='$password'";
+	$result = mysqli_query($conn, $sql);
+	if (!$result->num_rows > 0) {
+		$sql = "INSERT INTO tb_usuarios (username,firstname,lastname, email, password)
+				VALUES ('$username','$firstname', '$lastname', '$email', '$password')";
 		$result = mysqli_query($conn, $sql);
-		if (!$result->num_rows > 0) {
-			$sql = "INSERT INTO tb_usuarios (firstname,lastname, username, email, password)
-					VALUES ('$firstname', '$lastname', '$username', '$email', '$password')";
-			$result = mysqli_query($conn, $sql);
 
-			if ($result) {
+		if ($result) {
 				/*while ($row=mysqli_fetch_array($result)) {
 					echo '<script type="text/javascript">alert("You are login successfully and you are logined as '.$row['usertype'].'")</script>';
 				}if (mysqli_num_rows($result)>0) {
@@ -93,54 +93,6 @@ $ejecutar = mysqli_query($conn,$query);
 	<title>Register</title>
 </head>
 <body>
-	<style type="text/css">
-		*{
-			margin: 0;
-			padding: 0;
-		}
-		#head{
-		height: 9%;
-		margin-top: -7%;
-	}
-	button{
-		max-width:100%;
-		margin-top:  5%;
-		margin-bottom: 2%;
-		width: 40%;
-	}
-	label{
-		margin-left: 5%;
-	}
-		@media (max-width: 952px){
-	img{
-		min-width: 70%;
-	}
-	
-	#head{
-		height: 5%;
-		margin-top: -7%;
-		
-	}
-    h1{
-    	max-width:100%;
-    	margin-top: 2%;
-        font-size: 80%;
-       
-    }
-button{
-		max-width:100%;
-		margin-top:  5%;
-		margin-bottom: 2%;
-		width: 50%;
-	}
-  .container-fluid{
-  	margin-right: 30%;
-  	margin-top: 15%;
-  }
-  p{
-  	 font-size: 1em;
-  }
-	</style>
 
 	<div style="position: all; width: 70%; height: 110%;margin-top: 7%" class="container-fluid">
 

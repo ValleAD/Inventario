@@ -85,7 +85,7 @@ if(isset($_POST['codigo'])){
 
     echo'
     <br>
-    <form action="datos_vale.php" method="post">
+    <form action="Controller/añadir_vale.php" method="post">
         
         <div class="container">
             <div class="row">
@@ -94,8 +94,8 @@ if(isset($_POST['codigo'])){
                 <input class="form-control" type="text" name="departamento" required>
             </div>
             <div class="col-4 col-sm-4">
-                <label>Orden de trabajo</label>   
-                <input class="form-control" type="text" name="odt" required>
+                <label>Vale N°</label>   
+                <input class="form-control" type="number" name="odt" required>
             </div>
         </div>
         <br>
@@ -137,7 +137,7 @@ if(isset($_POST['codigo'])){
                <td><input type="number"  class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
                <td><input type="text"  class="form-control" readonly name="desc[]" value ="<?php  echo $productos['descripcion']; ?>"></td>
                <td><input type="text"  class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
-               <td><input type="number"  class="form-control"  name="cant[]" required></td>
+               <td><input type="number"  class="form-control" readonly name="cant[]" values = "<?php  echo $productos['stock']; ?>"></td>
                <td><input type="number"  class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
             </tr>
    
@@ -165,25 +165,6 @@ if(isset($_POST['codigo'])){
             } 
         </style>
     </form>';
-                if (isset($_POST['submit'])) {
-                $departamento = $_POST['departamento'];
-                $odt = $_POST['odt'];
-
-                $insert = "INSERT INTO tb_vale (departamento, odt) VALUES ('$departamento','$odt')";
-                $query = mysqli_query($conn, $insert);
-
-            if ($query) {
-            echo "<script> alert('Su producto fue registrado correctamente');
-        
-            </script>
-            ";
-            }else {
-            echo "<script> alert('UUPS!! Algo no fue mal escrito');
-            location.href = 'form_vale.php';
-            </script>
-            ";
-            }
-                }
 }
 ?>
 </section>

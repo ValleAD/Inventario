@@ -82,7 +82,7 @@ die();
         </div>
     </div>            
 </div>
-
+ 
 <div class="col-xs-4" style="position: initial">
     <div class="well" style="margin:5%">
       <button id="btn-agregar" class="btn btn-block btn-default bg-success" type="button" style="color: white;">Agregar Producto</button>                
