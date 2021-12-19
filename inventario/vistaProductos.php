@@ -30,29 +30,7 @@ die();
       <link rel="stylesheet" type="text/css" href="sweetalert2/sweetalert2.min.css">
     <title>Productos</title>
 </head>
-<style type="text/css">
-   #form{
-    background: transparent;
-    margin: 0;
-    padding: 0;
-   }
 
-    button{
-        max-width:100%;
-        margin-top:  5%;
-        margin-bottom: 2%;
-        width: 40%;
-    }
-    label{
-        margin-left: 5%;
-    }
-        @media (max-width: 952px){
-    table{
-        width: 10%;
-    }
-  
- }
-    </style>
 
 <body>
     <div class=" container table-responsive ">
@@ -69,7 +47,7 @@ die();
                 <td class="table-info text-dark"><strong>U/M</strong></td>
                 <td class="table-info text-dark"><strong>Cantidad</strong></td>
                 <td class="table-info text-dark"><strong>Costo unitario</strong></td>
-                <td  class="table-info text-dark"><strong>Accion</strong></td>
+                <td colspan="2"  class="table-info text-dark"><strong>Accion</strong></td>
                 
             </tr>
             <td id="td" colspan="8"><h4>No se encontraron nigun  resutados 😥</h4></td>
@@ -86,11 +64,11 @@ die();
     }
    
 </style>
-            <tr >
+            <tr>
                <td class="delete"><?php  echo $productos['codProductos']; ?></td>
                <td class="delete"><?php  echo $productos['catalogo']; ?></td>
                <td class="delete"><?php  echo $productos['nombre']; ?></td>
-               <td class="delete"><?php  echo $productos['descripcion']; ?></td>
+               <td class="delete"><?php  echo $productos['Descripcion']; ?></td>
                <td class="delete"><?php  echo $productos['unidad_medida']; ?></td>
                <td class="delete"><?php  echo $productos['stock']; ?></td>
                <td class="delete">$<?php  echo $productos['precio']; ?></td>
@@ -99,7 +77,7 @@ die();
 <!--**********************************************************************************************************************************************************************************-->
   <!--Botones para actualizar y eliminar-->
                <td><a class="btn btn-primary swal2-styled.swal2-confirm" data-toggle="modal" data-target="#exampleModal" class="text-primary"><i class="far fa-edit"></i></a> 
-               <a data-toggle="modal" data-target="#delete"  class="btn btn-danger" class="text-danger"> <i class="fas fa-trash"></i> </a></td>
+                <a data-toggle="modal" data-target="#delete"  class="btn btn-danger" class="text-danger"> <i class="fas fa-trash"></i> </a></td>
             </tr>
             <div class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
               
