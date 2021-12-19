@@ -123,7 +123,7 @@ die();
 
     </div>
     <div class="col">
-      <input  class="form-control" name="descripcion" value="<?php  echo $productos['descripcion']; ?>"style="background-color: #FDF6F0"><br>
+      <input  class="form-control" name="descripcion" value="<?php  echo $productos['Descripcion']; ?>"style="background-color: #FDF6F0"><br>
 
     </div>
    
