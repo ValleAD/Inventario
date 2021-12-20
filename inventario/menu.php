@@ -34,7 +34,17 @@ if(!isset($_SESSION['signin'])){
             nav{
                 max-width: 100%;
             }
-  
+             img{
+        display: flex;
+        max-width:100%;
+        min-width: 35%;
+        align-items: center;
+        padding: 30px;
+        justify-content: center;
+    }
+  .btn{
+    margin-right: 45%;
+     }
 }
 </style>
     <nav>
@@ -58,7 +68,7 @@ if(!isset($_SESSION['signin'])){
     $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
     while ($consulta =mysqli_fetch_array($data)) {
 ?>
-    <button class="btn" data-toggle="modal" data-target="#delete" style="margin-right: 2%; margin-left: 8%;background:transparent;color: white;"><?php echo $consulta['firstname'];?> <?php echo $consulta['lastname'];?></button>
+    <button class="btn" data-toggle="modal" data-target="#delete" style="background:transparent;float: right;margin-top: 1%; color: white;"><?php echo $consulta['username'];?></button>
 <!-- Delete -->
 <div class="modal fade" id="delete" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">
@@ -108,7 +118,6 @@ if(!isset($_SESSION['signin'])){
             </style>
             </div>
             <div class="modal-footer">
-        
         <a href="log/logout.php" type="submit" id="Update" class="btn btn-danger" >Cerrar Seccion</a>
       </div>
            

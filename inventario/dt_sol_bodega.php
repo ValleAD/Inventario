@@ -39,7 +39,7 @@ die();
       echo 
       '
 <section>
-<form method="POST" action="pdf_bodega.php" target="_blank">
+<form method="POST" action="Exportar_PDF/pdf_bodega.php" target="_blank">
          
       <section>
         <div class="row">

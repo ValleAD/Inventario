@@ -68,7 +68,7 @@ die();
                <td class="delete"><?php  echo $productos['codProductos']; ?></td>
                <td class="delete"><?php  echo $productos['catalogo']; ?></td>
                <td class="delete"><?php  echo $productos['nombre']; ?></td>
-               <td class="delete"><?php  echo $productos['Descripcion']; ?></td>
+               <td class="delete"><?php  echo $productos['descripcion']; ?></td>
                <td class="delete"><?php  echo $productos['unidad_medida']; ?></td>
                <td class="delete"><?php  echo $productos['stock']; ?></td>
                <td class="delete">$<?php  echo $productos['precio']; ?></td>
@@ -123,7 +123,7 @@ die();
 
     </div>
     <div class="col">
-      <input  class="form-control" name="descripcion" value="<?php  echo $productos['Descripcion']; ?>"style="background-color: #FDF6F0"><br>
+      <input  class="form-control" name="descripcion" value="<?php  echo $productos['descripcion']; ?>"style="background-color: #FDF6F0"><br>
 
     </div>
    

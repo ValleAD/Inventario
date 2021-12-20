@@ -27,9 +27,9 @@ die();
 <section>
 <form action="form_sol_bodega.php" method="post">
 <br>
-    <div class="container">
+    <div class="container" style="position: initial">
         <div class="row">
-    <div class="col">
+    <div class="col" style="position: initial">
      <label>¿Cuántos productos desea solicitar?</label>
     </div>
    <div style="margin-bottom: 1%;margin-right: 1%;">

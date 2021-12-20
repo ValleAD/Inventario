@@ -32,14 +32,14 @@ die();
     
     if ( isset($_POST["cod"]) ) { 
 
-      $Depto =$_POST['depto'];
+      $Depto =$_POST['departamento'];
 
       $final = 0;
 
       echo 
       '
 <section>
-<form method="POST" action="pdf_vale.php" target="_blank">
+<form method="POST" action="Exportar_PDF/pdf_vale.php" target="_blank">
          
       <section>
         <div class="row">

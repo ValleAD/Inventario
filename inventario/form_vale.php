@@ -30,7 +30,7 @@ die();
 <br>
     <div class="container">
         <div class="row">
-    <div class="col">
+    <div class="col" style="position: initial">
      <label>¿Cuántos productos desea solicitar?</label>
     </div>
    <div style="margin-bottom: 1%;margin-right: 1%;">
@@ -50,7 +50,7 @@ die();
 
             echo'
             <form action="form_vale.php" method="post" style="margin-top: 2%;">
-            <div class="container">
+            <div class="container" style="position: initial">
                 <div class="row">
                     <div class="col-6 col-sm-3">
                     <input class="form-control" required type="number" name="codigo[]" id="codigo" style="margin-bottom: 2%;" placeholder="Ingrese el código del Producto">
@@ -87,7 +87,7 @@ if(isset($_POST['codigo'])){
     <br>
     <form action="Controller/añadir_vale.php" method="post">
         
-        <div class="container">
+        <div class="container" style="position: initial">
             <div class="row">
               <div class="col-4 col-sm-4">
                 <label>Departamento que solicita</label>   
@@ -135,7 +135,7 @@ if(isset($_POST['codigo'])){
     
             <tr>
                <td><input type="number"  class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
-               <td><input type="text"  class="form-control" readonly name="desc[]" value ="<?php  echo $productos['Descripcion']; ?>"></td>
+               <td><input type="text"  class="form-control" readonly name="desc[]" value ="<?php  echo $productos['descripcion']; ?>"></td>
                <td><input type="text"  class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
                <td><input type="number"  class="form-control" readonly name="cant[]" values = "<?php  echo $productos['stock']; ?>"></td>
                <td><input type="number"  class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
