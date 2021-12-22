@@ -10,6 +10,7 @@ session_start();
 die();
 
     ';
+    
 }
     
 ?>
@@ -29,8 +30,13 @@ die();
 <body>
 
 <?php
+
+
+$sql = "SELECT * FROM detalle_vale WHERE coddetallevale";
     
-    if ( isset($_POST["cod"]) ) { 
+
+    
+    if ( isset($_POST["submits"]) ) { 
 
       $Depto =$_POST['departamento'];
 
@@ -80,11 +86,10 @@ die();
       
   echo'  
       <tr >
-        <td><input name="cod[]" value="' .$codigo. '" style="width: 120px; border: none"></td>
-        <td><input name="desc[]" value="'.$des. '" style="border: none"></td>
-        <td><input name="um[]" value="'.$um. '" style="width: 60px; border: none"></td>
-        <td><input name="cant[]" value="'.$cantidad. '" style="width: 60px; border: none"></td>
-        <td><input name="cost[]" value="'.$cost. '" style="width: 90px; border: none"></td>
+        <td><input name="cod[]" value="' .$productos['codigo']. '" style="width: 120px; border: none"></td>
+        <td><input name="desc[]" value="'.$productos['descripcion']. '" style="border: none"></td>
+        <td><input name="um[]" value="'.$productos['unidadmedida']. '" style="width: 60px; border: none"></td>
+        <td><input name="cant[]" value="'.$productos['stock']. '" style="width: 60px; border: none"></td>
         <td><input name="tot[]" value="$'.$total[$i]. '" style="width: 90px; border: none"></td>
       </tr>'; 
 }

@@ -85,13 +85,17 @@ if(isset($_POST['codigo'])){
 
     echo'
     <br>
-    <form action="dt_sol_bodega.php" method="post">
+    <form action="Controller/añadir_bodega.php.php" method="post">
         
         <div class="container">
             <div class="row">
               <div class="col-6 col-sm-3">
                 <label>Departamento</label>   
-                <input class="form-control" type="text" name="depto" required>
+                <input class="form-control" type="text" name="departamento" required>
+            </div>
+            <div class="col-4 col-sm-4">
+                <label>Vale N°</label>   
+                <input class="form-control" type="number" name="odt" required>
             </div>
         </div>
         
@@ -130,11 +134,11 @@ $result = mysqli_query($conn, $sql);
 </style>
     
             <tr>
-               <td><input type="number"  class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
-               <td><input type="text"  class="form-control" readonly name="desc[]" value ="<?php  echo $productos['Descripcion']; ?>"></td>
-               <td><input type="text"  class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
-               <td><input type="number"  class="form-control"  name="cant[]" required></td>
-               <td><input type="number"  class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
+               <td><input type="number"  class="form-control" readonly name="cod" value ="<?php  echo $productos['codProductos']; ?>"></td>
+               <td><input type="text"  class="form-control" readonly name="desc" value ="<?php  echo $productos['descripcion']; ?>"></td>
+               <td><input type="text"  class="form-control" readonly name="um" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
+               <td><input type="number"  class="form-control"  name="cant" required></td>
+               <td><input type="number"  class="form-control" readonly name="cu" value ="<?php  echo $productos['precio']; ?>"></td>    
             </tr>
    
 <?php        }
@@ -143,8 +147,8 @@ $result = mysqli_query($conn, $sql);
     echo ' 
     </table>
     
-    <input class="btn btn-lg" type="submit" value="Enviar" id="enviar">
-        <style>
+    <input class="btn btn-lg" type="submit" value="Enviar" id="enviar" name="submits">
+    <style>
             #enviar{
             margin-left: 1.5%; 
             background: rgb(5, 65, 114); 
@@ -162,7 +166,5 @@ $result = mysqli_query($conn, $sql);
 }
 ?>
 </section>
-<script type="text/javascript" src="asset/js/bootstrap.js"></script>
-<script src="asset/js/jquery-ui/jquery-ui.min.js"></script>
 </body>
 </html>
