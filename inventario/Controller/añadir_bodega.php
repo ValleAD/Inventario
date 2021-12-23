@@ -18,15 +18,16 @@ if (isset($_POST['submits'])) {
         $result = mysqli_query($conn, $sql); 
         if ($result) {
             echo "<script> alert('Su solicitud fue guardada correctamente');
-            location.href = '../home.php';
+            location.href = '../datos_vale.php';
             </script>
             ";
           }else {
             echo "<script> alert('UUPS!! Algo no fue mal escrito');
-            location.href = '../form_sol_bodega.php';
+            location.href = '../form_vale.php';
             </script>
             ";
          }
+
          //CRUD que trae los productos seleccionados por el id de 'tb_productos' y los captura y los inserta en la nueva tabla llamada
          //detalle_bodega
          if($result){

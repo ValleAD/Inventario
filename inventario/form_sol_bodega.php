@@ -19,15 +19,16 @@ die();
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="styles/estilo.css" > 
+    
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">  
-    <title>Solicitud a Bodega</title>
+    <title>Solicitud Bodega</title>
 </head>
 <body>
 
 <section>
-<form action="form_sol_bodega.php" method="post">
+<form action="form_vale.php" method="post">
 <br>
-    <div class="container" style="position: initial">
+    <div class="container">
         <div class="row">
     <div class="col" style="position: initial">
      <label>¿Cuántos productos desea solicitar?</label>
@@ -41,7 +42,6 @@ die();
     </div>
   </div>
 </div>
-
 </form>
 <?php
     if(isset($_POST['cantidad'])){
@@ -49,11 +49,11 @@ die();
         for($x = 1; $x <= $cantidad; $x++){
 
             echo'
-            <form action="form_sol_bodega.php" method="post" style="margin-top: 2%;">
-            <div class="container">
+            <form action="form_vale.php" method="post" style="margin-top: 2%;">
+            <div class="container" style="position: initial">
                 <div class="row">
                     <div class="col-6 col-sm-3">
-                    <input class="form-control" type="number" name="codigo[]" id="codigo" style="margin-bottom: 2%;" placeholder="Ingrese el código del Producto">
+                    <input class="form-control" required type="number" name="codigo[]" id="codigo" style="margin-bottom: 2%;" placeholder="Ingrese el código del Producto">
                     </div>
                 </div>
             </div>
@@ -85,12 +85,12 @@ if(isset($_POST['codigo'])){
 
     echo'
     <br>
-    <form action="Controller/añadir_bodega.php.php" method="post">
+    <form action="Controller/añadir_bodega.php" method="post">
         
-        <div class="container">
+        <div class="container" style="position: initial">
             <div class="row">
-              <div class="col-6 col-sm-3">
-                <label>Departamento</label>   
+              <div class="col-4 col-sm-4">
+                <label>Departamento que solicita</label>   
                 <input class="form-control" type="text" name="departamento" required>
             </div>
             <div class="col-4 col-sm-4">
@@ -98,9 +98,7 @@ if(isset($_POST['codigo'])){
                 <input class="form-control" type="number" name="odt" required>
             </div>
         </div>
-        
         <br>
-        
         <div class="table-responsive">
         <table class="table">
            <tr id="head">
@@ -116,39 +114,43 @@ if(isset($_POST['codigo'])){
             </tr>';
 
 
+           
+
+
     for($i = 0; $i < count($_POST['codigo']); $i++){
 
     
     $codigo = $_POST['codigo'][$i];
-    
-$sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
-$result = mysqli_query($conn, $sql);
+    $sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
+    $result = mysqli_query($conn, $sql);
 
     
-    while ($productos = mysqli_fetch_array($result)){ ?>
-<style type="text/css">
-     #td{
+    while ($productos = mysqli_fetch_array($result)){ ?>    
+        <style type="text/css">
+        #td{
         display: none;
     }
-    
+
 </style>
     
             <tr>
                <td><input type="number"  class="form-control" readonly name="cod" value ="<?php  echo $productos['codProductos']; ?>"></td>
                <td><input type="text"  class="form-control" readonly name="desc" value ="<?php  echo $productos['descripcion']; ?>"></td>
                <td><input type="text"  class="form-control" readonly name="um" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
-               <td><input type="number"  class="form-control"  name="cant" required></td>
+               <td><input type="number"  class="form-control"  name="cant" values = "<?php  echo $productos['stock']; ?>"></td>
                <td><input type="number"  class="form-control" readonly name="cu" value ="<?php  echo $productos['precio']; ?>"></td>    
             </tr>
    
-<?php        }
+        <?php }
     }
+    
+
 
     echo ' 
     </table>
     
     <input class="btn btn-lg" type="submit" value="Enviar" id="enviar" name="submits">
-    <style>
+        <style>
             #enviar{
             margin-left: 1.5%; 
             background: rgb(5, 65, 114); 
@@ -166,5 +168,6 @@ $result = mysqli_query($conn, $sql);
 }
 ?>
 </section>
+
 </body>
 </html>
