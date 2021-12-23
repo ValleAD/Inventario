@@ -33,13 +33,14 @@ die();
 
 
 <body>
-    <div class=" container table-responsive ">
+    <div class=" container table-responsive " >
         <h2 class="text-center mg-t" style="color: #fff; margin-top: 2%;">Inventario de productos</h2>
+        <p style="margin-top: 5%;" ></p>
         <table class="table table-dark table-hover table-bordered container-fluid" style="vertical-align: bottom;">
             <tr>
                 <a href="form_vale.php"  style="margin-right: 1%;" class="text btn btn-success "> <i class="bi bi-search"></i> <span>Buscar Producto</span> </a>
                 <a href="regi_producto.php" class="text btn btn-info "><i class="bi bi-file-earmark-plus-fill"></i> <span>Nuevo Producto</span> </a>
-
+             
                 <td class="table-info text-dark"><strong>Código</strong></td>
                 <td class="table-info text-dark"><strong>Codificación de catálogo</strong></td>
                 <td class="table-info text-dark"><strong>Nombre</strong></td>
@@ -52,6 +53,9 @@ die();
             </tr>
             <td id="td" colspan="8"><h4>No se encontraron nigun  resutados 😥</h4></td>
             </tr>
+            <a href="home.php" style="margin-left: 1%;" class="text btn btn-info "><span>Volver</span> </a>
+
+            
     <?php
     include 'Model/conexion.php';
     $sql = "SELECT * FROM tb_productos";
