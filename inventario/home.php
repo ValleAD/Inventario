@@ -44,7 +44,9 @@ die();
             h2{
                 margin-top: 44%;
             }
+        }
     </style>
+    
       <center> <h1 id="h1" style="margin-top: 13%">Bienvenidos al Sistema de Inventario del
        <br> 
       Hospital Nacional Santa Teresa de Zacatecoluca</h1></center>

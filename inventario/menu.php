@@ -53,7 +53,7 @@ if(!isset($_SESSION['signin'])){
             <i class="fas fa-bars"></i>
         </label>
         <a style="margin-left:-2.5%;margin-top: -1%; width: 1%;" href="home.php" class="enlace">
-            <img src="img/log.png "  alt="" class="logo" width="60" height="65" >
+            <img src="img/log.png"  alt="" class="logo" width="60" height="65" >
         </a>
         <ul>
             <li><a id="a" href="vistaProductos.php">Ver Productos</a></li>
