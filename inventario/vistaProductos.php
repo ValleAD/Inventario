@@ -13,6 +13,7 @@ die();
     ';
 }
 ?>
+<?php include ('menu.php')?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -34,7 +35,8 @@ die();
 
 <body>
     <div class=" container table-responsive " >
-        <h2 class="text-center mg-t" style="color: #fff; margin-top: 2%;">Inventario de productos</h2>
+      
+        <h2 class="text-center mg-t" style="color: #fff; margin-top: 2%;">Inventario de Productos</h2>
         <p style="margin-top: 5%;" ></p>
         <table class="table table-dark table-hover table-bordered container-fluid" style="vertical-align: bottom;">
             <tr>
@@ -53,8 +55,7 @@ die();
             </tr>
             <td id="td" colspan="8"><h4>No se encontraron nigun  resutados 😥</h4></td>
             </tr>
-            <a href="home.php" style="margin-left: 1%;" class="text btn btn-info "><span>Volver</span> </a>
-
+    
             
     <?php
     include 'Model/conexion.php';
