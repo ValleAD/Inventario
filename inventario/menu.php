@@ -37,9 +37,8 @@ if(!isset($_SESSION['signin'])){
              img{
         display: flex;
         max-width:100%;
-        min-width: 35%;
+        min-width: 100%;
         align-items: center;
-        padding: 30px;
         justify-content: center;
     }
   .btn{
@@ -52,8 +51,8 @@ if(!isset($_SESSION['signin'])){
         <label for="check" class="checkbtn">
             <i class="fas fa-bars"></i>
         </label>
-        <a style="margin-left:-2.5%;margin-top: -1%; width: 1%;" href="home.php" class="enlace">
-            <img src="img/log.png"  alt="" class="logo" width="60" height="65" >
+        <a style="margin-left:-2.5%;margin-top: 0.2%;" style="width:100%;" href="home.php" class="enlace">
+            <img src="img/log.png"  alt="" class="logo" >
         </a>
         <ul>
             <li><a id="a" href="vistaProductos.php">Ver Productos</a></li>
@@ -122,11 +121,11 @@ if(!isset($_SESSION['signin'])){
       </div>
            
         </div>
-    </div>
+        </nav> </div>
 </div>
 </div>
         </ul>
-    </nav>
+   
     <script src="Plugin/bootstrap/js/jquery.slim.min.js"></script>
    
     <script src="Plugin/bootstrap/js/bootstrap.min.js"></script>
