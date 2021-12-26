@@ -134,11 +134,11 @@ if(isset($_POST['codigo'])){
 </style>
     
             <tr>
-               <td><input type="number"  class="form-control" readonly name="cod" value ="<?php  echo $productos['codProductos']; ?>"></td>
-               <td><input type="text"  class="form-control" readonly name="desc" value ="<?php  echo $productos['descripcion']; ?>"></td>
-               <td><input type="text"  class="form-control" readonly name="um" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
-               <td><input type="number"  class="form-control"  name="cant" values = "<?php  echo $productos['stock']; ?>"></td>
-               <td><input type="number"  class="form-control" readonly name="cu" value ="<?php  echo $productos['precio']; ?>"></td>    
+               <td><input type="number"  class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
+               <td><input type="text"  class="form-control" readonly name="desc[]" value ="<?php  echo $productos['descripcion']; ?>"></td>
+               <td><input type="text"  class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
+               <td><input type="number"  class="form-control"  name="cant[]" values = "<?php  echo $productos['stock']; ?>"></td>
+               <td><input type="number"  class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
             </tr>
    
         <?php }

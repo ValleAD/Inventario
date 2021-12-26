@@ -100,7 +100,7 @@ die();
                #ver{
                 margin-left: 2%; 
                 background: rgb(5, 65, 114); 
-                color: #fff; margin-bottom: 2%; 
+                color: #fff; margin-bottom: 2%;  
                 border: rgb(5, 65, 114);
                }
                #ver:hover{

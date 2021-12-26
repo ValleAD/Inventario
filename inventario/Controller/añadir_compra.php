@@ -5,13 +5,12 @@
 include '../Model/conexion.php';
 
 
-if (isset($_POST['sumbit'])) {
 
   for($i = 0; $i < count($_POST['cod']); $i++)
     {
       $codigo_producto  = $_POST['cod'][$i];
-      $catalogo         = $_POST['catal'][$i];
-      $Descripción      = $_POST['descr'][$i];
+      $catalogo         = $_POST['cat'][$i];
+      $Descripción      = $_POST['desc'][$i];
       $u_m              = $_POST['um'][$i];
       $cantidad         = $_POST['cant'][$i];
       $cost             = $_POST['cu'][$i];
@@ -26,12 +25,12 @@ if (isset($_POST['sumbit'])) {
         ";
       }else {
         echo "<script> alert('UUPS!! Algo no fue mal escrito');
-        location.href = '../form_compra.php';
+        location.href = '../home.php';
         </script>
         ";
       }
 
-        $$nSolicitud = $_POST['nsolicitud'];
+        $nSolicitud = $_POST['nsolicitud'];
         $dependencia = $_POST['dependencia'];
         $plazo = $_POST['plazo'];
         $u_t= $_POST['unidad_tecnica'];
@@ -53,5 +52,4 @@ if (isset($_POST['sumbit'])) {
       }
      
     }
-  }
 ?>

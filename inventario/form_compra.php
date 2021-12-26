@@ -26,7 +26,7 @@ die();
     <body >
 
 
-  <form style="width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%;"action="dt_sol_compra.php" method="POST">
+  <form style="width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%;"action="Controller/añadir_compra.php" method="POST">
 <ol class="breadcrumb">
   <li><a id="a" href="home.php">Inicio</a></li>/
   <li class="active">Solicitud de Compra</li>
@@ -62,17 +62,12 @@ form{
     </div>
     <div class="col-6 col-sm-4" style="position: initial">
       <label>Unidad Tecnica</label> 
-      <input class="form-control" type="int" name="unidad_tecnica" id="como3" required>
+      <input class="form-control" type="text" name="unidad_tecnica" id="como3" required>
       <br>
     </div>
     <div class="col-6 col-sm-4" style="position: initial">
-      <label>Fecha</label> 
+      <label>Descripcion Solicitante</label> 
       <input class="form-control" type="text" name="descripcion_solicitud" id="como3" required>
-      <br>
-  </div>
-  <div class="col-6 col-sm-4" style="position: initial">
-      <label>Fecha</label> 
-      <input class="form-control" type="date" name="fech" id="como3" required>
       <br>
   </div>
   
@@ -139,7 +134,8 @@ form{
     <hr />
     
     <div class="text-right">
-        <button  class="btn btn-success btn-lg btn-block">Guardar</button>
+        <button  class="btn btn-success btn-lg btn-block" name="submit">Guardar</button>
+        <a id="ver" class="btn btn-lg" href="vistaProductos.php">Ver Productos</a>
     </div>
 </form>
 
