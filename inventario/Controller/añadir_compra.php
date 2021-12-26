@@ -3,7 +3,7 @@
 //CRUD para guardar datos enviados
 // de re_producto.php y se guarde en la tabla tb_productos mysql
 include '../Model/conexion.php';
-
+ 
 
 
   for($i = 0; $i < count($_POST['cod']); $i++)
@@ -20,12 +20,12 @@ include '../Model/conexion.php';
 
       if ($query) {
         echo "<script> alert('Su producto fue registrado correctamente');
-        location.href = '../vistaProductos.php';
+        location.href = '../dt_compra.php';
         </script>
         ";
       }else {
         echo "<script> alert('UUPS!! Algo no fue mal escrito');
-        location.href = '../home.php';
+        location.href = '../form_compra.php';
         </script>
         ";
       }
@@ -41,7 +41,7 @@ include '../Model/conexion.php';
         $result = mysqli_query($conn, $insert);
       if ($result)  {
         echo "<script> alert('Su producto fue registrado correctamente');
-        location.href = '../vistaProductos.php';
+        location.href = '../dt_compra.php';
         </script>
         ";
       }else {

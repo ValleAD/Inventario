@@ -19,12 +19,12 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 
       if ($query) {
         echo "<script> alert('Su producto fue registrado correctamente');
-        location.href = '../vistaProductos.php';
+        location.href = '../dt_bodega.php';
         </script>
         ";
       }else {
         echo "<script> alert('UUPS!! Algo no fue mal escrito');
-        location.href = '../home.php';
+        location.href = '../form_sol_bodega.php';
         </script>
         ";
       }
@@ -38,12 +38,12 @@ for($i = 0; $i < count($_POST['cod']); $i++)
         $result = mysqli_query($conn, $sql); 
         if ($result) {
             echo "<script> alert('Su solicitud fue guardada correctamente');
-            location.href = '../datos_vale.php';
+            location.href = '../dt_bodega.php';
             </script>
             ";
           }else {
             echo "<script> alert('UUPS!! Algo no fue mal escrito');
-            location.href = '../form_vale.php';
+            location.href = '../form_sol_bodega.php';
             </script>
             ";
          }

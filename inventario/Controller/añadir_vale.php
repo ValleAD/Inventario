@@ -18,12 +18,12 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 
       if ($query) {
         echo "<script> alert('Su producto fue registrado correctamente');
-        location.href = '../vistaProductos.php';
+        location.href = '../datos_vale.php';
         </script>
         ";
       }else {
         echo "<script> alert('UUPS!! Algo no fue mal escrito');
-        location.href = '../home.php';
+        location.href = '../form_vale.php';
         </script>
         ";
       }
