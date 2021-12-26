@@ -101,7 +101,7 @@ CREATE TABLE detalle_vale (
 CREATE TABLE detalle_compra (
   codCompra int(11) NOT NULL AUTO_INCREMENT,
   codigo int(15) NOT NULL,
-  codCatalogo int(20) NOT NULL,
+  catalogo int(20) NOT NULL,
   descripcion varchar(200) NOT NULL,
   unidad_medida varchar(2) NOT NULL DEFAULT 'U',
   stock int(200) NOT NULL,
