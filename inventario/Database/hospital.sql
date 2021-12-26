@@ -62,7 +62,7 @@ CREATE TABLE tb_vale (
 CREATE TABLE tb_compra (
   nSolicitud int(11) NOT NULL,
   dependencia varchar(50) NOT NULL,
-  Plazo varchar(50) NULL,
+  plazo varchar(50) NULL,
   unidad_tecnica int(20) NOT NULL,
   descripcion_solicitud int(20) NOT NULL,
   fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),

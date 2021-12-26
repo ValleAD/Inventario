@@ -9,13 +9,12 @@ include '../Model/conexion.php';
     {
       $codigo_producto  = $_POST['cod'][$i];
       $catalogo         = $_POST['catal'][$i];
-      $nombre_articulo  = $_POST['nombre'][$i];
       $Descripción      = $_POST['descr'][$i];
       $u_m              = $_POST['um'][$i];
       $cantidad         = $_POST['cant'][$i];
       $cost             = $_POST['cu'][$i];
 
-      $insert = "INSERT INTO detalle_compra (codProducto, catalogo, nombre, descripcion, unidad_medida, stock, precio) VALUES ('$codigo_producto','$catalogo', '$nombre_articulo', '$Descripción', '$u_m', '$cantidad', '$cost')";
+      $insert = "INSERT INTO detalle_compra (codigo, catalogo, descripcion, unidad_medida, stock, precio) VALUES ('$codigo_producto','$catalogo', '$Descripción', '$u_m', '$cantidad', '$cost')";
       $query = mysqli_query($conn, $insert);
 
       if ($query) {
@@ -30,7 +29,7 @@ include '../Model/conexion.php';
         ";
       }
       if ($query) {
-        $insert = "INSERT INTO tb_productos (codProductos, catalogo, nombre, descripcion, unidad_medida, stock, precio) VALUES ('$codigo_producto','$catalogo', '$nombre_articulo', '$Descripción', '$u_m', '$cantidad', '$cost')";
+        $insert = "INSERT INTO tb_compra (nSolicitud, dependencia, nombre, descripcion, unidad_medida, stock, precio) VALUES ('$codigo_producto','$catalogo', '$nombre_articulo', '$Descripción', '$u_m', '$cantidad', '$cost')";
         $query = mysqli_query($conn, $insert);
       }
      
