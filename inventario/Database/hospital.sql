@@ -63,7 +63,7 @@ CREATE TABLE tb_compra (
   nSolicitud int(11) NOT NULL,
   dependencia varchar(50) NOT NULL,
   plazo varchar(50) NULL,
-  unidad_tecnica int(20) NOT NULL,
+  unidad_tecnica varchar(75) NOT NULL,
   descripcion_solicitud int(20) NOT NULL,
   fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (nSolicitud)

@@ -30,7 +30,7 @@ die();
 <ol class="breadcrumb">
   <li><a id="a" href="home.php">Inicio</a></li>/
   <li class="active">Solicitud de Compra</li>
-  <style type="text/css">
+ <!-- <style type="text/css">
             #a:hover{
                 background: transparent;
                     
@@ -42,24 +42,40 @@ form{
     margin-left: 15%;
 }
 
-    </style>
+    </style>-->
 </ol>
 <center>
 <div class="container">
 <div class="row">
     <div class="col-6 col-sm-4" style="position: initial">
        <label>Número de Solicitud</label> 
-      <input class="form-control" type="number" name="sol" id="como1" required>
+      <input class="form-control" type="number" name="nsolicitud" id="como1" required>
     </div>
     <div class="col-6 col-sm-4" style="position: initial">
       <label>Dependencia que Solicita</label>   
-      <input class="form-control" type="text" name="depto" id="como2" required>
+      <input class="form-control" type="text" name="dependencia" id="como2" required>
     </div>
-<div class="col-6 col-sm-4" style="position: initial">
+    <div class="col-6 col-sm-4" style="position: initial">
+      <label>Plazo y Numero de Entregas</label> 
+      <input class="form-control" type="text" name="plazo" id="como3" required>
+      <br>
+    </div>
+    <div class="col-6 col-sm-4" style="position: initial">
+      <label>Unidad Tecnica</label> 
+      <input class="form-control" type="int" name="unidad_tecnica" id="como3" required>
+      <br>
+    </div>
+    <div class="col-6 col-sm-4" style="position: initial">
+      <label>Fecha</label> 
+      <input class="form-control" type="text" name="descripcion_solicitud" id="como3" required>
+      <br>
+  </div>
+  <div class="col-6 col-sm-4" style="position: initial">
       <label>Fecha</label> 
       <input class="form-control" type="date" name="fech" id="como3" required>
       <br>
   </div>
+  
     </div>
 </div>
 </center>

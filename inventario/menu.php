@@ -58,8 +58,8 @@ if(!isset($_SESSION['signin'])){
             <li><a id="a" href="vistaProductos.php">Ver Productos</a></li>
             <li><a id="a" href="form_vale.php">Vale</a></li>
             <li><a id="a" href="form_sol_bodega.php">Solicitud a Bodega</a></li>
-            <li><a id="a" href="form_sol_almacen.php">Solicitud a Almacen</a></li>
-            <li><a id="a" href="form_sol_compra.php">Solicitud de compra</a></li>
+            <li><a id="a" href="form_almacen.php">Solicitud a Almacen</a></li>
+            <li><a id="a" href="form_compra.php">Solicitud de compra</a></li>
             <li><a id="a" href="form_sol_circulante.php">Solicitud de fondo circulante</a></li>
             
 <?php
