@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
 	$email = $_POST['email'];
 	$password = ($_POST['password']);
 	$cpassword = ($_POST['cpassword']);
-$verificar_usuario =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username ='$username'");
+	$verificar_usuario =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username ='$username'");
 
 if (mysqli_num_rows($verificar_usuario)>0) {
 	echo '
@@ -27,6 +27,7 @@ if (mysqli_num_rows($verificar_usuario)>0) {
 exit();
 }
 $ejecutar = mysqli_query($conn,$query);
+
 if ($password == $cpassword) {
 	$sql = "SELECT * FROM tb_usuarios WHERE username='$username' AND firstname='$firstname' AND lastname='$lastname' AND email='$email' AND password='$password'";
 	$result = mysqli_query($conn, $sql);
@@ -55,37 +56,31 @@ if ($password == $cpassword) {
 				        alert("!Error¡ Correo o contraseña incorrectos.");
 				        window.location ="signup.php";
 				        session_destroy();  
-				                </script>
-	';
-			}
-		} else {
-			 echo '
-    <script>
-        alert("!Error¡ Correo o contraseña incorrectos.");
-        window.location ="signup.php";
-        session_destroy();  
-                </script>
-	';
-		}
-		
-	} else {
-		 echo '
-    <script>
-        alert("!Error¡ Correo o contraseña incorrectos.");
-        window.location ="signup.php";
-        session_destroy();  
-                </script>
-	';
-	}
+				                </script>';
+				}
+		} 
 }
 
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head></head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
 <head>
 <meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="../styles/log.css" > 
     <link rel="stylesheet" href="../Plugin/bootstrap/css/bootstrap.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -93,48 +88,46 @@ if ($password == $cpassword) {
 	<title>Register</title>
 </head>
 <body>
+<div style="position: all; width: 70%; height: 110%;margin-top: 7%" class="container-fluid">
 
-	<div style="position: all; width: 70%; height: 110%;margin-top: 7%" class="container-fluid">
+<form id="form" style="position: all; width: 70%; height: 110%;margin-top: 7%"action="" method="POST" style="position: all; width: 70%; height: 110%;margin-top: 1%">
+<center>
+<h2 align="center">Registro de Usuario</h2><img src="../img/register.png" alt="logo" style="height: 25%;width: 25%;margin-top: 5%"></center>
 
-		<form id="form" style="position: all; width: 70%; height: 110%;margin-top: 7%"action="" method="POST" style="position: all; width: 70%; height: 110%;margin-top: 1%">
-		<center>
-		<h2 align="center">Registro de Usuario</h2><img src="../img/register.png" alt="logo" style="height: 25%;width: 25%;margin-top: 5%"></center>
-
-			<div class="container" style="position: all;">
-			<label>Nombre de usuario</label><br>
-				<input class="form-control" type="text"  name="username" value="<?php echo $username; ?>" required>
-			
-			<label>Nombre</label><br>
-				<input class="form-control" type="text"  name="firstname" value="<?php echo $firstname; ?>" required>
-			
-			<label>Apellido</label><br>
-				<input class="form-control" type="text"  name="lastname" value="<?php echo $lastname; ?>" required>
-			
-			<label>Correo</label><br>
-				<input class="form-control" type="email" name="email" value="<?php echo $email; ?>" required>
-			
-			<label>Contraseña</label><br>
-				<input class="form-control" type="password"  name="password" value="<?php echo $_POST['password']; ?>" required>
-          
-			<label>Confirmar Contraseña</label><br>
-				<input class="form-control" type="password"  name="cpassword" value="<?php echo $_POST['cpassword']; ?>" required>
-			</div>
-
-			<div>
-		<center><button type="submit" name="submit" class="btn btn-secondary">Registrarse</button></center>
-			</div>
-			<p class="account text-center">¿Ya tienes una cuenta? <a id="a" href="signin.php" style="margin-left:1%;">Inicar Sesión</a></p>
-			<style type="text/css">
-					#a{
-						width: 20%;
-						margin-left: 40%;
-					}
-					#a:hover{
-						text-decoration-line: underline;
-					}
-				</style>
-		</form>
+	<div class="container" style="position: all;">
+	<label>Nombre de usuario</label><br>
+		<input class="form-control" type="text"  name="username" value="<?php echo $username; ?>" required>
+	
+	<label>Nombre</label><br>
+		<input class="form-control" type="text"  name="firstname" value="<?php echo $firstname; ?>" required>
+	
+	<label>Apellido</label><br>
+		<input class="form-control" type="text"  name="lastname" value="<?php echo $lastname; ?>" required>
+	
+	<label>Correo</label><br>
+		<input class="form-control" type="email" name="email" value="<?php echo $email; ?>" required>
+	
+	<label>Contraseña</label><br>
+		<input class="form-control" type="password"  name="password" value="<?php echo $_POST['password']; ?>" required>
+  
+	<label>Confirmar Contraseña</label><br>
+		<input class="form-control" type="password"  name="cpassword" value="<?php echo $_POST['cpassword']; ?>" required>
 	</div>
 
+	<div>
+<center><button type="submit" name="submit" class="btn btn-secondary">Registrarse</button></center>
+	</div>
+	<p class="account text-center">¿Ya tienes una cuenta? <a id="a" href="signin.php" style="margin-left:1%;">Inicar Sesión</a></p>
+	<style type="text/css">
+			#a{
+				width: 20%;
+				margin-left: 40%;
+			}
+			#a:hover{
+				text-decoration-line: underline;
+			}
+		</style>
+</form>
+</div>
 </body>
 </html>
