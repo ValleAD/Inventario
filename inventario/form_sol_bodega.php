@@ -26,7 +26,7 @@ die();
 <body>
 
 <section>
-<form action="form_vale.php" method="post">
+<form action="form_sol_bodega.php" method="post">
 <br>
     <div class="container">
         <div class="row">
@@ -49,7 +49,7 @@ die();
         for($x = 1; $x <= $cantidad; $x++){
 
             echo'
-            <form action="form_vale.php" method="post" style="margin-top: 2%;">
+            <form action="form_sol_bodega.php" method="post" style="margin-top: 2%;">
             <div class="container" style="position: initial">
                 <div class="row">
                     <div class="col-6 col-sm-3">
@@ -94,7 +94,7 @@ if(isset($_POST['codigo'])){
                 <input class="form-control" type="text" name="departamento" required>
             </div>
             <div class="col-4 col-sm-4">
-                <label>Vale N°</label>   
+                <label>O. DE .T N°</label>   
                 <input class="form-control" type="number" name="odt" required>
             </div>
         </div>

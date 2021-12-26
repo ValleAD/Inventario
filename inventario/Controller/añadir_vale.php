@@ -5,8 +5,9 @@
 include '../Model/conexion.php';
 
 if (isset($_POST['submits'])) {
+ 
     $departamento = $_POST['departamento'];
-    $odt = $_POST['odt'];
+    $numero_vale = $_POST['numero_vale'];
     $codigo= $_POST['cod'];
     $descripcion= $_POST['desc'];
     $unidadmedida= $_POST['um'];
@@ -14,7 +15,7 @@ if (isset($_POST['submits'])) {
     $precio= $_POST['cu'];
     
 
-    $sql = "INSERT INTO tb_vale (departamento, odt) VALUES ('$departamento','$odt')";
+    $sql = "INSERT INTO tb_vale (codVale, departamento) VALUES ('$numero_vale', '$departamento')";
         $result = mysqli_query($conn, $sql); 
         if ($result) {
             echo "<script> alert('Su solicitud fue guardada correctamente');
@@ -31,11 +32,12 @@ if (isset($_POST['submits'])) {
          //CRUD que trae los productos seleccionados por el id de 'tb_productos' y los captura y los inserta en la nueva tabla llamada
          //detalle_bodega
          if($result){
-        $sql  = "INSERT INTO detalle_vale (codigo,descripcion,unidadmedida,stock,precio) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio')";
+        $sql  = "INSERT INTO detalle_vale (codigo,descripcion,unidad_medida,stock,precio) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio')";
         $result = mysqli_query($conn, $sql);
         
          }
-    }          
+    }  
+        
 
 
 ?>

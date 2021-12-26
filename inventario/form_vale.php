@@ -95,7 +95,7 @@ if(isset($_POST['codigo'])){
             </div>
             <div class="col-4 col-sm-4">
                 <label>Vale N°</label>   
-                <input class="form-control" type="number" name="odt" required>
+                <input class="form-control" type="number" name="numero_vale" required>
             </div>
         </div>
         <br>
