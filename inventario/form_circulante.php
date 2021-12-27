@@ -132,7 +132,7 @@ form{
     <hr>
     
     <div class="button21">
-        <button  class="button">Guardar</button>
+        <button  class="button"  style="margin-bottom:3%;">Guardar</button>
     </div>
 </form>
 

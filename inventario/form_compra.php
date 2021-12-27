@@ -175,7 +175,7 @@ form{
     </div>
     
     <div class="button21">
-        <button  class="button " name="submit">Guardar</button>
+        <button  class="button " name="submit" style="margin-bottom:3%;">Guardar</button>
         <a class="button button2" href="vistaProductos.php">Ver Productos</a>
     </div>
     
