@@ -26,6 +26,30 @@ die();
         <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
         
         <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">  
+        <style>
+
+.button21 {
+
+  text-align: center;
+}
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 12px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+ 
+
+}
+
+</style>
 </head>
 <body >
 
@@ -107,8 +131,8 @@ form{
     
     <hr>
     
-    <div class="text-right">
-        <button  class="btn btn-success btn-lg btn-block">Guardar</button>
+    <div class="button21">
+        <button  class="button">Guardar</button>
     </div>
 </form>
 

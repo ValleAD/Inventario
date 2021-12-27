@@ -22,6 +22,44 @@ die();
         <meta charset="utf-8" />
         <link rel="stylesheet" type="text/css" href="styles/style.css" > 
         <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
+
+        <style>
+
+.button21 {
+
+  text-align: center;
+}
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 12px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+ 
+
+}
+
+.button2 {  background-color: #008CBA;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 12px;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+</style>
   </head>
     <body >
 
@@ -136,12 +174,12 @@ form{
 </div>
     </div>
     
-    <hr />
-    
-    <div class="text-right">
-        <button  class="btn btn-success btn-lg btn-block" name="submit">Guardar</button>
-        <a id="ver" class="btn btn-lg" href="vistaProductos.php">Ver Productos</a>
+    <div class="button21">
+        <button  class="button " name="submit">Guardar</button>
+        <a class="button button2" href="vistaProductos.php">Ver Productos</a>
     </div>
+    
+
 </form>
 
 
