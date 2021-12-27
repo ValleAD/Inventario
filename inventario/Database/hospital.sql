@@ -70,7 +70,6 @@ CREATE TABLE tb_compra (
 );
 
 CREATE TABLE detalle_bodega (
-  coddetallebodega int(15) NOT NULL AUTO_INCREMENT,
   codigo int(15) NOT NULL,
   descripcion varchar(50) NOT NULL,
   unidad_medida varchar(11) NOT NULL DEFAULT 'U',
@@ -78,13 +77,12 @@ CREATE TABLE detalle_bodega (
   precio decimal(6,2) NOT NULL,
   odt_bodega int(15),
   fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-    PRIMARY KEY (coddetallebodega),
+    PRIMARY KEY (codigo),
     CONSTRAINT fk_tb_bodega_detalle_bodeha FOREIGN KEY (odt_bodega)
     REFERENCES tb_bodega(codBodega)
 );
 
 CREATE TABLE detalle_vale (
-  coddetallevale int(11) NOT NULL AUTO_INCREMENT,
   codigo int(15) NOT NULL,
   descripcion varchar(50) NOT NULL,
   unidad_medida varchar(11) NOT NULL DEFAULT 'U',
@@ -99,7 +97,6 @@ CREATE TABLE detalle_vale (
 
 
 CREATE TABLE detalle_compra (
-  codCompra int(11) NOT NULL AUTO_INCREMENT,
   codigo int(15) NOT NULL,
   catalogo int(20) NOT NULL,
   descripcion varchar(200) NOT NULL,
