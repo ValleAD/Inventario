@@ -70,6 +70,11 @@ form{
       <input class="form-control" type="text" name="descripcion_solicitud" id="como3" required>
       <br>
   </div>
+  <div class="col-6 col-sm-4" style="position: initial">
+      <label>Fecha</label> 
+      <input class="form-control" type="date" name="fecha" id="como3" required>
+      <br>
+    </div>
   
     </div>
 </div>

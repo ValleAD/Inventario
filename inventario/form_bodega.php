@@ -26,7 +26,7 @@ die();
 <body>
 
 <section>
-<form action="form_sol_bodega.php" method="post">
+<form action="form_bodega.php" method="post">
 <br>
     <div class="container">
         <div class="row">
@@ -49,7 +49,7 @@ die();
         for($x = 1; $x <= $cantidad; $x++){
 
             echo'
-            <form action="form_sol_bodega.php" method="post" style="margin-top: 2%;">
+            <form action="form_bodega.php" method="post" style="margin-top: 2%;">
             <div class="container" style="position: initial">
                 <div class="row">
                     <div class="col-6 col-sm-3">

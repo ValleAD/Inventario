@@ -57,10 +57,10 @@ if(!isset($_SESSION['signin'])){
         <ul>
             <li><a id="a" href="vistaProductos.php">Ver Productos</a></li>
             <li><a id="a" href="form_vale.php">Vale</a></li>
-            <li><a id="a" href="form_sol_bodega.php">Solicitud a Bodega</a></li>
-            <li><a id="a" href="form_almacen.php">Solicitud a Almacen</a></li>
+            <li><a id="a" href="form_bodega.php">Solicitud a Bodega</a></li>
             <li><a id="a" href="form_compra.php">Solicitud de compra</a></li>
-            <li><a id="a" href="form_sol_circulante.php">Solicitud de fondo circulante</a></li>
+            <li><a id="a" href="form_almacen.php">Solicitud a Almacen</a></li>
+            <li><a id="a" href="form_circulante.php">Solicitud de fondo circulante</a></li>
             
 <?php
     $cliente =$_SESSION['signin'];
@@ -71,7 +71,7 @@ if(!isset($_SESSION['signin'])){
 <!-- Delete -->
 <div class="modal fade" id="delete" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">
-        <div class="modal-content" style="background-color: hsla(0.5turn , 100% , 0.1% , 0.5 );color: white;">
+        <div class="modal-content" style="background-color: hsla(0.5turn , 100% , 0.1% , 1 );color: white;">
             <div class="modal-header">
                 <h5 class="modal-title">Información del Usuario</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
