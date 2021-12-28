@@ -59,6 +59,7 @@ if ($password == $cpassword) {
 				                </script>';
 				}
 		} 
+	}
 }
 
 ?>

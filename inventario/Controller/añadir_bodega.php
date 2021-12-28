@@ -24,7 +24,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
         ";
       }else {
         echo "<script> alert('UUPS!! Algo no fue mal escrito');
-        location.href = '../form_sol_bodega.php';
+        location.href = '../form_bodega.php';
         </script>
         ";
       }
@@ -43,7 +43,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
             ";
           }else {
             echo "<script> alert('UUPS!! Algo no fue mal escrito');
-            location.href = '../form_sol_bodega.php';
+            location.href = '../form_bodega.php';
             </script>
             ";
          }
