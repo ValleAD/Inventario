@@ -32,18 +32,13 @@ die();
 <?php
 
 
-$sql = "SELECT * FROM detalle_vale WHERE coddetallevale";
-    
 
-    
-    if ( isset($_POST["submits"]) ) { 
+   include 'Model/conexion.php';
+    $sql = "SELECT * FROM tb_vale";
+    $result = mysqli_query($conn, $sql);
+ while ($productos1 = mysqli_fetch_array($result)){
 
-      $Depto =$_POST['departamento'];
-
-      $final = 0;
-
-      echo 
-      '
+ echo'   
 <section>
 <form method="POST" action="Exportar_PDF/pdf_vale.php" target="_blank">
          
@@ -51,9 +46,9 @@ $sql = "SELECT * FROM detalle_vale WHERE coddetallevale";
         <div class="row">
       
           <div class="col-6 col-sm-3" style="position: initial">
-        
+      
               <label style="font-weight: bold;">Depto. o Servicio:</label>
-              <input readonly class="form-control"  type="text" value="' .$Depto. '" name="depto">
+              <input readonly class="form-control"  type="text" value="' .$productos1['departamento']. '" name="depto">
     
           </div>
         </div>
@@ -69,30 +64,23 @@ $sql = "SELECT * FROM detalle_vale WHERE coddetallevale";
             <td><strong>Cantidad</strong></td>
             <td><strong>Costo unitario</strong></td>
             <td><strong>Total</strong></td>
-          </tr>';
-
-      for($i = 0; $i < count($_POST['cod']); $i++)
-    {
-       
-        $codigo = $_POST['cod'][$i];
-        $des = $_POST['desc'][$i];
-        $um = $_POST['um'][$i];
-        $cantidad = $_POST['cant'][$i];
-        $cost = $_POST['cu'][$i];
-
-        $total[$i] = $cost * $cantidad;
-        $final = $final + $total[$i];
-      
+          </tr>';}
+ $sql = "SELECT * FROM detalle_vale";
+    $result = mysqli_query($conn, $sql);
+while ($productos = mysqli_fetch_array($result)){
+      $final =0;
       
   echo'  
       <tr >
         <td><input name="cod[]" value="' .$productos['codigo']. '" style="width: 120px; border: none"></td>
         <td><input name="desc[]" value="'.$productos['descripcion']. '" style="border: none"></td>
-        <td><input name="um[]" value="'.$productos['unidadmedida']. '" style="width: 60px; border: none"></td>
+        <td><input name="um[]" value="'.$productos['unidad_medida']. '" style="width: 60px; border: none"></td>
         <td><input name="cant[]" value="'.$productos['stock']. '" style="width: 60px; border: none"></td>
-        <td><input name="tot[]" value="$'.$total[$i]. '" style="width: 90px; border: none"></td>
+        <td><input name="cant[]" value="'.$productos['precio']. '" style="width: 60px; border: none"></td>
+        <td><input name="tot[]" value="$" style="width: 90px; border: none"></td>
       </tr>'; 
 }
+
       echo'
         <tr>
           <td></td>
@@ -100,7 +88,7 @@ $sql = "SELECT * FROM detalle_vale WHERE coddetallevale";
           <td></td>
           <td></td>
           <td><strong>Total</strong></td> 
-          <td><input name="tot_f" value="$'.$final.'" style="width: 90px; border: none"></td>
+          <td><input name="tot_f" value="$'.$final.'"  style="width: 90px; border: none"></td>
         </tr>
       </table>   
     <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
@@ -122,7 +110,6 @@ $sql = "SELECT * FROM detalle_vale WHERE coddetallevale";
 </form>
 </section>
       ';
-  }
 ?>            
 <?php include ('footer.php');?>
   </body>
