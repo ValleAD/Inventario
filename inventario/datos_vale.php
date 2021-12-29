@@ -31,7 +31,7 @@ die();
 
 <?php
 
-
+$final = 0;
 
    include 'Model/conexion.php';
     $sql = "SELECT * FROM tb_vale";
@@ -68,27 +68,28 @@ die();
  $sql = "SELECT * FROM detalle_vale";
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
-      $final =0;
       
+      $final += $productos['total'];
   echo'  
       <tr >
-        <td><input name="cod[]" value="' .$productos['codigo']. '" style="width: 120px; border: none"></td>
-        <td><input name="desc[]" value="'.$productos['descripcion']. '" style="border: none"></td>
-        <td><input name="um[]" value="'.$productos['unidad_medida']. '" style="width: 60px; border: none"></td>
-        <td><input name="cant[]" value="'.$productos['stock']. '" style="width: 60px; border: none"></td>
-        <td><input name="cant[]" value="'.$productos['precio']. '" style="width: 60px; border: none"></td>
-        <td><input name="tot[]" value="$" style="width: 90px; border: none"></td>
-      </tr>'; 
+        <td><input  name="cod[]" readonly value="' .$productos['codigo']. '" style="width: 120px; border: none"></td>
+        <td><input  name="desc[]" readonly value="'.$productos['descripcion']. '" style="border: none"></td>
+        <td><input  name="um[]" readonly value="'.$productos['unidad_medida']. '" style="width: 60px; border: none"></td>
+        <td><input  name="cant[]" readonly value="'.$productos['stock']. '" style="width: 60px; border: none"></td>
+        <td><input  name="cost[]" readonly value="$'.$productos['precio']. '" style="width: 60px; border: none"></td>
+        <td><input  name="tot[]" readonly value="$'.$productos['total']. '" style="width: 90px; border: none"></td>
+      </tr>';
+
 }
 
       echo'
         <tr>
           <td></td>
-          <td></td>
+          <td></td> 
           <td></td>
           <td></td>
           <td><strong>Total</strong></td> 
-          <td><input name="tot_f" value="$'.$final.'"  style="width: 90px; border: none"></td>
+          <td><input  name="tot_f" readonly value="$'.$final.'"  style="width: 90px; border: none; color: rgb(168, 8, 8); font-weight: bold;"></td>
         </tr>
       </table>   
     <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">

@@ -12,24 +12,12 @@ for($i = 0; $i < count($_POST['cod']); $i++)
       $unidadmedida= $_POST['um'][$i];
       $stock = $_POST['cant'][$i];
       $precio= $_POST['cu'][$i];
+
+        $total[$i] = $precio * $stock;
+        $final = $final + $total[$i];
+        $tot =  $total[$i];
+
       $numero_vale = $_POST['numero_vale'];
-
-      $insert = "INSERT INTO detalle_vale (codigo,descripcion,unidad_medida,stock,precio,numero_vale) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$numero_vale')";
-      $query = mysqli_query($conn, $insert);
-
-      if ($query) {
-        echo "<script> alert('Su producto fue registrado correctamente');
-        location.href = '../datos_vale.php';
-        </script>
-        ";
-      }else {
-        echo "<script> alert('UUPS!! Algo no fue mal escrito');
-        location.href = '../form_vale.php';
-        </script>
-        ";
-      }
-
-      
       $departamento = $_POST['departamento'];
 
       //crud para guardar los productos en la tabla tb_vale
@@ -46,6 +34,24 @@ for($i = 0; $i < count($_POST['cod']); $i++)
             </script>
             ";
          }
+         
+      $insert = "INSERT INTO detalle_vale (codigo,descripcion,unidad_medida,stock,precio, total, tot_final, numero_vale) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$tot','$final','$numero_vale')";
+      $query = mysqli_query($conn, $insert);
+
+      if ($query) {
+        echo "<script> alert('Su producto fue registrado correctamente');
+        location.href = '../datos_vale.php';
+        </script>
+        ";
+      }else {
+        echo "<script> alert('¡Error!');
+        location.href = '../form_vale.php';
+        </script>
+        ";
+      }
+
+      
+     
 
          //CRUD que trae los productos seleccionados por el id de 'tb_productos' y los captura y los inserta en la nueva tabla llamada
          //detalle_bodega
