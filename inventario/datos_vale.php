@@ -49,7 +49,18 @@ $final = 0;
       
               <label style="font-weight: bold;">Depto. o Servicio:</label>
               <input readonly class="form-control"  type="text" value="' .$productos1['departamento']. '" name="depto">
-    
+
+          </div>
+
+          <div class="col-6 col-sm-3" style="position: initial">
+            <label style="font-weight: bold;">N° de Vale:</label>
+            <input readonly class="form-control"  type="text" value="' .$productos1['codVale']. '" name="vale">
+          </div>
+
+          
+          <div class="col-6 col-sm-3" style="position: initial">
+            <label style="font-weight: bold;">Fecha:</label>
+              <input readonly class="form-control"  type="text" value="' .$productos1['fecha_registro']. '" name="fech">
           </div>
         </div>
       

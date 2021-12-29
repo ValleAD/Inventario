@@ -3,22 +3,27 @@
 if(isset($_POST['cod'])){
 
     $depto = $_POST['depto'];
+    $fech = $_POST['fech'];
+    
         
     $final = 0;
-require('fpdf/fpdf.php');
+
+require('../fpdf/fpdf.php');
 
 class PDF extends FPDF{ 
 
 function Header(){
+
+    $vale = $_POST['vale'];
     
     $this->Cell(10);
-    $this->Image('img/log_1.png', 150, 10, 50);
-    $this->Image('img/log_1.png', 12, null, 50);
+    $this->Image('../img/log_1.png', 150, 10, 50);
+    $this->Image('../img/log_1.png', 12, null, 50);
     $this->Ln(5);
     $this->SetFont('Arial', 'B', 12);
     $this->Cell(70, 15, 'HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA',0, 0, 'c');
     $this->SetFont('Arial', '', 11);
-    $this->Cell(160, 15, ('Vale No.: '), 0, 0, 'C', 0);
+    $this->Cell(160, 15, ('Vale No.: '.$vale), 0, 0, 'C', 0);
     $this->Ln();
     $this->SetFont('Arial', 'B', 12);
     $this->Cell(70, 5, 'DEPARTAMENTO DE MANTENIMIENTO',0, 0, 'c');
@@ -35,8 +40,8 @@ $pdf->SetFont('Arial', '', '12');
 
 
 $pdf->Ln();
-$pdf->Cell(25, 10, utf8_decode('Fecha: '), 0, 0, 'C', 0);   
-$pdf->Cell(126, 10, 'Depto. o Servicio: ', 0, 0, 'C', 0);
+$pdf->Cell(75, 10, utf8_decode('Fecha: '. $fech), 0, 0, 'C', 0);   
+$pdf->Cell(105, 10, ('Depto. o Servicio: '. $depto), 0, 0, 'C', 0);
 $pdf->Ln(15);
 $pdf->SetFont('Arial', 'B', '12');
 $pdf->Cell(25, 10, utf8_decode('Código'), 1, 0, 'C', 0);
@@ -54,22 +59,24 @@ for($i = 0; $i < count($_POST['cod']); $i++)
     $um = $_POST['um'][$i];
     $cantidad = $_POST['cant'][$i];
     $cost = $_POST['cost'][$i];
-
-    $total[$i] = $cost * $cantidad;
-    $final = $final + $total[$i];
+    $tot = $_POST['tot'][$i];
 
 $pdf->SetFont('Arial', '', '12');
 $pdf->Cell(25, 10, utf8_decode($codigo),1, 0, 'C', 0);
 $pdf->Cell(60, 10, utf8_decode($des),1, 0, 'C', 0);
 $pdf->Cell(15, 10, utf8_decode($um),1, 0, 'C', 0);
 $pdf->Cell(20, 10, utf8_decode($cantidad),1, 0, 'C', 0);
-$pdf->Cell(40, 10, utf8_decode("$" . $cost),1, 0, 'C', 0);
-$pdf->Cell(20, 10, utf8_decode("$" . $total[$i]),1, 0, 'C', 0);
+$pdf->Cell(40, 10, utf8_decode($cost),1, 0, 'C', 0);
+$pdf->Cell(20, 10, utf8_decode($tot),1, 0, 'C', 0);
 $pdf->Ln();
 }
 
-$pdf->Cell(160, 10, utf8_decode(""),1, 0, 'C', 0);
-$pdf->Cell(20, 10, utf8_decode("$" . $final),1, 0, 'C', 0);
+$tot_f = $_POST['tot_f'];
+
+$pdf->SetFont('Arial', 'B', '12');
+$pdf->Cell(120, 10, utf8_decode(""),1, 0, 'C', 0);
+$pdf->Cell(40, 10, 'Subtotal', 1, 0, 'C', 0);
+$pdf->Cell(20, 10, utf8_decode($tot_f),1, 0, 'C', 0);
 $pdf->Ln();
 $pdf->Ln();
 $pdf->Cell(0, 12,('Solicita: ________________                                  Entrega: ________________'), 0, 1);
