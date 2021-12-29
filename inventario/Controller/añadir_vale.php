@@ -12,8 +12,9 @@ for($i = 0; $i < count($_POST['cod']); $i++)
       $unidadmedida= $_POST['um'][$i];
       $stock = $_POST['cant'][$i];
       $precio= $_POST['cu'][$i];
+      $numero_vale = $_POST['numero_vale'];
 
-      $insert = "INSERT INTO detalle_vale (codigo,descripcion,unidad_medida,stock,precio) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio')";
+      $insert = "INSERT INTO detalle_vale (codigo,descripcion,unidad_medida,stock,precio,numero_vale) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$numero_vale')";
       $query = mysqli_query($conn, $insert);
 
       if ($query) {
@@ -30,7 +31,6 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 
       
       $departamento = $_POST['departamento'];
-      $numero_vale = $_POST['numero_vale'];
 
       //crud para guardar los productos en la tabla tb_vale
       $sql = "INSERT INTO tb_vale (codVale, departamento) VALUES ('$numero_vale', '$departamento')";
