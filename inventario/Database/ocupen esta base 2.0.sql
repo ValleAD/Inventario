@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-12-2021 a las 03:58:00
+-- Tiempo de generación: 30-12-2021 a las 05:07:14
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.10
 
@@ -52,6 +52,7 @@ INSERT INTO `detalle_bodega` (`coddetallebodega`, `codigo`, `descripcion`, `unid
 --
 
 CREATE TABLE `detalle_compra` (
+  `coddetallecompra` int(11) NOT NULL,
   `codigo` int(15) NOT NULL,
   `catalogo` int(20) NOT NULL,
   `descripcion` varchar(200) NOT NULL,
@@ -61,6 +62,14 @@ CREATE TABLE `detalle_compra` (
   `solicitud_compra` int(8) DEFAULT NULL,
   `fecha_registro` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `detalle_compra`
+--
+
+INSERT INTO `detalle_compra` (`coddetallecompra`, `codigo`, `catalogo`, `descripcion`, `unidad_medida`, `stock`, `precio`, `solicitud_compra`, `fecha_registro`) VALUES
+(1, 15, 15, 'caja', 'U', 15, '15.00', 503, '2021-12-30 03:29:10'),
+(2, 133, 133, '133', 'U', 14, '14.00', 133, '2021-12-30 03:52:51');
 
 -- --------------------------------------------------------
 
@@ -128,9 +137,17 @@ CREATE TABLE `tb_compra` (
   `dependencia` varchar(50) NOT NULL,
   `plazo` varchar(50) DEFAULT NULL,
   `unidad_tecnica` varchar(75) NOT NULL,
-  `descripcion_solicitud` int(20) NOT NULL,
+  `descripcion_solicitud` varchar(20) NOT NULL,
   `fecha_registro` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tb_compra`
+--
+
+INSERT INTO `tb_compra` (`nSolicitud`, `dependencia`, `plazo`, `unidad_tecnica`, `descripcion_solicitud`, `fecha_registro`) VALUES
+(133, 'almacen', 'xd', 'almacen', 'pastillas', '2021-12-30 03:52:51'),
+(503, 'mantenimiento', 'jhhj', 'mantenimiento', '0', '2021-12-30 03:29:10');
 
 -- --------------------------------------------------------
 
@@ -223,7 +240,7 @@ ALTER TABLE `detalle_bodega`
 -- Indices de la tabla `detalle_compra`
 --
 ALTER TABLE `detalle_compra`
-  ADD PRIMARY KEY (`codigo`),
+  ADD PRIMARY KEY (`coddetallecompra`),
   ADD KEY `fk_tb_compra_detalle_compra` (`solicitud_compra`);
 
 --
@@ -272,6 +289,12 @@ ALTER TABLE `tb_vale`
 --
 ALTER TABLE `detalle_bodega`
   MODIFY `coddetallebodega` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `detalle_compra`
+--
+ALTER TABLE `detalle_compra`
+  MODIFY `coddetallecompra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `detalle_vale`

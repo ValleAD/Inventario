@@ -104,7 +104,7 @@ form{
       <br>
     </div>
     <div class="col-6 col-sm-4" style="position: initial">
-      <label>Descripcion Solicitante</label> 
+      <label>Suministros Solicita</label> 
       <input class="form-control" type="text" name="descripcion_solicitud" id="como3" required>
       <br>
   </div>
