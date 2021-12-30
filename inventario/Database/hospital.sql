@@ -105,7 +105,7 @@ CREATE TABLE detalle_compra (
   precio decimal(6,2) NOT NULL,
   solicitud_compra int(8) DEFAULT NULL,
   fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-     PRIMARY KEY (codCompra),
+     PRIMARY KEY (codigo),
     CONSTRAINT fk_tb_compra_detalle_compra FOREIGN KEY (solicitud_compra)
     REFERENCES tb_compra(nSolicitud)
 );
