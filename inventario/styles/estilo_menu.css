@@ -5,12 +5,7 @@
     box-sizing: border-box;
 }
 
-nav{
-    background: #244242;
-    height: 80px;
-    width: 100%;
-    text-decoration:none ;
-}
+
 .enlace{
     float: left;
     margin-right: 3%;
@@ -25,10 +20,11 @@ nav{
 nav ul li{
     display: inline-block;
     line-height: 80px;
+    background: #4CAF50;
     margin: 0 2px;
 }
 nav ul li a{
-    color: #fff;
+    color: #3a0c0c;
     font-size: 14px;
     padding: 7px 13px;
     border-radius: 3px;
