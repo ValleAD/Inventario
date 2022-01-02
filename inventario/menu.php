@@ -54,20 +54,20 @@ if(!isset($_SESSION['signin'])){
         <a style="margin-left:-2.5%;margin-top: 0.2%;" style="width:100%;" href="home.php" class="enlace">
             <img src="img/log.png"  alt="" class="logo" >
         </a>
-        <ul>
-            <li><a id="a" href="vistaProductos.php">Ver Productos</a></li>
-            <li><a id="a" href="form_vale.php">Vale</a></li>
-            <li><a id="a" href="form_bodega.php">Solicitud a Bodega</a></li>
-            <li><a id="a" href="form_compra.php">Solicitud de compra</a></li>
-            <li><a id="a" href="form_almacen.php">Solicitud a Almacen</a></li>
-            <li><a id="a" href="form_circulante.php">Solicitud de fondo circulante</a></li>
+        <ul style="background: #244242; margin-bottom: 7%;">
+            <li><a href="vistaProductos.php">Ver Productos</a></li>
+            <li><a href="form_vale.php">Vale</a></li>
+            <li><a href="form_bodega.php">Solicitud a Bodega</a></li>
+            <li><a href="form_compra.php">Solicitud de compra</a></li>
+            <li><a href="form_almacen.php">Solicitud a Almacen</a></li>
+            <li><a href="form_circulante.php">Solicitud de fondo circulante</a></li>
             
 <?php
     $cliente =$_SESSION['signin'];
     $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
     while ($consulta =mysqli_fetch_array($data)) {
 ?>
-    <button class="btn" data-toggle="modal" data-target="#delete" style="background:transparent;float: right;margin-top: 1%; color: white;"><?php echo $consulta['username'];?></button>
+    <button class="btn" data-toggle="modal" data-target="#delete" style="background:rgb(5, 114, 72);float: right;margin-top: 0.5%; color: white;"><?php echo $consulta['username'];?></button>
 <!-- Delete -->
 <div class="modal fade" id="delete" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">
