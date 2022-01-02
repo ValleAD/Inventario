@@ -31,10 +31,11 @@ die();
 
 <?php
 
+$total = 0;
 $final = 0;
 
    include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_vale";
+    $sql = "SELECT * FROM tb_vale ORDER BY fecha_registro DESC LIMIT 1";
     $result = mysqli_query($conn, $sql);
  while ($productos1 = mysqli_fetch_array($result)){
 
@@ -75,12 +76,16 @@ $final = 0;
             <td><strong>Cantidad</strong></td>
             <td><strong>Costo unitario</strong></td>
             <td><strong>Total</strong></td>
-          </tr>';}
- $sql = "SELECT * FROM detalle_vale";
+          </tr>';
+
+$num_vale = $productos1['codVale'];
+}
+ $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale";
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
       
-      $final += $productos['total'];
+      $total = $productos['stock'] * $productos['precio'];
+      $final += $total;
   echo'  
       <tr >
         <td><input  name="cod[]" readonly value="' .$productos['codigo']. '" style="width: 120px; border: none"></td>
@@ -88,7 +93,7 @@ while ($productos = mysqli_fetch_array($result)){
         <td><input  name="um[]" readonly value="'.$productos['unidad_medida']. '" style="width: 60px; border: none"></td>
         <td><input  name="cant[]" readonly value="'.$productos['stock']. '" style="width: 60px; border: none"></td>
         <td><input  name="cost[]" readonly value="$'.$productos['precio']. '" style="width: 60px; border: none"></td>
-        <td><input  name="tot[]" readonly value="$'.$productos['total']. '" style="width: 90px; border: none"></td>
+        <td><input  name="tot[]" readonly value="$'.$total. '" style="width: 90px; border: none"></td>
       </tr>';
 
 }
