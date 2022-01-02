@@ -24,9 +24,9 @@ nav{
 
 nav ul li{
     display: inline-block;
-    margin-top: 2%;
-    line-height: 50px;
+    line-height: 40px;
     margin: 0 2px;
+    margin-top: 1%;
 }
 nav ul li a{
     color: #fffafa;
@@ -39,7 +39,7 @@ nav ul li a{
     border-right: solid 2px rgb(5, 114, 72);
 }
 li a.active, li a:hover{
-    background: rgb(5, 114, 72);
+    /*background: rgb(5, 114, 72); */
     transition: .5s;
     color: #fff;
     text-decoration: none;
