@@ -19,16 +19,15 @@ die();
 <head>
 <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles/style.css" > 
+     <link rel="stylesheet" type="text/css" href="styles/estilos_menu.css" > 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
          <link rel="stylesheet" href="Plugin/bootstap-icon/bootstrap-icons.min.css">
       <link rel="stylesheet" href="Plugin/bootstap-icon/fontawesome.all.min.css">
-      <link rel="stylesheet" type="text/css" href="sweetalert2/sweetalert2.min.css">
     <title>Productos</title>
 </head>
 
@@ -227,20 +226,5 @@ die();
            
         </table>
     </div>
-
-
-   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
- <script src="codigo_modal.js"></script>  
- <script type="text/javascript" src="Plugin/jquery/comfirmacion.js"></script>
-  <script src="sweetalert2/sweetalert2.min.js"></script> 
-  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-  <script src="Plugin/bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
-  <script src="Plugin/bootstrap-5.1.3-dist/js/bootstrap.js"></script>
-
-
 </body>
 </html>

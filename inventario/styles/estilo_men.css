@@ -1,123 +1,150 @@
-*{
-    padding: 0;
-    margin: 0;
-    list-style: none;
+* {
+    padding:0;
+    margin:0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
-nav{
-    background: #244242;
-    height: 80px;
+body {background:#FEFEFE;}
+
+.menu_bar {
+    display:none;
+}
+
+header {
     width: 100%;
-    text-decoration:none ;
-}
-.enlace{
-    float: left;
-    margin-right: 3%;
-    padding: 20px 50px;
-}
-.logo{
-    margin-top: -20%;
-    height: 65px;
 }
 
-
-nav ul li{
-    display: inline-block;
-    line-height: 40px;
-    margin: 0 2px;
-    margin-top: 1%;
-}
-nav ul li a{
-    color: #fffafa;
-    text-decoration: none;
-    font-size: 14px;
-    padding: 7px 13px;
-    border-radius: 3px;
-    text-transform: capitalize;
-    text-decoration: none;
-    border-right: solid 2px rgb(5, 114, 72);
-}
-li a.active, li a:hover{
-    /*background: rgb(5, 114, 72); */
-    transition: .5s;
-    color: #fff;
-    text-decoration: none;
+header nav {
+    background:#023859;
+    z-index:1000;
+    max-width: 1000px;
+    width:95%;
+    margin:20px auto;
 }
 
-.button {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
+header nav ul {
+    list-style:none;
 }
 
+header nav ul li {
+    display:inline-block;
+    position: relative;
+}
 
-.checkbtn{
-    font-size: 30px;
-    color: #fff;
+header nav ul li:hover {
+    background:#E6344A;
+}
+
+header nav ul li a {
+    color:#fff;
+    display:block;
+    text-decoration:none;
+    padding: 20px;
+}
+
+header nav ul li a span {
+    margin-right:10px;
+}
+
+header nav ul li:hover .children {
+    display:block;
+}
+
+header nav ul li .children {
+    display: none;
+    background:#011826;
+    position: absolute;
+    width: 150%;
+    z-index:1000;
+}
+
+header nav ul li .children li {
+    display:block;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255,255,255,.5);
+}
+
+header nav ul li .children li a {
+    display: block;
+}
+
+header nav ul li .children li a span {
     float: right;
-    line-height: 80px;
-    margin-right: 40px;
-    cursor: pointer;
-    display: none;
-}
-#check{
-    display: none;
+    position: relative;
+    top:3px;
+    margin-right:0;
+    margin-left:10px;
 }
 
-@media (max-width: 952px){
-    .enlace{
-        padding-left: 20px;
+header nav ul li .caret {
+    position: relative;
+    top:3px;
+    margin-left:10px;
+    margin-right:0px;
+}
+
+@media screen and (max-width: 800px) {
+    body {
+        padding-top:80px;
     }
-    nav ul li a{
-        font-size: 14px;
+
+    .menu_bar {
+        display:block;
+        width:100%;
+        position: fixed;
+        top:0;
+        background:#E6344A;
+    }
+
+    .menu_bar .bt-menu {
+        display: block;
+        padding: 20px;
+        color: #fff;
+        overflow: hidden;
+        font-size: 25px;
+        font-weight: bold;
         text-decoration: none;
     }
-}
 
-@media (max-width: 952px){
-    .enlace{
-        padding-left: 20px;
+    .menu_bar span {
+        float: right;
+        font-size: 40px;
     }
-    nav ul li a{
-        font-size: 16px;
-    }
-}
 
-@media (max-width: 858px){
-    .checkbtn{
+    header nav {
+        width: 50%;
+        height: calc(100% - 80px);
+        position: fixed;
+        right:100%;
+        margin: 0;
+        overflow: scroll;
+    }
+
+    header nav ul li {
+        display: block;
+        border-bottom:1px solid rgba(255,255,255,.5);
+    }
+
+    header nav ul li a {
         display: block;
     }
-    ul{
-        position: absolute;
+
+    header nav ul li:hover .children {
+        display: none;
+    }
+
+    header nav ul li .children {
         width: 100%;
-        height: 80vh;
-        background: #244242;
-        top: 80px;
-        left: -100%;
-        text-align: center;
-        transition: all .5s;
+        position: relative;
     }
-    nav ul li{
-        display: block;
-        margin: 30px 0;
-        line-height: 30px;
+
+    header nav ul li .children li a {
+        margin-left:20px;
     }
-    nav ul li a{
-        font-size: 20px;
-    }
-    li a:hover, li a.active{
-        background: rgb(5, 114, 72);
-        transition: .5s;
-    }
-    #check:checked ~ ul{
-        left:0;
+
+    header nav ul li .caret {
+        float: right;
     }
 }

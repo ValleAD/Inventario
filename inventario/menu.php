@@ -1,3 +1,4 @@
+
 <?php
 include("Model/conexion.php");
 if(!isset($_SESSION['signin'])){
@@ -9,69 +10,58 @@ if(!isset($_SESSION['signin'])){
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles/estilo_men.css">
-    <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
+   <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
       <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
 </head>
 <body>
-      <style type="text/css">
-            #a:hover{
-                background: transparent;
-                    
-                }
-                
-
-
-    @media (max-width: 952px){
-    
-       #Perfil{
-                   margin-top: -15%;
-                    margin-left: 15%;
-                    color: #000;
-            }
-            nav{
-                max-width: 100%;
-            }
-             img{
-        display: flex;
-        max-width:100%;
-        min-width: 100%;
-        align-items: center;
-        justify-content: center;
-    }
-  .btn{
-    margin-right: 45%;
-     }
+    <style type="text/css">
+        #a:hover{
+   text-decoration: none;
+   color: lawngreen;
 }
-</style>
-    <nav>
-        <input type="checkbox" id="check">
-        <label for="check" class="checkbtn">
-            <i class="fas fa-bars"></i>
-        </label>
-        <a style="margin-left:-2.5%;margin-top: 0.2%;" style="width:100%;" href="home.php" class="enlace">
-            <img src="img/log.png"  alt="" class="logo" >
-        </a>
-        <ul style="background: #244242;">
-            <li><a href="vistaProductos.php">Ver Productos</a></li>
-            <li><a href="form_vale.php">Vale</a></li>
-            <li><a href="form_bodega.php">Solicitud a Bodega</a></li>
-            <li><a href="form_compra.php">Solicitud de compra</a></li>
-            <li><a href="form_almacen.php">Solicitud a Almacen</a></li>
-            <li><a href="form_circulante.php">Solicitud de fondo circulante</a></li>
-            
-<?php
+ #b:hover{
+   text-decoration: none;
+   color:whitesmoke;
+}
+.children{
+background:burlywood;
+}
+
+    </style>
+      <header>
+        <div class="menu_bar">
+            <a href="#" class="bt-menu"><span class="fas fa-bars"></span>Menú</a>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a id="a" href="home.php"><span class="icon-house"></span>Inicio</a></li>
+                <li><a id="a" href="vistaProductos.php"><span></span>Ver Productos</a></li>
+                <li><span></span><a id="a" href="form_vale.php"><span></span>Vale</a></li>
+                <li class="submenu">
+                    <a id="a" href="#"><span class="icon-rocket"></span>Solicitudes<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <ul class="children">
+                        <li><a id="b" href="form_bodega.php">Solicitud a Bodega</a></li>
+                        <li><a id="b" href="form_almacen.php">Solicitud a Almacen</a></li>
+                        <li><a id="b" href="form_compra.php">Solicitud de compra</a></li>
+                        <li><a id="b" href="form_circulante.php">Solicitud de fondo circulante</a></li>
+                    </ul>
+                </li>
+               <?php
     $cliente =$_SESSION['signin'];
     $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
     while ($consulta =mysqli_fetch_array($data)) {
-?>
-    <button class="btn" data-toggle="modal" data-target="#delete" style="background:rgb(5, 114, 72);float: right;margin-top: 1%; margin-right: 7%;color: white;"><?php echo $consulta['username'];?></button>
+?>  
+    <button class="btn" data-toggle="modal" data-target="#info" style=" background:transparent;float: right;margin-top: 1%; color: white;"><?php echo $consulta['username'];?> <i class="bi bi-caret-down-fill"></i></button>
 <!-- Delete -->
-<div class="modal fade" id="delete" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
+<div class="modal fade" id="info" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">
-        <div class="modal-content" style="background-color: hsla(0.5turn , 100% , 0.1% , 1 );color: white;">
+        <div class="modal-content" style="background-color: hsla(0.5turn , 100% , 0.1% , 0.5 );color: white;">
             <div class="modal-header">
                 <h5 class="modal-title">Información del Usuario</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -121,16 +111,43 @@ if(!isset($_SESSION['signin'])){
       </div>
            
         </div>
-        </nav> </div>
+    </div>
 </div>
 </div>
-        </ul>
-   
+            </ul>
+        </nav>
+    </header>
     <script src="Plugin/bootstrap/js/jquery.slim.min.js"></script>
    
     <script src="Plugin/bootstrap/js/bootstrap.min.js"></script>
    
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+    $(document).ready(main);
 
+var contador = 1;
+
+function main () {
+    $('.menu_bar').click(function(){
+        if (contador == 1) {
+            $('nav').animate({
+                left: '0'
+            });
+            contador = 0;
+        } else {
+            contador = 1;
+            $('nav').animate({
+                left: '-100%'
+            });
+        }
+    });
+
+    // Mostramos y ocultamos submenus
+    $('.submenu').click(function(){
+        $(this).children('.children').slideToggle();
+    });
+}
+</script>
     
 </body>
 </html>
