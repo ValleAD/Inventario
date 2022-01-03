@@ -4,12 +4,13 @@ session_start();
     # code...
     echo '
     <script>
-        window.location ="log/signin.php";
+         window.location ="log/signin.php";
         session_destroy();  
                 </script>
 die();
 
     ';
+    
 }
     
 ?>
@@ -30,15 +31,16 @@ die();
 <body>
 
 <?php
-    
-    if ( isset($_POST["cod"]) ) { 
 
-      $Depto =$_POST['depto'];
+$total = 0;
+$final = 0;
 
-      $final = 0;
+   include 'Model/conexion.php';
+    $sql = "SELECT * FROM tb_bodega ORDER BY fecha_registro DESC LIMIT 1";
+    $result = mysqli_query($conn, $sql);
+ while ($productos1 = mysqli_fetch_array($result)){
 
-      echo 
-      '
+ echo'   
 <section>
 <form method="POST" action="Exportar_PDF/pdf_bodega.php" target="_blank">
          
@@ -46,10 +48,21 @@ die();
         <div class="row">
       
           <div class="col-6 col-sm-3" style="position: initial">
-        
+      
               <label style="font-weight: bold;">Depto. o Servicio:</label>
-              <input readonly class="form-control"  type="text" value="' .$Depto. '" name="depto">
-    
+              <input readonly class="form-control"  type="text" value="' .$productos1['departamento']. '" name="depto">
+
+          </div>
+
+          <div class="col-6 col-sm-3" style="position: initial">
+            <label style="font-weight: bold;">O de T.:</label>
+            <input readonly class="form-control"  type="text" value="' .$productos1['codBodega']. '" name="odt">
+          </div>
+
+          
+          <div class="col-6 col-sm-3" style="position: initial">
+            <label style="font-weight: bold;">Fecha:</label>
+              <input readonly class="form-control"  type="text" value="' .$productos1['fecha_registro']. '" name="fech">
           </div>
         </div>
       
@@ -66,40 +79,37 @@ die();
             <td><strong>Total</strong></td>
           </tr>';
 
-      for($i = 0; $i < count($_POST['cod']); $i++)
-    {
-       
-        $codigo = $_POST['cod'][$i];
-        $des = $_POST['desc'][$i];
-        $um = $_POST['um'][$i];
-        $cantidad = $_POST['cant'][$i];
-        $cost = $_POST['cu'][$i];
-
-        $total[$i] = $cost * $cantidad;
-        $final = $final + $total[$i];
+$odt_bodega = $productos1['codBodega'];
+}
+ $sql = "SELECT * FROM detalle_bodega WHERE odt_bodega = $odt_bodega";
+    $result = mysqli_query($conn, $sql);
+while ($productos = mysqli_fetch_array($result)){
       
-      
+      $total = $productos['stock'] * $productos['precio'];
+      $final += $total;
   echo'  
       <tr >
-        <td><input name="cod[]" value="' .$codigo. '" style="width: 120px; border: none"></td>
-        <td><input name="desc[]" value="'.$des. '" style="border: none"></td>
-        <td><input name="um[]" value="'.$um. '" style="width: 60px; border: none"></td>
-        <td><input name="cant[]" value="'.$cantidad. '" style="width: 60px; border: none"></td>
-        <td><input name="cost[]" value="'.$cost. '" style="width: 90px; border: none"></td>
-        <td><input name="tot[]" value="$'.$total[$i]. '" style="width: 90px; border: none"></td>
-      </tr>'; 
+        <td><input  name="cod[]" readonly value="' .$productos['codigo']. '" style="width: 120px; border: none"></td>
+        <td><input  name="desc[]" readonly value="'.$productos['descripcion']. '" style="border: none"></td>
+        <td><input  name="um[]" readonly value="'.$productos['unidad_medida']. '" style="width: 60px; border: none"></td>
+        <td><input  name="cant[]" readonly value="'.$productos['stock']. '" style="width: 60px; border: none"></td>
+        <td><input  name="cost[]" readonly value="$'.$productos['precio']. '" style="width: 60px; border: none"></td>
+        <td><input  name="tot[]" readonly value="$'.$total. '" style="width: 90px; border: none"></td>
+      </tr>';
+
 }
+
       echo'
         <tr>
           <td></td>
-          <td></td>
+          <td></td> 
           <td></td>
           <td></td>
           <td><strong>Total</strong></td> 
-          <td><input name="tot_f" value="$'.$final.'" style="width: 90px; border: none"></td>
+          <td><input  name="tot_f" readonly value="$'.$final.'"  style="width: 90px; border: none; color: rgb(168, 8, 8); font-weight: bold;"></td>
         </tr>
       </table>   
-      <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
+    <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
       <style>
         #pdf{
         margin-left: 38%; 
@@ -118,7 +128,6 @@ die();
 </form>
 </section>
       ';
-  }
 ?>            
 <?php include ('footer.php');?>
   </body>
