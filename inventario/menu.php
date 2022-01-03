@@ -10,7 +10,7 @@ if(!isset($_SESSION['signin'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles/estilo_menu.css">
+    <link rel="stylesheet" type="text/css" href="styles/estilo_men.css">
     <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
       <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
