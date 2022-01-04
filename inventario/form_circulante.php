@@ -72,13 +72,17 @@ die();
 form{
     margin-left: 15%;
 }
+.active{
+    margin-top: 1%;
+    font-size: 13px;
+}
 
     </style>
     </ol>
   <center>
     <div class="container">
         <div class="row">
-            <div class="col-6 col-sm-3"  style="position: initial">
+            <div class="col-6.5 col-sm-3"  style="position: initial">
                 <label>Número de Solicitud</label> 
                 <input class="form-control" type="number" name="sol" id="como1" required="">
             </div>

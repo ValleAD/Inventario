@@ -35,12 +35,10 @@ die();
 <body>
     <div class=" container table-responsive " >
       
-        <h2 class="text-center mg-t" style="color: #fff; margin-top: 2%;">Inventario de Productos</h2>
+        <h2 class="text-center mg-t" style="color: #fff; margin-top: -0.5%;">Inventario de Productos</h2>
         <p style="margin-top: 5%;" ></p>
         <table class="table table-dark table-hover table-bordered container-fluid" style="vertical-align: bottom;">
             <tr>
-                <a href="form_vale.php"  style="margin-right: 1%;" class="text btn btn-success "> <i class="bi bi-search"></i> <span>Buscar Producto</span> </a>
-                <a href="regi_producto.php" class="text btn btn-info "><i class="bi bi-file-earmark-plus-fill"></i> <span>Nuevo Producto</span> </a>
              
                 <td class="table-info text-dark"><strong>Código</strong></td>
                 <td class="table-info text-dark"><strong>Codificación de catálogo</strong></td>

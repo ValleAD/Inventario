@@ -1,9 +1,6 @@
 * {
     padding:0;
     margin:0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
 }
 
 body {background:#FEFEFE;}
@@ -19,9 +16,9 @@ header {
 header nav {
     background:#023859;
     z-index:1000;
-    max-width: 1000px;
-    width:95%;
-    margin:20px auto;
+    max-width: 100%;
+    width:100%;
+    
 }
 
 header nav ul {

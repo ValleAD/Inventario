@@ -25,7 +25,14 @@ die();
         <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
 
         <style>
-
+                  @media (max-width: 952px){
+form{
+    margin-left: 15%;
+}
+.button:hover{
+    text-decoration: none;
+}
+}
 .button21 {
 
   text-align: center;
@@ -69,47 +76,34 @@ die();
 <ol class="breadcrumb">
   <li><a id="a" href="home.php">Inicio</a></li>/
   <li class="active">Solicitud de Compra</li>
- <!-- <style type="text/css">
-            #a:hover{
-                background: transparent;
-                    
-                }
-            
-    
-        @media (max-width: 952px){
-form{
-    margin-left: 15%;
-}
-
-    </style>-->
 </ol>
 <center>
 <div class="container">
 <div class="row">
-    <div class="col-6 col-sm-4" style="position: initial">
+    <div class="col-6.5 col-sm-4" style="position: initial">
        <label>Número de Solicitud</label> 
       <input class="form-control" type="number" name="nsolicitud" id="como1" required>
     </div>
-    <div class="col-6 col-sm-4" style="position: initial">
+    <div class="col-6.5 col-sm-4" style="position: initial">
       <label>Dependencia que Solicita</label>   
       <input class="form-control" type="text" name="dependencia" id="como2" required>
     </div>
-    <div class="col-6 col-sm-4" style="position: initial">
+    <div class="col-6.5 col-sm-4" style="position: initial">
       <label>Plazo y Numero de Entregas</label> 
       <input class="form-control" type="text" name="plazo" id="como3" required>
       <br>
     </div>
-    <div class="col-6 col-sm-4" style="position: initial">
+    <div class="col-6.5 col-sm-4" style="position: initial">
       <label>Unidad Tecnica</label> 
       <input class="form-control" type="text" name="unidad_tecnica" id="como3" required>
       <br>
     </div>
-    <div class="col-6 col-sm-4" style="position: initial">
+    <div class="col-6.5 col-sm-4" style="position: initial">
       <label>Suministros Solicita</label> 
       <input class="form-control" type="text" name="descripcion_solicitud" id="como3" required>
       <br>
   </div>
-  <div class="col-6 col-sm-4" style="position: initial">
+  <div class="col-6.5 col-sm-4" style="position: initial">
       <label>Fecha</label> 
       <input class="form-control" type="date" name="fecha" id="como3" required>
       <br>

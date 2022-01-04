@@ -38,18 +38,25 @@ background:burlywood;
             <a href="#" class="bt-menu"><span class="fas fa-bars"></span>Menú</a>
         </div>
 
-        <nav>
+        <nav s>
             <ul>
-                <li><a id="a" href="home.php"><span class="icon-house"></span>Inicio</a></li>
-                <li><a id="a" href="vistaProductos.php"><span></span>Ver Productos</a></li>
-                <li><span></span><a id="a" href="form_vale.php"><span></span>Vale</a></li>
-                <li class="submenu">
-                    <a id="a" href="#"><span class="icon-rocket"></span>Solicitudes<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                <li><a id="a" href="home.php">Inicio</a></li>
+                 <li class="submenu">
+                    <a id="a" href="#">Productos<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
-                        <li><a id="b" href="form_bodega.php">Solicitud a Bodega</a></li>
-                        <li><a id="b" href="form_almacen.php">Solicitud a Almacen</a></li>
-                        <li><a id="b" href="form_compra.php">Solicitud de compra</a></li>
-                        <li><a id="b" href="form_circulante.php">Solicitud de fondo circulante</a></li>
+                        <li><a id="b" href="regi_producto.php"><span>.</span>Nuevo Producto</a></li>
+                        <li><a id="b" href="vistaProductos.php"><span>.</span>Ver Producto</a></li>
+                       
+                    </ul>
+                </li>
+                <li><a id="a" href="form_vale.php">Vale</a></li>
+                <li class="submenu">
+                    <a id="a" href="#">Solicitudes<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <ul class="children">
+                        <li><a id="b" href="form_bodega.php"> <span>.</span>Solicitud a Bodega</a></li>
+                        <li><a id="b" href="form_almacen.php"> <span>.</span>Solicitud a Almacen</a></li>
+                        <li><a id="b" href="form_compra.php"> <span>.</span>Solicitud de compra</a></li>
+                        <li><a id="b" href="form_circulante.php"> <span>.</span>Solicitud de fondo circulante</a></li>
                     </ul>
                 </li>
                <?php
@@ -59,7 +66,7 @@ background:burlywood;
 ?>  
     <button class="btn" data-toggle="modal" data-target="#info" style=" background:transparent;float: right;margin-top: 1%; color: white;"><?php echo $consulta['username'];?> <i class="bi bi-caret-down-fill"></i></button>
 <!-- Delete -->
-<div class="modal fade" id="info" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
+<div style="z-index: 5000;" class="modal fade" id="info" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content" style="background-color: hsla(0.5turn , 100% , 0.1% , 0.5 );color: white;">
             <div class="modal-header">
@@ -124,7 +131,10 @@ background:burlywood;
     <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
     $(document).ready(main);
+    function alert() {
+        alert('ss');
 
+    }
 var contador = 1;
 
 function main () {

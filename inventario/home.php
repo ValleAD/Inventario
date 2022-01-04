@@ -32,18 +32,22 @@ die();
                 margin-top: 14.2%;
                 max-height: 100%;
             }
-          @media (max-width: 952px){
-    
+          @media screen (max-width: 952px){
+    form{
+        width: 100%;
+    }
        #h1{
                 
                 font-size: 2em;
+                padding: 3%;
             }
             nav{
                 max-width: 100%;
             }
-            h2{
-                margin-top: 44%;
-            }
+           
+        }
+        body{
+            max-height: 100%;
         }
     </style>
     

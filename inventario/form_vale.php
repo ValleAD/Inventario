@@ -15,6 +15,48 @@ die();
 ?>
 <?php include ('menu.php')?>
 <!DOCTYPE html>
+<!--Espara la version de mobile-->
+<style type="text/css">
+      @media (max-width: 952px){
+    #section{
+        margin-top: 5%;
+        margin-left: 15%;
+        width: 75%;
+    }
+    #lab{
+        margin-left: 5%;
+
+    }
+    .w{
+        margin-top: 5%;
+    }
+    #inp{
+            margin-left: 10%;
+    }  #inp1{
+         margin-top: 2%;
+          margin-left: 5%;
+    }  #buscar{
+         margin-top: 2%;
+          margin-left: 25%;
+          margin-bottom: 25%;
+    }
+    #btn{
+        margin-top: 5%;
+        margin-left: 35%;
+        margin-bottom: 15%;
+    }
+    #buscar{
+        margin-top: 5%;
+        margin-left: 35%;
+        margin-bottom: 15%;
+        background: whitesmoke;
+    }
+form{
+ margin-right: 15%;
+
+}
+</style>
+</style>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -26,20 +68,20 @@ die();
 </head>
 <body>
 
-<section>
+<section id="section">
 <form action="form_vale.php" method="post">
 <br>
-    <div class="container">
+ <div class="container">
         <div class="row">
     <div class="col" style="position: initial">
-     <label>¿Cuántos productos desea solicitar?</label>
+     <label>¿Cuántos productos desea solicitar en VALE?</label>
     </div>
    <div style="margin-bottom: 1%;margin-right: 1%;">
-        <input class="form-control" type="number" name="cantidad" value="1"> 
+        <input id="inp" style="position: initial;" class="form-control" type="number" name="cantidad" value="1"> 
       
     </div>
    <div>
-        <input class="btn btn-success" type="submit" value="Aceptar" name="aceptar"> 
+        <input id="btn" class="btn btn-success" type="submit" value="Aceptar" name="aceptar"> 
     </div>
   </div>
 </div>
@@ -53,18 +95,20 @@ die();
             <form action="form_vale.php" method="post" style="margin-top: 2%;">
             <div class="container" style="position: initial">
                 <div class="row">
-                    <div class="col-6 col-sm-3">
-                    <input class="form-control" required type="number" name="codigo[]" id="codigo" style="margin-bottom: 2%;" placeholder="Ingrese el código del Producto">
+                    <div class="col-6.5 col-sm-4" style="position: initial">
+                    <input  id="inp1" class="form-control" required type="number" name="codigo[]" id="codigo" style="margin-bottom: 2%;" placeholder="Ingrese el código del Producto">
                     </div>
                 </div>
             </div>
             ';
         }
         echo'
-        <input type="submit" class="btn btn-success" value="Buscar" name="buscar" id="buscar" >
+        <input   type="submit" class=" btn btn-success" value="Buscar" name="buscar" id="buscar" >
         <style>
             #buscar{
-            margin-left: 1.5%; 
+            margin-bottom: 5%;
+            margin-left: 2.5%;
+            margin-top: 0.5%; 
             background: rgb(5, 65, 114); 
             color: #fff; margin-bottom: 2%; 
             border: rgb(5, 65, 114);
@@ -90,13 +134,13 @@ if(isset($_POST['codigo'])){
         
         <div class="container" style="position: initial">
             <div class="row">
-              <div class="col-4 col-sm-4">
-                <label>Departamento que solicita</label>   
-                <input class="form-control" type="text" name="departamento" required>
+              <div class="col-6.5 col-sm-4">
+                <label id="inp1">Departamento que solicita</label>   
+                <input id="inp1" class="form-control" type="text" name="departamento" required>
             </div>
-            <div class="col-4 col-sm-4">
-                <label>Vale N°</label>   
-                <input class="form-control" type="number" name="numero_vale" required>
+            <div class="col-.5 col-sm-4">
+                <label id="inp1">Vale N°</label>   
+                <input id="inp1"class="form-control" type="number" name="numero_vale" required>
             </div>
         </div>
         <br>
@@ -153,6 +197,7 @@ if(isset($_POST['codigo'])){
     <input class="btn btn-lg" type="submit" value="Enviar" id="enviar">
         <style>
             #enviar{
+                margin-bottom: 5%;
             margin-left: 1.5%; 
             background: rgb(5, 65, 114); 
             color: #fff; margin-bottom: 2%; 

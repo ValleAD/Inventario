@@ -67,18 +67,23 @@ die();
 form{
     margin-left: 15%;
 }
-
+.active{
+    margin-top: 2%;
+    font-size: 12px;
+}#a{
+    font-size: 13px;
+}
     </style>
 </ol>
 <center>
 <div class="container">
   <div class="row">
    
-   <div class="col-6 col-sm-4"  style="position: initial">
+   <div class="col-6.5 col-sm-4"  style="position: initial">
       <label>Departamento que solicita</label>   
       <input class="form-control" type="text" name="depto" id="como2" required=""></div>
 
-    <div class="col-6 col-sm-4"  style="position: initial">
+    <div class="col-6.5 col-sm-4"  style="position: initial">
       <label>Fecha</label> 
       <input class="form-control" type="date" name="fech" id="como3" required><br></div>
    

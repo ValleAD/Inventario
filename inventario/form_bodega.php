@@ -16,6 +16,38 @@ die();
 <?php include ('menu.php')?>
 <!DOCTYPE html>
 <html lang="en">
+<!--Espara la version de mobile-->
+<style type="text/css">
+      @media (max-width: 952px){
+   #section{
+        margin-top: 5%;
+        margin-left: 15%;
+        width: 75%;
+    }
+    #lab{
+        margin-left: 15%;
+
+    }
+    .w{
+        margin-top: 5%;
+    }
+  #inp{
+            margin-left: 10%;
+    }  #inp1{
+         margin-top: 2%;
+          margin-left: 5%;
+    }
+    #btn{
+        margin-top: 5%;
+        margin-left: 35%;
+        margin-bottom: 15%;
+    }
+
+form{
+ margin-right: 15%;
+
+}
+</style>
 <head>
     <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -26,20 +58,20 @@ die();
 </head>
 <body>
 
-<section>
+<section id="section">
 <form action="form_bodega.php" method="post">
 <br>
     <div class="container">
         <div class="row">
     <div class="col" style="position: initial">
-     <label>¿Cuántos productos desea solicitar?</label>
+     <label>¿Cuántos productos desea solicitar de la bodega?</label>
     </div>
    <div style="margin-bottom: 1%;margin-right: 1%;">
-        <input class="form-control" type="number" name="cantidad" value="1"> 
+        <input id="inp" style="position: initial" class="form-control" type="number" name="cantidad" value="1"> 
       
     </div>
    <div>
-        <input class="btn btn-success" type="submit" value="Aceptar" name="aceptar"> 
+        <input id="btn" class="btn btn-success" type="submit" value="Aceptar" name="aceptar"> 
     </div>
   </div>
 </div>
@@ -53,18 +85,19 @@ die();
             <form action="form_bodega.php" method="post" style="margin-top: 2%;">
             <div class="container" style="position: initial">
                 <div class="row">
-                    <div class="col-6 col-sm-3">
-                    <input class="form-control" required type="number" name="codigo[]" id="codigo" style="margin-bottom: 2%;" placeholder="Ingrese el código del Producto">
+                    <div style="position: initial;" class="col-6 col-sm-3">
+                    <input id="inp1 "  class="form-control" required type="number" name="codigo[]" id="codigo" style="margin-bottom: 2%;" placeholder="Ingrese el código del Producto">
                     </div>
                 </div>
             </div>
             ';
         }
         echo'
-        <input type="submit" class="btn btn-success" value="Buscar" name="buscar" id="buscar" >
+        <input  type="submit" class="btn btn-success" value="Buscar" name="buscar" id="buscar" >
         <style>
             #buscar{
-            margin-left: 1.5%; 
+            margin-top: 1%;
+            margin-left: 2.5%; 
             background: rgb(5, 65, 114); 
             color: #fff; margin-bottom: 2%; 
             border: rgb(5, 65, 114);
@@ -90,13 +123,13 @@ if(isset($_POST['codigo'])){
         
         <div class="container" style="position: initial">
             <div class="row">
-              <div class="col-4 col-sm-4">
-                <label>Departamento que solicita</label>   
-                <input class="form-control" type="text" name="departamento" required>
+              <div  style="position: initial;"  class="col-6.5 col-sm-4">
+                <label id="inp1">Departamento que solicita</label>   
+                <input id="inp1" class="form-control" type="text" name="departamento" required>
             </div>
-            <div class="col-4 col-sm-4">
-                <label>O. DE .T N°</label>   
-                <input class="form-control" type="number" name="odt" required>
+            <div style="position: initial;" class="w col-6.5 col-sm-4">
+                <label id="inp1" >O. DE .T N°</label>   
+                <input id="inp1" class="form-control" type="number" name="odt" required>
             </div>
         </div>
         <br>
