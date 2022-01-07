@@ -12,7 +12,7 @@ die();
 
     ';
 }?>
-<?php include ('menu.php')?>
+<?php include ('templates/menu.php')?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -185,6 +185,6 @@ $("#btn-agregar").click(function(){
         });
     })
 </script>
-<?php include ('footer.php');?>
+<?php include ('templates/footer.php');?>
   </body>
   </html>

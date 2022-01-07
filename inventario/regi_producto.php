@@ -155,6 +155,6 @@ $("#btn-agregar").click(function(){
         });
     })
 </script>
-<?php include ('footer.php');?>
+<?php include ('templates/footer.php');?>
   </body>
   </html>
