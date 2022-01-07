@@ -40,7 +40,7 @@ background:burlywood;
 
         <nav>
             <ul>
-                <li><a id="a" href="/home.php"><span class="icon-house"></span>Inicio</a></li>
+                <li><a id="a" href="home.php"><span class="icon-house"></span>Inicio</a></li>
                 <li class="submenu">
                     <a id="a" href="#"><span class="icon-rocket"></span>Articulos<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
