@@ -13,7 +13,7 @@ die();
     ';
 }
 ?>
-<?php include ('menu.php')?>
+<?php include ('templates/menu.php')?>
 <!DOCTYPE html>
 <!--Espara la version de mobile-->
 <style type="text/css">

@@ -45,7 +45,7 @@ die();
                 max-width: 100%;
             }
            
-        }
+          };
         body{
             max-height: 100%;
         }
