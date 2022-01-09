@@ -14,7 +14,7 @@ die();
 }
     
 ?>
-<?php include ('menu.php')?>
+<?php include ('templates/menu.php')?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -55,7 +55,7 @@ $final = 0;
           </div>
 
           <div class="col-6 col-sm-3" style="position: initial">
-            <label style="font-weight: bold;">O de T.:</label>
+            <label style="font-weight: bold;">O de T.</label>
             <input readonly class="form-control"  type="text" value="' .$productos1['codBodega']. '" name="odt">
           </div>
 
@@ -129,7 +129,7 @@ while ($productos = mysqli_fetch_array($result)){
 </section>
       ';
 ?>            
-<?php include ('footer.php');?>
+<?php include ('templates/footer.php');?>
   </body>
   </html>
 

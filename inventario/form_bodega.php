@@ -128,7 +128,7 @@ if(isset($_POST['codigo'])){
                 <input id="inp1" class="form-control" type="text" name="departamento" required>
             </div>
             <div style="position: initial;" class="w col-6.5 col-sm-4">
-                <label id="inp1" >O. DE .T N°</label>   
+                <label id="inp1" >O. DE T. No.</label>   
                 <input id="inp1" class="form-control" type="number" name="odt" required>
             </div>
         </div>

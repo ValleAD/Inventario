@@ -58,7 +58,7 @@ background:burlywood;
                 <li class="submenu">
                     <a id="a" href="#"><span class="icon-rocket"></span>Solicitud Bodega<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
-                        <li><a id="b" href="">Mostrar</a></li>
+                        <li><a id="b" href="solicitudes_bodega.php">Mostrar</a></li>
                         <li><a id="b" href="form_bodega.php">Nuevo</a></li>
                     </ul>
                 </li>
