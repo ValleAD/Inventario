@@ -51,7 +51,7 @@ background:burlywood;
                 <li class="submenu">
                     <a id="a" href="#"><span class="icon-rocket"></span>Solicitud Vale<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
-                        <li><a id="b" href="">Mostrar</a></li>
+                        <li><a id="b" href="solicitudes_vale.php">Mostrar</a></li>
                         <li><a id="b" href="form_vale.php">Nuevo</a></li>
                     </ul>
                 </li>
@@ -105,9 +105,7 @@ background:burlywood;
     <img src="img/logo1.png" style="width: 25%;" id="img">
                 <div id="Perfil">
                 <table id="table">
-                    
-                
-
+                               
                 <tr>
                     
                     <p style="color: #fff">Usuario: <?php  echo $consulta['username'];?></p>
@@ -140,7 +138,7 @@ background:burlywood;
             </style>
             </div>
             <div class="modal-footer">
-        <a href="log/logout.php" type="submit" id="Update" class="btn btn-danger" >Cerrar Seccion</a>
+        <a href="log/logout.php" type="submit" id="Update" class="btn btn-danger" >Cerrar Sesión</a>
       </div>
            
         </div>
@@ -183,4 +181,4 @@ function main () {
 </script>
     
 </body>
-</html>f
+</html>

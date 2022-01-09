@@ -14,7 +14,7 @@ die();
 }
     
 ?>
-<?php include ('menu.php')?>
+<?php include ('templates/menu.php')?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -150,7 +150,7 @@ while ($productos = mysqli_fetch_array($result)){
 </section>
       ';
 ?>            
-<?php include ('footer.php');?>
+<?php include ('templates/footer.php');?>
   </body>
   </html>
 
