@@ -26,6 +26,16 @@ die();
     <title>Solicitud de Bodega</title>
 </head>
 <body>
+    <style type="text/css">
+              @media (max-width: 952px){
+   #section{
+        margin-top: 5%;
+        margin-left: 15%;
+        width: 75%;
+        padding: 2%;
+    }
+    
+    </style>
 <?php
     
     if ( isset($_POST["desc"]) ) { 
@@ -36,7 +46,7 @@ die();
 
       echo 
       '
-<form  style="position: all; width: 70%; height: 100%;margin-bottom: 5%;margin-top: 1%;background: #54C10F;">
+<form id="section"  style="position: all; width: 70%; height: 100%;margin-bottom: 5%;margin-top: 1%;background: #54C10F;">
     <div class="container-fluid" style="margin:1%" >
         <div align="right">
             <label style="font-weight: bold; margin-right: 20px;">No. de Solicitud</label>

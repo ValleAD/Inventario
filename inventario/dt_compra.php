@@ -29,7 +29,16 @@ die();
     <title>Solicitud Comp</title>
 </head>
 <body>
-
+<style type="text/css">
+              @media (max-width: 952px){
+   #section{
+        margin-top: 5%;
+        margin-left: 15%;
+        width: 75%;
+        padding: 2%;
+    }
+    
+    </style>
 <?php
 
 $total = 0;
@@ -42,7 +51,7 @@ $final = 0;
 
  echo'   
 <section>
-<form method="POST" action="Exportar_PDF/pdf_compra.php" target="_blank">
+<form id="section" method="POST" action="Exportar_PDF/pdf_compra.php" target="_blank">
          
       <section>
         <div class="row">

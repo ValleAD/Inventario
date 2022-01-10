@@ -65,7 +65,7 @@ background:burlywood;
                 <li class="submenu">
                     <a id="a" href="#"><span class="icon-rocket"></span>Solicitud Compra<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
-                        <li><a id="b" href="">Mostrar</a></li>
+                        <li><a id="b" href="solicitudes_compra.php">Mostrar</a></li>
                         <li><a id="b" href="form_compra.php">Nuevo</a></li>
                     </ul>
                 </li>
@@ -73,14 +73,14 @@ background:burlywood;
                 <li class="submenu">
                     <a id="a" href="#"><span class="icon-rocket"></span>Solicitud Almacen<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
-                        <li><a id="b" href="">Mostrar</a></li>
+                        <li><a id="b" href="solicitudes_almacen.php">Mostrar</a></li>
                         <li><a id="b" href="form_almacen.php">Nuevo</a></li>
                     </ul>
                 </li>
                 <li class="submenu">
                     <a id="a" href="#"><span class="icon-rocket"></span>Solicitud Circulante<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
-                        <li><a id="b" href="">Mostrar</a></li>
+                        <li><a id="b" href="solicitudes_circulante.php">Mostrar</a></li>
                         <li><a id="b" href="form_circulante.php">Nuevo</a></li>
                     </ul>
                 </li>

@@ -29,7 +29,15 @@ die();
     <title>Vale</title>
 </head>
 <body>
-
+    <style type="text/css">
+              @media (max-width: 952px){
+   #section{
+        margin-top: 5%;
+        margin-left: 15%;
+        width: 75%;
+    }
+    
+    </style>
 <?php
 
 $total = 0;
@@ -41,26 +49,26 @@ $final = 0;
  while ($productos1 = mysqli_fetch_array($result)){
 
  echo'   
-<section>
+<section id="section">
 <form method="POST" action="Exportar_PDF/pdf_vale.php" target="_blank">
          
-      <section>
+      <section id="section">
         <div class="row">
       
-          <div class="col-6 col-sm-3" style="position: initial">
+          <div class="col-6.5 col-sm-4" style="position: initial">
       
               <label style="font-weight: bold;">Depto. o Servicio:</label>
               <input readonly class="form-control"  type="text" value="' .$productos1['departamento']. '" name="depto">
 
           </div>
 
-          <div class="col-6 col-sm-3" style="position: initial">
+          <div class="col-6.5 col-sm-4" style="position: initial">
             <label style="font-weight: bold;">N° de Vale:</label>
             <input readonly class="form-control"  type="text" value="' .$productos1['codVale']. '" name="vale">
           </div>
 
           
-          <div class="col-6 col-sm-3" style="position: initial">
+          <div class="col-6.5 col-sm-4" style="position: initial">
             <label style="font-weight: bold;">Fecha:</label>
               <input readonly class="form-control"  type="text" value="' .$productos1['fecha_registro']. '" name="fech">
           </div>
@@ -108,7 +116,8 @@ while ($productos = mysqli_fetch_array($result)){
           <td><strong>Total</strong></td> 
           <td><input  name="tot_f" readonly value="$'.$final.'"  style="width: 90px; border: none; color: rgb(168, 8, 8); font-weight: bold;"></td>
         </tr>
-      </table>   
+      </table>  
+    </section> 
     <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
       <style>
         #pdf{
@@ -124,7 +133,6 @@ while ($productos = mysqli_fetch_array($result)){
         transform: translateY(5px);
         } 
       </style>
-    </section>
 </form>
 </section>
       ';

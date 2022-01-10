@@ -28,7 +28,7 @@ die();
     <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
          <link rel="stylesheet" href="Plugin/bootstap-icon/bootstrap-icons.min.css">
       <link rel="stylesheet" href="Plugin/bootstap-icon/fontawesome.all.min.css">
-    <title>Solicitudes Vale</title>
+    <title>Solicitudes De Vale</title>
 </head>
 
 
@@ -44,6 +44,7 @@ die();
                 <td class="table-info text-dark"><strong>Departamento Solicitante</strong></td>
                 <td class="table-info text-dark"><strong>Fecha de solicitud</strong></td>
                 <td class="table-info text-dark"><strong>Detalles</strong></td>
+                <td class="table-info text-dark"><strong>Accines</strong></td>
                 
             </tr>
             <td id="td" colspan="8"><h4>No se encontraron nigun  resutados 😥</h4></td>
@@ -73,10 +74,85 @@ die();
             <td>
                 <a class="btn btn-primary swal2-styled.swal2-confirm" href="datos_vale.php">Ver detalles</a>
             </td>
-        </tr>
+       
+            <!--**********************************************************************************************************************************************************************************-->
+  <!--Botones para actualizar y eliminar-->
+               <td><a class="btn btn-primary swal2-styled.swal2-confirm" data-toggle="modal" data-target="#exampleModal" class="text-primary"><i class="far fa-edit"></i></a> 
+                <a data-toggle="modal" data-target="#delete"  class="btn btn-danger" class="text-danger"> <i class="fas fa-trash"></i> </a></td>
+            </tr>
             <div class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+              
+  <div class="modal-dialog">
+    <div class="modal-content" style="background-color: hsl(100% , 50% , 1 );color: #FDF6F0;  background-image: linear-gradient(90deg, rgb(5, 114, 72), rgb(42, 136, 136));">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Actualizar Información</h5>
+        <button type="button" class="close" style="width: 15%;" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+       <form id="form" action="Controller/Actualizar.php?id=<?php  echo $solicitudes['codVale']; ?>" method="POST">
+      <div class="modal-body">
+         <div class="row">
+   <input type="hidden"class="form-control" name="codProducto" value="<?php  echo $solicitudes['codVale']; ?>" style="background-color:rgba(102,255,255,4.5)"><br>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class=""><strong>Departamento Solicitante</strong></div>
+    </div>
+    <div class="col">
+       <input  class="form-control" name="Departamento" value="<?php  echo $solicitudes['departamento']; ?>"style="background-color: #FDF6F0"><br>
+    </div>
    
+  </div>
+</div><br>
+
+    </div>
+  </div>
+  <center>
+      <div class="modal-footer">
+       
+        <button type="button" class="btn btn-danger" data-dismiss="modal"  style="margin-right: 15%;">Cancelar</button>
+        <button name="" type="submit" id="Update" class="btn btn-info">Actualizar</button>
+      
+      </div>  </center>
+        </form>
+    </div>
+  </div>
+</div>
+
+
+<!--***************************************************************************************************************************-->
+<!-- Delete -->
+<div class="modal fade" id="delete" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content"  style="background-color: hsl(100% , 50% , 1 );color: #FDF6F0;  background-image: linear-gradient(90deg, rgb(5, 114, 72), rgb(42, 136, 136));">
+            <div class="modal-header">
+                <h5 class="modal-title" >Eliminar Solicitud</h5>
+                <button type="button"  class="close"   style="width: 15%;"data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            
+     
+           
+      <div class="modal-body">
+           <form action="Controller/Delete_producto.php" method="POST">
+         <h3 class="text-center">Esta Solicitud será Eliminada Permanentemente</h3>
+   <input type="text"class="form-control" name="id" value="<?php  echo $solicitudes['codVale']; ?>" style="background-color:rgba(102,255,255,4.5)"><br>
+
+      
+        
+            </div>
+            <div class="modal-footer">
+        <button type="button" class="btn btn-info" data-dismiss="modal" style="margin-right: 15%;">Cancelar</button>
+        <button name="" type="submit" id="Update" class="btn btn-danger">Eliminar</button>
+      </div>
+           </form>
         </div>
+    </div>
+</div>
+</div>
  <?php } ?> 
            
         </table>

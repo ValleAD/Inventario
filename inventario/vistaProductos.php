@@ -206,7 +206,7 @@ die();
       <div class="modal-body">
            <form action="Controller/Delete_producto.php" method="POST">
          <h3 class="text-center">Este Producto será Eliminado Permanentemente</h3>
-   <input type="hidden"class="form-control" name="id" value="<?php  echo $productos['codProductos']; ?>" style="background-color:rgba(102,255,255,4.5)"><br>
+   <input type="text"class="form-control" name="id" value="<?php  echo $productos['codProductos']; ?>" style="background-color:rgba(102,255,255,4.5)"><br>
 
       
         
