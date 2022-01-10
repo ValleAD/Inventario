@@ -90,10 +90,10 @@ die();
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-       <form id="form" action="Controller/Actualizar.php?id=<?php  echo $solicitudes['codVale']; ?>" method="POST">
+       <form id="form" action="Controller/Actualizar_vale.php?id=<?php  echo $solicitudes['codVale']; ?>" method="POST">
       <div class="modal-body">
          <div class="row">
-   <input type="hidden"class="form-control" name="codProducto" value="<?php  echo $solicitudes['codVale']; ?>" style="background-color:rgba(102,255,255,4.5)"><br>
+   <input type="hidden"class="form-control" name="id" value="<?php  echo $solicitudes['codVale']; ?>" style="background-color:rgba(102,255,255,4.5)"><br>
 
 <div class="container">
   <div class="row">
