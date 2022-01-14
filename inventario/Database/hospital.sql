@@ -71,9 +71,9 @@ CREATE TABLE tb_compra (
 
 CREATE TABLE tb_almacen (
 codigoalmacen int(11) NOT NULL AUTO_INCREMENT,
-codigo (15) NOT NULL,
-nombre (50)  NOT NULL,
-unidad_medida (5) NOT NULL,
+codigo int(15) NOT NULL,
+nombre varchar(50)  NOT NULL,
+unidad_medida varchar(5) NOT NULL,
 cantidad_solicitada int(25) NOT NULL,
 cantidad_despachada int(25) NOT NULL,
 precio int(20) NOT NULL,
@@ -113,7 +113,7 @@ CREATE TABLE detalle_vale (
   precio decimal(6,2) NOT NULL,
   numero_vale int(15),
   fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-    PRIMARY KEY (coddetallevale),
+    PRIMARY KEY (codigodetallevale),
     CONSTRAINT fk_tb_vale_detalle_vale FOREIGN KEY (numero_vale)
     REFERENCES tb_vale(codVale)
 );
@@ -129,7 +129,7 @@ CREATE TABLE detalle_compra (
   precio decimal(6,2) NOT NULL,
   solicitud_compra int(8) DEFAULT NULL,
   fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-     PRIMARY KEY (codigo),
+     PRIMARY KEY (codigodetallecompra),
     CONSTRAINT fk_tb_compra_detalle_compra FOREIGN KEY (solicitud_compra)
     REFERENCES tb_compra(nSolicitud)
 );

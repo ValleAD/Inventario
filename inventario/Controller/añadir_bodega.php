@@ -14,7 +14,7 @@ $departamento = $_POST['departamento'];
             echo "<script> alert('Su solicitud fue guardada correctamente');
             location.href = '../dt_bodega.php';
             </script>
-            ";
+            "; 
           }else {
             echo "<script> alert('UUPS!! Algo no fue mal escrito');
             location.href = '../form_bodega.php';

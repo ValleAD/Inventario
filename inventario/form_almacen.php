@@ -51,10 +51,10 @@ die();
     <body >
 
 
-  <form style="width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%;" action="dt_sol_almacen.php" method="POST">
+  <form style="width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%;" action="Controller/almacen.php" method="POST">
 
     <ol class="breadcrumb">
-  <li><a id="a" href="home.php">Inicio</a></li>/
+  <li><a id="a" href="home.php">Inicio</a></li> &nbsp;/ &nbsp; 
   <li class="active">Solicitud de Materiales a almacen</li>
   <style type="text/css">
             #a:hover{
@@ -76,19 +76,7 @@ form{
     </style>
 </ol>
 <center>
-<div class="container">
-  <div class="row">
-   
-   <div class="col-6.5 col-sm-4"  style="position: initial">
-      <label>Departamento que solicita</label>   
-      <input class="form-control" type="text" name="depto" id="como2" required=""></div>
 
-    <div class="col-6.5 col-sm-4"  style="position: initial">
-      <label>Fecha</label> 
-      <input class="form-control" type="date" name="fech" id="como3" required><br></div>
-   
-  </div>
-</div>
 </center>
        <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
 
@@ -97,7 +85,7 @@ form{
         <div class="well well-sm" style="position: all; margin: 5%">
             <div class="form-group" style="position: all; margin: 2%">
                         <label>Código</label> 
-                      <input type="number" name="cod[]" class="form-control" placeholder="Ingrese código de producto " required=""/>
+                      <input type="number" name="cod[]" class="form-control" placeholder="Ingrese código de producto "/>
                   </div>
 
 
@@ -107,7 +95,7 @@ form{
                     <div class="invalid-feedback">
                         Por favor seleccione una opción.
                       </div>
-                      <select  class="form-control" name="um[]" id="um" required>
+                      <select  class="form-control" name="um[]" id="um">
                         <option selected disabled value="">U/M</option>
                         <option value="U">U</option>
                         <option value="M">M</option>
@@ -117,23 +105,20 @@ form{
 
             <div class="form-group">
                  <label>Nombre del Artículo</label>
-                <input type="text" name="nom[]" class="form-control" placeholder="Nombre y descripción del producto" required=""/>
+                <input type="text" name="nom[]" class="form-control" placeholder="Nombre y descripción del producto"/>
             </div>
 
             
             <div class="form-group">
                 <label>Cantidad Solicitada</label>
-                <input type="number" name="cant_sol[]" class="form-control" placeholder="Ingrese la Cantidad Solicitada" required="" />
+                <input type="number" name="soli[]" class="form-control" placeholder="Ingrese la Cantidad Solicitada"/>
             </div>
 
-            <div class="form-group">
-                <label>Cantidad Despachada</label>
-                <input type="number" name="cant_des[]" class="form-control" placeholder="Ingrese la Cantidad Despachada" required="" />
-            </div>
+            
             
             <div class="form-group">
                 <label>Costo Unitario</label>
-               <input class="form-control" type="number" step="0.01" name="cu[]" placeholder="Costo unitario del producto" required><br>
+               <input class="form-control" type="number" step="0.01" name="precio[]" placeholder="Costo unitario del producto"><br>
             </div>
         </div>
     </div>            
