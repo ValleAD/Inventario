@@ -139,9 +139,35 @@ die();
     </div>
     <div class="col">
 <div class="form-floating">
-              <textarea class="form-control"name="descripcion" placeholder="Ingrese la Descripción" id="floatingTextarea"><?php  echo $productos['descripcion']; ?></textarea>
+              <textarea id="content" class="form-control"name="descripcion" placeholder="Ingrese la Descripción" id="floatingTextarea"><?php  echo $productos['descripcion']; ?></textarea>
             </div>
-
+            <style>
+textarea{
+  width: 100%;
+  min-height: 50px;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  color: #444;
+  padding: 5px;
+}
+.noscroll{
+  overflow: hidden;
+  resize: none;
+}
+.hiddendiv{
+  display: none;
+  white-space: pre-wrap;
+  width: 500px;
+  min-height: 50px;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  padding: 5px;
+  word-wrap: break-word;
+}
+.lbr {
+  line-height: 3px;
+}
+</style>
     </div>
    
   </div>
@@ -243,5 +269,25 @@ die();
             </tbody>
         </table>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+$(function(){
+    var textArea = $('#content'),
+    hiddenDiv = $(document.createElement('div')),
+    content = null;
+    
+    textArea.addClass('noscroll');
+    hiddenDiv.addClass('hiddendiv');
+    
+    $(textArea).after(hiddenDiv);
+    
+    textArea.on('keyup', function(){
+        content = $(this).val();
+        content = content.replace(/\n/g, '<br>');
+        hiddenDiv.html(content + '<br class="lbr">');
+        $(this).css('height', hiddenDiv.height());
+    });
+});
+</script>
 </body>
 </html>
