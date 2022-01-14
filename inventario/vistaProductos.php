@@ -35,10 +35,9 @@ die();
 
 <body>
   <body>
-
     <div class="container">
         <table class="table">
-            <caption style="margin-top:5px">Inventario de Productos</caption>
+            <h1 style="margin-top:5px">Inventario de Productos</h1>
             <thead>
               <tr id="tr">
                     <th>
@@ -68,7 +67,7 @@ die();
                 </tr>
                 <tr>
                   <td id="td" colspan="8">
-                    <h4>No se encontraron nigun  resutados 😥</h4></td>
+                    <h4>No se encontraron resultados 😥</h4></td>
             </tr>
             </thead>
             <tbody>

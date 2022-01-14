@@ -81,8 +81,8 @@ form{
                         Por favor seleccione una opción.
                       </div>
                       <select  class="form-control" name="um[]" id="um" required>
-                        <option selected disabled value="">U/M</option>
-                        <option>C/U - Codigo Unico</option>
+                        <option selected disabled value="">Seleccione</option>
+                        <option>C/U - Cada Uno</option>
                         <option>Lb - Libra</option>
                         <option>Mts - Metros</option>
                         <option>Pgo - Pliego</option> 

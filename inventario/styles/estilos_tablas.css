@@ -17,7 +17,7 @@ body {
     table-layout: fixed;
 }
 
-.table caption {
+.table h1 {
     font-size: 28px;
     text-transform: uppercase;
     font-weight: bold;
@@ -51,7 +51,7 @@ body {
     .table {
         border: 0px;
     }
-    .table caption {
+    .table h1 {
         font-size: 22px;
     }
     .table thead {
