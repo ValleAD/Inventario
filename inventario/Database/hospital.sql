@@ -64,12 +64,34 @@ CREATE TABLE tb_compra (
   dependencia varchar(50) NOT NULL,
   plazo varchar(50) NULL,
   unidad_tecnica varchar(75) NOT NULL,
-  descripcion_solicitud int(20) NOT NULL,
+  descripcion_solicitud varchar(50) NOT NULL,
   fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (nSolicitud)
 );
 
+CREATE TABLE tb_almacen (
+codigoalmacen int(11) NOT NULL AUTO_INCREMENT,
+codigo (15) NOT NULL,
+nombre (50)  NOT NULL,
+unidad_medida (5) NOT NULL,
+cantidad_solicitada int(25) NOT NULL,
+cantidad_despachada int(25) NOT NULL,
+precio int(20) NOT NULL,
+fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+    PRIMARY KEY (codigoalmacen)
+);
+
+CREATE TABLE tb_circulante (
+codigo int(15) NOT NULl AUTO_INCREMENT,
+descripcion varchar(50) NOT NULL,
+unidad_medida varchar(5) NOT NULL,
+cantidad_solicitada int(25) NOT NULL,
+fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+    PRIMARY KEY (codigo)
+);
+
 CREATE TABLE detalle_bodega (
+  codigodetallebodega int(15) NOT NULL AUTO_INCREMENT,
   codigo int(15) NOT NULL,
   descripcion varchar(50) NOT NULL,
   unidad_medida varchar(11) NOT NULL DEFAULT 'U',
@@ -77,12 +99,13 @@ CREATE TABLE detalle_bodega (
   precio decimal(6,2) NOT NULL,
   odt_bodega int(15),
   fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-    PRIMARY KEY (codigo),
+    PRIMARY KEY (codigodetallebodega),
     CONSTRAINT fk_tb_bodega_detalle_bodeha FOREIGN KEY (odt_bodega)
     REFERENCES tb_bodega(codBodega)
 );
 
 CREATE TABLE detalle_vale (
+  codigodetallevale int(11) NOT NULL AUTO_INCREMENT,
   codigo int(15) NOT NULL,
   descripcion varchar(50) NOT NULL,
   unidad_medida varchar(11) NOT NULL DEFAULT 'U',
@@ -97,6 +120,7 @@ CREATE TABLE detalle_vale (
 
 
 CREATE TABLE detalle_compra (
+  codigodetallecompra int(11) NOT NULl AUTO_INCREMENT,
   codigo int(15) NOT NULL,
   catalogo int(20) NOT NULL,
   descripcion varchar(200) NOT NULL,
