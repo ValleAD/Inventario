@@ -111,22 +111,36 @@ form{
 <div id="lo-que-vamos-a-copiar"  style="background:#FAE2E2;margin-left: 1%;margin-right: 1%;margin-top: 1%">
     <div class="col-xs-4 "  style="background: #FAE2E2;margin-left: 1;margin-right: 1%;margin-top: 1%;" >
         <div class="well well-sm" style="position: all; margin: 5%">
-            <div class="form-group" style="position: all; margin: 2%">
-                        <label>Código</label> 
-                      <input type="number" name="cod[]" class="form-control" placeholder="Ingrese código de producto " required>
+        
+                  <div class="form-group" style="position: all; margin: 2%">
+                      <label>Categoría</label> 
+                      <select  class="form-control" name="um" id="um" required style="background-color: #FDF6F0">
+                        <option selected disabled value="">Seleccionar</option>
+                        <option value="agro">Agropecuarios y Forestales</option>
+                        <option value="cuero">Cuero y Caucho</option>
+                        <option value="quimicos">Químicos</option>
+                        <option value="combus">Combustibles y Lubricantes</option> 
+                        <option value="minNo">Minerales no Metálicos</option>
+                        <option value="min">Minerales Metálicos</option>
+                        <option value="repuestos">Herramientas y Repuestos</option>
+                        <option value="elec">Materiales Eléctricos</option>
+                      </select>
+                  </div> 
+
+                  <div class="form-group" style="position: all; margin: 2%">
+                      <label>Código</label> 
+                      <input type="number" name="cod[]" class="form-control" placeholder="Código de producto " required>
                   </div>
 
                   <div class="form-group" style="position: all; margin: 2%">
                         <label>Codificación de Catálogo de NA</label> 
-                      <input type="number" name="cat[]" class="form-control" placeholder="Ingrese código" required>
+                      <input type="number" name="cat[]" class="form-control" placeholder="Código" required>
                   </div>
 
                   <div class="form-group">
                     <label>Descripción Completa</label>
-                    <input type="text" name="desc[]" class="form-control" placeholder="Descripción con especificaciones" required>
+                    <input type="text" name="desc[]" class="form-control" placeholder="Descripción" required>
                   </div>
-
-
 
                   <div class="form-group" style="position: initial">
                     <label>Unidad de medida (U/M)</label>
@@ -134,12 +148,15 @@ form{
                     <div class="invalid-feedback">
                         Por favor seleccione una opción.
                       </div>
-                      <select  class="form-control" name="um[]" id="um" required>
-                        <option selected disabled value="">U/M</option>
-                        <option value="U">U</option>
-                        <option value="M">M</option>
-                      </select>
-                      
+                        <select  class="form-control" name="um" id="um" required style="background-color: #FDF6F0">
+                          <option selected disabled value="">Seleccionar</option>
+                          <option value="">c/u</option>
+                          <option value="">lb</option>
+                          <option value="">mts</option>
+                          <option value="">Pgo</option> 
+                          <option value="">Qq</option>
+                          <option value="">Cto</option>
+                        </select>
                     </div>
                   </div>
             
@@ -150,7 +167,7 @@ form{
 
             <div class="form-group">
                 <label>Costo Unitario (Estimado)</label>
-               <input class="form-control" type="number" step="0.01" name="cu[]" placeholder="Costo unitario del producto" required><br>
+               <input class="form-control" type="number" step="0.01" name="cu[]" placeholder="Costo unitario" required><br>
             </div>
         </div>
     </div>            

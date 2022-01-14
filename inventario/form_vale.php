@@ -15,7 +15,7 @@ die();
 ?>
 <?php include ('templates/menu.php')?>
 <!DOCTYPE html>
-<!--Espara la version de mobile-->
+<!--Es para la version de mobile-->
 <style type="text/css">
       @media (max-width: 952px){
     #section{
@@ -55,8 +55,9 @@ form{
  margin-right: 15%;
 
 }
+      }
 </style>
-</style>
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -147,11 +148,11 @@ if(isset($_POST['codigo'])){
         <div class="table-responsive">
         <table class="table">
            <tr id="head">
-                <td><strong>Código</strong></td>
+                <td style="width: 12%;"><strong>Código</strong></td>
                 <td><strong>Descripción</strong></td>
-                <td><strong>U/M</strong></td>
-                <td><strong>Cantidad</strong></td>
-                <td><strong>Costo unitario</strong></td>
+                <td style="width: 15%;"><strong>U/M</strong></td>
+                <td style="width: 15%;"><strong>Cantidad</strong></td>
+                <td style="width: 15%;"><strong>Costo unitario</strong></td>
             </tr>
               <tr>
               <center> <td id="td" colspan="5"><h4>No se encontraron ningun resutados 😥</h4></td></center> 
@@ -179,11 +180,11 @@ if(isset($_POST['codigo'])){
 </style>
     
             <tr>
-               <td><input type="number"  class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
-               <td><input type="text"  class="form-control" readonly name="desc[]" value ="<?php  echo $productos['descripcion']; ?>"></td>
-               <td><input type="text"  class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
-               <td><input type="number"  class="form-control"  name="cant[]" values = "<?php  echo $productos['stock']; ?>"></td>
-               <td><input type="number"  class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
+               <td><input type="number" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
+               <td><textarea cols="10" rows="1" type="text" class="form-control" readonly name="desc[]"><?php  echo $productos['descripcion']; ?></textarea></td>
+               <td><input type="text" class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
+               <td><input type="number" class="form-control"  name="cant[]" values = "<?php  echo $productos['stock']; ?>"></td>
+               <td><input type="number" class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
             </tr>
    
         <?php }

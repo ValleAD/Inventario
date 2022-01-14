@@ -35,6 +35,7 @@ die();
 
 <body>
   <body>
+
     <div class="container">
         <table class="table">
             <h1 style="margin-top:5px">Inventario de Productos</h1>
@@ -49,7 +50,7 @@ die();
                     <th>
                         Nombre
                     </th>
-                    <th>
+                    <th style="width: 25%;">
                         Descripción Completa</th>
                     <th>
                        
@@ -84,19 +85,17 @@ die();
    
 </style>
                 <tr>
-                    <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
-                    <td data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
-                    <td data-label="Nombre"><?php  echo $productos['nombre']; ?></td>
-                    <td data-label="Descripción Completa"><?php  echo $productos['descripcion']; ?></td>
-                    <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
-                    <td data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
-                    <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
-                    <td data-label="Acciones">
-                        <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" class="text-primary"><i class="far fa-edit"></i></a>
-                    <a data-toggle="modal" data-target="#delete"  class="btn btn-danger" class="text-danger"> <i class="fas fa-trash"></i> </a></td>
-                </tr>
-                <div class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-              
+                  <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
+                  <td data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
+                  <td data-label="Nombre"><?php  echo $productos['nombre']; ?></td>
+                  <td data-label="Descripción Completa" style="width: 100%;"><textarea cols="10" rows="3" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
+                  <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
+                  <td data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
+                  <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
+                  <td data-label="Acciones"><a class="btn btn-primary swal2-styled.swal2-confirm" data-toggle="modal" data-target="#exampleModal" class="text-primary"><i class="far fa-edit"></i></a>
+                  <a data-toggle="modal" data-target="#delete"  class="btn btn-danger" class="text-danger"> <i class="fas fa-trash"></i> </a></td>
+              </tr>
+              <div  class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
   <div class="modal-dialog">
     <div class="modal-content" style="background-color: hsl(100% , 50% , 1 );color: #FDF6F0;  background-image: linear-gradient(90deg, rgb(5, 114, 72), rgb(42, 136, 136));">
       <div class="modal-header">
@@ -140,7 +139,7 @@ die();
     </div>
     <div class="col">
 <div class="form-floating">
-              <textarea id="content" class="form-control"name="descripcion" placeholder="Ingrese la Descripción" id="floatingTextarea"><?php  echo $productos['descripcion']; ?></textarea>
+              <textarea cols="10" rows="3" readonly id="content" class="form-control"name="descripcion" placeholder="Ingrese la Descripción" id="floatingTextarea"><?php  echo $productos['descripcion']; ?></textarea>
             </div>
             <style>
 textarea{
@@ -185,14 +184,13 @@ textarea{
            </div>
               <select  class="form-control" name="um" id="um" required style="background-color: #FDF6F0">
                 <option selected disabled value="">seleccione una opción</option>
-                        <option>C/U - Codigo Unico</option>
+                        <option>C/U - Cada Uno</option>
                         <option>Lb - Libra</option>
                         <option>Mts - Metros</option>
                         <option>Pgo - Pliego</option> 
                         <option>Qq - Quintal</option>
                         <option>Cto - Ciento</option>
               </select>
-                      
             </div>
     </div>
    
