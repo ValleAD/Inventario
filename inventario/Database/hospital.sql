@@ -86,6 +86,7 @@ codigo int(15) NOT NULl AUTO_INCREMENT,
 descripcion varchar(50) NOT NULL,
 unidad_medida varchar(5) NOT NULL,
 cantidad_solicitada int(25) NOT NULL,
+costo int(50) NOT NULL,
 fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (codigo)
 );

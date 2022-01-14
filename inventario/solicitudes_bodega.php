@@ -46,7 +46,7 @@ die();
                 <td class="table-info text-dark"><strong>Detalles</strong></td>
                 
             </tr>
-            <td id="td" colspan="8"><h4>No se encontraron nigun  resutados 😥</h4></td>
+            <td id="td" colspan="8"><h4>No se encontraron ningun  resultados 😥</h4></td>
             </tr>
     
             

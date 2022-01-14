@@ -40,13 +40,18 @@ die();
         <table class="table table-dark table-hover table-bordered container-fluid" style="vertical-align: bottom;">
             <tr>
              
-                <td class="table-info text-dark"><strong>Código de Vale</strong></td>
-                <td class="table-info text-dark"><strong>Departamento Solicitante</strong></td>
-                <td class="table-info text-dark"><strong>Fecha de solicitud</strong></td>
+                <td class="table-info text-dark"><strong>Código</strong></td>
+                <td class="table-info text-dark"><strong>Nombre</strong></td>
+                <td class="table-info text-dark"><strong>U/M</strong></td>
+                <td class="table-info text-dark"><strong>Cantidad Solicitada</strong></td>
+                <td class="table-info text-dark"><strong>Costo Unitario</strong></td>
+                <td class="table-info text-dark"><strong>Fecha</strong></td>
                 <td class="table-info text-dark"><strong>Detalles</strong></td>
+               
+                
                 
             </tr>
-            <td id="td" colspan="8"><h4>No se encontraron nigun  resutados 😥</h4></td>
+            <td id="td" colspan="8"><h4>No se encontraron ningun resultados 😥</h4></td>
             </tr>
     
             
@@ -63,8 +68,11 @@ die();
    
 </style>
         <tr>
-            <td class="delete"><?php  echo $solicitudes['codVale']; ?></td>
-            <td class="delete"><?php  echo $solicitudes['departamento']; ?></td>
+            <td class="delete"><?php  echo $solicitudes['codigo']; ?></td>
+            <td class="delete"><?php  echo $solicitudes['nombre']; ?></td>
+            <td class="delete"><?php  echo $solicitudes['unidad_medida']; ?></td>
+            <td class="delete"><?php  echo $solicitudes['cantidad_solicitada']; ?></td>
+            <td class="delete"><?php  echo $solicitudes['precio']; ?></td>
             <td class="delete"><?php  echo $solicitudes['fecha_registro']; ?></td>
 
 
