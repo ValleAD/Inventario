@@ -19,6 +19,7 @@ die();
 <head>
 <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles/style.css" > 
+    <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css" > 
      <link rel="stylesheet" type="text/css" href="styles/estilos_menu.css" > 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -33,28 +34,44 @@ die();
 
 
 <body>
-    <div class=" container table-responsive " >
-      
-        <h2 class="text-center mg-t" style="color: #fff; margin-top: -0.5%;">Inventario de Productos</h2>
-        <p style="margin-top: 5%;" ></p>
-        <table class="table table-dark table-hover table-bordered container-fluid" style="vertical-align: bottom;">
-            <tr>
-             
-                <td class="table-info text-dark"><strong>Código</strong></td>
-                <td class="table-info text-dark"><strong>Codificación de catálogo</strong></td>
-                <td class="table-info text-dark"><strong>Nombre</strong></td>
-                <td class="table-info text-dark"><strong>Descripción Completa</strong></td>
-                <td class="table-info text-dark"><strong>U/M</strong></td>
-                <td class="table-info text-dark"><strong>Cantidad</strong></td>
-                <td class="table-info text-dark"><strong>Costo unitario</strong></td>
-                <td colspan="2"  class="table-info text-dark"><strong>Accion</strong></td>
-                
+  <body>
+    <div class="container">
+        <table class="table">
+            <caption>Inventario de Productos</caption>
+            <thead>
+              <tr>
+                    <th>
+                        Código
+                    </th>
+                    <th>
+                        Codificación de catálogo
+                    </th>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Descripción Completa</th>
+                    <th>
+                       
+                        Unidad De Medida
+                    </th>
+                    <th>
+                        Cantidad
+                    </th>
+                    <th>
+                        Costo Unitario
+                    </th>
+                    <th>
+                        Acciones
+                    </th>
+                </tr>
+                <tr>
+                  <td id="td" colspan="8">
+                    <h4>No se encontraron nigun  resutados 😥</h4></td>
             </tr>
-            <td id="td" colspan="8"><h4>No se encontraron nigun  resutados 😥</h4></td>
-            </tr>
-    
-            
-    <?php
+            </thead>
+            <tbody>
+                    <?php
     include 'Model/conexion.php';
     $sql = "SELECT * FROM tb_productos";
     $result = mysqli_query($conn, $sql);
@@ -66,22 +83,18 @@ die();
     }
    
 </style>
-            <tr>
-               <td class="delete"><?php  echo $productos['codProductos']; ?></td>
-               <td class="delete"><?php  echo $productos['catalogo']; ?></td>
-               <td class="delete"><?php  echo $productos['nombre']; ?></td>
-               <td class="delete"><?php  echo $productos['descripcion']; ?></td>
-               <td class="delete"><?php  echo $productos['unidad_medida']; ?></td>
-               <td class="delete"><?php  echo $productos['stock']; ?></td>
-               <td class="delete">$<?php  echo $productos['precio']; ?></td>
-
-
-<!--**********************************************************************************************************************************************************************************-->
-  <!--Botones para actualizar y eliminar-->
-               <td><a class="btn btn-primary swal2-styled.swal2-confirm" data-toggle="modal" data-target="#exampleModal" class="text-primary"><i class="far fa-edit"></i></a> 
-                <a data-toggle="modal" data-target="#delete"  class="btn btn-danger" class="text-danger"> <i class="fas fa-trash"></i> </a></td>
-            </tr>
-            <div class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+                <tr>
+                    <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
+                    <td data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
+                    <td data-label="Nombre"><?php  echo $productos['nombre']; ?></td>
+                    <td data-label="Descripción Completa"><?php  echo $productos['descripcion']; ?></td>
+                    <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
+                    <td data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
+                    <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
+                    <td data-label="Acciones"><a class="btn btn-primary swal2-styled.swal2-confirm" data-toggle="modal" data-target="#exampleModal" class="text-primary"><i class="far fa-edit"></i></a>
+                    <a data-toggle="modal" data-target="#delete"  class="btn btn-danger" class="text-danger"> <i class="fas fa-trash"></i> </a></td>
+                </tr>
+                <div class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
               
   <div class="modal-dialog">
     <div class="modal-content" style="background-color: hsl(100% , 50% , 1 );color: #FDF6F0;  background-image: linear-gradient(90deg, rgb(5, 114, 72), rgb(42, 136, 136));">
@@ -125,7 +138,9 @@ die();
 
     </div>
     <div class="col">
-      <input  class="form-control" name="descripcion" value="<?php  echo $productos['descripcion']; ?>"style="background-color: #FDF6F0"><br>
+<div class="form-floating">
+              <textarea class="form-control"name="descripcion" placeholder="Ingrese la Descripción" id="floatingTextarea"><?php  echo $productos['descripcion']; ?></textarea>
+            </div>
 
     </div>
    
@@ -143,8 +158,12 @@ die();
            </div>
               <select  class="form-control" name="um" id="um" required style="background-color: #FDF6F0">
                 <option selected disabled value="">seleccione una opción</option>
-                <option value="U">U</option>
-                <option value="M">M</option>
+                        <option>C/U - Codigo Unico</option>
+                        <option>Lb - Libra</option>
+                        <option>Mts - Metros</option>
+                        <option>Pgo - Pliego</option> 
+                        <option>Qq - Quintal</option>
+                        <option>Cto - Ciento</option>
               </select>
                       
             </div>
@@ -206,7 +225,7 @@ die();
       <div class="modal-body">
            <form action="Controller/Delete_producto.php" method="POST">
          <h3 class="text-center">Este Producto será Eliminado Permanentemente</h3>
-   <input type="text"class="form-control" name="id" value="<?php  echo $productos['codProductos']; ?>" style="background-color:rgba(102,255,255,4.5)"><br>
+   <input type="hidden"class="form-control" name="id" value="<?php  echo $productos['codProductos']; ?>" style="background-color:rgba(102,255,255,4.5)"><br>
 
       
         
@@ -220,8 +239,8 @@ die();
     </div>
 </div>
 </div>
- <?php } ?> 
-           
+                <?php } ?> 
+            </tbody>
         </table>
     </div>
 </body>

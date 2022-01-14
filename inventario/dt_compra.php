@@ -53,40 +53,40 @@ $final = 0;
 <section>
 <form id="section" method="POST" action="Exportar_PDF/pdf_compra.php" target="_blank">
          
-      <section>
+      <section id="section">
         <div class="row">
       
-          <div class="col-6 col-sm-3" style="position: initial; margin-top: 5%;">
+          <div class="col-6.5 col-sm-4" style="position: initial; margin-top: 5%;">
               <label style="font-weight: bold;">Solicitud No.</label>
               <input readonly class="form-control"  type="text" value="' .$datos['nSolicitud']. '" name="depto">
           </div>
 
-          <div class="col-6 col-sm-3" style="position: initial; margin-top: 5%;">
+          <div class="col-6.5 col-sm-4" style="position: initial; margin-top: 5%;">
             <label style="font-weight: bold;">Dependecia Solicitante.</label>
             <input readonly class="form-control"  type="text" value="' .$datos['dependencia']. '" name="odt">
           </div>
 
-          <div class="col-6 col-sm-3" style="position: initial; margin-top: 5%;">
+          <div class="col-6.5 col-sm-4" style="position: initial; margin-top: 5%;">
             <label style="font-weight: bold;">Plazo y N° entregas:</label>
             <input readonly class="form-control"  type="text" value="Plazo y N° entregas" name="odt">
           </div>
 
-          <div class="col-6 col-sm-3" style="position: initial; margin-top: 5%;">
+          <div class="col-6.5 col-sm-4" style="position: initial; margin-top: 5%;">
             <label style="font-weight: bold;">Unidad Técnica:</label>
               <input readonly class="form-control"  type="text" value="' .$datos['unidad_tecnica']. '" name="fech">
           </div>
 
-          <div class="col-6 col-sm-3" style="position: initial; margin-top: 2%;">
+          <div class="col-6.5 col-sm-4" style="position: initial; margin-top: 2%;">
             <label style="font-weight: bold;">Monto presupuestado:</label>
             <input readonly class="form-control"  type="text" value="total" name="odt">
           </div>
 
-          <div class="col-6 col-sm-3" style="position: initial; margin-top: 2%;">
+          <div class="col-6.5 col-sm-4" style="position: initial; margin-top: 2%;">
             <label style="font-weight: bold;">Fecha:</label>
               <input readonly class="form-control"  type="text" value="' .$datos['fecha_registro']. '" name="fech">
           </div>
 
-          <div class="col-6 col-sm-3" style="position: initial; margin-top: 2%;">
+          <div class="col-6.5 col-sm-4" style="position: initial; margin-top: 2%;">
           <label style="font-weight: bold;">Suministro Solicitado:</label>
           <input readonly class="form-control"  type="text" value="Suministro" name="odt">
         </div>
@@ -138,7 +138,7 @@ while ($productos = mysqli_fetch_array($result)){
           <td><strong>Total</strong></td> 
           <td><input  name="tot_f" readonly value="$'.$final.'"  style="width: 90px; border: none; color: rgb(168, 8, 8); font-weight: bold;"></td>
         </tr>
-      </table>   
+      </table>    </section>
     <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
       <style>
         #pdf{
@@ -154,7 +154,7 @@ while ($productos = mysqli_fetch_array($result)){
         transform: translateY(5px);
         } 
       </style>
-    </section>
+   
 </form>
 </section>
       ';

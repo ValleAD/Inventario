@@ -52,7 +52,7 @@ die();
             
     <?php
     include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_vale ORDER BY fecha_registro DESC";
+    $sql = "SELECT * FROM tb_almacen ORDER BY fecha_registro DESC";
     $result = mysqli_query($conn, $sql);
 
     while ($solicitudes = mysqli_fetch_array($result)){?>
