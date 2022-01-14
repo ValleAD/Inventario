@@ -18,9 +18,8 @@ die();
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="styles/style.css" > 
-    <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css" > 
-     <link rel="stylesheet" type="text/css" href="styles/estilos_menu.css" > 
+    <link rel="stylesheet" type="text/css" href="styles/style.css"> 
+    <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
@@ -63,8 +62,11 @@ die();
                         Costo Unitario
                     </th>
                     <th>
-                        Acciones
+                        Editar
                     </th>
+                    <th>
+                      Eliminar
+                  </th>
                 </tr>
                 <tr>
                   <td id="td" colspan="8">
@@ -92,8 +94,23 @@ die();
                   <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
                   <td data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
                   <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
-                  <td data-label="Acciones"><a class="btn btn-primary swal2-styled.swal2-confirm" data-toggle="modal" data-target="#exampleModal" class="text-primary"><i class="far fa-edit"></i></a>
-                  <a data-toggle="modal" data-target="#delete"  class="btn btn-danger" class="text-danger"> <i class="fas fa-trash"></i> </a></td>
+                  <td data-label="Editar">
+                    <form style="margin: 0%; background: transparent;" method='POST' action="Controller/Actualizar.php">             
+                      <input type='hidden' name='id' value="<?php  echo $productos['codProductos']; ?>">             
+                      <button name='editar' class='btn btn-info btn-sm'  >Editar</button>             
+                    </form>  
+                  </td>
+
+                  <td data-label="Eliminar">
+                    <form style="margin: 0%; background: transparent;" onsubmit=\"return confirm('¿Realmente desea eliminar el registro?');\" method='POST' action="">             
+                      <input type='hidden' name='id' value="<?php  echo $productos['codProductos']; ?>">             
+                      <button name='eliminar' class='btn btn-danger btn-sm'>Eliminar</button>             
+                    </form> 
+                  </td>
+                </tr>
+<!--                   
+<a class="btn btn-primary swal2-styled.swal2-confirm" data-toggle="modal" data-target="#exampleModal" class="text-primary"><i class="far fa-edit"></i></a>
+<a data-toggle="modal" data-target="#delete"  class="btn btn-danger" class="text-danger"> <i class="fas fa-trash"></i> </a></td>
               </tr>
               <div  class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
   <div class="modal-dialog">
@@ -104,7 +121,7 @@ die();
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-       <form id="form" action="Controller/Actualizar.php?id=<?php  echo $productos['codProductos']; ?>" method="POST">
+      <form method='POST' action="Controller/Actualizar.php"> 
       <div class="modal-body">
          <div class="row">
    <input type="hidden"class="form-control" name="codProducto" value="<?php  echo $productos['codProductos']; ?>" style="background-color:rgba(102,255,255,4.5)"><br>
@@ -231,10 +248,10 @@ textarea{
     </div>
   </div>
 </div>
-
+-->
 
 <!--***************************************************************************************************************************-->
-<!-- Delete -->
+<!-- Delete 
 <div class="modal fade" id="delete" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content"  style="background-color: hsl(100% , 50% , 1 );color: #FDF6F0;  background-image: linear-gradient(90deg, rgb(5, 114, 72), rgb(42, 136, 136));">
@@ -263,7 +280,7 @@ textarea{
         </div>
     </div>
 </div>
-</div>
+</div>-->
                 <?php } ?> 
             </tbody>
         </table>
