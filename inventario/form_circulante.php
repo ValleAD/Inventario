@@ -55,10 +55,10 @@ die();
 <body >
 
 
-  <form style="width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%;" action="dt_sol_circulante.php" method="POST">
+  <form style="width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%;" action="Controller/añadir_circulante.php" method="POST">
 
     <ol class="breadcrumb">
-      <li><a id="a" href="home.php">Inicio</a></li>/
+      <li><a id="a" href="home.php">Inicio</a></li>&nbsp; / &nbsp;
       <li  class="active">Solicitud de Fondo Circulante</li>
 
          <style type="text/css">
@@ -81,12 +81,7 @@ form{
     </ol>
   <center>
     <div class="container">
-        <div class="row">
-            <div class="col-6.5 col-sm-3"  style="position: initial">
-                <label>Número de Solicitud</label> 
-                <input class="form-control" type="number" name="sol" id="como1" required="">
-            </div>
-        </div>
+        
     </div><br>
   </center>
     <div id="Registro" class="row container-fluid" style="position: all; margin-left: 1%;margin-right: 1%;"  >
@@ -116,12 +111,12 @@ form{
 
                     <div class="form-group">
                         <label>Cantidad Solicitada</label>
-                        <input type="number" name="cant[]" class="form-control" placeholder="Ingrese la Cantidad" required="" />
+                        <input type="number" name="soli[]" class="form-control" placeholder="Ingrese la Cantidad" required="" />
                     </div>
 
                     <div class="form-group">
                         <label>Costo Estimado</label>
-                        <input class="form-control" type="number" step="0.01" name="cu[]" placeholder="Costo unitario del producto" required=""><br>
+                        <input class="form-control" type="number" step="0.01" name="costo[]" placeholder="Costo unitario del producto" required=""><br>
                     </div>
             </div>
         </div>            

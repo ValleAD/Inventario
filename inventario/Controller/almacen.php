@@ -17,12 +17,12 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 
       if ($query) {
         echo "<script> alert('Su producto fue registrado correctamente');
-        location.href = '../home.php';
+        location.href = '../dt_almacen.php';
         </script>
         ";
       }else {
         echo "<script> alert('UUPS!! Algo no fue mal escrito');
-        location.href = '../regi_producto.php';
+        location.href = '../form_almacen.php';
         </script>
         ";
       }
