@@ -40,8 +40,10 @@ die();
         <table class="table table-dark table-hover table-bordered container-fluid" style="vertical-align: bottom;">
             <tr>
              
-                <td class="table-info text-dark"><strong>Código de Vale</strong></td>
-                <td class="table-info text-dark"><strong>Departamento Solicitante</strong></td>
+                <td class="table-info text-dark"><strong>N. Solicitud</strong></td>
+                <td class="table-info text-dark"><strong>Dependencia</strong></td>
+                <td class="table-info text-dark"><strong>Plaza</strong></td><td class="table-info text-dark"><strong>Unidad Técnica</strong></td>
+                <td class="table-info text-dark"><strong>Descripción Solitud</strong></td>
                 <td class="table-info text-dark"><strong>Fecha de solicitud</strong></td>
                 <td class="table-info text-dark"><strong>Detalles</strong></td>
                 
@@ -52,7 +54,7 @@ die();
             
     <?php
     include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_vale ORDER BY fecha_registro DESC";
+    $sql = "SELECT * FROM tb_compra ORDER BY fecha_registro DESC";
     $result = mysqli_query($conn, $sql);
 
     while ($solicitudes = mysqli_fetch_array($result)){?>
@@ -63,15 +65,18 @@ die();
    
 </style>
         <tr>
-            <td class="delete"><?php  echo $solicitudes['codVale']; ?></td>
-            <td class="delete"><?php  echo $solicitudes['departamento']; ?></td>
+            <td class="delete"><?php  echo $solicitudes['nSolicitud']; ?></td>
+            <td class="delete"><?php  echo $solicitudes['dependencia']; ?></td>
+            <td class="delete"><?php  echo $solicitudes['plazo']; ?></td>
+            <td class="delete"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
+            <td class="delete"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
             <td class="delete"><?php  echo $solicitudes['fecha_registro']; ?></td>
 
 
 <!--**********************************************************************************************************************************************************************************-->
   <!--Botones para actualizar y eliminar-->
             <td>
-                <a class="btn btn-primary swal2-styled.swal2-confirm" href="datos_vale.php">Ver detalles</a>
+                <a class="btn btn-primary swal2-styled.swal2-confirm" href="datos_compra.php">Ver detalles</a>
             </td>
         </tr>
             <div class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >

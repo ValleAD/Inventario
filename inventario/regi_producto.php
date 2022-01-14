@@ -27,6 +27,9 @@ die();
   </head>
     <body >
 <style type="text/css">
+        table { table-layout: fixed;}
+        td{width: calc(100%/3);}
+
                   @media (max-width: 952px){
 form{
     margin: auto;
@@ -63,7 +66,12 @@ form{
 
                   <div class="form-group">
                     <label style="color: #000">Descripción Completa</label>
-                    <input type="text" name="descr[]" class="form-control" placeholder="Descripción con especificaciones" required>
+
+            <div class="form-floating" >
+              <textarea class="form-control" name="descr[]"  placeholder="Ingrese la Descripción" id="floatingTextarea"></textarea>
+            </div>
+
+                  
                   </div>
 
                   <div class="form-group" >
@@ -73,9 +81,14 @@ form{
                         Por favor seleccione una opción.
                       </div>
                       <select  class="form-control" name="um[]" id="um" required>
-                        <option selected disabled value="">U/M</option>
-                        <option value="U">U</option>
-                        <option value="M">M</option>
+                        <option selected disabled value="">Seleccione</option>
+                        <option>C/U - Cada Uno</option>
+                        <option>Lb - Libra</option>
+                        <option>Mts - Metros</option>
+                        <option>Pgo - Pliego</option> 
+                        <option>Qq - Quintal</option>
+                        <option>Cto - Ciento</option>
+                </select>
                       </select>
                       
                     </div>

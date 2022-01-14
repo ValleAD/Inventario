@@ -44,8 +44,8 @@ background:burlywood;
                 <li class="submenu">
                     <a id="a" href="#"><span class="icon-rocket"></span>Articulos<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
-                        <li><a id="b" href="vistaProductos.php">Mostrar</a></li>
-                        <li><a id="b" href="regi_producto.php">Nuevo</a></li>
+                        <li><a id="b" href="vistaProductos.php">Ver Artículos</a></li>
+                        <li><a id="b" href="regi_producto.php">Nuevo Artículo</a></li>
                     </ul>
                 </li>
                 <li class="submenu">

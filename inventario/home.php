@@ -17,7 +17,7 @@ die();
 <?php include ('templates/menu.php')?>
 <!DOCTYPE html>
 <html lang="es">
-<head>f
+<head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles/style.css">
 
