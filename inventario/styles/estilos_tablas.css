@@ -36,7 +36,6 @@ body {
 }
 
 .table thead th{ 
-    text-transform: uppercase;
     background-color: #ddd;
 }
 
@@ -48,12 +47,11 @@ body {
     background-color: rgba(0, 0, 0, 0.3);
 }
 
-@media screen and (max-width: 600px) {
+@media (max-width: 600px) {
     .table {
         border: 0px;
     }
     .table caption {
-        margin-top: -55%;
         font-size: 22px;
     }
     .table thead {
@@ -81,4 +79,15 @@ body {
         text-transform: uppercase;
         float: left;
     }
+}
+         @media (max-width: 952px){
+.table thead th{ 
+    font-size: 12px;
+}
+.table{
+    margin-top: 5%;
+}
+.table caption{
+    margin-top: 5px;
+}
 }

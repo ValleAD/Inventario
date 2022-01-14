@@ -35,11 +35,12 @@ die();
 
 <body>
   <body>
+
     <div class="container">
         <table class="table">
-            <caption>Inventario de Productos</caption>
+            <caption style="margin-top:5px">Inventario de Productos</caption>
             <thead>
-              <tr>
+              <tr id="tr">
                     <th>
                         Código
                     </th>
@@ -73,7 +74,7 @@ die();
             <tbody>
                     <?php
     include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_productos";
+    $sql = "SELECT * FROM tb_productos WHERE codProductos";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){?>
@@ -91,7 +92,8 @@ die();
                     <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
                     <td data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
                     <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
-                    <td data-label="Acciones"><a class="btn btn-primary swal2-styled.swal2-confirm" data-toggle="modal" data-target="#exampleModal" class="text-primary"><i class="far fa-edit"></i></a>
+                    <td data-label="Acciones">
+                        <a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" class="text-primary"><i class="far fa-edit"></i></a>
                     <a data-toggle="modal" data-target="#delete"  class="btn btn-danger" class="text-danger"> <i class="fas fa-trash"></i> </a></td>
                 </tr>
                 <div class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
