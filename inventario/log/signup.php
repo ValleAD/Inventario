@@ -26,7 +26,6 @@ if (mysqli_num_rows($verificar_usuario)>0) {
 	';
 exit();
 }
-$ejecutar = mysqli_query($conn,$query);
 
 if ($password == $cpassword) {
 	$sql = "SELECT * FROM tb_usuarios WHERE username='$username' AND firstname='$firstname' AND lastname='$lastname' AND email='$email' AND password='$password'";
