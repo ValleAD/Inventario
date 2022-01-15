@@ -26,7 +26,7 @@ die();
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
     <title>Inicio</title>
 </head>
-<body>
+<body style="background-image: url(img/bg3.jpg)">
     <style type="text/css">
         h2{
                 margin-top: 14.2%;
@@ -55,7 +55,6 @@ die();
        <br> 
       Hospital Nacional Santa Teresa de Zacatecoluca</h1></center>
       
-<h2></h2>
-<?php include('templates/footer.php') ?>      
+  
 </body>
 </html>
