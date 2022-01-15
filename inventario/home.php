@@ -55,7 +55,6 @@ die();
        <br> 
       Hospital Nacional Santa Teresa de Zacatecoluca</h1></center>
       
-<h2></h2>
-<?php include('templates/footer.php') ?>      
+     
 </body>
 </html>

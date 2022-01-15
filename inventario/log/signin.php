@@ -65,6 +65,7 @@ if (isset($_POST['submit'])) {
 		width: 40%;
 	}
 	form{
+		padding-bottom: .5px;
 		background: rgba(0, 0, 0, .5);
 		color: white;
 	}
@@ -81,9 +82,6 @@ if (isset($_POST['submit'])) {
   	margin-right: 30%;
   }
   #a{
-  	margin-top: -7.5%;
-  	margin-right: -120%;
-  	background: rgba(23, 32,22, 1.0);
   	 font-size: 1em;
   }#p{
   	float: left;
@@ -114,23 +112,26 @@ if (isset($_POST['submit'])) {
 			<center>	<button  class="btn btn-primary "name="submit" >Ingresar</button></center>
 			</div>
 			<div class="container">
-				<div class="row">
-					<div class="col-6.5 col-sm-4">
-						<p class="p" >No tienes cuenta ?</p>
-					</div>
-					<div class="col-6.5 col-sm-4">
-					<a id="a" href="signup.php">Registrarse</a>
-				</div>
-				</div>
+				
+						<p class="p" >No tienes cuenta ?&nbsp;&nbsp;<a id="a" href="signup.php">Registrarse</a></p>
+					
+				
 			</div>
 			
 				
 				<style type="text/css">
+						.container{
+							margin-bottom: 5%;
+					}
+					.p{
+						margin-bottom: 5%;
+					}
 					#a{
-						width: 20%;
-						margin-left: 50%;
+						margin-left: 10%;
+						margin-top: -12%;
 					}
 					#a:hover{
+						color: white;
 						text-decoration-line: underline;
 					}
 				</style>
