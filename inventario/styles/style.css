@@ -27,12 +27,19 @@ form {
     margin-left: 160px;
     margin-right: 160px;
     border-radius: 14px;
-    background-color: white;
+    background: rgba(0, 0, 0, .5);
+    color: white;
 }
 
 section{
     margin-left: 10%;
     margin-right: 10%;
+}
+li{
+    color: black;
+}
+div{
+color: black;
 }
 
 

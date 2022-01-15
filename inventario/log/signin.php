@@ -41,12 +41,15 @@ if (isset($_POST['submit'])) {
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="../styles/log.css" > 
+	<link rel="stylesheet" type="text/css" href="../styles/styles.css" > 
+
+	<link rel="stylesheet" type="text/css" href="../styles/estilo_men.css">
     <link rel="stylesheet" href="../Plugin/bootstrap/css/bootstrap.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" type="image/png" sizes="32x32"  href="../img/log.png">
 	<title>Sign In </title>
 </head>
-<body>
+<body style="background-image: url(../img/bg1.jpg)">
 <style type="text/css">
 	img{
 		display: flex;
@@ -61,6 +64,10 @@ if (isset($_POST['submit'])) {
 		margin-top:  5%;
 		width: 40%;
 	}
+	form{
+		background: rgba(0, 0, 0, .5);
+		color: white;
+	}
 	@media (max-width: 952px){
 	
     h1{
@@ -70,17 +77,21 @@ if (isset($_POST['submit'])) {
        
     }
   .container-fluid{
-  	margin-top: -7%;
+  	margin-top: -17%;
   	margin-right: 30%;
   }
-  p{
+  #a{
+  	margin-top: -7.5%;
   	margin-right: -120%;
+  	background: rgba(23, 32,22, 1.0);
   	 font-size: 1em;
+  }#p{
+  	float: left;
   }
 }
 </style>
     <br>
-	<div style="position: all; width: 70%; height: 110%;margin-top: 7%" class="container-fluid">
+	<div id="div" style="position: all; width: 70%; height: 110%;" class="container-fluid">
 		
 		<form action="" method="POST" style="position: all; width: 70%; height: 110%;margin-top: 1%">
 			<div class="container">
@@ -102,9 +113,18 @@ if (isset($_POST['submit'])) {
 			<div>
 			<center>	<button  class="btn btn-primary "name="submit" >Ingresar</button></center>
 			</div>
-			<p class="p" style="margin-top:2%;margin-left:  35%">No tienes cuenta ?</p>
-			<p class="p" style="margin-top:4%;"></p>
-				<a id="a" href="signup.php" class="nav-link text-center" style="margin-top:-7.5%;">Registrarse</a>
+			<div class="container">
+				<div class="row">
+					<div class="col-6.5 col-sm-4">
+						<p class="p" >No tienes cuenta ?</p>
+					</div>
+					<div class="col-6.5 col-sm-4">
+					<a id="a" href="signup.php">Registrarse</a>
+				</div>
+				</div>
+			</div>
+			
+				
 				<style type="text/css">
 					#a{
 						width: 20%;

@@ -82,12 +82,13 @@ if ($password == $cpassword) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="../styles/log.css" > 
+	<link rel="stylesheet" type="text/css" href="../styles/estilo_men.css">
     <link rel="stylesheet" href="../Plugin/bootstrap/css/bootstrap.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" type="image/png" sizes="32x32"  href="../img/log.png">
 	<title>Register</title>
 </head>
-<body>
+<body style="background-image: url(../img/bg3.jpg)">
 <div style="position: all; width: 70%; height: 110%;margin-top: 7%" class="container-fluid">
 
 <form id="form" style="position: all; width: 70%; height: 110%;margin-top: 7%"action="" method="POST" style="position: all; width: 70%; height: 110%;margin-top: 1%">

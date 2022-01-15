@@ -58,7 +58,7 @@ die();
   <form style="width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%;" action="Controller/añadir_circulante.php" method="POST">
 
     <ol class="breadcrumb">
-      <li><a id="a" href="home.php">Inicio</a></li>&nbsp; / &nbsp;
+      <li><a id="a" href="home.php">Inicio</a></li><li>&nbsp; / &nbsp;</li>
       <li  class="active">Solicitud de Fondo Circulante</li>
 
          <style type="text/css">
