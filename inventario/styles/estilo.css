@@ -23,11 +23,10 @@ section {
 }
 
 form {
-        background: rgb(27, 31, 69, .5);
-    
-    color: white;
+    background: rgba(255, 255, 255);
+    color: #000;
     padding: 1%;
-  border-radius: 7px;
+    border-radius: 7px;
 }
 
 

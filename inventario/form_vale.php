@@ -62,7 +62,8 @@ form{
 <head>
     <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles/estilo.css">
+    <link rel="stylesheet" type="text/css" href="styles/estilo.css"> 
+     <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">  
     <title>Vale</title>
 </head>
@@ -147,7 +148,7 @@ if(isset($_POST['codigo'])){
           <div class="container">
         <table class="table" style="color:black;">
         <thead>
-           <tr id="head">
+           <tr id="tr">
                 <th style="width: 12%;"><strong>Código</strong></th>
                 <th><strong>Descripción</strong></th>
                 <th style="width: 15%;"><strong>U/M</strong></th>
@@ -158,8 +159,8 @@ if(isset($_POST['codigo'])){
               <center> <td id="td" colspan="5"><h4>No se encontraron ningun resutados 😥</h4></td></center> 
 
             </tr>
-        </thead>
-        <tbody>';
+            </thead>
+            <tbody>';
 
 
            
