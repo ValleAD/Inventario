@@ -14,9 +14,9 @@ section {
 }
 
 #head{
-    text-align: center;
-    background: rgb(42, 136, 136);
-    color: #fff;
+    text-align: left;
+    background: rgb(55, 177, 177);
+    color: rgb(0, 0, 0);
 }
 #head > td{
     border-left: solid 1px #fff;
