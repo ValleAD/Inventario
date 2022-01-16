@@ -66,7 +66,13 @@ form{
     margin: 4px 2px;
     cursor: pointer;
 }
-
+.EstiloTexto{
+    color:#FE0000;
+    font-weight: bold;
+    text-align: center;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size: 25px;
+}
 </style>
   </head>
     <body >
@@ -81,25 +87,25 @@ form{
 <div class="container">
 <div class="row">
     <div class="col-6.5 col-sm-4" style="position: initial">
-       <label>Número de Solicitud</label> 
+    <font color="white"><label>Número de Solicitud</label> </font>
       <input class="form-control" type="number" name="nsolicitud" id="como1" required>
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
-      <label>Dependencia que Solicita</label>   
+    <font color="white"><label>Dependencia que Solicita</label></font>   
       <input class="form-control" type="text" name="dependencia" id="como2" required>
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
-      <label>Plazo y Numero de Entregas</label> 
+    <font color="white"><label>Plazo y Numero de Entregas</label></font> 
       <input class="form-control" type="text" name="plazo" id="como3" required>
       <br>
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
-      <label>Unidad Tecnica</label> 
+    <font color="white"><label>Unidad Tecnica</label> </font>
       <input class="form-control" type="text" name="unidad_tecnica" id="como3" required>
       <br>
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
-      <label>Suministros Solicita</label> 
+    <font color="white"><label>Suministros Solicita</label>  </font>
       <input class="form-control" type="text" name="descripcion_solicitud" id="como3" required>
       <br>
   </div>
