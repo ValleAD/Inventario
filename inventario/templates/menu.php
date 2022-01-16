@@ -18,7 +18,9 @@ if(!isset($_SESSION['signin'])){
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
       <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
 </head>
-<body style="background-image: url(img/bg2.jpg)">
+<body style="background-image: url(img/bg2.jpg);  
+            background-repeat: no-repeat;
+            background-attachment: fixed;">
     <style type="text/css">
         #a:hover{
    text-decoration: none;

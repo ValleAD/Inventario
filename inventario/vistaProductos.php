@@ -14,6 +14,7 @@ die();
 }
 ?>
 <?php include ('templates/menu.php')?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -30,14 +31,76 @@ die();
       <link rel="stylesheet" href="Plugin/bootstap-icon/fontawesome.all.min.css">
     <title>Productos</title>
 </head>
-
-
 <body>
-  <body>
-
     <div class="container">
-        <table class="table">
-            <h1 style="margin-top:5px">Inventario de Productos</h1>
+      <table class="table">
+        <h1 style="margin-top:5px">Inventario de Productos</h1>
+
+<?php      
+
+if (isset($_POST['editar'])){       
+    $id = $_POST['id'];       
+   
+  
+    $sql = "SELECT * FROM tb_productos WHERE codProductos = $id";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+?>
+
+<form action="Controller/Actualizar.php" method="post">
+  <h3 align="center">Actualizar Producto</h3>
+  <section style="float: left">
+    <label for="">Categoría</label><br>
+    <label for="">Código</label><br>
+    <label for="">Codificación de Catálogo</label><br>
+    <label for="">Nombre</label><br>
+    <label for="">Descripción</label><br>
+    <label for="">Unidad de medida (u/m)</label><br>
+    <label for="">Cantidad</label><br>
+    <label for="">Costo unitario</label><br>
+  </section>
+
+  <section>
+    <input type="text" name="categoria"  value=""><br>
+    <input type="text" name="codProducto" id="act" value="<?php  echo $productos['codProductos']; ?>"><br>
+    <input type="text" name="codCatalogo" id="act" value="<?php  echo $productos['catalogo']; ?>"><br>
+    <input type="text" name="nombre" id="act" value="<?php  echo $productos['nombre']; ?>"><br>
+    <textarea type="text" name="descripcion" id="act" style="width: 21%"><?php  echo $productos['descripcion']; ?></textarea><br>
+    <input type="text" name="um" id="act" value="<?php  echo $productos['unidad_medida']; ?>"><br>
+    <input type="text" name="stock" id="act" value="<?php  echo $productos['stock']; ?>"><br>
+    <input type="text" name="precio" id="act" value="<?php  echo $productos['precio']; ?>">
+  </section>
+  <button type="submit" class ="btn btn-primary" style="background:rgb(26, 2, 92); margin-right: 1%">Guardar Cambios</button>
+  <a href="vistaProductos.php"><button type="button" class ="btn btn-primary" style="background:rgb(146, 5, 5)"">Cancelar</button></a>
+</form>
+<style>
+  #act {
+    margin-top: 0.5%;
+  }
+</style>
+<?php 
+  }
+} 
+?><br>
+          <a id="ver" class="btn btn-lg" href="regi_producto.php">Nuevo Producto</a>
+          <a id="ver" class="btn btn-lg" href="regi_producto.php" style=" background: rgb(5, 114, 5); ">Buscar Producto</a>
+        <style>
+               #ver{
+                margin-top: 2%;
+                margin-right: 1%; 
+                background: rgb(5, 65, 114); 
+                color: #fff; 
+                margin-bottom: 0.5%;  
+                border: rgb(5, 65, 114);
+               }
+               #ver:hover{
+                background: rgb(9, 100, 175);
+               } 
+               #ver:active{
+                transform: translateY(5px);
+               } 
+        </style>
             <thead>
               <tr id="tr">
                     <th>
@@ -74,236 +137,48 @@ die();
             </tr>
             </thead>
             <tbody>
-                    <?php
+
+<?php
     include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_productos WHERE codProductos";
+    $sql = "SELECT * FROM tb_productos WHERE fecha_registro";
     $result = mysqli_query($conn, $sql);
 
-    while ($productos = mysqli_fetch_array($result)){?>
-        <style type="text/css">
+    while ($productos = mysqli_fetch_array($result)){
+?>
+
+<style type="text/css">
+
      #td{
         display: none;
     }
    
 </style>
-                <tr>
-                  <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
-                  <td data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
-                  <td data-label="Nombre"><?php  echo $productos['nombre']; ?></td>
-                  <td data-label="Descripción Completa" style="width: 100%;"><textarea cols="10" rows="3" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
-                  <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
-                  <td data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
-                  <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
-                  <td data-label="Editar">
-                    <form style="margin: 0%; background: transparent;" method='POST' action="Controller/Actualizar.php">             
-                      <input type='hidden' name='id' value="<?php  echo $productos['codProductos']; ?>">             
-                      <button name='editar' class='btn btn-info btn-sm'  >Editar</button>             
-                    </form>  
-                  </td>
+      <tr>
+      <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
+      <td data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
+      <td data-label="Nombre"><?php  echo $productos['nombre']; ?></td>
+      <td data-label="Descripción Completa" style="width: 100%;"><textarea cols="10" rows="3" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
+      <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
+      <td data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
+      <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
+      <td data-label="Editar">
+        <form style="margin: 0%; background: transparent;" method='POST' action="vistaProductos.php">             
+          <input type='hidden' name='id' value="<?php  echo $productos['codProductos']; ?>">             
+          <button name='editar' class='btn btn-info btn-sm'  >Editar</button>             
+        </form>  
+      </td>
 
-                  <td data-label="Eliminar">
-                    <form style="margin: 0%; background: transparent;" onsubmit=\"return confirm('¿Realmente desea eliminar el registro?');\" method='POST' action="">             
-                      <input type='hidden' name='id' value="<?php  echo $productos['codProductos']; ?>">             
-                      <button name='eliminar' class='btn btn-danger btn-sm'>Eliminar</button>             
-                    </form> 
-                  </td>
-                </tr>
-<!--                   
-<a class="btn btn-primary swal2-styled.swal2-confirm" data-toggle="modal" data-target="#exampleModal" class="text-primary"><i class="far fa-edit"></i></a>
-<a data-toggle="modal" data-target="#delete"  class="btn btn-danger" class="text-danger"> <i class="fas fa-trash"></i> </a></td>
-              </tr>
-              <div  class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-  <div class="modal-dialog">
-    <div class="modal-content" style="background-color: hsl(100% , 50% , 1 );color: #FDF6F0;  background-image: linear-gradient(90deg, rgb(5, 114, 72), rgb(42, 136, 136));">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Actualizar Información</h5>
-        <button type="button" class="close" style="width: 15%;" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form method='POST' action="Controller/Actualizar.php"> 
-      <div class="modal-body">
-         <div class="row">
-   <input type="hidden"class="form-control" name="codProducto" value="<?php  echo $productos['codProductos']; ?>" style="background-color:rgba(102,255,255,4.5)"><br>
+      <td data-label="Eliminar">
+        <form style="margin: 0%; background: transparent;" onsubmit=\"return confirm('¿Realmente desea eliminar el registro?');\" method='POST' action="">             
+          <input type='hidden' name='id' value="<?php  echo $productos['codProductos']; ?>">             
+          <button name='eliminar' class='btn btn-danger btn-sm'>Eliminar</button>             
+        </form> 
+      </td>
+    </tr>
 
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <div class=""><strong>Codificación de catálogo</strong></div>
-    </div>
-    <div class="col">
-       <input  class="form-control" name="codCatalogo" value="<?php  echo $productos['catalogo']; ?>"style="background-color: #FDF6F0"><br>
-    </div>
-   
-  </div>
-</div><br>
-<div class="container">
-  <div class="row">
-    <div class="col">
-       <div class=""><strong>Nombre</strong></div>
-    </div>
-    <div class="col">
-       <input  class="form-control" name="nombre" value="<?php  echo $productos['nombre']; ?>"style="background-color: #FDF6F0"><br>
-    </div>
-   
-  </div>
-</div><br>
-<div class="container">
-  <div class="row">
-    <div class="col">
-        <div class=""><strong>Descripción Completa</strong></div>
-
-    </div>
-    <div class="col">
-<div class="form-floating">
-              <textarea cols="10" rows="3" readonly id="content" class="form-control"name="descripcion" placeholder="Ingrese la Descripción" id="floatingTextarea"><?php  echo $productos['descripcion']; ?></textarea>
-            </div>
-            <style>
-textarea{
-  width: 100%;
-  min-height: 50px;
-  font-family: Arial, sans-serif;
-  font-size: 13px;
-  color: #444;
-  padding: 5px;
-}
-.noscroll{
-  overflow: hidden;
-  resize: none;
-}
-.hiddendiv{
-  display: none;
-  white-space: pre-wrap;
-  width: 500px;
-  min-height: 50px;
-  font-family: Arial, sans-serif;
-  font-size: 13px;
-  padding: 5px;
-  word-wrap: break-word;
-}
-.lbr {
-  line-height: 3px;
-}
-</style>
-    </div>
-   
-  </div>
-</div><br>
-<div class="container">
-  <div class="row">
-    <div class="col">
-       <div class=""><strong>Unidad de Medida(U/M)</strong></div>
-    </div>
-    <div class="col">
-          <div class="col-md-16" >
-        <div class="invalid-feedback">
-          Por favor seleccione una opción.
-           </div>
-              <select  class="form-control" name="um" id="um" required style="background-color: #FDF6F0">
-                <option selected disabled value="">seleccione una opción</option>
-                        <option>C/U - Cada Uno</option>
-                        <option>Lb - Libra</option>
-                        <option>Mts - Metros</option>
-                        <option>Pgo - Pliego</option> 
-                        <option>Qq - Quintal</option>
-                        <option>Cto - Ciento</option>
-              </select>
-            </div>
-    </div>
-   
-  </div>
-</div><br><br><br>
-<div class="container">
-  <div class="row">
-    <div class="col">
-       <div class=""><strong>Cantidad</strong></div>
-    </div>
-    <div class="col">
-<input class="form-control" name="stock"  value="<?php  echo $productos['stock']; ?>"style="background-color: #FDF6F0"><br><br>
-    </div>
-   
-  </div>
-</div><br>
-<div class="container">
-    <div class="row">
-    <div class="col">
-      <div class=""><strong>Precio</strong></div>
-    </div>
-
-    <div class="col">
-      <input class="form-control" name="precio" value="<?php  echo $productos['precio']; ?>"style="background-color: #FDF6F0"><br>
-                  </div>
-            </div>
-        </div>
-    </div>
-  </div>
-  <center>
-      <div class="modal-footer">
-       
-        <button type="button" class="btn btn-danger" data-dismiss="modal"  style="margin-right: 15%;">Cancelar</button>
-        <button name="" type="submit" id="Update" class="btn btn-info">Actualizar</button>
-      
-      </div>  </center>
-        </form>
-    </div>
-  </div>
-</div>
--->
-
-<!--***************************************************************************************************************************-->
-<!-- Delete 
-<div class="modal fade" id="delete" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content"  style="background-color: hsl(100% , 50% , 1 );color: #FDF6F0;  background-image: linear-gradient(90deg, rgb(5, 114, 72), rgb(42, 136, 136));">
-            <div class="modal-header">
-                <h5 class="modal-title" >Eliminar Productos</h5>
-                <button type="button"  class="close"   style="width: 15%;"data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            
-     
-           
-      <div class="modal-body">
-           <form action="Controller/Delete_producto.php" method="POST">
-         <h3 class="text-center">Este Producto será Eliminado Permanentemente</h3>
-   <input type="hidden"class="form-control" name="id" value="<?php  echo $productos['codProductos']; ?>" style="background-color:rgba(102,255,255,4.5)"><br>
-
-      
-        
-            </div>
-            <div class="modal-footer">
-        <button type="button" class="btn btn-info" data-dismiss="modal" style="margin-right: 15%;">Cancelar</button>
-        <button name="" type="submit" id="Update" class="btn btn-danger">Eliminar</button>
-      </div>
-           </form>
-        </div>
-    </div>
-</div>
-</div>-->
-                <?php } ?> 
+<?php } ?> 
             </tbody>
         </table>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-$(function(){
-    var textArea = $('#content'),
-    hiddenDiv = $(document.createElement('div')),
-    content = null;
-    
-    textArea.addClass('noscroll');
-    hiddenDiv.addClass('hiddendiv');
-    
-    $(textArea).after(hiddenDiv);
-    
-    textArea.on('keyup', function(){
-        content = $(this).val();
-        content = content.replace(/\n/g, '<br>');
-        hiddenDiv.html(content + '<br class="lbr">');
-        $(this).css('height', hiddenDiv.height());
-    });
-});
-</script>
 </body>
 </html>

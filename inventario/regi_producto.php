@@ -61,7 +61,7 @@ form{
 
                   <div class="form-group">
                     <label style="color: #000">Nombre de Artículo</label>
-                    <input type="text" name="nombre[]" class="form-control" placeholder="Descripción con especificaciones" required>
+                    <input type="text" name="nombre[]" class="form-control" placeholder="Nombre" required>
                   </div>
 
                   <div class="form-group">
@@ -82,12 +82,12 @@ form{
                       </div>
                       <select  class="form-control" name="um[]" id="um" required>
                         <option selected disabled value="">Seleccione</option>
-                        <option>C/U - Cada Uno</option>
-                        <option>Lb - Libra</option>
-                        <option>Mts - Metros</option>
-                        <option>Pgo - Pliego</option> 
-                        <option>Qq - Quintal</option>
-                        <option>Cto - Ciento</option>
+                        <option>c/u</option>
+                        <option>lb</option>
+                        <option>mts</option>
+                        <option>Pgo</option> 
+                        <option>Qq</option>
+                        <option>cto</option>
                 </select>
                       </select>
                       
@@ -101,7 +101,7 @@ form{
 
             <div class="form-group">
                 <label>Costo Unitario</label>
-               <input class="form-control" type="number" step="0.01" name="cu[]" placeholder="Costo unitario del producto" required><br>
+               <input class="form-control" type="number" step="0.01" name="cu[]" placeholder="Costo Unitario" required><br>
             </div>
         </div>
     </div>            
