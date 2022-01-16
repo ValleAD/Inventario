@@ -42,7 +42,7 @@ location.href = '../form_compra.php';
 
       if ($query) {
         echo "<script> alert('Su producto fue registrado correctamente');
-        location.href = '../dt_compra.php';
+        //location.href = '../dt_compra.php';
         </script>
         ";
       }else {

@@ -28,11 +28,14 @@ die();
 </head>
 <body>
     <style type="text/css">
+        body{
+            height: 100%;
+        }
         h2{
                 margin-top: 14.2%;
                 max-height: 100%;
             }
-          @media screen (max-width: 952px){
+          @media screen and (max-width: 952px){
     form{
         width: 100%;
     }

@@ -41,7 +41,6 @@ if (isset($_POST['submit'])) {
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="../styles/log.css" > 
-	<link rel="stylesheet" type="text/css" href="../styles/styles.css" > 
 
 	<link rel="stylesheet" type="text/css" href="../styles/estilo_men.css">
     <link rel="stylesheet" href="../Plugin/bootstrap/css/bootstrap.css">
@@ -52,21 +51,21 @@ if (isset($_POST['submit'])) {
 <body style="background-image: url(../img/bg1.jpg)">
 <style type="text/css">
 	img{
-		display: flex;
-		max-width:100%;
-		min-width: 10%;
-		align-items: center;
-		padding: 20px;
-		justify-content: center;
+		
+		width: 30%;
+		
 	}
 	button{
 		max-width:100%;
 		margin-top:  5%;
 		width: 40%;
 	}
+	#input{
+		background: transparent;
+		color: white;
+	}
 	form{
-		padding-bottom: .5px;
-		background: rgba(0, 0, 0, .5);
+		background: rgb(27, 31, 69, .5);
 		color: white;
 	}
 	@media (max-width: 952px){
@@ -77,43 +76,36 @@ if (isset($_POST['submit'])) {
         font-size: 100%;
        
     }
-  .container-fluid{
-  	margin-top: -17%;
-  	margin-right: 30%;
-  }
-  #a{
-  	 font-size: 1em;
-  }#p{
-  	float: left;
-  }
+
+    img{
+		display: flex;
+		max-width:100%;
+		width: 60%;
+		align-items: center;
+		padding: 5px;
+		justify-content: center;
+	}
 }
+
 </style>
-    <br>
-	<div id="div" style="position: all; width: 70%; height: 110%;" class="container-fluid">
+   
 		
-		<form action="" method="POST" style="position: all; width: 70%; height: 110%;margin-top: 1%">
+		<form id="form" action="" method="POST" style="position: all; width: 70%; height: 10%;margin-top: 3%;margin-bottom: 3%; padding: 1%;margin-left: 15%;">
 			<div class="container">
 			<center>	<img src="../img/logo1.png" alt="logo"></center>
-			</div>
 			
-			
-			<div>
 			<label for="username" style="margin-left:  16%">Nombre de usuario</label><br>
-				<input  method="POST" style="position: all; width: 70%; height: 110%;margin-top:2%;margin-left:  15%" class="form-control1" type="text" name="username" value="<?php echo $username; ?>" required>
-			</div>
-			<div>
+				<input id="input" method="POST" style="position: all; width: 70%; height: 110%;margin-top:2%;margin-left:  15%" class="form-control1" type="text" name="username" value="<?php echo $username; ?>" required>
+			
 
 			<label for="password" style="margin-left:  16%">Contraseña</label><br>
-				<input  method="POST" style="position: all; width: 70%; height: 110%;margin-top: 2%;margin-left:  15%"  method="POST" class="form-control" type="password" name="password" value="<?php echo $_POST['password']; ?>" required >
+				<input id="input"  method="POST" style="position: all; width: 70%; height: 110%;margin-top: 2%;margin-left:  15%"  method="POST" class="form-control" type="password" name="password" value="<?php echo $_POST['password']; ?>" required >
 
 
-            
+            </div>
 			<div>
 			<center>	<button  class="btn btn-primary "name="submit" >Ingresar</button></center>
-			</div>
-			<div class="container">
-				
-						<p class="p" >No tienes cuenta ?&nbsp;&nbsp;<a id="a" href="signup.php">Registrarse</a></p>
+			<p class="p" >No tienes cuenta ?&nbsp;&nbsp;<a id="a" href="signup.php">Registrarse</a></p>
 					
 				
 			</div>
@@ -137,8 +129,6 @@ if (isset($_POST['submit'])) {
 				</style>
 			
 		</form>
-	</div>
-	</div>
    
 </body>
 </html>

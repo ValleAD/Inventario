@@ -52,7 +52,7 @@ form{
     <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles/estilo.css" > 
-    
+    <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">  
     <title>Solicitud Bodega</title>
 </head>
@@ -119,7 +119,7 @@ if(isset($_POST['codigo'])){
 
     echo'
     <br>
-    <form action="Controller/añadir_bodega.php" method="post">
+    <form style="margin-bottom: 15%;" action="Controller/añadir_bodega.php" method="post">
         
         <div class="container" style="position: initial">
             <div class="row">
@@ -133,19 +133,23 @@ if(isset($_POST['codigo'])){
             </div>
         </div>
         <br>
-        <div class="table-responsive">
+          <div class="container">
         <table class="table">
-           <tr id="head">
-                <td><strong>Código</strong></td>
-                <td><strong>Descripción</strong></td>
-                <td><strong>U/M</strong></td>
-                <td><strong>Cantidad</strong></td>
-                <td><strong>Costo unitario</strong></td>
+            
+            <thead>
+              <tr id="tr">
+                <th><strong>Código</strong></th>
+                <th><strong>Descripción</strong></th>
+                <th><strong>U/M</strong></th>
+                <th><strong>Cantidad</strong></th>
+                <th><strong>Costo unitario</strong></th>
             </tr>
               <tr>
               <center> <td id="td" colspan="5"><h4>No se encontraron ningun resutados 😥</h4></td></center> 
 
-            </tr>';
+            </tr>
+             </thead>
+            <tbody>';
 
 
            
@@ -168,11 +172,13 @@ if(isset($_POST['codigo'])){
 </style>
     
             <tr>
-               <td><input type="number"  class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
-               <td><input type="text"  class="form-control" readonly name="desc[]" value ="<?php  echo $productos['descripcion']; ?>"></td>
-               <td><input type="text"  class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
-               <td><input type="number"  class="form-control"  name="cant[]" values = "<?php  echo $productos['stock']; ?>"></td>
-               <td><input type="number"  class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
+               <td data-label="Codigo"><input type="number"  class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
+               <td data-label="total">
+                <textarea style="background:transparent;color: black;" cols="10" rows="1" readonly name="desc[]" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea>
+                </td>
+               <td data-label="total"><input type="text"  class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
+               <td data-label="total"><input type="number"  class="form-control"  name="cant[]" values = "<?php  echo $productos['stock']; ?>"></td>
+               <td data-label="total"><input type="number"  class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
             </tr>
    
         <?php }
@@ -180,8 +186,10 @@ if(isset($_POST['codigo'])){
     
 
 
-    echo ' 
-    </table>
+    echo '    </tbody>
+        </table>
+
+    </div>
     
     <input class="btn btn-lg" type="submit" value="Enviar" id="enviar" name="submits">
         <style>

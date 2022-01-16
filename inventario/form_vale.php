@@ -63,7 +63,7 @@ form{
     <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles/estilo.css" > 
-    
+     <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">  
     <title>Vale</title>
 </head>
@@ -135,29 +135,32 @@ if(isset($_POST['codigo'])){
         
         <div class="container" style="position: initial">
             <div class="row">
-              <div class="col-6.5 col-sm-4">
+              <div class="col-6.5 col-sm-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</label>   
                 <input id="inp1" class="form-control" type="text" name="departamento" required>
             </div>
-            <div class="col-.5 col-sm-4">
+            <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Vale N°</label>   
                 <input id="inp1"class="form-control" type="number" name="numero_vale" required>
             </div>
         </div>
         <br>
-        <div class="table-responsive">
-        <table class="table">
-           <tr id="head">
-                <td style="width: 12%;"><strong>Código</strong></td>
-                <td><strong>Descripción</strong></td>
-                <td style="width: 15%;"><strong>U/M</strong></td>
-                <td style="width: 15%;"><strong>Cantidad</strong></td>
-                <td style="width: 15%;"><strong>Costo unitario</strong></td>
+          <div class="container">
+        <table class="table" style="color:black;">
+        <thead>
+           <tr id="tr">
+                <th style="width: 12%;"><strong>Código</strong></th>
+                <th><strong>Descripción</strong></th>
+                <th style="width: 15%;"><strong>U/M</strong></th>
+                <th style="width: 15%;"><strong>Cantidad</strong></th>
+                <th style="width: 15%;"><strong>Costo unitario</strong></th>
             </tr>
               <tr>
               <center> <td id="td" colspan="5"><h4>No se encontraron ningun resutados 😥</h4></td></center> 
 
-            </tr>';
+            </tr>
+            </thead>
+            <tbody>';
 
 
            
@@ -180,11 +183,11 @@ if(isset($_POST['codigo'])){
 </style>
     
             <tr>
-               <td><input type="number" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
-               <td><textarea cols="10" rows="1" type="text" class="form-control" readonly name="desc[]"><?php  echo $productos['descripcion']; ?></textarea></td>
-               <td><input type="text" class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
-               <td><input type="number" class="form-control"  name="cant[]" values = "<?php  echo $productos['stock']; ?>"></td>
-               <td><input type="number" class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
+               <td data-label="Codigo"><input type="number" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
+               <td data-label="Descripción"><textarea cols="10" rows="1" type="text" class="form-control" readonly name="desc[]"><?php  echo $productos['descripcion']; ?></textarea></td>
+               <td data-label="Unidad De Medida"><input type="text" class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
+               <td data-label="Cantidad"><input type="number" class="form-control"  name="cant[]" values = "<?php  echo $productos['stock']; ?>"></td>
+               <td data-label="Precio"><input type="number" class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
             </tr>
    
         <?php }
@@ -193,7 +196,10 @@ if(isset($_POST['codigo'])){
 
 
     echo ' 
-    </table>
+   </tbody>
+        </table>
+
+    </div>
     
     <input class="btn btn-lg" type="submit" value="Enviar" id="enviar">
         <style>

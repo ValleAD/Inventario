@@ -100,9 +100,7 @@ die();
 </form>
       ';
   }
-?>    
-<p style="margin-top:10.5%"></p>        
-<?php include ('footer.php');?>
+?>
   </body>
   </html>
 

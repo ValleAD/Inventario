@@ -159,7 +159,6 @@ while ($productos = mysqli_fetch_array($result)){
 </section>
       ';
 ?>            
-<?php include ('templates/footer.php');?>
   </body>
   </html>
 

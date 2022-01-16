@@ -170,6 +170,5 @@ $("#btn-agregar").click(function(){
         });
     })
 </script>
-<?php include ('templates/footer.php');?>
   </body>
   </html>

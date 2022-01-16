@@ -88,46 +88,94 @@ if ($password == $cpassword) {
 	<title>Register</title>
 </head>
 <body style="background-image: url(../img/bg3.jpg)">
-<div style="position: all; width: 70%; height: 110%;margin-top: 7%" class="container-fluid">
+	
 
-<form id="form" style="position: all; width: 70%; height: 110%;margin-top: 7%"action="" method="POST" style="position: all; width: 70%; height: 110%;margin-top: 1%">
+<form id="form" action="" method="POST" style="position: all; width: 70%; height: 10%;margin-top: 3%;margin-bottom: 3%; padding: 1%;margin-left: 15%;">
 <center>
 <h2 align="center">Registro de Usuario</h2><img src="../img/register.png" alt="logo" style="height: 25%;width: 25%;margin-top: 5%"></center>
+<center>
 
-	<div class="container" style="position: all;">
-	<label>Nombre de usuario</label><br>
-		<input class="form-control" type="text"  name="username" value="<?php echo $username; ?>" required>
-	
-	<label>Nombre</label><br>
-		<input class="form-control" type="text"  name="firstname" value="<?php echo $firstname; ?>" required>
-	
-	<label>Apellido</label><br>
-		<input class="form-control" type="text"  name="lastname" value="<?php echo $lastname; ?>" required>
-	
-	<label>Correo</label><br>
-		<input class="form-control" type="email" name="email" value="<?php echo $email; ?>" required>
-	
-	<label>Contraseña</label><br>
-		<input class="form-control" type="password"  name="password" value="<?php echo $_POST['password']; ?>" required>
-  
-	<label>Confirmar Contraseña</label><br>
-		<input class="form-control" type="password"  name="cpassword" value="<?php echo $_POST['cpassword']; ?>" required>
-	</div>
+		<div class="container">
+				<div class="row">
+				    <div class="col-6.5 col-sm-6" style="position: initial">
+				       <label>Nombre de usuario</label><br>
+						<input class="form-control" type="text"  name="username" value="<?php echo $username; ?>" required>
+				    </div>
+				    <div class="col-6.5 col-sm-6" style="position: initial">
+				      <label>Nombre</label><br>
+						<input class="form-control" type="text"  name="firstname" value="<?php echo $firstname; ?>" required>
+				    </div>
+				</div>
+				<div class="row">
 
-	<div>
-<center><button type="submit" name="submit" class="btn btn-secondary">Registrarse</button></center>
+				    <div class="col-6.5 col-sm-6" style="position: initial">
+				     <label>Apellido</label><br>
+						<input class="form-control" type="text"  name="lastname" value="<?php echo $lastname; ?>" required>
+				     
+				    </div>
+				    <div class="col-6.5 col-sm-6" style="position: initial">
+				      <label>Correo</label><br>
+						<input class="form-control" type="email" name="email" value="<?php echo $email; ?>" required>
+				     
+				    </div>
+				</div>
+				<div class="row">
+				    <div class="col-6.5 col-sm-6" style="position: initial">
+				      <label>Contraseña</label><br>
+						<input class="form-control" type="password"  name="password" value="<?php echo $_POST['password']; ?>" required>
+				      
+				  </div>
+				  <div class="col-6.5 col-sm-6" style="position: initial">
+				      <label>Confirmar Contraseña</label><br>
+						<input class="form-control" type="password"  name="cpassword" value="<?php echo $_POST['cpassword']; ?>" required>
+				  </div>
+				</div>
+				<div>
+					<div>
+						<center><button type="submit" name="submit" class="btn btn-secondary">Registrarse</button></center>
+						<p class="account text-center">¿Ya tienes una cuenta? <a id="a" href="signin.php" style="margin-left:1%;">Inicar Sesión</a></p>
 	</div>
-	<p class="account text-center">¿Ya tienes una cuenta? <a id="a" href="signin.php" style="margin-left:1%;">Inicar Sesión</a></p>
+					</div>
+
+   
+</div>
+</center>
+</form>
+
+
+	
+	
 	<style type="text/css">
+		p{
+			margin-top: 2%;
+		}
+		button{
+			margin-top: 5%;
+		}
+		label{
+			color: white;
+		}h2{
+			color: lawngreen;
+		}
+		.account{
+			color: white;
+		}
 			#a{
 				width: 20%;
 				margin-left: 40%;
 			}
 			#a:hover{
 				text-decoration-line: underline;
+				color: white;
 			}
-		</style>
-</form>
-</div>
+	    @media (max-width: 952px){
+    #form{
+    	
+        margin-top: 15%;
+        margin-left: 5%;
+        width: 100%;
+    }
+   
+</style>
 </body>
 </html>

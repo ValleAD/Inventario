@@ -21,6 +21,7 @@ die();
 <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles/estilo.css" > 
+    <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
     <link rel="stylesheet" href="Plugin/assets/css/bootstrap.css" />
     <link rel="stylesheet" href="Plugin/assets/css/bootstrap-theme.min.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,6 +36,9 @@ die();
         margin-top: 5%;
         margin-left: 15%;
         width: 75%;
+    }
+    th{
+        width: 25%;
     }
     
     </style>
@@ -52,7 +56,7 @@ $final = 0;
 <section id="section">
 <form method="POST" action="Exportar_PDF/pdf_vale.php" target="_blank">
          
-      <section id="section">
+      
         <div class="row">
       
           <div class="col-6.5 col-sm-4" style="position: initial">
@@ -75,17 +79,22 @@ $final = 0;
         </div>
       
         <br>
-        <br>
-        <div class="table-responsive">
-        <table class="table">
-          <tr>
-            <td><strong>Código</strong></td>
-            <td><strong>Descripción</strong></td>
-            <td><strong>U/M</strong></td>
-            <td><strong>Cantidad</strong></td>
-            <td><strong>Costo unitario</strong></td>
-            <td><strong>Total</strong></td>
-          </tr>';
+          
+        <table class="table" >
+            
+            <thead>
+              <tr id="tr">
+            <th>Código</th>
+            <th style="width: 35%;">Descripción</th>
+            <th>Unidad de Medida</th>
+            <th>Cantidad</th>
+            <th>Costo unitario</th>
+            <th>Total</th>
+            <th>SubTotal</th>
+          </tr>
+           <td id="td" colspan="8"><h4>No se encontraron ningun  resultados 😥</h4></td>
+           </thead>
+            <tbody>';
 
 $num_vale = $productos1['codVale'];
 }
@@ -95,29 +104,33 @@ while ($productos = mysqli_fetch_array($result)){
       
       $total = $productos['stock'] * $productos['precio'];
       $final += $total;
-  echo'  
+  echo' 
+    <style type="text/css">
+     #td{
+        display: none;
+    }
+    
+   
+</style> 
       <tr >
-        <td><input  name="cod[]" readonly value="' .$productos['codigo']. '" style="width: 120px; border: none"></td>
-        <td><input  name="desc[]" readonly value="'.$productos['descripcion']. '" style="border: none"></td>
-        <td><input  name="um[]" readonly value="'.$productos['unidad_medida']. '" style="width: 60px; border: none"></td>
-        <td><input  name="cant[]" readonly value="'.$productos['stock']. '" style="width: 60px; border: none"></td>
-        <td><input  name="cost[]" readonly value="$'.$productos['precio']. '" style="width: 60px; border: none"></td>
-        <td><input  name="tot[]" readonly value="$'.$total. '" style="width: 90px; border: none"></td>
+        <td  data-label="Código"><input  name="cod[]" readonly value="' .$productos['codigo']. '" style="width: 120px; border: none"></td>
+        <td  data-label="Descripción"><textarea  name="desc[]" readonly style="border: none">'.$productos['descripcion']. '</textarea></td>
+        <td  data-label="Unidada de Medida"><input  name="um[]" readonly value="'.$productos['unidad_medida']. '" style="width: 60px; border: none"></td>
+        <td  data-label="Cantidad"><input  name="cant[]" readonly value="'.$productos['stock']. '" style="width: 60px; border: none"></td>
+        <td  data-label="Costo unitario"><input  name="cost[]" readonly value="$'.$productos['precio']. '" style="width: 60px; border: none"></td>
+        <td  data-label="total"><input  name="tot[]" readonly value="$'.$total. '" style="width: 90px; border: none"></td>
+          <td data-label="Subtotal"><input  name="tot_f" readonly value="$'.$final.'"  style="width: 90px; border: none; color: rgb(168, 8, 8); font-weight: bold;"></td>
       </tr>';
 
 }
 
       echo'
-        <tr>
-          <td></td>
-          <td></td> 
-          <td></td>
-          <td></td>
-          <td><strong>Total</strong></td> 
-          <td><input  name="tot_f" readonly value="$'.$final.'"  style="width: 90px; border: none; color: rgb(168, 8, 8); font-weight: bold;"></td>
-        </tr>
-      </table>  
-    </section> 
+
+         </tbody>
+        </table>
+
+    
+  
     <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
       <style>
         #pdf{
@@ -137,7 +150,6 @@ while ($productos = mysqli_fetch_array($result)){
 </section>
       ';
 ?>            
-<?php include ('templates/footer.php');?>
   </body>
   </html>
 

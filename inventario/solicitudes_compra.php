@@ -20,6 +20,7 @@ die();
 <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles/style.css" > 
      <link rel="stylesheet" type="text/css" href="styles/estilos_menu.css" > 
+      <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
@@ -33,24 +34,25 @@ die();
 
 
 <body>
-    <div class=" container table-responsive " >
-      
-        <h2 class="text-center mg-t" style="color: #fff; margin-top: -0.5%;">Solicitudes Vale</h2>
-        <p style="margin-top: 5%;" ></p>
-        <table class="table table-dark table-hover table-bordered container-fluid" style="vertical-align: bottom;">
-            <tr>
+     <div class="container">
+        <table class="table">
+            <center><h1 style="margin-top:5px">Solicitudes de Compra</h1></center>
+            <thead>
+              <tr id="tr">
              
-                <td class="table-info text-dark"><strong>N. Solicitud</strong></td>
-                <td class="table-info text-dark"><strong>Dependencia</strong></td>
-                <td class="table-info text-dark"><strong>Plaza</strong></td><td class="table-info text-dark"><strong>Unidad Técnica</strong></td>
-                <td class="table-info text-dark"><strong>Descripción Solitud</strong></td>
-                <td class="table-info text-dark"><strong>Fecha de solicitud</strong></td>
-                <td class="table-info text-dark"><strong>Detalles</strong></td>
+                <th><strong>N. Solicitud</strong></th>
+                <th><strong>Dependencia</strong></th>
+                <th><strong>Plaza</strong></th>
+                <th><strong>Unidad Técnica</strong></th>
+                <th><strong>Descripción Solitud</strong></th>
+                <th><strong>Fecha de Registro</strong></th>
+                <th><strong>Detalles</strong></th>
                 
             </tr>
             <td id="td" colspan="8"><h4>No se encontraron ningun  resultados 😥</h4></td>
-            </tr>
-    
+            
+    </thead>
+        <tbody> 
             
     <?php
     include 'Model/conexion.php';
@@ -62,20 +64,25 @@ die();
      #td{
         display: none;
     }
+      @media (max-width: 952px){
+          #td{
+        display: block;
+    }
+      }
    
 </style>
         <tr>
-            <td class="delete"><?php  echo $solicitudes['nSolicitud']; ?></td>
-            <td class="delete"><?php  echo $solicitudes['dependencia']; ?></td>
-            <td class="delete"><?php  echo $solicitudes['plazo']; ?></td>
-            <td class="delete"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
-            <td class="delete"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
-            <td class="delete"><?php  echo $solicitudes['fecha_registro']; ?></td>
+            <td data-label="N. Solicitud"><?php  echo $solicitudes['nSolicitud']; ?></td>
+            <td data-label="Dependencia"><?php  echo $solicitudes['dependencia']; ?></td>
+            <td data-label="Plaza"><?php  echo $solicitudes['plazo']; ?></td>
+            <td data-label="Unidad Técnica"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
+            <td data-label="Descripción Solitud"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
+            <td data-label="Fecha de solicitud"><?php  echo $solicitudes['fecha_registro']; ?></td>
 
 
 <!--**********************************************************************************************************************************************************************************-->
   <!--Botones para actualizar y eliminar-->
-            <td>
+            <td data-label="Detalles">
                 <a class="btn btn-primary swal2-styled.swal2-confirm" href="datos_compra.php">Ver detalles</a>
             </td>
         </tr>
@@ -83,7 +90,7 @@ die();
    
         </div>
  <?php } ?> 
-           
+           </tbody>
         </table>
     </div>
 </body>

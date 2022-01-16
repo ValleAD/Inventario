@@ -2,7 +2,7 @@
 <?php 
  include '../Model/conexion.php';
 
-$id1 = $_POST['id'];
+$id1 = $_GET['id'];
 $eliminar ="DELETE FROM tb_productos WHERE codProductos='$id1'";
 $result= mysqli_query($conn, $eliminar);
 if ($result) {

@@ -14,6 +14,7 @@ body {
     border-collapse: collapse;
     margin: 0;
     padding: 0;
+    color: black;
     table-layout: fixed;
 }
 
@@ -27,6 +28,7 @@ body {
 .table tr {
     background-color: #f8f8f8;
     border: 1px solid #ddd;
+    color: black;
 }
 
 .table th, .table td {
@@ -45,6 +47,7 @@ body {
 
 .table tbody td:hover {
     background-color: rgba(0, 0, 0, 0.3);
+    color: white;
 }
 
 @media (max-width: 600px) {
@@ -64,14 +67,18 @@ body {
     }
     .table th, .table td {
         font-size: 12px;
+
     }
+
     .table td {
         display: block;
         border-bottom: 1px solid #ddd;
         text-align: right;
+        color: black;
     }
     .table  td:last-child {
         border-bottom: 0px;
+       
     }
     .table td::before {
         content: attr(data-label);
@@ -90,4 +97,5 @@ body {
 .table caption{
     margin-top: 5px;
 }
+
 }

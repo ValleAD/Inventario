@@ -45,6 +45,7 @@ if (isset($_POST['editar'])){
     $sql = "SELECT * FROM tb_productos WHERE codProductos = $id";
     $result = mysqli_query($conn, $sql);
 
+
     while ($productos = mysqli_fetch_array($result)){
 ?>
 
@@ -101,6 +102,11 @@ if (isset($_POST['editar'])){
                 transform: translateY(5px);
                } 
         </style>
+
+    <div class="container">
+        <table class="table">
+            <center><h1 style="margin-top:5px">Inventario de Productos</h1></center>
+
             <thead>
               <tr id="tr">
                     <th>
@@ -124,12 +130,10 @@ if (isset($_POST['editar'])){
                     <th>
                         Costo Unitario
                     </th>
-                    <th>
-                        Editar
+                    <th>Editar
                     </th>
-                    <th>
-                      Eliminar
-                  </th>
+                    <th> Eliminar
+                    </th>
                 </tr>
                 <tr>
                   <td id="td" colspan="8">
@@ -153,6 +157,7 @@ if (isset($_POST['editar'])){
     }
    
 </style>
+
       <tr>
       <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
       <td data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
@@ -177,8 +182,44 @@ if (isset($_POST['editar'])){
     </tr>
 
 <?php } ?> 
+
+
             </tbody>
         </table>
+
     </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+$(function(){
+    var textArea = $('#content'),
+    hiddenDiv = $(document.createElement('div')),
+    content = null;
+    
+    textArea.addClass('noscroll');
+    hiddenDiv.addClass('hiddendiv');
+    
+    $(textArea).after(hiddenDiv);
+    
+    textArea.on('keyup', function(){
+        content = $(this).val();
+        content = content.replace(/\n/g, '<br>');
+        hiddenDiv.html(content + '<br class="lbr">');
+        $(this).css('height', hiddenDiv.height());
+    });
+});
+</script>
+<script type="text/javascript">
+function confirmaion(e) {
+    if (confirm("¿Estas seguro que deseas Eliminar este registro?")) {
+        return true;
+    } else {
+        return false;
+        e.preventDefault();
+    }
+}
+let linkDelete =document.querySelectorAll("delete");
+</script>
+
 </body>
 </html>

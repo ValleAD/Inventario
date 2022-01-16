@@ -82,12 +82,14 @@ form{
                       </div>
                       <select  class="form-control" name="um[]" id="um" required>
                         <option selected disabled value="">Seleccione</option>
+
                         <option>c/u</option>
                         <option>lb</option>
                         <option>mts</option>
                         <option>Pgo</option> 
                         <option>Qq</option>
                         <option>cto</option>
+
                 </select>
                       </select>
                       
@@ -168,6 +170,5 @@ $("#btn-agregar").click(function(){
         });
     })
 </script>
-<?php include ('templates/footer.php');?>
   </body>
   </html>

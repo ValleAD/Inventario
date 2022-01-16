@@ -18,9 +18,11 @@ if(!isset($_SESSION['signin'])){
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
       <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
 </head>
+
 <body style="background-image: url(img/bg2.jpg);  
             background-repeat: no-repeat;
             background-attachment: fixed;">
+
     <style type="text/css">
         #a:hover{
    text-decoration: none;
@@ -33,8 +35,7 @@ if(!isset($_SESSION['signin'])){
 .children{
 background:burlywood;
 }
-
-    </style>
+ </style>
       <header>
         <div class="menu_bar">
             <a href="#" class="bt-menu"><span class="fas fa-bars"></span>Menú</a>
@@ -98,7 +99,7 @@ background:burlywood;
     <div class="modal-dialog">
         <div class="modal-content" style="background-color: hsla(0.5turn , 100% , 0.1% , 0.5 );color: white;">
             <div class="modal-header">
-                <h5 class="modal-title">Información del Usuario</h5>
+                <h5 class="modal-title" style="color:white;">Información del Usuario</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                 </button>

@@ -1,8 +1,8 @@
-<link rel="stylesheet" type="text/css" href="styles/footer.css">
-<footer>
 
-<div align="center">
-<img src="img/log_1.png" alt="" width="320px" height="150px">
+<footer style="height: 5%; color: white;">
+
+<div align="center" style="height: 5%;">
+<img src="img/log_1.png" alt="" width="220px" height="70px">
 </div>
 
 </footer>

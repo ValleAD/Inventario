@@ -18,8 +18,9 @@ die();
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="styles/style.css" > 
+   
      <link rel="stylesheet" type="text/css" href="styles/estilos_menu.css" > 
+      <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
@@ -33,23 +34,23 @@ die();
 
 
 <body>
-    <div class=" container table-responsive " >
-      
-        <h2 class="text-center mg-t" style="color: #fff; margin-top: -0.5%;">Solicitudes Vale</h2>
-        <p style="margin-top: 5%;" ></p>
-        <table class="table table-dark table-hover table-bordered container-fluid" style="vertical-align: bottom;">
-            <tr>
+     <div class="container">
+        <table class="table">
+            <center><h1 style="margin-top:5px">Solicitudes Vale</h1></center>
+            <thead>
+              <tr id="tr">
+            
              
-                <td class="table-info text-dark"><strong>Código de Vale</strong></td>
-                <td class="table-info text-dark"><strong>Departamento Solicitante</strong></td>
-                <td class="table-info text-dark"><strong>Fecha de solicitud</strong></td>
-                <td class="table-info text-dark"><strong>Detalles</strong></td>
+                <th class="table-info text-dark"><strong>Código de Vale</strong></th>
+                <th class="table-info text-dark"><strong>Departamento Solicitante</strong></th>
+                <th class="table-info text-dark"><strong>Fecha de solicitud</strong></th>
+                <th class="table-info text-dark"><strong>Detalles</strong></th>
                 
             </tr>
-            <td id="td" colspan="8"><h4>No se encontraron ningun  resultados 😥</h4></td>
-            </tr>
-    
-            
+            <td id="td" colspan="4"><h4>No se encontraron ningun  resultados 😥</h4></td>
+           
+     </thead>
+        <tbody>     
     <?php
     include 'Model/conexion.php';
     $sql = "SELECT * FROM tb_vale ORDER BY fecha_registro DESC";
@@ -63,21 +64,26 @@ die();
    
 </style>
         <tr>
-            <td  class="delete"><?php  echo $solicitudes['codVale']; ?></td>
-            <td class="delete"><?php  echo $solicitudes['departamento']; ?></td>
-            <td class="delete"><?php  echo $solicitudes['fecha_registro']; ?></td>
+            <td data-label="Codigo" class="delete"><?php  echo $solicitudes['codVale']; ?></td>
+            <td data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
+            <td data-label="Fecha de solicitud" class="delete"><?php  echo $solicitudes['fecha_registro']; ?></td>
+            <td  data-label="Detalles">
+                <a class="btn btn-primary swal2-styled.swal2-confirm" href="datos_vale.php">Ver detalles</a>
+            </td>
+        </tr>
 
+           
 
 <!--**********************************************************************************************************************************************************************************-->
   <!--Botones para actualizar y eliminar-->
-            <td>
-                <a  class="btn btn-primary swal2-styled.swal2-confirm" href="datos_vale.php">Ver detalles</a>
-            </td>
+            
        
           
  <?php } ?> 
            
+           </tbody>
         </table>
+
     </div>
 </body>
 </html>
