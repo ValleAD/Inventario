@@ -21,6 +21,7 @@ die();
 <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles/style.css"> 
     <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
@@ -29,12 +30,16 @@ die();
     <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
          <link rel="stylesheet" href="Plugin/bootstap-icon/bootstrap-icons.min.css">
       <link rel="stylesheet" href="Plugin/bootstap-icon/fontawesome.all.min.css">
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+  
+
     <title>Productos</title>
 </head>
 <body>
     <div class="container">
       <table class="table">
-        <h1 style="margin-top:5px">Inventario de Productos</h1>
+        
+            <center><h1 style="margin-top:5px">Inventario de Productos</h1></center>
 
 <?php      
 
@@ -52,28 +57,78 @@ if (isset($_POST['editar'])){
 <form action="Controller/Actualizar.php" method="post">
   <h3 align="center">Actualizar Producto</h3>
   <section style="float: left">
-    <label for="">Categoría</label><br>
-    <label for="">Código</label><br>
-    <label for="">Codificación de Catálogo</label><br>
-    <label for="">Nombre</label><br>
-    <label for="">Descripción</label><br>
-    <label for="">Unidad de medida (u/m)</label><br>
-    <label for="">Cantidad</label><br>
-    <label for="">Costo unitario</label><br>
-  </section>
+        <div class="container">
+                <div class="row">
+                    <div class="col-6.5 col-sm-6" style="position: initial">
+                        <label for="">Categoría</label><br> 
+            <input class="form-control" type="text" name="categoria"  value="">
+                    </div>
+                    <div class="col-6.5 col-sm-6" style="position: initial">
+                      <label for="">Código</label>
+          <input class="form-control" type="text" name="codProducto" id="act" value="<?php  echo $productos['codProductos']; ?>">
+                    </div>
+                </div>
+                <div class="row">
 
-  <section>
-    <input type="text" name="categoria"  value=""><br>
-    <input type="text" name="codProducto" id="act" value="<?php  echo $productos['codProductos']; ?>"><br>
-    <input type="text" name="codCatalogo" id="act" value="<?php  echo $productos['catalogo']; ?>"><br>
-    <input type="text" name="nombre" id="act" value="<?php  echo $productos['nombre']; ?>"><br>
-    <textarea type="text" name="descripcion" id="act" style="width: 21%"><?php  echo $productos['descripcion']; ?></textarea><br>
-    <input type="text" name="um" id="act" value="<?php  echo $productos['unidad_medida']; ?>"><br>
-    <input type="text" name="stock" id="act" value="<?php  echo $productos['stock']; ?>"><br>
-    <input type="text" name="precio" id="act" value="<?php  echo $productos['precio']; ?>">
+                    <div class="col-6.5 col-sm-6" style="position: initial">
+                      <label for="">Codificación de Catálogo</label>
+                        <input class="form-control" type="text" name="codCatalogo" id="act" value="<?php  echo $productos['catalogo']; ?>">
+                    </div>
+                    <div class="col-6.5 col-sm-6" style="position: initial">
+                      <label for="">Nombre</label>
+                       <input class="form-control" type="text" name="nombre" id="act" value="<?php  echo $productos['nombre']; ?>">
+                     
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6.5 col-sm-6" style="position: initial">
+                     <label for="">Descripción</label>
+                        <textarea cols="50" rows="1" class="form-control" type="text" name="descripcion" id="act" style="width: 100%"><?php  echo $productos['descripcion']; ?></textarea>
+                      
+                  </div>
+                  <div class="col-6.5 col-sm-6" style="position: initial">
+                          <div class="form-group" >
+                    <label>Unidad de medida (U/M)</label>
+                    <div class="col-md-16" >
+                    <div class="invalid-feedback">
+                        Por favor seleccione una opción.
+                      </div>
+                      <select  class="form-control" name="um" id="um" required>
+                        <option selected disabled value="">Seleccione</option>
+
+                        <option>c/u</option>
+                        <option>lb</option>
+                        <option>mts</option>
+                        <option>Pgo</option> 
+                        <option>Qq</option>
+                        <option>cto</option>
+
+                </select>
+                      </select>
+                      
+                    </div>
+                  </div>
+            
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-6.5 col-sm-6" style="position: initial">
+                        <label for="">Cantidad</label>
+                        <input class="form-control" type="text" name="stock" id="act" value="<?php  echo $productos['stock']; ?>">
+                      
+                  </div>
+                  <div class="col-6.5 col-sm-6" style="position: initial">
+                         <label for="">Costo unitario</label>
+                         <input class="form-control" type="text" name="precio" id="act" value="<?php  echo $productos['precio']; ?>">
+                  </div>
+                </div><hr>
+                <button type="submit" class ="btn btn-primary" style="background:rgb(26, 2, 92); margin-right: 1%">Guardar Cambios</button>
+  <a href="vistaProductos.php" class ="btn btn-primary" style="background:rgb(146, 5, 5)">Cancelar</a>
+            </div>
+    
+
   </section>
-  <button type="submit" class ="btn btn-primary" style="background:rgb(26, 2, 92); margin-right: 1%">Guardar Cambios</button>
-  <a href="vistaProductos.php"><button type="button" class ="btn btn-primary" style="background:rgb(146, 5, 5)"">Cancelar</button></a>
+  
 </form>
 <style>
   #act {
@@ -84,8 +139,7 @@ if (isset($_POST['editar'])){
   }
 } 
 ?><br>
-          <a id="ver" class="btn btn-lg" href="regi_producto.php">Nuevo Producto</a>
-          <a id="ver" class="btn btn-lg" href="regi_producto.php" style=" background: rgb(5, 114, 5); ">Buscar Producto</a>
+          
         <style>
                #ver{
                 margin-top: 2%;
@@ -102,11 +156,46 @@ if (isset($_POST['editar'])){
                 transform: translateY(5px);
                } 
         </style>
+</table>
+</div>
 
     <div class="container">
         <table class="table">
-            <center><h1 style="margin-top:5px">Inventario de Productos</h1></center>
+            <div class="row" >
+                    <div class="col-6.5 col-sm-6" style="position: initial;margin-right: 16.6%;">
+                       <a id="ver" class="btn btn-lg" href="regi_producto.php">Nuevo Producto</a>
+                  </div>
+                  <div class="col-6.5 col-sm-4" style="position: initial">
+                          <form class="d-flex" action="vistaProductos.php" method="POST">
+                            <div class="row">
+                    <div class="col-6.5 col-sm-6" style="position: initial">
+                       <input name="busqueda" class="form-control " type="search" placeholder="Search" aria-label="Search">
+                      
+                  </div>
+                  <div class="col-6.5 col-sm-6" style="position: initial">
+                         <button name="enviar" class="btn btn-outline-success" type="submit">Search</button>
+                  </div>
+                </div>
+        
+       <br><br><br>
+       <?php 
 
+if (isset($_POST['enviar'])) {
+    $busqueda= $_POST['busqueda'];
+    $consulta= $conn->query("SELECT * FROM tb_productos WHERE nombre LIkE '%$busqueda%'");
+while ($row=$consulta->fetch_array()) {
+    echo $row['codProductos'].'<br>';
+echo'
+';
+}
+}
+
+        ?>
+      </form>
+                  </div>
+                </div>
+            
+          
             <thead>
               <tr id="tr">
                     <th>
@@ -162,22 +251,19 @@ if (isset($_POST['editar'])){
       <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
       <td data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
       <td data-label="Nombre"><?php  echo $productos['nombre']; ?></td>
-      <td data-label="Descripción Completa" style="width: 100%;"><textarea cols="10" rows="3" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
+      <td data-label="Descripción Completa" style="width: 100%;"><textarea cols="10" rows="1" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
       <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
       <td data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
       <td data-label="Editar">
-        <form style="margin: 0%; background: transparent;" method='POST' action="vistaProductos.php">             
+        <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="vistaProductos.php">             
           <input type='hidden' name='id' value="<?php  echo $productos['codProductos']; ?>">             
           <button name='editar' class='btn btn-info btn-sm'  >Editar</button>             
         </form>  
       </td>
 
       <td data-label="Eliminar">
-        <form style="margin: 0%; background: transparent;" onsubmit=\"return confirm('¿Realmente desea eliminar el registro?');\" method='POST' action="">             
-          <input type='hidden' name='id' value="<?php  echo $productos['codProductos']; ?>">             
-          <button name='eliminar' class='btn btn-danger btn-sm'>Eliminar</button>             
-        </form> 
+                    <a class="btn btn-danger btn-sm" class="text-primary" href="Controller/Delete_producto.php?id=<?php  echo $productos['codProductos']; ?>" onclick="return confirmaion()">Eliminar</a>
       </td>
     </tr>
 
@@ -220,6 +306,6 @@ function confirmaion(e) {
 }
 let linkDelete =document.querySelectorAll("delete");
 </script>
-
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
 </body>
 </html>

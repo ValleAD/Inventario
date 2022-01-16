@@ -23,7 +23,8 @@ section {
 }
 
 form {
-    background: rgba(55, 55, 55, .5);
+        background: rgb(27, 31, 69, .5);
+    
     color: white;
     padding: 1%;
   border-radius: 7px;

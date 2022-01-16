@@ -82,12 +82,15 @@ if ($password == $cpassword) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="../styles/log.css" > 
+
+	<link rel="stylesheet" type="text/css" href="../styles/estilo_men.css">
+
     <link rel="stylesheet" href="../Plugin/bootstrap/css/bootstrap.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" type="image/png" sizes="32x32"  href="../img/log.png">
 	<title>Register</title>
 </head>
-<body style="background-image: url(../img/bg3.jpg)">
+<body style="background-image: url(../img/bg3.jpg);">
 	
 
 <form id="form" action="" method="POST" style="position: all; width: 70%; height: 10%;margin-top: 3%;margin-bottom: 3%; padding: 1%;margin-left: 15%;">
@@ -132,7 +135,7 @@ if ($password == $cpassword) {
 				</div>
 				<div>
 					<div>
-						<center><button type="submit" name="submit" class="btn btn-secondary">Registrarse</button></center>
+						<center><button type="submit" name="submit" class="btn btn-info">Registrarse</button></center>
 						<p class="account text-center">¿Ya tienes una cuenta? <a id="a" href="signin.php" style="margin-left:1%;">Inicar Sesión</a></p>
 	</div>
 					</div>
@@ -160,6 +163,7 @@ if ($password == $cpassword) {
 		.account{
 			color: white;
 		}
+
 			#a{
 				width: 20%;
 				margin-left: 40%;
