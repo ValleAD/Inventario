@@ -73,6 +73,7 @@ form{
     font-family:Verdana, Arial, Helvetica, sans-serif;
     font-size: 25px;
 }
+
 </style>
   </head>
     <body >
@@ -88,25 +89,25 @@ form{
 <div class="row">
     <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="white"><label>Número de Solicitud</label> </font>
-      <input class="form-control" type="number" name="nsolicitud" id="como1" required>
+      <input style="background:transparent; color: white;" class="form-control" type="number" name="nsolicitud" id="como1" required>
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="white"><label>Dependencia que Solicita</label></font>   
-      <input class="form-control" type="text" name="dependencia" id="como2" required>
+      <input  style="background:transparent; color: white;" class="form-control" type="text" name="dependencia" id="como2" required>
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="white"><label>Plazo y Numero de Entregas</label></font> 
-      <input class="form-control" type="text" name="plazo" id="como3" required>
+      <input  style="background:transparent; color: white;" class="form-control" type="text" name="plazo" id="como3" required>
       <br>
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="white"><label>Unidad Tecnica</label> </font>
-      <input class="form-control" type="text" name="unidad_tecnica" id="como3" required>
+      <input style="background:transparent; color: white;"  class="form-control" type="text" name="unidad_tecnica" id="como3" required>
       <br>
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="white"><label>Suministros Solicita</label>  </font>
-      <input class="form-control" type="text" name="descripcion_solicitud" id="como3" required>
+      <input style="background:transparent; color: white;"  class="form-control" type="text" name="descripcion_solicitud" id="como3" required>
       <br>
   </div>
     </div>
@@ -114,8 +115,8 @@ form{
 </center>
     <div id="Registro" class="row container-fluid" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%">
 
-<div id="lo-que-vamos-a-copiar"  style="background:#FAE2E2;margin-left: 1%;margin-right: 1%;margin-top: 1%">
-    <div class="col-xs-4 "  style="background: #FAE2E2;margin-left: 1;margin-right: 1%;margin-top: 1%;" >
+<div id="lo-que-vamos-a-copiar"  style="background:#FAE2E2;margin-left: 1%;border-radius: 5px;margin-right: 1%;margin-top: 1%">
+    <div class="col-xs-4 "  style="background: #FAE2E2;margin-left: 1;border-radius: 5px;margin-right: 1%;margin-top: 1%;" >
         <div class="well well-sm" style="position: all; margin: 5%">
         
                   <div class="form-group" style="position: all; margin: 2%">

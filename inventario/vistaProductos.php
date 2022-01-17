@@ -161,41 +161,68 @@ if (isset($_POST['editar'])){
     <div class="container">
         <table class="table">
             <div class="row" >
-                    <div class="col-6.5 col-sm-6" style="position: initial;margin-right: 16.6%;">
-                       <a id="ver" class="btn btn-lg" href="regi_producto.php">Nuevo Producto</a>
-                  </div>
-                  <div class="col-6.5 col-sm-4" style="position: initial">
-                          <form class="d-flex" action="vistaProductos.php" method="POST">
-                            <div class="row">
-                    <div class="col-6.5 col-sm-6" style="position: initial">
-                       <input name="busqueda" class="form-control " type="search" placeholder="Search" aria-label="Search">
-                      
-                  </div>
-                  <div class="col-6.5 col-sm-6" style="position: initial">
-                         <button name="enviar" class="btn btn-outline-success" type="submit">Search</button>
-                  </div>
-                </div>
-        
-       <br><br><br>
-       <?php 
+         <?php
 
-if (isset($_POST['enviar'])) {
-    $busqueda= $_POST['busqueda'];
-    $consulta= $conn->query("SELECT * FROM tb_productos WHERE nombre LIkE '%$busqueda%'");
-while ($row=$consulta->fetch_array()) {
-    echo $row['codProductos'].'<br>';
-echo'
-';
-}
-}
+////////////////// CONEXION A LA BASE DE DATOS ////////////////////////////////////
 
-        ?>
-      </form>
-                  </div>
-                </div>
-            
-          
-            <thead>
+$host="localhost";
+$usuario="root";
+$contraseña="";
+$base="hospital";
+
+$conexion= new mysqli($host, $usuario, $contraseña, $base);
+if ($conexion -> connect_errno)
+{
+    die("Fallo la conexion:(".$conexion -> mysqli_connect_errno().")".$conexion-> mysqli_connect_error());
+}
+////////////////// VARIABLES DE CONSULTA////////////////////////////////////
+
+$where="";
+
+
+
+////////////////////// BOTON BUSCAR //////////////////////////////////////
+
+if (isset($_POST['buscar']))
+{
+
+
+$nombre=$_POST['xnombre'];
+
+    if (empty($_POST['xcarrera']))
+    {
+        $where="where nombre like '".$nombre."%'";
+    }
+
+}
+/////////////////////// CONSULTA A LA BASE DE DATOS ////////////////////////
+
+$productos="SELECT * FROM tb_productos $where";
+$resAlumnos=$conexion->query($productos);
+
+if(mysqli_num_rows($resAlumnos)==0)
+{
+    $mensaje="<h1>No hay registros que coincidan con su criterio de búsqueda.</h1>";
+}
+?>
+
+
+        <section>
+            <form method="post">
+                <div class="row">
+                    
+                
+  <div class="col-6.5 col-sm-6" style="position: initial">
+                <input type="text" class="form-control" placeholder="Productos..." name="xnombre"/>
+            </div>
+  <div class="col-6.5 col-sm-6" style="position: initial">
+                <button name="buscar" type="submit" class="btn btn-outline-success">Buscar</button>
+            </div>
+            </div>
+            </form>
+            <table class="table">
+                 <a href="regi_producto.php" class="btn btn-primary"> Nuevo Producto</a>
+                   <thead>
               <tr id="tr">
                     <th>
                         Código
@@ -204,7 +231,7 @@ echo'
                         Codificación de catálogo
                     </th>
                     <th>
-                        Nombre
+                        Nombre de Producto
                     </th>
                     <th style="width: 25%;">
                         Descripción Completa</th>
@@ -224,20 +251,16 @@ echo'
                     </th>
                 </tr>
                 <tr>
-                  <td id="td" colspan="8">
+                  <td id="td" colspan="9">
                     <h4>No se encontraron resultados 😥</h4></td>
             </tr>
             </thead>
             <tbody>
 
-<?php
-    include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_productos WHERE fecha_registro";
-    $result = mysqli_query($conn, $sql);
 
-    while ($productos = mysqli_fetch_array($result)){
-?>
+                <?php
 
+                while ($productos = $resAlumnos->fetch_array(MYSQLI_BOTH)){?>
 <style type="text/css">
 
      #td{
@@ -245,8 +268,7 @@ echo'
     }
    
 </style>
-
-      <tr>
+                      <tr>
       <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
       <td data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
       <td data-label="Nombre"><?php  echo $productos['nombre']; ?></td>
@@ -268,11 +290,13 @@ echo'
 
 <?php } ?> 
 
-
-            </tbody>
+              </tbody>
         </table>
 
-    </div>
+        </section>
+
+
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>

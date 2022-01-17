@@ -91,7 +91,7 @@ form{
         <div class="well well-sm" style="position: all; margin: 5%">
             <div class="form-group" style="position: all; margin: 2%">
                     <label>Descripción de material</label>
-                    <textarea type="text" name="desc[]" class="form-control" placeholder="Ingrese la descripción del material" required=""></textarea>
+                    <textarea type="text" name="desc[]" class="form-control" placeholder="Descripción del material" required=""></textarea>
                     </div>
                     <br>
 

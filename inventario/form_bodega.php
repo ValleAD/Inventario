@@ -21,7 +21,7 @@ die();
       @media (max-width: 952px){
    #section{
         margin-top: 5%;
-        margin-left: 15%;
+        margin-left: 12%;
         width: 75%;
     }
     #lab{
@@ -43,10 +43,6 @@ die();
         margin-bottom: 15%;
     }
 
-form{
- margin-right: 15%;
-
-}
 </style>
 <head>
     <meta charset="utf-8">
