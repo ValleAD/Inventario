@@ -146,7 +146,7 @@ if(isset($_POST['codigo'])){
         </div>
         <br>
           <div class="container">
-        <table class="table" style="color:black;">
+         <table class="table" style="margin-bottom:3%;%color:while;">
         <thead>
            <tr id="tr">
                 <th style="width: 12%;"><strong>Código</strong></th>
@@ -183,11 +183,11 @@ if(isset($_POST['codigo'])){
 </style>
     
             <tr>
-               <td data-label="Codigo"><input type="number" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
-               <td data-label="Descripción"><textarea cols="10" rows="1" type="text" class="form-control" readonly name="desc[]"><?php  echo $productos['descripcion']; ?></textarea></td>
-               <td data-label="Unidad De Medida"><input type="text" class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
-               <td data-label="Cantidad"><input type="number" class="form-control"  name="cant[]" values = "<?php  echo $productos['stock']; ?>"></td>
-               <td data-label="Precio"><input type="number" class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
+               <td data-label="Codigo"><input style="background:transparent; border: none; width: 100%; color: black;"  type="number" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
+               <td data-label="Descripción"><textarea  style="background:transparent; border: none; width: 100%; color: black;" cols="10" rows="1" type="text" class="form-control" readonly name="desc[]"><?php  echo $productos['descripcion']; ?></textarea></td>
+               <td data-label="Unidad De Medida"><input  style="background:transparent; border: none; width: 100%; color: black;" type="text" class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
+               <td data-label="Cantidad"><input  style="background:transparent; border: none; width: 100%; color: black;" type="number" class="form-control"  name="cant[]" values = "<?php  echo $productos['stock']; ?>"></td>
+               <td data-label="Precio"><input style="background:transparent; border: none; width: 100%; color: black;"  type="number" class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
             </tr>
    
         <?php }

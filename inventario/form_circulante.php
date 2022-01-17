@@ -91,7 +91,7 @@ form{
         <div class="well well-sm" style="position: all; margin: 5%">
             <div class="form-group" style="position: all; margin: 2%">
                     <label>Descripción de material</label>
-                    <input type="text" name="desc[]" class="form-control" placeholder="Ingrese la descripción del material" required=""/>
+                    <textarea type="text" name="desc[]" class="form-control" placeholder="Ingrese la descripción del material" required=""></textarea>
                     </div>
                     <br>
 
@@ -103,8 +103,12 @@ form{
                             </div>
                         <select  class="form-control" name="um[]" id="um" required>
                             <option selected disabled value="">Unidad de Medida</option>
-                            <option value="U">U</option>
-                            <option value="M">M</option>
+                           <option>c/u</option>
+                            <option>lb</option>
+                            <option>mts</option>
+                            <option>Pgo</option> 
+                            <option>Qq</option>
+                            <option>cto</option>
                         </select>
                         </div>
                     </div>

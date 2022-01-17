@@ -64,11 +64,7 @@ die();
      #td{
         display: none;
     }
-      @media (max-width: 952px){
-          #td{
-        display: block;
-    }
-      }
+   
    
 </style>
         <tr>

@@ -66,6 +66,13 @@ form{
     margin: 4px 2px;
     cursor: pointer;
 }
+.EstiloTexto{
+    color:#FE0000;
+    font-weight: bold;
+    text-align: center;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size: 25px;
+}
 </style>
   </head>
     <body >
@@ -141,23 +148,24 @@ form{
                     <input type="text" name="desc[]" class="form-control" placeholder="Descripción" required>
                   </div>
 
-                  <div class="form-group" style="position: initial">
-                    <label>Unidad de medida (U/M)</label>
-                    <div class="col-md-16" >
-                    <div class="invalid-feedback">
-                        Por favor seleccione una opción.
-                      </div>
-                        <select  class="form-control" name="um" id="um" required style="background-color: #FDF6F0">
-                          <option selected disabled value="">Seleccionar</option>
-                          <option value="">c/u</option>
-                          <option value="">lb</option>
-                          <option value="">mts</option>
-                          <option value="">Pgo</option> 
-                          <option value="">Qq</option>
-                          <option value="">Cto</option>
+                  
+                    <div class="form-group" >
+                        <label>Unidad de medida (U/M)</label>
+                        <div class="col-md-16" >
+                            <div class="invalid-feedback">
+                            Por favor seleccione una opción.
+                            </div>
+                        <select  class="form-control" name="um[]" id="um" required>
+                            <option selected disabled value="">Unidad de Medida</option>
+                           <option>c/u</option>
+                            <option>lb</option>
+                            <option>mts</option>
+                            <option>Pgo</option> 
+                            <option>Qq</option>
+                            <option>cto</option>
                         </select>
+                        </div>
                     </div>
-                  </div>
             
             <div class="form-group">
                 <label>Cantidad</label>

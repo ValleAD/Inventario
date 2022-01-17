@@ -77,6 +77,7 @@ die();
 <!--**********************************************************************************************************************************************************************************-->
   <!--Botones para actualizar y eliminar-->
             <td data-label="Detalles">
+                
                 <a class="btn btn-primary swal2-styled.swal2-confirm" href="dt_bodega.php">Ver detalles</a>
             </td>
         </tr>

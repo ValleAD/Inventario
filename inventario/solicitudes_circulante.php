@@ -19,7 +19,8 @@ die();
 <head>
 <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles/style.css" > 
-     <link rel="stylesheet" type="text/css" href="styles/estilos_menu.css" > 
+     <link rel="stylesheet" type="text/css" href="styles/estilos_menu.css" >
+     <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
@@ -35,22 +36,24 @@ die();
 <body>
     <div class=" container table-responsive " >
       
-        <h2 class="text-center mg-t" style="color: #fff; margin-top: -0.5%;">Solicitudes Vale</h2>
+        <table class="table">
+        <h2 class="text-center mg-t" style=" margin-top: -0.5%;">Solicitudes Circulante</h2>
         <p style="margin-top: 5%;" ></p>
-        <table class="table table-dark table-hover table-bordered container-fluid" style="vertical-align: bottom;">
-            <tr>
-             
-                <td class="table-info text-dark"><strong>Descripcion</strong></td>
-                <td class="table-info text-dark"><strong>U/M</strong></td>
-                <td class="table-info text-dark"><strong>Cantidad Solicitada</strong></td>
-                <td class="table-info text-dark"><strong>Costo</strong></td>
-                <td class="table-info text-dark"><strong>Fecha</strong></td>
-                <td class="table-info text-dark"><strong>Detalles</strong></td>
+        <thead>
+              <tr id="tr">
+                <th class="table-info text-dark"><strong>Código</strong></th>
+                <th class="table-info text-dark"><strong>Nombre</strong></th>
+                <th class="table-info text-dark"><strong>Unidad de Medida</strong></th>
+                <th class="table-info text-dark"><strong>Cantidad Solicitada</strong></th>
+                <th class="table-info text-dark"><strong>Cantidad Despachada</strong></th>
+                <th class="table-info text-dark"><strong>Precio</strong></th> <th class="table-info text-dark"><strong>Fecha Registro</strong></th>
                 
             </tr>
-            <td id="td" colspan="8"><h4>No se encontraron ningun  resultados 😥</h4></td>
+            <tr>
+            <td id="td" colspan="7"><h4>No se encontraron ningun  resultados 😥</h4></td>
             </tr>
-    
+     </thead>
+            <tbody>
             
     <?php
     include 'Model/conexion.php';
@@ -65,11 +68,12 @@ die();
    
 </style>
         <tr>
-            <td class="delete"><?php  echo $solicitudes['descripcion']; ?></td>
-            <td class="delete"><?php  echo $solicitudes['unidad_medida']; ?></td>
-            <td class="delete"><?php  echo $solicitudes['cantidad_solicitada']; ?></td>
-            <td class="delete"><?php  echo $solicitudes['costo']; ?></td>
-            <td class="delete"><?php  echo $solicitudes['fecha_registro']; ?></td>
+            <td data-label="Codigo" class="delete"><?php  echo $solicitudes['codigo']; ?></td>
+            <td data-label="Descripción" class="delete"><?php  echo $solicitudes['descripcion']; ?></td>
+            <td data-label="Unidad De Medida" class="delete"><?php  echo $solicitudes['unidad_medida']; ?></td>
+            <td data-label="Cantidad Solicitada" class="delete"><?php  echo $solicitudes['cantidad_solicitada']; ?></td> 
+            <td data-label="Costo Unitario" class="delete"><?php  echo $solicitudes['costo']; ?></td>
+            <td data-label="Eliminar" class="delete"><?php  echo $solicitudes['fecha_registro']; ?></td>
 
 
 <!--**********************************************************************************************************************************************************************************-->
@@ -82,7 +86,7 @@ die();
    
         </div>
  <?php } ?> 
-           
+           </tbody>
         </table>
     </div>
 </body>

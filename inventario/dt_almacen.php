@@ -13,7 +13,7 @@ die();
 }
     
 ?>
-<?php include ('menu.php')?>
+<?php include ('templates/menu.php')?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -64,7 +64,7 @@ die();
           </div></div><br>
 
         <div class="table-responsive container-fluid">
-      <table class="table table-bordered">
+      <table class="table" style="margin-bottom:3%" >
           <tr>
             <td><strong>Código</strong></td>
             <td><strong>Descripción</strong></td>

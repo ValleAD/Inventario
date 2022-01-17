@@ -21,6 +21,7 @@ die();
 <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles/estilo.css" > 
+ <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
     <link rel="stylesheet" href="Plugin/assets/css/bootstrap.css" />
     <link rel="stylesheet" href="Plugin/assets/css/bootstrap-theme.min.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -95,17 +96,22 @@ $final = 0;
       
         <br>
         <br>
-        <div class="table-responsive">
-        <table class="table">
-          <tr style="text-align: left">
-            <td style="width: 40px"><strong>Código</strong></td>
-            <td style="width: 40px"><strong>Cod. Catálogo</strong></td>
-            <td><strong>Descripción</strong></td>
-            <td><strong>U/M</strong></td>
-            <td><strong>Cantidad</strong></td>
-            <td style="width: 40px"><strong>Precio Unitario (estimado)</strong></td>
-            <td style="width: 40px"><strong>Monto Total (estimado)</strong></td>
-          </tr>';
+       
+        <table class="table" style="margin-bottom:3%">
+         <thead>
+              <tr id="tr">
+          
+            <th style=""><strong>Código</strong></th>
+            <th style=""><strong>Cod. Catálogo</strong></th>
+            <th><strong>Descripción</strong></th>
+            <th><strong>U/M</strong></th>
+            <th><strong>Cantidad</strong></th>
+            <th style=""><strong>Precio Unitario (estimado)</strong></th>
+            <th style=""><strong>Monto Total (estimado)</strong></th>
+          </tr>
+          </thead>
+          <tbody>';
+
 
 $solicitud_n = $datos['nSolicitud'];
 }
@@ -117,27 +123,23 @@ while ($productos = mysqli_fetch_array($result)){
       $final += $total;
   echo'  
       <tr >
-        <td><input  name="cod[]" readonly value="' .$productos['codigo']. '" style="width: 60px; border: none"></td>
-        <td><input  name="cat[]" readonly value="'.$productos['catalogo']. '" style="width: 60px;border: none"></td>
-        <td><input  name="desc[]" readonly value="'.$productos['descripcion']. '" style="width: 120px; border: none"></td>
-        <td><input  name="um[]" readonly value="'.$productos['unidad_medida']. '" style="width: 40px; border: none"></td>
-        <td><input  name="cant[]" readonly value="$'.$productos['stock']. '" style="width: 60px; border: none"></td>
-        <td><input  name="cost[]" readonly value="$'.$productos['precio']. '" style="width: 60px; border: none"></td>
-        <td><input  name="tot[]" readonly value="$'.$total. '" style="width: 90px; border: none"></td>
+        <td data-label="Código"><input  name="cod[]" readonly value="' .$productos['codigo']. '" style="width: 60px; border: none"></td>
+        <td data-label="Catálogo"><input  name="cat[]" readonly value="'.$productos['catalogo']. '" style="width: 60px;border: none"></td>
+        <td data-label="Descripción"><input size="5px"  name="desc[]" readonly value="'.$productos['descripcion']. '" style="width: 120px; border: none"></td>
+        <td data-label="Unidad De Medida"><input  name="um[]" readonly value="'.$productos['unidad_medida']. '" style="width: 40px; border: none"></td>
+        <td data-label="Cantidad"><input  name="cant[]" readonly value="$'.$productos['stock']. '" style="width: 60px; border: none"></td>
+        <td data-label="Precio Unitario (estimado)"><input  name="cost[]" readonly value="$'.$productos['precio']. '" style="width: 60px; border: none"></td>
+        <td data-label="Monto Total (estimado)"><input  name="tot[]" readonly value="$'.$total. '" style="width: 90px; border: none"></td>
       </tr>';
 
 }
 
       echo'
         <tr>
-          <td></td>
-          <td></td> 
-          <td></td>
-          <td></td>
-          <td></td>
-          <td><strong>Total</strong></td> 
+          <td colspan="6"><strong>SubTotal</strong></td> 
           <td><input  name="tot_f" readonly value="$'.$final.'"  style="width: 90px; border: none; color: rgb(168, 8, 8); font-weight: bold;"></td>
         </tr>
+        </tbody>
       </table>    </section>
     <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
       <style>

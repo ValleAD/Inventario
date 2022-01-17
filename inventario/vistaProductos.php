@@ -104,7 +104,6 @@ if (isset($_POST['editar'])){
                         <option>cto</option>
 
                 </select>
-                      </select>
                       
                     </div>
                   </div>
@@ -251,7 +250,7 @@ echo'
       <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
       <td data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
       <td data-label="Nombre"><?php  echo $productos['nombre']; ?></td>
-      <td data-label="Descripción Completa" style="width: 100%;"><textarea cols="10" rows="1" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
+      <td data-label="Descripción Completa"><textarea style="background:transparent; border: none; width: 100%;color: black;" cols="10" rows="1" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
       <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
       <td data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>

@@ -20,6 +20,7 @@
     text-transform: uppercase;
     font-weight: bold;
     margin: 8px 0px;
+    color: black;
 }
 
 .table tr {
@@ -40,6 +41,7 @@
 
 .table tbody tr:hover {
     background-color: rgba(0, 0, 0, 0.2);
+    color: white;
 }
 
 .table tbody td:hover {

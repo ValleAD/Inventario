@@ -97,8 +97,12 @@ form{
                       </div>
                       <select  class="form-control" name="um[]" id="um">
                         <option selected disabled value="">U/M</option>
-                        <option value="U">U</option>
-                        <option value="M">M</option>
+                        <option>c/u</option>
+                        <option>lb</option>
+                        <option>mts</option>
+                        <option>Pgo</option> 
+                        <option>Qq</option>
+                        <option>cto</option>
                       </select>
                     </div>
                   </div>

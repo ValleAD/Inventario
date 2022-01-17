@@ -21,6 +21,7 @@ die();
 <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles/estilo.css" > 
+     <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
     <link rel="stylesheet" href="Plugin/assets/css/bootstrap.css" />
     <link rel="stylesheet" href="Plugin/assets/css/bootstrap-theme.min.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,9 +34,10 @@ die();
               @media (max-width: 952px){
    #section{
         margin-top: 5%;
-        margin-left: 15%;
-        width: 75%;
+        margin-left: 10%;
+        width: 80%;
     }
+
     
     </style>
 <?php
@@ -52,22 +54,39 @@ $final = 0;
 <section id="section">
 <form method="POST" action="Exportar_PDF/pdf_vale.php" target="_blank">
          
-      <section id="section">
+
+        <div class=" container">
+            
+        
         <div class="row">
       
 
-        <div class="table-responsive">
-        <table class="table">
-          <tr>
-            <td><strong>Código</strong></td>
-            <td><strong>Catalogo</strong></td>
-            <td><strong>Descripción</strong></td>
-            <td><strong>U/M</strong></td>
-            <td><strong>Cantidad</strong></td>
-            <td><strong>Costo unitario</strong></td>
-            <td><strong>solicitud_compra</strong></td>
-            <td><strong>Total</strong></td>
-          </tr>';
+           <table class="table" style="width; 100%;margin-bottom: 3%;">
+            <h1 class="text-center mg-t" style="margin-top: -0.5%;">Detalles De la Compra</h1>
+          <thead>
+              <tr id="tr">
+            <td style="width:100%"><strong>Código</strong></td>
+            <td style="width:100%"><strong>Catalogo</strong></td>
+            <td style="width:100%"><strong>Descripción</strong></td>
+            <td style="width:100%"><strong>U/M</strong></td>
+            <td style="width:100%"><strong>Cantidad</strong></td>
+            <td style="width:100%"><strong>Costo unitario</strong></td>
+            <td style="width:100%"><strong>solicitud compra</strong></td>
+            <td style="width:100%"><strong>Total</strong></td>
+               
+            </tr>
+            <tr>
+                  <td id="td" colspan="7">
+                    <h4>No se encontraron resultados 😥</h4></td>
+            </tr>
+            </thead>
+            <tbody>     
+             <style type="text/css">
+     #td{
+        display: none;
+    }
+   
+</style>';
 
 
 }
@@ -79,30 +98,32 @@ while ($productos = mysqli_fetch_array($result)){
       $final += $total;
   echo'  
       <tr >
-        <td><input  name="cod[]" readonly value="' .$productos['codigo']. '" style="width: 120px; border: none"></td>
-        <td><input  name="desc[]" readonly value="'.$productos['catalogo']. '" style="border: none"></td>
-        <td><input  name="desc[]" readonly value="'.$productos['descripcion']. '" style="border: none"></td>
-        <td><input  name="um[]" readonly value="'.$productos['unidad_medida']. '" style="width: 60px; border: none"></td>
-        <td><input  name="cant[]" readonly value="'.$productos['stock']. '" style="width: 60px; border: none"></td>
-        <td><input  name="cost[]" readonly value="$'.$productos['precio']. '" style="width: 60px; border: none">
-        </td><td><input  name="cost[]" readonly value="$'.$productos['solicitud_compra']. '" style="width: 60px; border: none"></td>
-        <td><input  name="tot[]" readonly value="$'.$total. '" style="width: 140px; border: none"></td>
+        <td data-label="Código"><input  style="background:transparent; border: none; width: 100%;"   name="cod[]" readonly value="' .$productos['codigo']. '"></td>
+        <td data-label="Nombre"><input  name="desc[]" readonly value="'.$productos['catalogo']. '"  style="background:transparent; border: none; width: 100%;"  ></td>
+        <td data-label="Descripción"><input name="desc[]" readonly value="'.$productos['descripcion']. '"  style="background:transparent; border: none; width: 100%;"  ></td>
+        <td data-label="Unidad De Medida"><input  name="um[]" readonly value="'.$productos['unidad_medida']. '"  style="background:transparent; border: none; width: 100%;"  ></td>
+        <td data-label="Cantidad"><input  name="cant[]" readonly value="'.$productos['stock']. '"  style="background:transparent; border: none;width: 100%;"  ></td>
+        <td data-label="Costo unitario"><input  name="cost[]" readonly value="$'.$productos['precio']. '"  style="background:transparent; border: none; width: 100%;"  >
+        </td>
+        <td data-label="solicitud compra"><input name="cost[]" readonly value="$'.$productos['solicitud_compra']. '"  style="background:transparent; border: none; width: 100%;" ></td>
+        <td data-label="Total"><input name="tot[]" readonly value="$'.$total. '"  style="background:transparent; border: none; width: 100%;" ></td>
       </tr>';
 
 }
 
       echo'
         <tr>
-          <td></td>
-          <td></td> 
-          <td></td>
-          <td></td>
-          <td><strong>Total</strong></td> 
-          <td><input  name="tot_f" readonly value="$'.$final.'"  style="width: 90px; border: none; color: rgb(168, 8, 8); font-weight: bold;"></td>
+          
+          <td colspan="6"><strong>SubTotal</strong></td> 
+          <td colspan="2"><input name="tot_f" readonly value="$'.$final.'"  style="background:transparent; border: none; width: 100%; color: rgb(168, 8, 8); font-weight: bold;"></td>
         </tr>
-      </table>  
-    </section> 
-    <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
+            </tbody>
+        </table>
+</div>
+</div>
+
+
+    <input id="pdf" type="submit" class="btn" value="Exportar a PDF" name="pdf">
       <style>
         #pdf{
         margin-left: 38%; 
