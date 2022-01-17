@@ -79,7 +79,7 @@ die();
 <!--**********************************************************************************************************************************************************************************-->
   <!--Botones para actualizar y eliminar-->
             <td>
-                <a class="btn btn-primary swal2-styled.swal2-confirm" href="datos_vale.php">Ver detalles</a>
+                <a class="btn btn-primary swal2-styled.swal2-confirm" href="dt_circulante.php">Ver detalles</a>
             </td>
         </tr>
             <div class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
