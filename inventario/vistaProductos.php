@@ -55,13 +55,12 @@ if (isset($_POST['editar'])){
 
 <form action="Controller/Actualizar.php" method="post">
   <h3 align="center">Actualizar Producto</h3>
-        <div class="container">
-
-                <div class="row">
-                    <div class="col-6.5 col-sm-6" style="position: initial">
-                        <label for="">Categoría</label><br> 
-             <select  class="form-control" name="categoria" id="um" required style="background-color: #FDF6F0; cursor: s-resize">
-                        <option selected disabled value="">Seleccionar</option>
+    <div class="container" style="background: rgba(0, 0, 0, 0.6); border-radius: 9px; color:#fff; font-weight: bold;">
+        <div class="row">
+            <div class="col-6 col-sm-4" style="position: initial; margin-left: 17%; margin-top: 2%">
+                <label for="">Categoría</label><br> 
+                    <select  class="form-control" name="categoria" id="um" required style="cursor: pointer">
+                        <option selected value="">Seleccionar</option>
                         <option value="agro">Agropecuarios y Forestales</option>
                         <option value="cuero">Cuero y Caucho</option>
                         <option value="quimicos">Químicos</option>
@@ -70,78 +69,73 @@ if (isset($_POST['editar'])){
                         <option value="min">Minerales Metálicos</option>
                         <option value="repuestos">Herramientas y Repuestos</option>
                         <option value="elec">Materiales Eléctricos</option>
-                      </select>
-                    </div>
-                    <div class="col-6.5 col-sm-6" style="position: initial">
-                      <label for="">Código</label>
-          <input class="form-control" disabled type="text" style="cursor: not-allowed;" name="codProducto" id="act" value="<?php  echo $productos['codProductos']; ?>">
-                    </div>
+                    </select>
+            </div>
+           
+            <div class="col-6 col-sm-4" style="position: initial; margin-top: 2%;">
+                <label for="">Código</label>
+                <input class="form-control" type="text" name="codProducto" id="act" value="<?php  echo $productos['codProductos']; ?>">
+            </div>
+        </div>
 
-
-                <div class="col-6 col-sm-4" style="position: initial">
-                    <label for="">Código</label>
-                    <input class="form-control" type="text" name="codProducto" id="act" value="<?php  echo $productos['codProductos']; ?>">
-                </div>
+        <div class="row">
+            <div class="col-6 col-sm-4" style="position: initial; margin-left: 17%;">
+                <label for="">Codificación de Catálogo</label>
+                <input class="form-control" type="text" name="codCatalogo" id="act" value="<?php  echo $productos['catalogo']; ?>">
             </div>
 
-            <div class="row">
-                <div class="col-6 col-sm-4" style="position: initial">
-                    <label for="">Codificación de Catálogo</label>
-                    <input class="form-control" type="text" name="codCatalogo" id="act" value="<?php  echo $productos['catalogo']; ?>">
-                </div>
+            <div class="col-6 col-sm-4" style="position: initial">
+                <label for="">Nombre</label>
+                <input class="form-control" type="text" name="nombre" id="act" value="<?php  echo $productos['nombre']; ?>">
+            </div>
+        </div>
 
-                <div class="col-6 col-sm-4" style="position: initial">
-                    <label for="">Nombre</label>
-                    <input class="form-control" type="text" name="nombre" id="act" value="<?php  echo $productos['nombre']; ?>">
-                </div>
+        <div class="row">
+            <div class="col-6 col-sm-4" style="position: initial; margin-left: 17%;">
+                <label for="">Descripción</label>
+                <textarea cols="50" rows="1" class="form-control" type="text" name="descripcion" id="act" style="width: 100%"><?php  echo $productos['descripcion']; ?></textarea>                     
             </div>
 
-            <div class="row">
-                <div class="col-6 col-sm-4" style="position: initial">
-                    <label for="">Descripción</label>
-                    <textarea cols="50" rows="1" class="form-control" type="text" name="descripcion" id="act" style="width: 100%"><?php  echo $productos['descripcion']; ?></textarea>                     
-                </div>
-
-                <div class="col-6 col-sm-4" style="position: initial">
-                    <div class="form-group" >
-                        <label>Unidad de medida (U/M)</label>
-                        <div class="col-md-16" >
+            <div class="col-6 col-sm-4" style="position: initial">
+                <div class="form-group" >
+                    <label>Unidad de medida (U/M)</label>
+                    <div class="col-md-16" >
                         <div class="invalid-feedback">
                         Por favor seleccione una opción.
-                      </div>
-                      <select  class="form-control" name="um" id="um" style="cursor: s-resize" required>
+                    </div>
+                    <select  class="form-control" name="um" id="um" style="cursor: s-resize" required>
                         <option selected disabled value="">Seleccione</option>
-
                         <option>c/u</option>
                         <option>lb</option>
                         <option>mts</option>
                         <option>Pgo</option> 
                         <option>Qq</option>
                         <option>cto</option>
-
-                </select>
-                      
-
+                    </select>
                     </div>
-                  </div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-6 col-sm-4" style="position: initial">
-                    <label for="">Cantidad</label>
-                    <input class="form-control" type="text" name="stock" id="act" value="<?php  echo $productos['stock']; ?>">
-                </div>
-
-                <div class="col-6 col-sm-4" style="position: initial">
-                    <label for="">Costo unitario</label>
-                    <input class="form-control" type="text" name="precio" id="act" value="<?php  echo $productos['precio']; ?>">
-                </div>
-            </div>
-            <hr>
-            <button type="submit" class ="btn btn-primary" style="background:rgb(26, 2, 92); margin-right: 1%">Guardar Cambios</button>
-            <a href="vistaProductos.php" class ="btn btn-primary" style="background:rgb(146, 5, 5)">Cancelar</a>
         </div>
+
+        <div class="row">
+            <div class="col-6 col-sm-4" style="position: initial; margin-left: 17%;">
+                <label for="">Cantidad</label>
+                <input class="form-control" type="text" name="stock" id="act" value="<?php  echo $productos['stock']; ?>">
+            </div>
+
+            <div class="col-6 col-sm-4" style="position: initial">
+                <label for="">Costo unitario</label>
+                <input class="form-control" type="text" name="precio" id="act" value="<?php  echo $productos['precio']; ?>">
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-6 col-sm-4" style="position: initial; margin-left: 17%; margin-bottom: 2%;">
+                <button type="submit" class ="btn btn-primary" style="background:rgb(12, 139, 8); margin-right: 1%; border: none">Guardar Cambios</button>
+                <a href="vistaProductos.php" class ="btn btn-primary" style="background:rgb(184, 8, 8); border: none">Cancelar</a>
+            </div>
+        </div>
+    </div>
 </form>
 
 <style>
