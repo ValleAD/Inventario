@@ -227,9 +227,9 @@ if(mysqli_num_rows($resAlumnos)==0)
             <form method="post">
                 <div class="row">
                      <a style="cursor: crosshair; margin-right: 10px;" href="regi_producto.php" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Nuevo Registro"> Nuevo Producto</a>
-  <div class="col-6" style="position: initial">
+  <div class="col-6" style="position: initial"> 
 
-                <input data-bs-toggle="tooltip" data-bs-placement="top" title="Buscar por Producto" width="50%" type="text" class="form-control" placeholder="Productos..." name="xnombre"/>
+                <input data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese el nombre del producto" width="50%" type="text" class="form-control" placeholder="Productos..." name="xnombre"/>
             </div>
                 <button name="buscar" type="submit" class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Buscar">Buscar</button>
             
