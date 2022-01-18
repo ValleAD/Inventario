@@ -40,14 +40,9 @@
 }
 
 .table tbody tr:hover {
-    background-color: rgba(0, 0, 0, 0.2);
-    color: white;
+    background-color: rgb(180, 176, 176);
 }
 
-.table tbody td:hover {
-    background-color: rgba(0, 0, 0, 0.3);
-    color: white;
-}
 
 @media (max-width: 600px) {
     .table {
