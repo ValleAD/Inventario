@@ -16,34 +16,6 @@ die();
 <?php include ('templates/menu.php')?>
 <!DOCTYPE html>
 <html lang="en">
-<!--Espara la version de mobile-->
-<style type="text/css">
-      @media (max-width: 952px){
-   #section{
-        margin-top: 5%;
-        margin-left: 12%;
-        width: 75%;
-    }
-    #lab{
-        margin-left: 15%;
-
-    }
-    .w{
-        margin-top: 5%;
-    }
-  #inp{
-            margin-left: 10%;
-    }  #inp1{
-         margin-top: 2%;
-          margin-left: 5%;
-    }
-    #btn{
-        margin-top: 5%;
-        margin-left: 35%;
-        margin-bottom: 15%;
-    }
-
-</style>
 <head>
     <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">

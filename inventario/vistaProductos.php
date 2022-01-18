@@ -19,9 +19,7 @@ die();
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="styles/style.css"> 
-    <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
-
+    <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
@@ -39,7 +37,7 @@ die();
     <div class="container">
       <table class="table">
         
-            <center><h1 style="margin-top:5px">Inventario de Productos</h1></center>
+           <h1 style="margin-top:5px; text-align: center;">Inventario de Productos</h1>
 
 <?php      
 
@@ -54,10 +52,11 @@ if (isset($_POST['editar'])){
     while ($productos = mysqli_fetch_array($result)){
 ?>
 
+
 <form action="Controller/Actualizar.php" method="post">
   <h3 align="center">Actualizar Producto</h3>
-  <section style="float: left">
         <div class="container">
+
                 <div class="row">
                     <div class="col-6.5 col-sm-6" style="position: initial">
                         <label for="">Categoría</label><br> 
@@ -77,30 +76,37 @@ if (isset($_POST['editar'])){
                       <label for="">Código</label>
           <input class="form-control" disabled type="text" style="cursor: not-allowed;" name="codProducto" id="act" value="<?php  echo $productos['codProductos']; ?>">
                     </div>
-                </div>
-                <div class="row">
 
-                    <div class="col-6.5 col-sm-6" style="position: initial">
-                      <label for="">Codificación de Catálogo</label>
-                        <input class="form-control" type="text" name="codCatalogo" id="act" value="<?php  echo $productos['catalogo']; ?>">
-                    </div>
-                    <div class="col-6.5 col-sm-6" style="position: initial">
-                      <label for="">Nombre</label>
-                       <input class="form-control" type="text" name="nombre" id="act" value="<?php  echo $productos['nombre']; ?>">
-                     
-                    </div>
+
+                <div class="col-6 col-sm-4" style="position: initial">
+                    <label for="">Código</label>
+                    <input class="form-control" type="text" name="codProducto" id="act" value="<?php  echo $productos['codProductos']; ?>">
                 </div>
-                <div class="row">
-                    <div class="col-6.5 col-sm-6" style="position: initial">
-                     <label for="">Descripción</label>
-                        <textarea cols="50" rows="1" class="form-control" type="text" name="descripcion" id="act" style="width: 100%"><?php  echo $productos['descripcion']; ?></textarea>
-                      
-                  </div>
-                  <div class="col-6.5 col-sm-6" style="position: initial">
-                          <div class="form-group" >
-                    <label>Unidad de medida (U/M)</label>
-                    <div class="col-md-16" >
-                    <div class="invalid-feedback">
+            </div>
+
+            <div class="row">
+                <div class="col-6 col-sm-4" style="position: initial">
+                    <label for="">Codificación de Catálogo</label>
+                    <input class="form-control" type="text" name="codCatalogo" id="act" value="<?php  echo $productos['catalogo']; ?>">
+                </div>
+
+                <div class="col-6 col-sm-4" style="position: initial">
+                    <label for="">Nombre</label>
+                    <input class="form-control" type="text" name="nombre" id="act" value="<?php  echo $productos['nombre']; ?>">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6 col-sm-4" style="position: initial">
+                    <label for="">Descripción</label>
+                    <textarea cols="50" rows="1" class="form-control" type="text" name="descripcion" id="act" style="width: 100%"><?php  echo $productos['descripcion']; ?></textarea>                     
+                </div>
+
+                <div class="col-6 col-sm-4" style="position: initial">
+                    <div class="form-group" >
+                        <label>Unidad de medida (U/M)</label>
+                        <div class="col-md-16" >
+                        <div class="invalid-feedback">
                         Por favor seleccione una opción.
                       </div>
                       <select  class="form-control" name="um" id="um" style="cursor: s-resize" required>
@@ -115,30 +121,29 @@ if (isset($_POST['editar'])){
 
                 </select>
                       
+
                     </div>
                   </div>
-            
-                  </div>
                 </div>
-                <div class="row">
-                    <div class="col-6.5 col-sm-6" style="position: initial">
-                        <label for="">Cantidad</label>
-                        <input class="form-control" type="text" name="stock" id="act" value="<?php  echo $productos['stock']; ?>">
-                      
-                  </div>
-                  <div class="col-6.5 col-sm-6" style="position: initial">
-                         <label for="">Costo unitario</label>
-                         <input class="form-control" type="text" name="precio" id="act" value="<?php  echo $productos['precio']; ?>">
-                  </div>
-                </div><hr>
-                <button type="submit" class ="btn btn-primary" style="background:rgb(26, 2, 92); margin-right: 1%">Guardar Cambios</button>
-  <a href="vistaProductos.php" class ="btn btn-primary" style="background:rgb(146, 5, 5)">Cancelar</a>
             </div>
-    
 
-  </section>
-  
+            <div class="row">
+                <div class="col-6 col-sm-4" style="position: initial">
+                    <label for="">Cantidad</label>
+                    <input class="form-control" type="text" name="stock" id="act" value="<?php  echo $productos['stock']; ?>">
+                </div>
+
+                <div class="col-6 col-sm-4" style="position: initial">
+                    <label for="">Costo unitario</label>
+                    <input class="form-control" type="text" name="precio" id="act" value="<?php  echo $productos['precio']; ?>">
+                </div>
+            </div>
+            <hr>
+            <button type="submit" class ="btn btn-primary" style="background:rgb(26, 2, 92); margin-right: 1%">Guardar Cambios</button>
+            <a href="vistaProductos.php" class ="btn btn-primary" style="background:rgb(146, 5, 5)">Cancelar</a>
+        </div>
 </form>
+
 <style>
   #act {
     margin-top: 0.5%;
@@ -147,24 +152,24 @@ if (isset($_POST['editar'])){
 <?php 
   }
 } 
-?><br>
-          
-        <style>
-               #ver{
-                margin-top: 2%;
-                margin-right: 1%; 
-                background: rgb(5, 65, 114); 
-                color: #fff; 
-                margin-bottom: 0.5%;  
-                border: rgb(5, 65, 114);
-               }
-               #ver:hover{
-                background: rgb(9, 100, 175);
-               } 
-               #ver:active{
-                transform: translateY(5px);
-               } 
-        </style>
+?>
+<br>
+    <style>
+        #ver{
+            margin-top: 2%;
+            margin-right: 1%; 
+            background: rgb(5, 65, 114); 
+            color: #fff; 
+            margin-bottom: 0.5%;  
+            border: rgb(5, 65, 114);
+        }
+        #ver:hover{
+            background: rgb(9, 100, 175);
+        } 
+        #ver:active{
+        transform: translateY(5px);
+        } 
+    </style>
 </table>
 </div>
 
@@ -217,6 +222,7 @@ if(mysqli_num_rows($resAlumnos)==0)
 ?>
 
 
+
         <section>
             <form method="post">
                 <div class="row">
@@ -229,55 +235,44 @@ if(mysqli_num_rows($resAlumnos)==0)
             
             </div>
             </form>
-            <table class="table">
-                
-                   <thead>
+
+<section>
+    
+      
+        
+        <table class="table">
+            <thead >
               <tr id="tr">
-                    <th>
-                        Código
-                    </th>
-                    <th>
-                        Codificación de catálogo
-                    </th>
-                    <th>
-                        Nombre de Producto
-                    </th>
-                    <th style="width: 25%;">
-                        Descripción Completa</th>
-                    <th>
-                       
-                        Unidad De Medida
-                    </th>
-                    <th>
-                        Cantidad
-                    </th>
-                    <th>
-                        Costo Unitario
-                    </th>
-                    <th>Editar
-                    </th> 
-                    <th> Eliminar
-                    </th>
-                </tr>
-                <tr>
+                <th>Código</th>
+                <th>Codificación de catálogo</th>
+                <th>Nombre de Producto</th>
+                <th style="width: 25%;">Descripción Completa</th>
+                <th>Unidad De Medida</th>
+                <th>Cantidad</th>
+                <th>Costo Unitario</th>
+                <th>Editar</th>
+                <th> Eliminar</th>
+              </tr>
+
+              <tr>
                   <td id="td" colspan="9">
-                    <h4>No se encontraron resultados 😥</h4></td>
-            </tr>
+                <h4>No se encontraron resultados 😥</h4></td>
+              </tr>
             </thead>
+
             <tbody>
+<?php
 
+    while ($productos = $resAlumnos->fetch_array(MYSQLI_BOTH)){ ?>
 
-                <?php
-
-                while ($productos = $resAlumnos->fetch_array(MYSQLI_BOTH)){?>
 <style type="text/css">
 
-     #td{
+    #td{
         display: none;
     }
    
 </style>
-                      <tr>
+    <tr>
       <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
       <td data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
       <td data-label="Nombre"><?php  echo $productos['nombre']; ?></td>
@@ -299,13 +294,9 @@ if(mysqli_num_rows($resAlumnos)==0)
 
 <?php } ?> 
 
-              </tbody>
+            </tbody>
         </table>
-
-        </section>
-
-
-
+</section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
