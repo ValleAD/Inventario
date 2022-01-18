@@ -37,11 +37,7 @@ if ($password == $cpassword) {
 		$result = mysqli_query($conn, $sql);
 
 		if ($result) {
-				/*while ($row=mysqli_fetch_array($result)) {
-					echo '<script type="text/javascript">alert("You are login successfully and you are logined as '.$row['usertype'].'")</script>';
-				}if (mysqli_num_rows($result)>0) {
-					
-				}*/
+		
 				echo "<script>alert('Resgitro completado exitosamente.') </script>";
 				$username = "";
 				$firstname = "";
@@ -100,40 +96,58 @@ if ($password == $cpassword) {
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Account</h3></div>
                                     <div class="card-body">
-                                        <form method="POST">
-                                            <div class="form-row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group"><label class="small mb-1" for="inputFirstName">Username</label><input class="form-control py-4" id="inputFirstName" type="text" placeholder="Enter Username"name="username" value="<?php echo $username; ?>" required /></div>
-                                                </div> <div class="col-md-6">
-                                                    <div class="form-group"><label class="small mb-1" for="inputFirstName">First Name</label>
-                                                    	<input class="form-control py-4" type="text" placeholder="Enter First Name"  name="firstname" value="<?php echo $firstname; ?>" required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group"><label class="small mb-1" for="inputLastName">Last Name</label><input class="form-control py-4" type="text"  name="lastname" placeholder="Enter Last Name" value="<?php echo $lastname; ?>" required></div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group"><label class="small mb-1" for="inputLastName">Correo Eléctronico</label><input class="form-control py-4" type="email" name="email"placeholder="Example@gmail.com" value="<?php echo $email; ?>" required></div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="form-row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group"><label class="small mb-1" for="inputPassword">Password</label><input class="form-control py-4" type="password"  name="password" placeholder="Enter Password" value="<?php echo $_POST['password']; ?>" required></div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group"><label class="small mb-1" for="inputConfirmPassword">Confirm Password</label>
-                                                    <input class="form-control py-4" type="password" placeholder="Confirm password"  name="cpassword" value="<?php echo $_POST['cpassword']; ?>" required></div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                            	<label class="small mb-1" for="inputEmailAddress">Tipo de Usuarios</label>
+                                        <form method="POST" action="">
+                                          	<div class="container">
+				<div class="row">
+				    <div class="col-md-6" style="position: initial">
+				       <label class="small mb-1">Nombre de usuario</label><br>
+						<input class="form-control py-4" type="text"  name="username" value="<?php echo $username; ?>" required>
+				    </div>
+				    <div class="col-md-6" style="position: initial">
+				      <label class="small mb-1">Nombre</label><br>
+						<input class="form-control py-4" type="text"  name="firstname" value="<?php echo $firstname; ?>" required>
+				    </div>
+				</div>
+				<div class="row">
+
+				    <div class="col-md-6" style="position: initial">
+				     <label class="small mb-1">Apellido</label><br>
+						<input class="form-control py-4" type="text"  name="lastname" value="<?php echo $lastname; ?>" required>
+				     
+				    </div>
+				    <div class="col-md-6" style="position: initial">
+				      <label class="small mb-1">Correo</label><br>
+						<input class="form-control py-4" type="email" name="email" value="<?php echo $email; ?>" required>
+				     
+				    </div>
+				</div>
+				<div class="row">
+				    <div class="col-md-6" style="position: initial">
+				      <label class="small mb-1">Contraseña</label><br>
+						<input class="form-control py-4" type="password"  name="password" value="<?php echo $_POST['password']; ?>" required>
+				      
+				  </div>
+				  <div class="col-md-6" style="position: initial">
+				      <label class="small mb-1">Confirmar Contraseña</label><br>
+						<input class="form-control py-4" type="password"  name="cpassword" value="<?php echo $_POST['cpassword']; ?>" required>
+				  </div>
+				</div>
+				<div class="form-group">
+                                            	<label class="small mb-1">Tipo de Usuarios</label>
 												<select class="form-control" name="tipo_usuario">
 													<option selected disabled>Selecione</option>
 													<option>Admistrador</option>
 													<option>Cliente</option>
 												</select></div>
-                                            <div class="form-group mt-4 mb-0"><button type="submit" name="submit" class="btn btn-primary btn-block">Create Account</button></div>
+				<div>
+					<div>
+						<button type="submit" name="submit" class="btn btn-primary btn-block">Registrarse</button>
+					</div>
+
+   
+</div>
+</center>
+</form>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center">
