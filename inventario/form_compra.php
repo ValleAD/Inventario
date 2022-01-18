@@ -4,8 +4,7 @@ session_start();
     # code...
     echo '
     <script>
-        alert("Por favor debes de iniciar sesión");
-         window.location ="log/signin.php";
+         window.location ="..log/signin.php";
         session_destroy();  
                 </script>
 die();

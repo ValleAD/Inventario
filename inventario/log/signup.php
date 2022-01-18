@@ -136,8 +136,8 @@ if ($password == $cpassword) {
                                             	<label class="small mb-1">Tipo de Usuarios</label>
 												<select class="form-control" name="tipo_usuario">
 													<option selected disabled>Selecione</option>
-													<option>Admistrador</option>
-													<option>Cliente</option>
+													<option value="1">Admistrador</option>
+													<option value="2">Cliente</option>
 												</select></div>
 				<div>
 					<div>

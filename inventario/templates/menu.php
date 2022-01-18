@@ -2,9 +2,9 @@
 <?php
 include("Model/conexion.php");
 if(!isset($_SESSION['signin'])){
-    header("location: log/signin.php");
+    header("location: ../log/signin.php");
 }
-
+$tipo_usuario = $_SESSION['tipo_usuario'];
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,13 +44,14 @@ background:burlywood;
         <nav>
             <ul>
                 <li><a id="a" href="home.php"><span class="icon-house"></span>Inicio</a></li>
-                <li class="submenu">
+                <?php if($tipo_usuario == 1) { ?>
+                    <li class="submenu">
                     <a id="a" href="#"><span class="icon-rocket"></span>Articulos<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
                         <li><a id="b" href="vistaProductos.php">Ver Artículos</a></li>
                         <li><a id="b" href="regi_producto.php">Nuevo Artículo</a></li>
                     </ul>
-                </li>
+                </li><?php } ?>
                 <li class="submenu">
                     <a id="a" href="#"><span class="icon-rocket"></span>Solicitud Vale<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
@@ -58,6 +59,7 @@ background:burlywood;
                         <li><a id="b" href="form_vale.php">Nuevo</a></li>
                     </ul>
                 </li>
+                <?php if($tipo_usuario == 1) { ?>
                 <li class="submenu">
                     <a id="a" href="#"><span class="icon-rocket"></span>Solicitud Bodega<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
@@ -86,7 +88,7 @@ background:burlywood;
                         <li><a id="b" href="solicitudes_circulante.php">Mostrar</a></li>
                         <li><a id="b" href="form_circulante.php">Nuevo</a></li>
                     </ul>
-                </li>
+                </li><?php }?>
 
                <?php
     $cliente =$_SESSION['signin'];

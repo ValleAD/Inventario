@@ -43,7 +43,7 @@ CREATE TABLE tb_usuarios (
   lastname varchar(50) NOT NULL,
   email varchar(50) NOT NULL,
   password varchar(50) NOT NULL,
-  tipo_usuario VARCHAR(15) NOT NULL,
+  tipo_usuario int(15) NOT NULL,
     PRIMARY KEY (id)
 );
 CREATE TABLE tb_bodega (

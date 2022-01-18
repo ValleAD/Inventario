@@ -20,6 +20,7 @@ if (isset($_POST['submit'])) {
 	if ($result->num_rows > 0) {
 		$row = mysqli_fetch_assoc($result);
 		$_SESSION['signin'] = $row['username'];
+		$_SESSION['tipo_usuario'] = $row['tipo_usuario'];
 		header("Location: ../home.php");
 	} else {
 		 echo '
