@@ -74,14 +74,14 @@ if (isset($_POST['editar'])){
            
             <div class="col-6 col-sm-4" style="position: initial; margin-top: 2%;">
                 <label for="">Código</label>
-                <input class="form-control" type="text" name="codProducto" id="act" value="<?php  echo $productos['codProductos']; ?>">
+                <input class="form-control" readonly style="cursor: not-allowed;" type="text" name="codProducto" id="act" value="<?php  echo $productos['codProductos']; ?>">
             </div>
-        </div>
+        </div> 
 
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial; margin-left: 17%;">
                 <label for="">Codificación de Catálogo</label>
-                <input class="form-control" type="text" name="codCatalogo" id="act" value="<?php  echo $productos['catalogo']; ?>">
+                <input class="form-control" readonly style="cursor: not-allowed;" type="text" name="codCatalogo" id="act" value="<?php  echo $productos['catalogo']; ?>">
             </div>
 
             <div class="col-6 col-sm-4" style="position: initial">
