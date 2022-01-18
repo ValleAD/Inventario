@@ -25,10 +25,11 @@ USE `hospital` ;
 
 CREATE TABLE tb_productos (
   codProductos int(15) NOT NULL,
+  categoria varchar(50) NOT NULL,
   catalogo int(15) NOT NULL,
   nombre varchar(50) NOT NULL,
   descripcion varchar(200) NOT NULL,
-  unidad_medida varchar(10) NOT NULL DEFAULT 'U',
+  unidad_medida varchar(10) NOT NULL,
   stock int(11) NOT NULL,
   precio decimal(6,2) NOT NULL,
   fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -42,9 +43,9 @@ CREATE TABLE tb_usuarios (
   lastname varchar(50) NOT NULL,
   email varchar(50) NOT NULL,
   password varchar(50) NOT NULL,
+  tipo_usuario VARCHAR(15) NOT NULL,
     PRIMARY KEY (id)
 );
-
 CREATE TABLE tb_bodega (
   codBodega int(11) NOT NULL,
   departamento varchar(50) NOT NULL,
@@ -122,6 +123,7 @@ CREATE TABLE detalle_vale (
 
 CREATE TABLE detalle_compra (
   codigodetallecompra int(11) NOT NULl AUTO_INCREMENT,
+  categoria varchar(50) NOT NULL,
   codigo int(15) NOT NULL,
   catalogo int(20) NOT NULL,
   descripcion varchar(200) NOT NULL,
@@ -135,6 +137,8 @@ CREATE TABLE detalle_compra (
     REFERENCES tb_compra(nSolicitud)
 );
 
+INSERT INTO `tb_usuarios` (`id`, `username`, `firstname`, `lastname`, `email`, `password`, `tipo_usuario`) 
+VALUES (NULL, 'Admin', 'Admin', 'Master', 'Admin@mail.com', 'Admin', 'Administrador');
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
