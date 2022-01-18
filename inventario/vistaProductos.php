@@ -61,11 +61,21 @@ if (isset($_POST['editar'])){
                 <div class="row">
                     <div class="col-6.5 col-sm-6" style="position: initial">
                         <label for="">Categoría</label><br> 
-            <input class="form-control" type="text" name="categoria"  value="">
+             <select  class="form-control" name="categoria" id="um" required style="background-color: #FDF6F0; cursor: s-resize">
+                        <option selected disabled value="">Seleccionar</option>
+                        <option value="agro">Agropecuarios y Forestales</option>
+                        <option value="cuero">Cuero y Caucho</option>
+                        <option value="quimicos">Químicos</option>
+                        <option value="combus">Combustibles y Lubricantes</option> 
+                        <option value="minNo">Minerales no Metálicos</option>
+                        <option value="min">Minerales Metálicos</option>
+                        <option value="repuestos">Herramientas y Repuestos</option>
+                        <option value="elec">Materiales Eléctricos</option>
+                      </select>
                     </div>
                     <div class="col-6.5 col-sm-6" style="position: initial">
                       <label for="">Código</label>
-          <input class="form-control" type="text" name="codProducto" id="act" value="<?php  echo $productos['codProductos']; ?>">
+          <input class="form-control" disabled type="text" style="cursor: not-allowed;" name="codProducto" id="act" value="<?php  echo $productos['codProductos']; ?>">
                     </div>
                 </div>
                 <div class="row">
@@ -93,7 +103,7 @@ if (isset($_POST['editar'])){
                     <div class="invalid-feedback">
                         Por favor seleccione una opción.
                       </div>
-                      <select  class="form-control" name="um" id="um" required>
+                      <select  class="form-control" name="um" id="um" style="cursor: s-resize" required>
                         <option selected disabled value="">Seleccione</option>
 
                         <option>c/u</option>
@@ -210,18 +220,17 @@ if(mysqli_num_rows($resAlumnos)==0)
         <section>
             <form method="post">
                 <div class="row">
-                    
-                
-  <div class="col-6.5 col-sm-6" style="position: initial">
-                <input type="text" class="form-control" placeholder="Productos..." name="xnombre"/>
+                     <a style="cursor: crosshair; margin-right: 10px;" href="regi_producto.php" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Nuevo Registro"> Nuevo Producto</a>
+  <div class="col-6" style="position: initial">
+
+                <input data-bs-toggle="tooltip" data-bs-placement="top" title="Buscar por Producto" width="50%" type="text" class="form-control" placeholder="Productos..." name="xnombre"/>
             </div>
-  <div class="col-6.5 col-sm-6" style="position: initial">
-                <button name="buscar" type="submit" class="btn btn-outline-success">Buscar</button>
-            </div>
+                <button name="buscar" type="submit" class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Buscar">Buscar</button>
+            
             </div>
             </form>
             <table class="table">
-                 <a href="regi_producto.php" class="btn btn-primary"> Nuevo Producto</a>
+                
                    <thead>
               <tr id="tr">
                     <th>
@@ -246,7 +255,7 @@ if(mysqli_num_rows($resAlumnos)==0)
                         Costo Unitario
                     </th>
                     <th>Editar
-                    </th>
+                    </th> 
                     <th> Eliminar
                     </th>
                 </tr>
@@ -279,12 +288,12 @@ if(mysqli_num_rows($resAlumnos)==0)
       <td data-label="Editar">
         <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="vistaProductos.php">             
           <input type='hidden' name='id' value="<?php  echo $productos['codProductos']; ?>">             
-          <button name='editar' class='btn btn-info btn-sm'  >Editar</button>             
+          <button name='editar' class='btn btn-info btn-sm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
         </form>  
       </td>
 
       <td data-label="Eliminar">
-                    <a class="btn btn-danger btn-sm" class="text-primary" href="Controller/Delete_producto.php?id=<?php  echo $productos['codProductos']; ?>" onclick="return confirmaion()">Eliminar</a>
+                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm " class="text-primary" href="Controller/Delete_producto.php?id=<?php  echo $productos['codProductos']; ?>" onclick="return confirmaion()">Eliminar</a>
       </td>
     </tr>
 

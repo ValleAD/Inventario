@@ -121,7 +121,7 @@ form{
         
                   <div class="form-group" style="position: all; margin: 2%">
                       <label>Categoría</label> 
-                      <select  class="form-control" name="um" id="um" required style="background-color: #FDF6F0">
+                      <select  class="form-control" name="category" id="um" required style="background-color: #FDF6F0">
                         <option selected disabled value="">Seleccionar</option>
                         <option value="agro">Agropecuarios y Forestales</option>
                         <option value="cuero">Cuero y Caucho</option>
