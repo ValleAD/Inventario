@@ -62,7 +62,7 @@ if (isset($_POST['submit'])) {
 	}
 	#input{
 		background: transparent;
-		color: white;
+		color: black;
 	}
 
 	@media (max-width: 952px){
@@ -95,7 +95,7 @@ if (isset($_POST['submit'])) {
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
                                     <div class="card-body">
-                                        <form method="POST">
+                                        <form method="POST" class="needs-validation" novalidate>
                                             <div class="form-group"><label class="small mb-1" for="inputEmailAddress">Usuario</label>
                                             	<input id="input" method="POST" class="form-control py-4" id="inputEmailAddress" placeholder="Ingrese el usuario" type="text" name="username" value="<?php echo $username; ?>" required></div>
                                             <div class="form-group"><label class="small mb-1" for="inputPassword">Password</label>

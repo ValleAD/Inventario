@@ -166,7 +166,8 @@ if (isset($_POST['editar'])){
 </table>
 </div>
 <div class="container top">
-<h3 class="text-center mt-5"><a style="cursor: crosshair; margin-right: 630px;" href="regi_producto.php" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Nuevo Registro"> Nuevo Producto</a>
+<h3 class="text-center mt-5">
+    <a style="cursor: crosshair; margin-right: 630px;" href="regi_producto.php" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Nuevo Registro"> Nuevo Producto</a>
     <span style="float: right;">
         <form method="post">
                 <div class="row">
@@ -181,8 +182,10 @@ if (isset($_POST['editar'])){
             </form>
     </span> 
 </h3><br>
-</div>
+
+
     <div class="container">
+       
             <div class="row" >
          <?php
 
@@ -289,12 +292,28 @@ if(mysqli_num_rows($resAlumnos)==0)
             </tbody>
         </table>
     </div>
-</div>
 </section>
 
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-   
+    <script>
+$(function(){
+    var textArea = $('#content'),
+    hiddenDiv = $(document.createElement('div')),
+    content = null;
+    
+    textArea.addClass('noscroll');
+    hiddenDiv.addClass('hiddendiv');
+    
+    $(textArea).after(hiddenDiv);
+    
+    textArea.on('keyup', function(){
+        content = $(this).val();
+        content = content.replace(/\n/g, '<br>');
+        hiddenDiv.html(content + '<br class="lbr">');
+        $(this).css('height', hiddenDiv.height());
+    });
+});
+</script>
 <script type="text/javascript">
 function confirmaion(e) {
     if (confirm("¿Estas seguro que deseas Eliminar este registro?")) {
