@@ -46,7 +46,7 @@ CREATE TABLE tb_usuarios (
   password varchar(50) NOT NULL,
   tipo_usuario int(15) NOT NULL,
     PRIMARY KEY (id)
-);
+); 
 CREATE TABLE tb_bodega (
   codBodega int(11) NOT NULL,
   departamento varchar(50) NOT NULL,
