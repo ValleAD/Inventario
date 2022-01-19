@@ -189,7 +189,7 @@ if (isset($_POST['editar'])){
        <table class="table">
             <thead>
               <tr id="tr">
-                <th>Categoría</th>
+                <th style="width: 175%;">Categoría</th>
                 <th>Código</th>
                 <th>Cod. de Catálogo</th>
                 <th style="width: 175%;">Nombre</th>
