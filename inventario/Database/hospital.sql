@@ -33,7 +33,7 @@ CREATE TABLE tb_productos (
   unidad_medida varchar(10) NOT NULL DEFAULT 'c/u',
   stock int(11) NOT NULL,
   precio decimal(6,2) NOT NULL,
-  fecha_registro date NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  fecha_registro date NOT NULL DEFAULT current_timestamp(),
     PRIMARY KEY (cod)
 );
 
