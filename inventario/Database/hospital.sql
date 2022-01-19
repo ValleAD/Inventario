@@ -24,16 +24,17 @@ CREATE DATABASE IF NOT EXISTS `hospital` DEFAULT CHARACTER SET utf8mb4 COLLATE u
 USE `hospital` ;
 
 CREATE TABLE tb_productos (
+  cod int(15) NOT NULL AUTO_INCREMENT,
   codProductos int(15) NOT NULL,
   categoria varchar(50) NOT NULL,
   catalogo int(15) NOT NULL,
   nombre varchar(50) NOT NULL,
   descripcion varchar(200) NOT NULL,
-  unidad_medida varchar(10) NOT NULL,
+  unidad_medida varchar(10) NOT NULL DEFAULT 'c/u',
   stock int(11) NOT NULL,
   precio decimal(6,2) NOT NULL,
-  fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-    PRIMARY KEY (codProductos)
+  fecha_registro date NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+    PRIMARY KEY (cod)
 );
 
 CREATE TABLE tb_usuarios (
@@ -45,18 +46,18 @@ CREATE TABLE tb_usuarios (
   password varchar(50) NOT NULL,
   tipo_usuario int(15) NOT NULL,
     PRIMARY KEY (id)
-);
+); 
 CREATE TABLE tb_bodega (
   codBodega int(11) NOT NULL,
   departamento varchar(50) NOT NULL,
-  fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  fecha_registro date NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (codBodega)
 );
 
 CREATE TABLE tb_vale (
   codVale int(11) NOT NULL,
   departamento varchar(50) NOT NULL,
-  fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  fecha_registro date NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (codVale)
 );
 
@@ -66,7 +67,7 @@ CREATE TABLE tb_compra (
   plazo varchar(50) NULL,
   unidad_tecnica varchar(75) NOT NULL,
   descripcion_solicitud varchar(50) NOT NULL,
-  fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  fecha_registro date NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (nSolicitud)
 );
 
@@ -78,7 +79,7 @@ unidad_medida varchar(5) NOT NULL,
 cantidad_solicitada int(25) NOT NULL,
 cantidad_despachada int(25) NOT NULL,
 precio int(20) NOT NULL,
-fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+fecha_registro date NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (codigoalmacen)
 );
 
@@ -88,7 +89,7 @@ descripcion varchar(50) NOT NULL,
 unidad_medida varchar(5) NOT NULL,
 cantidad_solicitada int(25) NOT NULL,
 costo int(50) NOT NULL,
-fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+fecha_registro date NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (codigo)
 );
 
@@ -96,11 +97,11 @@ CREATE TABLE detalle_bodega (
   codigodetallebodega int(15) NOT NULL AUTO_INCREMENT,
   codigo int(15) NOT NULL,
   descripcion varchar(50) NOT NULL,
-  unidad_medida varchar(11) NOT NULL DEFAULT 'U',
+  unidad_medida varchar(11) NOT NULL DEFAULT 'c/u',
   stock int(11) NOT NULL,
   precio decimal(6,2) NOT NULL,
   odt_bodega int(15),
-  fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  fecha_registro date NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (codigodetallebodega),
     CONSTRAINT fk_tb_bodega_detalle_bodeha FOREIGN KEY (odt_bodega)
     REFERENCES tb_bodega(codBodega)
@@ -110,11 +111,11 @@ CREATE TABLE detalle_vale (
   codigodetallevale int(11) NOT NULL AUTO_INCREMENT,
   codigo int(15) NOT NULL,
   descripcion varchar(50) NOT NULL,
-  unidad_medida varchar(11) NOT NULL DEFAULT 'U',
+  unidad_medida varchar(11) NOT NULL DEFAULT 'c/u',
   stock int(11) NOT NULL,
   precio decimal(6,2) NOT NULL,
   numero_vale int(15),
-  fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  fecha_registro date NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (codigodetallevale),
     CONSTRAINT fk_tb_vale_detalle_vale FOREIGN KEY (numero_vale)
     REFERENCES tb_vale(codVale)
@@ -127,18 +128,25 @@ CREATE TABLE detalle_compra (
   codigo int(15) NOT NULL,
   catalogo int(20) NOT NULL,
   descripcion varchar(200) NOT NULL,
-  unidad_medida varchar(2) NOT NULL DEFAULT 'U',
+  unidad_medida varchar(2) NOT NULL DEFAULT 'c/u',
   stock int(200) NOT NULL,
   precio decimal(6,2) NOT NULL,
   solicitud_compra int(8) DEFAULT NULL,
-  fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  fecha_registro date NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
      PRIMARY KEY (codigodetallecompra),
     CONSTRAINT fk_tb_compra_detalle_compra FOREIGN KEY (solicitud_compra)
     REFERENCES tb_compra(nSolicitud)
 );
 
 INSERT INTO `tb_usuarios` (`id`, `username`, `firstname`, `lastname`, `email`, `password`, `tipo_usuario`) 
-VALUES (NULL, 'Admin', 'Admin', 'Master', 'Admin@mail.com', 'Admin', 'Administrador');
+VALUES (NULL, 'Admin', 'Admin', 'Master', 'Admin@mail.com', 'Admin', '1');
+INSERT INTO `tb_productos` (`cod`, `codProductos`, `categoria`, `catalogo`, `nombre`, `descripcion`, `unidad_medida`, `stock`, `precio`) 
+VALUES (NULL, '1', 'almacen', '1', 'martillo', 'herramientas', 'lb', '50', '12.25'),
+       (NULL, '2', 'enfermeria', '2', 'mascarilla k-95', 'utensilio', 'cto', '70', '10'),
+       (NULL, '3', 'computacion', '3', 'destornillador', 'herramienta', 'mto', '15', '7'),
+       (NULL, '4', 'Químicos', '4', 'botella', 'herramientas', 'Qq', '25', '15'),
+       (NULL, '5', 'Agropecuarios y Forestales', '5', 'hacha', 'herramientas', 'Pgo', '6', '25');
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

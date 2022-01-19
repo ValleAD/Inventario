@@ -18,8 +18,8 @@ for($i = 0; $i < count($_POST['cod']); $i++)
       $query = mysqli_query($conn, $insert);
 
       if ($query) {
-        echo "<script> alert('Su producto fue registrado correctamente');
-        location.href = '../VistaProductos.php';
+        echo '<script type="text/javascript">alert("Producto Registrado Exitosamente")</script>';
+        "<script>location.href = '../VistaProductos.php';
         </script>
         ";
       }else {
