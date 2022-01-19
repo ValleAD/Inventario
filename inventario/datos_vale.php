@@ -80,7 +80,7 @@ $final = 0;
       
         <br>
           
-        <table class="table">
+        <table class="table" style="margin-bottom:3%">
             
             <thead>
               <tr id="tr">

@@ -58,16 +58,16 @@ if (isset($_POST['editar'])){
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial; margin-left: 17%; margin-top: 2%">
                 <label for="">Categoría</label><br> 
-                    <select  class="form-control" name="categoria" id="um" required style="cursor: pointer">
-                        <option selected value="">Seleccionar</option>
-                        <option value="agro">Agropecuarios y Forestales</option>
-                        <option value="cuero">Cuero y Caucho</option>
-                        <option value="quimicos">Químicos</option>
-                        <option value="combus">Combustibles y Lubricantes</option> 
-                        <option value="minNo">Minerales no Metálicos</option>
-                        <option value="min">Minerales Metálicos</option>
-                        <option value="repuestos">Herramientas y Repuestos</option>
-                        <option value="elec">Materiales Eléctricos</option>
+                    <select  class="form-control" name="categoria" id="categoria" style="cursor: pointer">
+                        <option><?php  echo $productos['categoria']; ?></option>
+                        <option>Agropecuarios y Forestales</option>
+                        <option>Cuero y Caucho</option>
+                        <option>Químicos</option>
+                        <option>Combustibles y Lubricantes</option> 
+                        <option>Minerales no Metálicos</option>
+                        <option>Minerales Metálicos</option>
+                        <option>Herramientas y Repuestos</option>
+                        <option>Materiales Eléctricos</option>
                     </select>
             </div>
            
@@ -102,8 +102,8 @@ if (isset($_POST['editar'])){
                         <div class="invalid-feedback">
                         Por favor seleccione una opción.
                     </div>
-                    <select  class="form-control" name="um" id="um" style="cursor: s-resize" required>
-                        <option selected disabled value=""><?php  echo $productos['unidad_medida']; ?></option>
+                    <select class="form-control" name="um" id="um" style="cursor: s-resize" required>
+                        <option><?php  echo $productos['unidad_medida']; ?></option>
                         <option>c/u</option>
                         <option>lb</option>
                         <option>mts</option>
@@ -185,54 +185,8 @@ if (isset($_POST['editar'])){
 
 
     <div class="container">
-       
-            <div class="row" >
-         <?php
-
-////////////////// CONEXION A LA BASE DE DATOS ////////////////////////////////////
-
-$host="localhost";
-$usuario="root";
-$contraseña="";
-$base="hospital";
-
-$conexion= new mysqli($host, $usuario, $contraseña, $base);
-if ($conexion -> connect_errno)
-{
-    die("Fallo la conexion:(".$conexion -> mysqli_connect_errno().")".$conexion-> mysqli_connect_error());
-}
-////////////////// VARIABLES DE CONSULTA////////////////////////////////////
-
-$where="";
-
-
-
-////////////////////// BOTON BUSCAR //////////////////////////////////////
-
-if (isset($_POST['buscar']))
-{
-
-
-$nombre=$_POST['xnombre'];
-
-    if (empty($_POST['xcarrera']))
-    {
-        $where="where nombre like '".$nombre."%'";
-    }
-
-}
-/////////////////////// CONSULTA A LA BASE DE DATOS ////////////////////////
-
-$productos="SELECT * FROM tb_productos $where";
-$resAlumnos=$conexion->query($productos);
-
-if(mysqli_num_rows($resAlumnos)==0)
-{
-    $mensaje="<h1>No hay registros que coincidan con su criterio de búsqueda.</h1>";
-}
-?>
- 
-        <table class="table">
+       <div class="row" >
+       <table class="table">
             <thead>
               <tr id="tr">
                 <th>Categoría</th>
@@ -243,20 +197,28 @@ if(mysqli_num_rows($resAlumnos)==0)
                 <th>U/M</th>
                 <th>Cantidad</th>
                 <th>Costo Unitario</th>
+                <th>Fecha Registro</th>
                 <th>Editar</th>
-                <th> Eliminar</th>
+                <th>Eliminar</th>
               </tr>
 
               <tr>
-                  <td id="td" colspan="9">
+
+ <?php
+    include 'Model/conexion.php';
+    $sql = "SELECT * FROM tb_productos";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){?>
+
+       
+                <td id="td" colspan="9">
                 <h4>No se encontraron resultados 😥</h4></td>
               </tr>
             </thead>
 
             <tbody>
-<?php
 
-    while ($productos = $resAlumnos->fetch_array(MYSQLI_BOTH)){ ?>
 
 <style type="text/css">
 
@@ -274,6 +236,7 @@ if(mysqli_num_rows($resAlumnos)==0)
       <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
       <td data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
+      <td data-label="Costo Unitario"><?php  echo $productos['fecha_registro']; ?></td>
       <td data-label="Editar">
         <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="vistaProductos.php">             
           <input type='hidden' name='id' value="<?php  echo $productos['codProductos']; ?>">             

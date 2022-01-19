@@ -2,6 +2,7 @@
 require '../Model/conexion.php';
 
 //conversion
+$categoria = $_POST['categoria'];
 $id1 =$_POST['codProducto'];
 $codCatalogo =$_POST['codCatalogo'];
 $nombre =$_POST['nombre'];
@@ -13,7 +14,7 @@ $precio=$_POST['precio'];
  
 
 //sql
-$sql="UPDATE tb_productos SET codProductos='$id1', catalogo='$codCatalogo',nombre='$nombre',Descripcion='$descripcion',unidad_medida='$um',stock='$stock',precio='$precio' WHERE codProductos='$id1'" ;
+$sql="UPDATE tb_productos SET categoria = '$categoria' ,codProductos='$id1', catalogo='$codCatalogo',nombre='$nombre',Descripcion='$descripcion',unidad_medida='$um',stock='$stock',precio='$precio' WHERE codProductos='$id1'" ;
 $result = mysqli_query($conn, $sql);
 if ($result) {
 	echo '
