@@ -28,7 +28,7 @@ die();
 form{
     margin-left: 15%;
 }
-.button:hover{
+.button .button2 :hover{
     text-decoration: none;
 }
 }
@@ -37,34 +37,7 @@ form{
   text-align: center;
 }
 
-.button {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 12px;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
- 
 
-}
-
-.button2 {  background-color: #008CBA;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    border-radius: 12px;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-}
 .EstiloTexto{
     color:#FE0000;
     font-weight: bold;
@@ -185,8 +158,22 @@ form{
     </div>
     
     <div class="button21">
-        <button  class="button " name="submit" style="margin-bottom:3%;">Guardar</button>
-        <a class="button button2" href="vistaProductos.php">Ver Productos</a>
+        <button  class="btn btn-success btn-lg" name="submit" style="margin-bottom:2%;">Guardar</button>
+        <a id="ver" class="btn btn-lg" href="vistaProductos.php">Ver Productos</a>
+         <style>
+               #ver{
+                margin-left: 2%; 
+                background: rgb(5, 65, 114); 
+                color: #fff; margin-bottom: 2%;  
+                border: rgb(5, 65, 114);
+               }
+               #ver:hover{
+                background: rgb(9, 100, 175);
+               } 
+               #ver:active{
+                transform: translateY(5px);
+               } 
+        </style>
     </div>
     
 
