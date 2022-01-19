@@ -17,7 +17,7 @@ die();
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <title>Solicitud de Compra</title>
+    <title>Registro de Productos</title>
         
         <meta charset="utf-8" />
          <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -49,52 +49,63 @@ form{
 <div id="lo-que-vamos-a-copiar"  style="background:#FAE2E2;margin-left: 1%;margin-right: 1%;margin-top: 1%">
     <div class="col-xs-4 "  style="background: #FAE2E2;margin-left: 1;margin-right: 1%;margin-top: 1%" >
         <div class="well well-sm" style="position: all; margin: 5%">
+
             <div class="form-group" style="position: all; margin: 2%">
-                        <label style="color: #000">Código</label> 
-                      <input type="number" name="cod[]" class="form-control" placeholder="Ingrese código de producto " required>
-                  </div>
+            <label for="">Categoría</label><br> 
+                    <select  class="form-control" name="categoria" id="um" required style="cursor: pointer">
+                        <option selected value="">Seleccionar</option>
+                        <option value="agro">Agropecuarios y Forestales</option>
+                        <option value="cuero">Cuero y Caucho</option>
+                        <option value="quimicos">Químicos</option>
+                        <option value="combus">Combustibles y Lubricantes</option> 
+                        <option value="minNo">Minerales no Metálicos</option>
+                        <option value="min">Minerales Metálicos</option>
+                        <option value="repuestos">Herramientas y Repuestos</option>
+                        <option value="elec">Materiales Eléctricos</option>
+                    </select>
+            </div>
 
-                  <div class="form-group" style="margin: 2%">
-                        <label style="color: #000">Codificación de Catálogo</label> 
-                      <input type="number" name="catal[]" class="form-control" placeholder="Ingrese código" required>
-                  </div>
+            <div class="form-group" style="position: all; margin: 2%">
+                <label style="color: #000">Código</label> 
+                <input type="number" name="cod[]" class="form-control" placeholder="Ingrese código de producto " required>
+            </div>
 
-                  <div class="form-group">
-                    <label style="color: #000">Nombre de Artículo</label>
-                    <input type="text" name="nombre[]" class="form-control" placeholder="Nombre" required>
-                  </div>
+            <div class="form-group" style="margin: 2%">
+              <label style="color: #000">Codificación de Catálogo</label> 
+              <input type="number" name="catal[]" class="form-control" placeholder="Ingrese código" required>
+            </div>
 
-                  <div class="form-group">
-                    <label style="color: #000">Descripción Completa</label>
+            <div class="form-group">
+              <label style="color: #000">Nombre de Artículo</label>
+              <input type="text" name="nombre[]" class="form-control" placeholder="Nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label style="color: #000">Descripción Completa</label>
 
             <div class="form-floating" >
               <textarea class="form-control" name="descr[]"  placeholder="Ingrese la Descripción" id="floatingTextarea"></textarea>
             </div>
 
-                  
-                  </div>
+        </div>
 
-                  <div class="form-group" >
-                    <label>Unidad de medida (U/M)</label>
-                    <div class="col-md-16" >
-                    <div class="invalid-feedback">
-                        Por favor seleccione una opción.
-                      </div>
-                      <select  class="form-control" name="um[]" id="um" required>
-                        <option selected disabled value="">Seleccione</option>
-
-                        <option>c/u</option>
-                        <option>lb</option>
-                        <option>mts</option>
-                        <option>Pgo</option> 
-                        <option>Qq</option>
-                        <option>cto</option>
-
-                </select>
-                      </select>
-                      
-                    </div>
-                  </div>
+        <div class="form-group" >
+            <label>Unidad de medida (U/M)</label>
+              <div class="col-md-16" >
+                <div class="invalid-feedback">
+                  Por favor seleccione una opción.
+                </div>
+                <select  class="form-control" name="um[]" id="um" required>
+                  <option selected disabled value="">Seleccione</option>
+                    <option>c/u</option>
+                    <option>lb</option>
+                    <option>mts</option>
+                    <option>Pgo</option> 
+                    <option>Qq</option>
+                    <option>cto</option>
+                </select>  
+              </div>
+        </div>
             
             <div class="form-group" >
                 <label>Cantidad</label>

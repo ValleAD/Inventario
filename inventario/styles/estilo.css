@@ -13,15 +13,6 @@ section {
     
 }
 
-#head{
-    text-align: left;
-    background: rgb(55, 177, 177);
-    color: rgb(0, 0, 0);
-}
-#head > td{
-    border-left: solid 1px #fff;
-}
-
 form {
     background:white;
     

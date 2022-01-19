@@ -59,7 +59,7 @@ die();
 <head>
     <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles/estilo.css"> 
+     <link rel="stylesheet" type="text/css" href="styles/estilo.css"> 
      <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">  
     <title>Vale</title>
@@ -143,21 +143,20 @@ if(isset($_POST['codigo'])){
         </div>
         <br>
           <div class="container">
-         <table class="table" style="margin-bottom:3%;%color:while;">
+         <table class="table" style="margin-bottom:3%;">
         <thead>
-           <tr id="tr">
-                <th style="width: 12%;"><strong>Código</strong></th>
-                <th><strong>Descripción</strong></th>
-                <th style="width: 15%;"><strong>U/M</strong></th>
-                <th style="width: 15%;"><strong>Cantidad</strong></th>
-                <th style="width: 15%;"><strong>Costo unitario</strong></th>
+           <tr id="tr" style="text-align: left">
+                <th style="width: 12%;">Código</th>
+                <th>Descripción</th>
+                <th style="width: 15%;">U/M</th>
+                <th style="width: 15%;">Cantidad</th>
+                <th style="width: 15%;">Costo unitario</th>
             </tr>
               <tr>
-              <center> <td id="td" colspan="5"><h4>No se encontraron ningun resutados 😥</h4></td></center> 
-
+              <center> <td id="td" colspan="5"><h4>No se encontraron resultados 😥</h4></td></center> 
             </tr>
-            </thead>
-            <tbody>';
+        </thead>
+        <tbody>';
 
 
            
@@ -178,12 +177,11 @@ if(isset($_POST['codigo'])){
     }
 
 </style>
-    
             <tr>
                <td data-label="Codigo"><input style="background:transparent; border: none; width: 100%; color: black;"  type="number" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
                <td data-label="Descripción"><textarea  style="background:transparent; border: none; width: 100%; color: black;" cols="10" rows="1" type="text" class="form-control" readonly name="desc[]"><?php  echo $productos['descripcion']; ?></textarea></td>
                <td data-label="Unidad De Medida"><input  style="background:transparent; border: none; width: 100%; color: black;" type="text" class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
-               <td data-label="Cantidad"><input  style="background:transparent; border: none; width: 100%; color: black;" type="number" class="form-control"  name="cant[]" values = "<?php  echo $productos['stock']; ?>"></td>
+               <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="number" class="form-control"  name="cant[]" required></td>
                <td data-label="Precio"><input style="background:transparent; border: none; width: 100%; color: black;"  type="number" class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
             </tr>
    

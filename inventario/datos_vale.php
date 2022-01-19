@@ -40,7 +40,7 @@ die();
     th{
         width: 25%;
     }
-    
+  }
     </style>
 <?php
 
@@ -80,19 +80,18 @@ $final = 0;
       
         <br>
           
-        <table class="table" style="margin-bottom:3%" >
+        <table class="table">
             
             <thead>
               <tr id="tr">
-            <th>Código</th>
-            <th style="width: 35%;">Descripción</th>
-            <th>Unidad de Medida</th>
-            <th>Cantidad</th>
-            <th>Costo unitario</th>
-            <th>Total</th>
-            
-          </tr>
-           <td id="td" colspan="8"><h4>No se encontraron ningun  resultados 😥</h4></td>
+                <th>Código</th>
+                <th style="width: 35%;">Descripción</th>
+                <th>Unidad de Medida</th>
+                <th>Cantidad</th>
+                <th>Costo unitario</th>
+                <th>Total</th>
+              </tr>
+                <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
            </thead>
             <tbody>';
 
@@ -112,22 +111,22 @@ while ($productos = mysqli_fetch_array($result)){
     
    
 </style> 
-      <tr >
-        <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="' .$productos['codigo']. '" style="width: 120px; border: none"></td>
+      <tr>
+        <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="' .$productos['codigo']. '"></td>
         <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly style="border: none">'.$productos['descripcion']. '</textarea></td>
-        <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="'.$productos['unidad_medida']. '" style="width: 60px; border: none"></td>
-        <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="'.$productos['stock']. '" style="width: 60px; border: none"></td>
-        <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$'.$productos['precio']. '" style="width: 60px; border: none"></td>
-        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$'.$total. '" style="width: 90px; border: none"></td>
-        <tr>
-            <th colspan="5">SubTotal</th>
-          <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%;"  name="tot_f" readonly value="$'.$final.'"  style="width: 90px; border: none; color: rgb(168, 8, 8); font-weight: bold;"></td></tr>
+        <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
+        <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="'.$productos['stock']. '"></td>
+        <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$'.$productos['precio']. '"></td>
+        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$'.$total. '"></td>
+        
       </tr>';
 
 }
 
       echo'
-
+      <th colspan="5">SubTotal</th>
+      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$'.$final.'" ></td></tr>
+  
          </tbody>
         </table>
 

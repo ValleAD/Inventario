@@ -103,7 +103,7 @@ if (isset($_POST['editar'])){
                         Por favor seleccione una opción.
                     </div>
                     <select  class="form-control" name="um" id="um" style="cursor: s-resize" required>
-                        <option selected disabled value="">Seleccione</option>
+                        <option selected disabled value=""><?php  echo $productos['unidad_medida']; ?></option>
                         <option>c/u</option>
                         <option>lb</option>
                         <option>mts</option>
@@ -231,18 +231,16 @@ if(mysqli_num_rows($resAlumnos)==0)
     $mensaje="<h1>No hay registros que coincidan con su criterio de búsqueda.</h1>";
 }
 ?>
-
-    
-      
-        
+ 
         <table class="table">
-            <thead >
+            <thead>
               <tr id="tr">
+                <th>Categoría</th>
                 <th>Código</th>
-                <th>Codificación de catálogo</th>
-                <th>Nombre de Producto</th>
+                <th>Cod. de Catálogo</th>
+                <th>Nombre</th>
                 <th style="width: 25%;">Descripción Completa</th>
-                <th>Unidad De Medida</th>
+                <th>U/M</th>
                 <th>Cantidad</th>
                 <th>Costo Unitario</th>
                 <th>Editar</th>
@@ -268,6 +266,7 @@ if(mysqli_num_rows($resAlumnos)==0)
    
 </style>
     <tr>
+    <td data-label="Categoría"><?php  echo $productos['categoria']; ?></td>
       <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
       <td data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
       <td data-label="Nombre"><?php  echo $productos['nombre']; ?></td>
