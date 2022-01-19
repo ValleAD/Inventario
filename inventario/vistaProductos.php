@@ -189,15 +189,15 @@ if (isset($_POST['editar'])){
        <table class="table">
             <thead>
               <tr id="tr">
-                <th>Categoría</th>
+                <th style="width: 175%;">Categoría</th>
                 <th>Código</th>
                 <th>Cod. de Catálogo</th>
-                <th>Nombre</th>
-                <th style="width: 25%;">Descripción Completa</th>
+                <th style="width: 175%;">Nombre</th>
+                <th style="width: 225%; padding: 2%;">Descripción Completa</th>
                 <th>U/M</th>
                 <th>Cantidad</th>
                 <th>Costo Unitario</th>
-                <th>Fecha Registro</th>
+                <th style="width: 145%;">Fecha Registro</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
               </tr>
@@ -225,14 +225,16 @@ if (isset($_POST['editar'])){
     #td{
         display: none;
     }
-   
+   th{
+       width: 100%;
+   }
 </style>
-    <tr>
+    <tr id="tr">
     <td data-label="Categoría"><?php  echo $productos['categoria']; ?></td>
       <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
       <td data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
       <td data-label="Nombre"><?php  echo $productos['nombre']; ?></td>
-      <td data-label="Descripción Completa"><textarea style="background:transparent; border: none; width: 100%;color: black;" cols="10" rows="1" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
+      <td data-label="Descripción Completa"><textarea style="background:transparent; border: none; color: black;" cols="10" rows="1" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
       <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
       <td data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
