@@ -130,7 +130,7 @@ form{
     <hr />
     
     <div class="text-center">
-        <button class="btn btn-success btn-lg" style="margin-bottom: 2%;">Guardar</button>  
+        <button class="btn btn-success btn-lg" name="submit" style="margin-bottom: 2%;">Guardar</button>  
         <a id="ver" class="btn btn-lg" href="vistaProductos.php">Ver Productos</a>
          <style>
                #ver{
