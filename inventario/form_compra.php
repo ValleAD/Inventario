@@ -79,33 +79,30 @@ form{
 
 
   <form style="width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%;"action="Controller/añadir_compra.php" method="POST">
-<ol class="breadcrumb">
-  <li><a id="a" href="home.php">Inicio</a></li><li>&nbsp; / &nbsp;</li>
-  <li class="active">Solicitud de Compra</li>
-</ol>
 <center>
+  <br>
 <div class="container">
 <div class="row">
     <div class="col-6.5 col-sm-4" style="position: initial">
-    <font color="white"><label>Número de Solicitud</label> </font>
+    <font color="black"><label>Número de Solicitud</label> </font>
       <input style="background:transparent; color: white;" class="form-control" type="number" name="nsolicitud" id="como1" required>
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
-    <font color="white"><label>Dependencia que Solicita</label></font>   
+    <font color="black"><label>Dependencia que Solicita</label></font>   
       <input  style="background:transparent; color: white;" class="form-control" type="text" name="dependencia" id="como2" required>
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
-    <font color="white"><label>Plazo y Numero de Entregas</label></font> 
+    <font color="black"><label>Plazo y Numero de Entregas</label></font> 
       <input  style="background:transparent; color: white;" class="form-control" type="text" name="plazo" id="como3" required>
       <br>
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
-    <font color="white"><label>Unidad Tecnica</label> </font>
+    <font color="black"><label>Unidad Tecnica</label> </font>
       <input style="background:transparent; color: white;"  class="form-control" type="text" name="unidad_tecnica" id="como3" required>
       <br>
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
-    <font color="white"><label>Suministros Solicita</label>  </font>
+    <font color="black"><label>Suministros Solicita</label>  </font>
       <input style="background:transparent; color: white;"  class="form-control" type="text" name="descripcion_solicitud" id="como3" required>
       <br>
   </div>
@@ -120,7 +117,7 @@ form{
         
                   <div class="form-group" style="position: all; margin: 2%">
                       <label>Categoría</label> 
-                      <select  class="form-control" name="category" id="um" required style="background-color: #FDF6F0">
+                      <select  class="form-control" name="category" id="um" required>
                         <option selected disabled value="">Seleccionar</option>
                         <option value="agro">Agropecuarios y Forestales</option>
                         <option value="cuero">Cuero y Caucho</option>
