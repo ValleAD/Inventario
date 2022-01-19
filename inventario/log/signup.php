@@ -101,39 +101,44 @@ if ($password == $cpassword) {
 				<div class="row">
 				    <div class="col-md-6" style="position: initial">
 				       <label class="small mb-1">Nombre de usuario</label><br>
-						<input class="form-control py-4" type="text"  name="username" value="<?php echo $username; ?>" required>
+						<input class="form-control" type="text"  name="username" value="<?php echo $username; ?>" required>
 				    </div>
 				    <div class="col-md-6" style="position: initial">
 				      <label class="small mb-1">Nombre</label><br>
-						<input class="form-control py-4" type="text"  name="firstname" value="<?php echo $firstname; ?>" required>
+						<input class="form-control" type="text"  name="firstname" value="<?php echo $firstname; ?>" required>
 				    </div>
 				</div>
 				<div class="row">
 
 				    <div class="col-md-6" style="position: initial">
 				     <label class="small mb-1">Apellido</label><br>
-						<input class="form-control py-4" type="text"  name="lastname" value="<?php echo $lastname; ?>" required>
+						<input class="form-control" type="text"  name="lastname" value="<?php echo $lastname; ?>" required>
+						
+                                                
+                                        
 				     
 				    </div>
 				    <div class="col-md-6" style="position: initial">
 				      <label class="small mb-1">Correo</label><br>
-						<input class="form-control py-4" type="email" name="email" value="<?php echo $email; ?>" required>
+						<input class="form-control" type="email" name="email" value="<?php echo $email; ?>" required>
 				     
 				    </div>
 				</div>
 				<div class="row">
 				    <div class="col-md-6" style="position: initial">
 				      <label class="small mb-1">Contraseña</label><br>
-						<input class="form-control py-4" type="password"  name="password" value="<?php echo $_POST['password']; ?>" required>
-				      
+						<input class="form-control" id="show" type="password"  name="password" value="<?php echo $_POST['password']; ?>" required>
+				      <div class="custom-control custom-checkbox"><input class="custom-control-input" onclick="myFuntion();" id="rememberPasswordCheck" type="checkbox" /><label class="custom-control-label" for="rememberPasswordCheck">Mostrar Contraseña</label></div>
 				  </div>
 				  <div class="col-md-6" style="position: initial">
 				      <label class="small mb-1">Confirmar Contraseña</label><br>
-						<input class="form-control py-4" type="password"  name="cpassword" value="<?php echo $_POST['cpassword']; ?>" required>
+						<input class="form-control" id="show1" type="password"  name="cpassword" value="<?php echo $_POST['cpassword']; ?>" required>
+						<div class="custom-control custom-checkbox"><input class="custom-control-input" onclick=" myFuntion1();" id="PasswordCheck" type="checkbox" /><label class="custom-control-label" for="PasswordCheck">Mostrar Contraseña</label></div>
 				  </div>
 				</div>
-				<div class="form-group">
-                                            	<label class="small mb-1">Tipo de Usuarios</label>
+
+				<div class="form-group" style="margin-bottom:3%;margin-top:3%">
+                                            	<label class="small mb-1">Tipo de Usuarios (Roles De Usuario)</label>
 												<select class="form-control" name="tipo_usuario">
 													<option selected disabled>Selecione</option>
 													<option value="1">Admistrador</option>
@@ -173,5 +178,29 @@ if ($password == $cpassword) {
 }
    
 </style>
+	<script type="text/javascript">
+					function myFuntion() {
+						var show = document.getElementById('show');
+						if (show.type=='password') {
+							show.type='text';
+						}
+						else{
+							show.type='password';
+						}
+
+					}
+				</script>
+				<script type="text/javascript">
+					function myFuntion1() {
+						var show = document.getElementById('show1');
+						if (show.type=='password') {
+							show.type='text';
+						}
+						else{
+							show.type='password';
+						}
+
+					}
+				</script>
 </body>
 </html>

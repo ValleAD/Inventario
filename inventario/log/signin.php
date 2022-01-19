@@ -99,9 +99,9 @@ if (isset($_POST['submit'])) {
                                             <div class="form-group"><label class="small mb-1" for="inputEmailAddress">Usuario</label>
                                             	<input id="input" method="POST" class="form-control py-4" id="inputEmailAddress" placeholder="Ingrese el usuario" type="text" name="username" value="<?php echo $username; ?>" required></div>
                                             <div class="form-group"><label class="small mb-1" for="inputPassword">Password</label>
-                                            <input  class="form-control py-4" id="inputPassword" type="password" placeholder="Enter password" id="input"  method="POST" class="form-control" type="password" name="password" value="<?php echo $_POST['password']; ?>" required ></div>
+                                            <input  class="form-control py-4" id="show" type="password" placeholder="Ingrese la Contraseña" id="input"  method="POST" class="form-control" type="password" name="password" value="<?php echo $_POST['password']; ?>" required ></div>
                                             <div class="form-group">
-                                                <div class="custom-control custom-checkbox"><input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" /><label class="custom-control-label" for="rememberPasswordCheck">Remember password</label></div>
+                                                <div class="custom-control custom-checkbox"><input class="custom-control-input" onclick="myFuntion();" id="rememberPasswordCheck" type="checkbox" /><label class="custom-control-label" for="rememberPasswordCheck">Mostrar Contraseña</label></div>
                                             </div>
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                             	<button  type="submit" class="btn btn-primary btn-block "name="submit" >Ingresar</button></div>
@@ -125,5 +125,17 @@ if (isset($_POST['submit'])) {
 					.p{
 					
 				</style>
+				<script type="text/javascript">
+					function myFuntion() {
+						var show = document.getElementById('show');
+						if (show.type=='password') {
+							show.type='text';
+						}
+						else{
+							show.type='password';
+						}
+
+					}
+				</script>
 </body>
 </html>
