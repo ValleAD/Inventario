@@ -178,6 +178,7 @@ if ($password == $cpassword) {
 }
    
 </style>
+<!--Es para la Contraseña Normarl-->
 	<script type="text/javascript">
 					function myFuntion() {
 						var show = document.getElementById('show');
@@ -190,6 +191,7 @@ if ($password == $cpassword) {
 
 					}
 				</script>
+				<!--Es para la Contraseña Confirmacion-->
 				<script type="text/javascript">
 					function myFuntion1() {
 						var show = document.getElementById('show1');
