@@ -33,7 +33,7 @@ CREATE TABLE tb_productos (
   unidad_medida varchar(10) NOT NULL DEFAULT 'c/u',
   stock int(11) NOT NULL,
   precio decimal(6,2) NOT NULL,
-  fecha_registro date NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  fecha_registro date NOT NULL DEFAULT current_timestamp(),
     PRIMARY KEY (cod)
 );
 
@@ -50,14 +50,14 @@ CREATE TABLE tb_usuarios (
 CREATE TABLE tb_bodega (
   codBodega int(11) NOT NULL,
   departamento varchar(50) NOT NULL,
-  fecha_registro date NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  fecha_registro date NOT NULL DEFAULT current_timestamp(),
     PRIMARY KEY (codBodega)
 );
 
 CREATE TABLE tb_vale (
   codVale int(11) NOT NULL,
   departamento varchar(50) NOT NULL,
-  fecha_registro date NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  fecha_registro date NOT NULL DEFAULT current_timestamp(),
     PRIMARY KEY (codVale)
 );
 
@@ -67,7 +67,7 @@ CREATE TABLE tb_compra (
   plazo varchar(50) NULL,
   unidad_tecnica varchar(75) NOT NULL,
   descripcion_solicitud varchar(50) NOT NULL,
-  fecha_registro date NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  fecha_registro date NOT NULL DEFAULT current_timestamp(),
     PRIMARY KEY (nSolicitud)
 );
 
@@ -79,7 +79,7 @@ unidad_medida varchar(5) NOT NULL,
 cantidad_solicitada int(25) NOT NULL,
 cantidad_despachada int(25) NOT NULL,
 precio int(20) NOT NULL,
-fecha_registro date NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+fecha_registro date NOT NULL DEFAULT current_timestamp(),
     PRIMARY KEY (codigoalmacen)
 );
 
@@ -89,7 +89,7 @@ descripcion varchar(50) NOT NULL,
 unidad_medida varchar(5) NOT NULL,
 cantidad_solicitada int(25) NOT NULL,
 costo int(50) NOT NULL,
-fecha_registro date NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+fecha_registro date NOT NULL DEFAULT current_timestamp(),
     PRIMARY KEY (codigo)
 );
 
@@ -101,7 +101,7 @@ CREATE TABLE detalle_bodega (
   stock int(11) NOT NULL,
   precio decimal(6,2) NOT NULL,
   odt_bodega int(15),
-  fecha_registro date NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  fecha_registro date NOT NULL DEFAULT current_timestamp(),
     PRIMARY KEY (codigodetallebodega),
     CONSTRAINT fk_tb_bodega_detalle_bodeha FOREIGN KEY (odt_bodega)
     REFERENCES tb_bodega(codBodega)
@@ -115,7 +115,7 @@ CREATE TABLE detalle_vale (
   stock int(11) NOT NULL,
   precio decimal(6,2) NOT NULL,
   numero_vale int(15),
-  fecha_registro date NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  fecha_registro date NOT NULL DEFAULT current_timestamp(),
     PRIMARY KEY (codigodetallevale),
     CONSTRAINT fk_tb_vale_detalle_vale FOREIGN KEY (numero_vale)
     REFERENCES tb_vale(codVale)
@@ -132,7 +132,7 @@ CREATE TABLE detalle_compra (
   stock int(200) NOT NULL,
   precio decimal(6,2) NOT NULL,
   solicitud_compra int(8) DEFAULT NULL,
-  fecha_registro date NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  fecha_registro date NOT NULL DEFAULT current_timestamp(),
      PRIMARY KEY (codigodetallecompra),
     CONSTRAINT fk_tb_compra_detalle_compra FOREIGN KEY (solicitud_compra)
     REFERENCES tb_compra(nSolicitud)
