@@ -88,13 +88,12 @@ background:burlywood;
         <nav>
             <ul>
                 <li>
-                    <a id="a" href="../home.php"><span class="icon-house"></span>Inicio</a></li>
+                    <a id="b" href="../invitado.php"><span class="icon-house"></span>Inicio</a></li>
                    
                 </li>
                 <li class="submenu">
-                    <a id="a" href="#"><span class="icon-rocket"></span>Solicitud Vale<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <a id="b" href="#"><span class="icon-rocket"></span>Solicitud Vale<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
-                        <li><a id="b" href="solicitudes_vale.php">Mostrar</a></li>
                         <li><a id="b" href="form_vale.php">Nuevo</a></li>
                     </ul>
                 </li>
@@ -254,6 +253,10 @@ if(isset($_POST['codigo'])){
             #enviar:active{
             transform: translateY(5px);
             } 
+            #b:hover{
+   text-decoration: none;
+   color:whitesmoke;
+}
         </style>
     </form>';
 }
