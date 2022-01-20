@@ -119,10 +119,16 @@ if (isset($_POST['editar'])){
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial; margin-left: 17%;">
                 <label for="">Cantidad</label>
-                <input class="form-control" type="text" name="stock" id="act" value="<?php  echo $productos['stock']; ?>">
+                <input class="form-control" type="text"style="cursor: not-allowed;" readonly name="stock" id="act" value="<?php  echo $productos['stock']; ?>">
             </div>
 
-            <div class="col-6 col-sm-4" style="position: initial">
+                <div class="col-6 col-sm-4" style="position: initial">
+                <label for="">Nueva Cantidad (+)</label>
+                <input class="form-control" type="text" name="stock_descontar" id="act">
+            </div>
+        </div>
+        <div  class="row">
+            <div class="col-6 col-sm-4" style="position: initial;margin: auto;">
                 <label for="">Costo unitario</label>
                 <input class="form-control" type="text" name="precio" id="act" value="<?php  echo $productos['precio']; ?>">
             </div>
