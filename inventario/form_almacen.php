@@ -59,7 +59,9 @@ die();
                 background: transparent;
                     
                 }
-            
+            form{
+            margin: auto;
+        }
     
         @media (max-width: 952px){
 form{

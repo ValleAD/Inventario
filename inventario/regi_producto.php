@@ -27,6 +27,9 @@ die();
   </head>
     <body >
 <style type="text/css">
+    form{
+    margin: auto;
+}
         table { table-layout: fixed;}
         td{width: calc(100%/3);}
 

@@ -27,7 +27,9 @@ die();
         
         <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">  
         <style>
-
+form{
+    margin: auto;
+}
 .button21 {
 
   text-align: center;
