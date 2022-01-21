@@ -172,6 +172,9 @@ if(isset($_POST['codigo'])){
             #enviar:active{
             transform: translateY(5px);
             } 
+            form{
+    margin: auto;
+}
         </style>
     </form>';
 }

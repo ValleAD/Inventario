@@ -27,6 +27,9 @@ die();
 </head>
 <body>
     <style type="text/css">
+        form{
+            margin: auto;
+        }
               @media (max-width: 952px){
    #section{
         margin-top: 5%;

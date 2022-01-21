@@ -119,10 +119,16 @@ if (isset($_POST['editar'])){
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial; margin-left: 17%;">
                 <label for="">Cantidad</label>
-                <input class="form-control" type="text" name="stock" id="act" value="<?php  echo $productos['stock']; ?>">
+                <input class="form-control" type="text"style="cursor: not-allowed;" readonly name="stock" id="act" value="<?php  echo $productos['stock']; ?>">
             </div>
 
-            <div class="col-6 col-sm-4" style="position: initial">
+                <div class="col-6 col-sm-4" style="position: initial">
+                <label for="">Nueva Cantidad (+)</label>
+                <input class="form-control" type="text" name="stock_descontar" id="act">
+            </div>
+        </div>
+        <div  class="row">
+            <div class="col-6 col-sm-4" style="position: initial;margin: auto;">
                 <label for="">Costo unitario</label>
                 <input class="form-control" type="text" name="precio" id="act" value="<?php  echo $productos['precio']; ?>">
             </div>
@@ -167,7 +173,7 @@ if (isset($_POST['editar'])){
 </div>
 <div class="container top">
 <h3 class="text-center mt-5">
-    <a style="cursor: crosshair; margin-right: 630px;" href="regi_producto.php" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Nuevo Registro"> Nuevo Producto</a>
+    <a style="margin-right: 630px;" href="regi_producto.php" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Nuevo Registro"> Nuevo Producto</a>
     <span style="float: right;">
         <form method="post">
                 <div class="row">
@@ -189,17 +195,17 @@ if (isset($_POST['editar'])){
        <table class="table">
             <thead>
               <tr id="tr">
-                <th>Categoría</th>
+                <th style="width: 175%;">Categoría</th>
                 <th>Código</th>
-                <th>Cod. de Catálogo</th>
-                <th style="width: 175%;">Nombre</th>
-                <th style="width: 225%; padding: 2%;">Descripción Completa</th>
+                <th style="width: 135%;">Cod. de Catálogo</th>
+                <th style="width: 200%;">Nombre</th>
+                <th style="width: 225%;">Descripción Completa</th>
                 <th>U/M</th>
-                <th>Cantidad</th>
+                <th style="width: 115%;">Cantidad</th>
                 <th>Costo Unitario</th>
                 <th style="width: 145%;">Fecha Registro</th>
                 <th>Editar</th>
-                <th>Eliminar</th>
+                <th style="width: 125%;">Eliminar</th>
               </tr>
 
               <tr>
@@ -235,10 +241,10 @@ if (isset($_POST['editar'])){
       <td data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
       <td data-label="Nombre"><?php  echo $productos['nombre']; ?></td>
       <td data-label="Descripción Completa"><textarea style="background:transparent; border: none; color: black;" cols="10" rows="1" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
-      <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
-      <td data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
+      <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
+      <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
-      <td data-label="Costo Unitario"><?php  echo $productos['fecha_registro']; ?></td>
+      <td data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
       <td data-label="Editar">
         <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="vistaProductos.php">             
           <input type='hidden' name='id' value="<?php  echo $productos['codProductos']; ?>">             

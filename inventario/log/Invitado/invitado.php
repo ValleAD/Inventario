@@ -1,19 +1,5 @@
-<?php
-session_start();
- if (!isset($_SESSION['signin'])>0) {
-    # code...
-    echo '
-    <script>
-        window.location ="../log/signin.php";
-        session_destroy();  
-                </script>
-die();
 
-    ';
-}
-    
-?>
-<?php include ('templates/menu.php')?>
+<?php include ('menu.php')?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -56,9 +42,9 @@ die();
     <br>
     <br>
     <br>
-      <font color="white"><center> <h1 id="h1"  style="margin-top: 10.1%">Bienvenidos al Sistema de Inventario del
+      <center> <h1 id="h1" style="margin-top: 10.1%">Bienvenidos al Sistema de Inventario del
        <br> 
-      Hospital Nacional Santa Teresa de Zacatecoluca</h1></center></font>
+      Hospital Nacional Santa Teresa de Zacatecoluca</h1></center>
       
      
 </body>

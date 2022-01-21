@@ -38,7 +38,7 @@ if ($password == $cpassword) {
 
 		if ($result) {
 		
-				echo "<script>alert('Resgitro completado exitosamente.') </script>";
+				echo '<script>alert('Resgitro completado exitosamente.') </script>';
 				$username = "";
 				$firstname = "";
 				$lastname = "";
