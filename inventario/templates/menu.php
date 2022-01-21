@@ -19,7 +19,7 @@ $tipo_usuario = $_SESSION['tipo_usuario'];
       <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
 </head>
 
-<body style="background-image: url(img/b.jpg);  
+<body style="background-image: url(img/e.jpg);  
             background-repeat: no-repeat;
             background-attachment: fixed;">
 
