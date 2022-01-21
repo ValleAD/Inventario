@@ -173,14 +173,14 @@ if (isset($_POST['editar'])){
 </div>
     <div class="container">
         <div class="row">
-            <div class="col-6 col-sm-4">
+            <div class="col-6 col-sm-4" style="position: initial;">
                 <a  href="regi_producto.php" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Nuevo Registro"> Nuevo Producto</a>
                 <a href="buscar.php" class="btn btn-primary">Buscar Productos</a>
             </div>
     
             <p style="margin-top: 0.5%; font-weight: bold; color: #fff;">Mostrar Por</p>
             <form action="" method="post">
-                <div class="col-6 col-sm-12">
+                <div class="col-6 col-sm-12" style="position: initial;">
                     <select class="form-control" name="mostrar" id="mostrar" required onchange="this.form.submit()">
                         <option value="">Seleccionar...</option>
                         <option value="categoria">Categoría</option>

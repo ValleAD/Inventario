@@ -36,7 +36,7 @@ die();
         <p style="color: #fff; font-weight: bold; margin-top: 0.5%; margin-right: 2%">Buscar por Código</p>
             <form method="post">
                 <div class="row">
-                    <div class="col-6 col-sm-8">
+                    <div class="col-6 col-sm-8" style="position: initial;">
                         <input class="form-control" placeholder="Código del Producto" name="cod_buscar">
                     </div>
                     <div class="col-6 col-sm-4" style="position: initial;">
