@@ -50,6 +50,7 @@ background:burlywood;
                     <ul class="children">
                         <li><a id="b" href="vistaProductos.php">Ver Artículos</a></li>
                         <li><a id="b" href="regi_producto.php">Nuevo Artículo</a></li>
+                        <li><a id="b" href="reporte.php">Reporte</a></li>
                     </ul>
                 </li><?php } ?>
                 <li class="submenu">

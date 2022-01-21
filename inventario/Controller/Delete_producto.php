@@ -3,7 +3,7 @@
  include '../Model/conexion.php';
 
 $id1 = $_GET['id'];
-$eliminar ="DELETE FROM tb_productos WHERE codProductos='$id1'";
+$eliminar ="DELETE FROM tb_productos WHERE cod='$id1'";
 $result= mysqli_query($conn, $eliminar);
 if ($result) {
     
