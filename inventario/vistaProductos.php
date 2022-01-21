@@ -172,22 +172,10 @@ if (isset($_POST['editar'])){
 </table>
 </div>
 <div class="container top">
-<h3 class="text-center mt-5">
-    <a style="margin-right: 630px;" href="regi_producto.php" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Nuevo Registro"> Nuevo Producto</a>
-    <span style="float: right;">
-        <form method="post">
-                <div class="row">
-                     
-                <div class="col-6" style="position: initial"> 
-
-                <input data-bs-toggle="tooltip" data-bs-placement="top" title="Ingrese el nombre del producto" width="50%" type="text" class="form-control" placeholder="Productos..." name="xnombre"/>
-            </div>
-                <button name="buscar" type="submit" class="btn btn-outline-success" data-bs-toggle="tooltip" data-bs-placement="top" title="Buscar">Buscar</button>
-            
-            </div>
-            </form>
-    </span> 
-</h3><br>
+    <a  href="regi_producto.php" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Nuevo Registro"> Nuevo Producto</a>
+    <a href="buscar.php" class="btn btn-primary">Buscar Productos</a>
+    </div>
+<br>
 
 
     <div class="container">

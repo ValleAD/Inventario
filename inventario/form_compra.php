@@ -92,8 +92,8 @@ form{
 </center>
     <div id="Registro" class="row container-fluid" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%">
 
-<div id="lo-que-vamos-a-copiar"  style="background:#FAE2E2;margin-left: 1%;border-radius: 5px;margin-right: 1%;margin-top: 1%">
-    <div class="col-xs-4 "  style="background: #FAE2E2;margin-left: 1;border-radius: 5px;margin-right: 1%" >
+<div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-left: 1%;border-radius: 5px;margin-right: 1%;margin-top: 1%">
+    <div class="col-xs-4 "  style="background: #bfe7ed;margin-left: 1;border-radius: 5px;margin-right: 1%" >
         <div class="well well-sm" style="position: all; margin: 5%">
         
                   <div class="form-group" style="position: all; margin: 2%">
