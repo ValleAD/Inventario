@@ -15,9 +15,9 @@ session_start();
       <link rel="icon" type="image/png" sizes="32x32"  href="../../img/log.png">
 </head>
 
-<body style="background-image: url(../../img/ias.jpg);  
+<body style="background-image: url(../../img/4k.jpg);  
             background-repeat: no-repeat;
-            background-attachment: fixed;">
+            background-attachment: fixed; color: aqua;">
 
     <style type="text/css">
         #a:hover{
