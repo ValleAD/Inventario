@@ -30,6 +30,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
       $descripcion= $_POST['desc'][$i];
       $unidadmedida= $_POST['um'][$i];
       $stock_vale = $_POST['cant'][$i];
+      $usuario = $_POST['usuario'];
       $precio= $_POST['cu'][$i];
       $numero = $_POST['numero_vale'];
       $id1 =$_POST['codProducto'];
@@ -49,7 +50,7 @@ if ($result) {
         ";
 } 
          
-      $insert = "INSERT INTO detalle_vale (codigo, descripcion, unidad_medida, stock, precio, numero_vale) VALUES ('$codigo','$descripcion','$unidadmedida','$stock_vale,'$precio','$numero')";
+      $insert = "INSERT INTO detalle_vale (codigo, descripcion, unidad_medida, stock, precio, numero_vale, usuario) VALUES ('$codigo','$descripcion','$unidadmedida','$stock_vale,'$precio','$numero', '$usuario')";
       $query = mysqli_query($conn, $insert);
 
       if ($query) {

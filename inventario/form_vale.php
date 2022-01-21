@@ -140,6 +140,10 @@ if(isset($_POST['codigo'])){
                 <label id="inp1">Vale N°</label>   
                 <input id="inp1"class="form-control" type="number" name="numero_vale" required>
             </div>
+            <div class="col-.5 col-sm-4" style="position: initial">
+                <label id="inp1">Usuario</label>   
+                <input id="inp1"class="form-control" type="text" name="usuario" required>
+            </div>
         </div>
         <br>
           <div class="container">

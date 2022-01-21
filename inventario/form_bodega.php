@@ -99,6 +99,10 @@ if(isset($_POST['codigo'])){
                 <label id="inp1" >O. DE T. No.</label>   
                 <input id="inp1" class="form-control" type="number" name="odt" required>
             </div>
+            <div style="position: initial;" class="w col-6.5 col-sm-4">
+            <label id="inp1" >Usuario</label>   
+            <input id="inp1" class="form-control" type="text" name="usuario" required>
+        </div>
         </div>
         <br>
 

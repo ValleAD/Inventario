@@ -65,23 +65,28 @@ form{
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="black"><label>Dependencia que Solicita</label></font>   
-      <input  style="background:transparent; color: white;" class="form-control" type="text" name="dependencia" id="como2" required>
+      <input  style="background:transparent; color: black;" class="form-control" type="text" name="dependencia" id="como2" required>
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="black"><label>Plazo y Numero de Entregas</label></font> 
-      <input  style="background:transparent; color: white;" class="form-control" type="text" name="plazo" id="como3" required>
+      <input  style="background:transparent; color: black;" class="form-control" type="text" name="plazo" id="como3" required>
       <br>
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="black"><label>Unidad Tecnica</label> </font>
-      <input style="background:transparent; color: white;"  class="form-control" type="text" name="unidad_tecnica" id="como3" required>
+      <input style="background:transparent; color: black;"  class="form-control" type="text" name="unidad_tecnica" id="como3" required>
       <br>
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="black"><label>Suministros Solicita</label>  </font>
-      <input style="background:transparent; color: white;"  class="form-control" type="text" name="descripcion_solicitud" id="como3" required>
+      <input style="background:transparent; color: black;"  class="form-control" type="text" name="descripcion_solicitud" id="como3" required>
       <br>
   </div>
+  <div class="col-6.5 col-sm-4" style="position: initial">
+    <font color="black"><label>Usuario</label> </font>
+      <input style="background:transparent; color: black;"  class="form-control" type="text" name="unidad_tecnica" id="como3" required>
+      <br>
+    </div>
     </div>
 </div>
 </center>
