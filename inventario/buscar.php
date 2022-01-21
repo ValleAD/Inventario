@@ -29,58 +29,21 @@ die();
     <title>Productos</title>
 </head>
 <body>
-<?php include ('templates/menu.php')?>
+<?php include ('templates/menu.php') ?>
+<?php include ('Model/conexion.php') ?>
     <div class="container">
         <div class="row">
-            <p style="margin-top: 0.5%; font-weight: bold; color: #fff;">Buscar Por</p>
-        <form action="" method="post">
-            <div class="col-16 col-sm-12">
-                <select class="form-control" name="buscar" id="buscar" required onchange="this.form.submit()">
-                    <option value="">Seleccionar...</option>
-                    <option value="categoria">Categoría</option>
-                    <option value="codigo">Código de Producto</option>
-                </select>
-            </div>
-        </form>   
-        <?php
-        if(isset($_POST['buscar'])){
-            $busqueda = $_POST['buscar'];
-    
-            if($busqueda == "categoria"){
-                echo'
-                <form method="post">
-                    <div class="row">
-                        <div class="col-6 col-sm-12">
-                            <select class="form-control" onchange="this.form.submit()">
-                                <option>Seleccionar Categoría</option>
-                                <option>Agropecuarios y Forestales</option>
-                                <option>Cuero y Caucho</option>
-                                <option>Químicos</option>
-                                <option>Combustibles y Lubricantes</option> 
-                                <option>Minerales no Metálicos</option>
-                                <option>Minerales Metálicos</option>
-                                <option>Herramientas y Repuestos</option>
-                                <option>Materiales Eléctricos</option>
-                            </select>  
-                        </div>
-                    </div>       
-                </form>';
-            }
-            else if($busqueda == "codigo"){
-                echo'
-                <form method="post">
-                    <div class="row">
-                        <div class="col-6 col-sm-8">
-                            <input class="form-control" placeholder="Código del Producto">
-                        </div>
-                        <div class="col-6 col-sm-4" style="position: initial;">
-                            <input type="submit" class="btn btn-secondary" value="Buscar">
-                        </div>
-                    </div>  
-                </form>';
-            }
-        }
-    ?>
+        <p style="color: #fff; font-weight: bold; margin-top: 0.5%; margin-right: 2%">Buscar por Código</p>
+            <form method="post">
+                <div class="row">
+                    <div class="col-6 col-sm-8">
+                        <input class="form-control" placeholder="Código del Producto" name="cod_buscar">
+                    </div>
+                    <div class="col-6 col-sm-4" style="position: initial;">
+                        <input type="submit" class="btn btn-secondary" value="Buscar">
+                    </div>
+                </div>  
+            </form>  
     <div class="col-6 col-sm-4" style="position: initial;">
         <a href="vistaProductos.php" id="ver" class="btn btn-primary">Ver Todos</a>
     </div>
@@ -100,25 +63,43 @@ die();
                  <thead>
                    <tr id="tr">
                      <th style="width: 165%;">Categoría</th>
-                     <th>Código</th>
+                     <th style="width: 100%;">Código</th>
                      <th style="width: 135%;">Cod. de Catálogo</th>
                      <th style="width: 180%;">Nombre</th>
                      <th style="width: 225%;">Descripción Completa</th>
                      <th style="width: 80%;">U/M</th>
                      <th style="width: 110%;">Cantidad</th>
-                     <th>Costo Unitario</th>
+                     <th style="width: 100%;">Costo Unitario</th>
                      <th style="width: 145%;">Fecha Registro</th>
                      <th>Editar</th>
                      <th style="width: 125%;">Eliminar</th>
                    </tr>
                    <tr>
-      <?php
-         include 'Model/conexion.php';
-         $sql = "SELECT * FROM tb_productos";
-         $result = mysqli_query($conn, $sql);
-     
-         while ($productos = mysqli_fetch_array($result)){
-     ?>
+
+<?php
+    $sql = "SELECT * FROM tb_productos";
+    $result = mysqli_query($conn, $sql);
+
+    if(isset($_POST['cat_buscar'])){
+
+        $buscar_cat = $_POST['cat_buscar'];
+
+        $sql = "SELECT * FROM tb_productos WHERE categoria = $buscar_cat";
+        $result = mysqli_query($conn, $sql);
+       
+    }
+
+    if(isset($_POST['cod_buscar'])){
+        $buscar_cod = $_POST['cod_buscar'];
+
+        $sql = "SELECT * FROM tb_productos WHERE codProductos = $buscar_cod";
+        $result = mysqli_query($conn, $sql);
+    }
+?>
+
+<?php
+    while ($productos = mysqli_fetch_array($result)){
+?>
      
             
                      <td id="td" colspan="9">
@@ -147,15 +128,14 @@ die();
            <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
            <td data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
            <td data-label="Editar">
-             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="vistaProductos.php">             
-               <input type='hidden' name='id' value="<?php  echo $productos['codProductos']; ?>">             
-               <button name='editar' class='btn btn-info btn-sm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
-             </form>  
-           </td>
-     
-           <td data-label="Eliminar">
-                         <a data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm " class="text-primary" href="Controller/Delete_producto.php?id=<?php  echo $productos['codProductos']; ?>" onclick="return confirmaion()">Eliminar</a>
-           </td>
+            <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="vistaProductos.php">             
+                <input type='hidden' name='id' value="<?php  echo $productos['codProductos']; ?>">             
+                <button name='editar' class='btn btn-info btn-sm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
+            </form>  
+            </td>
+            <td data-label="Eliminar">
+                <a data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm " class="text-primary" href="Controller/Delete_producto.php?id=<?php  echo $productos['cod']; ?>" onclick="return confirmaion()">Eliminar</a>
+            </td>
          </tr>
      
      <?php } ?> 

@@ -171,13 +171,26 @@ if (isset($_POST['editar'])){
     </style>
 </table>
 </div>
-<div class="container top">
-    <a  href="regi_producto.php" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Nuevo Registro"> Nuevo Producto</a>
-    <a href="buscar.php" class="btn btn-primary">Buscar Productos</a>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 col-sm-4">
+                <a  href="regi_producto.php" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Nuevo Registro"> Nuevo Producto</a>
+                <a href="buscar.php" class="btn btn-primary">Buscar Productos</a>
+            </div>
+    
+            <p style="margin-top: 0.5%; font-weight: bold; color: #fff;">Mostrar Por</p>
+            <form action="" method="post">
+                <div class="col-6 col-sm-12">
+                    <select class="form-control" name="mostrar" id="mostrar" required onchange="this.form.submit()">
+                        <option value="">Seleccionar...</option>
+                        <option value="categoria">Categoría</option>
+                        <option value="fecha">Fecha de registro</option>
+                    </select>
+                </div>
+            <form>
+        </div>
     </div>
 <br>
-
-
     <div class="container">
        <div class="row" >
        <table class="table">
@@ -202,6 +215,19 @@ if (isset($_POST['editar'])){
     include 'Model/conexion.php';
     $sql = "SELECT * FROM tb_productos";
     $result = mysqli_query($conn, $sql);
+
+    if(isset($_POST['mostrar'])){
+        $mostrar = $_POST['mostrar'];
+
+        if($mostrar == "categoria"){
+            $sql = "SELECT * FROM tb_productos ORDER BY categoria ASC";
+            $result = mysqli_query($conn, $sql);
+        }
+        else if($mostrar == "fecha"){
+            $sql = "SELECT * FROM tb_productos ORDER BY fecha_registro DESC";
+            $result = mysqli_query($conn, $sql);
+        }
+    }
 
     while ($productos = mysqli_fetch_array($result)){?>
 
@@ -241,7 +267,7 @@ if (isset($_POST['editar'])){
       </td>
 
       <td data-label="Eliminar">
-                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm " class="text-primary" href="Controller/Delete_producto.php?id=<?php  echo $productos['cod']; ?>" onclick="return confirmaion()">Eliminar</a>
+            <a data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm " class="text-primary" href="Controller/Delete_producto.php?id=<?php  echo $productos['cod']; ?>" onclick="return confirmaion()">Eliminar</a>
       </td>
     </tr>
 
