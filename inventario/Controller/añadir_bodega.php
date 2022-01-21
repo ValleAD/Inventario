@@ -26,13 +26,14 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 
     {
     $codigo= $_POST['cod'][$i];
+    $usuario = $_POST['usuario'];
     $descripcion= $_POST['desc'][$i];
     $unidadmedida= $_POST['um'][$i];
     $stock = $_POST['cant'][$i];
     $precio= $_POST['cu'][$i];
     $odt_bodega = $_POST['odt'];
 
-      $insert = "INSERT INTO detalle_bodega (codigo,descripcion,unidad_medida,stock,precio,odt_bodega) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$odt_bodega')";
+      $insert = "INSERT INTO detalle_bodega (codigo,descripcion,unidad_medida,stock,precio,odt_bodega, usuario) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$odt_bodega','$usuario')";
       $query = mysqli_query($conn, $insert);
 
       if ($query) {

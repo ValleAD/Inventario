@@ -125,7 +125,7 @@ if (isset($_POST['submit'])) {
 						.container{
 							margin-bottom: 5%;
 					}
-					.p{
+				
 					
 				</style>
 				<script type="text/javascript">

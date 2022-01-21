@@ -26,4 +26,16 @@ if ($result) {
                 ';
 }
 
+$verificar_usuario =mysqli_query($conn, "SELECT  FROM tb_productos WHERE stock ='$stock'");
+if (mysqli_num_rows($verificar_usuario)>=0) {
+
+        echo '
+                <script>
+                alert("Ya no hay productos Almacenados");
+              window.location ="../vistaProductos.php"; 
+        </script>
+        ';
+exit(); 
+}
+
 ?>

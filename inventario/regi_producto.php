@@ -55,16 +55,16 @@ form{
 
             <div class="form-group" style="position: all; margin: 2%">
             <label for="">Categoría</label><br> 
-                    <select  class="form-control" name="categoria" id="um" required style="cursor: pointer">
-                        <option selected value="">Seleccionar</option>
-                        <option value="agro">Agropecuarios y Forestales</option>
-                        <option value="cuero">Cuero y Caucho</option>
-                        <option value="quimicos">Químicos</option>
-                        <option value="combus">Combustibles y Lubricantes</option> 
-                        <option value="minNo">Minerales no Metálicos</option>
-                        <option value="min">Minerales Metálicos</option>
-                        <option value="repuestos">Herramientas y Repuestos</option>
-                        <option value="elec">Materiales Eléctricos</option>
+                    <select  class="form-control" name="categoria[]" id="categoria" required style="cursor: pointer">
+                        <option selected disabled value="">Seleccionar</option>
+                        <option>Agropecuarios y Forestales</option>
+                        <option>Cuero y Caucho</option>
+                        <option>Químicos</option>
+                        <option>Combustibles y Lubricantes</option> 
+                        <option>Minerales no Metálicos</option>
+                        <option>Minerales Metálicos</option>
+                        <option>Herramientas y Repuestos</option>
+                        <option>Materiales Eléctricos</option>
                     </select>
             </div>
 

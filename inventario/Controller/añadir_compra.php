@@ -9,9 +9,10 @@ $dependencia = $_POST['dependencia'];
 $plazo = $_POST['plazo'];
 $u_t= $_POST['unidad_tecnica'];
 $descripcion_solicitud = $_POST['descripcion_solicitud'];
+$usuario = $_POST['usuario'];
 
 
-$insert = "INSERT INTO tb_compra (nSolicitud, dependencia, plazo, unidad_tecnica, descripcion_solicitud) VALUES ('$nSolicitud','$dependencia', '$plazo', '$u_t', '$descripcion_solicitud')";
+$insert = "INSERT INTO tb_compra (nSolicitud, dependencia, plazo, unidad_tecnica, descripcion_solicitud, usuario) VALUES ('$nSolicitud','$dependencia', '$plazo', '$u_t', '$descripcion_solicitud', '$usurio')";
 $result = mysqli_query($conn, $insert);
 if ($result)  {
 echo "<script> alert('Su producto fue registrado correctamente');

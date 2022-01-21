@@ -140,6 +140,10 @@ if(isset($_POST['codigo'])){
                 <label id="inp1">Vale N°</label>   
                 <input id="inp1"class="form-control" type="number" name="numero_vale" required>
             </div>
+            <div class="col-.5 col-sm-4" style="position: initial">
+                <label id="inp1">Usuario</label>   
+                <input id="inp1"class="form-control" type="text" name="usuario" required>
+            </div>
         </div>
         <br>
           <div class="container">
@@ -181,7 +185,9 @@ if(isset($_POST['codigo'])){
                <td data-label="Codigo"><input style="background:transparent; border: none; width: 100%; color: black;"  type="number" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
                <td data-label="Descripción"><textarea  style="background:transparent; border: none; width: 100%; color: black;" cols="10" rows="1" type="text" class="form-control" readonly name="desc[]"><?php  echo $productos['descripcion']; ?></textarea></td>
                <td data-label="Unidad De Medida"><input  style="background:transparent; border: none; width: 100%; color: black;" type="text" class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
-               <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="number" class="form-control"  name="cant[]" required></td>
+               <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="number" class="form-control"  name="cant[]" required>
+                <input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="hidden" class="form-control"  name="stock_descontar[]" required>
+        </td>
                <td data-label="Precio"><input style="background:transparent; border: none; width: 100%; color: black;"  type="number" class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
             </tr>
    

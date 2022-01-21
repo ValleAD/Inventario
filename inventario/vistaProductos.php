@@ -118,13 +118,13 @@ if (isset($_POST['editar'])){
 
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial; margin-left: 17%;">
-                <label for="">Cantidad</label>
+                <label for="">Cantidad Actual</label>
                 <input class="form-control" type="text"style="cursor: not-allowed;" readonly name="stock" id="act" value="<?php  echo $productos['stock']; ?>">
             </div>
 
                 <div class="col-6 col-sm-4" style="position: initial">
                 <label for="">Nueva Cantidad (+)</label>
-                <input class="form-control" type="text" name="stock_descontar" id="act">
+                <input class="form-control" type="text" name="stock_descontar" id="act" required>
             </div>
         </div>
         <div  class="row">
@@ -253,7 +253,7 @@ if (isset($_POST['editar'])){
       </td>
 
       <td data-label="Eliminar">
-                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm " class="text-primary" href="Controller/Delete_producto.php?id=<?php  echo $productos['codProductos']; ?>" onclick="return confirmaion()">Eliminar</a>
+                    <a data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm " class="text-primary" href="Controller/Delete_producto.php?id=<?php  echo $productos['cod']; ?>" onclick="return confirmaion()">Eliminar</a>
       </td>
     </tr>
 
