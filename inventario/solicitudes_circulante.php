@@ -33,10 +33,9 @@ die();
 
 
 <body>
-    <div class=" container table-responsive " >
+    <div class=" container table-responsive" >
         <h2 class="text-center mg-t" style=" margin-top: -0.5%;">Solicitudes Circulante</h2>
         <p style="margin-top: 5%;" ></p>
-      <form method="POST" action="Detalle_circulante.php" style="margin:0">
         <table class="table">
         
         <thead>
@@ -85,7 +84,7 @@ die();
 <!--**********************************************************************************************************************************************************************************-->
   <!--Botones para actualizar y eliminar-->
             <td>
-                <button type="submit" class="btn btn-primary swal2-styled.swal2-confirm">Ver detalles</button>
+                <a href="Detalle_circulante.php?id=<?php  echo $solicitudes['codigo']; ?>" class="btn btn-primary swal2-styled.swal2-confirm">Ver detalles</a>
             </td>
         </tr>
             <div class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
