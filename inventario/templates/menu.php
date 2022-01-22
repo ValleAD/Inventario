@@ -98,9 +98,9 @@ background:burlywood;
 ?>  
     <button class="btn" data-toggle="modal" data-target="#info" style=" background:transparent;float: right;margin-top: 1%; color: white;"><?php echo $consulta['username'];?> <i class="bi bi-caret-down-fill"></i></button>
 <!-- Delete -->
-<div class="modal fade" id="info" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
+<div class="modal fade" id="info" style="background: rgba(0, 0, 0, 0.3);" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">
-        <div class="modal-content" style="background-color: hsla(0.5turn , 100% , 0.1% , 0.5 );color: white;">
+        <div class="modal-content" style="background-color: hsla(0.5turn , 100% , 0.1% , 0.5 );color: white; position: initial; z-index: 1000px;">
             <div class="modal-header">
                 <h5 class="modal-title" style="color:white;">Información del Usuario</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">

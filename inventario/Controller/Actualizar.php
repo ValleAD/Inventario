@@ -14,7 +14,7 @@ $precio=$_POST['precio'];
 $stock_descontado=$stock+$stock_obtenido;
 
 //sql
-$sql="UPDATE tb_productos SET categoria = '$categoria' ,codProductos='$id1', catalogo='$codCatalogo',nombre='$nombre',descripcion='$descripcion',unidad_medida='$um',stock='$stock_descontado',precio='$precio' WHERE cod='$id1'" ;
+$sql="UPDATE tb_productos SET categoria = '$categoria' ,codProductos='$id1', catalogo='$codCatalogo',nombre='$nombre',descripcion='$descripcion',unidad_medida='$um',stock='$stock_descontado',precio='$precio' WHERE codProductos='$id1'" ;
 $result = mysqli_query($conn, $sql);
 
 if ($result) {

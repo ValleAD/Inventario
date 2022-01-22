@@ -7,13 +7,7 @@ $stocks =$_POST['cant'];
    //sql
    $sql1="UPDATE tb_productos SET stock='$stock_descontado' WHERE stock='$stocks'" ;
    $result = mysqli_query($conn, $sql1);
-   if ($result) {
-     echo "<script> alert('Su producto fue registrado correctamente');
-           //location.href = '../datos_vale.php';
-          location.href = '../vistaProductos.php';
-           </script>
-           ";
-   } 
+   
 
    $departamento = $_POST['departamento'];
       $odt = $_POST['numero_vale'];
@@ -21,17 +15,7 @@ $stocks =$_POST['cant'];
       //crud para guardar los productos en la tabla tb_vale
       $sql = "INSERT INTO tb_vale (codVale, departamento) VALUES ('$odt', '$departamento')";
         $result = mysqli_query($conn, $sql); 
-        if ($result) {
-            echo "<script> alert('Su solicitud fue guardada correctamente');
-            //location.href = '../dt_.php';
-            </script>
-            "; 
-          }else {
-            echo "<script> alert('UUPS!! Algo no fue mal escrito');
-            //location.href = '../form_bodega.php';
-            </script>
-            ";
-         }
+        
          for($i = 0; $i < count($_POST['cod']); $i++)
 
     {
@@ -48,12 +32,12 @@ $stocks =$_POST['cant'];
 
       if ($query) {
         echo "<script> alert('Su producto fue registrado correctamente');
-       //location.href = '../dt_bodega.php';
+       location.href = '../datos_vale.php';
         </script>
         ";
       }else {
         echo "<script> alert('UUPS!! Algo no fue mal escrito');
-       // location.href = '../form_bodega.php';
+       // location.href = '../form_vale.php';
         </script>
         ";
       }

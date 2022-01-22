@@ -56,7 +56,7 @@ form{
 <body >
 
 
-  <form style="width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%;" action="Controller/añadir_circulante.php" method="POST">
+  <form style="width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%;" action="dt_circulante.php" method="POST">
 
 <br>
          <style type="text/css">
@@ -87,6 +87,10 @@ form{
 <div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-left: 1%;margin-right: 1%;border-radius: 5px;">
     <div class="col-xs-4 "  style="background: #bfe7ed;margin-left: 1;margin-right: 1%;border-radius: 5px;" >
         <div class="well well-sm" style="position: all; margin: 5%">
+             <div class="form-group">
+                        <label>Codigo</label>
+                        <input type="number" name="cod[]" class="form-control" placeholder="Ingrese la Codigo" required="" />
+                    </div>
             <div class="form-group" style="position: all; margin: 2%">
                     <label>Descripción de material</label>
                     <textarea type="text" name="desc[]" class="form-control" placeholder="Descripción del material" required=""></textarea>
@@ -134,10 +138,16 @@ form{
     <hr>
     
     <div class="button21">
-        <button  class="button"  style="margin-bottom:3%;">Guardar</button>
+        <button  class="button" name="guardar"  style="margin-bottom:3%;">Guardar</button>
     </div>
 </form>
+<?php 
 
+if (isset($_POST['guardar'])) {
+   echo'hola';
+}
+
+ ?>
 
 <script>
     $(document).ready(function(){

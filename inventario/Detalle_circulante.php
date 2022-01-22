@@ -42,34 +42,9 @@ die();
     </style>
 <?php
     
-    if ( isset($_POST["cod"]) ) { 
+    if ( isset($_POST["desc"]) ) { 
 
-        for($i = 0; $i < count($_POST['cod']); $i++) 
-    {
-         $cod  = $_POST['cod'][$i];
-      $descripcion  = $_POST['desc'][$i];
-      $u_m              = $_POST['um'][$i];
-      $soli             = $_POST['soli'][$i];
-      $costo             = $_POST['costo'][$i];
-
-      $insert = "INSERT INTO tb_circulante(codigo,descripcion, unidad_medida, cantidad_solicitada, costo) VALUES ('$cod','$descripcion','$u_m', '$soli', '$costo')";
-      $query = mysqli_query($conn, $insert);
-
-      if ($query) {
-        echo "<script> alert('Su producto fue registrado correctamente');
-        </script>
-        ";
-      }else{
-         echo "<script> alert('No se pudo Registrar');
-         //location.href = 'form_circulante.php';
-        </script>
-        ";
-      }
-    }
-
-
-      $final = 0;
-
+       
       echo 
       '
 <form id="section"  style="position: all; width: 70%; height: 100%;margin-bottom: 5%;margin-top: 1%;background: #white;">
@@ -77,7 +52,7 @@ die();
         <div align="right">
             <label style="font-weight: bold; margin-right: 20px;">No. de Solicitud</label>
             <div class="col-md-2">
-            <input style="background:transparent;" required class="form-control" type="text" value="'.$cod.'" style="margin-right: 10px;margin-bottom: -25%;margin-top: -25%;" required>
+            <input style="background:transparent;"  class="form-control" type="number" value="" style="margin-right: 10px;margin-bottom: -25%;margin-top: -25%;" required>
             </div>
         </div>
         <br>
@@ -85,7 +60,6 @@ die();
         <div class="table-responsive container-fluid">
       <table class="table table-bordered">
           <tr>
-
             <td><strong>Descripción de los materiales</strong></td>
             <td><strong>Unidad de Medida</strong></td>
             <td><strong>Cantidad Solicitada</strong></td>
@@ -93,16 +67,14 @@ die();
             <td><strong>Total</strong></td>
           </tr>';
 
-      for($i = 0; $i < count($_POST['cod']); $i++)
-    {
-        $cod = $_POST['cod'][$i];
-        $des = $_POST['desc'][$i];
-        $um = $_POST['um'][$i];
-        $cantidad = $_POST['soli'][$i];
-        $cost = $_POST['costo'][$i];
 
-        $total[$i] = $cost * $cantidad;
-        $final = $final + $total[$i];
+       
+        $des = $_POST['desc'];
+        $um = $_POST['um'];
+        $cantidad = $_POST['soli'];
+        $cost = $_POST['costo'];
+
+        
       
       
   echo'  
@@ -111,14 +83,13 @@ die();
         <td>' .$um. '</td>
         <td>' .$cantidad. '</td>
         <td>$' .$cost. '</td>
-        <td>$' .$total[$i]. '</td>
       </tr>'; 
-}
+
       echo'
         <tr>
           
           <td colspan="4"><strong>Costo estimado a realizar</strong></td>
-          <td style="color:red;">$ '.$final.'</td>
+          <td style="color:red;">$</td>
         </tr>
       </table>   
    </div></div>

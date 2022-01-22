@@ -19,7 +19,7 @@ die();
 <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles/style.css" > 
      <link rel="stylesheet" type="text/css" href="styles/estilos_menu.css" > 
-     <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
+     <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
@@ -33,11 +33,11 @@ die();
 
 
 <body>
-    <div class=" container table-responsive " >
+    <div class=" container table-responsive ">
       
         
        <div class="container">
-        <table class="table">
+        <table class="table" >
             <h1 class="text-center mg-t" style="margin-top: -0.5%;">Solicitudes de Almacen</h1>
           <thead>
               <tr id="tr">
@@ -53,8 +53,8 @@ die();
                 
             </tr>
             <tr>
-                  <td id="td" colspan="7">
-                    <h4>No se encontraron resultados 😥</h4></td>
+                  <td id="td" colspan="7" style="background: red;">
+                    <h4 align="center">No se encontraron resultados 😥</h4></td>
             </tr>
             </thead>
             <tbody>

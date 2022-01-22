@@ -34,22 +34,24 @@ die();
 
 <body>
     <div class=" container table-responsive " >
-      
-        <table class="table">
         <h2 class="text-center mg-t" style=" margin-top: -0.5%;">Solicitudes Circulante</h2>
         <p style="margin-top: 5%;" ></p>
+      <form method="POST" action="Detalle_circulante.php" style="margin:0">
+        <table class="table">
+        
         <thead>
               <tr id="tr">
                 <th class="table-info text-dark"><strong>Código</strong></th>
                 <th class="table-info text-dark"><strong>Nombre</strong></th>
                 <th class="table-info text-dark"><strong>Unidad de Medida</strong></th>
                 <th class="table-info text-dark"><strong>Cantidad Solicitada</strong></th>
-                <th class="table-info text-dark"><strong>Cantidad Despachada</strong></th>
-                <th class="table-info text-dark"><strong>Precio</strong></th> <th class="table-info text-dark"><strong>Fecha Registro</strong></th>
+                <th class="table-info text-dark"><strong>Precio</strong></th>
+                <th class="table-info text-dark"><strong>Fecha Registro</strong></th>
+                <th></th>
                 
             </tr>
             <tr>
-            <td id="td" colspan="7"><h4>No se encontraron ningun  resultados 😥</h4></td>
+            <td id="td" colspan="7" style="background: red;"><h4 align="center">No se encontraron ningun  resultados 😥</h4></td>
             </tr>
      </thead>
             <tbody>
@@ -67,18 +69,23 @@ die();
    
 </style>
         <tr>
-            <td data-label="Codigo" class="delete"><?php  echo $solicitudes['codigo']; ?></td>
-            <td data-label="Descripción" class="delete"><?php  echo $solicitudes['descripcion']; ?></td>
-            <td data-label="Unidad De Medida" class="delete"><?php  echo $solicitudes['unidad_medida']; ?></td>
-            <td data-label="Cantidad Solicitada" class="delete"><?php  echo $solicitudes['cantidad_solicitada']; ?></td> 
-            <td data-label="Costo Unitario" class="delete"><?php  echo $solicitudes['costo']; ?></td>
-            <td data-label="Eliminar" class="delete"><?php  echo $solicitudes['fecha_registro']; ?></td>
+            <td data-label="Codigo" class="delete"><input readonly style="width:100%;border:none;background: transparent;" type="text" name="cod" value="<?php  echo $solicitudes['codigo']; ?>"></td>
+
+            <td data-label="Descripción" class="delete"><textarea readonly name="desc" style="width:100%;border:none;background: transparent;"><?php  echo $solicitudes['descripcion']; ?></textarea></td>
+
+            <td data-label="Unidad De Medida" class="delete"><input readonly style="width:100%;border:none;background: transparent;" name="um" type="text"  value="<?php  echo $solicitudes['unidad_medida']; ?>"></td>
+
+            <td data-label="Cantidad Solicitada" class="delete"><input readonly style="width:100%;border:none;background: transparent;" type="text" name="soli" value="<?php  echo $solicitudes['cantidad_solicitada']; ?>"></td> 
+
+            <td data-label="Costo Unitario" class="delete"><input readonly style="width:100%;border:none;background: transparent;" type="number" name="costo" value="<?php  echo $solicitudes['costo']; ?>"></td>
+
+            <td data-label="Eliminar" class="delete"><input readonly style="width:100%;border:none;background: transparent;" type="text" name="fecha" value="<?php  echo $solicitudes['fecha_registro']; ?>"></td>
 
 
 <!--**********************************************************************************************************************************************************************************-->
   <!--Botones para actualizar y eliminar-->
             <td>
-                <a class="btn btn-primary swal2-styled.swal2-confirm" href="dt_circulante.php">Ver detalles</a>
+                <button type="submit" class="btn btn-primary swal2-styled.swal2-confirm">Ver detalles</button>
             </td>
         </tr>
             <div class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
@@ -87,6 +94,7 @@ die();
  <?php } ?> 
            </tbody>
         </table>
+    </form>
     </div>
 </body>
 </html>

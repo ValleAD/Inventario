@@ -25,7 +25,17 @@ die();
     <title>Solicitud Bodega</title>
 </head>
 <body>
+<style type="text/css">
+        @media (min-width: 1080px){
+         #section{
+        margin-top: 5%;
+        margin-left: 16%;
+        width: 69%;
 
+       }
+       
+    }
+</style>
 <section id="section">
 <form action="form_bodega.php" method="post">
 <br>
@@ -63,6 +73,7 @@ die();
         echo'
         <input  type="submit" class="btn btn-success" value="Buscar" name="buscar" id="buscar" >
         <style>
+
             #buscar{
             margin-top: 1%;
             margin-left: 2.5%; 
@@ -92,15 +103,15 @@ if(isset($_POST['codigo'])){
         <div class="container" style="position: initial">
             <div class="row">
               <div  style="position: initial;"  class="col-6.5 col-sm-4">
-                <label id="inp1">Departamento que solicita</label>   
+                <label id="inp1">Departamento que solicita <b>*</b></label>   
                 <input id="inp1" class="form-control" type="text" name="departamento" required>
             </div>
             <div style="position: initial;" class="w col-6.5 col-sm-4">
-                <label id="inp1" >O. DE T. No.</label>   
+                <label id="inp1" >O. DE T. No. <b>*</b></label>   
                 <input id="inp1" class="form-control" type="number" name="odt" required>
             </div>
             <div style="position: initial;" class="w col-6.5 col-sm-4">
-            <label id="inp1" >Usuario</label>   
+            <label id="inp1" >Usuario <b>*</b></label>   
             <input id="inp1" class="form-control" type="text" name="usuario" required>
         </div>
         </div>
@@ -117,7 +128,7 @@ if(isset($_POST['codigo'])){
                 <th><strong>Costo unitario</strong></th>
             </tr>
               <tr>
-              <center> <td id="td" colspan="5"><h4>No se encontraron ningun resutados 😥</h4></td></center> 
+              <center> <td id="td" colspan="5" style="background: red;"><h4 align="center">No se encontraron ningun resutados 😥</h4></td></center> 
 
             </tr>
              </thead>

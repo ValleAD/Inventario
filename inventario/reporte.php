@@ -97,7 +97,7 @@ die();
 
        
                 <td id="td" colspan="9">
-                <h4>No se encontraron resultados 😥</h4></td>
+                <h4 align="center">No se encontraron resultados 😥</h4></td>
               </tr>
             </thead>
 

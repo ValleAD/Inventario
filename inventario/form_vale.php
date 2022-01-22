@@ -17,6 +17,16 @@ die();
 <!DOCTYPE html>
 <!--Es para la version de mobile-->
 <style type="text/css">
+    @media (min-width: 1080px){
+         #section{
+        margin-top: 5%;
+        margin-left: 15%;
+        width: 70%;
+
+       }
+
+    }
+
       @media (max-width: 952px){
     #section{
         margin-top: 5%;
@@ -95,6 +105,7 @@ die();
                 <div class="row">
                     <div class="col-6.5 col-sm-4" style="position: initial">
                     <input  id="inp1" class="form-control" required type="number" name="codigo[]" id="codigo" style="margin-bottom: 2%;" placeholder="Ingrese el código del Producto">
+
                     </div>
                 </div>
             </div>
@@ -133,15 +144,15 @@ if(isset($_POST['codigo'])){
         <div class="container" style="position: initial">
             <div class="row">
               <div class="col-6.5 col-sm-4" style="position: initial">
-                <label id="inp1">Departamento que solicita</label>   
+                <label id="inp1">Departamento que solicita <b>*</b></label>   
                 <input id="inp1" class="form-control" type="text" name="departamento" required>
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
-                <label id="inp1">Vale N°</label>   
+                <label id="inp1">Vale N° <b>*</b></label>   
                 <input id="inp1"class="form-control" type="number" name="numero_vale" required>
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
-                <label id="inp1">Usuario</label>   
+                <label id="inp1">Usuario <b>*</b></label>   
                 <input id="inp1"class="form-control" type="text" name="usuario" required>
             </div>
         </div>
@@ -159,7 +170,7 @@ if(isset($_POST['codigo'])){
                 <th style="width: 15%;">Costo unitario</th>
             </tr>
               <tr>
-              <center> <td id="td" colspan="5"><h4>No se encontraron resultados 😥</h4></td></center> 
+              <center> <td id="td" colspan="7"  style="background: red;"><h4 align="center";>No se encontraron resultados 😥</h4></td></center> 
             </tr>
         </thead>
         <tbody>';

@@ -183,7 +183,8 @@ if (isset($_POST['editar'])){
                 <div class="col-6 col-sm-12" style="position: initial;">
                     <select class="form-control" name="mostrar" id="mostrar" required onchange="this.form.submit()">
                         <option value="">Seleccionar...</option>
-                        <option value="categoria">Categoría</option>
+                        <option value="categoria">Categoría
+                        </option>
                         <option value="fecha">Fecha de registro</option>
                     </select>
                 </div>
@@ -233,7 +234,7 @@ if (isset($_POST['editar'])){
 
        
                 <td id="td" colspan="9">
-                <h4>No se encontraron resultados 😥</h4></td>
+                <h4 align="center">No se encontraron resultados 😥</h4></td>
               </tr>
             </thead>
 

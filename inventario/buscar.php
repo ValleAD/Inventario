@@ -71,10 +71,16 @@ die();
                      <th style="width: 110%;">Cantidad</th>
                      <th style="width: 100%;">Costo Unitario</th>
                      <th style="width: 145%;">Fecha Registro</th>
-                     <th>Editar</th>
+                     <th style="width: 125%;">Editar</th>
                      <th style="width: 125%;">Eliminar</th>
                    </tr>
-                   <tr>
+                      <td id="td" colspan="11">
+                     <h4 align="center">No se encontraron resultados 😥</h4></td>
+                   
+                 </thead>
+     
+                 <tbody>
+                 
 
 <?php
     $sql = "SELECT * FROM tb_productos";
@@ -102,12 +108,7 @@ die();
 ?>
      
             
-                     <td id="td" colspan="9">
-                     <h4>No se encontraron resultados 😥</h4></td>
-                   </tr>
-                 </thead>
-     
-                 <tbody>
+                  
      <style type="text/css">
      
          #td{

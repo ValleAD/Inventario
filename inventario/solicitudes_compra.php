@@ -48,7 +48,7 @@ die();
                 <th><strong>Detalles</strong></th>
                 
             </tr>
-            <td id="td" colspan="8"><h4>No se encontraron ningun  resultados 😥</h4></td>
+            <td id="td" colspan="7"><h4 align="center">No se encontraron ningun  resultados 😥</h4></td>
             
     </thead>
         <tbody> 
@@ -73,7 +73,9 @@ die();
             <td data-label="Unidad Técnica"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
             <td data-label="Descripción Solitud"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
             <td data-label="Fecha de solicitud"><?php  echo $solicitudes['fecha_registro']; ?></td>
-
+             <tr>
+            <td id="td" colspan="6" style="background: red;"><h4 align="center">No se encontraron ningun  resultados 😥</h4></td>
+            </tr>
 
 <!--**********************************************************************************************************************************************************************************-->
   <!--Botones para actualizar y eliminar-->
