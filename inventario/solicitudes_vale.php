@@ -67,7 +67,7 @@ die();
             <td data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
             <td data-label="Fecha de solicitud" class="delete"><?php  echo $solicitudes['fecha_registro']; ?></td>
             <td  data-label="Detalles">
-                <a class="btn btn-primary swal2-styled.swal2-confirm" href="datos_vale.php">Ver detalles</a>
+                <a href="Detalle_Vale.php?id=<?php  echo $solicitudes['codVale']; ?>" class="btn btn-primary swal2-styled.swal2-confirm">Ver detalles</a>
             </td>
         </tr>
 

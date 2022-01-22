@@ -27,8 +27,9 @@ die();
      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
+         <link rel="stylesheet" href="Plugin/bootstap-icon/bootstrap-icons.min.css">
       <link rel="stylesheet" href="Plugin/bootstap-icon/fontawesome.all.min.css">
-    <title>Detalle Circulante</title>
+    <title>Detalle de la Compra</title>
 </head>
 
 
@@ -36,19 +37,17 @@ die();
  <?php 
 
 $id = $_GET['id'];
-$sql = "SELECT * FROM tb_circulante WHERE codigo='$id'";
+$sql = "SELECT * FROM tb_compra WHERE nSolicitud='$id'";
 if($result= mysqli_query($conn,$sql)){
 if (mysqli_num_rows($result)>0) {
 
 	while ($row = mysqli_fetch_array($result)) {
-		$codigo = $row['codigo'];
-		$Descripción = $row['descripcion'];
-		$um = $row['unidad_medida'];
-		$Cant_soli = $row['cantidad_solicitada'];
-        $fecha = $row['fecha_registro'];
-		$precio = $row['costo'];
-		
-        $totalF= $precio*$Cant_soli;
+		$codigo = $row['nSolicitud'];
+		$Descripción = $row['dependencia'];
+		$um = $row['plazo'];
+		$Cant_soli = $row['unidad_tecnica'];
+		$precio = $row['descripcion_solicitud'];
+		$fecha = $row['fecha_registro'];
 	}
 
 	mysqli_free_result($result);
@@ -59,19 +58,19 @@ if (mysqli_num_rows($result)>0) {
 		echo "ERROR: No se  pudo ejecutar la sentencia SQL por que " . mysql_errno($conn);
 }
  ?>
- <h1 style="color:white;text-align: center;"> Detalles Circulantes</h1>
+ <h1 style="color:white;text-align: center;">Detalle de la Compra</h1>
  <div class="container">
- <form action="Exportar_PDF/pdf_circulante.php" method="POST">
+ 
  <table class="table">
         
         <thead>
               <tr id="tr">
  			 <th class="table-info text-dark"><strong>Código</strong></th>
-                <th class="table-info text-dark"><strong>Nombre</strong></th>
-                <th class="table-info text-dark"><strong>Unidad de Medida</strong></th>
-                <th class="table-info text-dark"><strong>Cantidad Solicitada</strong></th>
+                <th class="table-info text-dark"><strong>Dependencia</strong></th>
+                <th class="table-info text-dark"><strong>Plazo</strong></th>
+                <th class="table-info text-dark"><strong>Unidad Tecnica Solicitada</strong></th>
+                <th class="table-info text-dark"><strong>Descripcion de la solicitud</strong></th>
                 <th class="table-info text-dark"><strong>Fecha Registro</strong></th>
-                 <th class="table-info text-dark"><strong>Precio</strong></th>
  		</tr>
  	</thead>
  	<tbody>
@@ -79,34 +78,11 @@ if (mysqli_num_rows($result)>0) {
  		<td data-label="Descripción"><?php echo $Descripción ?></td>
  		<td data-label="Unidad De Medida"><?php echo $um ?></td>
  		<td data-label="Cantidad Solicitada"><?php echo $Cant_soli ?></td>
-        <td data-label="Fecha de Registro"><?php echo $fecha ?></td>
  		<td data-label="Precio"><?php echo $precio ?></td>
- 		<tr>
-            <td colspan="5" style="text-align:right"><b>Total</b></td>
-            <td><?php echo $totalF ?></td>
-        </tr>
-        
+ 		<td data-label="Fecha de Registro"><?php echo $fecha ?></td>
  </tbody>
  </table>
- <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
-      <style>
-        td{
-          background: transparent;
-        }
-        #pdf{
-        margin-left: 38%; 
-        background: rgb(175, 0, 0); 
-        color: #fff; margin-bottom: 2%; 
-        border: rgb(0, 0, 0);
-        }
-        #pdf:hover{
-        background: rgb(128, 4, 4);
-        } 
-        #pdf:active{
-        transform: translateY(5px);
-        } 
-      </style>
-</form>
+
  </div>
 </body>
 </html>

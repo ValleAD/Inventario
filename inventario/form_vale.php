@@ -152,7 +152,7 @@ if(isset($_POST['codigo'])){
                 <input id="inp1"class="form-control" type="number" name="numero_vale" required>
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
-                <label id="inp1">Usuario <b>*</b></label>   
+                <label id="inp1">Nombre de la persona <b>*</b></label>   
                 <input id="inp1"class="form-control" type="text" name="usuario" required>
             </div>
         </div>

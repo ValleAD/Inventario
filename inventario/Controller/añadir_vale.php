@@ -1,6 +1,6 @@
 <?php
 include ('../Model/conexion.php');
-$stocks =$_POST['cant'];
+         $stocks =$_POST['cant'];   
          $stock_obtenido =$_POST['stock_descontar'];
          $stock_descontado=$stocks - $stock_obtenido;
           
@@ -11,9 +11,10 @@ $stocks =$_POST['cant'];
 
    $departamento = $_POST['departamento'];
       $odt = $_POST['numero_vale'];
+         $usuario = $_POST['usuario'];
 
       //crud para guardar los productos en la tabla tb_vale
-      $sql = "INSERT INTO tb_vale (codVale, departamento) VALUES ('$odt', '$departamento')";
+      $sql = "INSERT INTO tb_vale (codVale, departamento,usuario) VALUES ('$odt', '$departamento','$usuario')";
         $result = mysqli_query($conn, $sql); 
         
          for($i = 0; $i < count($_POST['cod']); $i++)
@@ -37,7 +38,7 @@ $stocks =$_POST['cant'];
         ";
       }else {
         echo "<script> alert('UUPS!! Algo no fue mal escrito');
-       // location.href = '../form_vale.php';
+       location.href = '../form_vale.php';
         </script>
         ";
       }

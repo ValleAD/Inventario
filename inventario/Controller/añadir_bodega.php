@@ -4,11 +4,12 @@
 // de re_producto.php y se guarde en la tabla tb_productos mysql
 include '../Model/conexion.php';
 
-$departamento = $_POST['departamento'];
+      $departamento = $_POST['departamento'];
       $odt = $_POST['odt'];
+      $usuario = $_POST['usuario'];
 
       //crud para guardar los productos en la tabla tb_vale
-      $sql = "INSERT INTO tb_bodega (codBodega, departamento) VALUES ('$odt', '$departamento')";
+      $sql = "INSERT INTO tb_bodega (codBodega, departamento,usuario) VALUES ('$odt', '$departamento','$usuario')";
         $result = mysqli_query($conn, $sql); 
         if ($result) {
             echo "<script> alert('Su solicitud fue guardada correctamente');

@@ -58,10 +58,10 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 {
    
     $codigo = $_POST['cod'][$i];
-    $des = $_POST['desc'][$i];
+    $Descripción = $_POST['desc'][$i];
     $um = $_POST['um'][$i];
-    $cantidad = $_POST['cant'][$i];
-    $cost = $_POST['cost'][$i];
+    $Cant_soli = $_POST['cant'][$i];
+    $fecha = $_POST['cost'][$i];
     $tot = $_POST['tot'][$i];
 
 $pdf->SetFont('Arial', '', '12');

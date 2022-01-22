@@ -106,6 +106,7 @@ CREATE TABLE detalle_bodega (
   stock int(11) NOT NULL,
   precio decimal(6,2) NOT NULL,
   odt_bodega int(15),
+  usuario varchar (50)  NOT NULL,
   fecha_registro date NOT NULL DEFAULT current_timestamp(),
     PRIMARY KEY (codigodetallebodega),
     CONSTRAINT fk_tb_bodega_detalle_bodeha FOREIGN KEY (odt_bodega)
@@ -120,6 +121,7 @@ CREATE TABLE detalle_vale (
   stock int(11) NOT NULL,
   precio decimal(6,2) NOT NULL,
   numero_vale int(15),
+  usuario varchar (50)  NOT NULL,
   fecha_registro date NOT NULL DEFAULT current_timestamp(),
     PRIMARY KEY (codigodetallevale),
     CONSTRAINT fk_tb_vale_detalle_vale FOREIGN KEY (numero_vale)

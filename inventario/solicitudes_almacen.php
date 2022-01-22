@@ -88,7 +88,7 @@ die();
   <!--Botones para actualizar y eliminar-->
             <td>
                 <form style="margin:0;background: transparent;" action="dt_almacen.php" method="POST">
-                    <input type="submit" name="enviar" class="btn btn-primary swal2-styled.swal2-confirm" value="Ver detalles">
+                    <a href="Detalle_Almacen.php?id=<?php  echo $solicitudes['codigo']; ?>" class="btn btn-primary swal2-styled.swal2-confirm">Ver detalles</a>
                 </form>
                 
             </td>
