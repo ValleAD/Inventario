@@ -90,7 +90,7 @@ die();
 
  <?php
     include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_productos";
+    $sql = "SELECT * FROM tb_productos ORDER BY fecha_registro DESC";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){?>
