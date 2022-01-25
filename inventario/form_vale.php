@@ -144,16 +144,24 @@ if(isset($_POST['codigo'])){
         <div class="container" style="position: initial">
             <div class="row">
               <div class="col-6.5 col-sm-4" style="position: initial">
-                <label id="inp1">Departamento que solicita <b>*</b></label>   
+                <label id="inp1">Departamento que solicita</b></label>   
                 <input id="inp1" class="form-control" type="text" name="departamento" required>
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
-                <label id="inp1">Vale N° <b>*</b></label>   
+                <label id="inp1">Vale N°</b></label>   
                 <input id="inp1"class="form-control" type="number" name="numero_vale" required>
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
-                <label id="inp1">Nombre de la persona <b>*</b></label>   
-                <input id="inp1"class="form-control" type="text" name="usuario" required>
+                <label id="inp1">Nombre de la persona
+                <select  class="form-control" name="usuarios[]" id="categoria" required style="cursor: pointer">
+                <option selected disabled value="">Seleccionar</option>
+                <option>Juan Martinez</option>
+                <option>Miguel Roscencio</option>
+                <option>Francisco Guevarra </option>
+                <option>Rocio Amilcar</option> 
+               
+            </select>
+                </label>   
             </div>
         </div>
         <br>

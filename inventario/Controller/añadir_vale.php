@@ -6,14 +6,16 @@ include ('../Model/conexion.php');
      
 
 
-
-      $departamento = $_POST['departamento'];
+for ($i=0; $i < count($_POST['cod']) ; $i++) { 
+  $departamento = $_POST['departamento'];
       $odt = $_POST['numero_vale'];
-      $usuario = $_POST['usuario'];
+      $usuario = $_POST['usuarios'][$i];
 
       //crud para guardar los productos en la tabla tb_vale
       $sql = "INSERT INTO tb_vale (codVale, departamento,usuario) VALUES ('$odt', '$departamento','$usuario')";
       $result = mysqli_query($conn, $sql); 
+}
+      
         
          for($i = 0; $i < count($_POST['cod']); $i++)
 
