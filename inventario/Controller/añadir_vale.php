@@ -1,12 +1,10 @@
 <?php
+
+
+
 include ('../Model/conexion.php');
-         $stocks =$_POST['stock'];   
-         $stock_obtenido =$_POST['cant'];
-         $stock_descontado=$stocks - $stock_obtenido;
-          
-   //sql
-   $sql1="UPDATE tb_productos SET stock='$stock_descontado' WHERE stock='$stocks'" ;
-   $result = mysqli_query($conn, $sql1);
+     
+
 
 
       $departamento = $_POST['departamento'];
@@ -47,4 +45,16 @@ include ('../Model/conexion.php');
         ";
       }
     }
+
+    
+for ($i=0; $i < count($_POST['cod']) ; $i++) {
+
+  $stocks =$_POST['stock'][$i];   
+  $stock_obtenido =$_POST['cant'][$i];
+  $stock_descontado=$stocks - $stock_obtenido;
+   
+//sql
+$sql1="UPDATE tb_productos SET stock='$stock_descontado' WHERE stock='$stocks'" ;
+$result = mysqli_query($conn, $sql1);
+}
 ?>
