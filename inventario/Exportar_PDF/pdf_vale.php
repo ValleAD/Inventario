@@ -4,6 +4,7 @@ if(isset($_POST['cod'])){
 
     $depto = $_POST['depto'];
     $fech = $_POST['fech'];
+    $encargado = $_POST['usuario'];
     
         
     $final = 0;
@@ -17,7 +18,7 @@ function Header(){
     $vale = $_POST['vale'];
     
     $this->Cell(8);
-    $this->Image('../img/hospital.jpg', 150, 7, 50);
+    $this->Image('../img/hospital.jpg', 150, 7, 48);
     $this->Image('../img/log_1.png', 12, null, 50);
     $this->Ln(5);
     $this->SetFont('Arial', 'B', 12);
@@ -42,9 +43,11 @@ $pdf->SetFont('Arial', '', '12');
 
 
 $pdf->Ln();
-$pdf->Cell(75, 10, utf8_decode('Fecha: '. $fech), 0, 0, 'C', 0);   
+$pdf->Cell(55, 10, utf8_decode('Fecha: '. $fech), 0, 0, 'C', 0);   
 $pdf->Cell(105, 10, ('Depto. o Servicio: '. $depto), 0, 0, 'C', 0);
-$pdf->Ln(15);
+$pdf->Ln(10);
+$pdf->Cell(68, 5, utf8_decode('Encargado: '. $encargado), 0, 0, 'C', 0);
+$pdf->Ln(10);
 $pdf->SetFont('Arial', 'B', '12');
 $pdf->Cell(5, 10, '', 0, 0, 'C', 0);
 $pdf->Cell(20, 10, utf8_decode('Código'), 1, 0, 'C', 0);
@@ -90,7 +93,7 @@ $pdf->Cell(175, 10, utf8_decode('Observaciones (En que se ocupará el bien entre
 $pdf->Ln();
 $pdf->Cell(5, 10, '', 0, 0, 'C', 0);
 $pdf->Cell(175, 40, '', 1, 0, 'C', 0);
-$pdf->Ln(55);
+$pdf->Ln(50);
 $pdf->Cell(5, 10, '', 0, 0, 'C', 0);
 $pdf->Cell(0, 12,('Solicita: ________________                                  Entrega: ________________'), 0, 1);
 $pdf->Ln();
