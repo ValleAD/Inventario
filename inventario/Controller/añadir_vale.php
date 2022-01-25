@@ -46,12 +46,13 @@ include ('../Model/conexion.php');
     
 for ($i=0; $i < count($_POST['cod']) ; $i++) {
 
+  $codigo= $_POST['cod'][$i];
   $stocks =$_POST['stock'][$i];   
   $stock_obtenido =$_POST['cant'][$i];
   $stock_descontado=$stocks - $stock_obtenido;
    
 //sql
-$sql1="UPDATE tb_productos SET stock='$stock_descontado' WHERE stock='$stocks'" ;
+$sql1="UPDATE tb_productos SET stock='$stock_descontado' WHERE codProductos ='$codigo'" ;
 $result = mysqli_query($conn, $sql1);
 }
 if ($query) {
