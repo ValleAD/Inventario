@@ -3,13 +3,9 @@
 include ('../Model/conexion.php');
      
 
-<<<<<<< HEAD
 
 for ($i=0; $i < count($_POST['cod']) ; $i++) { 
   $departamento = $_POST['departamento'];
-=======
-      $departamento = $_POST['departamento'];
->>>>>>> b63062aae6c096b35da757cd91e10e948e33bdc6
       $odt = $_POST['numero_vale'];
       $usuario = $_POST['usuarios'][$i];
 
