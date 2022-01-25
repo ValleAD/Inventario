@@ -37,7 +37,7 @@ die();
  <?php 
 
 $id = $_GET['id'];
-$sql = "SELECT * FROM tb_vale WHERE codVale='$id'";
+$sql = "SELECT * FROM tb_vale WHERE codVale='$id' ORDER BY fecha_registro ASC";
 if($result= mysqli_query($conn,$sql)){
 if (mysqli_num_rows($result)>0) {
 
