@@ -1,7 +1,7 @@
 <?php
 include ('../Model/conexion.php');
-         $stocks =$_POST['cant'];   
-         $stock_obtenido =$_POST['stock_descontar'];
+         $stocks =$_POST['stock'];   
+         $stock_obtenido =$_POST['cant'];
          $stock_descontado=$stocks - $stock_obtenido;
           
    //sql
