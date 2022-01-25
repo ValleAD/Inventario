@@ -1,11 +1,7 @@
 <?php
 
-
-
 include ('../Model/conexion.php');
      
-
-
 
       $departamento = $_POST['departamento'];
       $odt = $_POST['numero_vale'];
@@ -32,14 +28,14 @@ include ('../Model/conexion.php');
       $query = mysqli_query($conn, $insert);
 
       if ($query) {
-        echo "<script> alert('Su producto fue registrado correctamente');
+        echo "<script> alert('Su solicitud fué realizada correctamente');
        location.href = '../datos_vale.php';
         </script>
         ";
       }if ($result) {
         
       }else {
-        echo "<script> alert('UUPS!! Algo no fue mal escrito');
+        echo "<script> alert('¡Error! algo salió mal');
        location.href = '../form_vale.php';
         </script>
         ";
@@ -56,5 +52,18 @@ for ($i=0; $i < count($_POST['cod']) ; $i++) {
 //sql
 $sql1="UPDATE tb_productos SET stock='$stock_descontado' WHERE stock='$stocks'" ;
 $result = mysqli_query($conn, $sql1);
+}
+if ($query) {
+  echo "<script> alert('Valores descontados correctamente');
+ location.href = '../datos_vale.php';
+  </script>
+  ";
+}if ($result) {
+  
+}else {
+  echo "<script> alert('¡Error! algo salió mal');
+ location.href = '../form_vale.php';
+  </script>
+  ";
 }
 ?>
