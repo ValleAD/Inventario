@@ -178,17 +178,6 @@ if (isset($_POST['editar'])){
                 <a href="buscar.php" class="btn btn-primary">Buscar Productos</a>
             </div>
     
-            <p style="margin-top: 0.5%; font-weight: bold; color: #fff;">Mostrar Por</p>
-            <form action="" method="post">
-                <div class="col-6 col-sm-12" style="position: initial;">
-                    <select class="form-control" name="mostrar" id="mostrar" required onchange="this.form.submit()">
-                        <option value="">Seleccionar...</option>
-                        <option value="categoria">Categoría
-                        </option>
-                        <option value="fecha">Fecha de registro</option>
-                    </select>
-                </div>
-            <form>
         </div>
     </div>
 <br>
@@ -216,19 +205,6 @@ if (isset($_POST['editar'])){
     include 'Model/conexion.php';
     $sql = "SELECT * FROM tb_productos";
     $result = mysqli_query($conn, $sql);
-
-    if(isset($_POST['mostrar'])){
-        $mostrar = $_POST['mostrar'];
-
-        if($mostrar == "categoria"){
-            $sql = "SELECT * FROM tb_productos ORDER BY categoria ASC";
-            $result = mysqli_query($conn, $sql);
-        }
-        else if($mostrar == "fecha"){
-            $sql = "SELECT * FROM tb_productos ORDER BY fecha_registro DESC";
-            $result = mysqli_query($conn, $sql);
-        }
-    }
 
     while ($productos = mysqli_fetch_array($result)){?>
 
