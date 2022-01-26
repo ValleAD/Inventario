@@ -4,14 +4,13 @@ include ('../Model/conexion.php');
      
 
 
-  $departamento = $_POST['departamento'];
-      $odt = $_POST['numero_vale'];
-      $usuario = $_POST['usuario'];
+    $departamento = $_POST['departamento'];
+    $odt = $_POST['numero_vale'];
+    $usuario = $_POST['usuario'];
 
-      //crud para guardar los productos en la tabla tb_vale
-      $sql = "INSERT INTO tb_vale (codVale, departamento,usuario) VALUES ('$odt', '$departamento','$usuario')";
-      $result = mysqli_query($conn, $sql); 
-
+    //crud para guardar los productos en la tabla tb_vale
+    $sql = "INSERT INTO tb_vale (codVale, departamento,usuario) VALUES ('$odt', '$departamento','$usuario')";
+    $result = mysqli_query($conn, $sql); 
       
         
          for($i = 0; $i < count($_POST['cod']); $i++)
@@ -19,7 +18,6 @@ include ('../Model/conexion.php');
     {
  
     $codigo= $_POST['cod'][$i];
-    $usuario = $_POST['usuario'];
     $descripcion= $_POST['desc'][$i];
     $unidadmedida= $_POST['um'][$i];
     $stock = $_POST['cant'][$i];
@@ -56,6 +54,18 @@ for ($i=0; $i < count($_POST['cod']) ; $i++) {
 //sql
 $sql1="UPDATE tb_productos SET stock='$stock_descontado' WHERE codProductos ='$codigo'" ;
 $result = mysqli_query($conn, $sql1);
-
+}
+if ($query) {
+  echo "<script> alert('Valores descontados correctamente');
+ location.href = '../datos_vale.php';
+  </script>
+  ";
+}if ($result) {
+  
+}else {
+  echo "<script> alert('¡Error! algo salió mal');
+ location.href = '../form_vale.php';
+  </script>
+  ";
 }
 ?>
