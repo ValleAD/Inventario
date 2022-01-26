@@ -44,8 +44,9 @@ if (isset($_POST['editar'])){
     $id = $_POST['id'];       
    
   
-    $sql = "SELECT * FROM tb_productos WHERE codProductos = $id";
-    $result = mysqli_query($conn, $sql);
+ 
+$sql = "SELECT codProductos, categoria, catalogo, nombre, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE  codProductos = '$id'";
+$result = mysqli_query($conn, $sql);
 
 
     while ($productos = mysqli_fetch_array($result)){
@@ -119,16 +120,9 @@ if (isset($_POST['editar'])){
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial; margin-left: 17%;">
                 <label for="">Cantidad Actual</label>
-                <input class="form-control" type="text"style="cursor: not-allowed;" readonly name="stock" id="act" value="<?php  echo $productos['stock']; ?>">
+                <input class="form-control" type="text"style="cursor: not-allowed;" readonly name="stock" id="act" value="<?php  echo $productos['SUM(stock)']; ?>">
             </div>
-
-                <div class="col-6 col-sm-4" style="position: initial">
-                <label for="">Nueva Cantidad (+)</label>
-                <input class="form-control" type="text" name="stock_descontar" id="act" required>
-            </div>
-        </div>
-        <div  class="row">
-            <div class="col-6 col-sm-4" style="position: initial;margin: auto;">
+            <div class="col-6 col-sm-4" style="position: initial;">
                 <label for="">Costo unitario</label>
                 <input class="form-control" type="text" name="precio" id="act" value="<?php  echo $productos['precio']; ?>">
             </div>
