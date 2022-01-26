@@ -198,7 +198,7 @@ if(isset($_POST['codigo'])){
                 <input id="inp1"class="form-control" type="number" name="numero_vale" required>
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
-                <label id="inp1">Nombre de la persona
+                <label id="inp1">Nombre de la persona</label>
                 <select  class="form-control" name="usuario" id="usuario" required style="cursor: pointer">
                 <option selected disabled value="">Seleccionar</option>
                 <option>Juan Martinez</option>
