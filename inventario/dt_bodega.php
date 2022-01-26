@@ -40,12 +40,12 @@ die();
     
     </style>
 <?php
-
+$departamento = $_POST['depto'];
 $total = 0;
 $final = 0;
 
    include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_bodega ORDER BY fecha_registro DESC LIMIT 1";
+    $sql = "SELECT * FROM tb_bodega ORDER BY fecha_registro DESC LIMIT 1 and departamento='$departamento'";
     $result = mysqli_query($conn, $sql);
  while ($productos1 = mysqli_fetch_array($result)){
 
@@ -95,7 +95,7 @@ $final = 0;
 
 $odt_bodega = $productos1['codBodega'];
 }
- $sql = "SELECT * FROM detalle_bodega WHERE odt_bodega = $odt_bodega";
+ $sql = "SELECT * FROM detalle_bodega WHERE odt_bodega = $odt_bodega and codigodetallebodega='$cod'";
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
       

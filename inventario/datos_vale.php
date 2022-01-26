@@ -43,16 +43,88 @@ die();
   }
     </style>
 <?php
-
+//fecha
+date_default_timezone_set('UTC');
 $total = 0;
 $final = 0;
 
-   include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_vale ORDER BY fecha_registro DESC LIMIT 1";
-    $result = mysqli_query($conn, $sql);
- while ($productos1 = mysqli_fetch_array($result)){
+    $departamento = $_POST['departamento'];
+    $odt = $_POST['numero_vale'];
+    $usuario = $_POST['usuario'];
+ //crud para guardar los productos en la tabla tb_vale
+    $sql = "INSERT INTO tb_vale (codVale, departamento,usuario) VALUES ('$odt', '$departamento','$usuario')";
+    $result = mysqli_query($conn, $sql); 
+      
+        
+         for($i = 0; $i < count($_POST['cod']); $i++)
 
- echo'   
+    {
+ 
+    $codigo= $_POST['cod'][$i];
+    $descripcion= $_POST['desc'][$i];
+    $unidadmedida= $_POST['um'][$i];
+    $stock = $_POST['cant'][$i];
+    $precio= $_POST['cu'][$i];
+    $odt = $_POST['numero_vale'];
+
+  
+      $insert = "INSERT INTO detalle_vale (codigo,descripcion,unidad_medida,stock,precio,numero_vale) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$odt')";
+      $query = mysqli_query($conn, $insert);
+
+      if ($query) {
+        echo "<script> alert('Su solicitud fué realizada correctamente');
+       
+        </script>
+        ";
+      }if ($result) {
+        
+      }else {
+        echo "<script> alert('¡Error! algo salió mal');
+       location.href = 'form_vale.php';
+        </script>
+        ";
+      }
+    }
+
+    
+for ($i=0; $i < count($_POST['cod']) ; $i++) {
+
+  $codigo= $_POST['cod'][$i];
+  $stocks =$_POST['stock'][$i];   
+  $stock_obtenido =$_POST['cant'][$i];
+  $stock_descontado=$stocks - $stock_obtenido;
+   
+//sql
+$sql1="UPDATE tb_productos SET stock='$stock_descontado' WHERE codProductos ='$codigo'" ;
+$result = mysqli_query($conn, $sql1);
+}
+if ($query) {
+  echo "<script> alert('Valores descontados correctamente');
+  </script>
+  ";
+}if ($result) {
+  
+}else {
+  echo "<script> alert('¡Error! algo salió mal');
+ location.href = 'form_vale.php';
+  </script>
+  ";
+}
+    //Detalles Vale
+      for($i = 0; $i < count($_POST['cod']); $i++)
+
+    {
+ 
+    $codigo= $_POST['cod'][$i];
+    $descripcion= $_POST['desc'][$i];
+    $unidadmedida= $_POST['um'][$i];
+    $stock = $_POST['cant'][$i];
+    $precio= $_POST['cu'][$i];
+    $total = $stock* $precio;
+      $final += $total;
+
+   include 'Model/conexion.php';
+echo'    
 <section id="section">
 <form method="POST" action="Exportar_PDF/pdf_vale.php" target="_blank">
          
@@ -62,24 +134,25 @@ $final = 0;
           <div class="col-6 col-sm-3" style="position: initial">
       
               <label style="font-weight: bold;">Depto. o Servicio:</label>
-              <input readonly class="form-control"  type="text" value="' .$productos1['departamento']. '" name="depto">
+              <input readonly class="form-control"  type="text" value="' .$departamento.'" name="depto">
 
           </div>
 
           <div class="col-6 col-sm-3" style="position: initial">
             <label style="font-weight: bold;">N° de Vale:</label>
-            <input readonly class="form-control"  type="text" value="' .$productos1['codVale']. '" name="vale">
+            <input readonly class="form-control"  type="text" value="' .$odt. '" name="vale">
           </div>
 
         <div class="col-6 col-sm-3" style="position: initial">
             <label style="font-weight: bold;">Encargado:</label>
-            <input readonly class="form-control"  type="text" value="' .$productos1['usuario']. '" name="usuario">
+            <input readonly class="form-control"  type="text" value="' .$usuario.'" name="usuario">
         </div>
 
-          
+          ';  }
+?>  
           <div class="col-6 col-sm-3" style="position: initial">
             <label style="font-weight: bold;">Fecha:</label>
-              <input readonly class="form-control"  type="text" value="' .$productos1['fecha_registro']. '" name="fech">
+              <input readonly class="form-control"  type="text" value="<?php echo date('d/m/Y'); ?>" name="fech">
           </div>
         </div>
       
@@ -98,17 +171,11 @@ $final = 0;
               </tr>
                 <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
            </thead>
-            <tbody>';
+            <tbody>
 
-$num_vale = $productos1['codVale'];
-}
- $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale";
-    $result = mysqli_query($conn, $sql);
-while ($productos = mysqli_fetch_array($result)){
-      
-      $total = $productos['stock'] * $productos['precio'];
-      $final += $total;
-  echo' 
+
+
+
     <style type="text/css">
      #td{
         display: none;
@@ -117,20 +184,16 @@ while ($productos = mysqli_fetch_array($result)){
    
 </style> 
       <tr>
-        <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="' .$productos['codigo']. '"></td>
-        <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly style="border: none">'.$productos['descripcion']. '</textarea></td>
-        <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
-        <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="'.$productos['stock']. '"></td>
-        <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$'.$productos['precio']. '"></td>
-        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$'.$total. '"></td>
+        <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod" readonly value="<?php echo $codigo ?>"></td>
+        <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc" readonly style="border: none"><?php echo $descripcion ?></textarea></td>
+        <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um" readonly value="<?php echo $unidadmedida ?>"></td>
+        <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant" readonly value="<?php echo $stock ?>"></td>
+        <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost" readonly value="$ <?php echo $precio ?>"></td>
+        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot" readonly value="$ <?php echo $total ?>"></td>
         
-      </tr>';
-
-}
-
-      echo'
+      </tr>
       <th colspan="5">SubTotal</th>
-      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$'.$final.'" ></td></tr>
+      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$ <?php echo $final ?>" ></td></tr>
   
          </tbody>
         </table>
@@ -154,8 +217,7 @@ while ($productos = mysqli_fetch_array($result)){
       </style>
 </form>
 </section>
-      ';
-?>            
+ 
   </body>
   </html>
 

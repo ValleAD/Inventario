@@ -139,14 +139,60 @@ if(isset($_POST['codigo'])){
 
     echo'
     <br>
-    <form action="Controller/añadir_vale.php" method="post">
+    <form action="datos_vale.php" method="post">
         
         <div class="container" style="position: initial">
             <div class="row">
-              <div class="col-6.5 col-sm-4" style="position: initial">
-                <label id="inp1">Departamento que solicita</b></label>   
-                <input id="inp1" class="form-control" type="text" name="departamento" required>
-            </div>
+             
+               
+               <div class="col-6.5 col-sm-4" style="position: initial">
+                <div class="form-group" >
+                    <label>Departamento que lo solicitará <b>*</b></label>
+                    <div class="col-md-16" >
+                    <div class="invalid-feedback">
+                        Por favor seleccione una opción.
+                      </div>
+                      <select  class="form-control" name="departamento" required id="departamento">
+                        <option selected disabled value="">Selecione</option>
+                        <option>Direccion Hospital</option>
+                        <option>Subdirección Hospital</option>
+                        <option>Sección Equipo Médico</option>
+                        <option>Sección Equipo Básico</option> 
+                        <option>Seccion Planta Fisica y Monitoreo</option>
+                        <option>Departamento Mantenimiento Local</option>
+                        <option>Servicio Centro Quirúrgico</option>
+                        <option>Departamento Lavamdería y Ropería</option>
+                        <option>Sevicio Medicina Hombre</option>
+                        <option>Sevicio Medicina Mujeres</option>
+                        <option>Unidad Sala de Operacion</option>
+                        <option>Unidad Sala de Partos</option>
+                        <option>Sevicio Almacen</option>
+                        <option>Sevicio Consulta Externa</option>
+                        <option>Unidad Neonatos</option>
+                        <option>Unidad Maxima Urgencia</option>
+                        <option>Sevicio Trabajo Social</option>
+                        <option>Área Saneamiento Ambiental</option>
+                        <option>Unidad Financiara Institucional</option>
+                        <option>Departamento Estadística y Documento Medicos</option>
+                        <option>Departamento Activo Fijo</option>
+                        <option>Unidad Auditoria Interna</option>
+                        <option>Departamento Recursos Humanos</option>
+                        <option>Unidad Asesora de Suministro Médicos</option>
+                        <option>Area Servicios Auxiliares</option>
+                        <option>Servicio Obstetricia</option>
+                        <option>Área Clinica De Úlceras Y Heridas</option>
+                        <option>Unidad Atención Integral e Integrada ala Salud Sexual Reproductiva</option>
+                        <option>Departamento Terapia Dialítica</option>
+                        <option>Área Residencial Médica</option>
+                        <option>Unidad Cuidados Especiales</option>
+                        <option>Área Epidemiología</option>
+                        <option>Area COVID 19</option>
+                      </select>
+                    </div>
+                  </div>
+
+    </div>
+            
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Vale N°</b></label>   
                 <input id="inp1"class="form-control" type="number" name="numero_vale" required>
@@ -203,14 +249,14 @@ if(isset($_POST['codigo'])){
 
 </style>
             <tr>
-               <td data-label="Codigo"><input style="background:transparent; border: none; width: 100%; color: black;"  type="number" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
+               <td data-label="Codigo"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
                <td data-label="Codigo"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="nombre[]" value ="<?php  echo $productos['nombre']; ?>"></td>
                <td data-label="Descripción"><textarea  style="background:transparent; border: none; width: 100%; color: black;" cols="10" rows="1" type="text" class="form-control" readonly name="desc[]"><?php  echo $productos['descripcion']; ?></textarea></td>
                <td data-label="Unidad De Medida"><input  style="background:transparent; border: none; width: 100%; color: black;" type="text" class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
-               <td data-label="Productos Disponibles"><input  style="background:transparent; border: none; width: 100%; color: gray;" type="number" class="form-control" readonly  name="stock[]"  value ="<?php  echo $productos['stock']; ?>"></td>
-               <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="number" class="form-control"  name="cant[]" required>
+               <td data-label="Productos Disponibles"><input  style="background:transparent; border: none; width: 100%; color: gray;" type="text" class="form-control" readonly  name="stock[]"  value ="<?php  echo $productos['stock']; ?>"></td>
+               <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="text" class="form-control"  name="cant[]" required>
         </td>
-               <td data-label="Precio"><input style="background:transparent; border: none; width: 100%; color: black;"  type="number" class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
+               <td data-label="Precio"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
             </tr>
    
         <?php }

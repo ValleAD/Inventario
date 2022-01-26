@@ -57,15 +57,14 @@ $pdf->Cell(20, 10, 'Cantidad', 1, 0, 'C', 0);
 $pdf->Cell(40, 10, 'Costo Unitario', 1, 0, 'C', 0);
 $pdf->Cell(20, 10, 'Total', 1, 1, 'C', 0);
 
-for($i = 0; $i < count($_POST['cod']); $i++)
-{
+
    
-    $codigo = $_POST['cod'][$i];
-    $des = $_POST['desc'][$i];
-    $um = $_POST['um'][$i];
-    $cantidad = $_POST['cant'][$i];
-    $cost = $_POST['cost'][$i];
-    $tot = $_POST['tot'][$i];
+    $codigo = $_POST['cod'];
+    $des = $_POST['desc'];
+    $um = $_POST['um'];
+    $cantidad = $_POST['cant'];
+    $cost = $_POST['cost'];
+    $tot = $_POST['tot'];
 
 $pdf->SetFont('Arial', '', '12');
 $pdf->Cell(5, 10, '', 0, 0, 'C', 0);
@@ -76,7 +75,7 @@ $pdf->Cell(20, 10, utf8_decode($cantidad),1, 0, 'C', 0);
 $pdf->Cell(40, 10, utf8_decode($cost),1, 0, 'C', 0);
 $pdf->Cell(20, 10, utf8_decode($tot),1, 0, 'C', 0);
 $pdf->Ln();
-}
+
 
 $tot_f = $_POST['tot_f'];
 
@@ -100,10 +99,10 @@ $pdf->Ln();
 $pdf->Cell(50);
 $pdf->Cell(0, 12,('Autoriza: ________________'), 0, 1);
 
-
+}
 //mostramos el PDF
 $pdf->Output('', 'Vale.pdf');
 
-}
+
 
 ?>
