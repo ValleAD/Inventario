@@ -79,7 +79,7 @@ $final = 0;
           
           <div class="col-6 col-sm-3" style="position: initial">
             <label style="font-weight: bold;">Fecha:</label>
-              <input readonly class="form-control"  type="text" value="' .$productos1['fecha_registro']. '" name="fech">
+              <input readonly class="form-control"  type="text" value="' .date("d-m-Y",strtotime($productos1['fecha_registro'])). '" name="fech">
           </div>
         </div>
       
