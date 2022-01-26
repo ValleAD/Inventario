@@ -43,7 +43,7 @@ $pdf->SetFont('Arial', '', '12');
 
 
 $pdf->Ln();
-$pdf->Cell(65, 10, utf8_decode('Fecha: '. $fech), 0, 0, 'C', 0);   
+$pdf->Cell(58, 10, utf8_decode('Fecha: '. $fech), 0, 0, 'C', 0);   
 $pdf->Cell(105, 10, ('Depto. o Servicio: '. $depto), 0, 0, 'C', 0);
 $pdf->Ln(10);
 $pdf->Cell(71, 5, utf8_decode('Encargado: '. $encargado), 0, 0, 'C', 0);
