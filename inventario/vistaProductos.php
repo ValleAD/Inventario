@@ -197,7 +197,10 @@ $result = mysqli_query($conn, $sql);
 
  <?php
     include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_productos";
+
+
+    //    $sql = "SELECT * FROM tb_productos";
+    $sql = "SELECT codProductos, categoria, catalogo, nombre, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos GROUP BY codProductos";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){?>
@@ -227,7 +230,7 @@ $result = mysqli_query($conn, $sql);
       <td data-label="Nombre"><?php  echo $productos['nombre']; ?></td>
       <td data-label="Descripción Completa"><textarea style="background:transparent; border: none; color: black;" cols="10" rows="1" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
       <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-      <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
+      <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['SUM(stock)']; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
       <td data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
       <td data-label="Editar">
@@ -238,7 +241,7 @@ $result = mysqli_query($conn, $sql);
       </td>
 
       <td data-label="Eliminar">
-            <a data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm " class="text-primary" href="Controller/Delete_producto.php?id=<?php  echo $productos['cod']; ?>" onclick="return confirmaion()">Eliminar</a>
+            <a data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm " class="text-primary" href="Controller/Delete_producto.php?id=<?php  echo $productos['codProductos']; ?>" onclick="return confirmaion()">Eliminar</a>
       </td>
     </tr>
 
