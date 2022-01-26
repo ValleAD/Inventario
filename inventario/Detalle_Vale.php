@@ -4,79 +4,163 @@ session_start();
     # code...
     echo '
     <script>
-        window.location ="../log/signin.php";
+         window.location ="../log/signin.php";
         session_destroy();  
                 </script>
 die();
 
     ';
+    
 }
+    
 ?>
-<?php include ('templates/menu.php');
-      include ('Model/conexion.php') ?>
+<?php include ('templates/menu.php')?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="styles/style.css" > 
-     <link rel="stylesheet" type="text/css" href="styles/estilos_menu.css" >
-     <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
+ <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles/estilo.css" > 
+    <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
+    <link rel="stylesheet" href="Plugin/assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="Plugin/assets/css/bootstrap-theme.min.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
-         <link rel="stylesheet" href="Plugin/bootstap-icon/bootstrap-icons.min.css">
-      <link rel="stylesheet" href="Plugin/bootstap-icon/fontawesome.all.min.css">
-    <title>Detalles del vale</title>
+    <title>Vale</title>
 </head>
+<body>
+    <style type="text/css">
+              @media (max-width: 952px){
+   #section{
+        margin-top: 5%;
+        margin-left: 15%;
+        width: 75%;
+    }
+    th{
+        width: 25%;
+    }
+  }
+    </style>
+<?php
 
+if(isset($_POST['detalle'])){
 
-<body style="color:white;">
- <?php 
+    $total = 0;
+    $final = 0;
 
-$id = $_GET['id'];
-$sql = "SELECT * FROM tb_vale WHERE codVale='$id' ORDER BY fecha_registro ASC";
-if($result= mysqli_query($conn,$sql)){
-if (mysqli_num_rows($result)>0) {
-
-	while ($row = mysqli_fetch_array($result)) {
-		$codigo = $row['codVale'];
-		$departamento = $row['departamento'];
-        $usuario = $row['usuario'];
-		$fecha = $row['fecha_registro'];
-	}
-
-	mysqli_free_result($result);
-	}else{
-		echo "El Produto no Exixte";
-	}
-}else{
-		echo "ERROR: No se  pudo ejecutar la sentencia SQL por que " . mysql_errno($conn);
-}
- ?>
- <h1 style="color:white;text-align: center;"> Detalles del vale</h1>
- <div class="container">
- 
- <table class="table">
+    $cod_vale = $_POST['id'];
+    
+       include 'Model/conexion.php';
+        $sql = "SELECT * FROM tb_vale WHERE codVale = $cod_vale";
+        $result = mysqli_query($conn, $sql);
+     while ($productos1 = mysqli_fetch_array($result)){
+    
+     echo'   
+    <section id="section">
+    <form method="POST" action="Exportar_PDF/pdf_vale.php" target="_blank">
+             
+          
+            <div class="row">
+          
+              <div class="col-6 col-sm-3" style="position: initial">
+          
+                  <label style="font-weight: bold;">Depto. o Servicio:</label>
+                  <input readonly class="form-control"  type="text" value="' .$productos1['departamento']. '" name="depto">
+    
+              </div>
+    
+              <div class="col-6 col-sm-3" style="position: initial">
+                <label style="font-weight: bold;">N° de Vale:</label>
+                <input readonly class="form-control"  type="text" value="' .$productos1['codVale']. '" name="vale">
+              </div>
+    
+            <div class="col-6 col-sm-3" style="position: initial">
+                <label style="font-weight: bold;">Encargado:</label>
+                <input readonly class="form-control"  type="text" value="' .$productos1['usuario']. '" name="usuario">
+            </div>
+    
+              
+              <div class="col-6 col-sm-3" style="position: initial">
+                <label style="font-weight: bold;">Fecha:</label>
+                  <input readonly class="form-control"  type="text" value="' .$productos1['fecha_registro']. '" name="fech">
+              </div>
+            </div>
+          
+            <br>
+              
+            <table class="table" style="margin-bottom:3%">
+                
+                <thead>
+                  <tr id="tr">
+                    <th>Código</th>
+                    <th style="width: 35%;">Descripción</th>
+                    <th>Unidad de Medida</th>
+                    <th>Cantidad</th>
+                    <th>Costo unitario</th>
+                    <th>Total</th>
+                  </tr>
+                    <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
+               </thead>
+                <tbody>';
+    
+    $num_vale = $productos1['codVale'];
+    }
+     $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale";
+        $result = mysqli_query($conn, $sql);
+    while ($productos = mysqli_fetch_array($result)){
+          
+          $total = $productos['stock'] * $productos['precio'];
+          $final += $total;
+      echo' 
+        <style type="text/css">
+         #td{
+            display: none;
+        }
         
-        <thead>
-              <tr id="tr">
- 			 <th class="table-info text-dark"><strong>Código</strong></th>
-                <th class="table-info text-dark"><strong>Departamento Solicitante</strong></th>
-                <th>Usuario Resonsable</th>
-                <th class="table-info text-dark"><strong>Fecha Registro</strong></th>
- 		</tr>
- 	</thead>
- 	<tbody>
- 		<td data-label="Codigo"><?php echo $codigo ?></td>
- 		<td data-label="Departamento Solicitante"><?php echo $departamento ?></td>
-        <td><?php echo $usuario ?></td>
- 		<td data-label="Fecha de Registro"><?php echo $fecha ?></td>
- </tbody>
- </table>
-
- </div>
+       
+    </style> 
+          <tr>
+            <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="' .$productos['codigo']. '"></td>
+            <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly style="border: none">'.$productos['descripcion']. '</textarea></td>
+            <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
+            <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="'.$productos['stock']. '"></td>
+            <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$'.$productos['precio']. '"></td>
+            <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$'.$total. '"></td>
+            
+          </tr>';
+    
+    }
+    
+          echo'
+          <th colspan="5">SubTotal</th>
+          <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$'.$final.'" ></td></tr>
+      
+             </tbody>
+            </table>
+    
+        
+      
+        <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
+          <style>
+            #pdf{
+            margin-left: 38%; 
+            background: rgb(175, 0, 0); 
+            color: #fff; margin-bottom: 2%; 
+            border: rgb(0, 0, 0);
+            }
+            #pdf:hover{
+            background: rgb(128, 4, 4);
+            } 
+            #pdf:active{
+            transform: translateY(5px);
+            } 
+          </style>
+    </form>
+    </section>';
+}
+?>            
 </body>
 </html>
+
+

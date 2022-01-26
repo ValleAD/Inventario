@@ -56,7 +56,11 @@ $count = "SELECT codProductos, SUM(stock), fecha_registro FROM tb_productos GROU
 $sql1="UPDATE tb_productos SET stock='$stock_descontado' WHERE codProductos ='$codigo'" ;
 $result = mysqli_query($conn, $sql1);
 }
+<<<<<<< Updated upstream
 if ($query) {
+=======
+if ($query) { 
+>>>>>>> Stashed changes
   echo "<script> alert('Valores descontados correctamente');
  location.href = '../datos_vale.php';
   </script>

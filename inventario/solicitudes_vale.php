@@ -67,7 +67,10 @@ die();
             <td data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
             <td data-label="Fecha de solicitud" class="delete"><?php  echo $solicitudes['fecha_registro']; ?></td>
             <td  data-label="Detalles">
-                <a href="Detalle_Vale.php?id=<?php  echo $solicitudes['codVale']; ?>" class="btn btn-primary swal2-styled.swal2-confirm">Ver detalles</a>
+            <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_vale.php">             
+                <input type='hidden' name='id' value="<?php  echo $solicitudes['codVale']; ?>">             
+                <button name='detalle' class="btn btn-primary swal2-styled.swal2-confirm">Ver Detalles</button>             
+            </form> 
             </td>
         </tr>
 
