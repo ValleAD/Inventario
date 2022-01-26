@@ -75,21 +75,24 @@ if (mysqli_num_rows($result)>0) {
  		</tr>
  	</thead>
  	<tbody>
- 		<td data-label="Codigo"><?php echo $codigo ?></td>
- 		<td data-label="Descripción"><?php echo $Descripción ?></td>
- 		<td data-label="Unidad De Medida"><?php echo $um ?></td>
- 		<td data-label="Cantidad Solicitada"><?php echo $Cant_soli ?></td>
-        <td data-label="Fecha de Registro"><?php echo $fecha ?></td>
- 		<td data-label="Precio"><?php echo $precio ?></td>
+ 		<td data-label="Codigo"><input type="text" name="cod" value="<?php echo $codigo ?>"></td>
+ 		<td data-label="Descripción"><input type="text" name="desc" value="<?php echo $Descripción ?>"></td>
+ 		<td data-label="Unidad De Medida"><input type="text" name="um" value="<?php echo $um ?>"></td>
+ 		<td data-label="Cantidad Solicitada"><input type="text" name="cant" value="<?php echo $Cant_soli ?>"></td>
+        <td data-label="Fecha de Registro"><input type="text" name="fecha" value="<?php echo $fecha ?>"></td>
+ 		<td data-label="Precio"><input type="text" name="precio" value="<?php echo $precio ?>"></td>
  		<tr>
             <td colspan="5" style="text-align:right"><b>Total</b></td>
-            <td><?php echo $totalF ?></td>
+            <td><input type="text" name="Total" value="<?php echo $totalF ?>"></td>
         </tr>
         
  </tbody>
  </table>
- <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
+ <button id="pdf" type="submit" class="btn btn-lg" name="pdf">Exportar a PDF</button>
       <style>
+        input{
+            background:transparent; border: none; width: 100%;
+        }
         td{
           background: transparent;
         }

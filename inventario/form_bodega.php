@@ -102,10 +102,53 @@ if(isset($_POST['codigo'])){
         
         <div class="container" style="position: initial">
             <div class="row">
-              <div  style="position: initial;"  class="col-6.5 col-sm-4">
-                <label id="inp1">Departamento que solicita <b>*</b></label>   
-                <input id="inp1" class="form-control" type="text" name="departamento" required>
-            </div>
+            <div class="col-6.5 col-sm-4" style="position: initial">
+                <div class="form-group" >
+                    <label>Departamento que lo solicitará <b>*</b></label>
+                    <div class="col-md-16" >
+                    <div class="invalid-feedback">
+                        Por favor seleccione una opción.
+                      </div>
+                      <select  class="form-control" name="departamento" id="departamento">
+                        <option selected disabled value="">Selecione</option>
+                        <option>Direccion Hospital</option>
+                        <option>Subdirección Hospital</option>
+                        <option>Sección Equipo Médico</option>
+                        <option>Sección Equipo Básico</option> 
+                        <option>Seccion Planta Fisica y Monitoreo</option>
+                        <option>Departamento Mantenimiento Local</option>
+                        <option>Servicio Centro Quirúrgico</option>
+                        <option>Departamento Lavamdería y Ropería</option>
+                        <option>Sevicio Medicina Hombre</option>
+                        <option>Sevicio Medicina Mujeres</option>
+                        <option>Unidad Sala de Operacion</option>
+                        <option>Unidad Sala de Partos</option>
+                        <option>Sevicio Almacen</option>
+                        <option>Sevicio Consulta Externa</option>
+                        <option>Unidad Neonatos</option>
+                        <option>Unidad Maxima Urgencia</option>
+                        <option>Sevicio Trabajo Social</option>
+                        <option>Área Saneamiento Ambiental</option>
+                        <option>Unidad Financiara Institucional</option>
+                        <option>Departamento Estadística y Documento Medicos</option>
+                        <option>Departamento Activo Fijo</option>
+                        <option>Unidad Auditoria Interna</option>
+                        <option>Departamento Recursos Humanos</option>
+                        <option>Unidad Asesora de Suministro Médicos</option>
+                        <option>Area Servicios Auxiliares</option>
+                        <option>Servicio Obstetricia</option>
+                        <option>Área Clinica De Úlceras Y Heridas</option>
+                        <option>Unidad Atención Integral e Integrada ala Salud Sexual Reproductiva</option>
+                        <option>Departamento Terapia Dialítica</option>
+                        <option>Área Residencial Médica</option>
+                        <option>Unidad Cuidados Especiales</option>
+                        <option>Área Epidemiología</option>
+                        <option>Area COVID 19</option>
+                      </select>
+                    </div>
+                  </div>
+
+    </div>
             <div style="position: initial;" class="w col-6.5 col-sm-4">
                 <label id="inp1" >O. DE T. No. <b>*</b></label>   
                 <input id="inp1" class="form-control" type="number" name="odt" required>
