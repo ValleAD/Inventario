@@ -1,68 +1,49 @@
-<?php
-session_start();
- if (!isset($_SESSION['signin'])>0) {
-    # code...
-    echo '
-    <script>
-        window.location ="../log/signin.php";
-        session_destroy();  
-                </script>
-die();
-
-    ';
-}
-?>
-<?php include ('templates/menu.php')?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
-         <link rel="stylesheet" href="Plugin/bootstap-icon/bootstrap-icons.min.css">
-      <link rel="stylesheet" href="Plugin/bootstap-icon/fontawesome.all.min.css">
-      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
-  
+         <link rel="stylesheet" type="text/css" href="../../../styles/estilo_men.css">
+         <link rel="stylesheet" type="text/css" href="../../../styles/estilos_tablas.css">
+   <link rel="stylesheet" type="text/css" href="../../../Plugin/bootstrap/css/bootstrap.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+      <link rel="icon" type="image/png" sizes="32x32"  href="../../../img/log.png"> 
     <title>Productos</title>
 </head>
 <body>
-    <div class="container">
-      <table class="table">
-        
-           <h1 style="margin-top:5px; text-align: center;">Inventario de Productos</h1>
+<body style="background-image: url(../../../img/4k.jpg);  
+            background-repeat: no-repeat;
+            background-attachment: fixed;">
+ <header>
+        <div class="menu_bar">
+            <a href="#" class="bt-menu"><span class="fas fa-bars"></span>Menú</a>
+        </div>
 
-
-
-<style>
-  #act {
-    margin-top: 0.5%;
-  }
-</style>
-
-<br>
-    <style>
-        #ver{
-            margin-top: 2%;
-            margin-right: 1%; 
-            background: rgb(5, 65, 114); 
-            color: #fff; 
-            margin-bottom: 0.5%;  
-            border: rgb(5, 65, 114);
-        }
-        #ver:hover{
-            background: rgb(9, 100, 175);
-        } 
-        #ver:active{
-        transform: translateY(5px);
-        } 
-    </style>
+        <nav>
+            <ul>
+                <li>
+                    <a id="b" href="../invitado.php"><span class="icon-house"></span>Inicio</a></li>
+                   
+                </li>
+                <li class="submenu">
+                    <a id="b" href="#"><span class="icon-rocket"></span>Solicitud Vale<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <ul class="children">
+                        <li><a id="b" href="form_vale.php">Nuevo</a></li>
+                    </ul>
+                </li>
+                 <li class="submenu" style="float:right;">
+                    <a id="a" href="#"><span class="icon-rocket"></span><i class="bi bi-person"></i> Invitado<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <ul class="children">
+                        <li><a id="b" href="../logout_invitado.php">Cerrar Session</a></li>
+                        
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
 </table>
 </div>
 <div class="container top">
@@ -89,7 +70,7 @@ die();
               <tr>
 
  <?php
-    include 'Model/conexion.php';
+    include '../../../Model/conexion.php';
     $sql = "SELECT * FROM tb_productos";
     $result = mysqli_query($conn, $sql);
 

@@ -1,7 +1,5 @@
 
-<?php
-session_start();
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -46,8 +44,9 @@ background:burlywood;
                 <li class="submenu">
                     <a id="a" href="#"><span class="icon-rocket"></span>Solicitud Vale<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
+                    <li><a id="b" href="vale/productos.php">Articulos</a></li>
                         <li><a id="b" href="vale/form_vale.php">Nuevo</a></li>
-                        <li><a id="b" href="vale/productos.php">Articulos</a></li>
+                       
                     </ul>
                 </li>
                  <li class="submenu" style="float:right;">

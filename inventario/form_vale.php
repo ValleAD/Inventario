@@ -110,7 +110,7 @@ die();
                 </div>
             </div>
             ';
-        }
+        } 
         echo'
         <input   type="submit" class=" btn btn-success" value="Buscar" name="buscar" id="buscar" >
         <style>
@@ -206,7 +206,7 @@ if(isset($_POST['codigo'])){
                 <option>Francisco Guevarra </option>
                 <option>Rocio Amilcar</option> 
                
-            </select>
+                </select>
                 </label>   
             </div>
         </div>
@@ -254,8 +254,7 @@ if(isset($_POST['codigo'])){
                <td data-label="Descripción"><textarea  style="background:transparent; border: none; width: 100%; color: black;" cols="10" rows="1" type="text" class="form-control" readonly name="desc[]"><?php  echo $productos['descripcion']; ?></textarea></td>
                <td data-label="Unidad De Medida"><input  style="background:transparent; border: none; width: 100%; color: black;" type="text" class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
                <td data-label="Productos Disponibles"><input  style="background:transparent; border: none; width: 100%; color: gray;" type="text" class="form-control" readonly  name="stock[]"  value ="<?php  echo $productos['stock']; ?>"></td>
-               <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="text" class="form-control"  name="cant[]" required>
-        </td>
+               <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="text" class="form-control"  name="cant[]" required></td>
                <td data-label="Precio"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
             </tr>
    

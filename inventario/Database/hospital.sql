@@ -37,6 +37,21 @@ CREATE TABLE tb_productos (
     PRIMARY KEY (cod)
 );
 
+
+CREATE TABLE report_productos (
+  cod int(15) NOT NULL AUTO_INCREMENT,
+  codProductos int(15) NOT NULL,
+  categoria varchar(50) NOT NULL,
+  catalogo int(15) NOT NULL,
+  nombre varchar(50) NOT NULL,
+  descripcion varchar(200) NOT NULL,
+  unidad_medida varchar(10) NOT NULL DEFAULT 'u',
+  stock int(11) NOT NULL,
+  precio decimal(6,2) NOT NULL,
+  fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+    PRIMARY KEY (cod)
+);
+
 CREATE TABLE tb_usuarios (
   id int(11) NOT NULl AUTO_INCREMENT,
   username varchar(25) NOT NULL,
@@ -51,7 +66,7 @@ CREATE TABLE tb_bodega (
   codBodega int(11) NOT NULL,
   departamento varchar(50) NOT NULL,
     usuario varchar (50)  NOT NULL,
-  fecha_registro date NOT NULL DEFAULT current_timestamp(),
+  fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (codBodega)
 );
 
@@ -59,7 +74,7 @@ CREATE TABLE tb_vale (
   codVale int(11) NOT NULL,
   departamento varchar(50) NOT NULL,
   usuario varchar (50)  NOT NULL,
-  fecha_registro date NOT NULL DEFAULT current_timestamp(),
+  fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (codVale)
 );
 
@@ -70,7 +85,7 @@ CREATE TABLE tb_compra (
   unidad_tecnica varchar(75) NOT NULL,
   descripcion_solicitud varchar(50) NOT NULL,
     usuario varchar (50)  NOT NULL,
-  fecha_registro date NOT NULL DEFAULT current_timestamp(),
+  fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (nSolicitud)
 );
 
@@ -83,7 +98,7 @@ cantidad_solicitada int(25) NOT NULL,
 cantidad_despachada int(25) NOT NULL,
 precio int(20) NOT NULL,
   usuario varchar (50)  NOT NULL,
-fecha_registro date NOT NULL DEFAULT current_timestamp(),
+fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (codigoalmacen)
 );
 
@@ -94,7 +109,7 @@ unidad_medida varchar(5) NOT NULL,
 cantidad_solicitada int(25) NOT NULL,
 costo int(50) NOT NULL,
   usuario varchar (50)  NOT NULL,
-fecha_registro date NOT NULL DEFAULT current_timestamp(),
+fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (codigo)
 );
 
@@ -147,12 +162,17 @@ CREATE TABLE detalle_compra (
 
 INSERT INTO `tb_usuarios` (`id`, `username`, `firstname`, `lastname`, `email`, `password`, `tipo_usuario`) 
 VALUES (NULL, 'Admin', 'Admin', 'Master', 'Admin@mail.com', 'Admin', '1');
-INSERT INTO `tb_productos` (`cod`, `codProductos`, `categoria`, `catalogo`, `nombre`, `descripcion`, `unidad_medida`, `stock`, `precio`) 
-VALUES (NULL, '1', 'almacen', '1', 'martillo', 'herramientas', 'lb', '50', '12.25'),
-       (NULL, '2', 'enfermeria', '2', 'mascarilla k-95', 'utensilio', 'cto', '70', '10'),
-       (NULL, '3', 'computacion', '3', 'destornillador', 'herramienta', 'mto', '15', '7'),
-       (NULL, '4', 'Químicos', '4', 'botella', 'herramientas', 'Qq', '25', '15'),
-       (NULL, '5', 'Agropecuarios y Forestales', '5', 'hacha', 'herramientas', 'Pgo', '6', '25');
+INSERT INTO `report_productos`(`cod`, `codProductos`, `categoria`, `catalogo`, `nombre`, `descripcion`, `unidad_medida`, `stock`, `precio`, `fecha_registro`) VALUES (NULL, '1', 'almacen', '1', 'martillo', 'herramientas', 'lb', '50', '12.25', '2022-01-26'),
+       (NULL, '2', 'enfermeria', '2', 'mascarilla k-95', 'utensilio', 'cto', '70', '10', '2022-01-26'),
+       (NULL, '3', 'computacion', '3', 'destornillador', 'herramienta', 'mto', '15', '7', '2022-01-26'),
+       (NULL, '4', 'Químicos', '4', 'botella', 'herramientas', 'Qq', '25', '15', '2022-01-26'),
+       (NULL, '5', 'Agropecuarios y Forestales', '5', 'hacha', 'herramientas', 'Pgo', '6', '25', '2022-01-26');
+INSERT INTO `tb_productos`(`cod`, `codProductos`, `categoria`, `catalogo`, `nombre`, `descripcion`, `unidad_medida`, `stock`, `precio`, `fecha_registro`) VALUES (NULL, '1', 'almacen', '1', 'martillo', 'herramientas', 'lb', '50', '12.25', '2022-01-26'),
+       (NULL, '2', 'enfermeria', '2', 'mascarilla k-95', 'utensilio', 'cto', '70', '10', '2022-01-26'),
+       (NULL, '3', 'computacion', '3', 'destornillador', 'herramienta', 'mto', '15', '7', '2022-01-26'),
+       (NULL, '4', 'Químicos', '4', 'botella', 'herramientas', 'Qq', '25', '15', '2022-01-26'),
+       (NULL, '5', 'Agropecuarios y Forestales', '5', 'hacha', 'herramientas', 'Pgo', '6', '25', '2022-01-26');
+       
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
