@@ -92,6 +92,12 @@ background:burlywood;
                    
                 </li>
                 <li class="submenu">
+                    <a id="b" href="#"><span class="icon-rocket"></span>Articulos<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <ul class="children">
+                        <li><a id="b" href="vale/productos.php">Nuevo</a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
                     <a id="b" href="#"><span class="icon-rocket"></span>Solicitud Vale<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
                         <li><a id="b" href="form_vale.php">Nuevo</a></li>

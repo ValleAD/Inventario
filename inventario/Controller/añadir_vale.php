@@ -54,6 +54,7 @@ for ($i=0; $i < count($_POST['cod']) ; $i++) {
   $stock_descontado=$stocks - $stock_obtenido;
    
 //sql
+$count = "SELECT codProductos, SUM(stock), fecha_registro FROM tb_productos GROUP BY codProductos";
 $sql1="UPDATE tb_productos SET stock='$stock_descontado' WHERE codProductos ='$codigo'" ;
 $result = mysqli_query($conn, $sql1);
 

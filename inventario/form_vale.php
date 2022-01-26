@@ -237,10 +237,12 @@ if(isset($_POST['codigo'])){
 
     
     $codigo = $_POST['codigo'][$i];
-    $sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
+   //$sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
+
+
+   $sql = "SELECT codProductos, nombre, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE  codProductos = '$codigo'";
     $result = mysqli_query($conn, $sql);
 
-    
     while ($productos = mysqli_fetch_array($result)){ ?>    
         <style type="text/css">
         #td{
@@ -253,7 +255,7 @@ if(isset($_POST['codigo'])){
                <td data-label="Codigo"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="nombre[]" value ="<?php  echo $productos['nombre']; ?>"></td>
                <td data-label="Descripción"><textarea  style="background:transparent; border: none; width: 100%; color: black;" cols="10" rows="1" type="text" class="form-control" readonly name="desc[]"><?php  echo $productos['descripcion']; ?></textarea></td>
                <td data-label="Unidad De Medida"><input  style="background:transparent; border: none; width: 100%; color: black;" type="text" class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
-               <td data-label="Productos Disponibles"><input  style="background:transparent; border: none; width: 100%; color: gray;" type="text" class="form-control" readonly  name="stock[]"  value ="<?php  echo $productos['stock']; ?>"></td>
+               <td data-label="Productos Disponibles"><input  style="background:transparent; border: none; width: 100%; color: gray;" type="text" class="form-control" readonly  name="stock[]"  value ="<?php  echo $productos['SUM(stock)']; ?>"></td>
                <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="text" class="form-control"  name="cant[]" required></td>
                <td data-label="Precio"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
             </tr>
