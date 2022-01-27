@@ -40,14 +40,13 @@ die();
             <thead>
               <tr id="tr">
              
-                <th class="table-info text-dark text-center"><strong>O. de T. No.</strong></th>
-                <th class="table-info text-dark text-center"><strong>Departamento Solicitante</strong></th>
-                <th class="table-info text-dark text-center"><strong>Persona que lo Solicito</strong></th>
-                <th class="table-info text-dark text-center"><strong>Fecha de solicitud</strong></th>
-                <th class="table-info text-dark text-center"><strong>Detalles</strong></th>
+                <th class="table-info text-dark"><strong>O. de T. No.</strong></th>
+                <th class="table-info text-dark"><strong>Departamento Solicitante</strong></th>
+                <th class="table-info text-dark"><strong>Fecha de solicitud</strong></th>
+                <th class="table-info text-dark"><strong>Detalles</strong></th>
                 
             </tr>
-            <td id="td" colspan="5"  style="background: red;"><h4 align="center">No se encontraron ningun  resultados 😥</h4></td>
+            <td id="td" colspan="5"  style="background: red;"><h4 align="center">No se encontraron resultados 😥</h4></td>
             
     <style type="text/css">
         
@@ -69,26 +68,20 @@ die();
 </style>
 
         <tr>
-            <td data-label="O. de T. No." class="delete"><input readonly style="width:100%;border:none;background: transparent; color: black;" class="form-control" type="number" name="odt" value="<?php  echo $solicitudes['codBodega']; ?>"></td>
-            <td data-label="Departamento Solicitante" class="delete"><input readonly style="width:100%;border:none;background: transparent; color: black;" class="form-control" type="text" name="Departamento" value="<?php  echo $solicitudes['departamento']; ?>"></td>
-            <td data-label="Persona que lo Solicito" class="delete">
-                <input readonly style="width:100%;border:none;background: transparent; color: black;" class="form-control" type="text" name="usuario" value="<?php  echo $solicitudes['usuario']; ?>">
-            </td>
-            <td data-label="Fecha de solicitud" class="delete"><input readonly style="width:100%;border:none;background: transparent; color: black;" class="form-control" type="text" name="fecha" value="<?php  echo $solicitudes['fecha_registro']; ?>"></td>
-
-
-<!--**********************************************************************************************************************************************************************************-->
-  <!--Botones para actualizar y eliminar-->
-            <td data-label="Detalles">
-               <a href="Detalle_Bodega.php?id=<?php  echo $solicitudes['codBodega']; ?>" class="btn btn-primary swal2-styled.swal2-confirm">Ver detalles</a>
+            <td data-label="Código" class="delete"><?php  echo $solicitudes['codBodega']; ?></td>
+            <td data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
+            <td data-label="Fecha de solicitud" class="delete"><?php  echo $solicitudes['fecha_registro']; ?></td>
+            <td  data-label="Detalles">
+            <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Bodega.php">             
+                <input type='hidden' name='id' value="<?php  echo $solicitudes['codBodega']; ?>">             
+                <button name='detalle' class="btn btn-primary swal2-styled.swal2-confirm">Ver Detalles</button>             
+            </form> 
             </td>
         </tr>
-            <div class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-   
-        </div>
  <?php } ?> 
            </tbody>
         </table>
+
     </div>
 </body>
 </html>

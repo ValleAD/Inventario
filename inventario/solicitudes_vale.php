@@ -38,13 +38,10 @@ die();
             <center><h1 style="margin-top:5px">Solicitudes Vale</h1></center>
             <thead>
               <tr id="tr">
-            
-             
                 <th class="table-info text-dark"><strong>Código de Vale</strong></th>
                 <th class="table-info text-dark"><strong>Departamento Solicitante</strong></th>
                 <th class="table-info text-dark"><strong>Fecha de solicitud</strong></th>
-                <th class="table-info text-dark"><strong>Detalles</strong></th>
-                
+                <th class="table-info text-dark"><strong>Detalles</strong></th> 
             </tr>
             <td id="td" colspan="4"  style="background: red;"><h4 align="center">No se encontraron ningun  resultados 😥</h4></td>
            
@@ -63,7 +60,7 @@ die();
    
 </style>
         <tr>
-            <td data-label="Codigo" class="delete"><?php  echo $solicitudes['codVale']; ?></td>
+            <td data-label="Código" class="delete"><?php  echo $solicitudes['codVale']; ?></td>
             <td data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
             <td data-label="Fecha de solicitud" class="delete"><?php  echo $solicitudes['fecha_registro']; ?></td>
             <td  data-label="Detalles">
@@ -74,13 +71,6 @@ die();
             </td>
         </tr>
 
-           
-
-<!--**********************************************************************************************************************************************************************************-->
-  <!--Botones para actualizar y eliminar-->
-            
-       
-          
  <?php } ?> 
            
            </tbody>

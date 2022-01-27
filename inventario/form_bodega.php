@@ -4,8 +4,8 @@ session_start();
     # code...
     echo '
     <script>
-
-         window.location ="log/signin.php";
+        
+         window.location ="../log/signin.php";
         session_destroy();  
                 </script>
 die();
@@ -15,37 +15,77 @@ die();
 ?>
 <?php include ('templates/menu.php')?>
 <!DOCTYPE html>
+<!--Es para la version de mobile-->
+<style type="text/css">
+    @media (min-width: 1080px){
+         #section{
+        margin-top: 5%;
+        margin-left: 15%;
+        width: 70%;
+
+       }
+
+    }
+
+      @media (max-width: 952px){
+    #section{
+        margin-top: 5%;
+        margin-left: 12%;
+        width: 75%;
+       }
+    #lab{
+        margin-left: 5%;
+
+    }
+    .w{
+        margin-top: 5%;
+    }
+    #inp{
+            margin-left: 10%;
+    }  #inp1{
+         margin-top: 2%;
+          margin-left: 5%;
+    }  #buscar{
+         margin-top: 2%;
+          margin-left: 25%;
+          margin-bottom: 25%;
+    }
+    #btn{
+        margin-top: 5%;
+        margin-left: 35%;
+        margin-bottom: 15%;
+    }
+    #buscar{
+        margin-top: 5%;
+        margin-left: 35%;
+        margin-bottom: 15%;
+        background: whitesmoke;
+    }
+
+      }
+</style>
+
 <html lang="en">
 <head>
     <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles/estilo.css" > 
-    <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
+     <link rel="stylesheet" type="text/css" href="styles/estilo.css"> 
+     <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">  
     <title>Solicitud Bodega</title>
 </head>
 <body>
-<style type="text/css">
-        @media (min-width: 1080px){
-         #section{
-        margin-top: 5%;
-        margin-left: 16%;
-        width: 69%;
 
-       }
-       
-    }
-</style>
 <section id="section">
 <form action="form_bodega.php" method="post">
 <br>
-    <div class="container">
+ <div class="container">
         <div class="row">
     <div class="col" style="position: initial">
-     <label>¿Cuántos productos desea solicitar de la bodega?</label>
+     <label>¿Cuántos productos desea solicitar a Bodega?</label>
     </div>
    <div style="margin-bottom: 1%;margin-right: 1%;">
-        <input id="inp" style="position: initial" class="form-control" type="number" name="cantidad" value="1"> 
+        <input id="inp" style="position: initial;" class="form-control" type="number" name="cantidad" value="1"> 
       
     </div>
    <div>
@@ -63,20 +103,21 @@ die();
             <form action="form_bodega.php" method="post" style="margin-top: 2%;">
             <div class="container" style="position: initial">
                 <div class="row">
-                    <div style="position: initial;" class="col-6 col-sm-3">
-                    <input id="inp1 "  class="form-control" required type="number" name="codigo[]" id="codigo" style="margin-bottom: 2%;" placeholder="Ingrese el código del Producto">
+                    <div class="col-6.5 col-sm-4" style="position: initial">
+                    <input  id="inp1" class="form-control" required type="number" name="codigo[]" id="codigo" style="margin-bottom: 2%;" placeholder="Ingrese el código del Producto">
+
                     </div>
                 </div>
             </div>
             ';
         }
         echo'
-        <input  type="submit" class="btn btn-success" value="Buscar" name="buscar" id="buscar" >
+        <input   type="submit" class=" btn btn-success" value="Buscar" name="buscar" id="buscar" >
         <style>
-
             #buscar{
-            margin-top: 1%;
-            margin-left: 2.5%; 
+            margin-bottom: 5%;
+            margin-left: 2.5%;
+            margin-top: 0.5%; 
             background: rgb(5, 65, 114); 
             color: #fff; margin-bottom: 2%; 
             border: rgb(5, 65, 114);
@@ -98,84 +139,49 @@ if(isset($_POST['codigo'])){
 
     echo'
     <br>
-    <form style="margin-bottom: 15%;" action="Controller/añadir_bodega.php" method="post">
+    <form action="Controller/añadir_bodega.php" method="post">
         
         <div class="container" style="position: initial">
             <div class="row">
-            <div class="col-6.5 col-sm-4" style="position: initial">
-                <div class="form-group" >
-                    <label>Departamento que lo solicitará <b>*</b></label>
-                    <div class="col-md-16" >
-                    <div class="invalid-feedback">
-                        Por favor seleccione una opción.
-                      </div>
-                      <select  class="form-control" name="departamento" id="departamento">
-                        <option selected disabled value="">Selecione</option>
-                        <option>Direccion Hospital</option>
-                        <option>Subdirección Hospital</option>
-                        <option>Sección Equipo Médico</option>
-                        <option>Sección Equipo Básico</option> 
-                        <option>Seccion Planta Fisica y Monitoreo</option>
-                        <option>Departamento Mantenimiento Local</option>
-                        <option>Servicio Centro Quirúrgico</option>
-                        <option>Departamento Lavamdería y Ropería</option>
-                        <option>Sevicio Medicina Hombre</option>
-                        <option>Sevicio Medicina Mujeres</option>
-                        <option>Unidad Sala de Operacion</option>
-                        <option>Unidad Sala de Partos</option>
-                        <option>Sevicio Almacen</option>
-                        <option>Sevicio Consulta Externa</option>
-                        <option>Unidad Neonatos</option>
-                        <option>Unidad Maxima Urgencia</option>
-                        <option>Sevicio Trabajo Social</option>
-                        <option>Área Saneamiento Ambiental</option>
-                        <option>Unidad Financiara Institucional</option>
-                        <option>Departamento Estadística y Documento Medicos</option>
-                        <option>Departamento Activo Fijo</option>
-                        <option>Unidad Auditoria Interna</option>
-                        <option>Departamento Recursos Humanos</option>
-                        <option>Unidad Asesora de Suministro Médicos</option>
-                        <option>Area Servicios Auxiliares</option>
-                        <option>Servicio Obstetricia</option>
-                        <option>Área Clinica De Úlceras Y Heridas</option>
-                        <option>Unidad Atención Integral e Integrada ala Salud Sexual Reproductiva</option>
-                        <option>Departamento Terapia Dialítica</option>
-                        <option>Área Residencial Médica</option>
-                        <option>Unidad Cuidados Especiales</option>
-                        <option>Área Epidemiología</option>
-                        <option>Area COVID 19</option>
-                      </select>
-                    </div>
-                  </div>
-
-    </div>
-            <div style="position: initial;" class="w col-6.5 col-sm-4">
-                <label id="inp1" >O. DE T. No. <b>*</b></label>   
-                <input id="inp1" class="form-control" type="number" name="odt" required>
+              <div class="col-6.5 col-sm-4" style="position: initial">
+                <label id="inp1">Departamento que solicita</b></label>   
+                <input id="inp1" class="form-control" type="text" name="departamento" required>
             </div>
-            <div style="position: initial;" class="w col-6.5 col-sm-4">
-            <label id="inp1" >Usuario <b>*</b></label>   
-            <input id="inp1" class="form-control" type="text" name="usuario" required>
-        </div>
+            <div class="col-.5 col-sm-4" style="position: initial">
+                <label id="inp1">O. de T. No.</b></label>   
+                <input id="inp1"class="form-control" type="number" name="odt" required>
+            </div>
+            <div class="col-.5 col-sm-4" style="position: initial">
+                <label id="inp1">Nombre de la persona</label>
+                <select  class="form-control" name="usuario" id="usuario" required style="cursor: pointer">
+                <option selected disabled value="">Seleccionar</option>
+                <option>Juan Martinez</option>
+                <option>Miguel Roscencio</option>
+                <option>Francisco Guevarra </option>
+                <option>Rocio Amilcar</option> 
+               
+            </select>
+                </label>   
+            </div>
         </div>
         <br>
-
-        <table class="table" style="margin-bottom:3%">
-            
-            <thead>
-              <tr id="tr">
-                <th><strong>Código</strong></th>
-                <th><strong>Descripción</strong></th>
-                <th><strong>U/M</strong></th>
-                <th><strong>Cantidad</strong></th>
-                <th><strong>Costo unitario</strong></th>
+          <div class="container">
+         <table class="table" style="margin-bottom:3%;">
+        <thead>
+           <tr id="tr" style="text-align: left">
+                <th style="width: 10%;">Código</th>
+                <th style="width: 17%;">Nombre</th>
+                <th style="width: 20%;">Descripción</th>
+                <th style="width: 10%;">U/M</th>
+                <th style="width: 15%;">Productos Disponibles</th>
+                <th style="width: 15%;">Cantidad</th>
+                <th style="width: 15%;">Costo unitario</th>
             </tr>
               <tr>
-              <center> <td id="td" colspan="5" style="background: red;"><h4 align="center">No se encontraron ningun resutados 😥</h4></td></center> 
-
+              <center> <td id="td" colspan="7"  style="background: red;"><h4 align="center";>No se encontraron resultados 😥</h4></td></center> 
             </tr>
-             </thead>
-            <tbody>';
+        </thead>
+        <tbody>';
 
 
            
@@ -185,10 +191,12 @@ if(isset($_POST['codigo'])){
 
     
     $codigo = $_POST['codigo'][$i];
-    $sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
+   //$sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
+
+
+   $sql = "SELECT codProductos, nombre, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE  codProductos = '$codigo'";
     $result = mysqli_query($conn, $sql);
 
-    
     while ($productos = mysqli_fetch_array($result)){ ?>    
         <style type="text/css">
         #td{
@@ -196,15 +204,14 @@ if(isset($_POST['codigo'])){
     }
 
 </style>
-    
             <tr>
-               <td data-label="Codigo"><input style="background:transparent; border: none; width: 100%;color: black;" type="number"  class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
-               <td data-label="Descripción">
-                <textarea style="background:transparent;color: black;border: none;" cols="10" rows="1" readonly name="desc[]" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea>
-                </td>
-               <td data-label="Unidad De Medida"><input  style="background:transparent; border: none; width: 100%;color: black;"type="text"  class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
-               <td data-label="Cantidad"><input  style="background:transparent; border: none; width: 100%;color: black;"type="number"  class="form-control"  name="cant[]" values = "<?php  echo $productos['stock']; ?>"></td>
-               <td data-label="Costo Unitario"><input style="background:transparent; border: none; width: 100%;color: black;" type="number"  class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
+               <td data-label="Codigo"><input style="background:transparent; border: none; width: 100%; color: black;"  type="number" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
+               <td data-label="Codigo"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="nombre[]" value ="<?php  echo $productos['nombre']; ?>"></td>
+               <td data-label="Descripción"><textarea  style="background:transparent; border: none; width: 100%; color: black;" cols="10" rows="1" type="text" class="form-control" readonly name="desc[]"><?php  echo $productos['descripcion']; ?></textarea></td>
+               <td data-label="Unidad De Medida"><input  style="background:transparent; border: none; width: 100%; color: black;" type="text" class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
+               <td data-label="Productos Disponibles"><input  style="background:transparent; border: none; width: 100%; color: gray;" type="text" class="form-control" readonly  name="stock[]"  value ="<?php  echo $productos['SUM(stock)']; ?>"></td>
+               <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="text" class="form-control"  name="cant[]" required></td>
+               <td data-label="Precio"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
             </tr>
    
         <?php }
@@ -212,13 +219,16 @@ if(isset($_POST['codigo'])){
     
 
 
-    echo '    </tbody>
+    echo ' 
+   </tbody>
         </table>
 
+    </div>
     
-    <input class="btn btn-lg" type="submit" value="Enviar" id="enviar" name="submits">
+    <input class="btn btn-lg" type="submit" value="Enviar" id="enviar">
         <style>
             #enviar{
+                margin-bottom: 5%;
             margin-left: 1.5%; 
             background: rgb(5, 65, 114); 
             color: #fff; margin-bottom: 2%; 
@@ -230,9 +240,6 @@ if(isset($_POST['codigo'])){
             #enviar:active{
             transform: translateY(5px);
             } 
-            form{
-    margin: auto;
-}
         </style>
     </form>';
 }

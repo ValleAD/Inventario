@@ -1,60 +1,72 @@
 <?php
 
-//CRUD para guardar datos enviados
-// de re_producto.php y se guarde en la tabla tb_productos mysql
-include '../Model/conexion.php';
+include ('../Model/conexion.php');
+     
 
-      $departamento = $_POST['departamento'];
-      $odt = $_POST['odt'];
-      $usuario = $_POST['usuario'];
 
-      //crud para guardar los productos en la tabla tb_vale
-      $sql = "INSERT INTO tb_bodega (codBodega, departamento,usuario) VALUES ('$odt', '$departamento','$usuario')";
-        $result = mysqli_query($conn, $sql); 
-        if ($result) {
-            echo "<script> alert('Su solicitud fue guardada correctamente');
-            location.href = '../dt_bodega.php';
-            </script>
-            "; 
-          }else {
-            echo "<script> alert('UUPS!! Algo no fue mal escrito');
-            location.href = '../form_bodega.php';
-            </script>
-            ";
-         }
-         
-for($i = 0; $i < count($_POST['cod']); $i++)
+    $departamento = $_POST['departamento'];
+    $orden_trabajo = $_POST['odt'];
+    $usuario = $_POST['usuario'];
+
+    //crud para guardar los productos en la tabla tb_vale
+    $sql = "INSERT INTO tb_bodega (codBodega, departamento,usuario) VALUES ('$orden_trabajo', '$departamento','$usuario')";
+    $result = mysqli_query($conn, $sql); 
+      
+        
+         for($i = 0; $i < count($_POST['cod']); $i++)
 
     {
+ 
     $codigo= $_POST['cod'][$i];
-    $usuario = $_POST['usuario'];
     $descripcion= $_POST['desc'][$i];
     $unidadmedida= $_POST['um'][$i];
     $stock = $_POST['cant'][$i];
     $precio= $_POST['cu'][$i];
-    $odt_bodega = $_POST['odt'];
+    $orden_trabajo = $_POST['odt'];
 
-      $insert = "INSERT INTO detalle_bodega (codigo,descripcion,unidad_medida,stock,precio,odt_bodega, usuario) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$odt_bodega','$usuario')";
+  
+      $insert = "INSERT INTO detalle_bodega (codigo,descripcion,unidad_medida,stock,precio,odt_bodega) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$orden_trabajo')";
       $query = mysqli_query($conn, $insert);
 
       if ($query) {
-        echo "<script> alert('Su producto fue registrado correctamente');
-        location.href = '../dt_bodega.php';
+        echo "<script> alert('Su solicitud fué realizada correctamente');
+       location.href = '../dt_bodega.php';
         </script>
         ";
+      }if ($result) {
+        
       }else {
-        echo "<script> alert('UUPS!! Algo no fue mal escrito');
-        location.href = '../form_bodega.php';
+        echo "<script> alert('¡Error! algo salió mal');
+       location.href = '../form_bodega.php';
         </script>
         ";
       }
+    }
 
-      
-      
-
-         //CRUD que trae los productos seleccionados por el id de 'tb_productos' y los captura y los inserta en la nueva tabla llamada
-         //detalle_bodega
-    }  
     
+for ($i=0; $i < count($_POST['cod']) ; $i++) {
 
+  $codigo= $_POST['cod'][$i];
+  $stocks =$_POST['stock'][$i];   
+  $stock_obtenido =$_POST['cant'][$i];
+  $stock_descontado=$stocks - $stock_obtenido;
+   
+//sql
+$count = "SELECT codProductos, SUM(stock), fecha_registro FROM tb_productos GROUP BY codProductos";
+$sql1="UPDATE tb_productos SET stock='$stock_descontado' WHERE codProductos ='$codigo'" ;
+$result = mysqli_query($conn, $sql1);
+}
+if ($query) {
+  echo "<script> alert('Valores descontados correctamente');
+ location.href = '../dt_bodega.php';
+  </script>
+  ";
+}if ($result) {
+  
+}else {
+  echo "<script> alert('¡Error! algo salió mal');
+ location.href = '../form_bodega.php';
+  </script>
+  ";
+}
 ?>

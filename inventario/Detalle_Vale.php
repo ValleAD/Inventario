@@ -138,8 +138,6 @@ if(isset($_POST['detalle'])){
       
              </tbody>
             </table>
-    
-        
       
         <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
           <style>
