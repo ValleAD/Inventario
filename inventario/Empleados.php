@@ -39,7 +39,7 @@ die();
 
         <table class="table">
 
-    <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%;">Nuevo Integrante<i class="bi bi-caret-down-fill"></i></button>
+    <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%;">Nuevo Integrantes</button>
 <!-- Delete -->
 <div class="modal fade" id="Usuarios" style="background: rgba(0, 0, 0, 0.3);" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">
@@ -102,7 +102,7 @@ die();
                 
             </tr>
             <tr>
-            <td id="td" colspan="7" style="background: red;"><h4 align="center">No se encontraron ningun  resultados 😥</h4></td>
+            <td id="td" colspan="5" style="background: red;"><h4 align="center">No se encontraron ningun  resultados 😥</h4></td>
             </tr>
      </thead>
             <tbody>
