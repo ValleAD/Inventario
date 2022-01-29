@@ -7,11 +7,11 @@ include '../Model/conexion.php';
 for($i = 0; $i < count($_POST['cod']); $i++) 
     {
       $codigo_producto  = $_POST['cod'][$i];
-      $categoria        = $_POST['categoria'][$i];
+      $categoria        = $_POST['categoria'];
       $catalogo         = $_POST['catal'][$i];
       $nombre_articulo  = $_POST['nombre'][$i];
       $Descripción      = $_POST['descr'][$i];
-      $u_m              = $_POST['um'][$i];
+      $u_m              = $_POST['um'];
       $cantidad         = $_POST['cant'][$i];
       $cost             = $_POST['cu'][$i];
 

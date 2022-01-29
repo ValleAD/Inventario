@@ -44,7 +44,7 @@ background:burlywood;
         <nav>
             <ul>
                 <li><a id="a" href="home.php"><span class="icon-house"></span>Inicio</a></li>
-                <?php if($tipo_usuario == 1) { ?>
+                
                     <li class="submenu">
                     <a id="a" href="#"><span class="icon-rocket"></span>Articulos<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
@@ -53,24 +53,24 @@ background:burlywood;
                         <li><a id="b" href="reporte_ingresos.php">Reporte Ingresos</a></li>
                         <li><a id="b" href="reporte_egresos.php">Reporte Egresos</a></li>
                     </ul>
-                </li><?php } ?>
+                </li>
                 <li class="submenu">
-                    <a id="a" href="#"><span class="icon-rocket"></span>Solicitud Vale<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <a id="a" href="#"><span class="icon-rocket"></span>Soli. Vale<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_vale.php">Mostrar</a></li>
                         <li><a id="b" href="form_vale.php">Nuevo</a></li>
                     </ul>
                 </li>
-                <?php if($tipo_usuario == 1) { ?>
+                
                 <li class="submenu">
-                    <a id="a" href="#"><span class="icon-rocket"></span>Solicitud Bodega<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <a id="a" href="#"><span class="icon-rocket"></span>Soli. Bodega<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_bodega.php">Mostrar</a></li>
                         <li><a id="b" href="form_bodega.php">Nuevo</a></li>
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a id="a" href="#"><span class="icon-rocket"></span>Solicitud Compra<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <a id="a" href="#"><span class="icon-rocket"></span>Soli. Compra<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_compra.php">Mostrar</a></li>
                         <li><a id="b" href="form_compra.php">Nuevo</a></li>
@@ -78,19 +78,27 @@ background:burlywood;
                 </li>
                 
                 <li class="submenu">
-                    <a id="a" href="#"><span class="icon-rocket"></span>Solicitud Almacen<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <a id="a" href="#"><span class="icon-rocket"></span>Soli. Almacen<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_almacen.php">Mostrar</a></li>
                         <li><a id="b" href="form_almacen.php">Nuevo</a></li>
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a id="a" href="#"><span class="icon-rocket"></span>Solicitud Circulante<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <a id="a" href="#"><span class="icon-rocket"></span>Soli. Circulante<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_circulante.php">Mostrar</a></li>
                         <li><a id="b" href="form_circulante.php">Nuevo</a></li>
                     </ul>
-                </li><?php }?>
+                </li><?php if($tipo_usuario == 1) { ?>
+                 <li class="submenu">
+                    <a id="a" href="#"><span class="icon-rocket"></span>Empleados<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <ul class="children">
+                        <li><a id="b" href="Empleados.php">Mostrar</a></li>
+                    </ul>
+                </li>
+
+                <?php }?>
 
                <?php
     $cliente =$_SESSION['signin'];
@@ -101,7 +109,7 @@ background:burlywood;
 <!-- Delete -->
 <div class="modal fade" id="info" style="background: rgba(0, 0, 0, 0.3);" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">
-        <div class="modal-content" style="background-color: hsla(0.5turn , 100% , 0.1% , 0.5 );color: white; position: initial; z-index: 1000px;">
+        <div class="modal-content" style="background-image: linear-gradient(90deg, rgb(5, 114, 72), rgb(42, 136, 136));color: white; position: initial; z-index: 1000px;">
             <div class="modal-header">
                 <h5 class="modal-title" style="color:white;">Información del Usuario</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -125,7 +133,11 @@ background:burlywood;
                 </tr>
                 <tr>
                     
-                    <p style="color: #fff">Email: <?php echo $consulta['email'];?></p>
+                    <p style="color: #fff">Establecimiento:<br> <?php echo $consulta['Establecimiento'];?></p>
+                </tr>
+                <tr>
+                    
+                    <p style="color: #fff">Unidad: <?php echo $consulta['unidad'];?></p>
                 </tr>
 <?php } ?>
                </table>
