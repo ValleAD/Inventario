@@ -2,7 +2,7 @@
 require '../Model/conexion.php';
 
 //conversion
-$Nusuario =$_POST['usuario'];
+$usuario =$_POST['usuario'];
 $Nusuario =$_POST['Nusuario'];
 $Npassword =$_POST['Npassword'];
 
