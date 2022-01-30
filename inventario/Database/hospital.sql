@@ -167,12 +167,8 @@ VALUES (NULL, 'Admin', 'Admin', 'Master', 'Hospital Nacional Zacatecoluca PA "Sa
 
 
 
-INSERT INTO `report_productos`(`cod`, `codProductos`, `categoria`, `catalogo`, `nombre`, `descripcion`, `unidad_medida`, `stock`, `precio`, `fecha_registro`) 
-VALUES (NULL, '1', 'almacen', '1', 'martillo', 'herramientas', 'lb', '50', '12.25', '2022-01-26'),
-       (NULL, '2', 'enfermeria', '2', 'mascarilla k-95', 'utensilio', 'cto', '70', '10', '2022-01-26'),
-       (NULL, '3', 'computacion', '3', 'destornillador', 'herramienta', 'mto', '15', '7', '2022-01-26'),
-       (NULL, '4', 'Químicos', '4', 'botella', 'herramientas', 'Qq', '25', '15', '2022-01-26'),
-       (NULL, '5', 'Agropecuarios y Forestales', '5', 'hacha', 'herramientas', 'Pgo', '6', '25', '2022-01-26');
+
+
 INSERT INTO `tb_productos`(`cod`, `codProductos`, `categoria`, `catalogo`, `nombre`, `descripcion`, `unidad_medida`, `stock`, `precio`, `fecha_registro`) VALUES (NULL, '1', 'almacen', '1', 'martillo', 'herramientas', 'lb', '50', '12.25', '2022-01-26'),
        (NULL, '2', 'enfermeria', '2', 'mascarilla k-95', 'utensilio', 'cto', '70', '10', '2022-01-26'),
        (NULL, '3', 'computacion', '3', 'destornillador', 'herramienta', 'mto', '15', '7', '2022-01-26'),
