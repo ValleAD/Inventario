@@ -139,7 +139,7 @@ background:burlywood;
                     
                     <p style="color: #fff">Unidad: <?php echo $consulta['unidad'];?></p>
                 </tr>
-<?php } ?>
+
                </table>
           
 
@@ -157,6 +157,8 @@ background:burlywood;
             </style>
             </div>
             <div class="modal-footer">
+                <button data-toggle="modal" data-target="#Usuario_Contraseña" class="btn btn-info" >Cambiar Usuario y Contraseña</button>
+
         <a href="log/logout.php" type="submit" id="Update" class="btn btn-danger" >Cerrar Sesión</a>
       </div>
            
@@ -164,6 +166,36 @@ background:burlywood;
     </div>
 </div>
 </div>
+<div class="modal fade" id="Usuario_Contraseña" style="background: rgba(0, 0, 0, 0.3);" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content" style="background-image: linear-gradient(1deg, rgb(5, 114, 72), rgb(42, 136, 136));color: white; position: initial; z-index: 1000px;">
+            <div class="modal-header">
+                <h5 class="modal-title" style="color:white;">Cambiando Información del Usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+            </div>
+              <div class="modal-body">
+                <form action="log/logout_Empleado.php" method="POST" style="margin: 1%;background: transparent;">
+                    
+                    <div class="form-group">
+                        <label>Nuevo Usuario</label>
+                        <input class="form-control" type="text" name="Nusuario">
+                    
+                        <label>Nueva Contraseña</label>
+                        <input class="form-control" type="text" name="Npassword">
+                    </div>
+                
+                     </div>
+            <div class="modal-footer">
+
+        <button type="submit" id="Update" class="btn btn-danger" >Cambiar datos</button>
+      </div>
+          </form>
+        </div>
+    </div>
+</div>
+         <?php } ?>
             </ul>
         </nav>
     </header>

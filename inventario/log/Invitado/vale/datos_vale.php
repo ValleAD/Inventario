@@ -20,6 +20,19 @@
 <body style="background-image: url(../../../img/4k.jpg);  
             background-repeat: no-repeat;
             background-attachment: fixed;">
+                <style type="text/css">
+        #a:hover{
+   text-decoration: none;
+   color: lawngreen;
+}
+ #b:hover{
+   text-decoration: none;
+   color:whitesmoke;
+}
+.children{
+background:burlywood;
+}
+ </style>
  <header>
         <div class="menu_bar">
             <a href="#" class="bt-menu"><span class="fas fa-bars"></span>Menú</a>
@@ -30,6 +43,12 @@
                 <li>
                     <a id="b" href="../invitado.php"><span class="icon-house"></span>Inicio</a></li>
                    
+                </li>
+                <li class="submenu">
+                    <a id="b" href="#"><span class="icon-rocket"></span>Articulos<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <ul class="children">
+                        <li><a id="b" href="vale/productos.php">Nuevo</a></li>
+                    </ul>
                 </li>
                 <li class="submenu">
                     <a id="b" href="#"><span class="icon-rocket"></span>Solicitud Vale<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
