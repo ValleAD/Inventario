@@ -30,25 +30,21 @@ die();
       <link rel="stylesheet" href="Plugin/bootstap-icon/fontawesome.all.min.css">
     <title>Solicitudes De Compra</title>
 </head>
-
-
 <body>
      <div class="container">
         <table class="table">
             <center><h1 style="margin-top:5px">Solicitudes de Compra</h1></center>
             <thead>
               <tr id="tr">
-             
-                <th><strong>N. Solicitud</strong></th>
+                <th><strong>No. Solicitud</strong></th>
                 <th><strong>Dependencia</strong></th>
-                <th><strong>Plaza</strong></th>
+                <th><strong>Plazo y No. de Enrtegas</strong></th>
                 <th><strong>Unidad Técnica</strong></th>
                 <th align="center"><strong>Descripción Solicitud</strong></th>
                 <th><strong>Fecha de Registro</strong></th>
                 <th><strong>Detalles</strong></th>
-                
             </tr>
-            <td id="td" colspan="7"  style="background:red;"><h4 align="center" >No se encontraron ningun  resultados 😥</h4></td>
+            <td id="td" colspan="7"><h4 align="center" >No se encontraron resultados 😥</h4></td>
             
     </thead>
         <tbody> 
@@ -63,42 +59,22 @@ die();
      #td{
         display: none;
     }
-   
-   
 </style>
         <tr>
-            <td data-label="N. Solicitud"><input readonly style="width:100%;border:none;background: transparent; color:black;" class="form-control" type="text" name="nSolicitud" value="<?php  echo $solicitudes['nSolicitud']; ?>"></td>
-
-            <td data-label="Dependencia">
-                <input  class="form-control" readonly style="width:100%;border:none;background: transparent; color:black;" type="text" name="dependencia" value="<?php  echo $solicitudes['dependencia']; ?>"></td>
-
-            <td data-label="Plaza">
-                <input  class="form-control" readonly style="width:100%;border:none;background: transparent; color:black;" type="text" name="plazo" value="<?php  echo $solicitudes['plazo']; ?>"></td>
-
-            <td data-label="Unidad Técnica">
-                <input  class="form-control" readonly style="width:100%;border:none;background: transparent; color:black;" type="text" name="unidad_tecnica" value="<?php  echo $solicitudes['unidad_tecnica']; ?>"></td>
-
-            <td data-label="Descripción Solitud">
-                <input  class="form-control" readonly style="width:100%;border:none;background: transparent; color:black;" type="text" name="" value="<?php  echo $solicitudes['descripcion_solicitud']; ?>"></td>
-
-            <td data-label="Fecha de solicitud">
-                <input  class="form-control" readonly style="width:100%;border:none;background: transparent; color:black;" type="text" name="" value="<?php  echo $solicitudes['fecha_registro']; ?>"></td>
-
-              <td data-label="Detalles">
-                <a href="Detalle_Compra.php?id=<?php  echo $solicitudes['nSolicitud']; ?>" class="btn btn-primary swal2-styled.swal2-confirm">Ver detalles</a>
+            <td data-label="No. Solicitud" class="delete"><?php  echo $solicitudes['nSolicitud']; ?></td>
+            <td data-label="Dependencia" class="delete"><?php  echo $solicitudes['dependencia']; ?></td>
+            <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['plazo']; ?></td>
+            <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
+            <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
+            <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['fecha_registro']; ?></td>
+            <td  data-label="Detalles">
+            <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Compra.php">             
+                <input type='hidden' name='id' value="<?php  echo $solicitudes['nSolicitud']; ?>">             
+                <button name='detalle' class="btn btn-primary swal2-styled.swal2-confirm">Ver Detalles</button>             
+            </form> 
             </td>
-             <tr>
-            <td id="td" colspan="6" style="background: red;"><h4 align="center">No se encontraron ningun  resultados 😥</h4></td>
-
-            </tr>
-
-<!--**********************************************************************************************************************************************************************************-->
-  <!--Botones para actualizar y eliminar-->
-          
         </tr>
-            <div class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-   
-        </div>
+        
  <?php } ?> 
            </tbody>
         </table>

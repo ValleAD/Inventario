@@ -84,7 +84,7 @@ form{
   </div>
   <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="black"><label>Usuario</label> </font>
-      <input style="background:transparent; color: black;"  class="form-control" type="text" name="unidad_tecnica" id="como3" required>
+      <input style="background:transparent; color: black;"  class="form-control" type="text" name="usuario" id="como3" required>
       <br>
     </div>
     </div>
@@ -98,16 +98,16 @@ form{
         
                   <div class="form-group" style="position: all; margin: 2%">
                       <label>Categoría</label> 
-                      <select  class="form-control" name="category" id="um" required>
-                        <option selected disabled value="">Seleccionar</option>
-                        <option value="agro">Agropecuarios y Forestales</option>
-                        <option value="cuero">Cuero y Caucho</option>
-                        <option value="quimicos">Químicos</option>
-                        <option value="combus">Combustibles y Lubricantes</option> 
-                        <option value="minNo">Minerales no Metálicos</option>
-                        <option value="min">Minerales Metálicos</option>
-                        <option value="repuestos">Herramientas y Repuestos</option>
-                        <option value="elec">Materiales Eléctricos</option>
+                      <select  class="form-control" name="categoria[]" id="categoria" required>
+                        <option selected disabled>Seleccionar</option>
+                        <option>Agropecuarios y Forestales</option>
+                        <option>Cuero y Caucho</option>
+                        <option>Químicos</option>
+                        <option>Combustibles y Lubricantes</option> 
+                        <option>Minerales no Metálicos</option>
+                        <option>Minerales Metálicos</option>
+                        <option>Herramientas y Repuestos</option>
+                        <option>Materiales Eléctricos</option>
                       </select>
                   </div> 
 
@@ -133,7 +133,7 @@ form{
                             <div class="invalid-feedback">
                             Por favor seleccione una opción.
                             </div>
-                        <select  class="form-control" name="um[]" id="um" required>
+                        <select class="form-control" name="um[]" id="um" required>
                             <option selected disabled value="">Unidad de Medida</option>
                            <option>c/u</option>
                             <option>lb</option>

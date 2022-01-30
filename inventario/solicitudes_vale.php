@@ -30,8 +30,6 @@ die();
       <link rel="stylesheet" href="Plugin/bootstap-icon/fontawesome.all.min.css">
     <title>Solicitudes De Vale</title>
 </head>
-
-
 <body>
      <div class="container">
         <table class="table">
@@ -43,7 +41,7 @@ die();
                 <th class="table-info text-dark"><strong>Fecha de solicitud</strong></th>
                 <th class="table-info text-dark"><strong>Detalles</strong></th> 
             </tr>
-            <td id="td" colspan="4"  style="background: red;"><h4 align="center">No se encontraron ningun  resultados 😥</h4></td>
+            <td id="td" colspan="4"><h4 align="center">No se encontraron ningun  resultados 😥</h4></td>
            
      </thead>
         <tbody>     

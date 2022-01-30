@@ -18,71 +18,147 @@ die();
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="styles/style.css" > 
-     <link rel="stylesheet" type="text/css" href="styles/estilos_menu.css" >
-     <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles/estilo.css" > 
+    <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
+    <link rel="stylesheet" href="Plugin/assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="Plugin/assets/css/bootstrap-theme.min.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
-         <link rel="stylesheet" href="Plugin/bootstap-icon/bootstrap-icons.min.css">
-      <link rel="stylesheet" href="Plugin/bootstap-icon/fontawesome.all.min.css">
     <title>Detalle de la Compra</title>
 </head>
 
 
-<body style="color:white;">
- <?php 
+<body>
+<?php
+if(isset($_POST['detalle'])){
 
-$id = $_GET['id'];
-$sql = "SELECT * FROM tb_compra WHERE nSolicitud='$id'";
-if($result= mysqli_query($conn,$sql)){
-if (mysqli_num_rows($result)>0) {
+$total = 0;
+$final = 0;
 
-	while ($row = mysqli_fetch_array($result)) {
-		$codigo = $row['nSolicitud'];
-		$Descripción = $row['dependencia'];
-		$um = $row['plazo'];
-		$Cant_soli = $row['unidad_tecnica'];
-		$precio = $row['descripcion_solicitud'];
-		$fecha = $row['fecha_registro'];
-	}
+$cod_compra = $_POST['id'];
 
-	mysqli_free_result($result);
-	}else{
-		echo "El Produto no Exixte";
-	}
-}else{
-		echo "ERROR: No se  pudo ejecutar la sentencia SQL por que " . mysql_errno($conn);
-}
- ?>
- <h1 style="color:white;text-align: center;">Detalle de la Compra</h1>
- <div class="container">
- 
- <table class="table">
-        
-        <thead>
+   include 'Model/conexion.php';
+    $sql = "SELECT * FROM tb_compra WHERE nSolicitud = $cod_compra";
+    $result = mysqli_query($conn, $sql);
+ while ($productos1 = mysqli_fetch_array($result)){
+
+ echo'   
+<section id="section">
+<form method="POST" action="Exportar_PDF/pdf_compra.php" target="_blank">
+         
+      
+        <div class="row">
+      
+          <div class="col-6 col-sm-3" style="position: initial">
+      
+              <label style="font-weight: bold;">Solicitud No.</label>
+              <input readonly class="form-control"  type="text" value="' .$productos1['nSolicitud']. '" name="depto">
+
+          </div>
+
+          <div class="col-6 col-sm-3" style="position: initial">
+            <label style="font-weight: bold;">Dependencia Solicitante</label>
+            <input readonly class="form-control"  type="text" value="' .$productos1['dependencia']. '" name="vale">
+          </div>
+
+        <div class="col-6 col-sm-3" style="position: initial">
+            <label style="font-weight: bold;">Plazo y No. de Entregas</label>
+            <input readonly class="form-control"  type="text" value="' .$productos1['plazo']. '" name="usuario">
+        </div>
+
+        <div class="col-6 col-sm-3" style="position: initial">
+            <label style="font-weight: bold;">Unidad Técnica</label>
+            <input readonly class="form-control"  type="text" value="' .$productos1['unidad_tecnica']. '" name="usuario">
+        </div>
+
+        <div class="col-6 col-sm-3" style="position: initial">
+            <label style="font-weight: bold;">Suministro Solicitado</label>
+            <input readonly class="form-control"  type="text" value="' .$productos1['descripcion_solicitud']. '" name="usuario">
+        </div>
+
+          <div class="col-6 col-sm-3" style="position: initial">
+            <label style="font-weight: bold;">Fecha</label>
+              <input readonly class="form-control"  type="text" value="'.date("d-m-Y",strtotime($productos1['fecha_registro'])). '" name="fech">
+          </div>
+        </div>
+      
+        <br>
+          
+        <table class="table" style="margin-bottom:3%">
+            
+            <thead>
               <tr id="tr">
- 			 <th class="table-info text-dark"><strong>Código</strong></th>
-                <th class="table-info text-dark"><strong>Dependencia</strong></th>
-                <th class="table-info text-dark"><strong>Plazo</strong></th>
-                <th class="table-info text-dark"><strong>Unidad Tecnica Solicitada</strong></th>
-                <th class="table-info text-dark"><strong>Descripcion de la solicitud</strong></th>
-                <th class="table-info text-dark"><strong>Fecha Registro</strong></th>
- 		</tr>
- 	</thead>
- 	<tbody>
- 		<td data-label="Codigo"><?php echo $codigo ?></td>
- 		<td data-label="Descripción"><?php echo $Descripción ?></td>
- 		<td data-label="Unidad De Medida"><?php echo $um ?></td>
- 		<td data-label="Cantidad Solicitada"><?php echo $Cant_soli ?></td>
- 		<td data-label="Precio"><?php echo $precio ?></td>
- 		<td data-label="Fecha de Registro"><?php echo $fecha ?></td>
- </tbody>
- </table>
+                <th>Categoría</th>
+                <th>Código</th>
+                <th>Cod. Catálogo</th>
+                <th style="width: 35%;">Descripción Completa</th>
+                <th>U/M</th>
+                <th>Cantidad</th>
+                <th>Costo Unitario (estimado)</th>
+                <th>Monto Total (estimado)</th>
+              </tr>
+                <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
+           </thead>
+            <tbody>';
 
- </div>
+$cod_compra = $productos1['nSolicitud'];
+}
+ $sql = "SELECT * FROM detalle_compra WHERE solicitud_compra = $cod_compra";
+    $result = mysqli_query($conn, $sql);
+while ($productos = mysqli_fetch_array($result)){
+      
+      $total = $productos['stock'] * $productos['precio'];
+      $final += $total;
+  echo' 
+    <style type="text/css">
+     #td{
+        display: none;
+    }
+    
+   
+</style> 
+      <tr>
+      <td  data-label="Categoría"><input style="background:transparent; border: none; width: 100%;"  name="categoria[]" readonly value="' .$productos['categoria']. '"></td>
+        <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="' .$productos['codigo']. '"></td>
+        <td  data-label="Cod. Catálogo"><input style="background:transparent; border: none; width: 100%;"  name="catalogo[]" readonly value="' .$productos['catalogo']. '"></td>
+        <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly style="border: none">'.$productos['descripcion']. '</textarea></td>
+        <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
+        <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="'.$productos['stock']. '"></td>
+        <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$'.$productos['precio']. '"></td>
+        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$'.$total. '"></td>
+        
+      </tr>';
+
+}
+
+    echo'
+    <tr>
+      <th colspan="7">Subtotal</th>
+      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$'.$final.'" ></td></tr>
+    </tr>
+         </tbody>
+        </table>
+  
+    <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
+      <style>
+        #pdf{
+        margin-left: 38%; 
+        background: rgb(175, 0, 0); 
+        color: #fff; margin-bottom: 2%; 
+        border: rgb(0, 0, 0);
+        }
+        #pdf:hover{
+        background: rgb(128, 4, 4);
+        } 
+        #pdf:active{
+        transform: translateY(5px);
+        } 
+      </style>
+</form>
+</section>';
+}
+?>            
 </body>
 </html>
