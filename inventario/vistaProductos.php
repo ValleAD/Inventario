@@ -241,7 +241,7 @@ $result = mysqli_query($conn, $sql);
       </td>
 
       <td data-label="Eliminar">
-            <a data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm " class="text-primary" href="Controller/Delete_producto.php?id=<?php  echo $productos['codProductos']; ?>" onclick="return confirmaion()">Eliminar</a>
+            <a data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm " class="text-primary" href="Controller/Delete_producto.php?id=<?php  echo $productos['SUM(stock)']; ?>" onclick="return confirmaion()">Eliminar</a>
       </td>
     </tr>
 

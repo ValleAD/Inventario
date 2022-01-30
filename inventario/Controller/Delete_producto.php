@@ -3,21 +3,25 @@
  include '../Model/conexion.php';
 
 $id1 = $_GET['id'];
-$eliminar ="DELETE FROM tb_productos WHERE cod='$id1'";
+if ($id1==0) {
+
+$eliminar ="DELETE FROM tb_productos WHERE stock='$id1'";
 $result= mysqli_query($conn, $eliminar);
 if ($result) {
     
 echo '<script>
 
-        alert(" Producto Eliminado Corectamente");
+        alert(" Producto Eliminado Correctamente");
         window.location ="../vistaProductos.php"; 
                 </script>';
+}
 } else {
-    echo '
+       echo '
     <script>
         alert("No se pudo Eliminar el Producto");
         window.location ="../vistaProductos.php"; 
                 </script>
                 ';
 }
+
  ?>
