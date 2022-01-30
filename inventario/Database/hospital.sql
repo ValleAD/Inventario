@@ -38,19 +38,6 @@ CREATE TABLE tb_productos (
 );
 
 
-CREATE TABLE report_productos (
-  cod int(15) NOT NULL AUTO_INCREMENT,
-  codProductos int(15) NOT NULL,
-  categoria varchar(50) NOT NULL,
-  catalogo int(15) NOT NULL,
-  nombre varchar(50) NOT NULL,
-  descripcion varchar(200) NOT NULL,
-  unidad_medida varchar(10) NOT NULL DEFAULT 'u',
-  stock int(11) NOT NULL,
-  precio decimal(6,2) NOT NULL,
-  fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-    PRIMARY KEY (cod)
-);
 
 CREATE TABLE tb_usuarios (
   id int(11) NOT NULl AUTO_INCREMENT,
