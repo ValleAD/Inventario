@@ -214,17 +214,14 @@ if(isset($_POST['codigo'])){
                     </select>
                 </td>
                 </tr>
-            <tr  style="text-align: center;">
-                <th style="width: 15%;">Productos Disponibles</th>
-                <td data-label="Productos Disponibles"><input  style="width: 100%; color:gray;" type="text" class="form-control"   name="stock[]"  value ="<?php  echo $productos['SUM(stock)']; ?>"></td>
-            </tr>
+
             <tr  style="text-align: center;">
                 <th style="width: 15%;">Cantidad</th>
                 <td data-label="Cantidad"><input  style="width: 100%; " type="number" class="form-control"  name="cant[]" required></td>
             </tr>
             <tr  style="text-align: center;">
                 <th style="width: 15%;">Costo unitario</th>
-                <td data-label="Precio"><input style="width: 100%; color:gray;"  type="text" class="form-control"  name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td> 
+                <td data-label="Precio"><input style="width: 100%; color:gray;"  type="number" class="form-control"  name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td> 
             </tr>
               <tr  style="text-align: center;">
               <center> <td id="td" colspan="7"  style="background: red;"><h4 align="center";>No se encontraron resultados 😥</h4></td></center> 
