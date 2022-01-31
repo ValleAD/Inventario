@@ -90,7 +90,7 @@ background:burlywood;
                         <li><a id="b" href="solicitudes_circulante.php">Mostrar</a></li>
                         <li><a id="b" href="form_circulante.php">Nuevo</a></li>
                     </ul>
-                </li><?php if($tipo_usuario == 1) { ?>
+                </li>
                  <li class="submenu">
                     <a id="a" href="#"><span class="icon-rocket"></span>Empleados<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
@@ -98,7 +98,6 @@ background:burlywood;
                     </ul>
                 </li>
 
-                <?php }?>
 
                <?php
     $cliente =$_SESSION['signin'];

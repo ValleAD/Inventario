@@ -67,32 +67,35 @@ die();
     <div class="container">
        <div class="row" >
        <table class="table">
+
             <thead>
               <tr id="tr">
-                <th>Código</th>
+                <th style="width: 175%;">Código</th>
                 <th style="width: 225%;">Descripción Completa</th>
-                <th>U/M</th>
-                <th>Cantidad</th>
-                <th>Costo Unitario</th>
-                <th>No. Vale</th>
-                <th>Encargado</th>
-                <th>Departamento</th>
-                <th style="text-align: center">Fecha</th>
+                <th style="width: 175%;">U/M</th>
+                <th style="width: 175%;">Cantidad</th>
+                <th style="width: 175%;">Costo Unitario</th>
+                <th style="width: 175%;">No. Vale</th>
+                <th style="width: 175%;">Encargado</th>
+                <th style="width: 175%;">Departamento</th>
+                <th style="width: 175%;text-align: center">Fecha</th>
               </tr>
+
+              <tr> <td id="td" colspan="11">
+                <h4 align="center">No se encontraron resultados 😥</h4></td>
+              </tr>
+            </thead>
+
+            <tbody>
  <?php
     include 'Model/conexion.php';
-    $sql = "SELECT * FROM detalle_vale ORDER BY fecha_registro DESC";
+    $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.codigodetallevale=V.CodVale";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){?>
 
        
-                <td id="td" colspan="9">
-                <h4 align="center">No se encontraron resultados 😥</h4>
-                </td>
-              </tr>
-            </thead>
-            <tbody>
+            
 <style type="text/css">
 
     #td{
@@ -109,12 +112,14 @@ die();
       <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
       <td data-label="No. Vale"><?php  echo $productos['numero_vale']; ?></td>
+      <td data-label="No. Vale"><?php  echo $productos['usuario']; ?>
+    </td><td data-label="No. Vale"><?php  echo $productos['departamento']; ?></td>
+    </td><td data-label="No. Vale"><?php  echo $productos['fecha_registro']; ?></td>
 <?php } ?>      
  
             </tbody>
         </table>
     </div>
-</section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>

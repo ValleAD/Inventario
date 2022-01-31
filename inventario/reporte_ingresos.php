@@ -70,19 +70,24 @@ die();
             <thead>
               <tr id="tr">
                 <th style="width: 175%;">Categoría</th>
-                <th>Código</th>
+                <th style="width: 175%;">Código</th>
                 <th style="width: 135%;">Cod. de Catálogo</th>
                 <th style="width: 200%;">Nombre</th>
                 <th style="width: 225%;">Descripción Completa</th>
-                <th>U/M</th>
+                <th style="width: 175%;">U/M</th>
                 <th style="width: 115%;">Cantidad</th>
-                <th>Costo Unitario</th>
+                <th style="width: 175%;">Costo Unitario</th>
                 <th style="width: 145%;">Fecha Registro</th>
                 
               </tr>
 
               <tr>
+   <td id="td" colspan="9">
+                <h4 align="center">No se encontraron resultados 😥</h4></td>
+              </tr>
+            </thead>
 
+            <tbody>
  <?php
     include 'Model/conexion.php';
     $sql = "SELECT * FROM tb_productos ORDER BY fecha_registro DESC";
@@ -91,12 +96,7 @@ die();
     while ($productos = mysqli_fetch_array($result)){?>
 
        
-                <td id="td" colspan="9">
-                <h4 align="center">No se encontraron resultados 😥</h4></td>
-              </tr>
-            </thead>
-
-            <tbody>
+             
 
 
 <style type="text/css">

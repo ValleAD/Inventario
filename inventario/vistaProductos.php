@@ -181,19 +181,26 @@ $result = mysqli_query($conn, $sql);
             <thead>
               <tr id="tr">
                 <th style="width: 175%;">Categoría</th>
-                <th>Código</th>
+                <th style="width: 175%;">Código</th>
                 <th style="width: 135%;">Cod. de Catálogo</th>
                 <th style="width: 200%;">Nombre</th>
                 <th style="width: 225%;">Descripción Completa</th>
-                <th>U/M</th>
+                <th style="width: 175%;">U/M</th>
                 <th style="width: 115%;">Cantidad</th>
-                <th>Costo Unitario</th>
+                <th style="width: 175%;">Costo Unitario</th>
                 <th style="width: 145%;">Fecha Registro</th>
+                <?php if($tipo_usuario == 1) { ?>
                 <th>Editar</th>
                 <th style="width: 125%;">Eliminar</th>
+            <?php } ?>
               </tr>
 
-              <tr>
+              <tr> <td id="td" colspan="11">
+                <h4 align="center">No se encontraron resultados 😥</h4></td>
+              </tr>
+            </thead>
+
+            <tbody>
 
  <?php
     include 'Model/conexion.php';
@@ -206,12 +213,7 @@ $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){?>
 
        
-                <td id="td" colspan="9">
-                <h4 align="center">No se encontraron resultados 😥</h4></td>
-              </tr>
-            </thead>
-
-            <tbody>
+               
 
 
 <style type="text/css">
@@ -233,6 +235,7 @@ $result = mysqli_query($conn, $sql);
       <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['SUM(stock)']; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
       <td data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
+      <?php if($tipo_usuario == 1) { ?>
       <td data-label="Editar">
         <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="vistaProductos.php">             
           <input type='hidden' name='id' value="<?php  echo $productos['codProductos']; ?>">             
@@ -242,7 +245,7 @@ $result = mysqli_query($conn, $sql);
 
       <td data-label="Eliminar">
             <a data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm " class="text-primary" href="Controller/Delete_producto.php?id=<?php  echo $productos['SUM(stock)']; ?>" onclick="return confirmaion()">Eliminar</a>
-      </td>
+      </td><?php } ?>
     </tr>
 
 <?php } ?> 

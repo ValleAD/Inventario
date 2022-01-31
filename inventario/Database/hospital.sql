@@ -47,6 +47,7 @@ CREATE TABLE tb_usuarios (
   Establecimiento varchar(100) NOT NULL,
   unidad varchar(50) NOT NULL,
   password varchar(50) NOT NULL,
+  Habilitado varchar(2) NOT NULL,
   tipo_usuario int(15) NOT NULL,
     PRIMARY KEY (id)
 ); 
@@ -148,22 +149,22 @@ CREATE TABLE detalle_compra (
     REFERENCES tb_compra(nSolicitud)
 );
 
-INSERT INTO `tb_usuarios` (`id`, `username`, `firstname`, `lastname`, `Establecimiento`,  `unidad`,`password`, `tipo_usuario`) 
-VALUES (NULL, 'Admin', 'Admin', 'Master', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Sin Unidad', 'Admin', '1'),
-       (NULL, 'Usuario', 'Ernesto', 'Gonzales Choto', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Departamento Mantenimiento Local', '123', '1'),
-       (NULL, 'Usuario1', 'Baltazar Alexander', 'Marinero Perez', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Sección Equipo Básico', '123', '2'),
-       (NULL, 'Usuario2', 'Fransico Tolentino', 'López', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Sección Planta Física y Mobiliario' , '123', '2'),
-       (NULL, 'Usuario3', 'René Adán', 'Villaltá Perez', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Sección Planta Física y Mobiliario' , '123', '2'),
-       (NULL, 'Usuario4', 'José Walter', 'Pineda Leiva', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Sección Equipo Básico' , '123', '2'),
-       (NULL, 'Usuario5', 'Justo Antonio', 'Alfaro', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Sección Planta Física y Mobiliario' , '123', '2'),
-       (NULL, 'Usuario6', 'José Dominguez', 'Echeverría', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Sección Equipo Médico' , '123', '2'),
-       (NULL, 'Usuario7', 'Nepoldo Alfaro', 'Rodas', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Sección Equipo Básico' , '123', '2'),
-       (NULL, 'Usuario8', 'Miguel Antonio', 'Corvera Torrez', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Sección Planta Física y Mobiliario' , '123', '2'),
-       (NULL, 'Usuario9', 'Anderson Eduardo', 'López Rodriguez', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Departamento Mantenimiento Local' , '123', '2'),
-       (NULL, 'Usuario10', 'kevin Alexander', 'Guevara Marinero', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Sección Equipo Básico' , '123', '2'),
-       (NULL, 'Usuario11', 'Yenifer Marisol', 'Campos Yanez', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Departamento Mantenimiento Local' , '123', '2'),
-       (NULL, 'Usuario12', 'kilmar Waldir', 'Pérez Marin', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Departamento Mantenimiento Local' , '123', '2'),
-       (NULL, 'Usuario13', 'Ronald Alexander', 'Lopez Cisnero', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Departamento Mantenimiento Local' , '123', '2');
+INSERT INTO `tb_usuarios` (`id`, `username`, `firstname`, `lastname`, `Establecimiento`,  `unidad`,`password`,`Habilitado`, `tipo_usuario`) 
+VALUES (NULL, 'Admin', 'Admin', 'Master', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Sin Unidad', 'Admin','Si', '1'),
+       (NULL, 'Usuario', 'Ernesto', 'Gonzales Choto', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Departamento Mantenimiento Local', '123','Si', '1'),
+       (NULL, 'Usuario1', 'Baltazar Alexander', 'Marinero Perez', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Sección Equipo Básico', '123','Si', '2'),
+       (NULL, 'Usuario2', 'Fransico Tolentino', 'López', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Sección Planta Física y Mobiliario' , '123','Si', '2'),
+       (NULL, 'Usuario3', 'René Adán', 'Villaltá Perez', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Sección Planta Física y Mobiliario' , '123','Si', '2'),
+       (NULL, 'Usuario4', 'José Walter', 'Pineda Leiva', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Sección Equipo Básico' , '123','Si', '2'),
+       (NULL, 'Usuario5', 'Justo Antonio', 'Alfaro', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Sección Planta Física y Mobiliario' , '123','Si', '2'),
+       (NULL, 'Usuario6', 'José Dominguez', 'Echeverría', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Sección Equipo Médico' , '123','Si', '2'),
+       (NULL, 'Usuario7', 'Nepoldo Alfaro', 'Rodas', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Sección Equipo Básico' , '123','Si', '2'),
+       (NULL, 'Usuario8', 'Miguel Antonio', 'Corvera Torrez', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Sección Planta Física y Mobiliario' , '123','Si', '2'),
+       (NULL, 'Usuario9', 'Anderson Eduardo', 'López Rodriguez', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Departamento Mantenimiento Local' , '123','Si', '2'),
+       (NULL, 'Usuario10', 'kevin Alexander', 'Guevara Marinero', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Sección Equipo Básico' , '123','Si', '2'),
+       (NULL, 'Usuario11', 'Yenifer Marisol', 'Campos Yanez', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Departamento Mantenimiento Local' , '123','Si', '2'),
+       (NULL, 'Usuario12', 'kilmar Waldir', 'Pérez Marin', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Departamento Mantenimiento Local' , '123','Si', '2'),
+       (NULL, 'Usuario13', 'Ronald Alexander', 'Lopez Cisnero', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Departamento Mantenimiento Local' , '123','Si', '2');
 
 
 

@@ -23,6 +23,13 @@ if ($result) {
        window.location ="../vistaProductos.php"; 
                 </script>
                 ';
+}else {
+  echo '
+    <script>
+        alert("No se pudo actualizar");
+        window.location ="../vistaProductos.php"; 
+                </script>
+                ';
 }
 
 ?>
