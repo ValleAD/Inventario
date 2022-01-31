@@ -70,14 +70,15 @@ die();
 
             <thead>
               <tr id="tr">
+                  <th style="width: 175%;">No. Vale</th>
+                <th style="width: 275%;">Departamento</th>
+                  <th style="width: 175%;">Encargado</th>
                 <th style="width: 175%;">Código</th>
                 <th style="width: 225%;">Descripción Completa</th>
                 <th style="width: 175%;">U/M</th>
                 <th style="width: 175%;">Cantidad</th>
                 <th style="width: 175%;">Costo Unitario</th>
-                <th style="width: 175%;">No. Vale</th>
-                <th style="width: 175%;">Encargado</th>
-                <th style="width: 175%;">Departamento</th>
+                <th style="width: 275%;">Departamento que Solicitó</th>
                 <th style="width: 275%;text-align: center">Fecha</th>
               </tr>
 
@@ -106,15 +107,16 @@ die();
    }
 </style>
     <tr id="tr">
+    <td data-label="No. Vale"><?php  echo $productos['numero_vale']; ?></td> 
+    <td data-label="Departamento"><?php  echo $productos['departamento']; ?></td>
+    <td data-label="Encargado"><?php  echo $productos['usuario']; ?></td>
       <td data-label="Codigo"><?php  echo $productos['codigo']; ?></td>
       <td data-label="Descripción Completa"><textarea style="background:transparent; border: none; color: black;" cols="10" rows="1" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
       <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
       <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
-      <td data-label="No. Vale"><?php  echo $productos['numero_vale']; ?></td>
-      <td data-label="No. Vale"><?php  echo $productos['usuario']; ?>
-    </td><td data-label="No. Vale"><?php  echo $productos['departamento']; ?></td>
-    </td><td data-label="No. Vale"><?php  echo $productos['fecha_registro']; ?></td>
+      <td data-label="Costo Unitario"><?php  echo $productos['campo']; ?></td>
+      <td data-label="No. Vale"><?php  echo $productos['fecha_registro']; ?></td>
 <?php } ?>      
  
             </tbody>

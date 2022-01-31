@@ -8,8 +8,9 @@ include ('../Model/conexion.php');
     $odt = $_POST['numero_vale'];
     $usuario = $_POST['usuario'];
 
+
     //crud para guardar los productos en la tabla tb_vale
-    $sql = "INSERT INTO tb_vale (codVale, departamento,usuario) VALUES ('$odt', '$departamento','$usuario')";
+    $sql = "INSERT INTO tb_vale (codVale, departamento,usuario,campo) VALUES ('$odt', '$departamento','$usuario','Solicitud Vale')";
     $result = mysqli_query($conn, $sql); 
       
         

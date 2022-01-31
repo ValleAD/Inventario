@@ -81,7 +81,7 @@ die();
 <br>
  <div class="container">
         <div class="row">
-    <div class="col" style="position: initial">
+    <div class="col" style="position: initial ">
      <label>¿Cuántos productos desea Registrar?</label>
     </div>
    <div style="margin-bottom: 1%;margin-right: 1%;">
@@ -91,6 +91,11 @@ die();
    <div>
         <input id="btn" class="btn btn-success" type="submit" value="Aceptar" name="aceptar"> 
     </div>
+    <div>
+    &nbsp;
+        <a href="new_product.php" class="btn btn-primary" > Nuevo</a>
+    </div>
+    
   </div>
 </div>
 </form>

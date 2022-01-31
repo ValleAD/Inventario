@@ -55,6 +55,7 @@ CREATE TABLE tb_bodega (
   codBodega int(11) NOT NULL,
   departamento varchar(50) NOT NULL,
     usuario varchar (50)  NOT NULL,
+    campo varchar (50)  NOT NULL DEFAULT ' Solicitud Bodega',
   fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (codBodega)
 );
@@ -63,6 +64,7 @@ CREATE TABLE tb_vale (
   codVale int(11) NOT NULL,
   departamento varchar(50) NOT NULL,
   usuario varchar (50)  NOT NULL,
+  campo varchar (50)  NOT NULL DEFAULT 'Solicitud Vale',
   fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (codVale)
 );
@@ -74,6 +76,7 @@ CREATE TABLE tb_compra (
   unidad_tecnica varchar(75) NOT NULL,
   descripcion_solicitud varchar(50) NOT NULL,
     usuario varchar (50)  NOT NULL,
+    campo varchar (50)  NOT NULL DEFAULT 'Solicitud Compra',
   fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (nSolicitud)
 );
@@ -87,6 +90,7 @@ cantidad_solicitada int(25) NOT NULL,
 cantidad_despachada int(25) NOT NULL,
 precio int(20) NOT NULL,
   usuario varchar (50)  NOT NULL,
+  campo varchar (50)  NOT NULL DEFAULT 'Solicitud Almacen',
 fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (codigoalmacen)
 );
@@ -98,6 +102,7 @@ unidad_medida varchar(5) NOT NULL,
 cantidad_solicitada int(25) NOT NULL,
 costo int(50) NOT NULL,
   usuario varchar (50)  NOT NULL,
+  campo varchar (50)  NOT NULL DEFAULT 'Solicitud Circulante',
 fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (codigo)
 );

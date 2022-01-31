@@ -153,15 +153,8 @@ if(isset($_POST['codigo'])){
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Nombre de la persona</label>
-                <select  class="form-control" name="usuario" id="usuario" required style="cursor: pointer">
-                <option selected disabled value="">Seleccionar</option>
-                <option>Juan Martinez</option>
-                <option>Miguel Roscencio</option>
-                <option>Francisco Guevarra </option>
-                <option>Rocio Amilcar</option> 
-               
-            </select>
-                </label>   
+                <input  class="form-control" name="usuario" id="usuario" required style="cursor: pointer">
+                  
             </div>
         </div>
         <br>

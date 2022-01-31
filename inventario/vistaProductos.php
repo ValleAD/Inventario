@@ -168,8 +168,7 @@ $result = mysqli_query($conn, $sql);
     <div class="container">
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial;">
-                <a  href="regi_producto.php" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Nuevo Registro"> Nuevo Producto</a>
-                <a href="buscar.php" class="btn btn-primary">Buscar Productos</a>
+            <a href="buscar.php" class="btn btn-primary">Buscar Productos</a>
             </div>
     
         </div>

@@ -90,7 +90,7 @@ die();
             <tbody>
  <?php
     include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_productos ORDER BY fecha_registro DESC";
+    $sql = "SELECT * FROM detalle_bodega P JOIN tb_bodega B  ON P.codigodetallebodega= B.campo  ORDER BY `codigodetallebodega` ASC ";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){?>

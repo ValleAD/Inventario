@@ -58,7 +58,7 @@ $result = mysqli_query($conn, $sql);
                 <input type="hidden" name="id" value="<?php  echo $productos['id']; ?>">
                 <label for="">Habilitado</label><br> 
                     <select  class="form-control" name="Habilitado" id="categoria" style="cursor: pointer">
-                        <option><?php  echo $productos['Habilitado']; ?></option>
+                        <option>[Seleccione]</option>
                         <option>Si</option>
                         <option>No</option>
                         
