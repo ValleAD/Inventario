@@ -89,7 +89,7 @@ die();
             <tbody>
  <?php
     include 'Model/conexion.php';
-    $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.codigodetallevale=V.CodVale";
+    $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){?>
