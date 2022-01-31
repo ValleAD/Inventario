@@ -78,7 +78,7 @@ die();
                 <th style="width: 175%;">No. Vale</th>
                 <th style="width: 175%;">Encargado</th>
                 <th style="width: 175%;">Departamento</th>
-                <th style="width: 175%;text-align: center">Fecha</th>
+                <th style="width: 275%;text-align: center">Fecha</th>
               </tr>
 
               <tr> <td id="td" colspan="11">
