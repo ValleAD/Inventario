@@ -54,28 +54,33 @@ $cod_compra = $_POST['id'];
           <div class="col-6 col-sm-3" style="position: initial">
       
               <label style="font-weight: bold;">Solicitud No.</label>
-              <input readonly class="form-control"  type="text" value="' .$productos1['nSolicitud']. '" name="depto">
+              <input readonly class="form-control"  type="text" value="' .$productos1['nSolicitud']. '" name="sol_compra">
 
           </div>
 
           <div class="col-6 col-sm-3" style="position: initial">
             <label style="font-weight: bold;">Dependencia Solicitante</label>
-            <input readonly class="form-control"  type="text" value="' .$productos1['dependencia']. '" name="vale">
+            <input readonly class="form-control"  type="text" value="' .$productos1['dependencia']. '" name="dependencia">
           </div>
 
         <div class="col-6 col-sm-3" style="position: initial">
             <label style="font-weight: bold;">Plazo y No. de Entregas</label>
-            <input readonly class="form-control"  type="text" value="' .$productos1['plazo']. '" name="usuario">
+            <input readonly class="form-control"  type="text" value="' .$productos1['plazo']. '" name="plazo">
         </div>
 
         <div class="col-6 col-sm-3" style="position: initial">
             <label style="font-weight: bold;">Unidad Técnica</label>
-            <input readonly class="form-control"  type="text" value="' .$productos1['unidad_tecnica']. '" name="usuario">
+            <input readonly class="form-control"  type="text" value="' .$productos1['unidad_tecnica']. '" name="unidad">
         </div>
 
         <div class="col-6 col-sm-3" style="position: initial">
             <label style="font-weight: bold;">Suministro Solicitado</label>
-            <input readonly class="form-control"  type="text" value="' .$productos1['descripcion_solicitud']. '" name="usuario">
+            <input readonly class="form-control"  type="text" value="' .$productos1['descripcion_solicitud']. '" name="suministro">
+        </div>
+
+        <div class="col-6 col-sm-3" style="position: initial">
+          <label style="font-weight: bold;">Encargado</label>
+          <input readonly class="form-control"  type="text" value="' .$productos1['usuario']. '" name="usuario">
         </div>
 
           <div class="col-6 col-sm-3" style="position: initial">
