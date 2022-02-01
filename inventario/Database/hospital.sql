@@ -152,6 +152,86 @@ CREATE TABLE detalle_compra (
     CONSTRAINT fk_tb_compra_detalle_compra FOREIGN KEY (solicitud_compra)
     REFERENCES tb_compra(nSolicitud)
 );
+CREATE TABLE Selects_unidad_medida (
+  id int(11) NOT NULl AUTO_INCREMENT PRIMARY KEY,
+unidad_medida varchar(50) NOT NULL
+);
+CREATE TABLE Selects_categoria (
+  id int(11) NOT NULl AUTO_INCREMENT PRIMARY KEY,
+categoria varchar(50) NOT NULL
+);
+CREATE TABLE Selects_dependencia (
+  id int(11) NOT NULl AUTO_INCREMENT PRIMARY KEY,
+dependencia varchar(50) NOT NULL
+);
+CREATE TABLE Selects_departamento (
+  id int(11) NOT NULl AUTO_INCREMENT PRIMARY KEY,
+departamento varchar(50) NOT NULL
+);
+INSERT INTO `Selects_unidad_medida` (`unidad_medida`)
+VALUES ('c/m'),
+       ('lb'),
+       ('mts'),
+       ('Pgo'),
+       ('Qq'),
+       ('cto');
+INSERT INTO `Selects_categoria` (`categoria`)
+VALUES ('Agropecuarios y Forestales'),
+       ('Cuero y Caucho'),
+       ('Químicos'),
+       ('Combustibles y Lubricantes'),
+       ('Minerales no Metálicos'),
+       ('Minerales Metálicos'),
+       ('Herramientas y Repuestos'),
+       ('Materiales Eléctricos');
+
+INSERT INTO `Selects_dependencia` (`dependencia`)
+VALUES ('Direccion Hospital'),
+       ('Departamento Mantenimiento Local'),
+       ('División Administrativa'),
+       ('Departamento Servicios Generales'),
+       ('Sevicio Medicina Interna'),
+       ('Sevicio Centro Quirúrgico'),
+       ('Sevicio Centro Obstétrico'),
+       ('Departamento Enfermeria'),
+       ('Subdirección Hospital'),
+       ('Sevicio Consulta Externa'),
+       ('Unidad Enfermeria');
+
+INSERT INTO `Selects_departamento` (`departamento`)
+VALUES ('Direccion Hospital'),
+       ('Subdirección Hospital'),
+       ('Sección Equipo Médico'),
+       ('Sección Equipo Básico'),
+       ('Seccion Planta Fisica y Monitoreo'),
+       ('Departamento Mantenimiento Local'),
+       ('Servicio Centro Quirúrgico'),
+       ('Departamento Lavamdería y Ropería'),
+       ('Sevicio Medicina Hombre'),
+       ('Sevicio Medicina Mujeres'),
+       ('Unidad Sala de Operacion'),
+       ('Unidad Sala de Partos'),
+       ('Sevicio Almacen'),
+       ('Sevicio Consulta Externa'),
+       ('Unidad Neonatos'),
+       ('Unidad Maxima Urgencia'),
+       ('Sevicio Trabajo Social'),
+       ('Área Saneamiento Ambiental'),
+       ('Unidad Financiara Institucional'),
+       ('Departamento Estadística y Documento Medicos'),
+       ('Departamento Activo Fijo'),
+       ('Unidad Auditoria Interna'),
+       ('Departamento Recursos Humanos'),
+       ('Unidad Asesora de Suministro Médicos'),
+       ('Area Servicios Auxiliares'),
+       ('Servicio Obstetricia'),
+       ('Área Clinica De Úlceras Y Heridas'),
+       ('Unidad Atención Integral e Integrada ala Salud Sexual Reproductiva'),
+       ('Departamento Terapia Dialítica'),
+       ('Área Residencial Médica'),
+       ('Unidad Cuidados Especiales'),
+       ('Área Epidemiología'),
+       ('Area COVID 19');
 
 INSERT INTO `tb_usuarios` (`id`, `username`, `firstname`, `lastname`, `Establecimiento`,  `unidad`,`password`,`Habilitado`, `tipo_usuario`) 
 VALUES (NULL, 'Admin', 'Admin', 'Master', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Sin Unidad', 'Admin','Si', '1'),

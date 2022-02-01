@@ -65,7 +65,20 @@ form{
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="black"><label>Dependencia que Solicita</label></font>   
-      <input  style="background:transparent; color: black;" class="form-control" type="text" name="dependencia" id="como2" required>
+    <select class="form-control" name="dependencia"  required>
+    <option disabled selected>Selecione</option> '; 
+<?php 
+
+     $sql = "SELECT * FROM selects_dependencia";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){ 
+
+      echo'  <option>'.$productos['dependencia'].'</option>
+  ';  
+ } ?>
+</select>
+      
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="black"><label>Plazo y Numero de Entregas</label></font> 
@@ -84,7 +97,22 @@ form{
   </div>
   <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="black"><label>Usuario</label> </font>
-      <input style="background:transparent; color: black;"  class="form-control" type="text" name="usuario" id="como3" required>
+           <label id="inp1">Nombre de la persona</label>
+             
+            
+<select class="form-control" name="usuario" style="background:transparent; color: black;" >
+    <option disabled selected>Selecione</option> 
+
+<?php
+     $sql = "SELECT * FROM tb_usuarios";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){ 
+
+      echo'  <option>'.$productos['firstname']." ".$productos['lastname'].'</option>
+  ';   
+ } ?>
+</select>
       <br>
     </div>
     </div>
@@ -100,14 +128,18 @@ form{
                       <label>Categoría</label> 
                       <select  class="form-control" name="categoria[]" id="categoria" required>
                         <option selected disabled>Seleccionar</option>
-                        <option>Agropecuarios y Forestales</option>
-                        <option>Cuero y Caucho</option>
-                        <option>Químicos</option>
-                        <option>Combustibles y Lubricantes</option> 
-                        <option>Minerales no Metálicos</option>
-                        <option>Minerales Metálicos</option>
-                        <option>Herramientas y Repuestos</option>
-                        <option>Materiales Eléctricos</option>
+                        <?php 
+                     $sql = "SELECT * FROM selects_categoria";
+                        $result = mysqli_query($conn, $sql);
+
+                        while ($productos = mysqli_fetch_array($result)){ 
+
+                          echo'  <option>'.$productos['categoria'].'</option>
+                      ';   
+                     } 
+
+
+                         ?>
                       </select>
                   </div> 
 
@@ -135,12 +167,16 @@ form{
                             </div>
                         <select class="form-control" name="um[]" id="um" required>
                             <option selected disabled value="">Unidad de Medida</option>
-                           <option>c/u</option>
-                            <option>lb</option>
-                            <option>mts</option>
-                            <option>Pgo</option> 
-                            <option>Qq</option>
-                            <option>cto</option>
+                          <?php 
+                     $sql = "SELECT * FROM  selects_unidad_medida";
+                        $result = mysqli_query($conn, $sql);
+
+                        while ($productos = mysqli_fetch_array($result)){ 
+
+                          echo'  <option>'.$productos['unidad_medida'].'</option>
+                      ';   
+                     } 
+                           ?>
                         </select>
                         </div>
                     </div>

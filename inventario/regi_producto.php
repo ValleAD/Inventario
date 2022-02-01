@@ -210,12 +210,16 @@ if(isset($_POST['codigo'])){
                 <td data-label="Unidad De Medida">
                      <select class="form-control" name="um" id="um" style="cursor: s-resize" required>
                         <option><?php  echo $productos['unidad_medida']; ?></option>
-                        <option>c/u</option>
-                        <option>lb</option>
-                        <option>mts</option>
-                        <option>Pgo</option> 
-                        <option>Qq</option>
-                        <option>cto</option>
+                        <?php 
+                     $sql = "SELECT * FROM  selects_unidad_medida";
+                        $result = mysqli_query($conn, $sql);
+
+                        while ($productos = mysqli_fetch_array($result)){ 
+
+                          echo'  <option>'.$productos['unidad_medida'].'</option>
+                      ';   
+                     } 
+                           ?>
                     </select>
                 </td>
                 </tr>

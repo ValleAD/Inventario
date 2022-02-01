@@ -105,12 +105,16 @@ form{
                             </div>
                         <select  class="form-control" name="um[]" id="um" required>
                             <option selected disabled value="">Unidad de Medida</option>
-                           <option>c/u</option>
-                            <option>lb</option>
-                            <option>mts</option>
-                            <option>Pgo</option> 
-                            <option>Qq</option>
-                            <option>cto</option>
+                          <?php 
+                     $sql = "SELECT * FROM  selects_unidad_medida";
+                        $result = mysqli_query($conn, $sql);
+
+                        while ($productos = mysqli_fetch_array($result)){ 
+
+                          echo'  <option>'.$productos['unidad_medida'].'</option>
+                      ';   
+                     } 
+                           ?>
                         </select>
                         </div>
                     </div>
