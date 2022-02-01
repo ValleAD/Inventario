@@ -138,8 +138,10 @@ $result = mysqli_query($conn, $sql);
 </form>
 
 <style>
-  #act {
+ #act {
     margin-top: 0.5%;
+    margin-right: 2%;
+    margin-left: 2%;
   }
 </style>
 <?php 
@@ -162,29 +164,28 @@ $result = mysqli_query($conn, $sql);
         #ver:active{
         transform: translateY(5px);
         } 
+         #act {
+    margin-top: 0.5%;
+    margin-right: 2%;
+    margin-left: 2%;
+  }
     </style>
 </table>
 </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-6 col-sm-4" style="position: initial;">
+<section id="act">
+   
             <a href="buscar.php" class="btn btn-primary">Buscar Productos</a>
-            </div>
-    
-        </div>
-    </div>
-<br>
-    <div class="container">
-       <div class="row" >
+<br><br>
+
        <table class="table">
             <thead>
               <tr id="tr">
                 <th style="width: 175%;">Categoría</th>
-                <th style="width: 175%;">Código</th>
-                <th style="width: 135%;">Cod. de Catálogo</th>
+                <th style="width: 95%;">Código</th>
+                <th style="width: 135%;">Catálogo</th>
                 <th style="width: 200%;">Nombre</th>
                 <th style="width: 225%;">Descripción Completa</th>
-                <th style="width: 175%;">U/M</th>
+                <th style="width: 175%; text-align: center;">U/M</th>
                 <th style="width: 115%;">Cantidad</th>
                 <th style="width: 175%;">Costo Unitario</th>
                 <th style="width: 145%;">Fecha Registro</th>
@@ -251,7 +252,7 @@ $result = mysqli_query($conn, $sql);
 
             </tbody>
         </table>
-    </div>
+
 </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

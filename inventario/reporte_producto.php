@@ -28,12 +28,12 @@ die();
     <link rel="stylesheet" href="Plugin/bootstap-icon/bootstrap-icons.min.css">
     <link rel="stylesheet" href="Plugin/bootstap-icon/fontawesome.all.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
-
-    <title>Egresos</title>
+<title>Ingresos</title>
 </head>
 <body>
     <section id="act">
-           <h1 style="margin-top:5px; text-align: center;">Egreso de Productos</h1>
+        
+           <h1 style="margin-top:5px; text-align: center;">Ingreso de Productos</h1>
 <style>
   #act {
     margin-top: 0.5%;
@@ -60,23 +60,25 @@ die();
         } 
     </style>
 
-       <table class="table">
 
+
+       <table class="table">
             <thead>
               <tr id="tr">
-                  <th style="width: 175%;">No. Vale</th>
-                <th style="width: 275%;">Departamento</th>
-                  <th style="width: 175%;">Encargado</th>
+                <th style="width: 175%;">Categoría</th>
                 <th style="width: 175%;">Código</th>
-                <th style="width: 225%;">Descripción Completa</th>
+                <th style="width: 135%;">Cod. de Catálogo</th>
+                <th style="width: 200%;">Nombre</th>
+                <th style="width: 275%;">Descripción Completa</th>
                 <th style="width: 175%;">U/M</th>
-                <th style="width: 175%;">Cantidad</th>
+                <th style="width: 115%;">Cantidad</th>
                 <th style="width: 175%;">Costo Unitario</th>
-                <th style="width: 275%;">Departamento que Solicitó</th>
-                <th style="width: 275%;text-align: center">Fecha</th>
+                <th style="width: 135%;">Formularios</th>
+                <th style="width: 145%;">Fecha Registro</th>
               </tr>
 
-              <tr> <td id="td" colspan="11">
+              <tr>
+   <td id="td" colspan="9">
                 <h4 align="center">No se encontraron resultados 😥</h4></td>
               </tr>
             </thead>
@@ -84,13 +86,15 @@ die();
             <tbody>
  <?php
     include 'Model/conexion.php';
-    $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale";
+   $sql = "SELECT * FROM tb_productos";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){?>
 
        
-            
+             
+
+
 <style type="text/css">
 
     #td{
@@ -101,42 +105,30 @@ die();
    }
 </style>
     <tr id="tr">
-    <td data-label="No. Vale"><?php  echo $productos['numero_vale']; ?></td> 
-    <td data-label="Departamento"><?php  echo $productos['departamento']; ?></td>
-    <td data-label="Encargado"><?php  echo $productos['usuario']; ?></td>
-      <td data-label="Codigo"><?php  echo $productos['codigo']; ?></td>
-      <td data-label="Descripción Completa"><textarea style="background:transparent; border: none; color: black;" cols="10" rows="1" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
+    <td data-label="Categoría"><?php  echo $productos['categoria']; ?></td>
+      <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
+      <td data-label="Codigo"><?php  echo $productos['nombre']; ?></td>
+      <td data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
+      <td data-label="Descripción Completa"><textarea  style="background:transparent; border: none; color: black;"  readonly name="" id="" cols="15" rows="2" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
       <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
       <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
       <td data-label="Costo Unitario"><?php  echo $productos['campo']; ?></td>
-      <td data-label="No. Vale"><?php  echo $productos['fecha_registro']; ?></td>
-<?php } ?>      
- 
+      <td data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
+      
+
+    
+    </tr>
+
+<?php } ?> 
+
             </tbody>
         </table>
-    </section>
 
+</section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-$(function(){
-    var textArea = $('#content'),
-    hiddenDiv = $(document.createElement('div')),
-    content = null;
-    
-    textArea.addClass('noscroll');
-    hiddenDiv.addClass('hiddendiv');
-    
-    $(textArea).after(hiddenDiv);
-    
-    textArea.on('keyup', function(){
-        content = $(this).val();
-        content = content.replace(/\n/g, '<br>');
-        hiddenDiv.html(content + '<br class="lbr">');
-        $(this).css('height', hiddenDiv.height());
-    });
-});
-</script>
+
 <script type="text/javascript">
 function confirmaion(e) {
     if (confirm("¿Estas seguro que deseas Eliminar este registro?")) {

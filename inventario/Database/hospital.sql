@@ -33,6 +33,7 @@ CREATE TABLE tb_productos (
   unidad_medida varchar(10) NOT NULL DEFAULT 'u',
   stock int(11) NOT NULL,
   precio decimal(6,2) NOT NULL,
+  campo varchar (50)  NOT NULL,
   fecha_registro date NOT NULL DEFAULT current_timestamp(),
     PRIMARY KEY (cod)
 );
@@ -115,7 +116,6 @@ CREATE TABLE detalle_bodega (
   stock int(11) NOT NULL,
   precio decimal(6,2) NOT NULL,
   odt_bodega int(15),
-  usuario varchar (50)  NOT NULL,
   fecha_registro date NOT NULL DEFAULT current_timestamp(),
     PRIMARY KEY (codigodetallebodega),
     CONSTRAINT fk_tb_bodega_detalle_bodeha FOREIGN KEY (odt_bodega)
@@ -130,7 +130,6 @@ CREATE TABLE detalle_vale (
   stock int(11) NOT NULL,
   precio decimal(6,2) NOT NULL,
   numero_vale int(15),
-  usuario varchar (50)  NOT NULL,
   fecha_registro date NOT NULL DEFAULT current_timestamp(),
     PRIMARY KEY (codigodetallevale),
     CONSTRAINT fk_tb_vale_detalle_vale FOREIGN KEY (numero_vale)
@@ -175,11 +174,12 @@ VALUES (NULL, 'Admin', 'Admin', 'Master', 'Hospital Nacional Zacatecoluca PA "Sa
 
 
 
-INSERT INTO `tb_productos`(`cod`, `codProductos`, `categoria`, `catalogo`, `nombre`, `descripcion`, `unidad_medida`, `stock`, `precio`, `fecha_registro`) VALUES (NULL, '1', 'almacen', '1', 'martillo', 'herramientas', 'lb', '50', '12.25', '2022-01-26'),
-       (NULL, '2', 'enfermeria', '2', 'mascarilla k-95', 'utensilio', 'cto', '70', '10', '2022-01-26'),
-       (NULL, '3', 'computacion', '3', 'destornillador', 'herramienta', 'mto', '15', '7', '2022-01-26'),
-       (NULL, '4', 'Químicos', '4', 'botella', 'herramientas', 'Qq', '25', '15', '2022-01-26'),
-       (NULL, '5', 'Agropecuarios y Forestales', '5', 'hacha', 'herramientas', 'Pgo', '6', '25', '2022-01-26');
+INSERT INTO `tb_productos`(`cod`, `codProductos`, `categoria`, `catalogo`, `nombre`, `descripcion`, `unidad_medida`, `stock`, `precio`,`campo`, `fecha_registro`) 
+VALUES (NULL, '1', 'almacen', '1', 'martillo', 'herramientas', 'lb', '50', '12.25','Solicitud Vale', '2022-01-26'),
+       (NULL, '2', 'enfermeria', '2', 'mascarilla k-95', 'utensilio', 'cto', '70', '10','Solicitud Bodega', '2022-01-26'),
+       (NULL, '3', 'computacion', '3', 'destornillador', 'herramienta', 'mto', '15', '7','Solicitud Compra', '2022-01-26'),
+       (NULL, '4', 'Químicos', '4', 'botella', 'herramientas', 'Qq', '25', '15','Solicitud Almacen', '2022-01-26'),
+       (NULL, '5', 'Agropecuarios y Forestales', '5', 'hacha', 'herramientas', 'Pgo', '6', '25', 'Solicitud Circulante', '2022-01-26');
        
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -31,13 +31,14 @@ die();
 <title>Ingresos</title>
 </head>
 <body>
-    <div class="container">
-      <table class="table">
+    <section id="act">
         
            <h1 style="margin-top:5px; text-align: center;">Ingreso de Productos</h1>
 <style>
   #act {
     margin-top: 0.5%;
+    margin-right: 2%;
+    margin-left: 2%;
   }
 </style>
 
@@ -58,25 +59,18 @@ die();
         transform: translateY(5px);
         } 
     </style>
-</table>
-</div>
-<div class="container top">
-<br>
 
-
-    <div class="container">
-       <div class="row" >
        <table class="table">
             <thead>
               <tr id="tr">
-                <th style="width: 175%;">Categoría</th>
-                <th style="width: 175%;">Código</th>
-                <th style="width: 135%;">Cod. de Catálogo</th>
-                <th style="width: 200%;">Nombre</th>
+                <th style="width: 175%;">Departamento</th>
+                <th style="width: 175%;">Encargado</th>
+                <th style="width: 175%;">Codigo</th>
                 <th style="width: 225%;">Descripción Completa</th>
                 <th style="width: 175%;">U/M</th>
                 <th style="width: 115%;">Cantidad</th>
                 <th style="width: 175%;">Costo Unitario</th>
+                <th style="width: 135%;">Departamento que lo Solicitó</th>
                 <th style="width: 145%;">Fecha Registro</th>
                 
               </tr>
@@ -90,7 +84,7 @@ die();
             <tbody>
  <?php
     include 'Model/conexion.php';
-    $sql = "SELECT * FROM detalle_bodega P JOIN tb_bodega B  ON P.codigodetallebodega= B.campo  ORDER BY `codigodetallebodega` ASC ";
+   $sql = "SELECT * FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){?>
@@ -109,14 +103,14 @@ die();
    }
 </style>
     <tr id="tr">
-    <td data-label="Categoría"><?php  echo $productos['categoria']; ?></td>
-      <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
-      <td data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
-      <td data-label="Nombre"><?php  echo $productos['nombre']; ?></td>
+    <td data-label="Categoría"><?php  echo $productos['departamento']; ?></td>
+      <td data-label="Codigo"><?php  echo $productos['usuario']; ?></td>
+      <td data-label="Codificación de catálogo"><?php  echo $productos['codigo']; ?></td>
       <td data-label="Descripción Completa"><textarea style="background:transparent; border: none; color: black;" cols="10" rows="1" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
       <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
       <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
+      <td data-label="Costo Unitario"><?php  echo $productos['campo']; ?></td>
       <td data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
       
 
@@ -127,7 +121,7 @@ die();
 
             </tbody>
         </table>
-    </div>
+
 </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

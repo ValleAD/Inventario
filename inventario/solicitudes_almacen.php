@@ -33,12 +33,17 @@ die();
 
 
 <body>
-    <div class=" container table-responsive ">
-      
+<section id="act">
+    <style type="text/css">
         
-       <div class="container">
-        <table class="table" >
-            <h1 class="text-center mg-t" style="margin-top: -0.5%;">Solicitudes de Almacen</h1>
+     #act {
+    margin-top: 0.5%;
+    margin-right: 2%;
+    margin-left: 2%;
+  }
+    </style>
+        <table class="table">
+            <h1 class="text-center mg-t" style="margin-top: -0.5%;">Solicitudes de Almacen</h1><br>
           <thead>
               <tr id="tr">
                 <th class="table-info text-dark"><strong>Código</strong></th>
@@ -53,7 +58,7 @@ die();
                 
             </tr>
             <tr>
-                  <td id="td" colspan="7" style="background: red;">
+                  <td id="td" colspan="7" >
                     <h4 align="center">No se encontraron resultados 😥</h4></td>
             </tr>
             </thead>
@@ -98,7 +103,6 @@ die();
       
             </tbody>
         </table>
-
-    </div>
+    </section>
 </body>
 </html>

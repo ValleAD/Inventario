@@ -34,7 +34,15 @@ die();
 
 <body>
 
-      <div class="container">
+      <section id="act">
+        <style type="text/css">
+            
+     #act {
+    margin-top: 0.5%;
+    margin-right: 2%;
+    margin-left: 2%;
+  }
+        </style>
         <table class="table">
             <center><h1 style="margin-top:5px">Solicitudes Bodega</h1></center>
             <thead>
@@ -46,7 +54,7 @@ die();
                 <th class="table-info text-dark"><strong>Detalles</strong></th>
                 
             </tr>
-            <td id="td" colspan="4"  style="background: red;"><h4 align="center">No se encontraron resultados 😥</h4></td>
+            <td id="td" colspan="4"><h4 align="center">No se encontraron resultados 😥</h4></td>
             
     <style type="text/css">
         
@@ -82,6 +90,6 @@ die();
            </tbody>
         </table>
 
-    </div>
+    </section>
 </body>
 </html>

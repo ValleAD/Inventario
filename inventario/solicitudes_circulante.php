@@ -33,9 +33,14 @@ die();
 
 
 <body>
-    <div class=" container table-responsive" >
-        <h2 class="text-center mg-t" style=" margin-top: -0.5%;">Solicitudes Circulante</h2>
-        <p style="margin-top: 5%;" ></p>
+    <div id="act">
+        <style type="text/css"> 
+     #act {
+    margin-top: 0.5%;
+    margin-right: 2%;
+    margin-left: 2%;
+  }</style>
+        <h2 class="text-center mg-t" style=" margin-top: -0.5%;">Solicitudes Circulante</h2><br>
         <table class="table">
         
         <thead>
@@ -50,7 +55,7 @@ die();
                 
             </tr>
             <tr>
-            <td id="td" colspan="7" style="background: red;"><h4 align="center">No se encontraron ningun  resultados 😥</h4></td>
+            <td id="td" colspan="7"><h4 align="center">No se encontraron ningun  resultados 😥</h4></td>
             </tr>
      </thead>
             <tbody>

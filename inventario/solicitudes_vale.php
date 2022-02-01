@@ -31,9 +31,17 @@ die();
     <title>Solicitudes De Vale</title>
 </head>
 <body>
-     <div class="container">
+     <div id="act">
+        <style type="text/css">
+            
+     #act {
+    margin-top: 0.5%;
+    margin-right: 2%;
+    margin-left: 2%;
+  }
+        </style>
         <table class="table">
-            <center><h1 style="margin-top:5px">Solicitudes Vale</h1></center>
+            <center><h1 style="margin-top:5px">Solicitudes Vale</h1></center><br>
             <thead>
               <tr id="tr">
                 <th class="table-info text-dark"><strong>Código de Vale</strong></th>

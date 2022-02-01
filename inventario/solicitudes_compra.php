@@ -31,9 +31,18 @@ die();
     <title>Solicitudes De Compra</title>
 </head>
 <body>
-     <div class="container">
+    <style type="text/css">
+        
+     #act {
+    margin-top: 0.5%;
+    margin-right: 2%;
+    margin-left: 2%;
+  }
+    </style>
+     <div id="act">
         <table class="table">
             <center><h1 style="margin-top:5px">Solicitudes de Compra</h1></center>
+            <br>
             <thead>
               <tr id="tr">
                 <th><strong>No. Solicitud</strong></th>
