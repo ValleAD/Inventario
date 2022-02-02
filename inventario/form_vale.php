@@ -170,8 +170,8 @@ if(isset($_POST['codigo'])){
 <select class="form-control" name="usuario">
     <option disabled selected>Selecione</option> '; 
 
-
-     $sql = "SELECT id, firstname,lastname FROM tb_usuarios";
+$habilitado = 'si';
+     $sql = "SELECT id, firstname,lastname FROM tb_usuarios WHERE Habilitado = 'si'";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){ 
