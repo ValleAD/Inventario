@@ -121,6 +121,12 @@ $result = mysqli_query($conn, $sql);
                 <option>Sección Planta Física y Mobiliario</option>
                 <option>Sección Equipo Médico</option>
             </select>
+            <label>Tipo de Usuario</label>
+            <select class="form-control" name="tipo">
+                <option selected disabled >Seleccionar</option>
+                <option value="1">Administrador</option>
+                <option value="2">Técnico</option>
+            </select>
             <label>Password</label>
             <input class="form-control" name="Password" type="password"> 
             

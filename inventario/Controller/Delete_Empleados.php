@@ -9,13 +9,13 @@ if ($result) {
     
 echo '<script>
 
-        alert(" Producto Eliminado Corectamente");
+        alert(" Empleado Eliminado Corectamente");
         window.location ="../Empleados.php"; 
                 </script>';
 } else {
     echo '
     <script>
-        alert("No se pudo Eliminar el Producto");
+        alert("No se pudo Eliminar el Empleado");
         window.location ="../Empleados.php"; 
                 </script>
                 ';
