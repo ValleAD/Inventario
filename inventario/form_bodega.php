@@ -145,19 +145,7 @@ if(isset($_POST['codigo'])){
             <div class="row">
               <div class="col-6.5 col-sm-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>   
-                 <select class="form-control" name="departamento">
-    <option disabled selected>Selecione</option> '; 
-   $sql = "SELECT * FROM selects_departamento";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){ 
-
-      echo'  <option>'.$productos['departamento'].'</option>
-  ';   
- }
-    echo'
-              </select>  
-               
+                <input id="inp1" class="form-control" type="text" name="departamento" required>
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">O. de T. No.</b></label>   
@@ -165,19 +153,14 @@ if(isset($_POST['codigo'])){
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Nombre de la persona</label>
-               <select class="form-control" name="usuario">
-    <option disabled selected>Selecione</option> '; 
-
-
-     $sql = "SELECT id, firstname,lastname FROM tb_usuarios";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){ 
-
-      echo'  <option>'.$productos['firstname']." ".$productos['lastname'].'</option>
-  ';   
- } echo'
-</select>
+                <select  class="form-control" name="usuario" id="usuario" required style="cursor: pointer">
+                <option selected disabled value="">Seleccionar</option>
+                <option>Juan Martinez</option>
+                <option>Miguel Roscencio</option>
+                <option>Francisco Guevarra </option>
+                <option>Rocio Amilcar</option> 
+               
+            </select>
                 </label>   
             </div>
         </div>
@@ -211,7 +194,7 @@ if(isset($_POST['codigo'])){
    //$sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
 
 
-   $sql = "SELECT codProductos,categoria,catalogo, nombre, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE  codProductos = '$codigo'";
+   $sql = "SELECT codProductos, nombre, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE  codProductos = '$codigo'";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){ ?>    
@@ -228,10 +211,7 @@ if(isset($_POST['codigo'])){
                <td data-label="Unidad De Medida"><input  style="background:transparent; border: none; width: 100%; color: black;" type="text" class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
                <td data-label="Productos Disponibles"><input  style="background:transparent; border: none; width: 100%; color: gray;" type="text" class="form-control" readonly  name="stock[]"  value ="<?php  echo $productos['SUM(stock)']; ?>"></td>
                <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="text" class="form-control"  name="cant[]" required></td>
-               <td data-label="Precio"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>
-               <td ><input class="form-control" type="hidden"  name="form_bodega[]" value="Formulario Bodega">
-                <input class="form-control" type="hidden"  name="categoria[]" value="<?php  echo $productos['categoria']; ?>">   
-                <input class="form-control" type="hidden"  name="cat[]" value="<?php  echo $productos['catalogo']; ?>"></td>      
+               <td data-label="Precio"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
             </tr>
    
         <?php }
