@@ -266,7 +266,7 @@ if(isset($_POST['codigo'])){
 
     </div>
     <center>
-    <input align="center" class="btn btn-lg" type="submit" value="Registrar Producto" id="enviar"></center>
+    <input align="center" class="btn btn-lg" type="submit" value="Comprar Producto" id="enviar"></center>
         <style>
             #enviar{
                 margin-bottom: 5%;
