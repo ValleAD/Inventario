@@ -86,23 +86,38 @@ CREATE TABLE tb_compra (
 
 
 CREATE TABLE tb_circulante (
-  codCirculante int(15) NOT NULL,
-  departamento varchar(200) NOT NULL,
+codigo int(15) NOT NULl AUTO_INCREMENT,
+descripcion varchar(50) NOT NULL,
+unidad_medida varchar(5) NOT NULL,
+cantidad_solicitada int(25) NOT NULL,
+costo int(50) NOT NULL,
   usuario varchar (50)  NOT NULL,
   campo varchar (50)  NOT NULL DEFAULT 'Solicitud Circulante',
-  fecha_solicitud timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (codCirculante)
+fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+    PRIMARY KEY (codigo)
 );
-
-CREATE TABLE tb_almacen (
-  codAlmacen int(12) NOT NULL,
-  departamento varchar(200) NOT NULL,
-  encargado varchar(75) NOT NULL,
-  fecha_solicitud timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  PRIMARY KEY (codAlmacen)
+CREATE TABLE `tb_almacen` (
+  `id` int(8) NOT NULL,
+  `cod_solicitud` int(12) NOT NULL,
+  `departamento` varchar(200) NOT NULL,
+  `encargado` varchar(75) NOT NULL,
+  `fecha_solicitud` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 );
-
-
+CREATE TABLE detalle_almacen (
+codigoalmacen int(11) NOT NULL AUTO_INCREMENT,
+codigo int(15) NOT NULL,
+nombre varchar(50)  NOT NULL,
+unidad_medida varchar(5) NOT NULL,
+cantidad_solicitada int(25) NOT NULL,
+cantidad_despachada int(25) NOT NULL,
+tbAlmacen int(20) NOT NULL,
+precio int(20) NOT NULL,
+fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+    PRIMARY KEY (codigoalmacen),
+     CONSTRAINT fk_tb_almacen_detalle_almacen FOREIGN KEY (tbAlmacen)
+    REFERENCES tb_almacen(codAlmacen)
+);
 CREATE TABLE detalle_bodega (
   codigodetallebodega int(15) NOT NULL AUTO_INCREMENT,
   codigo int(15) NOT NULL,
@@ -114,7 +129,7 @@ CREATE TABLE detalle_bodega (
   estado varchar (50)  NOT NULL,
   fecha_registro date NOT NULL DEFAULT current_timestamp(),
     PRIMARY KEY (codigodetallebodega),
-    CONSTRAINT fk_tb_bodega_detalle_bodega FOREIGN KEY (odt_bodega)
+    CONSTRAINT fk_tb_bodega_detalle_bodeha FOREIGN KEY (odt_bodega)
     REFERENCES tb_bodega(codBodega)
 );
 
@@ -133,37 +148,6 @@ CREATE TABLE detalle_vale (
     REFERENCES tb_vale(codVale)
 );
 
-CREATE TABLE detalle_circulante (
-codigodetallecirculante int(15) NOT NULL AUTO_INCREMENT,
-  codigo int(15) NOT NULL,
-  descripcion varchar(50) NOT NULL,
-  unidad_medida varchar(11) NOT NULL DEFAULT 'u',
-  stock int(11) NOT NULL,
-  precio decimal(6,2) NOT NULL,
-  tb_circulante int(15),
-  estado varchar (50)  NOT NULL,
-  fecha_registro date NOT NULL DEFAULT current_timestamp(),
-    PRIMARY KEY (codigodetallecirculante),
-    CONSTRAINT fk_tb_circulante_detalle_circulante FOREIGN KEY (tb_circulante)
-    REFERENCES tb_circulante(codCirculante)
-); 
-
-CREATE TABLE detalle_almacen (
-codigoalmacen int(11) NOT NULL AUTO_INCREMENT,
-codigo int(15) NOT NULL,
-nombre varchar(50)  NOT NULL,
-unidad_medida varchar(5) NOT NULL,
-cantidad_solicitada int(25) NOT NULL,
-cantidad_despachada int(25) NOT NULL,
-tb_almacen int(20) NOT NULL,
-precio int(20) NOT NULL,
-fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-    PRIMARY KEY (codigoalmacen),
-     CONSTRAINT fk_tb_almacen_detalle_almacen FOREIGN KEY (tb_almacen)
-    REFERENCES tb_almacen(codAlmacen)
-);
-
-
 
 CREATE TABLE detalle_compra (
   codigodetallecompra int(11) NOT NULl AUTO_INCREMENT,
@@ -181,23 +165,18 @@ CREATE TABLE detalle_compra (
     CONSTRAINT fk_tb_compra_detalle_compra FOREIGN KEY (solicitud_compra)
     REFERENCES tb_compra(nSolicitud)
 );
-
-
 CREATE TABLE Selects_unidad_medida (
   id int(11) NOT NULl AUTO_INCREMENT PRIMARY KEY,
 unidad_medida varchar(50) NOT NULL
 );
-
 CREATE TABLE Selects_categoria (
   id int(11) NOT NULl AUTO_INCREMENT PRIMARY KEY,
 categoria varchar(50) NOT NULL
 );
-
 CREATE TABLE Selects_dependencia (
   id int(11) NOT NULl AUTO_INCREMENT PRIMARY KEY,
 dependencia varchar(50) NOT NULL
 );
-
 CREATE TABLE Selects_departamento (
   id int(11) NOT NULl AUTO_INCREMENT PRIMARY KEY,
 departamento varchar(50) NOT NULL
