@@ -18,74 +18,145 @@ die();
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="styles/style.css" > 
-     <link rel="stylesheet" type="text/css" href="styles/estilos_menu.css" >
-     <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
+ <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles/estilo.css" > 
+    <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
+    <link rel="stylesheet" href="Plugin/assets/css/bootstrap.css" />
+    <link rel="stylesheet" href="Plugin/assets/css/bootstrap-theme.min.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
-         <link rel="stylesheet" href="Plugin/bootstap-icon/bootstrap-icons.min.css">
-      <link rel="stylesheet" href="Plugin/bootstap-icon/fontawesome.all.min.css">
-    <title>Detalles del Almacen</title>
+    <title>Solicitudes Almacén</title>
 </head>
+<body>
+<body>
+    <style type="text/css">
+              @media (max-width: 952px){
+   #section{
+        margin-top: 5%;
+        margin-left: 15%;
+        width: 75%;
+    }
+    th{
+        width: 25%;
+    }
+  }
+    </style>
+<?php
 
+if(isset($_POST['detalle'])){
 
-<body style="color:white;">
- <?php 
+$total = 0;
+$final = 0;
 
-$id = $_GET['id'];
-$sql = "SELECT * FROM tb_almacen WHERE codigo='$id'";
-if($result= mysqli_query($conn,$sql)){
-if (mysqli_num_rows($result)>0) {
+$num_sol = $_POST['id'];
 
-	while ($row = mysqli_fetch_array($result)) {
-		$codigo = $row['codigo'];
-		$nombre = $row['nombre'];
-		$um = $row['unidad_medida'];
-		$Cant_soli = $row['cantidad_solicitada'];
-        $Cant_despachada = $row['cantidad_despachada'];
-		$precio = $row['precio'];
-		$fecha = $row['fecha_registro'];
-	}
+   include 'Model/conexion.php';
+    $sql = "SELECT * FROM tb_almacen WHERE cod_solicitud = $num_sol";
+    $result = mysqli_query($conn, $sql);
+ while ($datos_sol = mysqli_fetch_array($result)){
 
-	mysqli_free_result($result);
-	}else{
-		echo "El Produto no Exixte";
-	}
-}else{
-		echo "ERROR: No se  pudo ejecutar la sentencia SQL por que " . mysql_errno($conn);
-}
- ?>
- <h1 style="color:white;text-align: center;"> Detalles del Almacen</h1>
- <div class="container">
- 
- <table class="table">
+ echo'   
+<section id="section">
+<form method="POST" action="Exportar_PDF/pdf_almacen.php" target="_blank">
+         
+      
+        <div class="row">  
+
+          <div class="col-6 col-sm-3" style="position: initial">
+            <label style="font-weight: bold;">N° de Solicitud:</label>
+            <input readonly class="form-control"  type="text" value="' .$datos_sol['cod_solicitud']. '" name="num_sol">
+          </div>
+
+          <div class="col-6 col-sm-3" style="position: initial">
+              <label style="font-weight: bold;">Depto. o Servicio:</label>
+              <input readonly class="form-control"  type="text" value="' .$datos_sol['departamento']. '" name="depto">
+          </div>
+
         
-        <thead>
-              <tr id="tr">
- 			 <th class="table-info text-dark"><strong>Código</strong></th>
-                <th class="table-info text-dark"><strong>Nombre</strong></th>
-                <th class="table-info text-dark"><strong>Unidad de Medida</strong></th>
-                <th class="table-info text-dark"><strong>Cantidad Solicitada</strong></th>
-                <th class="table-info text-dark"><strong>Cantidad Despachada</strong></th>
-                <th class="table-info text-dark"><strong>Precio</strong></th>
-                <th class="table-info text-dark"><strong>Fecha Registro</strong></th>
- 		</tr>
- 	</thead>
- 	<tbody>
- 		<td data-label="Codigo"><?php echo $codigo ?></td>
- 		<td data-label="Nombre"><?php echo $nombre ?></td>
- 		<td data-label="Unidad De Medida"><?php echo $um ?></td>
- 		<td data-label="Cantidad Solicitada"><?php echo $Cant_soli ?></td>
-        <td data-label="Cantidad Despachada"><?php echo $Cant_despachada ?></td>
- 		<td data-label="Precio"><?php echo $precio ?></td>
- 		<td data-label="Fecha de Registro"><?php echo $fecha ?></td>
- </tbody>
- </table>
+        <div class="col-6 col-sm-3" style="position: initial">
+            <label style="font-weight: bold;">Encargado:</label>
+            <input readonly class="form-control"  type="text" value="' .$datos_sol['encargado']. '" name="encargado">
+        </div>
 
- </div>
-</body>
-</html>
+          
+          <div class="col-6 col-sm-3" style="position: initial">
+            <label style="font-weight: bold;">Fecha:</label>
+              <input readonly class="form-control"  type="text" value="' .date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])). '" name="fech">
+          </div>
+        </div>
+      
+        <br>
+          
+        <table class="table" style="margin-bottom:3%">
+            
+            <thead>
+              <tr id="tr">
+                <th>Código</th>
+                <th style="width: 35%;">Nombre del Artículo</th>
+                <th>Unidad de Medida</th>
+                <th>Cantidad Solicitada</th>
+                <th>Costo unitario</th>
+                <th>Total</th>
+              </tr>
+                <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
+           </thead>
+            <tbody>';
+
+$num_almacen = $datos_sol['cod_solicitud'];
+}
+ $sql = "SELECT * FROM detalle_almacen WHERE cod_solicitud = $num_almacen";
+    $result = mysqli_query($conn, $sql);
+while ($productos = mysqli_fetch_array($result)){
+      
+      $total = $productos['cantidad'] * $productos['costo_unitario'];
+      $final += $total;
+  echo' 
+    <style type="text/css">
+     #td{
+        display: none;
+    }
+    
+   
+</style> 
+      <tr>
+        <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="' .$productos['cod_producto']. '"></td>
+        <td  data-label="Nombre del Artículo"><textarea style="background:transparent; border: none; width: 100%;"  name="nombre[]" readonly style="border: none">'.$productos['nombre']. '</textarea></td>
+        <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
+        <td  data-label="Cantidad Solicitada"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="'.$productos['cantidad']. '"></td>
+        <td  data-label="Costo Unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$'.$productos['costo_unitario']. '"></td>
+        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$'.$total. '"></td>
+      </tr>';
+
+}
+
+      echo'
+      <th colspan="5">SubTotal</th>
+      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$'.$final.'" ></td></tr>
+  
+         </tbody>
+        </table>
+
+    
+  
+    <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
+      <style>
+        #pdf{
+        margin-left: 38%; 
+        background: rgb(175, 0, 0); 
+        color: #fff; margin-bottom: 2%; 
+        border: rgb(0, 0, 0);
+        }
+        #pdf:hover{
+        background: rgb(128, 4, 4);
+        } 
+        #pdf:active{
+        transform: translateY(5px);
+        } 
+      </style>
+</form>
+</section>';
+    }
+?>            
+  </body>
+  </html>
