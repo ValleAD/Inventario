@@ -44,17 +44,7 @@ location.href = '../form_compra.php';
       $insert = "INSERT INTO detalle_compra (categoria, codigo, catalogo, descripcion, unidad_medida, stock, precio, estado, solicitud_compra) VALUES ('$categoria', '$codigo_producto','$catalogo', '$Descripción', '$u_m', '$cantidad', '$cost','$estado', '$solicitud')";
       $query = mysqli_query($conn, $insert);
 
-      if ($query) {
-        echo "<script> alert('Su solicitud fué realizada correctamente');
-        location.href = '../dt_compra.php';
-        </script>
-        ";
-      }else {
-        echo "<script> alert('¡Error! algo salió mal');
-        location.href = '../form_compra.php';
-        </script>
-        ";
-      }
+    
 
     }  
      for($i = 0; $i < count($_POST['cod']); $i++)
@@ -68,7 +58,7 @@ location.href = '../form_compra.php';
       $cantidad         = $_POST['cant'][$i];
       $cost             = $_POST['cu'][$i];
       $campo            = $_POST['form_compra'][$i];
-       $insert = "INSERT INTO tb_productos (codProductos, categoria, catalogo, nombre, descripcion, unidad_medida, stock, precio,campo) VALUES ('$codigo_producto', '$categoria', '$catalogo', '$nombre_articulo', '$Descripción', '$u_m', '$cantidad', '$cost','$campo')";
+       $insert = "INSERT INTO reporte_articulos (codProductos, categoria, catalogo, nombre, descripcion, unidad_medida, stock, precio,campo) VALUES ('$codigo_producto', '$categoria', '$catalogo', '$nombre_articulo', '$Descripción', '$u_m', '$cantidad', '$cost','$campo')";
       $query = mysqli_query($conn, $insert);
 
     }

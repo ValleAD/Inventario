@@ -79,7 +79,7 @@ if ($query) {
       $cantidad         = $_POST['cant'][$i];
       $cost             = $_POST['cu'][$i];
       $campo            = $_POST['form_vale'][$i];
-       $insert = "INSERT INTO tb_productos (codProductos, categoria, catalogo, nombre, descripcion, unidad_medida, stock, precio,campo) VALUES ('$codigo_producto', '$categoria', '$catalogo', '$nombre_articulo', '$Descripción', '$u_m', '$cantidad', '$cost','$campo')";
+       $insert = "INSERT INTO reporte_articulos (codProductos, categoria, catalogo, nombre, descripcion, unidad_medida, stock, precio,campo) VALUES ('$codigo_producto', '$categoria', '$catalogo', '$nombre_articulo', '$Descripción', '$u_m', '$cantidad', '$cost','$campo')";
       $query = mysqli_query($conn, $insert);
 
     }

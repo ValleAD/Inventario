@@ -28,12 +28,12 @@ die();
     <link rel="stylesheet" href="Plugin/bootstap-icon/bootstrap-icons.min.css">
     <link rel="stylesheet" href="Plugin/bootstap-icon/fontawesome.all.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
-<title>Ingresos</title>
+<title>Reportes de Productos</title>
 </head>
 <body>
     <section id="act">
         
-           <h1 style="margin-top:5px; text-align: center;">Ingreso de Productos</h1>
+           <h1 style="margin-top:5px; text-align: center;">Reportes de Productos</h1>
 <style>
   #act {
     margin-top: 0.5%;
@@ -65,16 +65,16 @@ die();
        <table class="table">
             <thead>
               <tr id="tr">
-                <th style="width: 175%;">Categoría</th>
-                <th style="width: 175%;">Código</th>
-                <th style="width: 135%;">Cod. de Catálogo</th>
-                <th style="width: 200%;">Nombre</th>
-                <th style="width: 275%;">Descripción Completa</th>
-                <th style="width: 175%;">U/M</th>
-                <th style="width: 115%;">Cantidad</th>
-                <th style="width: 175%;">Costo Unitario</th>
-                <th style="width: 135%;">Formularios</th>
-                <th style="width: 145%;">Fecha Registro</th>
+                <th style="text-align:center">Categoría</th>
+                <th style="text-align:center">Código</th>
+                <th style="text-align:center">Cod. de Catálogo</th>
+                <th style="text-align:center">Nombre</th>
+                <th style="text-align:center">Descripción Completa</th>
+                <th style="text-align:center">U/M</th>
+                <th style="text-align:center">Cantidad</th>
+                <th style="text-align:center">Costo Unitario</th>
+                <th style="text-align:center">Formularios</th>
+                <th style="text-align:center">Fecha Registro</th>
               </tr>
 
               <tr>
@@ -86,7 +86,7 @@ die();
             <tbody>
  <?php
     include 'Model/conexion.php';
-   $sql = "SELECT * FROM tb_productos";
+   $sql = "SELECT * FROM reporte_articulos";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){?>
