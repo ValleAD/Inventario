@@ -32,7 +32,6 @@ die();
 </head>
 
 <body>
-<<<<<<< Updated upstream
 <section id="act">
     <style type="text/css">
         
@@ -45,13 +44,6 @@ die();
         <table class="table">
             <h1 class="text-center mg-t" style="margin-top: -0.5%;">Solicitudes de Almacen</h1><br>
           <thead>
-=======
-
-      <div class="container">
-        <table class="table">
-            <center><h1 style="margin-top:5px">Solicitudes Bodega</h1></center>
-            <thead>
->>>>>>> Stashed changes
               <tr id="tr">
              
                 <th class="table-info text-dark"><strong>No. de Solicitud</strong></th>
@@ -61,16 +53,12 @@ die();
                 <th class="table-info text-dark"><strong>Detalles</strong></th>
                 
             </tr>
-<<<<<<< Updated upstream
             <tr>
                   <td id="td" colspan="7" >
                     <h4 align="center">No se encontraron resultados 😥</h4></td>
             </tr>
             </thead>
             <tbody>
-=======
-            <td id="td" colspan="5"><h4 align="center">No se encontraron resultados 😥</h4></td>
->>>>>>> Stashed changes
             
     <style type="text/css">
         

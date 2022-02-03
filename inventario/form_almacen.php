@@ -90,7 +90,6 @@ form{
                 <label id="inp1">Departamento que solicita</b></label>   
                 <select  class="form-control" name="depto" id="depto" required>
                         <option selected disabled value="">Selecione</option>
-<<<<<<< Updated upstream
                         <option>Direccion Hospital</option>
                         <option selected disabled>Seleccionar</option>
                         <?php 
@@ -105,41 +104,6 @@ form{
 
 
                          ?>
-=======
-                        <option>Dirección Hospital</option>
-                        <option>Subdirección Hospital</option>
-                        <option>Sección Equipo Médico</option>
-                        <option>Sección Equipo Básico</option> 
-                        <option>Sección Planta Fisica y Monitoreo</option>
-                        <option>Departamento Mantenimiento Local</option>
-                        <option>Servicio Centro Quirúrgico</option>
-                        <option>Departamento Lavandería y Ropería</option>
-                        <option>Sevicio Medicina Hombre</option>
-                        <option>Sevicio Medicina Mujeres</option>
-                        <option>Unidad Sala de Operación</option>
-                        <option>Unidad Sala de Partos</option>
-                        <option>Sevicio Almacén</option>
-                        <option>Sevicio Consulta Externa</option>
-                        <option>Unidad Neonatos</option>
-                        <option>Unidad Máxima Urgencia</option>
-                        <option>Sevicio Trabajo Social</option>
-                        <option>Área Saneamiento Ambiental</option>
-                        <option>Unidad Financiara Institucional</option>
-                        <option>Departamento Estadística y Documento Médicos</option>
-                        <option>Departamento Activo Fijo</option>
-                        <option>Unidad Auditoría Interna</option>
-                        <option>Departamento Recursos Humanos</option>
-                        <option>Unidad Asesora de Suministro Médicos</option>
-                        <option>Área Servicios Auxiliares</option>
-                        <option>Servicio Obstetricia</option>
-                        <option>Área Clínica De Úlceras Y Heridas</option>
-                        <option>Unidad Atención Integral e Integrada a la Salud Sexual Reproductiva</option>
-                        <option>Departamento Terapia Dialítica</option>
-                        <option>Área Residencial Médica</option>
-                        <option>Unidad Cuidados Especiales</option>
-                        <option>Área Epidemiología</option>
-                        <option>Área COVID 19</option>
->>>>>>> Stashed changes
                       </select>
             </div>
             
