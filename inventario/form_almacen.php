@@ -109,13 +109,19 @@ form{
             
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Nombre de la persona</label>
-                <select  class="form-control" name="usuario" id="usuario" required style="cursor: pointer">
-                <option selected disabled value="">Seleccionar</option>
-                <option>Juan Martinez</option>
-                <option>Miguel Roscencio</option>
-                <option>Francisco Guevarra </option>
-                <option>Rocio Amilcar</option> 
-            </select>
+               <select class="form-control" name="usuario">
+    <option disabled selected>Selecione</option> 
+<?php  
+$habilitado = 'si';
+     $sql = "SELECT id, firstname,lastname FROM tb_usuarios WHERE Habilitado = 'si'";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){ 
+
+      echo'  <option>'.$productos['firstname']." ".$productos['lastname'].'</option>
+  ';   
+ } ?>
+</select>
                 </label>   
             </div>
         </div>
