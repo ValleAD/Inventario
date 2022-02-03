@@ -211,7 +211,7 @@ if(isset($_POST['codigo'])){
    //$sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
 
 
-   $sql = "SELECT codProductos, nombre, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE  codProductos = '$codigo'";
+   $sql = "SELECT codProductos,categoria,catalogo, nombre, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE  codProductos = '$codigo'";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){ ?>    
@@ -228,7 +228,10 @@ if(isset($_POST['codigo'])){
                <td data-label="Unidad De Medida"><input  style="background:transparent; border: none; width: 100%; color: black;" type="text" class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
                <td data-label="Productos Disponibles"><input  style="background:transparent; border: none; width: 100%; color: gray;" type="text" class="form-control" readonly  name="stock[]"  value ="<?php  echo $productos['SUM(stock)']; ?>"></td>
                <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="text" class="form-control"  name="cant[]" required></td>
-               <td data-label="Precio"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
+               <td data-label="Precio"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>
+               <td ><input class="form-control" type="hidden"  name="form_bodega[]" value="Formulario Bodega">
+                <input class="form-control" type="hidden"  name="categoria[]" value="<?php  echo $productos['categoria']; ?>">   
+                <input class="form-control" type="hidden"  name="cat[]" value="<?php  echo $productos['catalogo']; ?>"></td>      
             </tr>
    
         <?php }
