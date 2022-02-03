@@ -16,7 +16,7 @@ die();
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <title>Solicitud de materiales a almacen</title>
+    <title>Solicitud de materiales a almacén</title>
         
         <meta charset="utf-8" />
          <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -73,24 +73,24 @@ form{
 }#a{
     font-size: 13px;
 }
+        }
     </style>
 </ol>
 <center>
 
 </center>
 <div class="container">
-    
 
-<div class="row">
-    <div class="col-6.5 col-sm-4" style="position: initial">
-     <div class="form-group" >
-                    <label>Departamento que lo solicitará</label>
-                    <div class="col-md-16" >
-                    <div class="invalid-feedback">
-                        Por favor seleccione una opción.
-                      </div>
-                      <select  class="form-control" name="departamento[]" id="um">
+        <div class="row">
+            <div class="col-.5 col-sm-4" style="position: initial">
+                <label id="inp1">Solicitud N°</b></label>   
+                <input id="inp1"class="form-control" type="number" name="solicitud_no" required>
+            </div>
+              <div class="col-6.5 col-sm-4" style="position: initial">
+                <label id="inp1">Departamento que solicita</b></label>   
+                <select  class="form-control" name="depto" id="depto" required>
                         <option selected disabled value="">Selecione</option>
+<<<<<<< Updated upstream
                         <option>Direccion Hospital</option>
                         <option selected disabled>Seleccionar</option>
                         <?php 
@@ -105,17 +105,58 @@ form{
 
 
                          ?>
+=======
+                        <option>Dirección Hospital</option>
+                        <option>Subdirección Hospital</option>
+                        <option>Sección Equipo Médico</option>
+                        <option>Sección Equipo Básico</option> 
+                        <option>Sección Planta Fisica y Monitoreo</option>
+                        <option>Departamento Mantenimiento Local</option>
+                        <option>Servicio Centro Quirúrgico</option>
+                        <option>Departamento Lavandería y Ropería</option>
+                        <option>Sevicio Medicina Hombre</option>
+                        <option>Sevicio Medicina Mujeres</option>
+                        <option>Unidad Sala de Operación</option>
+                        <option>Unidad Sala de Partos</option>
+                        <option>Sevicio Almacén</option>
+                        <option>Sevicio Consulta Externa</option>
+                        <option>Unidad Neonatos</option>
+                        <option>Unidad Máxima Urgencia</option>
+                        <option>Sevicio Trabajo Social</option>
+                        <option>Área Saneamiento Ambiental</option>
+                        <option>Unidad Financiara Institucional</option>
+                        <option>Departamento Estadística y Documento Médicos</option>
+                        <option>Departamento Activo Fijo</option>
+                        <option>Unidad Auditoría Interna</option>
+                        <option>Departamento Recursos Humanos</option>
+                        <option>Unidad Asesora de Suministro Médicos</option>
+                        <option>Área Servicios Auxiliares</option>
+                        <option>Servicio Obstetricia</option>
+                        <option>Área Clínica De Úlceras Y Heridas</option>
+                        <option>Unidad Atención Integral e Integrada a la Salud Sexual Reproductiva</option>
+                        <option>Departamento Terapia Dialítica</option>
+                        <option>Área Residencial Médica</option>
+                        <option>Unidad Cuidados Especiales</option>
+                        <option>Área Epidemiología</option>
+                        <option>Área COVID 19</option>
+>>>>>>> Stashed changes
                       </select>
-                    </div>
-                  </div>
+            </div>
+            
+            <div class="col-.5 col-sm-4" style="position: initial">
+                <label id="inp1">Nombre de la persona</label>
+                <select  class="form-control" name="usuario" id="usuario" required style="cursor: pointer">
+                <option selected disabled value="">Seleccionar</option>
+                <option>Juan Martinez</option>
+                <option>Miguel Roscencio</option>
+                <option>Francisco Guevarra </option>
+                <option>Rocio Amilcar</option> 
+            </select>
+                </label>   
+            </div>
+        </div>
 
-    </div>
-    <div class="col-6.5 col-sm-4" style="position: initial">
-    <font color="black"><label>Fecha</label></font>   
-      <input  style="background:transparent; color: black;" class="form-control" type="date" name="dependencia" id="como2" required>
-    </div>
-    </div>
-    </div>
+
        <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
 
 <div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-left: 1%;margin-right: 1%;margin-top: 1%; border-radius: 5px;">
@@ -125,7 +166,7 @@ form{
 
             <div class="form-group" style="position: all; margin: 2%">
                         <label>Código</label> 
-                      <input type="number" name="cod[]" class="form-control" placeholder="Ingrese código de producto "/>
+                      <input type="number" name="cod[]" class="form-control" placeholder="Ingrese código de producto " required>
                   </div>
 
 
@@ -135,7 +176,7 @@ form{
                     <div class="invalid-feedback">
                         Por favor seleccione una opción.
                       </div>
-                      <select  class="form-control" name="um[]" id="um">
+                      <select  class="form-control" name="um[]" id="um" required>
                         <option selected disabled value="">U/M</option>
                        <?php 
                      $sql = "SELECT * FROM  selects_unidad_medida";
@@ -153,20 +194,20 @@ form{
 
             <div class="form-group">
                  <label>Nombre del Artículo</label>
-                <input type="text" name="nom[]" class="form-control" placeholder="Nombre y descripción del producto"/>
+                <input type="text" name="nom[]" class="form-control" placeholder="Nombre y descripción del producto" required>
             </div>
 
             
             <div class="form-group">
                 <label>Cantidad Solicitada</label>
-                <input type="number" name="soli[]" class="form-control" placeholder="Ingrese la Cantidad Solicitada"/>
+                <input type="number" name="soli[]" class="form-control" placeholder="Ingrese la Cantidad Solicitada" required>
             </div>
 
             
             
             <div class="form-group">
                 <label>Costo Unitario</label>
-               <input class="form-control" type="number" step="0.01" name="precio[]" placeholder="Costo unitario del producto"><br>
+               <input class="form-control" type="number" step="0.01" name="precio[]" placeholder="Costo unitario del producto" required><br>
             </div>
         </div>
     </div>            
@@ -182,7 +223,7 @@ form{
     <hr/>
     
     <div class="button21">
-        <button  class="button"  style="margin-bottom:3%;">Guardar</button>
+        <button class="btn btn-success btn-lg" name="submit" style="margin-bottom:2%;">Guardar</button>
     </div>
 </form>
 

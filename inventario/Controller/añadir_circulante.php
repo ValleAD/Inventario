@@ -4,9 +4,8 @@
 // de re_producto.php y se guarde en la tabla tb_productos mysql
 include '../Model/conexion.php';
 //     , 
-for($i = 0; $i < count($_POST['desc']); $i++) 
+for($i = 0; $i < count($_POST['submit']); $i++) 
     {
-      $codigo_producto  = $_POST['cod'][$i];
       $descripcion  = $_POST['desc'][$i];
       $u_m              = $_POST['um'][$i];
       $soli             = $_POST['soli'][$i];

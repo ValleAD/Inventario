@@ -31,8 +31,8 @@ die();
     <title>Solicitudes De Almacen</title>
 </head>
 
-
 <body>
+<<<<<<< Updated upstream
 <section id="act">
     <style type="text/css">
         
@@ -45,63 +45,66 @@ die();
         <table class="table">
             <h1 class="text-center mg-t" style="margin-top: -0.5%;">Solicitudes de Almacen</h1><br>
           <thead>
+=======
+
+      <div class="container">
+        <table class="table">
+            <center><h1 style="margin-top:5px">Solicitudes Bodega</h1></center>
+            <thead>
+>>>>>>> Stashed changes
               <tr id="tr">
-                <th class="table-info text-dark"><strong>Código</strong></th>
-                <th class="table-info text-dark"><strong>Nombre</strong></th>
-                <th class="table-info text-dark"><strong>U/M</strong></th>
-                <th class="table-info text-dark"><strong>Cantidad Solicitada</strong></th>
-                <th class="table-info text-dark"><strong>Costo Unitario</strong></th>
-                <th class="table-info text-dark"><strong>Fecha</strong></th>
+             
+                <th class="table-info text-dark"><strong>No. de Solicitud</strong></th>
+                <th class="table-info text-dark"><strong>Departamento Solicitante</strong></th>
+                <th class="table-info text-dark"><strong>Usuario</strong></th>
+                <th class="table-info text-dark"><strong>Fecha de solicitud</strong></th>
                 <th class="table-info text-dark"><strong>Detalles</strong></th>
-               
-                
                 
             </tr>
+<<<<<<< Updated upstream
             <tr>
                   <td id="td" colspan="7" >
                     <h4 align="center">No se encontraron resultados 😥</h4></td>
             </tr>
             </thead>
             <tbody>
+=======
+            <td id="td" colspan="5"><h4 align="center">No se encontraron resultados 😥</h4></td>
+>>>>>>> Stashed changes
             
+    <style type="text/css">
+        
+    </style>
+         </thead>
+<tbody>   
     <?php
     include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_almacen ORDER BY fecha_registro DESC";
+    $sql = "SELECT * FROM tb_almacen ORDER BY fecha_solicitud DESC";
     $result = mysqli_query($conn, $sql);
 
-    while ($solicitudes = mysqli_fetch_array($result)){?>
+    while ($datos_sol = mysqli_fetch_array($result)){?>
         <style type="text/css">
      #td{
         display: none;
     }
+    
    
 </style>
+
         <tr>
-            <td data-label="Codigo"><input style="background:transparent; border: none; width: 100%;color: black;" type="number"  class="form-control" readonly name="cod[]" value ="<?php  echo $solicitudes['codigo']; ?>"></td>
-
-            <td data-label="Nombre"><input style="background:transparent; border: none; width: 100%;color: black;" type="number"  class="form-control" readonly name="nombre[]" value ="<?php  echo $solicitudes['nombre']; ?>"></td>
-
-            <td data-label="Unidad De Medida"><input style="background:transparent; border: none; width: 100%;color: black;" type="number"  class="form-control" readonly name="um[]" value ="<?php  echo $solicitudes['unidad_medida']; ?>"></td>
-
-            <td data-label="Cantidad Despachada"><input style="background:transparent; border: none; width: 100%;color: black;" type="number"  class="form-control" readonly name="cantidad_solicitada[]" value ="<?php  echo $solicitudes['cantidad_solicitada']; ?>"></td>
-
-            <td data-label="Precio"><input style="background:transparent; border: none; width: 100%;color: black;" type="number"  class="form-control" readonly name="costo[]" value ="<?php  echo $solicitudes['precio']; ?>"></td>
-            
-            <td data-label="Precio"><input style="background:transparent; border: none; width: 100%;color: black;" type="text"  class="form-control"  name="Fecha[]" value ="<?php  echo $solicitudes['fecha_registro']; ?>"></td>
-
-<!--**********************************************************************************************************************************************************************************-->
-  <!--Botones para actualizar y eliminar-->
-            <td>
-                <form style="margin:0;background: transparent;" action="dt_almacen.php" method="POST">
-                    <a href="Detalle_Almacen.php?id=<?php  echo $solicitudes['codigo']; ?>" class="btn btn-primary swal2-styled.swal2-confirm">Ver detalles</a>
-                </form>
-                
+            <td data-label="No. solicitud" class="delete"><?php  echo $datos_sol['cod_solicitud']; ?></td>
+            <td data-label="Departamento Solicitante" class="delete"><?php  echo $datos_sol['departamento']; ?></td>
+            <td data-label="Usuario" class="delete"><?php  echo $datos_sol['encargado']; ?></td>
+            <td data-label="Fecha de solicitud" class="delete"><?php  echo $datos_sol['fecha_solicitud']; ?></td>
+            <td  data-label="Detalles">
+            <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Almacen.php">             
+                <input type='hidden' name='id' value="<?php  echo $datos_sol['cod_solicitud']; ?>">             
+                <button name='detalle' class="btn btn-primary swal2-styled.swal2-confirm">Ver Detalles</button>             
+            </form> 
             </td>
         </tr>
-           
  <?php } ?> 
-      
-            </tbody>
+           </tbody>
         </table>
     </section>
 </body>
