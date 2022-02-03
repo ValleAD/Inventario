@@ -24,9 +24,13 @@ $tipo_usuario = $_SESSION['tipo_usuario'];
             background-attachment: fixed;">
 
     <style type="text/css">
+        #a{
+            padding: 20px 10px;
+        }
         #a:hover{
    text-decoration: none;
    color: lawngreen;
+   
 }
  #b:hover{
    text-decoration: none;

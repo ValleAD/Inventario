@@ -174,7 +174,7 @@ if(isset($_POST['codigo'])){
 
     while ($productos = mysqli_fetch_array($result)){ 
 
-      echo'  <option value="'.$productos['id'].'">'.$productos['firstname']." ".$productos['lastname'].'</option>
+      echo'  <option>'.$productos['firstname']." ".$productos['lastname'].'</option>
   ';   
  } echo'
 </select>

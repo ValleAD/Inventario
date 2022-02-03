@@ -38,7 +38,7 @@ background:burlywood;
         <nav>
             <ul>
                 <li>
-                    <a id="b" href="../invitado.php"><span class="icon-house"></span>Inicio</a></li>
+                    <a id="b" href="invitado.php"><span class="icon-house"></span>Inicio</a></li>
                    
                 </li>
                 <li class="submenu">
@@ -50,13 +50,13 @@ background:burlywood;
                 <li class="submenu">
                     <a id="b" href="#"><span class="icon-rocket"></span>Solicitud Vale<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
-                        <li><a id="b" href="form_vale.php">Nuevo</a></li>
+                        <li><a id="b" href="vale/form_vale.php">Nuevo</a></li>
                     </ul>
                 </li>
                  <li class="submenu" style="float:right;">
                     <a id="a" href="#"><span class="icon-rocket"></span><i class="bi bi-person"></i> Invitado<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
-                        <li><a id="b" href="../logout_invitado.php">Cerrar Session</a></li>
+                        <li><a id="b" href="logout_invitado.php">Cerrar Session</a></li>
                         
                     </ul>
                 </li>

@@ -52,6 +52,7 @@ CREATE TABLE tb_usuarios (
   tipo_usuario int(15) NOT NULL,
     PRIMARY KEY (id)
 ); 
+
 CREATE TABLE tb_bodega (
   codBodega int(11) NOT NULL,
   departamento varchar(50) NOT NULL,
@@ -82,19 +83,7 @@ CREATE TABLE tb_compra (
     PRIMARY KEY (nSolicitud)
 );
 
-CREATE TABLE tb_almacen (
-codigoalmacen int(11) NOT NULL AUTO_INCREMENT,
-codigo int(15) NOT NULL,
-nombre varchar(50)  NOT NULL,
-unidad_medida varchar(5) NOT NULL,
-cantidad_solicitada int(25) NOT NULL,
-cantidad_despachada int(25) NOT NULL,
-precio int(20) NOT NULL,
-  usuario varchar (50)  NOT NULL,
-  campo varchar (50)  NOT NULL DEFAULT 'Solicitud Almacen',
-fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-    PRIMARY KEY (codigoalmacen)
-);
+
 
 CREATE TABLE tb_circulante (
 codigo int(15) NOT NULl AUTO_INCREMENT,
@@ -107,7 +96,28 @@ costo int(50) NOT NULL,
 fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (codigo)
 );
-
+CREATE TABLE `tb_almacen` (
+  `id` int(8) NOT NULL,
+  `cod_solicitud` int(12) NOT NULL,
+  `departamento` varchar(200) NOT NULL,
+  `encargado` varchar(75) NOT NULL,
+  `fecha_solicitud` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+);
+CREATE TABLE detalle_almacen (
+codigoalmacen int(11) NOT NULL AUTO_INCREMENT,
+codigo int(15) NOT NULL,
+nombre varchar(50)  NOT NULL,
+unidad_medida varchar(5) NOT NULL,
+cantidad_solicitada int(25) NOT NULL,
+cantidad_despachada int(25) NOT NULL,
+tbAlmacen int(20) NOT NULL,
+precio int(20) NOT NULL,
+fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+    PRIMARY KEY (codigoalmacen),
+     CONSTRAINT fk_tb_almacen_detalle_almacen FOREIGN KEY (tbAlmacen)
+    REFERENCES tb_almacen(codAlmacen)
+);
 CREATE TABLE detalle_bodega (
   codigodetallebodega int(15) NOT NULL AUTO_INCREMENT,
   codigo int(15) NOT NULL,
@@ -116,6 +126,7 @@ CREATE TABLE detalle_bodega (
   stock int(11) NOT NULL,
   precio decimal(6,2) NOT NULL,
   odt_bodega int(15),
+  estado varchar (50)  NOT NULL,
   fecha_registro date NOT NULL DEFAULT current_timestamp(),
     PRIMARY KEY (codigodetallebodega),
     CONSTRAINT fk_tb_bodega_detalle_bodeha FOREIGN KEY (odt_bodega)
@@ -130,6 +141,7 @@ CREATE TABLE detalle_vale (
   stock int(11) NOT NULL,
   precio decimal(6,2) NOT NULL,
   numero_vale int(15),
+  estado varchar (50)  NOT NULL,
   fecha_registro date NOT NULL DEFAULT current_timestamp(),
     PRIMARY KEY (codigodetallevale),
     CONSTRAINT fk_tb_vale_detalle_vale FOREIGN KEY (numero_vale)
@@ -143,9 +155,10 @@ CREATE TABLE detalle_compra (
   codigo int(15) NOT NULL,
   catalogo int(20) NOT NULL,
   descripcion varchar(200) NOT NULL,
-  unidad_medida varchar(2) NOT NULL DEFAULT 'u',
+  unidad_medida varchar(5) NOT NULL DEFAULT 'u',
   stock int(200) NOT NULL,
   precio decimal(6,2) NOT NULL,
+  estado varchar (50)  NOT NULL,
   solicitud_compra int(8) DEFAULT NULL,
   fecha_registro date NOT NULL DEFAULT current_timestamp(),
      PRIMARY KEY (codigodetallecompra),

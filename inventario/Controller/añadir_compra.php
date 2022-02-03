@@ -38,9 +38,10 @@ location.href = '../form_compra.php';
       $u_m              = $_POST['um'][$i];
       $cantidad         = $_POST['cant'][$i];
       $cost             = $_POST['cu'][$i];
+      $estado             = $_POST['estado'][$i];
       $solicitud        = $_POST['nsolicitud'];;
 
-      $insert = "INSERT INTO detalle_compra (categoria, codigo, catalogo, descripcion, unidad_medida, stock, precio, solicitud_compra) VALUES ('$categoria', '$codigo_producto','$catalogo', '$Descripción', '$u_m', '$cantidad', '$cost', '$solicitud')";
+      $insert = "INSERT INTO detalle_compra (categoria, codigo, catalogo, descripcion, unidad_medida, stock, precio, estado, solicitud_compra) VALUES ('$categoria', '$codigo_producto','$catalogo', '$Descripción', '$u_m', '$cantidad', '$cost','$estado', '$solicitud')";
       $query = mysqli_query($conn, $insert);
 
       if ($query) {
@@ -56,4 +57,19 @@ location.href = '../form_compra.php';
       }
 
     }  
+     for($i = 0; $i < count($_POST['cod']); $i++)
+    {
+      $codigo_producto  = $_POST['cod'][$i];
+      $categoria        = $_POST['categoria'][$i];;
+      $catalogo         = $_POST['cat'][$i];
+      $nombre_articulo  = $_POST['nombre'][$i];
+      $Descripción      = $_POST['desc'][$i];
+      $u_m              = $_POST['um'][$i];;
+      $cantidad         = $_POST['cant'][$i];
+      $cost             = $_POST['cu'][$i];
+      $campo            = $_POST['form_compra'][$i];
+       $insert = "INSERT INTO tb_productos (codProductos, categoria, catalogo, nombre, descripcion, unidad_medida, stock, precio,campo) VALUES ('$codigo_producto', '$categoria', '$catalogo', '$nombre_articulo', '$Descripción', '$u_m', '$cantidad', '$cost','$campo')";
+      $query = mysqli_query($conn, $insert);
+
+    }
 ?>

@@ -13,7 +13,7 @@
       <link rel="icon" type="image/png" sizes="32x32"  href="../../../img/log.png"> 
     <title>Productos</title>
 </head>
-<body>
+
 <body style="background-image: url(../../../img/4k.jpg);  
             background-repeat: no-repeat;
             background-attachment: fixed;">
@@ -63,30 +63,27 @@ background:burlywood;
             </ul>
         </nav>
     </header>
-</table>
-</div>
-<div class="container top">
-<br>
 
-
-    <div class="container">
-       <div class="row" >
+<section style="margin:2%">
        <table class="table">
             <thead>
               <tr id="tr">
                 <th style="width: 175%;">Categoría</th>
-                <th>Código</th>
+                <th style="width: 135%;">Código</th>
                 <th style="width: 135%;">Cod. de Catálogo</th>
                 <th style="width: 200%;">Nombre</th>
                 <th style="width: 225%;">Descripción Completa</th>
-                <th>U/M</th>
+                <th style="width: 135%;">U/M</th>
                 <th style="width: 115%;">Cantidad</th>
-                <th>Costo Unitario</th>
+                <th style="width: 135%;">Costo Unitario</th>
                 <th style="width: 145%;">Fecha Registro</th>
                 
               </tr>
 
               <tr>
+                <td id="td" colspan="9">
+                <h4 align="center">No se encontraron resultados 😥</h4></td>
+              </tr>
 
  <?php
     include '../../../Model/conexion.php';
@@ -96,9 +93,7 @@ background:burlywood;
     while ($productos = mysqli_fetch_array($result)){?>
 
        
-                <td id="td" colspan="9">
-                <h4 align="center">No se encontraron resultados 😥</h4></td>
-              </tr>
+                
             </thead>
 
             <tbody>
@@ -132,7 +127,7 @@ background:burlywood;
 
             </tbody>
         </table>
-    </div>
+
 </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

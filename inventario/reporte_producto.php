@@ -78,7 +78,7 @@ die();
               </tr>
 
               <tr>
-   <td id="td" colspan="9">
+   <td id="td" colspan="10">
                 <h4 align="center">No se encontraron resultados 😥</h4></td>
               </tr>
             </thead>

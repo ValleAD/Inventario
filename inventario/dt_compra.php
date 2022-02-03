@@ -31,8 +31,13 @@ die();
 </head>
 <body>
 <style type="text/css">
+      #section{
+        margin-left: 2%;
+        margin-right: 2%;
+      }
         form{
-          margin: auto;
+          margin:0;
+      }
       }
               @media (max-width: 952px){
    #section{
@@ -55,7 +60,7 @@ $final = 0;
 
   echo'   
   <section id="section">
-  <form method="POST" action="Exportar_PDF/pdf_compra.php" target="_blank">
+  <form method="POST"  action="Exportar_PDF/pdf_compra.php" target="_blank">
            
         
           <div class="row">
@@ -107,11 +112,12 @@ $final = 0;
                   <th>Categoría</th>
                   <th>Código</th>
                   <th>Cod. Catálogo</th>
-                  <th style="width: 35%;">Descripción Completa</th>
+                  <th style="width:25%;">Descripción Completa</th>
                   <th>U/M</th>
                   <th>Cantidad</th>
                   <th>Costo Unitario (estimado)</th>
-                  <th>Monto Total (estimado)</th>
+                  <th>Monto Total (estimado)
+                  </th><th>Estado</th>
                 </tr>
                   <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
              </thead>
@@ -142,14 +148,14 @@ $final = 0;
           <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="'.$productos['stock']. '"></td>
           <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$'.$productos['precio']. '"></td>
           <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$'.$total. '"></td>
-          
+          <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="'.$productos['estado']. '"></td>
         </tr>';
   
   }
   
       echo'
       <tr>
-        <th colspan="7">Subtotal</th>
+        <th colspan="8">Subtotal</th>
         <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$'.$final.'" ></td></tr>
       </tr>
            </tbody>
