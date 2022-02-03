@@ -9,7 +9,7 @@ include '../Model/conexion.php';
     $usuario = $_POST['usuario'];
 
     //crud para guardar los productos en la tabla tb_vale
-    $sql = "INSERT INTO tb_almacen (cod_solicitud, departamento,encargado) VALUES ('$solicitud_no', '$departamento','$usuario')";
+    $sql = "INSERT INTO tb_almacen (codAlmacen, departamento,encargado) VALUES ('$solicitud_no', '$departamento','$usuario')";
     $result = mysqli_query($conn, $sql); 
 
 for($i = 0; $i < count($_POST['cod']); $i++) 
@@ -21,7 +21,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
       $cost             = $_POST['precio'][$i];
       $num_sol          = $_POST['solicitud_no'];
 
-      $insert = "INSERT INTO detalle_almacen(cod_producto, unidad_medida, nombre, cantidad, costo_unitario, cod_solicitud) VALUES ('$codigo_producto','$u_m','$nombre_articulo', '$soli', '$cost', '$num_sol')";
+      $insert = "INSERT INTO detalle_almacen(codigo, nombre, unidad_medida, cantidad_solicitada, tb_almacen, precio) VALUES ('$codigo_producto', '$nombre_articulo','$u_m', '$soli', '$num_sol', '$cost')";
       $query = mysqli_query($conn, $insert);
 
       if ($query) {

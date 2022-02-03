@@ -80,13 +80,13 @@ die();
 </style>
 
         <tr>
-            <td data-label="No. solicitud" class="delete"><?php  echo $datos_sol['cod_solicitud']; ?></td>
+            <td data-label="No. solicitud" class="delete"><?php  echo $datos_sol['codAlmacen']; ?></td>
             <td data-label="Departamento Solicitante" class="delete"><?php  echo $datos_sol['departamento']; ?></td>
             <td data-label="Usuario" class="delete"><?php  echo $datos_sol['encargado']; ?></td>
             <td data-label="Fecha de solicitud" class="delete"><?php  echo $datos_sol['fecha_solicitud']; ?></td>
             <td  data-label="Detalles">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Almacen.php">             
-                <input type='hidden' name='id' value="<?php  echo $datos_sol['cod_solicitud']; ?>">             
+                <input type='hidden' name='id' value="<?php  echo $datos_sol['codAlmacen']; ?>">             
                 <button name='detalle' class="btn btn-primary swal2-styled.swal2-confirm">Ver Detalles</button>             
             </form> 
             </td>

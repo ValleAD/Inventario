@@ -52,7 +52,7 @@ $final = 0;
 $num_sol = $_POST['id'];
 
    include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_almacen WHERE cod_solicitud = $num_sol";
+    $sql = "SELECT * FROM tb_almacen WHERE codAlmacen = $num_sol";
     $result = mysqli_query($conn, $sql);
  while ($datos_sol = mysqli_fetch_array($result)){
 
@@ -65,7 +65,7 @@ $num_sol = $_POST['id'];
 
           <div class="col-6 col-sm-3" style="position: initial">
             <label style="font-weight: bold;">N° de Solicitud:</label>
-            <input readonly class="form-control"  type="text" value="' .$datos_sol['cod_solicitud']. '" name="num_sol">
+            <input readonly class="form-control"  type="text" value="' .$datos_sol['codAlmacen']. '" name="num_sol">
           </div>
 
           <div class="col-6 col-sm-3" style="position: initial">
@@ -103,13 +103,13 @@ $num_sol = $_POST['id'];
            </thead>
             <tbody>';
 
-$num_almacen = $datos_sol['cod_solicitud'];
+$num_almacen = $datos_sol['codAlmacen'];
 }
- $sql = "SELECT * FROM detalle_almacen WHERE cod_solicitud = $num_almacen";
+ $sql = "SELECT * FROM detalle_almacen WHERE tb_almacen = $num_almacen";
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
       
-      $total = $productos['cantidad'] * $productos['costo_unitario'];
+      $total = $productos['cantidad_solicitada'] * $productos['precio'];
       $final += $total;
   echo' 
     <style type="text/css">
@@ -120,11 +120,11 @@ while ($productos = mysqli_fetch_array($result)){
    
 </style> 
       <tr>
-        <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="' .$productos['cod_producto']. '"></td>
+        <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="' .$productos['codigo']. '"></td>
         <td  data-label="Nombre del Artículo"><textarea style="background:transparent; border: none; width: 100%;"  name="nombre[]" readonly style="border: none">'.$productos['nombre']. '</textarea></td>
         <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
-        <td  data-label="Cantidad Solicitada"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="'.$productos['cantidad']. '"></td>
-        <td  data-label="Costo Unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$'.$productos['costo_unitario']. '"></td>
+        <td  data-label="Cantidad Solicitada"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="'.$productos['cantidad_solicitada']. '"></td>
+        <td  data-label="Costo Unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$'.$productos['precio']. '"></td>
         <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$'.$total. '"></td>
       </tr>';
 

@@ -109,7 +109,7 @@ form{
             
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Nombre de la persona</label>
-               <select class="form-control" name="usuario">
+               <select class="form-control" name="usuario" required>
     <option disabled selected>Selecione</option> 
 <?php  
 $habilitado = 'si';
@@ -135,8 +135,8 @@ $habilitado = 'si';
         <div class="well well-sm" style="position: all; margin: 5%">
 
             <div class="form-group" style="position: all; margin: 2%">
-                        <label>Código</label> 
-                      <input type="number" name="cod[]" class="form-control" placeholder="Ingrese código de producto " required>
+                        <label>Código del Producto</label> 
+                      <input type="number" name="cod[]" class="form-control" placeholder="Código" required>
                   </div>
 
 
@@ -147,7 +147,7 @@ $habilitado = 'si';
                         Por favor seleccione una opción.
                       </div>
                       <select  class="form-control" name="um[]" id="um" required>
-                        <option selected disabled value="">U/M</option>
+                        <option selected disabled value="">Seleccionar</option>
                        <?php 
                      $sql = "SELECT * FROM  selects_unidad_medida";
                         $result = mysqli_query($conn, $sql);
@@ -164,20 +164,20 @@ $habilitado = 'si';
 
             <div class="form-group">
                  <label>Nombre del Artículo</label>
-                <input type="text" name="nom[]" class="form-control" placeholder="Nombre y descripción del producto" required>
+                <input type="text" name="nom[]" class="form-control" placeholder="Nombre del producto" required>
             </div>
 
             
             <div class="form-group">
                 <label>Cantidad Solicitada</label>
-                <input type="number" name="soli[]" class="form-control" placeholder="Ingrese la Cantidad Solicitada" required>
+                <input type="number" name="soli[]" class="form-control" placeholder="0" required>
             </div>
 
             
             
             <div class="form-group">
                 <label>Costo Unitario</label>
-               <input class="form-control" type="number" step="0.01" name="precio[]" placeholder="Costo unitario del producto" required><br>
+               <input class="form-control" type="number" step="0.01" name="precio[]" placeholder="$0.00" required><br>
             </div>
         </div>
     </div>            
