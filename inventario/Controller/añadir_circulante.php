@@ -16,11 +16,7 @@ for($i = 0; $i < count($_POST['desc']); $i++)
       $cost             = $_POST['costo'][$i];
       $num_sol          = $_POST['solicitud_no'];
 
-<<<<<<< Updated upstream
-      $insert = "INSERT INTO  detalle_circulante(descripcion, unidad_medida, cantidad_solicitada, costo) VALUES ('$descripcion','$u_m', '$soli', '$costo')";
-=======
       $insert = "INSERT INTO detalle_Circulante(descripcion, unidad_medida, stock, tb_circulante, precio) VALUES ('$descripcion','$u_m', '$soli', '$num_sol', '$cost')";
->>>>>>> Stashed changes
       $query = mysqli_query($conn, $insert);
 
       if ($query) {

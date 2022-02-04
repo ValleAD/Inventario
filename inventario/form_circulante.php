@@ -109,25 +109,6 @@ form{
 
     while ($productos = mysqli_fetch_array($result)){ 
 
-<<<<<<< Updated upstream
-                    <div class="form-group" >
-                        <label>Unidad de medida (U/M)</label>
-                        
-                        <select  class="form-control" name="um[]" id="um" required>
-                            <option selected disabled value="">Unidad de Medida</option>
-                          <?php 
-                     $sql = "SELECT * FROM  selects_unidad_medida";
-                        $result = mysqli_query($conn, $sql);
-
-                        while ($productos = mysqli_fetch_array($result)){ 
-
-                          echo'  <option>'.$productos['unidad_medida'].'</option>
-                      ';   
-                     } 
-                           ?>
-                        </select>
-                    </div>
-=======
         echo'  <option>'.$productos['unidad_medida'].'</option>
     ';   
     } 
@@ -135,7 +116,6 @@ form{
                                 </select>
                                 </div>
                             </div>
->>>>>>> Stashed changes
 
                     <div class="form-group">
                         <label>Cantidad Solicitada</label>
@@ -163,10 +143,6 @@ form{
         <button class="btn btn-success btn-lg" type="submit" style="margin-bottom:2%;">Guardar</button>
     </div>
 </form>
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
 
 <script>
     $(document).ready(function(){
