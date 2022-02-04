@@ -11,7 +11,7 @@ for($i = 0; $i < count($_POST['submit']); $i++)
       $soli             = $_POST['soli'][$i];
       $costo             = $_POST['costo'][$i];
 
-      $insert = "INSERT INTO tb_circulante(descripcion, unidad_medida, cantidad_solicitada, costo) VALUES ('$descripcion','$u_m', '$soli', '$costo')";
+      $insert = "INSERT INTO  detalle_circulante(descripcion, unidad_medida, cantidad_solicitada, costo) VALUES ('$descripcion','$u_m', '$soli', '$costo')";
       $query = mysqli_query($conn, $insert);
 
       if ($query) {

@@ -95,10 +95,7 @@ form{
 
                     <div class="form-group" >
                         <label>Unidad de medida (U/M)</label>
-                        <div class="col-md-16" >
-                            <div class="invalid-feedback">
-                            Por favor seleccione una opción.
-                            </div>
+                        
                         <select  class="form-control" name="um[]" id="um" required>
                             <option selected disabled value="">Unidad de Medida</option>
                           <?php 
@@ -112,7 +109,6 @@ form{
                      } 
                            ?>
                         </select>
-                        </div>
                     </div>
 
                     <div class="form-group">
@@ -141,13 +137,7 @@ form{
         <button class="btn btn-success btn-lg" name="submit" style="margin-bottom:2%;">Guardar</button>
     </div>
 </form>
-<?php 
 
-if (isset($_POST['guardar'])) {
-   echo'hola';
-}
-
- ?>
 
 <script>
     $(document).ready(function(){
