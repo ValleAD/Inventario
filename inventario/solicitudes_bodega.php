@@ -63,7 +63,15 @@ die();
 <tbody>   
     <?php
     include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_bodega ORDER BY fecha_registro DESC";
+     $por_pagina = 6;
+ if (isset($_GET['pagina'])) {
+    $pagina = $_GET['pagina'];
+ }else{
+    $pagina =1;
+ }
+ $empieza = ($pagina-1) * $por_pagina;
+
+    $sql = "SELECT * FROM tb_bodega ORDER BY fecha_registro DESC LIMIT $empieza,$por_pagina";
     $result = mysqli_query($conn, $sql);
 
     while ($solicitudes = mysqli_fetch_array($result)){?>
@@ -89,7 +97,41 @@ die();
  <?php } ?> 
            </tbody>
         </table>
+ <p style="margin-top: 2%;"></p>
+<?php 
+ $sql = "SELECT * FROM tb_bodega";
+    $result = mysqli_query($conn, $sql);
+$total_registro = mysqli_num_rows($result);
+$total_pagina = ceil($total_registro / $por_pagina);
 
+echo "<center><a id='cb' href='solicitudes_bodega.php?pagina= 1'>".'Primera'."</a>";
+for ($i=1; $i <=$total_pagina; $i++) { 
+    echo "<a id='c' href='solicitudes_bodega.php?pagina=".$i."'>".$i."</a>";
+}
+echo "<a  id='cbq' href='solicitudes_bodega.php?pagina=$total_pagina'>".'Ultima'."</a></center>";
+?>
+
+</section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style type="text/css">
+                #cb{
+            border-radius: 15px 0px 0px 15px;
+            padding: 20px 10px;
+            background: whitesmoke;
+            }
+            #cbq{
+            border-radius: 0px 15px 15px 0px;
+            padding: 20px 10px;
+            background: whitesmoke;
+            }
+            #c{
+            padding: 20px 10px;
+            color: violet; 
+            flex-wrap: wrap-reverse;
+            text-decoration-style: dotted;
+            background: whitesmoke;
+     }
+</style>
     </section>
 </body>
 </html>

@@ -90,8 +90,7 @@ form{
                 <label id="inp1">Departamento que solicita</b></label>   
                 <select  class="form-control" name="depto" id="depto" required>
                         <option selected disabled value="">Selecione</option>
-                        <option>Direccion Hospital</option>
-                        <option selected disabled>Seleccionar</option>
+                     
                         <?php 
                         $sql = "SELECT * FROM selects_departamento";
                         $result = mysqli_query($conn, $sql);

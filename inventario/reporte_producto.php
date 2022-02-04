@@ -85,11 +85,20 @@ die();
 
             <tbody>
  <?php
-    include 'Model/conexion.php';
-   $sql = "SELECT * FROM reporte_articulos";
+ include 'Model/conexion.php';
+ $por_pagina = 6;
+ if (isset($_GET['pagina'])) {
+    $pagina = $_GET['pagina'];
+ }else{
+    $pagina =1;
+ }
+ $empieza = ($pagina-1) * $por_pagina;
+
+    
+   $sql = "SELECT * FROM reporte_articulos LIMIT $empieza,$por_pagina";
     $result = mysqli_query($conn, $sql);
 
-    while ($productos = mysqli_fetch_array($result)){?>
+    while ($productos = mysqli_fetch_assoc($result)){?>
 
        
              
@@ -124,10 +133,41 @@ die();
 
             </tbody>
         </table>
+ <p style="margin-top: 2%;"></p>
+<?php 
+ $sql = "SELECT * FROM reporte_articulos";
+    $result = mysqli_query($conn, $sql);
+$total_registro = mysqli_num_rows($result);
+$total_pagina = ceil($total_registro / $por_pagina);
+
+echo "<center><a id='cb' href='reporte_producto.php?pagina= 1'>".'Primera'."</a>";
+for ($i=1; $i <=$total_pagina; $i++) { 
+    echo "<a id='c' href='reporte_producto.php?pagina=".$i."'>".$i."</a>";
+}
+echo "<a  id='cbq' href='reporte_producto.php?pagina=$total_pagina'>".'Ultima'."</a></center>";
+?>
 
 </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
+<style type="text/css">
+            #cb{
+            border-radius: 15px 0px 0px 15px;
+            padding: 20px 10px;
+            background: whitesmoke;
+            }
+            #cbq{
+            border-radius: 0px 15px 15px 0px;
+            padding: 20px 10px;
+            background: whitesmoke;
+            }
+            #c{
+            padding: 20px 10px;
+            color: violet; 
+            flex-wrap: wrap-reverse;
+            text-decoration-style: dotted;
+            background: whitesmoke;
+     }
+</style>
 
 <script type="text/javascript">
 function confirmaion(e) {

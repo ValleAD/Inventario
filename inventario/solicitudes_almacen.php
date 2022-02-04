@@ -48,13 +48,13 @@ die();
              
                 <th class="table-info text-dark"><strong>No. de Solicitud</strong></th>
                 <th class="table-info text-dark"><strong>Departamento Solicitante</strong></th>
-                <th class="table-info text-dark"><strong>Usuario</strong></th>
+                <th class="table-info text-dark"><strong>Encargado</strong></th>
                 <th class="table-info text-dark"><strong>Fecha de solicitud</strong></th>
                 <th class="table-info text-dark"><strong>Detalles</strong></th>
                 
             </tr>
             <tr>
-                  <td id="td" colspan="7" >
+                  <td id="td" colspan="5" >
                     <h4 align="center">No se encontraron resultados 😥</h4></td>
             </tr>
             </thead>
@@ -67,10 +67,18 @@ die();
 <tbody>   
     <?php
     include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_almacen ORDER BY fecha_solicitud DESC";
+     $por_pagina = 5;
+ if (isset($_GET['pagina'])) {
+    $pagina = $_GET['pagina'];
+ }else{
+    $pagina =1;
+ }
+ $empieza = ($pagina-1) * $por_pagina;
+
+    $sql = "SELECT * FROM tb_almacen ORDER BY fecha_solicitud DESC  LIMIT  $empieza,$por_pagina";
     $result = mysqli_query($conn, $sql);
 
-    while ($datos_sol = mysqli_fetch_array($result)){?>
+    while ($datos_sol = mysqli_fetch_assoc($result)){?>
         <style type="text/css">
      #td{
         display: none;
@@ -94,6 +102,41 @@ die();
  <?php } ?> 
            </tbody>
         </table>
+         <p style="margin-top: 2%;"></p>
+<?php 
+ $sql = "SELECT * FROM tb_almacen";
+    $result = mysqli_query($conn, $sql);
+$total_registro = mysqli_num_rows($result);
+$total_pagina = ceil($total_registro / $por_pagina);
+
+echo "<center><a id='cb' href='solicitudes_almacen.php?pagina= 1'>".'Primera'."</a>";
+for ($i=1; $i <=$total_pagina; $i++) { 
+    echo "<a id='c' href='solicitudes_almacen.php?pagina=".$i."'>".$i."</a>";
+}
+echo "<a  id='cbq' href='solicitudes_almacen.php?pagina=$total_pagina'>".'Ultima'."</a></center>";
+?>
+
+</section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style type="text/css">
+            #cb{
+            border-radius: 15px 0px 0px 15px;
+            padding: 20px 10px;
+            background: whitesmoke;
+            }
+            #cbq{
+            border-radius: 0px 15px 15px 0px;
+            padding: 20px 10px;
+            background: whitesmoke;
+            }
+            #c{
+            padding: 20px 10px;
+            color: violet; 
+            flex-wrap: wrap-reverse;
+            text-decoration-style: dotted;
+            background: whitesmoke;
+     }
+</style>
     </section>
 </body>
 </html>

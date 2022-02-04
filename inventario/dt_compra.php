@@ -175,6 +175,23 @@ $final = 0;
           #pdf:active{
           transform: translateY(5px);
           } 
+            #cb{
+            border-radius: 15px 0px 0px 15px;
+            padding: 20px 10px;
+            background: whitesmoke;
+            }
+            #cbq{
+            border-radius: 0px 15px 15px 0px;
+            padding: 20px 10px;
+            background: whitesmoke;
+            }
+            #c{
+            padding: 20px 10px;
+            color: violet; 
+            flex-wrap: wrap-reverse;
+            text-decoration-style: dotted;
+            background: whitesmoke;
+     }
         </style>
   </form>
   </section>';

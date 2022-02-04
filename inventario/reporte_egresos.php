@@ -84,7 +84,15 @@ die();
             <tbody>
  <?php
     include 'Model/conexion.php';
-    $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale";
+     $por_pagina = 5;
+ if (isset($_GET['pagina'])) {
+    $pagina = $_GET['pagina'];
+ }else{
+    $pagina =1;
+ }
+ $empieza = ($pagina-1) * $por_pagina;
+
+    $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale LIMIT  $empieza,$por_pagina";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){?>
@@ -115,39 +123,45 @@ die();
  
             </tbody>
         </table>
+         <p style="margin-top: 2%;"></p>
+<?php 
+ $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale";
+    $result = mysqli_query($conn, $sql);
+$total_registro = mysqli_num_rows($result);
+$total_pagina = ceil($total_registro / $por_pagina);
+
+echo "<center><a id='cb' href='reporte_egresos.php?pagina= 1'>".'Primera'."</a>";
+for ($i=1; $i <=$total_pagina; $i++) { 
+    echo "<a id='c' href='reporte_egresos.php?pagina=".$i."'>".$i."</a>";
+}
+echo "<a  id='cbq' href='reporte_egresos.php?pagina=$total_pagina'>".'Ultima'."</a></center>";
+?>
+
+</section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style type="text/css">
+               #cb{
+            border-radius: 15px 0px 0px 15px;
+            padding: 20px 10px;
+            background: whitesmoke;
+            }
+            #cbq{
+            border-radius: 0px 15px 15px 0px;
+            padding: 20px 10px;
+            background: whitesmoke;
+            }
+            #c{
+            padding: 20px 10px;
+            color: violet; 
+            flex-wrap: wrap-reverse;
+            text-decoration-style: dotted;
+            background: whitesmoke;
+     }
+</style>
     </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-$(function(){
-    var textArea = $('#content'),
-    hiddenDiv = $(document.createElement('div')),
-    content = null;
-    
-    textArea.addClass('noscroll');
-    hiddenDiv.addClass('hiddendiv');
-    
-    $(textArea).after(hiddenDiv);
-    
-    textArea.on('keyup', function(){
-        content = $(this).val();
-        content = content.replace(/\n/g, '<br>');
-        hiddenDiv.html(content + '<br class="lbr">');
-        $(this).css('height', hiddenDiv.height());
-    });
-});
-</script>
-<script type="text/javascript">
-function confirmaion(e) {
-    if (confirm("¿Estas seguro que deseas Eliminar este registro?")) {
-        return true;
-    } else {
-        return false;
-        e.preventDefault();
-    }
-}
-let linkDelete =document.querySelectorAll("delete");
-</script>
+
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
 </body>
 </html>
