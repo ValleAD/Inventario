@@ -52,7 +52,7 @@ $final = 0;
 $num_sol = $_POST['id'];
 
    include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_almacen WHERE codAlmacen = $num_sol";
+    $sql = "SELECT * FROM tb_almacen ORDER BY fecha_solicitud DESC LIMIT 1";
     $result = mysqli_query($conn, $sql);
  while ($datos_sol = mysqli_fetch_array($result)){
 

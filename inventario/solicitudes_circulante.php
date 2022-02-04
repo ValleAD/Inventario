@@ -18,8 +18,8 @@ die();
 <head>
 <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="styles/style.css" > 
-     <link rel="stylesheet" type="text/css" href="styles/estilos_menu.css" >
-     <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
+     <link rel="stylesheet" type="text/css" href="styles/estilos_menu.css" > 
+     <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
@@ -28,23 +28,24 @@ die();
     <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
          <link rel="stylesheet" href="Plugin/bootstap-icon/bootstrap-icons.min.css">
       <link rel="stylesheet" href="Plugin/bootstap-icon/fontawesome.all.min.css">
-    <title>Solicitudes De Fondo Circulante</title>
+    <title>Solicitudes Circulante</title>
 </head>
 
-
 <body>
-    <div id="act">
-        <style type="text/css"> 
+<section id="act">
+    <style type="text/css">
+        
      #act {
     margin-top: 0.5%;
     margin-right: 2%;
     margin-left: 2%;
-  }</style>
-        <h2 class="text-center mg-t" style=" margin-top: -0.5%;">Solicitudes Circulante</h2><br>
+  }
+    </style>
         <table class="table">
-        
-        <thead>
+            <h1 class="text-center mg-t" style="margin-top: -0.5%;">Solicitudes de Fondo Circulante</h1><br>
+          <thead>
               <tr id="tr">
+<<<<<<< Updated upstream
                 <th class="table-info text-dark"><strong>Código</strong></th>
                 <th class="table-info text-dark"><strong>Departamento</strong></th>
                 <th class="table-info text-dark"><strong>Encargado</strong></th>
@@ -55,12 +56,29 @@ die();
             </tr>
             <tr>
             <td id="td" colspan="5"><h4 align="center">No se encontraron ningun  resultados 😥</h4></td>
+=======
+             
+                <th class="table-info text-dark"><strong>No. de Solicitud</strong></th>
+                <th class="table-info text-dark"><strong>Fecha de solicitud</strong></th>
+                <th class="table-info text-dark"><strong>Detalles</strong></th>
+                
             </tr>
-     </thead>
+            <tr>
+                  <td id="td" colspan="3" >
+                    <h4 align="center">No se encontraron resultados 😥</h4></td>
+>>>>>>> Stashed changes
+            </tr>
+            </thead>
             <tbody>
             
+    <style type="text/css">
+        
+    </style>
+         </thead>
+<tbody>   
     <?php
     include 'Model/conexion.php';
+<<<<<<< Updated upstream
      $por_pagina = 6;
  if (isset($_GET['pagina'])) {
     $pagina = $_GET['pagina'];
@@ -70,15 +88,20 @@ die();
  $empieza = ($pagina-1) * $por_pagina;
 
     $sql = "SELECT * FROM tb_circulante ORDER BY fecha_solicitud DESC LIMIT  $empieza,$por_pagina";
+=======
+    $sql = "SELECT * FROM tb_circulante ORDER BY fecha_solicitud DESC";
+>>>>>>> Stashed changes
     $result = mysqli_query($conn, $sql);
 
-    while ($solicitudes = mysqli_fetch_array($result)){?>
+    while ($datos_sol = mysqli_fetch_array($result)){?>
         <style type="text/css">
      #td{
         display: none;
     }
+    
    
 </style>
+<<<<<<< Updated upstream
         <tr>
             <td data-label="Codigo" class="delete"><input readonly style="width:100%;border:none;background: transparent;" type="text" name="cod" value="<?php  echo $solicitudes['codCirculante']; ?>"></td>
 
@@ -97,14 +120,23 @@ die();
   <!--Botones para actualizar y eliminar-->
             <td>
                 <a href="Detalle_circulante.php?id=<?php  echo $solicitudes['codCirculante']; ?>" class="btn btn-primary swal2-styled.swal2-confirm">Ver detalles</a>
+=======
+
+        <tr>
+            <td data-label="No. solicitud" class="delete"><?php  echo $datos_sol['codCirculante']; ?></td>
+            <td data-label="Fecha de solicitud" class="delete"><?php  echo $datos_sol['fecha_solicitud']; ?></td>
+            <td  data-label="Detalles">
+            <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_circulante.php">             
+                <input type='hidden' name='id' value="<?php  echo $datos_sol['codCirculante']; ?>">             
+                <button name='detalle' class="btn btn-primary swal2-styled.swal2-confirm">Ver Detalles</button>             
+            </form> 
+>>>>>>> Stashed changes
             </td>
         </tr>
-            <div class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-   
-        </div>
  <?php } ?> 
            </tbody>
         </table>
+<<<<<<< Updated upstream
     <p style="margin-top: 2%;"></p>
 <?php 
  $sql = "SELECT * FROM tb_circulante";
@@ -142,5 +174,8 @@ echo "<a  id='cbq' href='solicitudes_circulante.php?pagina=$total_pagina'>".'Ult
 </style>
 
     </div>
+=======
+    </section>
+>>>>>>> Stashed changes
 </body>
 </html>
