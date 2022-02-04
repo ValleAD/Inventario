@@ -89,14 +89,7 @@ $result = mysqli_query($conn, $sql);
 
         <table class="table">
 <?php if($tipo_usuario == 1) { ?>
-
-    <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="float: left; color: white;margin-bottom: 1%;">Nuevo Integrante</button>
-
-    <a href="categorias.php" class="btn btn-success" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; ">Categorias</a> 
-    <a href="categorias.php" class="btn btn-success" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Dependencias</a>
-
-    
-
+    <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%;">Nuevo Integrantes</button>
 <!-- Delete -->
 <div class="modal fade" id="Usuarios" style="background: rgba(0, 0, 0, 0.3);" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">

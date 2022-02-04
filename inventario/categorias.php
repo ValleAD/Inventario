@@ -29,7 +29,7 @@ die();
     <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
          <link rel="stylesheet" href="Plugin/bootstap-icon/bootstrap-icons.min.css">
       <link rel="stylesheet" href="Plugin/bootstap-icon/fontawesome.all.min.css">
-    <title>Empleados</title>
+    <title>Categorias</title>
 </head>
 
 
@@ -42,20 +42,20 @@ if (isset($_POST['editar'])){
    
   
  
-$sql = "SELECT * FROM tb_usuarios  WHERE  id = '$id'";
+$sql = "SELECT * FROM selects_categorias  WHERE  id = '$id'";
 $result = mysqli_query($conn, $sql);
 
 
-    while ($productos = mysqli_fetch_array($result)){
+    while ($categoria = mysqli_fetch_array($result)){
 ?>
 
 
-<form action="Controller/Desabilitar-Empleado.php" method="POST" style="background: transparent; ">
+<form action="Controller/Desabilitar-categoria.php" method="POST" style="background: transparent; ">
   <h3 align="center">Actualizar Producto</h3>
     <div class="container" style="background: rgba(0, 0, 0, 0.6); width: 70%; margin: auto; border-radius: 9px; color:#fff; font-weight: bold;">
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial; margin: auto; margin-top: 2%">
-                <input type="hidden" name="id" value="<?php  echo $productos['id']; ?>">
+                <input type="hidden" name="id" value="<?php  echo $categoria['id']; ?>">
                 <label for="">Habilitado</label><br> 
                     <select  class="form-control" name="Habilitado" id="categoria" style="cursor: pointer">
                         <option>[Seleccione]</option>
@@ -69,7 +69,7 @@ $result = mysqli_query($conn, $sql);
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial; margin: auto; margin-bottom: 2%;">
                 <button type="submit" class ="btn btn-primary" style="background:rgb(12, 139, 8); margin-right: 1%; border: none">Guardar Cambios</button>
-                <a href="Empleados.php" class ="btn btn-primary" style="background:rgb(184, 8, 8); border: none">Cancelar</a>
+                <a href="categorias.php" class ="btn btn-primary" style="background:rgb(184, 8, 8); border: none">Cancelar</a>
             </div>
         </div>
     </div>
@@ -85,58 +85,26 @@ $result = mysqli_query($conn, $sql);
 } 
 ?>
     <section style="margin:2%;background: transparent; ">
-        <h2 class="text-center " >Empleados Del Sistema</h2>
+        <h2 class="text-center " >Categorias</h2>
 
         <table class="table">
 <?php if($tipo_usuario == 1) { ?>
-
-    <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="float: left; color: white;margin-bottom: 1%;">Nuevo Integrante</button>
-
-    <a href="categorias.php" class="btn btn-success" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; ">Categorias</a> 
-    <a href="categorias.php" class="btn btn-success" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Dependencias</a>
-
-    
-
+    <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="float: left;margin-top: 1%; color: white;margin-bottom: 1%;">Nueva Categoria</button>
 <!-- Delete -->
 <div class="modal fade" id="Usuarios" style="background: rgba(0, 0, 0, 0.3);" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content" style="background-color: hsla(0.5turn , 100% , 0.1% , 0.5 );color: white; position: initial; z-index: 1000px;">
             <div class="modal-header">
-                <h5 class="modal-title" style="color:white;">Información del Usuario</h5>
+                <h5 class="modal-title" style="color:white;">Información de Categorias</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                 </button>
             </div>
               <div class="modal-body">
-                <form action="Controller/añadirEmpleados.php" method="POST">
-                <label>Usuario</label>              
-            <input class="form-control" name="Usuario" type="text">
-            <label>Nombres</label>              
-            <input class="form-control" name="Nombres" type="text">
-            <label>Apellidos</label>
-            <input class="form-control" name="Apellidos" type="text">
-            <label>Establecimientos</label>
-            <select class="form-control" name="Establecimientos">
-                <option selected disabled >Seleccionar</option>
-                <option>Hospital Nacional Zacatecoluca PA "Santa Tereza"</option>
-            </select>
-            <label>Unidad</label>
-            <select class="form-control" name="Unidad">
-                <option selected disabled >Seleccionar</option>
-                <option>Departamento Mantenimiento Local</option>
-                <option>Sección Equipo Básico</option>
-                <option>Sección Planta Física y Mobiliario</option>
-                <option>Sección Equipo Médico</option>
-            </select>
-            <label>Tipo de Usuario</label>
-            <select class="form-control" name="tipo">
-                <option selected disabled >Seleccionar</option>
-                <option value="1">Administrador</option>
-                <option value="2">Técnico</option>
-            </select>
-            <label>Password</label>
-            <input class="form-control" name="Password" type="password"> 
-            
+                <form action="Controller/añadir-categoria.php" method="POST">
+                <label>Nombre</label>              
+            <input class="form-control" name="categoria" type="text">
+                      
                
             </div>
             <style type="text/css">
@@ -153,10 +121,7 @@ $result = mysqli_query($conn, $sql);
 </div><?php } ?>
         <thead>
               <tr id="tr">
-                <th class="table-info text-dark"><strong>Nombre</strong></th>
-                <th class="table-info text-dark"><strong>Apellidos</strong></th>
-                <th class="table-info text-dark"><strong>Establecimiento</strong></th>
-                <th class="table-info text-dark"><strong>Unidad</strong></th>
+                <th class="table-info text-dark"><strong>Categoria</strong></th>
                 <th class="table-info text-dark text-center"><strong>Habilitado</strong></th><?php if($tipo_usuario == 1) { ?>
                 <th class="table-info text-dark text-center"><strong> Cambiar Habilitado</strong></th>
                 <th style="text-align:center;">Eliminar</th><?php } ?>
@@ -170,7 +135,7 @@ $result = mysqli_query($conn, $sql);
             
     <?php
     include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_usuarios";
+    $sql = "SELECT * FROM selects_categoria";
     $result = mysqli_query($conn, $sql);
 
     while ($solicitudes = mysqli_fetch_array($result)){?>
@@ -181,16 +146,14 @@ $result = mysqli_query($conn, $sql);
    
 </style>
         <tr>
-            <td data-label="Nombres" class="delete"><input readonly style="width:100%;border:none;background: transparent;" type="text" name="cod" value="<?php  echo $solicitudes['firstname']; ?>"></td>
+            <td data-label="Nombres" class="delete"><input readonly style="width:100%;border:none;background: transparent;" type="text" name="cod" value="<?php  echo $solicitudes['categoria']; ?>"></td>
 
-            <td data-label="Apellidos" class="delete"><input readonly name="desc" style="width:100%;border:none;background: transparent;" value="<?php  echo $solicitudes['lastname']; ?>"></td>
 
-            <td data-label="Establecimiento" class="delete"><input data-bs-toggle="tooltip" data-bs-placement="top" title="<?php  echo $solicitudes['Establecimiento']; ?>" readonly style="width:100%;border:none;background: transparent;" name="um" type="text"  value="<?php  echo $solicitudes['Establecimiento']; ?>"></td>
 
-            <td data-label="unidad" class="delete"><input readonly style="width:100%;border:none;background: transparent;" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php  echo $solicitudes['unidad']; ?>" type="text" name="soli" value="<?php  echo $solicitudes['unidad']; ?>"></td> 
-            <td ><input type="text"  name="Habilitado" style="width:100%;border:none;background: transparent; text-align: center;"  value="<?php  echo $solicitudes['Habilitado']; ?>"></td><?php if($tipo_usuario == 1) { ?>
+            <td ><input type="text"  name="Habilitado" style="width:100%;border:none;background: transparent; text-align: center;"  value="<?php  echo $solicitudes['Habilitado']; ?>"></td>
+            <?php if($tipo_usuario == 1) { ?>
             <td align="center">
-                 <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Empleados.php">             
+                 <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="categorias.php">             
           <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">             
           <button name='editar' class='btn btn-info btn-sm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
         </form>
@@ -200,7 +163,7 @@ $result = mysqli_query($conn, $sql);
   <!--Botones para actualizar y eliminar-->
 
             <td align="center">
-                <a href="Controller/Delete_Empleados.php?id=<?php  echo $solicitudes['id']; ?>" onclick="return confirmaion()" class="btn btn-danger swal2-styled.swal2-confirm">Eliminar</a>
+                <a href="Controller/Delete-categorias.php?id=<?php  echo $solicitudes['id']; ?>" onclick="return confirmaion()" class="btn btn-danger swal2-styled.swal2-confirm">Eliminar</a>
             </td></td><?php } ?>
         </tr>
       
