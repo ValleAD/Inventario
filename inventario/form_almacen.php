@@ -79,7 +79,7 @@ form{
 <center>
 
 </center>
-<div class="container">
+<d iv class="container">
 
         <div class="row">
             <div class="col-.5 col-sm-4" style="position: initial">
@@ -110,9 +110,8 @@ form{
                 <label id="inp1">Nombre de la persona</label>
                <select class="form-control" name="usuario" required>
     <option disabled selected>Selecione</option> 
-<?php  
-$habilitado = 'si';
-     $sql = "SELECT id, firstname,lastname FROM tb_usuarios WHERE Habilitado = 'si'";
+    <?php  
+     $sql = "SELECT id, firstname,lastname FROM tb_usuarios WHERE Habilitado = 'Si'";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){ 
@@ -120,7 +119,7 @@ $habilitado = 'si';
       echo'  <option>'.$productos['firstname']." ".$productos['lastname'].'</option>
   ';   
  } ?>
-</select>
+    </select>
                 </label>   
             </div>
         </div>
@@ -128,7 +127,7 @@ $habilitado = 'si';
 
        <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
 
-<div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-left: 1%;margin-right: 1%;margin-top: 1%; border-radius: 5px;">
+    <div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-left: 1%;margin-right: 1%;margin-top: 1%; border-radius: 5px;">
     <div class="col-xs-4 "  style="background: #bfe7ed;margin-left: 1;margin-right: 1%;margin-top: 1%;border-radius: 5px;" >
 
         <div class="well well-sm" style="position: all; margin: 5%">

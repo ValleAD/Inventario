@@ -145,23 +145,36 @@ if(isset($_POST['codigo'])){
             <div class="row">
               <div class="col-6.5 col-sm-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>   
-                <input id="inp1" class="form-control" type="text" name="departamento" required>
+                <select class="form-control" name="departamento">
+    <option disabled selected>Selecione</option> '; 
+   $sql = "SELECT * FROM selects_departamento";
+    $result = mysqli_query($conn, $sql);
+    while ($productos = mysqli_fetch_array($result)){ 
+      echo'  <option>'.$productos['departamento'].'</option>
+  ';   
+ }
+    echo'
+              </select>  
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Vale N°</b></label>   
                 <input id="inp1"class="form-control" type="number" name="numero_vale" required>
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
-                <label id="inp1">Nombre de la persona</label>
-                <select  class="form-control" name="usuario" id="usuario" required style="cursor: pointer">
-                <option selected disabled value="">Seleccionar</option>
-                <option>Juan Martinez</option>
-                <option>Miguel Roscencio</option>
-                <option>Francisco Guevarra </option>
-                <option>Rocio Amilcar</option> 
+               <label id="inp1">Nombre de la persona</label>                
+               <select  class="form-control" name="usuario" id="usuario" required style="cursor: pointer">
                
-            </select>
-                </label>   
+    <option disabled selected>Selecione</option> '; 
+    $habilitado = 'si';
+     $sql = "SELECT id, firstname,lastname FROM tb_usuarios WHERE Habilitado = 'si'";
+     $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){ 
+        echo'  <option value="'.$productos['id'].'">'.$productos['firstname']." ".$productos['lastname'].'</option>
+  ';   
+ } echo'
+</select>
+                  
             </div>
         </div>
         <br>

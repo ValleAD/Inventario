@@ -1,6 +1,6 @@
 <?php
 session_start();
- if (!isset($_SESSION['signin'])>0) {
+if (!isset($_SESSION['signin']) && !isset($_SESSION['habilitado'] ) ) {
     # code...
     echo '
     <script>

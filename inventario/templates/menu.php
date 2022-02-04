@@ -96,8 +96,8 @@ background:burlywood;
                         <li><a id="b" href="form_circulante.php">Nuevo</a></li>
                     </ul>
                 </li>
-                 <li class="submenu">
-                    <a id="a" href="#"><span class="icon-rocket"></span>Empleados<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                 <li class="submenu" style="margin-left: auto;">
+                    <a id="a" href="#" ><span class="icon-rocket"></span>Empleados<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
                         <li><a id="b" href="Empleados.php">Mostrar</a></li>
                     </ul>

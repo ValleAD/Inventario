@@ -21,6 +21,8 @@ if (isset($_POST['submit'])) {
 		$row = mysqli_fetch_assoc($result);
 		$_SESSION['signin'] = $row['username'];
 		$_SESSION['tipo_usuario'] = $row['tipo_usuario'];
+		$_SESSION['habilitado'] = $row1 ['Habilitado'];
+		$row1 = "si";
 		header("Location: ../home.php");
 	} else {
 		 echo '
