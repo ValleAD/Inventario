@@ -90,10 +90,11 @@ $result = mysqli_query($conn, $sql);
         <table class="table">
 <?php if($tipo_usuario == 1) { ?>
 
-    <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="float: left; color: white;margin-bottom: 1%;">Nuevo Integrante</button>
+    <button class="btn btn-secondary" data-toggle="modal" data-target="#Usuarios" style="float: left; color: white;margin-bottom: 1%;">Nuevo Integrante</button>
 
-    <a href="categorias.php" class="btn btn-success" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; ">Categorias</a> 
+    <a href="categorias.php" class="btn btn-info" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; ">Categorias</a> 
     <a href="dependencias.php" class="btn btn-success" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Dependencias</a>
+    <a href="dependencias.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Departamentos</a>
 
     
 
@@ -188,7 +189,19 @@ $result = mysqli_query($conn, $sql);
             <td data-label="Establecimiento" class="delete"><input data-bs-toggle="tooltip" data-bs-placement="top" title="<?php  echo $solicitudes['Establecimiento']; ?>" readonly style="width:100%;border:none;background: transparent;" name="um" type="text"  value="<?php  echo $solicitudes['Establecimiento']; ?>"></td>
 
             <td data-label="unidad" class="delete"><input readonly style="width:100%;border:none;background: transparent;" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php  echo $solicitudes['unidad']; ?>" type="text" name="soli" value="<?php  echo $solicitudes['unidad']; ?>"></td> 
-            <td ><input type="text"  name="Habilitado" style="width:100%;border:none;background: transparent; text-align: center;"  value="<?php  echo $solicitudes['Habilitado']; ?>"></td><?php if($tipo_usuario == 1) { ?>
+            
+<td align="center"
+    <?php
+        if($solicitudes['Habilitado']  =='Si') {
+            echo ' style="background-color: blue; color: white;"';
+        } elseif ($solicitudes['Habilitado']  == 'No') {
+            // code...
+        } {
+            echo ' style="background-color:red; color: white;"';
+        }
+    ?>
+><input type="text"  name="Habilitado" style="width:100%;border:none;background: transparent; text-align: center;color: white;"  value="<?=   $solicitudes['Habilitado']; ?>"></td>
+            <?php if($tipo_usuario == 1) { ?>
             <td align="center">
                  <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Empleados.php">             
           <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">             
