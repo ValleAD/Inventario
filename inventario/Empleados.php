@@ -154,13 +154,13 @@ $result = mysqli_query($conn, $sql);
 </div><?php } ?>
         <thead>
               <tr id="tr">
-                <th class="table-info text-dark"><strong>Nombre</strong></th>
-                <th class="table-info text-dark"><strong>Apellidos</strong></th>
-                <th class="table-info text-dark"><strong>Establecimiento</strong></th>
-                <th class="table-info text-dark"><strong>Unidad</strong></th>
-                <th class="table-info text-dark text-center"><strong>Habilitado</strong></th><?php if($tipo_usuario == 1) { ?>
-                <th class="table-info text-dark text-center"><strong> Cambiar Habilitado</strong></th>
-                <th style="text-align:center;">Eliminar</th><?php } ?>
+                <th style="width: 15%"><strong>Nombre</strong></th>
+                <th style="width: 15%"><strong>Apellidos</strong></th>
+                <th style="width: 15%"><strong>Establecimiento</strong></th>
+                <th style="width: 15%"><strong>Unidad</strong></th>
+                <th  style="width: 5%;" ><strong>Habilitado</strong></th><?php if($tipo_usuario == 1) { ?>
+                <th style="width: 10%;margin-left: 5%;"><strong style="text-align: center;"> Cambiar Habilitado</strong></th>
+                <th style="width: 10%">Eliminar</th><?php } ?>
                 
             </tr>
             <tr>
@@ -190,14 +190,14 @@ $result = mysqli_query($conn, $sql);
 
             <td data-label="unidad" class="delete"><input readonly style="width:100%;border:none;background: transparent;" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php  echo $solicitudes['unidad']; ?>" type="text" name="soli" value="<?php  echo $solicitudes['unidad']; ?>"></td> 
             
-<td align="center"
+<td 
     <?php
         if($solicitudes['Habilitado']  =='Si') {
-            echo ' style="background-color: blue; color: white;"';
+            echo ' style="background-color: blue;width:10%; "';
         } elseif ($solicitudes['Habilitado']  == 'No') {
             // code...
         } {
-            echo ' style="background-color:red; color: white;"';
+            echo ' style="background-color:red;width:10%; "';
         }
     ?>
 ><input type="text"  name="Habilitado" style="width:100%;border:none;background: transparent; text-align: center;color: white;"  value="<?=   $solicitudes['Habilitado']; ?>"></td>
