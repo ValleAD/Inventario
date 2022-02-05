@@ -204,16 +204,19 @@ unidad_medida varchar(50) NOT NULL
 
 CREATE TABLE Selects_categoria (
   id int(11) NOT NULl AUTO_INCREMENT PRIMARY KEY,
+  Habilitado varchar(2) NOT NULL,
 categoria varchar(50) NOT NULL
 );
 
 CREATE TABLE Selects_dependencia (
   id int(11) NOT NULl AUTO_INCREMENT PRIMARY KEY,
+  Habilitado varchar(2) NOT NULL,
 dependencia varchar(50) NOT NULL
 );
 
 CREATE TABLE Selects_departamento (
   id int(11) NOT NULl AUTO_INCREMENT PRIMARY KEY,
+  Habilitado varchar(2) NOT NULL,
 departamento varchar(50) NOT NULL
 );
 INSERT INTO `Selects_unidad_medida` (`unidad_medida`)
@@ -223,63 +226,63 @@ VALUES ('c/m'),
        ('Pgo'),
        ('Qq'),
        ('cto');
-INSERT INTO `Selects_categoria` (`categoria`)
-VALUES ('Agropecuarios y Forestales'),
-       ('Cuero y Caucho'),
-       ('Químicos'),
-       ('Combustibles y Lubricantes'),
-       ('Minerales no Metálicos'),
-       ('Minerales Metálicos'),
-       ('Herramientas y Repuestos'),
-       ('Materiales Eléctricos');
+INSERT INTO `Selects_categoria` (`categoria`,`Habilitado`)
+VALUES ('Agropecuarios y Forestales' ,'Si'),
+       ('Cuero y Caucho' ,'Si'),
+       ('Químicos' ,'Si'),
+       ('Combustibles y Lubricantes' ,'Si'),
+       ('Minerales no Metálicos' ,'Si'),
+       ('Minerales Metálicos' ,'Si'),
+       ('Herramientas y Repuestos' ,'Si'),
+       ('Materiales Eléctricos' ,'Si');
 
-INSERT INTO `Selects_dependencia` (`dependencia`)
-VALUES ('Direccion Hospital'),
-       ('Departamento Mantenimiento Local'),
-       ('División Administrativa'),
-       ('Departamento Servicios Generales'),
-       ('Sevicio Medicina Interna'),
-       ('Sevicio Centro Quirúrgico'),
-       ('Sevicio Centro Obstétrico'),
-       ('Departamento Enfermeria'),
-       ('Subdirección Hospital'),
-       ('Sevicio Consulta Externa'),
-       ('Unidad Enfermeria');
+INSERT INTO `Selects_dependencia` (`dependencia`,`Habilitado`)
+VALUES ('Direccion Hospital','Si'),
+       ('Departamento Mantenimiento Local','Si'),
+       ('División Administrativa','Si'),
+       ('Departamento Servicios Generales','Si'),
+       ('Sevicio Medicina Interna','Si'),
+       ('Sevicio Centro Quirúrgico','Si'),
+       ('Sevicio Centro Obstétrico','Si'),
+       ('Departamento Enfermeria','Si'),
+       ('Subdirección Hospital','Si'),
+       ('Sevicio Consulta Externa','Si'),
+       ('Unidad Enfermeria','Si');
 
-INSERT INTO `Selects_departamento` (`departamento`)
-VALUES ('Direccion Hospital'),
-       ('Subdirección Hospital'),
-       ('Sección Equipo Médico'),
-       ('Sección Equipo Básico'),
-       ('Seccion Planta Fisica y Monitoreo'),
-       ('Departamento Mantenimiento Local'),
-       ('Servicio Centro Quirúrgico'),
-       ('Departamento Lavamdería y Ropería'),
-       ('Sevicio Medicina Hombre'),
-       ('Sevicio Medicina Mujeres'),
-       ('Unidad Sala de Operacion'),
-       ('Unidad Sala de Partos'),
-       ('Sevicio Almacen'),
-       ('Sevicio Consulta Externa'),
-       ('Unidad Neonatos'),
-       ('Unidad Maxima Urgencia'),
-       ('Sevicio Trabajo Social'),
-       ('Área Saneamiento Ambiental'),
-       ('Unidad Financiara Institucional'),
-       ('Departamento Estadística y Documento Medicos'),
-       ('Departamento Activo Fijo'),
-       ('Unidad Auditoria Interna'),
-       ('Departamento Recursos Humanos'),
-       ('Unidad Asesora de Suministro Médicos'),
-       ('Area Servicios Auxiliares'),
-       ('Servicio Obstetricia'),
-       ('Área Clinica De Úlceras Y Heridas'),
-       ('Unidad Atención Integral e Integrada ala Salud Sexual Reproductiva'),
-       ('Departamento Terapia Dialítica'),
-       ('Área Residencial Médica'),
-       ('Unidad Cuidados Especiales'),
-       ('Área Epidemiología'),
-       ('Area COVID 19');
+INSERT INTO `Selects_departamento` (`departamento`,`Habilitado`)
+VALUES ('Direccion Hospital' ,'Si'),
+       ('Subdirección Hospital' ,'Si'),
+       ('Sección Equipo Médico' ,'Si'),
+       ('Sección Equipo Básico' ,'Si'),
+       ('Seccion Planta Fisica y Monitoreo' ,'Si'),
+       ('Departamento Mantenimiento Local' ,'Si'),
+       ('Servicio Centro Quirúrgico' ,'Si'),
+       ('Departamento Lavamdería y Ropería' ,'Si'),
+       ('Sevicio Medicina Hombre' ,'Si'),
+       ('Sevicio Medicina Mujeres','Si'),
+       ('Unidad Sala de Operacion','Si'),
+       ('Unidad Sala de Partos','Si'),
+       ('Sevicio Almacen','Si'),
+       ('Sevicio Consulta Externa','Si'),
+       ('Unidad Neonatos','Si'),
+       ('Unidad Maxima Urgencia','Si'),
+       ('Sevicio Trabajo Social','Si'),
+       ('Área Saneamiento Ambiental','Si'),
+       ('Unidad Financiara Institucional','Si'),
+       ('Departamento Estadística y Documento Medicos','Si'),
+       ('Departamento Activo Fijo','Si'),
+       ('Unidad Auditoria Interna','Si'),
+       ('Departamento Recursos Humanos','Si'),
+       ('Unidad Asesora de Suministro Médicos','Si'),
+       ('Area Servicios Auxiliares','Si'),
+       ('Servicio Obstetricia','Si'),
+       ('Área Clinica De Úlceras Y Heridas','Si'),
+       ('Unidad Atención Integral e Integrada ala Salud Sexual Reproductiva','Si'),
+       ('Departamento Terapia Dialítica','Si'),
+       ('Área Residencial Médica','Si'),
+       ('Unidad Cuidados Especiales','Si'),
+       ('Área Epidemiología','Si'),
+       ('Area COVID 19','Si');
 
 INSERT INTO `tb_usuarios` (`id`, `username`, `firstname`, `lastname`, `Establecimiento`,  `unidad`,`password`,`Habilitado`, `tipo_usuario`) 
 VALUES (NULL, 'Admin', 'Admin', 'Master', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Sin Unidad', 'Admin','Si', '1'),

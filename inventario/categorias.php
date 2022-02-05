@@ -42,7 +42,7 @@ if (isset($_POST['editar'])){
    
   
  
-$sql = "SELECT * FROM selects_categorias  WHERE  id = '$id'";
+$sql = "SELECT * FROM   selects_categoria  WHERE  id = '$id'";
 $result = mysqli_query($conn, $sql);
 
 
@@ -68,7 +68,7 @@ $result = mysqli_query($conn, $sql);
         <hr>
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial; margin: auto; margin-bottom: 2%;">
-                <button type="submit" class ="btn btn-primary" style="background:rgb(12, 139, 8); margin-right: 1%; border: none">Guardar Cambios</button>
+                <button type="submit" name="Update_categorias" class ="btn btn-primary" style="background:rgb(12, 139, 8); margin-right: 1%; border: none">Guardar Cambios</button>
                 <a href="categorias.php" class ="btn btn-primary" style="background:rgb(184, 8, 8); border: none">Cancelar</a>
             </div>
         </div>
@@ -135,7 +135,14 @@ $result = mysqli_query($conn, $sql);
             
     <?php
     include 'Model/conexion.php';
-    $sql = "SELECT * FROM selects_categoria";
+     $por_pagina = 6;
+ if (isset($_GET['pagina'])) {
+    $pagina = $_GET['pagina'];
+ }else{
+    $pagina =1;
+ }
+ $empieza = ($pagina-1) * $por_pagina;
+    $sql = "SELECT * FROM selects_categoria LIMIT $empieza, $por_pagina";
     $result = mysqli_query($conn, $sql);
 
     while ($solicitudes = mysqli_fetch_array($result)){?>
@@ -163,7 +170,12 @@ $result = mysqli_query($conn, $sql);
   <!--Botones para actualizar y eliminar-->
 
             <td align="center">
-                <a href="Controller/Delete-categorias.php?id=<?php  echo $solicitudes['id']; ?>" onclick="return confirmaion()" class="btn btn-danger swal2-styled.swal2-confirm">Eliminar</a>
+                <form action="Controller/Delete-categorias.php" method="POST">
+                    <input type="hidden" name="id" value="<?php  echo $solicitudes['id']; ?>">
+                    <input type="hidden" name="Habilitado" value="<?php  echo $solicitudes['Habilitado']; ?>">
+                    <button  onclick="return confirmaion()" name="eliminar_categorias" class="btn btn-danger" type="submit">ELiminar</button>
+                </form>
+                
             </td></td><?php } ?>
         </tr>
       
@@ -171,6 +183,21 @@ $result = mysqli_query($conn, $sql);
  <?php } ?> 
            </tbody>
         </table>
+
+ <p style="margin-top: 2%;"></p>
+<?php 
+ $sql = "SELECT * FROM selects_categoria";
+    $result = mysqli_query($conn, $sql);
+$total_registro = mysqli_num_rows($result);
+$total_pagina = ceil($total_registro / $por_pagina);
+
+echo "<nav aria-label='Page navigation example'>
+  <ul class='pagination justify-content-end'><li class='page-item '><a class='page-link' href='categorias.php?pagina= 1'>".'Primera'."</a><li>";
+for ($i=1; $i <=$total_pagina; $i++) { 
+    echo "<li class='page-item '><a class='page-link ' href='categorias.php?pagina=".$i."'>".$i."</a></li>";
+}
+echo "<li class='page-item'><a class='page-link' href='categorias.php?pagina=$total_pagina'>".'Ultima'."</a><li></ul></nav>";
+?>
   </section>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript">

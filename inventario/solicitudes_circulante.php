@@ -65,7 +65,14 @@ die();
 <tbody>   
     <?php
     include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_circulante ORDER BY fecha_solicitud DESC";
+         $por_pagina = 6;
+ if (isset($_GET['pagina'])) {
+    $pagina = $_GET['pagina'];
+ }else{
+    $pagina =1;
+ }
+ $empieza = ($pagina-1) * $por_pagina;
+    $sql = "SELECT * FROM tb_circulante ORDER BY fecha_solicitud DESC LIMIT $empieza,$por_pagina";
     $result = mysqli_query($conn, $sql);
 
     while ($datos_sol = mysqli_fetch_array($result)){?>
@@ -91,5 +98,19 @@ die();
            </tbody>
         </table>
     </section>
+<p style="margin-top: 2%;"></p>
+<?php 
+ $sql = "SELECT * FROM tb_bodega";
+    $result = mysqli_query($conn, $sql);
+$total_registro = mysqli_num_rows($result);
+$total_pagina = ceil($total_registro / $por_pagina);
+
+echo "<nav aria-label='Page navigation example'>
+  <ul class='pagination justify-content-end'><li class='page-item '><a class='page-link' href='solicitudes_circulante.php?pagina= 1'>".'Primera'."</a><li>";
+for ($i=1; $i <=$total_pagina; $i++) { 
+    echo "<li class='page-item '><a class='page-link ' href='solicitudes_circulante.php?pagina=".$i."'>".$i."</a></li>";
+}
+echo "<li class='page-item'><a class='page-link' href='solicitudes_circulante.php?pagina=$total_pagina'>".'Ultima'."</a><li></ul></nav>";
+?>
 </body>
 </html>

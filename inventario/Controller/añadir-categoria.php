@@ -7,7 +7,7 @@ include ('../Model/conexion.php');
 if (mysqli_num_rows($verificar_usuario)>0) {
 	echo '
 		<script>
-		alert("Este Usuario ya esta Registrado, intente con otro diferente");
+		alert("Esta Categoria ya fue registrado anteriormente, intentelo con otra Categoria");
 		 window.location ="../categorias.php"; 
 	</script>
 	';
@@ -20,13 +20,13 @@ exit();
     
 echo '<script>
 
-        alert("Usuario Creado");
+        alert("Categoria Creada");
         window.location ="../categorias.php"; 
                 </script>';
 } else {
     echo '
     <script>
-        alert("No se pudo crear el Usuario");
+        alert("No se pudo crear la Categoria");
         window.location ="../categorias.php"; 
                 </script>
                 ';

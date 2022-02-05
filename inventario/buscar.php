@@ -31,9 +31,9 @@ die();
 <body>
 <?php include ('templates/menu.php') ?>
 <?php include ('Model/conexion.php') ?>
-    <div class="container">
+    <div style="margin: 2%;">
         <div class="row">
-        <p style="color: #fff; font-weight: bold; margin-top: 0.5%; margin-right: 2%">Buscar por Código</p>
+        <p style="color: #fff; font-weight: bold; margin-top: 0.5%; margin-right: 2%;margin-left: 2%;">Buscar por Código</p>
             <form method="post">
                 <div class="row">
                     <div class="col-6 col-sm-8" style="position: initial;">
@@ -58,7 +58,6 @@ die();
         } 
     </style>
     <hr>
-        <div class="row" >
             <table class="table">
                  <thead>
                    <tr id="tr">
@@ -83,7 +82,14 @@ die();
                  
 
 <?php
-    $sql = "SELECT * FROM tb_productos";
+     $por_pagina = 6;
+ if (isset($_GET['pagina'])) {
+    $pagina = $_GET['pagina'];
+ }else{
+    $pagina =1;
+ }
+ $empieza = ($pagina-1) * $por_pagina;
+    $sql = "SELECT * FROM tb_productos LIMIT $empieza,$por_pagina";
     $result = mysqli_query($conn, $sql);
 
     if(isset($_POST['cat_buscar'])){
@@ -143,7 +149,20 @@ die();
      
                  </tbody>
              </table>
-         </div>
+         <p style="margin-top: 2%;"></p>
+<?php 
+ $sql = "SELECT * FROM tb_productos";
+    $result = mysqli_query($conn, $sql);
+$total_registro = mysqli_num_rows($result);
+$total_pagina = ceil($total_registro / $por_pagina);
+
+echo "<nav aria-label='Page navigation example'>
+  <ul class='pagination justify-content-end'><li class='page-item '><a class='page-link' href='buscar.php?pagina= 1'>".'Primera'."</a><li>";
+for ($i=1; $i <=$total_pagina; $i++) { 
+    echo "<li class='page-item '><a class='page-link ' href='buscar.php?pagina=".$i."'>".$i."</a></li>";
+}
+echo "<li class='page-item'><a class='page-link' href='buscar.php?pagina=$total_pagina'>".'Ultima'."</a><li></ul></nav>";
+?>
     </div>
 </body>
 </html>

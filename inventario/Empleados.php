@@ -93,7 +93,7 @@ $result = mysqli_query($conn, $sql);
     <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="float: left; color: white;margin-bottom: 1%;">Nuevo Integrante</button>
 
     <a href="categorias.php" class="btn btn-success" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; ">Categorias</a> 
-    <a href="categorias.php" class="btn btn-success" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Dependencias</a>
+    <a href="dependencias.php" class="btn btn-success" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Dependencias</a>
 
     
 

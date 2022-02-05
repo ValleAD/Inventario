@@ -29,7 +29,7 @@ die();
     <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
          <link rel="stylesheet" href="Plugin/bootstap-icon/bootstrap-icons.min.css">
       <link rel="stylesheet" href="Plugin/bootstap-icon/fontawesome.all.min.css">
-    <title>Empleados</title>
+    <title>Dependencias</title>
 </head>
 
 
@@ -42,7 +42,7 @@ if (isset($_POST['editar'])){
    
   
  
-$sql = "SELECT * FROM tb_usuarios  WHERE  id = '$id'";
+$sql = "SELECT * FROM selects_dependencia  WHERE  id = '$id'";
 $result = mysqli_query($conn, $sql);
 
 
@@ -50,15 +50,15 @@ $result = mysqli_query($conn, $sql);
 ?>
 
 
-<form action="Controller/Desabilitar-Empleado.php" method="POST" style="background: transparent; ">
-  <h3 align="center">Actualizar Producto</h3>
+<form action="Controller/Desabilitar-dependencias.php" method="POST" style="background: transparent; ">
+  <h3 align="center">Actualizar Dependencias Habilitadas </h3>
     <div class="container" style="background: rgba(0, 0, 0, 0.6); width: 70%; margin: auto; border-radius: 9px; color:#fff; font-weight: bold;">
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial; margin: auto; margin-top: 2%">
                 <input type="hidden" name="id" value="<?php  echo $productos['id']; ?>">
                 <label for="">Habilitado</label><br> 
                     <select  class="form-control" name="Habilitado" id="categoria" style="cursor: pointer">
-                        <option>[Seleccione]</option>
+                        <option disabled selected>[Seleccione]</option>
                         <option>Si</option>
                         <option>No</option>
                         
@@ -68,8 +68,8 @@ $result = mysqli_query($conn, $sql);
         <hr>
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial; margin: auto; margin-bottom: 2%;">
-                <button type="submit" class ="btn btn-primary" style="background:rgb(12, 139, 8); margin-right: 1%; border: none">Guardar Cambios</button>
-                <a href="Empleados.php" class ="btn btn-primary" style="background:rgb(184, 8, 8); border: none">Cancelar</a>
+                <button type="submit" name="Update_Dependencias" class ="btn btn-primary" style="background:rgb(12, 139, 8); margin-right: 1%; border: none">Guardar Cambios</button>
+                <a href="dependencias.php" class ="btn btn-primary" style="background:rgb(184, 8, 8); border: none">Cancelar</a>
             </div>
         </div>
     </div>
@@ -85,7 +85,7 @@ $result = mysqli_query($conn, $sql);
 } 
 ?>
     <section style="margin:2%;background: transparent; ">
-        <h2 class="text-center " >Empleados Del Sistema</h2>
+        <h2 class="text-center " >Dependencias Del Departamento</h2>
 
         <table class="table">
 <?php if($tipo_usuario == 1) { ?>
@@ -145,11 +145,8 @@ $result = mysqli_query($conn, $sql);
     </div>
 </div><?php } ?>
         <thead>
-              <tr id="tr">
-                <th class="table-info text-dark"><strong>Nombre</strong></th>
-                <th class="table-info text-dark"><strong>Apellidos</strong></th>
-                <th class="table-info text-dark"><strong>Establecimiento</strong></th>
-                <th class="table-info text-dark"><strong>Unidad</strong></th>
+             <tr id="tr">
+                <th class="table-info text-dark"><strong>Dependencia</strong></th>
                 <th class="table-info text-dark text-center"><strong>Habilitado</strong></th><?php if($tipo_usuario == 1) { ?>
                 <th class="table-info text-dark text-center"><strong> Cambiar Habilitado</strong></th>
                 <th style="text-align:center;">Eliminar</th><?php } ?>
@@ -163,7 +160,14 @@ $result = mysqli_query($conn, $sql);
             
     <?php
     include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_usuarios";
+         $por_pagina = 6;
+ if (isset($_GET['pagina'])) {
+    $pagina = $_GET['pagina'];
+ }else{
+    $pagina =1;
+ }
+ $empieza = ($pagina-1) * $por_pagina;
+    $sql = "SELECT * FROM selects_dependencia LIMIT $empieza,$por_pagina";
     $result = mysqli_query($conn, $sql);
 
     while ($solicitudes = mysqli_fetch_array($result)){?>
@@ -174,16 +178,11 @@ $result = mysqli_query($conn, $sql);
    
 </style>
         <tr>
-            <td data-label="Nombres" class="delete"><input readonly style="width:100%;border:none;background: transparent;" type="text" name="cod" value="<?php  echo $solicitudes['firstname']; ?>"></td>
+            <td data-label="Nombres" class="delete"><input readonly style="width:100%;border:none;background: transparent;" type="text" name="cod" value="<?php  echo $solicitudes['dependencia']; ?>"></td>
 
-            <td data-label="Apellidos" class="delete"><input readonly name="desc" style="width:100%;border:none;background: transparent;" value="<?php  echo $solicitudes['lastname']; ?>"></td>
-
-            <td data-label="Establecimiento" class="delete"><input data-bs-toggle="tooltip" data-bs-placement="top" title="<?php  echo $solicitudes['Establecimiento']; ?>" readonly style="width:100%;border:none;background: transparent;" name="um" type="text"  value="<?php  echo $solicitudes['Establecimiento']; ?>"></td>
-
-            <td data-label="unidad" class="delete"><input readonly style="width:100%;border:none;background: transparent;" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php  echo $solicitudes['unidad']; ?>" type="text" name="soli" value="<?php  echo $solicitudes['unidad']; ?>"></td> 
             <td ><input type="text"  name="Habilitado" style="width:100%;border:none;background: transparent; text-align: center;"  value="<?php  echo $solicitudes['Habilitado']; ?>"></td><?php if($tipo_usuario == 1) { ?>
             <td align="center">
-                 <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Empleados.php">             
+                 <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="dependencias.php">             
           <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">             
           <button name='editar' class='btn btn-info btn-sm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
         </form>
@@ -193,7 +192,11 @@ $result = mysqli_query($conn, $sql);
   <!--Botones para actualizar y eliminar-->
 
             <td align="center">
-                <a href="Controller/Delete_Empleados.php?id=<?php  echo $solicitudes['id']; ?>" onclick="return confirmaion()" class="btn btn-danger swal2-styled.swal2-confirm">Eliminar</a>
+               <form action="Controller/Delete-dependencia.php" method="POST">
+                    <input type="hidden" name="id" value="<?php  echo $solicitudes['id']; ?>">
+                    <input type="hidden" name="Habilitado" value="<?php  echo $solicitudes['Habilitado']; ?>">
+                    <button  onclick="return confirmaion()" name="eliminar_dependencias" class="btn btn-danger" type="submit">ELiminar</button>
+                </form>
             </td></td><?php } ?>
         </tr>
       
@@ -201,6 +204,20 @@ $result = mysqli_query($conn, $sql);
  <?php } ?> 
            </tbody>
         </table>
+         <p style="margin-top: 2%;"></p>
+        <?php 
+ $sql = "SELECT * FROM selects_dependencia";
+    $result = mysqli_query($conn, $sql);
+$total_registro = mysqli_num_rows($result);
+$total_pagina = ceil($total_registro / $por_pagina);
+
+echo "<nav aria-label='Page navigation example'>
+  <ul class='pagination justify-content-end'><li class='page-item '><a class='page-link' href='dependencias.php?pagina= 1'>".'Primera'."</a><li>";
+for ($i=1; $i <=$total_pagina; $i++) { 
+    echo "<li class='page-item '><a class='page-link ' href='dependencias.php?pagina=".$i."'>".$i."</a></li>";
+}
+echo "<li class='page-item'><a class='page-link' href='dependencias.php?pagina=$total_pagina'>".'Ultima'."</a><li></ul></nav>";
+?>
   </section>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript">
@@ -214,6 +231,24 @@ function confirmaion(e) {
 }
 let linkDelete =document.querySelectorAll("delete");
 </script>
-
+<style type="text/css">
+            #cb{
+            border-radius: 15px 0px 0px 15px;
+            padding: 20px 10px;
+            background: whitesmoke;
+            }
+            #cbq{
+            border-radius: 0px 15px 15px 0px;
+            padding: 20px 10px;
+            background: whitesmoke;
+            }
+            #c{
+            padding: 20px 10px;
+            color: violet; 
+            flex-wrap: wrap-reverse;
+            text-decoration-style: dotted;
+            background: whitesmoke;
+     }
+</style>
 </body>
 </html>

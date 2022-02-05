@@ -104,34 +104,17 @@ die();
 $total_registro = mysqli_num_rows($result);
 $total_pagina = ceil($total_registro / $por_pagina);
 
-echo "<center><a id='cb' href='solicitudes_bodega.php?pagina= 1'>".'Primera'."</a>";
+echo "<nav aria-label='Page navigation example'>
+  <ul class='pagination justify-content-end'><li class='page-item '><a class='page-link' href='solicitudes_bodega.php?pagina= 1'>".'Primera'."</a><li>";
 for ($i=1; $i <=$total_pagina; $i++) { 
-    echo "<a id='c' href='solicitudes_bodega.php?pagina=".$i."'>".$i."</a>";
+    echo "<li class='page-item '><a class='page-link ' href='solicitudes_bodega.php?pagina=".$i."'>".$i."</a></li>";
 }
-echo "<a  id='cbq' href='solicitudes_bodega.php?pagina=$total_pagina'>".'Ultima'."</a></center>";
+echo "<li class='page-item'><a class='page-link' href='solicitudes_bodega.php?pagina=$total_pagina'>".'Ultima'."</a><li></ul></nav>";
 ?>
 
 </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<style type="text/css">
-                #cb{
-            border-radius: 15px 0px 0px 15px;
-            padding: 20px 10px;
-            background: whitesmoke;
-            }
-            #cbq{
-            border-radius: 0px 15px 15px 0px;
-            padding: 20px 10px;
-            background: whitesmoke;
-            }
-            #c{
-            padding: 20px 10px;
-            color: violet; 
-            flex-wrap: wrap-reverse;
-            text-decoration-style: dotted;
-            background: whitesmoke;
-     }
-</style>
+
     </section>
 </body>
 </html>

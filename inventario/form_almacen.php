@@ -51,7 +51,7 @@ die();
     <body >
 
 
-  <form style="width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%;" action="Controller/almacen.php" method="POST">
+  <form style="width: 70%; height: 100%;margin: auto;padding: 1%;" action="Controller/almacen.php" method="POST">
 
    <br>
   <style type="text/css">
@@ -84,7 +84,7 @@ form{
         <div class="row">
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Solicitud N°</b></label>   
-                <input id="inp1"class="form-control" type="number" name="solicitud_no" required>
+                <input id="inp1"class="form-control" type="number" name="solicitud_no" readonly value="<?php  mt_srand(time());echo mt_rand(0,1000); ?>">
             </div>
               <div class="col-6.5 col-sm-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>   
