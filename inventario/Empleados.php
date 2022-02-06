@@ -94,7 +94,7 @@ $result = mysqli_query($conn, $sql);
 
     <a href="categorias.php" class="btn btn-info" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; ">Categorias</a> 
     <a href="dependencias.php" class="btn btn-success" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Dependencias</a>
-    <a href="dependencias.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Departamentos</a>
+    <a href="departamentos.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Departamentos</a>
 
     
 
@@ -154,11 +154,11 @@ $result = mysqli_query($conn, $sql);
 </div><?php } ?>
         <thead>
               <tr id="tr">
-                <th style="width: 15%"><strong>Nombre</strong></th>
-                <th style="width: 15%"><strong>Apellidos</strong></th>
+                <th style="width: 12%"><strong>Nombre</strong></th>
+                <th style="width: 12%"><strong>Apellidos</strong></th>
                 <th style="width: 15%"><strong>Establecimiento</strong></th>
                 <th style="width: 15%"><strong>Unidad</strong></th>
-                <th  style="width: 5%;" ><strong>Habilitado</strong></th><?php if($tipo_usuario == 1) { ?>
+                <th  style="width: 8%; text-align:center;" ><strong>Habilitado</strong></th><?php if($tipo_usuario == 1) { ?>
                 <th style="width: 10%;margin-left: 5%;"><strong style="text-align: center;"> Cambiar Habilitado</strong></th>
                 <th style="width: 10%">Eliminar</th><?php } ?>
                 
@@ -171,10 +171,17 @@ $result = mysqli_query($conn, $sql);
             
     <?php
     include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_usuarios";
+    $por_pagina = 5;
+     if (isset($_GET['pagina'])) {
+    $pagina = $_GET['pagina'];
+ }else{
+    $pagina =1;
+ }
+ $empieza = ($pagina-1) * $por_pagina;
+    $sql = "SELECT * FROM tb_usuarios ORDER BY `id` LIMIT $empieza,$por_pagina";
     $result = mysqli_query($conn, $sql);
 
-    while ($solicitudes = mysqli_fetch_array($result)){?>
+    while ($solicitudes = mysqli_fetch_assoc($result)){?>
         <style type="text/css">
      #td{
         display: none;
@@ -190,17 +197,17 @@ $result = mysqli_query($conn, $sql);
 
             <td data-label="unidad" class="delete"><input readonly style="width:100%;border:none;background: transparent;" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php  echo $solicitudes['unidad']; ?>" type="text" name="soli" value="<?php  echo $solicitudes['unidad']; ?>"></td> 
             
-<td 
-    <?php
-        if($solicitudes['Habilitado']  =='Si') {
-            echo ' style="background-color: blue;width:10%; "';
-        } elseif ($solicitudes['Habilitado']  == 'No') {
-            // code...
-        } {
-            echo ' style="background-color:red;width:10%; "';
-        }
-    ?>
-><input type="text"  name="Habilitado" style="width:100%;border:none;background: transparent; text-align: center;color: white;"  value="<?=   $solicitudes['Habilitado']; ?>"></td>
+ <td align="center">
+            <input  <?php
+                if($solicitudes['Habilitado']  =='Si') {
+                    echo ' style="background-color:blueviolet ;width:39%; border-radius:100px;text-align:center; color: white;"';
+                } elseif ($solicitudes['Habilitado']  == 'No') {
+                    // code...
+                } {
+                    echo ' style="background-color:red;width:39%; border-radius:100px;text-align:center;color: white;"';
+                }
+            ?>
+ type="text" class="btn"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $solicitudes['Habilitado']; ?>"></td>
             <?php if($tipo_usuario == 1) { ?>
             <td align="center">
                  <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Empleados.php">             
@@ -221,7 +228,22 @@ $result = mysqli_query($conn, $sql);
  <?php } ?> 
            </tbody>
         </table>
+         <p style="margin-top: 2%;"></p>
+        <?php 
+ $sql = "SELECT * FROM tb_usuarios";
+    $result = mysqli_query($conn, $sql);
+$total_registro = mysqli_num_rows($result);
+$total_pagina = ceil($total_registro / $por_pagina);
+
+echo "<nav aria-label='Page navigation example'>
+  <ul class='pagination justify-content-end'><li class='page-item '><a class='page-link' href='Empleados.php?pagina= 1'>".'Primera'."</a><li>";
+for ($i=1; $i <=$total_pagina; $i++) { 
+    echo "<li class='page-item '><a class='page-link ' href='Empleados.php?pagina=".$i."'>".$i."</a></li>";
+}
+echo "<li class='page-item'><a class='page-link' href='Empleados.php?pagina=$total_pagina'>".'Ultima'."</a><li></ul></nav>";
+?>
   </section>
+   
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript">
 function confirmaion(e) {

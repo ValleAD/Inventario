@@ -89,7 +89,9 @@ $result = mysqli_query($conn, $sql);
 
         <table class="table">
 <?php if($tipo_usuario == 1) { ?>
-    <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%;">Nuevo Integrantes</button>
+    <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="float: left;margin-top: 1%; color: white;margin-bottom: 1%;">Nueva Dependencia</button>
+    <a href="categorias.php" class="btn btn-info" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; ">Categorias</a>4
+    <a href="departamentos.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Departamentos</a>
 <!-- Delete -->
 <div class="modal fade" id="Usuarios" style="background: rgba(0, 0, 0, 0.3);" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">
@@ -101,36 +103,11 @@ $result = mysqli_query($conn, $sql);
                 </button>
             </div>
               <div class="modal-body">
-                <form action="Controller/añadirEmpleados.php" method="POST">
-                <label>Usuario</label>              
-            <input class="form-control" name="Usuario" type="text">
+                <form action="Controller/añadir-dependencias.php" method="POST">
+
             <label>Nombres</label>              
-            <input class="form-control" name="Nombres" type="text">
-            <label>Apellidos</label>
-            <input class="form-control" name="Apellidos" type="text">
-            <label>Establecimientos</label>
-            <select class="form-control" name="Establecimientos">
-                <option selected disabled >Seleccionar</option>
-                <option>Hospital Nacional Zacatecoluca PA "Santa Tereza"</option>
-            </select>
-            <label>Unidad</label>
-            <select class="form-control" name="Unidad">
-                <option selected disabled >Seleccionar</option>
-                <option>Departamento Mantenimiento Local</option>
-                <option>Sección Equipo Básico</option>
-                <option>Sección Planta Física y Mobiliario</option>
-                <option>Sección Equipo Médico</option>
-            </select>
-            <label>Tipo de Usuario</label>
-            <select class="form-control" name="tipo">
-                <option selected disabled >Seleccionar</option>
-                <option value="1">Administrador</option>
-                <option value="2">Técnico</option>
-            </select>
-            <label>Password</label>
-            <input class="form-control" name="Password" type="password"> 
-            
-               
+            <input class="form-control" name="dependencia" type="text" required>
+           
             </div>
             <style type="text/css">
                 label{
@@ -167,7 +144,7 @@ $result = mysqli_query($conn, $sql);
     $pagina =1;
  }
  $empieza = ($pagina-1) * $por_pagina;
-    $sql = "SELECT * FROM selects_dependencia LIMIT $empieza,$por_pagina";
+    $sql = "SELECT * FROM selects_dependencia  ORDER BY `id` DESC LIMIT $empieza,$por_pagina";
     $result = mysqli_query($conn, $sql);
 
     while ($solicitudes = mysqli_fetch_array($result)){?>
@@ -180,7 +157,18 @@ $result = mysqli_query($conn, $sql);
         <tr>
             <td data-label="Nombres" class="delete"><input readonly style="width:100%;border:none;background: transparent;" type="text" name="cod" value="<?php  echo $solicitudes['dependencia']; ?>"></td>
 
-            <td ><input type="text"  name="Habilitado" style="width:100%;border:none;background: transparent; text-align: center;"  value="<?php  echo $solicitudes['Habilitado']; ?>"></td><?php if($tipo_usuario == 1) { ?>
+            <td align="center">
+            <input  <?php
+                if($solicitudes['Habilitado']  =='Si') {
+                    echo ' style="background-color:blueviolet ;width:14%; border-radius:100px;text-align:center; color: white;"';
+                } elseif ($solicitudes['Habilitado']  == 'No') {
+                    // code...
+                } {
+                    echo ' style="background-color:red;width:14%; border-radius:100px;text-align:center;color: white;"';
+                }
+            ?>
+ type="text" class="btn"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $solicitudes['Habilitado']; ?>"></td>
+</td><?php if($tipo_usuario == 1) { ?>
             <td align="center">
                  <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="dependencias.php">             
           <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">             
@@ -231,24 +219,6 @@ function confirmaion(e) {
 }
 let linkDelete =document.querySelectorAll("delete");
 </script>
-<style type="text/css">
-            #cb{
-            border-radius: 15px 0px 0px 15px;
-            padding: 20px 10px;
-            background: whitesmoke;
-            }
-            #cbq{
-            border-radius: 0px 15px 15px 0px;
-            padding: 20px 10px;
-            background: whitesmoke;
-            }
-            #c{
-            padding: 20px 10px;
-            color: violet; 
-            flex-wrap: wrap-reverse;
-            text-decoration-style: dotted;
-            background: whitesmoke;
-     }
-</style>
+
 </body>
 </html>

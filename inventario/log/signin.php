@@ -52,39 +52,14 @@ if (isset($_POST['submit'])) {
 </head>
 <body style="background-image: url(../img/bg1.jpg)">
 <style type="text/css">
-	img{
-		
-		width: 30%;
-		
+
 	}
 	button{
 		max-width:100%;
 		margin-top:  5%;
 		width: 40%;
 	}
-	#input{
-		background: transparent;
-		color: black;
-	}
 
-	@media (max-width: 952px){
-	
-    h1{
-    	max-width:100%;
-    	margin-top: 8%;
-        font-size: 100%;
-       
-    }
-
-    img{
-		display: flex;
-		max-width:100%;
-		width: 60%;
-		align-items: center;
-		padding: 5px;
-		justify-content: center;
-	}
-}
 
 </style>
    
@@ -107,6 +82,7 @@ if (isset($_POST['submit'])) {
                                             </div>
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                             	<button  type="submit" class="btn btn-primary btn-block "name="submit" >Ingresar</button></div>
+                                            	
                                         </form>
                                     </div>
                                     <div class="card-footer text-center">
