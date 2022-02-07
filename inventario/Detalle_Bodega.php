@@ -103,10 +103,8 @@ if(isset($_POST['detalle'])){
                     <th ">Cantidad</th>
                     <th ">Costo <br> unitario</th>
                     <th style="text-align:center;">Estado</th>';
-                     if($tipo_usuario == 1) { ?>
-                        <?php     $odt = $productos1['codBodega'];
-    }
-     $sql = "SELECT * FROM detalle_bodega WHERE odt_bodega = $odt";
+                     if($tipo_usuario == 1) { 
+                 $sql = "SELECT * FROM detalle_bodega WHERE odt_bodega = $odt";
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
 
@@ -114,9 +112,11 @@ while ($productos = mysqli_fetch_array($result)){
       ?>
                     <th  <?php if($estado=='Aprobado') {
                      echo ' style="display:none"';
+                }if ($estado=='Rechazado') {
+                   echo ' style="display:none"';
                 }
                  ?> style="text-align:center;width:8%">Editar</th>
-                      <?php } ?>   
+                      <?php }} ?>   
                     <th style="width: 6%;">Total</th>
                   </tr>
                     <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
@@ -161,11 +161,16 @@ while ($productos = mysqli_fetch_array($result)){
             ?>
  type="text" class="btn"  name="estado[]" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $productos['estado']; ?>">
   <?php if($tipo_usuario == 1) { ?>
+
  <td  <?php if($estado=='Aprobado') {
                      echo ' style="display:none"';
                 } 
+                if($estado=='Rechazado'){
+                     echo ' style="display:none"';
+                 }
                  ?> align="center" ><a  class="btn btn-info" href="cambiar_estado_bodeda.php?id=<?php  echo $productos['odt_bodega']; ?>">Editar</a></td><?php } ?>
-                 
+                
+
 
         <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="<?php echo $total ?>"></td>
       </tr>
