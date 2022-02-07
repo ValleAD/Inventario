@@ -51,10 +51,11 @@ $pdf->Ln(10);
 $pdf->SetFont('Arial', 'B', '12');
 $pdf->Cell(5, 10, '', 0, 0, 'C', 0);
 $pdf->Cell(20, 10, utf8_decode('Código'), 1, 0, 'C', 0);
-$pdf->Cell(70, 10, utf8_decode('Descripción'), 1, 0, 'C', 0);   
+$pdf->Cell(50, 10, utf8_decode('Descripción'), 1, 0, 'C', 0);   
 $pdf->Cell(15, 10, 'U/M', 1, 0, 'C', 0);
 $pdf->Cell(20, 10, 'Cantidad', 1, 0, 'C', 0);
 $pdf->Cell(30, 10, 'Costo Unitario', 1, 0, 'C', 0);
+$pdf->Cell(30, 10, 'Estado', 1, 0, 'C', 0);
 $pdf->Cell(20, 10, 'Total', 1, 1, 'C', 0);
 
 for($i = 0; $i < count($_POST['cod']); $i++)
@@ -65,15 +66,17 @@ for($i = 0; $i < count($_POST['cod']); $i++)
     $um = $_POST['um'][$i];
     $cantidad = $_POST['cant'][$i];
     $cost = $_POST['cost'][$i];
+    $estado = $_POST['estado'][$i];
     $tot = $_POST['tot'][$i];
 
 $pdf->SetFont('Arial', '', '12');
 $pdf->Cell(5, 10, '', 0, 0, 'C', 0);
 $pdf->Cell(20, 10, utf8_decode($codigo),1, 0, 'C', 0);
-$pdf->Cell(70, 10, utf8_decode($des),1, 0, 'L', 0);
+$pdf->Cell(50, 10, utf8_decode($des),1, 0, 'L', 0);
 $pdf->Cell(15, 10, utf8_decode($um),1, 0, 'C', 0);
 $pdf->Cell(20, 10, utf8_decode($cantidad),1, 0, 'C', 0);
 $pdf->Cell(30, 10, utf8_decode($cost),1, 0, 'C', 0);
+$pdf->Cell(30, 10, utf8_decode($estado),1, 0, 'C', 0);
 $pdf->Cell(20, 10, utf8_decode($tot),1, 0, 'C', 0);
 $pdf->Ln();
 }
@@ -82,7 +85,7 @@ $tot_f = $_POST['tot_f'];
 
 $pdf->SetFont('Arial', 'B', '12');
 $pdf->Cell(5, 10, '', 0, 0, 'C', 0);
-$pdf->Cell(125, 10, utf8_decode(""),1, 0, 'C', 0);
+$pdf->Cell(135, 10, utf8_decode(""),1, 0, 'C', 0);
 $pdf->Cell(30, 10, 'Subtotal', 1, 0, 'C', 0);
 $pdf->Cell(20, 10, utf8_decode($tot_f),1, 0, 'C', 0);
 $pdf->Ln();

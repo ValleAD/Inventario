@@ -132,17 +132,17 @@ while ($productos = mysqli_fetch_array($result)){
                     echo ' style="background-color:green ;width:59%; border-radius:100px;text-align:center; color: white;"';
                 }
             ?>
- type="text" class="btn"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $productos['estado']; ?>"></td>
+ type="text" class="btn"  name="estado[]" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $productos['estado']; ?>"></td>
         
         <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="<?php echo $total ?>"></td></tr>
 
 
-
+<?php }?>
      
       <th colspan="6">SubTotal</th>
       <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="<?php echo $final ?>" ></td></tr>
    
-<?php }?>
+
          </tbody>
         </table>
 

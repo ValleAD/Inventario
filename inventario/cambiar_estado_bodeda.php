@@ -23,21 +23,14 @@ die();
 	<title>Cambiar Estado Bodega</title>
 </head>
 <body>
-		<?php 
-            	$id =$_GET['id'];
-            	$sql = "SELECT * FROM detalle_bodega  WHERE  odt_bodega = '$id'";
-$result = mysqli_query($conn, $sql);
-
-
-    while ($productos = mysqli_fetch_array($result)){
-?> 
+		<?php $id =$_GET['id'];?> 
 <form action="Controller/Aprobar_bodega.php" method="POST" style="background: transparent; ">
   <h3 align="center">Actualizar Producto</h3>
     <div class="container" style="background: rgba(0, 0, 0, 0.6); width: 70%; margin: auto; border-radius: 9px; color:#fff; font-weight: bold;">
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial; margin: auto; margin-top: 2%">
             
-                <input type="hidden" name="id" value="<?php  echo $productos['odt_bodega']; ?>">
+                <input type="hidden" name="id" value="<?php  echo $id; ?>">
                 <label for="">Cambiar el estado</label><br> 
                     <select  class="form-control" name="estado" style="cursor: pointer" required>
                         <option>[Seleccione]</option>
@@ -45,7 +38,6 @@ $result = mysqli_query($conn, $sql);
                         <option>Rechazado</option>
                         
                     </select>
-                <?php } ?>
             </div>
          </div>
         <hr>

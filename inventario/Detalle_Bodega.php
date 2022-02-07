@@ -62,7 +62,7 @@ if(isset($_POST['detalle'])){
     
      echo'   
     <section id="section">
-    <form method="POST" action="Exportar_PDF/pdf_vale.php" target="_blank">
+    <form method="POST" action="Exportar_PDF/pdf_bodega.php" target="_blank">
              
           
             <div class="row">
@@ -76,7 +76,7 @@ if(isset($_POST['detalle'])){
     
               <div class="col-6 col-sm-3" style="position: initial">
                 <label style="font-weight: bold;">O. de T. No.</label>
-                <input readonly class="form-control"  type="text" value="' .$productos1['codBodega']. '" name="vale">
+                <input readonly class="form-control"  type="text" value="' .$productos1['codBodega']. '" name="odt">
               </div>
     
             <div class="col-6 col-sm-3" style="position: initial">
@@ -97,18 +97,21 @@ if(isset($_POST['detalle'])){
                 
                 <thead>
                   <tr id="tr">
-                    <th style="width: 6%;">Código</th>
-                    <th style="width: 15%;">Descripción</th>
-                    <th style="width: 10%;">Unidad de Medida</th>
-                    <th style="width: 6%;">Cantidad</th>
-                    <th style="width: 6%;">Costo <br> unitario</th>
-                    <th style="text-align:center;width:8%">Estado</th>
+                    <th ">Código</th>
+                    <th ">Descripción</th>
+                    <th ">Unidad de Medida</th>
+                    <th ">Cantidad</th>
+                    <th ">Costo <br> unitario</th>
+                    <th style="text-align:center;">Estado</th>';
+                     if($tipo_usuario == 1) { ?>
                     <th style="text-align:center;width:8%">Editar</th>
+                      <?php } ?>   
                     <th style="width: 6%;">Total</th>
                   </tr>
                     <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
                </thead>
-                <tbody>';
+                <tbody>
+                    <?php 
     
     $odt = $productos1['codBodega'];
     }
@@ -138,14 +141,14 @@ while ($productos = mysqli_fetch_array($result)){
     <td align="center">
             <input  <?php
                 if($estado=='Pendiente') {
-                    echo ' style="background-color:green ;width:59%; border-radius:100px;text-align:center; color: white;"';
+                    echo ' style="background-color:green ;width:61%; border-radius:100px;text-align:center; color: white;"';
                 }else if($estado=='Aprobado') {
                      echo ' style="background-color:blueviolet ;width:60%; border-radius:100px;text-align:center; color: white;"';
                 }else if($estado=='Rechazado') {
                      echo ' style="background-color:red ;width:65%; border-radius:100px;text-align:center; color: white;"';
                 }
             ?>
- type="text" class="btn"  name="estado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $productos['estado']; ?>">
+ type="text" class="btn"  name="estado[]" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $productos['estado']; ?>">
   <?php if($tipo_usuario == 1) { ?>
  <td align="center" ><a class="btn btn-info" href="cambiar_estado_bodeda.php?id=<?php  echo $productos['odt_bodega']; ?>">Editar</a></td><?php } ?>
 
@@ -154,10 +157,21 @@ while ($productos = mysqli_fetch_array($result)){
 
 
 
-     
-      <th colspan="7">SubTotal</th>
-      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="<?php echo $final ?>" ></td></tr>
-   
+  <?php } }?> 
+
+   <?php if($tipo_usuario == 1) { ?> 
+        <th colspan="7">SubTotal</th>
+        <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="<?php echo $final ?>" ></td></tr>
+      <?php } ?>
+
+     <?php if($tipo_usuario == 2) { ?>
+      <th colspan="6">SubTotal</th>
+      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="<?php echo $final ?>" ></td></tr> 
+      <?php } ?>
+
+      <?php if($tipo_usuario == 1) { ?>
+        <p><b>Nota Importante: </b>Cuando Actualizen el Estado se van a Actualizar todos los registros que se muestran en esta tabla </p>
+        <?php } ?>
 
          </tbody>
         </table>
@@ -182,6 +196,6 @@ while ($productos = mysqli_fetch_array($result)){
 </form>
 </section>
       
-     <?php } }?>       
+       
   </body>
   </html>
