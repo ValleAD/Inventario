@@ -106,7 +106,7 @@ $num_almacen = $datos_sol['codAlmacen'];
 while ($productos = mysqli_fetch_array($result)){
       
       $total = $productos['cantidad_solicitada'] * $productos['precio'];
-      $final += $total;
+      $final += $total;?>
   echo' 
     <style type="text/css">
      #td{
@@ -116,19 +116,27 @@ while ($productos = mysqli_fetch_array($result)){
    
 </style> 
       <tr>
-        <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="' .$productos['codigo']. '"></td>
-        <td  data-label="Nombre del Artículo"><textarea style="background:transparent; border: none; width: 100%;"  name="nombre[]" readonly style="border: none">'.$productos['nombre']. '</textarea></td>
-        <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
-        <td  data-label="Cantidad Solicitada"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="'.$productos['cantidad_solicitada']. '"></td>
-        <td  data-label="Costo Unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$'.$productos['precio']. '"></td>
-        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$'.$total. '"></td>
-      </tr>';
+        <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="<?php echo $productos['codigo'];?>"></td>
+        <td  data-label="Nombre del Artículo"><textarea style="background:transparent; border: none; width: 100%;"  name="nombre[]" readonly style="border: none"><?php echo $productos['nombre'];?></textarea></td>
+        <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="<?php echo $productos['unidad_medida'];?>"></td>
+        <td  data-label="Cantidad Solicitada"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="<?php echo $productos['cantidad_solicitada'];?>"></td>
+        <td  data-label="Costo Unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$<?php echo $productos['precio'];?>"></td>
+    <td align="center">
+            <input  <?php
+                if($estado=='Pendiente') {
+                    echo ' style="background-color:green ;width:59%; border-radius:100px;text-align:center; color: white;"';
+                }
+            ?>
+ type="text" class="btn"  name="estado[]" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $productos['estado']; ?>"></td>
+        
+        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$<?php echo $total;?>"></td>
+      </tr>
 
-}
+<?php }?>
 
-      echo'
+      
       <th colspan="5">SubTotal</th>
-      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$'.$final.'" ></td></tr>
+      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="<?php echo $final;?>" ></td></tr>
   
          </tbody>
         </table>

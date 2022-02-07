@@ -166,12 +166,13 @@ if(isset($_POST['id'])){
             </tr>
         </thead>
         <tbody>
-            <?php 
-    $codigo = $_POST['id'];
-   //$sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
+            <?php
 
+          for($i = 0; $i < count($_POST['id']); $i++) {
+             $codigo=$_POST['id'][$i];
+            
 
-   $sql = "SELECT codProductos, nombre,catalogo,categoria, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE  codProductos = '$codigo'";
+   $sql = "SELECT codProductos, categoria, catalogo, nombre, descripcion, unidad_medida,SUM(stock), precio, fecha_registro FROM tb_productos  WHERE  cod = '$codigo' GROUP BY precio";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){ ?>    
@@ -182,7 +183,7 @@ if(isset($_POST['id'])){
 
 </style>
             <tr>
-               <td data-label="Codigo"><input style="background:transparent; border: none; width: 100%; color: black;"  type="number" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
+               <td data-label="Codigo"><input style="background:transparent; border: none; width: 100%; color: black;"  type="number" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos'];  ?>"></td>
                <td data-label="Codigo"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="nombre[]" value ="<?php  echo $productos['nombre']; ?>"></td>
                <td data-label="Descripción"><textarea  style="background:transparent; border: none; width: 100%; color: black;" cols="10" rows="1" type="text" class="form-control" readonly name="desc[]"><?php  echo $productos['descripcion']; ?></textarea></td>
                <td data-label="Unidad De Medida"><input  style="background:transparent; border: none; width: 100%; color: black;" type="text" class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
@@ -196,7 +197,7 @@ if(isset($_POST['id'])){
                 <input type="hidden" name="categoria[]" value="<?php  echo $productos['categoria']; ?>"></td>      
             </tr>
    
-        <?php }
+        <?php } }
     
     
 

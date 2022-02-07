@@ -19,9 +19,10 @@ for($i = 0; $i < count($_POST['cod']); $i++)
       $u_m              = $_POST['um'][$i];
       $soli             = $_POST['soli'][$i];
       $cost             = $_POST['precio'][$i];
+      $estado           = $_POST['estado'][$i];
       $num_sol          = $_POST['solicitud_no'];
 
-      $insert = "INSERT INTO detalle_almacen(codigo, nombre, unidad_medida, cantidad_solicitada, tb_almacen, precio) VALUES ('$codigo_producto', '$nombre_articulo','$u_m', '$soli', '$num_sol', '$cost')";
+      $insert = "INSERT INTO detalle_almacen(codigo, nombre, unidad_medida, cantidad_solicitada, tb_almacen, precio,estado) VALUES ('$codigo_producto', '$nombre_articulo','$u_m', '$soli', '$num_sol', '$cost','$estado')";
       $query = mysqli_query($conn, $insert);
 
       if ($query) {

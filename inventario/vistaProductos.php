@@ -176,7 +176,7 @@ $result = mysqli_query($conn, $sql);
    
             <a href="buscar.php" class="btn btn-primary">Buscar Productos</a>
 <br><br>
-
+     <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="form_compra.php">
        <table class="table">
             <thead>
               <tr id="tr">
@@ -189,7 +189,7 @@ $result = mysqli_query($conn, $sql);
                 <th style="width: 115%;">Cantidad</th>
                 <th style="width: 175%;">Costo Unitario</th>
                 <th style="width: 145%;">Fecha Registro</th>
-                <th style="width: 145%;">Solicitar Producto</th>
+                <th style="width: 145%;" align="center"><button  name='solicitar' class='btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button> </th>
                 <?php if($tipo_usuario == 1) { ?>
                 <th>Editar</th>
                 <th style="width: 125%;">Eliminar</th>
@@ -236,11 +236,10 @@ $result = mysqli_query($conn, $sql);
       <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['SUM(stock)']; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
       <td data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
-      <td data-label="solicitar">
-        <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="form_compra.php">             
-          <input type='hidden' name='id' value="<?php  echo $productos['codProductos']; ?>">             
-          <button name='solicitar' class='btn btn-info btn-sm'  data-bs-toggle="tooltip" style="background: rgb(47, 119, 44); border-color: rgb(68, 138, 64);" data-bs-placement="top" title="Solicitar">Solicitar</button>             
-        </form>  
+      <td data-label="solicitar" align="center">
+                    
+          <input type="checkbox" name="id[]" value="<?php  echo $productos['codProductos']; ?>">             
+         
       </td>
       <?php if($tipo_usuario == 1) { ?>
       <td data-label="Editar">
@@ -259,7 +258,7 @@ $result = mysqli_query($conn, $sql);
 
             </tbody>
         </table>
-
+</form>
 </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

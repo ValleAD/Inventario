@@ -172,6 +172,7 @@ cantidad_solicitada int(25) NOT NULL,
 cantidad_despachada int(25) NOT NULL,
 tb_almacen int(20) NOT NULL,
 precio int(20) NOT NULL,
+estado varchar (50)  NOT NULL,
 fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (codigoalmacen),
      CONSTRAINT fk_tb_almacen_detalle_almacen FOREIGN KEY (tb_almacen)
