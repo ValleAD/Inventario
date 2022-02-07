@@ -104,7 +104,18 @@ if(isset($_POST['detalle'])){
                     <th ">Costo <br> unitario</th>
                     <th style="text-align:center;">Estado</th>';
                      if($tipo_usuario == 1) { ?>
-                    <th style="text-align:center;width:8%">Editar</th>
+                        <?php     $odt = $productos1['codBodega'];
+    }
+     $sql = "SELECT * FROM detalle_bodega WHERE odt_bodega = $odt";
+    $result = mysqli_query($conn, $sql);
+while ($productos = mysqli_fetch_array($result)){
+
+      $estado=$productos['estado'];
+      ?>
+                    <th  <?php if($estado=='Aprobado') {
+                     echo ' style="display:none"';
+                }
+                 ?> style="text-align:center;width:8%">Editar</th>
                       <?php } ?>   
                     <th style="width: 6%;">Total</th>
                   </tr>
@@ -150,7 +161,10 @@ while ($productos = mysqli_fetch_array($result)){
             ?>
  type="text" class="btn"  name="estado[]" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $productos['estado']; ?>">
   <?php if($tipo_usuario == 1) { ?>
- <td align="center" ><a class="btn btn-info" href="cambiar_estado_bodeda.php?id=<?php  echo $productos['odt_bodega']; ?>">Editar</a></td><?php } ?>
+ <td  <?php if($estado=='Aprobado') {
+                     echo ' style="display:none"';
+                }
+                 ?> align="center" ><a  class="btn btn-info" href="cambiar_estado_bodeda.php?id=<?php  echo $productos['odt_bodega']; ?>">Editar</a></td><?php } ?>
 
         <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="<?php echo $total ?>"></td>
       </tr>
@@ -159,10 +173,11 @@ while ($productos = mysqli_fetch_array($result)){
 
   <?php } }?> 
 
-   <?php if($tipo_usuario == 1) { ?> 
-        <th colspan="7">SubTotal</th>
+   <?php if($estado=='Aprobado') {?> 
+        <th colspan="6">SubTotal</th>
         <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="<?php echo $final ?>" ></td></tr>
       <?php } ?>
+
 
      <?php if($tipo_usuario == 2) { ?>
       <th colspan="6">SubTotal</th>
