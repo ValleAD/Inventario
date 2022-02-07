@@ -17,6 +17,9 @@ die();
 <!DOCTYPE html>
 <!--Es para la version de mobile-->
 <style type="text/css">
+    form{
+        margin: 2%;
+     }
     @media (min-width: 1080px){
          #section{
         margin-top: 5%;
@@ -78,35 +81,35 @@ die();
 <?php  
 include 'Model/conexion.php';
 if(isset($_POST['id'])){
-
-    echo'
+?>
     <br>
     <form action="Controller/añadir_vale.php" method="post">
-        
-        <div class="container" style="position: initial">
+
             <div class="row">
               <div class="col-6.5 col-sm-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>   
                 <select class="form-control" name="departamento">
-    <option disabled selected>Selecione</option> '; 
+    <option disabled selected>Selecione</option>
+    <?php  
    $sql = "SELECT * FROM selects_departamento";
     $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){ 
       echo'  <option>'.$productos['departamento'].'</option>
   ';   
- }
-    echo'
+ }?>
+   
               </select>  
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Vale N°</b></label>   
-                <input id="inp1"class="form-control" type="number" name="numero_vale" required>
+                <input id="inp1"class="form-control" type="number" name="numero_vale" required readonly value="<?php  mt_srand(time());echo mt_rand(0,10000); ?>">
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
                <label id="inp1">Nombre de la persona</label>                
                <select  class="form-control" name="usuario" id="usuario" required style="cursor: pointer">
                
-    <option disabled selected>Selecione</option> '; 
+    <option disabled selected>Selecione</option> 
+    <?php  
     $habilitado = 'si';
      $sql = "SELECT id, firstname,lastname FROM tb_usuarios WHERE Habilitado = 'si'";
      $result = mysqli_query($conn, $sql);
@@ -114,13 +117,12 @@ if(isset($_POST['id'])){
     while ($productos = mysqli_fetch_array($result)){ 
         echo'  <option value="'.$productos['id'].'">'.$productos['firstname']." ".$productos['lastname'].'</option>
   ';   
- } echo'
+ }?>
 </select>
                   
             </div>
         </div>
         <br>
-          <div class="container">
          <table class="table" style="margin-bottom:3%;">
         <thead>
            <tr id="tr" style="text-align: left">
@@ -136,8 +138,8 @@ if(isset($_POST['id'])){
               <center> <td id="td" colspan="7"  style="background: red;"><h4 align="center";>No se encontraron resultados 😥</h4></td></center> 
             </tr>
         </thead>
-        <tbody>';
-
+        <tbody>
+            <?php 
     $codigo = $_POST['id'];
    //$sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
 
@@ -171,7 +173,6 @@ if(isset($_POST['id'])){
    </tbody>
         </table>
 
-    </div>
     
     <input class="btn btn-lg" type="submit" value="Enviar" id="enviar">
         <style>

@@ -107,48 +107,88 @@ $result = mysqli_query($conn, $sql);
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                 </button>
-            </div>
-              <div class="modal-body">
+                </div>
+                <div class="modal-body">
                 <form action="Controller/añadirEmpleados.php" method="POST">
-                <label>Usuario</label>              
-            <input class="form-control" name="Usuario" type="text">
-            <label>Nombres</label>              
-            <input class="form-control" name="Nombres" type="text">
-            <label>Apellidos</label>
-            <input class="form-control" name="Apellidos" type="text">
-            <label>Establecimientos</label>
-            <select class="form-control" name="Establecimientos">
+              <div class="row">
+                    <div class="col-md-6" style="position: initial">
+                       <label class="small mb-1">Nombre de usuario</label><br>
+                        <input pattern="[A-Za-z0-9_-]{1,}" class="form-control" type="text"  name="usuario"  required>
+                    </div>
+                    <div class="col-md-6" style="position: initial">
+                      <label class="small mb-1">Nombre</label><br>
+                        <input pattern="[A-Za-z0-9_- ]{1,}" class="form-control" type="text"  name="nombre" required>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-6" style="position: initial">
+                     <label class="small mb-1">Apellido</label><br>
+                        <input pattern="[A-Za-z0-9- ]{1,}" class="form-control" type="text"  name="Apellido"  required>
+                        
+                                                
+                                        
+                     
+                    </div>
+                    <div class="col-md-6" style="position: initial">
+                      <label class="small mb-1">Establecimiento</label><br>
+                       <select class="form-control" name="Establecimientos">
                 <option selected disabled >Seleccionar</option>
                 <option>Hospital Nacional Zacatecoluca PA "Santa Tereza"</option>
             </select>
-            <label>Unidad</label>
+                     
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6" style="position: initial">
+                      <label class="small mb-1">Contraseña</label><br>
+                        <input pattern="[A-Za-z0-9_-]{1,}" class="form-control" id="show" type="password"  name="password"  required>
+                      <div class="custom-control custom-checkbox"><input class="custom-control-input" onclick="myFuntion();" id="rememberPasswordCheck" type="checkbox" /><label class="custom-control-label" for="rememberPasswordCheck">Mostrar Contraseña</label></div>
+                  </div>
+                  <div class="col-md-6" style="position: initial">
+                      <label class="small mb-1">Confirmar Contraseña</label><br>
+                        <input pattern="[A-Za-z0-9_-]{1,}" class="form-control" id="show1" type="password"  name="cpassword" required>
+                        <div class="custom-control custom-checkbox"><input class="custom-control-input" onclick=" myFuntion1();" id="PasswordCheck" type="checkbox" /><label class="custom-control-label" for="PasswordCheck">Mostrar Contraseña</label></div>
+                  </div>
+                </div>
+                <br>
+                <div class="row">
+                    
+                    <div class="col-md-6" style="position: initial">
+                        <label  class="small mb-1">Unidad ó Departamento</label><br>
             <select class="form-control" name="Unidad">
                 <option selected disabled >Seleccionar</option>
-                <option>Departamento Mantenimiento Local</option>
-                <option>Sección Equipo Básico</option>
-                <option>Sección Planta Física y Mobiliario</option>
-                <option>Sección Equipo Médico</option>
+                   <?php  
+   $sql = "SELECT * FROM selects_departamento";
+    $result = mysqli_query($conn, $sql);
+    while ($productos = mysqli_fetch_array($result)){ 
+      echo'  <option>'.$productos['departamento'].'</option>
+  ';   
+ }?>
             </select>
-            <label>Tipo de Usuario</label>
-            <select class="form-control" name="tipo">
-                <option selected disabled >Seleccionar</option>
-                <option value="1">Administrador</option>
-                <option value="2">Técnico</option>
-            </select>
-            <label>Password</label>
-            <input class="form-control" name="Password" type="password"> 
-            
-               
-            </div>
-            <style type="text/css">
-                label{
+                </div>
+                <div class="col-md-6" style="position: initial">
+                                                <label class="small mb-1">Tipo de Usuarios (Roles De Usuario)</label>
+                                                <select class="form-control" name="tipo_usuario" required>
+                                                    <option selected disabled>Selecione</option>
+                                                    <option value="1">Admistrador</option>
+                                                    <option value="2">Tenico</option>
+                                               </select>
+                        </div>
+                    </div>
+                <div>
+                    <div class="form-group" style="margin-top: 2%;">
+                        <button type="submit" name="submit" class="btn btn-primary btn-block">Registrarse</button>
+                    </div>
+
+                    </div>
+                     <style type="text/css">
+                    label{
                     color: white;
-                }
-            </style>
-            <div class="modal-footer">
-        <button name="submit" type="submit" id="Update" class="btn btn-danger" >Agregar</button> 
-      </div>
-           </form> 
+                 }
+                    </style>
+                
+                </form> 
         </div>
     </div>
 </div><?php } ?>
@@ -200,11 +240,11 @@ $result = mysqli_query($conn, $sql);
  <td align="center">
             <input  <?php
                 if($solicitudes['Habilitado']  =='Si') {
-                    echo ' style="background-color:blueviolet ;width:39%; border-radius:100px;text-align:center; color: white;"';
+                    echo ' style="background-color:blueviolet ;max-width:39%;font-size: 12px; border-radius:100px;text-align:center; color: white;"';
                 } elseif ($solicitudes['Habilitado']  == 'No') {
                     // code...
                 } {
-                    echo ' style="background-color:red;width:39%; border-radius:100px;text-align:center;color: white;"';
+                    echo ' style="background-color:red;max-width:39%;font-size: 12px; border-radius:100px;text-align:center;color: white;"';
                 }
             ?>
  type="text" class="btn"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $solicitudes['Habilitado']; ?>"></td>
@@ -256,6 +296,30 @@ function confirmaion(e) {
 }
 let linkDelete =document.querySelectorAll("delete");
 </script>
+<script type="text/javascript">
+                    function myFuntion() {
+                        var show = document.getElementById('show');
+                        if (show.type=='password') {
+                            show.type='text';
+                        }
+                        else{
+                            show.type='password';
+                        }
 
+                    }
+                </script>
+                <!--Es para la Contraseña Confirmacion-->
+                <script type="text/javascript">
+                    function myFuntion1() {
+                        var show = document.getElementById('show1');
+                        if (show.type=='password') {
+                            show.type='text';
+                        }
+                        else{
+                            show.type='password';
+                        }
+
+                    }
+                </script>
 </body>
 </html>

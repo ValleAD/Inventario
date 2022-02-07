@@ -32,8 +32,8 @@ if ($password == $cpassword) {
 	$sql = "SELECT * FROM tb_usuarios WHERE username='$username' AND firstname='$firstname' AND lastname='$lastname' AND email='$email' AND password='$password'";
 	$result = mysqli_query($conn, $sql);
 	if (!$result->num_rows > 0) {
-		$sql = "INSERT INTO tb_usuarios (username,firstname,lastname, email, password,tipo_usuario)
-				VALUES ('$username','$firstname', '$lastname', '$email', '$password','$tipo_usuario')";
+		$sql = "INSERT INTO tb_usuarios (username,firstname,lastname, email, password,tipo_usuario,Habilitado)
+				VALUES ('$username','$firstname', '$lastname', '$email', '$password','$tipo_usuario','Si')";
 		$result = mysqli_query($conn, $sql);
 
 		if ($result) {
@@ -66,7 +66,7 @@ if ($password == $cpassword) {
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>registro de Usuarios</title>
+	<title>Registro de Usuarios</title>
 </head>
 <body>
 	
@@ -151,21 +151,16 @@ if ($password == $cpassword) {
 
    
 </div>
-</center>
 </form>
-                                        </form>
-                                    </div>
+                                  
                                     <div class="card-footer text-center">
                                         <div class="small"><a href="signin.php">¿Ya tienes una cuenta? Go to login</a></div>
                                     </div>
+                                    </main>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </main>
-            </div>
-            
-        </div>
+                
+
 
 
 	

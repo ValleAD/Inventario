@@ -19,11 +19,23 @@ if (isset($_POST['submit'])) {
 	$result = mysqli_query($conn, $sql);
 	if ($result->num_rows > 0) {
 		$row = mysqli_fetch_assoc($result);
-		$_SESSION['signin'] = $row['username'];
+		
+		if ($row ['Habilitado']=="Si") { 
+			$_SESSION['signin'] = $row['username'];
 		$_SESSION['tipo_usuario'] = $row['tipo_usuario'];
-		$_SESSION['habilitado'] = $row1 ['Habilitado'];
-		$row1 = "si";
+		
 		header("Location: ../home.php");
+		}else{
+			 echo '
+    <script>
+        alert("No Puede Entrar Usuario Desabilitado");
+        window.location ="signin.php";
+        session_destroy();  
+                </script>
+	';
+		}
+		
+		
 	} else {
 		 echo '
     <script>
@@ -72,11 +84,11 @@ if (isset($_POST['submit'])) {
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
                                     <div class="card-body">
-                                        <form method="POST" class="needs-validation" novalidate>
+                                        <form method="POST" class="needs-validation" >
                                             <div class="form-group"><label class="small mb-1" for="inputEmailAddress">Usuario</label>
-                                            	<input id="input" method="POST" class="form-control py-4" id="inputEmailAddress" placeholder="Ingrese el usuario" type="text" name="username" value="<?php echo $username; ?>" required></div>
+                                            	<input pattern="[A-Za-z0-9_-]{1,}" id="input" method="POST" class="form-control py-4" id="inputEmailAddress" placeholder="Ingrese el usuario" type="text" name="username" value="<?php echo $username; ?>" required></div>
                                             <div class="form-group"><label class="small mb-1" for="inputPassword">Password</label>
-                                            <input  class="form-control py-4" id="show" type="password" placeholder="Ingrese la Contraseña" id="input"  method="POST" class="form-control" type="password" name="password" value="<?php echo $_POST['password']; ?>" required ></div>
+                                            <input pattern="[A-Za-z0-9_-]{1,}"  class="form-control py-4" id="show" type="password" placeholder="Ingrese la Contraseña" id="input"  method="POST" class="form-control" type="password" name="password" value="<?php echo $_POST['password']; ?>" required ></div>
                                             <div class="form-group">
                                                 <div class="custom-control custom-checkbox"><input class="custom-control-input" onclick="myFuntion();" id="rememberPasswordCheck" type="checkbox" /><label class="custom-control-label" for="rememberPasswordCheck">Mostrar Contraseña</label></div>
                                             </div>
@@ -86,7 +98,7 @@ if (isset($_POST['submit'])) {
                                         </form>
                                     </div>
                                     <div class="card-footer text-center">
-                                        <div class="small"><a href="signup.php">No tienes cuenta ? Registrarse</a></div>
+                                        <!-- <div class="small"><a href="signup.php">No tienes cuenta ? Registrarse</a></div> -->
                                         <div class="small"><form action="Invitado/invitado.php">
                                         	<button class="btn btn-info" type="submit">Modo inviado</button>
                                         </form></div>
