@@ -238,7 +238,7 @@ $result = mysqli_query($conn, $sql);
       <td data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
       <td data-label="solicitar" align="center">
                     
-          <input type="checkbox" name="id[]" value="<?php  echo $productos['codProductos']; ?>">             
+          <input type="checkbox" name="id[]" required value="<?php  echo $productos['codProductos']; ?>">             
          
       </td>
       <?php if($tipo_usuario == 1) { ?>
