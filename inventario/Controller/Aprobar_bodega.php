@@ -9,7 +9,7 @@ $aprobado =$_POST['estado'];
 //sql
 
 
-$sql="UPDATE detalle_bodega SET estado = '$aprobado' WHERE codigodetallebodega='$id'" ;
+$sql="UPDATE detalle_bodega SET estado = '$aprobado' WHERE odt_bodega='$id'" ;
 $result = mysqli_query($conn, $sql);
 
 if ($result) {

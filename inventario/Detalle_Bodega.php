@@ -146,7 +146,8 @@ while ($productos = mysqli_fetch_array($result)){
                 }
             ?>
  type="text" class="btn"  name="estado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $productos['estado']; ?>">
- <td align="center" ><a class="btn btn-info" href="cambiar_estado_bodeda.php?id=<?php  echo $productos['codigo']; ?>">Editar</a></td>
+  <?php if($tipo_usuario == 1) { ?>
+ <td align="center" ><a class="btn btn-info" href="cambiar_estado_bodeda.php?id=<?php  echo $productos['odt_bodega']; ?>">Editar</a></td><?php } ?>
 
         <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="<?php echo $total ?>"></td>
       </tr>

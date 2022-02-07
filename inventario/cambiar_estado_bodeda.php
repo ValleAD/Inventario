@@ -25,7 +25,7 @@ die();
 <body>
 		<?php 
             	$id =$_GET['id'];
-            	$sql = "SELECT * FROM detalle_bodega  WHERE  codigodetallebodega = '$id'";
+            	$sql = "SELECT * FROM detalle_bodega  WHERE  odt_bodega = '$id'";
 $result = mysqli_query($conn, $sql);
 
 
@@ -37,7 +37,7 @@ $result = mysqli_query($conn, $sql);
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial; margin: auto; margin-top: 2%">
             
-                <input type="hidden" name="id" value="<?php  echo $productos['codigodetallebodega']; ?>">
+                <input type="hidden" name="id" value="<?php  echo $productos['odt_bodega']; ?>">
                 <label for="">Cambiar el estado</label><br> 
                     <select  class="form-control" name="estado" style="cursor: pointer" required>
                         <option>[Seleccione]</option>
