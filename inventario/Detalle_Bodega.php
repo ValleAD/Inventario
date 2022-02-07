@@ -31,6 +31,9 @@ die();
 </head>
 <body>
     <style type="text/css">
+      #section{
+        margin: 2%;
+      }
               @media (max-width: 952px){
    #section{
         margin-top: 5%;
@@ -42,6 +45,7 @@ die();
     }
   }
     </style>
+
 <?php
 
 if(isset($_POST['detalle'])){
@@ -93,12 +97,14 @@ if(isset($_POST['detalle'])){
                 
                 <thead>
                   <tr id="tr">
-                    <th>Código</th>
-                    <th style="width: 35%;">Descripción</th>
-                    <th>Unidad de Medida</th>
-                    <th>Cantidad</th>
-                    <th>Costo unitario</th>
-                    <th>Total</th>
+                    <th style="width: 6%;">Código</th>
+                    <th style="width: 15%;">Descripción</th>
+                    <th style="width: 10%;">Unidad de Medida</th>
+                    <th style="width: 6%;">Cantidad</th>
+                    <th style="width: 6%;">Costo <br> unitario</th>
+                    <th style="text-align:center;width:8%">Estado</th>
+                    <th style="text-align:center;width:8%">Editar</th>
+                    <th style="width: 6%;">Total</th>
                   </tr>
                     <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
                </thead>
@@ -107,56 +113,74 @@ if(isset($_POST['detalle'])){
     $odt = $productos1['codBodega'];
     }
      $sql = "SELECT * FROM detalle_bodega WHERE odt_bodega = $odt";
-        $result = mysqli_query($conn, $sql);
-    while ($productos = mysqli_fetch_array($result)){
-          
-          $total = $productos['stock'] * $productos['precio'];
-          $final += $total;
-      echo' 
-        <style type="text/css">
-         #td{
-            display: none;
-        }
-        
-       
-    </style> 
-          <tr>
-            <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="' .$productos['codigo']. '"></td>
-            <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly style="border: none">'.$productos['descripcion']. '</textarea></td>
-            <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
-            <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="'.$productos['stock']. '"></td>
-            <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$'.$productos['precio']. '"></td>
-            <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$'.$total. '"></td>
-            
-          </tr>';
-    
-    }
-    
-          echo'
-          <th colspan="5">SubTotal</th>
-          <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$'.$final.'" ></td></tr>
+    $result = mysqli_query($conn, $sql);
+while ($productos = mysqli_fetch_array($result)){
       
-             </tbody>
-            </table>
+      $total = $productos['stock'] * $productos['precio'];
+      $final += $total;
+      $codigo=$productos['codigo'];
+      $descripcion=$productos['descripcion'];
+      $um=$productos['unidad_medida'];
+      $stock=$productos['stock'];
+      $precio=$productos['precio'];
+      $estado=$productos['estado'];
+      $fecha=$productos['fecha_registro'];
+      ?>
+       <style type="text/css"> #td{display: none;} </style> 
+
+      <tr>
+        <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="<?php echo $codigo ?>"></td>
+        <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly style="border: none"><?php echo $descripcion ?></textarea></td>
+        <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="<?php echo $um ?>"></td>
+        <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="<?php echo $stock ?>"></td>
+        
+        <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$<?php echo $precio ?>"></td>
+    <td align="center">
+            <input  <?php
+                if($estado=='Pendiente') {
+                    echo ' style="background-color:green ;width:59%; border-radius:100px;text-align:center; color: white;"';
+                }else if($estado=='Aprobado') {
+                     echo ' style="background-color:blueviolet ;width:60%; border-radius:100px;text-align:center; color: white;"';
+                }else if($estado=='Rechazado') {
+                     echo ' style="background-color:red ;width:65%; border-radius:100px;text-align:center; color: white;"';
+                }
+            ?>
+ type="text" class="btn"  name="estado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $productos['estado']; ?>">
+ <td align="center" ><a class="btn btn-info" href="cambiar_estado_bodeda.php?id=<?php  echo $productos['codigo']; ?>">Editar</a></td>
+
+        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="<?php echo $total ?>"></td>
+      </tr>
+
+
+
+     
+      <th colspan="7">SubTotal</th>
+      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="<?php echo $final ?>" ></td></tr>
+   
+
+         </tbody>
+        </table>
+
     
-        <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
-          <style>
-            #pdf{
-            margin-left: 38%; 
-            background: rgb(175, 0, 0); 
-            color: #fff; margin-bottom: 2%; 
-            border: rgb(0, 0, 0);
-            }
-            #pdf:hover{
-            background: rgb(128, 4, 4);
-            } 
-            #pdf:active{
-            transform: translateY(5px);
-            } 
-          </style>
-    </form>
-    </section>';
-}
-?>            
-</body>
-</html>
+  
+    <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
+      <style>
+        #pdf{
+        margin-left: 38%; 
+        background: rgb(175, 0, 0); 
+        color: #fff; margin-bottom: 2%; 
+        border: rgb(0, 0, 0);
+        }
+        #pdf:hover{
+        background: rgb(128, 4, 4);
+        } 
+        #pdf:active{
+        transform: translateY(5px);
+        } 
+      </style>
+</form>
+</section>
+      
+     <?php } }?>       
+  </body>
+  </html>

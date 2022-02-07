@@ -116,8 +116,8 @@ die();
     <tr id="tr">
     <td data-label="Categoría"><?php  echo $productos['categoria']; ?></td>
       <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
-      <td data-label="Codigo"><?php  echo $productos['nombre']; ?></td>
       <td data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
+      <td data-label="Codigo"><?php  echo $productos['nombre']; ?></td>
       <td data-label="Descripción Completa"><textarea  style="background:transparent; border: none; color: black;"  readonly name="" id="" cols="15" rows="2" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
       <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
       <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>

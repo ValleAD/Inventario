@@ -82,7 +82,7 @@ form{
         <div class="row">
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Solicitud N°</b></label>   
-                <input id="inp1"class="form-control" type="number" name="solicitud_no" readonly value="<?php  mt_srand(time());echo mt_rand(0,1000); ?>">
+                <input id="inp1"class="form-control" type="number" name="solicitud_no" readonly value="<?php  mt_srand(time());echo mt_rand(0,10000); ?>">
             </div>           
         </div>
  
@@ -125,6 +125,11 @@ form{
                     <div class="form-group">
                         <label>Costo Estimado</label>
                         <input class="form-control" type="number" step="0.01" name="costo[]" placeholder="$0.00" required=""><br>
+                    </div>
+                    <div class="form-group">
+                   <input style="background:transparent; border: none; width: 100%; color: black;"  type="hidden" class="form-control" readonly name="form_bodega[]" value ="Formulario Bodega">
+                <input type="hidden" name="estado" value="Pendiente">
+
                     </div>
             </div>
         </div>            

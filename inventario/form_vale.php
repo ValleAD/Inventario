@@ -136,8 +136,7 @@ die();
 <?php  
 include 'Model/conexion.php';
 if(isset($_POST['codigo'])){
-
-    echo'
+?>
     <br>
     <form action="Controller/añadir_vale.php" method="post">
         
@@ -146,25 +145,27 @@ if(isset($_POST['codigo'])){
               <div class="col-6.5 col-sm-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>   
                 <select class="form-control" name="departamento">
-    <option disabled selected>Selecione</option> '; 
+    <option disabled selected>Selecione</option>
+    <?php  
    $sql = "SELECT * FROM selects_departamento";
     $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){ 
       echo'  <option>'.$productos['departamento'].'</option>
   ';   
- }
-    echo'
+ }?>
+   
               </select>  
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Vale N°</b></label>   
-                <input id="inp1"class="form-control" type="number" name="numero_vale" required>
+                <input id="inp1"class="form-control" type="number" name="numero_vale" required readonly value="<?php  mt_srand(time());echo mt_rand(0,10000); ?>">
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
                <label id="inp1">Nombre de la persona</label>                
                <select  class="form-control" name="usuario" id="usuario" required style="cursor: pointer">
                
-    <option disabled selected>Selecione</option> '; 
+    <option disabled selected>Selecione</option> 
+    <?php  
     $habilitado = 'si';
      $sql = "SELECT id, firstname,lastname FROM tb_usuarios WHERE Habilitado = 'si'";
      $result = mysqli_query($conn, $sql);
@@ -172,7 +173,7 @@ if(isset($_POST['codigo'])){
     while ($productos = mysqli_fetch_array($result)){ 
         echo'  <option value="'.$productos['id'].'">'.$productos['firstname']." ".$productos['lastname'].'</option>
   ';   
- } echo'
+ }?>
 </select>
                   
             </div>
@@ -194,11 +195,11 @@ if(isset($_POST['codigo'])){
               <center> <td id="td" colspan="7"  style="background: red;"><h4 align="center";>No se encontraron resultados 😥</h4></td></center> 
             </tr>
         </thead>
-        <tbody>';
+        <tbody>
 
 
            
-
+<?php 
 
     for($i = 0; $i < count($_POST['codigo']); $i++){
 
@@ -207,7 +208,7 @@ if(isset($_POST['codigo'])){
    //$sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
 
 
-   $sql = "SELECT codProductos, nombre, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE  codProductos = '$codigo'";
+   $sql = "SELECT categoria, codProductos, nombre,catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE  codProductos = '$codigo'";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){ ?>    
@@ -224,7 +225,12 @@ if(isset($_POST['codigo'])){
                <td data-label="Unidad De Medida"><input  style="background:transparent; border: none; width: 100%; color: black;" type="text" class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
                <td data-label="Productos Disponibles"><input  style="background:transparent; border: none; width: 100%; color: gray;" type="text" class="form-control" readonly  name="stock[]"  value ="<?php  echo $productos['SUM(stock)']; ?>"></td>
                <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="text" class="form-control"  name="cant[]" required></td>
-               <td data-label="Precio"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
+               <td data-label="Precio"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td> 
+                <td><input style="background:transparent; border: none; width: 100%; color: black;"  type="hidden" class="form-control" readonly name="form_vale[]" value ="Formulario Vale">
+                <input type="hidden" name="estado" value="Pendiente">
+                <input type="hidden" name="nombre[]" value="<?php  echo $productos['nombre']; ?>"></td>  
+                <input type="hidden" name="cat[]" value="<?php  echo $productos['catalogo']; ?>"></td>  
+                <input type="hidden" name="categoria[]" value="<?php  echo $productos['categoria']; ?>"></td>   
             </tr>
    
         <?php }

@@ -177,6 +177,11 @@ form{
                 <label>Costo Unitario</label>
                <input class="form-control" type="number" step="0.01" name="precio[]" placeholder="$0.00" required><br>
             </div>
+             <div class="form-group">
+                   <input style="background:transparent; border: none; width: 100%; color: black;"  type="hidden" class="form-control" readonly name="form_bodega[]" value ="Formulario Bodega">
+                <input type="hidden" name="estado" value="Pendiente">
+
+                    </div>
         </div>
     </div>            
 </div>

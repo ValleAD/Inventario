@@ -48,6 +48,7 @@ CREATE TABLE reporte_articulos (
   stock int(11) NOT NULL,
   precio decimal(6,2) NOT NULL,
   campo varchar (50)  NOT NULL,
+    estado varchar (50)  NOT NULL,
   fecha_registro date NOT NULL DEFAULT current_timestamp(),
     PRIMARY KEY (cod)
 );

@@ -23,9 +23,10 @@ include ('../Model/conexion.php');
     $stock = $_POST['cant'][$i];
     $precio= $_POST['cu'][$i];
     $orden_trabajo = $_POST['odt'];
+    $estado = $_POST['estado'];
 
   
-      $insert = "INSERT INTO detalle_bodega (codigo,descripcion,unidad_medida,stock,precio,odt_bodega) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$orden_trabajo')";
+      $insert = "INSERT INTO detalle_bodega (codigo,descripcion,unidad_medida,stock,precio,odt_bodega,estado) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$orden_trabajo','$estado')";
       $query = mysqli_query($conn, $insert);
 
       if ($query) {
@@ -79,8 +80,9 @@ for($i = 0; $i < count($_POST['cod']); $i++)
       $u_m              = $_POST['um'][$i];
       $cantidad         = $_POST['cant'][$i];
       $cost             = $_POST['cu'][$i];
+      $estado           = $_POST['estado'][$i];
       $campo            = $_POST['form_bodega'][$i];
-       $insert = "INSERT INTO reporte_articulos (codProductos, categoria, catalogo, nombre, descripcion, unidad_medida, stock, precio,campo) VALUES ('$codigo_producto', '$categoria', '$catalogo', '$nombre_articulo', '$Descripción', '$u_m', '$cantidad', '$cost','$campo')";
+       $insert = "INSERT INTO reporte_articulos (codProductos, categoria, catalogo, nombre, descripcion, unidad_medida, stock, precio,campo,estado) VALUES ('$codigo_producto', '$categoria', '$catalogo', '$nombre_articulo', '$Descripción', '$u_m', '$cantidad', '$cost','$campo','$estado')";
       $query = mysqli_query($conn, $insert);
 
     }
