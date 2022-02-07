@@ -163,8 +163,9 @@ while ($productos = mysqli_fetch_array($result)){
   <?php if($tipo_usuario == 1) { ?>
  <td  <?php if($estado=='Aprobado') {
                      echo ' style="display:none"';
-                }
+                } 
                  ?> align="center" ><a  class="btn btn-info" href="cambiar_estado_bodeda.php?id=<?php  echo $productos['odt_bodega']; ?>">Editar</a></td><?php } ?>
+                 
 
         <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="<?php echo $total ?>"></td>
       </tr>
@@ -173,10 +174,15 @@ while ($productos = mysqli_fetch_array($result)){
 
   <?php } }?> 
 
-   <?php if($estado=='Aprobado') {?> 
+   <?php if($estado=='Aprobado') {
+    echo'
         <th colspan="6">SubTotal</th>
-        <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="<?php echo $final ?>" ></td></tr>
-      <?php } ?>
+        <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="'.$final.' " ></td></tr>';
+      }
+      if ($estado=='Rechazado') {
+        echo' <th colspan="6">SubTotal</th>
+        <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="'.$final.'" ></td></tr>';
+} ?>
 
 
      <?php if($tipo_usuario == 2) { ?>
