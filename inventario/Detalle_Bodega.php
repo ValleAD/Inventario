@@ -102,27 +102,18 @@ if(isset($_POST['detalle'])){
                     <th ">Unidad de Medida</th>
                     <th ">Cantidad</th>
                     <th ">Costo <br> unitario</th>
-                    <th style="text-align:center;">Estado</th>';
-                     if($tipo_usuario == 1) { 
-                 $sql = "SELECT * FROM detalle_bodega WHERE odt_bodega = $odt";
-    $result = mysqli_query($conn, $sql);
-while ($productos = mysqli_fetch_array($result)){
+                    <th style="text-align:center;">Estado</th>
+                     
 
-      $estado=$productos['estado'];
-      ?>
-                    <th  <?php if($estado=='Aprobado') {
-                     echo ' style="display:none"';
-                }if ($estado=='Rechazado') {
-                   echo ' style="display:none"';
-                }
-                 ?> style="text-align:center;width:8%">Editar</th>
-                      <?php }} ?>   
+                    <th style="text-align:center;width:8%">Editar</th>
+                    
+                    
                     <th style="width: 6%;">Total</th>
                   </tr>
                     <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
                </thead>
-                <tbody>
-                    <?php 
+                <tbody>';
+                   
     
     $odt = $productos1['codBodega'];
     }
@@ -162,13 +153,20 @@ while ($productos = mysqli_fetch_array($result)){
  type="text" class="btn"  name="estado[]" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $productos['estado']; ?>">
   <?php if($tipo_usuario == 1) { ?>
 
- <td  <?php if($estado=='Aprobado') {
+ <td  align="center" <?php if($estado=='Aprobado') {
+                     echo " <p> No Disponible</p";
+                }elseif($estado=='Rechazado'){
+                     echo "<p>No Disponible</p";
+                 }
+                 ?>  >
+
+                 <a <?php if($estado=='Aprobado') {
                      echo ' style="display:none"';
                 } 
                 if($estado=='Rechazado'){
                      echo ' style="display:none"';
                  }
-                 ?> align="center" ><a  class="btn btn-info" href="cambiar_estado_bodeda.php?id=<?php  echo $productos['odt_bodega']; ?>">Editar</a></td><?php } ?>
+                 ?>  class="btn btn-info" href="cambiar_estado_bodeda.php?id=<?php  echo $productos['codigodetallebodega']; ?>">Editar</a></td><?php } ?>
                 
 
 
@@ -178,26 +176,9 @@ while ($productos = mysqli_fetch_array($result)){
 
 
   <?php } }?> 
-<?php if($tipo_usuario == 1) { ?>
-   <?php if($estado=='Aprobado') {
-    echo'
-        <th colspan="6">SubTotal</th>
-        <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="'.$final.' " ></td></tr>';
-      }
-      if ($estado=='Rechazado') {
-        echo' <th colspan="6">SubTotal</th>
-        <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="'.$final.'" ></td></tr>';
-} ?>
-<?php } ?>
 
-     <?php if($tipo_usuario == 2) { ?>
-      <th colspan="6">SubTotal</th>
+      <th colspan="7">SubTotal</th>
       <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="<?php echo $final ?>" ></td></tr> 
-      <?php } ?>
-
-      <?php if($tipo_usuario == 1) { ?>
-        <p><b>Nota Importante: </b>Cuando Actualizen el Estado se van a Actualizar todos los registros que se muestran en esta tabla </p>
-        <?php } ?>
 
          </tbody>
         </table>

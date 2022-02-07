@@ -94,27 +94,14 @@ $final = 0;
                     <th ">Unidad de Medida</th>
                     <th ">Cantidad</th>
                     <th ">Costo <br> unitario</th>
-                    <th style="text-align:center;">Estado</th>';
-                     if($tipo_usuario == 1) { 
-                 $sql = "SELECT * FROM detalle_vale ";
-    $result = mysqli_query($conn, $sql);
-while ($productos = mysqli_fetch_array($result)){
+                    <th style="text-align:center;">Estado</th>
 
-      $estado=$productos['estado'];
-      ?>
-                    <th  <?php if($estado=='Aprobado') {
-                     echo ' style="display:none"';
-                }if ($estado=='Rechazado') {
-                   echo ' style="display:none"';
-                }
-                 ?> style="text-align:center;width:8%">Editar</th>
-                      <?php }} ?>   
+                         
                     <th style="width: 6%;">Total</th>
                   </tr>
                     <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
                </thead>
-                <tbody>
-                    <?php 
+                <tbody>'; 
 
 $num_vale = $productos1['codVale'];
 }
@@ -152,15 +139,7 @@ while ($productos = mysqli_fetch_array($result)){
                 }
             ?>
  type="text" class="btn"  name="estado[]" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $productos['estado']; ?>">
-  <?php if($tipo_usuario == 1) { ?>
 
- <td  <?php if($estado=='Aprobado') {
-                     echo ' style="display:none"';
-                } 
-                if($estado=='Rechazado'){
-                     echo ' style="display:none"';
-                 }
-                 ?> align="center" ><a  class="btn btn-info" href="cambiar_estado_bodeda.php?id=<?php  echo $productos['numero_vale']; ?>">Editar</a></td><?php } ?>
                 
 
 
@@ -171,29 +150,12 @@ while ($productos = mysqli_fetch_array($result)){
 
   <?php } ?> 
 
-<?php if($tipo_usuario == 1) { ?>
-   <?php if($estado=='Aprobado') {
-    echo'
-        <th colspan="6">SubTotal</th>
-        <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="'.$final.' " ></td></tr>';
-      }
-      if ($estado=='Rechazado') {
-        echo' <th colspan="6">SubTotal</th>
-        <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="'.$final.'" ></td></tr>';
-} ?><th colspan="7">SubTotal</th>
-        <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="<?php echo 
-        $final ?>" ></td></tr>
-<?php } ?>
 
-        
-     <?php if($tipo_usuario == 2) { ?>
+
+
       <th colspan="6">SubTotal</th>
       <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="<?php echo $final ?>" ></td></tr> 
-      <?php } ?>
 
-      <?php if($tipo_usuario == 1) { ?>
-        <p><b>Nota Importante: </b>Cuando Actualizen el Estado se van a Actualizar todos los registros que se muestran en esta tabla </p>
-        <?php } ?>
 
          </tbody>
         </table>    <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">

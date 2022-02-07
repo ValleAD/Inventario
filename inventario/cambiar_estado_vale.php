@@ -24,7 +24,7 @@ die();
 </head>
 <body>
 		<?php $id =$_GET['id'];?> 
-<form action="Controller/Aprobar_bodega.php" method="POST" style="background: transparent; ">
+<form action="Controller/Aprobar_vale.php" method="POST" style="background: transparent; ">
   <h3 align="center">Actualizando el Estado Producto</h3>
     <div class="container" style="background: rgba(0, 0, 0, 0.6); width: 70%; margin: auto; border-radius: 9px; color:#fff; font-weight: bold;">
         <div class="row">
