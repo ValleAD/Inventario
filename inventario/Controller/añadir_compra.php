@@ -44,7 +44,17 @@ location.href = '../form_compra.php';
       $insert = "INSERT INTO detalle_compra (categoria, codigo, catalogo, descripcion, unidad_medida, stock, precio, estado, solicitud_compra) VALUES ('$categoria', '$codigo_producto','$catalogo', '$Descripción', '$u_m', '$cantidad', '$cost','$estado', '$solicitud')";
       $query = mysqli_query($conn, $insert);
 
-    
+    for ($i=0; $i < count($_POST['cod']) ; $i++) {
+
+  $codigo= $_POST['cod'][$i];
+  $stocks =$_POST['stock'][$i];   
+  $stock_obtenido =$_POST['cant'][$i];
+  $stock_descontado=$stocks + $stock_obtenido;
+   }
+//sql
+$count = "SELECT codProductos, SUM(stock), fecha_registro FROM tb_productos GROUP BY codProductos";
+$sql1="UPDATE tb_productos SET stock='$stock_descontado' WHERE codProductos ='$codigo'" ;
+$result = mysqli_query($conn, $sql1);
 
     }  
      for($i = 0; $i < count($_POST['cod']); $i++)

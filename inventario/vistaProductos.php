@@ -237,7 +237,7 @@ $result = mysqli_query($conn, $sql);
       <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
       <td data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
       <td data-label="solicitar">
-        <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="vale.php">             
+        <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="form_compra.php">             
           <input type='hidden' name='id' value="<?php  echo $productos['codProductos']; ?>">             
           <button name='solicitar' class='btn btn-info btn-sm'  data-bs-toggle="tooltip" style="background: rgb(47, 119, 44); border-color: rgb(68, 138, 64);" data-bs-placement="top" title="Solicitar">Solicitar</button>             
         </form>  

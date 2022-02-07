@@ -21,10 +21,11 @@ include ('../Model/conexion.php');
     $unidadmedida= $_POST['um'][$i];
     $stock = $_POST['cant'][$i];
     $precio= $_POST['cu'][$i];
+    $estado= $_POST['estado'][$i];
     $numero_vale = $_POST['numero_vale'];
 
   
-      $insert = "INSERT INTO detalle_vale (codigo,descripcion,unidad_medida,stock,precio,numero_vale) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$numero_vale')";
+      $insert = "INSERT INTO detalle_vale (codigo,descripcion,unidad_medida,stock,precio,numero_vale,estado) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$numero_vale','$estado')";
       $query = mysqli_query($conn, $insert);
 
       if ($query) {
