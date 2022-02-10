@@ -88,18 +88,15 @@ $final = 0;
         <table class="table" style="margin-bottom:3%">
             
             <thead>
-                       <tr id="tr">
-                     <th ">Código</th>
+                    <tr id="tr">
+                    <th ">Código</th>
                     <th ">Descripción</th>
                     <th ">Unidad de Medida</th>
                     <th ">Cantidad</th>
                     <th ">Costo <br> unitario</th>
-                    <th style="text-align:center;">Estado</th>
-
-                         
                     <th style="width: 6%;">Total</th>
                   </tr>
-                    <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
+                    <td id="td" colspan="6"><h4>No se encontraron resultados 😥</h4></td>
                </thead>
                 <tbody>'; 
 
@@ -116,7 +113,6 @@ while ($productos = mysqli_fetch_array($result)){
       $um=$productos['unidad_medida'];
       $stock=$productos['stock'];
       $precio=$productos['precio'];
-      $estado=$productos['estado'];
       $fecha=$productos['fecha_registro'];
       ?>
        <style type="text/css"> #td{display: none;} </style> 
@@ -126,23 +122,7 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly style="border: none"><?php echo $descripcion ?></textarea></td>
         <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="<?php echo $um ?>"></td>
         <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="<?php echo $stock ?>"></td>
-        
         <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$<?php echo $precio ?>"></td>
-    <td align="center">
-            <input  <?php
-                if($estado=='Pendiente') {
-                    echo ' style="background-color:green ;width:61%; border-radius:100px;text-align:center; color: white;"';
-                }else if($estado=='Aprobado') {
-                     echo ' style="background-color:blueviolet ;width:60%; border-radius:100px;text-align:center; color: white;"';
-                }else if($estado=='Rechazado') {
-                     echo ' style="background-color:red ;width:65%; border-radius:100px;text-align:center; color: white;"';
-                }
-            ?>
- type="text" class="btn"  name="estado[]" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $productos['estado']; ?>">
-
-                
-
-
         <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="<?php echo $total ?>"></td>
       </tr>
 
@@ -150,10 +130,8 @@ while ($productos = mysqli_fetch_array($result)){
 
   <?php } ?> 
 
-
-
-
-      <th colspan="6">SubTotal</th>
+      <th colspan="4"></th>
+      <th colspan="1">SubTotal</th>
       <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="<?php echo $final ?>" ></td></tr> 
 
 

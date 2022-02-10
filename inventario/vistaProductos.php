@@ -190,19 +190,18 @@ $result = mysqli_query($conn, $sql);
                 <th style="width: 95%;">Código</th>
                 <th style="width: 135%;">Catálogo</th>
                 <th style="width: 200%;">Nombre</th>
-                <th style="width: 225%;">Descripción Completa</th>
+                <th style="width: 250%;">Descripción Completa</th>
                 <th style="width: 175%; text-align: center;">U/M</th>
                 <th style="width: 115%;">Cantidad</th>
                 <th style="width: 175%;">Costo Unitario</th>
                 <th style="width: 175%;">Fecha Registro</th>
-                <th style="width: 145%;" align="center">
                 <?php if($tipo_usuario == 1) { ?>
                 <th style="width: 125%;">Editar</th>
                 <th style="width: 125%;">Eliminar</th>
             <?php } ?>
               </tr>
 
-              <tr> <td id="td" colspan="13">
+              <tr> <td id="td" colspan="12">
                 <h4 align="center">No se encontraron resultados 😥</h4></td>
               </tr>
             </thead>
@@ -218,10 +217,6 @@ $result = mysqli_query($conn, $sql);
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){?>
-
-       
-               
-
 
 <style type="text/css">
 
@@ -242,9 +237,6 @@ $result = mysqli_query($conn, $sql);
       <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['SUM(stock)']; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
       <td data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
-      <td data-label="solicitar" align="center">         
-         
-      </td>
       <?php if($tipo_usuario == 1) { ?>
       <td data-label="Editar">
         <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="vistaProductos.php">             
