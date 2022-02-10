@@ -54,7 +54,7 @@ background:burlywood;
                     <ul class="children">
                        <li><a id="b" href="vistaProductos.php">Ver Artículos</a></li>
                         <li><a id="b" href="regi_producto.php">Nuevo Artículo</a></li>
-                        <li><a id="b" href="reporte_producto.php">Reporte Artículo</a></li>
+                       
                         <li><a id="b" href="reporte_ingresos.php">Reporte Ingresos</a></li>
                         <li><a id="b" href="reporte_egresos.php">Reporte Egresos</a></li>
                     </ul>
@@ -63,6 +63,7 @@ background:burlywood;
                     <a id="a" href="#"><span class="icon-rocket"></span>Soli. Vale<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_vale.php">Mostrar</a></li>
+                        <li><a id="b" href="reporte_producto.php">Nuevo estilo checkbox</a></li>
                         <li><a id="b" href="form_vale.php">Nuevo</a></li>
                     </ul>
                 </li>
@@ -78,7 +79,7 @@ background:burlywood;
                     <a id="a" href="#"><span class="icon-rocket"></span>Soli. Compra<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_compra.php">Mostrar</a></li>
-                        <!-- <li><a id="b" href="form_compra.php">Nuevo</a></li> -->
+                        <li><a id="b" href="form_compra.php">Nuevo</a></li>
                     </ul>
                 </li>
                 

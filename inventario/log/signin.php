@@ -98,7 +98,7 @@ if (isset($_POST['submit'])) {
                                         </form>
                                     </div>
                                     <div class="card-footer text-center">
-                                        <!-- <div class="small"><a href="signup.php">No tienes cuenta ? Registrarse</a></div> -->
+                                        <div class="small"><a href="signup.php">No tienes cuenta ? Registrarse</a></div>
                                         <div class="small"><form action="Invitado/invitado.php">
                                         	<button class="btn btn-info" type="submit">Modo inviado</button>
                                         </form></div>
