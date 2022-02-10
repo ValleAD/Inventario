@@ -57,7 +57,7 @@ $result = mysqli_query($conn, $sql);
             <div class="col-6 col-sm-4" style="position: initial; margin: auto; margin-top: 2%">
                 <input type="hidden" name="id" value="<?php  echo $productos['id']; ?>">
                 <label for="">Habilitado</label><br> 
-                    <select  class="form-control" name="estado" id="categoria" style="cursor: pointer">
+                    <select  class="form-control" name="Habilitado" id="categoria" style="cursor: pointer">
                         <option>[Seleccione]</option>
                         <option>Si</option>
                         <option>No</option>
@@ -244,7 +244,7 @@ $result = mysqli_query($conn, $sql);
                 } elseif ($solicitudes['Habilitado']  == 'No') {
                     // code...
                 } {
-                    echo ' style="background-color:red;max-width:39%;font-size: 12px; border-radius:100px;text-align:center;color: white;"';
+                    echo ' style="background-color:red;max-width:40%;font-size: 12px; border-radius:100px;text-align:center;color: white;"';
                 }
             ?>
  type="text" class="btn"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $solicitudes['Habilitado']; ?>"></td>
