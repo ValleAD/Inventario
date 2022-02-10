@@ -89,7 +89,7 @@ die();
                 <th style="width: 175%;">Costo Unitario</th>
                 <th style="width: 145%;">Fecha Registro</th>
                 <th style="width: 145%;" align="center">
-                    <button  name='solicitar' class='btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button> 
+                    <button type="submit" name='solicitar' class='btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button> 
                 </th>
                
               </tr>

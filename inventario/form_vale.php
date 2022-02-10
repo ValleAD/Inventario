@@ -76,49 +76,92 @@ die();
 </head>
 <body>
 
+<section id="section">
+<form action="form_vale.php" method="post">
+<br>
+ <div class="container">
+        <div class="row">
+    <div class="col" style="position: initial">
+     <label>¿Cuántos productos desea solicitar en VALE?</label>
+    </div>
+   <div style="margin-bottom: 1%;margin-right: 1%;">
+        <input id="inp" style="position: initial;" class="form-control" type="number" name="cantidad" value="1"> 
+      
+    </div>
+   <div>
+        <input id="btn" class="btn btn-success" type="submit" value="Aceptar" name="aceptar"> 
+    </div>
+  </div>
+</div>
+</form>
+<?php
+    if(isset($_POST['cantidad'])){
+        $cantidad = $_POST['cantidad'];
+        for($x = 1; $x <= $cantidad; $x++){
+
+            echo'
+            <form action="form_vale.php" method="post" style="margin-top: 2%;">
+            <div class="container" style="position: initial">
+                <div class="row">
+                    <div class="col-6.5 col-sm-4" style="position: initial">
+                    <input  id="inp1" class="form-control" required type="number" name="codigo[]" id="codigo" style="margin-bottom: 2%;" placeholder="Ingrese el código del Producto">
+
+                    </div>
+                </div>
+            </div>
+            ';
+        }
+        echo'
+        <input   type="submit" class=" btn btn-success" value="Buscar" name="buscar" id="buscar" >
+        <style>
+            #buscar{
+            margin-bottom: 5%;
+            margin-left: 2.5%;
+            margin-top: 0.5%; 
+            background: rgb(5, 65, 114); 
+            color: #fff; margin-bottom: 2%; 
+            border: rgb(5, 65, 114);
+            }
+            #buscar:hover{
+            background: rgb(9, 100, 175);
+            } 
+            #buscar:active{
+            transform: translateY(5px);
+            } 
+        </style>
+        </form>';
+    }
+?>
+     
 <?php  
 include 'Model/conexion.php';
-if(isset($_POST['id'])){
-?>
+if(isset($_POST['codigo'])){
+
+    echo'
     <br>
-    <div class="container">
     <form action="Controller/añadir_vale.php" method="post">
         
         <div class="container" style="position: initial">
             <div class="row">
               <div class="col-6.5 col-sm-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>   
-                <select class="form-control" name="departamento" required>
-    <option disabled selected>Selecione</option>
-    <?php  
-   $sql = "SELECT * FROM selects_departamento";
-    $result = mysqli_query($conn, $sql);
-    while ($productos = mysqli_fetch_array($result)){ 
-      echo'  <option>'.$productos['departamento'].'</option>
-  ';   
- }?>
-   
-              </select>  
+                <input id="inp1" class="form-control" type="text" name="departamento" required>
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Vale N°</b></label>   
                 <input id="inp1"class="form-control" type="number" name="numero_vale" required>
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
-               <label id="inp1">Nombre de la persona</label>                
-               <select  class="form-control" name="usuario" id="usuario" required style="cursor: pointer">
+                <label id="inp1">Nombre de la persona</label>
+                <select  class="form-control" name="usuario" id="usuario" required style="cursor: pointer">
+                <option selected disabled value="">Seleccionar</option>
+                <option>Juan Martinez</option>
+                <option>Miguel Roscencio</option>
+                <option>Francisco Guevarra </option>
+                <option>Rocio Amilcar</option> 
                
-    <option disabled selected>Selecione</option> 
-    <?php  
-     $sql = "SELECT id, firstname,lastname FROM tb_usuarios WHERE Habilitado = 'si'";
-     $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){ 
-        echo'  <option>'.$productos['firstname']." ".$productos['lastname'].'</option>
-  ';   
- }?>
-</select>
-                  
+            </select>
+                </label>   
             </div>
         </div>
         <br>
@@ -138,22 +181,20 @@ if(isset($_POST['id'])){
               <center> <td id="td" colspan="7"  style="background: red;"><h4 align="center";>No se encontraron resultados 😥</h4></td></center> 
             </tr>
         </thead>
-        <tbody>
+        <tbody>';
 
 
            
-<?php 
 
-    for($i = 0; $i < count($_POST['id']); $i++){
+
+    for($i = 0; $i < count($_POST['codigo']); $i++){
 
     
-    $codigo = $_POST['id'][$i];
-    $precio = $_POST['precio'][$i];
-
+    $codigo = $_POST['codigo'][$i];
    //$sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
 
 
-   $sql = "SELECT codProductos, categoria, catalogo, nombre, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE codProductos = $codigo && precio = $precio GROUP BY codProductos, precio";
+   $sql = "SELECT codProductos, categoria, catalogo, nombre, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE codProductos = $codigo GROUP BY codProductos, precio";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){ ?>    
@@ -170,12 +211,7 @@ if(isset($_POST['id'])){
                <td data-label="Unidad De Medida"><input  style="background:transparent; border: none; width: 100%; color: black;" type="text" class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
                <td data-label="Productos Disponibles"><input  style="background:transparent; border: none; width: 100%; color: gray;" type="text" class="form-control" readonly  name="stock[]"  value ="<?php  echo $productos['SUM(stock)']; ?>"></td>
                <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="text" class="form-control"  name="cant[]" required></td>
-               <td data-label="Precio"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td> 
-                <td><input style="background:transparent; border: none; width: 100%; color: black;"  type="hidden" class="form-control" readonly name="form_vale[]" value ="Formulario Vale">
-                <input type="hidden" name="estado[]" value="Pendiente">
-                <input type="hidden" name="nombre[]" value="<?php  echo $productos['nombre']; ?>"></td>  
-                <input type="hidden" name="cat[]" value="<?php  echo $productos['catalogo']; ?>"></td>  
-                <input type="hidden" name="categoria[]" value="<?php  echo $productos['categoria']; ?>"></td>   
+               <td data-label="Precio"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
             </tr>
    
         <?php }
