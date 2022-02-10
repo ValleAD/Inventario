@@ -70,12 +70,12 @@ form{
 
             <div class="form-group" style="position: all; margin: 2%">
                 <label style="color: #000">Código</label> 
-                <input type="number" name="cod[]" class="form-control" placeholder="Ingrese código de producto " required value="<?php  mt_srand(time());echo mt_rand(0,10000); ?>" readonly>
+                <input type="number" name="cod[]" class="form-control" placeholder="Ingrese código de producto " required>
             </div>
 
             <div class="form-group" style="margin: 2%">
               <label style="color: #000">Codificación de Catálogo</label> 
-              <input type="number" name="catal[]" class="form-control" placeholder="Ingrese código" required value="<?php  mt_srand(time());echo mt_rand(0,10000); ?>" readonly>
+              <input type="number" name="catal[]" class="form-control" placeholder="Ingrese código" required>
             </div>
 
             <div class="form-group">

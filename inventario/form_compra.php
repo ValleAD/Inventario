@@ -88,7 +88,7 @@ if(isset($_POST['id'])){
 <div class="row">
     <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="black"><label>Número de Solicitud</label> </font>
-      <input readonly style="background:transparent; color: black;" class="form-control" type="number" name="nsolicitud" id="como1" required value="<?php  mt_srand(time());echo mt_rand(0,10000); ?>">
+      <input readonly style="background:transparent; color: black;" class="form-control" type="number" name="nsolicitud" id="como1" required>
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="black"><label>Dependencia que Solicita</label></font>   

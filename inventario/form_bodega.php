@@ -157,7 +157,7 @@ if(isset($_POST['codigo'])){
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">O. de T. No.</b></label>   
-                <input id="inp1"class="form-control" type="number" name="odt" require readonly value="<?php  mt_srand(time());echo mt_rand(0,10000); ?>" >
+                <input id="inp1"class="form-control" type="number" name="odt" require readonly >
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Nombre de la persona</label>
