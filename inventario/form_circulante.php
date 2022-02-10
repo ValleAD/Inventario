@@ -82,7 +82,7 @@ form{
         <div class="row">
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Solicitud N°</b></label>   
-                <input id="inp1"class="form-control" type="number" name="solicitud_no" readonly value="<?php  mt_srand(time());echo mt_rand(0,10000); ?>">
+                <input id="inp1"class="form-control" type="number" name="solicitud_no" required="">
             </div>           
         </div>
  
@@ -101,7 +101,7 @@ form{
                                 <div class="invalid-feedback">
                                 Por favor seleccione una opción.
                                 </div>
-                                <select  class="form-control" name="um[]" id="um" required>
+                                <select  class="form-control" name="um[]" id="um" required="">
                                 <option selected disabled value="">Unidad de Medida</option>
 <?php 
     $sql = "SELECT * FROM  selects_unidad_medida";

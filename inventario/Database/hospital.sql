@@ -201,6 +201,7 @@ CREATE TABLE detalle_compra (
 
 CREATE TABLE Selects_unidad_medida (
   id int(11) NOT NULl AUTO_INCREMENT PRIMARY KEY,
+  Habilitado varchar(2) NOT NULL,
 unidad_medida varchar(50) NOT NULL
 );
 
@@ -221,13 +222,13 @@ CREATE TABLE Selects_departamento (
   Habilitado varchar(2) NOT NULL,
 departamento varchar(50) NOT NULL
 );
-INSERT INTO `Selects_unidad_medida` (`unidad_medida`)
-VALUES ('c/m'),
-       ('lb'),
-       ('mts'),
-       ('Pgo'),
-       ('Qq'),
-       ('cto');
+INSERT INTO `Selects_unidad_medida` (`unidad_medida`,`Habilitado`)
+VALUES ('c/m'  ,'Si'),
+       ('lb'  ,'Si'),
+       ('mts'  ,'Si'),
+       ('Pgo'  ,'Si'),
+       ('Qq'  ,'Si'),
+       ('cto'  ,'Si');
 INSERT INTO `Selects_categoria` (`categoria`,`Habilitado`)
 VALUES ('Agropecuarios y Forestales' ,'Si'),
        ('Cuero y Caucho' ,'Si'),

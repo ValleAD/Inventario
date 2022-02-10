@@ -145,7 +145,7 @@ if(isset($_POST['codigo'])){
             <div class="row">
               <div class="col-6.5 col-sm-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>   
-                 <select class="form-control" name="departamento" required>
+                 <select class="form-control" name="departamento" required="">
                     <option disabled selected>Selecione</option>
                     <?php  
                    $sql = "SELECT * FROM selects_departamento";
@@ -157,11 +157,11 @@ if(isset($_POST['codigo'])){
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">O. de T. No.</b></label>   
-                <input id="inp1"class="form-control" type="number" name="odt" require readonly >
+                <input id="inp1"class="form-control" type="number" name="odt" required=""  >
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Nombre de la persona</label>
-                <select  class="form-control" name="usuario" id="usuario" required style="cursor: pointer">
+                <select  class="form-control" name="usuario" id="usuario" required="" style="cursor: pointer">
                 <option selected disabled value="">Seleccionar</option>
                 <option>Juan Martinez</option>
                 <option>Miguel Roscencio</option>

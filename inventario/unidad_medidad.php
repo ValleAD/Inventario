@@ -50,7 +50,7 @@ $result = mysqli_query($conn, $sql);
 ?>
 
 
-<form action="Controller/Desabilitar-departamentos.php" method="POST" style="background: transparent; ">
+<form action="Controller/Desabilitar-unidad_medida.php" method="POST" style="background: transparent; ">
   <h3 align="center">Actualizar Dependencias Habilitadas </h3>
     <div class="container" style="background: rgba(0, 0, 0, 0.6); width: 70%; margin: auto; border-radius: 9px; color:#fff; font-weight: bold;">
         <div class="row">
@@ -89,9 +89,10 @@ $result = mysqli_query($conn, $sql);
 
         <table class="table">
 <?php if($tipo_usuario == 1) { ?>
-    <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="float: left;margin-top: 1%; color: white;margin-bottom: 1%;">Nuevo Departamento</button>
+    <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="float: left;margin-top: 1%; color: white;margin-bottom: 1%;">Nuevo Unidad de Medida</button>
     <a href="categorias.php" class="btn btn-info" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; ">Categorias</a> 
     <a href="dependencias.php" class="btn btn-success" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Dependencias</a>
+    <a href="departamentos.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Departamentos</a>
    
 <!-- Delete -->
 <div class="modal fade" id="Usuarios" style="background: rgba(0, 0, 0, 0.3);" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
@@ -123,7 +124,7 @@ $result = mysqli_query($conn, $sql);
 </div><?php } ?>
         <thead>
              <tr id="tr">
-                <th class="table-info text-dark"><strong>Departamentos</strong></th>
+                <th class="table-info text-dark"><strong>Unidad de Medida</strong></th>
                 <th class="table-info text-dark text-center"><strong>Habilitado</strong></th><?php if($tipo_usuario == 1) { ?>
                 <th class="table-info text-dark text-center"><strong> Cambiar Habilitado</strong></th>
                 <th style="text-align:center;">Eliminar</th><?php } ?>
@@ -144,7 +145,7 @@ $result = mysqli_query($conn, $sql);
     $pagina =1;
  }
  $empieza = ($pagina-1) * $por_pagina;
-    $sql = "SELECT * FROM selects_departamento ORDER BY `id` DESC LIMIT $empieza,$por_pagina ";
+    $sql = "SELECT * FROM selects_unidad_medida ORDER BY `id` DESC LIMIT $empieza,$por_pagina ";
     $result = mysqli_query($conn, $sql);
 
     while ($solicitudes = mysqli_fetch_array($result)){?>
@@ -155,7 +156,7 @@ $result = mysqli_query($conn, $sql);
    
 </style>
         <tr>
-            <td data-label="Nombres" class="delete"><input readonly style="width:100%;border:none;background: transparent;" type="text" name="cod" value="<?php  echo $solicitudes['departamento']; ?>"></td>
+            <td data-label="Nombres" class="delete"><input readonly style="width:100%;border:none;background: transparent;" type="text" name="cod" value="<?php  echo $solicitudes['unidad_medida']; ?>"></td>
 
             <td align="center">
             <input  <?php
@@ -170,7 +171,7 @@ $result = mysqli_query($conn, $sql);
  type="text" class="btn"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $solicitudes['Habilitado']; ?>"></td>
 </td><?php if($tipo_usuario == 1) { ?>
             <td align="center">
-                 <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="departamentos.php">             
+                 <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="unidad_medidad.php">             
           <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">             
           <button name='editar' class='btn btn-info btn-sm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
         </form>
@@ -180,7 +181,7 @@ $result = mysqli_query($conn, $sql);
   <!--Botones para actualizar y eliminar-->
 
             <td align="center">
-               <form action="Controller/Delete-departamentos.php" method="POST">
+               <form action="Controller/Delete-unidad_medida.php" method="POST">
                     <input type="hidden" name="id" value="<?php  echo $solicitudes['id']; ?>">
                     <input type="hidden" name="Habilitado" value="<?php  echo $solicitudes['Habilitado']; ?>">
                     <button  onclick="return confirmaion()" name="eliminar_dependencias" class="btn btn-danger" type="submit">ELiminar</button>
@@ -194,17 +195,17 @@ $result = mysqli_query($conn, $sql);
         </table>
          <p style="margin-top: 2%;"></p>
         <?php 
- $sql = "SELECT * FROM selects_departamento";
+ $sql = "SELECT * FROM selects_unidad_medida";
     $result = mysqli_query($conn, $sql);
 $total_registro = mysqli_num_rows($result);
 $total_pagina = ceil($total_registro / $por_pagina);
 
 echo "<nav aria-label='Page navigation example'>
-  <ul class='pagination justify-content-end'><li class='page-item '><a class='page-link' href='departamentos.php?pagina= 1'>".'Primera'."</a><li>";
+  <ul class='pagination justify-content-end'><li class='page-item '><a class='page-link' href='unidad_medidad.php?pagina= 1'>".'Primera'."</a><li>";
 for ($i=1; $i <=$total_pagina; $i++) { 
-    echo "<li class='page-item  '><a class='page-link ' href='departamentos.php?pagina=".$i."'>".$i."</a></li>";
+    echo "<li class='page-item  '><a class='page-link ' href='unidad_medidad.php?pagina=".$i."'>".$i."</a></li>";
 }
-echo "<li class='page-item'><a class='page-link' href='departamentos.php?pagina=$total_pagina'>".'Ultima'."</a><li></ul></nav>";
+echo "<li class='page-item'><a class='page-link' href='unidad_medidad.php?pagina=$total_pagina'>".'Ultima'."</a><li></ul></nav>";
 ?>
   </section>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
