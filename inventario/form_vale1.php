@@ -137,7 +137,8 @@ die();
       <td data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
       <td data-label="solicitar" align="center">
                     
-          <input type="checkbox" name="id[]"  value="<?php  echo $productos['codProductos']; ?>">             
+          <input type="checkbox" name="id[]"  value="<?php  echo $productos['codProductos']; ?>">
+          <input type="hidden" name="precio[]"  value="<?php  echo $productos['precio']; ?>">             
          
       </td>
      

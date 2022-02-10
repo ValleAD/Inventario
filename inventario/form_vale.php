@@ -148,10 +148,12 @@ if(isset($_POST['id'])){
 
     
     $codigo = $_POST['id'][$i];
+    $precio = $_POST['precio'][$i];
+
    //$sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
 
 
-   $sql = "SELECT categoria, codProductos, nombre,catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE  codProductos = '$codigo'";
+   $sql = "SELECT codProductos, categoria, catalogo, nombre, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE codProductos = $codigo && precio = $precio GROUP BY precio, codProductos";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){ ?>    
