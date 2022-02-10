@@ -4,8 +4,7 @@ session_start();
     # code...
     echo '
     <script>
-        
-         window.location ="../log/signin.php";
+         window.location ="..log/signin.php";
         session_destroy();  
                 </script>
 die();
@@ -13,99 +12,64 @@ die();
     ';
 }
 ?>
-<?php include ('templates/menu.php')?>
-<!DOCTYPE html>
-<!--Es para la version de mobile-->
-<style type="text/css">
-    form{
-        margin: 2%;
-     }
-    @media (min-width: 1080px){
-         #section{
-        margin-top: 5%;
-        margin-left: 15%;
-        width: 70%;
+<?php include ('templates/menu.php');
 
-       }
 
-    }
 
-      @media (max-width: 952px){
-    #section{
-        margin-top: 5%;
-        margin-left: 12%;
-        width: 75%;
-       }
-    #lab{
-        margin-left: 5%;
-
-    }
-    .w{
-        margin-top: 5%;
-    }
-    #inp{
-            margin-left: 10%;
-    }  #inp1{
-         margin-top: 2%;
-          margin-left: 5%;
-    }  #buscar{
-         margin-top: 2%;
-          margin-left: 25%;
-          margin-bottom: 25%;
-    }
-    #btn{
-        margin-top: 5%;
-        margin-left: 35%;
-        margin-bottom: 15%;
-    }
-    #buscar{
-        margin-top: 5%;
-        margin-left: 35%;
-        margin-bottom: 15%;
-        background: whitesmoke;
-    }
-
-      }
-</style>
-
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-     <link rel="stylesheet" type="text/css" href="styles/estilo.css"> 
-     <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
-    <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">  
-    <title>Form_Compra</title>
-</head>
-<body>     
-<?php  
-include 'Model/conexion.php';
-if(isset($_POST['id'])){
 ?>
-    <br>
-    <form action="Controller/añadir_compra.php" method="post">
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Solicitud de Compra</title>
+        
+        <meta charset="utf-8" />
+         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="styles/style.css" > 
+        <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
 
+        <style>
+            form{
+            margin: auto;
+}
+                  @media (max-width: 952px){
+form{
+    margin-left: 15%;
+}
+.button .button2 :hover{
+    text-decoration: none;
+}
+}
+.button21 {
+
+  text-align: center;
+}
+
+
+.EstiloTexto{
+    color:#FE0000;
+    font-weight: bold;
+    text-align: center;
+    font-family:Verdana, Arial, Helvetica, sans-serif;
+    font-size: 25px;
+}
+
+</style>
+  </head>
+    <body >
+
+
+  <form style="width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%;"action="Controller/añadir_compra.php" method="POST">
+<center>
+  <br>
+<div class="container">
 <div class="row">
     <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="black"><label>Número de Solicitud</label> </font>
-      <input readonly style="background:transparent; color: black;" class="form-control" type="number" name="nsolicitud" id="como1" required>
+      <input style="background:transparent; color: black;" class="form-control" type="number" name="nsolicitud" id="como1" required>
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="black"><label>Dependencia que Solicita</label></font>   
-    <select class="form-control" name="dependencia" style="background:transparent; color: black;" required >
-    <option disabled selected>Selecione</option> '; 
-
-<?php      $sql = "SELECT * FROM selects_dependencia";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){ 
-
-      echo'  <option>'.$productos['dependencia'].'</option>
-  ';  
- }
- echo'
-</select>
-      
+      <input  style="background:transparent; color: black;" class="form-control" type="text" name="dependencia" id="como2" required>
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="black"><label>Plazo y Numero de Entregas</label></font> 
@@ -123,110 +87,153 @@ if(isset($_POST['id'])){
       <br>
   </div>
   <div class="col-6.5 col-sm-4" style="position: initial">
-    <font color="black"><label>Usuario</label> </font>
-           <label id="inp1">Nombre de la persona</label>
-             
-            
-<select class="form-control" name="usuario" style="background:transparent; color: black;" required >
-    <option disabled selected>Selecione</option> ',
-
-
-     $sql = "SELECT * FROM tb_usuarios" ;
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){ 
-
-      echo'  <option>'.$productos['firstname']." ".$productos['lastname'].'</option>
-  ';   
- } ?>
-</select>
+  <?php     $cliente =$_SESSION['signin'];
+    $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
+    while ($consulta =mysqli_fetch_array($data)) {
+ ?>
+    <font color="black"><label>Encargado</label> </font>
+      <input style="cursor: not-allowed; color: black;"  class="form-control" type="text" name="usuario" id="como3" required readonly value="<?php  echo $consulta['firstname']?> <?php  echo $consulta['lastname']?>">
       <br>
+      <?php }?>
     </div>
     </div>
-</div>  
+</div>
+</center>
 
-</select>
+    <div id="Registro" class="row container-fluid" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%">
+
+<div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-left: 1%;border-radius: 5px;margin-right: 1%;margin-top: 1%">
+    <div class="col-xs-4 "  style="background: #bfe7ed;margin-left: 1;border-radius: 5px;margin-right: 1%" >
+        <div class="well well-sm" style="position: all; margin: 5%">
+        
+                  <div class="form-group" style="position: all; margin: 2%">
+                      <label>Categoría</label> 
+                      <select  class="form-control" name="categoria" id="um" required>
+                        <option selected disabled value="">Categoría</option>
+                        <?php 
+                     $sql = "SELECT * FROM  selects_categoria";
+                        $result = mysqli_query($conn, $sql);
+
+                        while ($productos = mysqli_fetch_array($result)){ 
+
+                          echo'  <option>'.$productos['categoria'].'</option>
+                      ';   
+                     } 
+                           ?>
+                      </select>
+                  </div> 
+
+                  <div class="form-group" style="position: all; margin: 2%">
+                      <label>Código</label> 
+                      <input  type="number" name="cod[]" class="form-control" placeholder="Código de producto " value="<?php echo $codigo ?>" required>
+                  </div>
+
+                  <div class="form-group" style="position: all; margin: 2%">
+                        <label>Codificación de Catálogo de NA</label> 
+                      <input  type="number" name="cat[]" class="form-control" placeholder="Código" value="<?php echo $productos['catalogo'] ?>" required>
+                  </div>
+
+                  <div class="form-group">
+                    <label>Descripción Completa</label>
+                    <input type="text" name="desc[]" class="form-control" placeholder="Descripción" required>
+                  </div>
+
                   
+                    <div class="form-group" >
+                        <label>Unidad de medida (U/M)</label>
+                        <div class="col-md-16" >
+                            <div class="invalid-feedback">
+                            Por favor seleccione una opción.
+                            </div>
+                        <select  class="form-control" name="um[]" id="um" required>
+                            <option selected disabled value="">Unidad de Medida</option>
+                            <?php 
+                     $sql = "SELECT * FROM  selects_unidad_medida";
+                        $result = mysqli_query($conn, $sql);
+
+                        while ($productos = mysqli_fetch_array($result)){ 
+
+                          echo'  <option>'.$productos['unidad_medida'].'</option>
+                      ';   
+                     } 
+                           ?>
+                        </select>
+                        </div>
+                    </div>
+            
+            <div class="form-group">
+                <label>Cantidad</label>
+                <input type="number" name="cant[]" class="form-control" placeholder="Ingrese la Cantidad" required>
+            </div>
+
+            <div class="form-group">
+                <label>Costo Unitario (Estimado)</label>
+               <input  class="form-control" type="number" step="0.01" name="cu[]" placeholder="Costo unitario" value="<?php echo $productos['precio'] ?>" required><br>
             </div>
         </div>
-        <br>
-         <table class="table" style="margin-bottom:3%;">
-        <thead>
-           <tr id="tr" style="text-align: left">
-                <th style="width: 10%;">Código</th>
-                <th style="width: 17%;">Nombre</th>
-                <th style="width: 20%;">Descripción</th>
-                <th style="width: 10%;">U/M</th>
-                <th style="width: 15%;">Productos Disponibles</th>
-                <th style="width: 15%;">Cantidad</th>
-                <th style="width: 15%;">Costo unitario</th>
-            </tr>
-              <tr>
-              <center> <td id="td" colspan="7"  style="background: red;"><h4 align="center";>No se encontraron resultados 😥</h4></td></center> 
-            </tr>
-        </thead>
-        <tbody>
-            <?php
+    </div>            
+</div>
 
-          for($i = 0; $i < count($_POST['id']); $i++) {
-             $codigo=$_POST['id'][$i];
-            
-
-   $sql = "SELECT codProductos, categoria, catalogo, nombre, descripcion, unidad_medida,SUM(stock), precio, fecha_registro FROM tb_productos  WHERE  cod = '$codigo' GROUP BY precio";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){ ?>    
-        <style type="text/css">
-        #td{
-        display: none;
-    }
-
-</style>
-            <tr>
-               <td data-label="Codigo"><input style="background:transparent; border: none; width: 100%; color: black;"  type="number" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos'];  ?>"></td>
-               <td data-label="Codigo"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="nombre[]" value ="<?php  echo $productos['nombre']; ?>"></td>
-               <td data-label="Descripción"><textarea  style="background:transparent; border: none; width: 100%; color: black;" cols="10" rows="1" type="text" class="form-control" readonly name="desc[]"><?php  echo $productos['descripcion']; ?></textarea></td>
-               <td data-label="Unidad De Medida"><input  style="background:transparent; border: none; width: 100%; color: black;" type="text" class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
-               <td data-label="Productos Disponibles"><input  style="background:transparent; border: none; width: 100%; color: gray;" type="text" class="form-control" readonly  name="stock[]"  value ="<?php  echo $productos['SUM(stock)']; ?>"></td>
-               <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="text" class="form-control"  name="cant[]" required></td>
-               <td data-label="Precio"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>
-                <td><input style="background:transparent; border: none; width: 100%; color: black;"  type="hidden" class="form-control" readonly name="form_vale[]" value ="Formulario Vale">
-                <input type="hidden" name="estado[]" value="Pendiente">
-                <input type="hidden" name="nombre[]" value="<?php  echo $productos['nombre']; ?>"></td>  
-                <input type="hidden" name="cat[]" value="<?php  echo $productos['catalogo']; ?>"></td>  
-                <input type="hidden" name="categoria[]" value="<?php  echo $productos['categoria']; ?>"></td>      
-            </tr>
-   
-        <?php } }
+<div class="col-xs-4" style="position: initial">
+    <div class="well" style="position: all; margin:5%">
+       <button id="btn-agregar" class="btn btn-block btn-default bg-success" type="button" style="color: white;">Agregar Producto</button> 
+    </div>
+</div>
+    </div>
     
-    
-
-
-    echo ' 
-   </tbody>
-        </table>
-
-    
-    <input class="btn btn-lg" type="submit" value="Enviar" id="enviar">
-        <style>
-            #enviar{
-                margin-bottom: 5%;
-            margin-left: 1.5%; 
-            background: rgb(5, 65, 114); 
-            color: #fff; margin-bottom: 2%; 
-            border: rgb(5, 65, 114);
-            }
-            #enviar:hover{
-            background: rgb(9, 100, 175);
-            } 
-            #enviar:active{
-            transform: translateY(5px);
-            } 
+    <div class="button21">
+        <button  class="btn btn-success btn-lg" name="submit" style="margin-bottom:2%;">Guardar</button>
+        <a id="ver" class="btn btn-lg" href="vistaProductos.php">Ver Productos</a>
+         <style>
+               #ver{
+                margin-left: 2%; 
+                background: rgb(5, 65, 114); 
+                color: #fff; margin-bottom: 2%;  
+                border: rgb(5, 65, 114);
+               }
+               #ver:hover{
+                background: rgb(9, 100, 175);
+               } 
+               #ver:active{
+                transform: translateY(5px);
+               } 
         </style>
-    </form>';
-}
-?>
-</section>
+    </div>
 
-</body>
-</html>
+
+</form>
+
+
+<script>
+    $(document).ready(function(){
+        
+        // El formulario que queremos replicar
+        var formulario_registro = $("#lo-que-vamos-a-copiar").html();
+        
+// El encargado de agregar más formularios
+$("#btn-agregar").click(function(){
+    // Agregamos el formulario
+    $("#Registro").prepend(formulario_registro);
+
+    // Agregamos un boton para retirar el formulario
+    $("#Registro .col-xs-4:first .well").append('<button class="btn-danger btn btn-block btn-retirar-registro" type="button">Retirar</button>');
+
+    // Hacemos focus en el primer input del formulario
+    $("#Registro .col-xs-4:first .well input:first").focus();
+
+    // Volvemos a cargar todo los plugins que teníamos, dentro de esta función esta el del datepicker assets/js/ini.js
+    Plugins();
+});
+        
+        // Cuando hacemos click en el boton de retirar
+        $("#Registro").on('click', '.btn-retirar-registro', function(){
+            $(this).closest('.col-xs-4').remove();
+        })
+            
+        $("#frm-registro").submit(function(){
+            return $(this).validate();
+        });
+    })
+</script>
+  </body>
+  </html>
