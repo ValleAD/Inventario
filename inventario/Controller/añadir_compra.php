@@ -16,7 +16,7 @@ $insert = "INSERT INTO tb_compra (nSolicitud, dependencia, plazo, unidad_tecnica
 $result = mysqli_query($conn, $insert);
 
 if ($result)  {
-echo "<script> alert('Su producto fue registrado correctamente')
+echo "<script> alert('Solicitud realizada correctamente')
 location.href = '../dt_compra.php';
 </script>
 ";

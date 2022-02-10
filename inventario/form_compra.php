@@ -108,7 +108,7 @@ form{
         
                   <div class="form-group" style="position: all; margin: 2%">
                       <label>Categoría</label> 
-                      <select  class="form-control" name="categoria" id="um" required>
+                      <select  class="form-control" name="categoria[]" id="um" required>
                         <option selected disabled value="">Categoría</option>
                         <?php 
                      $sql = "SELECT * FROM  selects_categoria";

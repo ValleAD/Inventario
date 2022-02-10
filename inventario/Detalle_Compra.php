@@ -87,6 +87,11 @@ $cod_compra = $_POST['id'];
             <label style="font-weight: bold;">Fecha</label>
               <input readonly class="form-control"  type="text" value="'.date("d-m-Y",strtotime($productos1['fecha_registro'])). '" name="fech">
           </div>
+          <div class="col-6 col-sm-3" style="position: initial">
+              <label style="font-weight: bold;">Estado</label>
+              <br>
+                <a class="btn btn-danger" href="dt_compra_copy.php"> Cambiar estado</a>
+            </div>
         </div>
       
         <br>

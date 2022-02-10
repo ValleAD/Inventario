@@ -60,7 +60,7 @@ $final = 0;
 
   echo'   
   <section id="section">
-  <form method="POST"  action="Exportar_PDF/pdf_compra.php" target="_blank">
+  <form method="POST"  action="Controller/añadir_compra_copy.php" target="_blank">
            
         
           <div class="row">
@@ -101,6 +101,14 @@ $final = 0;
               <label style="font-weight: bold;">Fecha</label>
                 <input readonly class="form-control"  type="text" value="'.date("d-m-Y",strtotime($datos['fecha_registro'])). '" name="fech">
             </div>
+            <div class="col-6 col-sm-3" style="position: initial">
+              <label style="font-weight: bold;">Estado</label>
+                <select  class="form-control"  type="text"  name="estado" required>
+                <option disabled selected>Selecione</option>
+                <option>Acetado</option>
+                <option>Rechazado</option>
+                </select>
+            </div>
           </div>
         
           <br>
@@ -114,10 +122,11 @@ $final = 0;
                   <th>Cod. Catálogo</th>
                   <th style="width:25%;">Descripción Completa</th>
                   <th>U/M</th>
-                  <th>Cantidad</th>
+                  <th>Cantidad Solicitada</th>
+                  <th>Cantidad Despachada</th>
                   <th>Costo Unitario (estimado)</th>
                   <th>Monto Total (estimado)
-                  </th><th>Estado</th>
+                  
                 </tr>
                   <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
              </thead>
@@ -140,16 +149,16 @@ $final = 0;
      
   </style> 
         <tr>
-        
         <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="cat[]" readonly style="border: none">'.$productos['categoria']. '</textarea></td>
           <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="' .$productos['codigo']. '"></td>
           <td  data-label="Cod. Catálogo"><input style="background:transparent; border: none; width: 100%;"  name="catalogo[]" readonly value="' .$productos['catalogo']. '"></td>
           <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly style="border: none">'.$productos['descripcion']. '</textarea></td>
           <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
           <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="'.$productos['stock']. '"></td>
-          <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$'.$productos['precio']. '"></td>
+          <td  data-label="Cantidad"><input style="background:transparent; border: 1 solid #000;  width: 100%;" class="form-control" type="number" required  name="cant_aprobada[]" required value=""></td>
+          <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  type="number" step="0.01" name="cost[]" required  placeholder="$'.$productos['precio']. '"></td>
           <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$'.$total. '"></td>
-          <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="'.$productos['estado']. '"></td>
+         
         </tr>';
   
   }
@@ -162,7 +171,7 @@ $final = 0;
            </tbody>
           </table>
     
-      <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
+      <input id="pdf" type="submit" class="btn btn-lg" value="Guardar Estado" name="pdf">
         <style>
           #pdf{
           margin-left: 38%; 
