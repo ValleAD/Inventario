@@ -173,7 +173,7 @@ $result = mysqli_query($conn, $sql);
                                                 <select class="form-control" name="tipo_usuario" required>
                                                     <option selected disabled>Selecione</option>
                                                     <option value="1">Admistrador</option>
-                                                    <option value="2">Tenico</option>
+                                                    <option value="2">Cliente</option>
                                                </select>
                         </div>
                     </div>
@@ -199,7 +199,7 @@ $result = mysqli_query($conn, $sql);
                 <th style="width: 12%"><strong>Apellidos</strong></th>
                 <th style="width: 15%"><strong>Establecimiento</strong></th>
                 <th style="width: 15%"><strong>Unidad</strong></th>
-                <th  style="width: 8%; text-align:center;" ><strong>Habilitado</strong></th><?php if($tipo_usuario == 1) { ?>
+                <th  style="width: 10%; text-align:center;" ><strong>Habilitado</strong></th><?php if($tipo_usuario == 1) { ?>
                 <th style="width: 10%;margin-left: 5%;"><strong style="text-align: center;"> Cambiar Habilitado</strong></th>
                 <th style="width: 10%">Eliminar</th><?php } ?>
                 
@@ -241,11 +241,11 @@ $result = mysqli_query($conn, $sql);
  <td align="center">
             <input  <?php
                 if($solicitudes['Habilitado']  =='Si') {
-                    echo ' style="background-color:blueviolet ;max-width:39%;font-size: 12px; border-radius:100px;text-align:center; color: white;"';
+                    echo ' style="max-width:39%;font-size: 12px; border-radius:5px;text-align:center; color: blue; font-size: 13px; font-weight: bold;"';
                 } elseif ($solicitudes['Habilitado']  == 'No') {
                     // code...
                 } {
-                    echo ' style="background-color:red;max-width:40%;font-size: 12px; border-radius:100px;text-align:center;color: white;"';
+                    echo 'style="max-width:40%;font-size: 12px; border-radius:13px;text-align:center;color: red; font-weight: bold; font-size: 13px;"';
                 }
             ?>
  type="text" class="btn"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $solicitudes['Habilitado']; ?>"></td>
