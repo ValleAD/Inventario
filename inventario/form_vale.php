@@ -76,68 +76,12 @@ die();
 </head>
 <body>
 
-<section id="section">
-<form action="form_vale.php" method="post">
-<br>
- <div class="container">
-        <div class="row">
-    <div class="col" style="position: initial">
-     <label>¿Cuántos productos desea solicitar en VALE?</label>
-    </div>
-   <div style="margin-bottom: 1%;margin-right: 1%;">
-        <input id="inp" style="position: initial;" class="form-control" type="number" name="cantidad" value="1"> 
-      
-    </div>
-   <div>
-        <input id="btn" class="btn btn-success" type="submit" value="Aceptar" name="aceptar"> 
-    </div>
-  </div>
-</div>
-</form>
-<?php
-    if(isset($_POST['cantidad'])){
-        $cantidad = $_POST['cantidad'];
-        for($x = 1; $x <= $cantidad; $x++){
-
-            echo'
-            <form action="form_vale.php" method="post" style="margin-top: 2%;">
-            <div class="container" style="position: initial">
-                <div class="row">
-                    <div class="col-6.5 col-sm-4" style="position: initial">
-                    <input  id="inp1" class="form-control" required type="number" name="codigo[]" id="codigo" style="margin-bottom: 2%;" placeholder="Ingrese el código del Producto">
-
-                    </div>
-                </div>
-            </div>
-            ';
-        }
-        echo'
-        <input   type="submit" class=" btn btn-success" value="Buscar" name="buscar" id="buscar" >
-        <style>
-            #buscar{
-            margin-bottom: 5%;
-            margin-left: 2.5%;
-            margin-top: 0.5%; 
-            background: rgb(5, 65, 114); 
-            color: #fff; margin-bottom: 2%; 
-            border: rgb(5, 65, 114);
-            }
-            #buscar:hover{
-            background: rgb(9, 100, 175);
-            } 
-            #buscar:active{
-            transform: translateY(5px);
-            } 
-        </style>
-        </form>';
-    }
-?>
-     
 <?php  
 include 'Model/conexion.php';
-if(isset($_POST['codigo'])){
+if(isset($_POST['id'])){
 ?>
     <br>
+    <div class="container">
     <form action="Controller/añadir_vale.php" method="post">
         
         <div class="container" style="position: initial">
@@ -200,10 +144,10 @@ if(isset($_POST['codigo'])){
            
 <?php 
 
-    for($i = 0; $i < count($_POST['codigo']); $i++){
+    for($i = 0; $i < count($_POST['id']); $i++){
 
     
-    $codigo = $_POST['codigo'][$i];
+    $codigo = $_POST['id'][$i];
    //$sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
 
 
