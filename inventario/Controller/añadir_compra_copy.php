@@ -19,12 +19,12 @@ include '../Model/conexion.php';
       $query = mysqli_query($conn, $insert);
       if ($query)  {
         echo "<script> alert('Su producto fue registrado correctamente')
-        location.href = '../Detalle_Compra.php';
+        location.href = '../solicitudes_compra.php';
         </script>
         ";
         }else {
         echo "<script> alert('UUPS!! Algo no fue mal escrito')
-        location.href = '../form_compra.php';
+        location.href = '../dt_compra_copy.php';
         </script>
         ";
         }
