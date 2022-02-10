@@ -93,6 +93,7 @@ $final = 0;
                 <th>Unidad de Medida</th>
                 <th>Cantidad Solicitada</th>
                 <th>Costo unitario</th>
+                <th>Estado</th>
                 <th>Total</th>
               </tr>
                 <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
@@ -108,6 +109,8 @@ while ($productos = mysqli_fetch_array($result)){
       $total = $productos['cantidad_solicitada'] * $productos['precio'];
       $final += $total;
       
+      $estado=$productos['estado'];
+      
 ?>
     <style type="text/css">
      #td{
@@ -119,15 +122,16 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Nombre del Artículo"><textarea style="background:transparent; border: none; width: 100%;"  name="nombre[]" readonly style="border: none"><?php echo $productos['nombre'];?></textarea></td>
         <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="<?php echo $productos['unidad_medida'];?>"></td>
         <td  data-label="Cantidad Solicitada"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="<?php echo $productos['cantidad_solicitada'];?>"></td>
-        <td  data-label="Costo Unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$<?php echo $productos['precio'];?>"></td>
-    <td align="center">
+        <td  data-label="Costo Unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$<?php echo $productos['precio'];?>"></td>  
+    <td align="left">
             <input  <?php
                 if($estado=='Pendiente') {
-                    echo ' style="background-color:green ;width:59%; border-radius:100px;text-align:center; color: white;"';
+                    echo ' style="background-color:green ;width:63%; border-radius:100px;text-align:center; color: white;"';
                 }
             ?>
- <td type="text" class="btn"  name="estado[]" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $productos['estado']; ?>"></td>
+ type="text" class="btn"  name="estado[]" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $productos['estado']; ?>"></td>
         
+ 
         <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$<?php echo $total;?>"></td>
       </tr>
 
