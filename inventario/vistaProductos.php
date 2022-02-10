@@ -61,14 +61,16 @@ $result = mysqli_query($conn, $sql);
                 <label for="">Categoría</label><br> 
                     <select  class="form-control" name="categoria" id="categoria" style="cursor: pointer">
                         <option><?php  echo $productos['categoria']; ?></option>
-                        <option>Agropecuarios y Forestales</option>
-                        <option>Cuero y Caucho</option>
-                        <option>Químicos</option>
-                        <option>Combustibles y Lubricantes</option> 
-                        <option>Minerales no Metálicos</option>
-                        <option>Minerales Metálicos</option>
-                        <option>Herramientas y Repuestos</option>
-                        <option>Materiales Eléctricos</option>
+                        <?php 
+                     $sql = "SELECT * FROM  selects_categoria";
+                        $result = mysqli_query($conn, $sql);
+
+                        while ($productos = mysqli_fetch_array($result)){ 
+
+                          echo'  <option>'.$productos['categoria'].'</option>
+                      ';   
+                     } 
+                           ?>
                     </select>
             </div>
            
@@ -105,12 +107,16 @@ $result = mysqli_query($conn, $sql);
                     </div>
                     <select class="form-control" name="um" id="um" style="cursor: s-resize" required>
                         <option><?php  echo $productos['unidad_medida']; ?></option>
-                        <option>c/u</option>
-                        <option>lb</option>
-                        <option>mts</option>
-                        <option>Pgo</option> 
-                        <option>Qq</option>
-                        <option>cto</option>
+                        <?php 
+                     $sql = "SELECT * FROM  selects_unidad_medida";
+                        $result = mysqli_query($conn, $sql);
+
+                        while ($productos = mysqli_fetch_array($result)){ 
+
+                          echo'  <option>'.$productos['unidad_medida'].'</option>
+                      ';   
+                     } 
+                           ?>
                     </select>
                     </div>
                 </div>
@@ -191,12 +197,12 @@ $result = mysqli_query($conn, $sql);
                 <th style="width: 145%;">Fecha Registro</th>
                 <th style="width: 145%;" align="center"><button  name='solicitar' class='btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button> </th>
                 <?php if($tipo_usuario == 1) { ?>
-                <th>Editar</th>
+                <th style="width: 125%;">Editar</th>
                 <th style="width: 125%;">Eliminar</th>
             <?php } ?>
               </tr>
 
-              <tr> <td id="td" colspan="11">
+              <tr> <td id="td" colspan="13">
                 <h4 align="center">No se encontraron resultados 😥</h4></td>
               </tr>
             </thead>
