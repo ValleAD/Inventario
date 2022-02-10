@@ -70,7 +70,7 @@ die();
                 <th style="width: 175%;">U/M</th>
                 <th style="width: 115%;">Cantidad</th>
                 <th style="width: 175%;">Costo Unitario</th>
-                <th style="width: 135%;">Departamento que lo Solicitó</th>
+                <th style="width: 135%;">Fuente de Ingreso</th>
                 <th style="width: 145%;">Fecha Registro</th>
                 
               </tr>

@@ -65,14 +65,14 @@ die();
             <thead>
               <tr id="tr">
                   <th style="width: 175%;">No. Vale</th>
-                <th style="width: 275%;">Departamento</th>
+                <th style="width: 275%;">Departamento Solicitante</th>
                   <th style="width: 175%;">Encargado</th>
                 <th style="width: 175%;">Código</th>
                 <th style="width: 225%;">Descripción Completa</th>
                 <th style="width: 175%;">U/M</th>
                 <th style="width: 175%;">Cantidad</th>
                 <th style="width: 175%;">Costo Unitario</th>
-                <th style="width: 275%;">Departamento que Solicitó</th>
+                <th style="width: 275%;">Solictud de Salida</th>
                 <th style="width: 275%;text-align: center">Fecha</th>
               </tr>
 
@@ -118,7 +118,7 @@ die();
       <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
       <td data-label="Costo Unitario"><?php  echo $productos['campo']; ?></td>
-      <td data-label="No. Vale"><?php  echo $productos['fecha_registro']; ?></td>
+      <td data-label="No. Vale"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
 <?php } ?>      
  
             </tbody>
