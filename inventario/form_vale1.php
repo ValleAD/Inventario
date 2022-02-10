@@ -75,7 +75,6 @@ die();
 </div>
 <section id="act">
    
-<br><br>
      <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="form_vale.php">
        <table class="table">
             <thead>

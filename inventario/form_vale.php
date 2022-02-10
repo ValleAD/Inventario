@@ -102,7 +102,7 @@ if(isset($_POST['id'])){
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Vale N°</b></label>   
-                <input id="inp1"class="form-control" type="number" name="numero_vale" required readonly>
+                <input id="inp1"class="form-control" type="number" name="numero_vale" required>
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
                <label id="inp1">Nombre de la persona</label>                
