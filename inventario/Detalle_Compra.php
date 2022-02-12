@@ -158,7 +158,7 @@ $final = 0;
            </tbody>
           </table>
     
-      <input id="pdf" type="submit" class="btn btn-success btn-lg" value="Guardar Estado" name="pdf">
+      <input id="pdf" type="submit" class="btn btn-success btn-lg" value="Guardar Estado" name="detalle_compra">
        
   </form>
   </section>';

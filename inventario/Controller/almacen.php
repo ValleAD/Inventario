@@ -2,6 +2,7 @@
 
 //CRUD para guardar datos enviados
 // de re_producto.php y se guarde en la tabla tb_productos mysql
+if(isset($_POST['submit'])){
 include '../Model/conexion.php';
 
     $solicitud_no     = $_POST['solicitud_no'];
@@ -36,4 +37,6 @@ for($i = 0; $i < count($_POST['cod']); $i++)
         ";
       }
     }
+  }
+    
 ?>
