@@ -116,8 +116,7 @@ $final = 0;
                   <th>U/M</th>
                   <th>Cantidad</th>
                   <th>Costo Unitario (estimado)</th>
-                  <th>Monto Total (estimado)
-                  </th><th>Estado</th>
+                  <th>Monto Total (estimado)</th>
                 </tr>
                   <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
              </thead>
@@ -148,14 +147,13 @@ $final = 0;
           <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="'.$productos['stock']. '"></td>
           <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$'.$productos['precio']. '"></td>
           <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$'.$total. '"></td>
-          <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="'.$productos['estado']. '"></td>
         </tr>';
   
   }
   
       echo'
       <tr>
-        <th colspan="8">Subtotal</th>
+        <th colspan="7">Subtotal</th>
         <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$'.$final.'" ></td></tr>
       </tr>
            </tbody>

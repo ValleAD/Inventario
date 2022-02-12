@@ -51,6 +51,7 @@ die();
                 <th><strong>Unidad Técnica</strong></th>
                 <th align="center"><strong>Descripción Solicitud</strong></th>
                 <th><strong>Fecha de Registro</strong></th>
+                <th><strong>Estado</strong></th>
                 <th><strong>Detalles</strong></th>
             </tr>
             <td id="td" colspan="7"><h4 align="center" >No se encontraron resultados 😥</h4></td>
@@ -84,6 +85,7 @@ die();
             <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
             <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
             <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['fecha_registro']; ?></td>
+            <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['estado']; ?></td>
             <td  data-label="Detalles">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Compra.php">             
                 <input type='hidden' name='id' value="<?php  echo $solicitudes['nSolicitud']; ?>">             

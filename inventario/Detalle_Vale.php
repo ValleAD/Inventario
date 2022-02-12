@@ -98,7 +98,6 @@ if(isset($_POST['detalle'])){
                     <th ">Unidad de Medida</th>
                     <th ">Cantidad</th>
                     <th ">Costo <br> unitario</th>
-                    <th style="text-align:center;">Estado</th>
                     
                     <th  style="text-align:center;width:8%">Editar</th>
                      
@@ -134,17 +133,7 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="<?php echo $stock ?>"></td>
         
         <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$<?php echo $precio ?>"></td>
-    <td align="center">
-            <input  <?php
-                if($estado=='Pendiente') {
-                    echo ' style="background-color:green ;width:61%; border-radius:100px;text-align:center; color: white;"';
-                }else if($estado=='Aprobado') {
-                     echo ' style="background-color:blueviolet ;width:60%; border-radius:100px;text-align:center; color: white;"';
-                }else if($estado=='Rechazado') {
-                     echo ' style="background-color:red ;width:65%; border-radius:100px;text-align:center; color: white;"';
-                }
-            ?>
- type="text" class="btn"  name="estado[]" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $productos['estado']; ?>">
+   
   <?php if($tipo_usuario == 1) { ?>
 
  <td   align="center" <?php if($estado=='Aprobado') {

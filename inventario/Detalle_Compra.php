@@ -42,9 +42,8 @@ $cod_compra = $_POST['id'];
    include 'Model/conexion.php';
     $sql = "SELECT * FROM tb_compra WHERE nSolicitud = $cod_compra";
     $result = mysqli_query($conn, $sql);
- while ($productos1 = mysqli_fetch_array($result)){
-
- echo'   
+ while ($productos1 = mysqli_fetch_array($result)){?>
+  
 <section id="section">
 <form method="POST" action="Exportar_PDF/pdf_compra.php" target="_blank">
          
@@ -54,43 +53,45 @@ $cod_compra = $_POST['id'];
           <div class="col-6 col-sm-3" style="position: initial">
       
               <label style="font-weight: bold;">Solicitud No.</label>
-              <input readonly class="form-control"  type="text" value="' .$productos1['nSolicitud']. '" name="sol_compra">
+              <input readonly class="form-control" name="n"  type="text" value="<?php echo $productos1['nSolicitud'] ?>" name="sol_compra">
 
           </div>
 
           <div class="col-6 col-sm-3" style="position: initial">
             <label style="font-weight: bold;">Dependencia Solicitante</label>
-            <input readonly class="form-control"  type="text" value="' .$productos1['dependencia']. '" name="dependencia">
+            <input readonly class="form-control"  type="text" value="<?php echo $productos1['dependencia'] ?>" name="dependencia">
           </div>
 
         <div class="col-6 col-sm-3" style="position: initial">
             <label style="font-weight: bold;">Plazo y No. de Entregas</label>
-            <input readonly class="form-control"  type="text" value="' .$productos1['plazo']. '" name="plazo">
+            <input readonly class="form-control"  type="text" value="<?php echo $productos1['plazo'] ?>" name="plazo">
         </div>
 
         <div class="col-6 col-sm-3" style="position: initial">
             <label style="font-weight: bold;">Unidad Técnica</label>
-            <input readonly class="form-control"  type="text" value="' .$productos1['unidad_tecnica']. '" name="unidad">
+            <input readonly class="form-control"  type="text" value="<?php echo $productos1['unidad_tecnica'] ?>" name="unidad">
         </div>
 
         <div class="col-6 col-sm-3" style="position: initial">
             <label style="font-weight: bold;">Suministro Solicitado</label>
-            <input readonly class="form-control"  type="text" value="' .$productos1['descripcion_solicitud']. '" name="suministro">
+            <input readonly class="form-control"  type="text" value="<?php echo $productos1['descripcion_solicitud'] ?>" name="suministro">
         </div>
 
         <div class="col-6 col-sm-3" style="position: initial">
           <label style="font-weight: bold;">Encargado</label>
-          <input readonly class="form-control"  type="text" value="' .$productos1['usuario']. '" name="usuario">
+          <input readonly class="form-control"  type="text" value="<?php echo $productos1['usuario'] ?>" name="usuario">
         </div>
 
           <div class="col-6 col-sm-3" style="position: initial">
             <label style="font-weight: bold;">Fecha</label>
-              <input readonly class="form-control"  type="text" value="'.date("d-m-Y",strtotime($productos1['fecha_registro'])). '" name="fech">
+              <input readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro'])) ?>" name="fech">
           </div>
           <div class="col-6 col-sm-3" style="position: initial">
               <label style="font-weight: bold;">Estado</label>
               <br>
-                <a class="btn btn-danger" href="dt_compra_copy.php"> Cambiar estado</a>
+              <input type="text" name="" value="<?php echo $productos1['estado'] ?>">
+              
+                <a style="float: right;" class="btn btn-danger" name="estado" href="dt_compra_copy.php?id=<?php echo $productos1['estado'] ?>"> Cambiar estado</a>
             </div>
         </div>
       
@@ -111,8 +112,8 @@ $cod_compra = $_POST['id'];
               </tr>
                 <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
            </thead>
-            <tbody>';
-
+            <tbody>
+<?php 
 $cod_compra = $productos1['nSolicitud'];
 }
  $sql = "SELECT * FROM detalle_compra WHERE solicitud_compra = $cod_compra";
@@ -169,6 +170,7 @@ while ($productos = mysqli_fetch_array($result)){
 </form>
 </section>';
 }
-?>            
+
+?>          
 </body>
 </html>

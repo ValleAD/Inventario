@@ -90,18 +90,18 @@ if(isset($_POST['detalle'])){
                   <input readonly class="form-control"  type="text" value="'.date("d-m-Y",strtotime($productos1['fecha_registro'])). '" name="fech">
               </div>
             </div>
-          
+          ';?>
             <br>
               
             <table class="table" style="margin-bottom:3%">
                 
                 <thead>
                   <tr id="tr">
-                    <th ">Código</th>
-                    <th ">Descripción</th>
-                    <th ">Unidad de Medida</th>
-                    <th ">Cantidad</th>
-                    <th ">Costo <br> unitario</th>
+                    <th>Código</th>
+                    <th>Descripción</th>
+                    <th>Unidad de Medida</th>
+                    <th>Cantidad</th>
+                    <th>Costo <br> unitario</th>
                     <th style="text-align:center;">Estado</th>
                      
 
@@ -112,8 +112,8 @@ if(isset($_POST['detalle'])){
                   </tr>
                     <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
                </thead>
-                <tbody>';
-                   
+                <tbody>
+                <?php    
     
     $odt = $productos1['codBodega'];
     }

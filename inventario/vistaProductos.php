@@ -43,7 +43,7 @@ die();
     if (isset($_POST['editar'])){       
     $id = $_POST['id'];       
                  
-    $sql = "SELECT codProductos, categoria, catalogo, nombre, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE  codProductos = '$id'";
+    $sql = "SELECT codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE  codProductos = '$id'";
     $result = mysqli_query($conn, $sql);
            
            
@@ -81,10 +81,7 @@ die();
                         <input class="form-control" readonly style="cursor: not-allowed;" type="text" name="codCatalogo" id="act" value="<?php  echo $productos['catalogo']; ?>">
                     </div>
            
-                    <div class="col-6 col-sm-4" style="position: initial">
-                        <label for="">Nombre</label>
-                        <input class="form-control" type="text" name="nombre" id="act" value="<?php  echo $productos['nombre']; ?>">
-                    </div>
+                   
                 </div>
            
                 <div class="row">
@@ -179,12 +176,12 @@ die();
                 <th style="width: 175%;">Categoría</th>
                 <th style="width: 95%;">Código</th>
                 <th style="width: 135%;">Catálogo</th>
-                <th style="width: 200%;">Nombre</th>
                 <th style="width: 250%;">Descripción Completa</th>
                 <th style="width: 175%; text-align: center;">U/M</th>
                 <th style="width: 115%;">Cantidad</th>
                 <th style="width: 175%;">Costo Unitario</th>
                 <th style="width: 175%;">Fecha Registro</th>
+                <th style="width: 175%;">Productos de donde viene</th>
                 <?php if($tipo_usuario == 1) { ?>
                 <th style="width: 125%;">Editar</th>
                 <th style="width: 125%;">Eliminar</th>
@@ -203,7 +200,7 @@ die();
 
 
     //    $sql = "SELECT * FROM tb_productos";
-    $sql = "SELECT codProductos, categoria, catalogo, nombre, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos GROUP BY precio, codProductos";
+    $sql = "SELECT codProductos, categoria, catalogo, solicitudes, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos GROUP BY precio, codProductos";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){?>
@@ -221,12 +218,12 @@ die();
     <td data-label="Categoría"><?php  echo $productos['categoria']; ?></td>
       <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
       <td data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
-      <td data-label="Nombre"><?php  echo $productos['nombre']; ?></td>
       <td data-label="Descripción Completa"><textarea style="background:transparent; border: none; color: black;" cols="10" rows="1" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
       <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
       <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['SUM(stock)']; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
       <td data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
+      <td data-label="Fecha Registro"><?php  echo $productos['solicitudes']; ?></td>
       <?php if($tipo_usuario == 1) { ?>
       <td data-label="Editar">
         <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="vistaProductos.php">             
@@ -247,25 +244,7 @@ die();
 </section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-$(function(){
-    var textArea = $('#content'),
-    hiddenDiv = $(document.createElement('div')),
-    content = null;
-    
-    textArea.addClass('noscroll');
-    hiddenDiv.addClass('hiddendiv');
-    
-    $(textArea).after(hiddenDiv);
-    
-    textArea.on('keyup', function(){
-        content = $(this).val();
-        content = content.replace(/\n/g, '<br>');
-        hiddenDiv.html(content + '<br class="lbr">');
-        $(this).css('height', hiddenDiv.height());
-    });
-});
-</script>
+
 <script type="text/javascript">
 function confirmaion(e) {
     if (confirm("¿Estas seguro que deseas Eliminar este registro?")) {

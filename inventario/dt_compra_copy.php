@@ -103,6 +103,7 @@ $final = 0;
             </div>
             <div class="col-6 col-sm-3" style="position: initial">
               <label style="font-weight: bold;">Estado</label>
+              <input readonly class="form-control"  type="hidden" value="' .$datos['nSolicitud']. '" name="id"> 
                 <select  class="form-control"  type="text"  name="estado" required>
                 <option disabled selected>Selecione</option>
                 <option>Acetado</option>
@@ -120,11 +121,12 @@ $final = 0;
                   <th>Categoría</th>
                   <th>Código</th>
                   <th>Cod. Catálogo</th>
-                  <th style="width:25%;">Descripción Completa</th>
-                  <th>U/M</th>
+                  <th style="width:20%;">Descripción Completa</th>
+                  <th style="width:5%;">U/M</th>
                   <th>Cantidad Solicitada</th>
                   <th>Cantidad Despachada</th>
-                  <th>Costo Unitario (estimado)</th>
+                  <th>Costo Unitario (estimado)Actual</th>
+                  <th>Nuevo Costo Unitario (estimado)</th>
                   <th>Monto Total (estimado)
                   
                 </tr>
@@ -156,8 +158,10 @@ $final = 0;
           <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
           <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="'.$productos['stock']. '"></td>
           <td  data-label="Cantidad"><input style="background:transparent; border: 1 solid #000;  width: 100%;" class="form-control" type="number" required  name="cant_aprobada[]" required value=""></td>
-          <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  type="number" step="0.01" name="cost[]" required  placeholder="$'.$productos['precio']. '"></td>
-          <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$'.$total. '"></td>
+          <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  type="text step="0.01"  required readonly  value="$'.$productos['precio']. '"></td>
+
+          <td  data-label="Costo unitario"><input class="form-control" type="number" style="background:transparent;border: 1 solid #000; width: 100%;" required step="0.01" name="cost[]"></td>
+          <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$'.$total. '"><input style="background:transparent; border: none; width: 100%; color: black;"  type="hidden" class="form-control" readonly name="form_compra[]" value ="Solicitud Compra"></td>
          
         </tr>';
   
@@ -165,44 +169,14 @@ $final = 0;
   
       echo'
       <tr>
-        <th colspan="8">Subtotal</th>
+        <th colspan="9">Subtotal</th>
         <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$'.$final.'" ></td></tr>
       </tr>
            </tbody>
           </table>
     
-      <input id="pdf" type="submit" class="btn btn-lg" value="Guardar Estado" name="pdf">
-        <style>
-          #pdf{
-          margin-left: 38%; 
-          background: rgb(175, 0, 0); 
-          color: #fff; margin-bottom: 2%; 
-          border: rgb(0, 0, 0);
-          }
-          #pdf:hover{
-          background: rgb(128, 4, 4);
-          } 
-          #pdf:active{
-          transform: translateY(5px);
-          } 
-            #cb{
-            border-radius: 15px 0px 0px 15px;
-            padding: 20px 10px;
-            background: whitesmoke;
-            }
-            #cbq{
-            border-radius: 0px 15px 15px 0px;
-            padding: 20px 10px;
-            background: whitesmoke;
-            }
-            #c{
-            padding: 20px 10px;
-            color: violet; 
-            flex-wrap: wrap-reverse;
-            text-decoration-style: dotted;
-            background: whitesmoke;
-     }
-        </style>
+      <input id="pdf" type="submit" class="btn btn-success btn-lg" value="Guardar Estado" name="pdf">
+       
   </form>
   </section>';
   ?>            

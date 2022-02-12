@@ -64,7 +64,6 @@ die();
                      <th style="width: 165%;">Categoría</th>
                      <th style="width: 100%;">Código</th>
                      <th style="width: 135%;">Cod. de Catálogo</th>
-                     <th style="width: 180%;">Nombre</th>
                      <th style="width: 225%;">Descripción Completa</th>
                      <th style="width: 80%;">U/M</th>
                      <th style="width: 110%;">Cantidad</th>
@@ -82,14 +81,8 @@ die();
                  
 
 <?php
-     $por_pagina = 6;
- if (isset($_GET['pagina'])) {
-    $pagina = $_GET['pagina'];
- }else{
-    $pagina =1;
- }
- $empieza = ($pagina-1) * $por_pagina;
-    $sql = "SELECT * FROM tb_productos LIMIT $empieza,$por_pagina";
+
+    $sql = "SELECT * FROM tb_productos";
     $result = mysqli_query($conn, $sql);
 
     if(isset($_POST['cat_buscar'])){
@@ -128,7 +121,6 @@ die();
          <td data-label="Categoría"><?php  echo $productos['categoria']; ?></td>
            <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['codProductos']; ?></td>
            <td data-label="Codificación de catálogo" style="text-align: center;"><?php  echo $productos['catalogo']; ?></td>
-           <td data-label="Nombre"><?php  echo $productos['nombre']; ?></td>
            <td data-label="Descripción Completa"><textarea style="background:transparent; border: none; color: black;" cols="10" rows="1" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
            <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
            <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
@@ -150,19 +142,7 @@ die();
                  </tbody>
              </table>
          <p style="margin-top: 2%;"></p>
-<?php 
- $sql = "SELECT * FROM tb_productos";
-    $result = mysqli_query($conn, $sql);
-$total_registro = mysqli_num_rows($result);
-$total_pagina = ceil($total_registro / $por_pagina);
 
-echo "<nav aria-label='Page navigation example'>
-  <ul class='pagination justify-content-end'><li class='page-item '><a class='page-link' href='buscar.php?pagina= 1'>".'Primera'."</a><li>";
-for ($i=1; $i <=$total_pagina; $i++) { 
-    echo "<li class='page-item '><a class='page-link ' href='buscar.php?pagina=".$i."'>".$i."</a></li>";
-}
-echo "<li class='page-item'><a class='page-link' href='buscar.php?pagina=$total_pagina'>".'Ultima'."</a><li></ul></nav>";
-?>
     </div>
 </body>
 </html>

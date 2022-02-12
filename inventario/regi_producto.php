@@ -78,11 +78,7 @@ form{
               <input type="number" name="catal[]" class="form-control" placeholder="Ingrese código" required>
             </div>
 
-            <div class="form-group">
-              <label style="color: #000">Nombre de Artículo</label>
-              <input type="text" name="nombre[]" class="form-control" placeholder="Nombre" required>
-            </div>
-
+          
             <div class="form-group">
                 <label style="color: #000">Descripción Completa</label>
 
