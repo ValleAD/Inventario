@@ -3,6 +3,8 @@
 //CRUD para guardar datos enviados
 // de re_producto.php y se guarde en la tabla tb_productos mysql
 include '../Model/conexion.php';
+//estado compra
+if(isset($_POST['detalle_compra'])){
 $nSolicitud=$_POST['sol_compra'];
 $estado =$_POST['estado'];
 $sql="UPDATE  tb_compra SET estado = '$estado' WHERE nSolicitud='$nSolicitud'" ;
@@ -35,4 +37,5 @@ $result = mysqli_query($conn, $sql);
         ";
         }
     }
-?>
+  }
+  ?>

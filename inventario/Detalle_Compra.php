@@ -296,7 +296,7 @@ while ($productos = mysqli_fetch_array($result)){
          </tbody>
         </table>
   
-    <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
+    <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="">
       <style>
         #pdf{
         margin-left: 38%; 

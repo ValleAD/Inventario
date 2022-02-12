@@ -56,7 +56,7 @@ $final = 0;
 
  echo'   
 <section id="section">
-<form id="form" method="POST" action="Controller/" target="_blank">
+<form id="form" method="POST" action="Controller/añadir_almacen_copy.php" target="_blank">
          
       
         <div class="row">  
@@ -84,9 +84,7 @@ $final = 0;
           </div>
           <div class="col-8 col-sm-3" style="position: initial">
             <label style="font-weight: bold;">Estado:</label>
-              
-                <input readonly class="form-control"  type="hidden" value="' .$datos['nSolicitud']. '" name="id"> 
-                <select   class="form-control"  type="text"  required>
+                <select   class="form-control" name="estado"  type="text"  required>
                 <option disabled selected>Selecione</option>
                 <option>Aprobado</option>
                 <option>Rechazado</option>
@@ -103,6 +101,7 @@ $final = 0;
                 <th style="width: 35%;">Nombre del Artículo</th>
                 <th>Unidad de Medida</th>
                 <th>Cantidad Solicitada</th>
+                <th>Cantidad Aprobada</th>
                 <th>Costo unitario</th>
                 <th>Total</th>
               </tr>
@@ -128,9 +127,12 @@ while ($productos = mysqli_fetch_array($result)){
 </style> 
       <tr>
         <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="' .$productos['codigo']. '"></td>
-        <td  data-label="Nombre del Artículo"><textarea style="background:transparent; border: none; width: 100%;"  name="nombre[]" readonly style="border: none">'.$productos['nombre']. '</textarea></td>
+        <td  data-label="Nombre del Artículo"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly style="border: none">'.$productos['nombre']. '</textarea></td>
         <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
         <td  data-label="Cantidad Solicitada"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="'.$productos['cantidad_solicitada']. '"></td>
+
+        <td  data-label="Cantidad Solicitada"><input style="background:transparent; border: none; width: 100%;"  name="cant_aprobada[]"  ></td>
+
         <td  data-label="Costo Unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$'.$productos['precio']. '"></td>
         <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$'.$total. '"></td>
       </tr>';
@@ -172,7 +174,7 @@ $final = 0;
 $num_sol = $_POST['id'];
 
    include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_almacen ORDER BY fecha_solicitud DESC LIMIT 1";
+    $sql = "SELECT * FROM tb_almacen WHERE codAlmacen='$num_sol' ORDER BY fecha_solicitud DESC LIMIT 1";
     $result = mysqli_query($conn, $sql);
  while ($datos_sol = mysqli_fetch_array($result)){
 
@@ -240,7 +242,7 @@ $num_sol = $_POST['id'];
               </tr>
                 <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
            </thead>
-            <tbody>';
+            <tbody>
 <?php 
 $num_almacen = $datos_sol['codAlmacen'];
 }
