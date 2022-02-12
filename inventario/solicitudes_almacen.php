@@ -38,12 +38,7 @@ die();
     <link rel="stylesheet" href="https://cdn.datatables.net/searchpanes/1.0.1/css/searchPanes.dataTables.min.css">
     <!-- select -->
     <link href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
-    <style>
-    table thead{
-    background: linear-gradient(to right, #4A00E0, #8E2DE2); 
-    color:white;
-    }
-    </style>
+
     <title>Solicitudes De Almacen</title>
 </head>
 
@@ -59,6 +54,7 @@ die();
                 <th class="table-info text-dark"><strong>Departamento Solicitante</strong></th>
                 <th class="table-info text-dark"><strong>Encargado</strong></th>
                 <th class="table-info text-dark"><strong>Fecha de solicitud</strong></th>
+                <th class="table-info text-dark text-center"><strong>Estado</strong></th>
                 <th class="table-info text-dark"><strong>Detalles</strong></th>
                 
             </tr>
@@ -85,6 +81,16 @@ die();
             <td data-label="Departamento Solicitante" class="delete"><?php  echo $datos_sol['departamento']; ?></td>
             <td data-label="Usuario" class="delete"><?php  echo $datos_sol['encargado']; ?></td>
             <td data-label="Fecha de solicitud" class="delete"><?php  echo $datos_sol['fecha_solicitud']; ?></td>
+            <td data-label="Fecha de solicitud" class="delete"><input <?php
+                if($datos_sol['estado']=='Pendiente') {
+                    echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
+                }else if($datos_sol['estado']=='Aprobado') {
+                     echo ' style="background-color:blueviolet ;width:100%; border-radius:5px;text-align:center; color: white;"';
+                }else if($datos_sol['estado']=='Rechazado') {
+                     echo ' style="background-color:red ;width:100%; border-radius:5px;text-align:center; color: white;"';
+                }
+            ?> class="form-control" readonly type="text" name="" value="<?php echo $datos_sol['estado'] ?>"><br>
+              </td>
             <td  data-label="Detalles">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Almacen.php">             
                 <input type='hidden' name='id' value="<?php  echo $datos_sol['codAlmacen']; ?>">             

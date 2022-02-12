@@ -98,8 +98,6 @@ if(isset($_POST['detalle'])){
                     <th ">Unidad de Medida</th>
                     <th ">Cantidad</th>
                     <th ">Costo <br> unitario</th>
-                    
-                    <th  style="text-align:center;width:8%">Editar</th>
                      
                     <th style="width: 6%;">Total</th>
                   </tr>
@@ -135,19 +133,7 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$<?php echo $precio ?>"></td>
    
   <?php if($tipo_usuario == 1) { ?>
-
- <td   align="center" <?php if($estado=='Aprobado') {
-                     echo " <p> No Disponible</p";
-                }elseif($estado=='Rechazado'){
-                     echo "<p>No Disponible</p";
-                 }
-                 ?> ><a <?php if($estado=='Aprobado') {
-                     echo ' style="display:none"';
-                } 
-                if($estado=='Rechazado'){
-                     echo ' style="display:none"';
-                 }
-                 ?> class="btn btn-info" href="cambiar_estado_vale.php?id=<?php  echo $productos['codigodetallevale']; ?>">Editar</a></td><?php } ?>
+<?php } ?>
                 
 
 
@@ -159,7 +145,7 @@ while ($productos = mysqli_fetch_array($result)){
   <?php } }?> 
 
 
-      <th colspan="7">SubTotal</th>
+      <th colspan="5">SubTotal</th>
       <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="<?php echo $final ?>" ></td></tr> 
 
 

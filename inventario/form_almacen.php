@@ -108,19 +108,14 @@ form{
             
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Nombre de la persona</label>
-               <select class="form-control" name="usuario" required>
-    <option disabled selected>Selecione</option> 
-    <?php  
-     $sql = "SELECT id, firstname,lastname FROM tb_usuarios WHERE Habilitado = 'Si'";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){ 
-
-      echo'  <option>'.$productos['firstname']." ".$productos['lastname'].'</option>
-  ';   
- } ?>
-    </select>
-                </label>   
+               <?php     $cliente =$_SESSION['signin'];
+    $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
+    while ($consulta =mysqli_fetch_array($data)) {
+ ?>
+    <font color="black"><label>Encargado</label> </font>
+      <input style="cursor: not-allowed; color: black;"  class="form-control" type="text" name="usuario" id="como3" required readonly value="<?php  echo $consulta['firstname']?> <?php  echo $consulta['lastname']?>">
+      <br>
+      <?php }?> 
             </div>
         </div>
 
@@ -179,7 +174,7 @@ form{
             </div>
              <div class="form-group">
                    <input style="background:transparent; border: none; width: 100%; color: black;"  type="hidden" class="form-control" readonly name="form_bodega[]" value ="Formulario Bodega">
-                <input type="hidden" name="estado[]" value="Pendiente">
+                <input type="hidden" name="estado" value="Pendiente">
 
                     </div>
         </div>

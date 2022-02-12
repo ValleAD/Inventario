@@ -4,12 +4,12 @@
 // de re_producto.php y se guarde en la tabla tb_productos mysql
 include '../Model/conexion.php';
 
-    $solicitud_no = $_POST['solicitud_no'];
-    $departamento = $_POST['depto'];
-    $usuario = $_POST['usuario'];
-
+    $solicitud_no     = $_POST['solicitud_no'];
+    $departamento     = $_POST['depto'];
+    $usuario          = $_POST['usuario'];
+    $estado           = $_POST['estado'];
     //crud para guardar los productos en la tabla tb_vale
-    $sql = "INSERT INTO tb_almacen (codAlmacen, departamento,encargado) VALUES ('$solicitud_no', '$departamento','$usuario')";
+    $sql = "INSERT INTO tb_almacen (codAlmacen, departamento,encargado,estado) VALUES ('$solicitud_no', '$departamento','$usuario','$estado')";
     $result = mysqli_query($conn, $sql); 
 
 for($i = 0; $i < count($_POST['cod']); $i++) 
@@ -19,10 +19,9 @@ for($i = 0; $i < count($_POST['cod']); $i++)
       $u_m              = $_POST['um'][$i];
       $soli             = $_POST['soli'][$i];
       $cost             = $_POST['precio'][$i];
-      $estado           = $_POST['estado'][$i];
       $num_sol          = $_POST['solicitud_no'];
 
-      $insert = "INSERT INTO detalle_almacen(codigo, nombre, unidad_medida, cantidad_solicitada, tb_almacen, precio,estado) VALUES ('$codigo_producto', '$nombre_articulo','$u_m', '$soli', '$num_sol', '$cost','$estado')";
+      $insert = "INSERT INTO detalle_almacen(codigo, nombre, unidad_medida, cantidad_solicitada, tb_almacen, precio) VALUES ('$codigo_producto', '$nombre_articulo','$u_m', '$soli', '$num_sol', '$cost')";
       $query = mysqli_query($conn, $insert);
 
       if ($query) {

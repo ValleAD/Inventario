@@ -70,8 +70,9 @@ CREATE TABLE tb_usuarios (
 CREATE TABLE tb_bodega (
   codBodega int(11) NOT NULL,
   departamento varchar(50) NOT NULL,
-    usuario varchar (50)  NOT NULL,
-    campo varchar (50)  NOT NULL DEFAULT ' Solicitud Bodega',
+  usuario varchar (50)  NOT NULL,
+  campo varchar (50)  NOT NULL DEFAULT ' Solicitud Bodega',
+  estado varchar (50)  NOT NULL,
   fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (codBodega)
 );
@@ -105,6 +106,7 @@ CREATE TABLE tb_circulante (
   departamento varchar(200) NOT NULL,
   usuario varchar (50)  NOT NULL,
   campo varchar (50)  NOT NULL DEFAULT 'Solicitud Circulante',
+  estado varchar (50)  NOT NULL,
   fecha_solicitud timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (codCirculante)
 );
@@ -113,6 +115,7 @@ CREATE TABLE tb_almacen (
   codAlmacen int(12) NOT NULL,
   departamento varchar(200) NOT NULL,
   encargado varchar(75) NOT NULL,
+estado varchar (50)  NOT NULL,
   fecha_solicitud timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (codAlmacen)
 );
@@ -172,7 +175,6 @@ cantidad_solicitada int(25) NOT NULL,
 cantidad_despachada int(25) NOT NULL,
 tb_almacen int(20) NOT NULL,
 precio int(20) NOT NULL,
-estado varchar (50)  NOT NULL,
 fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (codigoalmacen),
      CONSTRAINT fk_tb_almacen_detalle_almacen FOREIGN KEY (tb_almacen)

@@ -99,7 +99,15 @@ $final = 0;
   
             <div class="col-6 col-sm-3" style="position: initial">
               <label style="font-weight: bold;">Fecha</label>
-                <input readonly class="form-control"  type="text" value="'.date("d-m-Y",strtotime($datos['fecha_registro'])). '" name="fech">
+                  <input readonly class="form-control"  type="text" value="'.date("d-m-Y",strtotime($datos['fecha_registro'])). '" name="fech">';?>
+            </div>
+            <div class="col-6 col-sm-3" style="position: initial">
+              <label style="font-weight: bold;">Estado</label>
+              <input <?php
+                if($datos['estado']=='Pendiente') {
+                    echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
+                }
+            ?> readonly class="form-control"  type="text" value="<?= $datos['estado'] ?>" name="id"> 
             </div>
           </div>
         
@@ -120,9 +128,9 @@ $final = 0;
                 </tr>
                   <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
              </thead>
-              <tbody>';
-  
-  $cod_compra = $datos['nSolicitud'];
+              <tbody>
+  <?php 
+    $cod_compra = $datos['nSolicitud'];
   }
    $sql = "SELECT * FROM detalle_compra WHERE solicitud_compra = $cod_compra";
       $result = mysqli_query($conn, $sql);

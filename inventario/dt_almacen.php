@@ -78,7 +78,15 @@ $final = 0;
           
           <div class="col-6 col-sm-3" style="position: initial">
             <label style="font-weight: bold;">Fecha:</label>
-              <input readonly class="form-control"  type="text" value="' .date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])). '" name="fech">
+              <input readonly class="form-control"  type="text" value="' .date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])). '" name="fech">';?>
+          </div> <div class="col-6 col-sm-3" style="position: initial">
+            <label style="font-weight: bold;">Estado:</label>
+               <input  <?php
+                if($datos_sol['estado']=='Pendiente') {
+                    echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
+                }
+            ?>
+ type="text" class="btn"  name="estado[]" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $datos_sol['estado']; ?>">
           </div>
         </div>
       
@@ -93,13 +101,12 @@ $final = 0;
                 <th>Unidad de Medida</th>
                 <th>Cantidad Solicitada</th>
                 <th>Costo unitario</th>
-                <th>Estado</th>
                 <th>Total</th>
               </tr>
                 <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
            </thead>
-            <tbody>';
-
+            <tbody>
+<?php 
 $num_almacen = $datos_sol['codAlmacen'];
 }
  $sql = "SELECT * FROM detalle_almacen WHERE tb_almacen = $num_almacen";
@@ -108,8 +115,6 @@ while ($productos = mysqli_fetch_array($result)){
       
       $total = $productos['cantidad_solicitada'] * $productos['precio'];
       $final += $total;
-      
-      $estado=$productos['estado'];
       
 ?>
     <style type="text/css">
@@ -123,15 +128,6 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="<?php echo $productos['unidad_medida'];?>"></td>
         <td  data-label="Cantidad Solicitada"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="<?php echo $productos['cantidad_solicitada'];?>"></td>
         <td  data-label="Costo Unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$<?php echo $productos['precio'];?>"></td>  
-    <td align="left">
-            <input  <?php
-                if($estado=='Pendiente') {
-                    echo ' style="background-color:green ;width:63%; border-radius:100px;text-align:center; color: white;"';
-                }
-            ?>
- type="text" class="btn"  name="estado[]" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $productos['estado']; ?>"></td>
-        
- 
         <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$<?php echo $total;?>"></td>
       </tr>
 
