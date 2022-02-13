@@ -42,6 +42,11 @@ die();
 </head>
 
 <body>
+<style>
+    h1 {
+  color: white;
+}
+    </style>
             <h1 class="text-center mg-t" style="margin-top: -0.5%;">Solicitudes de Fondo Circulante</h1><br>
 <section class="mx-5 p-2" style="background-color:white;border-radius: 5px; position: initial;">
 

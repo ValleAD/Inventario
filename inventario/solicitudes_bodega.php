@@ -43,6 +43,9 @@ die();
     background: linear-gradient(to right, #4A00E0, #8E2DE2); 
     color:white;
     }
+    h1 {
+  color: white;
+}
     </style>
     <title>Solicitudes De Bodega</title>
 </head>
