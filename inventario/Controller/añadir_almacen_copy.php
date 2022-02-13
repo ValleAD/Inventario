@@ -15,7 +15,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
     {
       $nSolicitud=$_POST['num_sol'][$i];
       $cant_aprobada    = $_POST['cant_aprobada'][$i];
-$sql="UPDATE  detalle_almacen SET cantidad_despachada='$cant_aprobada'  WHERE codAlmacen ='$nSolicitud'" ;
+$sql="UPDATE  detalle_almacen SET cantidad_despachada='$cant_aprobada'  WHERE codigoalmacen ='$nSolicitud'" ;
 $result = mysqli_query($conn, $sql);
 }
      for($i = 0; $i < count($_POST['cod']); $i++)

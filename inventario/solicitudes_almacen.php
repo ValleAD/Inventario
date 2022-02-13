@@ -46,16 +46,16 @@ die();
             <h1 class="text-center mg-t" style="margin-top: -0.5%;">Solicitudes de Almacen</h1><br>
 <section class="mx-5 p-2" style="background-color:white; border-radius:5px">
 
-        <table class="table" id="example">
+<table class="table table-responsive table-striped" id="example" style=" width: 100%">
           <thead>
               <tr id="tr">
              
-                <th class="table-info text-dark"><strong>No. de Solicitud</strong></th>
-                <th class="table-info text-dark"><strong>Departamento Solicitante</strong></th>
-                <th class="table-info text-dark"><strong>Encargado</strong></th>
-                <th class="table-info text-dark"><strong>Fecha de solicitud</strong></th>
-                <th class="table-info text-dark text-center"><strong>Estado</strong></th>
-                <th class="table-info text-dark"><strong>Detalles</strong></th>
+                <th class="table-info text-dark"  style=" width: 20%"><strong>No. de Solicitud</strong></th>
+                <th class="table-info text-dark" style=" width: 30%" ><strong>Departamento Solicitante</strong></th>
+                <th class="table-info text-dark"  style=" width: 20%"><strong>Encargado</strong></th>
+                <th class="table-info text-dark"  style=" width: 20%"><strong>Fecha de solicitud</strong></th>
+                <th class="table-info text-dark text-center"  style=" width: 60%"><strong>Estado</strong></th>
+                <th class="table-info text-dark" style=" width: 10%" ><strong>Detalles</strong></th>
                 
             </tr>
             </thead>

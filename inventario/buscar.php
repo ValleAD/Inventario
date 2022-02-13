@@ -69,18 +69,19 @@ die();
     <div class="m-5 p-2 r-5" style="background-color: white;">
         <div class="row">
             <div class="col">
-            <table id="example" class="table table-bordered  display nowrap" cellspacing="0" width="100%">
+            
+                <table class="table table-responsive table-striped" id="example" style=" width: 100%">
                 <thead>
                      <tr id="tr">
-                     <th style="width: 55px;">Código</th>
-                     <th style="width: 55px;">Cod. de Catálogo</th>
-                     <th >Descripción Completa</th>
-                     <th>U/M</th>
-                     <th >Cantidad</th>
-                     <th >Costo Unitario</th>
-                     <th >Fecha Registro</th>
-                     <th >Editar</th>
-                     <th >Eliminar</th>
+                     <th  style="width: 30%">Código</th>
+                     <th  style="width: 30%">Cod. de Catálogo</th>
+                     <th  style="width: 30%">Descripción Completa</th>
+                     <th  style="width: 30%">U/M</th>
+                     <th  style="width: 30%">Cantidad</th>
+                     <th  style="width: 30%">Costo Unitario</th>
+                     <th  style="width: 30%">Fecha Registro</th>
+                     <th  style="width: 30%">Editar</th>
+                     <th  style="width: 30%">Eliminar</th>
                    </tr>
                 </thead>
                 <tbody>
@@ -121,20 +122,20 @@ die();
         }
      </style>
          <tr id="tr">
-           <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['codProductos']; ?></td>
-           <td data-label="Codificación de catálogo" style="text-align: center;"><?php  echo $productos['catalogo']; ?></td>
-           <td data-label="Descripción Completa"><textarea style="background:transparent; border: none; color: black;" cols="10" rows="1" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
-           <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-           <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
-           <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
-           <td data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
-           <td data-label="Editar">
+           <td class="table-info text-dark"  data-label="Codigo" style="text-align: center;"><?php  echo $productos['codProductos']; ?></td>
+           <td class="table-info text-dark"  data-label="Codificación de catálogo" style="text-align: center;"><?php  echo $productos['catalogo']; ?></td>
+           <td class="table-info text-dark"  data-label="Descripción Completa"><textarea style="background:transparent; border: none; color: black;" cols="10" rows="1" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
+           <td class="table-info text-dark"  data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
+           <td class="table-info text-dark"  data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
+           <td class="table-info text-dark"  data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
+           <td class="table-info text-dark"  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
+           <td class="table-info text-dark"  data-label="Editar">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="vistaProductos.php">             
                 <input type='hidden' name='id' value="<?php  echo $productos['codProductos']; ?>">             
                 <button name='editar' class='btn btn-info btn-sm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
             </form>  
             </td>
-            <td data-label="Eliminar">
+            <td  class="table-info text-dark" data-label="Eliminar">
                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm " class="text-primary" href="Controller/Delete_producto.php?id=<?php  echo $productos['cod']; ?>" onclick="return confirmaion()">Eliminar</a>
             </td>
          </tr>

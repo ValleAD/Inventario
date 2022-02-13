@@ -57,18 +57,18 @@ die();
     </style><center><h1 style="margin-top:5px">Solicitudes de Compra</h1></center>
             <br>
      <div class="mx-5 p-2" id="act" style="background-color: white; border-radius: 5px;">
-        <table class="table" id="example">
+        <table class="table table-responsive" id="example" style="width:100%">
             
             <thead>
               <tr id="tr">
-                <th><strong>No. Solicitud</strong></th>
-                <th><strong>Dependencia</strong></th>
-                <th><strong>Plazo y No. de Enrtegas</strong></th>
-                <th><strong>Unidad Técnica</strong></th>
-                <th align="center"><strong>Descripción Solicitud</strong></th>
-                <th><strong>Fecha de Registro</strong></th>
-                <th><strong>Estado</strong></th>
-                <th><strong>Detalles</strong></th>
+                <th style="width:20%" class="table-info text-dark"><strong>No. Solicitud</strong></th>
+                <th  style="width:10%" class="table-info text-dark"><strong>Dependencia</strong></th>
+                <th  style="width:10%" class="table-info text-dark"><strong>Plazo y No. de Enrtegas</strong></th>
+                <th  style="width:10%" class="table-info text-dark"><strong>Unidad Técnica</strong></th>
+                <th  style="width:30%" class="table-info text-dark" align="center"><strong>Descripción Solicitud</strong></th>
+                <th  style="width:20%" class="table-info text-dark"><strong>Fecha de Registro</strong></th>
+                <th  style="width:20%" class="table-info text-dark"><strong>Estado</strong></th>
+                <th  style="width:20%" class="table-info text-dark"><strong>Detalles</strong></th>
            
     </thead>
         <tbody> 
@@ -105,7 +105,7 @@ die();
             <td  data-label="Detalles">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Compra.php">             
                 <input type='hidden' name='id' value="<?php  echo $solicitudes['nSolicitud']; ?>">             
-                <button name='detalle' class="btn btn-primary swal2-styled.swal2-confirm">Ver Detalles</button>             
+                <button name='detalle' class="btn btn-primary  btn-lg">Ver Detalles</button>             
             </form> 
             </td>
         </tr>
