@@ -179,15 +179,15 @@ $result = mysqli_query($conn, $sql);
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
                 <thead>
                      <tr id="tr">
-                     <th >Código</th>
-                     <th >Cod. de Catálogo</th>
-                     <th >Descripción Completa</th>
-                     <th >U/M</th>
-                     <th >Cantidad</th>
-                     <th >Costo Unitario</th>
-                     <th >Fecha Registro</th>
-                     <th >Editar</th>
-                     <th >Eliminar</th>
+                     <th style=" width: 20%">Código</th>
+                     <th style=" width: 20%">Cod. de Catálogo</th>
+                     <th style=" width: 100%">Descripción Completa</th>
+                     <th style=" width: 100%">U/M</th>
+                     <th style=" width: 100%">Cantidad</th>
+                     <th style=" width: 100%">Costo Unitario</th>
+                     <th style=" width: 100%">Fecha Registro</th>
+                     <th style=" width: 100%">Editar</th>
+                     <th style=" width: 100%">Eliminar</th>
                    </tr>
                 </thead>
                 <tbody>
