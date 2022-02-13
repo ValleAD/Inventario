@@ -38,7 +38,12 @@ die();
     <link rel="stylesheet" href="https://cdn.datatables.net/searchpanes/1.0.1/css/searchPanes.dataTables.min.css">
     <!-- select -->
     <link href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
-   
+     <style>
+    table thead{
+    background: linear-gradient(to right, #4A00E0, #8E2DE2); 
+    color:white;
+    }
+    </style>
 <title>Ingresos</title>
 </head>
 <body style="max-width: 100%;">
@@ -81,20 +86,16 @@ if(isset($_POST['ingresos'])){
   input{
     width: 100%;
   }
- 
-    table thead{
-    background: linear-gradient(to right, #4A00E0, #8E2DE2); 
-    color:white;
-    }
-    </style>
+</style>
+
     <h3 style="text-align: center; color: violet; font-weight: bold; text-decoration: underline;">Ingresos de Bodega</h3>
 
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
             <thead>
               <tr id="tr">
-                <th  style="width: 100%">Departamento</th>
-                <th  style="width: 100%">Encargado</th>
-                <th  style="width: 100%">Codigo</th>
+                <th  style="width: 15%">Departamento</th>
+                <th  style="width: 15%">Encargado</th>
+                <th  style="width: 10%">Codigo</th>
                 <th  style="width: 100%">Descripción Completa</th>
                 <th  style="width: 100%">U/M</th>
                 <th  style="width: 100%">Cantidad</th>
@@ -163,15 +164,15 @@ if(isset($_POST['ingresos'])){
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
      <thead>
        <tr id="tr">
-         <th class="table-info text-dark" style="width: 100%">Departamento</th>
-         <th class="table-info text-dark" style="width: 100%">Encargado</th>
-         <th class="table-info text-dark" style="width: 100%">Codigo</th>
-         <th class="table-info text-dark" style="width: 100%">Descripción Completa</th>
-         <th class="table-info text-dark" style="width: 100%">U/M</th>
-         <th class="table-info text-dark" style="width: 100%">Cantidad</th>
-         <th class="table-info text-dark" style="width: 100%">Costo Unitario</th>
-         <th class="table-info text-dark" style="width: 100%">Fuente de Ingreso</th>
-         <th class="table-info text-dark" style="width: 100%">Fecha Registro</th>
+         <th  style="width: 15%">Departamento</th>
+         <th  style="width: 15%">Encargado</th>
+         <th  style="width: 10%">Codigo</th>
+         <th  style="width: 100%">Descripción Completa</th>
+         <th  style="width: 100%">U/M</th>
+         <th  style="width: 100%">Cantidad</th>
+         <th  style="width: 100%">Costo Unitario</th>
+         <th  style="width: 100%">Fuente de Ingreso</th>
+         <th  style="width: 100%">Fecha Registro</th>
          
        </tr>
 
@@ -239,15 +240,15 @@ width: 100%;
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
      <thead>
        <tr>
-         <th class="table-info text-dark" style="width:40%">Departamento</th>
-         <th class="table-info text-dark" style="width:100%">Encargado</th>
-         <th class="table-info text-dark" style="width:100%">Codigo</th>
-         <th class="table-info text-dark" style="width:100%">Descripción Completa</th>
-         <th class="table-info text-dark" style="width:100%">U/M</th>
-         <th class="table-info text-dark" style="width:100%">Cantidad</th>
-         <th class="table-info text-dark" style="width:100%">Costo Unitario</th>
-         <th class="table-info text-dark" style="width:100%">Fuente de Ingreso</th>
-         <th class="table-info text-dark" style="width:100%">Fecha Registro</th>
+         <th  style="width:15%">Departamento</th>
+         <th  style="width:15%">Encargado</th>
+         <th  style="width:10%">Codigo</th>
+         <th  style="width:100%">Descripción Completa</th>
+         <th  style="width:100%">U/M</th>
+         <th  style="width:100%">Cantidad</th>
+         <th  style="width:100%">Costo Unitario</th>
+         <th  style="width:100%">Fuente de Ingreso</th>
+         <th  style="width:100%">Fecha Registro</th>
          
        </tr>
 
