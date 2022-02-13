@@ -59,6 +59,30 @@ die();
         transform: translateY(5px);
         } 
     </style>
+    <div class="row" style="position: relative;">
+        <p style="color: #fff; font-weight: bold; margin-top: 0.5%; margin-right: 2%;margin-left: 2%;">Mostrar Ingresos por:</p>
+            <form method="POST">
+                <div class="row">
+                    <div class="col-32 col-sm-12" style="position: in;">
+                        <select class="form-control" name="ingresos" id="ingresos" onchange="this.form.submit()">
+                            <option value="">Seleccionar</option>
+                            <option value="bodega">Solicitud a Bodega</option>
+                            <option value="almacen">Solicitud a Almacén</option>
+                            <option value="compra">Solicitud de Compra</option>
+                        </select>
+                    </div>
+                </div>  
+            </form>
+    </div> 
+<?php
+
+if(isset($_POST['ingresos'])){
+
+    $mostrar = $_POST['ingresos'];
+    
+    if($mostrar == "bodega"){
+?>
+    <h3 style="text-align: center; color: #fff; font-weight: bold; text-decoration: underline;">Ingresos de Bodega</h3>
 
        <table class="table">
             <thead>
@@ -72,11 +96,10 @@ die();
                 <th style="width: 175%;">Costo Unitario</th>
                 <th style="width: 135%;">Fuente de Ingreso</th>
                 <th style="width: 145%;">Fecha Registro</th>
-                
               </tr>
 
               <tr>
-   <td id="td" colspan="9">
+                <td id="td" colspan="9">
                 <h4 align="center">No se encontraron resultados 😥</h4></td>
               </tr>
             </thead>
@@ -97,10 +120,6 @@ die();
 
     while ($productos = mysqli_fetch_array($result)){?>
 
-       
-             
-
-
 <style type="text/css">
 
     #td{
@@ -111,15 +130,15 @@ die();
    }
 </style>
     <tr id="tr">
-    <td data-label="Categoría"><?php  echo $productos['departamento']; ?></td>
-      <td data-label="Codigo"><?php  echo $productos['usuario']; ?></td>
-      <td data-label="Codificación de catálogo"><?php  echo $productos['codigo']; ?></td>
-      <td data-label="Descripción Completa"><textarea style="background:transparent; border: none; color: black;" cols="10" rows="1" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
+    <td data-label="Departamento"><?php  echo $productos['departamento']; ?></td>
+      <td data-label="Encargado"><?php  echo $productos['usuario']; ?></td>
+      <td data-label="Código Producto"><?php  echo $productos['codigo']; ?></td>
+      <td data-label="Descripción"><textarea style="background:transparent; border: none; color: black;" cols="10" rows="1" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
       <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
       <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
-      <td data-label="Costo Unitario"><?php  echo $productos['campo']; ?></td>
-      <td data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
+      <td data-label="Fuente de Ingreso"><?php  echo $productos['campo']; ?></td>
+      <td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
       
 
     
@@ -142,6 +161,183 @@ for ($i=1; $i <=$total_pagina; $i++) {
     echo "<li class='page-item '><a class='page-link ' href='reporte_ingresos.php?pagina=".$i."'>".$i."</a></li>";
 }
 echo "<li class='page-item'><a class='page-link' href='reporte_ingresos.php?pagina=$total_pagina'>".'Ultima'."</a><li></ul></nav>";
+?>
+
+<?php 
+    }
+    else if($mostrar == "almacen"){
+?>
+<h3 style="text-align: center; color: #fff; font-weight: bold; text-decoration: underline;">Ingresos de Almacén</h3>
+
+<table class="table">
+     <thead>
+       <tr id="tr">
+         <th style="width: 175%;">Departamento</th>
+         <th style="width: 175%;">Encargado</th>
+         <th style="width: 175%;">Codigo</th>
+         <th style="width: 225%;">Descripción Completa</th>
+         <th style="width: 175%;">U/M</th>
+         <th style="width: 115%;">Cantidad</th>
+         <th style="width: 175%;">Costo Unitario</th>
+         <th style="width: 135%;">Fuente de Ingreso</th>
+         <th style="width: 145%;">Fecha Registro</th>
+         
+       </tr>
+
+       <tr>
+<td id="td" colspan="9">
+         <h4 align="center">No se encontraron resultados 😥</h4></td>
+       </tr>
+     </thead>
+
+     <tbody>
+<?php
+include 'Model/conexion.php';
+$por_pagina = 6;
+if (isset($_GET['pagina'])) {
+$pagina = $_GET['pagina'];
+}else{
+$pagina =1;
+}
+$empieza = ($pagina-1) * $por_pagina;
+
+$sql = "SELECT * FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen LIMIT  $empieza,$por_pagina";
+$result = mysqli_query($conn, $sql);
+
+while ($productos = mysqli_fetch_array($result)){?>
+
+<style type="text/css">
+
+#td{
+ display: none;
+}
+th{
+width: 100%;
+}
+</style>
+<tr id="tr">
+<td data-label="Departamento"><?php  echo $productos['departamento']; ?></td>
+<td data-label="Encargado"><?php  echo $productos['encargado']; ?></td>
+<td data-label="Código Producto"><?php  echo $productos['codigo']; ?></td>
+<td data-label="Descripción"><textarea style="background:transparent; border: none; color: black;" cols="10" rows="1" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['nombre']; ?></textarea></td>
+<td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
+<td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['cantidad_solicitada']; ?></td>
+<td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
+<td data-label="Fuente de Ingreso">Solicitud a Almacén</td>
+<td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
+
+
+
+</tr>
+
+<?php } ?> 
+
+     </tbody>
+ </table>
+<p style="margin-top: 2%;"></p>
+<?php 
+$sql = "SELECT * FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen";
+$result = mysqli_query($conn, $sql);
+$total_registro = mysqli_num_rows($result);
+$total_pagina = ceil($total_registro / $por_pagina);
+
+echo "<nav aria-label='Page navigation example'>
+<ul class='pagination justify-content-end'><li class='page-item '><a class='page-link' href='reporte_ingresos.php?pagina= 1'>".'Primera'."</a><li>";
+for ($i=1; $i <=$total_pagina; $i++) { 
+echo "<li class='page-item '><a class='page-link ' href='reporte_ingresos.php?pagina=".$i."'>".$i."</a></li>";
+}
+echo "<li class='page-item'><a class='page-link' href='reporte_ingresos.php?pagina=$total_pagina'>".'Ultima'."</a><li></ul></nav>";
+?>
+<?php
+    }
+    else if($mostrar == "compra"){
+
+?>
+<h3 style="text-align: center; color: #fff; font-weight: bold; text-decoration: underline;">Ingresos de Compra</h3>
+
+<table class="table">
+     <thead>
+       <tr id="tr">
+         <th style="width: 175%;">Departamento</th>
+         <th style="width: 175%;">Encargado</th>
+         <th style="width: 175%;">Codigo</th>
+         <th style="width: 225%;">Descripción Completa</th>
+         <th style="width: 175%;">U/M</th>
+         <th style="width: 115%;">Cantidad</th>
+         <th style="width: 175%;">Costo Unitario</th>
+         <th style="width: 135%;">Fuente de Ingreso</th>
+         <th style="width: 145%;">Fecha Registro</th>
+         
+       </tr>
+
+       <tr>
+<td id="td" colspan="9">
+         <h4 align="center">No se encontraron resultados 😥</h4></td>
+       </tr>
+     </thead>
+
+     <tbody>
+<?php
+include 'Model/conexion.php';
+$por_pagina = 6;
+if (isset($_GET['pagina'])) {
+$pagina = $_GET['pagina'];
+}else{
+$pagina =1;
+}
+$empieza = ($pagina-1) * $por_pagina;
+
+$sql = "SELECT * FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra LIMIT  $empieza,$por_pagina";
+$result = mysqli_query($conn, $sql);
+
+while ($productos = mysqli_fetch_array($result)){?>
+
+<style type="text/css">
+
+#td{
+ display: none;
+}
+th{
+width: 100%;
+}
+</style>
+<tr id="tr">
+<td data-label="Departamento">Mantenimiento</td>
+<td data-label="Encargado"><?php  echo $productos['usuario']; ?></td>
+<td data-label="Código de Producto"><?php  echo $productos['codigo']; ?></td>
+<td data-label="Descripción Completa"><textarea style="background:transparent; border: none; color: black;" cols="10" rows="1" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
+<td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
+<td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
+<td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
+<td data-label="Fuente de Ingreso">Solicitud de Compra</td>
+<td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
+
+
+
+</tr>
+
+<?php } ?> 
+
+     </tbody>
+ </table>
+<p style="margin-top: 2%;"></p>
+<?php 
+$sql = "SELECT * FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra";
+$result = mysqli_query($conn, $sql);
+$total_registro = mysqli_num_rows($result);
+$total_pagina = ceil($total_registro / $por_pagina);
+
+echo "<nav aria-label='Page navigation example'>
+<ul class='pagination justify-content-end'><li class='page-item '><a class='page-link' href='reporte_ingresos.php?pagina= 1'>".'Primera'."</a><li>";
+for ($i=1; $i <=$total_pagina; $i++) { 
+echo "<li class='page-item '><a class='page-link ' href='reporte_ingresos.php?pagina=".$i."'>".$i."</a></li>";
+}
+echo "<li class='page-item'><a class='page-link' href='reporte_ingresos.php?pagina=$total_pagina'>".'Ultima'."</a><li></ul></nav>";
+?>
+
+<?php
+    }
+}
 ?>
 
 
