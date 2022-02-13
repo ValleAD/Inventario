@@ -43,15 +43,15 @@ die();
 
 <body>
             <h1 class="text-center mg-t" style="margin-top: -0.5%;">Solicitudes de Fondo Circulante</h1><br>
-<section class="mx-5 p-2" style="background-color:white;border-radius: 5px;">
+<section class="mx-5 p-2" style="background-color:white;border-radius: 5px; position: initial;">
 
-        <table class="table table-responsive" id="example">
+<table class="table table-responsive table-striped" id="example" style=" width: 100%;">
           <thead>
               <tr id="tr">
              
-                <th class="table-info text-dark"><strong>No. de Solicitud</strong></th>
-                <th class="table-info text-dark"><strong>Fecha de solicitud</strong></th>
-                <th class="table-info text-dark"><strong>Detalles</strong></th>
+                <th class="table-info text-dark" style=" width: 50%"><strong>No. de Solicitud</strong></th>
+                <th class="table-info text-dark" style=" width: 100%"><strong>Fecha de solicitud</strong></th>
+                <th class="table-info text-dark" style=" width: 50%"><strong>Detalles</strong></th>
                 
             </tr>
             

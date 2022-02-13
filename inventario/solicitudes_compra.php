@@ -61,14 +61,14 @@ die();
             
             <thead>
               <tr id="tr">
-                <th style="width:20%" class="table-info text-dark"><strong>No. Solicitud</strong></th>
+                <th style="width:10%" class="table-info text-dark"><strong>No. Solicitud</strong></th>
                 <th  style="width:10%" class="table-info text-dark"><strong>Dependencia</strong></th>
-                <th  style="width:10%" class="table-info text-dark"><strong>Plazo y No. de Enrtegas</strong></th>
+                <th  style="width:20%" class="table-info text-dark"><strong>Plazo y No. de Enrtegas</strong></th>
                 <th  style="width:10%" class="table-info text-dark"><strong>Unidad Técnica</strong></th>
                 <th  style="width:30%" class="table-info text-dark" align="center"><strong>Descripción Solicitud</strong></th>
                 <th  style="width:20%" class="table-info text-dark"><strong>Fecha de Registro</strong></th>
-                <th  style="width:20%" class="table-info text-dark"><strong>Estado</strong></th>
-                <th  style="width:20%" class="table-info text-dark"><strong>Detalles</strong></th>
+                <th  style="width:10%" class="table-info text-dark"><strong>Estado</strong></th>
+                <th   class="table-info text-dark"><strong>Detalles</strong></th>
            
     </thead>
         <tbody> 
