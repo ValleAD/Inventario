@@ -73,15 +73,15 @@ die();
                 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
                 <thead>
                      <tr id="tr">
-                     <th  style="width: 30%">Código</th>
-                     <th  style="width: 30%">Cod. de Catálogo</th>
-                     <th  style="width: 30%">Descripción Completa</th>
-                     <th  style="width: 30%">U/M</th>
-                     <th  style="width: 30%">Cantidad</th>
-                     <th  style="width: 30%">Costo Unitario</th>
-                     <th  style="width: 30%">Fecha Registro</th>
-                     <th  style="width: 30%">Editar</th>
-                     <th  style="width: 30%">Eliminar</th>
+                     <th  style="width: 20%">Código</th>
+                     <th  style="width: 20%">Cod. de Catálogo</th>
+                     <th  style="width: 100%">Descripción Completa</th>
+                     <th  style="width: 100%">U/M</th>
+                     <th  style="width: 100%">Cantidad</th>
+                     <th  style="width: 100%">Costo Unitario</th>
+                     <th  style="width: 100%">Fecha Registro</th>
+                     <th  style="width: 100%">Editar</th>
+                     <th  style="width: 100%">Eliminar</th>
                    </tr>
                 </thead>
                 <tbody>
