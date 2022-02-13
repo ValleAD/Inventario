@@ -22,23 +22,33 @@ die();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="Plugin/bootstap-icon/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="Plugin/bootstap-icon/fontawesome.all.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
 
+
+
+    <link rel="stylesheet" type="text/css" href="styles/style.css" >
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!--  Datatables  -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>  
+    
+    <!-- searchPanes -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/searchpanes/1.0.1/css/searchPanes.dataTables.min.css">
+    <!-- select -->
+    <link href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
     <title>Egresos</title>
 </head>
 <body>
+           <h1 style="margin: 0% 0% 2% 0%; text-align: center;">Egreso de Productos</h1>
     <section id="act">
-           <h1 style="margin-top:5px; text-align: center;">Egreso de Productos</h1>
 <style>
   #act {
     margin-top: 0.5%;
     margin-right: 2%;
     margin-left: 2%;
+    padding: 1%;
+            border-radius: 5px;
+    background-color: white;
   }
 </style>
 
@@ -60,38 +70,31 @@ die();
         } 
     </style>
 
-       <table class="table">
+<table class="table table-responsive table-striped" id="example" style=" width: 100%">
             <thead>
               <tr id="tr">
-                <th style="width: 175%;">No. Vale</th>
-                <th style="width: 275%;">Departamento Solicitante</th>
-                <th style="width: 175%;">Encargado</th>
-                <th style="width: 175%;">Código</th>
-                <th style="width: 225%;">Descripción Completa</th>
-                <th style="width: 175%;">U/M</th>
-                <th style="width: 175%;">Cantidad</th>
-                <th style="width: 175%;">Costo Unitario</th>
-                <th style="width: 275%;">Solictud de Salida</th>
-                <th style="width: 275%;text-align: center">Fecha</th>
+                <th style="width: 15%;">No. Vale</th>
+                <th style="width: 15%;">Departamento Solicitante</th>
+                <th style="width: 15%;">Encargado</th>
+                <th style="width: 15%;">Código</th>
+                <th style="width: 100%;">Descripción Completa</th>
+                <th style="width: 15%;">U/M</th>
+                <th style="width: 15%;">Cantidad</th>
+                <th style="width: 100%;">Costo Unitario</th>
+                <th style="width: 100%;">Solictud de Salida</th>
+                <th style="width: 100%;text-align: center">Fecha</th>
               </tr>
 
-              <tr> <td id="td" colspan="11">
-                <h4 align="center">No se encontraron resultados 😥</h4></td>
-              </tr>
+              
             </thead>
 
             <tbody>
  <?php
     include 'Model/conexion.php';
      $por_pagina = 5;
- if (isset($_GET['pagina'])) {
-    $pagina = $_GET['pagina'];
- }else{
-    $pagina =1;
- }
- $empieza = ($pagina-1) * $por_pagina;
+ 
 
-    $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale LIMIT  $empieza,$por_pagina";
+    $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale ";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){?>
@@ -122,20 +125,7 @@ die();
  
             </tbody>
         </table>
-         <p style="margin-top: 2%;"></p>
-<?php 
- $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale";
-    $result = mysqli_query($conn, $sql);
-$total_registro = mysqli_num_rows($result);
-$total_pagina = ceil($total_registro / $por_pagina);
 
-echo "<nav aria-label='Page navigation example'>
-  <ul class='pagination justify-content-end'><li class='page-item '><a class='page-link' href='reporte_egresos.php?pagina= 1'>".'Primera'."</a><li>";
-for ($i=1; $i <=$total_pagina; $i++) { 
-    echo "<li class='page-item '><a class='page-link ' href='reporte_egresos.php?pagina=".$i."'>".$i."</a></li>";
-}
-echo "<li class='page-item'><a class='page-link' href='reporte_egresos.php?pagina=$total_pagina'>".'Ultima'."</a><li></ul></nav>";
-?>
 
 </section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -145,5 +135,34 @@ echo "<li class='page-item'><a class='page-link' href='reporte_egresos.php?pagin
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+            
+    <!--   Datatables-->
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>  
+
+    <!-- searchPanes   -->
+    <script src="https://cdn.datatables.net/searchpanes/1.0.1/js/dataTables.searchPanes.min.js"></script>
+    <!-- select -->
+    <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>  
+    
+    <script>
+    $(document).ready(function(){
+        $('#example').DataTable({
+             language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "sProcessing":"Procesando...", 
+            }
+        });
+
+    });
+    </script>
 </body>
 </html>

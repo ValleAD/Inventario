@@ -24,7 +24,7 @@
 }
 
 .table tr {
-    background-color: #f8f8f8;
+    background-color: #000;
     border: 1px solid #ddd;
     color: black;
 }
@@ -34,9 +34,6 @@
     padding: 8px;
 }
 
-.table thead th{ 
-    background-color:blueviolet;
-}
 
 .table tbody tr:hover {
     background-color: rgb(180, 176, 176);

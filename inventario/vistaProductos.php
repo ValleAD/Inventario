@@ -21,6 +21,7 @@ die();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VistaProductos</title>
    
+      <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -228,20 +229,20 @@ $result = mysqli_query($conn, $sql);
         }
      </style>
          <tr id="tr">
-           <td class="table-info text-dark"data-label="Codigo" style="text-align: center;"><?php  echo $productos['codProductos']; ?></td>
-           <td class="table-info text-dark" data-label="Codificación de catálogo" style="text-align: center;"><?php  echo $productos['catalogo']; ?></td>
-           <td class="table-info text-dark" data-label="Descripción Completa"><textarea style="background:transparent; border: none; color: black;" cols="10" rows="1" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
-           <td class="table-info text-dark" data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-           <td class="table-info text-dark" data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
-           <td class="table-info text-dark" data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
-           <td class="table-info text-dark" data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
-           <td class="table-info text-dark" data-label="Editar">
+           <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['codProductos']; ?></td>
+           <td  data-label="Codificación de catálogo" style="text-align: center;"><?php  echo $productos['catalogo']; ?></td>
+           <td  data-label="Descripción Completa"><textarea style="background:transparent; border: none; color: black;" cols="10" rows="1" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
+           <td  data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
+           <td  data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
+           <td  data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
+           <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
+           <td  data-label="Editar">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="vistaProductos.php">             
                 <input type='hidden' name='id' value="<?php  echo $productos['codProductos']; ?>">             
                 <button name='editar' class='btn btn-info btn-sm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
             </form>  
             </td>
-            <td class="table-info text-dark" data-label="Eliminar">
+            <td  data-label="Eliminar">
                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm " class="text-primary" href="Controller/Delete_producto.php?id=<?php  echo $productos['cod']; ?>" onclick="return confirmaion()">Eliminar</a>
             </td>
          </tr>
