@@ -58,7 +58,7 @@ die();
                 <th   style=" width: 20%">No. de Solicitud</th>
                 <th  style=" width: 30%" >Departamento Solicitante</th>
                 <th   style=" width: 20%">Encargado</th>
-                <th   style=" width: 20%">Fecha de solicitud</th>
+                <th   style=" width: 20%;  text-transform: capitalize">Fecha de solicitud</th>
                 <th  style=" width: 60%">Estado</th>
                 <th  style=" width: 10%" >Detalles</th>
                 

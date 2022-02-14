@@ -55,7 +55,7 @@ die();
               <tr id="tr">
              
                 <th  style=" width: 50%"><strong>No. de Solicitud</strong></th>
-                <th  style=" width: 100%"><strong>Fecha de solicitud</strong></th>
+                <th  style=" width: 100%;  text-transform: capitalize"><strong>Fecha de solicitud</strong></th>
                 <th  style=" width: 50%"><strong>Detalles</strong></th>
                 
             </tr>

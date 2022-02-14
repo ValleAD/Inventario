@@ -58,9 +58,9 @@ die();
         <table class="table table-responsive" id="example" style="width:100%">
             <thead>
               <tr id="tr">
-                <th style="width:30%"><strong>Código de Vale</strong></th>
+                <th style="width:30%" ><strong>Código de Vale</strong></th>
                 <th style="width:50%"><strong>Departamento Solicitante</strong></th>
-                <th style="width:100%"><strong>Fecha de solicitud</strong></th>
+                <th style="width:100%; text-transform: capitalize" ><strong>Fecha de solicitud</strong></th>
                 <th style="width:100%"><strong>Detalles</strong></th> 
             </tr>
             

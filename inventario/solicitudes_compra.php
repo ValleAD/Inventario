@@ -66,7 +66,7 @@ h1 {
               <tr id="tr">
                 <th style="width:10%">No. Solicitud</th>
                 <th  style="width:10%">Dependencia</th>
-                <th  style="width:20%">Plazo y No. de Enrtegas</th>
+                <th  style="width:20%">Plazo y No. de Entregas</th>
                 <th  style="width:10%">Unidad Técnica</th>
                 <th  style="width:20%" align="center">Descripción Solicitud</th>
                 <th  style="width:20%">Fecha de Registro</th>
