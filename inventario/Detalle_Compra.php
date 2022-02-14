@@ -4,7 +4,7 @@ session_start();
     # code...
     echo '
     <script>
-        window.location ="../log/signin.php";
+        window.location ="log/signin.php";
         session_destroy();  
                 </script>
 die();
@@ -19,10 +19,14 @@ die();
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles/estilo.css" > 
-    <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
-    <link rel="stylesheet" href="Plugin/assets/css/bootstrap.css" />
-    <link rel="stylesheet" href="Plugin/assets/css/bootstrap-theme.min.css">
+      <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!--  Datatables  -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>  
+    <!-- select -->
+    <link href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
@@ -31,138 +35,7 @@ die();
 
 
 <body>
-<?php
-if(isset($_POST['submit'])){
-$total = 0;
-$final = 0;
-
-   include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_compra ORDER BY fecha_registro DESC LIMIT 1";
-    $result = mysqli_query($conn, $sql);
- while ($datos = mysqli_fetch_array($result)){
-
-  echo'   
-  <section id="section">
-  <form method="POST"  action="Controller/añadir_compra_copy.php" target="_blank">
-           
-        
-          <div class="row">
-        
-            <div class="col-6 col-sm-3" style="position: initial">
-        
-                <label style="font-weight: bold;">Solicitud No.</label>
-                <input readonly class="form-control"  type="text" value="' .$datos['nSolicitud']. '" name="sol_compra">
-  
-            </div>
-  
-            <div class="col-6 col-sm-3" style="position: initial">
-              <label style="font-weight: bold;">Dependencia Solicitante</label>
-              <input readonly class="form-control"  type="text" value="' .$datos['dependencia']. '" name="dependencia">
-            </div>
-  
-          <div class="col-6 col-sm-3" style="position: initial">
-              <label style="font-weight: bold;">Plazo y No. de Entregas</label>
-              <input readonly class="form-control"  type="text" value="' .$datos['plazo']. '" name="plazo">
-          </div>
-  
-          <div class="col-6 col-sm-3" style="position: initial">
-              <label style="font-weight: bold;">Unidad Técnica</label>
-              <input readonly class="form-control"  type="text" value="' .$datos['unidad_tecnica']. '" name="unidad">
-          </div>
-  
-          <div class="col-6 col-sm-3" style="position: initial">
-              <label style="font-weight: bold;">Suministro Solicitado</label>
-              <input readonly class="form-control"  type="text" value="' .$datos['descripcion_solicitud']. '" name="suministro">
-          </div>
-
-          <div class="col-6 col-sm-3" style="position: initial">
-              <label style="font-weight: bold;">Encargado</label>
-              <input readonly class="form-control"  type="text" value="' .$datos['usuario']. '" name="usuario">
-          </div>
-  
-            <div class="col-6 col-sm-3" style="position: initial">
-              <label style="font-weight: bold;">Fecha</label>
-                <input readonly class="form-control"  type="text" value="'.date("d-m-Y",strtotime($datos['fecha_registro'])). '" name="fech">
-            </div>
-            <div class="col-6 col-sm-3" style="position: initial">
-              <label style="font-weight: bold;">Estado</label>
-              <input readonly class="form-control"  type="hidden" value="' .$datos['nSolicitud']. '" name="id"> 
-                <select  class="form-control"  type="text"  name="estado" required>
-                <option disabled selected>Selecione</option>
-                <option>Aprobado</option>
-                <option>Rechazado</option>
-                </select>
-            </div>
-          </div>
-        
-          <br>
-            
-          <table class="table" style="margin-bottom:3%">
-              
-              <thead>
-                <tr id="tr">
-                  <th>Categoría</th>
-                  <th>Código</th>
-                  <th>Cod. Catálogo</th>
-                  <th style="width:20%;">Descripción Completa</th>
-                  <th style="width:5%;">U/M</th>
-                  <th>Cantidad Solicitada</th>
-                  <th>Cantidad Despachada</th>
-                  <th>Costo Unitario (estimado)Actual</th>
-                  <th>Nuevo Costo Unitario (estimado)</th>
-                  <th>Monto Total (estimado)
-                  
-                </tr>
-                  <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
-             </thead>
-              <tbody>';
-  
-  $cod_compra = $datos['nSolicitud'];
-  }
-   $sql = "SELECT * FROM detalle_compra WHERE solicitud_compra = $cod_compra";
-      $result = mysqli_query($conn, $sql);
-  while ($productos = mysqli_fetch_array($result)){
-        
-        $total = $productos['stock'] * $productos['precio'];
-        $final += $total;
-    echo' 
-      <style type="text/css">
-       #td{
-          display: none;
-      }
-      
-     
-  </style> 
-        <tr>
-        <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="cat[]" readonly style="border: none">'.$productos['categoria']. '</textarea></td>
-          <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="' .$productos['codigo']. '"></td>
-          <td  data-label="Cod. Catálogo"><input style="background:transparent; border: none; width: 100%;"  name="catalogo[]" readonly value="' .$productos['catalogo']. '"></td>
-          <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly style="border: none">'.$productos['descripcion']. '</textarea></td>
-          <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
-          <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="'.$productos['stock']. '"></td>
-          <td  data-label="Cantidad"><input style="background:transparent; border: 1 solid #000;  width: 100%;" class="form-control" type="number" required  name="cant_aprobada[]" required value=""></td>
-          <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  type="text step="0.01"  required readonly  value="$'.$productos['precio']. '"></td>
-
-          <td  data-label="Costo unitario"><input class="form-control" type="number" style="background:transparent;border: 1 solid #000; width: 100%;" required step="0.01" name="cost[]"></td>
-          <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$'.$total. '"><input style="background:transparent; border: none; width: 100%; color: black;"  type="hidden" class="form-control" readonly name="form_compra[]" value ="Solicitud Compra"></td>
-         
-        </tr>';
-  
-  }
-  
-      echo'
-      <tr>
-        <th colspan="9">Subtotal</th>
-        <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$'.$final.'" ></td></tr>
-      </tr>
-           </tbody>
-          </table>
-    
-      <input id="pdf" type="submit" class="btn btn-success btn-lg" value="Guardar Estado" name="detalle_compra">
-       
-  </form>
-  </section>';
-}
+  <?php 
     if(isset($_POST['detalle'])){
 
 $total = 0;
@@ -241,20 +114,20 @@ $cod_compra = $_POST['id'];
         </div>
       </form>
          <form method="POST" action="Exportar_PDF/pdf_compra.php" target="_blank"> 
-        <table class="table" style="margin-bottom:3%">
+       
+          <table class="table table-responsive table-striped" id="example" style=" width: 100%">
             
             <thead>
               <tr id="tr">
-                <th>Categoría</th>
-                <th>Código</th>
-                <th>Cod. Catálogo</th>
+                <th style=" width:10%">Categoría</th>
+                <th style=" width:7%">Código</th>
+                <th style=" width:7%">Cod. Catálogo</th>
                 <th style="width: 35%;">Descripción Completa</th>
-                <th>U/M</th>
-                <th>Cantidad</th>
-                <th>Costo Unitario (estimado)</th>
-                <th>Monto Total (estimado)</th>
-              </tr>
-                <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
+                <th style=" width:7%">U/M</th>
+                <th style=" width:7%">Cantidad</th>
+                <th style=" width:7%">Costo Unitario (estimado)</th>
+                <th style=" width:7%">Monto Total (estimado)</th>
+             
            </thead>
             <tbody>
 <?php 
@@ -266,7 +139,7 @@ while ($productos = mysqli_fetch_array($result)){
       
       $total = $productos['stock'] * $productos['precio'];
       $final += $total;
-  echo' 
+  ?>
     <style type="text/css">
      #td{
         display: none;
@@ -275,30 +148,26 @@ while ($productos = mysqli_fetch_array($result)){
    
 </style> 
       <tr>
-      <td  data-label="Categoría"><input style="background:transparent; border: none; width: 100%;"  name="categoria[]" readonly value="' .$productos['categoria']. '"></td>
-        <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="' .$productos['codigo']. '"></td>
-        <td  data-label="Cod. Catálogo"><input style="background:transparent; border: none; width: 100%;"  name="catalogo[]" readonly value="' .$productos['catalogo']. '"></td>
-        <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly style="border: none">'.$productos['descripcion']. '</textarea></td>
-        <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
-        <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="'.$productos['stock']. '"></td>
-        <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$'.$productos['precio']. '"></td>
-        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$'.$total. '"></td>
-        
-      </tr>';
+          <td  data-label="Categoría"><input style="background:transparent; border: none; width: 100%;"  name="categoria[]" readonly value="<?php echo $productos['categoria']?>"></td>
+        <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="<?php echo $productos['codigo']?>"></td>
+        <td  data-label="Cod. Catálogo"><input style="background:transparent; border: none; width: 100%;"  name="catalogo[]" readonly value="<?php echo $productos['catalogo']?>"></td>
+        <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly style="border: none"><?php echo $productos['descripcion']?></textarea></td>
+        <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="<?php echo $productos['unidad_medida']?>"></td>
+        <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="<?php echo $productos['stock']?>"></td>
+        <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$<?php echo $productos['precio']?>"></td>
+        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$<?php echo $total?>"></td>
+      
+        <?php } ?>
+         <tfoot>
+            <th colspan="7">SubTotal</th>
+            <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$<?php echo $final?>" ></td></tr>
+        </tfoot>
 
-}
-
-    echo'
-    <tr>
-      <th colspan="7">Subtotal</th>
-      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$'.$final.'" ></td></tr>
-    </tr>
-         </tbody>
-        </table>
   
     <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="">
       <style>
         #pdf{
+      margin-top:2%;
         margin-left: 38%; 
         background: rgb(175, 0, 0); 
         color: #fff; margin-bottom: 2%; 
@@ -319,9 +188,33 @@ while ($productos = mysqli_fetch_array($result)){
             border-radius:10px 10px 0px 0px
         }
       </style>
-</form>';
-} 
+</form>
+<?php } 
 
-?>          
-</body>
+?>   
+ <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+            
+    <!--   Datatables-->
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>  
+
+
+    <script>
+    $(document).ready(function(){
+        $('#example').DataTable({
+             language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "sProcessing":"Procesando...", 
+            }
+        });
+
+    });
+    </script>
+  </body>
 </html>

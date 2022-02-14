@@ -5,7 +5,7 @@ session_start();
     # code...
     echo '
     <script>
-        window.location ="../log/signin.php";
+        window.location ="log/signin.php";
         session_destroy();  
                 </script>
 die();
@@ -27,9 +27,6 @@ die();
 
     <!--  Datatables  -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>  
-    
-    <!-- searchPanes -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/searchpanes/1.0.1/css/searchPanes.dataTables.min.css">
     <!-- select -->
     <link href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
     <style>
@@ -262,11 +259,7 @@ $result = mysqli_query($conn, $sql);
     <!--   Datatables-->
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>  
 
-    <!-- searchPanes   -->
-    <script src="https://cdn.datatables.net/searchpanes/1.0.1/js/dataTables.searchPanes.min.js"></script>
-    <!-- select -->
-    <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>  
-    
+
     <script>
     $(document).ready(function(){
         $('#example').DataTable({

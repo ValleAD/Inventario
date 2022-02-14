@@ -22,7 +22,6 @@ $result = mysqli_query($conn, $sql);
       $cost             = $_POST['cost'][$i];
       $cant_aprobada    = $_POST['cant_aprobada'][$i];
       $cant_aprobada    = $_POST['cant_aprobada'][$i];
-       $campo            = $_POST['form_compra'][$i];
        $insert = "INSERT INTO tb_productos (codProductos, categoria, catalogo, descripcion, unidad_medida, stock, precio) VALUES ('$codigo_producto', '$categoria', '$catalogo','$Descripción', '$u_m', '$cant_aprobada', '$cost' )";
       $query = mysqli_query($conn, $insert);
       if ($query)  {
