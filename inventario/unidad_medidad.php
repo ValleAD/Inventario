@@ -124,9 +124,9 @@ $result = mysqli_query($conn, $sql);
 </div><?php } ?>
         <thead>
              <tr id="tr">
-                <th class="table-info text-dark"><strong>Unidad de Medida</strong></th>
-                <th class="table-info text-dark text-center"><strong>Habilitado</strong></th><?php if($tipo_usuario == 1) { ?>
-                <th class="table-info text-dark text-center"><strong> Cambiar Habilitado</strong></th>
+                <th >Unidad de Medida</th>
+                <th>Habilitado</th><?php if($tipo_usuario == 1) { ?>
+                <th> Cambiar Habilitado</th>
                 <th style="text-align:center;">Eliminar</th><?php } ?>
                 
             </tr>
@@ -158,7 +158,7 @@ $result = mysqli_query($conn, $sql);
         <tr>
             <td data-label="Nombres" class="delete"><input readonly style="width:100%;border:none;background: transparent;" type="text" name="cod" value="<?php  echo $solicitudes['unidad_medida']; ?>"></td>
 
-            <td align="center">
+            <td align="left">
             <input  <?php
                 if($solicitudes['Habilitado']  =='Si') {
                     echo ' style="background-color:blueviolet ;width:14%; border-radius:100px;text-align:center; color: white;"';

@@ -54,9 +54,9 @@ die();
           <thead>
               <tr id="tr">
              
-                <th class="table-info text-dark" style=" width: 50%"><strong>No. de Solicitud</strong></th>
-                <th class="table-info text-dark" style=" width: 100%"><strong>Fecha de solicitud</strong></th>
-                <th class="table-info text-dark" style=" width: 50%"><strong>Detalles</strong></th>
+                <th  style=" width: 50%"><strong>No. de Solicitud</strong></th>
+                <th  style=" width: 100%"><strong>Fecha de solicitud</strong></th>
+                <th  style=" width: 50%"><strong>Detalles</strong></th>
                 
             </tr>
             

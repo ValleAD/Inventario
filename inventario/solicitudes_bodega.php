@@ -60,10 +60,10 @@ die();
             <thead>
               <tr id="tr">
              
-                <th class="table-info text-dark" style="width: 30%"><strong>O. de T. No.</strong></th>
-                <th class="table-info text-dark" style="width: 30%"><strong>Departamento Solicitante</strong></th>
-                <th class="table-info text-dark" style="width: 50%"><strong>Fecha de solicitud</strong></th>
-                <th class="table-info text-dark"  style="width: 50%"><strong>Detalles</strong></th>
+                <th style="width: 30%"><strong>O. de T. No.</strong></th>
+                <th style="width: 30%"><strong>Departamento Solicitante</strong></th>
+                <th style="width: 50%"><strong>Fecha de solicitud</strong></th>
+                <th  style="width: 50%"><strong>Detalles</strong></th>
                 
             </tr>
             

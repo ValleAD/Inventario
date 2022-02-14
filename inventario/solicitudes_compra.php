@@ -17,17 +17,13 @@ die();
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="styles/style.css" > 
-     <link rel="stylesheet" type="text/css" href="styles/estilos_menu.css" > 
+
       <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
+     <link rel="stylesheet" type="text/css" href="styles/estilos_menu.css" > 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
-         <link rel="stylesheet" href="Plugin/bootstap-icon/bootstrap-icons.min.css">
-      <link rel="stylesheet" href="Plugin/bootstap-icon/fontawesome.all.min.css">
+
       <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -68,14 +64,14 @@ h1 {
             
             <thead>
               <tr id="tr">
-                <th style="width:10%" class="table-info text-dark"><strong>No. Solicitud</strong></th>
-                <th  style="width:10%" class="table-info text-dark"><strong>Dependencia</strong></th>
-                <th  style="width:20%" class="table-info text-dark"><strong>Plazo y No. de Enrtegas</strong></th>
-                <th  style="width:10%" class="table-info text-dark"><strong>Unidad Técnica</strong></th>
-                <th  style="width:30%" class="table-info text-dark" align="center"><strong>Descripción Solicitud</strong></th>
-                <th  style="width:20%" class="table-info text-dark"><strong>Fecha de Registro</strong></th>
-                <th  style="width:10%" class="table-info text-dark"><strong>Estado</strong></th>
-                <th   class="table-info text-dark"><strong>Detalles</strong></th>
+                <th style="width:10%">No. Solicitud</th>
+                <th  style="width:10%">Dependencia</th>
+                <th  style="width:20%">Plazo y No. de Enrtegas</th>
+                <th  style="width:10%">Unidad Técnica</th>
+                <th  style="width:20%" align="center">Descripción Solicitud</th>
+                <th  style="width:20%">Fecha de Registro</th>
+                <th  style="width:30%">Estado</th>
+                <th  style="width:10%">Detalles</th>
            
     </thead>
         <tbody> 
@@ -112,7 +108,7 @@ h1 {
             <td  data-label="Detalles">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Compra.php">             
                 <input type='hidden' name='id' value="<?php  echo $solicitudes['nSolicitud']; ?>">             
-                <button name='detalle' class="btn btn-primary  btn-lg">Ver Detalles</button>             
+                <button name='detalle' class="btn btn-primary  btn-ms">Ver Detalles</button>             
             </form> 
             </td>
         </tr>

@@ -58,10 +58,10 @@ die();
         <table class="table table-responsive" id="example" style="width:100%">
             <thead>
               <tr id="tr">
-                <th style="width:30%" class="table-info text-dark"><strong>Código de Vale</strong></th>
-                <th style="width:50%" class="table-info text-dark"><strong>Departamento Solicitante</strong></th>
-                <th style="width:100%" class="table-info text-dark"><strong>Fecha de solicitud</strong></th>
-                <th style="width:100%" class="table-info text-dark"><strong>Detalles</strong></th> 
+                <th style="width:30%"><strong>Código de Vale</strong></th>
+                <th style="width:50%"><strong>Departamento Solicitante</strong></th>
+                <th style="width:100%"><strong>Fecha de solicitud</strong></th>
+                <th style="width:100%"><strong>Detalles</strong></th> 
             </tr>
             
      </thead>

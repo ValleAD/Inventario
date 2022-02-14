@@ -55,12 +55,12 @@ die();
           <thead>
               <tr id="tr">
              
-                <th class="table-info text-dark"  style=" width: 20%"><strong>No. de Solicitud</strong></th>
-                <th class="table-info text-dark" style=" width: 30%" ><strong>Departamento Solicitante</strong></th>
-                <th class="table-info text-dark"  style=" width: 20%"><strong>Encargado</strong></th>
-                <th class="table-info text-dark"  style=" width: 20%"><strong>Fecha de solicitud</strong></th>
-                <th class="table-info text-dark text-center"  style=" width: 60%"><strong>Estado</strong></th>
-                <th class="table-info text-dark" style=" width: 10%" ><strong>Detalles</strong></th>
+                <th   style=" width: 20%">No. de Solicitud</th>
+                <th  style=" width: 30%" >Departamento Solicitante</th>
+                <th   style=" width: 20%">Encargado</th>
+                <th   style=" width: 20%">Fecha de solicitud</th>
+                <th  style=" width: 60%">Estado</th>
+                <th  style=" width: 10%" >Detalles</th>
                 
             </tr>
             </thead>
@@ -99,7 +99,7 @@ die();
             <td  data-label="Detalles">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Almacen.php">             
                 <input type='hidden' name='id' value="<?php  echo $datos_sol['codAlmacen']; ?>">             
-                <button name='detalle' class="btn btn-primary swal2-styled.swal2-confirm">Ver Detalles</button>             
+                <button name='detalle' class="btn btn-primary btn-ms">Ver Detalles</button>             
             </form> 
             </td>
         </tr>

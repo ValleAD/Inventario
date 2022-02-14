@@ -123,10 +123,10 @@ $result = mysqli_query($conn, $sql);
 </div><?php } ?>
         <thead>
              <tr id="tr">
-                <th class="table-info text-dark"><strong>Dependencia</strong></th>
-                <th class="table-info text-dark text-center"><strong>Habilitado</strong></th><?php if($tipo_usuario == 1) { ?>
-                <th class="table-info text-dark text-center"><strong> Cambiar Habilitado</strong></th>
-                <th style="text-align:center;">Eliminar</th><?php } ?>
+                <th >Dependencia</th>
+                <th >Habilitado</th><?php if($tipo_usuario == 1) { ?>
+                <th > Cambiar Habilitado</th>
+                <th >Eliminar</th><?php } ?>
                 
             </tr>
             <tr>

@@ -71,18 +71,18 @@ die();
         <div class="row">
             <div class="col">
             
-<table class="table table-responsive table-striped" id="example" style=" width: 100%">
+<table class="table table-responsive table-striped" id="example" style=" width: 100%;background: white;">
                 <thead>
-                     <tr id="tr">
-                     <th bgcolor="blue" style="width: 30% ;background: indigo-700;" >Código</th>
-                     <th bgcolor="blue" style="width: 30%">Cod. de Catálogo</th>
-                     <th bgcolor="blue" style="width: 30%">Descripción Completa</th>
-                     <th bgcolor="blue" style="width: 30%">U/M</th>
-                     <th bgcolor="blue" style="width: 30%">Cantidad</th>
-                     <th bgcolor="blue" style="width: 30%">Costo Unitario</th>
-                     <th bgcolor="blue" style="width: 30%">Fecha Registro</th>
-                     <th bgcolor="blue" style="width: 30%">Editar</th>
-                     <th bgcolor="blue" style="width: 30%">Eliminar</th>
+                     <tr >
+                     <th bgcolor="blue" style="width: 10% ;background: indigo-700;" >Código</th>
+                     <th bgcolor="blue" style="width: 10%">Cod. de Catálogo</th>
+                     <th bgcolor="blue" style="width: 40%">Descripción Completa</th>
+                     <th bgcolor="blue" style="width: 10%">U/M</th>
+                     <th bgcolor="blue" style="width: 10%">Cantidad</th>
+                     <th bgcolor="blue" style="width: 10%">Costo Unitario</th>
+                     <th bgcolor="blue" style="width: 10%">Fecha Registro</th>
+                     <th bgcolor="blue" style="width: 10%">Editar</th>
+                     <th bgcolor="blue" style="width: 10%">Eliminar</th>
                    </tr>
                 </thead>
                 <tbody>

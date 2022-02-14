@@ -123,9 +123,9 @@ $result = mysqli_query($conn, $sql);
 </div><?php } ?>
         <thead>
              <tr id="tr">
-                <th class="table-info text-dark"><strong>Departamentos</strong></th>
-                <th class="table-info text-dark text-center"><strong>Habilitado</strong></th><?php if($tipo_usuario == 1) { ?>
-                <th class="table-info text-dark text-center"><strong> Cambiar Habilitado</strong></th>
+                <th >Departamentos</th>
+                <th class=" text-center">Habilitado</th><?php if($tipo_usuario == 1) { ?>
+                <th class=" text-center"> Cambiar Habilitado</th>
                 <th style="text-align:center;">Eliminar</th><?php } ?>
                 
             </tr>
