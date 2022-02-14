@@ -85,7 +85,7 @@ $result = mysqli_query($conn, $sql);
 } 
 ?>
     <section style="margin:2%;background: transparent; ">
-        <h2 class="text-center " >Empleados Del Sistema</h2>
+        <font color="White"><h2 class="text-center " >Empleados Del Sistema</h2></font>
 
         <table class="table">
 <?php if($tipo_usuario == 1) { ?>

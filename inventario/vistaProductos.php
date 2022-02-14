@@ -160,7 +160,7 @@ $result = mysqli_query($conn, $sql);
         } 
     </style>
 </table>
-<h2 class="text-center" >Inventario de Productos</h2>
+<font color="white"><h2 class="text-center" >Inventario de Productos</h2></font>
 <br>
     <div class="mx-5 p-2 r-5" style="background-color: white; border-radius: 5px;">
         <div class="row">

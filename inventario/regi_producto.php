@@ -44,13 +44,13 @@ form{
 </style>
 
 <form style="width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%; padding: 1%" action="Controller/añadir.php" method="POST" style="height: 30%; margin-top: -15">
-<font color=marballe><h3 style="text-align: center; font-weight: bold">Registro de Productos</h3></font>
+<font color=#023859><h3 style="text-align: center; font-weight: bold">Registro de Productos</h3></font>
 </center>
 <p style="margin-top: 5%;" ></p>
    <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
 
-<div id="lo-que-vamos-a-copiar"  style="background:#FAE2E2;margin-left: 1%;margin-right: 1%;margin-top: 1%;  border-radius:5px;">
-    <div class="col-xs-4 "  style="background: #FAE2E2;margin-left: 1;margin-right: 1%;margin-top: 1%;  border-radius:5px;" >
+<div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-left: 1%;margin-right: 1%;margin-top: 1%;  border-radius:5px;">
+    <div class="col-xs-4 "  style="background: #bfe7ed;margin-left: 1;margin-right: 1%;margin-top: 1%;  border-radius:5px;" >
         <div class="well well-sm" style="position: all; margin: 5%">
 
             <div class="form-group" style="position: all; margin: 2%">
@@ -118,10 +118,18 @@ form{
         </div>
     </div>            
 </div>
- 
+<style type="text/css">
+  .boton_2{
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    background-color: #28a745;
+    border-radius: 6px;
+  }
+</style>
 <div class="col-xs-4" style="position: initial">
-    <div class="well" style="margin:5%">
-      <button id="btn-agregar" class="btn btn-block btn-default bg-success" type="button" style="color: white;">Agregar Producto</button>                
+    <div>
+      <a style="cursor: default;color: white; " id="btn-agregar" class="boton_2" type="button" >Agregar Producto</a>                
     </div>
 </div>
     </div>
