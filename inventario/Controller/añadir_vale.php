@@ -2,7 +2,7 @@
 
 include ('../Model/conexion.php');
      
-    $departamento = $_POST['departamento'];
+    $departamento = $_POST['depto'];
     $odt = $_POST['numero_vale'];
     $usuario = $_POST['usuario'];
 
