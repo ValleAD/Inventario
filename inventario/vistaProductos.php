@@ -160,15 +160,7 @@ $result = mysqli_query($conn, $sql);
         } 
     </style>
 </table>
-</div>
-    <div class="container-fluid" >
-        <div class="row">
-            <div  class="col-6 col-sm-4" style="position: initial;">
-                <a href="buscar.php" class="btn btn-primary">Buscar Productos</a>
-            </div>
-    
-        </div>
-    </div>
+<h2 class="text-center" >Inventario de Productos</h2>
 <br>
     <div class="mx-5 p-2 r-5" style="background-color: white; border-radius: 5px;">
         <div class="row">
