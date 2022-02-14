@@ -123,7 +123,7 @@ form{
     padding: 10px;
     font-weight: 600;
     font-size: 20px;
-    background-color: #1883ba;
+    background-color: #28a745;
     border-radius: 6px;
   }
 </style>
