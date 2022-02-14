@@ -59,7 +59,7 @@ h1 {
   }
     </style><center><h1 style="margin-top:5px">Solicitudes de Compra</h1></center>
             <br>
-     <div class="mx-5 p-2" id="act" style="background-color: white; border-radius: 5px;">
+     <div class="mx-5 p-2" id="act" style="background: white; border-radius: 5px;">
         <table class="table table-responsive" id="example" style="width:100%">
             
             <thead>
@@ -118,7 +118,6 @@ h1 {
         </table>
 
 
-</section>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     </div>

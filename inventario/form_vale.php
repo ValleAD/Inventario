@@ -145,20 +145,37 @@ if(isset($_POST['codigo'])){
             <div class="row">
               <div class="col-6.5 col-sm-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>   
-                <input id="inp1" class="form-control" type="text" name="departamento" required>
-            </div>
+                <select  class="form-control" name="depto" id="depto" required>
+                        <option selected disabled value="">Selecione</option>
+                      ';?>
+                      <?php 
+                        $sql = "SELECT * FROM selects_departamento";
+                        $result = mysqli_query($conn, $sql);
+
+                        while ($productos = mysqli_fetch_array($result)){ 
+
+                          echo'  <option>'.$productos['departamento'].'</option>
+                      ';   
+                     }
+
+
+                         ?>
+                      </select>
+                  </div>
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Vale N°</b></label>   
                 <input id="inp1"class="form-control" type="number" name="numero_vale" required>
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Nombre de la persona</label>
-                <select  class="form-control" name="usuario" id="usuario" required style="cursor: pointer">
-                <option selected disabled value="">Seleccionar</option>
-                <option>Juan Martinez</option>
-                <option>Miguel Roscencio</option>
-                <option>Francisco Guevarra </option>
-                <option>Rocio Amilcar</option> 
+                <?php     $cliente =$_SESSION['signin'];
+    $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
+    while ($consulta =mysqli_fetch_array($data)) {
+ ?>
+    <font color="black"><label>Encargado</label> </font>
+      <input style="cursor: not-allowed; color: black;"  class="form-control" type="text" name="usuario" id="como3" required readonly value="<?php  echo $consulta['firstname']?> <?php  echo $consulta['lastname']?>">
+      <br>
+      <?php }?> 
                
             </select>
                 </label>   
@@ -177,14 +194,14 @@ if(isset($_POST['codigo'])){
                 <th style="width: 15%;">Costo unitario</th>
             </tr>
               <tr>
-              <center> <td id="td" colspan="7"  style="background: red;"><h4 align="center";>No se encontraron resultados 😥</h4></td></center> 
+              <center> <td id="td" colspan="6"  style="background: red;"><h4 align="center";>No se encontraron resultados 😥</h4></td></center> 
             </tr>
         </thead>
-        <tbody>';
+        <tbody>
 
 
            
-
+<?php 
 
     for($i = 0; $i < count($_POST['codigo']); $i++){
 
