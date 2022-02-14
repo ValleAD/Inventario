@@ -39,7 +39,7 @@ die();
     <title>Egresos</title>
 </head>
 <body>
-           <h1 style="margin: 0% 0% 2% 0%; text-align: center;">Egreso de Productos</h1>
+           <font color="white"><h1 style="margin: 0% 0% 2% 0%; text-align: center;">Egreso de Productos</h1></font>
     <section id="act">
 <style>
   #act {

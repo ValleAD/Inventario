@@ -47,7 +47,7 @@ die();
 <title>Ingresos</title>
 </head>
 <body style="max-width: 100%;">
-           <h1 style="margin:5px; text-align: center;">Ingreso de Productos</h1>
+           <font color="white"><h1 style="margin:5px; text-align: center;">Ingreso de Productos</h1></font>
 
 
     <div class="row" style="position: relative; max-width: 100%; margin: 2% 0% 0% 0%;">
@@ -88,7 +88,7 @@ if(isset($_POST['ingresos'])){
   }
 </style>
 
-    <h3 style="text-align: center; color: violet; font-weight: bold; text-decoration: underline;">Ingresos de Bodega</h3>
+    <h3 style="text-align: center; color: black;">Ingresos de Bodega</h3>
 
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
             <thead>
@@ -159,7 +159,7 @@ if(isset($_POST['ingresos'])){
     width: 100%;
   }
 </style>
-<h3 style="text-align: center; color: violet; font-weight: bold; text-decoration: underline;">Ingresos de Almacén</h3>
+<h3 style="text-align: center; color: black;">Ingresos de Almacén</h3>
 
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
      <thead>
@@ -235,7 +235,7 @@ width: 100%;
     width: 100%;
   }
 </style>
-<h3 style="text-align: center; color: violet; font-weight: bold; text-decoration: underline;">Ingresos de Compra</h3>
+<h3 style="text-align: center; color: black;">Ingresos de Compra</h3>
 
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
      <thead>
