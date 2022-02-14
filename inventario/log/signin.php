@@ -19,7 +19,19 @@ if (isset($_POST['submit'])) {
 	$result = mysqli_query($conn, $sql);
 	if ($result->num_rows > 0) {
 		$row = mysqli_fetch_assoc($result);
+		if($_SESSION['signin']==$row['username']){
+            echo '
+            <script>
+                alert("Ya esta Inicializada la Sesion");
+                window.location ="signin.php";
+                session_destroy();  
+                        </script>
+            ';
+        }else{
+            $_SESSION['signin'] = $row['username'];
+		$_SESSION['tipo_usuario'] = $row['tipo_usuario'];
 		
+        }
 		if ($row ['Habilitado']=="Si") { 
 			$_SESSION['signin'] = $row['username'];
 		$_SESSION['tipo_usuario'] = $row['tipo_usuario'];
