@@ -205,7 +205,7 @@ $result = mysqli_query($conn, $sql);
                 
             </tr>
             <tr>
-            <td id="td" colspan="7" style="background: red;"><h4 align="center">No se encontraron ningun  resultados 😥</h4></td>
+            <td id="td" colspan="7" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td>
             </tr>
      </thead>
             <tbody>

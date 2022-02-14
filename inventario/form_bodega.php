@@ -192,7 +192,7 @@ if(isset($_POST['codigo'])){
                 <th style="width: 15%;">Costo unitario</th>
             </tr>
               <tr>
-              <center> <td id="td" colspan="6"  style="background: red;"><h4 align="center";>No se encontraron resultados 😥</h4></td></center> 
+              <center> <td id="td" colspan="6" ><h4 align="center";>No se encontraron resultados 😥</h4></td></center> 
             </tr>
         </thead>
         <tbody>

@@ -183,9 +183,9 @@ if(isset($_POST['codigo'])){
         </div>
         <br>
           <div class="container">
-         <table class="table" style="margin-bottom:3%;">
+         <table class="table" style="margin-bottom:3%; ">
         <thead>
-           <tr id="tr" style="text-align: left">
+           <tr id="tr" style="text-align: left;">
                 <th style="width: 10%;">Código</th>
                 <th style="width: 20%;">Descripción</th>
                 <th style="width: 10%;">U/M</th>
@@ -194,7 +194,7 @@ if(isset($_POST['codigo'])){
                 <th style="width: 15%;">Costo unitario</th>
             </tr>
               <tr>
-              <center> <td id="td" colspan="6"  style="background: red;"><h4 align="center";>No se encontraron resultados 😥</h4></td></center> 
+              <center> <td id="td" colspan="6" ><h4 align="center";>No se encontraron resultados 😥</h4></td></center> 
             </tr>
         </thead>
         <tbody>
