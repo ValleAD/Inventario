@@ -34,12 +34,12 @@ $result = mysqli_query($conn, $sql);
       $query = mysqli_query($conn, $insert);
       if ($query)  {
         echo "<script> alert('Su producto fue registrado correctamente')
-        // location.href = '../solicitudes_compra.php';
+          location.href = '../solicitudes_almacen.php';
         </script>
         ";
         }else {
         echo "<script> alert('UUPS!! Algo no fue mal escrito')
-        // location.href = '../dt_compra_copy.php';
+          location.href = '../Detalle_Almacen.php';
         </script>
         ";
         }

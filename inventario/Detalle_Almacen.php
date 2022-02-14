@@ -74,7 +74,7 @@ $final = 0;
         
         <div class="col-6 col-sm-2" style="position: initial">
             <label style="font-weight: bold;">Encargado:</label>
-            <input readonly class="form-control"  type="text" value="' .$datos_sol['encargado']. '" name="encargado">
+            <input readonly class="form-control" required  type="text" value="' .$datos_sol['encargado']. '" name="encargado">
         </div>
 
           
@@ -140,7 +140,7 @@ while ($productos = mysqli_fetch_array($result)){
 }
 
       echo'
-      <th colspan="5">SubTotal</th>
+      <th colspan="6">SubTotal</th>
       <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$'.$final.'" ></td></tr>
   
          </tbody>
@@ -215,7 +215,7 @@ $num_sol = $_POST['id'];
                 }else if($datos_sol['estado']=='Rechazado') {
                      echo ' style="background-color:red ;width:100%; border-radius:5px;text-align:center; color: white;"';
                 }
-            ?> class="form-control" type="text" name="" value="<?php echo $datos_sol['estado'] ?>"><br>
+            ?> class="form-control" type="text" name="" readonly value="<?php echo $datos_sol['estado'] ?>"><br>
                <button type="submit" name="submit" <?php
                 if($datos_sol['estado']=='Aprobado') {
                      echo ' style="display:none"';
@@ -228,6 +228,9 @@ $num_sol = $_POST['id'];
         </div>
       </form>
         <form  method="POST" action="Exportar_PDF/pdf_almacen.php" target="_blank">
+             <input readonly class="form-control"  type="hidden" value="<?php echo $datos_sol['codAlmacen']?>" name="num_sol">
+              <input readonly class="form-control"  type="hidden" value="<?php echo $datos_sol['departamento']?>" name="depto">
+              <input readonly class="form-control"  type="hidden" value="<?php echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])) ?>" name="fech">
 
         <table class="table" style="margin-bottom:3%">
             
@@ -251,8 +254,7 @@ $num_almacen = $datos_sol['codAlmacen'];
 while ($productos = mysqli_fetch_array($result)){
       
       $total = $productos['cantidad_solicitada'] * $productos['precio'];
-      $final += $total;
-  echo' 
+      $final += $total;?>
     <style type="text/css">
      #td{
         display: none;
@@ -261,19 +263,17 @@ while ($productos = mysqli_fetch_array($result)){
    
 </style> 
       <tr>
-        <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="' .$productos['codigo']. '"></td>
-        <td  data-label="Nombre del Artículo"><textarea style="background:transparent; border: none; width: 100%;"  name="nombre[]" readonly style="border: none">'.$productos['nombre']. '</textarea></td>
-        <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
-        <td  data-label="Cantidad Solicitada"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="'.$productos['cantidad_solicitada']. '"></td>
-        <td  data-label="Costo Unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$'.$productos['precio']. '"></td>
-        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$'.$total. '"></td>
-      </tr>';
+        <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="<?php echo $productos['precio'] ?>"></td>
+        <td  data-label="Nombre del Artículo"><textarea style="background:transparent; border: none; width: 100%;"  name="nombre[]" readonly style="border: none"><?php echo $productos['nombre'] ?></textarea></td>
+        <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="<?php echo $productos['unidad_medida'] ?>"></td>
+        <td  data-label="Cantidad Solicitada"><input required style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="<?php echo $productos['cantidad_solicitada'] ?>"></td>
+        <td  data-label="Costo Unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$<?php echo $productos['precio'] ?>"></td>
+        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$<?php echo $total ?>"></td>
+      </tr>
 
-}
-
-      echo'
+    
       <th colspan="5">SubTotal</th>
-      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$'.$final.'" ></td></tr>
+      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="<?php echo $final ?>" ></td></tr>
   
          </tbody>
         </table>
@@ -281,6 +281,8 @@ while ($productos = mysqli_fetch_array($result)){
     
   
     <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
+
+<?php }}?>
       <style>
         #pdf{
         margin-left: 38%; 
@@ -303,8 +305,6 @@ while ($productos = mysqli_fetch_array($result)){
             border-radius:10px 10px 0px 0px
         }
       </style>
-</form>';
-    }
-?>            
+</form>          
   </body>
   </html>
