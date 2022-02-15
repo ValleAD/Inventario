@@ -84,7 +84,7 @@ die();
         <tr>
             <td data-label="Código" class="delete"><?php  echo $solicitudes['codVale']; ?></td>
             <td data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
-            <td data-label="Fecha de solicitud" class="delete"><?php  echo $solicitudes['fecha_registro']; ?></td>
+            <td data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])); ?></td>
             <td  data-label="Detalles">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_vale.php">             
                 <input type='hidden' name='id' value="<?php  echo $solicitudes['codVale']; ?>">             

@@ -58,7 +58,7 @@ if(isset($_POST['detalle'])){
     
      echo'   
     <section id="section">
-    <form method="POST" action="Plugin/pdf_vale.php" target="_blank">
+    <form method="POST" action="Plugin/index.php" target="_blank">
              
           
             <div class="row">
@@ -93,11 +93,11 @@ if(isset($_POST['detalle'])){
                 
                 <thead>
                   <tr id="tr">
-                     <th ">Código</th>
-                    <th ">Descripción</th>
-                    <th ">Unidad de Medida</th>
-                    <th ">Cantidad</th>
-                    <th ">Costo <br> unitario</th>
+                     <th>Código</th>
+                    <th>Descripción</th>
+                    <th>Unidad de Medida</th>
+                    <th>Cantidad</th>
+                    <th>Costo <br> unitario</th>
                      
                     <th style="width: 6%;">Total</th>
                   </tr>
