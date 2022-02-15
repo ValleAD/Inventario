@@ -106,7 +106,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
                 </tbody>                
             </table>
             <div style="margin-top: 55%;">
-            <p style="text-align:left;">Solicita: ________________ <br><label style="margin-left: 5%;"><?php echo $encargado ?></label> </p><p style="text-align:center;margin-top: -6.5%;"> Entrega: ________________</p><p style="float: right;margin-top: -2.5%;">Autoriza: ________________</p></div>
+            <p style="text-align:left;">Solicita: ________________ <br> </p><p style="text-align:center;margin-top: -6.5%;"> Entrega: ________________</p><p style="float: right;margin-top: -2.5%;">Autoriza: ________________</p></div>
 
 </body>
 </html>
