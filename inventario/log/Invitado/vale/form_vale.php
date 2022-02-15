@@ -80,19 +80,6 @@ background:burlywood;
 <body style="background-image: url(../../../img/4k.jpg);  
             background-repeat: no-repeat;
             background-attachment: fixed;">
-                <style type="text/css">
-        #a:hover{
-   text-decoration: none;
-   color: lawngreen;
-}
- #b:hover{
-   text-decoration: none;
-   color:whitesmoke;
-}
-.children{
-background:burlywood;
-}
- </style>
  <header>
         <div class="menu_bar">
             <a href="#" class="bt-menu"><span class="fas fa-bars"></span>Menú</a>
@@ -107,7 +94,7 @@ background:burlywood;
                 <li class="submenu">
                     <a id="b" href="#"><span class="icon-rocket"></span>Articulos<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
-                        <li><a id="b" href="productos.php">Nuevo</a></li>
+                        <li><a id="b" href="vale/productos.php">Nuevo</a></li>
                     </ul>
                 </li>
                 <li class="submenu">
@@ -126,6 +113,7 @@ background:burlywood;
             </ul>
         </nav>
     </header>
+
 <section id="section">
 <form action="form_vale.php" method="post">
 <br>
@@ -155,6 +143,7 @@ background:burlywood;
                 <div class="row">
                     <div class="col-6.5 col-sm-4" style="position: initial">
                     <input  id="inp1" class="form-control" required type="number" name="codigo[]" id="codigo" style="margin-bottom: 2%;" placeholder="Ingrese el código del Producto">
+
                     </div>
                 </div>
             </div>
@@ -177,7 +166,6 @@ background:burlywood;
             #buscar:active{
             transform: translateY(5px);
             } 
-
         </style>
         </form>';
     }
@@ -189,20 +177,13 @@ if(isset($_POST['codigo'])){
 
     echo'
     <br>
-    <form action="datos_vale.php" method="post">
+    <form action="Controller/añadir_vale.php" method="post">
         
         <div class="container" style="position: initial">
             <div class="row">
-             
-               
-               <div class="col-6.5 col-sm-4" style="position: initial">
-                <div class="form-group" >
-                    <label>Departamento que lo solicitará <b>*</b></label>
-                    <div class="col-md-16" >
-                    <div class="invalid-feedback">
-                        Por favor seleccione una opción.
-                      </div>
-                      <select  class="form-control" name="departamento" required id="departamento">
+              <div class="col-6.5 col-sm-4" style="position: initial">
+                <label id="inp1">Departamento que solicita</b></label>   
+              <select  class="form-control" name="departamento" id="departamento">
                         <option selected disabled value="">Selecione</option>
                         <option>Direccion Hospital</option>
                         <option>Subdirección Hospital</option>
@@ -238,11 +219,7 @@ if(isset($_POST['codigo'])){
                         <option>Área Epidemiología</option>
                         <option>Area COVID 19</option>
                       </select>
-                    </div>
-                  </div>
-
-    </div>
-            
+            </div>
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Vale N°</b></label>   
                 <input id="inp1"class="form-control" type="number" name="numero_vale" required>
@@ -256,7 +233,7 @@ if(isset($_POST['codigo'])){
                 <option>Francisco Guevarra </option>
                 <option>Rocio Amilcar</option> 
                
-               </select>
+            </select>
                 </label>   
             </div>
         </div>
@@ -265,16 +242,15 @@ if(isset($_POST['codigo'])){
          <table class="table" style="margin-bottom:3%;">
         <thead>
            <tr id="tr" style="text-align: left">
-           <th style="width: 10%;">Código</th>
-           <th style="width: 17%;">Nombre</th>
-           <th style="width: 20%;">Descripción</th>
-           <th style="width: 10%;">U/M</th>
-           <th style="width: 15%;">Productos Disponibles</th>
-           <th style="width: 15%;">Cantidad</th>
-           <th style="width: 15%;">Costo unitario</th>
+                <th bgcolor="blue" style="width: 10%;color:white">Código</th>
+                <th bgcolor="blue" style="width: 20%;color:white">Descripción</th>
+                <th bgcolor="blue" style="width: 10%;color:white">U/M</th>
+                <th bgcolor="blue" style="width: 15%;color:white">Productos Disponibles</th>
+                <th bgcolor="blue" style="width: 15%;color:white">Cantidad</th>
+                <th bgcolor="blue" style="width: 15%;color:white">Costo unitario</th>
             </tr>
               <tr>
-              <center> <td id="td" colspan="5"><h4>No se encontraron resultados 😥</h4></td></center> 
+              <center> <td id="td" colspan="7"  style="background: red;"><h4 align="center";>No se encontraron resultados 😥</h4></td></center> 
             </tr>
         </thead>
         <tbody>';
@@ -287,10 +263,12 @@ if(isset($_POST['codigo'])){
 
     
     $codigo = $_POST['codigo'][$i];
-    $sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
+   //$sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
+
+
+   $sql = "SELECT codProductos, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE  codProductos = '$codigo'";
     $result = mysqli_query($conn, $sql);
 
-    
     while ($productos = mysqli_fetch_array($result)){ ?>    
         <style type="text/css">
         #td{
@@ -298,12 +276,12 @@ if(isset($_POST['codigo'])){
     }
 
 </style>
-<tr>
-               <td data-label="Codigo"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
-               <td data-label="Codigo"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="nombre[]" value ="<?php  echo $productos['nombre']; ?>"></td>
+            <tr>
+               <td data-label="Codigo"><input style="background:transparent; border: none; width: 100%; color: black;"  type="number" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
+             
                <td data-label="Descripción"><textarea  style="background:transparent; border: none; width: 100%; color: black;" cols="10" rows="1" type="text" class="form-control" readonly name="desc[]"><?php  echo $productos['descripcion']; ?></textarea></td>
                <td data-label="Unidad De Medida"><input  style="background:transparent; border: none; width: 100%; color: black;" type="text" class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
-               <td data-label="Productos Disponibles"><input  style="background:transparent; border: none; width: 100%; color: gray;" type="text" class="form-control" readonly  name="stock[]"  value ="<?php  echo $productos['stock']; ?>"></td>
+               <td data-label="Productos Disponibles"><input  style="background:transparent; border: none; width: 100%; color: gray;" type="text" class="form-control" readonly  name="stock[]"  value ="<?php  echo $productos['SUM(stock)']; ?>"></td>
                <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="text" class="form-control"  name="cant[]" required></td>
                <td data-label="Precio"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
             </tr>
@@ -334,15 +312,10 @@ if(isset($_POST['codigo'])){
             #enviar:active{
             transform: translateY(5px);
             } 
-            #b:hover{
-   text-decoration: none;
-   color:whitesmoke;
-}
         </style>
     </form>';
 }
 ?>
 </section>
-
 </body>
 </html>

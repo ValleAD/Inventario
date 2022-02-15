@@ -35,22 +35,8 @@ CREATE TABLE tb_productos (
   solicitudes varchar (50)  NOT NULL,
   fecha_registro date NOT NULL DEFAULT current_timestamp(),
     PRIMARY KEY (cod)
-);
-CREATE TABLE reporte_articulos (
-  cod int(15) NOT NULL AUTO_INCREMENT,
-  codProductos int(15) NOT NULL,
-  categoria varchar(50) NOT NULL,
-  catalogo int(15) NOT NULL,
-  nombre varchar(50) NOT NULL,
-  descripcion varchar(200) NOT NULL,
-  unidad_medida varchar(10) NOT NULL DEFAULT 'u',
-  stock int(11) NOT NULL,
-  precio decimal(6,2) NOT NULL,
-  campo varchar (50)  NOT NULL,
-    estado varchar (50)  NOT NULL,
-  fecha_registro date NOT NULL DEFAULT current_timestamp(),
-    PRIMARY KEY (cod)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
 
 
 
@@ -65,7 +51,7 @@ CREATE TABLE tb_usuarios (
   Habilitado varchar(2) NOT NULL,
   tipo_usuario int(15) NOT NULL,
     PRIMARY KEY (id)
-); 
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci; 
 
 CREATE TABLE tb_bodega (
   codBodega int(11) NOT NULL,
@@ -75,7 +61,7 @@ CREATE TABLE tb_bodega (
   estado varchar (50)  NOT NULL,
   fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (codBodega)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 CREATE TABLE tb_vale (
   codVale int(11) NOT NULL,
@@ -84,7 +70,7 @@ CREATE TABLE tb_vale (
   campo varchar (50)  NOT NULL DEFAULT 'Solicitud Vale',
   fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (codVale)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 CREATE TABLE tb_compra (
   nSolicitud int(11) NOT NULL,
@@ -97,7 +83,7 @@ CREATE TABLE tb_compra (
   estado varchar (50)  NOT NULL,
   fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (nSolicitud)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 
 
@@ -109,7 +95,7 @@ CREATE TABLE tb_circulante (
   estado varchar (50)  NOT NULL,
   fecha_solicitud timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (codCirculante)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 CREATE TABLE tb_almacen (
   codAlmacen int(12) NOT NULL,
@@ -118,7 +104,7 @@ CREATE TABLE tb_almacen (
 estado varchar (50)  NOT NULL,
   fecha_solicitud timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (codAlmacen)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 
 CREATE TABLE detalle_bodega (
@@ -134,7 +120,7 @@ CREATE TABLE detalle_bodega (
     PRIMARY KEY (codigodetallebodega),
     CONSTRAINT fk_tb_bodega_detalle_bodega FOREIGN KEY (odt_bodega)
     REFERENCES tb_bodega(codBodega)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 CREATE TABLE detalle_vale (
   codigodetallevale int(11) NOT NULL AUTO_INCREMENT,
@@ -149,7 +135,7 @@ CREATE TABLE detalle_vale (
     PRIMARY KEY (codigodetallevale),
     CONSTRAINT fk_tb_vale_detalle_vale FOREIGN KEY (numero_vale)
     REFERENCES tb_vale(codVale)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 CREATE TABLE detalle_circulante (
 codigodetallecirculante int(15) NOT NULL AUTO_INCREMENT,
@@ -164,7 +150,7 @@ codigodetallecirculante int(15) NOT NULL AUTO_INCREMENT,
     PRIMARY KEY (codigodetallecirculante),
     CONSTRAINT fk_tb_circulante_detalle_circulante FOREIGN KEY (tb_circulante)
     REFERENCES tb_circulante(codCirculante)
-); 
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci; 
 
 CREATE TABLE detalle_almacen (
 codigoalmacen int(11) NOT NULL AUTO_INCREMENT,
@@ -179,7 +165,7 @@ fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_
     PRIMARY KEY (codigoalmacen),
      CONSTRAINT fk_tb_almacen_detalle_almacen FOREIGN KEY (tb_almacen)
     REFERENCES tb_almacen(codAlmacen)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 
 
@@ -198,32 +184,32 @@ CREATE TABLE detalle_compra (
      PRIMARY KEY (codigodetallecompra),
     CONSTRAINT fk_tb_compra_detalle_compra FOREIGN KEY (solicitud_compra)
     REFERENCES tb_compra(nSolicitud)
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 
 CREATE TABLE Selects_unidad_medida (
   id int(11) NOT NULl AUTO_INCREMENT PRIMARY KEY,
   Habilitado varchar(2) NOT NULL,
 unidad_medida varchar(50) NOT NULL
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 CREATE TABLE Selects_categoria (
   id int(11) NOT NULl AUTO_INCREMENT PRIMARY KEY,
   Habilitado varchar(2) NOT NULL,
 categoria varchar(50) NOT NULL
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 CREATE TABLE Selects_dependencia (
   id int(11) NOT NULl AUTO_INCREMENT PRIMARY KEY,
   Habilitado varchar(2) NOT NULL,
 dependencia varchar(50) NOT NULL
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 CREATE TABLE Selects_departamento (
   id int(11) NOT NULl AUTO_INCREMENT PRIMARY KEY,
   Habilitado varchar(2) NOT NULL,
 departamento varchar(50) NOT NULL
-);
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 INSERT INTO `Selects_unidad_medida` (`unidad_medida`,`Habilitado`)
 VALUES ('c/m'  ,'Si'),
        ('lb'  ,'Si'),

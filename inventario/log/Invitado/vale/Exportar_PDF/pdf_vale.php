@@ -1,108 +1,99 @@
-<?php
-
-if(isset($_POST['cod'])){
+<?php ob_start() ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Vale</title>
+</head>
+<body>
+    <img src="hospital.jpg" style="width:20%">
+    <img src="log_1.png" style="width:20%;float:right">
+    <?php if(isset($_POST['cod'])){
 
     $depto = $_POST['depto'];
     $fech = $_POST['fech'];
     $encargado = $_POST['usuario'];
-    
-        
-    $final = 0;
-
-require('../fpdf/fpdf.php');
-
-class PDF extends FPDF{ 
-
-function Header(){
-
-    $vale = $_POST['vale'];
-    
-    $this->Cell(8);
-    $this->Image('../img/hospital.jpg', 150, 7, 48);
-    $this->Image('../img/log_1.png', 12, null, 50);
-    $this->Ln(5);
-    $this->SetFont('Arial', 'B', 12);
-    $this->Cell(10);
-    $this->Cell(70, 15, 'HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA',0, 0, 'c');
-    $this->SetFont('Arial', '', 11);
-    $this->Cell(160, 15, ('Vale No.: '.$vale), 0, 0, 'C', 0);
-    $this->Ln();
-    $this->Cell(10);
-    $this->SetFont('Arial', 'B', 12);
-    $this->Cell(70, 5, 'DEPARTAMENTO DE MANTENIMIENTO',0, 0, 'c');
-    $this->Ln(15);
-    $this->Cell(70);
-    $this->Cell(70, 5, 'Solicitud de Materiales',0, 0, 'c');
-    $this->Ln();
-    }
-}
-
-$pdf = new PDF();
-$pdf->AddPage();
-$pdf->SetFont('Arial', '', '12');
-
-
-$pdf->Ln();
-$pdf->Cell(55, 10, utf8_decode('Fecha: '. $fech), 0, 0, 'C', 0);   
-$pdf->Cell(105, 10, ('Depto. o Servicio: '. $depto), 0, 0, 'C', 0);
-$pdf->Ln(10);
-$pdf->Cell(68, 5, utf8_decode('Encargado: '. $encargado), 0, 0, 'C', 0);
-$pdf->Ln(10);
-$pdf->SetFont('Arial', 'B', '12');
-$pdf->Cell(5, 10, '', 0, 0, 'C', 0);
-$pdf->Cell(20, 10, utf8_decode('Código'), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode('Descripción'), 1, 0, 'C', 0);   
-$pdf->Cell(15, 10, 'U/M', 1, 0, 'C', 0);
-$pdf->Cell(20, 10, 'Cantidad', 1, 0, 'C', 0);
-$pdf->Cell(40, 10, 'Costo Unitario', 1, 0, 'C', 0);
-$pdf->Cell(20, 10, 'Total', 1, 1, 'C', 0);
-
-
-   
-    $codigo = $_POST['cod'];
-    $des = $_POST['desc'];
-    $um = $_POST['um'];
-    $cantidad = $_POST['cant'];
-    $cost = $_POST['cost'];
-    $tot = $_POST['tot'];
-
-$pdf->SetFont('Arial', '', '12');
-$pdf->Cell(5, 10, '', 0, 0, 'C', 0);
-$pdf->Cell(20, 10, utf8_decode($codigo),1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode($des),1, 0, 'C', 0);
-$pdf->Cell(15, 10, utf8_decode($um),1, 0, 'C', 0);
-$pdf->Cell(20, 10, utf8_decode($cantidad),1, 0, 'C', 0);
-$pdf->Cell(40, 10, utf8_decode($cost),1, 0, 'C', 0);
-$pdf->Cell(20, 10, utf8_decode($tot),1, 0, 'C', 0);
-$pdf->Ln();
-
-
-$tot_f = $_POST['tot_f'];
-
-$pdf->SetFont('Arial', 'B', '12');
-$pdf->Cell(5, 10, '', 0, 0, 'C', 0);
-$pdf->Cell(115, 10, utf8_decode(""),1, 0, 'C', 0);
-$pdf->Cell(40, 10, 'Subtotal', 1, 0, 'C', 0);
-$pdf->Cell(20, 10, utf8_decode($tot_f),1, 0, 'C', 0);
-$pdf->Ln();
-$pdf->Ln();
-$pdf->SetFont('Arial', '', '12');
-$pdf->Cell(5, 10, '', 0, 0, 'C', 0);
-$pdf->Cell(175, 10, utf8_decode('Observaciones (En que se ocupará el bien entregado)'),1, 0, 'L', 0);
-$pdf->Ln();
-$pdf->Cell(5, 10, '', 0, 0, 'C', 0);
-$pdf->Cell(175, 40, '', 1, 0, 'C', 0);
-$pdf->Ln(50);
-$pdf->Cell(5, 10, '', 0, 0, 'C', 0);
-$pdf->Cell(0, 12,('Solicita: ________________                                  Entrega: ________________'), 0, 1);
-$pdf->Ln();
-$pdf->Cell(50);
-$pdf->Cell(0, 12,('Autoriza: ________________'), 0, 1);
-
-}
-//mostramos el PDF
-$pdf->Output('', 'Vale.pdf');
-
-
-
+     $cod_vale = $_POST['id'];
+    echo $depto, $fech, $encargado,$id;
+      
 ?>
+<table border="1" class="table" id="example" style=" width: 100%;color: black;background-color: blanchedalmond;text-align: center ;">
+             
+                     <tr id="tr" >
+                     <th style=" width: 20%;color:black;">Código</th>
+                     <th style=" width: 20%" ;color:black;>Cod. de Catálogo</th>
+                     <th style=" width: 100% ;color:black;">Descripción Completa</th>
+                     <th style=" width: 100% ;color:black;">U/M</th>
+                     <th style=" width: 100% ;color:black;">Cantidad</th>
+                     <th style=" width: 100% ;color:black;">Costo Unitario</th>
+                     <th style=" width: 100% ;color:black;">Total</th>
+                   </tr>
+                
+                <tbody>
+<?php include ('../../../../Model/conexion.php');
+    $total = 0;
+    $final = 0;
+    $sql = "SELECT * FROM detalle_vale";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+              $total = $productos['stock'] * $productos['precio'];
+              $final += $total;
+?>
+     
+            
+                  
+     <style type="text/css">
+     
+         #td{
+             display: none;
+         }
+        th{
+            width: 100%;
+        }
+     </style>
+         <tr id="tr">
+           <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['codigo']; ?></td>
+           <td  data-label="Codificación de catálogo" style="text-align: center;"><?php  echo $productos['descripcion']; ?></td>
+           <td  data-label="Descripción Completa"><?php  echo $productos['descripcion']; ?></td>
+           <td  data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
+           <td  data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
+           <td  data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
+           <td  data-label="Fecha Registro"><?php  echo $total ?></td>
+         </tr>
+     
+     <?php } } ?> 
+     <tfoot>
+         <th>SubTotal
+             <td colspan="6" style="float right;text-align: right;padding-right:3%;color:red ;">
+                 <?php  echo $final ?>
+             </td>
+         </th>
+     </tfoot>
+                </tbody>                
+            </table>
+
+</body>
+</html>
+            <?php $html=ob_get_clean();
+                 // echo $html 
+require_once 'dompdf/autoload.inc.php';
+// reference the Dompdf namespace
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
+// instantiate and use the dompdf class
+$dompdf = new Dompdf();
+$options = $dompdf->getOptions();
+$options->setIsHtml5ParserEnabled(true);
+$dompdf->setOptions($options);
+$dompdf->loadHtml($html);
+$dompdf->setPaper('letter');
+
+// Render the HTML as PDF
+$dompdf->render();
+
+// Output the generated PDF to Browser
+$dompdf->stream("pdf_vale.php",array("Attachment"=>0));
+        ?>
