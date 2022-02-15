@@ -168,7 +168,7 @@ $final = 0;
       
         <br>
           
-        <table class="table" style="margin-bottom:3%">
+<table class="table table-responsive table-striped" id="example" style=" width: 100%">
             
             <thead>
               <tr id="tr">
@@ -203,9 +203,9 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="' .$productos['codigo']. '"></td>
         <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly style="border: none">'.$productos['descripcion']. '</textarea></td>
         <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
-        <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="'.$productos['stock']. '"></td>
-        <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$'.$productos['precio']. '"></td>
-        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$'.$total. '"></td>
+        <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" type="number" readonly value="'.$productos['stock']. '"></td>
+        <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 50%; color: red;"  name="cost[]" readonly type="number" value="$'.$productos['precio']. '"></td>
+        <td  data-label="total"><input style="background:transparent; border: none; width: 50%;"  name="tot[]" readonly value="$'.$total. '"></td>
         
       </tr>';
 

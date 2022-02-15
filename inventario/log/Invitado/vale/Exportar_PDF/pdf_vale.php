@@ -14,15 +14,42 @@
     $depto = $_POST['depto'];
     $fech = $_POST['fech'];
     $encargado = $_POST['usuario'];
-     $cod_vale = $_POST['id'];
-    echo $depto, $fech, $encargado,$id;
+     $vale = $_POST['vale'];
       
 ?>
+<h3 align="center">HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
+<h4 align="center">DEPARTAMENTO DE MANTENIMIENTO</h4>
+ 
+<section id="section">
+<form method="POST" action="Exportar_PDF/pdf_vale.php" target="_blank">
+         
+      
+        <div class="row">
+      <div class="col-6 col-sm-3" style="position: initial">
+      
+              <label style="font-weight: bold; ">Vale No.: </label><?php echo $vale ?>
+
+          </div>
+          <div class="col-6 col-sm-3" style="position: initial">
+      
+              <label style="font-weight: bold;">Depto. o Servicio: </label><?php echo $depto ?>
+
+          </div>
+
+          <div class="col-6 col-sm-3" style="position: initial">
+            <label style="font-weight: bold;">Fecha: </label>
+            <?php echo $fech ?> 
+          </div>
+
+        <div class="col-6 col-sm-3" style="position: initial">
+            <label style="font-weight: bold;">Encargado: </label><?php echo $encargado ?>
+        </div>
+        </div>
+<br>
 <table border="1" class="table" id="example" style=" width: 100%;color: black;background-color: blanchedalmond;text-align: center ;">
              
                      <tr id="tr" >
                      <th style=" width: 20%;color:black;">Código</th>
-                     <th style=" width: 20%" ;color:black;>Cod. de Catálogo</th>
                      <th style=" width: 100% ;color:black;">Descripción Completa</th>
                      <th style=" width: 100% ;color:black;">U/M</th>
                      <th style=" width: 100% ;color:black;">Cantidad</th>
@@ -31,15 +58,22 @@
                    </tr>
                 
                 <tbody>
-<?php include ('../../../../Model/conexion.php');
+<?php
     $total = 0;
     $final = 0;
-    $sql = "SELECT * FROM detalle_vale";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-              $total = $productos['stock'] * $productos['precio'];
-              $final += $total;
+for($i = 0; $i < count($_POST['cod']); $i++)
+{
+   
+    $codigo = $_POST['cod'][$i];
+    $des = $_POST['desc'][$i];
+    $um = $_POST['um'][$i];
+    $cantidad = $_POST['cant'][$i];
+    $cost = $_POST['cost'][$i];
+    $tot = $_POST['tot'][$i];
+    echo $cantidad,$cost;
+    $total = $cantidad * $codigo;
+      $final += $total;
+            
 ?>
      
             
@@ -54,12 +88,11 @@
         }
      </style>
          <tr id="tr">
-           <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['codigo']; ?></td>
-           <td  data-label="Codificación de catálogo" style="text-align: center;"><?php  echo $productos['descripcion']; ?></td>
-           <td  data-label="Descripción Completa"><?php  echo $productos['descripcion']; ?></td>
-           <td  data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-           <td  data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
-           <td  data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
+           <td data-label="Codigo" style="text-align: center;"><?php  echo $codigo?></td>
+           <td  data-label="Descripción Completa"><?php  echo $des?></td>
+           <td  data-label="Unidad De Medida" style="text-align: center;"><?php  echo $um?></td>
+           <td  data-label="Cantidad" style="color red"><?php echo $cantidad ?></td>
+        <td  data-label="Costo unitario" style="color red"><?php echo $cost ?></td>
            <td  data-label="Fecha Registro"><?php  echo $total ?></td>
          </tr>
      

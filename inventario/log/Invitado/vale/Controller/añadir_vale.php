@@ -35,14 +35,14 @@ include '../../../../Model/conexion.php';
 
       if ($query) {
         echo "<script> alert('Su solicitud fué realizada correctamente');
-       location.href = '../datos_vale.php';
+       // location.href = '../datos_vale.php';
         </script>
         ";
       }if ($result) {
         
       }else {
         echo "<script> alert('¡Error! algo salió mal');
-       location.href = '../form_vale.php';
+       // location.href = '../form_vale.php';
         </script>
         ";
       }
