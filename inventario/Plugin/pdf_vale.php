@@ -46,17 +46,18 @@
         </div>
         </div>
 <br>
-<table border="1" class="table" id="example" style=" width: 100%;color: black;background-color: blanchedalmond;text-align: center ;">
-             
-                     <tr id="tr" >
-                     <th style=" width: 20%;color:black;">Código</th>
-                     <th style=" width: 100% ;color:black;">Descripción Completa</th>
-                     <th style=" width: 100% ;color:black;">U/M</th>
-                     <th style=" width: 100% ;color:black;">Cantidad</th>
-                     <th style=" width: 100% ;color:black;">Costo Unitario</th>
-                     <th style=" width: 100% ;color:black;">Total</th>
+<table  class="table" id="example" style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; 
+    ">
+       <thead>     
+        <tr style="background-color: #f8f8f8;border: 1px solid #ddd;color: black;" >
+        <th style=" width: 5%;color:black;font-size: 16px;text-align: center;">Código</th>
+        <th style=" width: 130%;color:black;font-size: 16px;text-align: center;">Descripción Completa</th>
+        <th style=" width: 40%;color:black;font-size: 16px;text-align: center;">U/M</th>
+        <th style=" width: 40%;color:black;font-size: 16px;text-align: center;">Cantidad</th>
+        <th style=" width: 40%;color:black;font-size: 16px;text-align: center;">Costo Unitario</th>
+        <th style=" width: 40%;color:black;font-size: 16px;text-align: center;border-right:1px solid #ccc ;">Total</th>
                    </tr>
-                
+                </thead> 
                 <tbody>
 <?php
     $total = 0;
@@ -87,18 +88,18 @@ for($i = 0; $i < count($_POST['cod']); $i++)
         }
      </style>
          <tr id="tr">
-           <td data-label="Codigo" style="text-align: center;"><?php  echo $codigo?></td>
-           <td  data-label="Descripción Completa"><?php  echo $des?></td>
-           <td  data-label="Unidad De Medida" style="text-align: center;"><?php  echo $um?></td>
-           <td  data-label="Cantidad" style="color red"><?php echo $cantidad ?></td>
-        <td  data-label="Costo unitario" style="color red"><?php echo $cost ?></td>
-           <td  data-label="Fecha Registro"><?php  echo $total ?></td>
+           <td style="text-align:center;" data-label="Codigo" style="text-align: center;"><?php  echo $codigo?></td>
+           <td style="text-align:center;"  data-label="Descripción Completa"><?php  echo $des?></td>
+           <td style="text-align:center;"  data-label="Unidad De Medida" style="text-align: center;"><?php  echo $um?></td>
+           <td style="text-align:center;"  data-label="Cantidad" style="color red"><?php echo $cantidad ?></td>
+            <td style="text-align:center;"  data-label="Costo unitario" style="color red"><?php echo $cost ?></td>
+           <td style="text-align:center;"  data-label="Fecha Registro"><?php  echo $total ?></td>
          </tr>
      
      <?php } } ?> 
-     <tfoot>
+     <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
          <th>SubTotal
-             <td colspan="6" style="float right;text-align: right;padding-right:3%;color:red ;">
+             <td colspan="5" style="float right;text-align: right;padding-right:3%;color:red ;">
                  <?php  echo $final ?>
              </td>
          </th>
