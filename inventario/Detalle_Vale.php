@@ -58,7 +58,7 @@ if(isset($_POST['detalle'])){
     
      echo'   
     <section id="section">
-    <form method="POST" action="Exportar_PDF/pdf_vale.php" target="_blank">
+    <form method="POST" action="Plugin/pdf_vale.php" target="_blank">
              
           
             <div class="row">
@@ -130,7 +130,7 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="<?php echo $um ?>"></td>
         <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="<?php echo $stock ?>"></td>
         
-        <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$<?php echo $precio ?>"></td>
+        <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="<?php echo $precio ?>"></td>
    
   <?php if($tipo_usuario == 1) { ?>
 <?php } ?>

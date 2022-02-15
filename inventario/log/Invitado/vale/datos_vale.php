@@ -93,7 +93,7 @@ background:burlywood;
                 <li class="submenu">
                     <a id="b" href="#"><span class="icon-rocket"></span>Articulos<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
-                        <li><a id="b" href="vale/productos.php">Nuevo</a></li>
+                        <li><a id="b" href="productos.php">Nuevo</a></li>
                     </ul>
                 </li>
                 <li class="submenu">
@@ -137,7 +137,7 @@ $final = 0;
 
  echo'   
 <section id="section">
-<form method="POST" action="Exportar_PDF/pdf_vale.php" target="_blank">
+<form method="POST" action="../../../Plugin/pdf_vale.php" target="_blank">
          
       
         <div class="row">
@@ -204,7 +204,7 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly style="border: none">'.$productos['descripcion']. '</textarea></td>
         <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
         <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" type="number" readonly value="'.$productos['stock']. '"></td>
-        <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 50%; color: red;"  name="cost[]" readonly type="number" value="$'.$productos['precio']. '"></td>
+        <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 50%; color: red;"  name="cost[]" readonly type="number" value="'.$productos['precio']. '"></td>
         <td  data-label="total"><input style="background:transparent; border: none; width: 50%;"  name="tot[]" readonly value="$'.$total. '"></td>
         
       </tr>';

@@ -71,9 +71,8 @@ for($i = 0; $i < count($_POST['cod']); $i++)
     $cost = $_POST['cost'][$i];
     $tot = $_POST['tot'][$i];
     echo $cantidad,$cost;
-    $total = $cantidad * $codigo;
+    $total = $cantidad * $cost;
       $final += $total;
-            
 ?>
      
             
