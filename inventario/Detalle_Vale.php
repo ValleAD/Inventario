@@ -58,7 +58,7 @@ if(isset($_POST['detalle'])){
     
      echo'   
     <section id="section">
-    <form method="POST" action="Plugin/index.php" target="_blank">
+    <form method="POST" action="Plugin/pdf_vale.php" target="_blank">
              
           
             <div class="row">

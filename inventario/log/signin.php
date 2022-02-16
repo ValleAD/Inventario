@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
             $_SESSION['signin'] = $row['username'];
 		$_SESSION['tipo_usuario'] = $row['tipo_usuario'];
 		
-       }elseif ($row ['Habilitado']=="Si") { 
+       }if ($row ['Habilitado']=="Si") { 
 			$_SESSION['signin'] = $row['username'];
 		$_SESSION['tipo_usuario'] = $row['tipo_usuario'];
 		header("Location: ../home.php");
@@ -33,7 +33,17 @@ if (isset($_POST['submit'])) {
 			$eror= 'No Puede Entrar Usuario Desabilitado';
 		
 	session_destroy();  
-		}
+	}
+	//if($row['status']=="Activo"){
+	// 	$_SESSION['signin'] = $row['username'];
+	// 	// $_SESSION['signin'] = $row['status'];
+	// 	$_SESSION['tipo_usuario'] = $row['tipo_usuario'];
+	// 	header("Location: ../home.php");
+			
+	// }else{
+	// 	$eror= 'La cuenta se Encuentra Ocupada';
+	// 	session_destroy();  
+	// }
 		
 		
 	} else {
