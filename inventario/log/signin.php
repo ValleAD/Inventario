@@ -15,14 +15,21 @@ if (isset($_POST['submit'])) {
 //	$email = $_POST['email'];
 	$password = ($_POST['password']);
 
-	$sql = "SELECT * FROM tb_usuarios WHERE username='$username' AND password='$password' LIMIT 1 ";
+	$sql = "SELECT * FROM tb_usuarios WHERE username='$username' AND password='$password'";
 	$result = mysqli_query($conn, $sql);
 	if ($result->num_rows > 0) {
 		$row = mysqli_fetch_assoc($result);
-	{
+		if($_SESSION['signin']==$row['username']){
+            echo '
+            <script>
+                alert("Ya esta Inicializada la Sesion");
+                window.location ="signin.php";
+                session_destroy();  
+                        </script>
+            ';
+        }else{
             $_SESSION['signin'] = $row['username'];
 		$_SESSION['tipo_usuario'] = $row['tipo_usuario'];
-		$cotinue_login = true;
 		
         }
 		if ($row ['Habilitado']=="Si") { 
@@ -31,12 +38,28 @@ if (isset($_POST['submit'])) {
 		
 		header("Location: ../home.php");
 		}else{
-			$eror= 'Cuenta Desabilitada';
+			 echo '
+    <script>
+        alert("No Puede Entrar Usuario Desabilitado");
+        window.location ="signin.php";
+        session_destroy();  
+                </script>
+	';
 		}
+		
+		
 	} else {
-		 $eror= 'Woops! Usuario o contraseña son incorrecta ';
+		 echo '
+    <script>
+        alert("Woops! Email or Password is Wrong.");
+        window.location ="signin.php";
+        session_destroy();  
+                </script>
+	';
+
 	}
-	}
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -44,14 +67,11 @@ if (isset($_POST['submit'])) {
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="../Plugin/bootstrap4/css/bootstrap.min.css">	
-      
-    <link rel="stylesheet" href="../Plugin/bootstrap/css/bootstrap.css">
 
 	<link rel="stylesheet" type="text/css" href="../styles/estilo_men.css">
+    <link rel="stylesheet" href="../Plugin/bootstrap/css/bootstrap.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" type="image/png" sizes="32x32"  href="../img/log.png">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.0/dist/sweetalert2.min.css">
 	<title>Sign In </title>
 </head>
 <body style="background-image: url(../img/bg1.jpg)">
@@ -89,14 +109,6 @@ if (isset($_POST['submit'])) {
                                             	
                                         </form>
                                     </div>
-                                    <?php if (isset($_POST['submit'])) { ?>
-                           <div class="mx-2 alert alert-warning alert-dismissible fade show" role="alert">
-						  <strong><?php echo $eror ?></strong>
-						  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						    <span aria-hidden="true">&times;</span>
-						  </button>
-						</div><?php } ?>
-                                    <div></div>
                                     <div class="card-footer text-center">
                                         <div class="small"><a href="signup.php">No tienes cuenta ? Registrarse</a></div>
                                         <div class="small"><form action="Invitado/invitado.php">
@@ -110,7 +122,7 @@ if (isset($_POST['submit'])) {
                 </main>
             </div>
             
-
+        </div>
    <style type="text/css">
 						.container{
 							margin-bottom: 5%;
@@ -130,23 +142,5 @@ if (isset($_POST['submit'])) {
 
 					}
 				</script>
-				 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="text/javascript">
-$("#btn8").click(function(){
-  Swal.fire({
-  title: 'Error!',
-  text: 'Do you want to continue',
-  icon: 'error',
-  confirmButtonText: 'Cool'
-})
-});
-    </script>
 </body>
 </html>
