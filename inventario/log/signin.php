@@ -30,14 +30,14 @@ if (isset($_POST['submit'])) {
 		$_SESSION['tipo_usuario'] = $row['tipo_usuario'];
 		header("Location: ../home.php");
 		}else{
-			$eror= '<p class="alert-heading"><i style="width: 50%" class=" bi bi-exclamation-triangle-fill"></i></p>No Puede Entrar Usuario Desabilitado';
+			$eror= '<p class="alert-heading"><i style="width: 50%;font-size: 2rem;" class="text-danger bi bi-exclamation-triangle-fill"></i></p>No Puede Entrar Usuario Desabilitado';
 		
 	session_destroy();  
 		}
 		
 		
 	} else {
-		$eror= '<p class="alert-heading"><i style="width: 50%" class=" bi bi-exclamation-triangle-fill"></i></p> Usuario o Contraseña son Incorrectos ';
+		$eror= '<p class="alert-heading"><i style="width: 50%;font-size: 2rem;" class="text-danger  bi bi-exclamation-triangle-fill"></i></p> Usuario o Contraseña son Incorrectos ';
 
 	}
 

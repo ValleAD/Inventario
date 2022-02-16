@@ -9,43 +9,50 @@ if (isset($_SESSION['signup'])) {
 }
 
 if (isset($_POST['submit'])) {
-	$username = $_POST['username'];
-	$firstname = $_POST['firstname'];
-	$lastname = $_POST['lastname'];
-	$email = $_POST['email'];
-	$password = ($_POST['password']);
-	$cpassword = ($_POST['cpassword']);
+		$username = $_POST['usuario'];
+	$firstname = $_POST['nombre'];
+	$lastname = $_POST['Apellido'];
+	$Establecimiento = $_POST['Establecimientos'];
+	$unidad = $_POST['Unidad'];
+	$password = $_POST['password'];
+	$cpassword = $_POST['cpassword'];
 	$tipo_usuario = ($_POST['tipo_usuario']);
+	
 	$verificar_usuario =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username ='$username'");
 
 if (mysqli_num_rows($verificar_usuario)>0) {
 	echo '
 		<script>
 		alert("Este Usuario ya esta Registrado, intente con otro diferente");
-		window.location ="signup.php"
+		 window.location ="../Empleados.php"; 
 	</script>
 	';
 exit();
 }
-
-if ($password == $cpassword) {
-	$sql = "SELECT * FROM tb_usuarios WHERE username='$username' AND firstname='$firstname' AND lastname='$lastname' AND email='$email' AND password='$password'";
+	if ($password == $cpassword) {
+	$sql = "SELECT * FROM tb_usuarios WHERE username='$username' AND firstname='$firstname' AND lastname='$lastname'  AND password='$password'";
+	
 	$result = mysqli_query($conn, $sql);
 	if (!$result->num_rows > 0) {
-		$sql = "INSERT INTO tb_usuarios (username,firstname,lastname, email, password,tipo_usuario,Habilitado)
-				VALUES ('$username','$firstname', '$lastname', '$email', '$password','$tipo_usuario','Si')";
+		
+		$password= hash('sha512',$password);
+		$sql = "INSERT INTO tb_usuarios (username,firstname,lastname,Establecimiento,Unidad, password,tipo_usuario,Habilitado)
+				VALUES ('$username','$firstname', '$lastname','$Establecimiento','$unidad',  '$password','$tipo_usuario','Si')";
 		$result = mysqli_query($conn, $sql);
 
 		if ($result) {
-		
-				
+				echo '
+				 <script>
+				        alert("!Error¡ Correo o contraseña incorrectos.");
+				        window.location ="../Empleados.php"";
+				        session_destroy();  
+				</script>';
 				$username = "";
 				$firstname = "";
 				$lastname = "";
 				$email = "";
 				$_POST['password'] = "";
 				$_POST['cpassword'] = "";
- 		header("Location: signin.php");
 			} else {
 				 echo '
 				    <script>
@@ -54,7 +61,9 @@ if ($password == $cpassword) {
 				        session_destroy();  
 				                </script>';
 				}
-		} 
+		 
+	}
+	
 	}
 }
 
@@ -98,60 +107,88 @@ if ($password == $cpassword) {
                                     <div class="card-body">
                                         <form method="POST" action="">
                                           	<div class="container">
-				<div class="row">
-				    <div class="col-md-6" style="position: initial">
-				       <label class="small mb-1">Nombre de usuario</label><br>
-						<input class="form-control" type="text"  name="username" value="<?php echo $username; ?>" required>
-				    </div>
-				    <div class="col-md-6" style="position: initial">
-				      <label class="small mb-1">Nombre</label><br>
-						<input class="form-control" type="text"  name="firstname" value="<?php echo $firstname; ?>" required>
-				    </div>
-				</div>
-				<div class="row">
+                                          		<div class="row">
+                    <div class="col-md-6" style="position: initial">
+                       <label class="small mb-1">Nombre de usuario</label><br>
+                        <input pattern="[A-Za-z0-9_-]{1,}" class="form-control" type="text"  name="usuario"  required>
+                    </div>
+                    <div class="col-md-6" style="position: initial">
+                      <label class="small mb-1">Nombre</label><br>
+                        <input pattern="[A-Za-z0-9_- ]{1,}" class="form-control" type="text"  name="nombre" required>
+                    </div>
+                </div>
+                <div class="row">
 
-				    <div class="col-md-6" style="position: initial">
-				     <label class="small mb-1">Apellido</label><br>
-						<input class="form-control" type="text"  name="lastname" value="<?php echo $lastname; ?>" required>
-						
+                    <div class="col-md-6" style="position: initial">
+                     <label class="small mb-1">Apellido</label><br>
+                        <input pattern="[A-Za-z0-9- ]{1,}" class="form-control" type="text"  name="Apellido"  required>
+                        
                                                 
                                         
-				     
-				    </div>
-				    <div class="col-md-6" style="position: initial">
-				      <label class="small mb-1">Correo</label><br>
-						<input class="form-control" type="email" name="email" value="<?php echo $email; ?>" required>
-				     
-				    </div>
-				</div>
-				<div class="row">
-				    <div class="col-md-6" style="position: initial">
-				      <label class="small mb-1">Contraseña</label><br>
-						<input class="form-control" id="show" type="password"  name="password" value="<?php echo $_POST['password']; ?>" required>
-				      <div class="custom-control custom-checkbox"><input class="custom-control-input" onclick="myFuntion();" id="rememberPasswordCheck" type="checkbox" /><label class="custom-control-label" for="rememberPasswordCheck">Mostrar Contraseña</label></div>
-				  </div>
-				  <div class="col-md-6" style="position: initial">
-				      <label class="small mb-1">Confirmar Contraseña</label><br>
-						<input class="form-control" id="show1" type="password"  name="cpassword" value="<?php echo $_POST['cpassword']; ?>" required>
-						<div class="custom-control custom-checkbox"><input class="custom-control-input" onclick=" myFuntion1();" id="PasswordCheck" type="checkbox" /><label class="custom-control-label" for="PasswordCheck">Mostrar Contraseña</label></div>
-				  </div>
-				</div>
+                     
+                    </div>
+                    <div class="col-md-6" style="position: initial">
+                      <label class="small mb-1">Establecimiento</label><br>
+                       <select class="form-control" name="Establecimientos">
+                <option selected disabled >Seleccionar</option>
+                <option>Hospital Nacional Zacatecoluca PA "Santa Tereza"</option>
+            </select>
+                     
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6" style="position: initial">
+                      <label class="small mb-1">Contraseña</label><br>
+                        <input pattern="[A-Za-z0-9_-]{1,}" class="form-control" id="show" type="password"  name="password"  required>
+                      <div class="custom-control custom-checkbox"><input class="custom-control-input" onclick="myFuntion();" id="rememberPasswordCheck" type="checkbox" /><label class="custom-control-label" for="rememberPasswordCheck">Mostrar Contraseña</label></div>
+                  </div>
+                  <div class="col-md-6" style="position: initial">
+                      <label class="small mb-1">Confirmar Contraseña</label><br>
+                        <input pattern="[A-Za-z0-9_-]{1,}" class="form-control" id="show1" type="password"  name="cpassword" required>
+                        <div class="custom-control custom-checkbox"><input class="custom-control-input" onclick=" myFuntion1();" id="PasswordCheck" type="checkbox" /><label class="custom-control-label" for="PasswordCheck">Mostrar Contraseña</label></div>
+                  </div>
+                </div>
+                <br>
+                <div class="row">
+                    
+                    <div class="col-md-6" style="position: initial">
+                        <label  class="small mb-1">Unidad ó Departamento</label><br>
+            <select class="form-control" name="Unidad">
+                <option selected disabled >Seleccionar</option>
+                   <?php  
+   $sql = "SELECT * FROM selects_departamento";
+    $result = mysqli_query($conn, $sql);
+    while ($productos = mysqli_fetch_array($result)){ 
+      echo'  <option>'.$productos['departamento'].'</option>
+  ';   
+ }?>
+            </select>
+                </div>
+                <div class="col-md-6" style="position: initial">
+                                                <label class="small mb-1">Tipo de Usuarios (Roles De Usuario)</label>
+                                                <select class="form-control" name="tipo_usuario" required>
+                                                    <option selected disabled>Selecione</option>
+                                                    <option value="1">Admistrador</option>
+                                                    <option value="2">Cliente</option>
+                                               </select>
+                        </div>
+                    </div>
+                <div>
+                    <div class="form-group" style="margin-top: 2%;">
+                        <button type="submit" name="submit" class="btn btn-primary btn-block">Registrarse</button>
+                    </div>
 
-				<div class="form-group" style="margin-bottom:3%;margin-top:3%">
-                                            	<label class="small mb-1">Tipo de Usuarios (Roles De Usuario)</label>
-												<select class="form-control" name="tipo_usuario">
-													<option selected disabled>Selecione</option>
-													<option value="1">Admistrador</option>
-													<option value="2">Cliente</option>
-												</select></div>
-				<div>
-					<div>
-						<button type="submit" name="submit" class="btn btn-primary btn-block">Registrarse</button>
-					</div>
+                    </div>
+                     <style type="text/css">
+                    label{
+                    color: black;
+                 }
+                    </style>
+                
+                </form> 
+                                          	</div>
 
-   
-</div>
-</form>
+								</form>
                                   
                                     <div class="card-footer text-center">
                                         <div class="small"><a href="signin.php">¿Ya tienes una cuenta? Go to login</a></div>
@@ -159,7 +196,7 @@ if ($password == $cpassword) {
                                     </main>
                                 </div>
                             </div>
-                
+                </div></div></div></main></div></div>
 
 
 

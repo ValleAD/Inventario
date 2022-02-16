@@ -1,12 +1,14 @@
 <?php 
 include ('../Model/conexion.php');
-	$username = $_POST['Usuario'];
-	$firstname = $_POST['Nombres'];
-	$lastname = $_POST['Apellidos'];
+	$username = $_POST['usuario'];
+	$firstname = $_POST['nombre'];
+	$lastname = $_POST['Apellido'];
 	$Establecimiento = $_POST['Establecimientos'];
 	$unidad = $_POST['Unidad'];
-	$password = $_POST['Password'];
+	$password = $_POST['password'];
 	$cpassword = $_POST['cpassword'];
+	$tipo_usuario = ($_POST['tipo_usuario']);
+	
 	$verificar_usuario =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username ='$username'");
 
 if (mysqli_num_rows($verificar_usuario)>0) {
@@ -19,12 +21,14 @@ if (mysqli_num_rows($verificar_usuario)>0) {
 exit();
 }
 	if ($password == $cpassword) {
-	$sql = "SELECT * FROM tb_usuarios WHERE username='$username' AND firstname='$firstname' AND lastname='$lastname' AND email='$email' AND password='$password'";
+	$sql = "SELECT * FROM tb_usuarios WHERE username='$username' AND firstname='$firstname' AND lastname='$lastname'  AND password='$password'";
 	
 	$result = mysqli_query($conn, $sql);
 	if (!$result->num_rows > 0) {
-		$sql = "INSERT INTO tb_usuarios (username,firstname,lastname, email, password,tipo_usuario,Habilitado)
-				VALUES ('$username','$firstname', '$lastname', '$email', '$password','$tipo_usuario','Si')";
+		
+		$password= hash('sha512',$password);
+		$sql = "INSERT INTO tb_usuarios (username,firstname,lastname,Establecimiento,Unidad, password,tipo_usuario,Habilitado)
+				VALUES ('$username','$firstname', '$lastname','$Establecimiento','$unidad',  '$password','$tipo_usuario','Si')";
 		$result = mysqli_query($conn, $sql);
 
 		if ($result) {
