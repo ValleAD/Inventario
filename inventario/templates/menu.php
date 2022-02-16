@@ -96,13 +96,14 @@ background:burlywood;
                         <li><a id="b" href="form_circulante.php">Nuevo</a></li>
                     </ul>
                 </li>
+                <?php if($tipo_usuario == 1) { ?>
                  <li class="submenu" style="margin-left: auto;">
                     <a id="a" href="#" ><span class="icon-rocket"></span>Empleados<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
                         <li><a id="b" href="Empleados.php">Mostrar</a></li>
                     </ul>
                 </li>
-
+            <?php } ?>
 
                <?php
     $cliente =$_SESSION['signin'];
@@ -121,9 +122,14 @@ background:burlywood;
                 </button>
             </div>
               <div class="modal-body">
-    <img src="img/logo1.png" style="width: 25%;" id="img">
-                <div id="Perfil">
-                <table id="table">
+                <div class="card mb-3" style="max-width: 540px;background: transparent;border: none;">
+  <div  class="row no-gutters">
+    <div class="col-md-4">
+        <img src="img/logo1.png" style="max-width: 100%;" id="img">
+    </div>
+    <div style="background: transparent;"class="col-md-8">
+      <div  class="card-body">
+       <table id="table">
                                
                 <tr>
                     
@@ -145,8 +151,9 @@ background:burlywood;
                 </tr>
 
                </table>
-          
-
+      </div>
+    </div>
+  </div>
               </div>
             <style type="text/css">
                 #Perfil{

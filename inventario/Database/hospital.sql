@@ -49,6 +49,7 @@ CREATE TABLE tb_usuarios (
   unidad varchar(50) NOT NULL,
   password varchar(50) NOT NULL,
   Habilitado varchar(2) NOT NULL,
+  status varchar(11) NOT NULL,
   tipo_usuario int(15) NOT NULL,
     PRIMARY KEY (id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci; 
