@@ -4,7 +4,7 @@ include ('../Model/conexion.php');
      
 
 
-    $departamento = $_POST['departamento'];
+    $departamento = $_POST['depto'];
     $orden_trabajo = $_POST['odt'];
     $usuario = $_POST['usuario'];
 
@@ -23,10 +23,9 @@ include ('../Model/conexion.php');
     $stock = $_POST['cant'][$i];
     $precio= $_POST['cu'][$i];
     $orden_trabajo = $_POST['odt'];
-    $estado = $_POST['estado'];
 
   
-      $insert = "INSERT INTO detalle_bodega (codigo,descripcion,unidad_medida,stock,precio,odt_bodega,estado) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$orden_trabajo','$estado')";
+      $insert = "INSERT INTO detalle_bodega (codigo,descripcion,unidad_medida,stock,precio,odt_bodega) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$orden_trabajo')";
       $query = mysqli_query($conn, $insert);
 
       if ($query) {

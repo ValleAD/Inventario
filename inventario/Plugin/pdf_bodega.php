@@ -1,63 +1,51 @@
-<?php
-
-if(isset($_POST['cod'])){
+<?php ob_start() ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Bodega</title>
+</head>
+<body style="font-family: sans-serif;">
+    <img src="../img/hospital.jpg" style="width:20%">
+    <img src="../img/log_1.png" style="width:20%; float:right">
+    <?php if(isset($_POST['cod'])){
 
     $depto = $_POST['depto'];
     $fech = $_POST['fech'];
     $encargado = $_POST['usuario'];
-    
+     $vale = $_POST['odt'];
+      
+?>
+<h3>HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
+<p style="float: right; margin-right: 15%; position: absolute;">O. de T.: <?php echo $vale ?></p>
+<h4>DEPARTAMENTO DE MANTENIMIENTO</h4>
+<h5 align="center">SOLICITUD DE MATERIALES</h5>
+ 
+<section style="margin: 2%;">
+              
+    <p><b>Depto. o Servicio:</b> <?php echo $depto ?></p>
+
+    <p style="float: right; margin-right: 35%;"><b>Fecha:</b> <?php echo $fech ?></p>
         
+    <p><b>Encargado:</b> <?php echo $encargado ?></p>
+
+<table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
+    <thead>     
+        <tr style="border: 1px solid #ddd;color: black;" >
+            <th style="width: 25%;font-size: 16px;text-align: center;">Código</th>
+            <th style="width: 70%;color:black;font-size: 16px;text-align: center;">Descripción Completa</th>
+            <th style="width: 15%;color:black;font-size: 16px;text-align: center;">U/M</th>
+            <th style="width: 15%;color:black;font-size: 16px;text-align: center;">Cantidad</th>
+            <th style="width: 15%;color:black;font-size: 16px;text-align: center;">C/U</th>
+            <th style="width: 15%;color:black;font-size: 16px;text-align: center;border-right:1px solid #ccc ;">Total</th>
+        </tr>
+    </thead> 
+
+    <tbody>
+<?php
+    $total = 0;
     $final = 0;
-
-require('../fpdf/fpdf.php');
-
-class PDF extends FPDF{ 
-
-function Header(){
-
-    $odt = $_POST['odt'];
-    
-    $this->Cell(8);
-    $this->Image('../img/hospital.jpg', 150, 7, 50);
-    $this->Image('../img/log_1.png', 12, null, 50);
-    $this->Ln(5);
-    $this->SetFont('Arial', 'B', 12);
-    $this->Cell(10);
-    $this->Cell(70, 15, 'HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA',0, 0, 'c');
-    $this->SetFont('Arial', '', 11);
-    $this->Cell(160, 15, ('O. de T. No.: '.$odt), 0, 0, 'C', 0);
-    $this->Ln();
-    $this->Cell(10);
-    $this->SetFont('Arial', 'B', 12);
-    $this->Cell(70, 5, 'DEPARTAMENTO DE MANTENIMIENTO',0, 0, 'c');
-    $this->Ln(15);
-    $this->Cell(70);
-    $this->Cell(70, 5, 'Solicitud de Materiales',0, 0, 'c');
-    $this->Ln();
-    }
-}
-
-$pdf = new PDF();
-$pdf->AddPage();
-$pdf->SetFont('Arial', '', '12');
-
-
-$pdf->Ln();
-$pdf->Cell(58, 10, utf8_decode('Fecha: '. $fech), 0, 0, 'C', 0);   
-$pdf->Cell(105, 10, ('Depto. o Servicio: '. $depto), 0, 0, 'C', 0);
-$pdf->Ln(10);
-$pdf->Cell(71, 5, utf8_decode('Encargado: '. $encargado), 0, 0, 'C', 0);
-$pdf->Ln(10);
-$pdf->SetFont('Arial', 'B', '12');
-$pdf->Cell(5, 10, '', 0, 0, 'C', 0);
-$pdf->Cell(20, 10, utf8_decode('Código'), 1, 0, 'C', 0);
-$pdf->Cell(50, 10, utf8_decode('Descripción'), 1, 0, 'C', 0);   
-$pdf->Cell(15, 10, 'U/M', 1, 0, 'C', 0);
-$pdf->Cell(20, 10, 'Cantidad', 1, 0, 'C', 0);
-$pdf->Cell(30, 10, 'Costo Unitario', 1, 0, 'C', 0);
-$pdf->Cell(30, 10, 'Estado', 1, 0, 'C', 0);
-$pdf->Cell(20, 10, 'Total', 1, 1, 'C', 0);
-
 for($i = 0; $i < count($_POST['cod']); $i++)
 {
    
@@ -66,41 +54,56 @@ for($i = 0; $i < count($_POST['cod']); $i++)
     $um = $_POST['um'][$i];
     $cantidad = $_POST['cant'][$i];
     $cost = $_POST['cost'][$i];
-    $estado = $_POST['estado'][$i];
     $tot = $_POST['tot'][$i];
 
-$pdf->SetFont('Arial', '', '12');
-$pdf->Cell(5, 10, '', 0, 0, 'C', 0);
-$pdf->Cell(20, 10, utf8_decode($codigo),1, 0, 'C', 0);
-$pdf->Cell(50, 10, utf8_decode($des),1, 0, 'L', 0);
-$pdf->Cell(15, 10, utf8_decode($um),1, 0, 'C', 0);
-$pdf->Cell(20, 10, utf8_decode($cantidad),1, 0, 'C', 0);
-$pdf->Cell(30, 10, utf8_decode($cost),1, 0, 'C', 0);
-$pdf->Cell(30, 10, utf8_decode($estado),1, 0, 'C', 0);
-$pdf->Cell(20, 10, utf8_decode($tot),1, 0, 'C', 0);
-$pdf->Ln();
-}
-
-$tot_f = $_POST['tot_f'];
-
-$pdf->SetFont('Arial', 'B', '12');
-$pdf->Cell(5, 10, '', 0, 0, 'C', 0);
-$pdf->Cell(135, 10, utf8_decode(""),1, 0, 'C', 0);
-$pdf->Cell(30, 10, 'Subtotal', 1, 0, 'C', 0);
-$pdf->Cell(20, 10, utf8_decode($tot_f),1, 0, 'C', 0);
-$pdf->Ln();
-$pdf->Ln();
-$pdf->SetFont('Arial', '', '12');
-$pdf->Cell(5, 10, '', 0, 0, 'C', 0);
-$pdf->Cell(0, 12,('Solicita: ________________                                  Entrega: ________________'), 0, 1);
-$pdf->Ln();
-$pdf->Cell(50);
-$pdf->Cell(0, 12,('Autoriza: ________________'), 0, 1);
-
-
-//mostramos el PDF
-$pdf->Output('', 'Solicitud_bodega.pdf');
-
-}
-
+    $tot_f = $_POST['tot_f'];
 ?>
+  
+        <tr>
+            <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $codigo?></td>
+            <td style="border: 1px solid #ccc;border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $des?></td>
+            <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $um?></td>
+            <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $cantidad ?></td>
+            <td style="text-align: center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;;"><?php echo $cost ?></td>
+            <td style="text-align: center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $tot ?></td>
+        </tr>
+     
+     <?php } } ?> 
+    <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
+        <td style="text-align: center; font-weight: bold;">Subtotal</td>
+        <td colspan="4"></td>
+        <td style="text-align: center; font-weight: bold;">$<?php echo $final ?></td>
+    </tfoot>
+
+    </tbody>                
+</table>
+<br>
+    <p style="float: right;"> Entrega: ________________</p>
+    <p style="text-align:left;">Solicita: ________________ </p>
+    <br>
+    <p style="text-align: center;">Autoriza: ________________</p>
+</section>
+
+</body>
+</html>
+            <?php $html=ob_get_clean();
+                 // echo $html 
+require_once 'dompdf/autoload.inc.php';
+// reference the Dompdf namespace
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
+// instantiate and use the dompdf class
+$dompdf = new Dompdf();
+$options = $dompdf->getOptions();
+$options->setIsHtml5ParserEnabled(true);
+$dompdf->setOptions($options);
+$dompdf->loadHtml($html);
+$dompdf->setPaper('letter');
+
+// Render the HTML as PDF
+$dompdf->render();
+
+// Output the generated PDF to Browser
+$dompdf->stream("pdf_vale.php",array("Attachment"=>0));
+        ?>

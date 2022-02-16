@@ -56,7 +56,7 @@ $final = 0;
 
  echo'   
 <section id="section">
-<form id="form" method="POST" action="Controller/añadir_almacen_copy.php" target="_blank">
+<form id="form" method="POST" action="Plugin/pdf_almacen.php" target="_blank">
          
       
         <div class="row">  

@@ -50,7 +50,7 @@ $a=$_POST['sol_compra'];
 
   echo'   
   <section id="section">
-  <form method="POST"  action="Controller/añadir_compra_copy.php" target="_blank" style="background-color:white;padding:1%">
+  <form method="POST"  action="Plugin/pdf_compra.php" target="_blank" style="background-color:white;padding:1%">
            
         
           <div class="row">

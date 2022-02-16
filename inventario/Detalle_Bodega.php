@@ -62,7 +62,7 @@ if(isset($_POST['detalle'])){
     
      echo'   
     <section id="section">
-    <form method="POST" action="Exportar_PDF/pdf_bodega.php" target="_blank">
+    <form method="POST" action="Plugin/pdf_bodega.php" target="_blank">
              
           
             <div class="row">

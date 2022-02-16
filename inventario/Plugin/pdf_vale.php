@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDF Vale</title>
 </head>
-<body>
+<body style="font-family: sans-serif;">
     <img src="../img/hospital.jpg" style="width:20%">
-    <img src="../img/log_1.png" style="width:20%;float:right">
+    <img src="../img/log_1.png" style="width:20%; float:right">
     <?php if(isset($_POST['cod'])){
 
     $depto = $_POST['depto'];
@@ -17,48 +17,32 @@
      $vale = $_POST['vale'];
       
 ?>
-<h3 align="center">HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
-<h4 align="center">DEPARTAMENTO DE MANTENIMIENTO</h4>
+<h3>HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
+<p style="float: right; margin-right: 15%; position: absolute;">Vale No.: <?php echo $vale ?></p>
+<h4>DEPARTAMENTO DE MANTENIMIENTO</h4>
+<h5 align="center">SOLICITUD DE MATERIALES</h5>
  
-<section id="section">
-<form method="POST" action="Exportar_PDF/pdf_vale.php" target="_blank">
-         
-      
-        <div class="row">
-      <div class="col-6 col-sm-3" style="position: initial">
-      
-              <label style="font-weight: bold; ">Vale No.: </label><?php echo $vale ?>
+<section style="margin: 2%;">
+              
+    <p><b>Depto. o Servicio:</b> <?php echo $depto ?></p>
 
-          </div>
-          <div class="col-6 col-sm-3" style="position: initial">
-      
-              <label style="font-weight: bold;">Depto. o Servicio: </label><?php echo $depto ?>
+    <p style="float: right; margin-right: 35%;"><b>Fecha:</b> <?php echo $fech ?></p>
+        
+    <p><b>Encargado:</b> <?php echo $encargado ?></p>
 
-          </div>
+<table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+    <thead>     
+        <tr style="border: 1px solid #ddd;color: black;" >
+            <th style="width: 25%;font-size: 16px;text-align: center;">Código</th>
+            <th style="width: 70%;color:black;font-size: 16px;text-align: center;">Descripción Completa</th>
+            <th style="width: 15%;color:black;font-size: 16px;text-align: center;">U/M</th>
+            <th style="width: 15%;color:black;font-size: 16px;text-align: center;">Cantidad</th>
+            <th style="width: 15%;color:black;font-size: 16px;text-align: center;">C/U</th>
+            <th style="width: 15%;color:black;font-size: 16px;text-align: center;border-right:1px solid #ccc ;">Total</th>
+        </tr>
+    </thead> 
 
-          <div class="col-6 col-sm-3" style="position: initial">
-            <label style="font-weight: bold;">Fecha: </label>
-            <?php echo $fech ?> 
-          </div>
-
-        <div class="col-6 col-sm-3" style="position: initial">
-            <label style="font-weight: bold;">Encargado: </label><?php echo $encargado ?>
-        </div>
-        </div>
-<br>
-<table  class="table" id="example" style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; 
-    ">
-       <thead>     
-        <tr style="background-color: #f8f8f8;border: 1px solid #ddd;color: black;" >
-        <th style=" width: 5%;color:black;font-size: 16px;text-align: center;">Código</th>
-        <th style=" width: 130%;color:black;font-size: 16px;text-align: center;">Descripción Completa</th>
-        <th style=" width: 40%;color:black;font-size: 16px;text-align: center;">U/M</th>
-        <th style=" width: 40%;color:black;font-size: 16px;text-align: center;">Cantidad</th>
-        <th style=" width: 40%;color:black;font-size: 16px;text-align: center;">Costo Unitario</th>
-        <th style=" width: 40%;color:black;font-size: 16px;text-align: center;border-right:1px solid #ccc ;">Total</th>
-                   </tr>
-                </thead> 
-                <tbody>
+    <tbody>
 <?php
     $total = 0;
     $final = 0;
@@ -71,43 +55,42 @@ for($i = 0; $i < count($_POST['cod']); $i++)
     $cantidad = $_POST['cant'][$i];
     $cost = $_POST['cost'][$i];
     $tot = $_POST['tot'][$i];
-    echo $cantidad,$cost;
-    $total = $cantidad * $cost;
-      $final += $total;
+
+    $tot_f = $_POST['tot_f'];
 ?>
+  
+        <tr>
+            <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $codigo?></td>
+            <td style="border: 1px solid #ccc;border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $des?></td>
+            <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $um?></td>
+            <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $cantidad ?></td>
+            <td style="text-align: center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;;"><?php echo $cost ?></td>
+            <td style="text-align: center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $tot ?></td>
+        </tr>
      
-            
-                  
-     <style type="text/css">
-     
-         #td{
-             display: none;
-         }
-        th{
-            width: 100%;
-        }
-     </style>
-         <tr id="tr">
-           <td style="text-align:center;" data-label="Codigo" style="text-align: center;"><?php  echo $codigo?></td>
-           <td style="text-align:center;"  data-label="Descripción Completa"><?php  echo $des?></td>
-           <td style="text-align:center;"  data-label="Unidad De Medida" style="text-align: center;"><?php  echo $um?></td>
-           <td style="text-align:center;"  data-label="Cantidad" style="color red"><?php echo $cantidad ?></td>
-            <td style="text-align:center;"  data-label="Costo unitario" style="color red"><?php echo $cost ?></td>
-           <td style="text-align:center;"  data-label="Fecha Registro"><?php  echo $total ?></td>
-         </tr>
-     
+    </tbody>  
      <?php } } ?> 
-     <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
-         <th>SubTotal
-             <td colspan="5" style="float right;text-align: right;padding-right:3%;color:red ;">
-                 <?php  echo $final ?>
-             </td>
-         </th>
-     </tfoot>
-                </tbody>                
-            </table>
-            <div style="margin-top: 55%;">
-            <p style="text-align:left;">Solicita: ________________ <br> </p><p style="text-align:center;margin-top: -6.5%;"> Entrega: ________________</p><p style="float: right;margin-top: -2.5%;">Autoriza: ________________</p></div>
+    <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
+        <td style="text-align: center; font-weight: bold;">Subtotal</td>
+        <td colspan="4"></td>
+        <td style="text-align: center; font-weight: bold;">$<?php echo $tot_f ?></td>
+    </tfoot>
+</table>
+<br>
+    <table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
+        <tbody>
+            <tr>
+                <td>Observaciones (En qué se ocupará el bien entregado)</td>
+            </tr>
+            <td style="height: 20%;"></td>
+        </tbody>
+    </table>
+    <br>
+    <p style="float: right;"> Entrega: ________________</p>
+    <p style="text-align:left;">Solicita: ________________ </p>
+    <br>
+    <p style="text-align: center;">Autoriza: ________________</p>
+</section>
 
 </body>
 </html>

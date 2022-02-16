@@ -1,6 +1,16 @@
-<?php
+<?php ob_start() ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Compra</title>
+</head>
+<body style="font-family: sans-serif;">
+    <img src="../img/hospital.jpg" style="width:20%">
+    <img src="../img/log_1.png" style="width:20%; float:right">
 
-if(isset($_POST['cod'])){
+ <?php   if(isset($_POST['cod'])){
 
     $solicitud = $_POST['sol_compra'];
     $dependencia = $_POST['dependencia'];
@@ -9,112 +19,115 @@ if(isset($_POST['cod'])){
     $suministro = $_POST['suministro'];
     $usuario = $_POST['usuario'];
     $fecha = $_POST['fech'];
+      
+?>
+<h3 align="center" style="margin-top: -2%;">MINISTERIO DE SALUD</h3>
+<h3 align="center" style="margin-top: -2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
+<h4 align="center" style="margin-top: -2%;">UNIDAD DE ADQUISICIONES Y CONTRATACIONES INSTITUCIONAL</h4>
+<h4 align="center" style="margin-top: -2%;">SOLICITUD DE COMPRA</h4>
+ 
+<section style="margin: 2%;">
 
-    
-        
+<section style="font-size: 14px;">
+    <div style="float: right">
+        <label>FECHA DE IMPRESIÓN:</label><br>
+        <label>FECHA DE CREACIÓN: <?php echo $fecha ?></label>
+    </div>
+              
+    <p style="margin-top: -1.5%;"><b>Solicitud No.:</b> <?php echo $solicitud ?></p>
+    <p style="margin-top: -1.5%;"><b>DEPENDECIA SOLICITANTE:</b> <?php echo $dependencia ?></p> 
+    <p style="margin-top: -1.5%;"><b>PLAZO Y NÚMERO DE ENTREGAS:</b> <?php echo $plazo ?></p>
+    <p style="margin-top: -1.5%;"><b>UNIDAD TÉCNICA:</b> <?php echo $unidad ?></p>
+    <p style="margin-top: -1.5%;"><b>SUMINISTROS SOLICITADOS:</b> <?php echo $suministro ?></p>
+    <p style="margin-top: -1.5%;"><b>ENCARGADO:</b> <?php echo $usuario ?></p>
+</section>
+
+<div style="float: right; font-size: 13px;">
+    <p align="left">Montos estimados <br>presupuestados <br>en dólares</p>
+</div>
+
+<table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse; margin-top: 9%;">
+     <thead>     
+        <tr style="border: 1px solid #ddd;color: black;" >
+            <th style="width: 25%;font-size: 16px;text-align: center;">Código</th>
+            <th style="width: 25%;font-size: 16px;text-align: center;">Código <br>ONU</th>
+            <th style="width: 70%;color:black;font-size: 16px;text-align: center;">Descripción Completa <br>(con todas sus especificaciones)</th>
+            <th style="width: 15%;color:black;font-size: 16px;text-align: center;">U/M</th>
+            <th style="width: 15%;color:black;font-size: 16px;text-align: center;">Cant.<br>Sol.</th>
+            <th style="width: 15%;color:black;font-size: 16px;text-align: center;">Cant.<br>Desp.</th>
+            <th style="width: 15%;color:black;font-size: 16px;text-align: center;">C/U</th>
+            <th style="width: 15%;color:black;font-size: 16px;text-align: center;border-right:1px solid #ccc ;">Monto</th>
+        </tr>
+    </thead> 
+
+    <tbody>
+<?php
+    $total = 0;
     $final = 0;
-
-require('../fpdf/fpdf.php');
-
-class PDF extends FPDF{ 
-
-function Header(){
-    
-    $this->Cell(5);
-    $this->Image('../img/hospital.jpg', 150, 7, 50);
-    $this->Image('../img/log_1.png', 12, null, 50);
-    $this->Ln();
-    $this->SetFont('Arial', 'B', 11);
-    $this->Cell(180, 7, 'MINISTERIO DE SALUD',0, 0, 'C');
-    $this->Ln();
-    $this->Cell(180, 7, 'HOSPITAL NACIONAL SANTA TERESA',0, 0, 'C');
-    $this->Ln();
-    $this->Cell(180, 7, 'UNIDAD DE ADQUISICIONES  Y CONTRATACIONES INSTITUCIONAL',0, 0, 'C');
-    $this->Ln();
-    $this->Cell(180, 7, 'SOLICITUD DE COMPRA',0, 0, 'C');
-    }
-}
-
-$pdf = new PDF();
-$pdf->AddPage();
-$pdf->SetFont('Arial', '', '10');
-
-$pdf->Ln(8);
-$pdf->Cell(270, 10, utf8_decode('Fecha de impresión:'), 0, 0, 'C', 0); 
-$pdf->Ln(4);
-$pdf->Cell(291, 10, utf8_decode('Fecha de creación: ' .$fecha), 0, 0, 'C', 0);  
-$pdf->Ln(5); 
-$pdf->SetFont('Arial', 'B', '10');
-$pdf->Cell(5);
-$pdf->Cell(60, 10, ('Solicitud No. '. $solicitud), 0, 0, 'L', 0);
-$pdf->Ln(4);
-$pdf->Cell(5);
-$pdf->Cell(60, 10, ('Dependencia Solicitante: '. $dependencia), 0, 0, 'L', 0);
-$pdf->Ln(4);
-$pdf->Cell(5);
-$pdf->Cell(60, 10, utf8_decode('Plazo y Número de Entregas: '. $plazo), 0, 0, 'L', 0);
-$pdf->Ln(4);
-$pdf->Cell(5);
-$pdf->Cell(60, 10, utf8_decode('Unidad Técnica: '. $unidad), 0, 0, 'L', 0);
-$pdf->Ln(4);
-$pdf->Cell(5);
-$pdf->Cell(60, 10, ('Suministro Solicitado: '. $suministro), 0, 0, 'L', 0);
-$pdf->Ln(10);
-$pdf->Cell(142, 10, '', 0, 0, 'C', 0);
-$pdf->Cell(35, 10, utf8_decode("Montos Estimados"),1, 0, 'C', 0);
-$pdf->Ln(10);
-$pdf->SetFont('Arial', 'B', '10');
-$pdf->Cell(5, 10, '', 0, 0, 'C', 0);
-$pdf->Cell(20, 10, utf8_decode('Código'), 1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode('Descripción Completa'), 1, 0, 'C', 0);   
-$pdf->Cell(12, 10, 'U/M', 1, 0, 'C', 0);
-$pdf->Cell(20, 10, 'Cant. sol.', 1, 0, 'C', 0);
-$pdf->Cell(25, 10, 'Cant. aprob.', 1, 0, 'C', 0);
-$pdf->Cell(15, 10, 'C/U', 1, 0, 'C', 0);
-$pdf->Cell(20, 10, 'Total', 1, 1, 'C', 0);
-
 for($i = 0; $i < count($_POST['cod']); $i++)
 {
    
     $codigo = $_POST['cod'][$i];
+    $onu = $_POST['catalogo'][$i];
     $des = $_POST['desc'][$i];
     $um = $_POST['um'][$i];
     $cantidad = $_POST['cant'][$i];
     $cost = $_POST['cost'][$i];
     $tot = $_POST['tot'][$i];
 
-$pdf->SetFont('Arial', '', '10');
-$pdf->Cell(5, 10, '', 0, 0, 'C', 0);
-$pdf->Cell(20, 10, utf8_decode($codigo),1, 0, 'C', 0);
-$pdf->Cell(60, 10, utf8_decode($des),1, 0, 'L', 0);
-$pdf->Cell(12, 10, utf8_decode($um),1, 0, 'C', 0);
-$pdf->Cell(20, 10, utf8_decode($cantidad),1, 0, 'C', 0);
-$pdf->Cell(25, 10, "",1, 0, 'C', 0);
-$pdf->Cell(15, 10, utf8_decode($cost),1, 0, 'C', 0);
-$pdf->Cell(20, 10, utf8_decode($tot),1, 0, 'C', 0);
-$pdf->Ln();
-}
-
-$tot_f = $_POST['tot_f'];
-
-$pdf->SetFont('Arial', 'B', '10');
-$pdf->Cell(5, 10, '', 0, 0, 'C', 0);
-$pdf->Cell(112, 10, utf8_decode(""),1, 0, 'C', 0);
-$pdf->Cell(40, 10, 'Subtotal', 1, 0, 'C', 0);
-$pdf->Cell(20, 10, utf8_decode($tot_f),1, 0, 'C', 0);
-$pdf->Ln();
-$pdf->Ln();
-$pdf->SetFont('Arial', '', '10');
-$pdf->Cell(5, 10, '', 0, 0, 'C', 0);
-$pdf->Cell(175, 10, utf8_decode('Justificación por el OBS solicitado:'),1, 0, 'L', 0);
-$pdf->Ln();
-$pdf->Cell(5, 10, '', 0, 0, 'C', 0);
-$pdf->Cell(175, 40, '', 1, 0, 'C', 0);
-
-
-//mostramos el PDF
-$pdf->Output('', 'Solicitud_compra.pdf');
-
-}
-
+    $tot_f = $_POST['tot_f'];
 ?>
+  
+        <tr>
+            <td style="text-align:center;" style="text-align: center;"><?php  echo $codigo?></td>
+            <td style="text-align:center;" style="text-align: center;"><?php  echo $onu?></td>
+            <td><?php  echo $des?></td>
+            <td style="text-align:center;" style="text-align: center;"><?php  echo $um?></td>
+            <td style="text-align:center;"><?php echo $cantidad ?></td>
+            <td></td>
+            <td style="text-align: center;"><?php echo $cost ?></td>
+            <td style="text-align: center"><?php  echo $tot ?></td>
+        </tr>
+     
+     <?php } } ?> 
+    <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
+        <td style="text-align: center; font-weight: bold;">Subtotal</td>
+        <td colspan="6"></td>
+        <td style="text-align: center; font-weight: bold;"><?php echo $tot_f ?></td>
+    </tfoot>
+</table>
+<br>
+    <table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
+        <tbody>
+            <tr>
+                <td>Justificación por el OBS solicitado</td>
+            </tr>
+            <td style="height: 20%;"></td>
+        </tbody>
+    </table>
+    </tbody>                
+</section>
+
+</body>
+</html>
+            <?php $html=ob_get_clean();
+                 // echo $html 
+require_once 'dompdf/autoload.inc.php';
+// reference the Dompdf namespace
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
+// instantiate and use the dompdf class
+$dompdf = new Dompdf();
+$options = $dompdf->getOptions();
+$options->setIsHtml5ParserEnabled(true);
+$dompdf->setOptions($options);
+$dompdf->loadHtml($html);
+$dompdf->setPaper('letter');
+
+// Render the HTML as PDF
+$dompdf->render();
+
+// Output the generated PDF to Browser
+$dompdf->stream("pdf_vale.php",array("Attachment"=>0));
+        ?>

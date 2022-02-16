@@ -56,7 +56,7 @@ $final = 0;
 
  echo'   
 <section id="section">
-<form method="POST" action="Exportar_PDF/pdf_circulante.php" target="_blank">
+<form method="POST" action="Plugin/pdf_circulante.php" target="_blank">
          
       
         <div class="row">  
