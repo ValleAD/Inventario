@@ -39,7 +39,7 @@ location.href = '../form_compra.php';
       $cantidad         = $_POST['cant'][$i];
       $cost             = $_POST['cu'][$i];
       $estado             = $_POST['estado'][$i];
-      $solicitud        = $_POST['nsolicitud'];;
+      $solicitud        = $_POST['nsolicitud'];
 
       $insert = "INSERT INTO detalle_compra (categoria, codigo, catalogo, descripcion, unidad_medida, stock, precio, estado, solicitud_compra) VALUES ('$categoria', '$codigo_producto','$catalogo', '$Descripción', '$u_m', '$cantidad', '$cost','$estado', '$solicitud')";
       $query = mysqli_query($conn, $insert);
