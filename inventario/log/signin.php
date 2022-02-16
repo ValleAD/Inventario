@@ -7,9 +7,10 @@ session_start();
 error_reporting(0);
 
 if (isset($_SESSION['signin'])) {
-    header("Location: ../home.php");
+    header("Location: ../log/signin.php");
+}else {
+	header("windows.location: ../log/signin.php");
 }
-
 if (isset($_POST['submit'])) {
 	$username = $_POST['username'];
 //	$email = $_POST['email'];

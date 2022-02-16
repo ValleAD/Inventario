@@ -44,7 +44,7 @@ background:burlywood;
                 <li class="submenu">
                     <a id="b" href="#"><span class="icon-rocket"></span>Articulos<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
-                        <li><a id="b" href="vale/productos.php">Nuevo</a></li>
+                        <li><a id="b" href="vale/productos.php">ver</a></li>
                     </ul>
                 </li>
                 <li class="submenu">
@@ -97,3 +97,4 @@ function main () {
     
 </body>
 </html>
+
