@@ -2,18 +2,21 @@
 require '../Model/conexion.php';
 
 //conversion
-$categoria = $_POST['categoria'];
+$id2 =$_POST['cod'];
 $id1 =$_POST['codProducto'];
 $codCatalogo =$_POST['codCatalogo'];
-$nombre =$_POST['nombre'];
 $descripcion =$_POST['descripcion'];
-$um =$_POST['um'];
-$precio=$_POST['precio'];
 
+$precio=$_POST['precio'];
+for($i = 0; $i < count($_POST['categoria']); $i++) 
+    {
+      $categoria = $_POST['categoria'][$i];
+      $um =$_POST['um'][$i];
+    }
 //sql
 
 
-$sql="UPDATE tb_productos SET categoria = '$categoria' ,codProductos='$id1',nombre='$nombre',descripcion='$descripcion',unidad_medida='$um',precio='$precio' WHERE codProductos='$id1'" ;
+$sql="UPDATE tb_productos SET cod='$id2', codProductos='$id1',descripcion='$descripcion',precio='$precio' WHERE cod='$id2'" ;
 $result = mysqli_query($conn, $sql);
 
 if ($result) {
@@ -27,7 +30,7 @@ if ($result) {
   echo '
     <script>
         alert("No se pudo actualizar");
-        window.location ="../vistaProductos.php"; 
+      window.location ="../vistaProductos.php"; 
                 </script>
                 ';
 }

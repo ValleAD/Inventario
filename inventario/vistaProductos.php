@@ -15,7 +15,7 @@ die();
 ?><?php include ('templates/menu.php') ?>
 <?php include ('Model/conexion.php') ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,11 +44,11 @@ if (isset($_POST['editar'])){
    
   
  
-$sql = "SELECT codProductos, categoria, catalogo,  descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE  codProductos = '$id'";
+$sql = "SELECT cod, codProductos, categoria, catalogo,  descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE  codProductos = '$id'";
 $result = mysqli_query($conn, $sql);
 
 
-    while ($productos = mysqli_fetch_array($result)){
+    while ($productos1 = mysqli_fetch_array($result)){
 ?>
 
 
@@ -58,29 +58,32 @@ $result = mysqli_query($conn, $sql);
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial; margin-left: 17%; margin-top: 2%">
                 <label for="">Categoría</label><br> 
-                    <select  class="form-control" name="categoria" id="categoria" style="cursor: pointer">
-                        <option><?php  echo $productos['categoria']; ?></option>
-                        <option>Agropecuarios y Forestales</option>
-                        <option>Cuero y Caucho</option>
-                        <option>Químicos</option>
-                        <option>Combustibles y Lubricantes</option> 
-                        <option>Minerales no Metálicos</option>
-                        <option>Minerales Metálicos</option>
-                        <option>Herramientas y Repuestos</option>
-                        <option>Materiales Eléctricos</option>
-                    </select>
+                <select  class="form-control" name="categoria[]" id="um" required>
+                        <option selected disabled value=""><?php  echo $productos1['categoria']; ?></option>
+                        <?php 
+                     $sql = "SELECT * FROM  selects_categoria";
+                        $result = mysqli_query($conn, $sql);
+
+                        while ($productos = mysqli_fetch_array($result)){ 
+
+                          echo'  <option>'.$productos['categoria'].'</option>
+                      ';   
+                     } 
+                           ?>
+                      </select>
             </div>
            
             <div class="col-6 col-sm-4" style="position: initial; margin-top: 2%;">
                 <label for="">Código</label>
-                <input class="form-control" readonly style="cursor: not-allowed;" type="text" name="codProducto" id="act" value="<?php  echo $productos['codProductos']; ?>">
+                <input class="form-control"  type="hidden" name="cod" id="act" value="<?php  echo $productos1['cod']; ?>">
+                <input class="form-control"  type="text" name="codProducto" id="act" value="<?php  echo $productos1['codProductos']; ?>">
             </div>
         </div> 
 
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial; margin-left: 17%;">
                 <label for="">Codificación de Catálogo</label>
-                <input class="form-control" readonly style="cursor: not-allowed;" type="text" name="codCatalogo" id="act" value="<?php  echo $productos['catalogo']; ?>">
+                <input class="form-control"  type="text" name="codCatalogo" id="act" value="<?php  echo $productos1['catalogo']; ?>">
             </div>
 
             
@@ -89,7 +92,7 @@ $result = mysqli_query($conn, $sql);
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial; margin-left: 17%;">
                 <label for="">Descripción</label>
-                <textarea cols="50" rows="1" class="form-control" type="text" name="descripcion" id="act" style="width: 100%"><?php  echo $productos['descripcion']; ?></textarea>                     
+                <textarea cols="50" rows="1" class="form-control" type="text" name="descripcion" id="act" style="width: 100%"><?php  echo $productos1['descripcion']; ?></textarea>                     
             </div>
 
             <div class="col-6 col-sm-4" style="position: initial">
@@ -99,15 +102,19 @@ $result = mysqli_query($conn, $sql);
                         <div class="invalid-feedback">
                         Por favor seleccione una opción.
                     </div>
-                    <select class="form-control" name="um" id="um" style="cursor: s-resize" required>
-                        <option><?php  echo $productos['unidad_medida']; ?></option>
-                        <option>c/u</option>
-                        <option>lb</option>
-                        <option>mts</option>
-                        <option>Pgo</option> 
-                        <option>Qq</option>
-                        <option>cto</option>
-                    </select>
+                    <select  class="form-control" name="um[]" id="um" required>
+                            <option selected  value=""><?php  echo $productos1['unidad_medida']; ?></option>
+                            <?php 
+                     $sql = "SELECT * FROM  selects_unidad_medida";
+                        $result = mysqli_query($conn, $sql);
+
+                        while ($productos = mysqli_fetch_array($result)){ 
+
+                          echo'  <option>'.$productos['unidad_medida'].'</option>
+                      ';   
+                     } 
+                           ?>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -116,11 +123,11 @@ $result = mysqli_query($conn, $sql);
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial; margin-left: 17%;">
                 <label for="">Cantidad Actual</label>
-                <input class="form-control" type="text"style="cursor: not-allowed;" readonly name="stock" id="act" value="<?php  echo $productos['SUM(stock)']; ?>">
+                <input class="form-control" type="text"style="cursor: not-allowed;" readonly name="stock" id="act" value="<?php  echo $productos1['SUM(stock)']; ?>">
             </div>
             <div class="col-6 col-sm-4" style="position: initial;">
                 <label for="">Costo unitario</label>
-                <input class="form-control" type="text" name="precio" id="act" value="<?php  echo $productos['precio']; ?>">
+                <input class="form-control" type="text" name="precio" id="act" value="<?php  echo $productos1['precio']; ?>">
             </div>
         </div>
         <hr>
