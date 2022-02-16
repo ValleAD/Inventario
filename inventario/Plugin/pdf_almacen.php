@@ -13,7 +13,6 @@
 
     $depto = $_POST['depto'];
     $fech = $_POST['fech'];
-    $encargado = $_POST['encargado'];
      $vale = $_POST['num_sol'];
       
 ?>

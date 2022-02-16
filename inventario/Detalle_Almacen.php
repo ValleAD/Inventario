@@ -179,7 +179,7 @@ $num_sol = $_POST['id'];
  while ($datos_sol = mysqli_fetch_array($result)){
 
  echo'   
-<form id="form" method="POST" action="Plugin/pdf_almacen.php" target="_blank">
+<form id="form" method="POST" action="" target="_blank">
          
       
         <div class="row">  
@@ -225,7 +225,7 @@ $num_sol = $_POST['id'];
             ?> style="float: right;" class="btn btn-danger" name="estado" href="dt_compra_copy.php"> Cambiar estado</button>
           </div>
          
-        </div>
+        </div></div>
       </form>
         <form  method="POST" action="Plugin/pdf_almacen.php" target="_blank">
              <input readonly class="form-control"  type="hidden" value="<?php echo $datos_sol['codAlmacen']?>" name="num_sol">
