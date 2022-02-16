@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
 		$_SESSION['tipo_usuario'] = $row['tipo_usuario'];
 		header("Location: ../home.php");
 		}else{
-			$eror= 'No Puede Entrar Usuario Desabilitado';
+			$eror= '<p class="alert-heading"><i style="width: 50%" class=" bi bi-exclamation-triangle-fill"></i></p>No Puede Entrar Usuario Desabilitado';
 		
 	session_destroy();  
 		}
