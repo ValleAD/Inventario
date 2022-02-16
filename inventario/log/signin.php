@@ -20,42 +20,24 @@ if (isset($_POST['submit'])) {
 	if ($result->num_rows > 0) {
 		$row = mysqli_fetch_assoc($result);
 		if($_SESSION['signin']==$row['username']){
-            echo '
-            <script>
-                alert("Ya esta Inicializada la Sesion");
-                window.location ="signin.php";
-                session_destroy();  
-                        </script>
-            ';
-        }else{
+          
+        
             $_SESSION['signin'] = $row['username'];
 		$_SESSION['tipo_usuario'] = $row['tipo_usuario'];
 		
-        }
-		if ($row ['Habilitado']=="Si") { 
+       }elseif ($row ['Habilitado']=="Si") { 
 			$_SESSION['signin'] = $row['username'];
 		$_SESSION['tipo_usuario'] = $row['tipo_usuario'];
-		
 		header("Location: ../home.php");
 		}else{
-			 echo '
-    <script>
-        alert("No Puede Entrar Usuario Desabilitado");
-        window.location ="signin.php";
-        session_destroy();  
-                </script>
-	';
+			$eror= 'No Puede Entrar Usuario Desabilitado';
+		
+	session_destroy();  
 		}
 		
 		
 	} else {
-		 echo '
-    <script>
-        alert("Woops! Email or Password is Wrong.");
-        window.location ="signin.php";
-        session_destroy();  
-                </script>
-	';
+		$eror= 'Woops! Usuario o contraseña son incorrecta ';
 
 	}
 }
@@ -109,6 +91,13 @@ if (isset($_POST['submit'])) {
                                             	
                                         </form>
                                     </div>
+                                    <?php if (isset($_POST['submit'])) { ?>
+                           <div class="mx-2 alert alert-warning alert-dismissible fade show" role="alert">
+						  <strong><?php echo $eror ?></strong>
+						  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						    <span aria-hidden="true">&times;</span>
+						  </button>
+						</div><?php } ?>
                                     <div class="card-footer text-center">
                                         <div class="small"><a href="signup.php">No tienes cuenta ? Registrarse</a></div>
                                         <div class="small"><form action="Invitado/invitado.php">
