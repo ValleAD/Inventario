@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
 	$username = $_POST['username'];
 //	$email = $_POST['email'];
 	$password = ($_POST['password']);
-
+	//$password = MD5($pass);
 	$sql = "SELECT * FROM tb_usuarios WHERE username='$username' AND password='$password'";
 	$result = mysqli_query($conn, $sql);
 	if ($result->num_rows > 0) {

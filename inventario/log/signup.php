@@ -35,7 +35,7 @@ exit();
 	$result = mysqli_query($conn, $sql);
 	if (!$result->num_rows > 0) {
 		
-		$password= hash('sha512',$password);
+	//	$password= hash('MD5',$password);
 		$sql = "INSERT INTO tb_usuarios (username,firstname,lastname,Establecimiento,Unidad, password,tipo_usuario,Habilitado)
 				VALUES ('$username','$firstname', '$lastname','$Establecimiento','$unidad',  '$password','$tipo_usuario','Si')";
 		$result = mysqli_query($conn, $sql);
