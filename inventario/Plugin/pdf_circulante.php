@@ -82,7 +82,7 @@ for($i = 0; $i < count($_POST['desc']); $i++)
 <p>Sin más particular</p>
 
 <div align="right">
-<p style="float: right;"> Dá fe de no haber existencia: <br><br>F. ________________ <br>Sra. Isabel Romero</p>
+<p style="float: right;"> Dá fe de no haber existencia: <br><br>F. ________________ <br>Sra. Isabel Romero <br>Guardalmacén</p>
 </div>
 
 <div align="">
