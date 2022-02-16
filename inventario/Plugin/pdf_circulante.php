@@ -4,59 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Compra</title>
+    <title>PDF Circulante</title>
 </head>
 <body style="font-family: sans-serif;">
     <img src="../img/hospital.jpg" style="width:20%">
     <img src="../img/log_1.png" style="width:20%; float:right">
+    
+<?php if(isset($_POST['desc'])){
 
- <?php   if(isset($_POST['cod'])){
 
-    $solicitud = $_POST['sol_compra'];
-    $dependencia = $_POST['dependencia'];
-    $plazo = $_POST['plazo'];
-    $unidad = $_POST['unidad'];
-    $suministro = $_POST['suministro'];
-    $usuario = $_POST['usuario'];
-    $fecha = $_POST['fech'];
-      
+$fech = $_POST['fech'];
+$num_sol = $_POST['num_sol'];
+  
 ?>
-<h3 align="center" style="margin-top: -2%;">MINISTERIO DE SALUD</h3>
-<h3 align="center" style="margin-top: -2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
-<h4 align="center" style="margin-top: -2%;">UNIDAD DE ADQUISICIONES Y CONTRATACIONES INSTITUCIONAL</h4>
-<h4 align="center" style="margin-top: -2%;">SOLICITUD DE COMPRA</h4>
- 
+<h3 align="center" style="margin-top: -2%;">HOSPITAL NACIONAL "SANTA TERESA" DE ZACATECOLUCA</h3>
+<h3 align="center" style="margin-top: -2%;">FONDO CIRCULANTE DE MONTO FIJO</h3>
+
 <section style="margin: 2%;">
 
 <section style="font-size: 14px;">
-    <div style="float: right">
-        <label>FECHA DE IMPRESIÓN:</label><br>
-        <label>FECHA DE CREACIÓN: <?php echo $fecha ?></label>
-    </div>
-              
-    <p style="margin-top: -1.5%;"><b>Solicitud No.:</b> <?php echo $solicitud ?></p>
-    <p style="margin-top: -1.5%;"><b>DEPENDECIA SOLICITANTE:</b> <?php echo $dependencia ?></p> 
-    <p style="margin-top: -1.5%;"><b>PLAZO Y NÚMERO DE ENTREGAS:</b> <?php echo $plazo ?></p>
-    <p style="margin-top: -1.5%;"><b>UNIDAD TÉCNICA:</b> <?php echo $unidad ?></p>
-    <p style="margin-top: -1.5%;"><b>SUMINISTROS SOLICITADOS:</b> <?php echo $suministro ?></p>
-    <p style="margin-top: -1.5%;"><b>ENCARGADO:</b> <?php echo $usuario ?></p>
+<p><b>SOLICITUD NO.: </b><?php echo $num_sol ?></p>
+<p>Encargado del Fondo Circulante de Monto Fijo Recursos Propios</p>
+<p>Hospital Nacional "Santa Teresa" de Zacatecoluca</p>
+<br>
+<p>Atentamente solicito a usted la compra <b>Urgente</b> de los materiales y/o servicios que se detallan a continuación, a través del Fondo Circulante de Monto Fijo.</p>
 </section>
 
-<div style="float: right; font-size: 13px;">
-    <p align="left">Montos estimados <br>presupuestados <br>en dólares</p>
-</div>
-
-<table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse; margin-top: 9%;">
-     <thead>     
+              
+<table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
+    <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
-            <th style="width: 25%;font-size: 16px;text-align: center;">Código</th>
-            <th style="width: 25%;font-size: 16px;text-align: center;">Código <br>ONU</th>
-            <th style="width: 70%;color:black;font-size: 16px;text-align: center;">Descripción Completa <br>(con todas sus especificaciones)</th>
-            <th style="width: 15%;color:black;font-size: 16px;text-align: center;">U/M</th>
-            <th style="width: 15%;color:black;font-size: 16px;text-align: center;">Cant.<br>Sol.</th>
-            <th style="width: 15%;color:black;font-size: 16px;text-align: center;">Cant.<br>Desp.</th>
-            <th style="width: 15%;color:black;font-size: 16px;text-align: center;">C/U</th>
-            <th style="width: 15%;color:black;font-size: 16px;text-align: center;border-right:1px solid #ccc ;">Monto</th>
+            <th style="width: 70%;color:black;font-size: 15px;text-align: left;">Descripción de los materiales y/o servicios solicitados</th>
+            <th style="width: 15%;color:black;font-size: 15px;text-align: center;">U/M</th>
+            <th style="width: 15%;color:black;font-size: 15px;text-align: center;">Cant.<br>Sol.</th>
+            <th style="width: 15%;color:black;font-size: 15px;text-align: center;">Cant.<br>Desp.</th>
+            <th style="width: 15%;color:black;font-size: 15px;text-align: center;">C/U</th>
+            <th style="width: 15%;color:black;font-size: 15px;text-align: center;border-right:1px solid #ccc ;">Total</th>
         </tr>
     </thead> 
 
@@ -64,11 +47,9 @@
 <?php
     $total = 0;
     $final = 0;
-for($i = 0; $i < count($_POST['cod']); $i++)
+for($i = 0; $i < count($_POST['desc']); $i++)
 {
    
-    $codigo = $_POST['cod'][$i];
-    $onu = $_POST['catalogo'][$i];
     $des = $_POST['desc'][$i];
     $um = $_POST['um'][$i];
     $cantidad = $_POST['cant'][$i];
@@ -79,10 +60,8 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 ?>
   
         <tr>
-            <td style="text-align:center;" style="text-align: center;"><?php  echo $codigo?></td>
-            <td style="text-align:center;" style="text-align: center;"><?php  echo $onu?></td>
             <td><?php  echo $des?></td>
-            <td style="text-align:center;" style="text-align: center;"><?php  echo $um?></td>
+            <td style="text-align:center;"><?php  echo $um?></td>
             <td style="text-align:center;"><?php echo $cantidad ?></td>
             <td></td>
             <td style="text-align: center;"><?php echo $cost ?></td>
@@ -91,23 +70,35 @@ for($i = 0; $i < count($_POST['cod']); $i++)
      
      <?php } } ?> 
     <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
-        <td style="text-align: center; font-weight: bold;">Subtotal</td>
-        <td colspan="6"></td>
+    <td colspan="4"></td>    
+    <td style="text-align: left; font-weight: bold;">Costo estimado</td>
         <td style="text-align: center; font-weight: bold;"><?php echo $tot_f ?></td>
     </tfoot>
-</table>
-<br>
-    <table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
-        <tbody>
-            <tr>
-                <td>Justificación por el OBS solicitado</td>
-            </tr>
-            <td style="height: 20%;"></td>
-        </tbody>
-    </table>
-    </tbody>                
-</section>
+    </tbody>   
+</table>            
+    
+<section sytle="font-size: 14px;">
+<p>Todo lo anteriormente detallado, es indispensable para desarrollar nuestras funciones.</p>  
+<p>Sin más particular</p>
 
+<div align="right">
+<p style="float: right;"> Dá fe de no haber existencia: <br><br>F. ________________ <br>Sra. Isabel Romero</p>
+</div>
+
+<div align="">
+    <p style="text-align:left;">Solicita: <br><br>F. ________________ <br>Ing. Ernesto González Choto <br>Jefe de Mantenimiento</p>
+</div>
+
+<div align="">
+    <p style="text-align: center;">Autoriza: <br><br>F. ________________ <br>Dr. William Antonio Fernández Rodríguez <br>Director del Hospital Nacional “ Santa Teresa”</p>
+</div>
+
+   
+    
+    <br>
+    
+</section>
+</section>
 </body>
 </html>
             <?php $html=ob_get_clean();
@@ -129,5 +120,5 @@ $dompdf->setPaper('letter');
 $dompdf->render();
 
 // Output the generated PDF to Browser
-$dompdf->stream("pdf_vale.php",array("Attachment"=>0));
+$dompdf->stream("pdf_circulante.php",array("Attachment"=>0));
         ?>

@@ -129,5 +129,5 @@ $dompdf->setPaper('letter');
 $dompdf->render();
 
 // Output the generated PDF to Browser
-$dompdf->stream("pdf_vale.php",array("Attachment"=>0));
+$dompdf->stream("pdf_compra.php",array("Attachment"=>0));
         ?>

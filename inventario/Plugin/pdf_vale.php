@@ -14,7 +14,7 @@
     $depto = $_POST['depto'];
     $fech = $_POST['fech'];
     $encargado = $_POST['usuario'];
-     $vale = $_POST['vale'];
+    $vale = $_POST['vale'];
       
 ?>
 <h3>HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>

@@ -56,7 +56,7 @@ $final = 0;
 
  echo'   
 <section id="section">
-<form id="form" method="POST" action="Plugin/pdf_almacen.php" target="_blank">
+<form id="form" method="POST" action="Controller/añadir_almacen_copy.php" target="_blank">
          
       
         <div class="row">  
@@ -179,7 +179,7 @@ $num_sol = $_POST['id'];
  while ($datos_sol = mysqli_fetch_array($result)){
 
  echo'   
-<form id="form" method="POST" action="" target="_blank">
+<form id="form" method="POST" action="Plugin/pdf_almacen.php" target="_blank">
          
       
         <div class="row">  
@@ -227,7 +227,7 @@ $num_sol = $_POST['id'];
          
         </div>
       </form>
-        <form  method="POST" action="Exportar_PDF/pdf_almacen.php" target="_blank">
+        <form  method="POST" action="Plugin/pdf_almacen.php" target="_blank">
              <input readonly class="form-control"  type="hidden" value="<?php echo $datos_sol['codAlmacen']?>" name="num_sol">
               <input readonly class="form-control"  type="hidden" value="<?php echo $datos_sol['departamento']?>" name="depto">
               <input readonly class="form-control"  type="hidden" value="<?php echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])) ?>" name="fech">

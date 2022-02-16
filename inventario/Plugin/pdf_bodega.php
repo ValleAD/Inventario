@@ -105,5 +105,5 @@ $dompdf->setPaper('letter');
 $dompdf->render();
 
 // Output the generated PDF to Browser
-$dompdf->stream("pdf_vale.php",array("Attachment"=>0));
+$dompdf->stream("pdf_bodega.php",array("Attachment"=>0));
         ?>
