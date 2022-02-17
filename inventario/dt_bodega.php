@@ -125,7 +125,6 @@ while ($productos = mysqli_fetch_array($result)){
       $um=$productos['unidad_medida'];
       $stock=$productos['stock'];
       $precio=$productos['precio'];
-      $estado=$productos['estado'];
       $fecha=$productos['fecha_registro'];
       ?>
        <style type="text/css"> #td{display: none;} </style> 

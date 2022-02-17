@@ -203,9 +203,7 @@ $result = mysqli_query($conn, $sql);
                 <th style="width: 10%">Eliminar</th><?php } ?>
                 
             </tr>
-            <tr>
-            <td id="td" colspan="7" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td>
-            </tr>
+            
      </thead>
             <tbody>
             
