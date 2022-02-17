@@ -83,8 +83,8 @@ $result = mysqli_query($conn, $sql);
   }
 } 
 ?>
-    <section style="margin:2%;background: transparent; ">
         <font color="White"><h2 class="text-center " >Empleados Del Sistema</h2></font>
+    <section style="margin:1%;padding: 1%; border-radius: 5px; background: white; ">
 
         <table class="table" id="example">
 <?php if($tipo_usuario == 1) { ?>
