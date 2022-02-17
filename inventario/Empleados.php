@@ -18,7 +18,6 @@ die();
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="styles/style.css" > 
      <link rel="stylesheet" type="text/css" href="styles/estilos_menu.css" >
      <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -83,10 +82,10 @@ $result = mysqli_query($conn, $sql);
   }
 } 
 ?>
-        <font color="White"><h2 class="text-center " >Empleados Del Sistema</h2></font>
+        <font color="black"><h2 class="text-center " >Empleados Del Sistema</h2></font>
     <section style="margin:1%;padding: 1%; border-radius: 5px; background: white; ">
 
-        <table class="table" id="example">
+        <table class="table" id="example" style="width:100%">
 <?php if($tipo_usuario == 1) { ?>
 
     <button class="btn btn-secondary" data-toggle="modal" data-target="#Usuarios" style="float: left; color: white;margin-bottom: 1%;">Nuevo Integrante</button>
@@ -97,7 +96,7 @@ $result = mysqli_query($conn, $sql);
     <a href="unidad_medidad.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a>
 
     
-
+<br><br><br>
 <!-- Delete -->
 <div class="modal fade" id="Usuarios" style="background: rgba(0, 0, 0, 0.3);" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">
@@ -112,18 +111,18 @@ $result = mysqli_query($conn, $sql);
                 <form action="Controller/añadirEmpleados.php" method="POST">
               <div class="row">
                     <div class="col-md-6" style="position: initial">
-                       <label class="small mb-1">Nombre de usuario</label><br>
+                       <label id="label" class="small mb-1">Nombre de usuario</label><br>
                         <input pattern="[A-Za-z0-9_-]{1,}" class="form-control" type="text"  name="usuario"  required>
                     </div>
                     <div class="col-md-6" style="position: initial">
-                      <label class="small mb-1">Nombre</label><br>
+                      <label id="label" class="small mb-1">Nombre</label><br>
                         <input pattern="[A-Za-z0-9_- ]{1,}" class="form-control" type="text"  name="nombre" required>
                     </div>
                 </div>
                 <div class="row">
 
                     <div class="col-md-6" style="position: initial">
-                     <label class="small mb-1">Apellido</label><br>
+                     <label id="label" class="small mb-1">Apellido</label><br>
                         <input pattern="[A-Za-z0-9- ]{1,}" class="form-control" type="text"  name="Apellido"  required>
                         
                                                 
@@ -131,7 +130,7 @@ $result = mysqli_query($conn, $sql);
                      
                     </div>
                     <div class="col-md-6" style="position: initial">
-                      <label class="small mb-1">Establecimiento</label><br>
+                      <label id="label" class="small mb-1">Establecimiento</label><br>
                        <select class="form-control" name="Establecimientos">
                 <option selected disabled >Seleccionar</option>
                 <option>Hospital Nacional Zacatecoluca PA "Santa Tereza"</option>
@@ -140,13 +139,13 @@ $result = mysqli_query($conn, $sql);
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6" style="position: initial">
+                    <div id="label" class="col-md-6" style="position: initial">
                       <label class="small mb-1">Contraseña</label><br>
                         <input pattern="[A-Za-z0-9_-]{1,}" class="form-control" id="show" type="password"  name="password"  required>
                       <div class="custom-control custom-checkbox"><input class="custom-control-input" onclick="myFuntion();" id="rememberPasswordCheck" type="checkbox" /><label class="custom-control-label" for="rememberPasswordCheck">Mostrar Contraseña</label></div>
                   </div>
                   <div class="col-md-6" style="position: initial">
-                      <label class="small mb-1">Confirmar Contraseña</label><br>
+                      <label id="label"  class="small mb-1">Confirmar Contraseña</label><br>
                         <input pattern="[A-Za-z0-9_-]{1,}" class="form-control" id="show1" type="password"  name="cpassword" required>
                         <div class="custom-control custom-checkbox"><input class="custom-control-input" onclick=" myFuntion1();" id="PasswordCheck" type="checkbox" /><label class="custom-control-label" for="PasswordCheck">Mostrar Contraseña</label></div>
                   </div>
@@ -155,7 +154,7 @@ $result = mysqli_query($conn, $sql);
                 <div class="row">
                     
                     <div class="col-md-6" style="position: initial">
-                        <label  class="small mb-1">Unidad ó Departamento</label><br>
+                        <label id="label"  class="small mb-1">Unidad ó Departamento</label><br>
             <select class="form-control" name="Unidad">
                 <option selected disabled >Seleccionar</option>
                    <?php  
@@ -168,7 +167,7 @@ $result = mysqli_query($conn, $sql);
             </select>
                 </div>
                 <div class="col-md-6" style="position: initial">
-                                                <label class="small mb-1">Tipo de Usuarios (Roles De Usuario)</label>
+                                                <label id="label" class="small mb-1">Tipo de Usuarios (Roles De Usuario)</label>
                                                 <select class="form-control" name="tipo_usuario" required>
                                                     <option selected disabled>Selecione</option>
                                                     <option value="1">Admistrador</option>
@@ -183,7 +182,7 @@ $result = mysqli_query($conn, $sql);
 
                     </div>
                      <style type="text/css">
-                    label{
+                    #label{
                     color: white;
                  }
                     </style>
@@ -263,7 +262,6 @@ $result = mysqli_query($conn, $sql);
 
   </section>
    
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript">
 function confirmaion(e) {
     if (confirm("¿Estas seguro que deseas Eliminar este registro?")) {

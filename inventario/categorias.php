@@ -24,11 +24,10 @@ die();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
-         <link rel="stylesheet" href="Plugin/bootstap-icon/bootstrap-icons.min.css">
-      <link rel="stylesheet" href="Plugin/bootstap-icon/fontawesome.all.min.css">
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!--  Datatables  -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>  
     <title>Categorias</title>
 </head>
 
@@ -51,12 +50,12 @@ $result = mysqli_query($conn, $sql);
 
 
 <form action="Controller/Desabilitar-categoria.php" method="POST" style="background: transparent; ">
-  <h3 align="center">Actualizar Producto</h3>
+  <h3 align="center">Actualizar Categorias</h3>
     <div class="container" style="background: rgba(0, 0, 0, 0.6); width: 70%; margin: auto; border-radius: 9px; color:#fff; font-weight: bold;">
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial; margin: auto; margin-top: 2%">
                 <input type="hidden" name="id" value="<?php  echo $categoria['id']; ?>">
-                <label for="">Habilitado</label><br> 
+                <label id="label" for="">Habilitado</label><br> 
                     <select  class="form-control" name="Habilitado" id="categoria" style="cursor: pointer">
                         <option>[Seleccione]</option>
                         <option>Si</option>
@@ -84,15 +83,14 @@ $result = mysqli_query($conn, $sql);
   }
 } 
 ?>
-    <section style="margin:2%;background: transparent; ">
         <h2 class="text-center " >Categorias</h2>
-
-        <table class="table">
+    <section style="margin:2%;background: white;padding: 1%;border-radius: 1%; position: initial; ">
 <?php if($tipo_usuario == 1) { ?>
     <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="float: left;margin-top: 1%; color: white;margin-bottom: 1%;">Nueva Categoria</button>
 
     <a href="dependencias.php" class="btn btn-success" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Dependencias</a>
     <a href="departamentos.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Departamentos</a>
+     <a href="unidad_medidad.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a>
 <!-- Delete -->
 <div class="modal fade" id="Usuarios" style="background: rgba(0, 0, 0, 0.3);" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">
@@ -104,14 +102,14 @@ $result = mysqli_query($conn, $sql);
                 </button>
             </div>
               <div class="modal-body">
-                <form action="Controller/añadir-categoria.php" method="POST">
-                <label>Nombre</label>              
+                <form action="Controller/añadir-categoria.php" method="POST" style="margin:0;background: transparent;">
+                <label id="label">Nombre</label>              
             <input class="form-control" name="categoria" type="text" required>
                       
                
             </div>
             <style type="text/css">
-                label{
+                #label{
                     color: white;
                 }
             </style>
@@ -121,31 +119,31 @@ $result = mysqli_query($conn, $sql);
            </form> 
         </div>
     </div>
-</div><?php } ?>
+</div><?php } ?> <br><br><br>
+        <table class="table" id="example" style="width:100%">
+
         <thead>
               <tr id="tr">
-                <th class="table-info text-dark"><strong>Categoria</strong></th>
-                <th class="table-info text-dark text-center"><strong>Habilitado</strong></th><?php if($tipo_usuario == 1) { ?>
-                <th class="table-info text-dark text-center"><strong> Cambiar Habilitado</strong></th>
-                <th style="text-align:center;">Eliminar</th><?php } ?>
+                <th style="width:100%">Categoria</th>
+                <th style="width:100%">Habilitado</th><?php if($tipo_usuario == 1) { ?>
+                <th style="width:100%"> Cambiar Habilitado</strong></th>
+                <th style="width:100%">Eliminar</th><?php } ?>
                 
             </tr>
-            <tr>
-            <td id="td" colspan="7" style="background: red;"><h4 align="center">No se encontraron ningun  resultados 😥</h4></td>
-            </tr>
+            
      </thead>
             <tbody>
             
     <?php
     include 'Model/conexion.php';
-     $por_pagina = 6;
+           $por_pagina = 6;
  if (isset($_GET['pagina'])) {
     $pagina = $_GET['pagina'];
  }else{
     $pagina =1;
  }
  $empieza = ($pagina-1) * $por_pagina;
-    $sql = "SELECT * FROM selects_categoria ORDER BY `id` LIMIT $empieza, $por_pagina";
+    $sql = "SELECT * FROM selects_categoria ORDER BY `id` DESC  LIMIT $empieza,$por_pagina ";
     $result = mysqli_query($conn, $sql);
 
     while ($solicitudes = mysqli_fetch_array($result)){?>
@@ -158,7 +156,7 @@ $result = mysqli_query($conn, $sql);
         <tr>
             <td data-label="Nombres" class="delete"><input readonly style="width:100%;border:none;background: transparent;" type="text" name="cod" value="<?php  echo $solicitudes['categoria']; ?>"></td>
 
- <td align="center">
+ <td style="width:100%" align="center">
             <input  <?php
                 if($solicitudes['Habilitado']  =='Si') {
                     echo ' style="background-color:blueviolet ;width:14%; border-radius:100px;text-align:center; color: white;"';
@@ -180,8 +178,8 @@ $result = mysqli_query($conn, $sql);
 <!--**********************************************************************************************************************************************************************************-->
   <!--Botones para actualizar y eliminar-->
 
-            <td align="center">
-                <form action="Controller/Delete-categorias.php" method="POST">
+            <td style="width:100%" align="center">
+                <form action="Controller/Delete-categorias.php" method="POST" style="background:transparent;">
                     <input type="hidden" name="id" value="<?php  echo $solicitudes['id']; ?>">
                     <input type="hidden" name="Habilitado" value="<?php  echo $solicitudes['Habilitado']; ?>">
                     <button  onclick="return confirmaion()" name="eliminar_categorias" class="btn btn-danger" type="submit">ELiminar</button>
@@ -195,22 +193,8 @@ $result = mysqli_query($conn, $sql);
            </tbody>
         </table>
 
- <p style="margin-top: 2%;"></p>
-<?php 
- $sql = "SELECT * FROM selects_categoria";
-    $result = mysqli_query($conn, $sql);
-$total_registro = mysqli_num_rows($result);
-$total_pagina = ceil($total_registro / $por_pagina);
-
-echo "<nav aria-label='Page navigation example'>
-  <ul class='pagination justify-content-end'><li class='page-item '><a class='page-link' href='categorias.php?pagina= 1'>".'Primera'."</a><li>";
-for ($i=1; $i <=$total_pagina; $i++) { 
-    echo "<li class='page-item '><a class='page-link ' href='categorias.php?pagina=".$i."'>".$i."</a></li>";
-}
-echo "<li class='page-item'><a class='page-link' href='categorias.php?pagina=$total_pagina'>".'Ultima'."</a><li></ul></nav>";
-?>
-  </section>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</section>
+    
         <script type="text/javascript">
 function confirmaion(e) {
     if (confirm("¿Estas seguro que deseas Eliminar este registro?")) {
@@ -223,5 +207,29 @@ function confirmaion(e) {
 let linkDelete =document.querySelectorAll("delete");
 </script>
 
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+            
+    <!--   Datatables-->
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>  
+
+
+    <script>
+    $(document).ready(function(){
+        $('#example').DataTable({
+             language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "sProcessing":"Procesando...", 
+            }
+        });
+
+    });
+    </script>
 </body>
 </html>

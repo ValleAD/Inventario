@@ -153,7 +153,7 @@ $a=$_POST['sol_compra'];
           
           <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$<?php echo $total?>"></td>
       
-        
+        <?php }?>
          <tfoot style="text-align:right;">
             <th >SubTotal</th>
             <th colspan="8"></th>
@@ -163,16 +163,17 @@ $a=$_POST['sol_compra'];
         </tr>
              </tbody>
           </table>
-    
+          
+  
+
       <input id="pdf" type="submit" class="btn btn-success btn-lg" value="Guardar Estado" name="detalle_compra">
-       
+    <?php } ?>   
   </form>
   </section>
-  <?php } }?>
 
 
 
-}?>
+
 <br>
     <style>
         #ver{
@@ -327,7 +328,7 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$<?php echo $productos['precio']?>"></td>
         <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$<?php echo $total?>"></td>
       
-        
+        <?php } ?>
          <tfoot>
             <th colspan="7">SubTotal</th>
             <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$<?php echo $final?>" ></td></tr>
@@ -336,9 +337,9 @@ while ($productos = mysqli_fetch_array($result)){
     
          </tbody>
         </table>
-  
+   
     <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="">
-  <?php }} ?>      
+     <?php } ?>  
           <style>
         #pdf{
         margin-top:2%;

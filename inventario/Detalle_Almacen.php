@@ -55,7 +55,8 @@ $final = 0;
  while ($datos_sol = mysqli_fetch_array($result)){
 
  echo'   
-<section id="section">
+
+    <section style="margin:1%;padding: 1%; border-radius: 5px; background: white; ">
 <form id="form" method="POST" action="Controller/añadir_almacen_copy.php" target="_blank">
          
       
@@ -271,18 +272,18 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$<?php echo $total ?>"></td>
       </tr>
 
-    
+      <?php }?>
       <th colspan="5">SubTotal</th>
       <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="<?php echo $final ?>" ></td></tr>
-  
+
          </tbody>
         </table>
 
     
   
     <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
+<?php } ?>
 
-<?php }}?>
       <style>
         #pdf{
         margin-left: 38%; 
