@@ -24,11 +24,10 @@ die();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
-         <link rel="stylesheet" href="Plugin/bootstap-icon/bootstrap-icons.min.css">
-      <link rel="stylesheet" href="Plugin/bootstap-icon/fontawesome.all.min.css">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!--  Datatables  -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>  
     <title>Empleados</title>
 </head>
 
@@ -87,7 +86,7 @@ $result = mysqli_query($conn, $sql);
     <section style="margin:2%;background: transparent; ">
         <font color="White"><h2 class="text-center " >Empleados Del Sistema</h2></font>
 
-        <table class="table">
+        <table class="table" id="example">
 <?php if($tipo_usuario == 1) { ?>
 
     <button class="btn btn-secondary" data-toggle="modal" data-target="#Usuarios" style="float: left; color: white;margin-bottom: 1%;">Nuevo Integrante</button>
@@ -212,14 +211,8 @@ $result = mysqli_query($conn, $sql);
             
     <?php
     include 'Model/conexion.php';
-    $por_pagina = 5;
-     if (isset($_GET['pagina'])) {
-    $pagina = $_GET['pagina'];
- }else{
-    $pagina =1;
- }
- $empieza = ($pagina-1) * $por_pagina;
-    $sql = "SELECT * FROM tb_usuarios ORDER BY `id` LIMIT $empieza,$por_pagina";
+
+    $sql = "SELECT * FROM tb_usuarios ORDER BY `id` ";
     $result = mysqli_query($conn, $sql);
 
     while ($solicitudes = mysqli_fetch_assoc($result)){?>
@@ -269,20 +262,7 @@ $result = mysqli_query($conn, $sql);
  <?php } ?> 
            </tbody>
         </table>
-         <p style="margin-top: 2%;"></p>
-        <?php 
- $sql = "SELECT * FROM tb_usuarios";
-    $result = mysqli_query($conn, $sql);
-$total_registro = mysqli_num_rows($result);
-$total_pagina = ceil($total_registro / $por_pagina);
 
-echo "<nav aria-label='Page navigation example'>
-  <ul class='pagination justify-content-end'><li class='page-item '><a class='page-link' href='Empleados.php?pagina= 1'>".'Primera'."</a><li>";
-for ($i=1; $i <=$total_pagina; $i++) { 
-    echo "<li class='page-item '><a class='page-link ' href='Empleados.php?pagina=".$i."'>".$i."</a></li>";
-}
-echo "<li class='page-item'><a class='page-link' href='Empleados.php?pagina=$total_pagina'>".'Ultima'."</a><li></ul></nav>";
-?>
   </section>
    
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -322,5 +302,30 @@ let linkDelete =document.querySelectorAll("delete");
 
                     }
                 </script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+            
+    <!--   Datatables-->
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>  
+
+
+    <script>
+    $(document).ready(function(){
+        $('#example').DataTable({
+             language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "sProcessing":"Procesando...", 
+            }
+        });
+
+    });
+    </script>
 </body>
 </html>
