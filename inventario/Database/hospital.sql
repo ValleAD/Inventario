@@ -59,7 +59,6 @@ CREATE TABLE tb_bodega (
   departamento varchar(50) NOT NULL,
   usuario varchar (50)  NOT NULL,
   campo varchar (50)  NOT NULL DEFAULT ' Solicitud Bodega',
-  estado varchar (50)  NOT NULL,
   fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (codBodega)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;

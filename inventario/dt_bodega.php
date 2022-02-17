@@ -106,7 +106,6 @@ $final = 0;
                 <th>Unidad de Medida</th>
                 <th>Cantidad</th>
                 <th>Costo unitario</th>
-                <th style="width: 15%; text-align:center">Estado</th>
                 <th>Total</th>
               </tr>
                 <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
@@ -138,20 +137,14 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="<?php echo $stock ?>"></td>
         
         <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$<?php echo $precio ?>"></td>
-    <td align="center">
-            <input  <?php
-                if($estado=='Pendiente') {
-                    echo ' style="background-color:green ;width:59%; border-radius:100px;text-align:center; color: white;"';
-                }
-            ?>
- type="text" class="btn"  name="estado[]" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $productos['estado']; ?>"></td>
+   
         
         <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="<?php echo $total ?>"></td></tr>
 
 
 <?php }?>
      
-      <th colspan="6">SubTotal</th>
+      <th colspan="5">SubTotal</th>
       <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="<?php echo $final ?>" ></td></tr>
    
 
