@@ -60,7 +60,7 @@ die();
               <tr id="tr">
                 <th style="width:30%" ><strong>Código de Vale</strong></th>
                 <th style="width:50%"><strong>Departamento Solicitante</strong></th>
-                <th style="width:100%; text-transform: capitalize" ><strong>Fecha de solicitud</strong></th>
+                <th style="width:100%;"><strong>Fecha de solicitud</strong></th>
                 <th style="width:100%"><strong>Detalles</strong></th> 
             </tr>
             
@@ -88,7 +88,7 @@ die();
             <td  data-label="Detalles">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_vale.php">             
                 <input type='hidden' name='id' value="<?php  echo $solicitudes['codVale']; ?>">             
-                <button name='detalle' class="btn btn-primary swal2-styled.swal2-confirm">Ver Detalles</button>             
+                <input type="submit" name='detalle' class="btn btn-primary" value="Ver Detalles">             
             </form> 
             </td>
         </tr>

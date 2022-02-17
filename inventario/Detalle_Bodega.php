@@ -103,11 +103,11 @@ $a=$_POST['odt'];
                   <th style="width: 20%;">Código</th>
                   <th style="width:50%;">Descripción Completa</th>
                   <th style="width:5%;">U/M</th>
-                  <th style="width: 100%;">Cantidad Solicitada</th>
-                  <th style="width: 100%;">Cantidad Despachada</th>
-                  <th style="width: 100%;">Costo Unitario (estimado)Actual</th>
-                  <th style="width: 100%;">Nuevo Costo Unitario (estimado)</th>
-                  <th style="width: 100%;">Monto Total (estimado)
+                  <th style="width: 15%;">Cantidad Solicitada</th>
+                  <th style="width: 15%;">Cantidad Despachada</th>
+                  <th style="width: 15%;">Costo Unitario (estimado)Actual</th>
+                  <th style="width: 15%;">Nuevo Costo Unitario (estimado)</th>
+                  <th style="width: 15%;">Monto Total (estimado)
                   
                 
              </thead>
@@ -135,8 +135,8 @@ $a=$_POST['odt'];
      
   </style> 
         <tr>
-       <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="<?php echo $codigo ?>"></td>
-        <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly style="border: none"><?php echo $descripcion ?></textarea></td>
+       <td  data-label="Código"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="cod[]" readonly value="<?php echo $codigo ?>"></td>
+        <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;  height: 75px; text-align: left"  name="desc[]" readonly style="border: none"><?php echo $descripcion ?></textarea></td>
         <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="<?php echo $um ?>"></td>
         <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="<?php echo $stock ?>"></td>
         <td  data-label="Cantidad"><input style="background:transparent; border: 1 solid #000;  width: 100%;" class="form-control" type="number" required  name="cant_aprobada[]" required value=""></td>
@@ -145,14 +145,14 @@ $a=$_POST['odt'];
    <td  data-label="Cantidad"><input style="background:transparent; border: 1 solid #000;  width: 100%;" class="form-control" type="number" required  name="cost[]" required value=""></td>
 
  
-        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="<?php echo $total ?>"></td>
+        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$<?php echo $total ?>"></td>
       </tr>
 
 
 
   <?php } ?>
-      <th colspan="5">SubTotal</th>
-      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="<?php echo $final ?>" ></td></tr> 
+      <th colspan="7">SubTotal</th>
+      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$<?php echo $final ?>" ></td></tr> 
 
          </tbody>
         </table>
@@ -258,19 +258,17 @@ if(isset($_POST['detalle'])){
              
             <table class="table" style="margin-bottom:3%;text-align: center;">
                 
-                <thead>
-                  <tr id="tr">
-                    <th>Código</th>
-                    <th>Descripción</th>
-                    <th>Unidad de Medida</th>
-                    <th>Cantidad</th>
-                    <th>Costo <br> unitario</th>
-                    
-                    
-                    <th style="width: 6%;">Total</th>
-                  </tr>
-                    <td id="td" colspan="6"><h4>No se encontraron resultados 😥</h4></td>
-               </thead>
+            <thead>
+                <tr id="tr">
+                  <th style="width: 45%;">Código</th>
+                  <th style="width: 175%;">Descripción</th>
+                  <th style="width: 45%;">Unidad de Medida</th>
+                  <th style="width: 25%;">Cantidad</th>
+                  <th style="width: 30%;">Costo unitario</th>
+                  <th style="width: 30%;">Total</th>
+                </tr>
+                <td id="td" colspan="6"><h4>No se encontraron resultados 😥</h4></td>
+              </thead>
                 <tbody>
                 <?php    
     
@@ -293,7 +291,7 @@ while ($productos = mysqli_fetch_array($result)){
 
       <tr>
         <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="<?php echo $codigo ?>"></td>
-        <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly style="border: none"><?php echo $descripcion ?></textarea></td>
+        <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;  height: 75px; text-align: left"  name="desc[]" readonly style="border: none"><?php echo $descripcion ?></textarea></td>
         <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="<?php echo $um ?>"></td>
         <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="<?php echo $stock ?>"></td>
         
@@ -301,7 +299,7 @@ while ($productos = mysqli_fetch_array($result)){
    
 
  
-        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="<?php echo $total ?>"></td>
+        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$<?php echo $total ?>"></td>
       </tr>
 
 
@@ -309,7 +307,7 @@ while ($productos = mysqli_fetch_array($result)){
   <?php } ?> 
 
       <th colspan="5">SubTotal</th>
-      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="<?php echo $final ?>" ></td></tr> 
+      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$<?php echo $final ?>" ></td></tr> 
 
          </tbody>
         </table>

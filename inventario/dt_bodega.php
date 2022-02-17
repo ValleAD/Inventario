@@ -139,7 +139,7 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$<?php echo $precio ?>"></td>
    
         
-        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="<?php echo $total ?>"></td></tr>
+        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$<?php echo $total ?>"></td></tr>
 
 
 <?php }?>
