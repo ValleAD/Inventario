@@ -63,7 +63,7 @@ die();
                 <th style="width: 10%"><strong>O. de T. No.</strong></th>
                 <th style="width: 40%"><strong>Departamento Solicitante</strong></th>
                 <th style="width: 30%"><strong>Fecha de solicitud</strong></th>
-                <th style="width: 30%"><strong>Estado</strong></th>
+                <th style="width: 15%"><strong>Estado</strong></th>
                 <th  style="width: 50%"><strong>Detalles</strong></th>
                 
             </tr>
@@ -92,7 +92,7 @@ die();
         <tr>
             <td data-label="Código" class="delete"><?php  echo $solicitudes['codBodega']; ?></td>
             <td data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
-            <td data-label="Fecha de solicitud" class="delete"><?php  echo $solicitudes['fecha_registro']; ?></td>
+            <td data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])); ?></td>
                <td><input <?php
                 if($solicitudes['estado']=='Pendiente') {
                     echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
@@ -105,7 +105,7 @@ die();
             <td  data-label="Detalles">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Bodega.php">             
                 <input type='hidden' name='id' value="<?php  echo $solicitudes['codBodega']; ?>">          
-                <button name='detalle' class="btn btn-primary swal2-styled.swal2-confirm">Ver Detalles</button>             
+                <input type="submit" name='detalle' class="btn btn-primary" value="Ver Detalles">            
             </form> 
             </td>
         </tr>
