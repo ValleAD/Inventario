@@ -144,13 +144,8 @@ while ($productos = mysqli_fetch_array($result)){
 
 <?php }?>
      
-<<<<<<< Updated upstream
       <th colspan="5">SubTotal</th>
       <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="<?php echo $final ?>" ></td></tr>
-=======
-      <th colspan="6">SubTotal</th>
-      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$<?php echo $final ?>" ></td></tr>
->>>>>>> Stashed changes
    
 
          </tbody>
