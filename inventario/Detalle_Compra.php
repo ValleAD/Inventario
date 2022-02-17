@@ -150,6 +150,7 @@ $a=$_POST['sol_compra'];
           <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  type="text" step="0.01"  required readonly  value="$<?php echo $productos['precio']?>"></td>
 
           <td  data-label="Costo unitario"><input class="form-control" type="number" style="background:transparent;border: 1 solid #000; width: 100%;" required step="0.01" name="cost[]"></td>
+          
           <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$<?php echo $total?>"></td>
       
         

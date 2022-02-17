@@ -59,19 +59,19 @@ $final = 0;
       
         <div class="row">
       
-          <div class="col-6 col-sm-3" style="position: initial">
+          <div class="col-6 col-sm-2" style="position: initial">
       
               <label style="font-weight: bold;">Depto. o Servicio:</label>
               <input readonly class="form-control"  type="text" value="' .$productos1['departamento']. '" name="depto">
 
           </div>
 
-          <div class="col-6 col-sm-3" style="position: initial">
+          <div class="col-6 col-sm-2" style="position: initial">
             <label style="font-weight: bold;">O. de T. No.</label>
             <input readonly class="form-control"  type="text" value="' .$productos1['codBodega']. '" name="odt">
           </div>
 
-        <div class="col-6 col-sm-3" style="position: initial">
+        <div class="col-6 col-sm-2" style="position: initial">
             <label style="font-weight: bold;">Encargado:</label>
             <input readonly class="form-control"  type="text" value="' .$productos1['usuario']. '" name="usuario">
         </div>
@@ -80,6 +80,18 @@ $final = 0;
           <div class="col-6 col-sm-3" style="position: initial">
             <label style="font-weight: bold;">Fecha:</label>
               <input readonly class="form-control"  type="text" value="' .date("d-m-Y",strtotime($productos1['fecha_registro'])). '" name="fech">
+          </div>
+          <div class="col-6 col-sm-3" style="position: initial">
+            <label style="font-weight: bold;">Estado:</label>
+              <input ';
+                if($productos1['estado']=='Pendiente') {
+                    echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
+                }else if($productos1['estado']=='Aprobado') {
+                     echo ' style="background-color:blueviolet ;width:100%; border-radius:5px;text-align:center; color: white;"';
+                }else if($productos1['estado']=='Rechazado') {
+                     echo ' style="background-color:red ;width:100%; border-radius:5px;text-align:center; color: white;"';
+                }
+            ?> class="form-control" type="text" name="" readonly value="<?php echo $productos1['estado'] ?>">
           </div>
         </div>
       
@@ -99,8 +111,8 @@ $final = 0;
               </tr>
                 <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
            </thead>
-            <tbody>';
-
+            <tbody>
+<?php 
 $odt = $productos1['codBodega'];
 }
  $sql = "SELECT * FROM detalle_bodega WHERE odt_bodega = $odt";

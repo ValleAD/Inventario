@@ -60,9 +60,10 @@ die();
             <thead>
               <tr id="tr">
              
-                <th style="width: 30%"><strong>O. de T. No.</strong></th>
-                <th style="width: 30%"><strong>Departamento Solicitante</strong></th>
-                <th style="width: 50%"><strong>Fecha de solicitud</strong></th>
+                <th style="width: 10%"><strong>O. de T. No.</strong></th>
+                <th style="width: 40%"><strong>Departamento Solicitante</strong></th>
+                <th style="width: 30%"><strong>Fecha de solicitud</strong></th>
+                <th style="width: 30%"><strong>Estado</strong></th>
                 <th  style="width: 50%"><strong>Detalles</strong></th>
                 
             </tr>
@@ -92,9 +93,18 @@ die();
             <td data-label="Código" class="delete"><?php  echo $solicitudes['codBodega']; ?></td>
             <td data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
             <td data-label="Fecha de solicitud" class="delete"><?php  echo $solicitudes['fecha_registro']; ?></td>
+               <td><input <?php
+                if($solicitudes['estado']=='Pendiente') {
+                    echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
+                }else if($solicitudes['estado']=='Aprobado') {
+                     echo ' style="background-color:blueviolet ;width:100%; border-radius:5px;text-align:center; color: white;"';
+                }else if($solicitudes['estado']=='Rechazado') {
+                     echo ' style="background-color:red ;width:100%; border-radius:5px;text-align:center; color: white;"';
+                }
+            ?> class="form-control" type="text" name="" readonly value="<?php echo $solicitudes['estado'] ?>"></td>
             <td  data-label="Detalles">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Bodega.php">             
-                <input type='hidden' name='id' value="<?php  echo $solicitudes['codBodega']; ?>">             
+                <input type='hidden' name='id' value="<?php  echo $solicitudes['codBodega']; ?>">          
                 <button name='detalle' class="btn btn-primary swal2-styled.swal2-confirm">Ver Detalles</button>             
             </form> 
             </td>

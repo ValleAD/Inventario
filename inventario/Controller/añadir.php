@@ -14,7 +14,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
       $cantidad         = $_POST['cant'][$i];
       $cost             = $_POST['cu'][$i];
 
-      $insert = "INSERT INTO tb_productos (codProductos, categoria, catalogo, descripcion, unidad_medida, stock, precio) VALUES ('$codigo_producto', '$categoria', '$catalogo', '$Descripción', '$u_m', '$cantidad', '$cost')";
+      $insert = "INSERT INTO tb_productos (codProductos, categoria, catalogo, descripcion, unidad_medida, stock, precio,solicitudes) VALUES ('$codigo_producto', '$categoria', '$catalogo', '$Descripción', '$u_m', '$cantidad', '$cost','Registro de Producto')";
       $query = mysqli_query($conn, $insert);
 
       if ($query) {

@@ -30,10 +30,10 @@ $result = mysqli_query($conn, $sql);
       $cant_aprobada    = $_POST['cant_aprobada'][$i];
       // $cant_aprobada    = $_POST['cant_aprobada'][$i];
       //  $campo            = $_POST['form_compra'][$i];
-       $insert = "INSERT INTO tb_productos (codProductos, descripcion, unidad_medida, stock, precio) VALUES ('$codigo_producto', '$Descripción', '$u_m', '$cant_aprobada', '$cost' )";
+       $insert = "INSERT INTO tb_productos (codProductos, descripcion, unidad_medida, stock, precio,solicitudes) VALUES ('$codigo_producto', '$Descripción', '$u_m', '$cant_aprobada', '$cost','Solicitud Almacen' )";
       $query = mysqli_query($conn, $insert);
       if ($query)  {
-        echo "<script> alert('Su producto fue registrado correctamente')
+        echo "<script> alert('El Estado fue Cambiado correctamente')
           location.href = '../solicitudes_almacen.php';
         </script>
         ";

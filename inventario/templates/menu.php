@@ -96,15 +96,12 @@ background:burlywood;
                         <li><a id="b" href="form_circulante.php">Nuevo</a></li>
                     </ul>
                 </li>
-                <?php if($tipo_usuario == 1) { ?>
                  <li class="submenu" style="margin-left: auto;">
                     <a id="a" href="#" ><span class="icon-rocket"></span>Empleados<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
                         <li><a id="b" href="Empleados.php">Mostrar</a></li>
                     </ul>
                 </li>
-            <?php } ?>
-
                <?php
     $cliente =$_SESSION['signin'];
     $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");

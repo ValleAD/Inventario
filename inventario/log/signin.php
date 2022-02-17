@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
 	$result = mysqli_query($conn, $sql);
 	if ($result->num_rows > 0) {
 		$row = mysqli_fetch_assoc($result);
-		if($_SESSION['signin']==$row['password']){
+		if($_SESSION['signin']==$row['username']){
           
         
             $_SESSION['signin'] = $row['username'];

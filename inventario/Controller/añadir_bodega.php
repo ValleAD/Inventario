@@ -9,7 +9,7 @@ include ('../Model/conexion.php');
     $usuario = $_POST['usuario'];
 
     //crud para guardar los productos en la tabla tb_vale
-    $sql = "INSERT INTO tb_bodega (codBodega, departamento,usuario) VALUES ('$orden_trabajo', '$departamento','$usuario')";
+    $sql = "INSERT INTO tb_bodega (codBodega, departamento,usuario,estado) VALUES ('$orden_trabajo', '$departamento','$usuario','Pendiente')";
     $result = mysqli_query($conn, $sql); 
       
         
@@ -69,20 +69,4 @@ if ($query) {
   </script>
   ";
 }
-for($i = 0; $i < count($_POST['cod']); $i++)
-    {
-      $codigo_producto  = $_POST['cod'][$i];
-      $categoria        = $_POST['categoria'][$i];
-      $catalogo         = $_POST['cat'][$i];
-      $nombre_articulo  = $_POST['nombre'][$i];
-      $Descripción      = $_POST['desc'][$i];
-      $u_m              = $_POST['um'][$i];
-      $cantidad         = $_POST['cant'][$i];
-      $cost             = $_POST['cu'][$i];
-      $estado           = $_POST['estado'][$i];
-      $campo            = $_POST['form_bodega'][$i];
-       $insert = "INSERT INTO reporte_articulos (codProductos, categoria, catalogo, nombre, descripcion, unidad_medida, stock, precio,campo,estado) VALUES ('$codigo_producto', '$categoria', '$catalogo', '$nombre_articulo', '$Descripción', '$u_m', '$cantidad', '$cost','$campo','$estado')";
-      $query = mysqli_query($conn, $insert);
-
-    }
 ?>

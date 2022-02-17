@@ -22,10 +22,10 @@ $result = mysqli_query($conn, $sql);
       $cost             = $_POST['cost'][$i];
       $cant_aprobada    = $_POST['cant_aprobada'][$i];
       $cant_aprobada    = $_POST['cant_aprobada'][$i];
-       $insert = "INSERT INTO tb_productos (codProductos, categoria, catalogo, descripcion, unidad_medida, stock, precio) VALUES ('$codigo_producto', '$categoria', '$catalogo','$Descripción', '$u_m', '$cant_aprobada', '$cost' )";
+       $insert = "INSERT INTO tb_productos (codProductos, categoria, catalogo, descripcion, unidad_medida, stock, precio,solicitudes) VALUES ('$codigo_producto', '$categoria', '$catalogo','$Descripción', '$u_m', '$cant_aprobada', '$cost' ,'Solicitud Compra')";
       $query = mysqli_query($conn, $insert);
       if ($query)  {
-        echo "<script> alert('Su producto fue registrado correctamente')
+        echo "<script> alert('El Estado fue Cambiado correctamente')
         location.href = '../solicitudes_compra.php';
         </script>
         ";
