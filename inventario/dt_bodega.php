@@ -99,17 +99,17 @@ $final = 0;
           
         <table class="table" style="margin-bottom:3%">
             
-            <thead>
-              <tr id="tr">
-                <th>Código</th>
-                <th style="width: 25%;">Descripción</th>
-                <th>Unidad de Medida</th>
-                <th>Cantidad</th>
-                <th>Costo unitario</th>
-                <th>Total</th>
-              </tr>
-                <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
-           </thead>
+        <thead>
+                <tr id="tr">
+                  <th style="width: 45%;">Código</th>
+                  <th style="width: 175%;">Descripción</th>
+                  <th style="width: 45%;">Unidad de Medida</th>
+                  <th style="width: 25%;">Cantidad</th>
+                  <th style="width: 30%;">Costo unitario</th>
+                  <th style="width: 30%;">Total</th>
+                </tr>
+                <td id="td" colspan="6"><h4>No se encontraron resultados 😥</h4></td>
+              </thead>
             <tbody>
 <?php 
 $odt = $productos1['codBodega'];
@@ -144,7 +144,7 @@ while ($productos = mysqli_fetch_array($result)){
 <?php }?>
      
       <th colspan="5">SubTotal</th>
-      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="<?php echo $final ?>" ></td></tr>
+      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$<?php echo $final ?>" ></td></tr>
    
 
          </tbody>

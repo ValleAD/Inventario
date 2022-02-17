@@ -72,7 +72,7 @@ die();
      <link rel="stylesheet" type="text/css" href="styles/estilo.css"> 
      <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">  
-    <title>Vale</title>
+    <title>Bodega</title>
 </head>
 <body>
 
