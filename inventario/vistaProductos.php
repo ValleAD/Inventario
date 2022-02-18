@@ -183,7 +183,7 @@ $result = mysqli_query($conn, $sql);
                      <th style=" width: 100%">Cantidad</th>
                      <th style=" width: 100%">Costo Unitario</th>
                      <th style=" width: 100%">Fecha Registro</th>
-                     <th style=" width: 100%">Solicitudes</th>
+                     <th style=" width: 100%">Categoría</th>
                      <th style=" width: 100%">Editar</th>
                      <th style=" width: 100%">Eliminar</th>
                    </tr>
@@ -233,7 +233,7 @@ $result = mysqli_query($conn, $sql);
            <td  data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
            <td  data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
-           <td  data-label="Fecha Registro"><?php  echo $productos['solicitudes']; ?></td>
+           <td  data-label="Fecha Registro"><?php  echo $productos['categoria']; ?></td>
            <td  data-label="Editar">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="vistaProductos.php">             
                 <input type='hidden' name='id' value="<?php  echo $productos['codProductos']; ?>">             

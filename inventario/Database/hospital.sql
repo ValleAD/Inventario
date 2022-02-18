@@ -211,12 +211,13 @@ CREATE TABLE Selects_departamento (
 departamento varchar(50) NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 INSERT INTO `Selects_unidad_medida` (`unidad_medida`,`Habilitado`)
-VALUES ('c/m'  ,'Si'),
-       ('lb'  ,'Si'),
-       ('mts'  ,'Si'),
+VALUES ('C/M'  ,'Si'),
+       ('Lb'  ,'Si'),
+       ('Mts'  ,'Si'),
        ('Pgo'  ,'Si'),
        ('Qq'  ,'Si'),
-       ('cto'  ,'Si');
+       ('Cto'  ,'Si');
+       ('C/U'  ,'Si');
 INSERT INTO `Selects_categoria` (`categoria`,`Habilitado`)
 VALUES ('Agropecuarios y Forestales' ,'Si'),
        ('Cuero y Caucho' ,'Si'),
