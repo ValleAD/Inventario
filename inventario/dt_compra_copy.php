@@ -38,7 +38,7 @@ die();
         form{
           margin:0;
       }
-      }
+      
               @media (max-width: 952px){
    #section{
         margin-top: 5%;
@@ -46,6 +46,7 @@ die();
         width: 75%;
         padding: 2%;
     }
+  }
     
     </style>
 <?php
@@ -118,16 +119,16 @@ $final = 0;
               
               <thead>
                 <tr id="tr">
-                  <th>Categoría</th>
-                  <th>Código</th>
-                  <th>Cod. Catálogo</th>
+                  <th style="width:20%;">Categoría</th>
+                  <th style="width:20%;">Código</th>
+                  <th style="width:20%;">Cod. Catálogo</th>
                   <th style="width:20%;">Descripción Completa</th>
                   <th style="width:5%;">U/M</th>
-                  <th>Cantidad Solicitada</th>
-                  <th>Cantidad Despachada</th>
-                  <th>Costo Unitario (estimado)Actual</th>
-                  <th>Nuevo Costo Unitario (estimado)</th>
-                  <th>Monto Total (estimado)
+                  <th style="width:20%;">Cantidad Solicitada</th>
+                  <th style="width:20%;">Cantidad Despachada</th>
+                  <th style="width:20%;">Costo Unitario (estimado)Actual</th>
+                  <th style="width:20%;">Nuevo Costo Unitario (estimado)</th>
+                  <th style="width:20%;">Monto Total (estimado)
                   
                 </tr>
                   <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
@@ -151,7 +152,7 @@ $final = 0;
      
   </style> 
         <tr>
-        <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="cat[]" readonly style="border: none">'.$productos['categoria']. '</textarea></td>
+          <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="cat[]" readonly style="border: none">'.$productos['categoria']. '</textarea></td>
           <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="' .$productos['codigo']. '"></td>
           <td  data-label="Cod. Catálogo"><input style="background:transparent; border: none; width: 100%;"  name="catalogo[]" readonly value="' .$productos['catalogo']. '"></td>
           <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly style="border: none">'.$productos['descripcion']. '</textarea></td>
@@ -159,7 +160,6 @@ $final = 0;
           <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="'.$productos['stock']. '"></td>
           <td  data-label="Cantidad"><input style="background:transparent; border: 1 solid #000;  width: 100%;" class="form-control" type="number" required  name="cant_aprobada[]" required value=""></td>
           <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  type="text step="0.01"  required readonly  value="$'.$productos['precio']. '"></td>
-
           <td  data-label="Costo unitario"><input class="form-control" type="number" style="background:transparent;border: 1 solid #000; width: 100%;" required step="0.01" name="cost[]"></td>
           <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$'.$total. '"><input style="background:transparent; border: none; width: 100%; color: black;"  type="hidden" class="form-control" readonly name="form_compra[]" value ="Solicitud Compra"></td>
          

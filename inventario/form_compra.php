@@ -130,7 +130,7 @@ form{
 
                   <div class="form-group" style="position: all; margin: 2%">
                         <label>Codificación de Catálogo de NA</label> 
-                      <input  type="number" name="cat[]" class="form-control" placeholder="Código" value="<?php echo $productos['catalogo'] ?>" required>
+                      <input  type="number" name="cat[]" class="form-control" placeholder="Código" value="<?php echo $productos['catalogo'] ?>">
                   </div>
 
                   <div class="form-group">

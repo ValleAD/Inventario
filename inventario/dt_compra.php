@@ -38,7 +38,7 @@ die();
         form{
           margin:0;
       }
-      }
+      
               @media (max-width: 952px){
    #section{
         margin-top: 5%;
@@ -46,6 +46,7 @@ die();
         width: 75%;
         padding: 2%;
     }
+  }
     
     </style>
 <?php
@@ -117,14 +118,14 @@ $final = 0;
               
               <thead>
                 <tr id="tr">
-                  <th>Categoría</th>
-                  <th>Código</th>
-                  <th>Cod. Catálogo</th>
-                  <th style="width:25%;">Descripción Completa</th>
-                  <th>U/M</th>
-                  <th>Cantidad</th>
-                  <th>Costo Unitario (estimado)</th>
-                  <th>Monto Total (estimado)</th>
+                  <th style="width:30%;">Categoría</th>
+                  <th style="width:15%;">Código</th>
+                  <th style="width:15%;">Cod. Catálogo</th>
+                  <th style="width:70%;">Descripción Completa</th>
+                  <th style="width:15%;">U/M</th>
+                  <th style="width:15%;">Cantidad</th>
+                  <th style="width:15%;">Costo Unitario (estimado)</th>
+                  <th style="width:15%;">Monto Total (estimado)</th>
                 </tr>
                   <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
              </thead>
@@ -147,14 +148,14 @@ $final = 0;
      
   </style> 
         <tr>
-        <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="cat[]" readonly style="border: none">'.$productos['categoria']. '</textarea></td>
-          <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="' .$productos['codigo']. '"></td>
-          <td  data-label="Cod. Catálogo"><input style="background:transparent; border: none; width: 100%;"  name="catalogo[]" readonly value="' .$productos['catalogo']. '"></td>
-          <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly style="border: none">'.$productos['descripcion']. '</textarea></td>
-          <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
-          <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="'.$productos['stock']. '"></td>
-          <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$'.$productos['precio']. '"></td>
-          <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$'.$total. '"></td>
+        <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="cat[]" readonly>'.$productos['categoria']. '</textarea></td>
+          <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;  text-align: center"  name="cod[]" readonly value="' .$productos['codigo']. '"></td>
+          <td  data-label="Cod. Catálogo"><input style="background:transparent; border: none; width: 100%;  text-align: center"  name="catalogo[]" readonly value="' .$productos['catalogo']. '"></td>
+          <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly>'.$productos['descripcion']. '</textarea></td>
+          <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;  text-align: center" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
+          <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;  text-align: center"  name="cant[]" readonly value="'.$productos['stock']. '"></td>
+          <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;  text-align: center"  name="cost[]" readonly value="$'.$productos['precio']. '"></td>
+          <td  data-label="total"><input style="background:transparent; border: none; width: 100%;  text-align: center"  name="tot[]" readonly value="$'.$total. '"></td>
         </tr>';
   
   }
@@ -162,7 +163,7 @@ $final = 0;
       echo'
       <tr>
         <th colspan="7">Subtotal</th>
-        <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$'.$final.'" ></td></tr>
+        <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold; text-align: center"  name="tot_f" readonly value="$'.$final.'" ></td></tr>
       </tr>
            </tbody>
           </table>
