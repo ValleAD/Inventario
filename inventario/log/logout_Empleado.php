@@ -5,7 +5,7 @@ require '../Model/conexion.php';
 $usuario =$_POST['usuario'];
 $Nusuario =$_POST['Nusuario'];
 $Npassword =$_POST['Npassword'];
-$Npassword= hash('sha512',$Npassword);
+//$Npassword= hash('sha512',$Npassword);
 
  
 
