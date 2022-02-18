@@ -206,6 +206,7 @@ let linkDelete =document.querySelectorAll("delete");
     $(document).ready(function(){
         $('#example').DataTable({
              language: {
+                
                 "lengthMenu": "Mostrar _MENU_ registros",
                 "zeroRecords": "No se encontraron resultados",
                 "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",

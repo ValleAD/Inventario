@@ -15,7 +15,7 @@ die();
 ?>
 <?php include ('templates/menu.php')?>
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
