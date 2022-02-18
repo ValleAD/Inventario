@@ -81,11 +81,11 @@ die();
 
         <tr>
             <td data-label="No. solicitud" class="delete"><?php  echo $datos_sol['codCirculante']; ?></td>
-            <td data-label="Fecha de solicitud" class="delete"><?php  echo $datos_sol['fecha_solicitud']; ?></td>
+            <td data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])) ?></td>
             <td  data-label="Detalles">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_circulante.php">             
                 <input type='hidden' name='id' value="<?php  echo $datos_sol['codCirculante']; ?>">             
-                <button name='detalle' class="btn btn-primary swal2-styled.swal2-confirm">Ver Detalles</button>             
+                <input type="submit" name='detalle' class="btn btn-primary" value="Ver Detalles">               
             </form> 
             </td>
         </tr>

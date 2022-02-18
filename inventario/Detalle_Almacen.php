@@ -273,7 +273,7 @@ while ($productos = mysqli_fetch_array($result)){
 
       <?php }?>
       <th colspan="5">SubTotal</th>
-      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold; text-align: center"  name="tot_f" readonly value="<?php echo $final ?>" ></td></tr>
+      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold; text-align: center"  name="tot_f" readonly value="$<?php echo $final ?>" ></td></tr>
 
          </tbody>
         </table>

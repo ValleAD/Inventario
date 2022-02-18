@@ -163,16 +163,16 @@ if(isset($_POST['ingresos'])){
 
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
      <thead>
-       <tr id="tr">
-         <th  style="width: 15%">Departamento</th>
-         <th  style="width: 15%">Encargado</th>
-         <th  style="width: 10%">Codigo</th>
-         <th  style="width: 100%">Descripción Completa</th>
-         <th  style="width: 100%">U/M</th>
-         <th  style="width: 100%">Cantidad</th>
-         <th  style="width: 100%">Costo Unitario</th>
-         <th  style="width: 100%">Ingreso Por</th>
-         <th  style="width: 100%">Fecha Registro</th>
+       <tr>
+         <th  style="width:15%">Departamento</th>
+         <th  style="width:15%">Encargado</th>
+         <th  style="width:10%">Codigo</th>
+         <th  style="width:100%">Descripción Completa</th>
+         <th  style="width:100%">U/M</th>
+         <th  style="width:100%">Cantidad</th>
+         <th  style="width:100%">Costo Unitario</th>
+         <th  style="width:100%">Ingreso Por</th>
+         <th  style="width:100%">Fecha Registro</th>
          
        </tr>
 
@@ -199,10 +199,10 @@ width: 100%;
 }
 </style>
 <tr id="tr">
-<td data-label="Departamento"><?php  echo $productos['departamento']; ?></td>
-<td data-label="Encargado"><?php  echo $productos['encargado']; ?></td>
+<td data-label="Departamento" style="text-align: left"><?php  echo $productos['departamento']; ?></td>
+<td data-label="Encargado" style="text-align: left"><?php  echo $productos['encargado']; ?></td>
 <td data-label="Código Producto"><?php  echo $productos['codigo']; ?></td>
-<td data-label="Descripción" style="text-align: left><?php  echo $productos['nombre']; ?></td>
+<td data-label="Descripción" style="text-align: left"><?php  echo $productos['nombre']; ?></td>
 <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
 <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['cantidad_solicitada']; ?></td>
 <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
