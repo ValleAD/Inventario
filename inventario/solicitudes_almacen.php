@@ -55,12 +55,12 @@ die();
           <thead>
               <tr id="tr">
              
-                <th   style=" width: 20%">No. de Solicitud</th>
-                <th  style=" width: 30%" >Departamento Solicitante</th>
-                <th   style=" width: 20%">Encargado</th>
-                <th   style=" width: 20%;  text-transform: capitalize">Fecha de solicitud</th>
-                <th  style=" width: 60%">Estado</th>
-                <th  style=" width: 10%" >Detalles</th>
+                <th style=" width: 10%">No. de Solicitud</th>
+                <th style=" width: 30%" >Departamento Solicitante</th>
+                <th style=" width: 20%">Encargado</th>
+                <th style=" width: 20%;">Fecha de solicitud</th>
+                <th style=" width: 15%">Estado</th>
+                <th style=" width: 10%" >Detalles</th>
                 
             </tr>
             </thead>
@@ -85,7 +85,7 @@ die();
             <td data-label="No. solicitud" class="delete"><?php  echo $datos_sol['codAlmacen']; ?></td>
             <td data-label="Departamento Solicitante" class="delete"><?php  echo $datos_sol['departamento']; ?></td>
             <td data-label="Usuario" class="delete"><?php  echo $datos_sol['encargado']; ?></td>
-            <td data-label="Fecha de solicitud" class="delete"><?php  echo $datos_sol['fecha_solicitud']; ?></td>
+            <td data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])) ?></td>
             <td data-label="Fecha de solicitud" class="delete"><input <?php
                 if($datos_sol['estado']=='Pendiente') {
                     echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
@@ -99,7 +99,7 @@ die();
             <td  data-label="Detalles">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Almacen.php">             
                 <input type='hidden' name='id' value="<?php  echo $datos_sol['codAlmacen']; ?>">             
-                <button name='detalle' class="btn btn-primary btn-ms">Ver Detalles</button>             
+                <input type="submit" name='detalle' class="btn btn-primary" value="Ver Detalles">                 
             </form> 
             </td>
         </tr>

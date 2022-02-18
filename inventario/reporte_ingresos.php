@@ -100,7 +100,7 @@ if(isset($_POST['ingresos'])){
                 <th  style="width: 100%">U/M</th>
                 <th  style="width: 100%">Cantidad</th>
                 <th  style="width: 100%">Costo Unitario</th>
-                <th  style="width: 100%">Fuente de Ingreso</th>
+                <th  style="width: 100%">Ingreso Por</th>
                 <th  style="width: 100%">Fecha Registro</th>
               </tr>
 
@@ -124,7 +124,7 @@ if(isset($_POST['ingresos'])){
     <td data-label="Departamento"><?php  echo $productos['departamento']; ?></td>
       <td data-label="Encargado"><?php  echo $productos['usuario']; ?></td>
       <td data-label="Código Producto"><?php  echo $productos['codigo']; ?></td>
-      <td data-label="Descripción"><textarea style="background:transparent; border: none; color: black;" cols="10" rows="1" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
+      <td data-label="Descripción" style="text-align: left"><?php  echo $productos['descripcion']; ?></td>
       <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
       <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
@@ -171,7 +171,7 @@ if(isset($_POST['ingresos'])){
          <th  style="width: 100%">U/M</th>
          <th  style="width: 100%">Cantidad</th>
          <th  style="width: 100%">Costo Unitario</th>
-         <th  style="width: 100%">Fuente de Ingreso</th>
+         <th  style="width: 100%">Ingreso Por</th>
          <th  style="width: 100%">Fecha Registro</th>
          
        </tr>
@@ -202,7 +202,7 @@ width: 100%;
 <td data-label="Departamento"><?php  echo $productos['departamento']; ?></td>
 <td data-label="Encargado"><?php  echo $productos['encargado']; ?></td>
 <td data-label="Código Producto"><?php  echo $productos['codigo']; ?></td>
-<td data-label="Descripción"><textarea style="background:transparent; border: none; color: black;" cols="10" rows="1" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['nombre']; ?></textarea></td>
+<td data-label="Descripción" style="text-align: left><?php  echo $productos['nombre']; ?></td>
 <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
 <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['cantidad_solicitada']; ?></td>
 <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
@@ -247,7 +247,7 @@ width: 100%;
          <th  style="width:100%">U/M</th>
          <th  style="width:100%">Cantidad</th>
          <th  style="width:100%">Costo Unitario</th>
-         <th  style="width:100%">Fuente de Ingreso</th>
+         <th  style="width:100%">Ingreso Por</th>
          <th  style="width:100%">Fecha Registro</th>
          
        </tr>
@@ -268,7 +268,7 @@ while ($productos = mysqli_fetch_array($result)){?>
 <td data-label="Departamento">Mantenimiento</td>
 <td data-label="Encargado"><?php  echo $productos['usuario']; ?></td>
 <td data-label="Código de Producto"><?php  echo $productos['codigo']; ?></td>
-<td data-label="Descripción Completa"><textarea style="background:transparent; border: none; color: black;" cols="10" rows="1" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
+<td data-label="Descripción Completa" style="text-align: left"><?php  echo $productos['descripcion']; ?></td>
 <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
 <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
 <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>

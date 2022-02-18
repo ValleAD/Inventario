@@ -106,19 +106,18 @@ $a=$_POST['sol_compra'];
             
 <table class="table table-responsive  table-striped" id="example" style=" width: 100% ">
               
-              <thead>
-                <tr id="tr">
-                  <th style="width: 20%;">Categoría</th>
-                  <th style="width: 20%;">Código</th>
-                  <th style="width: 15%;">Cod. Catálogo</th>
-                  <th style="width:50%;">Descripción Completa</th>
-                  <th style="width:5%;">U/M</th>
-                  <th style="width: 100%;">Cantidad Solicitada</th>
-                  <th style="width: 100%;">Cantidad Despachada</th>
-                  <th style="width: 100%;">Costo Unitario (estimado)Actual</th>
-                  <th style="width: 100%;">Nuevo Costo Unitario (estimado)</th>
-                  <th style="width: 100%;">Monto Total (estimado)
-                  
+  <thead>
+    <tr id="tr">
+      <th style="width: 20%;">Categoría</th>
+      <th style="width: 20%;">Código</th>
+      <th style="width: 20%;">Cod. Catálogo</th>
+      <th style="width: 75%;">Descripción Completa</th>
+      <th style="width: 20%;">U/M</th>
+      <th style="width: 10%;">Cantidad Solicitada</th>
+      <th style="width: 10%;">Cantidad Despachada</th>
+      <th style="width: 10%;">Costo Unitario (estimado)Actual</th>
+      <th style="width: 10%;">Nuevo Costo Unitario (estimado)</th>
+      <th style="width: 10%;">Monto Total (estimado)
                 
              </thead>
               <tbody>';
@@ -137,27 +136,26 @@ $a=$_POST['sol_compra'];
           display: none;
       }
       
-     
   </style> 
         <tr>
-      <td  data-label="Categoría"><input style="background:transparent; border: none; width: 100%;"  name="cat[]" readonly value="<?php echo $productos['categoria']?>"></td>
-        <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="<?php echo $productos['codigo']?>"></td>
-        <td  data-label="Cod. Catálogo"><input style="background:transparent; border: none; width: 100%;"  name="catalogo[]" readonly value="<?php echo $productos['catalogo']?>"></td>
-        <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly style="border: none"><?php echo $productos['descripcion']?></textarea></td>
-        <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="<?php echo $productos['unidad_medida']?>"></td>
-        <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="<?php echo $productos['stock']?>"></td>
-        <td  data-label="Cantidad"><input style="background:transparent; border: 1 solid #000;  width: 100%;" class="form-control" type="number" required  name="cant_aprobada[]" required value=""></td>
-          <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  type="text" step="0.01"  required readonly  value="$<?php echo $productos['precio']?>"></td>
+      <td  data-label="Categoría"><textarea style="background:transparent; border: none; width: 100%; text-align: left;"  name="cat[]" readonly ><?php echo $productos['categoria']?></textarea></td>
+        <td  data-label="Código"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="cod[]" readonly value="<?php echo $productos['codigo']?>"></td>
+        <td  data-label="Cod. Catálogo"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="catalogo[]" readonly value="<?php echo $productos['catalogo']?>"></td>
+        <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%; text-align: left;"  name="desc[]" readonly style="border: none"><?php echo $productos['descripcion']?></textarea></td>
+        <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%; text-align: center" name="um[]" readonly value="<?php echo $productos['unidad_medida']?>"></td>
+        <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="cant[]" readonly value="<?php echo $productos['stock']?>"></td>
+        <td  data-label="Cantidad"><input style="background:transparent; border: 1 solid #000;  width: 100%; text-align: center" class="form-control" type="number" required  name="cant_aprobada[]" required value=""></td>
+          <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%; text-align: center"  type="text" step="0.01"  required readonly  value="$<?php echo $productos['precio']?>"></td>
 
           <td  data-label="Costo unitario"><input class="form-control" type="number" style="background:transparent;border: 1 solid #000; width: 100%;" required step="0.01" name="cost[]"></td>
           
-          <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$<?php echo $total?>"></td>
+          <td  data-label="total"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="tot[]" readonly value="$<?php echo $total?>"></td>
       
         <?php }?>
          <tfoot style="text-align:right;">
             <th >SubTotal</th>
             <th colspan="8"></th>
-            <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$<?php echo $final?>" ></td></tr>
+            <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold; text-align: center"  name="tot_f" readonly value="$<?php echo $final?>" ></td></tr>
         </tfoot>
 
         </tr>
@@ -175,22 +173,25 @@ $a=$_POST['sol_compra'];
 
 
 <br>
-    <style>
-        #ver{
-            margin-top: 2%;
-            margin-right: 1%; 
-            background: rgb(5, 65, 114); 
-            color: #fff; 
-            margin-bottom: 0.5%;  
-            border: rgb(5, 65, 114);
-        }
-        #ver:hover{
-            background: rgb(9, 100, 175);
-        } 
-        #ver:active{
-        transform: translateY(5px);
-        } 
-    </style>
+<style>
+  #ver{
+      margin-top: 2%;
+      margin-right: 1%; 
+      background: rgb(5, 65, 114); 
+      color: #fff; 
+      text-align: center;
+      margin-bottom: 0.5%;  
+      border: rgb(5, 65, 114);
+  }
+  #ver:hover{
+      background: rgb(9, 100, 175);
+  } 
+  #ver:active{
+  transform: translateY(5px);
+  } input{
+    text-align: center;
+  }
+</style>
 </table>
 </div>
       <?php 
@@ -281,18 +282,17 @@ $cod_compra = $_POST['id'];
             <input readonly class="form-control"  type="hidden" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro'])) ?>" name="fech">
           
 <table class="table table-responsive  table-striped" id="example" style=" width: 100% ">
-                <thead>
-                     <tr id="tr">
-                     <th style=" width: 20%">Categoria</th>
-                     <th style=" width: 20%">Código</th>
-                     <th style=" width: 20%">Cod. de Catálogo</th>
-                     <th style=" width: 100%">Descripción Completa</th>
-                     <th style=" width: 100%">U/M</th>
-                     <th style=" width: 100%">Cantidad</th>
-                     <th style=" width: 100%">Costo Unitario (estimado)</th>
-                     <th style=" width: 100%">Monto Total (estimado)</th>
-                     
-                   </tr>
+  <thead>
+    <tr id="tr">
+      <th style="width:30%;">Categoría</th>
+      <th style="width:15%;">Código</th>
+      <th style="width:15%;">Cod. Catálogo</th>
+      <th style="width:70%;">Descripción Completa</th>
+      <th style="width:15%;">U/M</th>
+      <th style="width:15%;">Cantidad</th>
+      <th style="width:15%;">Costo Unitario (estimado)</th>
+      <th style="width:15%;">Monto Total (estimado)</th>
+    </tr>
                 </thead>
                 <tbody>
 
@@ -319,19 +319,19 @@ while ($productos = mysqli_fetch_array($result)){
         }
      </style>
          <tr id="tr">
-        <td  data-label="Categoría"><input style="background:transparent; border: none; width: 100%;"  name="categoria[]" readonly value="<?php echo $productos['categoria']?>"></td>
-        <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="<?php echo $productos['codigo']?>"></td>
-        <td  data-label="Cod. Catálogo"><input style="background:transparent; border: none; width: 100%;"  name="catalogo[]" readonly value="<?php echo $productos['catalogo']?>"></td>
-        <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly style="border: none"><?php echo $productos['descripcion']?></textarea></td>
-        <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="<?php echo $productos['unidad_medida']?>"></td>
-        <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="<?php echo $productos['stock']?>"></td>
-        <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$<?php echo $productos['precio']?>"></td>
-        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$<?php echo $total?>"></td>
+        <td  data-label="Categoría"><textarea style="background:transparent; border: none; width: 100%; text-align: left;"  name="categoria[]" readonly ><?php echo $productos['categoria']?></textarea></td>
+        <td  data-label="Código"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="cod[]" readonly value="<?php echo $productos['codigo']?>"></td>
+        <td  data-label="Cod. Catálogo"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="catalogo[]" readonly value="<?php echo $productos['catalogo']?>"></td>
+        <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%; text-align: left;"  name="desc[]" readonly style="border: none"><?php echo $productos['descripcion']?></textarea></td>
+        <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%; text-align: center" name="um[]" readonly value="<?php echo $productos['unidad_medida']?>"></td>
+        <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="cant[]" readonly value="<?php echo $productos['stock']?>"></td>
+        <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="cost[]" readonly value="$<?php echo $productos['precio']?>"></td>
+        <td  data-label="total"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="tot[]" readonly value="$<?php echo $total?>"></td>
       
         <?php } ?>
          <tfoot>
             <th colspan="7">SubTotal</th>
-            <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$<?php echo $final?>" ></td></tr>
+            <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold; text-align: center"  name="tot_f" readonly value="$<?php echo $final?>" ></td></tr>
         </tfoot>
 
     
