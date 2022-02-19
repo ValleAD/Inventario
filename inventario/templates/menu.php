@@ -19,7 +19,7 @@ $tipo_usuario = $_SESSION['tipo_usuario'];
       <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
 </head>
 
-<body style="background-image: url(img/t.jpg);  
+<body style="background-image: url(img/hospital.png);  
             background-repeat: no-repeat;
             background-attachment: fixed;">
 
@@ -189,10 +189,10 @@ background:burlywood;
                     <input class="form-control" type="hidden" name="usuario" value="<?php echo $consulta['username'] ?>">
                     <div class="form-group">
                         <label>Nuevo Usuario</label>
-                        <input class="form-control" type="text" name="Nusuario">
+                        <input class="form-control"  required type="text" name="Nusuario">
                     
                         <label>Nueva Contraseña</label>
-                        <input class="form-control" type="text" name="Npassword">
+                        <input class="form-control" required  type="text" name="Npassword">
                     </div>
                 
                      </div>

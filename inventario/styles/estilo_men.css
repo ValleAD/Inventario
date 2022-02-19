@@ -4,7 +4,7 @@
 }
 
 body {
-    background-size: cover;
+    background-size: 100% auto,100%;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;

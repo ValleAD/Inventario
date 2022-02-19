@@ -7,7 +7,7 @@
     <title>PDF Bodega</title>
 </head>
 <body style="font-family: sans-serif;">
-    <img src="../img/hospital.jpg" style="width:20%">
+    <img src="../img/hospital.png" style="width:20%">
     <img src="../img/log_1.png" style="width:20%; float:right">
     <?php if(isset($_POST['cod'])){
 
