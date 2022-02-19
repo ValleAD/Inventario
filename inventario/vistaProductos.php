@@ -3,7 +3,7 @@
 session_start();
  if (!isset($_SESSION['signin'])>0) {
     # code...
-    echo '
+    echo ' 
     <script>
         window.location ="log/signin.php";
         session_destroy();  
@@ -21,19 +21,20 @@ die();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VistaProductos</title>
    
-    
+      <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="Plugin/bootstrap/css/bootstrap.min.css">
-    <!-- CSS personalizado --> 
-    <link rel="stylesheet" href="Plugin/main.css">  
-      
-    <!--datables CSS básico-->
-    <link rel="stylesheet" type="text/css" href="Plugin/datatables/datatables.min.css"/>
-    <!--datables estilo bootstrap 4 CSS-->  
-    <link rel="stylesheet"  type="text/css" href="Plugin/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
-           
-    <!--font awesome con CDN-->  
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!--  Datatables  -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>  
+    <!-- select -->
+    <link href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
+    <style>
+    table thead{
+    background: linear-gradient(to right, #4A00E0, #8E2DE2); 
+    color:white;
+    }
+    </style>
 </head>
 <body>
 <?php      
@@ -182,11 +183,9 @@ $result = mysqli_query($conn, $sql);
                      <th style=" width: 100%">Cantidad</th>
                      <th style=" width: 100%">Costo Unitario</th>
                      <th style=" width: 100%">Fecha Registro</th>
-                     <!-- <th style=" width: 100%">Solicitudes</th> -->
-                     <?php if($tipo_usuario == 1) { ?>
+                     <th style=" width: 100%">Categoría</th>
                      <th style=" width: 100%">Editar</th>
                      <th style=" width: 100%">Eliminar</th>
-                 <?php } ?>
                    </tr>
                 </thead>
                 <tbody>
@@ -234,8 +233,7 @@ $result = mysqli_query($conn, $sql);
            <td  data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
            <td  data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
-           <!-- <td  data-label="Fecha Registro"><?php  echo $productos['solicitudes']; ?></td> -->
-        <?php if($tipo_usuario == 1) { ?>
+           <td  data-label="Fecha Registro"><?php  echo $productos['categoria']; ?></td>
            <td  data-label="Editar">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="vistaProductos.php">             
                 <input type='hidden' name='id' value="<?php  echo $productos['codProductos']; ?>">             
@@ -247,7 +245,7 @@ $result = mysqli_query($conn, $sql);
             </td>
          </tr>
      
-     <?php } }?> 
+     <?php } ?> 
                 </tbody>                
             </table>           
             </div>
@@ -255,26 +253,30 @@ $result = mysqli_query($conn, $sql);
     </div>
 
 
-  
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+            
+    <!--   Datatables-->
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>  
 
 
- <!-- jQuery, Popper.js, Bootstrap JS -->
-    <script src="Plugin/jquery/jquery-3.3.1.min.js"></script>
-    <script src="Plugin/popper/popper.min.js"></script>
-    <script src="Plugin/bootstrap/js/bootstrap.min.js"></script>
-      
-    <!-- datatables JS -->
-    <script type="text/javascript" src="datatables/datatables.min.js"></script>    
-     
-    <!-- para usar botones en datatables JS -->  
-    <script src="Plugin/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>  
-    <script src="Plugin/datatables/JSZip-2.5.0/jszip.min.js"></script>    
-    <script src="Plugin/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>    
-    <script src="Plugin/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
-    <script src="Plugin/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
-     
-    <!-- código JS propìo-->    
-    <script type="text/javascript" src="Plugin/main.js"></script>  
+    <script>
+    $(document).ready(function(){
+        $('#example').DataTable({
+             language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "sProcessing":"Procesando...", 
+            }
+        });
+
+    });
+    </script>
     <script type="text/javascript">
 function confirmaion(e) {
     if (confirm("¿Estas seguro que deseas Eliminar este registro?")) {
