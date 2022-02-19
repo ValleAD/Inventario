@@ -60,6 +60,13 @@ die();
     <br>
     <br>
     <br>
+
+    <font color="white"><center>
+        <h1 id="h1" style="margin-top: 10.1%;">Bienvenidos al Sistema de Inventario del 
+            <br>
+            Hospital de zacatecoluca
+        </h1>
+    </center></font>
     
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

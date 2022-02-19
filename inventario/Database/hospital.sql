@@ -216,7 +216,7 @@ VALUES ('C/M'  ,'Si'),
        ('Mts'  ,'Si'),
        ('Pgo'  ,'Si'),
        ('Qq'  ,'Si'),
-       ('Cto'  ,'Si');
+       ('Cto'  ,'Si'),
        ('C/U'  ,'Si');
 INSERT INTO `Selects_categoria` (`categoria`,`Habilitado`)
 VALUES ('Agropecuarios y Forestales' ,'Si'),
