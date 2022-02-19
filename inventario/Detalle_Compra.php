@@ -271,7 +271,7 @@ $cod_compra = $_POST['id'];
             </div>
         </div>
        </form>
-         <form method="POST" action="Exportar_PDF/pdf_compra.php" target="_blank"> 
+         <form method="POST" action="Plugin/pdf_compra.php" target="_blank"> 
 
             <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['nSolicitud'] ?>" name="sol_compra">
             <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['dependencia'] ?>" name="dependencia">

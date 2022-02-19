@@ -202,7 +202,7 @@ if(isset($_POST['detalle'])){
     
      echo'   
     <section id="section">
-    <form method="POST" action="" target="_blank">
+    <form method="POST" action="Detalle_Bodega" target="_blank">
              
           
             <div class="row">
@@ -250,7 +250,7 @@ if(isset($_POST['detalle'])){
           </div>
             </div>
             <br></form><?php echo ' ?>
-              <form action="action="Plugin/pdf_bodega.php" method="POST">
+              <form action="Plugin/pdf_bodega.php" method="POST">
               <input readonly class="form-control"  type="hidden" value="' .$productos1['departamento']. '" name="depto">
                 <input readonly class="form-control"  type="hidden" value="' .$productos1['codBodega']. '" name="odt">
                 <input readonly class="form-control"  type="hidden" value="' .$productos1['usuario']. '" name="usuario">
