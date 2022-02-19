@@ -197,7 +197,7 @@ $result = mysqli_query($conn, $sql);
                 <th style="width: 12%"><strong>Apellidos</strong></th>
                 <th style="width: 15%"><strong>Establecimiento</strong></th>
                 <th style="width: 15%"><strong>Unidad</strong></th>
-                <th  style="width: 10%; text-align:center;" ><strong>Habilitado</strong></th>
+                <th  style="width: 10%; text-align:center;" ><strong>Habilitado</strong></th><?php if($tipo_usuario == 1) { ?>
                 <th style="width: 10%;margin-left: 5%;"><strong style="text-align: center;"> Cambiar Habilitado</strong></th>
                 <th style="width: 10%">Eliminar</th><?php } ?>
                 
