@@ -248,10 +248,78 @@ $result = mysqli_query($conn, $sql);
      <?php } ?> 
                 </tbody>                
             </table>           
+             <form method="POST" action="">
+                <div class="container">
+                 <div class="row">
+                    <div class="col-md-4" style="position: initial">
+                      <select class="form-control" name="cat" id="w" required>
+                    <option selected disabled value="">Seleccione</option>
+                <?php  $sql = "SELECT * FROM tb_productos GROUP BY categoria ";
+        $result = mysqli_query($conn, $sql);
+            while ($productos = mysqli_fetch_array($result)){
+                echo "<option>".$productos['categoria']."</option>";
+
+            }
+         ?></select>
+                    </div>
+                    <div class="col-md-6" style="position: initial">
+                       <button class="btn btn-success" name="categoria" type="submit">Exportar por Categorias</button>
+                    </div>
+                </div>
+            </div>
+                
+               
+            </form>   
+            <?php 
+
+if (isset($_POST['categoria'])){  ?>  <br> 
+<div class="mx-5 p-2 r-5" style="background-color: white; border-radius: 5px;">
+        <div class="row">
+            <div class="col">
+                <table class="table table-responsive table-striped" id="example1" style=" width: 100%">
+    <thead>
+         <tr id="tr">
+                     <th style=" width: 10%">Categoria</th>
+                     <th style=" width: 10%">Código</th>
+                     <th style=" width: 10%">Cod. de Catálogo</th>
+                     <th style=" width: 30%;padding-left:3%">Descripción Completa</th>
+                     <th style=" width: 10%">U/M</th>
+                     <th style=" width: 10%">Cantidad</th>
+                     <th style=" width: 10%">Costo Unitario</th>
+                     <th style=" width: 70%">Fecha Registro</th>
+                     
+                   </tr>
+    </thead>
+    <tbody>
+         <?php $categoria=$_POST['cat'];
+
+             // code...
+         
+                   $sql = "SELECT * FROM tb_productos WHERE categoria='$categoria' ";
+        $result = mysqli_query($conn, $sql);
+            while ($productos = mysqli_fetch_array($result)){
+                if ($_POST['cat']==$productos['categoria']) {?>
+                   <tr>
+                <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['categoria']; ?></td>
+                <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['codProductos']; ?></td>
+           <td  data-label="Codificación de catálogo" style="text-align: center;"><?php  echo $productos['catalogo']; ?></td>
+           <td  data-label="Descripción Completa" style="text-align: left;padding-left:3%"><?php  echo $productos['descripcion']; ?></td>
+           <td  data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
+           <td  data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
+           <td  data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
+           <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
+        </tr>
+                <?php}}?>
+      <?php   }}} ?>
+    </tbody>
+</table>
+  
+</div>
+            </div> 
             </div>
         </div>
     </div>
-
+</div>
  
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.js"></script>
@@ -265,6 +333,51 @@ $result = mysqli_query($conn, $sql);
     <script>
     $(document).ready(function(){
  $('#example').DataTable({        
+        language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                 },
+                 "sProcessing":"Procesando...",
+            },
+        //para usar los botones   
+        responsive: "true",
+        dom: 'Bfrtilp',       
+        buttons:[ 
+            {
+                extend:    'excelHtml5',
+                text:      '<i class="fas fa-file-excel"></i> ',
+                titleAttr: 'Exportar a Excel',
+                className: 'btn btn-success'
+            },
+            {
+                extend:    'pdfHtml5',
+                text:      '<i class="fas fa-file-pdf"></i> ',
+                titleAttr: 'Exportar a PDF',
+                className: 'btn btn-danger'
+            },
+            {
+                extend:    'print',
+                text:      '<i class="fa fa-print"></i> ',
+                titleAttr: 'Imprimir',
+                className: 'btn btn-info'
+            },
+        ]           
+    });     
+
+    });
+    </script>
+    <script type="text/javascript">
+         $(document).ready(function(){
+ $('#example1').DataTable({        
         language: {
                 "lengthMenu": "Mostrar _MENU_ registros",
                 "zeroRecords": "No se encontraron resultados",
