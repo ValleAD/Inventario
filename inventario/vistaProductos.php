@@ -54,7 +54,7 @@ $result = mysqli_query($conn, $sql);
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial; margin-left: 17%; margin-top: 2%">
                 <label for="">Categoría</label><br> 
-                <select  class="form-control" name="categoria[]" id="um" required>
+                <select  class="form-control" name="categoria" id="um" required>
                         <option selected disabled value=""><?php  echo $productos1['categoria']; ?></option>
                         <?php 
                      $sql = "SELECT * FROM  selects_categoria";
@@ -88,7 +88,7 @@ $result = mysqli_query($conn, $sql);
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial; margin-left: 17%;">
                 <label for="">Descripción</label>
-                <textarea cols="50" rows="1" class="form-control" type="text" name="descripcion" id="act" style="width: 100%"><?php  echo $productos1['descripcion']; ?></textarea>                     
+                <textarea cols="50" rows="1" class="form-control" type="text"  name="descripcion" id="act" style="width: 100;height: 90%"><?php  echo $productos1['descripcion']; ?></textarea>                     
             </div>
 
             <div class="col-6 col-sm-4" style="position: initial">
@@ -98,7 +98,7 @@ $result = mysqli_query($conn, $sql);
                         <div class="invalid-feedback">
                         Por favor seleccione una opción.
                     </div>
-                    <select  class="form-control" name="um[]" id="um" required>
+                    <select  class="form-control" name="um" id="um" required>
                             <option selected  value=""><?php  echo $productos1['unidad_medida']; ?></option>
                             <?php 
                      $sql = "SELECT * FROM  selects_unidad_medida";
@@ -119,7 +119,7 @@ $result = mysqli_query($conn, $sql);
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial; margin-left: 17%;">
                 <label for="">Cantidad Actual</label>
-                <input class="form-control" type="text"style="cursor: not-allowed;" readonly name="stock" id="act" value="<?php  echo $productos1['SUM(stock)']; ?>">
+                <input class="form-control" type="text" name="stock" id="act" value="<?php  echo $productos1['SUM(stock)']; ?>">
             </div>
             <div class="col-6 col-sm-4" style="position: initial;">
                 <label for="">Costo unitario</label>
@@ -263,7 +263,7 @@ $result = mysqli_query($conn, $sql);
          ?></select>
                     </div>
                     <div class="col-md-6" style="position: initial">
-                       <button class="btn btn-success" name="categoria" type="submit">Exportar por Categorias</button>
+                       <button class="btn btn-success" name="categorias" type="submit">Exportar por Categorias</button>
                     </div>
                 </div>
             </div>
@@ -272,7 +272,7 @@ $result = mysqli_query($conn, $sql);
             </form>   
             <?php 
 
-if (isset($_POST['categoria'])){  ?>  <br> 
+if (isset($_POST['categorias'])){  ?>  <br> 
 <div class="mx-5 p-2 r-5" style="background-color: white; border-radius: 5px;">
         <div class="row">
             <div class="col">
