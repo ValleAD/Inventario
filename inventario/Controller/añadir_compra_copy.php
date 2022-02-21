@@ -10,7 +10,14 @@ $estado =$_POST['estado'];
 $sql="UPDATE  tb_compra SET estado = '$estado' WHERE nSolicitud='$nSolicitud'" ;
 
 $result = mysqli_query($conn, $sql);
+ for($i = 0; $i < count($_POST['cod']); $i++)
+    {
+      $codigo_producto  = $_POST['cod1'][$i];
+      $cant_aprobada    = $_POST['cantidad_despachada'][$i];
+       $sql="UPDATE  detalle_compra SET cantidad_despachada = '$cant_aprobada' WHERE codigodetallecompra='$codigo_producto'" ;
 
+      $query = mysqli_query($conn, $sql);
+}
      for($i = 0; $i < count($_POST['cod']); $i++)
     {
       $codigo_producto  = $_POST['cod'][$i];
@@ -20,9 +27,10 @@ $result = mysqli_query($conn, $sql);
       $Descripción      = $_POST['desc'][$i];
       $u_m              = $_POST['um'][$i];
       $cost             = $_POST['cost'][$i];
-      $cant_aprobada    = $_POST['cant_aprobada'][$i];
-      $cant_aprobada    = $_POST['cant_aprobada'][$i];
-       $insert = "INSERT INTO tb_productos (codProductos, categoria, catalogo, descripcion, unidad_medida, stock, precio,solicitudes) VALUES ('$codigo_producto', '$categoria', '$catalogo','$Descripción', '$u_m', '$cant_aprobada', '$cost' ,'Solicitud Compra')";
+      $cant             = $_POST['cant'][$i];
+      // $cant_aprobada    = $_POST['cantidad_despachada'][$i];
+      // $catT=$cant-$cant_aprobada;
+       $insert = "INSERT INTO tb_productos (codProductos, categoria, catalogo, descripcion, unidad_medida, stock, precio,solicitudes) VALUES ('$codigo_producto', '$categoria', '$catalogo','$Descripción', '$u_m', '$cant', '$cost' ,'Solicitud Compra')";
       $query = mysqli_query($conn, $insert);
       if ($query)  {
         echo "<script> alert('El Estado fue Cambiado correctamente')

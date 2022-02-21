@@ -85,11 +85,12 @@ $final = 0;
           </div>
           <div class="col-8 col-sm-3" style="position: initial">
             <label style="font-weight: bold;">Estado:</label>
-                <select   class="form-control" name="estado"  type="text"  required>
-                <option disabled selected>Selecione</option>
+             <input readonly class="form-control"  type="hidden" value="<?php echo $datos_sol['codAlmacen']?>" name="id"> 
+                <select  class="form-control"  type="text"  name="estado" required>
+                <option disabled selected value="">Selecione</option>
                 <option>Aprobado</option>
                 <option>Rechazado</option>
-            </select><br>
+                </select><br>
               
           </div>
         <br><br>
@@ -102,6 +103,7 @@ $final = 0;
                 <th style="width: 95%;">Nombre del Artículo</th>
                 <th style="width: 35%;">Unidad de Medida</th>
                 <th style="width: 35%;">Cantidad Solicitada</th>
+                <th style="width: 35%;">Cantidad depachada</th>
                 <th style="width: 35%;">Costo unitario</th>
                 <th style="width: 35%;">Total</th>
               </tr>
@@ -126,12 +128,13 @@ while ($productos = mysqli_fetch_array($result)){
    
 </style> 
       <tr>
-        <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="' .$productos['codigo']. '"></td>
+        <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="' .$productos['codigo']. '">
+        <input type="hidden" style="background:transparent; border: none; width: 100%; text-align: center"  name="cod1[]" readonly value="' .$productos['codigoalmacen']. '"></td></td>
         <td  data-label="Nombre del Artículo"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly style="border: none">'.$productos['nombre']. '</textarea></td>
         <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
         <td  data-label="Cantidad Solicitada"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="'.$productos['cantidad_solicitada']. '"></td>
 
-        <td  data-label="Cantidad Solicitada"><input style="background:transparent; border: none; width: 100%;"  name="cant_aprobada[]"  ></td>
+        <td  data-label="Cantidad Solicitada"><input class="form-control" style="background:transparent; border: 1 solid #000;  width: 100%; text-align: center" name="cantidad_despachada[]" required ></td>
 
         <td  data-label="Costo Unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$'.$productos['precio']. '"></td>
         <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$'.$total. '"></td>

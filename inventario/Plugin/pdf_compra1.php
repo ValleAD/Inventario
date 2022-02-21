@@ -54,7 +54,6 @@
             <th style="width: 70%;color:black;font-size: 16px;text-align: center;">Descripción Completa <br>(con todas sus especificaciones)</th>
             <th style="width: 15%;color:black;font-size: 16px;text-align: center;">U/M</th>
             <th style="width: 15%;color:black;font-size: 16px;text-align: center;">Cant.<br>Sol.</th>
-            <th style="width: 15%;color:black;font-size: 16px;text-align: center;">Cant.<br>Desp.</th>
             <th style="width: 15%;color:black;font-size: 16px;text-align: center;">C/U</th>
             <th style="width: 15%;color:black;font-size: 16px;text-align: center;border-right:1px solid #ccc ;">Monto</th>
         </tr>
@@ -73,7 +72,6 @@ for($i = 0; $i < count($_POST['cod']); $i++)
     $um = $_POST['um'][$i];
     $cantidad = $_POST['cant'][$i];
     $cost = $_POST['cost'][$i];
-    $cantidad_despachada = $_POST['cantidad_despachada'][$i];
     $tot = $_POST['tot'][$i];
 
     $tot_f = $_POST['tot_f'];
@@ -85,7 +83,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
             <td><?php  echo $des?></td>
             <td style="text-align:center;" style="text-align: center;"><?php  echo $um?></td>
             <td style="text-align:center;"><?php echo $cantidad ?></td>
-            <td> <?php echo $cantidad_despachada; ?> </td>
+            
             <td style="text-align: center;"><?php echo $cost ?></td>
             <td style="text-align: center"><?php  echo $tot ?></td>
         </tr>
@@ -93,7 +91,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
      <?php } } ?> 
     <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
         <td style="text-align: center; font-weight: bold;">Subtotal</td>
-        <td colspan="6"></td>
+        <td colspan="5"></td>
         <td style="text-align: center; font-weight: bold;"><?php echo $tot_f ?></td>
     </tfoot>
 </table>

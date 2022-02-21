@@ -61,7 +61,7 @@ $final = 0;
 
   echo'   
   <section id="section">
-  <form method="POST"  action="Plugin/pdf_compra.php" target="_blank">
+  <form method="POST"  action="Plugin/pdf_compra1.php" target="_blank">
            
         
           <div class="row">
