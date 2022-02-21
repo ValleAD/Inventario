@@ -243,6 +243,7 @@ $num_sol = $_POST['id'];
                 <th style="width: 35%;">Nombre del Artículo</th>
                 <th>Unidad de Medida</th>
                 <th>Cantidad Solicitada</th>
+                <th>Cantidad Despachada</th>
                 <th>Costo unitario</th>
                 <th>Total</th>
               </tr>
@@ -270,6 +271,7 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Nombre del Artículo"><textarea style="background:transparent; border: none; width: 100%;"  name="nombre[]" readonly style="border: none"><?php echo $productos['nombre'] ?></textarea></td>
         <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%; text-align: center" name="um[]" readonly value="<?php echo $productos['unidad_medida'] ?>"></td>
         <td  data-label="Cantidad Solicitada"><input required style="background:transparent; border: none; width: 100%; text-align: center"  name="cant[]" readonly value="<?php echo $productos['cantidad_solicitada'] ?>"></td>
+        <td  data-label="Cantidad Solicitada"><input required style="background:transparent; border: none; width: 100%; text-align: center"  name="cantidad_despachada[]" readonly value="<?php echo $productos['cantidad_despachada'] ?>"></td>
         <td  data-label="Costo Unitario"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="cost[]" readonly value="$<?php echo $productos['precio'] ?>"></td>
         <td  data-label="total"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="tot[]" readonly value="$<?php echo $total ?>"></td>
       </tr>
