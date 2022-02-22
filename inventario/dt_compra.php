@@ -60,7 +60,7 @@ $final = 0;
  while ($datos = mysqli_fetch_array($result)){
 
   echo'   
-  <section id="section">
+<section id="section" style="margin:2%">
   <form method="POST"  action="Plugin/pdf_compra1.php" target="_blank">
            
         
@@ -125,7 +125,7 @@ $final = 0;
                   <th style="width:15%;">U/M</th>
                   <th style="width:15%;">Cantidad</th>
                   <th style="width:15%;">Costo Unitario (estimado)</th>
-                  <th style="width:15%;">Monto Total (estimado)</th>
+                  <th style="width:30%;">Monto Total (estimado)</th>
                 </tr>
                   <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
              </thead>
@@ -133,12 +133,17 @@ $final = 0;
   <?php 
     $cod_compra = $datos['nSolicitud'];
   }
+
    $sql = "SELECT * FROM detalle_compra WHERE solicitud_compra = $cod_compra";
       $result = mysqli_query($conn, $sql);
   while ($productos = mysqli_fetch_array($result)){
-        
-        $total = $productos['stock'] * $productos['precio'];
-        $final += $total;
+
+        $total    =    $productos['stock'] * $productos['precio']+$productos['solicitud_compra'];
+        $final    +=   $total;
+        $precio   =    $productos['precio'];
+        $precio2  =    number_format($precio, 2,".",",");
+        $total2   =    number_format($total, 2, ".",",");
+        $final2   =    number_format($final, 2, ".",",");
     echo' 
       <style type="text/css">
        #td{
@@ -154,8 +159,8 @@ $final = 0;
           <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly>'.$productos['descripcion']. '</textarea></td>
           <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;  text-align: center" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
           <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;  text-align: center"  name="cant[]" readonly value="'.$productos['stock']. '"></td>
-          <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;  text-align: center"  name="cost[]" readonly value="$'.$productos['precio']. '"></td>
-          <td  data-label="total"><input style="background:transparent; border: none; width: 100%;  text-align: center"  name="tot[]" readonly value="$'.$total. '"></td>
+           <td data-label="Costo unitario"><input  name="cost[]" readonly value="$'.$precio2.'"  style="background:transparent; border: none; width: 100%;"  >
+          <td  data-label="total"><input  style="background:transparent; border: none; width: 100%;  text-align: center"  name="tot[]" step="any"  readonly value="$'.$total2. '"></td>
         </tr>';
   
   }
@@ -163,7 +168,7 @@ $final = 0;
       echo'
       <tr>
         <th colspan="7">Subtotal</th>
-        <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold; text-align: center"  name="tot_f" readonly value="$'.$final.'" ></td></tr>
+        <td data-label="Subtotal"><input  style="background:transparent; border: none; width: 100%; color: red; font-weight: bold; text-align: center" step="0.01"   name="tot_f" readonly value="$'.$final2.'" ></td></tr>
       </tr>
            </tbody>
           </table>

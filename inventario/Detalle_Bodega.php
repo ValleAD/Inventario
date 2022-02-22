@@ -125,7 +125,11 @@ $a=$_POST['odt'];
       $um=$productos['unidad_medida'];
       $stock=$productos['stock'];
       $precio=$productos['precio'];
-      $fecha=$productos['fecha_registro'];?>
+      $fecha=$productos['fecha_registro'];
+      $precio2=number_format($precio, 2,".",",");
+      $total2= number_format($total, 2, ".",",");
+      $final2=number_format($final, 2, ".",",");
+      ?>
   
       <style type="text/css">
        #td{
@@ -140,19 +144,19 @@ $a=$_POST['odt'];
         <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="<?php echo $um ?>"></td>
         <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="<?php echo $stock ?>"></td>
         <td  data-label="Cantidad"><input style="background:transparent; border: 1 solid #000;  width: 100%;" class="form-control" type="number" required  name="cant_aprobada[]" required value=""></td>
-        <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  readonly value="$<?php echo $precio ?>"></td>
+        <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;" step="0.01"  readonly value="$<?php echo $precio2 ?>"></td>
 
-   <td  data-label="Cantidad"><input style="background:transparent; border: 1 solid #000;  width: 100%;" class="form-control" type="number" required  name="cost[]" required value=""></td>
+   <td  data-label="Cantidad"><input style="background:transparent; border: 1 solid #000;  width: 100%;" class="form-control" type="number" required step="0.01"  name="cost[]" required value=""></td>
 
  
-        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$<?php echo $total ?>"></td>
+        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;" step="0.01"   name="tot[]" readonly value="$<?php echo $total2 ?>"></td>
       </tr>
 
 
 
   <?php } ?>
       <th colspan="7">SubTotal</th>
-      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$<?php echo $final ?>" ></td></tr> 
+      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" step="0.01"  readonly value="$<?php echo $final2 ?>" ></td></tr> 
 
          </tbody>
         </table>
@@ -207,19 +211,19 @@ if(isset($_POST['detalle'])){
           
             <div class="row">
           
-              <div class="col-6 col-sm-3" style="position: initial">
+              <div class="col-6 col-sm-2" style="position: initial">
           
                   <label style="font-weight: bold;">Depto. o Servicio:</label>
                   <input readonly class="form-control"  type="text" value="' .$productos1['departamento']. '" name="depto">
     
               </div>
     
-              <div class="col-6 col-sm-3" style="position: initial">
+              <div class="col-6 col-sm-2" style="position: initial">
                 <label style="font-weight: bold;">O. de T. No.</label>
                 <input readonly class="form-control"  type="text" value="' .$productos1['codBodega']. '" name="odt">
               </div>
     
-            <div class="col-6 col-sm-3" style="position: initial">
+            <div class="col-6 col-sm-2" style="position: initial">
                 <label style="font-weight: bold;">Encargado:</label>
                 <input readonly class="form-control"  type="text" value="' .$productos1['usuario']. '" name="usuario">
             </div>
@@ -286,6 +290,9 @@ while ($productos = mysqli_fetch_array($result)){
       $stock=$productos['stock'];
       $precio=$productos['precio'];
       $fecha=$productos['fecha_registro'];
+        $precio2=number_format($precio, 2,".",",");
+        $total2= number_format($total, 2, ".",",");
+        $final2=number_format($final, 2, ".",",");
       ?>
        <style type="text/css"> #td{display: none;} </style> 
 
@@ -295,11 +302,11 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="<?php echo $um ?>"></td>
         <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="<?php echo $stock ?>"></td>
         
-        <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly step="0.01" value="$<?php echo $precio ?>"></td>
+        <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly step="0.01" value="$<?php echo $precio2 ?>"></td>
    
 
  
-        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$<?php echo $total ?>"></td>
+        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$<?php echo $total2 ?>"></td>
       </tr>
 
 
@@ -307,7 +314,7 @@ while ($productos = mysqli_fetch_array($result)){
   <?php } ?> 
 
       <th colspan="5">SubTotal</th>
-      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$<?php echo $final ?>" ></td></tr> 
+      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$<?php echo $final2 ?>" ></td></tr> 
 
          </tbody>
         </table>

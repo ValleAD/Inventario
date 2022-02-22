@@ -51,7 +51,7 @@ $final = 0;
  while ($productos1 = mysqli_fetch_array($result)){
 
  echo'   
-<section id="section">
+<section id="section" style="margin:2%">
 <form method="POST" action="Exportar_PDF/pdf_vale.php" target="_blank">
          
 
@@ -94,8 +94,12 @@ $final = 0;
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
       
-      $total = $productos['stock'] * $productos['precio']+$productos['solicitud_compra'];
-      $final += $total;
+        $total    =    $productos['stock'] * $productos['precio']+$productos['solicitud_compra'];
+        $final    +=   $total;
+        $precio   =    $productos['precio'];
+        $precio2  =    number_format($precio, 2,".",",");
+        $total2   =    number_format($total, 2, ".",",");
+        $final2   =    number_format($final, 2, ".",",");
   echo'  
       <tr >
         <td data-label="Código"><input  style="background:transparent; border: none; width: 100%;"   name="cod[]" readonly value="' .$productos['codigo']. '"></td>
@@ -103,10 +107,10 @@ while ($productos = mysqli_fetch_array($result)){
         <td data-label="Descripción"><input name="desc[]" readonly value="'.$productos['descripcion']. '"  style="background:transparent; border: none; width: 100%;"  ></td>
         <td data-label="Unidad De Medida"><input  name="um[]" readonly value="'.$productos['unidad_medida']. '"  style="background:transparent; border: none; width: 100%;"  ></td>
         <td data-label="Cantidad"><input  name="cant[]" readonly value="'.$productos['stock']. '"  style="background:transparent; border: none;width: 100%;"  ></td>
-        <td data-label="Costo unitario"><input  name="cost[]" readonly value="$'.$productos['precio']. '"  style="background:transparent; border: none; width: 100%;"  >
+        <td data-label="Costo unitario"><input  name="cost[]" readonly value="$'.$precio2.'"  style="background:transparent; border: none; width: 100%;"  >
         </td>
-        <td data-label="solicitud compra"><input name="cost[]" readonly value="$'.$productos['solicitud_compra']. '"  style="background:transparent; border: none; width: 100%;" ></td>
-        <td data-label="Total"><input name="tot[]" readonly value="$'.$total. '"  style="background:transparent; border: none; width: 100%;" ></td>
+        <td data-label="solicitud compra"><input name="cost[]" readonly value="$'.$productos['solicitud_compra']. '"  style="background:transparent; border: none; width: 100%;" step="0.01"  ></td>
+        <td data-label="Total"><input name="tot[]" readonly value="$'.$total2. '" step="0.01"  style="background:transparent; border: none; width: 100%;" ></td>
       </tr>';
 
 }
@@ -115,7 +119,7 @@ while ($productos = mysqli_fetch_array($result)){
         <tr>
           
           <td colspan="6"><strong>SubTotal</strong></td> 
-          <td colspan="2"><input name="tot_f" readonly value="$'.$final.'"  style="background:transparent; border: none; width: 100%; color: rgb(168, 8, 8); font-weight: bold;"></td>
+          <td colspan="2"><input step="0.01"  name="tot_f" readonly value="$'.$final2.'"  style="background:transparent; border: none; width: 100%; color: rgb(168, 8, 8); font-weight: bold;"></td>
         </tr>
             </tbody>
         </table>

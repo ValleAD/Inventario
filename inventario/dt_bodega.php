@@ -53,7 +53,7 @@ $final = 0;
  while ($productos1 = mysqli_fetch_array($result)){
 
  echo'   
-<section id="section">
+<section id="section" style="margin:2%">
 <form method="POST" action="Plugin/pdf_bodega.php" target="_blank">
          
       
@@ -118,14 +118,17 @@ $odt = $productos1['codBodega'];
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
       
-      $total = $productos['stock'] * $productos['precio'];
-      $final += $total;
-      $codigo=$productos['codigo'];
-      $descripcion=$productos['descripcion'];
-      $um=$productos['unidad_medida'];
-      $stock=$productos['stock'];
-      $precio=$productos['precio'];
-      $fecha=$productos['fecha_registro'];
+      $total        =  $productos['stock'] * $productos['precio'];
+      $final        += $total;
+      $codigo       =  $productos['codigo'];
+      $descripcion  =  $productos['descripcion'];
+      $um           =  $productos['unidad_medida'];
+      $stock        =  $productos['stock'];
+      $precio       =  $productos['precio'];
+      $fecha        =  $productos['fecha_registro'];
+      $precio2      =  number_format($precio, 2,".",",");
+      $total2       =  number_format($total, 2, ".",",");
+      $final2       =  number_format($final, 2, ".",",");
       ?>
        <style type="text/css"> #td{display: none;} </style> 
 
@@ -135,16 +138,16 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="<?php echo $um ?>"></td>
         <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="<?php echo $stock ?>"></td>
         
-        <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$<?php echo $precio ?>"></td>
+        <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$<?php echo $precio2 ?>"></td>
    
         
-        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$<?php echo $total ?>"></td></tr>
+        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;" step="0.01"   name="tot[]" readonly value="$<?php echo $total2 ?>"></td></tr>
 
 
 <?php }?>
      
       <th colspan="5">SubTotal</th>
-      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$<?php echo $final ?>" ></td></tr>
+      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f"step="0.01"  readonly value="$<?php echo $final2 ?>" ></td></tr>
    
 
          </tbody>
