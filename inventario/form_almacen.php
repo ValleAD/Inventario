@@ -87,25 +87,10 @@ form{
                 <input id="inp1"class="form-control" type="number" name="solicitud_no" >
             </div>
               <div class="col-6.5 col-sm-4" style="position: initial">
-                <label id="inp1">Departamento que solicita</b></label>   
-                <select  class="form-control" name="depto" id="depto" required>
-                        <option selected disabled value="">Selecione</option>
-                     
-                        <?php 
-                        $sql = "SELECT * FROM selects_departamento";
-                        $result = mysqli_query($conn, $sql);
-
-                        while ($productos = mysqli_fetch_array($result)){ 
-
-                          echo'  <option>'.$productos['departamento'].'</option>
-                      ';   
-                     }
-
-
-                         ?>
-                      </select>
-            </div>
-            
+                <label id="inp1">Departamento que solicita</b></label>
+                <input id="inp1"class="form-control" type="text" name="solicitud_no" value="Mantenimiento">
+    </div>   
+               
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Nombre de la persona</label>
                <?php     $cliente =$_SESSION['signin'];
