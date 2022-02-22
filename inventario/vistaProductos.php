@@ -32,7 +32,8 @@ die();
     }
     </style>
 </head>
-<body>
+<body> 
+    <section style="background: rgba(255, 255, 255, 0.9);padding-bottom: 1%;margin: 2%;">
 <?php      
 
 if (isset($_POST['editar'])){       
@@ -164,8 +165,75 @@ $result = mysqli_query($conn, $sql);
     </style>
 </table>
 <font color="black"><h2 class="text-center" >Inventario de Productos</h2></font>
-<br>
-    <div class="mx-5 p-2 r-5" style="background-color: white; border-radius: 5px;">
+<br><form method="POST" action="">
+                <div class="container">
+                 <div class="row">
+                    <div class="col-md-3" style="position: initial">
+                     <input type="DATE" class="form-control" name="F1" required>
+                    
+                    </div><div class="col-md-3" style="position: initial">
+                     <input type="DATE" class="form-control" name="F2" required>
+                    
+                    </div>
+                    <div class="col-md-6" style="position: initial">
+                       <button class="btn btn-success" name="Fecha" type="submit">Exportar por Fechas</button>
+                    </div>
+                </div>
+            </div>
+                
+               
+            </form>   
+            <?php 
+
+if (isset($_POST['Fecha'])){
+?>  <br> 
+<div class="mx-5 p-2 r-5" style="background-color: white; border-radius: 5px;">
+        <div class="row">
+            <div class="col">
+                <table class="table table-responsive table-striped" id="example1" style=" width: 100%">
+                    <h1>Filtro por Fechas</h1>
+    <thead>
+         <tr id="tr">
+                     <th style=" width: 10%">Categoria</th>
+                     <th style=" width: 10%">Código</th>
+                     <th style=" width: 10%">Cod. de Catálogo</th>
+                     <th style=" width: 30%;padding-left:3%">Descripción Completa</th>
+                     <th style=" width: 10%">U/M</th>
+                     <th style=" width: 10%">Cantidad</th>
+                     <th style=" width: 10%">Costo Unitario</th>
+                     <th style=" width: 70%">Fecha Registro</th>
+                     
+                   </tr>
+    </thead>
+    <tbody>
+         <?php  
+         $f1=$_POST['F1']; 
+         $f2=$_POST['F2'];
+             // code...
+         
+                   $sql = "SELECT * FROM `tb_productos` WHERE fecha_registro BETWEEN ' $f1' AND ' $f2'";
+        $result = mysqli_query($conn, $sql);
+            while ($productos = mysqli_fetch_array($result)){
+              ?>
+                   <tr>
+                <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['categoria']; ?></td>
+                <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['codProductos']; ?></td>
+           <td  data-label="Codificación de catálogo" style="text-align: center;"><?php  echo $productos['catalogo']; ?></td>
+           <td  data-label="Descripción Completa" style="text-align: left;padding-left:3%"><?php  echo $productos['descripcion']; ?></td>
+           <td  data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
+           <td  data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
+           <td  data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
+           <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
+        </tr>
+                <?php}?>
+      <?php   }} ?>
+    </tbody>
+</table>
+  
+</div>
+</div>
+</div>
+    <div class="mx-5 p-2 r-5" style="; border-radius: 5px;">
         <div class="row">
             <div class="col">
            <a href="unidad_medidad.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a>  <br><br>
@@ -248,7 +316,12 @@ $result = mysqli_query($conn, $sql);
      <?php } ?> 
                 </tbody>                
             </table>           
-             <form method="POST" action="">
+            
+            </div> 
+            </div>
+        </div>
+    <br><br>
+ <form method="POST" action="">
                 <div class="container">
                  <div class="row">
                     <div class="col-md-4" style="position: initial">
@@ -316,10 +389,10 @@ if (isset($_POST['categorias'])){  ?>  <br>
   
 </div>
             </div> 
-            </div>
-        </div>
-    </div>
-</div>
+            </div><br>
+
+                         
+</section>
  
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.js"></script>
