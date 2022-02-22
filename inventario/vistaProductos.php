@@ -163,12 +163,12 @@ $result = mysqli_query($conn, $sql);
         } 
     </style>
 </table>
-<font color="white"><h2 class="text-center" >Inventario de Productos</h2></font>
+<font color="black"><h2 class="text-center" >Inventario de Productos</h2></font>
 <br>
     <div class="mx-5 p-2 r-5" style="background-color: white; border-radius: 5px;">
         <div class="row">
             <div class="col">
-           <a href="unidad_medidad.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a>  
+           <a href="unidad_medidad.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a>  <br><br>
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
                 <thead>
                      <tr id="tr">
