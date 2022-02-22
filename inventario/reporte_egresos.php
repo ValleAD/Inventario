@@ -47,8 +47,8 @@ die();
     margin-right: 2%;
     margin-left: 2%;
     padding: 1%;
-            border-radius: 5px;
-    background-color: white;
+            border-radius: 15px;
+   background: rgba(255, 255, 255, 0.9);
   }
 </style>
 
@@ -69,6 +69,115 @@ die();
         transform: translateY(5px);
         } 
     </style>
+    <div class="row" style="position: relative; max-width: 100%; margin: 2% 0% 0% 0%;">
+        <p style="color: #000; font-weight: bold; margin: 0.2% 4% 2%;">Mostrar Egresos por:</p>
+            <form method="POST" style="background:transparent;">
+                <div class="row">
+                    <div class="col-32 col-sm-12" style="position: in;">
+                        <select class="form-control" name="ingresos" id="ingresos" onchange="this.form.submit()">
+                            <option value="">Seleccionar</option>
+                            <option value="bodega">Solicitud a Bodega</option>
+                            <option value="vale">Solicitud a Vale</option>
+                        </select>
+                    </div>
+                </div>  
+            </form>
+    </div> 
+    <section id="act">
+<?php
+
+if(isset($_POST['ingresos'])){
+
+    $mostrar = $_POST['ingresos'];
+    
+    if($mostrar == "bodega"){
+?>
+<style>
+  #act {
+    margin-top: 0.5%;
+    margin-right: 3%;
+    margin-left: 3%;
+    padding: 1%;
+    border-radius: 5px;
+    background-color: white;
+  }
+  input{
+    width: 100%;
+  }
+</style>
+
+    <h3 style="text-align: center; color: black;">Egresos de Bodega</h3>
+
+<table class="table table-responsive table-striped" id="example" style=" width: 100%">
+            <thead>
+              <tr id="tr">
+                <th  style="width: 15%">Departamento</th>
+                <th  style="width: 15%">Encargado</th>
+                <th  style="width: 10%">Codigo</th>
+                <th  style="width: 100%">Descripción Completa</th>
+                <th  style="width: 100%">U/M</th>
+                <th  style="width: 100%">Cantidad</th>
+                <th  style="width: 100%">Costo Unitario</th>
+                <th  style="width: 100%">Ingreso Por</th>
+                <th  style="width: 100%">Fecha Registro</th>
+              </tr>
+
+              
+            </thead>
+
+            <tbody>
+ <?php
+    include 'Model/conexion.php';
+     
+   $sql = "SELECT * FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){?>
+
+<style type="text/css">
+
+
+</style>
+    <tr id="tr">
+    <td data-label="Departamento"><?php  echo $productos['departamento']; ?></td>
+      <td data-label="Encargado"><?php  echo $productos['usuario']; ?></td>
+      <td data-label="Código Producto"><?php  echo $productos['codigo']; ?></td>
+      <td data-label="Descripción" style="text-align: left"><?php  echo $productos['descripcion']; ?></td>
+      <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
+      <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
+      <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
+      <td data-label="Fuente de Ingreso"><?php  echo $productos['campo']; ?></td>
+      <td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
+      
+
+    
+    </tr>
+
+<?php } ?> 
+
+            </tbody>
+        </table>
+
+
+<?php 
+    }
+    else if($mostrar == "vale"){
+?>
+<style>
+  #act {
+    margin-top: 0.5%;
+    margin-right: 3%;
+    margin-left: 3%;
+    padding: 1%;
+    border-radius: 5px;
+    background-color: white;
+
+  }
+    input{
+    width: 100%;
+  }
+</style>
+<h3 style="text-align: center; color: black;">Egresos Por Vale</h3>
 
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
             <thead>
@@ -91,7 +200,7 @@ die();
             <tbody>
  <?php
     include 'Model/conexion.php';
-     $por_pagina = 5;
+   
  
 
     $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale ";
@@ -125,6 +234,9 @@ die();
  
             </tbody>
         </table>
+<?php
+    }}?>
+
 
 
 </section>

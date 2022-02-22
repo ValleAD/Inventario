@@ -47,11 +47,12 @@ die();
 <title>Ingresos</title>
 </head>
 <body style="max-width: 100%;">
-           <font color="white"><h1 style="margin:5px; text-align: center;">Ingreso de Productos</h1></font>
+               <font color="#000"><h1 style="margin:5px; text-align: center;">Ingreso de Productos</h1></font>
+    <section style="background: rgba(255, 255, 255, 0.9); margin: 2%;border-radius: 15px; padding: 1%";>
 
 
     <div class="row" style="position: relative; max-width: 100%; margin: 2% 0% 0% 0%;">
-        <p style="color: #fff; font-weight: bold; margin: 0.2% 4% 2%;">Mostrar Ingresos por:</p>
+        <p style="color: #000; font-weight: bold; margin: 0.2% 4% 2%;">Mostrar Ingresos por:</p>
             <form method="POST" style="background:transparent;">
                 <div class="row">
                     <div class="col-32 col-sm-12" style="position: in;">
@@ -81,7 +82,6 @@ if(isset($_POST['ingresos'])){
     margin-left: 3%;
     padding: 1%;
     border-radius: 5px;
-    background-color: white;
   }
   input{
     width: 100%;
@@ -152,7 +152,6 @@ if(isset($_POST['ingresos'])){
     margin-left: 3%;
     padding: 1%;
     border-radius: 5px;
-    background-color: white;
 
   }
     input{
@@ -229,7 +228,6 @@ width: 100%;
     margin-left: 3%;
     padding: 0.5%;
     border-radius: 5px;
-    background-color: white;
   }
     input{
     width: 100%;
@@ -287,7 +285,7 @@ while ($productos = mysqli_fetch_array($result)){?>
 }
 ?>
 
-
+</section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
