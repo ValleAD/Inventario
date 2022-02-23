@@ -169,9 +169,11 @@ $result = mysqli_query($conn, $sql);
                 <div class="container">
                  <div class="row">
                     <div class="col-md-3" style="position: initial">
+                        <label>Desde</label>
                      <input type="DATE" class="form-control" name="F1" required>
                     
                     </div><div class="col-md-3" style="position: initial">
+                        <label>Hasta</label>
                      <input type="DATE" class="form-control" name="F2" required>
                     
                     </div>

@@ -24,7 +24,7 @@ CREATE DATABASE IF NOT EXISTS `hospital` DEFAULT CHARACTER SET utf8mb4 COLLATE u
 USE `hospital` ;
 
 CREATE TABLE tb_productos (
-  cod int(15) NOT NULL AUTO_INCREMENT,
+  cod int(3) zerofill NOT NULL AUTO_INCREMENT,
   codProductos int(15) NOT NULL,
   categoria varchar(50) NOT NULL,
   catalogo int(15) NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE tb_productos (
 
 
 CREATE TABLE tb_usuarios (
-  id int(11) NOT NULl AUTO_INCREMENT,
+  id int(3) zerofill NOT NULl AUTO_INCREMENT,
   username varchar(25) NOT NULL,
   firstname varchar(50) NOT NULL,
   lastname varchar(50) NOT NULL,
@@ -109,7 +109,7 @@ estado varchar (50)  NOT NULL,
 
 
 CREATE TABLE detalle_bodega (
-  codigodetallebodega int(15) NOT NULL AUTO_INCREMENT,
+  codigodetallebodega int(3) zerofill NOT NULL AUTO_INCREMENT,
   codigo int(15) NOT NULL,
   descripcion varchar(50) NOT NULL,
   unidad_medida varchar(11) NOT NULL DEFAULT 'u',
@@ -123,7 +123,7 @@ CREATE TABLE detalle_bodega (
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 CREATE TABLE detalle_vale (
-  codigodetallevale int(11) NOT NULL AUTO_INCREMENT,
+  codigodetallevale int(3) zerofill NOT NULL AUTO_INCREMENT,
   codigo int(15) NOT NULL,
   descripcion varchar(50) NOT NULL,
   unidad_medida varchar(11) NOT NULL DEFAULT 'u',
@@ -138,7 +138,7 @@ CREATE TABLE detalle_vale (
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 CREATE TABLE detalle_circulante (
-codigodetallecirculante int(15) NOT NULL AUTO_INCREMENT,
+codigodetallecirculante int(3) zerofill NOT NULL AUTO_INCREMENT,
   codigo int(15) NOT NULL,
   descripcion varchar(50) NOT NULL,
   unidad_medida varchar(11) NOT NULL DEFAULT 'u',
@@ -153,7 +153,7 @@ codigodetallecirculante int(15) NOT NULL AUTO_INCREMENT,
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci; 
 
 CREATE TABLE detalle_almacen (
-codigoalmacen int(11) NOT NULL AUTO_INCREMENT,
+codigoalmacen int(3) zerofill NOT NULL AUTO_INCREMENT,
 codigo int(15) NOT NULL,
 nombre varchar(50)  NOT NULL,
 unidad_medida varchar(5) NOT NULL,
@@ -170,7 +170,7 @@ fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_
 
 
 CREATE TABLE detalle_compra (
-  codigodetallecompra int(11) NOT NULl AUTO_INCREMENT,
+  codigodetallecompra int(3) zerofill NOT NULl AUTO_INCREMENT,
   categoria varchar(50) NOT NULL,
   codigo int(15) NOT NULL,
   catalogo int(20) NOT NULL,
@@ -188,25 +188,25 @@ CREATE TABLE detalle_compra (
 
 
 CREATE TABLE Selects_unidad_medida (
-  id int(11) NOT NULl AUTO_INCREMENT PRIMARY KEY,
+  id int(3) zerofill NOT NULl AUTO_INCREMENT PRIMARY KEY,
   Habilitado varchar(2) NOT NULL,
 unidad_medida varchar(50) NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 CREATE TABLE Selects_categoria (
-  id int(11) NOT NULl AUTO_INCREMENT PRIMARY KEY,
+  id int(3) zerofill NOT NULl AUTO_INCREMENT PRIMARY KEY,
   Habilitado varchar(2) NOT NULL,
 categoria varchar(50) NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 CREATE TABLE Selects_dependencia (
-  id int(11) NOT NULl AUTO_INCREMENT PRIMARY KEY,
+  id int(3) zerofill NOT NULl AUTO_INCREMENT PRIMARY KEY,
   Habilitado varchar(2) NOT NULL,
 dependencia varchar(50) NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 CREATE TABLE Selects_departamento (
-  id int(11) NOT NULl AUTO_INCREMENT PRIMARY KEY,
+  id int(3) zerofill NOT NULl AUTO_INCREMENT PRIMARY KEY,
   Habilitado varchar(2) NOT NULL,
 departamento varchar(50) NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
