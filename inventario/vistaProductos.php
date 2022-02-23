@@ -178,7 +178,7 @@ $result = mysqli_query($conn, $sql);
                     
                     </div>
                     <div class="col-md-6" style="position: initial">
-                       <button class="btn btn-success" name="Fecha" type="submit">Exportar por Fechas</button>
+                       <button class="btn btn-success" name="Fecha" type="submit">Filtrar Fechas</button>
                     </div>
                 </div>
             </div>
@@ -192,6 +192,7 @@ if (isset($_POST['Fecha'])){
 <div class="mx-5 p-2 r-5" style="background-color: white; border-radius: 5px;">
         <div class="row">
             <div class="col">
+
                 <table class="table table-responsive table-striped" id="example1" style=" width: 100%">
                     <h1>Filtro por Fechas</h1>
     <thead>
@@ -211,7 +212,20 @@ if (isset($_POST['Fecha'])){
          <?php  
          $f1=$_POST['F1']; 
          $f2=$_POST['F2'];
-             // code...
+          echo'
+        <div class="container">
+          <div class="row">
+                    <div class="col-md-3" style="position: initial">
+                        <label>Desde</label>
+                   <p>'. $f1.'</p>
+                    </div><div class="col-md-3" style="position: initial">
+                        <label>Hasta</label>
+                    <p>'.$f2.'</p>                
+                    </div>
+                    
+                </div> 
+                </div> 
+             ';
          
                    $sql = "SELECT * FROM `tb_productos` WHERE fecha_registro BETWEEN ' $f1' AND ' $f2'";
         $result = mysqli_query($conn, $sql);
