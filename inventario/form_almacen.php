@@ -88,7 +88,7 @@ form{
             </div>
               <div class="col-6.5 col-sm-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>
-                <input id="inp1"class="form-control" type="text" name="solicitud_no" value="Mantenimiento">
+                <input id="inp1"class="form-control" type="text" name="solicitud_no" readonly value="Mantenimiento">
     </div>   
                
             <div class="col-.5 col-sm-4" style="position: initial">

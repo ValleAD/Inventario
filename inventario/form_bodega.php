@@ -76,43 +76,21 @@ die();
 </head>
 <body>
 
-<section id="section">
-<form action="form_bodega.php" method="post">
-<br>
- <div class="container">
-        <div class="row">
-    <div class="col" style="position: initial">
-     <label>¿Cuántos productos desea solicitar en Bodega?</label>
-    </div>
-   <div style="margin-bottom: 1%;margin-right: 1%;">
-        <input id="inp" style="position: initial;" class="form-control" type="number" name="cantidad" value="1"> 
-      
-    </div>
-   <div>
-        <input id="btn" class="btn btn-success" type="submit" value="Aceptar" name="aceptar"> 
-    </div>
-  </div>
-</div>
-</form>
-<?php
-    if(isset($_POST['cantidad'])){
-        $cantidad = $_POST['cantidad'];
-        for($x = 1; $x <= $cantidad; $x++){
-
-            echo'
-            <form action="form_bodega.php" method="post" style="margin-top: 2%;">
-            <div class="container" style="position: initial">
+<section  style="margin:2%">
+<center>
+            <form action="form_bodega.php" method="post" style=" width: 50%;" >
+            <div class="container-fluid" style="position: initial">
                 <div class="row">
-                    <div class="col-6.5 col-sm-4" style="position: initial">
+                    <div class="col-sm-10" style="position: initial">
                     <input  id="inp1" class="form-control" required type="number" name="codigo[]" id="codigo" style="margin-bottom: 2%;" placeholder="Ingrese el código del Producto">
 
                     </div>
+                     <div style="position: initial">
+                      <input   type="submit" class=" btn btn-success" value="Buscar" name="buscar" id="buscar" >
+                    </div>
                 </div>
             </div>
-            ';
-        }
-        echo'
-        <input   type="submit" class=" btn btn-success" value="Buscar" name="buscar" id="buscar" >
+      </center>
         <style>
             #buscar{
             margin-bottom: 5%;
@@ -129,9 +107,7 @@ die();
             transform: translateY(5px);
             } 
         </style>
-        </form>';
-    }
-?>
+        </form>
      
 <?php  
 include 'Model/conexion.php';
@@ -141,7 +117,7 @@ if(isset($_POST['codigo'])){
     <br>
     <form action="Controller/añadir_bodega.php" method="post">
         
-        <div class="container" style="position: initial">
+        <div class="container-fluid" style="position: initial">
             <div class="row">
               <div class="col-6.5 col-sm-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>  
@@ -180,7 +156,7 @@ if(isset($_POST['codigo'])){
             </div>
         </div>
         <br>
-          <div class="container">
+          <div class="container-fluid">
          <table class="table" style="margin-bottom:3%;">
         <thead>
            <tr id="tr" style="text-align: left">

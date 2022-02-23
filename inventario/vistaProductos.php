@@ -212,19 +212,20 @@ if (isset($_POST['Fecha'])){
          <?php  
          $f1=$_POST['F1']; 
          $f2=$_POST['F2'];
-          echo'
+          echo'<center>
+          
         <div class="container">
           <div class="row">
-                    <div class="col-md-3" style="position: initial">
+                    <div class="col-md-6" style="position: initial">
                         <label>Desde</label>
                    <p>'. $f1.'</p>
-                    </div><div class="col-md-3" style="position: initial">
+                    </div><div class="col-md-6" style="position: initial">
                         <label>Hasta</label>
                     <p>'.$f2.'</p>                
                     </div>
                     
                 </div> 
-                </div> 
+                </div> </center>
              ';
          
                    $sql = "SELECT * FROM `tb_productos` WHERE fecha_registro BETWEEN ' $f1' AND ' $f2'";
