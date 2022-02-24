@@ -187,7 +187,10 @@ if(isset($_POST['codigo'])){
    $sql = "SELECT codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE codProductos = $codigo GROUP BY codProductos, precio";
     $result = mysqli_query($conn, $sql);
 
-    while ($productos = mysqli_fetch_array($result)){ ?>    
+    while ($productos = mysqli_fetch_array($result)){
+ $precio=$productos['precio'];
+       $precio1=number_format($precio, 2,".",",");
+     ?>    
         <style type="text/css">
         #td{
         display: none;
@@ -201,7 +204,7 @@ if(isset($_POST['codigo'])){
                <td data-label="Unidad De Medida"><input  style="background:transparent; border: none; width: 100%; color: black;" type="text" class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
                <td data-label="Productos Disponibles"><input  style="background:transparent; border: none; width: 100%; color: gray;" type="text" class="form-control" readonly  name="stock[]"  value ="<?php  echo $productos['SUM(stock)']; ?>"></td>
                <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="text" class="form-control"  name="cant[]" required></td>
-               <td data-label="Precio"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $productos['precio']; ?>"></td>    
+               <td data-label="Precio"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $precio1 ?>"></td>    
             </tr>
    
         <?php }
