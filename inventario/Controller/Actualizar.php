@@ -8,6 +8,7 @@ $codCatalogo =$_POST['codCatalogo'];
 $descripcion =$_POST['descripcion'];
 $categoria = $_POST['categoria'];
  $um =$_POST['um'];
+ $stock=$_POST['stock'];
 $precio=$_POST['precio'];
 
       
@@ -15,7 +16,7 @@ $precio=$_POST['precio'];
 //sql
 
 
-$sql="UPDATE tb_productos SET cod='$id2', codProductos='$id1',categoria='$categoria',catalogo='$codCatalogo',descripcion='$descripcion',unidad_medida='$um',precio='$precio' WHERE cod='$id2'" ;
+$sql="UPDATE tb_productos SET cod='$id2', codProductos='$id1',categoria='$categoria',catalogo='$codCatalogo',descripcion='$descripcion',stock='$stock',unidad_medida='$um',precio='$precio' WHERE cod='$id2'" ;
 $result = mysqli_query($conn, $sql);
 
 if ($result) {

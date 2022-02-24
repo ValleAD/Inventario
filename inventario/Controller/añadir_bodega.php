@@ -49,7 +49,7 @@ for ($i=0; $i < count($_POST['cod']) ; $i++) {
   $codigo= $_POST['cod'][$i];
   $stocks =$_POST['stock'][$i];   
   $stock_obtenido =$_POST['cant'][$i];
-  $stock_descontado=$stocks + $stock_obtenido;
+  $stock_descontado=$stocks - $stock_obtenido;
    
 //sql
 $count = "SELECT codProductos, SUM(stock), fecha_registro FROM tb_productos GROUP BY codProductos";

@@ -233,6 +233,8 @@ if (isset($_POST['Fecha'])){
                    $sql = "SELECT * FROM `tb_productos` WHERE fecha_registro BETWEEN ' $f1' AND ' $f2'";
         $result = mysqli_query($conn, $sql);
             while ($productos = mysqli_fetch_array($result)){
+                 $precio=$productos['precio'];
+        $precio1=number_format($precio, 2,".",",");
               ?>
                    <tr>
                 <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['categoria']; ?></td>
@@ -241,7 +243,7 @@ if (isset($_POST['Fecha'])){
            <td  data-label="Descripción Completa" style="text-align: left;padding-left:3%"><?php  echo $productos['descripcion']; ?></td>
            <td  data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
            <td  data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
-           <td  data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
+           <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
         </tr>
                 <?php}?>
@@ -299,6 +301,8 @@ if (isset($_POST['Fecha'])){
 
 <?php
     while ($productos = mysqli_fetch_array($result)){
+         $precio=$productos['precio'];
+        $precio1=number_format($precio, 2,".",",");
 ?>
      
             
@@ -318,7 +322,7 @@ if (isset($_POST['Fecha'])){
            <td  data-label="Descripción Completa" style="text-align: left;"><?php  echo $productos['descripcion']; ?></td>
            <td  data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
            <td  data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
-           <td  data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
+           <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['categoria']; ?></td>
            <td  data-label="Editar">
@@ -328,7 +332,7 @@ if (isset($_POST['Fecha'])){
             </form>  
             </td>
             <td  data-label="Eliminar">
-                <a data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm " class="text-primary" href="Controller/Delete_producto.php?id=<?php  echo $productos['cod']; ?>" onclick="return confirmaion()">Eliminar</a>
+                <a data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm " class="text-primary" href="Controller/Delete_producto.php?id=<?php  echo $productos['stock']; ?>" onclick="return confirmaion()">Eliminar</a>
             </td>
          </tr>
      
@@ -401,7 +405,7 @@ if (isset($_POST['categorias'])){  ?>  <br>
            <td  data-label="Descripción Completa" style="text-align: left;padding-left:3%"><?php  echo $productos['descripcion']; ?></td>
            <td  data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
            <td  data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
-           <td  data-label="Costo Unitario">$<?php  echo $precio?></td>
+           <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
         </tr>
                 <?php}}?>

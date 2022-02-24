@@ -88,19 +88,8 @@ if(isset($_POST['codigo'])){?>
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="black"><label>Dependencia que Solicita</label></font>   
-                            <select  class="form-control" name="dependencia" id="um" required style="background:transparent;">
-                        <option selected disabled value="">Selecione</option>
-                        <?php 
-                     $sql = "SELECT * FROM  selects_dependencia";
-                        $result = mysqli_query($conn, $sql);
-
-                        while ($productos = mysqli_fetch_array($result)){ 
-
-                          echo'  <option>'.$productos['dependencia'].'</option>
-                      ';   
-                     } 
-                           ?>
-                      </select>
+    <input type="text"  class="form-control" name="dependencia" id="um" required style="background:transparent;" value="Mantenimiento" readonly>
+                     
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="black"><label>Plazo y Numero de Entregas</label></font> 
