@@ -12,7 +12,17 @@ for($i = 0; $i < count($_POST['cod']); $i++)
       $Descripción      = $_POST['descr'][$i];
       $u_m              = $_POST['um'][$i];
       $cost             = $_POST['cu'][$i];
+$verificar_usuario =mysqli_query($conn, "SELECT * FROM tb_productos WHERE codProductos ='$codigo_producto'");
 
+if (mysqli_num_rows($verificar_usuario)>0) {
+  echo '
+    <script>
+    alert("Este Producto ya esta Registrado, intente con otro diferente");
+     window.location ="../regi_producto.php"; 
+  </script>
+  ';
+exit();
+}
       $insert = "INSERT INTO tb_productos (codProductos, categoria, catalogo, descripcion, unidad_medida,  precio,solicitudes) VALUES ('$codigo_producto', '$categoria', '$catalogo', '$Descripción', '$u_m', '$cost','Registro de Producto')";
       $query = mysqli_query($conn, $insert);
 
