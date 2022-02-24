@@ -65,11 +65,11 @@ form{
 <div class="row">
     <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="black"><label>Número de Solicitud</label> </font>
-      <input style="background:transparent; color: black;" class="form-control" type="number" name="nsolicitud" id="como1" required>
+      <input style="background:transparent; color: black;" class="form-control" type="number" name="nsolicitud" id="como1" >
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="black"><label>Dependencia que Solicita</label></font>   
-                            <select  class="form-control" name="dependencia" id="um" required style="background:transparent;">
+                            <select  class="form-control" name="dependencia" id="um"  style="background:transparent;">
                         <option selected disabled value="">Selecione</option>
                         <?php 
                      $sql = "SELECT * FROM  selects_dependencia";
@@ -85,17 +85,17 @@ form{
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="black"><label>Plazo y Numero de Entregas</label></font> 
-      <input  style="background:transparent; color: black;" class="form-control" type="text" name="plazo" id="como3" required>
+      <input  style="background:transparent; color: black;" class="form-control" type="text" name="plazo" id="como3" >
       <br>
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="black"><label>Unidad Tecnica</label> </font>
-      <input style="background:transparent; color: black;"  class="form-control" type="text" name="unidad_tecnica" id="como3" required>
+      <input style="background:transparent; color: black;"  class="form-control" type="text" name="unidad_tecnica" id="como3" >
       <br>
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="black"><label>Suministros Solicita</label>  </font>
-      <input style="background:transparent; color: black;"  class="form-control" type="text" name="descripcion_solicitud" id="como3" required>
+      <input style="background:transparent; color: black;"  class="form-control" type="text" name="descripcion_solicitud" id="como3" >
       <br>
   </div>
   <div class="col-6.5 col-sm-4" style="position: initial">
@@ -104,7 +104,7 @@ form{
     while ($consulta =mysqli_fetch_array($data)) {
  ?>
     <font color="black"><label>Encargado</label> </font>
-      <input style="cursor: not-allowed; color: black;"  class="form-control" type="text" name="usuario" id="como3" required readonly value="<?php  echo $consulta['firstname']?> <?php  echo $consulta['lastname']?>">
+      <input style="cursor: not-allowed; color: black;"  class="form-control" type="text" name="usuario" id="como3"  readonly value="<?php  echo $consulta['firstname']?> <?php  echo $consulta['lastname']?>">
       <br>
       <?php }?>
     </div>
@@ -120,7 +120,7 @@ form{
         
                   <div class="form-group" style="position: all; margin: 2%">
                       <label>Categoría</label> 
-                      <select  class="form-control" name="categoria[]" id="um" required>
+                      <select  class="form-control" name="categoria[]" id="um" >
                         <option selected disabled value="">Categoría</option>
                         <?php 
                      $sql = "SELECT * FROM  selects_categoria";
@@ -135,10 +135,43 @@ form{
                       </select>
                   </div> 
 
-                  <div class="form-group" style="position: all; margin: 2%">
-                      <label>Código</label> 
-                      <input  type="number" name="cod[]" class="form-control" placeholder="Código de producto " value="<?php echo $codigo ?>" required>
-                  </div>
+                    <div class="row" >
+    <div class="col" style="position: initial;">
+     <label >Codigo</label>
+      <input  type="number" name="cod[]" class="form-control" placeholder="Código de producto " value="<?php echo $codigo ?>"  readonly>
+    </div>
+   <div>
+       <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="margin-top:40%">Buscar</button>
+   
+<div class="modal fade" id="Usuarios" style="background: rgba(0, 0, 0, 0.3);" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content" style="background-color: hsla(0.5turn , 100% , 0.1% , 0.5 );color: white; position: initial; z-index: 1000px;">
+            <div class="modal-header">
+                <h5 class="modal-title" style="color:white;">Información del Usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+            </div>
+              <div class="modal-body">
+                <form action="Controller/añadir-departamentos.php" method="POST">
+            <label id="label">Codigo</label>              
+            <input class="form-control" name="buscar" type="number" >
+            
+            </div>
+            <style type="text/css">
+                #label{
+                    color: white;
+                }
+            </style>
+            <div class="modal-footer">
+        <button name="submit" type="submit" id="Update" class="btn btn-danger" >Agregar</button> 
+      </div>
+           </form> 
+        </div>
+    </div>
+</div> 
+    </div>
+  </div>
 
                   <div class="form-group" style="position: all; margin: 2%">
                         <label>Codificación de Catálogo de NA</label> 
@@ -147,7 +180,7 @@ form{
 
                   <div class="form-group">
                     <label>Descripción Completa</label>
-                    <input type="text" name="desc[]" class="form-control" placeholder="Descripción" required>
+                    <input type="text" name="desc[]" class="form-control" placeholder="Descripción" >
                   </div>
 
                   
@@ -157,7 +190,7 @@ form{
                             <div class="invalid-feedback">
                             Por favor seleccione una opción.
                             </div>
-                        <select  class="form-control" name="um[]" id="um" required>
+                        <select  class="form-control" name="um[]" id="um" >
                             <option selected disabled value="">Unidad de Medida</option>
                             <?php 
                      $sql = "SELECT * FROM  selects_unidad_medida";
@@ -175,12 +208,12 @@ form{
             
             <div class="form-group">
                 <label>Cantidad</label>
-                <input type="number" name="cant[]" class="form-control" placeholder="Ingrese la Cantidad" required>
+                <input type="number" name="cant[]" class="form-control" placeholder="Ingrese la Cantidad" >
             </div>
 
             <div class="form-group">
                 <label>Costo Unitario (Estimado)</label>
-               <input  class="form-control" type="number" step="0.01" name="cu[]" placeholder="Costo unitario" value="<?php echo $productos['precio'] ?>" required><br>
+               <input  class="form-control" type="number" step="0.01" name="cu[]" placeholder="Costo unitario" value="<?php echo $productos['precio'] ?>" ><br>
             </div>
         </div>
     </div>            

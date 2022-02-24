@@ -33,7 +33,7 @@ die();
     </style>
 </head>
 <body> 
-    <section style="background: rgba(255, 255, 255, 0.9);padding-bottom: 1%;margin: 2%;">
+  
 <?php      
 
 if (isset($_POST['editar'])){       
@@ -116,7 +116,7 @@ $result = mysqli_query($conn, $sql);
                 </div>
             </div>
         </div>
-
+<br>
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial; margin-left: 17%;">
                 <label for="">Cantidad Actual</label>
@@ -164,6 +164,7 @@ $result = mysqli_query($conn, $sql);
         } 
     </style>
 </table>
+  <section style="background: rgba(255, 255, 255, 0.9);padding-bottom: 1%;margin: 2%;border-radius: 15px;">
 <font color="black"><h2 class="text-center" >Inventario de Productos</h2></font>
 <br>
 <form method="POST" action="">

@@ -51,13 +51,13 @@ $result = mysqli_query($conn, $sql);
 
 <form action="Controller/Desabilitar-categoria.php" method="POST" style="background: transparent; ">
   <h3 align="center">Actualizar Categorias</h3>
-    <div class="container" style="background: rgba(0, 0, 0, 0.6); width: 70%; margin: auto; border-radius: 9px; color:#fff; font-weight: bold;">
+    <div class="container" style="background: rgba(255, 255, 255, 0.6); width: 40%; margin: auto; border-radius: 9px; color:#fff; font-weight: bold;">
         <div class="row">
-            <div class="col-6 col-sm-4" style="position: initial; margin: auto; margin-top: 2%">
+            <div class="col-6 col-sm-6" style="position: initial; margin: auto; margin-top: 2%">
                 <input type="hidden" name="id" value="<?php  echo $categoria['id']; ?>">
                 <label id="label" for="">Habilitado</label><br> 
-                    <select  class="form-control" name="Habilitado" id="categoria" style="cursor: pointer">
-                        <option>[Seleccione]</option>
+                    <select  class="form-control" name="Habilitado" id="categoria" style="cursor: pointer" required>
+                        <option selected disabled value="">[Seleccione]</option>
                         <option>Si</option>
                         <option>No</option>
                         
@@ -66,7 +66,7 @@ $result = mysqli_query($conn, $sql);
          </div>
         <hr>
         <div class="row">
-            <div class="col-6 col-sm-4" style="position: initial; margin: auto; margin-bottom: 2%;">
+            <div class=" col-sm-12" style="position: initial; margin-left: 20%; margin-bottom: 2%;">
                 <button type="submit" name="Update_categorias" class ="btn btn-primary" style="background:rgb(12, 139, 8); margin-right: 1%; border: none">Guardar Cambios</button>
                 <a href="categorias.php" class ="btn btn-primary" style="background:rgb(184, 8, 8); border: none">Cancelar</a>
             </div>
@@ -82,9 +82,9 @@ $result = mysqli_query($conn, $sql);
 <?php 
   }
 } 
-?>
-        <h2 class="text-center " >Categorias</h2>
-    <section style="margin:2%;background: white;padding: 1%;border-radius: 1%; position: initial; ">
+?><br>
+        <h2 class="text-center ;" style="color:black;">Categorias</h2>
+    <section style="margin:2%;background: rgba(255, 255, 255, 0.9);padding: 1%;border-radius: 1%; position: initial; ">
 <?php if($tipo_usuario == 1) { ?>
     <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="float: left;margin-top: 1%; color: white;margin-bottom: 1%;">Nueva Categoria</button>
 
@@ -120,14 +120,14 @@ $result = mysqli_query($conn, $sql);
         </div>
     </div>
 </div><?php } ?> <br><br><br>
-        <table class="table" id="example" style="width:100%">
-
+         <table class="table table-responsive table-striped" id="example" style=" width: 100%">
+                  
         <thead>
               <tr id="tr">
-                <th style="width:100%">Categoria</th>
-                <th style="width:100%">Habilitado</th><?php if($tipo_usuario == 1) { ?>
-                <th style="width:100%"> Cambiar Habilitado</strong></th>
-                <th style="width:100%">Eliminar</th><?php } ?>
+                <th style=" width: 100%">Categoria</th>
+                <th style="width: 100%;">Habilitado</th><?php if($tipo_usuario == 1) { ?>
+                <th > Cambiar Habilitado</strong></th>
+                <th>Eliminar</th><?php } ?>
                 
             </tr>
             
@@ -136,14 +136,7 @@ $result = mysqli_query($conn, $sql);
             
     <?php
     include 'Model/conexion.php';
-           $por_pagina = 6;
- if (isset($_GET['pagina'])) {
-    $pagina = $_GET['pagina'];
- }else{
-    $pagina =1;
- }
- $empieza = ($pagina-1) * $por_pagina;
-    $sql = "SELECT * FROM selects_categoria ORDER BY `id` DESC  LIMIT $empieza,$por_pagina ";
+    $sql = "SELECT * FROM selects_categoria ORDER BY `id` DESC  ";
     $result = mysqli_query($conn, $sql);
 
     while ($solicitudes = mysqli_fetch_array($result)){?>

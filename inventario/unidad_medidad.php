@@ -56,8 +56,8 @@ $result = mysqli_query($conn, $sql);
             <div class="col-6 col-sm-4" style="position: initial; margin: auto; margin-top: 2%">
                 <input type="hidden" name="id" value="<?php  echo $productos['id']; ?>">
                 <label for="">Habilitado</label><br> 
-                    <select  class="form-control" name="Habilitado" id="categoria" style="cursor: pointer">
-                        <option disabled selected>[Seleccione]</option>
+                    <select  class="form-control" name="Habilitado" id="categoria" style="cursor: pointer" required>
+                        <option disabled selected value="">[Seleccione]</option>
                         <option>Si</option>
                         <option>No</option>
                         
@@ -119,13 +119,13 @@ $result = mysqli_query($conn, $sql);
         </div>
     </div>
 </div><?php } ?><br><br><br>
-         <table class="table" id="example" width="100%">
-        <thead>
+         <table class="table table-responsive table-striped" id="example" style=" width: 100%">
+                   <thead>
              <tr id="tr">
-                <th >Unidad de Medida</th>
-                <th >Habilitado</th><?php if($tipo_usuario == 1) { ?>
-                <th > Cambiar Habilitado</th>
-                <th >Eliminar</th><?php } ?>
+                <th style=" width: 10%" >Unidad de Medida</th>
+                <th  style=" width: 100%">Habilitado</th><?php if($tipo_usuario == 1) { ?>
+                <th  style=" width: 100%"> Cambiar Habilitado</th>
+                <th  style=" width: 100%">Eliminar</th><?php } ?>
                 
             </tr>
            
@@ -161,7 +161,7 @@ $result = mysqli_query($conn, $sql);
  type="text" class="btn"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $solicitudes['Habilitado']; ?>"></td>
 </td><?php if($tipo_usuario == 1) { ?>
             <td align="center">
-                 <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="dependencias.php">             
+                 <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="">             
           <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">             
           <button name='editar' class='btn btn-info btn-sm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
         </form>

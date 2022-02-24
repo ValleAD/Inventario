@@ -106,10 +106,7 @@ form{
               </div>
         </div>
             
-            <div class="form-group" >
-                <label>Cantidad</label>
-                <input type="number" name="cant[]" class="form-control" placeholder="Ingrese la Cantidad" required>
-            </div>
+           
 
             <div class="form-group">
                 <label>Costo Unitario</label>

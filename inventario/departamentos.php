@@ -56,8 +56,8 @@ $result = mysqli_query($conn, $sql);
             <div class="col-6 col-sm-4" style="position: initial; margin: auto; margin-top: 2%">
                 <input type="hidden" name="id" value="<?php  echo $productos['id']; ?>">
                 <label for="">Habilitado</label><br> 
-                    <select  class="form-control" name="Habilitado" id="categoria" style="cursor: pointer">
-                        <option disabled selected>[Seleccione]</option>
+                    <select  class="form-control" name="Habilitado" id="categoria" style="cursor: pointer" required>
+                        <option disabled selected value="">[Seleccione]</option>
                         <option>Si</option>
                         <option>No</option>
                         
@@ -118,13 +118,14 @@ $result = mysqli_query($conn, $sql);
         </div>
     </div>
 </div><?php } ?><br><br><br>
- <table class="table" id="example" width="100%">
+  <table class="table table-responsive table-striped" id="example" style=" width: 100%">
+                  
         <thead>
              <tr id="tr">
-                <th >Departamentos</th>
-                <th class=" text-center">Habilitado</th><?php if($tipo_usuario == 1) { ?>
-                <th class=" text-center"> Cambiar Habilitado</th>
-                <th style="text-align:center;">Eliminar</th><?php } ?>
+                <th  style=" width: 20%">Departamentos</th>
+                <th  style=" width: 100%"class=" text-center">Habilitado</th><?php if($tipo_usuario == 1) { ?>
+                <th  style=" width: 100%"class=" text-center"> Cambiar Habilitado</th>
+                <th  style=" width: 100%;text-align:center;">Eliminar</th><?php } ?>
                 
             </tr>
       

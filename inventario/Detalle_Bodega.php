@@ -206,7 +206,7 @@ if(isset($_POST['detalle'])){
     
      echo'   
     <section id="section">
-    <form method="POST" action="Detalle_Bodega" target="_blank">
+    <form method="POST" action="Detalle_Bodega.php" target="_blank">
              
           
             <div class="row">
