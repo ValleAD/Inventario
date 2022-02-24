@@ -165,7 +165,8 @@ $result = mysqli_query($conn, $sql);
     </style>
 </table>
 <font color="black"><h2 class="text-center" >Inventario de Productos</h2></font>
-<br><form method="POST" action="">
+<br>
+<form method="POST" action="">
                 <div class="container">
                  <div class="row">
                     <div class="col-md-3" style="position: initial">
@@ -213,7 +214,7 @@ if (isset($_POST['Fecha'])){
          $f1=$_POST['F1']; 
          $f2=$_POST['F2'];
           echo'<center>
-          
+
         <div class="container">
           <div class="row">
                     <div class="col-md-6" style="position: initial">

@@ -69,7 +69,19 @@ form{
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="black"><label>Dependencia que Solicita</label></font>   
-      <input  style="background:transparent; color: black;" class="form-control" type="text" name="dependencia" id="como2" required>
+                            <select  class="form-control" name="dependencia" id="um" required style="background:transparent;">
+                        <option selected disabled value="">Selecione</option>
+                        <?php 
+                     $sql = "SELECT * FROM  selects_dependencia";
+                        $result = mysqli_query($conn, $sql);
+
+                        while ($productos = mysqli_fetch_array($result)){ 
+
+                          echo'  <option>'.$productos['dependencia'].'</option>
+                      ';   
+                     } 
+                           ?>
+                      </select>
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="black"><label>Plazo y Numero de Entregas</label></font> 

@@ -64,6 +64,7 @@ background:burlywood;
                     <ul class="children">
                         <li><a id="b" href="solicitudes_vale.php">Mostrar</a></li>
                         <li><a id="b" href="form_vale.php">Nuevo</a></li>
+                        <li><a id="b" href="form_vale1.php">Nuevo1</a></li>
                     </ul>
                 </li>
                 

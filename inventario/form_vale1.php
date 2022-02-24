@@ -22,12 +22,10 @@ die();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
-         <link rel="stylesheet" href="Plugin/bootstap-icon/bootstrap-icons.min.css">
-      <link rel="stylesheet" href="Plugin/bootstap-icon/fontawesome.all.min.css">
-      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap4.css"/>
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.bootstrap4.css"/>
+    <!--font awesome con CDN-->  
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"> 
   
 
     <title>Productos</title>
@@ -66,6 +64,9 @@ die();
         transform: translateY(5px);
         } 
          #act {
+            background: whitesmoke;
+            padding: 1%;
+            border-radius: 15px;
     margin-top: 0.5%;
     margin-right: 2%;
     margin-left: 2%;
@@ -74,22 +75,20 @@ die();
 </table>
 </div>
 <section id="act">
-   
-     <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="form_vale.php">
-       <table class="table">
+     <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="form_vale2.php">
+      <table class="table table-responsive table-striped" id="example" style=" width: 100%">
             <thead>
               <tr id="tr">
-                <th style="width: 175%;">Categoría</th>
-                <th style="width: 95%;">Código</th>
-                <th style="width: 135%;">Catálogo</th>
-                <th style="width: 200%;">Nombre</th>
-                <th style="width: 225%;">Descripción Completa</th>
+               
+                <th style="width: 10%;">Código</th>
+                <th style="width: 10%;">Catálogo</th>
+                <th style="width: 100%;">Descripción Completa</th>
                 <th style="width: 175%; text-align: center;">U/M</th>
                 <th style="width: 115%;">Cantidad</th>
                 <th style="width: 175%;">Costo Unitario</th>
                 <th style="width: 145%;">Fecha Registro</th>
                 <th style="width: 145%;" align="center">
-                    <button type="submit" name='solicitar' class='btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button> 
+                    <button type="submit" name="solicitar" class='btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button> 
                 </th>
                
               </tr>
@@ -106,7 +105,7 @@ die();
 
 
     //    $sql = "SELECT * FROM tb_productos";
-    $sql = "SELECT codProductos, categoria, catalogo, nombre, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos GROUP BY precio, codProductos";
+    $sql = "SELECT codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos GROUP BY precio, codProductos";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){?>
@@ -125,10 +124,8 @@ die();
    }
 </style>
     <tr id="tr">
-    <td data-label="Categoría"><?php  echo $productos['categoria']; ?></td>
       <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
       <td data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
-      <td data-label="Nombre"><?php  echo $productos['nombre']; ?></td>
       <td data-label="Descripción Completa"><textarea style="background:transparent; border: none; color: black;" cols="10" rows="1" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
       <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
       <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['SUM(stock)']; ?></td>
@@ -147,6 +144,7 @@ die();
         </table>
 </form>
 </section>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
@@ -179,5 +177,52 @@ function confirmaion(e) {
 }
 </script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap4.js"></script>
+    <script>
+    $(document).ready(function(){
+ $('#example').DataTable({        
+        language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                 },
+                 "sProcessing":"Procesando...",
+            },
+        //para usar los botones   
+        responsive: "true",
+        dom: 'Bfrtilp',       
+        buttons:[ 
+            {
+                extend:    'excelHtml5',
+                text:      '<i class="fas fa-file-excel"></i> ',
+                titleAttr: 'Exportar a Excel',
+                className: 'btn btn-success'
+            },
+            {
+                extend:    'pdfHtml5',
+                text:      '<i class="fas fa-file-pdf"></i> ',
+                titleAttr: 'Exportar a PDF',
+                className: 'btn btn-danger'
+            },
+            {
+                extend:    'print',
+                text:      '<i class="fa fa-print"></i> ',
+                titleAttr: 'Imprimir',
+                className: 'btn btn-info'
+            },
+        ]           
+    });     
+
+    });
+    </script>
 </body>
 </html>
