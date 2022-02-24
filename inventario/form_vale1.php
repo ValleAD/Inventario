@@ -82,8 +82,8 @@ die();
                
                 <th style="width: 10%;">Código</th>
                 <th style="width: 10%;">Catálogo</th>
-                <th style="width: 100%;">Descripción Completa</th>
-                <th style="width: 175%; text-align: center;">U/M</th>
+                <th style="width: 50%;">Descripción Completa</th>
+                <th style="width: 10%; text-align: center;">U/M</th>
                 <th style="width: 115%;">Cantidad</th>
                 <th style="width: 175%;">Costo Unitario</th>
                 <th style="width: 145%;">Fecha Registro</th>
@@ -108,9 +108,11 @@ die();
     $sql = "SELECT codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos GROUP BY precio, codProductos";
     $result = mysqli_query($conn, $sql);
 
-    while ($productos = mysqli_fetch_array($result)){?>
+    while ($productos = mysqli_fetch_array($result)){
 
-       
+        $precio=$productos['precio'];
+       $precio1=number_format($precio, 2,".",",");
+      ?>
                
 
 
@@ -129,7 +131,7 @@ die();
       <td data-label="Descripción Completa"><textarea style="background:transparent; border: none; color: black;" cols="10" rows="1" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
       <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
       <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['SUM(stock)']; ?></td>
-      <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
+      <td data-label="Costo Unitario">$<?php  echo $precio1?></td>
       <td data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
       <td data-label="solicitar" align="center">
                     

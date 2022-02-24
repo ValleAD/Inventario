@@ -389,6 +389,9 @@ if (isset($_POST['categorias'])){  ?>  <br>
                    $sql = "SELECT * FROM tb_productos WHERE categoria='$categoria' ";
         $result = mysqli_query($conn, $sql);
             while ($productos = mysqli_fetch_array($result)){
+                 $precio=$productos['precio'];
+                 $precio1=number_format($precio, 2,".",",");
+
                 if ($_POST['cat']==$productos['categoria']) {?>
                    <tr>
                 <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['categoria']; ?></td>
@@ -397,7 +400,7 @@ if (isset($_POST['categorias'])){  ?>  <br>
            <td  data-label="Descripción Completa" style="text-align: left;padding-left:3%"><?php  echo $productos['descripcion']; ?></td>
            <td  data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
            <td  data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
-           <td  data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
+           <td  data-label="Costo Unitario">$<?php  echo $precio?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
         </tr>
                 <?php}}?>
