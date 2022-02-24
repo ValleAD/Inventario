@@ -152,8 +152,8 @@ if(isset($_POST['codigo'])){?>
        echo'
  <div class="form-group" style="position: all; margin: 2%">
                       <label>Categoría</label> 
-                      <select  class="form-control" name="categoria[]" id="um" required>
-                        <option selected disabled value="">'.$productos['categoria'].'</option>
+                      <select  class="form-control" name="categoria[]" id="um" >
+                        <option>'.$productos['categoria'].'</option>
                         ';
                      $sql = "SELECT * FROM  selects_unidad_medida";
                         $result = mysqli_query($conn, $sql);
@@ -190,8 +190,8 @@ if(isset($_POST['codigo'])){?>
                             <div class="invalid-feedback">
                             Por favor seleccione una opción.
                             </div>
-                        <select  class="form-control" name="um[]" id="um" required>
-                            <option selected disabled value="">'.$productos['unidad_medida'] .'</option>
+                        <select  class="form-control" name="um[]" id="um" >
+                            <option >'.$productos['unidad_medida'] .'</option>
                             ';
                      $sql = "SELECT * FROM  selects_unidad_medida";
                         $result = mysqli_query($conn, $sql);
