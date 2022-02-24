@@ -57,12 +57,31 @@ form{
   </head>
     <body >
 
+<form action="" method="post" style=" width: 50%; height: 50%;padding: 1%;" >
+            <div class="container-fluid" style="position: initial">
+                <div class="row">
+                    <div class="col-sm-10" style="position: initial">
+                    <input  id="inp1" class="form-control" required type="number" name="codigo[]" id="codigo" style="margin-bottom: 2%;" placeholder="Ingrese el código del Producto">
+
+                    </div>
+                     <div style="position: initial">
+                      <input   type="submit" class=" btn btn-success" value="Buscar" name="buscar" id="buscar" >
+                    </div>
+                </div>
+            </div>
+      </center>
+  </form>
+  <?php  
+include 'Model/conexion.php';
+if(isset($_POST['codigo'])){?>
+
 
   <form style="width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%;"action="Controller/añadir_compra.php" method="POST">
-<center>
+
   <br>
 <div class="container">
 <div class="row">
+
     <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="black"><label>Número de Solicitud</label> </font>
       <input style="background:transparent; color: black;" class="form-control" type="number" name="nsolicitud" id="como1" required>
@@ -111,88 +130,95 @@ form{
     </div>
 </div>
 </center>
+ <div class="container">
+  <div class="col-xs-4 "  style="background: #bfe7ed;border-radius: 5px;margin: 1%;padding:1%" >
+<div class="well well-sm" style="position: all; margin: 1%">
+        <?php  for($i = 0; $i < count($_POST['codigo']); $i++){
 
-    <div id="Registro" class="row container-fluid" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%">
+    
+    $codigo = $_POST['codigo'][$i];
+   //$sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
 
-<div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-left: 1%;border-radius: 5px;margin-right: 1%;margin-top: 1%">
-    <div class="col-xs-4 "  style="background: #bfe7ed;margin-left: 1;border-radius: 5px;margin-right: 1%" >
-        <div class="well well-sm" style="position: all; margin: 5%">
-        
-                  <div class="form-group" style="position: all; margin: 2%">
+
+   $sql = "SELECT codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE codProductos = $codigo GROUP BY codProductos, precio";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+ $precio=$productos['precio'];
+
+       $precio1=number_format($precio, 2,".",",");
+       echo'
+ <div class="form-group" style="position: all; margin: 2%">
                       <label>Categoría</label> 
                       <select  class="form-control" name="categoria[]" id="um" required>
-                        <option selected disabled value="">Categoría</option>
-                        <?php 
-                     $sql = "SELECT * FROM  selects_categoria";
+                        <option selected disabled value="">'.$productos['categoria'].'</option>
+                        ';
+                     $sql = "SELECT * FROM  selects_unidad_medida";
                         $result = mysqli_query($conn, $sql);
 
-                        while ($productos = mysqli_fetch_array($result)){ 
+                        while ($productos1 = mysqli_fetch_array($result)){ 
 
-                          echo'  <option>'.$productos['categoria'].'</option>
+                          echo'  <option>'.$productos1['unidad_medida'].'</option>
                       ';   
                      } 
-                           ?>
+                        echo'
+                    
                       </select>
                   </div> 
 
                   <div class="form-group" style="position: all; margin: 2%">
                       <label>Código</label> 
-                      <input  type="number" name="cod[]" class="form-control" placeholder="Código de producto " value="<?php echo $codigo ?>" required>
+                      <input  type="number" name="cod[]" class="form-control" id="busqueda" placeholder="Código de producto " value="'.$productos['codProductos'] .'" required>
                   </div>
 
                   <div class="form-group" style="position: all; margin: 2%">
                         <label>Codificación de Catálogo de NA</label> 
-                      <input  type="number" name="cat[]" class="form-control" placeholder="Código" value="<?php echo $productos['catalogo'] ?>">
+                      <input  type="number" name="cat[]" class="form-control" placeholder="Código" value="'.$productos['catalogo'] .'">
                   </div>
 
-                  <div class="form-group">
+                  <div class="form-group" style="position: all; margin: 2%">
                     <label>Descripción Completa</label>
-                    <input type="text" name="desc[]" class="form-control" placeholder="Descripción" required>
+                    <input type="text" name="desc[]" class="form-control" placeholder="Descripción" required value="'.$productos['descripcion'] .'">
                   </div>
 
                   
-                    <div class="form-group" >
+                     <div class="form-group" style="position: all; margin: 2%">
                         <label>Unidad de medida (U/M)</label>
                         <div class="col-md-16" >
                             <div class="invalid-feedback">
                             Por favor seleccione una opción.
                             </div>
                         <select  class="form-control" name="um[]" id="um" required>
-                            <option selected disabled value="">Unidad de Medida</option>
-                            <?php 
+                            <option selected disabled value="">'.$productos['unidad_medida'] .'</option>
+                            ';
                      $sql = "SELECT * FROM  selects_unidad_medida";
                         $result = mysqli_query($conn, $sql);
 
-                        while ($productos = mysqli_fetch_array($result)){ 
+                        while ($productos1 = mysqli_fetch_array($result)){ 
 
-                          echo'  <option>'.$productos['unidad_medida'].'</option>
+                          echo'  <option>'.$productos1['unidad_medida'].'</option>
                       ';   
                      } 
-                           ?>
+                        echo'
                         </select>
                         </div>
                     </div>
             
-            <div class="form-group">
+            <div class="form-group" style="position: all; margin: 2%">
                 <label>Cantidad</label>
-                <input type="number" name="cant[]" class="form-control" placeholder="Ingrese la Cantidad" required>
+                <input type="number" name="cant[]" class="form-control" placeholder="Ingrese la Cantidad" required value="'.$productos['SUM(stock)'] .'">
             </div>
 
-            <div class="form-group">
+           <div class="form-group" style="position: all; margin: 2%">
                 <label>Costo Unitario (Estimado)</label>
-               <input  class="form-control" type="number" step="0.01" name="cu[]" placeholder="Costo unitario" value="<?php echo $productos['precio'] ?>" required><br>
-            </div>
-        </div>
-    </div>            
-</div>
+               <input  class="form-control" type="number" step="0.01" name="cu[]" placeholder="Costo unitario" value="'. $productos['precio'] .'" required><br>
+            </div>';
 
-<div class="col-xs-4" style="position: initial">
-    <div class="well" style="position: all; margin:5%">
-       <button id="btn-agregar" class="btn btn-block btn-default bg-success" type="button" style="color: white;">Agregar Producto</button> 
+ }} ?>
+        </div>
     </div>
 </div>
-    </div>
-    
+<br>
     <div class="button21">
         <button  class="btn btn-success btn-lg" name="submit" style="margin-bottom:2%;">Guardar</button>
         <a id="ver" class="btn btn-lg" href="vistaProductos.php">Ver Productos</a>
@@ -213,8 +239,38 @@ form{
     </div>
 
 
-</form>
 
+</form> <?php }?>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script>$(obtener_registros());
+
+function obtener_registros(alumnos)
+{
+    $.ajax({
+        url : 'consulta.php',
+        type : 'POST',
+        dataType : 'html',
+        data : { alumnos: alumnos },
+        })
+
+    .done(function(resultado){
+        $("#tabla_resultado").html(resultado);
+    })
+}
+
+$(document).on('keyup', '#busqueda', function()
+{
+    var valorBusqueda=$(this).val();
+    if (valorBusqueda!="")
+    {
+        obtener_registros(valorBusqueda);
+    }
+    else
+        {
+            obtener_registros();
+        }
+});
+</script>
 
 <script>
     $(document).ready(function(){
