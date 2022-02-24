@@ -133,6 +133,7 @@ if(isset($_POST['codigo'])){?>
  <div class="container">
   <div class="col-xs-4 "  style="background: #bfe7ed;border-radius: 5px;margin: 1%;padding:1%" >
 <div class="well well-sm" style="position: all; margin: 1%">
+
         <?php  for($i = 0; $i < count($_POST['codigo']); $i++){
 
     
@@ -147,6 +148,7 @@ if(isset($_POST['codigo'])){?>
  $precio=$productos['precio'];
 
        $precio1=number_format($precio, 2,".",",");
+
        echo'
  <div class="form-group" style="position: all; margin: 2%">
                       <label>Categoría</label> 
@@ -212,16 +214,40 @@ if(isset($_POST['codigo'])){?>
            <div class="form-group" style="position: all; margin: 2%">
                 <label>Costo Unitario (Estimado)</label>
                <input  class="form-control" type="number" step="0.01" name="cu[]" placeholder="Costo unitario" value="'. $productos['precio'] .'" required><br>
-            </div>';
-
- }} ?>
-        </div>
+            </div>
+            </div>
     </div>
-</div>
+    </div>
 <br>
-    <div class="button21">
-        <button  class="btn btn-success btn-lg" name="submit" style="margin-bottom:2%;">Guardar</button>
+            <div class="button21">
+             <button ';  
+                if($productos['codProductos']=="" || $productos['descripcion']=="" || $productos['unidad_medida']=="" || $productos['precio']) {
+                    echo ' #enviar{
+                margin-bottom: 5%;
+            margin-left: 1.5%; 
+            background: rgb(5, 65, 114); 
+            color: #fff; margin-bottom: 2%; 
+            border: rgb(5, 65, 114);
+            }
+            #enviar:hover{
+            background: rgb(9, 100, 175);
+            } 
+            #enviar:active{
+            transform: translateY(5px);
+            } "';
+                }else{
+                    echo ' style="display:none"';
+                }
+        echo' class="btn btn-success btn-lg" name="submit" style="margin-bottom:2%;">Guardar</button>
+       
         <a id="ver" class="btn btn-lg" href="vistaProductos.php">Ver Productos</a>
+
+        </div>';
+         
+
+ }} ?> 
+       
+     
          <style>
                #ver{
                 margin-left: 2%; 
@@ -236,72 +262,12 @@ if(isset($_POST['codigo'])){?>
                 transform: translateY(5px);
                } 
         </style>
-    </div>
+    
 
 
 
 </form> <?php }?>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-   <script>$(obtener_registros());
 
-function obtener_registros(alumnos)
-{
-    $.ajax({
-        url : 'consulta.php',
-        type : 'POST',
-        dataType : 'html',
-        data : { alumnos: alumnos },
-        })
 
-    .done(function(resultado){
-        $("#tabla_resultado").html(resultado);
-    })
-}
-
-$(document).on('keyup', '#busqueda', function()
-{
-    var valorBusqueda=$(this).val();
-    if (valorBusqueda!="")
-    {
-        obtener_registros(valorBusqueda);
-    }
-    else
-        {
-            obtener_registros();
-        }
-});
-</script>
-
-<script>
-    $(document).ready(function(){
-        
-        // El formulario que queremos replicar
-        var formulario_registro = $("#lo-que-vamos-a-copiar").html();
-        
-// El encargado de agregar más formularios
-$("#btn-agregar").click(function(){
-    // Agregamos el formulario
-    $("#Registro").prepend(formulario_registro);
-
-    // Agregamos un boton para retirar el formulario
-    $("#Registro .col-xs-4:first .well").append('<button class="btn-danger btn btn-block btn-retirar-registro" type="button">Retirar</button>');
-
-    // Hacemos focus en el primer input del formulario
-    $("#Registro .col-xs-4:first .well input:first").focus();
-
-    // Volvemos a cargar todo los plugins que teníamos, dentro de esta función esta el del datepicker assets/js/ini.js
-    Plugins();
-});
-        
-        // Cuando hacemos click en el boton de retirar
-        $("#Registro").on('click', '.btn-retirar-registro', function(){
-            $(this).closest('.col-xs-4').remove();
-        })
-            
-        $("#frm-registro").submit(function(){
-            return $(this).validate();
-        });
-    })
-</script>
   </body>
   </html>
