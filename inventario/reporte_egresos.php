@@ -132,7 +132,10 @@ if(isset($_POST['ingresos'])){
    $sql = "SELECT * FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega";
     $result = mysqli_query($conn, $sql);
 
-    while ($productos = mysqli_fetch_array($result)){?>
+    while ($productos = mysqli_fetch_array($result)){
+         $precio=$productos['precio'];
+       $precio1=number_format($precio, 2,".",",");
+       ?>
 
 <style type="text/css">
 
@@ -145,7 +148,7 @@ if(isset($_POST['ingresos'])){
       <td data-label="Descripción" style="text-align: left"><?php  echo $productos['descripcion']; ?></td>
       <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
       <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
-      <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
+      <td data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
       <td data-label="Fuente de Ingreso"><?php  echo $productos['campo']; ?></td>
       <td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
       
@@ -206,7 +209,10 @@ if(isset($_POST['ingresos'])){
     $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale ";
     $result = mysqli_query($conn, $sql);
 
-    while ($productos = mysqli_fetch_array($result)){?>
+    while ($productos = mysqli_fetch_array($result)){
+ $precio=$productos['precio'];
+       $precio2=number_format($precio, 2,".",",");
+        ?>
 
        
             
@@ -227,7 +233,7 @@ if(isset($_POST['ingresos'])){
     <td data-label="Descripción Completa" style="text-align: left;"><?php  echo $productos['descripcion']; ?></td>
     <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
     <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
-    <td data-label="Costo Unitario">$<?php  echo $productos['precio']; ?></td>
+    <td data-label="Costo Unitario">$<?php  echo $precio2 ?></td>
     <td data-label="Costo Unitario"><?php  echo $productos['campo']; ?></td>
     <td data-label="No. Vale"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
 <?php } ?>      
