@@ -12,7 +12,17 @@ include '../Model/conexion.php';
     //crud para guardar los productos en la tabla tb_vale
     $sql = "INSERT INTO tb_almacen (codAlmacen, departamento,encargado,estado) VALUES ('$solicitud_no', '$departamento','$usuario','$estado')";
     $result = mysqli_query($conn, $sql); 
+$verificar_usuario =mysqli_query($conn, "SELECT * FROM tb_almacen WHERE codAlmacen ='$solicitud_no'");
 
+if (mysqli_num_rows($verificar_usuario)>0) {
+  echo '
+    <script>
+    alert("Este Producto ya esta Registrado, intente con otro diferente");
+     window.location ="../form_almacen.php"; 
+  </script>
+  ';
+exit();
+}
 for($i = 0; $i < count($_POST['cod']); $i++) 
     {
       $codigo_producto  = $_POST['cod'][$i];
@@ -21,7 +31,17 @@ for($i = 0; $i < count($_POST['cod']); $i++)
       $soli             = $_POST['soli'][$i];
       $cost             = $_POST['precio'][$i];
       $num_sol          = $_POST['solicitud_no'];
+$verificar_usuario =mysqli_query($conn, "SELECT * FROM detalle_almacen WHERE codigo ='$codigo_producto'");
 
+if (mysqli_num_rows($verificar_usuario)>0) {
+  echo '
+    <script>
+    alert("Este Producto ya esta Registrado, intente con otro diferente");
+     window.location ="../form_almacen.php"; 
+  </script>
+  ';
+exit();
+}
       $insert = "INSERT INTO detalle_almacen(codigo, nombre, unidad_medida, cantidad_solicitada, tb_almacen, precio) VALUES ('$codigo_producto', '$nombre_articulo','$u_m', '$soli', '$num_sol', '$cost')";
       $query = mysqli_query($conn, $insert);
 

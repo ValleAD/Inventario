@@ -7,7 +7,7 @@ include '../Model/conexion.php';
 if(isset($_POST['detalle_almacen'])){
  $nSolicitud=$_POST['num_sol'];
 $estado =$_POST['estado'];
-$sql="UPDATE  tb_almacen SET estado = '$estado' WHERE nSolicitud='$nSolicitud'" ;
+$sql="UPDATE  tb_almacen SET estado = '$estado' WHERE codAlmacen='$nSolicitud'" ;
 
 $result = mysqli_query($conn, $sql);
  for($i = 0; $i < count($_POST['cod']); $i++)
@@ -34,12 +34,12 @@ $result = mysqli_query($conn, $sql);
       $query = mysqli_query($conn, $insert);
       if ($query)  {
         echo "<script> alert('El Estado fue Cambiado correctamente')
-        // location.href = '../solicitudes_almacen.php';
+        location.href = '../solicitudes_almacen.php';
         </script>
         ";
         }else {
         echo "<script> alert('UUPS!! Algo no fue mal escrito')
-        // location.href = '../solicitudes_almacen.php';
+        location.href = '../solicitudes_almacen.php';
         </script>
         ";
         }
