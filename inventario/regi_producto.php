@@ -55,16 +55,18 @@ form{
 
             <div class="form-group" style="position: all; margin: 2%">
             <label for="">Categoría</label><br> 
-                    <select  class="form-control" name="categoria[]" id="categoria" required style="cursor: pointer">
-                        <option selected disabled value="">Seleccionar</option>
-                        <option>Agropecuarios y Forestales</option>
-                        <option>Cuero y Caucho</option>
-                        <option>Químicos</option>
-                        <option>Combustibles y Lubricantes</option> 
-                        <option>Minerales no Metálicos</option>
-                        <option>Minerales Metálicos</option>
-                        <option>Herramientas y Repuestos</option>
-                        <option>Materiales Eléctricos</option>
+                    <select  class="form-control" name="categoria[]" id="categoria" required style="cursor: pointer" required>
+                        <option selected disabled value="">Seleccione</option>
+                     <?php 
+                        $sql = "SELECT * FROM  selects_categoria";
+                        $result = mysqli_query($conn, $sql);
+
+                        while ($productos1 = mysqli_fetch_array($result)){ 
+
+                          echo'  <option>'.$productos1['categoria'].'</option>
+                      ';   
+                     } ?>
+                       
                     </select>
             </div>
 
@@ -96,12 +98,15 @@ form{
                 </div>
                 <select  class="form-control" name="um[]" id="um" required>
                   <option selected disabled value="">Seleccione</option>
-                    <option>c/u</option>
-                    <option>lb</option>
-                    <option>mts</option>
-                    <option>Pgo</option> 
-                    <option>Qq</option>
-                    <option>cto</option>
+                 <?php 
+                        $sql = "SELECT * FROM  selects_unidad_medida";
+                        $result = mysqli_query($conn, $sql);
+
+                        while ($productos1 = mysqli_fetch_array($result)){ 
+
+                          echo'  <option>'.$productos1['unidad_medida'].'</option>
+                      ';   
+                     } ?>
                 </select>  
               </div>
         </div>

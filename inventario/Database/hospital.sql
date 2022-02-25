@@ -69,6 +69,7 @@ CREATE TABLE tb_vale (
   departamento varchar(50) NOT NULL,
   usuario varchar (50)  NOT NULL,
   campo varchar (50)  NOT NULL DEFAULT 'Solicitud Vale',
+  estado varchar (50)  NOT NULL,
   fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (codVale)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -130,7 +131,6 @@ CREATE TABLE detalle_vale (
   stock int(11) NOT NULL,
   precio decimal(6,2) NOT NULL,
   numero_vale int(15),
-  estado varchar (50)  NOT NULL,
   fecha_registro date NOT NULL DEFAULT current_timestamp(),
     PRIMARY KEY (codigodetallevale),
     CONSTRAINT fk_tb_vale_detalle_vale FOREIGN KEY (numero_vale)
@@ -145,7 +145,6 @@ codigodetallecirculante int(3) zerofill NOT NULL AUTO_INCREMENT,
   stock int(11) NOT NULL,
   precio decimal(6,2) NOT NULL,
   tb_circulante int(15),
-  estado varchar (50)  NOT NULL,
   fecha_registro date NOT NULL DEFAULT current_timestamp(),
     PRIMARY KEY (codigodetallecirculante),
     CONSTRAINT fk_tb_circulante_detalle_circulante FOREIGN KEY (tb_circulante)
@@ -160,7 +159,7 @@ unidad_medida varchar(5) NOT NULL,
 cantidad_solicitada int(25) NOT NULL,
 cantidad_despachada int(25) NOT NULL,
 tb_almacen int(20) NOT NULL,
-precio int(20) NOT NULL,
+precio decimal(6,2) NOT NULL,
 fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (codigoalmacen),
      CONSTRAINT fk_tb_almacen_detalle_almacen FOREIGN KEY (tb_almacen)

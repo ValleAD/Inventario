@@ -82,9 +82,7 @@ die();
                 <th style="width: 15%;">Productos Disponibles</th>
                 <th style="width: 15%;">Cantidad</th>
                 <th style="width: 15%;">Costo unitario</th>
-                <th style="width: 145%;" align="center">
-                    <button type="submit" name="solicitar" class="btn btn-success btn-sm text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar</button> 
-                </th>
+              
                
               </tr>
 
@@ -133,12 +131,13 @@ die();
                <td data-label="Productos Disponibles"><input  style="background:transparent; border: none; width: 100%; color: gray;" type="text" class="form-control" readonly  name="stock[]"  value ="<?php  echo $productos['SUM(stock)']; ?>"></td>
                <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="text" class="form-control"  name="cant[]" required></td>
                <td data-label="Precio" ><input style="background:transparent; border: none; width: 100%; color: black; text-align: center;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $precio1 ?>"></td>   
-      <td></td>
+      
      </tr>
 <?php }} ?> 
 
             </tbody>
         </table>
+         <center> <button type="submit" name="solicitar" class="btn btn-success btn-lg  text-center w-25"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar</button></center>    
 </form>
  </section>
 

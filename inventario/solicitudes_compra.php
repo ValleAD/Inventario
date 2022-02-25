@@ -96,7 +96,7 @@ h1 {
             <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
             <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
             <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
-            <td data-label="Plazo y No. de Entregas" class="delete"><input <?php
+            <td data-label="Plazo y No. de Entregas" class="delete"><input readonly <?php
                 if($solicitudes['estado']=='Pendiente') {
                     echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
                 }else if($solicitudes['estado']=='Aprobado') {

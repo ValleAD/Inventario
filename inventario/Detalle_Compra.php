@@ -41,6 +41,8 @@ die();
 if(isset($_POST['submit'])){
 $total = 0;
 $final = 0;
+$total2 = 0;
+$final2 = 0;
 $a=$_POST['sol_compra'];
 
    include 'Model/conexion.php';
@@ -208,7 +210,8 @@ $a=$_POST['sol_compra'];
 
 $total = 0;
 $final = 0;
-
+$total1 = 0;
+$final1 = 0;
 $cod_compra = $_POST['id'];
 
    include 'Model/conexion.php';

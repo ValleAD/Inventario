@@ -44,9 +44,10 @@ die();
     </style>
 <?php
 if(isset($_POST['submit'])){
-
 $total = 0;
 $final = 0;
+$total2 = 0;
+$final2 = 0;
     $a=$_POST['num_sol'];
 
    include 'Model/conexion.php';
@@ -175,9 +176,10 @@ while ($productos = mysqli_fetch_array($result)){
 </section>';
     }
 if(isset($_POST['detalle'])){
-
 $total = 0;
 $final = 0;
+$total1 = 0;
+$final1 = 0;
 
 $num_sol = $_POST['id'];
 

@@ -86,7 +86,7 @@ die();
             <td data-label="Departamento Solicitante" class="delete"><?php  echo $datos_sol['departamento']; ?></td>
             <td data-label="Usuario" class="delete"><?php  echo $datos_sol['encargado']; ?></td>
             <td data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])) ?></td>
-            <td data-label="Fecha de solicitud" class="delete"><input <?php
+            <td data-label="Fecha de solicitud" class="delete"><input readonly <?php
                 if($datos_sol['estado']=='Pendiente') {
                     echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
                 }else if($datos_sol['estado']=='Aprobado') {

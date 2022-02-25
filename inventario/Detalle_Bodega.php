@@ -50,6 +50,8 @@ die();
 if(isset($_POST['submit'])){
 $total = 0;
 $final = 0;
+$total2 = 0;
+$final2 = 0;
 $a=$_POST['odt'];
 
    include 'Model/conexion.php';
@@ -87,7 +89,7 @@ $a=$_POST['odt'];
             <label style="font-weight: bold;">Estado:</label>';?>
               <input readonly class="form-control"  type="hidden" value="' .$datos['nSolicitud']. '" name="id"> 
                 <select  class="form-control"  type="text"  name="estado" required>
-                <option disabled selected>Selecione</option>
+                <option disabled selected value="">Selecione</option>
                 <option>Aprobado</option>
                 <option>Rechazado</option>
                 </select>
@@ -196,6 +198,8 @@ if(isset($_POST['detalle'])){
 
     $total = 0;
     $final = 0;
+    $total1 = 0;
+    $final1 = 0;
 
     $odt = $_POST['id'];
     
