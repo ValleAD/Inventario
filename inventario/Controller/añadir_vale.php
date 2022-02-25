@@ -8,7 +8,7 @@ include ('../Model/conexion.php');
 
 
     //crud para guardar los productos en la tabla tb_vale
-    $sql = "INSERT INTO tb_vale (codVale, departamento,usuario,campo) VALUES ('$odt', '$departamento','$usuario','Solicitud Vale')";
+    $sql = "INSERT INTO tb_vale (codVale, departamento,usuario,campo,estado) VALUES ('$odt', '$departamento','$usuario','Solicitud Vale','Pendiente')";
     $result = mysqli_query($conn, $sql); 
       
         
@@ -24,7 +24,7 @@ include ('../Model/conexion.php');
     $numero_vale = $_POST['numero_vale'];
 
   
-      $insert = "INSERT INTO detalle_vale (codigo,descripcion,unidad_medida,stock,precio,numero_vale,estado) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$numero_vale','Pendiente')";
+      $insert = "INSERT INTO detalle_vale (codigo,descripcion,unidad_medida,stock,precio,numero_vale) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$numero_vale')";
       $query = mysqli_query($conn, $insert);
 
       if ($query) {

@@ -66,21 +66,29 @@ $final = 0;
 
           </div>
 
-          <div class="col-6 col-sm-3" style="position: initial">
+          <div class="col-6 col-sm-2" style="position: initial">
             <label style="font-weight: bold;">N° de Vale:</label>
             <input readonly class="form-control"  type="text" value="' .$productos1['codVale']. '" name="vale">
           </div>
 
-        <div class="col-6 col-sm-3" style="position: initial">
+        <div class="col-6 col-sm-2" style="position: initial">
             <label style="font-weight: bold;">Encargado:</label>
             <input readonly class="form-control"  type="text" value="' .$productos1['usuario']. '" name="usuario">
         </div>
 
           
-          <div class="col-6 col-sm-3" style="position: initial">
+          <div class="col-6 col-sm-2" style="position: initial">
             <label style="font-weight: bold;">Fecha:</label>
               <input readonly class="form-control"  type="text" value="' .date("d-m-Y",strtotime($productos1['fecha_registro'])). '" name="fech">
-          </div>
+          </div>';?>
+           <div class="col-6 col-sm-3" style="position: initial">
+              <label style="font-weight: bold;">Estado</label>
+              <input <?php
+                if($productos1['estado']=='Pendiente') {
+                    echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
+                }
+            ?> readonly class="form-control"  type="text" value="<?= $productos1['estado'] ?>" name="id"> 
+            </div>
         </div>
       
         <br>
@@ -98,7 +106,8 @@ $final = 0;
               </tr>
                 <td id="td" colspan="6"><h4>No se encontraron resultados 😥</h4></td>
            </thead>
-            <tbody>';
+            <tbody>
+                <?php 
 
 $num_vale = $productos1['codVale'];
 }

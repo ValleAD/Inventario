@@ -91,8 +91,6 @@ CREATE TABLE tb_compra (
 
 CREATE TABLE tb_circulante (
   codCirculante int(15) NOT NULL,
-  departamento varchar(200) NOT NULL,
-  usuario varchar (50)  NOT NULL,
   campo varchar (50)  NOT NULL DEFAULT 'Solicitud Circulante',
   estado varchar (50)  NOT NULL,
   fecha_solicitud timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),

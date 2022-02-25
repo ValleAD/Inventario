@@ -59,15 +59,23 @@ $final = 0;
       
         <div class="row">  
 
-          <div class="col-6 col-sm-3" style="position: initial">
+          <div class="col-6 col-sm-4" style="position: initial">
             <label style="font-weight: bold;">N° de Solicitud:</label>
             <input readonly class="form-control"  type="text" value="' .$datos_sol['codCirculante']. '" name="num_sol">
           </div>
 
-          <div class="col-6 col-sm-3" style="position: initial">
+          <div class="col-6 col-sm-4" style="position: initial">
             <label style="font-weight: bold;">Fecha:</label>
               <input readonly class="form-control"  type="text" value="' .date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])). '" name="fech">
-          </div>
+          </div>'?>
+           <div class="col-6 col-sm-4" style="position: initial">
+              <label style="font-weight: bold;">Estado</label>
+              <input <?php
+                if($datos_sol['estado']=='Pendiente') {
+                    echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
+                }
+            ?> readonly class="form-control"  type="text" value="<?= $datos_sol['estado'] ?>" name="id"> 
+            </div>
         </div>
       
         <br>
@@ -84,8 +92,8 @@ $final = 0;
               </tr>
                 <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
            </thead>
-            <tbody>';
-
+            <tbody>
+<?php 
 $num_circulante = $datos_sol['codCirculante'];
 }
  $sql = "SELECT * FROM detalle_circulante WHERE tb_circulante = $num_circulante";
