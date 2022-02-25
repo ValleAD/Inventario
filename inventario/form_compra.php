@@ -80,11 +80,22 @@ if(isset($_POST['codigo'])){?>
 
   <br>
 <div class="container">
-<div class="row">
 
-    <div class="col-6.5 col-sm-4" style="position: initial">
-    <font color="black"><label>Número de Solicitud</label> </font>
-      <input style="background:transparent; color: black;" class="form-control" type="number" name="nsolicitud" id="como1" required>
+<div class="row">
+      <div class="col-.5 col-sm-4" style="position: initial">
+                
+  <?php 
+          
+          $sql = "SELECT * FROM tb_compra ORDER BY fecha_registro DESC LIMIT 1";
+          $result = mysqli_query($conn, $sql);
+          while ($datos_sol = mysqli_fetch_array($result)){
+        
+          echo '<p style="color: red; margin-top: -8%; margin-bottom: -0.5%">Última solicitud: '; 
+          echo $datos_sol['nSolicitud']; 
+          echo '</p>'; }
+          ?>
+          <label id="inp1">Solicitud N°</b></label>   
+          <input id="inp1"class="form-control" type="number" name="nsolicitud" required> 
     </div>
     <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="black"><label>Dependencia que Solicita</label></font>   

@@ -80,15 +80,27 @@ form{
 
 </center>
 <d iv class="container">
-
+          
         <div class="row">
             <div class="col-.5 col-sm-4" style="position: initial">
+            <?php 
+
+                
+                 $sql = "SELECT * FROM tb_almacen ORDER BY fecha_solicitud DESC LIMIT 1";
+                 $result = mysqli_query($conn, $sql);
+                while ($datos_sol = mysqli_fetch_array($result)){
+
+                echo '<p style="color: red; margin-top: -15%">Última solicitud: '; 
+                echo $datos_sol['codAlmacen']; 
+                echo '</p>'; }
+            ?>
                 <label id="inp1">Solicitud N°</b></label>   
-                <input id="inp1"class="form-control" type="number" name="solicitud_no" >
+                <input id="inp1"class="form-control" type="number" name="solicitud_no" required> 
+               
             </div>
               <div class="col-6.5 col-sm-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>
-                <input id="inp1"class="form-control" type="text" name="solicitud_no" readonly value="Mantenimiento">
+                <input id="inp1"class="form-control" type="text" name="depto" readonly value="Mantenimiento">
     </div>   
                
             <div class="col-.5 col-sm-4" style="position: initial">
