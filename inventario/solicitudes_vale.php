@@ -54,7 +54,7 @@ die();
             
      <div class="mx-5 p-2" style="background-color: white; border-radius:5px">
 
-        </style>
+     
         <table class="table table-responsive" id="example" style="width:100%">
             <thead>
               <tr id="tr">
@@ -103,10 +103,12 @@ die();
             </td>
         </tr>
 
- <?php } ?> 
+    <?php } ?>   
            
            </tbody>
         </table>
+        <a href="Plugin/pdf_soli_vale.php" class="btn btn-danger">Generar Solicidud Vale</a>
+  
 
 </section>
        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
