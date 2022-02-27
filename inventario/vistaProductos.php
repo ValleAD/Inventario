@@ -179,7 +179,7 @@ $result = mysqli_query($conn, $sql);
                      <input type="DATE" class="form-control" name="F2" required>
                     
                     </div>
-                    <div class="col-md-6" style="position: initial">
+                    <div class="col-md-6" style="position: initial; margin-top: auto;">
                        <button class="btn btn-success" name="Fecha" type="submit">Filtrar Fechas</button>
                     </div>
                 </div>
