@@ -59,7 +59,7 @@ if(isset($_POST['detalle'])){
     
      echo'   
     <section id="section" style="margin:2%">
-    <form method="POST" action="" target="_blank">
+    <form method="POST" action="" >
              
           
             <div class="row">
@@ -198,7 +198,7 @@ if(isset($_POST['submit'])){
     
      echo'   
     <section id="section" style="margin:2%">
-    <form method="POST" action="Controller/añadir_vale_copy.php" target="_blank">
+    <form method="POST" action="Controller/añadir_vale_copy.php" >
              
           
             <div class="row">
@@ -227,7 +227,7 @@ if(isset($_POST['submit'])){
               </div>
               <div class="col-8 col-sm-3" style="position: initial">
             <label style="font-weight: bold;">Estado:</label>';?>
-           <select  class="form-control"  type="text"  name="estado" required>
+           <select  class="form-control"  type="text" name="estado" required>
                 <option disabled selected value="">Selecione</option>
                 <option>Aprobado</option>
                 <option>Rechazado</option>
@@ -266,7 +266,7 @@ while ($productos = mysqli_fetch_array($result)){
       $um=$productos['unidad_medida'];
       $stock=$productos['stock'];
       $precio=$productos['precio'];
-      $estado=$productos['estado'];
+     // $estado=$productos['estado'];
       $fecha=$productos['fecha_registro'];
        $precio1=number_format($precio, 2,".",",");
       $total1= number_format($total, 2, ".",",");
