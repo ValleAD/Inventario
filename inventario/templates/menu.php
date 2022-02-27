@@ -54,13 +54,15 @@ background:burlywood;
                     <ul class="children">
                        <li><a id="b" href="vistaProductos.php">Ver Artículos</a></li>
                         <li><a id="b" href="regi_producto.php">Nuevo Artículo</a></li>
-                       
                         <li><a id="b" href="reporte_ingresos.php">Reporte Ingresos</a></li>
                         <li><a id="b" href="reporte_egresos.php">Reporte Egresos</a></li>
+                        <li><a id="b" href="reporte_productos.php">Reporte Productos</a></li>
+                        <li><a id="b" href="reporte_general.php">Reporte General</a></li>
+
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a id="a" href="#"><span class="icon-rocket"></span>Vale<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <a id="a" href="#"><span class="icon-rocket"></span>Soli. Vale<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_vale.php">Mostrar</a></li>
                         <li><a id="b" href="form_vale.php">Buscar por código</a></li>

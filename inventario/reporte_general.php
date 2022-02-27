@@ -19,7 +19,7 @@ die();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VistaProductos</title>
+    <title>Reporte Egresos General</title>
    <!-- Bootstrap CSS -->
      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap4.css"/>
      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.bootstrap4.css"/>
@@ -33,119 +33,14 @@ die();
     </style>
 </head>
 <body> 
-  
-<?php      
-
-if (isset($_POST['editar'])){       
-    $id = $_POST['id'];       
-   
-  
- 
-$sql = "SELECT cod, codProductos, categoria, catalogo,  descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE  codProductos = '$id'";
-$result = mysqli_query($conn, $sql);
 
 
-    while ($productos1 = mysqli_fetch_array($result)){
-?>
 
 
-<form action="Controller/Actualizar.php" method="post">
-  <h3 align="center">Actualizar Producto</h3>
-    <div class="container" style="background: rgba(0, 0, 0, 0.6); border-radius: 9px; color:#fff; font-weight: bold;">
-        <div class="row">
-            <div class="col-6 col-sm-4" style="position: initial; margin-left: 17%; margin-top: 2%">
-                <label for="">Categoría</label><br> 
-                <select  class="form-control" name="categoria" id="um" >
-                        <option   ><?php  echo $productos1['categoria']; ?></option>
-                        <?php 
-                     $sql = "SELECT * FROM  selects_categoria";
-                        $result = mysqli_query($conn, $sql);
 
-                        while ($productos = mysqli_fetch_array($result)){ 
 
-                          echo'  <option>'.$productos['categoria'].'</option>
-                      ';   
-                     } 
-                           ?>
-                      </select>
-            </div>
-           
-            <div class="col-6 col-sm-4" style="position: initial; margin-top: 2%;">
-                <label for="">Código</label>
-                <input class="form-control"  type="hidden" name="cod" id="act" value="<?php  echo $productos1['cod']; ?>">
-                <input class="form-control"  type="text" name="codProducto" id="act" value="<?php  echo $productos1['codProductos']; ?>">
-            </div>
-        </div> 
 
-        <div class="row">
-            <div class="col-6 col-sm-4" style="position: initial; margin-left: 17%;">
-                <label for="">Codificación de Catálogo</label>
-                <input class="form-control"  type="text" name="codCatalogo" id="act" value="<?php  echo $productos1['catalogo']; ?>">
-            </div>
 
-            
-        </div>
-
-        <div class="row">
-            <div class="col-6 col-sm-4" style="position: initial; margin-left: 17%;">
-                <label for="">Descripción</label>
-                <textarea cols="50" rows="1" class="form-control" type="text"  name="descripcion" id="act" style="width: 100;height: 90%"><?php  echo $productos1['descripcion']; ?></textarea>                     
-            </div>
-
-            <div class="col-6 col-sm-4" style="position: initial">
-                <div class="form-group" >
-                    <label>Unidad de medida (U/M)</label>
-                    <div class="col-md-16" >
-                        <div class="invalid-feedback">
-                        Por favor seleccione una opción.
-                    </div>
-                    <select  class="form-control" name="um" id="um" >
-                            <option  ><?php  echo $productos1['unidad_medida']; ?></option>
-                            <?php 
-                     $sql = "SELECT * FROM  selects_unidad_medida";
-                        $result = mysqli_query($conn, $sql);
-
-                        while ($productos = mysqli_fetch_array($result)){ 
-
-                          echo'  <option>'.$productos['unidad_medida'].'</option>
-                      ';   
-                     } 
-                           ?>
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-<br>
-        <div class="row">
-            <div class="col-6 col-sm-4" style="position: initial; margin-left: 17%;">
-                <label for="">Cantidad Actual</label>
-                <input class="form-control" type="text" name="stock" id="act" value="<?php  echo $productos1['SUM(stock)']; ?>">
-            </div>
-            <div class="col-6 col-sm-4" style="position: initial;">
-                <label for="">Costo unitario</label>
-                <input class="form-control" type="text" name="precio" id="act" value="<?php  echo $productos1['precio']; ?>">
-            </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="col-6 col-sm-4" style="position: initial; margin-left: 17%; margin-bottom: 2%;">
-                <button type="submit" class ="btn btn-primary" style="background:rgb(12, 139, 8); margin-right: 1%; border: none">Guardar Cambios</button>
-                <a href="vistaProductos.php" class ="btn btn-primary" style="background:rgb(184, 8, 8); border: none">Cancelar</a>
-            </div>
-        </div>
-    </div>
-</form>
-
-<style>
-  #act {
-    margin-top: 0.5%;
-  }
-</style>
-<?php 
-  }
-} 
-?>
 <br>
     <style>
         #ver{
@@ -165,7 +60,7 @@ $result = mysqli_query($conn, $sql);
     </style>
 </table>
   <section style="background: rgba(255, 255, 255, 0.9);padding-bottom: 1%;margin: 2%;border-radius: 15px;">
-<font color="black"><h2 class="text-center" >Inventario de Productos</h2></font>
+<font color="black"><h2 class="text-center" >Reporte General</h2></font>
 <br>
 <form method="POST" action="">
                 <div class="container">
@@ -273,8 +168,7 @@ if (isset($_POST['Fecha'])){
 
                      <th style=" width: 100%">Categoría</th>
 
-                     <th style=" width: 100%">Editar</th>
-                     <th style=" width: 100%">Eliminar</th>
+                    
                    </tr>
                 </thead>
                 <tbody>
@@ -327,15 +221,10 @@ if (isset($_POST['Fecha'])){
            <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['categoria']; ?></td>
-           <td  data-label="Editar">
-            <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="vistaProductos.php">             
-                <input type='hidden' name='id' value="<?php  echo $productos['codProductos']; ?>">             
-                <button name='editar' class='btn btn-info btn-sm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
-            </form>  
-            </td>
-            <td  data-label="Eliminar">
-                <a data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm " class="text-primary" href="Controller/Delete_producto.php?id=<?php  echo $productos['stock']; ?>" onclick="return confirmaion()">Eliminar</a>
-            </td>
+          
+            
+            
+           
          </tr>
      
      <?php } ?> 
