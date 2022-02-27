@@ -61,7 +61,7 @@ $a=$_POST['odt'];
 
   echo'   
   <section id="section">
-  <form method="POST"  action="Controller/añadir_bodega_copy.php" target="_blank" style="background-color:white;padding:1%">
+  <form method="POST"  action="Controller/añadir_bodega_copy.php"  style="background-color:white;padding:1%">
            
         
           <div class="row">
@@ -210,7 +210,7 @@ if(isset($_POST['detalle'])){
     
      echo'   
     <section id="section">
-    <form method="POST" action="Detalle_Bodega.php" target="_blank">
+    <form method="POST" action="Detalle_Bodega.php" >
              
           
             <div class="row">
