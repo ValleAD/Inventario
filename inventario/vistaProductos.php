@@ -170,7 +170,7 @@ $result = mysqli_query($conn, $sql);
 <form method="POST" action="">
                 <div class="container">
                  <div class="row">
-                    <div class="col-md-3" style="position: initial">
+                    <div class="col-md-3" style="position: initial;">
                         <label>Desde</label>
                      <input type="DATE" class="form-control" name="F1" required>
                     

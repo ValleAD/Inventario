@@ -60,7 +60,7 @@ die();
     </style>
 </table>
   <section style="background: rgba(255, 255, 255, 0.9);padding-bottom: 1%;margin: 2%;border-radius: 15px;">
-<font color="black"><h2 class="text-center" >Reporte General</h2></font>
+<font color="black"><h2 class="text-center" >Reporte General de Productos</h2></font>
 <br>
 <form method="POST" action="">
                 <div class="container">
