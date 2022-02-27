@@ -89,6 +89,8 @@ if(isset($_POST['codigo'])){ ?>
  $precio=$productos['precio'];
 
        $precio1=number_format($precio, 2,".",",");
+       $cantidad=$productos['SUM(stock)'];
+        $stock=number_format($cantidad, 0,",");
 
        ?>
   <form style="width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%;"action="Controller/añadir_compra.php" method="POST">
@@ -209,7 +211,7 @@ if(isset($_POST['codigo'])){ ?>
             
             <div class="form-group" style="position: all; margin: 2%">
                 <label>Cantidad</label>
-                <input type="number" name="cant[]" class="form-control" placeholder="Ingrese la Cantidad" required value="<?php echo $productos['SUM(stock)'] ?>">
+                <input type="number" name="cant[]" class="form-control" placeholder="Ingrese la Cantidad" required value="<?php echo $stock?>">
             </div>
 
            <div class="form-group" style="position: all; margin: 2%">

@@ -125,12 +125,13 @@ $a=$_POST['odt'];
       $codigo=$productos['codigo'];
       $descripcion=$productos['descripcion'];
       $um=$productos['unidad_medida'];
-      $stock=$productos['stock'];
       $precio=$productos['precio'];
       $fecha=$productos['fecha_registro'];
       $precio2=number_format($precio, 2,".",",");
       $total2= number_format($total, 2, ".",",");
       $final2=number_format($final, 2, ".",",");
+      $cantidad=$productos['stock'];
+        $stock=number_format($cantidad, 0,",");
       ?>
   
       <style type="text/css">
@@ -291,12 +292,12 @@ while ($productos = mysqli_fetch_array($result)){
       $codigo=$productos['codigo'];
       $descripcion=$productos['descripcion'];
       $um=$productos['unidad_medida'];
-      $stock=$productos['stock'];
       $precio=$productos['precio'];
       $fecha=$productos['fecha_registro'];
         $precio2=number_format($precio, 2,".",",");
         $total2= number_format($total, 2, ".",",");
-        $final2=number_format($final, 2, ".",",");
+        $final2=number_format($final, 2, ".",",");$cantidad=$productos['stock'];
+        $stock=number_format($cantidad, 0,",");
       ?>
        <style type="text/css"> #td{display: none;} </style> 
 

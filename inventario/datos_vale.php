@@ -118,9 +118,11 @@ while ($productos = mysqli_fetch_array($result)){
         $total    =    $productos['stock'] * $productos['precio'];
         $final    +=   $total;
         $precio   =    $productos['precio'];
+        $cantidad =    $productos['stock'];
         $precio2  =    number_format($precio, 2,".",",");
         $total2   =    number_format($total, 2, ".",",");
         $final2   =    number_format($final, 2, ".",",");  
+        $stock=number_format($cantidad, 0,",");
         echo' 
     <style type="text/css">
      #td{
@@ -133,7 +135,7 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="' .$productos['codigo']. '"></td>
         <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly style="border: none">'.$productos['descripcion']. '</textarea></td>
         <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
-        <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="'.$productos['stock']. '"></td>
+        <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="'.$stock. '"></td>
         <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$'.$precio2.'"></td>
         <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$'.$total2. '"></td>
         

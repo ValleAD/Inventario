@@ -119,6 +119,8 @@ while ($productos = mysqli_fetch_array($result)){
         $precio2  =    number_format($precio, 2,".",",");
         $total2   =    number_format($total, 2, ".",",");
         $final2   =    number_format($final, 2, ".",",");
+        $cantidad=$productos['cantidad_solicitada'];
+        $stock=number_format($cantidad, 0,",");
       
 ?>
     <style type="text/css">
@@ -130,7 +132,7 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Código"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="cod[]" readonly value="<?php echo $productos['codigo'];?>"></td>
         <td  data-label="Nombre del Artículo"><textarea style="background:transparent; border: none; width: 100%;"  name="nombre[]" readonly style="border: none"><?php echo $productos['nombre'];?></textarea></td>
         <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%; text-align: center" name="um[]" readonly value="<?php echo $productos['unidad_medida'];?>"></td>
-        <td  data-label="Cantidad Solicitada"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="cant[]" readonly value="<?php echo $productos['cantidad_solicitada'];?>"></td>
+        <td  data-label="Cantidad Solicitada"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="cant[]" readonly value="<?php echo $stock; ?>"></td>
         <td  data-label="Costo Unitario"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="cost[]" step="0.01"  readonly value="$<?php echo $precio2?>"></td>  
         <td  data-label="total"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="tot[]" readonly step="0.01"  value="$<?php echo $total2;?>"></td>
       </tr>

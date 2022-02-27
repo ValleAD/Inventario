@@ -112,6 +112,8 @@ die();
 
         $precio=$productos['precio'];
        $precio1=number_format($precio, 2,".",",");
+       $cantidad=$productos['SUM(stock)'];
+        $stock=number_format($cantidad, 0,",");
       ?>
                
 
@@ -130,7 +132,7 @@ die();
       <td data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
       <td data-label="Descripción Completa"><textarea style="background:transparent; border: none; color: black;" cols="10" rows="1" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
       <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-      <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['SUM(stock)']; ?></td>
+      <td data-label="Cantidad" style="text-align: center;"><?php  echo $stock; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $precio1?></td>
       <td data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
       <td data-label="solicitar" align="center">

@@ -303,6 +303,8 @@ if (isset($_POST['Fecha'])){
     while ($productos = mysqli_fetch_array($result)){
          $precio=$productos['precio'];
         $precio1=number_format($precio, 2,".",",");
+        $cantidad=$productos['stock'];
+        $stock=number_format($cantidad, 0,",");
 ?>
      
             
@@ -321,7 +323,7 @@ if (isset($_POST['Fecha'])){
            <td  data-label="Codificación de catálogo" style="text-align: center;"><?php  echo $productos['catalogo']; ?></td>
            <td  data-label="Descripción Completa" style="text-align: left;"><?php  echo $productos['descripcion']; ?></td>
            <td  data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-           <td  data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
+           <td  data-label="Cantidad" style="text-align: center;"><?php  echo $stock; ?></td>
            <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['categoria']; ?></td>
