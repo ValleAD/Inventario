@@ -193,12 +193,12 @@ $result = mysqli_query($conn, $sql);
 </div><?php } ?>
         <thead>
               <tr id="tr">
-                <th style="width: 12%"><strong>Nombre</strong></th>
+                <th style="width: 12%"><strong>Nombres</strong></th>
                 <th style="width: 12%"><strong>Apellidos</strong></th>
                 <th style="width: 15%"><strong>Establecimiento</strong></th>
                 <th style="width: 15%"><strong>Unidad</strong></th>
                 <th  style="width: 10%; text-align:center;" ><strong>Habilitado</strong></th><?php if($tipo_usuario == 1) { ?>
-                <!-- <th style="width: 10%;margin-left: 5%;"><strong style="text-align: center;"> Cambiar Habilitado</strong></th> -->  
+                 <th style="width: 10%;margin-left: 5%;"><strong style="text-align: center;"> Cambiar Habilitado</strong></th>  
                 <th style="width: 10%">Eliminar</th><?php } ?>
                 
             </tr>
@@ -240,11 +240,11 @@ $result = mysqli_query($conn, $sql);
             ?>
  type="text" class="btn"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $solicitudes['Habilitado']; ?>"></td>
             <?php if($tipo_usuario == 1) { ?>
-         <!--    <td align="center">
+            <td align="center">
                  <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Empleados.php">             
           <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">             
           <button name='editar' class='btn btn-info btn-sm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
-        </form> -->
+        </form>
             
 
 <!--**********************************************************************************************************************************************************************************-->

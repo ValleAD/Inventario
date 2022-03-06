@@ -49,23 +49,26 @@ die();
 <body style="max-width: 100%;">
                <font color="#000"><h1 style="margin:5px; text-align: center;">Ingreso de Productos</h1></font>
     <section style="background: rgba(255, 255, 255, 0.9); margin: 2%;border-radius: 15px; padding: 1%";>
-
-
-    <div class="row" style="position: relative; max-width: 100%; margin: 2% 0% 0% 0%;">
+    <div class="row" style="position: relative; max-width: 100%; margin: 2% 0% 0% 10%;">
         <p style="color: #000; font-weight: bold; margin: 0.2% 4% 2%;">Mostrar Ingresos por:</p>
             <form method="POST" style="background:transparent;">
                 <div class="row">
-                    <div class="col-32 col-sm-12" style="position: in;">
-                        <select class="form-control" name="ingresos" id="ingresos" onchange="this.form.submit()">
-                            <option value="">Seleccionar</option>
+                <div class="col-6 col-sm-4" style="position: initial; ">
+                <a href="reporte_ingresos.php" class="btn btn-primary">Inicio</a>
+            </div>
+
+            <div class="col-7 col-sm-5" style="position: initial; width:50%px;">
+            <select class="form-control" name="ingresos" id="ingresos" onchange="this.form.submit()">
+                            <option>Seleccionar</option>
                             <option value="bodega">Solicitud a Bodega</option>
                             <option value="almacen">Solicitud a Almacén</option>
                             <option value="compra">Solicitud de Compra</option>
                         </select>
-                    </div>
+            </div>          
                 </div>  
             </form>
     </div> 
+    
     <section id="act">
 <?php
 

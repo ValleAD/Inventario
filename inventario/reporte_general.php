@@ -149,7 +149,7 @@ if (isset($_POST['Fecha'])){
 </div>
 </div>
 </div>
-    <div class="mx-5 p-2 r-5" style="; border-radius: 5px;">
+    <div class="mx-5 p-2 r-5" style=" border-radius: 5px;">
         <div class="row">
             <div class="col">
            <a href="unidad_medidad.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a>  <br><br>
