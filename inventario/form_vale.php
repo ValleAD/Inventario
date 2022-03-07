@@ -71,6 +71,17 @@ die();
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
      <link rel="stylesheet" type="text/css" href="styles/estilo.css"> 
      <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
+          <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!--  Datatables  -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>  
+    
+    <!-- searchPanes -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/searchpanes/1.0.1/css/searchPanes.dataTables.min.css">
+    <!-- select -->
+    <link href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"> 
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">  
     <title>Vale</title>
 </head>
@@ -160,8 +171,7 @@ if(isset($_POST['codigo'])){
             </div>
         </div>
         <br>
-          <div class="container">
-         <table class="table" style="margin-bottom:3%; ">
+        <table class="table table-responsive table-striped" id="example" style=" width: 100%">
         <thead>
            <tr id="tr" style="text-align: left;">
                 <th style="width: 10%;">Código</th>
@@ -170,9 +180,6 @@ if(isset($_POST['codigo'])){
                 <th style="width: 15%;">Productos Disponibles</th>
                 <th style="width: 15%;">Cantidad</th>
                 <th style="width: 15%;">Costo unitario</th>
-            </tr>
-              <tr>
-              <center> <td id="td" colspan="6" ><h4 align="center";>No se encontraron resultados 😥</h4></td></center> 
             </tr>
         </thead>
         <tbody>
@@ -192,8 +199,10 @@ if(isset($_POST['codigo'])){
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
- $precio=$productos['precio'];
+       $precio=$productos['precio'];
+       $cantidad=$productos['SUM(stock)'];
        $precio1=number_format($precio, 2,".",",");
+       $stock=number_format($cantidad, 0,",");
 
 
      ?>    
@@ -208,7 +217,7 @@ if(isset($_POST['codigo'])){
                
                <td data-label="Descripción"><textarea  style="background:transparent; border: none; width: 100%; color: black;" cols="10" rows="1" type="text" class="form-control" readonly name="desc[]"><?php  echo $productos['descripcion']; ?></textarea></td>
                <td data-label="Unidad De Medida"><input  style="background:transparent; border: none; width: 100%; color: black;" type="text" class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
-               <td data-label="Productos Disponibles"><input  style="background:transparent; border: none; width: 100%; color: gray;" type="text" class="form-control" readonly  name="stock[]"  value ="<?php  echo $productos['SUM(stock)']; ?>"></td>
+               <td data-label="Productos Disponibles"><input  style="background:transparent; border: none; width: 100%; color: gray;" type="text" class="form-control" readonly  name="stock[]"  value ="<?php  echo $stock; ?>"></td>
                <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="text" class="form-control"  name="cant[]" required></td>
                <td data-label="Precio"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $precio ?>"></td>    
             </tr>
@@ -241,7 +250,7 @@ if(isset($_POST['codigo'])){
    </tbody>
         </table>
 
-    </div>'?>
+    '?>
     
     
         <style>
@@ -262,6 +271,35 @@ if(isset($_POST['codigo'])){
     </form>
 <?php } ?>
 </section>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+            
+    <!--   Datatables-->
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>  
 
+    <!-- searchPanes   -->
+    <script src="https://cdn.datatables.net/searchpanes/1.0.1/js/dataTables.searchPanes.min.js"></script>
+    <!-- select -->
+    <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>  
+    
+    <script>
+    $(document).ready(function(){
+        $('#example').DataTable({
+
+        dom:'ltirp', 
+             language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "sProcessing":"Procesando...", 
+            }
+        });
+
+    });
+    </script>
 </body>
 </html>

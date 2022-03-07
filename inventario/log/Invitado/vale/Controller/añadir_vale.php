@@ -7,22 +7,20 @@ include '../../../../Model/conexion.php';
      
 
 
-  $departamento = $_POST['departamento'];
+  $departamento = $_POST['depto'];
       $odt = $_POST['numero_vale'];
       $usuario = $_POST['usuario'];
 
       //crud para guardar los productos en la tabla tb_vale
-      $sql = "INSERT INTO tb_vale (codVale, departamento,usuario) VALUES ('$odt', '$departamento','$usuario')";
-      $result = mysqli_query($conn, $sql); 
-
+    $sql = "INSERT INTO tb_vale (codVale, departamento,usuario,campo,estado) VALUES ('$odt', '$departamento','$usuario','Solicitud Vale','Pendiente')";
+    $result = mysqli_query($conn, $sql); 
       
         
-         for($i = 0; $i < count($_POST['cod']); $i++)
+     for($i = 0; $i < count($_POST['cod']); $i++)
 
     {
  
     $codigo= $_POST['cod'][$i];
-    $usuario = $_POST['usuario'];
     $descripcion= $_POST['desc'][$i];
     $unidadmedida= $_POST['um'][$i];
     $stock = $_POST['cant'][$i];
@@ -35,14 +33,14 @@ include '../../../../Model/conexion.php';
 
       if ($query) {
         echo "<script> alert('Su solicitud fué realizada correctamente');
-         location.href = '../datos_vale.php';
+       location.href = '../datos_vale.php';
         </script>
         ";
       }if ($result) {
         
       }else {
         echo "<script> alert('¡Error! algo salió mal');
-         location.href = '../form_vale.php';
+       location.href = '../form_vale.php';
         </script>
         ";
       }
@@ -54,11 +52,13 @@ for ($i=0; $i < count($_POST['cod']) ; $i++) {
   $codigo= $_POST['cod'][$i];
   $stocks =$_POST['stock'][$i];   
   $stock_obtenido =$_POST['cant'][$i];
+  $precio= $_POST['cu'][$i];
   $stock_descontado=$stocks - $stock_obtenido;
    
 //sql
-$sql1="UPDATE tb_productos SET stock='$stock_descontado' WHERE codProductos ='$codigo'" ;
+$count = "SELECT codProductos, SUM(stock), fecha_registro FROM tb_productos GROUP BY codProductos";
+$sql1="UPDATE tb_productos SET stock='$stock_descontado' WHERE codProductos ='$codigo' && precio = '$precio'" ;
 $result = mysqli_query($conn, $sql1);
-
 }
+
 ?>
