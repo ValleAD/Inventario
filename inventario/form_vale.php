@@ -130,7 +130,7 @@ if(isset($_POST['codigo'])){
     <br>
     <form action="Controller/añadir_vale.php" method="post">
         
-        <div class="container" style="position: initial">
+        <div style="position: initial">
             <div class="row">
               <div class="col-6.5 col-sm-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>   
