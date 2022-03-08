@@ -13,8 +13,10 @@ $result = mysqli_query($conn, $sql);
  for($i = 0; $i < count($_POST['cod']); $i++)
     {
       $codigo_producto  = $_POST['cod1'][$i];
-      $cant_aprobada    = $_POST['cantidad_despachada'][$i];
-       $sql="UPDATE  detalle_almacen SET cantidad_despachada = '$cant_aprobada' WHERE codigoalmacen='$codigo_producto'" ;
+      $cant_aprobada = $_POST['cant'][$i];
+      $cantidad_despachada    = $_POST['cantidad_despachada'][$i];
+      $cant=$cant_aprobada-$cantidad_despachada;
+       $sql="UPDATE  detalle_almacen SET  cantidad_solicitada= '$cant' WHERE codigoalmacen='$codigo_producto'" ;
 
       $query = mysqli_query($conn, $sql);
 }

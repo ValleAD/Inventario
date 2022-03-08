@@ -218,27 +218,9 @@ if(isset($_POST['codigo'])){
                <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="text" class="form-control"  name="cant[]" required></td>
                <td data-label="Precio"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $precio ?>"></td>    
             </tr>
-            <input <?php
-                if($productos['codProductos']=="" || $productos['descripcion']=="" || $productos['unidad_medida']=="" || $productos['precio']) {
-                    echo ' #enviar{
-                margin-bottom: 5%;
-            margin-left: 1.5%; 
-            background: rgb(5, 65, 114); 
-            color: #fff; margin-bottom: 2%; 
-            border: rgb(5, 65, 114);
-            }
-            #enviar:hover{
-            background: rgb(9, 100, 175);
-            } 
-            #enviar:active{
-            transform: translateY(5px);
-            } "';
-                }else{
-                    echo ' style="display:none"';
-                }
-            ?> class="btn btn-lg" type="submit" value="Enviar" id="enviar">
+           
   
-        <?php }
+        <?php } echo' <input class="btn btn-lg" type="submit" value="Enviar" id="enviar">';
     }
     
 

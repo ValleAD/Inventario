@@ -56,8 +56,75 @@ form{
 </style>
   </head>
     <body >
+  <form style="width: 70%; height: 100%;margin: auto;padding: 1%;" action="" method="POST">
 
-<form action="" method="post" style=" width: 50%; height: 50%;padding: 1%;" >
+   <br>
+  <style type="text/css">
+            #a:hover{
+                background: transparent;
+                    
+                }
+            form{
+            margin: auto;
+        }
+    
+        @media (max-width: 952px){
+form{
+    margin-left: 15%;
+}
+.active{
+    margin-top: 2%;
+    font-size: 12px;
+}#a{
+    font-size: 13px;
+}
+        }
+    </style>
+</ol>
+<center>
+
+</center>
+<d iv class="container">
+          
+        <div class="row">
+            <div class="col-.5 col-sm-4" style="position: initial">
+
+            </div>
+        </div>
+
+
+       <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
+
+    <div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-left: 1%;margin-right: 1%;margin-top: 1%; border-radius: 5px;width: 100%;">
+    <div class="col-xs-4 "  style="background: #bfe7ed;margin-left: 1;margin-right: 1%;margin-top: 1%;border-radius: 5px;width: 100%;" >
+
+        <div class="well well-sm" style="position: all; margin: 5%">
+
+            <div class="form-group" style="position: all; margin: 2%">
+                        <label>Código del Producto</label> 
+                      <input  id="inp1" class="form-control" required type="number" name="codigo[]" id="codigo" style="margin-bottom: 2%;" placeholder="Ingrese el código del Producto">
+                  </div>   
+        </div>
+    </div>            
+</div>
+
+<div class="col-xs-4">
+    <div class="well" style="position: all; margin:5%">
+      <button id="btn-agregar" class="btn btn-block btn-default bg-success" type="button" style="color: white;">Agregar Nueva Casilla</button>                
+    </div>
+</div>
+    </div>
+    
+    <hr/>
+    
+    <div class="button21">
+        <input class="btn btn-lg" type="submit" value="Consultar" id="enviar">';
+    </div>
+</form>
+
+
+
+<!-- <form action="" method="post" style=" width: 50%; height: 50%;padding: 1%;" >
             <div class="container-fluid" style="position: initial">
                 <div class="row">
                     <div class="col-sm-10" style="position: initial">
@@ -70,34 +137,15 @@ form{
                 </div>
             </div>
       </center>
-  </form>
+  </form> -->
   <?php  
 include 'Model/conexion.php';
 if(isset($_POST['codigo'])){ ?>
-
-       <?php  for($i = 0; $i < count($_POST['codigo']); $i++){
-
-    
-    $codigo = $_POST['codigo'][$i];
-   //$sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
-
-
-   $sql = "SELECT codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE codProductos = $codigo GROUP BY codProductos, precio";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
- $precio=$productos['precio'];
-
-       $precio1=number_format($precio, 2,".",",");
-       $cantidad=$productos['SUM(stock)'];
-        $stock=number_format($cantidad, 0,",");
-
-       ?>
-  <form style="width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%;"action="Controller/añadir_compra.php" method="POST">
+  <form style="width: 100%; height: 100%;margin-bottom: 5%;margin-top: 5%;"action="Controller/añadir_compra.php" method="POST">
 
   <br>
 
-<div class="container" style="padding-top:1%">
+<div style="padding-top:1%;margin: 1%;">
 
 <div class="row">
       <div class="col-.5 col-sm-4" style="position: initial">
@@ -149,6 +197,25 @@ if(isset($_POST['codigo'])){ ?>
     </div>
 </div>
 </center>
+       <?php  for($i = 0; $i < count($_POST['codigo']); $i++){
+
+    
+    $codigo = $_POST['codigo'][$i];
+   //$sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
+
+
+   $sql = "SELECT codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE codProductos = $codigo GROUP BY codProductos, precio";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+ $precio=$productos['precio'];
+
+       $precio1=number_format($precio, 2,".",",");
+       $cantidad=$productos['SUM(stock)'];
+        $stock=number_format($cantidad, 0,",");
+
+       ?>
+
  <div class="container">
   <div class="col-xs-4 "  style="background: #bfe7ed;border-radius: 5px;margin: 1%;padding:1%" >
 <div class="well well-sm" style="position: all; margin: 1%">
@@ -222,37 +289,29 @@ if(isset($_POST['codigo'])){ ?>
     </div>
     </div>
 <br>
-            <div class="button21">
-             <button <?php  
-                if($productos['codProductos']=="" || $productos['descripcion']=="" || $productos['unidad_medida']=="" || $productos['precio']) {
-                    
-                }else{
-                    echo ' style="display:none"';
-                }?>
-         class="btn btn-success btn-lg" name="submit" style="margin-bottom:2%;">Guardar</button>
-       
-        <a id="ver" class="btn btn-lg" href="vistaProductos.php">Ver Productos</a>
-
-        </div>
+           
  
          
 
- <?php }}} ?> 
-       
-     
-         <style>
-               #ver{
-                margin-left: 2%; 
-                background: rgb(5, 65, 114); 
-                color: #fff; margin-bottom: 2%;  
-                border: rgb(5, 65, 114);
-               }
-               #ver:hover{
-                background: rgb(9, 100, 175);
-               } 
-               #ver:active{
-                transform: translateY(5px);
-               } 
+ <?php }}
+echo '<div class="button21">
+             <input class="btn btn-lg" type="submit" value="Enviar" id="enviar">
+        </div>';} ?> 
+        
+  <style>
+            #enviar{
+                margin-bottom: 5%;
+            margin-left: 1.5%; 
+            background: rgb(5, 65, 114); 
+            color: #fff; margin-bottom: 2%; 
+            border: rgb(5, 65, 114);
+            }
+            #enviar:hover{
+            background: rgb(9, 100, 175);
+            } 
+            #enviar:active{
+            transform: translateY(5px);
+            } 
         </style>
     
 
@@ -260,6 +319,36 @@ if(isset($_POST['codigo'])){ ?>
 
 </form>
 
+<script>
+    $(document).ready(function(){
+        
+        // El formulario que queremos replicar
+        var formulario_registro = $("#lo-que-vamos-a-copiar").html();
+        
+// El encargado de agregar más formularios
+$("#btn-agregar").click(function(){
+    // Agregamos el formulario
+    $("#Registro").prepend(formulario_registro);
 
+    // Agregamos un boton para retirar el formulario
+    $("#Registro .col-xs-4:first .well").append('<button class="btn-danger btn btn-block btn-retirar-registro" type="button">Retirar</button>');
+
+    // Hacemos focus en el primer input del formulario
+    $("#Registro .col-xs-4:first .well input:first").focus();
+
+    // Volvemos a cargar todo los plugins que teníamos, dentro de esta función esta el del datepicker assets/js/ini.js
+    Plugins();
+});
+        
+        // Cuando hacemos click en el boton de retirar
+        $("#Registro").on('click', '.btn-retirar-registro', function(){
+            $(this).closest('.col-xs-4').remove();
+        })
+            
+        $("#frm-registro").submit(function(){
+            return $(this).validate();
+        });
+    })
+</script>
   </body>
   </html>
