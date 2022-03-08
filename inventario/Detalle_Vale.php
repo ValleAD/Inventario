@@ -110,6 +110,12 @@ if(isset($_POST['detalle'])){
             <br>
           </form>
               <form method="POST" action="Plugin/pdf_vale.php" target="_blank">
+
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
+              </div>
             <table class="table" style="margin-bottom:3%">
                 
               <thead>

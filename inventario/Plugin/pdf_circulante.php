@@ -24,6 +24,7 @@ $num_sol = $_POST['num_sol'];
 
 <section style="font-size: 14px;">
 <p><b>SOLICITUD NO.: </b><?php echo $num_sol ?></p>
+<p><b>FECHA</b>: <?php echo $fech ?></p><br>
 <p>Encargado del Fondo Circulante de Monto Fijo Recursos Propios</p>
 <p>Hospital Nacional "Santa Teresa" de Zacatecoluca</p>
 <br>
