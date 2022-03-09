@@ -77,7 +77,7 @@ die();
 <body>
 
 <section id="section">
-<form action="form_vale.php" method="post">
+<form action="form_vale_anterior.php" method="post">
 <br>
  <div class="container">
         <div class="row">
@@ -100,7 +100,7 @@ die();
         for($x = 1; $x <= $cantidad; $x++){
 
             echo'
-            <form action="form_vale.php" method="post" style="margin-top: 2%;">
+            <form action="form_vale_anterior.php" method="post" style="margin-top: 2%;">
             <div class="container" style="position: initial">
                 <div class="row">
                     <div class="col-6.5 col-sm-4" style="position: initial">
@@ -194,10 +194,17 @@ if(isset($_POST['codigo'])){
    //$sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
 
 
-   $sql = "SELECT codProductos, nombre, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE  codProductos = '$codigo'";
+   $sql = "SELECT codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE codProductos = $codigo GROUP BY codProductos, precio";
     $result = mysqli_query($conn, $sql);
 
-    while ($productos = mysqli_fetch_array($result)){ ?>    
+    while ($productos = mysqli_fetch_array($result)){
+       $precio=$productos['precio'];
+       $cantidad=$productos['SUM(stock)'];
+       $precio1=number_format($precio, 2,".",",");
+       $stock=number_format($cantidad, 0,",");
+
+
+     ?>    
         <style type="text/css">
         #td{
         display: none;
@@ -206,7 +213,6 @@ if(isset($_POST['codigo'])){
 </style>
             <tr>
                <td data-label="Codigo"><input style="background:transparent; border: none; width: 100%; color: black;"  type="number" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
-               <td data-label="Codigo"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="nombre[]" value ="<?php  echo $productos['nombre']; ?>"></td>
                <td data-label="Descripción"><textarea  style="background:transparent; border: none; width: 100%; color: black;" cols="10" rows="1" type="text" class="form-control" readonly name="desc[]"><?php  echo $productos['descripcion']; ?></textarea></td>
                <td data-label="Unidad De Medida"><input  style="background:transparent; border: none; width: 100%; color: black;" type="text" class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
                <td data-label="Productos Disponibles"><input  style="background:transparent; border: none; width: 100%; color: gray;" type="text" class="form-control" readonly  name="stock[]"  value ="<?php  echo $productos['SUM(stock)']; ?>"></td>
