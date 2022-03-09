@@ -58,7 +58,7 @@ $final2 = 0;
 
  echo'   
 <section id="section">
-<form method="POST" action="Controller/añadir_circulante_copy.php" target="_blank">
+<form method="POST" action="Controller/añadir_circulante_copy.php" >
          
       
         <div class="row">  
@@ -176,7 +176,7 @@ $final2 = 0;
 
  echo'   
 <section id="section">
-<form method="POST" action="" target="_blank">
+<form method="POST" action="" >
          
       
         <div class="row">  

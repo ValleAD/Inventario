@@ -259,7 +259,7 @@ if(isset($_POST['detalle'])){
           </div>
             </div>
             <br></form><?php echo '
-              <form action="Plugin/pdf_bodega.php" method="POST">
+              <form action="Plugin/pdf_bodega.php" method="POST" target="_blank">
               <input readonly class="form-control"  type="hidden" value="' .$productos1['departamento']. '" name="depto">
                 <input readonly class="form-control"  type="hidden" value="' .$productos1['codBodega']. '" name="odt">
                 <input readonly class="form-control"  type="hidden" value="' .$productos1['usuario']. '" name="usuario">

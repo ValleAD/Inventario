@@ -58,7 +58,7 @@ $final2 = 0;
  echo'   
 
     <section style="margin:1%;padding: 1%; border-radius: 5px; background: white; ">
-<form id="form" method="POST" action="Controller/añadir_almacen_copy.php" target="_blank">
+<form id="form" method="POST" action="Controller/añadir_almacen_copy.php" >
          
       
         <div class="row">  
@@ -191,7 +191,7 @@ $num_sol = $_POST['id'];
  while ($datos_sol = mysqli_fetch_array($result)){
 
  echo'   
-<form id="form" method="POST" action="" target="_blank">
+<form id="form" method="POST" action="" >
          
       
         <div class="row">  
