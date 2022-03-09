@@ -84,7 +84,7 @@ form{
 <center>
 
 </center>
-<d iv class="container">
+<div class="container">
           
         <div class="row">
             <div class="col-.5 col-sm-4" style="position: initial">
@@ -118,7 +118,7 @@ form{
     <hr/>
     
     <div class="button21">
-        <input class="btn btn-lg" type="submit" value="Consultar" id="enviar">';
+        <input class="btn btn-lg" type="submit" value="Consultar" id="enviar">
     </div>
 </form>
 
@@ -296,7 +296,9 @@ if(isset($_POST['codigo'])){ ?>
  <?php }}
 echo '<div class="button21">
              <input class="btn btn-lg" type="submit" value="Enviar" id="enviar">
-        </div>';} ?> 
+        </div>';
+        
+        } ?> 
         
   <style>
             #enviar{

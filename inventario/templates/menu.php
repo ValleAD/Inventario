@@ -74,7 +74,9 @@ background:burlywood;
                     <a id="a" href="#"><span class="icon-rocket"></span>Soli. Bodega<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_bodega.php">Mostrar</a></li>
-                        <li><a id="b" href="form_bodega.php">Nuevo</a></li>
+                        <li><a id="b" href="form_bodega.php">Buscar por codigo</a></li>
+                        <li><a id="b" href="form_bodega_varios.php">Seleccionar varios</a></li>
+
                     </ul>
                 </li>
                 <li class="submenu">
