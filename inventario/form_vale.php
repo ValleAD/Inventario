@@ -89,7 +89,7 @@ die();
 
 <section  style="margin:2%">
 
-            <form action="form_bodega.php" method="post" style="background: transparent;" >
+            <form action="" method="post" style="background: transparent;" >
            
      <div class="container" style="background:white;border-radius:15px;">
           
@@ -205,6 +205,7 @@ if(isset($_POST['codigo'])){
                 <th style="width: 15%;">Productos Disponibles</th>
                 <th style="width: 15%;">Cantidad</th>
                 <th style="width: 15%;">Costo unitario</th>
+                <th>Eliminar fila</th>
             </tr>
         </thead>
         <tbody>
@@ -244,7 +245,8 @@ if(isset($_POST['codigo'])){
                <td data-label="Unidad De Medida"><input  style="background:transparent; border: none; width: 100%; color: black;" type="text" class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
                <td data-label="Productos Disponibles"><input  style="background:transparent; border: none; width: 100%; color: gray;" type="text" class="form-control" readonly  name="stock[]"  value ="<?php  echo $stock; ?>"></td>
                <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="text" class="form-control"  name="cant[]" required></td>
-               <td data-label="Precio"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $precio ?>"></td>    
+               <td data-label="Precio"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $precio ?>"></td> 
+               <td><input type="button" class="borrar" value="Eliminar" /></td>   
             </tr>
            
   
@@ -321,5 +323,13 @@ $("#btn-agregar").click(function(){
         });
     })
 </script>
+<script>
+    $(document).on('click', '.borrar', function (event) {
+    event.preventDefault();
+    $(this).closest('tr').remove();
+});
+
+</script>
+
 </body>
 </html>
