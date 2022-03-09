@@ -67,6 +67,7 @@ background:burlywood;
                         <li><a id="b" href="solicitudes_vale.php">Mostrar</a></li>
                         <li><a id="b" href="form_vale.php">Buscar por código</a></li>
                         <li><a id="b" href="form_vale1.php">Seleccionar varios</a></li>
+                        <li><a id="b" href="form_vale_anterior.php">Vale anterior</a></li>
                     </ul>
                 </li>
                 
