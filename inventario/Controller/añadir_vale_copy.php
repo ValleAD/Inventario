@@ -10,6 +10,7 @@ $estado =$_POST['estado'];
 $sql="UPDATE  tb_vale SET estado = '$estado' WHERE codVale='$nSolicitud'" ;
 
 $result = mysqli_query($conn, $sql);
+if ($estado=='Aprobado') {
  if ($result)  {
         echo "<script> alert('El Estado fue Cambiado correctamente')
        location.href = '../solicitudes_vale.php';
@@ -56,5 +57,10 @@ $result = mysqli_query($conn, $sql);
 //         ";
     //     }
     // }
-  
+   }elseif ($estado=='Rechazado') {
+     echo "<script> alert('Producto Rechazado')
+        location.href = '../solicitudes_vale.php';
+        </script>
+        ";
+  }
   ?>

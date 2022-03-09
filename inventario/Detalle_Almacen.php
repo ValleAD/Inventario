@@ -108,7 +108,7 @@ $final2 = 0;
                 <th style="width: 35%;">Costo unitario</th>
                 <th style="width: 35%;">Total</th>
               </tr>
-                <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
+                <td id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>
            </thead>
             <tbody>
 <?php 
@@ -256,7 +256,7 @@ $num_sol = $_POST['id'];
                 <th>Costo unitario</th>
                 <th>Total</th>
               </tr>
-                <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
+                <td id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>
            </thead>
             <tbody>
 <?php 

@@ -10,6 +10,7 @@ $estado =$_POST['estado'];
 $sql="UPDATE  tb_almacen SET estado = '$estado' WHERE codAlmacen='$nSolicitud'" ;
 
 $result = mysqli_query($conn, $sql);
+if ($estado=='Aprobado') {
  for($i = 0; $i < count($_POST['cod']); $i++)
     {
       $codigo_producto  = $_POST['cod1'][$i];
@@ -46,5 +47,12 @@ $result = mysqli_query($conn, $sql);
         ";
         }
     }
+  }elseif ($estado=='Rechazado') {
+     echo "<script> alert('Producto Rechazado')
+        location.href = '../solicitudes_almacen.php';
+        </script>
+        ";
   }
+  }
+   
   ?>

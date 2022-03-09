@@ -50,9 +50,9 @@ $total = 0;
 $final = 0;
 $total2 = 0;
 $final2 = 0;
-
+$a=$_POST['num_sol'];
    include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_circulante ORDER BY fecha_solicitud DESC LIMIT 1";
+    $sql = "SELECT * FROM tb_circulante WHERE codCirculante='$a' ORDER BY fecha_solicitud DESC LIMIT 1";
     $result = mysqli_query($conn, $sql);
  while ($datos_sol = mysqli_fetch_array($result)){
 
@@ -168,9 +168,10 @@ $total = 0;
 $final = 0;
 $total2 = 0;
 $final2 = 0;
-
    include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_circulante ORDER BY fecha_solicitud DESC LIMIT 1";
+
+$id=$_POST['id'];
+    $sql = "SELECT * FROM tb_circulante  WHERE codCirculante='$id' ORDER BY fecha_solicitud DESC LIMIT 1";
     $result = mysqli_query($conn, $sql);
  while ($datos_sol = mysqli_fetch_array($result)){
 
@@ -181,16 +182,16 @@ $final2 = 0;
       
         <div class="row">  
 
-          <div class="col-6 col-sm-3" style="position: initial">
+          <div class="col-6 col-sm-4" style="position: initial">
             <label style="font-weight: bold;">N° de Solicitud:</label>
             <input readonly class="form-control"  type="text" value="' .$datos_sol['codCirculante']. '" name="num_sol">
           </div>
 
-          <div class="col-6 col-sm-3" style="position: initial">
+          <div class="col-6 col-sm-4" style="position: initial">
             <label style="font-weight: bold;">Fecha:</label>
               <input readonly class="form-control"  type="text" value="' .date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])). '" name="fech">
           </div>
-           <div class="col-8 col-sm-3" style="position: initial">
+           <div class="col-8 col-sm-4" style="position: initial">
             <label style="font-weight: bold;">Estado:</label>';?>
               <input <?php
                 if($datos_sol['estado']=='Pendiente') {

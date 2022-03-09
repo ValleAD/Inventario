@@ -10,7 +10,8 @@ $estado =$_POST['estado'];
 $sql="UPDATE  tb_compra SET estado = '$estado' WHERE nSolicitud='$nSolicitud'" ;
 
 $result = mysqli_query($conn, $sql);
- for($i = 0; $i < count($_POST['cod']); $i++)
+if ($estado=='Aprobado') {
+   for($i = 0; $i < count($_POST['cod']); $i++)
     {
       $codigo_producto  = $_POST['cod1'][$i];
       $cant_aprobada    = $_POST['cantidad_despachada'][$i];
@@ -18,6 +19,7 @@ $result = mysqli_query($conn, $sql);
 
       $query = mysqli_query($conn, $sql);
 }
+
      for($i = 0; $i < count($_POST['cod']); $i++)
     {
       $codigo_producto  = $_POST['cod'][$i];
@@ -44,5 +46,12 @@ $result = mysqli_query($conn, $sql);
         ";
         }
     }
+  }elseif ($estado=='Rechazado') {
+     echo "<script> alert('Producto Rechazado')
+        location.href = '../solicitudes_compra.php';
+        </script>
+        ";
   }
+}
+
   ?>

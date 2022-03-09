@@ -10,7 +10,7 @@ $estado =$_POST['estado'];
      $sql="UPDATE  tb_bodega SET estado = '$estado'  WHERE codBodega ='$nSolicitud'" ;
  
 $result = mysqli_query($conn, $sql);
-
+if ($estado=='Aprobado') {
 for($i = 0; $i < count($_POST['cod']); $i++)
     {
       $nSolicitud=$_POST['odt'][$i];
@@ -44,4 +44,10 @@ $result = mysqli_query($conn, $sql);
         ";
         }
     }
+     }elseif ($estado=='Rechazado') {
+     echo "<script> alert('Producto Rechazado')
+        location.href = '../solicitudes_bodega.php';
+        </script>
+        ";
+  }
   
