@@ -95,14 +95,14 @@ form{
 
        <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
 
-    <div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-left: 1%;margin-right: 1%;margin-top: 1%; border-radius: 5px;width: 100%;">
+   <div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-left: 1%;margin-right: 1%;margin-top: 1%; border-radius: 5px;width: 70%;">
     <div class="col-xs-4 "  style="background: #bfe7ed;margin-left: 1;margin-right: 1%;margin-top: 1%;border-radius: 5px;width: 100%;" >
 
-        <div class="well well-sm" style="position: all; margin: 5%">
+        <div class="well well-sm" style="position: all; margin: 1%">
 
-            <div class="form-group" style="position: all; margin: 2%">
+            <div style="position: all; margin: 1%;">
                         <label>Código del Producto</label> 
-                      <input  id="inp1" class="form-control" required type="number" name="codigo[]" id="codigo" style="margin-bottom: 2%;" placeholder="Ingrese el código del Producto">
+                      <input  class="form-control" required type="number" name="codigo[]"  style="width: 100%;" placeholder="Ingrese el código del Producto">
                   </div>   
         </div>
     </div>            
@@ -123,21 +123,6 @@ form{
 </form>
 
 
-
-<!-- <form action="" method="post" style=" width: 50%; height: 50%;padding: 1%;" >
-            <div class="container-fluid" style="position: initial">
-                <div class="row">
-                    <div class="col-sm-10" style="position: initial">
-                    <input  id="inp1" class="form-control" required type="number" name="codigo[]" id="codigo" style="margin-bottom: 2%;" placeholder="Ingrese el código del Producto">
-
-                    </div>
-                     <div style="position: initial">
-                      <input   type="submit" class=" btn btn-success" value="Buscar" name="buscar" id="buscar" >
-                    </div>
-                </div>
-            </div>
-      </center>
-  </form> -->
   <?php  
 include 'Model/conexion.php';
 if(isset($_POST['codigo'])){ ?>

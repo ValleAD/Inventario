@@ -86,23 +86,19 @@ form{
 </center>
 <div class="container">
           
-        <div class="row">
-            <div class="col-.5 col-sm-4" style="position: initial">
-
-            </div>
-        </div>
+    
 
 
        <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
 
-    <div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-left: 1%;margin-right: 1%;margin-top: 1%; border-radius: 5px;width: 100%;">
+    <div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-left: 1%;margin-right: 1%;margin-top: 1%; border-radius: 5px;width: 70%;">
     <div class="col-xs-4 "  style="background: #bfe7ed;margin-left: 1;margin-right: 1%;margin-top: 1%;border-radius: 5px;width: 100%;" >
 
-        <div class="well well-sm" style="position: all; margin: 5%">
+        <div class="well well-sm" style="position: all; margin: 1%">
 
-            <div class="form-group" style="position: all; margin: 2%">
+            <div style="position: all; margin: 1%;">
                         <label>Código del Producto</label> 
-                      <input  id="inp1" class="form-control" required type="number" name="codigo[]" id="codigo" style="margin-bottom: 2%;" placeholder="Ingrese el código del Producto">
+                      <input  class="form-control" required type="number" name="codigo[]"  style="width: 100%;" placeholder="Ingrese el código del Producto">
                   </div>   
         </div>
     </div>            
@@ -110,7 +106,7 @@ form{
 
 <div class="col-xs-4">
     <div class="well" style="position: all; margin:5%">
-      <button id="btn-agregar" class="btn btn-block btn-default bg-success" type="button" style="color: white;">Agregar Nueva Casilla</button>                
+      <button id="btn-agregar" class="btn btn-block  bg-success" type="button" style="color: white;">Agregar Nueva Casilla</button>                
     </div>
 </div>
     </div>

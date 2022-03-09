@@ -88,6 +88,31 @@ die();
 <body>
 
 <section  style="margin:2%">
+    <?php
+
+
+if(isset($_POST["dupe"]) && !empty($_POST["input"])){
+$input = $_POST["input"];
+$newstring = "";
+
+for($i = 0; $i < strlen($input); $i++){
+$newstring .= str_repeat(substr($input, $i,1), 2);
+}
+
+echo $newstring;
+}
+
+if(isset($_POST["undupe"]) && !empty($_POST["input"])){
+
+}
+?>
+
+<form method="post">
+<input type="text" name="input" placeholder="Input"></input><br><br>
+
+<button type="submit" name="dupe">Dupe</button>
+<button type="submit" name="undupe">Undupe</button>
+</form>
 <center>
             <form action="form_vale.php" method="post" style=" width: 50%;" >
             <div class="container-fluid" style="position: initial">
