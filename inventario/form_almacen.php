@@ -20,7 +20,7 @@ die();
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <title>Solicitud de Compra</title>
+    <title>Solicitud de Almacén</title>
         
         <meta charset="utf-8" />
          <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -126,9 +126,7 @@ form{
   <?php  
 include 'Model/conexion.php';
 if(isset($_POST['codigo'])){ ?>
-  <form style="width: 100%; height: 100%;margin-bottom: 5%;margin-top: 5%;"action="Controller/añadir_compra.php" method="POST">
-
-  <br>
+  <form style="width: 100%; height: 100%;margin-bottom: 5%;margin-top: 5%;"action="Controller/almacen.php" method="POST">
 
 <div style="padding-top:1%;margin: 1%;">
 
@@ -150,25 +148,9 @@ if(isset($_POST['codigo'])){ ?>
     </div>
 
     <div class="col-6.5 col-sm-4" style="position: initial">
-    <font color="black"><label>Dependencia que Solicita</label></font>   
-    <input type="text"  class="form-control" name="dependencia" id="um" required style="background:transparent;" value="Mantenimiento" readonly>
-                     
-    </div>
-    <div class="col-6.5 col-sm-4" style="position: initial">
-    <font color="black"><label>Plazo y Numero de Entregas</label></font> 
-      <input  style="background:transparent; color: black;" class="form-control" type="text" name="plazo" id="como3" required>
-      <br>
-    </div>
-    <div class="col-6.5 col-sm-4" style="position: initial">
-    <font color="black"><label>Unidad Tecnica</label> </font>
-      <input style="background:transparent; color: black;"  class="form-control" type="text" name="unidad_tecnica" id="como3" required>
-      <br>
-    </div>
-    <div class="col-6.5 col-sm-4" style="position: initial">
-    <font color="black"><label>Suministros Solicita</label>  </font>
-      <input style="background:transparent; color: black;"  class="form-control" type="text" name="descripcion_solicitud" id="como3" required>
-      <br>
-  </div>
+    <font color="black"><label>Departamento</label></font>   
+    <input type="text"  class="form-control" name="depto" id="um" required style="background:transparent;" value="Mantenimiento" readonly>
+                     </div>
   <div class="col-6.5 col-sm-4" style="position: initial">
   <?php     $cliente =$_SESSION['signin'];
     $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
@@ -280,7 +262,7 @@ if(isset($_POST['codigo'])){ ?>
 
  <?php }}
 echo '<div class="button21">
-             <input class="btn btn-lg" type="submit" value="Enviar" id="enviar">
+             <input class="btn btn-lg" name="submit" type="submit" value="Enviar" id="enviar">
         </div>';} ?> 
         
   <style>
