@@ -71,7 +71,6 @@ die();
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
      <link rel="stylesheet" type="text/css" href="styles/estilo.css"> 
      <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
-
           <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -162,7 +161,9 @@ if(isset($_POST['codigo'])){
                 <label id="inp1">Departamento que solicita</b></label>  
                  <select  class="form-control" name="depto" id="depto" required>
                         <option selected disabled value="">Selecione</option>
-                      ';?>
+                      ';
+                      ?>
+
                       <?php 
                         $sql = "SELECT * FROM selects_departamento";
                         $result = mysqli_query($conn, $sql);
@@ -291,24 +292,6 @@ if(isset($_POST['codigo'])){
     <!-- select -->
     <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>  
     
-    <script>
-    $(document).ready(function(){
-        $('#example').DataTable({
-
-        dom:'ltirp', 
-             language: {
-                "lengthMenu": "Mostrar _MENU_ registros",
-                "zeroRecords": "No se encontraron resultados",
-                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sSearch": "Buscar:",
-                "sProcessing":"Procesando...", 
-            }
-        });
-
-    });
-    </script>
     <script>
     $(document).ready(function(){
         

@@ -290,24 +290,36 @@ if(isset($_POST['codigo'])){
     <script src="https://cdn.datatables.net/searchpanes/1.0.1/js/dataTables.searchPanes.min.js"></script>
     <!-- select -->
     <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>  
-    
     <script>
     $(document).ready(function(){
-        $('#example').DataTable({
+        
+        // El formulario que queremos replicar
+        var formulario_registro = $("#lo-que-vamos-a-copiar").html();
+        
+// El encargado de agregar más formularios
+$("#btn-agregar").click(function(){
+    // Agregamos el formulario
+    $("#Registro").prepend(formulario_registro);
 
-        dom:'ltirp', 
-             language: {
-                "lengthMenu": "Mostrar _MENU_ registros",
-                "zeroRecords": "No se encontraron resultados",
-                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sSearch": "Buscar:",
-                "sProcessing":"Procesando...", 
-            }
+    // Agregamos un boton para retirar el formulario
+    $("#Registro .col-xs-4:first .well").append('<button class="btn-danger btn btn-block btn-retirar-registro" type="button">Retirar</button>');
+
+    // Hacemos focus en el primer input del formulario
+    $("#Registro .col-xs-4:first .well input:first").focus();
+
+    // Volvemos a cargar todo los plugins que teníamos, dentro de esta función esta el del datepicker assets/js/ini.js
+    Plugins();
+});
+        
+        // Cuando hacemos click en el boton de retirar
+        $("#Registro").on('click', '.btn-retirar-registro', function(){
+            $(this).closest('.col-xs-4').remove();
+        })
+            
+        $("#frm-registro").submit(function(){
+            return $(this).validate();
         });
-
-    });
-    </script>
+    })
+</script>
 </body>
 </html>
