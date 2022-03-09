@@ -185,7 +185,8 @@ function confirmaion(e) {
 <script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap4.js"></script>
     <script>
     $(document).ready(function(){
- $('#example').DataTable({        
+ $('#example').DataTable({    
+
         language: {
                 "lengthMenu": "Mostrar _MENU_ registros",
                 "zeroRecords": "No se encontraron resultados",
@@ -203,27 +204,8 @@ function confirmaion(e) {
             },
         //para usar los botones   
         responsive: "true",
-        dom: 'Bfrtilp',       
-        buttons:[ 
-            {
-                extend:    'excelHtml5',
-                text:      '<i class="fas fa-file-excel"></i> ',
-                titleAttr: 'Exportar a Excel',
-                className: 'btn btn-success'
-            },
-            {
-                extend:    'pdfHtml5',
-                text:      '<i class="fas fa-file-pdf"></i> ',
-                titleAttr: 'Exportar a PDF',
-                className: 'btn btn-danger'
-            },
-            {
-                extend:    'print',
-                text:      '<i class="fa fa-print"></i> ',
-                titleAttr: 'Imprimir',
-                className: 'btn btn-info'
-            },
-        ]           
+        paging: false,
+        dom: 'Bfrtil',          
     });     
 
     });
