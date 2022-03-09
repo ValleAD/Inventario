@@ -81,9 +81,7 @@ form{
         }
     </style>
 </ol>
-<center>
 
-</center>
 <div class="container">
           
         <div class="row">
@@ -120,28 +118,12 @@ form{
     <div class="button21">
         <input class="btn btn-lg" type="submit" value="Consultar" id="enviar">
     </div>
+</div>
 </form>
-
-
-
-<!-- <form action="" method="post" style=" width: 50%; height: 50%;padding: 1%;" >
-            <div class="container-fluid" style="position: initial">
-                <div class="row">
-                    <div class="col-sm-10" style="position: initial">
-                    <input  id="inp1" class="form-control" required type="number" name="codigo[]" id="codigo" style="margin-bottom: 2%;" placeholder="Ingrese el código del Producto">
-
-                    </div>
-                     <div style="position: initial">
-                      <input   type="submit" class=" btn btn-success" value="Buscar" name="buscar" id="buscar" >
-                    </div>
-                </div>
-            </div>
-      </center>
-  </form> -->
   <?php  
 include 'Model/conexion.php';
 if(isset($_POST['codigo'])){ ?>
-  <form style="width: 100%; height: 100%;margin-bottom: 5%;margin-top: 5%;"action="Controller/añadir_compra.php" method="POST">
+  <form style="width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%;"action="Controller/añadir_circulante.php" method="POST">
 
   <br>
 
@@ -160,40 +142,11 @@ if(isset($_POST['codigo'])){ ?>
           echo $datos_sol['nSolicitud']; 
           echo '</p>'; }
           ?>
-          <label id="inp1">Solicitud N°</b></label>   
-          <input id="inp1"class="form-control" type="number" name="nsolicitud" required> 
+            <label id="inp1">Solicitud N°</b></label>   
+                <input id="inp1"class="form-control" type="number" name="solicitud_no" required="">
     </div>
 
-    <div class="col-6.5 col-sm-4" style="position: initial">
-    <font color="black"><label>Dependencia que Solicita</label></font>   
-    <input type="text"  class="form-control" name="dependencia" id="um" required style="background:transparent;" value="Mantenimiento" readonly>
-                     
-    </div>
-    <div class="col-6.5 col-sm-4" style="position: initial">
-    <font color="black"><label>Plazo y Numero de Entregas</label></font> 
-      <input  style="background:transparent; color: black;" class="form-control" type="text" name="plazo" id="como3" required>
-      <br>
-    </div>
-    <div class="col-6.5 col-sm-4" style="position: initial">
-    <font color="black"><label>Unidad Tecnica</label> </font>
-      <input style="background:transparent; color: black;"  class="form-control" type="text" name="unidad_tecnica" id="como3" required>
-      <br>
-    </div>
-    <div class="col-6.5 col-sm-4" style="position: initial">
-    <font color="black"><label>Suministros Solicita</label>  </font>
-      <input style="background:transparent; color: black;"  class="form-control" type="text" name="descripcion_solicitud" id="como3" required>
-      <br>
-  </div>
-  <div class="col-6.5 col-sm-4" style="position: initial">
-  <?php     $cliente =$_SESSION['signin'];
-    $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
-    while ($consulta =mysqli_fetch_array($data)) {
- ?>
-    <font color="black"><label>Encargado</label> </font>
-      <input style="cursor: not-allowed; color: black;"  class="form-control" type="text" name="usuario" id="como3" required readonly value="<?php  echo $consulta['firstname']?> <?php  echo $consulta['lastname']?>">
-      <br>
-      <?php }?>
-    </div>
+    
     </div>
 </div>
 </center>
@@ -220,40 +173,16 @@ if(isset($_POST['codigo'])){ ?>
   <div class="col-xs-4 "  style="background: #bfe7ed;border-radius: 5px;margin: 1%;padding:1%" >
 <div class="well well-sm" style="position: all; margin: 1%">
 
-     <div class="form-group" style="position: all; margin: 2%">
-                      <label>Categoría</label> 
-                      <select  class="form-control" name="categoria[]" id="um" >
-                        <option><?php echo $productos['categoria']?></option>
-                        <?php 
-                        $sql = "SELECT * FROM  selects_categoria";
-                        $result = mysqli_query($conn, $sql);
-
-                        while ($productos1 = mysqli_fetch_array($result)){ 
-
-                          echo'  <option>'.$productos1['categoria'].'</option>
-                      ';   
-                     } ?>
-                       
-                    
-                      </select>
-                  </div> 
-
                   <div class="form-group" style="position: all; margin: 2%">
                       <label>Código</label> 
                       <input  type="number" name="cod[]" class="form-control" id="busqueda" placeholder="Código de producto " value="<?php echo $productos['codProductos'] ?>" required>
                   </div>
 
                   <div class="form-group" style="position: all; margin: 2%">
-                        <label>Codificación de Catálogo de NA</label> 
-                      <input  type="number" name="cat[]" class="form-control" placeholder="Código" value="<?php echo $productos['catalogo']?>">
-                  </div>
-
-                  <div class="form-group" style="position: all; margin: 2%">
-                    <label>Descripción Completa</label>
+                    <label>Descripción de material</label>
                     <input type="text" name="desc[]" class="form-control" placeholder="Descripción" required value="<?php echo $productos['descripcion']?>">
                   </div>
 
-                  
                      <div class="form-group" style="position: all; margin: 2%">
                         <label>Unidad de medida (U/M)</label>
                         <div class="col-md-16" >
@@ -277,13 +206,13 @@ if(isset($_POST['codigo'])){ ?>
                     </div>
             
             <div class="form-group" style="position: all; margin: 2%">
-                <label>Cantidad</label>
-                <input type="number" name="cant[]" class="form-control" placeholder="Ingrese la Cantidad" required value="<?php echo $stock?>">
+                <label>Cantidad Solicitada</label>
+                <input type="number" name="soli[]" class="form-control" placeholder="Ingrese la Cantidad" required value="<?php echo $stock?>">
             </div>
 
            <div class="form-group" style="position: all; margin: 2%">
                 <label>Costo Unitario (Estimado)</label>
-               <input  class="form-control" type="number" step="0.01" name="cu[]" placeholder="Costo unitario" value="<?php echo  $productos['precio'] ?>" required><br>
+               <input  class="form-control" type="number" step="0.01" name="costo[]" placeholder="Costo unitario" value="<?php echo  $productos['precio'] ?>" required><br>
             </div>
             </div>
     </div>

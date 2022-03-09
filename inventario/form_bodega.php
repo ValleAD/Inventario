@@ -89,20 +89,47 @@ die();
 <body>
 
 <section  style="margin:2%">
-<center>
-            <form action="form_bodega.php" method="post" style=" width: 50%;" >
-            <div class="container-fluid" style="position: initial">
-                <div class="row">
-                    <div class="col-sm-10" style="position: initial">
-                    <input  id="inp1" class="form-control" required type="number" name="codigo[]" id="codigo" style="margin-bottom: 2%;" placeholder="Ingrese el código del Producto">
 
-                    </div>
-                     <div style="position: initial">
-                      <input   type="submit" class=" btn btn-success" value="Buscar" name="buscar" id="buscar" >
-                    </div>
-                </div>
+            <form action="form_bodega.php" method="post" style="background: transparent;" >
+           
+     <div class="container" style="background:white;border-radius:15px;">
+          
+        <div class="row">
+            <div class="col-.5 col-sm-4" style="position: initial">
+
             </div>
-      </center>
+        </div>
+
+
+       <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
+
+   <div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-left: 1%;margin-right: 1%;margin-top: 1%; border-radius: 5px;width: 70%;">
+    <div class="col-xs-4 "  style="background: #bfe7ed;margin-left: 1;margin-right: 1%;margin-top: 1%;border-radius: 5px;width: 100%;" >
+
+        <div class="well well-sm" style="position: all; margin: 1%">
+
+            <div style="position: all; margin: 1%;">
+                        <label>Código del Producto</label> 
+                      <input  class="form-control" required type="number" name="codigo[]"  style="width: 100%;" placeholder="Ingrese el código del Producto">
+                  </div>   
+        </div>
+    </div>            
+</div>
+
+<div class="col-xs-4">
+    <div class="well" style="position: all; margin:5%">
+      <button id="btn-agregar" class="btn btn-block btn-default bg-success" type="button" style="color: white;">Agregar Nueva Casilla</button>                
+    </div>
+</div>
+    </div>
+    
+    <hr/>
+    
+    <div class="button21">
+        <input class="btn btn-lg" type="submit" value="Consultar" id="buscar">
+    </div>
+</div>
+</form>
         <style>
             #buscar{
             margin-bottom: 5%;
@@ -220,7 +247,7 @@ if(isset($_POST['codigo'])){
             </tr>
            
   
-        <?php } echo' <input class="btn btn-lg" type="submit" value="Enviar" id="enviar">';
+        <?php } echo' ';
     }
     
 
@@ -229,11 +256,13 @@ if(isset($_POST['codigo'])){
    </tbody>
         </table>
 
+<input class="btn btn-lg" type="submit" value="Enviar" id="enviar">
     '?>
     
     
         <style>
             #enviar{
+                margin-top: 2%;
                 margin-bottom: 5%;
             margin-left: 1.5%; 
             background: rgb(5, 65, 114); 
@@ -280,5 +309,36 @@ if(isset($_POST['codigo'])){
 
     });
     </script>
+    <script>
+    $(document).ready(function(){
+        
+        // El formulario que queremos replicar
+        var formulario_registro = $("#lo-que-vamos-a-copiar").html();
+        
+// El encargado de agregar más formularios
+$("#btn-agregar").click(function(){
+    // Agregamos el formulario
+    $("#Registro").prepend(formulario_registro);
+
+    // Agregamos un boton para retirar el formulario
+    $("#Registro .col-xs-4:first .well").append('<button class="btn-danger btn btn-block btn-retirar-registro" type="button">Retirar</button>');
+
+    // Hacemos focus en el primer input del formulario
+    $("#Registro .col-xs-4:first .well input:first").focus();
+
+    // Volvemos a cargar todo los plugins que teníamos, dentro de esta función esta el del datepicker assets/js/ini.js
+    Plugins();
+});
+        
+        // Cuando hacemos click en el boton de retirar
+        $("#Registro").on('click', '.btn-retirar-registro', function(){
+            $(this).closest('.col-xs-4').remove();
+        })
+            
+        $("#frm-registro").submit(function(){
+            return $(this).validate();
+        });
+    })
+</script>
 </body>
 </html>

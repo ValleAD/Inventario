@@ -88,47 +88,47 @@ die();
 <body>
 
 <section  style="margin:2%">
-    <?php
 
+            <form action="form_bodega.php" method="post" style="background: transparent;" >
+           
+     <div class="container" style="background:white;border-radius:15px;">
+          
+        <div class="row">
+            <div class="col-.5 col-sm-4" style="position: initial">
 
-if(isset($_POST["dupe"]) && !empty($_POST["input"])){
-$input = $_POST["input"];
-$newstring = "";
-
-for($i = 0; $i < strlen($input); $i++){
-$newstring .= str_repeat(substr($input, $i,1), 2);
-}
-
-echo $newstring;
-}
-
-if(isset($_POST["undupe"]) && !empty($_POST["input"])){
-
-}
-?>
-
-<form method="post">
-<input type="text" name="input" placeholder="Input"></input><br><br>
-
-<button type="submit" name="dupe">Dupe</button>
-<button type="submit" name="undupe">Undupe</button>
-</form>
-<center>
-            <form action="form_vale.php" method="post" style=" width: 50%;" >
-            <div class="container-fluid" style="position: initial">
-                <div class="row">
-                    <div class="col-sm-10" style="position: initial">
-                    <input  id="inp1" class="form-control" required type="number" name="codigo[]" id="codigo" style="margin-bottom: 2%;" placeholder="Ingrese el código del Producto">
-
-                    </div>
-                     <div style="position: initial">
-                      <input   type="submit" class=" btn btn-success" value="Buscar" name="buscar" id="buscar" >
-                    </div>
-                </div>
             </div>
-      </center>
+        </div>
+
+
+       <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
+
+   <div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-left: 1%;margin-right: 1%;margin-top: 1%; border-radius: 5px;width: 70%;">
+    <div class="col-xs-4 "  style="background: #bfe7ed;margin-left: 1;margin-right: 1%;margin-top: 1%;border-radius: 5px;width: 100%;" >
+
+        <div class="well well-sm" style="position: all; margin: 1%">
+
+            <div style="position: all; margin: 1%;">
+                        <label>Código del Producto</label> 
+                      <input  class="form-control" required type="number" name="codigo[]"  style="width: 100%;" placeholder="Ingrese el código del Producto">
+                  </div>   
+        </div>
+    </div>            
+</div>
+
+<div class="col-xs-4">
+    <div class="well" style="position: all; margin:5%">
+      <button id="btn-agregar" class="btn btn-block btn-default bg-success" type="button" style="color: white;">Agregar Nueva Casilla</button>                
+    </div>
+</div>
+    </div>
     
-       
+    <hr/>
+    
+    <div class="button21">
+        <input class="btn btn-lg" type="submit" value="Consultar" id="buscar">
+    </div>
+</div>
+</form>
         <style>
             #buscar{
             margin-bottom: 5%;
@@ -246,25 +246,7 @@ if(isset($_POST['codigo'])){
                <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="text" class="form-control"  name="cant[]" required></td>
                <td data-label="Precio"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $precio ?>"></td>    
             </tr>
-            <input <?php
-                if($productos['codProductos']=="" || $productos['descripcion']=="" || $productos['unidad_medida']=="" || $productos['precio']) {
-                    echo ' #enviar{
-                margin-bottom: 5%;
-            margin-left: 1.5%; 
-            background: rgb(5, 65, 114); 
-            color: #fff; margin-bottom: 2%; 
-            border: rgb(5, 65, 114);
-            }
-            #enviar:hover{
-            background: rgb(9, 100, 175);
-            } 
-            #enviar:active{
-            transform: translateY(5px);
-            } "';
-                }else{
-                    echo ' style="display:none"';
-                }
-            ?> class="btn btn-lg" type="submit" value="Enviar" id="enviar">
+           
   
         <?php }
     }
@@ -277,9 +259,10 @@ if(isset($_POST['codigo'])){
 
     '?>
     
-    
+     <input class="btn btn-lg" type="submit" value="Enviar" id="enviar">
         <style>
             #enviar{
+                margin-top: 2%;
                 margin-bottom: 5%;
             margin-left: 1.5%; 
             background: rgb(5, 65, 114); 
