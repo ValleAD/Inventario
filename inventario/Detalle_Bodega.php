@@ -276,6 +276,7 @@ if(isset($_POST['detalle'])){
                   <th style="width: 175%;">Descripción</th>
                   <th style="width: 45%;">Unidad de Medida</th>
                   <th style="width: 25%;">Cantidad</th>
+                  <th style="width: 25%;">Cantidad Despachada</th>
                   <th style="width: 30%;">Costo unitario</th>
                   <th style="width: 30%;">Total</th>
                 </tr>
@@ -295,6 +296,7 @@ while ($productos = mysqli_fetch_array($result)){
       $codigo=$productos['codigo'];
       $descripcion=$productos['descripcion'];
       $um=$productos['unidad_medida'];
+      $cantidad_despachada=$productos['cantidad_despachada'];
       $precio=$productos['precio'];
       $fecha=$productos['fecha_registro'];
         $precio2=number_format($precio, 2,".",",");
@@ -308,7 +310,7 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="<?php echo $codigo ?>"></td>
         <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;  height: 75px; text-align: left"  name="desc[]" readonly style="border: none"><?php echo $descripcion ?></textarea></td>
         <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="<?php echo $um ?>"></td>
-        <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="<?php echo $stock ?>"></td>
+        <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="<?php echo $stock ?>"></td><td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cantidad_despachada[]" readonly value="<?php echo $cantidad_despachada ?>"></td>
         
         <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly step="0.01" value="$<?php echo $precio2 ?>"></td>
    
@@ -321,7 +323,7 @@ while ($productos = mysqli_fetch_array($result)){
 
   <?php } ?> 
 
-      <th colspan="5">SubTotal</th>
+      <th colspan="6">SubTotal</th>
       <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$<?php echo $final2 ?>" ></td></tr> 
 
          </tbody>

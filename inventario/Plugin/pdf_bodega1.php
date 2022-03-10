@@ -11,15 +11,24 @@
     <img src="../img/log_1.png" style="width:20%; float:right">
     <?php if(isset($_POST['cod'])){
 
-
+    $depto = $_POST['depto'];
+    $fech = $_POST['fech'];
+    $encargado = $_POST['usuario'];
+     $vale = $_POST['odt'];
       
 ?>
 <h3>HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
-
+<p style="float: right; margin-right: 15%; position: absolute;">O. de T.: <?php echo $vale ?></p>
 <h4>DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h5 align="center">SOLICITUD DE MATERIALES</h5>
  
 <section style="margin: 2%;">
+              
+    <p><b>Depto. o Servicio:</b> <?php echo $depto ?></p>
+
+    <p style="float: right; margin-right: 35%;"><b>Fecha:</b> <?php echo $fech ?></p>
+        
+    <p><b>Encargado:</b> <?php echo $encargado ?></p>
 
 <table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
@@ -28,9 +37,8 @@
             <th style="width: 70%;color:black;font-size: 16px;text-align: center;">Descripción Completa</th>
             <th style="width: 15%;color:black;font-size: 16px;text-align: center;">U/M</th>
             <th style="width: 15%;color:black;font-size: 16px;text-align: center;">Cantidad</th>
-            <th style="width: 15%;color:black;font-size: 16px;text-align: center;">Cantidad Despachada</th>
-            <th style="width: 17%;color:black;font-size: 16px;text-align: center;">C/U</th>
-            <th style="width: 17%;color:black;font-size: 16px;text-align: center;border-right:1px solid #ccc ;">Total</th>
+            <th style="width: 15%;color:black;font-size: 16px;text-align: center;">C/U</th>
+            <th style="width: 15%;color:black;font-size: 16px;text-align: center;border-right:1px solid #ccc ;">Total</th>
         </tr>
     </thead> 
 
@@ -45,7 +53,6 @@ for($i = 0; $i < count($_POST['cod']); $i++)
     $des = $_POST['desc'][$i];
     $um = $_POST['um'][$i];
     $cantidad = $_POST['cant'][$i];
-    $cantidad_despachada = $_POST['cantidad_despachada'][$i];
     $cost = $_POST['cost'][$i];
     $tot = $_POST['tot'][$i];
 
@@ -56,7 +63,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
             <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $codigo?></td>
             <td style="border: 1px solid #ccc;border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $des?></td>
             <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $um?></td>
-            <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $cantidad ?></td>          <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $cantidad_despachada ?></td>
+            <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $cantidad ?></td>
             <td style="text-align: center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;;"><?php echo $cost ?></td>
             <td style="text-align: center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $tot ?></td>
         </tr>
@@ -64,7 +71,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
      <?php } } ?> 
     <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
         <td style="text-align: center; font-weight: bold;">Subtotal</td>
-        <td colspan="5"></td>
+        <td colspan="4"></td>
         <td style="text-align: center; font-weight: bold;"><?php echo $tot_f ?></td>
     </tfoot>
 
