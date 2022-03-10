@@ -17,7 +17,7 @@ if ($estado=='Aprobado') {
       $cant_aprobada = $_POST['cant'][$i];
       $cantidad_despachada    = $_POST['cantidad_despachada'][$i];
       $cant=$cant_aprobada-$cantidad_despachada;
-       $sql="UPDATE  detalle_almacen SET  cantidad_solicitada= '$cant' WHERE codigoalmacen='$codigo_producto'" ;
+       $sql="UPDATE  detalle_almacen SET  cantidad_solicitada= '$cant',cantidad_despachada='$cantidad_despachada' WHERE codigoalmacen='$codigo_producto'" ;
 
       $query = mysqli_query($conn, $sql);
 }

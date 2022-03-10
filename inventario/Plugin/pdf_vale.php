@@ -34,9 +34,10 @@
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
             <th style="width: 25%;font-size: 16px;text-align: center;">Código</th>
-            <th style="width: 70%;color:black;font-size: 16px;text-align: center;">Descripción Completa</th>
+            <th style="width: 70%;color:black;font-size: 16px;text-align: left;">Descripción Completa</th>
             <th style="width: 15%;color:black;font-size: 16px;text-align: center;">U/M</th>
-            <th style="width: 15%;color:black;font-size: 16px;text-align: center;">Cantidad</th>
+            <th style="width: 35%;">Cantidad Solicitada</th>
+                <th style="width: 35%;">Cantidad depachada</th>
             <th style="width: 15%;color:black;font-size: 16px;text-align: center;">C/U</th>
             <th style="width: 15%;color:black;font-size: 16px;text-align: center;border-right:1px solid #ccc ;">Total</th>
         </tr>
@@ -53,6 +54,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
     $des = $_POST['desc'][$i];
     $um = $_POST['um'][$i];
     $cantidad = $_POST['cant'][$i];
+    $cantidad1 = $_POST['cantidad_despachada'][$i];
     $cost = $_POST['cost'][$i];
     $tot = $_POST['tot'][$i];
 
@@ -64,6 +66,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
             <td style="border: 1px solid #ccc;border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $des?></td>
             <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $um?></td>
             <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $cantidad ?></td>
+            <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $cantidad1 ?></td>
             <td style="text-align: center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;;"><?php echo $cost ?></td>
             <td style="text-align: center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $tot ?></td>
         </tr>

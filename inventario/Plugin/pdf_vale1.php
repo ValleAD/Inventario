@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Almacén</title>
+    <title>PDF Vale</title>
 </head>
 <body style="font-family: sans-serif;">
     <img src="../img/hospital.png" style="width:20%">
@@ -13,22 +13,30 @@
 
     $depto = $_POST['depto'];
     $fech = $_POST['fech'];
-     $vale = $_POST['num_sol'];
+    $encargado = $_POST['usuario'];
+    $vale = $_POST['vale'];
       
 ?>
-<h3 align="center" style="margin-top: -2%;">HOSPITAL NACIONAL SANTA TERESA  DE ZACATECOLUCA</h3>
-<h4 align="center" style="margin-top: -2%;">ALMACÉN DE MEDICAMENTOS, INSUMOS MÉDICOS,</h4>
-<h4 align="center" style="margin-top: -2%;">PAPELERÍA Y OTROS ARTICULOS</h4>
+<h3>HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
+<p style="float: right; margin-right: 15%; position: absolute;">Vale No.: <?php echo $vale ?></p>
+<h4>DEPARTAMENTO DE MANTENIMIENTO</h4>
+<h5 align="center">SOLICITUD DE MATERIALES</h5>
  
 <section style="margin: 2%;">
               
-<table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
+    <p><b>Depto. o Servicio:</b> <?php echo $depto ?></p>
+
+    <p style="float: right; margin-right: 35%;"><b>Fecha:</b> <?php echo $fech ?></p>
+        
+    <p><b>Encargado:</b> <?php echo $encargado ?></p>
+
+<table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
             <th style="width: 25%;font-size: 16px;text-align: center;">Código</th>
+            <th style="width: 70%;color:black;font-size: 16px;text-align: left;">Descripción Completa</th>
             <th style="width: 15%;color:black;font-size: 16px;text-align: center;">U/M</th>
-            <th style="width: 60%;color:black;font-size: 16px;text-align: left;">Descripción</th>
-            <th style="width: 15%;color:black;font-size: 16px;text-align: center;">Cant.Sol.</th>
+            <th style="width: 35%;">Cantidad Solicitada</th>
             <th style="width: 15%;color:black;font-size: 16px;text-align: center;">C/U</th>
             <th style="width: 15%;color:black;font-size: 16px;text-align: center;border-right:1px solid #ccc ;">Total</th>
         </tr>
@@ -42,7 +50,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 {
    
     $codigo = $_POST['cod'][$i];
-    $des = $_POST['nombre'][$i];
+    $des = $_POST['desc'][$i];
     $um = $_POST['um'][$i];
     $cantidad = $_POST['cant'][$i];
     $cost = $_POST['cost'][$i];
@@ -52,15 +60,16 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 ?>
   
         <tr>
-            <td style="text-align:center;"><?php  echo $codigo?></td>
-            <td style="text-align:center;"><?php  echo $um?></td>
-            <td><?php  echo $des?></td>
-            <td style="text-align:center;"><?php echo $cantidad ?></td>
-            
-            <td style="text-align: center;"><?php echo $cost ?></td>
-            <td style="text-align: center"><?php  echo $tot ?></td>
+            <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $codigo?></td>
+            <td style="border: 1px solid #ccc;border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $des?></td>
+            <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $um?></td>
+            <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $cantidad ?></td>
+
+            <td style="text-align: center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;;"><?php echo $cost ?></td>
+            <td style="text-align: center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $tot ?></td>
         </tr>
      
+    </tbody>  
      <?php } } ?> 
     <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
         <td style="text-align: center; font-weight: bold;">Subtotal</td>
@@ -68,21 +77,20 @@ for($i = 0; $i < count($_POST['cod']); $i++)
         <td style="text-align: center; font-weight: bold;"><?php echo $tot_f ?></td>
     </tfoot>
 </table>
+<br>
     <table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
         <tbody>
-            <tr style="border: 1px solid #ddd;color: black;" >
-                <td style="height: 35px;"><b>DEPARTAMENTO QUE SOLICITA:</b> MANTENIMIENTO</td>
+            <tr>
+                <td>Observaciones (En qué se ocupará el bien entregado)</td>
             </tr>
-            <tr style="border: 1px solid #ddd;color: black;" >
-                <td style="height: 35px;"><b>FECHA: </b><?php echo $fech?> <div align="center" style="margin-top: -2.5%;">FIRMA</div> <div style="float: right; margin-top: -3%;">SELLO</div></td>
-            </tr>
-            <tr style="border: 1px solid #ddd;color: black;" >
-                <td style="height: 35px;"><b>AUTORIZA:</b> DIRECTOR HOSPITAL NACIONAL "SANTA TERESA"</td>
-            </tr>
+            <td style="height: 20%;"></td>
         </tbody>
     </table>
-
-    </tbody>                
+    <br>
+    <p style="float: right;"> Entrega: ________________</p>
+    <p style="text-align:left;">Solicita: ________________ </p>
+    <br>
+    <p style="text-align: center;">Autoriza: ________________</p>
 </section>
 
 </body>
@@ -106,5 +114,5 @@ $dompdf->setPaper('letter');
 $dompdf->render();
 
 // Output the generated PDF to Browser
-$dompdf->stream("pdf_almacen.php",array("Attachment"=>0));
+$dompdf->stream("pdf_vale.php",array("Attachment"=>0));
         ?>

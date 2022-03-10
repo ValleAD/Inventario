@@ -123,6 +123,7 @@ $a=$_POST['odt'];
          $total = $productos['stock'] * $productos['precio'];
       $final += $total;
       $codigo=$productos['codigo'];
+      $codigo1=$productos['codigodetallebodega'];
       $descripcion=$productos['descripcion'];
       $um=$productos['unidad_medida'];
       $precio=$productos['precio'];
@@ -130,8 +131,8 @@ $a=$_POST['odt'];
       $precio2=number_format($precio, 2,".",",");
       $total2= number_format($total, 2, ".",",");
       $final2=number_format($final, 2, ".",",");
-      $cantidad=$productos['stock'];
-        $stock=number_format($cantidad, 0,",");
+      $stock=$productos['stock'];
+        // $stock=number_format($cantidad, 0,",");
       ?>
   
       <style type="text/css">
@@ -142,11 +143,12 @@ $a=$_POST['odt'];
      
   </style> 
         <tr>
-       <td  data-label="Código"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="cod[]" readonly value="<?php echo $codigo ?>"></td>
+       <td  data-label="Código"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="cod[]" readonly value="<?php echo $codigo ?>">
+        <input type="hidden" style="background:transparent; border: none; width: 100%; text-align: center"  name="cod1[]" readonly value="<?php echo $codigo1 ?>"></td>
         <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;  height: 75px; text-align: left"  name="desc[]" readonly style="border: none"><?php echo $descripcion ?></textarea></td>
         <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="<?php echo $um ?>"></td>
         <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="<?php echo $stock ?>"></td>
-        <td  data-label="Cantidad"><input style="background:transparent; border: 1 solid #000;  width: 100%;" class="form-control" type="number" required  name="cant_aprobada[]" required value=""></td>
+        <td  data-label="Cantidad"><input style="background:transparent; border: 1 solid #000;  width: 100%; text-align: center" class="form-control" type="number" required  name="cantidad_despachada[]" required value=""></td>
         <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;" step="0.01"  readonly value="$<?php echo $precio2 ?>"></td>
 
    <td  data-label="Cantidad"><input style="background:transparent; border: 1 solid #000;  width: 100%;" class="form-control" type="number" required step="0.01"  name="cost[]" required value=""></td>

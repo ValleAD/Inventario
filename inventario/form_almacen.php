@@ -187,32 +187,9 @@ if(isset($_POST['codigo'])){ ?>
   <div class="col-xs-4 "  style="background: #bfe7ed;border-radius: 5px;margin: 1%;padding:1%" >
 <div class="well well-sm" style="position: all; margin: 1%">
 
-     <div class="form-group" style="position: all; margin: 2%">
-                      <label>Categoría</label> 
-                      <select  class="form-control" name="categoria[]" id="um" >
-                        <option><?php echo $productos['categoria']?></option>
-                        <?php 
-                        $sql = "SELECT * FROM  selects_categoria";
-                        $result = mysqli_query($conn, $sql);
-
-                        while ($productos1 = mysqli_fetch_array($result)){ 
-
-                          echo'  <option>'.$productos1['categoria'].'</option>
-                      ';   
-                     } ?>
-                       
-                    
-                      </select>
-                  </div> 
-
                   <div class="form-group" style="position: all; margin: 2%">
                       <label>Código</label> 
                       <input  type="number" name="cod[]" class="form-control" id="busqueda" placeholder="Código de producto " value="<?php echo $productos['codProductos'] ?>" required>
-                  </div>
-
-                  <div class="form-group" style="position: all; margin: 2%">
-                        <label>Codificación de Catálogo de NA</label> 
-                      <input  type="number" name="cat[]" class="form-control" placeholder="Código" value="<?php echo $productos['catalogo']?>">
                   </div>
 
                   <div class="form-group" style="position: all; margin: 2%">

@@ -92,10 +92,6 @@ die();
                 </th>
                
               </tr>
-
-              <tr> <td id="td" colspan="11">
-                <h4 align="center">No se encontraron resultados 😥</h4></td>
-              </tr>
             </thead>
 
             <tbody>
@@ -105,7 +101,7 @@ die();
 
 
     //    $sql = "SELECT * FROM tb_productos";
-    $sql = "SELECT codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos GROUP BY precio, codProductos";
+    $sql = "SELECT cod, codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos  GROUP BY precio, codProductos";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
@@ -137,7 +133,7 @@ die();
       <td data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
       <td data-label="solicitar" align="center">
                     
-          <input type="checkbox" name="id[]"  value="<?php  echo $productos['codProductos']; ?>">
+          <input type="checkbox" name="id[]"  value="<?php  echo $productos['cod']; ?>">
           <input type="hidden" name="precio[]"  value="<?php  echo $productos['precio']; ?>">             
          
       </td>

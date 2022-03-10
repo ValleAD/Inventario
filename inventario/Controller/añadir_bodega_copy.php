@@ -11,39 +11,41 @@ $estado =$_POST['estado'];
  
 $result = mysqli_query($conn, $sql);
 if ($estado=='Aprobado') {
-for($i = 0; $i < count($_POST['cod']); $i++)
+     for($i = 0; $i < count($_POST['cod1']); $i++)
     {
-      $nSolicitud=$_POST['odt'][$i];
-      $cant_aprobada    = $_POST['cant_aprobada'][$i];
-$sql="UPDATE  detalle_almacen SET cantidad_despachada='$cant_aprobada'  WHERE codigoalmacen ='$nSolicitud'" ;
-$result = mysqli_query($conn, $sql);
-}
-     for($i = 0; $i < count($_POST['cod']); $i++)
-    {
-      $codigo_producto  = $_POST['cod'][$i];
-      // $categoria        = $_POST['cat'][$i];
-      //  $catalogo         = $_POST['catalogo'][$i];
-       // $nombre_articulo  = $_POST['nombre'][$i];
-      $Descripción      = $_POST['desc'][$i];
-      $u_m              = $_POST['um'][$i];
-      $cost             = $_POST['cost'][$i];
-      $cant_aprobada    = $_POST['cant_aprobada'][$i];
-      // $cant_aprobada    = $_POST['cant_aprobada'][$i];
-      //  $campo            = $_POST['form_compra'][$i];
-       $insert = "INSERT INTO tb_productos (codProductos, descripcion, unidad_medida, stock, precio,solicitudes) VALUES ('$codigo_producto', '$Descripción', '$u_m', '$cant_aprobada', '$cost','Solicitud Bodega' )";
-      $query = mysqli_query($conn, $insert);
-      if ($query)  {
+      $codigo_producto  = $_POST['cod1'][$i];
+      $cant_aprobada    = $_POST['cant'][$i];
+      $cantidad_despachada    = $_POST['cantidad_despachada'][$i];
+      $cant=$cant_aprobada-$cantidad_despachada;
+     
+        $sql="UPDATE  detalle_vale SET stock = '$cant',cantidad_despachada='$cantidad_despachada' WHERE codigodetallevale ='$codigo_producto'" ;
+
+      $query = mysqli_query($conn, $sql);
+       if ($query)  {
         echo "<script> alert('El Estado fue Cambiado correctamente')
-          location.href = '../solicitudes_bodega.php';
+        location.href = '../solicitudes_almacen.php';
         </script>
         ";
         }else {
         echo "<script> alert('UUPS!! Algo no fue mal escrito')
-          location.href = '../Detalle_Bodega.php';
+        location.href = '../solicitudes_almacen.php';
         </script>
         ";
         }
-    }
+}
+for ($i=0; $i < count($_POST['cod']) ; $i++) {
+
+  $codigo= $_POST['cod'][$i];
+  $stocks =$_POST['cantidad_despachada'][$i];   
+  $stock_obtenido =$_POST['cant'][$i];
+  $stock_descontado=$stocks - $stock_obtenido;
+   
+//sql
+$count = "SELECT codProductos, SUM(stock), fecha_registro FROM tb_productos GROUP BY codProductos";
+$sql1="UPDATE tb_productos SET stock='$stock_descontado' WHERE codProductos ='$codigo'" ;
+$result = mysqli_query($conn, $sql1);
+}
+
      }elseif ($estado=='Rechazado') {
      echo "<script> alert('Producto Rechazado')
         location.href = '../solicitudes_bodega.php';

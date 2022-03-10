@@ -59,12 +59,12 @@ $final = 0;
       
         <div class="row">  
 
-          <div class="col-6 col-sm-3" style="position: initial">
+          <div class="col-6 col-sm-2 style="position: initial">
             <label style="font-weight: bold;">N° de Solicitud:</label>
             <input readonly class="form-control"  type="text" value="' .$datos_sol['codAlmacen']. '" name="num_sol">
           </div>
 
-          <div class="col-6 col-sm-3" style="position: initial">
+          <div class="col-6 col-sm-2" style="position: initial">
               <label style="font-weight: bold;">Depto. o Servicio:</label>
               <input readonly class="form-control"  type="text" value="' .$datos_sol['departamento']. '" name="depto">
           </div>
@@ -76,7 +76,7 @@ $final = 0;
         </div>
 
           
-          <div class="col-6 col-sm-3" style="position: initial">
+          <div class="col-6 col-sm-2" style="position: initial">
             <label style="font-weight: bold;">Fecha:</label>
               <input readonly class="form-control"  type="text" value="' .date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])). '" name="fech">';?>
           </div> <div class="col-6 col-sm-3" style="position: initial">

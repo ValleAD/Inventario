@@ -27,7 +27,7 @@
         <tr style="border: 1px solid #ddd;color: black;" >
             <th style="width: 25%;font-size: 16px;text-align: center;">Código</th>
             <th style="width: 15%;color:black;font-size: 16px;text-align: center;">U/M</th>
-            <th style="width: 70%;color:black;font-size: 16px;text-align: center;">Nombre del Artículo</th>
+            <th style="width: 70%;color:black;font-size: 16px;text-align: left;">Descripción</th>
             <th style="width: 15%;color:black;font-size: 16px;text-align: center;">Cant.<br>Sol.</th>
             <th style="width: 15%;color:black;font-size: 16px;text-align: center;">Cant.<br>Desp.</th>
             <th style="width: 15%;color:black;font-size: 16px;text-align: center;">C/U</th>

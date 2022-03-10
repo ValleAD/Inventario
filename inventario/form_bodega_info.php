@@ -76,7 +76,7 @@ die();
             <thead>
               <tr id="tr">
                
-                   <th style="width: 10%;">Código</th>
+                <th style="width: 10%;">Código</th>
                 <th style="width: 20%;">Descripción</th>
                 <th style="width: 10%;">U/M</th>
                 <th style="width: 15%;">Productos Disponibles</th>
@@ -102,7 +102,7 @@ die();
  
     $codigo= $_POST['id'][$i];
     //    $sql = "SELECT * FROM tb_productos";
-    $sql = "SELECT codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE codProductos='$codigo' GROUP BY precio, codProductos";
+    $sql = "SELECT codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE cod='$codigo' GROUP BY precio, cod";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
@@ -151,6 +151,7 @@ die();
     $(document).ready(function(){
         $('#example').DataTable({
             dom:'ltirp',
+            paging:false,
             language: {
                 "lengthMenu": "Mostrar _MENU_ registros",
                 "zeroRecords": "No se encontraron resultados",

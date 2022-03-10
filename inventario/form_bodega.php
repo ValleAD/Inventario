@@ -207,6 +207,9 @@ if(isset($_POST['codigo'])){
                 <th style="width: 15%;">Costo unitario</th>
                 <th>Eliminar Fila</th>
             </tr>
+            <tr>
+                
+            </tr>
         </thead>
         <tbody>
 
