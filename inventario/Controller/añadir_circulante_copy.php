@@ -17,42 +17,46 @@ if ($estado=='Aprobado') {
       $codigo_n  = $_POST['codn'][$i];
       $codigo_producto = $_POST['cod1'][$i];
       $cant_aprobada    = $_POST['cant'][$i];
+      $cost    = $_POST['cost'][$i];
       $cantidad_despachada    = $_POST['cantidad_despachada'][$i];
       $cant=$cant_aprobada-$cantidad_despachada;
-     echo $codigo_n;
-        $sql="UPDATE  detalle_circulante SET codigo='$codigo_n' stock = '$cant',cantidad_despachada='$cantidad_despachada' WHERE codigodetallecirculante  ='$codigo_producto'" ;
+        $sql="UPDATE  detalle_circulante  SET codigo='$codigo_n', stock = '$cant',cantidad_despachada='$cantidad_despachada', precio='$cost' WHERE codigodetallecirculante ='$codigo_producto'" ;
 
       $query = mysqli_query($conn, $sql);
+     
 }
 
-    //  for($i = 0; $i < count($_POST['cod']); $i++)
-    // {
-    //   $codigo_producto  = $_POST['cod'][$i];
-    //   $Descripción      = $_POST['desc'][$i];
-    //   $u_m              = $_POST['um'][$i];
-    //   $cost             = $_POST['cost'][$i];
-    //   $cant             = $_POST['cant'][$i];
-    //   $cant_aprobada    = $_POST['cantidad_despachada'][$i];
-    //   $catT=$cant+$cant_aprobada;
-    //    $insert = "INSERT INTO tb_productos (codProductos,  descripcion, unidad_medida, stock, precio,solicitudes) VALUES ('$codigo_producto',  '$Descripción', '$u_m',  '$cost','>$cant_aprobada' ,'Solicitud Compra')";
-    //   $query = mysqli_query($conn, $insert);
-    //   if ($query)  {
-    //     echo "<script> alert('El Estado fue Cambiado correctamente')
-    //     location.href = '../solicitudes_circulante.php';
-    //     </script>
-    //     ";
-    //     }else {
-    //     echo "<script> alert('UUPS!! Algo no fue mal escrito')
-    //     location.href = '../solicitudes_circulante.php';
-    //     </script>
-    //     ";
-    //     }
-    // }
+     for($i = 0; $i < count($_POST['cod1']); $i++)
+    {
+      $codigo_producto  = $_POST['cod1'][$i];
+      $Descripción      = $_POST['desc'][$i];
+      $u_m              = $_POST['um'][$i];
+      $cost             = $_POST['cost'][$i];
+      $cant             = $_POST['cant'][$i];
+      $cant_aprobada    = $_POST['cantidad_despachada'][$i];
+      $catT=$cant+$cant_aprobada;
+       $insert = "INSERT INTO tb_productos (codProductos,  descripcion, unidad_medida, stock, precio,solicitudes) VALUES ('$codigo_producto',  '$Descripción', '$u_m',  '$cost','>$cant_aprobada' ,'Solicitud Compra')";
+      $query1 = mysqli_query($conn, $insert);
+      
+    }
    }elseif ($estado=='Rechazado') {
      echo "<script> alert('Producto Rechazado')
         location.href = '../solicitudes_circulante.php';
         </script>
         ";
   }
+   if ($query || $result ||$query1)  {
+        echo "<script> alert('El Estado fue Cambiado correctamente')
+        location.href = '../solicitudes_circulante.php';
+        </script>
+        ";
+        return true;
+        }else {
+        echo "<script> alert('UUPS!! Algo no fue mal escrito')
+        location.href = '../solicitudes_circulante.php';
+        </script>
+        ";
+        return false;
+        }
 }
   ?>

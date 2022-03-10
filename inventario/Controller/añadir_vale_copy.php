@@ -15,23 +15,26 @@ if ($estado=='Aprobado') {
     {
       $codigo_producto  = $_POST['cod1'][$i];
       $cant_aprobada    = $_POST['cant'][$i];
+      $precio1   = $_POST['cost'][$i];
       $cantidad_despachada    = $_POST['cantidad_despachada'][$i];
       $cant=$cant_aprobada-$cantidad_despachada;
      
-        $sql="UPDATE   detalle_circulante SET stock = '$cant',cantidad_despachada='$cantidad_despachada',precio='$cost' WHERE codigodetallecirculante ='$codigo_producto'" ;
+         $sql="UPDATE   detalle_vale SET stock = '$cant',cantidad_despachada='$cantidad_despachada',precio='$precio1' WHERE codigodetallevale ='$codigo_producto'" ;
 
       $query = mysqli_query($conn, $sql);
 }
- if ($query)  {
+ if ($query||$query||$result)  {
         echo "<script> alert('El Estado fue Cambiado correctamente')
        location.href = '../solicitudes_vale.php';
         </script>
         ";
+        return true;
         }else {
         echo "<script> alert('UUPS!! Algo no fue mal escrito')
          location.href = '../solicitudes_vale.php';
         </script>
         ";
+        return false;
     }
 
 
@@ -47,7 +50,7 @@ for ($i=0; $i < count($_POST['cod']) ; $i++) {
 //sql
 $count = "SELECT codProductos, SUM(stock), fecha_registro FROM tb_productos GROUP BY codProductos";
 $sql1="UPDATE tb_productos SET stock='$stock_descontado' WHERE codProductos ='$codigo' && precio = '$precio'" ;
-$result = mysqli_query($conn, $sql1);
+$query1 = mysqli_query($conn, $sql1);
 }
    }elseif ($estado=='Rechazado') {
      echo "<script> alert('Producto Rechazado')

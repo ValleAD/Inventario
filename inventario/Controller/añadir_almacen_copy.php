@@ -15,9 +15,10 @@ if ($estado=='Aprobado') {
     {
       $codigo_producto  = $_POST['cod1'][$i];
       $cant_aprobada = $_POST['cant'][$i];
+      $precio = $_POST['cost'][$i];
       $cantidad_despachada    = $_POST['cantidad_despachada'][$i];
       $cant=$cant_aprobada-$cantidad_despachada;
-       $sql="UPDATE  detalle_almacen SET  cantidad_solicitada= '$cant',cantidad_despachada='$cantidad_despachada' WHERE codigoalmacen='$codigo_producto'" ;
+       $sql="UPDATE  detalle_almacen SET  cantidad_solicitada= '$cant',cantidad_despachada='$cantidad_despachada',precio='$cost' WHERE codigoalmacen='$codigo_producto'" ;
 
       $query = mysqli_query($conn, $sql);
 }
@@ -34,17 +35,19 @@ if ($estado=='Aprobado') {
       // $cant_aprobada    = $_POST['cantidad_despachada'][$i];
       // $catT=$cant-$cant_aprobada;
        $insert = "INSERT INTO tb_productos (codProductos,  descripcion, unidad_medida, stock, precio,solicitudes) VALUES ('$codigo_producto',  '$Descripción', '$u_m',  '$cost','>$cant' ,'Solicitud Compra')";
-      $query = mysqli_query($conn, $insert);
-      if ($query)  {
+      $query1 = mysqli_query($conn, $insert);
+      if ($result ||$query ||$query1)  {
         echo "<script> alert('El Estado fue Cambiado correctamente')
         location.href = '../solicitudes_almacen.php';
         </script>
         ";
+        return true;
         }else {
         echo "<script> alert('UUPS!! Algo no fue mal escrito')
         location.href = '../solicitudes_almacen.php';
         </script>
         ";
+        return false;
         }
     }
   }elseif ($estado=='Rechazado') {
