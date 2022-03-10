@@ -53,7 +53,9 @@ background:burlywood;
                     <a id="a" href="#"><span class="icon-rocket"></span>Articulos<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
                        <li><a id="b" href="vistaProductos.php">Ver Artículos</a></li>
+                       <?php if($tipo_usuario==1){ ?>
                         <li><a id="b" href="regi_producto.php">Nuevo Artículo</a></li>
+                    <?php } ?>
                         <li><a id="b" href="reporte_ingresos.php">Reporte Ingresos</a></li>
                         <li><a id="b" href="reporte_egresos.php">Reporte Egresos</a></li>
                         <li><a id="b" href="reporte_productos.php">Reporte Productos</a></li>
@@ -67,7 +69,7 @@ background:burlywood;
                         <li><a id="b" href="solicitudes_vale.php">Mostrar</a></li>
                         <li><a id="b" href="form_vale.php">Buscar por código</a></li>
                         <li><a id="b" href="form_vale1.php">Seleccionar varios</a></li>
-                        <li><a id="b" href="form_vale_anterior.php">Vale anterior</a></li>
+                        <!-- <li><a id="b" href="form_vale_anterior.php">Vale anterior</a></li> -->
                     </ul>
                 </li>
                 

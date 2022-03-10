@@ -82,7 +82,7 @@ die();
                 <th style="width: 15%;">Productos Disponibles</th>
                 <th style="width: 15%;">Cantidad</th>
                 <th style="width: 15%;">Costo unitario</th>
-              
+               <th>Eliminar fila</th>
                
               </tr>
 
@@ -102,7 +102,7 @@ die();
  
     $codigo= $_POST['id'][$i];
     //    $sql = "SELECT * FROM tb_productos";
-    $sql = "SELECT codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE codProductos='$codigo' GROUP BY precio, codProductos";
+    $sql = "SELECT codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE cod='$codigo' GROUP BY precio, codProductos";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
@@ -132,7 +132,8 @@ die();
                <td data-label="Unidad De Medida"><input  style="background:transparent; border: none; width: 100%; color: black;" type="text" class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
                <td data-label="Productos Disponibles"><input  style="background:transparent; border: none; width: 100%; color: gray;" type="text" class="form-control" readonly  name="stock[]"  value ="<?php  echo $stock; ?>"></td>
                <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="text" class="form-control"  name="cant[]" required></td>
-               <td data-label="Precio" ><input style="background:transparent; border: none; width: 100%; color: black; text-align: center;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $precio1 ?>"></td>   
+               <td data-label="Precio" ><input style="background:transparent; border: none; width: 100%; color: black; text-align: center;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $precio1 ?>"></td>  
+               <td><input type="button" class="borrar btn btn-success" value="Eliminar" /></td>   
       
      </tr>
 <?php }} ?> 
@@ -164,5 +165,12 @@ die();
 
     });
     </script>
+    <script>
+    $(document).on('click', '.borrar', function (event) {
+    event.preventDefault();
+    $(this).closest('tr').remove();
+});
+
+</script>
 </body>
 </html>

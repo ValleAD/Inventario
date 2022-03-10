@@ -97,13 +97,14 @@ if(isset($_POST['detalle'])){
                      echo ' style="background-color:red ;width:100%; border-radius:5px;text-align:center; color: white;"';
                 }
             ?> class="form-control" type="text" name="" readonly value="<?php echo $productos1['estado'] ?>"><br>
+            <?php if($tipo_usuario==1){ ?>
                <button type="submit" name="submit" <?php
                 if($productos1['estado']=='Aprobado') {
                      echo ' style="display:none"';
                 }else if($productos1['estado']=='Rechazado') {
                      echo ' style="display:none"';
                 }
-            ?> style="float: right;" class="btn btn-danger" name="estado" href="dt_compra_copy.php"> Cambiar estado</button>
+            ?> style="float: right;" class="btn btn-danger" name="estado" href="dt_compra_copy.php"> Cambiar estado</button><?php } ?>
           </div>
             </div>
           

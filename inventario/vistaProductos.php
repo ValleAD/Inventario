@@ -273,9 +273,10 @@ if (isset($_POST['Fecha'])){
                      <!-- <th style=" width: 100%">Solicitudes</th> -->
 
                      <th style=" width: 100%">Categoría</th>
-
+                    <?php if($tipo_usuario==1){ ?>
                      <th style=" width: 100%">Editar</th>
                      <th style=" width: 100%">Eliminar</th>
+                 <?php } ?>
                    </tr>
                 </thead>
                 <tbody>
@@ -328,6 +329,7 @@ if (isset($_POST['Fecha'])){
            <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['categoria']; ?></td>
+           <?php if($tipo_usuario==1){ ?>
            <td  data-label="Editar">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="vistaProductos.php">             
                 <input type='hidden' name='id' value="<?php  echo $productos['codProductos']; ?>">             
@@ -337,6 +339,7 @@ if (isset($_POST['Fecha'])){
             <td  data-label="Eliminar">
                 <a data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm " class="text-primary" href="Controller/Delete_producto.php?id=<?php  echo $productos['stock']; ?>" onclick="return confirmaion()">Eliminar</a>
             </td>
+        <?php } ?>
          </tr>
      
      <?php } ?> 
@@ -375,7 +378,7 @@ if (isset($_POST['categorias'])){  ?>  <br>
 <div class="mx-5 p-2 r-5" style="background-color: white; border-radius: 5px;">
         <div class="row">
             <div class="col">
-                <table class="table table-responsive table-striped" id="example1" style=" width: 100%">
+                <table class="table table-responsive table-striped" id="example2" style=" width: 100%">
     <thead>
          <tr id="tr">
                      <th style=" width: 10%">Categoria</th>
@@ -452,7 +455,7 @@ if (isset($_POST['categorias'])){  ?>  <br>
             },
         //para usar los botones   
         responsive: "true",
-       // dom: 'Bfrtilp',       
+        dom: 'Bfrtilp',       
         buttons:[ 
             {
                 extend:    'excelHtml5',
@@ -480,6 +483,50 @@ if (isset($_POST['categorias'])){  ?>  <br>
     <script type="text/javascript">
          $(document).ready(function(){
  $('#example1').DataTable({        
+        language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                 },
+                 "sProcessing":"Procesando...",
+            },
+        //para usar los botones   
+        responsive: "true",
+        dom: 'Bfrtilp',       
+        buttons:[ 
+            {
+                extend:    'excelHtml5',
+                text:      '<i class="fas fa-file-excel"></i> ',
+                titleAttr: 'Exportar a Excel',
+                className: 'btn btn-success'
+            },
+            {
+                extend:    'pdfHtml5',
+                text:      '<i class="fas fa-file-pdf"></i> ',
+                titleAttr: 'Exportar a PDF',
+                className: 'btn btn-danger'
+            },
+            {
+                extend:    'print',
+                text:      '<i class="fa fa-print"></i> ',
+                titleAttr: 'Imprimir',
+                className: 'btn btn-info'
+            },
+        ]           
+    });     
+
+    });
+    </script><script type="text/javascript">
+         $(document).ready(function(){
+ $('#example2').DataTable({        
         language: {
                 "lengthMenu": "Mostrar _MENU_ registros",
                 "zeroRecords": "No se encontraron resultados",

@@ -82,7 +82,7 @@ die();
                 <th style="width: 15%;">Productos Disponibles</th>
                 <th style="width: 15%;">Cantidad</th>
                 <th style="width: 15%;">Costo unitario</th>
-              
+               <th>Eliminar fila</th>
                
               </tr>
 
@@ -133,6 +133,7 @@ die();
                <td data-label="Productos Disponibles"><input  style="background:transparent; border: none; width: 100%; color: gray;" type="text" class="form-control" readonly  name="stock[]"  value ="<?php  echo $stock; ?>"></td>
                <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="text" class="form-control"  name="cant[]" required></td>
                <td data-label="Precio" ><input style="background:transparent; border: none; width: 100%; color: black; text-align: center;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $precio1 ?>"></td>   
+               <td><input type="button" class="borrar btn btn-success" value="Eliminar" /></td>  
       
      </tr>
 <?php }} ?> 
@@ -165,5 +166,12 @@ die();
 
     });
     </script>
+    <script>
+    $(document).on('click', '.borrar', function (event) {
+    event.preventDefault();
+    $(this).closest('tr').remove();
+});
+
+</script>
 </body>
 </html>

@@ -274,13 +274,14 @@ $cod_compra = $_POST['id'];
                 }
             ?> class="form-control" type="text" name="" value="<?php echo $productos1['estado'] ?>"><br>
               <input readonly class="form-control" type="hidden" value="<?php echo $productos1['nSolicitud'] ?>" name="sol_compra">
+              <?php if($tipo_usuario==1){ ?>
                 <button type="submit" name="submit" <?php
                 if($productos1['estado']=='Aprobado') {
                      echo ' style="display:none"';
                 }else if($productos1['estado']=='Rechazado') {
                      echo ' style="display:none"';
                 }
-            ?> style="float: right;margin-bottom:5%" class="btn btn-danger" href="dt_compra_copy.php"> Cambiar estado</button>
+            ?> style="float: right;margin-bottom:5%" class="btn btn-danger" href="dt_compra_copy.php"> Cambiar estado</button><?php } ?>
             </div>
         </div>
        </form>

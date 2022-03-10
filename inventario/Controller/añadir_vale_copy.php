@@ -18,7 +18,7 @@ if ($estado=='Aprobado') {
       $cantidad_despachada    = $_POST['cantidad_despachada'][$i];
       $cant=$cant_aprobada-$cantidad_despachada;
      
-        $sql="UPDATE  detalle_vale SET stock = '$cant',cantidad_despachada='$cantidad_despachada' WHERE codigodetallevale ='$codigo_producto'" ;
+        $sql="UPDATE   detalle_circulante SET stock = '$cant',cantidad_despachada='$cantidad_despachada',precio='$cost' WHERE codigodetallecirculante ='$codigo_producto'" ;
 
       $query = mysqli_query($conn, $sql);
 }
@@ -36,19 +36,19 @@ if ($estado=='Aprobado') {
 
 
 
-// for ($i=0; $i < count($_POST['cod']) ; $i++) {
+for ($i=0; $i < count($_POST['cod']) ; $i++) {
 
-//   $codigo= $_POST['cod'][$i];
-//   $stocks =$_POST['cant'][$i];   
-//   $stock_obtenido =$_POST['cant'][$i];
-//   $precio= $_POST['cost'][$i];
-//   $stock_descontado=$stocks - $stock_obtenido;
+  $codigo= $_POST['cod'][$i];
+  $stocks =$_POST['cant'][$i];   
+  $stock_obtenido =$_POST['cantidad_despachada'][$i];
+  $precio= $_POST['cost'][$i];
+  $stock_descontado=$stocks - $stock_obtenido;
    
-// //sql
-// $count = "SELECT codProductos, SUM(stock), fecha_registro FROM tb_productos GROUP BY codProductos";
-// $sql1="UPDATE tb_productos SET stock='$stock_descontado' WHERE codProductos ='$codigo' && precio = '$precio'" ;
-// $result = mysqli_query($conn, $sql1);
-// }
+//sql
+$count = "SELECT codProductos, SUM(stock), fecha_registro FROM tb_productos GROUP BY codProductos";
+$sql1="UPDATE tb_productos SET stock='$stock_descontado' WHERE codProductos ='$codigo' && precio = '$precio'" ;
+$result = mysqli_query($conn, $sql1);
+}
    }elseif ($estado=='Rechazado') {
      echo "<script> alert('Producto Rechazado')
         location.href = '../solicitudes_vale.php';
