@@ -19,7 +19,7 @@ for($i = 0; $i < count($_POST['desc']); $i++)
       $insert = "INSERT INTO detalle_Circulante(descripcion, unidad_medida, stock, tb_circulante, precio) VALUES ('$descripcion','$u_m', '$soli', '$num_sol', '$cost')";
       $query = mysqli_query($conn, $insert);
 
-      if ($query) {
+      if ($result || $query) {
         echo "<script> alert('Su solicitud fué realizada correctamente');
         location.href = '../dt_circulante.php';
         </script>

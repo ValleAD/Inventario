@@ -24,7 +24,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
       $insert = "INSERT INTO detalle_almacen(codigo, nombre, unidad_medida, cantidad_solicitada, tb_almacen, precio) VALUES ('$codigo_producto', '$nombre_articulo','$u_m', '$soli', '$num_sol', '$cost')";
       $query = mysqli_query($conn, $insert);
 
-      if ($query) {
+      if ($result || $query) {
         echo "<script> alert('Su solicitud fué realizada correctamente');
         location.href = '../dt_almacen.php';
         </script>

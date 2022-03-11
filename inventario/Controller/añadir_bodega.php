@@ -28,7 +28,7 @@ include ('../Model/conexion.php');
       $insert = "INSERT INTO detalle_bodega (codigo,descripcion,unidad_medida,stock,precio,odt_bodega) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$orden_trabajo')";
       $query = mysqli_query($conn, $insert);
 
-      if ($query) {
+      if ($result || $query) {
         echo "<script> alert('Su solicitud fué realizada correctamente');
        location.href = '../dt_bodega.php';
         </script>

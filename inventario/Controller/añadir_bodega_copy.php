@@ -22,7 +22,7 @@ if ($estado=='Aprobado') {
         $sql="UPDATE  detalle_bodega SET stock = '$cant',cantidad_despachada='$cantidad_despachada',precio='$cost' WHERE codigodetallebodega  ='$codigo_producto'" ;
 
       $query = mysqli_query($conn, $sql);
-       if ($query||$query||$result)  {
+       if ($query||$query1||$result)  {
         echo "<script> alert('El Estado fue Cambiado correctamente')
         location.href = '../solicitudes_almacen.php';
         </script>

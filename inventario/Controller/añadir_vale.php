@@ -27,13 +27,11 @@ include ('../Model/conexion.php');
       $insert = "INSERT INTO detalle_vale (codigo,descripcion,unidad_medida,stock,precio,numero_vale) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$numero_vale')";
       $query = mysqli_query($conn, $insert);
 
-      if ($query) {
+      if ($result || $query) {
         echo "<script> alert('Su solicitud fué realizada correctamente');
        location.href = '../datos_vale.php';
         </script>
         ";
-      }if ($result) {
-        
       }else {
         echo "<script> alert('¡Error! algo salió mal');
        location.href = '../form_vale.php';
