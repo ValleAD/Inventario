@@ -15,7 +15,7 @@ if ($estado=='Aprobado') {
     {
       $codigo_producto  = $_POST['cod1'][$i];
       $cant_aprobada    = $_POST['cant'][$i];
-      $precio1   = $_POST['cost'][$i];
+     // $precio1   = $_POST['cost'][$i];
       $cantidad_despachada    = $_POST['cantidad_despachada'][$i];
       $cant=$cant_aprobada-$cantidad_despachada;
 
