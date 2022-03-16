@@ -14,6 +14,7 @@ if ($estado=='Aprobado') {
          for($i = 0; $i < count($_POST['cod1']); $i++)
     {
       $codigo_producto  = $_POST['cod1'][$i];
+      $codigo_producto1  = $_POST['cod'][$i];
       $cant_aprobada    = $_POST['cant'][$i];
       $precio1   = $_POST['cost'][$i];
       $cantidad_despachada    = $_POST['cantidad_despachada'][$i];
@@ -26,7 +27,7 @@ if ($estado=='Aprobado') {
            $stock1= $stock-$cant;
     }
 
-$sql1="UPDATE tb_productos SET stock='$stock1' WHERE cod ='$codigo_producto'" ;
+$sql1="UPDATE tb_productos SET stock='$stock1' WHERE codProductos ='$codigo_producto1'" ;
 $query1 = mysqli_query($conn, $sql1);
 
          $sql="UPDATE detalle_bodega SET cantidad_despachada='$cantidad_despachada' WHERE codigodetallebodega  ='$codigo_producto'" ;
