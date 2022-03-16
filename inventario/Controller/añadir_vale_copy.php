@@ -24,7 +24,7 @@ if ($estado=='Aprobado') {
     $query2 = mysqli_query($conn, $count);
     while ($productos1 = mysqli_fetch_array($query2)){
    $stock =$productos1['SUM(stock)'];
-   $stock1= $stock-$cant;
+   $stock1= $stock-$cantidad_despachada;
 }
 
 $sql1="UPDATE tb_productos SET stock='$stock1' WHERE codProductos ='$codigo_producto1'" ;
