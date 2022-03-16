@@ -166,7 +166,7 @@ $a=$_POST['odt'];
          </tbody>
         </table>
     
-      <input id="ver" type="submit" class="btn btn-success btn-lg" value="Guardar Estado" name="Detalle_Bodega">
+      <input id="ver" type="submit" class="btn btn-success btn-lg" value="Guardar Estado" name="detalle_bodega">
        
   </form>
   </section>

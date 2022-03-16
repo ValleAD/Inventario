@@ -93,9 +93,6 @@ die();
                
               </tr>
 
-              <tr> <td id="td" colspan="11">
-                <h4 align="center">No se encontraron resultados 😥</h4></td>
-              </tr>
             </thead>
 
             <tbody>
