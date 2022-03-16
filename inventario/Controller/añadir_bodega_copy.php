@@ -29,7 +29,7 @@ if ($estado=='Aprobado') {
 $sql1="UPDATE tb_productos SET stock='$stock1' WHERE cod ='$codigo_producto'" ;
 $query1 = mysqli_query($conn, $sql1);
 
-         $sql="UPDATE detalle_bodega SET stock = '$cant',cantidad_despachada='$cantidad_despachada',precio='$precio1' WHERE codigodetallebodega  ='$codigo_producto'" ;
+         $sql="UPDATE detalle_bodega SET cantidad_despachada='$cantidad_despachada' WHERE codigodetallebodega  ='$codigo_producto'" ;
 
       $query = mysqli_query($conn, $sql);
 }

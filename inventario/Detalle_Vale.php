@@ -257,7 +257,7 @@ if(isset($_POST['submit'])){
                   <th style="width: 30%;">Cantidad Solicitada</th>
                   <th style="width: 30%;">Cantidad depachada</th>
                 <th style="width: 30%;">Costo Unitario (estimado)Actual</th>
-                <th style="width: 30%;">Nuevo Costo Unitario (estimado)</th>
+               <!-- <th style="width: 30%;">Nuevo Costo Unitario (estimado)</th>-->
                   <th style="width: 30%;">Total</th>
                 </tr>
                 <td id="td" colspan="6"><h4>No se encontraron resultados 😥</h4></td>
@@ -294,7 +294,7 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Cantidad"><input style="width: 100%; background:transparent; border: none; text-align: center"  name="cant[]" readonly value="<?php echo $stock ?>"></td>
         <td  data-label="Cantidad"><input style="background:transparent; border: 1 solid #000;  width: 100%; text-align: center" class="form-control" type="number" required  name="cantidad_despachada[]" required value=""></td>
         <td  data-label="Costo unitario"><input style="width: 100%; background:transparent; border: none; text-align: center"   step="0.01"  readonly value="$<?php echo $precio1 ?>"></td>
-        <td  data-label="Costo unitario"><input class="form-control" type="number" style="background:transparent;border: 1 solid #000; width: 100%;" required step="0.01" name="cost[]"></td>
+        <!--<td  data-label="Costo unitario"><input class="form-control" type="number" style="background:transparent;border: 1 solid #000; width: 100%;" required step="0.01" name="cost[]"></td>-->
         <td  data-label="total"><input style="width: 100%; background:transparent; border: none; text-align: center"  name="tot[]" readonly step="0.01" value="$<?php echo $total1 ?>"></td>
       </tr>
 

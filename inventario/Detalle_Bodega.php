@@ -108,7 +108,7 @@ $a=$_POST['odt'];
                   <th style="width: 15%;">Cantidad Solicitada</th>
                   <th style="width: 15%;">Cantidad Despachada</th>
                   <th style="width: 15%;">Costo Unitario (estimado)Actual</th>
-                  <th style="width: 15%;">Nuevo Costo Unitario (estimado)</th>
+                 <!-- <th style="width: 15%;">Nuevo Costo Unitario (estimado)</th>-->
                   <th style="width: 15%;">Monto Total (estimado)
                   
                 
@@ -151,7 +151,7 @@ $a=$_POST['odt'];
         <td  data-label="Cantidad"><input style="background:transparent; border: 1 solid #000;  width: 100%; text-align: center" class="form-control" type="number" required  name="cantidad_despachada[]" required value=""></td>
         <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;" step="0.01"  readonly value="$<?php echo $precio2 ?>"></td>
 
-   <td  data-label="Cantidad"><input style="background:transparent; border: 1 solid #000;  width: 100%;" class="form-control" type="number" required step="0.01"  name="cost[]" required value=""></td>
+   <!--<td  data-label="Cantidad"><input style="background:transparent; border: 1 solid #000;  width: 100%;" class="form-control" type="number" required step="0.01"  name="cost[]" required value=""></td>-->
 
  
         <td  data-label="total"><input style="background:transparent; border: none; width: 100%;" step="0.01"   name="tot[]" readonly value="$<?php echo $total2 ?>"></td>

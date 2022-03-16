@@ -29,19 +29,19 @@ if ($estado=='Aprobado') {
 $sql1="UPDATE tb_productos SET stock='$stock1' WHERE cod ='$codigo_producto'" ;
 $query1 = mysqli_query($conn, $sql1);
 
-         $sql="UPDATE detalle_vale SET stock = '$cant',cantidad_despachada='$cantidad_despachada',precio='$precio1' WHERE codigodetallevale ='$codigo_producto'" ;
+         $sql="UPDATE detalle_vale SETcantidad_despachada='$cantidad_despachada' WHERE codigodetallevale ='$codigo_producto'" ;
 
       $query = mysqli_query($conn, $sql);
 }
  if ($query || $query1 || $result)  {
         echo "<script> alert('El Estado fue Cambiado correctamente')
-       location.href = '../solicitudes_vale.php';
+       //location.href = '../solicitudes_vale.php';
         </script>
         ";
         return true;
         }else {
         echo "<script> alert('UUPS!! Algo no fue mal escrito')
-         location.href = '../solicitudes_vale.php';
+       //  location.href = '../solicitudes_vale.php';
         </script>
         ";
         return false;
@@ -50,7 +50,7 @@ $query1 = mysqli_query($conn, $sql1);
   
    }elseif ($estado=='Rechazado') {
      echo "<script> alert('Producto Rechazado')
-        location.href = '../solicitudes_vale.php';
+      //  location.href = '../solicitudes_vale.php';
         </script>
         ";
   }
