@@ -24,7 +24,7 @@ CREATE DATABASE IF NOT EXISTS `hospital` DEFAULT CHARACTER SET utf8mb4 COLLATE u
 USE `hospital` ;
 
 CREATE TABLE tb_productos (
-  cod int(3) zerofill NOT NULL AUTO_INCREMENT,
+  cod int(3)  NOT NULL AUTO_INCREMENT,
   codProductos int(15) NOT NULL,
   categoria varchar(50) NOT NULL,
   catalogo int(15) NOT NULL,
