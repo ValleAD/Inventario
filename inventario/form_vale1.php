@@ -34,7 +34,7 @@ die();
     <div class="container">
       <table class="table">
         
-           <h1 style="margin-top:5px; text-align: center;">solicitud de Vale</h1>
+          <font color="white"> <h1 style="margin-top:5px; text-align: center;">solicitud de Vale</h1> </font>
 
 
 

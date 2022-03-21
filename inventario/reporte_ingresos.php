@@ -47,7 +47,7 @@ die();
 <title>Ingresos</title>
 </head>
 <body style="max-width: 100%;">
-               <font color="#000"><h1 style="margin:5px; text-align: center;">Ingreso de Productos</h1></font>
+               <font color="white"><h1 style="margin:5px; text-align: center;">Ingreso de Productos</h1></font>
     <section style="background: rgba(255, 255, 255, 0.9); margin: 2%;border-radius: 15px; padding: 1%";>
     <div class="row" style="position: relative; max-width: 100%; margin: 2% 0% 0% 10%;">
         <p style="color: #000; font-weight: bold; margin: 0.2% 4% 2%;">Mostrar Ingresos por:</p>
