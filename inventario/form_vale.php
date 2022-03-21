@@ -228,8 +228,8 @@ if(isset($_POST['codigo'])){
        $precio=$productos['precio'];
        $cantidad=$productos['SUM(stock)'];
        $precio1=number_format($precio, 2,".",",");
-       $stock=number_format($cantidad, 0,",");
-
+       $stock=number_format($cantidad, 1,".");
+       $stock=round($stock);
 
      ?>    
         <style type="text/css">
