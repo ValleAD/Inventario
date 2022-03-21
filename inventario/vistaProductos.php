@@ -166,7 +166,7 @@ $result = mysqli_query($conn, $sql);
     </style>
 </table>
   <section style="background: rgba(255, 255, 255, 0.9);padding-bottom: 1%;margin: 3%;border-radius: 15px;">
-<font color="#023859"><h2 class="text-center">Inventario de Productos</h2></font>
+<font color="black"><h2 class="text-center">Inventario de Productos</h2></font>
 <br>
 <form method="POST" action="">
                 <div class="container">
