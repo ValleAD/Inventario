@@ -122,7 +122,7 @@ while ($productos = mysqli_fetch_array($result)){
         $precio2  =    number_format($precio, 2,".",",");
         $total2   =    number_format($total, 2, ".",",");
         $final2   =    number_format($final, 2, ".",",");  
-        $stock=number_format($cantidad, 0,",");
+        $stock=number_format($cantidad, 1,".");
         echo' 
     <style type="text/css">
      #td{

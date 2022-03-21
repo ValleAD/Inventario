@@ -27,7 +27,7 @@ if ($estado=='Aprobado') {
    $stock1= $stock-$cantidad_despachada;
 }
 
-$sql1="UPDATE tb_productos SET stock='$stock1' WHERE codProductos ='$codigo_producto1'" ;
+$sql1="UPDATE tb_productos SET stock='$stock1' WHERE codProductos ='$codigo_producto1'";
 $query1 = mysqli_query($conn, $sql1);
 
          $sql="UPDATE detalle_vale SET stock='$cant', cantidad_despachada='$cantidad_despachada' WHERE codigodetallevale ='$codigo_producto'" ;
