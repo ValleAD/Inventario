@@ -47,6 +47,10 @@ $result = mysqli_query($conn, $sql);
 
 
     while ($productos1 = mysqli_fetch_array($result)){
+           $precio=$productos1['precio'];
+        $precio1=number_format($precio, 2,".",",");
+        $cantidad=$productos1['SUM(stock)'];
+        $stock=number_format($cantidad, 1,".");
 ?>
 
 
@@ -121,11 +125,11 @@ $result = mysqli_query($conn, $sql);
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial; margin-left: 17%;">
                 <label for="">Cantidad Actual</label>
-                <input class="form-control" type="text" name="stock" id="act" value="<?php  echo $productos1['SUM(stock)']; ?>">
+                <input class="form-control" type="text" name="stock" id="act" value="<?php echo $stock?>">
             </div>
             <div class="col-6 col-sm-4" style="position: initial;">
                 <label for="">Costo unitario</label>
-                <input class="form-control" type="text" name="precio" id="act" value="<?php  echo $productos1['precio']; ?>">
+                <input class="form-control" type="text" name="precio" id="act" value="<?php  echo $precio1 ?>">
             </div>
         </div>
         <hr>
@@ -236,6 +240,8 @@ if (isset($_POST['Fecha'])){
             while ($productos = mysqli_fetch_array($result)){
                  $precio=$productos['precio'];
         $precio1=number_format($precio, 2,".",",");
+        $cantidad=$productos['stock'];
+        $stock=number_format($cantidad, 1,".");
               ?>
                    <tr>
                 <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['categoria']; ?></td>
@@ -243,7 +249,7 @@ if (isset($_POST['Fecha'])){
            <td  data-label="Codificación de catálogo" style="text-align: center;"><?php  echo $productos['catalogo']; ?></td>
            <td  data-label="Descripción Completa" style="text-align: left;padding-left:3%"><?php  echo $productos['descripcion']; ?></td>
            <td  data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-           <td  data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
+           <td  data-label="Cantidad" style="text-align: center;"><?php  echo $stock ?></td>
            <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
         </tr>
@@ -306,7 +312,7 @@ if (isset($_POST['Fecha'])){
          $precio=$productos['precio'];
         $precio1=number_format($precio, 2,".",",");
         $cantidad=$productos['stock'];
-        $stock=number_format($cantidad, 0,",");
+        $stock=number_format($cantidad, 1,".");
 ?>
      
             
@@ -402,6 +408,8 @@ if (isset($_POST['categorias'])){  ?>  <br>
             while ($productos = mysqli_fetch_array($result)){
                  $precio=$productos['precio'];
                  $precio1=number_format($precio, 2,".",",");
+                 $cantidad=$productos['stock'];
+        $stock=number_format($cantidad, 1,".");
 
                 if ($_POST['cat']==$productos['categoria']) {?>
                    <tr>
@@ -410,7 +418,7 @@ if (isset($_POST['categorias'])){  ?>  <br>
            <td  data-label="Codificación de catálogo" style="text-align: center;"><?php  echo $productos['catalogo']; ?></td>
            <td  data-label="Descripción Completa" style="text-align: left;padding-left:3%"><?php  echo $productos['descripcion']; ?></td>
            <td  data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-           <td  data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
+           <td  data-label="Cantidad" style="text-align: center;"><?php  echo $stock ?></td>
            <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
         </tr>
