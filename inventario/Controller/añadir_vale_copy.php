@@ -5,36 +5,36 @@
 include '../Model/conexion.php';
 //estado compra
 if(isset($_POST['detalle_vale'])){
+
+
  $nSolicitud=$_POST['vale'];
-$estado =$_POST['estado'];
+$estado = $_POST['estado'];
 $sql="UPDATE  tb_vale SET estado = '$estado' WHERE codVale='$nSolicitud'" ;
 
 $result = mysqli_query($conn, $sql);
 if ($estado=='Aprobado') {
-     for($i = 0; $i < count($_POST['cod1']); $i++)
+     for($i = 0; $i < count($_POST['cod']); $i++)
     {
-      $codigo_producto  = $_POST['cod1'][$i];
-      $codigo_producto1  = $_POST['cod'][$i];
+      $cod_producto  = $_POST['cod'][$i];
       $cant_aprobada    = $_POST['cant'][$i];
       // $precio1   = $_POST['cost'][$i];
-      $cantidad_despachada    = $_POST['cantidad_despachada'][$i];
-      $cant=$cant_aprobada-$cantidad_despachada;
+      $cantidad_despachada = $_POST['cantidad_despachada'][$i];
 
-      $count = "SELECT codProductos, SUM(stock) FROM tb_productos  GROUP BY codProductos";
+    $count = "SELECT codProductos, SUM(stock) FROM tb_productos  WHERE codProductos ='$cod_producto' GROUP BY codProductos ";
     $query2 = mysqli_query($conn, $count);
     while ($productos1 = mysqli_fetch_array($query2)){
-   $stock =$productos1['SUM(stock)'];
-   $stock1= $stock-$cantidad_despachada;
+
+   $stock = $productos1['SUM(stock)'];
+   $stock1= $stock - $cantidad_despachada;
 }
 
-$sql1="UPDATE tb_productos SET stock='$stock1' WHERE codProductos ='$codigo_producto1'";
+$sql1="UPDATE tb_productos SET stock ='$stock1' WHERE codProductos ='$cod_producto'";
 $query1 = mysqli_query($conn, $sql1);
 
-         $sql="UPDATE detalle_vale SET stock='$cant', cantidad_despachada='$cantidad_despachada' WHERE codigodetallevale ='$codigo_producto'" ;
-
-      $query = mysqli_query($conn, $sql);
+     
 }
- if ($query || $query1 || $result)  {
+
+ if ($query1 || $result)  {
         echo "<script> alert('El Estado fue Cambiado correctamente')
        location.href = '../solicitudes_vale.php';
         </script>
@@ -56,4 +56,5 @@ $query1 = mysqli_query($conn, $sql1);
         ";
   }
 }
+
   ?>
