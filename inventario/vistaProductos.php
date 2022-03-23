@@ -51,7 +51,7 @@ $result = mysqli_query($conn, $sql);
         $precio1=number_format($precio, 2,".",",");
         $cantidad=$productos1['SUM(stock)'];
         $stock=number_format($cantidad, 1,".");
-         $stock=round($stock);
+         //$stock=round($stock);
 ?>
 
 
@@ -126,7 +126,7 @@ $result = mysqli_query($conn, $sql);
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial; margin-left: 17%;">
                 <label for="">Cantidad Actual</label>
-                <input class="form-control" type="number" step="0.1" name="stock" id="act" value="<?php echo $stock?>">
+                <input class="form-control" type="decimal" step="0.1" name="stock" id="act" value="<?php echo $stock?>">
             </div>
             <div class="col-6 col-sm-4" style="position: initial;">
                 <label for="">Costo unitario</label>
