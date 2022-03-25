@@ -231,7 +231,7 @@ if(isset($_POST['codigo'])){
        $precio=$productos['precio'];
        $cantidad=$productos['SUM(stock)'];
        $precio1=number_format($precio, 2,".",",");
-       $stock=number_format($cantidad, 1,".");
+       $stock=number_format($cantidad, 2,".",",");
 
 
      ?>    
@@ -247,7 +247,7 @@ if(isset($_POST['codigo'])){
                <td data-label="Descripción"><textarea  style="background:transparent; border: none; width: 100%; color: black;" cols="10" rows="1" type="text" class="form-control" readonly name="desc[]"><?php  echo $productos['descripcion']; ?></textarea></td>
                <td data-label="Unidad De Medida"><input  style="background:transparent; border: none; width: 100%; color: black;" type="text" class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
                <td data-label="Productos Disponibles"><input  style="background:transparent; border: none; width: 100%; color: gray;" type="decimal" class="form-control" readonly  name="stock[]"  value ="<?php  echo $stock; ?>"></td>
-               <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="number" class="form-control"  step="0.1" name="cant[]" required></td>
+               <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="decimal" class="form-control"  step="0.1" name="cant[]" required></td>
                <td data-label="Precio"><input style="background:transparent; border: none; width: 100%; color: black;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $precio ?>"></td> 
                   <td><input type="button" class="borrar btn btn-success" value="Eliminar" /></td>
             </tr>

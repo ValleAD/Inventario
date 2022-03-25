@@ -110,7 +110,7 @@ die();
         $precio=$productos['precio'];
        $precio1=number_format($precio, 2,".",",");
        $cantidad=$productos['SUM(stock)'];
-        $stock=number_format($cantidad, 1,".");
+        $stock=number_format($cantidad, 2,".",",");
       ?>
                
 

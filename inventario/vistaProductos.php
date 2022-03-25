@@ -50,7 +50,7 @@ $result = mysqli_query($conn, $sql);
            $precio=$productos1['precio'];
         $precio1=number_format($precio, 2,".",",");
         $cantidad=$productos1['SUM(stock)'];
-        $stock=number_format($cantidad, 1,".");
+        $stock=number_format($cantidad, 2,".",",");
          //$stock=round($stock);
 ?>
 
@@ -241,9 +241,10 @@ if (isset($_POST['Fecha'])){
             while ($productos = mysqli_fetch_array($result)){
                  $precio=$productos['precio'];
         $precio1=number_format($precio, 2,".",",");
+
         $cantidad=$productos['stock'];
-        $stock=number_format($cantidad, 1,".");
-         $stock=round($stock);
+        $stock=number_format($cantidad,  2,".",",");
+       //  $stock=round($stock);
               ?>
                    <tr>
                 <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['categoria']; ?></td>
@@ -251,7 +252,7 @@ if (isset($_POST['Fecha'])){
            <td  data-label="Codificación de catálogo" style="text-align: center;"><?php  echo $productos['catalogo']; ?></td>
            <td  data-label="Descripción Completa" style="text-align: left;padding-left:3%"><?php  echo $productos['descripcion']; ?></td>
            <td  data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-           <td  data-label="Cantidad" style="text-align: center;"><?php  echo $stock ?></td>
+           <td  data-label="Cantidad"  style="text-align: center;"><?php  echo $stock ?></td>
            <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
         </tr>
@@ -263,7 +264,7 @@ if (isset($_POST['Fecha'])){
 </div>
 </div>
 </div>
-    <div class="mx-5 p-2 r-5" style="; border-radius: 5px;">
+    <div class="mx-5 p-2 r-5" style=" border-radius: 5px;">
         <div class="row">
             <div class="col">
            <a href="unidad_medidad.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a>  <br><br>
@@ -314,7 +315,7 @@ if (isset($_POST['Fecha'])){
          $precio=$productos['precio'];
         $precio1=number_format($precio, 2,".",",");
         $cantidad=$productos['stock'];
-        $stock=number_format($cantidad, 1,".");
+        $stock=number_format($cantidad, 2,".",",");
 ?>
      
             
