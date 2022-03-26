@@ -108,7 +108,7 @@ while ($productos = mysqli_fetch_array($result)){
         $final2   =    number_format($final, 2, ".",",");
         $cantidad=$productos['stock'];
         $stock=number_format($cantidad, 1,".");
-         $stock=round($stock);
+         
   echo' 
     <style type="text/css">
      #td{

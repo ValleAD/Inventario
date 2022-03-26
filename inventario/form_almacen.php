@@ -179,7 +179,7 @@ if(isset($_POST['codigo'])){ ?>
 
        $precio1=number_format($precio, 2,".",",");
        $cantidad=$productos['SUM(stock)'];
-        $stock=number_format($cantidad, 0,",");
+        $stock=number_format($cantidad, 1,",");
 
        ?>
 
@@ -222,7 +222,7 @@ if(isset($_POST['codigo'])){ ?>
             
             <div class="form-group" style="position: all; margin: 2%">
                 <label>Cantidad</label>
-                <input type="number" name="cant[]" class="form-control" placeholder="Ingrese la Cantidad" required value="<?php echo $stock?>">
+               <input type="decimal" step="0.01" name="cant[]" class="form-control" placeholder="Ingrese la Cantidad" required value="<?php echo $stock?>">
             </div>
 
            <div class="form-group" style="position: all; margin: 2%">
