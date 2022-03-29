@@ -49,9 +49,9 @@
 <table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse; margin-top: 9%;">
      <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
-            <th style="width: 25%;font-size: 16px;text-align: center;">Código</th>
-            <th style="width: 25%;font-size: 16px;text-align: center;">Código <br>ONU</th>
-            <th style="width: 70%;color:black;font-size: 16px;text-align: center;">Descripción Completa <br>(con todas sus especificaciones)</th>
+            <th style="width: 22%;font-size: 16px;text-align: center;">Código</th>
+            <th style="width: 22%;font-size: 16px;text-align: center;">Código <br>ONU</th>
+            <th style="width: 65%;color:black;font-size: 16px;text-align: left;">Descripción Completa <br>(con todas sus especificaciones)</th>
             <th style="width: 15%;color:black;font-size: 16px;text-align: center;">U/M</th>
             <th style="width: 15%;color:black;font-size: 16px;text-align: center;">Cant.<br>Sol.</th>
             <th style="width: 15%;color:black;font-size: 16px;text-align: center;">Cant.<br>Desp.</th>
@@ -73,7 +73,6 @@ for($i = 0; $i < count($_POST['cod']); $i++)
     $um = $_POST['um'][$i];
     $cantidad = $_POST['cant'][$i];
     $cost = $_POST['cost'][$i];
-    $cantidad_despachada = $_POST['cantidad_despachada'][$i];
     $tot = $_POST['tot'][$i];
 
     $tot_f = $_POST['tot_f'];
@@ -85,7 +84,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
             <td><?php  echo $des?></td>
             <td style="text-align:center;" style="text-align: center;"><?php  echo $um?></td>
             <td style="text-align:center;"><?php echo $cantidad ?></td>
-            <td> <?php echo $cantidad_despachada; ?> </td>
+            <td></td>
             <td style="text-align: center;"><?php echo $cost ?></td>
             <td style="text-align: center"><?php  echo $tot ?></td>
         </tr>

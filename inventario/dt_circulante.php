@@ -54,7 +54,7 @@ $final = 0;
 
  echo'   
 <section id="section" style="margin:2%">
-<form method="POST" action="Plugin/pdf_circulante1.php" target="_blank">
+<form method="POST" action="Plugin/pdf_circulante.php" target="_blank">
          
       
         <div class="row">  
@@ -100,7 +100,7 @@ $num_circulante = $datos_sol['codCirculante'];
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
       
-        $total    =    $productos['stock'] * $productos['precio']+$productos['stock'];
+        $total    =    $productos['stock'] * $productos['precio'];
         $final    +=   $total;
         $precio   =    $productos['precio'];
         $precio2  =    number_format($precio, 2,".",",");

@@ -54,7 +54,7 @@ $final = 0;
 
  echo'   
 <section id="section" style="margin:2%">
-<form method="POST" action="Plugin/pdf_bodega1.php" target="_blank">
+<form method="POST" action="Plugin/pdf_bodega.php" target="_blank">
          
       
         <div class="row">
@@ -104,7 +104,7 @@ $final = 0;
                   <th style="width: 45%;">Código</th>
                   <th style="width: 175%;">Descripción</th>
                   <th style="width: 45%;">Unidad de Medida</th>
-                  <th style="width: 25%;">Cantidad</th>
+                  <th style="width: 25%;">Cantidad Solicitada</th>
                   <th style="width: 30%;">Costo unitario</th>
                   <th style="width: 30%;">Total</th>
                 </tr>
