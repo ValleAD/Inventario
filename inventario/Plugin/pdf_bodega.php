@@ -1,4 +1,5 @@
-<?php ob_start() ?>
+<?php ob_start();
+include ('../Model/conexion.php') ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +15,7 @@
     $depto = $_POST['depto'];
     $fech = $_POST['fech'];
     $encargado = $_POST['usuario'];
-     $vale = $_POST['odt'];
+     $vale = $_POST['bodega'];
       
 ?>
 <h3>HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
@@ -53,11 +54,17 @@ for($i = 0; $i < count($_POST['cod']); $i++)
     $codigo = $_POST['cod'][$i];
     $des = $_POST['desc'][$i];
     $um = $_POST['um'][$i];
-    $cantidad = $_POST['cant'][$i];
+    $cantidad1 = $_POST['cant'][$i];
     $cost = $_POST['cost'][$i];
+    $stock = $_POST['cantidad_despachada'][$i];
     $tot = $_POST['tot'][$i];
 
     $tot_f = $_POST['tot_f'];
+    $count = "SELECT * FROM detalle_bodega WHERE codigo ='$codigo'";
+    $result = mysqli_query($conn, $count);
+    while ($productos = mysqli_fetch_array($result)) {
+        $cantidad = $productos['cantidad_despachada'];
+    }
 ?>
   
         <tr>
@@ -65,7 +72,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
             <td style="border: 1px solid #ccc;border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $des?></td>
             <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $um?></td>
             <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $cantidad ?></td>
-            <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"></td>
+           <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $stock ?></td>
             <td style="text-align: center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;;"><?php echo $cost ?></td>
             <td style="text-align: center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $tot ?></td>
         </tr>

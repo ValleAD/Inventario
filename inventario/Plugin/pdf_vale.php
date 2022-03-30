@@ -1,4 +1,5 @@
-<?php ob_start() ?>
+<?php ob_start();
+include ('../Model/conexion.php') ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,22 +51,29 @@
 for($i = 0; $i < count($_POST['cod']); $i++)
 {
    
-    $codigo = $_POST['cod'][$i];
-    $des = $_POST['desc'][$i];
-    $um = $_POST['um'][$i];
-    $cantidad = $_POST['cant'][$i];
-    $cost = $_POST['cost'][$i];
+    $codigoid = $_POST['cod'][$i];
     $tot = $_POST['tot'][$i];
 
     $tot_f = $_POST['tot_f'];
+
+       $count = "SELECT codigo,descripcion, unidad_medida, stock,cantidad_despachada, precio, fecha_registro FROM detalle_vale WHERE codigo ='$codigoid'";
+    $result = mysqli_query($conn, $count);
+    while ($productos = mysqli_fetch_array($result)) {
+        $codigo=$productos['codigo'];
+        $des=$productos['descripcion'];
+        $um=$productos['unidad_medida'];
+        $stock=$productos['stock'];
+        $cantidad = $productos['cantidad_despachada'];
+        $cost =$productos['precio'];
+    }
 ?>
   
         <tr>
             <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $codigo?></td>
             <td style="border: 1px solid #ccc;border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $des?></td>
             <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $um?></td>
+            <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $stock ?></td>
             <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $cantidad ?></td>
-            <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"></td>
             <td style="text-align: center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;;"><?php echo $cost ?></td>
             <td style="text-align: center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $tot ?></td>
         </tr>
