@@ -20,20 +20,21 @@ if ($estado=='Aprobado') {
       $descripcion= $_POST['desc'][$i];
       $unidadmedida= $_POST['um'][$i];
       $stock = $_POST['cant'][$i];
-      $stock_despachado = $_POST['cantidad_despachada'][$i];
-      $precio= $_POST['cu'][$i];
+      $precio= $_POST['precio'][$i];
       $cantidad_despachada = $_POST['cantidad_despachada'][$i];
-echo $unidadmedida;
+echo $precio;
     $count = "SELECT codProductos, SUM(stock) FROM tb_productos  WHERE codProductos ='$cod_producto' GROUP BY codProductos ";
     $query2 = mysqli_query($conn, $count);
+ $insert = "INSERT INTO detalle_vale (codigo,descripcion,unidad_medida,stock,cantidad_despachada,precio) VALUES ('$cod_producto','$descripcion','$unidadmedida','$stock','$cantidad_despachada','$precio')";
+$query3 = mysqli_query($conn, $insert);
+
     while ($productos1 = mysqli_fetch_array($query2)){
 
    $stock = $productos1['SUM(stock)'];
    $stock1= $stock - $cantidad_despachada;
 }
 
- $insert = "INSERT INTO detalle_vale (codigo,descripcion,unidad_medida,stock,precio) VALUES ('$cod_producto','$descripcion','$unidadmedida','$stock','$precio')";
-$query2 = mysqli_query($conn, $insert);
+
 $sql1="UPDATE tb_productos SET stock ='$stock1' WHERE codProductos ='$cod_producto'";
 $query1 = mysqli_query($conn, $sql1);
 
