@@ -292,6 +292,7 @@ while ($productos = mysqli_fetch_array($result)){
 
        <tr>
         <td  data-label="Código"><input style="width: 100%; background:transparent; border: none; text-align: center"  name="cod[]" readonly value="<?php echo $codigo ?>">
+        <input type="hidden" style="width: 100%; background:transparent; border: none; text-align: center"  name="cod_vale[]" readonly value="<?php echo $productos['codigodetallevale'] ?>"></td>
         <td  data-label="Descripción"><textarea style="width: 100%; background:transparent; border: none; text-align: left; height: 100%;"  name="desc[]" readonly><?php echo $descripcion ?></textarea></td>
         <td  data-label="Unidada de Medida"><input  style="width: 100%; background:transparent; border: none; text-align: center" name="um[]" readonly value="<?php echo $um ?>"></td>
         <td  data-label="Cantidad"><input style="width: 100%; background:transparent; border: none; text-align: center"  name="cant[]" readonly value="<?php echo $stock ?>"></td>
