@@ -249,8 +249,7 @@ if(isset($_POST['submit'])){
               
           </div>
             </div>
-          
-            <br>
+          <br>
             <table class="table" style="margin-bottom:3%">
                 
               <thead>
