@@ -313,6 +313,7 @@ while ($productos = mysqli_fetch_array($result)){
         </table>
     <input id="pdf" type="submit" class="btn btn-lg" value="Guardar Estado" name="detalle_vale">
         <?php } ?>
+</form>
       <style>
 </section>
       
