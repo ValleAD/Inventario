@@ -50,7 +50,11 @@ background:burlywood;
                 <li class="submenu">
                     <a id="b" href="#"><span class="icon-rocket"></span>Solicitud Vale<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
-                        <li><a id="b" href="vale/form_vale.php">Nuevo</a></li>
+                    <li><a id="b" href="vale/solicitudes_vale.php">Mostrar</a></li>
+                        
+                        
+                        <li><a id="b" href="vale/form_vale.php">Buscar por código</a></li>
+                        <li><a id="b" href="vale/form_vale1.php">Seleccionar Varios</a></li>
                     </ul>
                 </li>
                  <li class="submenu" style="float:right;">

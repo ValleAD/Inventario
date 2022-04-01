@@ -1,9 +1,6 @@
-<?php require '../../../Model/conexion.php'?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
 <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
          <link rel="stylesheet" type="text/css" href="../../../styles/estilo_men.css">
@@ -45,7 +42,7 @@
 background:burlywood;
 }
  </style>
-  <header>
+ <header>
         <div class="menu_bar">
             <a href="#" class="bt-menu"><span class="fas fa-bars"></span>Menú</a>
         </div>
@@ -82,30 +79,34 @@ background:burlywood;
             </ul>
         </nav>
     </header>
-
-    <font color="white"><h2 class="text-center" >Inventario de Productos</h2></font>
-<br>
-    <div class="mx-5 p-2 r-5" style="background-color: white; border-radius: 5px;">
+    <font color="white"><h2 class="text-center" >Solicutud Vale</h2></font>
+<section id="act">
+    
+<form style="margin: 0%;position: 0; background: transparent;" method='POST' action="form_vale2.php">
+<div class="mx-5 p-2 r-4" style="background-color: white; border-radius: 5px;">
         <div class="row">
             <div class="col">
-            
+           
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
-<thead>
-         <tr id="tr">
-         <th style=" width: 10%">Código</th>
-                     <th style=" width: 10%">Categoria</th>
-                    
-                     <th style=" width: 10%">Cod. de Catálogo</th>
-                     <th style=" width: 30%;padding-left:3%">Descripción Completa</th>
-                     <th style=" width: 10%">U/M</th>
-                     <th style=" width: 10%">Cantidad</th>
-                     <th style=" width: 10%">Costo Unitario</th>
-                     <th style=" width: 70%">Fecha Registro</th>
-                     
-                   </tr>
-    </thead>
-    <tbody>
-    <style type="text/css">
+            <thead>
+              <tr id="tr">
+              <th style=" width: 10%">Código</th>
+                <th style="width: 10%;">Catálogo</th>
+                <th style="width: 50%;">Descripción Completa</th>
+                <th style="width: 10%; text-align: center;">U/M</th>
+                <th style="width: 115%;">Cantidad</th>
+                <th style="width: 175%;">Costo Unitario</th>
+                <th style="width: 145%;">Fecha Registro</th>
+                <th style="width: 145%;" align="center">
+                    <button type="submit" name="solicitar" class='btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button> 
+                </th>
+               
+              </tr>
+
+            </thead>
+
+            <tbody>
+            <style type="text/css">
      
      #td{
          display: none;
@@ -115,63 +116,113 @@ background:burlywood;
     }
  </style>
 
-<?php
-$sql = "SELECT cod, codProductos, categoria, catalogo,  descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos  GROUP BY precio,codProductos";
-$result = mysqli_query($conn, $sql);
+ <?php
+    include '../../../Model/conexion.php';
+
+
+    //    $sql = "SELECT * FROM tb_productos";
+    $sql = "SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos GROUP BY precio, codProductos";
+    $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
-         $precio=$productos['precio'];
-        $precio1=number_format($precio, 2,".",",");
-        $cantidad=$productos['SUM(stock)'];
+
+        $precio=$productos['precio'];
+       $precio1=number_format($precio, 2,".",",");
+       $cantidad=$productos['SUM(stock)'];
         $stock=number_format($cantidad, 2,".",",");
-?>
+      ?>
+               
+
+
+<style type="text/css">
+
+    #td{
+        display: none;
+    }
+   th{
+       width: 100%;
+   }
+</style>
+    <tr id="tr">
+      <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
+      <td data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
+      <td data-label="Descripción Completa"><textarea style="background:transparent; border: none; color: black;" cols="10" rows="1" readonly name="" id="" cols="10" rows="3" class="form-control"><?php  echo $productos['descripcion']; ?></textarea></td>
+      <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
+      <td data-label="Cantidad" style="text-align: center;"><?php  echo $stock; ?></td>
+      <td data-label="Costo Unitario">$<?php  echo $precio1?></td>
+      <td data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
+      <td data-label="solicitar" align="center">
+                    
+          <input type="checkbox" name="id[]"  value="<?php  echo $productos['cod']; ?>">
+          <input type="hidden" name="precio[]"  value="<?php  echo $productos['precio']; ?>">             
+         
+      </td>
      
-            
-                  
-     
-         <tr id="tr">
+<?php } ?> 
 
-            <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['codProductos']; ?></td>
-            <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['categoria']; ?></td>
-           <td  data-label="Codificación de catálogo" style="text-align: center;"><?php  echo $productos['catalogo']; ?></td>
-           <td  data-label="Descripción Completa" style="text-align: left;"><?php  echo $productos['descripcion']; ?></td>
-           <td  data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-           <td  data-label="Cantidad" style="text-align: center;"><?php  echo $stock; ?></td>
-           <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
-           <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
-    </tr>
-     <?php } ?> 
-                </tbody>                
-            </table>           
-            </div>
-        </div>
-    </div>
+            </tbody>
+        </table>
+</form>
+</section>
 
-     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-            
-    <!--   Datatables-->
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>  
 
-    <!-- searchPanes   -->
-    <script src="https://cdn.datatables.net/searchpanes/1.0.1/js/dataTables.searchPanes.min.js"></script>
-    <!-- select -->
-    <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+$(function(){
+    var textArea = $('#content'),
+    hiddenDiv = $(document.createElement('div')),
+    content = null;
     
+    textArea.addClass('noscroll');
+    hiddenDiv.addClass('hiddendiv');
+    
+    $(textArea).after(hiddenDiv);
+    
+    textArea.on('keyup', function(){
+        content = $(this).val();
+        content = content.replace(/\n/g, '<br>');
+        hiddenDiv.html(content + '<br class="lbr">');
+        $(this).css('height', hiddenDiv.height());
+    });
+});
+</script>
+<script type="text/javascript">
+function confirmaion(e) {
+    if (confirm("¿Estas seguro que deseas Eliminar este registro?")) {
+        return true;
+    } else {
+        return false;
+        e.preventDefault();
+    }
+}
+</script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap4.js"></script>
     <script>
     $(document).ready(function(){
-        $('#example').DataTable({
-             language: {
+ $('#example').DataTable({    
+
+        language: {
                 "lengthMenu": "Mostrar _MENU_ registros",
                 "zeroRecords": "No se encontraron resultados",
                 "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
                 "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
                 "infoFiltered": "(filtrado de un total de _MAX_ registros)",
                 "sSearch": "Buscar:",
-                "sProcessing":"Procesando...", 
-            }
-        });
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                 },
+                 "sProcessing":"Procesando...",
+            },
+        //para usar los botones   
+        responsive: "true",
+        paging: false,
+        dom: 'Bfrtil',          
+    });     
 
     });
     </script>

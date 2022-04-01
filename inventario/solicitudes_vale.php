@@ -107,7 +107,7 @@ die();
            
            </tbody>
         </table>
-        <a href="Plugin/pdf_soli_vale.php" class="btn btn-danger">Generar Solicidud Vale</a>
+       <!-- <a href="Plugin/pdf_soli_vale.php" class="btn btn-danger">Generar Solicidud Vale</a> -->
   
 
 </section>

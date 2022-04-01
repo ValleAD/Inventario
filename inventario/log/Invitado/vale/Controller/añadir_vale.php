@@ -6,12 +6,12 @@ include '../../../../Model/conexion.php';
 
      
 
+    $departamento = $_POST['depto'];
+    $odt = $_POST['numero_vale'];
+    $usuario = $_POST['usuario'];
 
-  $departamento = $_POST['depto'];
-      $odt = $_POST['numero_vale'];
-      $usuario = $_POST['usuario'];
 
-      //crud para guardar los productos en la tabla tb_vale
+    //crud para guardar los productos en la tabla tb_vale
     $sql = "INSERT INTO tb_vale (codVale, departamento,usuario,campo,estado) VALUES ('$odt', '$departamento','$usuario','Solicitud Vale','Pendiente')";
     $result = mysqli_query($conn, $sql); 
       
@@ -31,13 +31,11 @@ include '../../../../Model/conexion.php';
       $insert = "INSERT INTO detalle_vale (codigo,descripcion,unidad_medida,stock,precio,numero_vale) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$numero_vale')";
       $query = mysqli_query($conn, $insert);
 
-      if ($query) {
+      if ($result || $query) {
         echo "<script> alert('Su solicitud fué realizada correctamente');
        location.href = '../datos_vale.php';
         </script>
         ";
-      }if ($result) {
-        
       }else {
         echo "<script> alert('¡Error! algo salió mal');
        location.href = '../form_vale.php';
@@ -45,20 +43,5 @@ include '../../../../Model/conexion.php';
         ";
       }
     }
-
-    
-for ($i=0; $i < count($_POST['cod']) ; $i++) {
-
-  $codigo= $_POST['cod'][$i];
-  $stocks =$_POST['stock'][$i];   
-  $stock_obtenido =$_POST['cant'][$i];
-  $precio= $_POST['cu'][$i];
-  $stock_descontado=$stocks - $stock_obtenido;
-   
-//sql
-$count = "SELECT codProductos, SUM(stock), fecha_registro FROM tb_productos GROUP BY codProductos";
-$sql1="UPDATE tb_productos SET stock='$stock_descontado' WHERE codProductos ='$codigo' && precio = '$precio'" ;
-$result = mysqli_query($conn, $sql1);
-}
 
 ?>
