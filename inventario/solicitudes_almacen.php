@@ -106,7 +106,7 @@ die();
  <?php } ?>
            </tbody>
         </table>
-        <a href="Plugin/pdf_soli_almacen.php" class="btn btn-danger">Generar Solicidud Almacen</a>
+     <!--   <a href="Plugin/pdf_soli_almacen.php" class="btn btn-danger">Generar Solicidud Almacen</a>-->
  
          
 </section>

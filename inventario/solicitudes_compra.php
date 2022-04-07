@@ -116,7 +116,7 @@ h1 {
 
            </tbody>
         </table>
-        <a  href="Plugin/pdf_soli_compra.php" class="btn btn-danger">Generar Solicidud de Compra</a>
+       <!-- <a  href="Plugin/pdf_soli_compra.php" class="btn btn-danger">Generar Solicidud de Compra</a>-->
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
