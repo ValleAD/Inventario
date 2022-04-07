@@ -58,9 +58,8 @@ background:burlywood;
         border-radius: 7px;
     }
     #section{
-        margin-top: 5%;
-        margin-left: 12%;
-        width: 75%;
+        margin: 2%;
+        
        }
 </style>
 
@@ -133,7 +132,7 @@ $final = 0;
 
     echo'   
     <section id="section">
-    <form method="POST" action="Plugin/pdf_vale.php" target="_blank">
+    <form method="POST" action="../../../Plugin/pdf_vale.php" target="_blank">
              
           
             <div class="row">
@@ -180,6 +179,7 @@ $final = 0;
                     <th style="width: 35%;">Descripción</th>
                     <th>Unidad de Medida</th>
                     <th>Cantidad</th>
+                    <th style="width: 30%;">Cantidad depachada</th>
                     <th>Costo unitario</th>
                     <th>Total</th>
                   </tr>
@@ -215,6 +215,7 @@ $final = 0;
             <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly style="border: none">'.$productos['descripcion']. '</textarea></td>
             <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
             <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="'.$stock. '"></td>
+            <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%; text-align: center" type="text" readonly required  name="cantidad_despachada[]" required value="'.$productos['cantidad_despachada'] .'"></td>
             <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$'.$precio2.'"></td>
             <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$'.$total2. '"></td>
             

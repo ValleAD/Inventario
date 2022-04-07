@@ -52,15 +52,15 @@ die();
     <div class="row" style="position: relative; max-width: 100%; margin: 2% 0% 0% 10%;">
         <p style="color: #000; font-weight: bold; margin: 0.2% 4% 2%;">Mostrar Ingresos por:</p>
             <form method="POST" style="background:transparent;">
-                <div class="row">
-                <div class="col-6 col-sm-4" style="position: initial; ">
+                <div class="row" style="width:100%">
+                
                 <a href="reporte_ingresos.php" class="btn btn-primary">Inicio</a>
-            </div>
+            
 
-            <div class="col-7 col-sm-5" style="position: initial; width:50%px;">
+            <div class="col-6 col-sm-9" style="position: initial; width:50%px;">
             <select class="form-control" name="ingresos" id="ingresos" onchange="this.form.submit()">
                             <option>Seleccionar</option>
-                            <option value="bodega">Solicitud a Bodega</option>
+                            <option  value="bodega">Solicitud a Bodega</option>
                             <option value="almacen">Solicitud a Almacén</option>
                             <option value="compra">Solicitud de Compra</option>
                         </select>
@@ -315,6 +315,8 @@ while ($productos = mysqli_fetch_array($result)){
 <script>
     $(document).ready(function(){
         $('#example').DataTable({
+            responsive: "true",
+        dom: 'Bfrtilp', 
              language: {
                 "lengthMenu": "Mostrar _MENU_ registros ",
                 "zeroRecords": "No se encontraron resultados 😢",
@@ -323,7 +325,26 @@ while ($productos = mysqli_fetch_array($result)){
                 "infoFiltered": "(filtrado de un total de _MAX_ registros)",
                 "sSearch": "Buscar:",
                 "sProcessing":"Procesando...", 
-            }
+            },
+            buttons:[ 
+            {
+                extend:    'excelHtml5',
+                text:      '<i class="fas fa-file-excel"></i> ',
+                titleAttr: 'Exportar a Excel',
+                className: 'btn btn-success'
+            },
+            {
+                extend:    'pdfHtml5',
+                text:      '<i class="fas fa-file-pdf"></i> ',
+                titleAttr: 'Exportar a PDF',
+                className: 'btn btn-danger'
+            },
+            {
+                extend:    'print',
+                text:      '<i class="fa fa-print"></i> ',
+                titleAttr: 'Imprimir',
+                className: 'btn btn-info'
+            },
         });
 
     });

@@ -31,6 +31,9 @@ die();
 </head>
 <body>
     <style type="text/css">
+        #section{
+        margin: 1%;
+    }
               @media (max-width: 952px){
    #section{
         margin-top: 5%;
@@ -90,9 +93,9 @@ $final = 0;
             ?> readonly class="form-control"  type="text" value="<?= $productos1['estado'] ?>" name="id"> 
             </div>
         </div>
-      
+        
         <br>
-          
+              
         <table class="table" style="margin-bottom:3%">
             
             <thead>
@@ -101,10 +104,12 @@ $final = 0;
                 <th style="width: 35%;">Descripción</th>
                 <th>Unidad de Medida</th>
                 <th>Cantidad</th>
+                <th style="width: 30%;">Cantidad depachada</th>
+
                 <th>Costo unitario</th>
                 <th>Total</th>
               </tr>
-                <td id="td" colspan="6"><h4>No se encontraron resultados 😥</h4></td>
+                <td id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>
            </thead>
             <tbody>
                 <?php 
@@ -136,6 +141,7 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly style="border: none">'.$productos['descripcion']. '</textarea></td>
         <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
         <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="'.$stock. '"></td>
+        <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%; text-align: center" type="text" readonly required  name="cantidad_despachada[]" required value="'.$productos['cantidad_despachada'] .'"></td>
         <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$'.$precio2.'"></td>
         <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$'.$total2. '"></td>
         
@@ -144,7 +150,7 @@ while ($productos = mysqli_fetch_array($result)){
 }
 
       echo'
-      <th colspan="5">SubTotal</th>
+      <th colspan="6">SubTotal</th>
       <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$'.$final2.'" ></td></tr>
   
          </tbody>

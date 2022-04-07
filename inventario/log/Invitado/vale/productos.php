@@ -92,15 +92,14 @@ background:burlywood;
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
 <thead>
          <tr id="tr">
-         <th style=" width: 10%">Código</th>
-                     <th style=" width: 10%">Categoria</th>
-                    
-                     <th style=" width: 10%">Cod. de Catálogo</th>
-                     <th style=" width: 30%;padding-left:3%">Descripción Completa</th>
-                     <th style=" width: 10%">U/M</th>
-                     <th style=" width: 10%">Cantidad</th>
-                     <th style=" width: 10%">Costo Unitario</th>
-                     <th style=" width: 70%">Fecha Registro</th>
+        <th style=" width: 20%">Código</th>
+                     <th style=" width: 20%">Categoria</th>
+                     <th style=" width: 20%">Cod. de Catálogo</th>
+                     <th style=" width: 100%">Descripción Completa</th>
+                     <th style=" width: 100%">U/M</th>
+                     <th style=" width: 100%">Cantidad</th>
+                     <th style=" width: 100%">Costo Unitario</th>
+                     <th style=" width: 100%">Fecha Registro</th>
                      
                    </tr>
     </thead>

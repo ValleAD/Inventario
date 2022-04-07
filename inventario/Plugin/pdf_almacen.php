@@ -37,18 +37,20 @@
 
     <tbody>
 <?php
-    $total = 0;
-    $final = 0;
 for($i = 0; $i < count($_POST['cod']); $i++)
 {
    
     $codigo = $_POST['cod'][$i];
     $des = $_POST['nombre'][$i];
     $um = $_POST['um'][$i];
-    $cantidad = $_POST['cant'][$i];
-    $cost = $_POST['cost'][$i];
-    $tot = $_POST['tot'][$i];
+    $cant = $_POST['cant'][$i];
+    $precio = $_POST['cost'][$i];
+    $total = $_POST['tot'][$i];
     $tot_f = $_POST['tot_f'];
+    $cantidad= number_format($cant,1,".",",");
+    $cost  =    number_format($precio, 2,".",",");
+        $tot   =    number_format($total, 2, ".",",");
+        $tot_f   =    number_format($tot_f, 2, ".",",");
 ?>
   
         <tr>

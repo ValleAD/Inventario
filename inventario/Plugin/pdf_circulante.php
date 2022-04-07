@@ -49,6 +49,7 @@ for($i = 0; $i < count($_POST['desc']); $i++)
     $des = $_POST['desc'][$i];
     $um = $_POST['um'][$i];
     $cantidad = $_POST['cant'][$i];
+    $cantidad_despachada = $_POST['cantidad_despachada'][$i];
     $cost = $_POST['cost'][$i];
     $tot = $_POST['tot'][$i];
 
@@ -59,7 +60,7 @@ for($i = 0; $i < count($_POST['desc']); $i++)
             <td><?php  echo $des?></td>
             <td style="text-align:center;"><?php  echo $um?></td>
             <td style="text-align:center;"><?php echo $cantidad ?></td>
-            <td></td>
+            <td><?php echo $cantidad_despachada ?></td>
             <td style="text-align: center;"><?php echo $cost ?></td>
             <td style="text-align: center"><?php  echo $tot ?></td>
         </tr>

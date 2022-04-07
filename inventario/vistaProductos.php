@@ -234,6 +234,10 @@ if (isset($_POST['Fecha'])){
                     
                 </div> 
                 </div> </center>
+                 <div class="col-md-6" style="position: initial">
+                       
+                       <a style="margin-top: -69%;margin-left: 130%;" href="" class="btn btn-danger" name="categorias" type="submit">Cancelar</a>
+                    </div>
              ';
          
                    $sql = "SELECT * FROM `tb_productos` WHERE fecha_registro BETWEEN ' $f1' AND ' $f2'";
@@ -315,7 +319,7 @@ if (isset($_POST['Fecha'])){
          $precio=$productos['precio'];
         $precio1=number_format($precio, 2,".",",");
         $cantidad=$productos['stock'];
-        $stock=number_format($cantidad, 2,".",",");
+        $stock=number_format($cantidad, 1,".",",");
 ?>
      
             
@@ -375,6 +379,7 @@ if (isset($_POST['Fecha'])){
                     </div>
                     <div class="col-md-6" style="position: initial">
                        <button class="btn btn-success" name="categorias" type="submit">Exportar por Categorias</button>
+                  
                     </div>
                 </div>
             </div>
@@ -384,7 +389,12 @@ if (isset($_POST['Fecha'])){
             <?php 
 
 if (isset($_POST['categorias'])){  ?>  <br> 
+ <div class="col-md-6" style="position: initial">
+                       
+                       <a style="margin-top: -19%;margin-left: 110%;" href="" class="btn btn-danger" name="categorias" type="submit">Cancelar</a>
+                    </div>
 <div class="mx-5 p-2 r-5" style="background-color: white; border-radius: 5px;">
+   
         <div class="row">
             <div class="col">
                 <table class="table table-responsive table-striped" id="example2" style=" width: 100%">
@@ -413,7 +423,7 @@ if (isset($_POST['categorias'])){  ?>  <br>
                  $precio1=number_format($precio, 2,".",",");
                  $cantidad=$productos['stock'];
         $stock=number_format($cantidad, 1,".");
-         $stock=round($stock);
+        
 
                 if ($_POST['cat']==$productos['categoria']) {?>
                    <tr>
@@ -467,7 +477,7 @@ if (isset($_POST['categorias'])){  ?>  <br>
             },
         //para usar los botones   
         responsive: "true",
-        dom: 'Bfrtilp',       
+        dom: 'frtilp',       
         buttons:[ 
             {
                 extend:    'excelHtml5',
@@ -583,7 +593,7 @@ if (isset($_POST['categorias'])){  ?>  <br>
     </script>
     <script type="text/javascript">
 function confirmaion(e) {
-    if (confirm("¿Estas seguro que deseas Eliminar este registro?")) {
+    if (confirm("¿Estas seguro que deseas Eliminar este registro?                                                                                                                   NOTA:                                                                            El Producto que tenga la cantidad igual a 0 sera eliminado ")) {
         return true;
     } else {
         return false;

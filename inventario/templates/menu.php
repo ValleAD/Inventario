@@ -192,10 +192,12 @@ background:burlywood;
                 </button>
             </div>
               <div class="modal-body">
-                <p><b class="text-danger">NOTA IMPORTANTE:</b> Al Cambiar el Usuario va a tener que ingresar de nuevo con el nuevo Usuario y Contraseña</p>
+                <p><b class="text-danger">NOTA IMPORTANTE:</b> Al Cambiar el Usuario va a tener que ingresar el nuevo Usuario y Contraseña</p>
                 <form action="log/logout_Empleado.php" method="POST" style="margin: 1%;background: transparent;">
                     <input class="form-control" type="hidden" name="usuario" value="<?php echo $consulta['username'] ?>">
                     <div class="form-group">
+                        <label style="color:white;">Usuario Actual</label>
+                        <b><p style="stroke: white;"><?php echo $consulta['username'] ?></p></b>
                         <label>Nuevo Usuario</label>
                         <input class="form-control"  required type="text" name="Nusuario">
                     

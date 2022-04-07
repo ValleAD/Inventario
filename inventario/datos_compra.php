@@ -70,13 +70,14 @@ $final = 0;
             <td style="width:100%"><strong>Descripción</strong></td>
             <td style="width:100%"><strong>U/M</strong></td>
             <td style="width:100%"><strong>Cantidad</strong></td>
+            <th style="width: 30%;">Cantidad depachada</th>
             <td style="width:100%"><strong>Costo unitario</strong></td>
             <td style="width:100%"><strong>solicitud compra</strong></td>
             <td style="width:100%"><strong>Total</strong></td>
                
             </tr>
             <tr>
-                  <td id="td" colspan="7">
+                  <td id="td" colspan="9">
                     <h4>No se encontraron resultados 😥</h4></td>
             </tr>
             </thead>
@@ -109,6 +110,7 @@ while ($productos = mysqli_fetch_array($result)){
         <td data-label="Descripción"><input name="desc[]" readonly value="'.$productos['descripcion']. '"  style="background:transparent; border: none; width: 100%;"  ></td>
         <td data-label="Unidad De Medida"><input  name="um[]" readonly value="'.$productos['unidad_medida']. '"  style="background:transparent; border: none; width: 100%;"  ></td>
         <td data-label="Cantidad"><input  name="cant[]" readonly value="'.$stock. '"  style="background:transparent; border: none;width: 100%;"  ></td>
+         <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%; text-align: center" type="text" readonly required  name="cantidad_despachada[]" required value="'.$productos['cantidad_despachada'] .'"></td>
         <td data-label="Costo unitario"><input  name="cost[]" readonly value="$'.$precio2.'"  style="background:transparent; border: none; width: 100%;"  >
         </td>
         <td data-label="solicitud compra"><input name="cost[]" readonly value="$'.$productos['solicitud_compra']. '"  style="background:transparent; border: none; width: 100%;" step="0.01"  ></td>

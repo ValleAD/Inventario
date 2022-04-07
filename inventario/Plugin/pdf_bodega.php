@@ -54,17 +54,12 @@ for($i = 0; $i < count($_POST['cod']); $i++)
     $codigo = $_POST['cod'][$i];
     $des = $_POST['desc'][$i];
     $um = $_POST['um'][$i];
-    $cantidad1 = $_POST['cant'][$i];
+     $cantidad = $_POST['cant'][$i];
     $cost = $_POST['cost'][$i];
     $stock = $_POST['cantidad_despachada'][$i];
     $tot = $_POST['tot'][$i];
+     $tot_f = $_POST['tot_f'];
 
-    $tot_f = $_POST['tot_f'];
-    $count = "SELECT * FROM detalle_bodega WHERE codigo ='$codigo'";
-    $result = mysqli_query($conn, $count);
-    while ($productos = mysqli_fetch_array($result)) {
-        $cantidad = $productos['cantidad_despachada'];
-    }
 ?>
   
         <tr>

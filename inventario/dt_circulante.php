@@ -87,6 +87,7 @@ $final = 0;
                 <th style="width: 35%;">Descripción del Artículo</th>
                 <th>Unidad de Medida</th>
                 <th>Cantidad Solicitada</th>
+                <th style="width: 30%;">Cantidad depachada</th>
                 <th>Costo unitario</th>
                 <th>Total</th>
               </tr>
@@ -121,6 +122,7 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Descripción del Artículo"><textarea style="background:transparent; border: none; width: 100%; text-align: left"  name="desc[]" readonly style="border: none">'.$productos['descripcion']. '</textarea></td>
         <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%; text-align: center" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
         <td  data-label="Cantidad Solicitada"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="cant[]" readonly value="'.$stock. '"></td>
+            <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%; text-align: center" type="text" readonly required  name="cantidad_despachada[]" required value="'.$productos['cantidad_despachada'] .'"></td>
         <td  data-label="Costo Unitario"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="cost[]" readonly value="$'.$precio2. '"></td>
         <td  data-label="total"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="tot[]" step="0.01"  readonly value="$'.$total2. '"></td>
       </tr>';

@@ -124,6 +124,7 @@ $final = 0;
                   <th style="width:70%;">Descripción Completa</th>
                   <th style="width:15%;">U/M</th>
                   <th style="width:15%;">Cantidad</th>
+                  <th style="width: 30%;">Cantidad depachada</th>
                   <th style="width:15%;">Costo Unitario (estimado)</th>
                   <th style="width:30%;">Monto Total (estimado)</th>
                 </tr>
@@ -161,6 +162,7 @@ $final = 0;
           <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly>'.$productos['descripcion']. '</textarea></td>
           <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;  text-align: center" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
           <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;  text-align: center"  name="cant[]" readonly value="'.$stock. '"></td>
+          <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%; text-align: center" type="text" readonly required  name="cantidad_despachada[]" required value="'.$productos['cantidad_despachada'] .'"></td>
            <td data-label="Costo unitario"><input  name="cost[]" readonly value="$'.$precio2.'"  style="background:transparent; border: none; width: 100%;"  >
           <td  data-label="total"><input  style="background:transparent; border: none; width: 100%;  text-align: center"  name="tot[]" step="any"  readonly value="$'.$total2. '"></td>
         </tr>';
