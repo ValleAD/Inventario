@@ -60,7 +60,7 @@ die();
             <div class="col-6 col-sm-9" style="position: initial; width:50%px;">
             <select class="form-control" name="ingresos" id="ingresos" onchange="this.form.submit()">
                             <option>Seleccionar</option>
-                            <option  value="bodega">Solicitud a Bodega</option>
+                            <option  value="circulante">Solicitud a Fondo Circulante</option>
                             <option value="almacen">Solicitud a Almacén</option>
                             <option value="compra">Solicitud de Compra</option>
                         </select>
@@ -76,7 +76,7 @@ if(isset($_POST['ingresos'])){
 
     $mostrar = $_POST['ingresos'];
     
-    if($mostrar == "bodega"){
+    if($mostrar == "circulante"){
 ?>
 <style>
   #act {
@@ -91,7 +91,7 @@ if(isset($_POST['ingresos'])){
   }
 </style>
 
-    <h3 style="text-align: center; color: black;">Ingresos de Bodega</h3>
+    <h3 style="text-align: center; color: black;">Ingresos de Solicitud Circulante</h3>
 
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
             <thead>
@@ -114,7 +114,7 @@ if(isset($_POST['ingresos'])){
  <?php
     include 'Model/conexion.php';
      
-   $sql = "SELECT * FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega";
+   $sql = "SELECT * FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
