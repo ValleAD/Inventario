@@ -149,7 +149,7 @@ while ($productos = mysqli_fetch_array($result)){
 
 <?php }?>
      
-      <th colspan="5">SubTotal</th>
+      <th colspan="6">SubTotal</th>
       <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f"step="0.01"  readonly value="$<?php echo $final2 ?>" ></td></tr>
    
 

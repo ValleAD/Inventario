@@ -319,7 +319,7 @@ if (isset($_POST['Fecha'])){
          $precio=$productos['precio'];
         $precio1=number_format($precio, 2,".",",");
         $cantidad=$productos['stock'];
-        $stock=number_format($cantidad, 1,".",",");
+        $stock=number_format($cantidad, 2,".",",");
 ?>
      
             
@@ -390,7 +390,7 @@ if (isset($_POST['Fecha'])){
 
 if (isset($_POST['categorias'])){  ?>  <br> 
  <div class="col-md-6" style="position: initial">
-                       
+                       <br>
                        <a style="margin-top: -19%;margin-left: 110%;" href="" class="btn btn-danger" name="categorias" type="submit">Cancelar</a>
                     </div>
 <div class="mx-5 p-2 r-5" style="background-color: white; border-radius: 5px;">
@@ -422,7 +422,7 @@ if (isset($_POST['categorias'])){  ?>  <br>
                  $precio=$productos['precio'];
                  $precio1=number_format($precio, 2,".",",");
                  $cantidad=$productos['stock'];
-        $stock=number_format($cantidad, 1,".");
+        $stock=number_format($cantidad, 2,".",",");
         
 
                 if ($_POST['cat']==$productos['categoria']) {?>
