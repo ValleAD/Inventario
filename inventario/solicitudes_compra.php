@@ -70,7 +70,7 @@ h1 {
                 <th  style="width:10%">Unidad Técnica</th>
                 <th  style="width:20%" align="center">Descripción Solicitud</th>
                 <th  style="width:20%">Fecha de Registro</th>
-                <th  style="width:10%">Estado</th>
+                <!-- <th  style="width:10%">Estado</th> -->
                 <th  style="width:10%">Detalles</th>
            
     </thead>
@@ -96,7 +96,7 @@ h1 {
             <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
             <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
             <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
-            <td data-label="Plazo y No. de Entregas" class="delete"><input readonly <?php
+            <!--<td data-label="Plazo y No. de Entregas" class="delete"><input readonly <?php
                 if($solicitudes['estado']=='Pendiente') {
                     echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
                 }else if($solicitudes['estado']=='Aprobado') {
@@ -104,7 +104,7 @@ h1 {
                 }else if($solicitudes['estado']=='Rechazado') {
                      echo ' style="background-color:red ;width:100%; border-radius:5px;text-align:center; color: white;"';
                 }
-            ?> class="form-control" type="text" name="" value="<?php echo $solicitudes['estado'] ?>"></td>
+            ?> class="form-control" type="text" name="" value="<?php echo $solicitudes['estado'] ?>"></td> -->
             <td  data-label="Detalles">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Compra.php">             
                 <input type='hidden' name='id' value="<?php  echo $solicitudes['nSolicitud']; ?>">             

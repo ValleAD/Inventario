@@ -258,7 +258,7 @@ $cod_compra = $_POST['id'];
             <label style="font-weight: bold;">Fecha</label>
               <input readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro'])) ?>" name="fech">
           </div>
-          <div class="col-6 col-sm-3" style="position: initial">
+          <!-- <div class="col-6 col-sm-3" style="position: initial">
               <label style="font-weight: bold;">Estado</label>
               <br>
               <input <?php
@@ -280,7 +280,7 @@ $cod_compra = $_POST['id'];
                 }
             ?> style="float: right;margin-bottom:5%" class="btn btn-danger" href="dt_compra_copy.php"> Cambiar estado</button><?php } ?>
             </div>
-        </div>
+        </div> -->
        </form>
          <form method="POST" action="Plugin/pdf_compra.php" target="_blank"> 
 

@@ -54,9 +54,9 @@ die();
           <thead>
               <tr id="tr">
              
-                <th  style=" width: 30%"><strong>No. de Solicitud</strong></th>
-                <th  style=" width: 50%;  text-transform: capitalize"><strong>Fecha de solicitud</strong></th>
-                <th  style=" width: 100%;  text-transform: capitalize"><strong>Estado</strong></th>
+                <th  style=" width: 10%"><strong>No. de Solicitud</strong></th>
+                <th  style=" width: 100%;  text-transform: capitalize"><strong>Fecha de solicitud</strong></th>
+                <!-- <th  style=" width: 100%;  text-transform: capitalize"><strong>Estado</strong></th> -->
                 <th  style=" width: 100%"><strong>Detalles</strong></th>
                 
             </tr>
@@ -83,7 +83,7 @@ die();
         <tr>
             <td data-label="No. solicitud" class="delete"><?php  echo $datos_sol['codCirculante']; ?></td>
             <td data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])) ?></td>
-             <td data-label="Fecha de solicitud" class="delete"><input readonly <?php
+            <!--  <td data-label="Fecha de solicitud" class="delete"><input readonly <?php
                 if($datos_sol['estado']=='Pendiente') {
                     echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
                 }else if($datos_sol['estado']=='Aprobado') {
@@ -91,7 +91,7 @@ die();
                 }else if($datos_sol['estado']=='Rechazado') {
                      echo ' style="background-color:red ;width:100%; border-radius:5px;text-align:center; color: white;"';
                 }
-            ?> class="form-control" readonly type="text" name="" value="<?php echo $datos_sol['estado'] ?>"><br>
+            ?> class="form-control" readonly type="text" name="" value="<?php echo $datos_sol['estado'] ?>"><br> -->
               </td>
             <td  data-label="Detalles">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_circulante.php">             

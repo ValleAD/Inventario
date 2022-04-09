@@ -210,9 +210,9 @@ $id=$_POST['id'];
           <div class="col-6 col-sm-4" style="position: initial">
             <label style="font-weight: bold;">Fecha:</label>
               <input readonly class="form-control"  type="text" value="' .date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])). '" name="fech">
-          </div>
-           <div class="col-8 col-sm-4" style="position: initial">
-            <label style="font-weight: bold;">Estado:</label>';?>
+          </div>';?>
+           <!-- <div class="col-8 col-sm-4" style="position: initial">
+            <label style="font-weight: bold;">Estado:</label>
               <input <?php
                 if($datos_sol['estado']=='Pendiente') {
                     echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
@@ -230,7 +230,7 @@ $id=$_POST['id'];
                      echo ' style="display:none"';
                 }
             ?> style="float: right;" class="btn btn-danger" name="estado" href="dt_compra_copy.php"> Cambiar estado</button><?php } ?>
-          </div>
+          </div> -->
         </div>
       
         <br>
