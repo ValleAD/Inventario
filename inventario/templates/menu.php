@@ -24,8 +24,13 @@ $tipo_usuario = $_SESSION['tipo_usuario'];
             background-attachment: fixed;">
 
     <style type="text/css">
-        #a{
-            padding: 20px 10px;
+        #b{
+            background: transparent;
+            border: none;
+            width: 100%;
+            padding: 10px 10px;
+            color: whitesmoke;
+            text-align: left;
         }
         #a:hover{
    text-decoration: none;
@@ -39,20 +44,27 @@ $tipo_usuario = $_SESSION['tipo_usuario'];
 .children{
 background:burlywood;
 }
+.btn{
+    margin-top: -5%;
+}
  </style>
       <header>
         <div class="menu_bar">
-            <a href="#" class="bt-menu"><span class="fas fa-bars"></span>Menú</a>
+            <a href="#" class="bt-menu"></span>Menú</a>
         </div>
 
         <nav>
             <ul>
-                <li><a id="a" href="home.php"><span class="icon-house"></span>Inicio</a></li>
+                <li><a id="a" href="home.php"></span>Inicio</a></li>
                 
                     <li class="submenu">
-                    <a id="a" href="#"><span class="icon-rocket"></span>Articulos<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <a id="a" href="#"></span>Articulos<span> <i id="bi" class="bi bi-caret-down-fill"></i></a>
                     <ul class="children">
-                       <li><a id="b" href="vistaProductos.php">Ver Artículos</a></li>
+                       <li>
+                       
+                        <a href="vistaProductos.php?productos" id="b" name="productos">Ver Artículos</a>
+                   
+                    </li>
                        <?php if($tipo_usuario==1){ ?>
                         <li><a id="b" href="regi_producto.php">Nuevo Artículo</a></li>
                     <?php } ?>
@@ -64,7 +76,7 @@ background:burlywood;
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a id="a" href="#"><span class="icon-rocket"></span>Soli. Vale<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <a id="a" href="#"></span>Soli. Vale<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_vale.php">Mostrar</a></li>
                         <li><a id="b" href="form_vale.php">Buscar por código</a></li>
@@ -74,7 +86,7 @@ background:burlywood;
                 </li>
                 
                 <li class="submenu">
-                    <a id="a" href="#"><span class="icon-rocket"></span>Soli. Bodega<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <a id="a" href="#"></span>Soli. Bodega<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_bodega.php">Mostrar</a></li>
                         <li><a id="b" href="form_bodega.php">Buscar por codigo</a></li>
@@ -83,7 +95,7 @@ background:burlywood;
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a id="a" href="#"><span class="icon-rocket"></span>Soli. Compra<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <a id="a" href="#">Soli. Compra<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_compra.php">Mostrar</a></li>
                         <li><a id="b" href="form_compra.php">Nuevo</a></li>
@@ -91,21 +103,21 @@ background:burlywood;
                 </li>
                 
                 <li class="submenu">
-                    <a id="a" href="#"><span class="icon-rocket"></span>Soli. Almacen<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <a id="a" href="#">Soli. Almacen<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_almacen.php">Mostrar</a></li>
                         <li><a id="b" href="form_almacen.php">Nuevo</a></li>
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a id="a" href="#"><span class="icon-rocket"></span>Soli. Circulante<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <a id="a" href="#">Soli. Circulante<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_circulante.php">Mostrar</a></li>
                         <li><a id="b" href="form_circulante.php">Nuevo</a></li>
                     </ul>
                 </li>
                  <li class="submenu" style="margin-left: auto;">
-                    <a id="a" href="#" ><span class="icon-rocket"></span>Empleados<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <a id="a" href="#" >Empleados<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
                         <li><a id="b" href="Empleados.php">Mostrar</a></li>
                     </ul>
@@ -115,7 +127,7 @@ background:burlywood;
     $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
     while ($consulta =mysqli_fetch_array($data)) {
 ?>  
-    <button class="btn" data-toggle="modal" data-target="#info" style=" background:transparent;float: right;margin-top: 1%; color: white;"><?php echo $consulta['username'];?> <i class="bi bi-caret-down-fill"></i></button>
+    <button class="btn" id="btn" data-toggle="modal" data-target="#info" style=" background:transparent;float: right;margin-top: 1%; color: white;"><?php echo $consulta['username'];?> <i class="bi bi-caret-down-fill"></i></button>
 <!-- Delete -->
 <div class="modal fade" id="info" style="background: rgba(0, 0, 0, 0.3);" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">

@@ -177,7 +177,7 @@ while ($productos = mysqli_fetch_array($result)){
       <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold; text-align: center" step="0.01"   name="tot_f" readonly value="$<?php echo $final1 ?>" ></td> 
     </tr>
         </table>
-    <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
+    <input id="pdf" type="submit" class="btn btn-lg my-1" value="Exportar a PDF" name="pdf">
         <?php } ?>
       <style>
         #pdf{
@@ -312,7 +312,7 @@ while ($productos = mysqli_fetch_array($result)){
       <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold; text-align: center" step="0.01"   name="tot_f" readonly value="$<?php echo $final1 ?>" ></td> 
     </tr>
         </table>
-    <input id="pdf" type="submit" class="btn btn-lg" value="Guardar Estado" name="detalle_bodega">
+    <input id="pdf" type="submit" class="btn btn-lg my-1" value="Guardar Estado" name="detalle_bodega">
         <?php } ?>
       <style>
 </section>

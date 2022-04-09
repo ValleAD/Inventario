@@ -40,7 +40,7 @@ form{
 }
 }
 .button21 {
-
+  margin-top: 1%;
   text-align: center;
 }
 
@@ -298,6 +298,7 @@ echo '<div class="button21">
             #enviar{
                 margin-bottom: 5%;
             margin-left: 1.5%; 
+            margin-top: 1%;
             background: rgb(5, 65, 114); 
             color: #fff; margin-bottom: 2%; 
             border: rgb(5, 65, 114);
@@ -327,7 +328,7 @@ $("#btn-agregar").click(function(){
     $("#Registro").prepend(formulario_registro);
 
     // Agregamos un boton para retirar el formulario
-    $("#Registro .col-xs-4:first .well").append('<button class="btn-danger btn btn-block btn-retirar-registro" type="button">Retirar</button>');
+    $("#Registro .col-xs-4:first .well").append('<button class="btn-danger btn btn-block btn-retirar-registro my-1" type="button">Retirar</button>');
 
     // Hacemos focus en el primer input del formulario
     $("#Registro .col-xs-4:first .well input:first").focus();

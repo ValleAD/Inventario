@@ -309,7 +309,7 @@ $("#btn-agregar").click(function(){
     $("#Registro").prepend(formulario_registro);
 
     // Agregamos un boton para retirar el formulario
-    $("#Registro .col-xs-4:first .well").append('<button class="btn-danger btn btn-block btn-retirar-registro" type="button">Retirar</button>');
+    $("#Registro .col-xs-4:first .well").append('<button class="btn-danger btn btn-block btn-retirar-registro my-1" type="button">Retirar</button>');
 
     // Hacemos focus en el primer input del formulario
     $("#Registro .col-xs-4:first .well input:first").focus();

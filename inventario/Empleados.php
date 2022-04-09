@@ -199,10 +199,6 @@ $result = mysqli_query($conn, $sql);
     $result = mysqli_query($conn, $sql);
 
     while ($solicitudes = mysqli_fetch_assoc($result)){?>
-        <style type="text/css">
-     #td{
-        display: none;
-    }
    
 </style>
        
@@ -213,10 +209,10 @@ $result = mysqli_query($conn, $sql);
     </div>
     <div class="col-md-8" style="position: initial">
       <div class="card-body" style="position: initial">
-        <h5 class="card-title"><?php echo $solicitudes['username'] ?></h5>
-        <p class="card-text"><?php echo $solicitudes['firstname']," ",$solicitudes['lastname']; ?></p>
-        <p class="card-text"><?php echo $solicitudes['Establecimiento']; ?></p>
-        <p class="card-text"><?php echo $solicitudes['unidad']; ?></p>
+        <h5 class="card-title">USUARIO: <?php echo $solicitudes['username'] ?></h5>
+        <p class="card-text"><b>NOMBRE COMPLETO: </b><?php echo $solicitudes['firstname']," ",$solicitudes['lastname']; ?></p>
+        <p class="card-text"><b>ESTABLECIMIENTO:</b> <?php echo $solicitudes['Establecimiento']; ?></p>
+        <p class="card-text"><b>UNIDAD:</b> <?php echo $solicitudes['unidad']; ?></p>
         <div class="row" style="position: initial">
          
                     <div class="col-md-1" style="position: initial">

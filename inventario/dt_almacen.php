@@ -79,14 +79,14 @@ $final = 0;
           <div class="col-6 col-sm-2" style="position: initial">
             <label style="font-weight: bold;">Fecha:</label>
               <input readonly class="form-control"  type="text" value="' .date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])). '" name="fech">';?>
-          </div> <div class="col-6 col-sm-3" style="position: initial">
+          </div> 
+           <div class="col-6 col-sm-3" style="position: initial">
             <label style="font-weight: bold;">Estado:</label>
-               <input  <?php
+              <input <?php 
                 if($datos_sol['estado']=='Pendiente') {
                     echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
                 }
-            ?>
- type="text" class="btn"  name="estado[]" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $datos_sol['estado']; ?>">
+            ?> class="form-control" type="text" name="" readonly value="<?php echo $datos_sol['estado'] ?>">
           </div>
         </div>
       
@@ -159,6 +159,7 @@ while ($productos = mysqli_fetch_array($result)){
       <style>
         #pdf{
         margin-left: 38%; 
+        margin-top: 1%;
         background: rgb(175, 0, 0); 
         color: #fff; margin-bottom: 2%; 
         border: rgb(0, 0, 0);

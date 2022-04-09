@@ -40,7 +40,6 @@ form{
 }
 }
 .button21 {
-
   text-align: center;
 }
 
@@ -116,18 +115,18 @@ form{
     <hr/>
     
     <div class="button21">
-        <input class="btn btn-lg" type="submit" value="Consultar" id="enviar">
+        <input class="btn btn-lg my-1" type="submit" value="Consultar" id="enviar">
     </div>
-</div>
+
 </form>
   <?php  
 include 'Model/conexion.php';
 if(isset($_POST['codigo'])){ ?>
-  <form style="width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%;"action="Controller/añadir_circulante.php" method="POST">
+  <form style="width: 100%; height: 100%;margin-bottom: 5%;margin-top: 5%;"action="Controller/añadir_circulante.php" method="POST">
 
   <br>
 
-<div style="padding-top:1%;margin: 1%;">
+<div style="padding-top:1%;margin:1%;">
 
 <div class="row">
       <div class="col-.5 col-sm-4" style="position: initial">
@@ -168,8 +167,6 @@ if(isset($_POST['codigo'])){ ?>
         $stock=number_format($cantidad, 1,".");
 
        ?>
-
- <div class="container">
   <div class="col-xs-4 "  style="background: #bfe7ed;border-radius: 5px;margin: 1%;padding:1%" >
 <div class="well well-sm" style="position: all; margin: 1%">
 
@@ -216,15 +213,11 @@ if(isset($_POST['codigo'])){ ?>
             </div>
             </div>
     </div>
-    </div>
-<br>
-           
- 
-         
+        </div> 
 
  <?php }}
 echo '<div class="button21">
-             <input class="btn btn-lg" type="submit" value="Enviar" id="enviar">
+             <input class="btn btn-lg my-1" type="submit" value="Enviar" id="enviar">
         </div>';
         
         } ?> 
@@ -262,7 +255,7 @@ $("#btn-agregar").click(function(){
     $("#Registro").prepend(formulario_registro);
 
     // Agregamos un boton para retirar el formulario
-    $("#Registro .col-xs-4:first .well").append('<button class="btn-danger btn btn-block btn-retirar-registro" type="button">Retirar</button>');
+    $("#Registro .col-xs-4:first .well").append('<button class="btn-danger btn btn-block btn-retirar-registro my-1" type="button">Retirar</button>');
 
     // Hacemos focus en el primer input del formulario
     $("#Registro .col-xs-4:first .well input:first").focus();

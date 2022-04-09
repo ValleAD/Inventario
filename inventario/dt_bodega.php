@@ -86,10 +86,6 @@ $final = 0;
               <input ';
                 if($productos1['estado']=='Pendiente') {
                     echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
-                }else if($productos1['estado']=='Aprobado') {
-                     echo ' style="background-color:blueviolet ;width:100%; border-radius:5px;text-align:center; color: white;"';
-                }else if($productos1['estado']=='Rechazado') {
-                     echo ' style="background-color:red ;width:100%; border-radius:5px;text-align:center; color: white;"';
                 }
             ?> class="form-control" type="text" name="" readonly value="<?php echo $productos1['estado'] ?>">
           </div>
@@ -102,7 +98,7 @@ $final = 0;
         <thead>
                 <tr id="tr">
                   <th style="width: 45%;">Código</th>
-                  <th style="width: 175%;">Descripción</th>
+                  <th style="width: 125%;">Descripción</th>
                   <th style="width: 45%;">Unidad de Medida</th>
                   <th style="width: 25%;">Cantidad Solicitada</th>
                   <th style="width: 30%;">Cantidad depachada</th>
@@ -160,7 +156,7 @@ while ($productos = mysqli_fetch_array($result)){
 
     
   
-    <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
+    <input id="pdf" type="submit" class="btn btn-lg my-1" value="Exportar a PDF" name="pdf">
       <style>
         #pdf{
         margin-left: 38%; 

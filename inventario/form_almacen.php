@@ -118,7 +118,7 @@ form{
     <hr/>
     
     <div class="button21">
-        <input class="btn btn-lg" type="submit" value="Consultar" id="enviar">
+        <input class="btn btn-lg my-1" type="submit" value="Consultar" id="enviar">
     </div>
 </form>
 
@@ -239,12 +239,12 @@ if(isset($_POST['codigo'])){ ?>
 
  <?php }}
 echo '<div class="button21">
-             <input class="btn btn-lg" name="submit" type="submit" value="Enviar" id="enviar">
+             <input class="btn btn-lg my-1" name="submit" type="submit" value="Enviar" id="enviar">
         </div>';} ?> 
         
   <style>
             #enviar{
-                margin-bottom: 5%;
+                margin-bottom: 1%;
             margin-left: 1.5%; 
             background: rgb(5, 65, 114); 
             color: #fff; margin-bottom: 2%; 
@@ -275,7 +275,7 @@ $("#btn-agregar").click(function(){
     $("#Registro").prepend(formulario_registro);
 
     // Agregamos un boton para retirar el formulario
-    $("#Registro .col-xs-4:first .well").append('<button class="btn-danger btn btn-block btn-retirar-registro" type="button">Retirar</button>');
+    $("#Registro .col-xs-4:first .well").append('<button class="btn-danger btn btn-block btn-retirar-registro my-1" type="button">Retirar</button>');
 
     // Hacemos focus en el primer input del formulario
     $("#Registro .col-xs-4:first .well input:first").focus();

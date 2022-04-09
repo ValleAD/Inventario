@@ -128,7 +128,7 @@ while ($productos = mysqli_fetch_array($result)){
         $final2   =    number_format($final, 2, ".",",");  
         $cant_aprobada=$productos['stock'];
         $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cantidad_aprobada, 2,",");
+        $stock=number_format($cant_aprobada, 2,",");
         $cantidad_desp=number_format($cantidad_despachada, 2,",");
         echo' 
     <style type="text/css">
@@ -164,6 +164,7 @@ while ($productos = mysqli_fetch_array($result)){
       <style>
         #pdf{
         margin-left: 38%; 
+        margin-top: 1%;
         background: rgb(175, 0, 0); 
         color: #fff; margin-bottom: 2%; 
         border: rgb(0, 0, 0);

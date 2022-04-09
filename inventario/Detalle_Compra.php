@@ -173,7 +173,7 @@ $a=$_POST['sol_compra'];
           
   
 
-      <input id="pdf" type="submit" class="btn btn-success btn-lg" value="Guardar Estado" name="detalle_compra">
+      <input id="pdf" type="submit" class="btn btn-success btn-lg my-1" value="Guardar Estado" name="detalle_compra">
     <?php } ?>   
   </form>
   </section>
@@ -364,7 +364,7 @@ while ($productos = mysqli_fetch_array($result)){
          </tbody>
         </table>
    
-    <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="">
+    <input id="pdf" type="submit" class="btn btn-lg my-1" value="Exportar a PDF" name="">
      <?php } ?>  
           <style>
         #pdf{

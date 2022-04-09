@@ -140,7 +140,7 @@ while ($productos = mysqli_fetch_array($result)){
 
     
   
-    <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
+    <input id="pdf" type="submit" class="btn btn-lg my-1" value="Exportar a PDF" name="pdf">
       <style>
         #pdf{
         margin-left: 38%; 
