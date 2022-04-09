@@ -145,8 +145,10 @@ $final = 0;
         $precio2  =    number_format($precio, 2,".",",");
         $total2   =    number_format($total, 2, ".",",");
         $final2   =    number_format($final, 2, ".",",");
-        $cantidad=$productos['stock'];
-        $stock=number_format($cantidad, 1,".");
+        $cant_aprobada=$productos['stock'];
+        $cantidad_despachada=$productos['cantidad_despachada'];
+        $stock=number_format($cantidad_aprobada, 2,".",",");
+        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
     echo' 
       <style type="text/css">
        #td{
@@ -162,7 +164,7 @@ $final = 0;
           <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly>'.$productos['descripcion']. '</textarea></td>
           <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;  text-align: center" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
           <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;  text-align: center"  name="cant[]" readonly value="'.$stock. '"></td>
-          <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%; text-align: center" type="text" readonly required  name="cantidad_despachada[]" required value="'.$productos['cantidad_despachada'] .'"></td>
+          <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%; text-align: center" type="text" readonly required  name="cantidad_despachada[]" required value="'.$cant_despachada .'"></td>
            <td data-label="Costo unitario"><input  name="cost[]" readonly value="$'.$precio2.'"  style="background:transparent; border: none; width: 100%;"  >
           <td  data-label="total"><input  style="background:transparent; border: none; width: 100%;  text-align: center"  name="tot[]" step="any"  readonly value="$'.$total2. '"></td>
         </tr>';

@@ -265,9 +265,10 @@ while ($productos = mysqli_fetch_array($result)){
         $precio2  =    number_format($precio, 2,".",",");
         $total2   =    number_format($total, 2, ".",",");
         $final2   =    number_format($final, 2, ".",",");
-        $cantidad=$productos['stock'];
-        $stock=number_format($cantidad, 0,",");
-         
+        $cant_aprobada=$productos['stock'];
+        $cantidad_despachada=$productos['cantidad_despachada'];
+        $stock=number_format($cant_aprobada, 2,".",",");
+        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
            echo' 
     <style type="text/css">
      #td{
@@ -282,7 +283,7 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Descripción del Artículo"><textarea style="background:transparent; border: none; width: 100%; text-align: left"  name="desc[]" readonly style="border: none">'.$productos['descripcion']. '</textarea></td>
         <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%; text-align: center" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
         <td  data-label="Cantidad Solicitada"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="cant[]" readonly value="'.$stock. '"></td>
-        <td  data-label="Cantidad"> <input readonly style="background:transparent; border: none;  width: 100%; text-align: center" class="form-control" type="number" required  name="cantidad_despachada[]" required value="'.$productos['cantidad_despachada'].'"></td>
+        <td  data-label="Cantidad"> <input readonly style="background:transparent; border: none;  width: 100%; text-align: center"  type="number" required  name="cantidad_despachada[]" required value="'.$cantidad_desp.'"></td>
          <td data-label="Costo unitario"><input  name="cost[]" readonly value="$'.$precio2.'"  style="background:transparent; border: none; width: 100%;"  ></td>
         <td  data-label="total"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="tot[]" readonly step="0.01"  value="$'.$total2. '"></td>
       </tr>';

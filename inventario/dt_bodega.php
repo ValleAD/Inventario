@@ -129,8 +129,10 @@ while ($productos = mysqli_fetch_array($result)){
       $precio2      =  number_format($precio, 2,".",",");
       $total2       =  number_format($total, 2, ".",",");
       $final2       =  number_format($final, 2, ".",",");
-      $cantidad=$productos['stock'];
-        $stock=number_format($cantidad, 2,".",",");
+      $cant_aprobada=$productos['stock'];
+        $cantidad_despachada=$productos['cantidad_despachada'];
+        $stock=number_format($cant_aprobada, 2,".",",");
+        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
       
       ?>
        <style type="text/css"> #td{display: none;} </style> 
@@ -140,7 +142,7 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly style="border: none"><?php echo $descripcion ?></textarea></td>
         <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="<?php echo $um ?>"></td>
         <td  data-label="Cantidad"><input  style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="<?php echo $stock ?>"></td>
-        <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%; text-align: center" type="text" readonly required  name="cantidad_despachada[]" required value="<?php echo $productos['cantidad_despachada'] ?>"></td>
+        <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%; text-align: center" type="text" readonly required  name="cantidad_despachada[]" required value="<?php echo $cantidad_desp?>"></td>
         <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$<?php echo $precio2 ?>"></td>
    
         

@@ -153,8 +153,10 @@ while ($productos = mysqli_fetch_array($result)){
       $total1= number_format($total, 2, ".",",");
       $final1=number_format($final, 2, ".",",");
 
-      $cantidad=$productos['stock'];
-        $stock=number_format($cantidad, 2, ".",",");
+      $cant_aprobada=$productos['stock'];
+        $cantidad_despachada=$productos['cantidad_despachada'];
+        $stock=number_format($cant_aprobada, 2,".",",");
+        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
         
       ?>
        <style type="text/css"> #td{display: none;} </style> 
@@ -164,7 +166,7 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Descripción"><textarea style="width: 100%; background:transparent; border: none; text-align: left; height: 100%;"  name="desc[]" readonly><?php echo $descripcion ?></textarea></td>
         <td  data-label="Unidada de Medida"><input  style="width: 100%; background:transparent; border: none; text-align: center" name="um[]" readonly value="<?php echo $um ?>"></td>
         <td  data-label="Cantidad"><input style="width: 100%; background:transparent; border: none; text-align: center" type="decimal" step="0.01"  name="cant[]" readonly value="<?php echo $stock ?>"></td>
-        <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%; text-align: center" type="decimal" readonly required  name="cantidad_despachada[]" required value="<?php echo $productos['cantidad_despachada'] ?>"></td>
+        <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%; text-align: center" type="decimal" readonly required  name="cantidad_despachada[]" required value="<?php echo $cantidad_desp ?>"></td>
         <td  data-label="Costo unitario"><input style="width: 100%; background:transparent; border: none; text-align: center"  name="cost[]" step="0.01"  readonly value="$<?php echo $precio1 ?>"></td>
         <td  data-label="total"><input style="width: 100%; background:transparent; border: none; text-align: center"  name="tot[]" readonly step="0.01" value="$<?php echo $total1 ?>"></td>
       </tr>

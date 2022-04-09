@@ -44,23 +44,20 @@ for($i = 0; $i < count($_POST['cod']); $i++)
     $des = $_POST['nombre'][$i];
     $um = $_POST['um'][$i];
     $cant = $_POST['cant'][$i];
+    $cantidad = $_POST['cantidad_despachada'][$i];
     $precio = $_POST['cost'][$i];
     $total = $_POST['tot'][$i];
     $tot_f = $_POST['tot_f'];
-    $cantidad= number_format($cant,1,".",",");
-    $cost  =    number_format($precio, 2,".",",");
-        $tot   =    number_format($total, 2, ".",",");
-        $tot_f   =    number_format($tot_f, 2, ".",",");
 ?>
   
         <tr>
             <td style="text-align:center;"><?php  echo $codigo?></td>
             <td style="text-align:center;"><?php  echo $um?></td>
             <td><?php  echo $des?></td>
-            <td style="text-align:center;"><?php echo $cantidad ?></td>
-            <td></td>
-            <td style="text-align: center;"><?php echo $cost ?></td>
-            <td style="text-align: center"><?php  echo $tot ?></td>
+            <td style="text-align:center;"><?php echo $cant ?></td>
+            <td><?php echo $cantidad ?></td>
+            <td style="text-align: center;"><?php echo $precio ?></td>
+            <td style="text-align: center"><?php  echo $total ?></td>
         </tr>
      
      <?php } } ?> 

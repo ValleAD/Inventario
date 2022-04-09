@@ -152,9 +152,10 @@ while ($productos = mysqli_fetch_array($result)){
        $precio1=number_format($precio, 2,".",",");
       $total1= number_format($total, 2, ".",",");
       $final1=number_format($final, 2, ".",",");
-      $cantidad=$productos['stock'];
-        $stock=number_format($cantidad, 2,".",",");
-       //  $stock=round($stock);
+      $cant_aprobada=$productos['stock'];
+        $cantidad_despachada=$productos['cantidad_despachada'];
+        $stock=number_format($cant_aprobada, 2,".",",");
+        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
       ?>
        <style type="text/css"> #td{display: none;} </style> 
 

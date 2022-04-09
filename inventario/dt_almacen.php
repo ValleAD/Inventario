@@ -100,6 +100,7 @@ $final = 0;
                 <th style="width: 95%;">Nombre del Artículo</th>
                 <th style="width: 35%;">Unidad de Medida</th>
                 <th style="width: 35%;">Cantidad Solicitada</th>
+                <th style="width: 35%;">Cantidad Despachada</th>
                 <th style="width: 35%;">Costo unitario</th>
                 <th style="width: 35%;">Total</th>
               </tr>
@@ -119,8 +120,10 @@ while ($productos = mysqli_fetch_array($result)){
         $precio2  =    number_format($precio, 2,".",",");
         $total2   =    number_format($total, 2, ".",",");
         $final2   =    number_format($final, 2, ".",",");
-        $cantidad=$productos['cantidad_solicitada'];
-        $stock=number_format($cantidad, 1,".");
+       $cant_aprobada=$productos['cantidad_solicitada'];
+        $cantidad_despachada=$productos['cantidad_despachada'];
+        $stock=number_format($cant_aprobada, 2,".",",");
+        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
          
       
 ?>
@@ -134,6 +137,9 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Nombre del Artículo"><textarea style="background:transparent; border: none; width: 100%;"  name="nombre[]" readonly style="border: none"><?php echo $productos['nombre'];?></textarea></td>
         <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%; text-align: center" name="um[]" readonly value="<?php echo $productos['unidad_medida'];?>"></td>
         <td  data-label="Cantidad Solicitada"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="cant[]" readonly value="<?php echo $stock; ?>"></td>
+
+        <td  data-label="Cantidad Solicitada"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="cantidad_despachada[]" readonly value="<?php echo $cantidad_desp; ?>"></td>
+
         <td  data-label="Costo Unitario"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="cost[]" step="0.01"  readonly value="$<?php echo $precio2?>"></td>  
         <td  data-label="total"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="tot[]" readonly step="0.01"  value="$<?php echo $total2;?>"></td>
       </tr>

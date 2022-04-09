@@ -83,10 +83,9 @@ $result = mysqli_query($conn, $sql);
 } 
 ?>
         <font color="black"><h2 class="text-center " >Empleados Del Sistema</h2></font>
-    <section style="margin:1%;padding: 1%; border-radius: 5px; background: white; ">
+    <section style="margin:5%;padding: 1%; border-radius: 5px; background: white; ">
 
-        <table class="table" id="example" style="width:100%">
-<?php if($tipo_usuario == 1) { ?>
+
 
     <button class="btn btn-secondary" data-toggle="modal" data-target="#Usuarios" style="float: left; color: white;margin-bottom: 1%;">Nuevo Integrante</button>
 
@@ -190,22 +189,9 @@ $result = mysqli_query($conn, $sql);
                 </form> 
         </div>
     </div>
-</div><?php } ?>
-        <thead>
-              <tr id="tr">
-                <th style="width: 12%"><strong>Nombres</strong></th>
-                <th style="width: 12%"><strong>Apellidos</strong></th>
-                <th style="width: 15%"><strong>Establecimiento</strong></th>
-                <th style="width: 15%"><strong>Unidad</strong></th>
-                <th  style="width: 10%; text-align:center;" ><strong>Habilitado</strong></th><?php if($tipo_usuario == 1) { ?>
-                 <th style="width: 10%;margin-left: 5%;"><strong style="text-align: center;"> Cambiar Habilitado</strong></th>  
-                <th style="width: 10%">Eliminar</th><?php } ?>
-                
-            </tr>
-            
-     </thead>
-            <tbody>
-            
+</div>
+
+</div>            
     <?php
     include 'Model/conexion.php';
 
@@ -219,46 +205,41 @@ $result = mysqli_query($conn, $sql);
     }
    
 </style>
-        <tr>
-            <td data-label="Nombres" class="delete"><input readonly style="width:100%;border:none;background: transparent;" type="text" name="cod" value="<?php  echo $solicitudes['firstname']; ?>"></td>
-
-            <td data-label="Apellidos" class="delete"><input readonly name="desc" style="width:100%;border:none;background: transparent;" value="<?php  echo $solicitudes['lastname']; ?>"></td>
-
-            <td data-label="Establecimiento" class="delete"><input data-bs-toggle="tooltip" data-bs-placement="top" title="<?php  echo $solicitudes['Establecimiento']; ?>" readonly style="width:100%;border:none;background: transparent;" name="um" type="text"  value="<?php  echo $solicitudes['Establecimiento']; ?>"></td>
-
-            <td data-label="unidad" class="delete"><input readonly style="width:100%;border:none;background: transparent;" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php  echo $solicitudes['unidad']; ?>" type="text" name="soli" value="<?php  echo $solicitudes['unidad']; ?>"></td> 
-            
- <td align="center">
-            <input  <?php
-                if($solicitudes['Habilitado']  =='Si') {
-                    echo ' style="max-width:39%;font-size: 12px; border-radius:5px;text-align:center; color: blue; font-size: 13px; font-weight: bold;"';
-                } elseif ($solicitudes['Habilitado']  == 'No') {
-                    // code...
-                } {
-                    echo 'style="max-width:40%;font-size: 12px; border-radius:13px;text-align:center;color: red; font-weight: bold; font-size: 13px;"';
-                }
-            ?>
- type="text" class="btn"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $solicitudes['Habilitado']; ?>"></td>
+       
+<div class="card mb-3 border-secondary " style="max-width: 100%;position: initial">
+  <div class="row g-0">
+    <div class="col-md-2" style="position: initial">
+      <img src="img/logo1.png" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8" style="position: initial">
+      <div class="card-body" style="position: initial">
+        <h5 class="card-title"><?php echo $solicitudes['username'] ?></h5>
+        <p class="card-text"><?php echo $solicitudes['firstname']," ",$solicitudes['lastname']; ?></p>
+        <p class="card-text"><?php echo $solicitudes['Establecimiento']; ?></p>
+        <p class="card-text"><?php echo $solicitudes['unidad']; ?></p>
+        <div class="row" style="position: initial">
+         
+                    <div class="col-md-1" style="position: initial">
             <?php if($tipo_usuario == 1) { ?>
-            <td align="center">
+               
                  <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Empleados.php">             
-          <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">             
-          <button name='editar' class='btn btn-info btn-sm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
+          <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">      
+          <button name='editar' class='btn btn-info swal2-styled.swal2-confirm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
         </form>
-            
+   </div>
+    <div class="col-md-1" style="position: initial">
+         <a href="Controller/Delete_Empleados.php?id=<?php  echo $solicitudes['id']; ?>" onclick="return confirmaion()" class="btn btn-danger swal2-styled.swal2-confirm">Eliminar</a>
+     <?php } ?>
+ </div>
 
-<!--**********************************************************************************************************************************************************************************-->
-  <!--Botones para actualizar y eliminar-->
 
-            <td align="center">
-                <a href="Controller/Delete_Empleados.php?id=<?php  echo $solicitudes['id']; ?>" onclick="return confirmaion()" class="btn btn-danger swal2-styled.swal2-confirm">Eliminar</a>
-            </td></td><?php } ?>
-        </tr>
-      
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 
  <?php } ?> 
-           </tbody>
-        </table>
 
   </section>
    
