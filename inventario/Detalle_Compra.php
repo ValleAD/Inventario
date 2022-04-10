@@ -258,29 +258,21 @@ $cod_compra = $_POST['id'];
             <label style="font-weight: bold;">Fecha</label>
               <input readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro'])) ?>" name="fech">
           </div>
-          <!-- <div class="col-6 col-sm-3" style="position: initial">
+          <div class="col-6 col-sm-3" style="position: initial">
               <label style="font-weight: bold;">Estado</label>
               <br>
-              <input <?php
-                if($productos1['estado']=='Pendiente') {
-                    echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
-                }else if($productos1['estado']=='Aprobado') {
+              
+              <div class="input-group mb-3">
+                 <label class="input-group-text" for="inputGroupSelect01"><i class="bi bi-check-circle-fill"></i></label>
+              <input id="inputGroupSelect01" <?php
+                if($productos1['estado']=='Comprado') {
                      echo ' style="background-color:blueviolet ;width:100%; border-radius:5px;text-align:center; color: white;"';
-                }else if($productos1['estado']=='Rechazado') {
-                     echo ' style="background-color:red ;width:100%; border-radius:5px;text-align:center; color: white;"';
                 }
             ?> class="form-control" type="text" name="" value="<?php echo $productos1['estado'] ?>"><br>
               <input readonly class="form-control" type="hidden" value="<?php echo $productos1['nSolicitud'] ?>" name="sol_compra">
-              <?php if($tipo_usuario==1){ ?>
-                <button type="submit" name="submit" <?php
-                if($productos1['estado']=='Aprobado') {
-                     echo ' style="display:none"';
-                }else if($productos1['estado']=='Rechazado') {
-                     echo ' style="display:none"';
-                }
-            ?> style="float: right;margin-bottom:5%" class="btn btn-danger" href="dt_compra_copy.php"> Cambiar estado</button><?php } ?>
+                </div>
             </div>
-        </div> -->
+        </div>
        </form>
          <form method="POST" action="Plugin/pdf_compra.php" target="_blank"> 
 

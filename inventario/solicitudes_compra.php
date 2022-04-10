@@ -64,13 +64,14 @@ h1 {
             
             <thead>
               <tr id="tr">
+                <th>#</th>
                 <th style="width:10%">No. Solicitud</th>
                 <th  style="width:10%">Dependencia</th>
                 <th  style="width:10%">Plazo y No. de Entregas</th>
                 <th  style="width:10%">Unidad Técnica</th>
                 <th  style="width:20%" align="center">Descripción Solicitud</th>
                 <th  style="width:20%">Fecha de Registro</th>
-                <!-- <th  style="width:10%">Estado</th> -->
+                <th  style="width:10%">Estado</th>
                 <th  style="width:10%">Detalles</th>
            
     </thead>
@@ -82,29 +83,29 @@ h1 {
 
     $sql = "SELECT * FROM tb_compra ORDER BY fecha_registro DESC ";
     $result = mysqli_query($conn, $sql);
-
-    while ($solicitudes = mysqli_fetch_array($result)){?>
+    $n=0;
+    while ($solicitudes = mysqli_fetch_array($result)){
+        $n++;
+        $r=$n+0;
+        ?>
         <style type="text/css">
      #td{
         display: none;
     }
 </style>
         <tr>
+            <td><?php echo $r ?></td>
             <td data-label="No. Solicitud" class="delete"><?php  echo $solicitudes['nSolicitud']; ?></td>
             <td data-label="Dependencia" class="delete"><?php  echo $solicitudes['dependencia']; ?></td>
             <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['plazo']; ?></td>
             <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
             <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
             <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
-            <!--<td data-label="Plazo y No. de Entregas" class="delete"><input readonly <?php
-                if($solicitudes['estado']=='Pendiente') {
-                    echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
-                }else if($solicitudes['estado']=='Aprobado') {
+            <td data-label="Plazo y No. de Entregas" class="delete"><input readonly <?php
+                if($solicitudes['estado']=='Comprado') {
                      echo ' style="background-color:blueviolet ;width:100%; border-radius:5px;text-align:center; color: white;"';
-                }else if($solicitudes['estado']=='Rechazado') {
-                     echo ' style="background-color:red ;width:100%; border-radius:5px;text-align:center; color: white;"';
                 }
-            ?> class="form-control" type="text" name="" value="<?php echo $solicitudes['estado'] ?>"></td> -->
+            ?> class="form-control" type="text" name="" value="<?php echo $solicitudes['estado'] ?>"></td>
             <td  data-label="Detalles">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Compra.php">             
                 <input type='hidden' name='id' value="<?php  echo $solicitudes['nSolicitud']; ?>">             

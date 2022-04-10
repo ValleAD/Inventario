@@ -31,7 +31,11 @@ die();
     <title>Departamentos</title>
 </head>
 
-
+<style type="text/css">
+      #form{
+    background: transparent;margin: 0%;padding: 0%;
+  }
+</style>
 <body>
 
 <?php      
@@ -55,7 +59,7 @@ $result = mysqli_query($conn, $sql);
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial; margin: auto; margin-top: 2%">
                 <input type="hidden" name="id" value="<?php  echo $productos['id']; ?>">
-                <label for="">Habilitado</label><br> 
+                <label for="" style="color: white;">Habilitado</label><br> 
                     <select  class="form-control" name="Habilitado" id="categoria" style="cursor: pointer" required>
                         <option disabled selected value="">[Seleccione]</option>
                         <option>Si</option>
@@ -78,6 +82,7 @@ $result = mysqli_query($conn, $sql);
   #act {
     margin-top: 0.5%;
   }
+
 </style>
 <?php 
   }
@@ -95,13 +100,13 @@ $result = mysqli_query($conn, $sql);
     <div class="modal-dialog">
         <div class="modal-content" style="background-color: hsla(0.5turn , 100% , 0.1% , 0.5 );color: white; position: initial; z-index: 1000px;">
             <div class="modal-header">
-                <h5 class="modal-title" style="color:white;">Información del Usuario</h5>
+                <h5 class="modal-title" style="color:white;">Nuevo Departameto</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                 </button>
             </div>
               <div class="modal-body">
-                <form action="Controller/añadir-departamentos.php" method="POST">
+                <form id="form" action="Controller/añadir-departamentos.php" method="POST">
             <label id="label">Nombres</label>              
             <input class="form-control" name="departamentos" type="text" required>
             
@@ -122,8 +127,9 @@ $result = mysqli_query($conn, $sql);
                   
         <thead>
              <tr id="tr">
+                <th>#</th>
                 <th  style=" width: 20%">Departamentos</th>
-                <th  style=" width: 100%"class=" text-center">Habilitado</th><?php if($tipo_usuario == 1) { ?>
+                <th  style=" width: 55%"class=" text-center">Habilitado</th><?php if($tipo_usuario == 1) { ?>
                 <th  style=" width: 100%"class=" text-center"> Cambiar Habilitado</th>
                 <th  style=" width: 100%;text-align:center;">Eliminar</th><?php } ?>
                 
@@ -137,23 +143,28 @@ $result = mysqli_query($conn, $sql);
 
     $sql = "SELECT * FROM selects_departamento ORDER BY `id` DESC";
     $result = mysqli_query($conn, $sql);
-
-    while ($solicitudes = mysqli_fetch_array($result)){?>
+    $n=0;
+    while ($solicitudes = mysqli_fetch_array($result)){
+        $n++;
+        $r=$n+0;
+        ?>
 
         <tr>
+            <td><?php echo $r ?></td>
             <td data-label="Nombres" class="delete"><input readonly style="width:100%;border:none;background: transparent;" type="text" name="cod" value="<?php  echo $solicitudes['departamento']; ?>"></td>
 
             <td align="center">
-            <input  <?php
-                if($solicitudes['Habilitado']  =='Si') {
-                    echo ' style="background-color:blueviolet ;width:14%; border-radius:100px;text-align:center; color: white;"';
+            <input <?php
+                if($solicitudes['Habilitado']=='Si') {
+                    echo ' style="background-color:blueviolet ;width:43%; border-radius:100px;text-align:center; color: white;margin-top: .2%"';
+                    $c='Departamento Disponble';
                 } elseif ($solicitudes['Habilitado']  == 'No') {
-                    // code...
-                } {
-                    echo ' style="background-color:red;width:14%; border-radius:100px;text-align:center;color: white;"';
+               
+                    echo ' style="background-color:red;width:43%; border-radius:100px;text-align:center;color: white;margin-top: .2%"';
+                    $c='Departamento no Disponble';
                 }
             ?>
- type="text" class="btn"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $solicitudes['Habilitado']; ?>"></td>
+ type="text" class="btn"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $c ?>"></td>
 </td><?php if($tipo_usuario == 1) { ?>
             <td align="center">
                  <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="departamentos.php">             

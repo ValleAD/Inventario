@@ -49,7 +49,7 @@ $result = mysqli_query($conn, $sql);
 ?>
 
 
-<form action="Controller/Desabilitar-categoria.php" method="POST" style="background: transparent; ">
+<form action="Controller/Desabilitar-categorias.php" method="POST" style="background: transparent; ">
   <h3 align="center">Actualizar Categorias</h3>
     <div class="container" style="background: rgba(255, 255, 255, 0.6); width: 40%; margin: auto; border-radius: 9px; color:#fff; font-weight: bold;">
         <div class="row">
@@ -96,7 +96,7 @@ $result = mysqli_query($conn, $sql);
     <div class="modal-dialog">
         <div class="modal-content" style="background-color: hsla(0.5turn , 100% , 0.1% , 0.5 );color: white; position: initial; z-index: 1000px;">
             <div class="modal-header">
-                <h5 class="modal-title" style="color:white;">Información de Categorias</h5>
+                <h5 class="modal-title" style="color:white;">Nueva Categorias</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                 </button>
@@ -124,9 +124,10 @@ $result = mysqli_query($conn, $sql);
                   
         <thead>
               <tr id="tr">
-                <th style=" width: 100%">Categoria</th>
+                <th>#</th>
+                <th style=" width: 30%">Categoria</th>
                 <th style="width: 100%;">Habilitado</th><?php if($tipo_usuario == 1) { ?>
-                <th > Cambiar Habilitado</strong></th>
+                <th> Cambiar Habilitado</strong></th>
                 <th>Eliminar</th><?php } ?>
                 
             </tr>
@@ -138,8 +139,11 @@ $result = mysqli_query($conn, $sql);
     include 'Model/conexion.php';
     $sql = "SELECT * FROM selects_categoria ORDER BY `id` DESC  ";
     $result = mysqli_query($conn, $sql);
-
-    while ($solicitudes = mysqli_fetch_array($result)){?>
+    $n=0;
+    while ($solicitudes = mysqli_fetch_array($result)){
+        $n++;
+        $r=$n+0;
+        ?>
         <style type="text/css">
      #td{
         display: none;
@@ -147,19 +151,21 @@ $result = mysqli_query($conn, $sql);
    
 </style>
         <tr>
+            <td><?php echo $r ?></td>
             <td data-label="Nombres" class="delete"><input readonly style="width:100%;border:none;background: transparent;" type="text" name="cod" value="<?php  echo $solicitudes['categoria']; ?>"></td>
 
- <td style="width:100%" align="center">
+ <td>
             <input  <?php
-                if($solicitudes['Habilitado']  =='Si') {
-                    echo ' style="background-color:blueviolet ;width:14%; border-radius:100px;text-align:center; color: white;"';
+                if($solicitudes['Habilitado']=='Si') {
+                    echo ' style="background-color:blueviolet ;width:33%; border-radius:100px;text-align:center; color: white;margin-top: .2%"';
+                    $c='Categoria Disponble';
                 } elseif ($solicitudes['Habilitado']  == 'No') {
-                    // code...
-                } {
-                    echo ' style="background-color:red;width:14%; border-radius:100px;text-align:center;color: white;"';
+               
+                    echo ' style="background-color:red;width:33%; border-radius:100px;text-align:center;color: white;margin-top: .2%"';
+                    $c='Categoria no Disponble';
                 }
             ?>
- type="text" class="btn"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $solicitudes['Habilitado']; ?>"></td>
+ type="text" class="btn"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $c ?>"></td>
             <?php if($tipo_usuario == 1) { ?>
             <td align="center">
                  <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="categorias.php">             
@@ -171,7 +177,7 @@ $result = mysqli_query($conn, $sql);
 <!--**********************************************************************************************************************************************************************************-->
   <!--Botones para actualizar y eliminar-->
 
-            <td style="width:100%" align="center">
+            <td  align="center">
                 <form action="Controller/Delete-categorias.php" method="POST" style="background:transparent;">
                     <input type="hidden" name="id" value="<?php  echo $solicitudes['id']; ?>">
                     <input type="hidden" name="Habilitado" value="<?php  echo $solicitudes['Habilitado']; ?>">

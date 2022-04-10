@@ -48,12 +48,12 @@ die();
 }
     </style>
             <h1 class="text-center mg-t" style="margin-top: -0.5%;">Solicitudes de Fondo Circulante</h1><br>
-<section class="mx-5 p-2" style="background-color:white;border-radius: 5px; position: initial;">
+<section class="mx-5 p-2" style="background-color:white;border-radius: 5px; position: initial;margin-bottom: 3%;">
 
 <table class="table table-responsive table-striped" id="example" style=" width: 100%;">
           <thead>
               <tr id="tr">
-             
+             <th>#</th>
                 <th  style=" width: 10%"><strong>No. de Solicitud</strong></th>
                 <th  style=" width: 100%;  text-transform: capitalize"><strong>Fecha de solicitud</strong></th>
                 <!-- <th  style=" width: 100%;  text-transform: capitalize"><strong>Estado</strong></th> -->
@@ -67,11 +67,14 @@ die();
   
     <?php
     include 'Model/conexion.php';
-
+    $n=0;
     $sql = "SELECT * FROM tb_circulante ORDER BY fecha_solicitud DESC ";
     $result = mysqli_query($conn, $sql);
 
-    while ($datos_sol = mysqli_fetch_array($result)){?>
+    while ($datos_sol = mysqli_fetch_array($result)){
+        $n++;
+        $r=$n+0;
+        ?>
         <style type="text/css">
      #td{
         display: none;
@@ -81,6 +84,7 @@ die();
 </style>
 
         <tr>
+            <td><?php echo $r ?></td>
             <td data-label="No. solicitud" class="delete"><?php  echo $datos_sol['codCirculante']; ?></td>
             <td data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])) ?></td>
             <!--  <td data-label="Fecha de solicitud" class="delete"><input readonly <?php

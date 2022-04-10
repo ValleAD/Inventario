@@ -49,12 +49,12 @@ die();
 }
     </style>
             <h1 class="text-center mg-t" style="margin-top: -0.5%;" >Solicitudes de Almacen</h1><br>
-<section class="mx-5 p-2" style="background-color:white; border-radius:5px">
+<section class="mx-5 p-2" style="background-color:white; border-radius:5px;margin-bottom: 3%;">
 
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
           <thead>
               <tr id="tr">
-             
+                <th>#</th>
                 <th style=" width: 10%">No. de Solicitud</th>
                 <th style=" width: 30%" >Departamento Solicitante</th>
                 <th style=" width: 20%">Encargado</th>
@@ -71,17 +71,14 @@ die();
 
     $sql = "SELECT * FROM tb_almacen ORDER BY fecha_solicitud DESC ";
     $result = mysqli_query($conn, $sql);
-
-    while ($datos_sol = mysqli_fetch_assoc($result)){?>
-        <style type="text/css">
-     #td{
-        display: none;
-    }
-    
-   
-</style>
+    $n=0;
+    while ($datos_sol = mysqli_fetch_assoc($result)){
+        $n++;
+        $r=$n+0;
+        ?>
 
         <tr>
+            <td><?php echo $r ?></td>
             <td data-label="No. solicitud" class="delete"><?php  echo $datos_sol['codAlmacen']; ?></td>
             <td data-label="Departamento Solicitante" class="delete"><?php  echo $datos_sol['departamento']; ?></td>
             <td data-label="Usuario" class="delete"><?php  echo $datos_sol['encargado']; ?></td>

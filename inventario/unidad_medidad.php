@@ -55,7 +55,7 @@ $result = mysqli_query($conn, $sql);
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial; margin: auto; margin-top: 2%">
                 <input type="hidden" name="id" value="<?php  echo $productos['id']; ?>">
-                <label for="">Habilitado</label><br> 
+                <label for="" style="color: white;">Habilitado</label><br> 
                     <select  class="form-control" name="Habilitado" id="categoria" style="cursor: pointer" required>
                         <option disabled selected value="">[Seleccione]</option>
                         <option>Si</option>
@@ -95,7 +95,7 @@ $result = mysqli_query($conn, $sql);
     <div class="modal-dialog">
         <div class="modal-content" style="background-color: hsla(0.5turn , 100% , 0.1% , 0.5 );color: white; position: initial; z-index: 1000px;">
             <div class="modal-header">
-                <h5 class="modal-title" style="color:white;">Información del Usuario</h5>
+                <h5 class="modal-title" style="color:white;">Nueva Unidad de Médida</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                 </button>
@@ -119,13 +119,14 @@ $result = mysqli_query($conn, $sql);
         </div>
     </div>
 </div><?php } ?><br><br><br>
-         <table class="table table-responsive table-striped" id="example" style=" width: 100%">
+         <table class="table table-responsive table-striped" id="example" style=" width: 100%;">
                    <thead>
              <tr id="tr">
-                <th style=" width: 10%" >Unidad de Medida</th>
-                <th  style=" width: 100%">Habilitado</th><?php if($tipo_usuario == 1) { ?>
-                <th  style=" width: 100%"> Cambiar Habilitado</th>
-                <th  style=" width: 100%">Eliminar</th><?php } ?>
+                <th>#</th>
+                <th style=" width: 40%" >Unidad de Medida</th>
+                <th  style=" width: 60%">Habilitado</th><?php if($tipo_usuario == 1) { ?>
+                <th  style=" width: 10%"> Cambiar Habilitado</th>
+                <th  style=" width: 10%">Eliminar</th><?php } ?>
                 
             </tr>
            
@@ -137,8 +138,12 @@ $result = mysqli_query($conn, $sql);
 
     $sql = "SELECT * FROM selects_unidad_medida ORDER BY `id` DESC ";
     $result = mysqli_query($conn, $sql);
+    $n=0;
+    while ($solicitudes = mysqli_fetch_array($result)){
+        $n++;
+        $r=$n+0;
 
-    while ($solicitudes = mysqli_fetch_array($result)){?>
+        ?>
         <style type="text/css">
      #td{
         display: none;
@@ -146,19 +151,21 @@ $result = mysqli_query($conn, $sql);
    
 </style>
         <tr>
+            <td><?php echo $r ?></td>
             <td data-label="Nombres" class="delete"><input readonly style="width:100%;border:none;background: transparent;" type="text" name="cod" value="<?php  echo $solicitudes['unidad_medida']; ?>"></td>
 
             <td align="center">
-            <input  <?php
-                if($solicitudes['Habilitado']  =='Si') {
-                    echo ' style="background-color:blueviolet ;width:14%; border-radius:100px;text-align:center; color: white;"';
+            <input <?php
+                if($solicitudes['Habilitado']=='Si') {
+                    echo ' style="background-color:blueviolet ;width:33%; border-radius:100px;text-align:center; color: white;margin-top: .2%"';
+                    $c='Unidad Disponble';
                 } elseif ($solicitudes['Habilitado']  == 'No') {
-                    // code...
-                } {
-                    echo ' style="background-color:red;width:14%; border-radius:100px;text-align:center;color: white;"';
+               
+                    echo ' style="background-color:red;width:33%; border-radius:100px;text-align:center;color: white;margin-top: .2%"';
+                    $c='Unidad no Disponble';
                 }
             ?>
- type="text" class="btn"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $solicitudes['Habilitado']; ?>"></td>
+ type="text" class="btn"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $c ?>"></td>
 </td><?php if($tipo_usuario == 1) { ?>
             <td align="center">
                  <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="">             

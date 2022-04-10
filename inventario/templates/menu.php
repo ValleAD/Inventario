@@ -126,6 +126,11 @@ background:burlywood;
     $cliente =$_SESSION['signin'];
     $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
     while ($consulta =mysqli_fetch_array($data)) {
+        if ($consulta['tipo_usuario']==1) {
+    $u='Administrador';
+}else if($consulta['tipo_usuario']==2){
+$u='Cliente';
+}
 ?>  
     <button class="btn" id="btn" data-toggle="modal" data-target="#info" style=" background:transparent;float: right;margin-top: 1%; color: white;"><?php echo $consulta['username'];?> <i class="bi bi-caret-down-fill"></i></button>
 <!-- Delete -->
@@ -166,7 +171,7 @@ background:burlywood;
                     
                     <p style="color: #fff">Unidad: <?php echo $consulta['unidad'];?></p>
                 </tr>
-
+                <tr><p style="color: #fff">Cuenta: <?php echo $u;?></p></tr>
                </table>
       </div>
     </div>

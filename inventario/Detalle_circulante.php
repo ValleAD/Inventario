@@ -31,8 +31,28 @@ die();
 </head>
 <body>
     <style type="text/css">
+        textarea{
+            width: 100%; background:transparent; border: none;text-align: left;
+        }
+        input {
+            width: 100%; background:transparent; border: none;
+        }
+         #pdf{
+        margin-left: 38%; 
+        background: rgb(175, 0, 0); 
+        color: #fff; margin-bottom: 2%; 
+        border: rgb(0, 0, 0);
+        }
+        #pdf:hover{
+        background: rgb(128, 4, 4);
+        } 
+        #pdf:active{
+        transform: translateY(5px);
+        } 
         #section{
             margin: 2%;
+            border-radius: 15px;
+            background: white;
         }
               @media (max-width: 952px){
    #section{
@@ -93,6 +113,7 @@ $a=$_POST['num_sol'];
             
             <thead>
               <tr id="tr">
+                <th>#</th>
                 <th>Codigo</th>
                 <th style="width: 10%;">Nuevo Codigo</th>
                 <th style="width: 35%;">Descripción del Artículo</th>
@@ -112,8 +133,10 @@ $num_circulante = $datos_sol['codCirculante'];
 }
  $sql = "SELECT * FROM detalle_circulante WHERE tb_circulante = $num_circulante";
     $result = mysqli_query($conn, $sql);
+$n=0;
 while ($productos = mysqli_fetch_array($result)){
-      
+      $n++;
+        $r=$n+0;
         $total    =    $productos['stock'] * $productos['precio'];
         $final    +=   $total;
         $precio   =    $productos['precio'];
@@ -134,26 +157,28 @@ while ($productos = mysqli_fetch_array($result)){
    
 </style> 
       <tr>
-      <td  data-label="Código"><input style="width: 100%; background:transparent; border: none; text-align: center"  readonly value="'.$codigo.'"><input type="hidden" style="width: 100%; background:transparent; border: none; text-align: center"  name="cod1[]" readonly value="'.$productos['codigodetallecirculante'] .'">
-      <td  data-label="Código"><input style="background:transparent;border: 1 solid #000; width: 100%;" type="number" background:transparent; border: none; text-align: center"  name="codn[]" class="form-control"  value="">
+      <td data-label="#">'.$r .'</td>
+      <td  data-label="Código"><input   readonly value="'.$codigo.'"><input type="hidden"   name="cod1[]" readonly value="'.$productos['codigodetallecirculante'] .'">
+      <td  data-label="Código"><input  type="number"  name="codn[]" class="form-control"  value="">
         </td>
-        <td  data-label="Descripción del Artículo"><textarea style="background:transparent; border: none; width: 100%; text-align: left"  name="desc[]" readonly style="border: none">'.$productos['descripcion']. '</textarea></td>
-        <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%; text-align: center" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
-        <td  data-label="Cantidad Solicitada"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="cant[]" readonly value="'.$stock. '"></td>
-         <td  data-label="Cantidad"><input style="background:transparent; border: 1 solid #000;  width: 100%; text-align: center" class="form-control" type="number" required  name="cantidad_despachada[]" required value=""></td>
+        <td  data-label="Descripción del Artículo"><textarea name="desc[]" readonly style="border: none">'.$productos['descripcion']. '</textarea></td>
+        <td  data-label="Unidada de Medida"><input   name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
+        <td  data-label="Cantidad Solicitada"><input   name="cant[]" readonly value="'.$stock. '"></td>
+         <td  data-label="Cantidad"><input  class="form-control" type="number" required  name="cantidad_despachada[]" required value=""></td>
 
-          <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%; text-align: center"  type="text" step="0.01"  required readonly  value="$'.$precio2.'"></td>
+          <td  data-label="Costo unitario"><input   type="text" step="0.01"  required readonly  value="$'.$precio2.'"></td>
 
-          <td  data-label="Costo unitario"><input class="form-control" type="number" style="background:transparent;border: 1 solid #000; width: 100%;" required step="0.01" name="cost[]"></td>
+          <td  data-label="Costo unitario"><input class="form-control" type="number"  required step="0.01" name="cost[]"></td>
          
-        <td  data-label="total"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="tot[]" readonly step="0.01"  value="$'.$total2. '"></td>
+        <td  data-label="total"><input   name="tot[]" readonly step="0.01"  value="$'.$total2. '"></td>
       </tr>';
 
 }
 
       echo'
-      <th colspan="8">SubTotal</th>
-      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold; text-align: center" step="0.01"   name="tot_f" readonly value="$'.$final2.'" ></td></tr>
+      <th colspan="5"></th>
+      <th >SubTotal</th>
+      <td><input  step="0.01"   name="tot_f" readonly value="$'.$final2.'" ></td></tr>
   
          </tbody>
         </table>
@@ -161,20 +186,7 @@ while ($productos = mysqli_fetch_array($result)){
     
   
     <input id="pdf" type="submit" class="btn btn-lg my-1" value="Guardar Estado" name="detalle_circulante">
-      <style>
-        #pdf{
-        margin-left: 38%; 
-        background: rgb(175, 0, 0); 
-        color: #fff; margin-bottom: 2%; 
-        border: rgb(0, 0, 0);
-        }
-        #pdf:hover{
-        background: rgb(128, 4, 4);
-        } 
-        #pdf:active{
-        transform: translateY(5px);
-        } 
-      </style>
+      
 </form>
 </section>
       ';
@@ -240,6 +252,7 @@ $id=$_POST['id'];
             
             <thead>
               <tr id="tr">
+                <th>#</th>
                 <th>Codigo</th>
                 <th style="width: 35%;">Descripción del Artículo</th>
                 <th>Unidad de Medida</th>
@@ -256,8 +269,10 @@ $num_circulante = $datos_sol['codCirculante'];
 }
  $sql = "SELECT * FROM detalle_circulante WHERE tb_circulante = $num_circulante";
     $result = mysqli_query($conn, $sql);
+    $n=0;
 while ($productos = mysqli_fetch_array($result)){
-      
+      $n++;
+        $r=$n+0;
         $total    =    $productos['stock'] * $productos['precio'];
         $final    +=   $total;
         $precio   =    $productos['precio'];
@@ -279,41 +294,29 @@ while ($productos = mysqli_fetch_array($result)){
    
 </style> 
       <tr>
-       <td  data-label="Código"><input style="width: 100%; background:transparent; border: none; text-align: center"   readonly value="'.$codigo.'">
-        <td  data-label="Descripción del Artículo"><textarea style="background:transparent; border: none; width: 100%; text-align: left"  name="desc[]" readonly style="border: none">'.$productos['descripcion']. '</textarea></td>
-        <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%; text-align: center" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
-        <td  data-label="Cantidad Solicitada"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="cant[]" readonly value="'.$stock. '"></td>
-        <td  data-label="Cantidad"> <input readonly style="background:transparent; border: none;  width: 100%; text-align: center"  type="number" required  name="cantidad_despachada[]" required value="'.$cantidad_desp.'"></td>
-         <td data-label="Costo unitario"><input  name="cost[]" readonly value="$'.$precio2.'"  style="background:transparent; border: none; width: 100%;"  ></td>
-        <td  data-label="total"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="tot[]" readonly step="0.01"  value="$'.$total2. '"></td>
+      <td data-label="#"><input name="#" readonly value="'. $r.' "> </td>
+       <td  data-label="Código">
+       <input readonly value="'.$codigo.'"></td>
+        <td  data-label="Descripción del Artículo"><textarea name="desc[]" readonly style="border: none">'.$productos['descripcion']. '</textarea></td>
+
+        <td  data-label="Unidada de Medida"><input name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
+        <td  data-label="Cantidad Solicitada"><input  name="cant[]" readonly value="'.$stock. '"></td>
+        <td  data-label="Cantidad"> <input readonly  type="number" required  name="cantidad_despachada[]" required value="'.$cantidad_desp.'"></td>
+         <td data-label="Costo unitario"><input  name="cost[]" readonly value="$'.$precio2.'"   ></td>
+        <td  data-label="total"><input name="tot[]" readonly step="0.01"  value="$'.$total2. '"></td>
       </tr>';
 
 }
 
       echo'
-      <th colspan="6">SubTotal</th>
-      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold; text-align: center" step="0.01"   name="tot_f" readonly value="$'.$final2.'" ></td></tr>
+      <th colspan="5"></th>
+      <th >SubTotal</th>
+      <td  colspan="2"><input style="color: red; font-weight: bold; text-align: center" step="0.01"   name="tot_f" readonly value="$'.$final2.'" ></td></tr>
   
          </tbody>
         </table>
-
-    
   
-    <input id="pdf" type="submit" class="btn btn-lg my-1" value="Exportar a PDF" name="pdf">
-      <style>
-        #pdf{
-        margin-left: 38%; 
-        background: rgb(175, 0, 0); 
-        color: #fff; margin-bottom: 2%; 
-        border: rgb(0, 0, 0);
-        }
-        #pdf:hover{
-        background: rgb(128, 4, 4);
-        } 
-        #pdf:active{
-        transform: translateY(5px);
-        } 
-      </style>
+    <button id="pdf" name="pdf" type="submit" class="btn btn-lg my-1">Exportar a PDF</button>
 </form>
 </section>
       ';

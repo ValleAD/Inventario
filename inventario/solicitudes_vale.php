@@ -52,12 +52,13 @@ die();
 <body>
     <center><h1 style="margin-top:5px">Solicitudes Vale</h1></center><br>
             
-     <div class="mx-5 p-2" style="background-color: white; border-radius:5px">
+     <div class="mx-5 p-2 mb-5" style="background-color: white; border-radius:5px;">
 
      
         <table class="table table-responsive" id="example" style="width:100%">
             <thead>
               <tr id="tr">
+                <th>#</th>
                 <th style="width:30%" ><strong>Código de Vale</strong></th>
                 <th style="width:50%"><strong>Departamento Solicitante</strong></th>
                 <th style="width:50%"><strong>Estado</strong></th>
@@ -74,15 +75,14 @@ die();
 
     $sql = "SELECT * FROM tb_vale ORDER BY fecha_registro DESC ";
     $result = mysqli_query($conn, $sql);
+    $n=0;
+    while ($solicitudes = mysqli_fetch_array($result)){
+        $n++;
+        $r=$n+0;
+        ?>
 
-    while ($solicitudes = mysqli_fetch_array($result)){?>
-        <style type="text/css">
-     #td{
-        display: none;
-    }
-   
-</style>
         <tr>
+            <td><?php echo $r ?></td>
             <td data-label="Código" class="delete"><?php  echo $solicitudes['codVale']; ?></td>
             <td data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
             <td data-label="Departamento Solicitante" class="delete"><input readonly <?php

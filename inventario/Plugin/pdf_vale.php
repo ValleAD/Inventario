@@ -33,7 +33,7 @@ include ('../Model/conexion.php') ?>
 
 <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
-        <tr style="border: 1px solid #ddd;color: black;" >
+        <tr style="border: 1px solid #ddd;color: black;">
             <th style="width: 25%;font-size: 16px;text-align: center;">Código</th>
             <th style="width: 70%;color:black;font-size: 16px;text-align: left;">Descripción Completa</th>
             <th style="width: 15%;color:black;font-size: 16px;text-align: center;">U/M</th>

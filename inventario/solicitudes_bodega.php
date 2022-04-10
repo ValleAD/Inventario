@@ -54,12 +54,12 @@ die();
 <body>
 
             <center><h1 style="margin-top:5px">Solicitudes Bodega</h1></center><br>
-      <section class="mx-5 p-2" style="background-color:white; border-radius: 5px;">
+      <section class="mx-5 p-2" style="background-color:white; border-radius: 5px;margin-bottom:3%;">
 
-            <table class="table table-responsive table-striped" id="example" style=" width: 100%">
+            <table class="table table-responsive table-striped" id="example" style=" width: 100%;">
             <thead>
               <tr id="tr">
-             
+             <th>#</th>
                 <th style="width: 10%"><strong>O. de T. No.</strong></th>
                 <th style="width: 40%"><strong>Departamento Solicitante</strong></th>
                 <th style="width: 30%"><strong>Fecha de solicitud</strong></th>
@@ -79,8 +79,11 @@ die();
 
     $sql = "SELECT * FROM tb_bodega ORDER BY fecha_registro DESC";
     $result = mysqli_query($conn, $sql);
-
-    while ($solicitudes = mysqli_fetch_array($result)){?>
+$n=0;
+    while ($solicitudes = mysqli_fetch_array($result)){ 
+        $n++;
+        $r=$n+0;
+        ?>
         <style type="text/css">
      #td{
         display: none;
@@ -90,6 +93,7 @@ die();
 </style>
 
         <tr>
+            <td><?php echo $r ?></td>
             <td data-label="Código" class="delete"><?php  echo $solicitudes['codBodega']; ?></td>
             <td data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
             <td data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])); ?></td>

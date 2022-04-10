@@ -12,7 +12,7 @@ $descripcion_solicitud = $_POST['descripcion_solicitud'];
 $usuario = $_POST['usuario'];
 
 
-$insert = "INSERT INTO tb_compra (nSolicitud, dependencia, plazo, unidad_tecnica, descripcion_solicitud, usuario,estado) VALUES ('$nSolicitud','$dependencia', '$plazo', '$u_t', '$descripcion_solicitud', '$usuario','Pendiente')";
+$insert = "INSERT INTO tb_compra (nSolicitud, dependencia, plazo, unidad_tecnica, descripcion_solicitud, usuario,estado) VALUES ('$nSolicitud','$dependencia', '$plazo', '$u_t', '$descripcion_solicitud', '$usuario','Comprado')";
 $result = mysqli_query($conn, $insert);
 
 

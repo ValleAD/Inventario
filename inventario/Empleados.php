@@ -84,18 +84,15 @@ $result = mysqli_query($conn, $sql);
 ?>
         <font color="black"><h2 class="text-center " >Empleados Del Sistema</h2></font>
     <section style="margin:5%;padding: 1%; border-radius: 5px; background: white; ">
+    <button class="btn btn-secondary" data-toggle="modal" data-target="#Usuarios" style="float: left; color: white;margin-top: 1%;">Nuevo Integrante</button>
 
-
-
-    <button class="btn btn-secondary" data-toggle="modal" data-target="#Usuarios" style="float: left; color: white;margin-bottom: 1%;">Nuevo Integrante</button>
-
-    <a href="categorias.php" class="btn btn-info" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; ">Categorias</a> 
-    <a href="dependencias.php" class="btn btn-success" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Dependencias</a>
-    <a href="departamentos.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Departamentos</a>
+    <a href="categorias.php" class="btn btn-info" style="float: right;margin-top: 1%; color: white; ">Categorias</a> 
+    <a href="dependencias.php" class="btn btn-success" style="float: right;margin-top: 1%; color: white; margin-right: 15px;">Dependencias</a>
+    <a href="departamentos.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white; margin-right: 15px;">Departamentos</a>
    
 
     
-<br><br><br>
+<br><br><br><br>    
 <!-- Delete -->
 <div class="modal fade" id="Usuarios" style="background: rgba(0, 0, 0, 0.3);" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">
@@ -175,7 +172,7 @@ $result = mysqli_query($conn, $sql);
                         </div>
                     </div>
                 <div>
-                    <div class="form-group" style="margin-top: 2%;">
+                    <div class="form-group" style="margin-top: 7%;">
                         <button type="submit" name="submit" class="btn btn-primary btn-block">Registrarse</button>
                     </div>
 
@@ -198,14 +195,21 @@ $result = mysqli_query($conn, $sql);
     $sql = "SELECT * FROM tb_usuarios ORDER BY `id` ";
     $result = mysqli_query($conn, $sql);
 
-    while ($solicitudes = mysqli_fetch_assoc($result)){?>
+    while ($solicitudes = mysqli_fetch_assoc($result)){
+if ($solicitudes['tipo_usuario']==1) {
+    $u='Administrador';
+}else if($solicitudes['tipo_usuario']==2){
+$u='Cliente';
+}else if($solicitudes['Habilitado']=="No"){
+    $u='Cuenta Desabilitada';
+}
+        ?>
    
-</style>
        
 <div class="card mb-3 border-secondary " style="max-width: 100%;position: initial">
   <div class="row g-0">
     <div class="col-md-2" style="position: initial">
-      <img src="img/logo1.png" class="img-fluid rounded-start" alt="...">
+      <img src="img/logo1.png" class="img-fluid rounded-start" style="margin-top:20%;margin-left: 15%;border-radius: 10%;">
     </div>
     <div class="col-md-8" style="position: initial">
       <div class="card-body" style="position: initial">
@@ -213,9 +217,10 @@ $result = mysqli_query($conn, $sql);
         <p class="card-text"><b>NOMBRE COMPLETO: </b><?php echo $solicitudes['firstname']," ",$solicitudes['lastname']; ?></p>
         <p class="card-text"><b>ESTABLECIMIENTO:</b> <?php echo $solicitudes['Establecimiento']; ?></p>
         <p class="card-text"><b>UNIDAD:</b> <?php echo $solicitudes['unidad']; ?></p>
+        <p class="card-text"><b>CUENTA:</b> <?php echo $u; ?></p>
         <div class="row" style="position: initial">
          
-                    <div class="col-md-1" style="position: initial">
+                    <div class="col-md-1" style="position: initial;padding-left: 1%;">
             <?php if($tipo_usuario == 1) { ?>
                
                  <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Empleados.php">             
