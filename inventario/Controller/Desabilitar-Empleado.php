@@ -4,12 +4,14 @@ require '../Model/conexion.php';
 //conversion
 $id = $_POST['id'];
 $No =$_POST['Habilitado'];
+$u= $_POST['Nombres'];
+$ap= $_POST['Apellidos'];
 
 
 //sql
 
 
-$sql="UPDATE tb_usuarios SET Habilitado = '$No' WHERE id='$id'" ;
+$sql="UPDATE tb_usuarios SET Habilitado = '$No',firstname='$u',lastname='$ap' WHERE id='$id'" ;
 $result = mysqli_query($conn, $sql);
 
 if ($result) {

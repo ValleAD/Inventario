@@ -21,7 +21,9 @@ $tipo_usuario = $_SESSION['tipo_usuario'];
 
 <body style="background-image: url(img/camion.jpg);  
             background-repeat: no-repeat;
-            background-attachment: fixed;">
+            background-attachment: fixed;
+            width: 100%;
+            max-height: 100%;">
 
     <style type="text/css">
         #b{

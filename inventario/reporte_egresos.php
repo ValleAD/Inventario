@@ -43,11 +43,11 @@ die();
         <p style="color: #000; font-weight: bold; margin: 0.2% 4% 2%;">Mostrar Egresos por:</p>
             <form method="POST" style="background:transparent;">
                <div class="row" style="width:100%">  
-                
-                <a href="reporte_ingresos.php" class="btn btn-primary">Inicio</a>
-            
+              <div class=" col-sm-3" style="position: initial; margin-top: 2%   ;">  
+                <a href="reporte_ingresos.php" class="btn btn-primary btn-sm">Inicio</a>
+            </div>
 
-            <div class=" col-sm-8" style="position: initial; ">
+            <div class=" col-sm-9" style="position: initial; ">
                         <select class="form-control" name="ingresos" id="ingresos" onchange="this.form.submit()">
                             <option value="">Seleccionar</option>
                             <option value="bodega">Solicitud a Bodega</option>
@@ -57,7 +57,6 @@ die();
                 </div> 
             </form>
     </div> 
-    <section id="act">
 <?php
 
 if(isset($_POST['ingresos'])){
@@ -79,12 +78,13 @@ if(isset($_POST['ingresos'])){
     width: 100%;
   }
 </style>
-
+    <br>
     <h3 style="text-align: center; color: black;">Egresos de Bodega</h3>
 
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
             <thead>
               <tr id="tr">
+                <th>#</th>
                 <th  style="width: 15%">Departamento</th>
                 <th  style="width: 15%">Encargado</th>
                 <th  style="width: 10%">Codigo</th>
@@ -105,17 +105,19 @@ if(isset($_POST['ingresos'])){
      
    $sql = "SELECT * FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega";
     $result = mysqli_query($conn, $sql);
-
+$n=0;
     while ($productos = mysqli_fetch_array($result)){
          $precio=$productos['precio'];
        $precio1=number_format($precio, 2,".",",");
-       ?>
+       $n++;
+        $r=$n+0;?>
 
 <style type="text/css">
 
 
 </style>
     <tr id="tr">
+        <td data-label="#"><?php echo $r ?></td>
     <td data-label="Departamento"><?php  echo $productos['departamento']; ?></td>
       <td data-label="Encargado"><?php  echo $productos['usuario']; ?></td>
       <td data-label="Código Producto"><?php  echo $productos['codigo']; ?></td>
@@ -153,12 +155,13 @@ if(isset($_POST['ingresos'])){
     input{
     width: 100%;
   }
-</style>
+</style><br>
 <h3 style="text-align: center; color: black;">Egresos Por Vale</h3>
 
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
             <thead>
               <tr id="tr">
+                <th style="width:10%">#</th>
                 <th style="width: 15%;">No. Vale</th>
                 <th style="width: 15%;">Departamento Solicitante</th>
                 <th style="width: 15%;">Encargado</th>
@@ -182,11 +185,12 @@ if(isset($_POST['ingresos'])){
 
     $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale ";
     $result = mysqli_query($conn, $sql);
-
+    $n=0;
     while ($productos = mysqli_fetch_array($result)){
  $precio=$productos['precio'];
        $precio2=number_format($precio, 2,".",",");
-        ?>
+        $n++;
+        $r=$n+0?>
 
        
             
@@ -200,6 +204,7 @@ if(isset($_POST['ingresos'])){
    }
 </style>
     <tr id="tr">
+        <td data-label="#"><?php echo $r ?></td>
     <td data-label="No. Vale"><?php  echo $productos['numero_vale']; ?></td> 
     <td data-label="Departamento" style="text-align: left;"><?php  echo $productos['departamento']; ?></td>
     <td data-label="Encargado"><?php  echo $productos['usuario']; ?></td>
@@ -219,7 +224,7 @@ if(isset($_POST['ingresos'])){
 
 
 
-</section>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.js"></script>

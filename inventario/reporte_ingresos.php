@@ -53,9 +53,9 @@ die();
         <p style="color: #000; font-weight: bold; margin: 0.2% 4% 2%;">Mostrar Ingresos por:</p>
             <form method="POST" style="background:transparent;">
                 <div class="row" style="width:100%">
-                
+                <div class=" col-sm-3" style="position: initial; margin-top: 2%   ;"> 
                 <a href="reporte_ingresos.php" class="btn btn-primary">Inicio</a>
-            
+            </div>
 
             <div class="col-6 col-sm-9" style="position: initial; width:50%px;">
             <select class="form-control" name="ingresos" id="ingresos" onchange="this.form.submit()">
@@ -69,7 +69,6 @@ die();
             </form>
     </div> 
     
-    <section id="act">
 <?php
 
 if(isset($_POST['ingresos'])){
@@ -90,14 +89,15 @@ if(isset($_POST['ingresos'])){
     width: 100%;
   }
 </style>
-
+<br>
     <h3 style="text-align: center; color: black;">Ingresos de Solicitud Circulante</h3>
 
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
             <thead>
               <tr id="tr">
-                <th  style="width: 15%">Departamento</th>
-                <th  style="width: 15%">Encargado</th>
+                <th>#</th>
+                <!-- <th  style="width: 15%">Departamento</th>
+                <th  style="width: 15%">Encargado</th> -->
                 <th  style="width: 10%">Codigo</th>
                 <th  style="width: 100%">Descripción Completa</th>
                 <th  style="width: 100%">U/M</th>
@@ -116,18 +116,20 @@ if(isset($_POST['ingresos'])){
      
    $sql = "SELECT * FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante";
     $result = mysqli_query($conn, $sql);
-
+        $n=0;
     while ($productos = mysqli_fetch_array($result)){
          $precio=$productos['precio'];
-       $precio1=number_format($precio, 2,".",",");?>
+       $precio1=number_format($precio, 2,".",",");$n++;
+        $r=$n+0;?>
 
 <style type="text/css">
 
 
 </style>
     <tr id="tr">
-    <td data-label="Departamento"><?php  echo $productos['departamento']; ?></td>
-      <td data-label="Encargado"><?php  echo $productos['usuario']; ?></td>
+        <td data-label="#"><?php echo $r ?></td>
+    <!-- <td data-label="Departamento"><?php  echo $productos['departamento']; ?></td>
+      <td data-label="Encargado"><?php  echo $productos['usuario']; ?></td> -->
       <td data-label="Código Producto"><?php  echo $productos['codigo']; ?></td>
       <td data-label="Descripción" style="text-align: left"><?php  echo $productos['descripcion']; ?></td>
       <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
@@ -162,21 +164,22 @@ if(isset($_POST['ingresos'])){
     input{
     width: 100%;
   }
-</style>
+</style><br>
 <h3 style="text-align: center; color: black;">Ingresos de Almacén</h3>
 
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
      <thead>
        <tr>
-         <th  style="width:15%">Departamento</th>
-         <th  style="width:15%">Encargado</th>
-         <th  style="width:10%">Codigo</th>
-         <th  style="width:100%">Descripción Completa</th>
-         <th  style="width:100%">U/M</th>
-         <th  style="width:100%">Cantidad</th>
-         <th  style="width:100%">Costo Unitario</th>
-         <th  style="width:100%">Ingreso Por</th>
-         <th  style="width:100%">Fecha Registro</th>
+        <th>#</th>
+         <th>Departamento</th>
+         <th>Encargado</th>
+         <th>Codigo</th>
+         <th>Descripción Completa</th>
+         <th>U/M</th>
+         <th>Cantidad</th>
+         <th>Costo Unitario</th>
+         <th>Ingreso Por</th>
+         <th>Fecha Registro</th>
          
        </tr>
 
@@ -190,10 +193,12 @@ include 'Model/conexion.php';
 
 $sql = "SELECT * FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen";
 $result = mysqli_query($conn, $sql);
-
+$n=0;
 while ($productos = mysqli_fetch_array($result)){
      $precio=$productos['precio'];
-       $precio2=number_format($precio, 2,".",",");?>
+       $precio2=number_format($precio, 2,".",",");
+       $n++;
+        $r=$n+0?>
 
 <style type="text/css">
 
@@ -205,6 +210,7 @@ width: 100%;
 }
 </style>
 <tr id="tr">
+    <td data-label="#"><?php echo $r ?></td>
 <td data-label="Departamento" style="text-align: left"><?php  echo $productos['departamento']; ?></td>
 <td data-label="Encargado" style="text-align: left"><?php  echo $productos['encargado']; ?></td>
 <td data-label="Código Producto"><?php  echo $productos['codigo']; ?></td>
@@ -239,12 +245,13 @@ width: 100%;
     input{
     width: 100%;
   }
-</style>
+</style><br>
 <h3 style="text-align: center; color: black;">Ingresos de Compra</h3>
 
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
      <thead>
        <tr>
+        <th>#</th>
          <th  style="width:15%">Departamento</th>
          <th  style="width:15%">Encargado</th>
          <th  style="width:10%">Codigo</th>
@@ -266,13 +273,15 @@ include 'Model/conexion.php';
 
 $sql = "SELECT * FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra";
 $result = mysqli_query($conn, $sql);
-
+$n=0;
 while ($productos = mysqli_fetch_array($result)){
  $precio=$productos['precio'];
        $precio3=number_format($precio, 2,".",",");
-    ?>
+    $n++;
+        $r=$n+0?>
 
 <tr>
+    <td data-label="#"><?php echo $r ?></td>
 <td data-label="Departamento">Mantenimiento</td>
 <td data-label="Encargado"><?php  echo $productos['usuario']; ?></td>
 <td data-label="Código de Producto"><?php  echo $productos['codigo']; ?></td>
@@ -295,7 +304,6 @@ while ($productos = mysqli_fetch_array($result)){
 }
 ?>
 
-</section>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 

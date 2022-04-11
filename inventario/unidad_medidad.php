@@ -28,7 +28,7 @@ die();
 
     <!--  Datatables  -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>  
-    <title>Unidades de Medidad</title>
+    <title>Unidades de Medida</title>
 </head>
 
 
@@ -51,11 +51,11 @@ $result = mysqli_query($conn, $sql);
 
 <form action="Controller/Desabilitar-unidad_medida.php" method="POST" style="background: transparent; ">
   <h3 align="center">Actualizar Unidades Habilitadas </h3>
-    <div class="container" style="background: rgba(0, 0, 0, 0.6); width: 70%; margin: auto; border-radius: 9px; color:#fff; font-weight: bold;">
+    <div class="container" style="background: rgba(100, 100, 100, 0.6); width: 70%; margin: auto; border-radius: 9px; color:#fff; font-weight: bold;">
         <div class="row">
-            <div class="col-6 col-sm-4" style="position: initial; margin: auto; margin-top: 2%">
+            <div class="col-sm-12" style="position: initial; margin: auto; margin-top: 2%"><p class="small mb-1"><font color="black"><b>La Categoria que has Seleccionado:</b></font> <?php echo $productos['unidad_medida']?></p>
                 <input type="hidden" name="id" value="<?php  echo $productos['id']; ?>">
-                <label for="" style="color: white;">Habilitado</label><br> 
+                <label for="" class="small mb-1" style="color: white;">Habilitado</label><br> 
                     <select  class="form-control" name="Habilitado" id="categoria" style="cursor: pointer" required>
                         <option disabled selected value="">[Seleccione]</option>
                         <option>Si</option>
@@ -66,9 +66,9 @@ $result = mysqli_query($conn, $sql);
          </div>
         <hr>
         <div class="row">
-            <div class="col-6 col-sm-4" style="position: initial; margin: auto; margin-bottom: 2%;">
+            <div class="col-sm-12" style="position: initial; margin: auto; margin-bottom: 2%;">
                 <button type="submit" name="Update_Dependencias" class ="btn btn-primary" style="background:rgb(12, 139, 8); margin-right: 1%; border: none">Guardar Cambios</button>
-                <a href="dependencias.php" class ="btn btn-primary" style="background:rgb(184, 8, 8); border: none">Cancelar</a>
+                <a href="" class ="btn btn-primary"  style="background:rgb(184, 8, 8); border: none">Cancelar</a>
             </div>
         </div>
     </div>
@@ -165,7 +165,7 @@ $result = mysqli_query($conn, $sql);
                     $c='Unidad no Disponble';
                 }
             ?>
- type="text" class="btn"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $c ?>"></td>
+ type="text" class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="<?=   $c ?>"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $c ?>"></td>
 </td><?php if($tipo_usuario == 1) { ?>
             <td align="center">
                  <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="">             
@@ -181,7 +181,7 @@ $result = mysqli_query($conn, $sql);
                <form action="Controller/Delete-dependencia.php" method="POST" style="background:transparent;">
                     <input type="hidden" name="id" value="<?php  echo $solicitudes['id']; ?>">
                     <input type="hidden" name="Habilitado" value="<?php  echo $solicitudes['Habilitado']; ?>">
-                    <button  onclick="return confirmaion()" name="eliminar_dependencias" class="btn btn-danger" type="submit">ELiminar</button>
+                    <button  onclick="return confirmaion()" name="eliminar_dependencias" class="btn btn-danger btn-sm" type="submit">ELiminar</button>
                 </form>
             </td></td><?php } ?>
         </tr>

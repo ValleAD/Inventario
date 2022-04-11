@@ -345,9 +345,8 @@ if (isset($_POST['categorias'])){  ?>  <br>
             </div><br>
             <?php if (isset($_GET['productos'])){ 
             $productos = $_GET['productos'] ?>
-    <div class="mx-5 p-2 r-5" style=" border-radius: 5px;">
-        <div class="row">
-            <div class="col">
+    <div class="mx-1 p-2 r-5" style=" border-radius: 5px;">
+        
            <a href="unidad_medidad.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a><br><br><br>
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
                 <thead>
@@ -435,9 +434,6 @@ if (isset($_POST['categorias'])){  ?>  <br>
      <?php } ?> 
                 </tbody>                
             </table>           
-            
-            </div> 
-            </div>
         </div>
   <?php } ?>
             

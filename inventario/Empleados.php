@@ -48,13 +48,26 @@ $result = mysqli_query($conn, $sql);
 ?>
 
 
-<form action="Controller/Desabilitar-Empleado.php" method="POST" style="background: transparent; ">
-  <h3 align="center">Actualizar Producto</h3>
-    <div class="container" style="background: rgba(0, 0, 0, 0.6); width: 70%; margin: auto; border-radius: 9px; color:#fff; font-weight: bold;">
+<form action="Controller/Desabilitar-Empleado.php" method="POST" style="background: transparent;  ">
+  <h3 align="center">Actualizar Informacion del Empleado</h3>
+    <div class="container" style="background: rgba(100, 100, 100, 0.6); width: 70%; margin: auto; border-radius: 9px; color:#fff; font-weight: bold;">
         <div class="row">
-            <div class="col-6 col-sm-4" style="position: initial; margin: auto; margin-top: 2%">
+            <div class=" col-sm-12" style="position: initial; margin: auto; margin-top: 2%"><p class="small mb-1"><font color="black"><b>Usuario que a Seleccionado:</b></font> <?php echo $productos['username']?></p>
+                <div class="row">
+                    <div class="col-md-6" style="position: initial">
+                        
+                       <label id="label" class="small mb-1">Nombre</label><br>
+                        <input pattern="[A-Za-z ]{1,}" class="form-control" type="text"  name="Nombres"  required>
+                    </div>
+                    <div class="col-md-6" style="position: initial">
+                      <label id="label" class="small mb-1">Apellido</label><br>
+                        <input pattern="[A-Za-z_- ]{1,}" class="form-control" type="text"  name="Apellidos" required >
+                    </div>
+                </div>
+                
+                    
                 <input type="hidden" name="id" value="<?php  echo $productos['id']; ?>">
-                <label for="">Habilitado</label><br> 
+                <label id="label" class="small mb-1">Habilitado</label><br> 
                     <select  class="form-control" name="Habilitado" id="categoria" style="cursor: pointer">
                         <option>[Seleccione]</option>
                         <option>Si</option>
@@ -65,7 +78,7 @@ $result = mysqli_query($conn, $sql);
          </div>
         <hr>
         <div class="row">
-            <div class="col-6 col-sm-4" style="position: initial; margin: auto; margin-bottom: 2%;">
+            <div class="col-sm-12" style="position: initial; margin: auto; margin-bottom: 2%;">
                 <button type="submit" class ="btn btn-primary" style="background:rgb(12, 139, 8); margin-right: 1%; border: none">Guardar Cambios</button>
                 <a href="Empleados.php" class ="btn btn-primary" style="background:rgb(184, 8, 8); border: none">Cancelar</a>
             </div>
@@ -206,21 +219,29 @@ $u='Cliente';
         ?>
    
        
-<div class="card mb-3 border-secondary " style="max-width: 100%;position: initial">
+<div class="card mb-3 border-secondary " style="max-width: 100%;min-width: 100%;position: initial">
   <div class="row g-0">
-    <div class="col-md-2" style="position: initial">
-      <img src="img/logo1.png" class="img-fluid rounded-start" style="margin-top:20%;margin-left: 15%;border-radius: 10%;">
+    <div class="col-1" style="position: initial">
+      <img src="img/logo1.png" class="img-fluid rounded-start" style="padding: 2%;margin-top: 45%; border-radius: 10%; max-width:100%;min-width: 150%;max-height: 50%;min-height: 50%;">
     </div>
-    <div class="col-md-8" style="position: initial">
+    
       <div class="card-body" style="position: initial">
         <h5 class="card-title">USUARIO: <?php echo $solicitudes['username'] ?></h5>
+        <div class="row">
+        <div class="col-md-7" style="position: initial">
         <p class="card-text"><b>NOMBRE COMPLETO: </b><?php echo $solicitudes['firstname']," ",$solicitudes['lastname']; ?></p>
         <p class="card-text"><b>ESTABLECIMIENTO:</b> <?php echo $solicitudes['Establecimiento']; ?></p>
+    </div>
+    <div class="row">
+    <div class="col-md-12" style="position: initial">
         <p class="card-text"><b>UNIDAD:</b> <?php echo $solicitudes['unidad']; ?></p>
         <p class="card-text"><b>CUENTA:</b> <?php echo $u; ?></p>
+    </div>
+</div>
+</div><br>
         <div class="row" style="position: initial">
          
-                    <div class="col-md-1" style="position: initial;padding-left: 1%;">
+                    <div class="col-md-.1" style="position: initial;padding-left: 1%;">
             <?php if($tipo_usuario == 1) { ?>
                
                  <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Empleados.php">             
@@ -232,12 +253,9 @@ $u='Cliente';
          <a href="Controller/Delete_Empleados.php?id=<?php  echo $solicitudes['id']; ?>" onclick="return confirmaion()" class="btn btn-danger swal2-styled.swal2-confirm">Eliminar</a>
      <?php } ?>
  </div>
-
-
-      </div>
+</div>
     </div>
   </div>
-</div>
 </div>
 
  <?php } ?> 

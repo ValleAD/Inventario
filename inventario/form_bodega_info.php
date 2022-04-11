@@ -133,14 +133,14 @@ die();
                <td data-label="Productos Disponibles"><input  style="background:transparent; border: none; width: 100%; color: gray;" type="decimal" class="form-control" readonly  name="stock[]"  value ="<?php  echo $stock; ?>"></td>
                <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="decimal" step="0.1" class="form-control"  name="cant[]" required></td>
                <td data-label="Precio" ><input style="background:transparent; border: none; width: 100%; color: black; text-align: center;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $precio1 ?>"></td>   
-               <td><input type="button" class="borrar btn btn-success" value="Eliminar" /></td>  
+               <td><input type="button" class="borrar btn btn-success my-1" value="Eliminar" /></td>  
       
      </tr>
 <?php }} ?> 
 
             </tbody>
         </table>
-         <center> <button type="submit" name="solicitar" class="btn btn-success btn-lg  text-center w-25"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar</button></center>    
+         <center> <button type="submit" name="solicitar" class="btn btn-success btn-lg  text-center w-25 my-3"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar</button></center>    
 </form>
  </section>
 

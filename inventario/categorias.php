@@ -51,11 +51,11 @@ $result = mysqli_query($conn, $sql);
 
 <form action="Controller/Desabilitar-categorias.php" method="POST" style="background: transparent; ">
   <h3 align="center">Actualizar Categorias</h3>
-    <div class="container" style="background: rgba(255, 255, 255, 0.6); width: 40%; margin: auto; border-radius: 9px; color:#fff; font-weight: bold;">
+    <div class="container" style="background: rgba(100, 100, 100, 0.6); width: 70%; margin: auto; border-radius: 9px; color:#fff; font-weight: bold;">
         <div class="row">
-            <div class="col-6 col-sm-6" style="position: initial; margin: auto; margin-top: 2%">
+            <div class=" col-sm-12" style="position: initial; margin: auto; margin-top: 2%"><p class="small mb-1"><font color="black"><b>La Categoria que has Seleccionado:</b></font> <?php echo $categoria['categoria']?></p>
                 <input type="hidden" name="id" value="<?php  echo $categoria['id']; ?>">
-                <label id="label" for="">Habilitado</label><br> 
+                <label id="label" class="small mb-1" for="">Habilitado</label><br> 
                     <select  class="form-control" name="Habilitado" id="categoria" style="cursor: pointer" required>
                         <option selected disabled value="">[Seleccione]</option>
                         <option>Si</option>
@@ -64,14 +64,16 @@ $result = mysqli_query($conn, $sql);
                     </select>
             </div>
          </div>
+
         <hr>
         <div class="row">
             <div class=" col-sm-12" style="position: initial; margin-left: 20%; margin-bottom: 2%;">
                 <button type="submit" name="Update_categorias" class ="btn btn-primary" style="background:rgb(12, 139, 8); margin-right: 1%; border: none">Guardar Cambios</button>
-                <a href="categorias.php" class ="btn btn-primary" style="background:rgb(184, 8, 8); border: none">Cancelar</a>
+                <a href="" class ="btn btn-primary" style="background:rgb(184, 8, 8); border: none">Cancelar</a>
             </div>
         </div>
     </div>
+
 </form>
 
 <style>
@@ -152,7 +154,7 @@ $result = mysqli_query($conn, $sql);
 </style>
         <tr>
             <td><?php echo $r ?></td>
-            <td data-label="Nombres" class="delete"><input readonly style="width:100%;border:none;background: transparent;" type="text" name="cod" value="<?php  echo $solicitudes['categoria']; ?>"></td>
+            <td data-label="Categoria" style="text-align:left;"><?php  echo $solicitudes['categoria']; ?></td>
 
  <td>
             <input  <?php
@@ -165,7 +167,7 @@ $result = mysqli_query($conn, $sql);
                     $c='Categoria no Disponble';
                 }
             ?>
- type="text" class="btn"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $c ?>"></td>
+ type="text" class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="<?=   $c ?>"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $c ?>"></td>
             <?php if($tipo_usuario == 1) { ?>
             <td align="center">
                  <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="categorias.php">             
@@ -181,7 +183,7 @@ $result = mysqli_query($conn, $sql);
                 <form action="Controller/Delete-categorias.php" method="POST" style="background:transparent;">
                     <input type="hidden" name="id" value="<?php  echo $solicitudes['id']; ?>">
                     <input type="hidden" name="Habilitado" value="<?php  echo $solicitudes['Habilitado']; ?>">
-                    <button  onclick="return confirmaion()" name="eliminar_categorias" class="btn btn-danger" type="submit">ELiminar</button>
+                    <button  onclick="return confirmaion()" name="eliminar_categorias" class="btn btn-danger btn-sm " type="submit">ELiminar</button>
                 </form>
                 
             </td></td><?php } ?>
