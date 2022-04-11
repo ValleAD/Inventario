@@ -18,13 +18,13 @@ if (isset($_POST['submit'])) {
 	$cpassword = $_POST['cpassword'];
 	$tipo_usuario = ($_POST['tipo_usuario']);
 	
-	$verificar_usuario =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username ='$username'");
+	$verificar_usuario =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username ='$username' AND firstname='$firstname' AND lastname='$lastname' AND Establecimiento='$Establecimiento' AND unidad='$unidad' AND password='$password' AND tipo_usuario='$tipo_usuario'");
 
 if (mysqli_num_rows($verificar_usuario)>0) {
 	echo '
 		<script>
 		alert("Este Usuario ya esta Registrado, intente con otro diferente");
-		 window.location ="../Empleados.php"; 
+		 window.location ="signup.php"; 
 	</script>
 	';
 exit();
@@ -32,7 +32,15 @@ exit();
 	if ($password == $cpassword) {
 	$sql = "SELECT * FROM tb_usuarios WHERE username='$username' AND firstname='$firstname' AND lastname='$lastname'  AND password='$password'";
 	
-	$result = mysqli_query($conn, $sql);
+	$result1 = mysqli_query($conn, $sql);
+	if ($result1) {
+				echo '
+				 <script>
+				   alert("Usuario Creado");
+				        window.location ="signin.php";
+				        session_destroy();  
+				                </script>';
+			}
 	if (!$result->num_rows > 0) {
 		
 		//$password= hash('MD5',$password);
@@ -62,12 +70,6 @@ exit();
 				                </script>';
 				}
 		 
-	}else{
-		echo '<script>
-				        alert("Usuario Creado");
-				        window.location ="signup.php";
-				        session_destroy();  
-				                </script>';
 	}
 	
 	}
@@ -120,14 +122,14 @@ exit();
                     </div>
                     <div class="col-md-6" style="position: initial">
                       <label class="small mb-1">Nombre</label><br>
-                        <input pattern="[A-Za-z0-9_- ]{1,}" class="form-control" type="text"  name="nombre" required>
+                        <input pattern="[A-Za-z0-9_- ´]{1,}" class="form-control" type="text"  name="nombre" required>
                     </div>
                 </div>
                 <div class="row">
 
                     <div class="col-md-6" style="position: initial">
                      <label class="small mb-1">Apellido</label><br>
-                        <input pattern="[A-Za-z0-9- ]{1,}" class="form-control" type="text"  name="Apellido"  required>
+                        <input pattern="[A-Za-z0-9- ´]{1,}" class="form-control" type="text"  name="Apellido"  required>
                         
                                                 
                                         

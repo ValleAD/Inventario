@@ -46,13 +46,13 @@ $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
 ?>
-
-
+<?php if ($tipo_usuario==2) {?>
 <form action="Controller/Desabilitar-Empleado.php" method="POST" style="background: transparent;  ">
   <h3 align="center">Actualizar Informacion del Empleado</h3>
     <div class="container" style="background: rgba(100, 100, 100, 0.6); width: 70%; margin: auto; border-radius: 9px; color:#fff; font-weight: bold;">
         <div class="row">
             <div class=" col-sm-12" style="position: initial; margin: auto; margin-top: 2%"><p class="small mb-1"><font color="black"><b>Usuario que a Seleccionado:</b></font> <?php echo $productos['username']?></p>
+                 <input type="hidden" name="id" value="<?php  echo $productos['id']; ?>">
                 <div class="row">
                     <div class="col-md-6" style="position: initial">
                         
@@ -64,7 +64,24 @@ $result = mysqli_query($conn, $sql);
                         <input pattern="[A-Za-z_- ]{1,}" class="form-control" type="text"  name="Apellidos" required >
                     </div>
                 </div>
-                
+            
+            </div>
+         </div>
+        <hr>
+        <div class="row">
+            <div class="col-sm-12" style="position: initial; margin: auto; margin-bottom: 2%;">
+                <button type="submit" name="submit" class ="btn btn-primary" style="background:rgb(12, 139, 8); margin-right: 1%; border: none">Guardar Cambios</button>
+                <a href="Empleados.php" class ="btn btn-primary" style="background:rgb(184, 8, 8); border: none">Cancelar</a>
+            </div>
+        </div>
+    </div>
+</form>
+<?php  } if ($tipo_usuario==1) {?>
+<form action="Controller/Desabilitar-Empleado.php" method="POST" style="background: transparent;  ">
+  <h3 align="center">Actualizar Informacion del Empleado</h3>
+    <div class="container" style="background: rgba(100, 100, 100, 0.6); width: 70%; margin: auto; border-radius: 9px; color:#fff; font-weight: bold;">
+        <div class="row">
+            <div class=" col-sm-12" style="position: initial; margin: auto; margin-top: 2%"><p class="small mb-1"><font color="black"><b>Usuario que a Seleccionado:</b></font> <?php echo $productos['username']?></p>
                     
                 <input type="hidden" name="id" value="<?php  echo $productos['id']; ?>">
                 <label id="label" class="small mb-1">Habilitado</label><br> 
@@ -79,7 +96,7 @@ $result = mysqli_query($conn, $sql);
         <hr>
         <div class="row">
             <div class="col-sm-12" style="position: initial; margin: auto; margin-bottom: 2%;">
-                <button type="submit" class ="btn btn-primary" style="background:rgb(12, 139, 8); margin-right: 1%; border: none">Guardar Cambios</button>
+                <button type="submit" name="info" class ="btn btn-primary" style="background:rgb(12, 139, 8); margin-right: 1%; border: none">Guardar Cambios</button>
                 <a href="Empleados.php" class ="btn btn-primary" style="background:rgb(184, 8, 8); border: none">Cancelar</a>
             </div>
         </div>
@@ -92,6 +109,7 @@ $result = mysqli_query($conn, $sql);
   }
 </style>
 <?php 
+}
   }
 } 
 ?>
@@ -213,7 +231,7 @@ if ($solicitudes['tipo_usuario']==1) {
     $u='Administrador';
 }else if($solicitudes['tipo_usuario']==2){
 $u='Cliente';
-}else if($solicitudes['Habilitado']=="No"){
+} if($solicitudes['Habilitado']=="No"){
     $u='Cuenta Desabilitada';
 }
         ?>
@@ -242,9 +260,15 @@ $u='Cliente';
         <div class="row" style="position: initial">
          
                     <div class="col-md-.1" style="position: initial;padding-left: 1%;">
-            <?php if($tipo_usuario == 1) { ?>
+            <?php if($tipo_usuario==2) { ?>
                
                  <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Empleados.php">             
+          <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">      
+          <button name='editar' class='btn btn-info swal2-styled.swal2-confirm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
+        </form>
+   </div>
+<?php } elseif ($tipo_usuario==1) { ?>
+     <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Empleados.php">             
           <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">      
           <button name='editar' class='btn btn-info swal2-styled.swal2-confirm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
         </form>
