@@ -169,7 +169,7 @@ $result = mysqli_query($conn, $sql);
         } 
     </style>
 </table>
-  <section style="background: rgba(255, 255, 255, 0.9);padding-bottom: 1%;margin: 3%;border-radius: 15px;">
+<section style="background: rgba(255, 255, 255, 0.9);padding-bottom: 1%;margin: 3%;border-radius: 15px;">
 <font color="black"><h2 class="text-center">Inventario de Productos</h2></font>
 <?php if (isset($_POST['categorias'])){  ?>
 <a class="btn btn-success mx-2" href="vistaProductos.php?productos">Ver Productos</a>
@@ -180,7 +180,7 @@ if (isset($_POST['Fecha'])){  ?>
 <div class=" row">
 <form method="POST" action="vistaProductos.php" style="margin-left: 2%;">
                  <div class="row">
-                    <div class="col-md-5" style="position: initial;">
+                    <div class="col-md-4" style="position: initial;">
                         <label>Desde</label>
                      <input type="DATE" class="form-control" name="F1" required>
                     
@@ -189,7 +189,7 @@ if (isset($_POST['Fecha'])){  ?>
                      <input type="DATE" class="form-control" name="F2" required>
                     
                     </div>
-                    <div class="col-md-3" style="position: initial; margin-top: auto;">
+                    <div class="col-md-4" style="position: initial; margin-top: auto;">
                        <button class="btn btn-success" name="Fecha" type="submit">Filtrar Fechas</button>
                     </div>
                 </div>

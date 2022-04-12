@@ -59,34 +59,60 @@ die();
         } 
     </style>
 </table>
-  <section style="background: rgba(255, 255, 255, 0.9);padding-bottom: 1%;margin: 2%;border-radius: 15px;">
-<font color="black"><h2 class="text-center" >Reporte General de Productos</h2></font>
-<br>
-<form method="POST" action="">
-                <div class="container">
+<section style="background: rgba(255, 255, 255, 0.9);padding-bottom: 1%;margin: 3%;border-radius: 15px;">
+<font color="black"><h2 class="text-center">Reporte General de Productos</h2></font>
+<?php if (isset($_POST['categorias'])){  ?>
+<a class="btn btn-success mx-2" href="vistaProductos.php?productos">Ver Productos</a>
+<?php } 
+if (isset($_POST['Fecha'])){  ?>
+<a class="btn btn-success mx-2" href="vistaProductos.php?productos">Ver Productos</a>
+<?php } ?>
+<div class=" row">
+<form method="POST" action="vistaProductos.php" style="margin-left: 2%;">
                  <div class="row">
-                    <div class="col-md-3" style="position: initial">
+                    <div class="col-md-4" style="position: initial;">
                         <label>Desde</label>
                      <input type="DATE" class="form-control" name="F1" required>
                     
-                    </div><div class="col-md-3" style="position: initial">
+                    </div><div class="col-4" style="position: initial">
                         <label>Hasta</label>
                      <input type="DATE" class="form-control" name="F2" required>
                     
                     </div>
-                    <div class="col-md-6" style="position: initial; margin-top: auto;">
+                    <div class="col-md-4" style="position: initial; margin-top: auto;">
                        <button class="btn btn-success" name="Fecha" type="submit">Filtrar Fechas</button>
                     </div>
                 </div>
-            </div>
+            </form> 
+
+ <form method="POST" action="vistaProductos.php" style="margin-left: 70%;margin-top: -3%;">  
+                 <div class="row">
+                    <div class="col-md-5" style="position: initial">
+                      <select class="form-control" name="cat" id="w" required>
+                    <option selected disabled value="">Seleccione</option>
+                <?php  $sql = "SELECT * FROM tb_productos GROUP BY categoria ";
+        $result = mysqli_query($conn, $sql);
+            while ($productos = mysqli_fetch_array($result)){
+                echo "<option>".$productos['categoria']."</option>";
+
+            }
+         ?></select>
+                    </div>
+                    <div class="col-md-6" style="position: initial;margin-top: 2%;">
+                       <button class="btn btn-success" name="categorias" type="submit">Exportar por Categorias</button>
+                  
+                    </div>
+                </div>
                 
                
-            </form>   
-            <?php 
+            </form> 
+            </div>
 
+
+            <?php 
 if (isset($_POST['Fecha'])){
-?>  <br> 
-<div class="mx-5 p-2 r-5" style="background-color: white; border-radius: 5px;">
+?> 
+<div class="mx-5 p-2 r-5" style="background-color: transparent; border-radius: 5px;">
         <div class="row">
             <div class="col">
 
@@ -130,6 +156,10 @@ if (isset($_POST['Fecha'])){
             while ($productos = mysqli_fetch_array($result)){
                  $precio=$productos['precio'];
         $precio1=number_format($precio, 2,".",",");
+
+        $cantidad=$productos['stock'];
+        $stock=number_format($cantidad,  2,".",",");
+       //  $stock=round($stock);
               ?>
                    <tr>
                 <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['categoria']; ?></td>
@@ -137,7 +167,7 @@ if (isset($_POST['Fecha'])){
            <td  data-label="Codificación de catálogo" style="text-align: center;"><?php  echo $productos['catalogo']; ?></td>
            <td  data-label="Descripción Completa" style="text-align: left;padding-left:3%"><?php  echo $productos['descripcion']; ?></td>
            <td  data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-           <td  data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
+           <td  data-label="Cantidad"  style="text-align: center;"><?php  echo $stock ?></td>
            <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
         </tr>
@@ -149,9 +179,64 @@ if (isset($_POST['Fecha'])){
 </div>
 </div>
 </div>
-    <div class="mx-5 p-2 r-5" style=" border-radius: 5px;">
+<?php 
+
+if (isset($_POST['categorias'])){  ?>  <br> 
+<div class="mx-5 p-2 r-5" style="background-color: white; border-radius: 5px;">
+   
         <div class="row">
             <div class="col">
+                <table class="table table-responsive table-striped" id="example2" style=" width: 100%">
+    <thead>
+         <tr id="tr">
+                     <th style=" width: 10%">Categoria</th>
+                     <th style=" width: 10%">Código</th>
+                     <th style=" width: 10%">Cod. de Catálogo</th>
+                     <th style=" width: 30%;padding-left:3%">Descripción Completa</th>
+                     <th style=" width: 10%">U/M</th>
+                     <th style=" width: 10%">Cantidad</th>
+                     <th style=" width: 10%">Costo Unitario</th>
+                     <th style=" width: 70%">Fecha Registro</th>
+                     
+                   </tr>
+    </thead>
+    <tbody>
+         <?php $categoria=$_POST['cat'];
+
+             // code...
+         
+                   $sql = "SELECT * FROM tb_productos WHERE categoria='$categoria' ";
+        $result = mysqli_query($conn, $sql);
+            while ($productos = mysqli_fetch_array($result)){
+                 $precio=$productos['precio'];
+                 $precio1=number_format($precio, 2,".",",");
+                 $cantidad=$productos['stock'];
+        $stock=number_format($cantidad, 2,".",",");
+        
+
+                if ($_POST['cat']==$productos['categoria']) {?>
+                   <tr>
+                <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['categoria']; ?></td>
+                <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['codProductos']; ?></td>
+           <td  data-label="Codificación de catálogo" style="text-align: center;"><?php  echo $productos['catalogo']; ?></td>
+           <td  data-label="Descripción Completa" style="text-align: left;padding-left:3%"><?php  echo $productos['descripcion']; ?></td>
+           <td  data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
+           <td  data-label="Cantidad" style="text-align: center;"><?php  echo $stock ?></td>
+           <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
+           <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
+        </tr>
+                <?php}}?>
+      <?php   }}} ?>
+    </tbody>
+</table>
+  
+</div>
+            </div> 
+            </div><br>
+            <?php if (isset($_GET['productos'])){ 
+            $productos = $_GET['productos'] ?>
+    <div class="mx-1 p-2 r-5" style=" border-radius: 5px;">
+        
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
                 <thead>
                      <tr id="tr">
@@ -166,8 +251,7 @@ if (isset($_POST['Fecha'])){
                      <!-- <th style=" width: 100%">Solicitudes</th> -->
 
                      <th style=" width: 100%">Categoría</th>
-
-                    
+                   
                    </tr>
                 </thead>
                 <tbody>
@@ -197,7 +281,7 @@ if (isset($_POST['Fecha'])){
          $precio=$productos['precio'];
         $precio1=number_format($precio, 2,".",",");
         $cantidad=$productos['stock'];
-        $stock=number_format($cantidad, 0,",");
+        $stock=number_format($cantidad, 2,".",",");
 ?>
      
             
@@ -220,92 +304,15 @@ if (isset($_POST['Fecha'])){
            <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['categoria']; ?></td>
-          
-            
-            
            
          </tr>
      
      <?php } ?> 
                 </tbody>                
             </table>           
-            
-            </div> 
-            </div>
         </div>
-    <br><br>
- <form method="POST" action="">
-                <div class="container">
-                 <div class="row">
-                    <div class="col-md-4" style="position: initial">
-                      <select class="form-control" name="cat" id="w" required>
-                    <option selected disabled value="">Seleccione</option>
-                <?php  $sql = "SELECT * FROM tb_productos GROUP BY categoria ";
-        $result = mysqli_query($conn, $sql);
-            while ($productos = mysqli_fetch_array($result)){
-                echo "<option>".$productos['categoria']."</option>";
-
-            }
-         ?></select>
-                    </div>
-                    <div class="col-md-6" style="position: initial">
-                       <button class="btn btn-success" name="categorias" type="submit">Exportar por Categorias</button>
-                    </div>
-                </div>
-            </div>
-                
-               
-            </form>   
-            <?php 
-
-if (isset($_POST['categorias'])){  ?>  <br> 
-<div class="mx-5 p-2 r-5" style="background-color: white; border-radius: 5px;">
-        <div class="row">
-            <div class="col">
-                <table class="table table-responsive table-striped" id="example1" style=" width: 100%">
-    <thead>
-         <tr id="tr">
-                     <th style=" width: 10%">Categoria</th>
-                     <th style=" width: 10%">Código</th>
-                     <th style=" width: 10%">Cod. de Catálogo</th>
-                     <th style=" width: 30%;padding-left:3%">Descripción Completa</th>
-                     <th style=" width: 10%">U/M</th>
-                     <th style=" width: 10%">Cantidad</th>
-                     <th style=" width: 10%">Costo Unitario</th>
-                     <th style=" width: 70%">Fecha Registro</th>
-                     
-                   </tr>
-    </thead>
-    <tbody>
-         <?php $categoria=$_POST['cat'];
-
-             // code...
-         
-                   $sql = "SELECT * FROM tb_productos WHERE categoria='$categoria' ";
-        $result = mysqli_query($conn, $sql);
-            while ($productos = mysqli_fetch_array($result)){
-                 $precio=$productos['precio'];
-                 $precio1=number_format($precio, 2,".",",");
-
-                if ($_POST['cat']==$productos['categoria']) {?>
-                   <tr>
-                <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['categoria']; ?></td>
-                <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['codProductos']; ?></td>
-           <td  data-label="Codificación de catálogo" style="text-align: center;"><?php  echo $productos['catalogo']; ?></td>
-           <td  data-label="Descripción Completa" style="text-align: left;padding-left:3%"><?php  echo $productos['descripcion']; ?></td>
-           <td  data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-           <td  data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
-           <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
-           <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
-        </tr>
-                <?php}}?>
-      <?php   }}} ?>
-    </tbody>
-</table>
-  
-</div>
-            </div> 
-            </div><br>
+  <?php } ?>
+            
 
                          
 </section>
@@ -408,16 +415,50 @@ if (isset($_POST['categorias'])){  ?>  <br>
     });     
 
     });
+    </script><script type="text/javascript">
+         $(document).ready(function(){
+ $('#example2').DataTable({        
+        language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                 },
+                 "sProcessing":"Procesando...",
+            },
+        //para usar los botones   
+        responsive: "true",
+        dom: 'Bfrtilp',       
+        buttons:[ 
+            {
+                extend:    'excelHtml5',
+                text:      '<i class="fas fa-file-excel"></i> ',
+                titleAttr: 'Exportar a Excel',
+                className: 'btn btn-success'
+            },
+            {
+                extend:    'pdfHtml5',
+                text:      '<i class="fas fa-file-pdf"></i> ',
+                titleAttr: 'Exportar a PDF',
+                className: 'btn btn-danger'
+            },
+            {
+                extend:    'print',
+                text:      '<i class="fa fa-print"></i> ',
+                titleAttr: 'Imprimir',
+                className: 'btn btn-info'
+            },
+        ]           
+    });     
+
+    });
     </script>
-    <script type="text/javascript">
-function confirmaion(e) {
-    if (confirm("¿Estas seguro que deseas Eliminar este registro?")) {
-        return true;
-    } else {
-        return false;
-        e.preventDefault();
-    }
-}
-</script>
 </body>
 </html>

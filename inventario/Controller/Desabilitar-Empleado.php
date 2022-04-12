@@ -5,10 +5,24 @@ require '../Model/conexion.php';
 if(isset($_POST['info'])){
 $id = $_POST['id'];
 $No =$_POST['Habilitado'];
+$u= $_POST['Nombres'];
+$ap= $_POST['Apellidos'];
+if ($u=$_POST['Nombres']=="" || $ap=$_POST['Apellidos']=="") {
+  $sql="UPDATE tb_usuarios SET Habilitado = '$No' WHERE id='$id'" ;
+$result = mysqli_query($conn, $sql);
 
-
-
-$sql="UPDATE tb_usuarios SET Habilitado = '$No' WHERE id='$id'" ;
+if ($result) {
+ echo'
+    <script>
+       alert("Los datos fueron Actualizados");
+         window.location ="../Empleados.php"; 
+                </script>
+                ';
+              }
+}else{
+  $u= $_POST['Nombres'];
+$ap= $_POST['Apellidos'];
+$sql="UPDATE tb_usuarios SET Habilitado = '$No',firstname='$u',lastname='$ap' WHERE id='$id'" ;
 $result = mysqli_query($conn, $sql);
 
 if ($result) {
@@ -26,7 +40,8 @@ else {
           window.location ="../Empleados.php"; 
                 </script>
                 ';
-}
+    }
+  }
 }
 
 //sql
