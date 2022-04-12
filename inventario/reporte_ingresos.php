@@ -27,17 +27,11 @@ die();
      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
-         <link rel="stylesheet" href="Plugin/bootstap-icon/bootstrap-icons.min.css">
-      <link rel="stylesheet" href="Plugin/bootstap-icon/fontawesome.all.min.css"><!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <!--  Datatables  -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>  
-    
-    <!-- searchPanes -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/searchpanes/1.0.1/css/searchPanes.dataTables.min.css">
-    <!-- select -->
-    <link href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
+         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap4.css"/>
+     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.bootstrap4.css"/>
+    <!--font awesome con CDN-->  
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"> 
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
      <style>
     table thead{
     background: linear-gradient(to right, #4A00E0, #8E2DE2); 
@@ -95,7 +89,7 @@ if(isset($_POST['ingresos'])){
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
             <thead>
               <tr id="tr">
-                <th>#</th>
+                <th style="width: 10%">#</th>
                 <!-- <th  style="width: 15%">Departamento</th>
                 <th  style="width: 15%">Encargado</th> -->
                 <th  style="width: 10%">Codigo</th>
@@ -170,16 +164,16 @@ if(isset($_POST['ingresos'])){
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
      <thead>
        <tr>
-        <th>#</th>
-         <th>Departamento</th>
-         <th>Encargado</th>
-         <th>Codigo</th>
-         <th>Descripción Completa</th>
-         <th>U/M</th>
-         <th>Cantidad</th>
-         <th>Costo Unitario</th>
-         <th>Ingreso Por</th>
-         <th>Fecha Registro</th>
+        <th style="width: 10%">#</th>
+         <th style="width: 15%">Departamento</th>
+         <th style="width: 15%">Encargado</th>
+         <th style="width: 15%">Codigo</th>
+         <th style="width: 50%">Descripción Completa</th>
+         <th style="width: 15%">U/M</th>
+         <th style="width: 15%">Cantidad</th>
+         <th style="width: 15%">Costo Unitario</th>
+         <th style="width: 15%">Ingreso Por</th>
+         <th style="width: 15%">Fecha Registro</th>
          
        </tr>
 
@@ -251,7 +245,7 @@ width: 100%;
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
      <thead>
        <tr>
-        <th>#</th>
+        <th style="width: 10%">#</th>
          <th  style="width:15%">Departamento</th>
          <th  style="width:15%">Encargado</th>
          <th  style="width:10%">Codigo</th>
@@ -308,33 +302,37 @@ while ($productos = mysqli_fetch_array($result)){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-            
-    <!--   Datatables-->
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>  
-
-    <!-- searchPanes   -->
-    <script src="https://cdn.datatables.net/searchpanes/1.0.1/js/dataTables.searchPanes.min.js"></script>
-    <!-- select -->
-    <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>  
-<script>
-    $(document).ready(function(){
-        $('#example').DataTable({
-            responsive: "true",
-        dom: 'Bfrtilp', 
-             language: {
-                "lengthMenu": "Mostrar _MENU_ registros ",
-                "zeroRecords": "No se encontraron resultados 😢",
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap4.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.bootstrap4.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.js"></script>
+    <script>
+   $(document).ready(function(){
+ $('#example').DataTable({        
+        language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
                 "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
                 "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
                 "infoFiltered": "(filtrado de un total de _MAX_ registros)",
                 "sSearch": "Buscar:",
-                "sProcessing":"Procesando...", 
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                 },
+                 "sProcessing":"Procesando...",
             },
-            buttons:[ 
+        //para usar los botones   
+        responsive: "true",
+        dom: 'Bfrtilp',       
+        buttons:[ 
             {
                 extend:    'excelHtml5',
                 text:      '<i class="fas fa-file-excel"></i> ',
@@ -353,7 +351,8 @@ while ($productos = mysqli_fetch_array($result)){
                 titleAttr: 'Imprimir',
                 className: 'btn btn-info'
             },
-        });
+        ]           
+    });     
 
     });
     </script>

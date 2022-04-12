@@ -27,7 +27,7 @@ die();
 
     <link rel="stylesheet" type="text/css" href="styles/style.css" >
     <!-- Bootstrap CSS -->
-     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap4.css"/>
+      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap4.css"/>
      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.bootstrap4.css"/>
     <!--font awesome con CDN-->  
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"> 
@@ -84,7 +84,7 @@ if(isset($_POST['ingresos'])){
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
             <thead>
               <tr id="tr">
-                <th>#</th>
+                <th style="width: 10%">#</th>
                 <th  style="width: 15%">Departamento</th>
                 <th  style="width: 15%">Encargado</th>
                 <th  style="width: 10%">Codigo</th>
@@ -227,6 +227,7 @@ $n=0;
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
@@ -237,21 +238,27 @@ $n=0;
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.js"></script>
     <script>
-    $(document).ready(function(){
-        $('#example').DataTable({
-            
-             language: {
-                "lengthMenu": "Mostrar _MENU_ registros ",
-                "zeroRecords": "No se encontraron resultados 😢",
+   $(document).ready(function(){
+ $('#example').DataTable({        
+        language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
                 "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
                 "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
                 "infoFiltered": "(filtrado de un total de _MAX_ registros)",
                 "sSearch": "Buscar:",
-                "sProcessing":"Procesando...", 
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                 },
+                 "sProcessing":"Procesando...",
             },
-            responsive: "true",
-        dom: 'Bfrtilp', 
-            buttons:[ 
+        //para usar los botones   
+        responsive: "true",
+        dom: 'Bfrtilp',       
+        buttons:[ 
             {
                 extend:    'excelHtml5',
                 text:      '<i class="fas fa-file-excel"></i> ',
@@ -270,7 +277,8 @@ $n=0;
                 titleAttr: 'Imprimir',
                 className: 'btn btn-info'
             },
-        });
+        ]           
+    });     
 
     });
     </script>
