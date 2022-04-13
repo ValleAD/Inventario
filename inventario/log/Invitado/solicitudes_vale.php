@@ -1,11 +1,13 @@
+<?php require '../../Model/conexion.php';
+include ('menu.php');
+?>
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta charset="utf-8">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-         <link rel="stylesheet" type="text/css" href="../../../styles/estilo_men.css">
+         <link rel="stylesheet" type="text/css" href="../../styles/estilo_men.css">
       <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
@@ -30,7 +32,8 @@
 
 <body style="background-image: url(../../../img/4k.jpg);  
             background-repeat: no-repeat;
-            background-attachment: fixed;">
+            background-attachment: fixed;
+            color: black;">
                 <style type="text/css">
         #a:hover{
    text-decoration: none;
@@ -44,52 +47,16 @@
 background:burlywood;
 }
  </style>
-<header>
-        <div class="menu_bar">
-            <a href="#" class="bt-menu"><span class="fas fa-bars"></span>Menú</a>
-        </div>
-
-        <nav>
-            <ul>
-                <li>
-                    <a id="b" href="../invitado.php"><span class="icon-house"></span>Inicio</a></li>
-                   
-                </li>
-                <li class="submenu">
-                    <a id="b" href="#"><span class="icon-rocket"></span>Articulos<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
-                    <ul class="children">
-                        <li><a id="b" href="productos.php?productos">Mostrar</a></li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a id="b" href="#"><span class="icon-rocket"></span>Solicitud Vale<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
-                    <ul class="children">
-                    <li><a id="b" href="solicitudes_vale.php">Mostrar</a></li>
-                        <li><a id="b" href="form_vale.php">Buscar por codigo</a></li>
-                        <li><a id="b" href="form_vale1.php">Seleccionar Varios</a></li>
-
-                       
-                    </ul>
-                </li>
-                 <li class="submenu" style="float:right;">
-                    <a id="a" href="#"><span class="icon-rocket"></span><i class="bi bi-person"></i> Invitado<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
-                    <ul class="children">
-                        <li><a id="b" href="../logout_invitado.php">Cerrar Session</a></li>
-                        
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </header>
     <center><h1 style="margin-top:5px">Solicitudes Vale</h1></center><br>
             
-     <div class="mx-5 p-2" style="background-color: white; border-radius:5px">
+     <div class="mx-5 p-2" style="background-color: white;color: black; border-radius:5px">
 
      
-        <table class="table table-responsive" id="example" style="width:100%">
+        <table class="table table-responsive" id="example" style="width:100%;color: black;">
             <thead>
               <tr id="tr">
-                <th style="width:30%" ><strong>Código de Vale</strong></th>
+                <th style="width:10%" ><strong>#</strong></th>
+                <th style="width:10%" ><strong>Código de Vale</strong></th>
                 <th style="width:50%"><strong>Departamento Solicitante</strong></th>
                 <th style="width:50%"><strong>Estado</strong></th>
                 <th style="width:100%;"><strong>Fecha de solicitud</strong></th>
@@ -99,14 +66,13 @@ background:burlywood;
      </thead>
         <tbody>     
     <?php
-    include '../../../Model/conexion.php';
     
-
-
     $sql = "SELECT * FROM tb_vale ORDER BY fecha_registro DESC ";
     $result = mysqli_query($conn, $sql);
-
-    while ($solicitudes = mysqli_fetch_array($result)){?>
+    $n=0;
+    while ($solicitudes = mysqli_fetch_array($result)){
+        $n++;
+        $r=$n+0?>
         <style type="text/css">
      #td{
         display: none;
@@ -114,6 +80,7 @@ background:burlywood;
    
 </style>
         <tr>
+            <td data-label="#"><?php echo $r ?></td>
             <td data-label="Código" class="delete"><?php  echo $solicitudes['codVale']; ?></td>
             <td data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
             <td data-label="Departamento Solicitante" class="delete"><input readonly <?php

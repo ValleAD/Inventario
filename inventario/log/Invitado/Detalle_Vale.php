@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -25,9 +26,7 @@
       <link rel="icon" type="image/png" sizes="32x32"  href="../../../img/log.png"> 
     <title>Productos</title>
 </head>
-<body style="background-image: url(../../../img/4k.jpg);  
-            background-repeat: no-repeat;
-            background-attachment: fixed;">
+<body>
                 <style type="text/css">
         #a:hover{
    text-decoration: none;
@@ -47,43 +46,7 @@ background:burlywood;
     background:whitesmoke ;
 }
  </style>
-  <header>
-        <div class="menu_bar">
-            <a href="#" class="bt-menu"><span class="fas fa-bars"></span>Menú</a>
-        </div>
 
-        <nav>
-            <ul>
-                <li>
-                    <a id="b" href="../invitado.php"><span class="icon-house"></span>Inicio</a></li>
-                   
-                </li>
-                <li class="submenu">
-                    <a id="b" href="#"><span class="icon-rocket"></span>Articulos<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
-                    <ul class="children">
-                        <li><a id="b" href="productos.php">Mostrar</a></li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a id="b" href="#"><span class="icon-rocket"></span>Solicitud Vale<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
-                    <ul class="children">
-                    <li><a id="b" href="solicitudes_vale.php">Mostrar</a></li>
-                        <li><a id="b" href="form_vale.php">Buscar por codigo</a></li>
-                        <li><a id="b" href="form_vale1.php">Seleccionar Varios</a></li>
-
-                       
-                    </ul>
-                </li>
-                 <li class="submenu" style="float:right;">
-                    <a id="a" href="#"><span class="icon-rocket"></span><i class="bi bi-person"></i> Invitado<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
-                    <ul class="children">
-                        <li><a id="b" href="../logout_invitado.php">Cerrar Session</a></li>
-                        
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </header>
 <?php
 
 if(isset($_POST['detalle'])){
@@ -94,14 +57,15 @@ if(isset($_POST['detalle'])){
     $final1 = 0;
     $cod_vale = $_POST['id'];
     
-       include '../../../Model/conexion.php';
+       include '../../Model/conexion.php';include 'menu.php';
+
         $sql = "SELECT * FROM tb_vale WHERE codVale = $cod_vale";
         $result = mysqli_query($conn, $sql);
      while ($productos1 = mysqli_fetch_array($result)){
     
      echo'   
     <section id="section" style="margin:2%">
-    <form method="POST" action="" >
+    <form method="POST" action="" style="color:black">
              
           
             <div class="row">
@@ -146,7 +110,7 @@ if(isset($_POST['detalle'])){
           
             <br>
           </form>
-              <form method="POST" action="../../../Plugin/pdf_vale.php" target="_blank">
+              <form method="POST" action="../../Plugin/pdf_vale.php" target="_blank">
 
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">

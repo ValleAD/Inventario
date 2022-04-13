@@ -1,4 +1,6 @@
-<?php require '../../../Model/conexion.php'?>
+<?php require '../../Model/conexion.php';
+include ('menu.php');
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -6,9 +8,9 @@
 <meta charset="UTF-8">
 <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-         <link rel="stylesheet" type="text/css" href="../../../styles/estilo_men.css">
+         <link rel="stylesheet" type="text/css" href="../../styles/estilo_men.css">
       <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="../../../Plugin/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/bootstrap.css">
 
     <!-- Bootstrap CSS -->
      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap4.css"/>
@@ -42,44 +44,8 @@
 background:burlywood;
 }
  </style>
-  <header>
-        <div class="menu_bar">
-            <a href="#" class="bt-menu"><span class="fas fa-bars"></span>Menú</a>
-        </div>
 
-        <nav>
-            <ul>
-                <li>
-                    <a id="b" href="../invitado.php"><span class="icon-house"></span>Inicio</a></li>
-                   
-                </li>
-                <li class="submenu">
-                    <a id="b" href="#"><span class="icon-rocket"></span>Articulos<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
-                    <ul class="children">
-                        <li><a id="b" href="productos.php?productos">Mostrar</a></li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a id="b" href="#"><span class="icon-rocket"></span>Solicitud Vale<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
-                    <ul class="children">
-                    <li><a id="b" href="solicitudes_vale.php">Mostrar</a></li>
-                        <li><a id="b" href="form_vale.php">Buscar por codigo</a></li>
-                        <li><a id="b" href="form_vale1.php">Seleccionar Varios</a></li>
-
-                       
-                    </ul>
-                </li>
-                 <li class="submenu" style="float:right;">
-                    <a id="a" href="#"><span class="icon-rocket"></span><i class="bi bi-person"></i> Invitado<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
-                    <ul class="children">
-                        <li><a id="b" href="../logout_invitado.php">Cerrar Session</a></li>
-                        
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </header>
-<section style="background: rgba(255, 255, 255, 0.9);padding-bottom: 1%;margin: 3%;border-radius: 15px;">
+<section style="background: rgba(255, 255, 255, 0.9);padding-bottom: 1%;margin: 3%;border-radius: 15px;color: black;">
 <font color="black"><h2 class="text-center">Inventario de Productos</h2></font>
 <?php if (isset($_POST['categorias'])){  ?>
 <a class="btn btn-success mx-2 mb-3" href="productos.php?productos">Ver Productos</a>

@@ -136,7 +136,7 @@ $result = mysqli_query($conn, $sql);
         <div class="row">
             <div class="col-6 col-sm-4" style="position: initial; margin-left: 17%; margin-bottom: 2%;">
                 <button type="submit" class ="btn btn-primary" style="background:rgb(12, 139, 8); margin-right: 1%; border: none">Guardar Cambios</button>
-                <a href="vistaProductos.php" class ="btn btn-primary" style="background:rgb(184, 8, 8); border: none">Cancelar</a>
+                <a href="vistaProductos.php?productos" class ="btn btn-primary" style="background:rgb(184, 8, 8); border: none">Cancelar</a>
             </div>
         </div>
     </div>
@@ -263,6 +263,7 @@ if (isset($_POST['Fecha'])){
          
                    $sql = "SELECT * FROM `tb_productos` WHERE fecha_registro BETWEEN ' $f1' AND ' $f2'";
         $result = mysqli_query($conn, $sql);
+
             while ($productos = mysqli_fetch_array($result)){
                  $precio=$productos['precio'];
         $precio1=number_format($precio, 2,".",",");
@@ -343,7 +344,7 @@ if (isset($_POST['categorias'])){  ?>  <br>
 </div>
             </div> 
             </div><br>
-            <?php if (isset($_GET['productos'])){ 
+            <?php  if (isset($_GET['productos'])){ 
             $productos = $_GET['productos'] ?>
     <div class="mx-1 p-2 r-5" style=" border-radius: 5px;">
         
@@ -351,20 +352,21 @@ if (isset($_POST['categorias'])){  ?>  <br>
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
                 <thead>
                      <tr id="tr">
-                     <th style=" width: 20%">Código</th>
-                     <th style=" width: 20%">Cod. de Catálogo</th>
-                     <th style=" width: 100%">Descripción Completa</th>
-                     <th style=" width: 100%">U/M</th>
-                     <th style=" width: 100%">Cantidad</th>
-                     <th style=" width: 100%">Costo Unitario</th>
-                     <th style=" width: 100%">Fecha Registro</th>
+                    <th>#</th>
+                     <th>Código</th>
+                     <th>Cod. de Catálogo</th>
+                     <th>Descripción Completa</th>
+                     <th>U/M</th>
+                     <th>Cantidad</th>
+                     <th>Costo Unitario</th>
+                     <th>Fecha Registro</th>
 
                      <!-- <th style=" width: 100%">Solicitudes</th> -->
 
-                     <th style=" width: 100%">Categoría</th>
+                     <th>Categoría</th>
                     <?php if($tipo_usuario==1){ ?>
-                     <th style=" width: 100%">Editar</th>
-                     <th style=" width: 100%">Eliminar</th>
+                     <th>Editar</th>
+                     <th>Eliminar</th>
                  <?php } ?>
                    </tr>
                 </thead>
@@ -391,7 +393,10 @@ if (isset($_POST['categorias'])){  ?>  <br>
 ?>
 
 <?php
+$n=0;
     while ($productos = mysqli_fetch_array($result)){
+        $n++;
+        $r=$n+0;
          $precio=$productos['precio'];
         $precio1=number_format($precio, 2,".",",");
         $cantidad=$productos['stock'];
@@ -410,6 +415,7 @@ if (isset($_POST['categorias'])){  ?>  <br>
         }
      </style>
          <tr id="tr">
+            <td><?php echo $r ?></td>
            <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['codProductos']; ?></td>
            <td  data-label="Codificación de catálogo" style="text-align: center;"><?php  echo $productos['catalogo']; ?></td>
            <td  data-label="Descripción Completa" style="text-align: left;"><?php  echo $productos['descripcion']; ?></td>

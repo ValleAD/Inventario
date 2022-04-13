@@ -134,7 +134,7 @@ background:burlywood;
 $u='Cliente';
 }
 ?>  
-    <button class="btn" id="btn" data-toggle="modal" data-target="#info" style=" background:transparent;float: right;margin-top: 1%; color: white;"><?php echo $consulta['username'];?> <i class="bi bi-caret-down-fill"></i></button>
+    <button class="btn" id="btn" data-toggle="modal" data-target="#info" style=" background:transparent;float: right;margin-top: 0%; color: white;"><?php echo $consulta['username'];?> <i class="bi bi-caret-down-fill"></i></button>
 <!-- Delete -->
 <div class="modal fade" id="info" style="background: rgba(0, 0, 0, 0.3);" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">
@@ -192,9 +192,9 @@ $u='Cliente';
             </style>
             </div>
             <div class="modal-footer">
-                <button data-toggle="modal" data-target="#Usuario_Contraseña" class="btn btn-info" >Cambiar Usuario y Contraseña</button>
+                <button data-toggle="modal" data-target="#Usuario_Contraseña" class="btn btn-info my-0" >Cambiar Usuario y Contraseña</button>
 
-        <a href="log/logout.php" type="submit" id="Update" class="btn btn-danger" >Cerrar Sesión</a>
+        <a href="log/logout.php" type="submit" id="Update" class="btn btn-danger my-0" >Cerrar Sesión</a>
       </div>
            
         </div>
@@ -227,7 +227,7 @@ $u='Cliente';
                      </div>
             <div class="modal-footer">
 
-        <button type="submit" id="Update" class="btn btn-danger" >Cambiar datos</button>
+        <button type="submit" id="Update" class="btn btn-danger my-1" >Cambiar datos</button>
       </div>
           </form>
         </div>

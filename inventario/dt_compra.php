@@ -25,6 +25,8 @@ die();
     <link rel="stylesheet" href="Plugin/assets/css/bootstrap.css" />
     <link rel="stylesheet" href="Plugin/assets/css/bootstrap-theme.min.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
     <title>Solicitud Compra</title>
@@ -105,8 +107,8 @@ $final = 0;
             <div class="col-6 col-sm-3" style="position: initial">
               <label style="font-weight: bold;">Estado</label>
               <input <?php
-                if($datos['estado']=='Pendiente') {
-                    echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
+                 if($datos['estado']=='Comprado') {
+                     echo ' style="background-color:blueviolet ;width:100%; border-radius:5px;text-align:center; color: white;"';
                 }
             ?> readonly class="form-control"  type="text" value="<?= $datos['estado'] ?>" name="id"> 
             </div>
@@ -147,8 +149,8 @@ $final = 0;
         $final2   =    number_format($final, 2, ".",",");
         $cant_aprobada=$productos['stock'];
         $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cantidad_aprobada, 2,".",",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+        $stock=number_format($cant_aprobada, 2,".",",");
+        $cant_desp=number_format($cantidad_despachada, 2,".",",");
     echo' 
       <style type="text/css">
        #td{
@@ -164,7 +166,7 @@ $final = 0;
           <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly>'.$productos['descripcion']. '</textarea></td>
           <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;  text-align: center" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
           <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;  text-align: center"  name="cant[]" readonly value="'.$stock. '"></td>
-          <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%; text-align: center" type="text" readonly required  name="cantidad_despachada[]" required value="'.$cant_despachada .'"></td>
+          <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%; text-align: center" type="text" readonly required  name="cantidad_despachada[]" required value="'.$cant_desp .'"></td>
            <td data-label="Costo unitario"><input  name="cost[]" readonly value="$'.$precio2.'"  style="background:transparent; border: none; width: 100%;"  >
           <td  data-label="total"><input  style="background:transparent; border: none; width: 100%;  text-align: center"  name="tot[]" step="any"  readonly value="$'.$total2. '"></td>
         </tr>';
@@ -173,13 +175,13 @@ $final = 0;
   
       echo'
       <tr>
-        <th colspan="7">Subtotal</th>
+        <th colspan="8">Subtotal</th>
         <td data-label="Subtotal"><input  style="background:transparent; border: none; width: 100%; color: red; font-weight: bold; text-align: center" step="0.01"   name="tot_f" readonly value="$'.$final2.'" ></td></tr>
       </tr>
            </tbody>
           </table>
     
-      <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
+      <input id="pdf" type="submit" class="btn btn-lg my-1" value="Exportar a PDF" name="pdf">
         <style>
           #pdf{
           margin-left: 38%; 

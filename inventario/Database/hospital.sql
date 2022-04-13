@@ -61,6 +61,7 @@ CREATE TABLE tb_bodega (
   campo varchar (50)  NOT NULL DEFAULT ' Solicitud Bodega',
   fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   estado varchar (50)  NOT NULL,
+  idusuario int NOT NULL DEFAULT 1,
     PRIMARY KEY (codBodega)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -68,6 +69,7 @@ CREATE TABLE tb_vale (
   codVale int(11) NOT NULL,
   departamento varchar(50) NOT NULL,
   usuario varchar (50)  NOT NULL,
+  idusuario int NOT NULL DEFAULT 1,
   campo varchar (50)  NOT NULL DEFAULT 'Solicitud Vale',
   estado varchar (50)  NOT NULL,
   fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -83,6 +85,7 @@ CREATE TABLE tb_compra (
     usuario varchar (50)  NOT NULL,
     campo varchar (50)  NOT NULL DEFAULT 'Solicitud Compra',
   estado varchar (50)  NOT NULL,
+  idusuario int NOT NULL DEFAULT 1,
   fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (nSolicitud)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -93,6 +96,7 @@ CREATE TABLE tb_circulante (
   codCirculante int(15) NOT NULL,
   campo varchar (50)  NOT NULL DEFAULT 'Solicitud Circulante',
   estado varchar (50)  NOT NULL,
+  idusuario int NOT NULL DEFAULT 1,
   fecha_solicitud timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (codCirculante)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -102,6 +106,7 @@ CREATE TABLE tb_almacen (
   departamento varchar(200) NOT NULL,
   encargado varchar(75) NOT NULL,
 estado varchar (50)  NOT NULL,
+  idusuario int NOT NULL DEFAULT 1,
   fecha_solicitud timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (codAlmacen)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;

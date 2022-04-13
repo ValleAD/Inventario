@@ -2,7 +2,7 @@
 
 //CRUD para guardar datos enviados
 // de re_producto.php y se guarde en la tabla tb_productos mysql
-include '../../../../Model/conexion.php';
+include '../../../Model/conexion.php';
 
      
 

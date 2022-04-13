@@ -1,12 +1,15 @@
+<?php require '../../Model/conexion.php';
+include ('menu.php');
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-         <link rel="stylesheet" type="text/css" href="../../../styles/estilo_men.css">
+         <link rel="stylesheet" type="text/css" href="../../styles/estilo_men.css">
          <link rel="stylesheet" type="text/css" href="../../../styles/estilos_tablas.css">
       <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="../../../Plugin/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/bootstrap.css">
 
     <!--  Datatables  -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>  
@@ -43,47 +46,11 @@
 background:burlywood;
 }
  </style>
- <header>
-        <div class="menu_bar">
-            <a href="#" class="bt-menu"><span class="fas fa-bars"></span>Menú</a>
-        </div>
 
-        <nav>
-            <ul>
-                <li>
-                    <a id="b" href="../invitado.php"><span class="icon-house"></span>Inicio</a></li>
-                   
-                </li>
-                <li class="submenu">
-                    <a id="b" href="#"><span class="icon-rocket"></span>Articulos<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
-                    <ul class="children">
-                        <li><a id="b" href="productos.php?productos">Mostrar</a></li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a id="b" href="#"><span class="icon-rocket"></span>Solicitud Vale<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
-                    <ul class="children">
-                    <li><a id="b" href="solicitudes_vale.php">Mostrar</a></li>
-                        <li><a id="b" href="form_vale.php">Buscar por codigo</a></li>
-                        <li><a id="b" href="form_vale1.php">Seleccionar Varios</a></li>
-
-                       
-                    </ul>
-                </li>
-                 <li class="submenu" style="float:right;">
-                    <a id="a" href="#"><span class="icon-rocket"></span><i class="bi bi-person"></i> Invitado<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
-                    <ul class="children">
-                        <li><a id="b" href="../logout_invitado.php">Cerrar Session</a></li>
-                        
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </header>
     <font color="white"><h2 class="text-center" >Solicutud Vale</h2></font>
 <section id="act">
     
-<form style="margin: 0%;position: 0; background: transparent;" method='POST' action="form_vale2.php">
+<form style="margin: 0%;position: 0; background: transparent; color: black;" method='POST' action="form_vale2.php">
 <div class="mx-5 p-2 r-4" style="background-color: white; border-radius: 5px;">
         <div class="row">
             <div class="col">
@@ -118,7 +85,6 @@ background:burlywood;
  </style>
 
  <?php
-    include '../../../Model/conexion.php';
 
 
     //    $sql = "SELECT * FROM tb_productos";

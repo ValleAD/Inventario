@@ -67,72 +67,35 @@ background:burlywood;
 <head>
     <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-         <link rel="stylesheet" type="text/css" href="../../../styles/estilo_men.css">
-   <link rel="stylesheet" type="text/css" href="../../../Plugin/bootstrap/css/bootstrap.css">
+         <link rel="stylesheet" type="text/css" href="../../styles/estilo_men.css">
+   <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/bootstrap.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
       <link rel="icon" type="image/png" sizes="32x32"  href="../../../img/log.png">  
     <title>Vale</title>
 </head> 
-<body style="background-image: url(../../../img/4k.jpg);  
-            background-repeat: no-repeat;
-            background-attachment: fixed;">
+<body>
              <style>
     table thead{
     background: linear-gradient(to right, #4A00E0, #8E2DE2); 
     color:white;
     }
     </style>
- <header>
-        <div class="menu_bar">
-            <a href="#" class="bt-menu"><span class="fas fa-bars"></span>Menú</a>
-        </div>
-
-        <nav>
-            <ul>
-                <li>
-                    <a id="b" href="../invitado.php"><span class="icon-house"></span>Inicio</a></li>
-                   
-                </li>
-                <li class="submenu">
-                    <a id="b" href="#"><span class="icon-rocket"></span>Articulos<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
-                    <ul class="children">
-                        <li><a id="b" href="productos.php">Nuevo</a></li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a id="b" href="#"><span class="icon-rocket"></span>Solicitud Vale<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
-                    <ul class="children">
-                        <li><a id="b" href="form_vale.php">Nuevo</a></li>
-                        <li><a id="b" href="solicitudes_vale.php">Mostrar</a></li>
-                        <li><a id="b" href="form_vale1.php">Seleccionar Varios</a></li>
-                    </ul>
-                </li>
-                 <li class="submenu" style="float:right;">
-                    <a id="a" href="#"><span class="icon-rocket"></span><i class="bi bi-person"></i> Invitado<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
-                    <ul class="children">
-                        <li><a id="b" href="../logout_invitado.php">Cerrar Session</a></li>
-                        
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </header>
 
 <?php
 
 $total = 0;
 $final = 0;
 
-   include '../../../Model/conexion.php';
+   include '../../Model/conexion.php';include ('menu.php');
     $sql = "SELECT * FROM tb_vale ORDER BY fecha_registro DESC LIMIT 1";
     $result = mysqli_query($conn, $sql);
  while ($productos1 = mysqli_fetch_array($result)){
 
     echo'   
     <section id="section">
-    <form method="POST" action="../../../Plugin/pdf_vale.php" target="_blank">
+    <form method="POST" action="../../Plugin/pdf_vale.php" target="_blank" style="color:black">
              
           
             <div class="row">

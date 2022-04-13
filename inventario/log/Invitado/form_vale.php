@@ -1,3 +1,6 @@
+<?php require '../../Model/conexion.php';
+include ('menu.php');
+?>
 
 <!DOCTYPE html>
 <!--Es para la version de mobile-->
@@ -85,49 +88,10 @@ background:burlywood;
     color:white;
     }
     </style>
- <header>
-        <div class="menu_bar">
-            <a href="#" class="bt-menu"><span class="fas fa-bars"></span>Menú</a>
-        </div>
-
-        <nav>
-            <ul>
-                <li>
-                    <a id="b" href="../invitado.php"><span class="icon-house"></span>Inicio</a></li>
-                   
-                </li>
-                <li class="submenu">
-                    <a id="b" href="#"><span class="icon-rocket"></span>Articulos<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
-                    <ul class="children">
-                        <li><a id="b" href="productos.php?productos">Mostrar</a></li>
-                        
-                      
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a id="b" href="#"><span class="icon-rocket"></span>Solicitud Vale<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
-                    <ul class="children">
-                    <li><a id="b" href="solicitudes_vale.php">Mostrar</a></li>
-                        <li><a id="b" href="form_vale.php">Buscar por codigo</a></li>
-                        <li><a id="b" href="form_vale1.php">Seleccionar Varios</a></li>
-
-                        
-                    </ul>
-                </li>
-                 <li class="submenu" style="float:right;">
-                    <a id="a" href="#"><span class="icon-rocket"></span><i class="bi bi-person"></i> Invitado<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
-                    <ul class="children">
-                        <li><a id="b" href="../logout_invitado.php">Cerrar Session</a></li>
-                        
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </header>
-
+ 
     <section  style="margin:2%">
 
-<form action="" method="post" style="background: transparent;" >
+<form action="" method="post" style="background: transparent; color: black;" >
 
 <div class="container" style="background:white;border-radius:15px;">
 
@@ -186,12 +150,11 @@ transform: translateY(5px);
 </form>
 
 <?php  
-include '../../../Model/conexion.php';
 if(isset($_POST['codigo'])){
 
 echo'
 <br>
-<form action="Controller/añadir_vale.php" method="post">
+<form action="Controller/añadir_vale.php" method="post" style="color: black">
 
 <div style="position: initial">
 <div class="row">
@@ -220,7 +183,8 @@ echo'
 </div>
 <div class="col-.5 col-sm-4" style="position: initial">
       <label id="inp1">Nombre de la persona</label>
-            <input class="form-control" type="" name="usuario" required="" type="text"> 
+            <input class="form-control" type="" name="usuario" required="" type="text" > 
+            <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="20">
             </div>
         </div>
         <br>

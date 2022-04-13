@@ -147,25 +147,7 @@ die();
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script>
-$(function(){
-    var textArea = $('#content'),
-    hiddenDiv = $(document.createElement('div')),
-    content = null;
-    
-    textArea.addClass('noscroll');
-    hiddenDiv.addClass('hiddendiv');
-    
-    $(textArea).after(hiddenDiv);
-    
-    textArea.on('keyup', function(){
-        content = $(this).val();
-        content = content.replace(/\n/g, '<br>');
-        hiddenDiv.html(content + '<br class="lbr">');
-        $(this).css('height', hiddenDiv.height());
-    });
-});
-</script>
+
 <script type="text/javascript">
 function confirmaion(e) {
     if (confirm("¿Estas seguro que deseas Eliminar este registro?")) {

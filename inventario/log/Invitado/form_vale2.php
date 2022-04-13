@@ -1,11 +1,15 @@
+<?php require '../../Model/conexion.php';
+include ('menu.php');
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-         <link rel="stylesheet" type="text/css" href="../../../styles/estilo_men.css">
+         <link rel="stylesheet" type="text/css" href="../../styles/estilo_men.css">
       <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="../../../Plugin/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/bootstrap.css">
 
     <!--  Datatables  -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>  
@@ -42,46 +46,10 @@
 background:burlywood;
 }
  </style>
- <header>
-        <div class="menu_bar">
-            <a href="#" class="bt-menu"><span class="fas fa-bars"></span>Menú</a>
-        </div>
 
-        <nav>
-            <ul>
-                <li>
-                    <a id="b" href="../invitado.php"><span class="icon-house"></span>Inicio</a></li>
-                   
-                </li>
-                <li class="submenu">
-                    <a id="b" href="#"><span class="icon-rocket"></span>Articulos<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
-                    <ul class="children">
-                        <li><a id="b" href="productos.php?productos">Mostrar</a></li>
-                    </ul>
-                </li>
-                <li class="submenu">
-                    <a id="b" href="#"><span class="icon-rocket"></span>Solicitud Vale<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
-                    <ul class="children">
-                    <li><a id="b" href="solicitudes_vale.php">Mostrar</a></li>
-                        <li><a id="b" href="form_vale.php">Buscar por codigo</a></li>
-                        <li><a id="b" href="form_vale1.php">Seleccionar Varios</a></li>
-
-                       
-                    </ul>
-                </li>
-                 <li class="submenu" style="float:right;">
-                    <a id="a" href="#"><span class="icon-rocket"></span><i class="bi bi-person"></i> Invitado<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
-                    <ul class="children">
-                        <li><a id="b" href="../logout_invitado.php">Cerrar Session</a></li>
-                        
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-    </header>
     <font color="white"><h2 class="text-center" >Solicutud Vale</h2></font>
 
-	<section style="background:white;margin: 2%;padding: 1%;border-radius: 15px;">
+	<section style="background:white;margin: 2%;color: black; padding: 1%;border-radius: 15px;">
  <form style="margin: 0%;position: 0; background: transparent;" method="POST" action="Controller/añadir_vale.php">
     <div class="container-fluid" style="position: initial">
             <div class="row">
@@ -91,7 +59,6 @@ background:burlywood;
                         <option selected disabled value="">Selecione</option>
                       ';?>
                       <?php 
-                      include '../../../Model/conexion.php';
                         $sql = "SELECT * FROM selects_departamento";
                         $result = mysqli_query($conn, $sql);
 
@@ -110,7 +77,8 @@ background:burlywood;
                 <input id="inp1"class="form-control" type="number" name="numero_vale" required>
             </div><div class="col-.5 col-sm-4" style="position: initial">
       <label id="inp1">Nombre de la persona</label>
-            <input class="form-control" type="" name="usuario" required="" type="text"> 
+            <input class="form-control" type="" name="usuario" required="" type="text"?>
+            <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="20"> 
             </div>
         </div>
         <br>
@@ -133,8 +101,6 @@ background:burlywood;
             <tbody>
 
  <?php
-    include '../../../Model/conexion.php';
-
   if (isset($_POST['solicitar'])){ 
 
          for($i = 0; $i < count($_POST['id']); $i++)
