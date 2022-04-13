@@ -76,8 +76,8 @@ die();
     <?php
     include 'Model/conexion.php';
 
-
-    $sql = "SELECT * FROM tb_bodega ORDER BY fecha_registro DESC";
+    $tipo_usuario = $_SESSION['iduser'];
+    $sql = "SELECT * FROM tb_bodega WHERE idusuario='$tipo_usuario' ORDER  BY fecha_registro DESC";
     $result = mysqli_query($conn, $sql);
 $n=0;
     while ($solicitudes = mysqli_fetch_array($result)){ 

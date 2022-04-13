@@ -10,7 +10,7 @@ $Npassword =$_POST['Npassword'];
 if (mysqli_num_rows($verificar_usuario)>0) {
     echo '
         <script>
-        alert("Este Usuario no se puede Actualizado, porque es la misma información");
+        alert("Este Usuario no se puede Actualizado, porque es la misma información que estas cambiando");
          window.location ="../Empleados.php"; 
     </script>
     ';

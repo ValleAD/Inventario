@@ -67,10 +67,10 @@ die();
   
     <?php
     include 'Model/conexion.php';
-    $n=0;
-    $sql = "SELECT * FROM tb_circulante ORDER BY fecha_solicitud DESC ";
+    $tipo_usuario = $_SESSION['iduser'];
+    $sql = "SELECT * FROM tb_circulante WHERE idusuario='$tipo_usuario' ORDER BY fecha_solicitud DESC ";
     $result = mysqli_query($conn, $sql);
-
+    $n=0;
     while ($datos_sol = mysqli_fetch_array($result)){
         $n++;
         $r=$n+0;

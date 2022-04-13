@@ -61,19 +61,19 @@ die();
                 <th>#</th>
                 <th style="width:30%" ><strong>Código de Vale</strong></th>
                 <th style="width:50%"><strong>Departamento Solicitante</strong></th>
+                <th style="width:10%"><strong>Encargado</strong></th>
                 <th style="width:50%"><strong>Estado</strong></th>
-                <th style="width:100%;"><strong>Fecha de solicitud</strong></th>
-                <th style="width:100%"><strong>Detalles</strong></th> 
+                <th style="width:10%;"><strong>Fecha de solicitud</strong></th>
+                <th style="width:10%"><strong>Detalles</strong></th> 
             </tr>
             
      </thead>
         <tbody>     
     <?php
     include 'Model/conexion.php';
-    
-
-
-    $sql = "SELECT * FROM tb_vale ORDER BY fecha_registro DESC ";
+    $tipo_usuario = $_SESSION['iduser'];
+ 
+    $sql = "SELECT * FROM tb_vale WHERE idusuario='$tipo_usuario' ORDER BY fecha_registro DESC  ";
     $result = mysqli_query($conn, $sql);
     $n=0;
     while ($solicitudes = mysqli_fetch_array($result)){
@@ -85,6 +85,8 @@ die();
             <td><?php echo $r ?></td>
             <td data-label="Código" class="delete"><?php  echo $solicitudes['codVale']; ?></td>
             <td data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
+
+            <td data-label="Encargado" class="delete"><?php  echo $solicitudes['usuario']; ?></td>
             <td data-label="Departamento Solicitante" class="delete"><input readonly <?php
                 if($solicitudes['estado']=='Pendiente') {
                     echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
@@ -103,10 +105,11 @@ die();
             </td>
         </tr>
 
-    <?php } ?>   
+    <?php }?>   
            
            </tbody>
         </table>
+    </div>
        <!-- <a href="Plugin/pdf_soli_vale.php" class="btn btn-danger">Generar Solicidud Vale</a> -->
   
 

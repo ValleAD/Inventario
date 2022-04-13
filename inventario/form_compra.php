@@ -187,6 +187,7 @@ if(isset($_POST['codigo'])){ ?>
  ?>
     <font color="black"><label>Encargado</label> </font>
       <input style="cursor: not-allowed; color: black;"  class="form-control" type="text" name="usuario" id="como3" required readonly value="<?php  echo $consulta['firstname']?> <?php  echo $consulta['lastname']?>">
+      <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="<?php  echo $consulta['id']?>">
       <br>
       <?php }?>
     </div>

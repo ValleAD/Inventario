@@ -7,9 +7,10 @@ include ('../Model/conexion.php');
     $departamento = $_POST['depto'];
     $orden_trabajo = $_POST['odt'];
     $usuario = $_POST['usuario'];
+    $idusuario = $_POST['idusuario'];
 
     //crud para guardar los productos en la tabla tb_vale
-    $sql = "INSERT INTO tb_bodega (codBodega, departamento,usuario,estado) VALUES ('$orden_trabajo', '$departamento','$usuario','Pendiente')";
+    $sql = "INSERT INTO tb_bodega (codBodega, departamento,usuario,idusuario,estado) VALUES ('$orden_trabajo', '$departamento','$usuario','$idusuario','Pendiente')";
     $result = mysqli_query($conn, $sql); 
       
         

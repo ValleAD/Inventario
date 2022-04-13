@@ -20,7 +20,7 @@ die();
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <title>Solicitud de Compra</title>
+    <title>Fondo Circunlante</title>
         
         <meta charset="utf-8" />
          <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -143,6 +143,8 @@ if(isset($_POST['codigo'])){ ?>
           ?>
             <label id="inp1">Solicitud N°</b></label>   
                 <input id="inp1"class="form-control" type="number" name="solicitud_no" required="">
+                <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="
+                <?php $idusuario = $_SESSION['iduser']; echo $idusuario?>">
     </div>
 
     

@@ -3,9 +3,10 @@
 include '../Model/conexion.php';
 
     $solicitud_no = $_POST['solicitud_no'];
+    $idusuario = $_POST['idusuario'];
 
     //crud para guardar los productos en la tabla tb_vale
-    $sql = "INSERT INTO tb_circulante (codCirculante,estado) VALUES ('$solicitud_no','Pendiente')";
+    $sql = "INSERT INTO tb_circulante (codCirculante,estado,idusuario) VALUES ('$solicitud_no','Pendiente','$idusuario')";
     $result = mysqli_query($conn, $sql); 
 
 for($i = 0; $i < count($_POST['desc']); $i++) 

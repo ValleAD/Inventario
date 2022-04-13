@@ -76,7 +76,7 @@ $final = 0;
 
         <div class="col-6 col-sm-2" style="position: initial">
             <label style="font-weight: bold;">Encargado:</label>
-            <input readonly class="form-control"  type="text" value="' .$productos1['usuario']. '" name="usuario">
+            <input readonly class="form-control"  type="text" value="' .$productos1['Encargado']. '" name="usuario">
         </div>
 
           

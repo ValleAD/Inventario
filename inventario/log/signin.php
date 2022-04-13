@@ -23,10 +23,12 @@ if (isset($_POST['submit'])) {
         
             $_SESSION['signin'] = $row['username'];
 		$_SESSION['tipo_usuario'] = $row['tipo_usuario'];
+		$_SESSION['iduser'] = $row['id'];
 		
        }if ($row ['Habilitado']=="Si") { 
 			$_SESSION['signin'] = $row['username'];
 		$_SESSION['tipo_usuario'] = $row['tipo_usuario'];
+		$_SESSION['iduser'] = $row['id'];
 		header("Location: ../home.php");
 		}else{
 			$eror= '<p class="alert-heading"><i style="width: 50%;font-size: 2rem;" class="text-danger bi bi-exclamation-triangle-fill"></i></p>No Puede Entrar Usuario Desabilitado';

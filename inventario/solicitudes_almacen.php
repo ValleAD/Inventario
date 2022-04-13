@@ -68,8 +68,8 @@ die();
    
     <?php
     include 'Model/conexion.php';
-
-    $sql = "SELECT * FROM tb_almacen ORDER BY fecha_solicitud DESC ";
+    $tipo_usuario = $_SESSION['iduser'];
+    $sql = "SELECT * FROM tb_almacen WHERE  idusuario='$tipo_usuario' ORDER BY fecha_solicitud DESC ";
     $result = mysqli_query($conn, $sql);
     $n=0;
     while ($datos_sol = mysqli_fetch_assoc($result)){

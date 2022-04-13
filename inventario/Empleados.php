@@ -246,6 +246,71 @@ $u='Cliente';
 } if($solicitudes['Habilitado']=="No"){
     $u='Cuenta Desabilitada';
 }
+if ($tipo_usuario==1) {     ?>
+   
+       
+<div class="card mb-3 border-secondary " style="max-width: 100%;min-width: 100%;position: initial">
+  <div class="row g-0">
+    <div class="col-1" style="position: initial">
+      <img src="img/logo1.png" class="img-fluid rounded-start" style="padding: 2%;margin-top: 45%; border-radius: 10%; max-width:100%;min-width: 150%;max-height: 30%;min-height: 50%;">
+    </div>
+    
+      <div class="card-body" style="position: initial">
+        <h5 class="card-title">USUARIO: <?php echo $solicitudes['username'] ?></h5>
+        <div class="row">
+        <div class="col-md-7" style="position: initial">
+        <p class="card-text"><b>NOMBRE COMPLETO: </b><?php echo $solicitudes['firstname']," ",$solicitudes['lastname']; ?></p>
+        <p class="card-text"><b>ESTABLECIMIENTO:</b> <?php echo $solicitudes['Establecimiento']; ?></p>
+    </div>
+    <div class="row">
+    <div class="col-md-12" style="position: initial">
+        <p class="card-text"><b>UNIDAD:</b> <?php echo $solicitudes['unidad']; ?></p>
+        <p class="card-text"><b>CUENTA:</b> <?php echo $u; ?></p>
+    </div>
+</div>
+</div><br>
+        <div class="row" style="position: initial">
+         
+                    <div class="col-md-.1" style="position: initial;padding-left: 1%;">
+            <?php if($tipo_usuario==2) { ?>
+               
+                 <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Empleados.php">             
+          <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">      
+          <button name='editar' class='btn btn-info swal2-styled.swal2-confirm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
+        </form>
+   </div>
+<?php } elseif ($tipo_usuario==1) { ?>
+     <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Empleados.php">             
+          <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">      
+          <button name='editar' class='btn btn-info swal2-styled.swal2-confirm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
+        </form>
+   </div>
+    <div class="col-md-1" style="position: initial">
+         <a href="Controller/Delete_Empleados.php?id=<?php  echo $solicitudes['id']; ?>" onclick="return confirmaion()" class="btn btn-danger swal2-styled.swal2-confirm">Eliminar</a>
+     <?php } ?>
+ </div>
+</div>
+    </div>
+  </div>
+</div>
+
+ <?php } }?> 
+    <?php 
+    include 'Model/conexion.php';
+    $idusuario = $_SESSION['iduser'];
+    $sql = "SELECT * FROM tb_usuarios WHERE id='$idusuario'";
+    $result = mysqli_query($conn, $sql);
+
+    while ($solicitudes = mysqli_fetch_assoc($result)){
+if ($solicitudes['tipo_usuario']==1) {
+    $u='Administrador';
+}else if($solicitudes['tipo_usuario']==2){
+$u='Cliente';
+} if($solicitudes['Habilitado']=="No"){
+    $u='Cuenta Desabilitada';
+}
+if ($tipo_usuario==2) {
+
         ?>
    
        
@@ -294,7 +359,7 @@ $u='Cliente';
   </div>
 </div>
 
- <?php } ?> 
+ <?php } }?> 
 
   </section>
    
