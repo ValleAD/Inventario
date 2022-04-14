@@ -66,8 +66,8 @@ background:burlywood;
      </thead>
         <tbody>     
     <?php
-    
-    $sql = "SELECT * FROM tb_vale ORDER BY fecha_registro DESC ";
+    $idusuario=20;
+    $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario' ORDER BY fecha_registro DESC ";
     $result = mysqli_query($conn, $sql);
     $n=0;
     while ($solicitudes = mysqli_fetch_array($result)){

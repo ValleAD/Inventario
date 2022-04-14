@@ -9,7 +9,7 @@ include ('../Model/conexion.php');
 
 
     //crud para guardar los productos en la tabla tb_vale
-    $sql = "INSERT INTO tb_vale (codVale, departamento,Encargado,idusuario,campo,estado) VALUES ('$odt', '$departamento','$usuario','$idusuario','Solicitud Vale','Pendiente')";
+    $sql = "INSERT INTO tb_vale (codVale, departamento,usuario,idusuario,campo,estado) VALUES ('$odt', '$departamento','$usuario','$idusuario','Solicitud Vale','Pendiente')";
     $result = mysqli_query($conn, $sql); 
       
         

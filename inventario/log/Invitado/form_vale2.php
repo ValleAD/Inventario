@@ -77,7 +77,7 @@ background:burlywood;
                 <input id="inp1"class="form-control" type="number" name="numero_vale" required>
             </div><div class="col-.5 col-sm-4" style="position: initial">
       <label id="inp1">Nombre de la persona</label>
-            <input class="form-control" type="" name="usuario" required="" type="text"?>
+            <input pattern="[A-Za-z]{1,}" class="form-control" type="" name="usuario" required="" type="text"?>
             <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="20"> 
             </div>
         </div>

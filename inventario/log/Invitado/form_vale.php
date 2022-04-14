@@ -179,12 +179,12 @@ echo'
       </div>
 <div class="col-.5 col-sm-4" style="position: initial">
     <label id="inp1">Vale N°</b></label>   
-    <input id="inp1"class="form-control" type="number" name="numero_vale" required>
+    <input id="inp1"class="form-control" pattern="[0-9]{1,}" type="number" name="numero_vale" required>
 </div>
 <div class="col-.5 col-sm-4" style="position: initial">
       <label id="inp1">Nombre de la persona</label>
-            <input class="form-control" type="" name="usuario" required="" type="text" > 
-            <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="20">
+            <input pattern="[A-Za-z]{1,}" class="form-control" type="" name="usuario" required="" type="text" > 
+            <input   style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="20">
             </div>
         </div>
         <br>

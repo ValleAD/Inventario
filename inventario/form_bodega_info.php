@@ -77,7 +77,7 @@ die();
             <thead>
               <tr id="tr">
                
-                <th style="width: 10%;">Código</th>
+                <th style="width: 15%;">Código</th>
                 <th style="width: 20%;">Descripción</th>
                 <th style="width: 10%;">U/M</th>
                 <th style="width: 15%;">Productos Disponibles</th>
@@ -127,7 +127,8 @@ die();
    }
 </style>
     <tr id="tr">
-      <td data-label="Codigo"><input style="background:transparent; border: none; width: 100%; color: black;"  type="number" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
+      <td data-label="Codigo">
+        <input style="background:transparent; border: none; width: 100%; color: black;"  type="number" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
                
                <td data-label="Descripción"><textarea  style="background:transparent; border: none; width: 100%; color: black;" cols="10" rows="1" type="text" class="form-control" readonly name="desc[]"><?php  echo $productos['descripcion']; ?></textarea></td>
                <td data-label="Unidad De Medida"><input  style="background:transparent; border: none; width: 100%; color: black;" type="text" class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>

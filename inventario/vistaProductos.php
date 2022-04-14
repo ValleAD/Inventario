@@ -352,7 +352,7 @@ if (isset($_POST['categorias'])){  ?>  <br>
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
                 <thead>
                      <tr id="tr">
-                    <th>#</th>
+                    <th style="width: 10%;">#</th>
                      <th>Código</th>
                      <th>Cod. de Catálogo</th>
                      <th>Descripción Completa</th>

@@ -54,6 +54,80 @@ die();
 <body>
 
             <center><h1 style="margin-top:5px">Solicitudes Bodega</h1></center><br>
+            <?php if ($tipo_usuario==1) {?>
+      <section class="mx-5 p-2" style="background-color:white; border-radius: 5px;margin-bottom:3%;">
+
+            <table class="table table-responsive table-striped" id="example" style=" width: 100%;">
+            <thead>
+              <tr id="tr">
+             <th>#</th>
+                <th style="width: 10%"><strong>O. de T. No.</strong></th>
+                <th style="width: 40%"><strong>Departamento Solicitante</strong></th>
+                <th style="width: 40%"><strong>Encargado</strong></th>
+                <th style="width: 30%"><strong>Fecha de solicitud</strong></th>
+                <th style="width: 15%"><strong>Estado</strong></th>
+                <th  style="width: 50%"><strong>Detalles</strong></th>
+                
+            </tr>
+            
+    <style type="text/css">
+        
+    </style>
+         </thead>
+<tbody>   
+    <?php
+    include 'Model/conexion.php';
+    $sql = "SELECT * FROM tb_bodega ORDER  BY fecha_registro DESC";
+    $result = mysqli_query($conn, $sql);
+$n=0;
+    while ($solicitudes = mysqli_fetch_array($result)){ 
+        $n++;
+        $r=$n+0;
+        if ($tipo_usuario==1) {
+        $u='Administrador';
+        }
+        else {
+            $u='Cliente';
+        }
+        ?>
+        <style type="text/css">
+     #td{
+        display: none;
+    }
+    
+   
+</style>
+
+        <tr>
+            <td><?php echo $r ?></td>
+            <td data-label="Código" class="delete"><?php  echo $solicitudes['codBodega']; ?></td>
+            <td data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
+            <td data-label="Encargado" class="delete"><?php  echo $solicitudes['usuario'],"<br> ","(",$u,")"; ?></td>
+            <td data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])); ?></td>
+               <td><input readonly <?php
+                if($solicitudes['estado']=='Pendiente') {
+                    echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
+                }else if($solicitudes['estado']=='Aprobado') {
+                     echo ' style="background-color:blueviolet ;width:100%; border-radius:5px;text-align:center; color: white;"';
+                }else if($solicitudes['estado']=='Rechazado') {
+                     echo ' style="background-color:red ;width:100%; border-radius:5px;text-align:center; color: white;"';
+                }
+            ?> class="form-control" type="text" name="" readonly value="<?php echo $solicitudes['estado'] ?>"></td>
+            <td  data-label="Detalles">
+            <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Bodega.php">             
+                <input type='hidden' name='id' value="<?php  echo $solicitudes['codBodega']; ?>">          
+                <input type="submit" name='detalle' class="btn btn-primary" value="Ver Detalles">            
+            </form> 
+            </td>
+        </tr>
+ <?php } ?> 
+           </tbody>
+        </table>
+      <!--  <a href="Plugin/pdf_soli_bodega.php" class="btn btn-danger">Generar Solicidud Bodega</a>-->
+
+    </section>
+<?php } ?>           
+ <?php if ($tipo_usuario==2) {?>
       <section class="mx-5 p-2" style="background-color:white; border-radius: 5px;margin-bottom:3%;">
 
             <table class="table table-responsive table-striped" id="example" style=" width: 100%;">
@@ -119,6 +193,7 @@ $n=0;
       <!--  <a href="Plugin/pdf_soli_bodega.php" class="btn btn-danger">Generar Solicidud Bodega</a>-->
 
     </section>
+<?php } ?>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
