@@ -51,21 +51,14 @@ include ('../Model/conexion.php') ?>
 for($i = 0; $i < count($_POST['cod']); $i++)
 {
    
-    $codigoid = $_POST['cod'][$i];
+        $codigo = $_POST['cod'][$i];
+    $des = $_POST['desc'][$i];
+    $um = $_POST['um'][$i];
+     $cantidad = $_POST['cant'][$i];
+    $cost = $_POST['cost'][$i];
+    $stock = $_POST['cantidad_despachada'][$i];
     $tot = $_POST['tot'][$i];
-
-    $tot_f = $_POST['tot_f'];
-
-       $count = "SELECT codigo,descripcion, unidad_medida, stock,cantidad_despachada, precio, fecha_registro FROM detalle_vale WHERE codigo ='$codigoid'";
-    $result = mysqli_query($conn, $count);
-    while ($productos = mysqli_fetch_array($result)) {
-        $codigo=$productos['codigo'];
-        $des=$productos['descripcion'];
-        $um=$productos['unidad_medida'];
-        $stock=$productos['stock'];
-        $cantidad = $productos['cantidad_despachada'];
-        $cost =$productos['precio'];
-    }
+     $tot_f = $_POST['tot_f'];
 ?>
   
         <tr>

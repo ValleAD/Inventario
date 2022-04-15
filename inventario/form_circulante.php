@@ -179,7 +179,7 @@ if(isset($_POST['codigo'])){ ?>
 
                   <div class="form-group" style="position: all; margin: 2%">
                     <label>Descripción de material</label>
-                    <input type="text" name="desc[]" class="form-control" placeholder="Descripción" required value="<?php echo $productos['descripcion']?>">
+                    <textarea type="text" name="desc[]" class="form-control" placeholder="Descripción" required><?php echo $productos['descripcion']?></textarea>
                   </div>
 
                      <div class="form-group" style="position: all; margin: 2%">
@@ -215,7 +215,7 @@ if(isset($_POST['codigo'])){ ?>
             </div>
             </div>
     </div>
-        </div> 
+        
 
  <?php }}
 echo '<div class="button21">
@@ -223,7 +223,8 @@ echo '<div class="button21">
         </div>';
         
         } ?> 
-        
+        </div> 
+</form>
   <style>
             #enviar{
                 margin-bottom: 5%;
@@ -243,7 +244,6 @@ echo '<div class="button21">
 
 
 
-</form>
 
 <script>
     $(document).ready(function(){

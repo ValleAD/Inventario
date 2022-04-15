@@ -38,13 +38,13 @@ if ($estado=='Aprobado') {
       $query1 = mysqli_query($conn, $insert);
       if ($result ||$query ||$query1)  {
         echo "<script> alert('El Estado fue Cambiado correctamente')
-        location.href = '../solicitudes_almacen.php';
+        // location.href = '../solicitudes_almacen.php';
         </script>
         ";
         return true;
         }else {
         echo "<script> alert('UUPS!! Algo no fue mal escrito')
-        location.href = '../solicitudes_almacen.php';
+        // location.href = '../solicitudes_almacen.php';
         </script>
         ";
         return false;

@@ -134,25 +134,32 @@ while ($productos = mysqli_fetch_array($result)){
        <style type="text/css"> #td{display: none;} </style> 
 
       <tr>
-        <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="<?php echo $codigo ?>"></td>
-        <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly style="border: none"><?php echo $descripcion ?></textarea></td>
-        <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="<?php echo $um ?>"></td>
-        <td  data-label="Cantidad"><input  style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="<?php echo $stock ?>"></td>
-        <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%; text-align: center" type="text" readonly required  name="cantidad_despachada[]" required value="<?php echo $cantidad_desp?>"></td>
-        <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$<?php echo $precio2 ?>"></td>
-   
-        
-        <td  data-label="total"><input style="background:transparent; border: none; width: 100%;" step="0.01"   name="tot[]" readonly value="$<?php echo $total2 ?>"></td></tr>
+      <td  data-label="Código"><?php echo $codigo ?>
+            <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
+            <input type="hidden" name="desc[]" value="<?php echo $productos['descripcion'] ?>">
+            <input type="hidden" name="um[]" value="<?php echo $productos['unidad_medida'] ?>">
+            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
+            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
+            <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
+            <input type="hidden" name="tot[]" value="$<?php echo $total2 ?>">
+            <input type="hidden" name="tot_f" value="$<?php echo $final2 ?>" >
+        </td>
+        <td  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
+        <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
+        <td  data-label="Cantidad"><?php echo $stock ?></td>
+        <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
+        <td  data-label="Costo unitario"><?php echo $precio2 ?></td>
+        <td  data-label="total"><?php echo $total2 ?></td>
+      </tr>
 
-
-<?php }?>
-     
-      <th colspan="6">SubTotal</th>
-      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f"step="0.01"  readonly value="$<?php echo $final2 ?>" ></td></tr>
-   
-
-         </tbody>
-        </table>
+      <?php } ?> 
+     <tfoot>
+        <th colspan="5"></th>
+            <th >SubTotal</th>
+            <td style=" color: red; font-weight: bold;" data-label="Subtotal"><?php echo $final2?></td>
+        </tfoot>
+        </tbody>
+    </table>
 
     
   

@@ -49,6 +49,7 @@
 <table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse; margin-top: 9%;">
      <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
+            <th style="width: 22%;font-size: 16px;text-align: center;">Categoria</th>
             <th style="width: 22%;font-size: 16px;text-align: center;">Código</th>
             <th style="width: 22%;font-size: 16px;text-align: center;">Código <br>ONU</th>
             <th style="width: 65%;color:black;font-size: 16px;text-align: left;">Descripción Completa <br>(con todas sus especificaciones)</th>
@@ -67,6 +68,7 @@
 for($i = 0; $i < count($_POST['cod']); $i++)
 {
    
+    $categoria = $_POST['categoria'][$i];
     $codigo = $_POST['cod'][$i];
     $onu = $_POST['catalogo'][$i];
     $des = $_POST['desc'][$i];
@@ -80,6 +82,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 ?>
   
         <tr>
+            <td style="text-align:center;" style="text-align: center;"><?php  echo $categoria?></td>
             <td style="text-align:center;" style="text-align: center;"><?php  echo $codigo?></td>
             <td style="text-align:center;" style="text-align: center;"><?php  echo $onu?></td>
             <td><?php  echo $des?></td>
@@ -93,7 +96,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
      <?php } } ?> 
     <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
         <td style="text-align: center; font-weight: bold;">Subtotal</td>
-        <td colspan="6"></td>
+        <td colspan="7"></td>
         <td style="text-align: center; font-weight: bold;"><?php echo $tot_f ?></td>
     </tfoot>
 </table>

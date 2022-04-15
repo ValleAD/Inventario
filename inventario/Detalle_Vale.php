@@ -58,8 +58,8 @@ if(isset($_POST['detalle'])){
      while ($productos1 = mysqli_fetch_array($result)){
     
      echo'   
-    <section id="section" style="margin:2%">
-    <form method="POST" action="" >
+    <section id="section" style="margin:2%;background: rgba(555, 555, 555, .7);border-radius:15px;">
+    <form method="POST" action="" style="background:transparent" >
              
           
             <div class="row">
@@ -110,14 +110,14 @@ if(isset($_POST['detalle'])){
           
             <br>
           </form>
-              <form method="POST" action="Plugin/pdf_vale.php" target="_blank">
+              <form method="POST" action="Plugin/pdf_vale.php" target="_blank" style="background: transparent;">
 
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
               </div>
-            <table class="table" style="margin-bottom:3%">
+            <table class="table" style="margin-bottom:3%;">
                 
               <thead>
                 <tr id="tr">
@@ -125,7 +125,7 @@ if(isset($_POST['detalle'])){
                   <th style="width: 125%;">Descripción</th>
                   <th style="width: 45%;">Unidad de Medida</th>
                   <th style="width: 30%;">Cantidad Solicitada</th>
-                  <th style="width: 30%;">Cantidad depachada</th>
+                  <th style="width: 30%;">Cantidad Depachada</th>
                   <th style="width: 30%;">Costo unitario</th>
                   <th style="width: 30%;">Total</th>
                 </tr>
@@ -162,23 +162,32 @@ while ($productos = mysqli_fetch_array($result)){
        <style type="text/css"> #td{display: none;} </style> 
 
        <tr>
-        <td  data-label="Código"><input style="width: 100%; background:transparent; border: none; text-align: center"  name="cod[]" readonly value="<?php echo $codigo ?>"></td>
-        <td  data-label="Descripción"><textarea style="width: 100%; background:transparent; border: none; text-align: left; height: 100%;"  name="desc[]" readonly><?php echo $descripcion ?></textarea></td>
-        <td  data-label="Unidada de Medida"><input  style="width: 100%; background:transparent; border: none; text-align: center" name="um[]" readonly value="<?php echo $um ?>"></td>
-        <td  data-label="Cantidad"><input style="width: 100%; background:transparent; border: none; text-align: center" type="decimal" step="0.01"  name="cant[]" readonly value="<?php echo $stock ?>"></td>
-        <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%; text-align: center" type="decimal" readonly required  name="cantidad_despachada[]" required value="<?php echo $cantidad_desp ?>"></td>
-        <td  data-label="Costo unitario"><input style="width: 100%; background:transparent; border: none; text-align: center"  name="cost[]" step="0.01"  readonly value="$<?php echo $precio1 ?>"></td>
-        <td  data-label="total"><input style="width: 100%; background:transparent; border: none; text-align: center"  name="tot[]" readonly step="0.01" value="$<?php echo $total1 ?>"></td>
+        <td  data-label="Código"><?php echo $codigo ?>
+            <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
+            <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
+            <input type="hidden" name="um[]" value="<?php echo $um ?>">
+            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
+            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
+            <input type="hidden" name="cost[]" value="$<?php echo $precio1 ?>">
+            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
+            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
+        </td>
+        <td  data-label="Descripción"><?php echo $descripcion ?></td>
+        <td  data-label="Unidada de Medida"><?php echo $um ?></td>
+        <td  data-label="Cantidad"><?php echo $stock ?></td>
+        <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
+        <td  data-label="Costo unitario"><?php echo $precio1 ?></td>
+        <td  data-label="total"><?php echo $total1 ?></td>
       </tr>
 
       <?php } ?> 
-    <tr>
-      
-    <th colspan="5"></th>
-      <th colspan="1">SubTotal</th>
-      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold; text-align: center" step="0.01"   name="tot_f" readonly value="$<?php echo $final1 ?>" ></td> 
-    </tr>
-        </table>
+     <tfoot>
+        <th colspan="5"></th>
+            <th >SubTotal</th>
+            <td style=" color: red; font-weight: bold;" data-label="Subtotal"><?php echo $final1?></td>
+        </tfoot>
+        </tbody>
+    </table>
     <input id="pdf" type="submit" class="btn btn-lg my-1" value="Exportar a PDF" name="pdf">
         <?php } ?>
       <style>
@@ -213,7 +222,7 @@ if(isset($_POST['submit'])){
      while ($productos1 = mysqli_fetch_array($result)){
     
      echo'   
-    <section id="section" style="margin:2%">
+    <section id="section" style="margin:2%; ">
     <form method="POST" action="Controller/añadir_vale_copy.php">
              
           
@@ -256,14 +265,14 @@ if(isset($_POST['submit'])){
                 
               <thead>
                 <tr id="tr">
-                  <th style="width: 45%;">Código</th>
-                  <th style="width: 125%;text-align: left;">Descripción</th>
-                  <th style="width: 10%;">Unidad de Medida</th>
-                  <th style="width: 30%;">Cantidad Solicitada</th>
-                  <th style="width: 30%;">Cantidad depachada</th>
-                <th style="width: 30%;">Costo Unitario (estimado)Actual</th>
-               <!-- <th style="width: 30%;">Nuevo Costo Unitario (estimado)</th>-->
-                  <th style="width: 30%;">Total</th>
+                  <th>Código</th>
+                  <th style="width:30%">Descripción</th>
+                  <th>Unidad de Medida</th>
+                  <th>Cantidad Solicitada</th>
+                  <th>Cantidad Depachada</th>
+                <th>Costo Unitario (estimado)Actual</th>
+               <!-- <th>Nuevo Costo Unitario (estimado)</th>-->
+                  <th>Total</th>
                 </tr>
                 <td id="td" colspan="6"><h4>No se encontraron resultados 😥</h4></td>
               </thead>
@@ -293,30 +302,46 @@ while ($productos = mysqli_fetch_array($result)){
        <style type="text/css"> #td{display: none;} </style> 
 
        <tr>
-        <td  data-label="Código"><input style="width: 100%; background:transparent; border: none; text-align: center"  name="cod[]" readonly value="<?php echo $codigo ?>">
-        <input type="hidden" style="width: 100%; background:transparent; border: none; text-align: center"  name="cod_vale[]" readonly value="<?php echo $productos['codigodetallevale'] ?>"></td>
-        <td  data-label="Descripción"><textarea style="width: 100%; background:transparent; border: none; text-align: left; height: 100%;"  name="desc[]" readonly><?php echo $descripcion ?></textarea></td>
-        <td  data-label="Unidada de Medida"><input  style="width: 100%; background:transparent; border: none; text-align: center" name="um[]" readonly value="<?php echo $um ?>"></td>
-        <td  data-label="Cantidad"><input style="width: 100%; background:transparent; border: none; text-align: center"  name="cant[]" readonly value="<?php echo $stock ?>"></td>
-        <td  data-label="Cantidad"><input style="background:transparent; border: 1 solid #000;  width: 100%; text-align: center" class="form-control" type="decimal" required  name="cantidad_despachada[]" required value=""></td>
-        <td data-label="Precio"><input style="background:transparent; border: none; width: 100%; color: black;" class="form-control" readonly name="precio[]" value ="<?php  echo $precio ?>"></td> 
+        <td  data-label="Código"><?php echo $codigo ?>
+        <input type="hidden" style="width: 100%; background:transparent; border: none; text-align: center"  name="cod_vale[]" readonly value="<?php echo $productos['codigodetallevale'] ?>">
 
-        <!--<td  data-label="Costo unitario"><input class="form-control" type="number" style="background:transparent;border: 1 solid #000; width: 100%;" required step="0.01" name="cost[]"></td>-->
-        <td  data-label="total"><input style="width: 100%; background:transparent; border: none; text-align: center"  name="tot[]" readonly step="0.01" value="$<?php echo $total1 ?>"></td>
+            <input type="hidden"  name="cod[]" readonly value="<?php echo $codigo ?>">
+
+            <input type="hidden" style="width: 100%; background:transparent; border: none; text-align: left; height: 100%;"  name="desc[]" readonly value="<?php echo $descripcion ?>">
+
+            <input type="hidden" name="um[]" readonly value="<?php echo $um ?>">
+
+            <input type="hidden" type="decimal" step="0.01"  name="cant[]" readonly value="<?php echo $stock ?>">
+
+            <input type="hidden"  name="cost[]" step="0.01"  readonly value="$<?php echo $precio1 ?>">
+
+            <input type="hidden" style="width: 100%; background:transparent; border: none; text-align: center"  name="tot[]" readonly step="0.01" value="$<?php echo $total1 ?>">
+
+            <input type="hidden"  step="0.01"   name="tot_f" readonly value="$<?php echo $final1 ?>" >
+    </td>
+    <td  data-label="Descripción"><?php echo $descripcion ?></td>
+        <td  data-label="Unidada de Medida"><?php echo $um ?></td>
+        <td  data-label="Cantidad"><?php echo $stock ?></td>
+        <td  data-label="Cantidad"><input style="background:transparent; border: 1 solid #000;  width: 100%; text-align: center" class="form-control" type="decimal" required  name="cantidad_despachada[]" required value=""></td>
+        <td  data-label="Costo unitario"><?php echo $precio1 ?></td>
+        <td  data-label="total"><?php echo $total1 ?></td>
+
+        
+        
       </tr>
 
       <?php } ?> 
-    <tr>
-      
-    <th colspan="5"></th>
-      <th colspan="1">SubTotal</th>
-      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold; text-align: center" step="0.01"   name="tot_f" readonly value="$<?php echo $final1 ?>" ></td> 
-    </tr>
-        </table>
+        <tfoot>
+        <th colspan="5"></th>
+            <th >SubTotal</th>
+            <td style=" color: red; font-weight: bold;" data-label="Subtotal"><?php echo $final1?></td>
+        </tfoot>
+        </tbody>
+    </table>
+
     <input id="pdf" type="submit" class="btn btn-lg my-1" value="Guardar Estado" name="detalle_vale">
         <?php } ?>
 </form>
-      <style>
 </section>
       
        

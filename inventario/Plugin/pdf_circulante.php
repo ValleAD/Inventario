@@ -30,6 +30,7 @@
 <table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
+            <th style="width: 25%;color:black;font-size: 15px;text-align: left;">Codigo</th>
             <th style="width: 70%;color:black;font-size: 15px;text-align: left;">Descripción de los materiales y/o servicios solicitados</th>
             <th style="width: 15%;color:black;font-size: 15px;text-align: center;">U/M</th>
             <th style="width: 15%;color:black;font-size: 15px;text-align: center;">Cant.<br>Sol.</th>
@@ -46,6 +47,7 @@
 for($i = 0; $i < count($_POST['desc']); $i++)
 {
    
+    $cod = $_POST['cod'][$i];
     $des = $_POST['desc'][$i];
     $um = $_POST['um'][$i];
     $cantidad = $_POST['cant'][$i];
@@ -57,6 +59,7 @@ for($i = 0; $i < count($_POST['desc']); $i++)
 ?>
   
         <tr>
+            <td><?php  echo $cod?></td>
             <td><?php  echo $des?></td>
             <td style="text-align:center;"><?php  echo $um?></td>
             <td style="text-align:center;"><?php echo $cantidad ?></td>
@@ -67,8 +70,8 @@ for($i = 0; $i < count($_POST['desc']); $i++)
      
      <?php } } ?> 
     <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
-    <td colspan="4"></td>    
-    <td style="text-align: left; font-weight: bold;">Costo estimado</td>
+      
+    <td colspan="6" style="text-align: right; font-weight: bold;">Costo Estimado</td>
         <td style="text-align: center; font-weight: bold;"><?php echo $tot_f ?></td>
     </tfoot>
     </tbody>   

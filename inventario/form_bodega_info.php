@@ -86,7 +86,7 @@ die();
                <th>Eliminar fila</th>
                
               </tr>
-
+              <td id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>
               
             </thead>
 
@@ -126,18 +126,22 @@ die();
        width: 100%;
    }
 </style>
-    <tr id="tr">
-      <td data-label="Codigo">
-        <input style="background:transparent; border: none; width: 100%; color: black;"  type="number" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
-               
-               <td data-label="Descripción"><textarea  style="background:transparent; border: none; width: 100%; color: black;" cols="10" rows="1" type="text" class="form-control" readonly name="desc[]"><?php  echo $productos['descripcion']; ?></textarea></td>
-               <td data-label="Unidad De Medida"><input  style="background:transparent; border: none; width: 100%; color: black;" type="text" class="form-control" readonly name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>"></td>
-               <td data-label="Productos Disponibles"><input  style="background:transparent; border: none; width: 100%; color: gray;" type="decimal" class="form-control" readonly  name="stock[]"  value ="<?php  echo $stock; ?>"></td>
-               <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="decimal" step="0.1" class="form-control"  name="cant[]" required></td>
-               <td data-label="Precio" ><input style="background:transparent; border: none; width: 100%; color: black; text-align: center;"  type="text" class="form-control" readonly name="cu[]" value ="<?php  echo $precio1 ?>"></td>   
-               <td><input type="button" class="borrar btn btn-success my-1" value="Eliminar" /></td>  
-      
-     </tr>
+    <tr>
+               <td data-label="Codigo"><?php echo $productos['codProductos'] ?>
+                <input  type="hidden" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
+               <input type="hidden" name="desc[]" value="<?php  echo $productos['descripcion']; ?>">
+               <input  type="hidden" name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>">
+                </td>
+               <td data-label="Descripción"><?php echo $productos['descripcion'] ?>
+               <td data-label="Unidad De Medida"><?php echo $productos['unidad_medida'] ?>
+                <input type="hidden"  name="stock[]"  value ="<?php  echo $stock; ?>">
+                <input  type="hidden" name="cu[]" value ="<?php  echo $precio ?>">
+               </td>
+               <td data-label="Productos Disponibles"><?php  echo $stock; ?></td>
+               <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="decimal" class="form-control"  name="cant[]" required></td>
+               <td data-label="Precio"><?php  echo $precio1 ?></td> 
+               <td><input type="button" class="borrar btn btn-success my-1" value="Eliminar" /></td>   
+            </tr>
 <?php }} ?> 
 
             </tbody>

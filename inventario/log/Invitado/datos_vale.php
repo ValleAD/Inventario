@@ -142,7 +142,7 @@ $final = 0;
                     <th style="width: 35%;">Descripción</th>
                     <th>Unidad de Medida</th>
                     <th>Cantidad</th>
-                    <th style="width: 30%;">Cantidad depachada</th>
+                    <th>Cantidad Depachada</th>
                     <th>Costo unitario</th>
                     <th>Total</th>
                   </tr>
@@ -157,15 +157,16 @@ $final = 0;
         $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
           
-            $total    =    $productos['stock'] * $productos['precio'];
-            $final    +=   $total;
-            $precio   =    $productos['precio'];
-            $cantidad =    $productos['stock'];
-            $precio2  =    number_format($precio, 2,".",",");
-            $total2   =    number_format($total, 2, ".",",");
-            $final2   =    number_format($final, 2, ".",",");  
-            $stock=number_format($cantidad, 2,".",",");
-            echo' 
+           $total    =    $productos['stock'] * $productos['precio'];
+        $final    +=   $total;
+        $precio   =    $productos['precio'];
+        $precio2  =    number_format($precio, 2,".",",");
+        $total2   =    number_format($total, 2, ".",",");
+        $final2   =    number_format($final, 2, ".",",");  
+        $cant_aprobada=$productos['stock'];
+        $cantidad_despachada=$productos['cantidad_despachada'];
+        $stock=number_format($cant_aprobada, 2,".",",");
+        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");?>
         <style type="text/css">
          #td{
             display: none;
@@ -174,27 +175,31 @@ $final = 0;
        
     </style> 
           <tr>
-            <td  data-label="Código"><input style="background:transparent; border: none; width: 100%;"  name="cod[]" readonly value="' .$productos['codigo']. '"></td>
-            <td  data-label="Descripción"><textarea style="background:transparent; border: none; width: 100%;"  name="desc[]" readonly style="border: none">'.$productos['descripcion']. '</textarea></td>
-            <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%;" name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
-            <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%;"  name="cant[]" readonly value="'.$stock. '"></td>
-            <td  data-label="Cantidad"><input style="background:transparent; border: none; width: 100%; text-align: center" type="text" readonly required  name="cantidad_despachada[]" required value="'.$productos['cantidad_despachada'] .'"></td>
-            <td  data-label="Costo unitario"><input style="background:transparent; border: none; width: 100%;"  name="cost[]" readonly value="$'.$precio2.'"></td>
-            <td  data-label="total"><input style="background:transparent; border: none; width: 100%;"  name="tot[]" readonly value="$'.$total2. '"></td>
-            
-          </tr>';
-    
-    }
-    
-          echo'
-          <th colspan="5">SubTotal</th>
-          <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold;"  name="tot_f" readonly value="$'.$final2.'" ></td></tr>
-      
-             </tbody>
-            </table>
-    
-        
-      
+            <td  data-label="Código"><?php echo $productos['codigo'] ?>
+            <input type="hidden" name="cod[]" value="<?php echo $productos['codigo'] ?>">
+            <input type="hidden" name="desc[]" value="<?php echo $productos['descripcion'] ?>">
+            <input type="hidden" name="um[]" value="<?php echo $productos['unidad_medida']?>">
+            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
+            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
+            <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
+            <input type="hidden" name="tot[]" value="$<?php echo $total2 ?>">
+            <input type="hidden" name="tot_f" value="$<?php echo $final2 ?>" >
+        </td>
+        <td  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
+        <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
+        <td  data-label="Cantidad"><?php echo $stock ?></td>
+        <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
+        <td  data-label="Costo unitario"><?php echo $precio2 ?></td>
+        <td  data-label="total"><?php echo $total2 ?></td>
+    </tr>
+    <?php } ?>
+<tfoot>
+        <th colspan="5"></th>
+            <th >SubTotal</th>
+            <td style=" color: red; font-weight: bold;" data-label="Subtotal"><?php echo $final2?></td>
+        </tfoot>
+        </tbody>
+    </table>
         <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
           <style>
             #pdf{
@@ -211,9 +216,7 @@ $final = 0;
             } 
           </style>
     </form>
-    </section>
-          ';
-    ?>            
+    </section>   
       </body>
       </html>
     

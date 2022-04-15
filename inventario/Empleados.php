@@ -61,7 +61,7 @@ $result = mysqli_query($conn, $sql);
                     </div>
                     <div class="col-md-6" style="position: initial">
                       <label id="label" class="small mb-1">Apellido</label><br>
-                        <input pattern="[A-Za-z ]{1,}" class="form-control" type="text"  name="Apellidos" required >
+                        <input pattern="[A-Za-z_ ]{1,}" class="form-control" type="text"  name="Apellidos" required >
                     </div>
                 </div>
             
@@ -91,7 +91,7 @@ $result = mysqli_query($conn, $sql);
                     </div>
                     <div class="col-md-6" style="position: initial">
                       <label id="label" class="small mb-1">Apellido (No es obligatorio)</label><br>
-                        <input pattern="[A-Za-z_- ]{1,}" class="form-control" type="text"  name="Apellidos" >
+                        <input pattern="[A-Za-z ]{1,}" class="form-control" type="text"  name="Apellidos" >
                     </div>
                 </div>
             

@@ -117,9 +117,9 @@ while ($productos = mysqli_fetch_array($result)){
             $total    =    $productos['cantidad_solicitada'] * $productos['precio'];
         $final    +=   $total;
         $precio   =    $productos['precio'];
-        $precio2  =    number_format($precio, 2,".",",");
-        $total2   =    number_format($total, 2, ".",",");
-        $final2   =    number_format($final, 2, ".",",");
+        $precio1  =    number_format($precio, 2,".",",");
+        $total1   =    number_format($total, 2, ".",",");
+        $final1   =    number_format($final, 2, ".",",");
        $cant_aprobada=$productos['cantidad_solicitada'];
         $cantidad_despachada=$productos['cantidad_despachada'];
         $stock=number_format($cant_aprobada, 2,".",",");
@@ -133,28 +133,32 @@ while ($productos = mysqli_fetch_array($result)){
     } 
 </style> 
       <tr>
-        <td  data-label="Código"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="cod[]" readonly value="<?php echo $productos['codigo'];?>"></td>
-        <td  data-label="Nombre del Artículo"><textarea style="background:transparent; border: none; width: 100%;"  name="nombre[]" readonly style="border: none"><?php echo $productos['nombre'];?></textarea></td>
-        <td  data-label="Unidada de Medida"><input  style="background:transparent; border: none; width: 100%; text-align: center" name="um[]" readonly value="<?php echo $productos['unidad_medida'];?>"></td>
-        <td  data-label="Cantidad Solicitada"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="cant[]" readonly value="<?php echo $stock; ?>"></td>
+        <td  data-label="Código"><?php echo $productos['codigo'] ?>
+        <input type="hidden" name="cod[]" value="<?php echo $productos['codigo'] ?>">
+            <input type="hidden" name="nombre[]" value="<?php echo $productos['nombre'] ?>">
+            <input type="hidden" name="um[]" value="<?php echo $productos['unidad_medida'] ?>">
+            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
+            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
+            <input type="hidden" name="cost[]" value="$<?php echo $precio1 ?>">
+            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
+            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" ></td>
 
-        <td  data-label="Cantidad Solicitada"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="cantidad_despachada[]" readonly value="<?php echo $cantidad_desp; ?>"></td>
-
-        <td  data-label="Costo Unitario"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="cost[]" step="0.01"  readonly value="$<?php echo $precio2?>"></td>  
-        <td  data-label="total"><input style="background:transparent; border: none; width: 100%; text-align: center"  name="tot[]" readonly step="0.01"  value="$<?php echo $total2;?>"></td>
+        <td  data-label="Nombre del Artículo"><?php echo $productos['nombre'] ?></td>
+        <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
+        <td  data-label="Cantidad Solicitada"><?php echo $stock ?></td>
+        <td  data-label="Cantidad Solicitada"><?php echo $cantidad_desp ?></td>
+        <td  data-label="Costo Unitario">$<?php echo $precio1 ?></td>
+        <td  data-label="total">$<?php echo $total1 ?></td>
       </tr>
 
-<?php }?>
-
-      
-      <th colspan="5">SubTotal</th>
-      <td data-label="Subtotal"><input style="background:transparent; border: none; width: 100%; color: red; font-weight: bold; text-align: center" step="0.01"  name="tot_f" readonly value="$<?php echo $final2;?>" ></td></tr>
-  
-         </tbody>
-        </table>
-
-    
-  
+      <?php }?>
+      <tfoot>
+        <th colspan="5"></th>
+            <th >SubTotal</th>
+            <td style=" color: red; font-weight: bold;" data-label="Subtotal"><?php echo $final1?></td>
+        </tfoot>
+        </tbody>
+    </table>
     <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
       <style>
         #pdf{

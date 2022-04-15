@@ -20,6 +20,7 @@ die();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos</title>
    <!-- Bootstrap CSS -->
+   <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css">
      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap4.css"/>
      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.bootstrap4.css"/>
     <!--font awesome con CDN-->  
@@ -222,9 +223,7 @@ if (isset($_POST['Fecha'])){  ?>
             <?php 
 if (isset($_POST['Fecha'])){
 ?> 
-<div class="mx-5 p-2 r-5" style="background-color: transparent; border-radius: 5px;">
-        <div class="row">
-            <div class="col">
+<div class="mx-1 p-2" style="background-color: transparent; border-radius: 5px;">
 
                 <table class="table table-responsive table-striped" id="example1" style=" width: 100%">
                     <h1>Filtro por Fechas</h1>
@@ -240,6 +239,7 @@ if (isset($_POST['Fecha'])){
                      <th style=" width: 70%">Fecha Registro</th>
                      
                    </tr>
+                   <tr> <td align="center" id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td></tr>
     </thead>
     <tbody>
          <?php  
@@ -272,6 +272,12 @@ if (isset($_POST['Fecha'])){
         $stock=number_format($cantidad,  2,".",",");
        //  $stock=round($stock);
               ?>
+ <style type="text/css">
+     #td{
+    text-align:center;
+        display: none;
+    }
+</style> 
                    <tr>
                 <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['categoria']; ?></td>
                 <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['codProductos']; ?></td>
@@ -288,26 +294,21 @@ if (isset($_POST['Fecha'])){
 </table>
   
 </div>
-</div>
-</div>
 <?php 
 
 if (isset($_POST['categorias'])){  ?>  <br> 
-<div class="mx-5 p-2 r-5" style="background-color: white; border-radius: 5px;">
-   
-        <div class="row">
-            <div class="col">
-                <table class="table table-responsive table-striped" id="example2" style=" width: 100%">
+<div class="mx-1 p-2" style="background-color: white; border-radius: 5px;">
+   <table class="table table-responsive table-striped" id="example2" style=" width: 100%">
     <thead>
          <tr id="tr">
                      <th style=" width: 10%">Categoria</th>
                      <th style=" width: 10%">Código</th>
                      <th style=" width: 10%">Cod. de Catálogo</th>
-                     <th style=" width: 30%;padding-left:3%">Descripción Completa</th>
-                     <th style=" width: 10%">U/M</th>
-                     <th style=" width: 10%">Cantidad</th>
-                     <th style=" width: 10%">Costo Unitario</th>
-                     <th style=" width: 70%">Fecha Registro</th>
+                     <th style=" width: 100%;padding-left:3%">Descripción Completa</th>
+                     <th style=" width: 100%">U/M</th>
+                     <th style=" width: 100%">Cantidad</th>
+                     <th style=" width: 100%">Costo Unitario</th>
+                     <th style=" width: 100%">Fecha Registro</th>
                      
                    </tr>
     </thead>
@@ -340,33 +341,27 @@ if (isset($_POST['categorias'])){  ?>  <br>
       <?php   }}} ?>
     </tbody>
 </table>
-  
-</div>
-            </div> 
-            </div><br>
+  <br>
             <?php  if (isset($_GET['productos'])){ 
             $productos = $_GET['productos'] ?>
-    <div class="mx-1 p-2 r-5" style=" border-radius: 5px;">
+    <div class="mx-1 p-2" style=" border-radius: 5px;">
         
            <a href="unidad_medidad.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a><br><br><br>
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
                 <thead>
                      <tr id="tr">
-                    <th style="width: 10%;">#</th>
-                     <th>Código</th>
-                     <th>Cod. de Catálogo</th>
-                     <th>Descripción Completa</th>
-                     <th>U/M</th>
-                     <th>Cantidad</th>
-                     <th>Costo Unitario</th>
-                     <th>Fecha Registro</th>
-
-                     <!-- <th style=" width: 100%">Solicitudes</th> -->
-
-                     <th>Categoría</th>
+                    <th style="max-width: 5%;">#</th>
+                     <th style="max-width: 10%;">Código</th>
+                     <th style="max-width: 10%;">Cod. de Catálogo</th>
+                     <th style="max-width: 50%;">Descripción Completa</th>
+                     <th style="max-width: 10%;">U/M</th>
+                     <th style="max-width: 10%;">Cantidad</th>
+                     <th style="max-width: 10%;">Costo Unitario</th>
+                     <th style="max-width: 40%;">Fecha Registro</th>
+                     <th style="max-width: 100%; max-width: 50%;">Categoría</th>
                     <?php if($tipo_usuario==1){ ?>
-                     <th>Editar</th>
-                     <th>Eliminar</th>
+                     <th style="max-width: 10%;">Editar</th>
+                     <th style="max-width: 10%;">Eliminar</th>
                  <?php } ?>
                    </tr>
                 </thead>
@@ -374,22 +369,6 @@ if (isset($_POST['categorias'])){  ?>  <br>
 <?php
     $sql = "SELECT * FROM tb_productos GROUP BY precio,codProductos";
     $result = mysqli_query($conn, $sql);
-
-    if(isset($_POST['cat_buscar'])){
-
-        $buscar_cat = $_POST['cat_buscar'];
-
-        $sql = "SELECT * FROM tb_productos WHERE categoria = $buscar_cat";
-        $result = mysqli_query($conn, $sql);
-       
-    }
-
-    if(isset($_POST['cod_buscar'])){
-        $buscar_cod = $_POST['cod_buscar'];
-
-        $sql = "SELECT * FROM tb_productos WHERE codProductos = $buscar_cod";
-        $result = mysqli_query($conn, $sql);
-    }
 ?>
 
 <?php
@@ -423,7 +402,7 @@ $n=0;
            <td  data-label="Cantidad" style="text-align: center;"><?php  echo $stock; ?></td>
            <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
-           <td  data-label="Fecha Registro"><?php  echo $productos['categoria']; ?></td>
+           <td  data-label="Categoría"><?php  echo $productos['categoria']; ?></td>
            <?php if($tipo_usuario==1){ ?>
            <td  data-label="Editar">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="vistaProductos.php">             

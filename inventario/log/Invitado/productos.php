@@ -9,6 +9,7 @@ include ('menu.php');
 <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
          <link rel="stylesheet" type="text/css" href="../../styles/estilo_men.css">
+         <link rel="stylesheet" type="text/css" href="../../styles/estilos_tablas.css">
       <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/bootstrap.css">
 
@@ -32,17 +33,6 @@ include ('menu.php');
             background-repeat: no-repeat;
             background-attachment: fixed;">
                 <style type="text/css">
-        #a:hover{
-   text-decoration: none;
-   color: lawngreen;
-}
- #b:hover{
-   text-decoration: none;
-   color:whitesmoke;
-}
-.children{
-background:burlywood;
-}
  </style>
 
 <section style="background: rgba(255, 255, 255, 0.9);padding-bottom: 1%;margin: 3%;border-radius: 15px;color: black;">
@@ -98,28 +88,10 @@ if (isset($_POST['Fecha'])){  ?>
             <?php 
 if (isset($_POST['Fecha'])){
 ?> 
-<div class="mx-5 p-2 r-5" style="background-color: transparent; border-radius: 5px;">
-        <div class="row">
-            <div class="col">
-
-                <table class="table table-responsive table-striped" id="example1" style=" width: 100%">
-                    <h1>Filtro por Fechas</h1>
-    <thead>
-         <tr id="tr">
-                     <th style=" width: 10%">Categoria</th>
-                     <th style=" width: 10%">Código</th>
-                     <th style=" width: 10%">Cod. de Catálogo</th>
-                     <th style=" width: 30%;padding-left:3%">Descripción Completa</th>
-                     <th style=" width: 10%">U/M</th>
-                     <th style=" width: 10%">Cantidad</th>
-                     <th style=" width: 10%">Costo Unitario</th>
-                     <th style=" width: 70%">Fecha Registro</th>
-                     
-                   </tr>
-    </thead>
-    <tbody>
-         <?php  
-         $f1=$_POST['F1']; 
+<div class="mx-2 p-2 r-5" style="background-color: transparent; border-radius: 5px;">
+<h1>Filtro por Fechas</h1>
+<?php 
+$f1=$_POST['F1']; 
          $f2=$_POST['F2'];
           echo'<center>
 
@@ -134,10 +106,28 @@ if (isset($_POST['Fecha'])){
                     </div>
                     
                 </div> 
-                </div> </center>
-             ';
-         
-                   $sql = "SELECT * FROM `tb_productos` WHERE fecha_registro BETWEEN ' $f1' AND ' $f2'";
+                </div> </center>';
+             ?>
+<table class="table table-responsive table-striped" id="example1" style=" width: 100%">
+                    
+    <thead>
+         <tr id="tr">
+                     <th style=" width: 10%">Categoria</th>
+                     <th style=" width: 10%">Código</th>
+                     <th style=" width: 10%">Cod. de Catálogo</th>
+                     <th style=" width: 30%;padding-left:3%">Descripción Completa</th>
+                     <th style=" width: 10%">U/M</th>
+                     <th style=" width: 10%">Cantidad</th>
+                     <th style=" width: 10%">Costo Unitario</th>
+                     <th style=" width: 70%">Fecha Registro</th>
+                     
+                   </tr>
+                    
+
+    </thead>
+    <tbody>
+         <?php  
+            $sql = "SELECT * FROM `tb_productos` WHERE fecha_registro BETWEEN ' $f1' AND ' $f2'";
         $result = mysqli_query($conn, $sql);
             while ($productos = mysqli_fetch_array($result)){
                  $precio=$productos['precio'];
@@ -147,8 +137,14 @@ if (isset($_POST['Fecha'])){
         $stock=number_format($cantidad,  2,".",",");
        //  $stock=round($stock);
               ?>
+                <style type="text/css">
+        #td{
+        display: none;
+    }
+</style>
                    <tr>
-                <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['categoria']; ?></td>
+                    <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
+                <td data-label="Categoría" style="text-align: center;"><?php  echo $productos['categoria']; ?></td>
                 <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['codProductos']; ?></td>
            <td  data-label="Codificación de catálogo" style="text-align: center;"><?php  echo $productos['catalogo']; ?></td>
            <td  data-label="Descripción Completa" style="text-align: left;padding-left:3%"><?php  echo $productos['descripcion']; ?></td>
@@ -161,17 +157,13 @@ if (isset($_POST['Fecha'])){
       <?php   }} ?>
     </tbody>
 </table>
-  
-</div>
-</div>
+
 </div>
 <?php 
 
 if (isset($_POST['categorias'])){  ?>  <br> 
-<div class="mx-5 p-2 r-5" style="background-color: white; border-radius: 5px;">
-   
-        <div class="row">
-            <div class="col">
+<div class="mx-2 p-2 r-5" style="background-color: white; border-radius: 5px;">
+
                 <table class="table table-responsive table-striped" id="example2" style=" width: 100%">
     <thead>
          <tr id="tr">
@@ -185,6 +177,8 @@ if (isset($_POST['categorias'])){  ?>  <br>
                      <th style=" width: 70%">Fecha Registro</th>
                      
                    </tr>
+                    <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
+
     </thead>
     <tbody>
          <?php $categoria=$_POST['cat'];
@@ -201,6 +195,11 @@ if (isset($_POST['categorias'])){  ?>  <br>
         
 
                 if ($_POST['cat']==$productos['categoria']) {?>
+                      <style type="text/css">
+        #td{
+        display: none;
+    }
+</style>
                    <tr>
                 <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['categoria']; ?></td>
                 <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['codProductos']; ?></td>
@@ -216,8 +215,6 @@ if (isset($_POST['categorias'])){  ?>  <br>
     </tbody>
 </table>
   
-</div>
-            </div> 
             </div><br>
             <?php if (isset($_GET['productos'])){ 
             $productos = $_GET['productos'] ?>
@@ -239,27 +236,12 @@ if (isset($_POST['categorias'])){  ?>  <br>
 
                      <th style=" width: 100%">Categoría</th>
                    </tr>
+                <td id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>               
                 </thead>
                 <tbody>
 <?php
     $sql = "SELECT * FROM tb_productos GROUP BY precio,codProductos";
     $result = mysqli_query($conn, $sql);
-
-    if(isset($_POST['cat_buscar'])){
-
-        $buscar_cat = $_POST['cat_buscar'];
-
-        $sql = "SELECT * FROM tb_productos WHERE categoria = $buscar_cat";
-        $result = mysqli_query($conn, $sql);
-       
-    }
-
-    if(isset($_POST['cod_buscar'])){
-        $buscar_cod = $_POST['cod_buscar'];
-
-        $sql = "SELECT * FROM tb_productos WHERE codProductos = $buscar_cod";
-        $result = mysqli_query($conn, $sql);
-    }
 ?>
 
 <?php
@@ -289,7 +271,7 @@ if (isset($_POST['categorias'])){  ?>  <br>
            <td  data-label="Cantidad" style="text-align: center;"><?php  echo $stock; ?></td>
            <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
-           <td  data-label="Fecha Registro"><?php  echo $productos['categoria']; ?></td>
+           <td  data-label="Categoría"><?php  echo $productos['categoria']; ?></td>
            
          </tr>
      

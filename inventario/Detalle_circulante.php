@@ -67,132 +67,6 @@ die();
     </style>
     <?php
 
-if(isset($_POST['submit'])){
-
-$total = 0;
-$final = 0;
-$total2 = 0;
-$final2 = 0;
-$a=$_POST['num_sol'];
-   include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_circulante WHERE codCirculante='$a' ORDER BY fecha_solicitud DESC LIMIT 1";
-    $result = mysqli_query($conn, $sql);
- while ($datos_sol = mysqli_fetch_array($result)){
-
- echo'   
-<section id="section">
-<form method="POST" action="Controller/añadir_circulante_copy.php" >
-         
-      
-        <div class="row">  
-
-          <div class="col-6 col-sm-4" style="position: initial">
-            <label style="font-weight: bold;">N° de Solicitud:</label>
-            <input readonly class="form-control"  type="text" value="' .$datos_sol['codCirculante']. '" name="num_sol">
-          </div>
-
-          <div class="col-6 col-sm-4" style="position: initial">
-            <label style="font-weight: bold;">Fecha:</label>
-              <input readonly class="form-control"  type="text" value="' .date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])). '" name="fech">
-          </div>
-           <div class="col-8 col-sm-4" style="position: initial">
-            <label style="font-weight: bold;">Estado:</label>';?>
-             <select  class="form-control"  type="text"  name="estado" required>
-                <option disabled selected value="">Selecione</option>
-                <option>Aprobado</option>
-                <option>Rechazado</option>
-                </select><br>
-               
-          </div>
-        </div>
-      
-        <br>
-         
-         <table class="table table-responsive table-striped" id="example1" style=" width: 100%;margin-bottom:2%">
-
-            
-            <thead>
-              <tr id="tr">
-                <th>#</th>
-                <th>Codigo</th>
-                <th style="width: 10%;">Nuevo Codigo</th>
-                <th style="width: 35%;">Descripción del Artículo</th>
-                <th style="width: 10%;">Unidad de Medida</th>
-                <th style="width: 10%;">Cantidad Solicitada</th>
-                <th style="width: 10%;">Cantidad Despachada</th>
-                <th style="width: 10%;">Costo Unitario (estimado)Actual</th>
-                <th style="width: 10%;">Nuevo Costo Unitario (estimado)</th>
-               
-                <th style="width: 10%;">Total</th>
-              </tr>
-                <td align="center" id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
-           </thead>
-            <tbody>
-<?php 
-$num_circulante = $datos_sol['codCirculante'];
-}
- $sql = "SELECT * FROM detalle_circulante WHERE tb_circulante = $num_circulante";
-    $result = mysqli_query($conn, $sql);
-$n=0;
-while ($productos = mysqli_fetch_array($result)){
-      $n++;
-        $r=$n+0;
-        $total    =    $productos['stock'] * $productos['precio'];
-        $final    +=   $total;
-        $precio   =    $productos['precio'];
-        $codigo   =    $productos['codigo'];
-        $precio2  =    number_format($precio, 2,".",",");
-        $total2   =    number_format($total, 2, ".",",");
-        $final2   =    number_format($final, 2, ".",",");
-        $cantidad=$productos['stock'];
-        $stock=number_format($cantidad, 1,".");
-         $stock=round($stock);
-  echo' 
-    <style type="text/css">
-     #td{
-    text-align:center;
-        display: none;
-    }
-    
-   
-</style> 
-      <tr>
-      <td data-label="#">'.$r .'</td>
-      <td  data-label="Código"><input   readonly value="'.$codigo.'"><input type="hidden"   name="cod1[]" readonly value="'.$productos['codigodetallecirculante'] .'">
-      <td  data-label="Código"><input  type="number"  name="codn[]" class="form-control"  value="">
-        </td>
-        <td  data-label="Descripción del Artículo"><textarea name="desc[]" readonly style="border: none">'.$productos['descripcion']. '</textarea></td>
-        <td  data-label="Unidada de Medida"><input   name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
-        <td  data-label="Cantidad Solicitada"><input   name="cant[]" readonly value="'.$stock. '"></td>
-         <td  data-label="Cantidad"><input  class="form-control" type="number" required  name="cantidad_despachada[]" required value=""></td>
-
-          <td  data-label="Costo unitario"><input   type="text" step="0.01"  required readonly  value="$'.$precio2.'"></td>
-
-          <td  data-label="Costo unitario"><input class="form-control" type="number"  required step="0.01" name="cost[]"></td>
-         
-        <td  data-label="total"><input   name="tot[]" readonly step="0.01"  value="$'.$total2. '"></td>
-      </tr>';
-
-}
-
-      echo'
-      <th colspan="5"></th>
-      <th >SubTotal</th>
-      <td><input  step="0.01"   name="tot_f" readonly value="$'.$final2.'" ></td></tr>
-  
-         </tbody>
-        </table>
-
-    
-  
-    <input id="pdf" type="submit" class="btn btn-lg my-1" value="Guardar Estado" name="detalle_circulante">
-      
-</form>
-</section>
-      ';
-}
-?>
-<?php
 
 if(isset($_POST['detalle'])){
 
@@ -214,12 +88,12 @@ $id=$_POST['id'];
       
         <div class="row">  
 
-          <div class="col-6 col-sm-4" style="position: initial">
+          <div class="col-6 col-sm-6" style="position: initial">
             <label style="font-weight: bold;">N° de Solicitud:</label>
             <input readonly class="form-control"  type="text" value="' .$datos_sol['codCirculante']. '" name="num_sol">
           </div>
 
-          <div class="col-6 col-sm-4" style="position: initial">
+          <div class="col-6 col-sm-6" style="position: initial">
             <label style="font-weight: bold;">Fecha:</label>
               <input readonly class="form-control"  type="text" value="' .date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])). '" name="fech">
           </div>';?>
@@ -283,8 +157,7 @@ while ($productos = mysqli_fetch_array($result)){
         $cant_aprobada=$productos['stock'];
         $cantidad_despachada=$productos['cantidad_despachada'];
         $stock=number_format($cant_aprobada, 2,".",",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
-           echo' 
+        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");?>
     <style type="text/css">
      #td{
         display: none;
@@ -294,24 +167,29 @@ while ($productos = mysqli_fetch_array($result)){
    
 </style> 
       <tr>
-      <td data-label="#"><input name="#" readonly value="'. $r.' "> </td>
-       <td  data-label="Código">
-       <input readonly value="'.$codigo.'"></td>
-        <td  data-label="Descripción del Artículo"><textarea name="desc[]" readonly style="border: none">'.$productos['descripcion']. '</textarea></td>
+      <td data-label="#"><?php echo $r ?> </td>
+       <td  data-label="Código"><?php echo $codigo ?>
+           <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
+            <input type="hidden" name="desc[]" value="<?php echo $productos['descripcion'] ?>">
+            <input type="hidden" name="um[]" value="<?php echo $productos['unidad_medida']?>">
+            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
+            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
+            <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
+            <input type="hidden" name="tot[]" value="$<?php echo $total2 ?>">
+            <input type="hidden" name="tot_f" value="$<?php echo $final2 ?>" >
+       </td>
+        <td  data-label="Descripción del Artículo"><?php echo $productos['descripcion'] ?></td>
 
-        <td  data-label="Unidada de Medida"><input name="um[]" readonly value="'.$productos['unidad_medida']. '"></td>
-        <td  data-label="Cantidad Solicitada"><input  name="cant[]" readonly value="'.$stock. '"></td>
-        <td  data-label="Cantidad"> <input readonly  type="number" required  name="cantidad_despachada[]" required value="'.$cantidad_desp.'"></td>
-         <td data-label="Costo unitario"><input  name="cost[]" readonly value="$'.$precio2.'"   ></td>
-        <td  data-label="total"><input name="tot[]" readonly step="0.01"  value="$'.$total2. '"></td>
-      </tr>';
-
-}
-
-      echo'
-      <th colspan="5"></th>
+        <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
+        <td  data-label="Cantidad Solicitada"><?php echo $stock ?></td>
+        <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
+         <td data-label="Costo unitario"><?php echo $precio2 ?></td>
+        <td  data-label="Total"><?php echo $total2 ?></td>
+      </tr>
+<?php } ?>
+      <th colspan="6"></th>
       <th >SubTotal</th>
-      <td  colspan="2"><input style="color: red; font-weight: bold; text-align: center" step="0.01"   name="tot_f" readonly value="$'.$final2.'" ></td></tr>
+      <td style="color: red; font-weight: bold;" ><?php echo $final2 ?></td></tr>
   
          </tbody>
         </table>
@@ -319,7 +197,7 @@ while ($productos = mysqli_fetch_array($result)){
     <button id="pdf" name="pdf" type="submit" class="btn btn-lg my-1">Exportar a PDF</button>
 </form>
 </section>
-      ';
+<?php
 }
 ?>            
   </body>

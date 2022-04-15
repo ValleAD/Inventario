@@ -85,7 +85,7 @@ die();
         else {
             $u='Cliente';
         }
-        if ($idusuario==20) {
+        if ($idusuario==0) {
             $u='Invitado';
         }
         ?>
@@ -95,7 +95,7 @@ die();
             <td data-label="Código" class="delete"><?php  echo $solicitudes['codVale']; ?></td>
             <td data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
 
-             
+             <td data-label="Encargado" class="delete"><?php  echo $solicitudes['usuario'],"<br> ","(",$u,")"; ?></td>
             <td data-label="Departamento Solicitante" class="delete"><input readonly <?php
                 if($solicitudes['estado']=='Pendiente') {
                     echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
