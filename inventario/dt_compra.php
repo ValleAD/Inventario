@@ -171,8 +171,8 @@ $final = 0;
             <input type="hidden" name="tot[]" value="$<?php echo $total2 ?>">
             <input type="hidden" name="tot_f" value="$<?php echo $final2 ?>" >
         </td>
-        <td  data-label="Código"><?php echo $productos['codigo'] ?></td>
-        <td  data-label="Código"><?php echo $productos['catalogo'] ?></td>
+        <td  data-label="Código"><p style="padding:5%"><?php echo $productos['codigo'] ?></p></td>
+        <td  data-label="Código"><p style="padding:5%"><?php echo $productos['catalogo'] ?></p></td>
         <td  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
         <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
         <td  data-label="Cantidad"><?php echo $stock ?></td>
@@ -189,7 +189,16 @@ $final = 0;
         </tfoot>
         </tbody>
     </table>
-    
+    <?php  $sql = "SELECT * FROM tb_compra ORDER BY fecha_registro DESC LIMIT 1";
+    $result = mysqli_query($conn, $sql);
+ while ($datos = mysqli_fetch_array($result)){ ?>
+    <div class="form-group" style="position: all;border: 1px solid #ccc;border-collapse: collapse;">
+                <p style="padding-left: 1%;">Justificación por el OBS solicitado</p>
+                <hr style=" border: 1px solid #ccc;border-collapse: collapse;">
+                <p style="padding-left: 1%;"><?php echo $datos['justificacion'] ?></p>
+                <textarea style="display: none;" name="jus" ><?php echo $datos['justificacion'] ?></textarea>
+            </div>
+<?php } ?>
       <input id="pdf" type="submit" class="btn btn-lg my-1" value="Exportar a PDF" name="pdf">
         <style>
           #pdf{

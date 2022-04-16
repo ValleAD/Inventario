@@ -16,7 +16,12 @@ include ('../Model/conexion.php') ?>
     $fech = $_POST['fech'];
     $encargado = $_POST['usuario'];
     $vale = $_POST['vale'];
-      
+    if ($_POST['jus']=="") {
+    $jus = "Sin observacion por el momento";
+        
+    }else{
+    $jus = $_POST['jus'];
+      }
 ?>
 <h3>HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
 <p style="float: right; margin-right: 15%; position: absolute;">Vale No.: <?php echo $vale ?></p>
@@ -80,12 +85,11 @@ for($i = 0; $i < count($_POST['cod']); $i++)
     </tfoot>
 </table>
 <br>
-    <table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
+    <table style="width: 100%;height: 10%; border: 1px solid #ccc;border-collapse: collapse;">
         <tbody>
-            <tr>
-                <td>Observaciones (En qué se ocupará el bien entregado)</td>
-            </tr>
-            <td style="height: 20%;"></td>
+           <p style="padding-left: 1%;"> Observaciones (En qué se ocupará el bien entregado)</p>
+           <hr style=" border: 1px solid #ccc;border-collapse: collapse;">
+            <p style="padding-left: 1%;"><?php echo $jus ?></p>
         </tbody>
     </table>
     <br>

@@ -77,11 +77,11 @@ die();
             <thead>
               <tr id="tr">
                
-                   <th style="width: 10%;">Código</th>
-                <th style="width: 20%;">Descripción</th>
+                <th style="width: 10%;">Código</th>
+                <th style="width: 50%;">Descripción</th>
                 <th style="width: 10%;">U/M</th>
                 <th style="width: 15%;">Productos Disponibles</th>
-                <th style="width: 15%;">Cantidad</th>
+                <th style="width: 50%;">Cantidad</th>
                 <th style="width: 15%;">Costo unitario</th>
                <th>Eliminar fila</th>
                
@@ -149,7 +149,11 @@ die();
 
             </tbody>
         </table>
-         <center> <button type="submit" name="solicitar" class="btn btn-success btn-lg  text-center w-25 my-3"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar</button></center>    
+       <!--  <div class="form-group" style="position: all;">
+                <label>Observaciones (En qué se ocupará el bien entregado)</label>
+               <textarea rows="7"  class="form-control" name="jus"  required> </textarea><br>
+            </div>  --> 
+       <center><button type="submit" name="form_vale2" class="btn btn-success btn-lg my-2 text-center w-25"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar</button> </center>   
 </form>
  </section>
 

@@ -19,6 +19,12 @@
     $suministro = $_POST['suministro'];
     $usuario = $_POST['usuario'];
     $fecha = $_POST['fech'];
+   if ($_POST['jus']=="") {
+    $jus = "Sin Justificación por el momento";
+        
+    }else{
+    $jus = $_POST['jus'];
+      }
       
 ?>
 <h3 align="center" style="margin-top: -2%;">MINISTERIO DE SALUD</h3>
@@ -30,7 +36,7 @@
 
 <section style="font-size: 14px;">
     <div style="float: right">
-        <label>FECHA DE IMPRESIÓN:</label><br>
+        <label>FECHA DE IMPRESIÓN:</label><?php echo date("d-m-Y")?><br>
         <label>FECHA DE CREACIÓN: <?php echo $fecha ?></label>
     </div>
               
@@ -101,15 +107,14 @@ for($i = 0; $i < count($_POST['cod']); $i++)
     </tfoot>
 </table>
 <br>
-    <table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
+
+    <table style="width: 100%;height: 10%; border: 1px solid #ccc;border-collapse: collapse;">
         <tbody>
-            <tr>
-                <td>Justificación por el OBS solicitado</td>
-            </tr>
-            <td style="height: 20%;"></td>
+           <p style="padding-left: 1%;"> Justificación por el OBS solicitado</p>
+           <hr style=" border: 1px solid #ccc;border-collapse: collapse;">
+            <p style="padding-left: 1%;"><?php echo $jus ?></p>
         </tbody>
-    </table>
-    </tbody>                
+    </table>                
 </section>
 
 </body>

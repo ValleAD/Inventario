@@ -144,9 +144,9 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="um[]" value="<?php echo $productos['unidad_medida']?>">
             <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
             <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
-            <input type="hidden" name="cost[]" value="$<?php echo $precio1 ?>">
-            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
-            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
+            <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
+            <input type="hidden" name="tot[]" value="$<?php echo $total2 ?>">
+            <input type="hidden" name="tot_f" value="$<?php echo $final2 ?>" >
         </td>
         <td  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
         <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
@@ -164,6 +164,16 @@ while ($productos = mysqli_fetch_array($result)){
         </tfoot>
         </tbody>
     </table>
+<!--      <?php  $sql = "SELECT * FROM tb_vale ORDER BY fecha_registro DESC LIMIT 1";
+    $result = mysqli_query($conn, $sql);
+ while ($datos = mysqli_fetch_array($result)){ ?>
+    <div class="form-group" style="position: all;border: 1px solid #ccc;border-collapse: collapse;">
+                <p style="padding-left: 1%;">Observaciones (En qué se ocupará el bien entregado)</p>
+                <hr style=" border: 1px solid #ccc;border-collapse: collapse;">
+                <p style="padding-left: 1%;"><?php echo $datos['observaciones'] ?></p>
+                <textarea style="display: none;" name="jus" ><?php echo $datos['observaciones'] ?></textarea>
+            </div> -->
+<?php } ?>
     <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
       <style>
         #pdf{

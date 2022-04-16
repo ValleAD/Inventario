@@ -9,7 +9,8 @@ if(isset($_POST['detalle_vale'])){
 
  $nSolicitud=$_POST['vale'];
 $estado = $_POST['estado'];
-$sql="UPDATE  tb_vale SET estado = '$estado' WHERE codVale='$nSolicitud'" ;
+$jus = $_POST['jus'];
+$sql="UPDATE  tb_vale SET estado = '$estado', observaciones='$jus' WHERE codVale='$nSolicitud'" ;
 
 $result = mysqli_query($conn, $sql);
 if ($estado=='Aprobado') {
