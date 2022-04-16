@@ -72,6 +72,7 @@ CREATE TABLE tb_vale (
   idusuario int NOT NULL DEFAULT 1,
   campo varchar (50)  NOT NULL DEFAULT 'Solicitud Vale',
   estado varchar (50)  NOT NULL,
+  observaciones varchar (50)  NOT NULL,
   fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (codVale)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -86,6 +87,7 @@ CREATE TABLE tb_compra (
     campo varchar (50)  NOT NULL DEFAULT 'Solicitud Compra',
   estado varchar (50)  NOT NULL,
   idusuario int NOT NULL DEFAULT 1,
+  justificacion varchar (50)  NOT NULL,
   fecha_registro timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
     PRIMARY KEY (nSolicitud)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
