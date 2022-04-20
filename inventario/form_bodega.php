@@ -143,30 +143,52 @@ die();
      
 <?php  
 include 'Model/conexion.php';
-if(isset($_POST['codigo'])){
-
-    echo'
+if(isset($_POST['codigo'])){?>
     <br>
     <form id="form" action="Controller/añadir_bodega.php" method="post">
-        
+
+        <p class="text-center bg-danger" style="color:white;border-radius: 5px;font-size: 1.5em;padding: 3%;">No se Encontró la información que busca, intentelo de nuevo</p>
+        <?php 
+
+    for($i = 0; $i < count($_POST['codigo']); $i++){
+
+    
+    $codigo = $_POST['codigo'][$i];
+   //$sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
+
+
+   $sql = "SELECT codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE codProductos = $codigo GROUP BY codProductos, precio";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+       $precio=$productos['precio'];
+       $cantidad=$productos['SUM(stock)'];
+       $precio1=number_format($precio, 2,".",",");
+       $stock=number_format($cantidad, 2,".",",");
+
+
+     ?>   
+            <style>
+       p{
+            display: none;
+       }
+   </style> 
         <div class="container-fluid" style="position: initial">
             <div class="row">
               <div class="col-6.5 col-sm-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>  
                  <select  class="form-control" name="depto" id="depto" required>
                         <option selected disabled value="">Selecione</option>
-                      ';
-                      ?>
+                      
 
                       <?php 
                         $sql = "SELECT * FROM selects_departamento";
                         $result = mysqli_query($conn, $sql);
 
-                        while ($productos = mysqli_fetch_array($result)){ 
+                        while ($productos = mysqli_fetch_array($result)){ ?>
 
-                          echo'  <option>'.$productos['departamento'].'</option>
-                      ';   
-                     }
+                          <option><?php  echo$productos['departamento']?></option> 
+                     <?php }?>
 
 
                          ?>
@@ -209,8 +231,7 @@ if(isset($_POST['codigo'])){
         <tbody>
 
 
-           
-<?php 
+           <?php 
 
     for($i = 0; $i < count($_POST['codigo']); $i++){
 
@@ -229,7 +250,13 @@ if(isset($_POST['codigo'])){
        $stock=number_format($cantidad, 2,".",",");
 
 
-     ?>    
+     ?>   
+            <style>
+       p{
+            display: none;
+       }
+   </style>     
+
         <style type="text/css">
         #td{
         display: none;
@@ -254,17 +281,14 @@ if(isset($_POST['codigo'])){
             </tr>
            
   
-        <?php } echo' ';
-    }
+        <?php } ?>
     
 
-
-    echo ' 
    </tbody>
         </table>
 
 <input class="btn btn-lg" type="submit" value="Enviar" id="enviar">
-    '?>
+    <?php }}}?>
     
     
         <style>

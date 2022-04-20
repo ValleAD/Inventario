@@ -122,9 +122,32 @@ form{
   <?php  
 include 'Model/conexion.php';
 if(isset($_POST['codigo'])){ ?>
-  <form style="width: 100%; height: 100%;margin-bottom: 5%;margin-top: 5%;"action="Controller/añadir_circulante.php" method="POST">
+<p class="text-center bg-danger my-4" style="color:white;border-radius: 5px;font-size: 1.5em;padding: 3%;">No se Encontró la información que busca, intentelo de nuevo</p>
 
-  <br>
+      <?php  for($i = 0; $i < count($_POST['codigo']); $i++){
+
+    
+    $codigo = $_POST['codigo'][$i];
+   //$sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
+
+
+   $sql = "SELECT codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE codProductos = $codigo GROUP BY codProductos, precio";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+ $precio=$productos['precio'];
+
+       $precio1=number_format($precio, 2,".",",");
+       $cantidad=$productos['SUM(stock)'];
+        $stock=number_format($cantidad, 1,".");
+
+       ?>
+       <style>
+        p{
+            display: none;
+       }
+   </style>
+  <form style="width: 100%; height: 100%;margin-bottom: 5%;margin-top: 5%;"action="Controller/añadir_circulante.php" method="POST">
 
 <div style="padding-top:1%;margin:1%;">
 
@@ -151,24 +174,7 @@ if(isset($_POST['codigo'])){ ?>
     </div>
 </div>
 </center>
-       <?php  for($i = 0; $i < count($_POST['codigo']); $i++){
-
-    
-    $codigo = $_POST['codigo'][$i];
-   //$sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
-
-
-   $sql = "SELECT codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE codProductos = $codigo GROUP BY codProductos, precio";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
- $precio=$productos['precio'];
-
-       $precio1=number_format($precio, 2,".",",");
-       $cantidad=$productos['SUM(stock)'];
-        $stock=number_format($cantidad, 1,".");
-
-       ?>
+ 
   <div class="col-xs-4 "  style="background: #bfe7ed;border-radius: 5px;margin: 1%;padding:1%" >
 <div class="well well-sm" style="position: all; margin: 1%">
 
@@ -215,14 +221,11 @@ if(isset($_POST['codigo'])){ ?>
             </div>
             </div>
     </div>
-        
-
- <?php }}
-echo '<div class="button21">
+<div class="button21">
              <input class="btn btn-lg my-1" type="submit" value="Enviar" id="enviar">
-        </div>';
+        </div>
         
-        } ?> 
+    <?php }}} ?> 
         </div> 
 </form>
   <style>
