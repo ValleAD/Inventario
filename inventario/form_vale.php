@@ -59,10 +59,10 @@ die();
                             </div>
                         </div>
             </div>
-                                <hr/>
-                                <div class="button21">
-                                    <input class="btn btn-lg" type="submit" value="Consultar" id="buscar">
-                                </div>
+                <hr/>
+                    <div class="button21">
+                        <input class="btn btn-lg" type="submit" value="Consultar" id="buscar">
+                    </div>
         </div>
 </form>
         <style>

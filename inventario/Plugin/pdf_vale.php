@@ -5,6 +5,7 @@ include ('../Model/conexion.php') ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
     <title>PDF Vale</title>
 </head>
 <body style="font-family: sans-serif;">
@@ -87,7 +88,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 <br>
     <table style="width: 100%;height: 10%; border: 1px solid #ccc;border-collapse: collapse;">
         <tbody>
-           <p style="padding-left: 1%;"> Observaciones (En qué se ocupará el bien entregado)</p>
+           <p style="padding-left: 1%;"> <b>Observaciones (En qué se ocupará el bien entregado)</b> </p>
            <hr style=" border: 1px solid #ccc;border-collapse: collapse;">
             <p style="padding-left: 1%;"><?php echo $jus ?></p>
         </tbody>

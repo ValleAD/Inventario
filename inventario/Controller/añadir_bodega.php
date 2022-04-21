@@ -8,6 +8,7 @@ include ('../Model/conexion.php');
     $orden_trabajo = $_POST['odt'];
     $usuario = $_POST['usuario'];
     $idusuario = $_POST['idusuario'];
+    $jus = $_POST['jus'];
 
     //crud para guardar los productos en la tabla tb_vale
     $sql = "INSERT INTO tb_bodega (codBodega, departamento,usuario,idusuario,estado) VALUES ('$orden_trabajo', '$departamento','$usuario','$idusuario','Pendiente')";
