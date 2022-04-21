@@ -139,8 +139,8 @@ form{
     <hr />
     
     <div class="text-center">
-        <button class="btn btn-success btn-lg" name="submit" style="margin-bottom: 2%;">Guardar</button>  
-        <a id="ver" class="btn btn-lg" href="vistaProductos.php">Ver Productos</a>
+        <button class="btn btn-success btn-lg my-2" name="submit" style="margin-bottom: 2%;">Guardar</button>  
+        <a id="ver" class="btn btn-lg my-2" href="vistaProductos.php?productos">Ver Productos</a>
          <style>
                #ver{
                 margin-left: 2%; 

@@ -5,7 +5,7 @@ session_start();
     # code...
     echo '
     <script>
-        window.location ="../log/signin.php";
+        window.location ="log/signin.php";
         session_destroy();  
                 </script>
 die();
@@ -118,6 +118,54 @@ $cod_compra = $_POST['id'];
             <input readonly class="form-control"  type="hidden" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro'])) ?>" name="fech">
           
 <table class="table table-responsive table-striped" style=" width: 100% ">
+                <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+            <form method="POST" action="Plugin/compra.php">
+                <button type="submit" class="btn btn-outline-primary" name="Fecha"><i class="bi bi-file-pdf-fill"></i></button>
+            </form>
+            <form method="POST" action="Plugin/compra.php">
+                <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['nSolicitud'] ?>" name="sol_compra">
+            <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['dependencia'] ?>" name="dependencia">
+            <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['plazo'] ?>" name="plazo">
+            <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['unidad_tecnica'] ?>" name="unidad">
+            <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['descripcion_solicitud'] ?>" name="suministro">
+            <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['usuario'] ?>" name="usuario">
+            <input readonly class="form-control"  type="hidden" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro'])) ?>" name="fech">
+            <?php  $cod_compra = $productos1['nSolicitud']; 
+            $sql = "SELECT * FROM detalle_compra WHERE solicitud_compra = $cod_compra";
+    $result = mysqli_query($conn, $sql);
+while ($productos = mysqli_fetch_array($result)){
+      
+      $total = $productos['stock'] * $productos['precio'];
+      $final += $total;
+      $precio=$productos['precio'];
+      $precio1=number_format($precio, 2,".",",");
+      $total1= number_format($total, 2, ".",",");
+      $final1=number_format($final, 2, ".",",");
+      $cant_aprobada=$productos['stock'];
+      $cantidad_despachada=$productos['cantidad_despachada'];
+      $stock=number_format($cant_aprobada, 2,".",",");
+      $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+    
+            ?>
+        <input type="hidden" name="categoria[]" value="<?php echo $productos['categoria']?>">
+        <input type="hidden" name="cod[]" value="<?php echo $productos['codigo']?>">
+        <input type="hidden" name="catalogo[]" value="<?php echo $productos['catalogo']?>">
+        <input type="hidden" name="desc[]" style="border: none" value="<?php echo $productos['descripcion']?>">
+        <input type="hidden" name="um[]" value="<?php echo $productos['unidad_medida']?>">
+        <input type="hidden" name="cant[]" value="<?php echo $stock?>">
+        <input type="hidden" name="cantidad_despachada[]" value="<?php echo $cantidad_desp ?>">
+        <input type="hidden" name="cost[]" value="$<?php echo $precio1?>">
+        <input type="hidden" name="tot[]" value="$<?php echo $total1?>">
+        <input type="hidden" name="tot_f" value="$<?php echo $final1?>" >
+    <?php } ?>
+           <?php  $sql = "SELECT * FROM tb_compra ORDER BY justificacion DESC LIMIT 1";
+    $result = mysqli_query($conn, $sql);
+ while ($datos = mysqli_fetch_array($result)){ ?>
+    <textarea style="display: none;" name="jus" ><?php echo $datos['justificacion'] ?></textarea> <?php } ?>
+                <button type="submit" class="btn btn-outline-primary" name="pdf"><i class="bi bi-printer"></i></button>
+            </form>
+
+</div>
   <thead>
     <tr id="tr">
       <th style="width:20%;">Categoría</th>
@@ -193,6 +241,7 @@ while ($productos = mysqli_fetch_array($result)){
             <th >SubTotal</th>
             <td style=" color: red; font-weight: bold;" data-label="Subtotal"><?php echo $final1?></td>
         </tfoot>
+
          </tbody>
         </table>
        <?php  $sql = "SELECT * FROM tb_compra ORDER BY fecha_registro DESC LIMIT 1";
@@ -204,8 +253,8 @@ while ($productos = mysqli_fetch_array($result)){
                 <p style="padding-left: 1%;"><?php echo $datos['justificacion'] ?></p>
                 <textarea style="display: none;" name="jus" ><?php echo $datos['justificacion'] ?></textarea>
             </div>
+
 <?php } ?>
-    <input id="pdf" type="submit" class="btn btn-lg my-1" value="Exportar a PDF" name="">
      </form>    
     </div>
      <?php } ?>  

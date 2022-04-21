@@ -55,9 +55,9 @@ die();
 
 $total = 0;
 $final = 0;
-
+$final2=0;
    include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_compra ORDER BY fecha_registro DESC LIMIT 1";
+    $sql = "SELECT * FROM tb_compra ORDER BY fecha_registro LIMIT 1";
     $result = mysqli_query($conn, $sql);
  while ($datos = mysqli_fetch_array($result)){
 
@@ -68,43 +68,43 @@ $final = 0;
         
           <div class="row">
         
-            <div class="col-6 col-sm-3" style="position: initial">
+            <div class="col-3" style="position: initial">
         
                 <label style="font-weight: bold;">Solicitud No.</label>
                 <input readonly class="form-control"  type="text" value="' .$datos['nSolicitud']. '" name="sol_compra">
   
             </div>
   
-            <div class="col-6 col-sm-3" style="position: initial">
+            <div class="col-3" style="position: initial">
               <label style="font-weight: bold;">Dependencia Solicitante</label>
               <input readonly class="form-control"  type="text" value="' .$datos['dependencia']. '" name="dependencia">
             </div>
   
-          <div class="col-6 col-sm-3" style="position: initial">
+          <div class="col-3" style="position: initial">
               <label style="font-weight: bold;">Plazo y No. de Entregas</label>
               <input readonly class="form-control"  type="text" value="' .$datos['plazo']. '" name="plazo">
           </div>
   
-          <div class="col-6 col-sm-3" style="position: initial">
+          <div class="col-3" style="position: initial">
               <label style="font-weight: bold;">Unidad Técnica</label>
               <input readonly class="form-control"  type="text" value="' .$datos['unidad_tecnica']. '" name="unidad">
           </div>
   
-          <div class="col-6 col-sm-3" style="position: initial">
+          <div class="col-3" style="position: initial">
               <label style="font-weight: bold;">Suministro Solicitado</label>
               <input readonly class="form-control"  type="text" value="' .$datos['descripcion_solicitud']. '" name="suministro">
           </div>
 
-          <div class="col-6 col-sm-3" style="position: initial">
+          <div class="col-3" style="position: initial">
               <label style="font-weight: bold;">Encargado</label>
               <input readonly class="form-control"  type="text" value="' .$datos['usuario']. '" name="usuario">
           </div>
   
-            <div class="col-6 col-sm-3" style="position: initial">
+            <div class="col-3" style="position: initial">
               <label style="font-weight: bold;">Fecha</label>
                   <input readonly class="form-control"  type="text" value="'.date("d-m-Y",strtotime($datos['fecha_registro'])). '" name="fech">';?>
             </div>
-            <div class="col-6 col-sm-3" style="position: initial">
+            <div class="col-3" style="position: initial">
               <label style="font-weight: bold;">Estado</label>
               <input <?php
                  if($datos['estado']=='Comprado') {
@@ -117,7 +117,54 @@ $final = 0;
           <br>
             
           <table class="table" style="margin-bottom:3%">
-              
+              <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+            <form method="POST" action="Plugin/compra.php">
+                <button type="submit" class="btn btn-outline-primary" name="Fecha"><i class="bi bi-file-pdf-fill"></i></button>
+            </form>
+            <form method="POST" action="Plugin/compra.php">
+                <input readonly class="form-control"  type="hidden" value="<?php echo $datos['nSolicitud'] ?>" name="sol_compra">
+            <input readonly class="form-control"  type="hidden" value="<?php echo $datos['dependencia'] ?>" name="dependencia">
+            <input readonly class="form-control"  type="hidden" value="<?php echo $datos['plazo'] ?>" name="plazo">
+            <input readonly class="form-control"  type="hidden" value="<?php echo $datos['unidad_tecnica'] ?>" name="unidad">
+            <input readonly class="form-control"  type="hidden" value="<?php echo $datos['descripcion_solicitud'] ?>" name="suministro">
+            <input readonly class="form-control"  type="hidden" value="<?php echo $datos['usuario'] ?>" name="usuario">
+            <input readonly class="form-control"  type="hidden" value="<?php echo date("d-m-Y",strtotime($datos['fecha_registro'])) ?>" name="fech">
+            <?php  $cod_compra = $datos['nSolicitud']; 
+            $sql = "SELECT * FROM detalle_compra WHERE solicitud_compra = $cod_compra";
+    $result = mysqli_query($conn, $sql);
+while ($productos = mysqli_fetch_array($result)){
+      
+      $total = $productos['stock'] * $productos['precio'];
+      $final += $total;
+      $precio=$productos['precio'];
+      $precio1=number_format($precio, 2,".",",");
+      $total1= number_format($total, 2, ".",",");
+      $final1=number_format($final, 2, ".",",");
+      $cant_aprobada=$productos['stock'];
+      $cantidad_despachada=$productos['cantidad_despachada'];
+      $stock=number_format($cant_aprobada, 2,".",",");
+      $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+    
+            ?>
+        <input type="hidden" name="categoria[]" value="<?php echo $productos['categoria']?>">
+        <input type="hidden" name="cod[]" value="<?php echo $productos['codigo']?>">
+        <input type="hidden" name="catalogo[]" value="<?php echo $productos['catalogo']?>">
+        <input type="hidden" name="desc[]" style="border: none" value="<?php echo $productos['descripcion']?>">
+        <input type="hidden" name="um[]" value="<?php echo $productos['unidad_medida']?>">
+        <input type="hidden" name="cant[]" value="<?php echo $stock?>">
+        <input type="hidden" name="cantidad_despachada[]" value="<?php echo $cantidad_desp ?>">
+        <input type="hidden" name="cost[]" value="$<?php echo $precio1?>">
+        <input type="hidden" name="tot[]" value="$<?php echo $total1?>">
+        <input type="hidden" name="tot_f" value="$<?php echo $final1?>" >
+    <?php } ?>
+           <?php  $sql = "SELECT * FROM tb_compra ORDER BY justificacion ASC LIMIT 1";
+    $result = mysqli_query($conn, $sql);
+ while ($datos1 = mysqli_fetch_array($result)){  ?>
+    <textarea style="display: none;" name="jus" ><?php echo $datos1['justificacion'] ?></textarea> <?php } ?>
+                <button type="submit" class="btn btn-outline-primary" name="pdf"><i class="bi bi-printer"></i></button>
+            </form>
+
+</div>
               <thead>
                 <tr id="tr">
                   <th style="width:30%;">Categoría</th>
@@ -137,7 +184,7 @@ $final = 0;
     $cod_compra = $datos['nSolicitud'];
   }
 
-   $sql = "SELECT * FROM detalle_compra WHERE solicitud_compra = $cod_compra";
+   $sql = "SELECT * FROM detalle_compra WHERE solicitud_compra = $cod_compra ORDER BY fecha_registro DESC ";
       $result = mysqli_query($conn, $sql);
   while ($productos = mysqli_fetch_array($result)){
 
@@ -199,38 +246,6 @@ $final = 0;
                 <textarea style="display: none;" name="jus" ><?php echo $datos['justificacion'] ?></textarea>
             </div>
 <?php } ?>
-      <input id="pdf" type="submit" class="btn btn-lg my-1" value="Exportar a PDF" name="pdf">
-        <style>
-          #pdf{
-          margin-left: 38%; 
-          background: rgb(175, 0, 0); 
-          color: #fff; margin-bottom: 2%; 
-          border: rgb(0, 0, 0);
-          }
-          #pdf:hover{
-          background: rgb(128, 4, 4);
-          } 
-          #pdf:active{
-          transform: translateY(5px);
-          } 
-            #cb{
-            border-radius: 15px 0px 0px 15px;
-            padding: 20px 10px;
-            background: whitesmoke;
-            }
-            #cbq{
-            border-radius: 0px 15px 15px 0px;
-            padding: 20px 10px;
-            background: whitesmoke;
-            }
-            #c{
-            padding: 20px 10px;
-            color: violet; 
-            flex-wrap: wrap-reverse;
-            text-decoration-style: dotted;
-            background: whitesmoke;
-     }
-        </style>
   </form>
   </section>';
   ?> 

@@ -73,19 +73,13 @@
 </head>
 <body>
 
-<section  style="margin:2%">
+<section class=""  style="margin:2%;">
 
-            <form action="" method="post" style="background: transparent;" >
+            <form id="form" action="" method="post"  >
            
-     <div class="container" style="background:white;border-radius:15px;">
-          
-        <div class="row">
-            <div class="col-.5 col-sm-4" style="position: initial">
-
-            </div>
-        </div>
 
 
+ 
        <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
 
    <div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-left: 1%;margin-right: 1%;margin-top: 1%; border-radius: 5px;width: 70%;">
@@ -135,13 +129,36 @@
      
 <?php  
 include '../../Model/conexion.php';
-if(isset($_POST['codigo'])){
+if(isset($_POST['codigo'])){?>
+<br>
+    <section style="background:white;margin: 0%;padding: 1%;border-radius: 15px;">
 
-    echo'
-    <br>
-    <form action="Controller/añadir_vale.php" method="post">
-        
-        <div style="position: initial">
+
+ <form style="margin: 0%;position: 0; background: transparent;" method="POST" action="Controller/añadir_vale.php">
+<p class="text-center bg-danger" style="color:white;border-radius: 5px;font-size: 1.5em;padding: 3%;">No se Encontró la información que busca, intentelo de nuevo</p>
+
+    <?php
+  for($i = 0; $i < count($_POST['codigo']); $i++){
+     $codigo = $_POST['codigo'][$i];
+    //    $sql = "SELECT * FROM tb_productos";
+    $sql = "SELECT codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE codProductos='$codigo' GROUP BY precio, codProductos";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+
+      $precio=$productos['precio'];
+       $precio1=number_format($precio, 2,".",",");
+       $cantidad=$productos['SUM(stock)'];
+
+        $stock=number_format($cantidad, 2,".",",");
+      ?>
+             <style>
+        p{
+
+            display: none;
+       }
+   </style>
+    <div class="container-fluid" style="position: initial">
             <div class="row">
               <div class="col-6.5 col-sm-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>   
@@ -152,11 +169,11 @@ if(isset($_POST['codigo'])){
                         $sql = "SELECT * FROM selects_departamento";
                         $result = mysqli_query($conn, $sql);
 
-                        while ($productos = mysqli_fetch_array($result)){ 
+                        while ($productos = mysqli_fetch_array($result)){ ?>
 
-                          echo'  <option>'.$productos['departamento'].'</option>
-                      ';   
-                     }
+                        <option><?php echo $productos['departamento']?></option>
+                         
+                     <?php }
 
 
                          ?>
@@ -168,61 +185,65 @@ if(isset($_POST['codigo'])){
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Nombre de la persona</label>
-                
-    <font color="black"><label>Encargado</label> </font>
-      <input class="form-control" type="text" name="usuario" id="como3" required  value="">
+            
+           <input class="form-control" type="text" name="usuario" id="como3" required  value="">
       <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="0">
       <br>
                
-            </select>
                 </label>   
             </div>
         </div>
-        <br>
-        <table class="table table-responsive table-striped" id="example" style=" width: 100%">
-        <thead>
-           <tr id="tr" style="text-align: left;">
+    </div>
+      <table class="table table-responsive table-striped"  style=" width: 100%">
+            <thead>
+              <tr id="tr">
+               
                 <th style="width: 10%;">Código</th>
-                <th style="width: 20%;">Descripción</th>
+                <th style="width: 50%;">Descripción</th>
                 <th style="width: 10%;">U/M</th>
                 <th style="width: 15%;">Productos Disponibles</th>
-                <th style="width: 15%;">Cantidad</th>
+                <th style="width: 50%;">Cantidad</th>
                 <th style="width: 15%;">Costo unitario</th>
-                <th>Eliminar fila</th>
-            </tr>
+               <th>Eliminar fila</th>
+               
+              </tr>
+
             <td id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>
-        </thead>
-        <tbody>
+              
+            </thead>
 
+            <tbody>
 
-           
-<?php 
+ 
 
-    for($i = 0; $i < count($_POST['codigo']); $i++){
-
-    
-    $codigo = $_POST['codigo'][$i];
-   //$sql = "SELECT * FROM tb_productos WHERE codProductos = '$codigo'";
-
-
-   $sql = "SELECT codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE codProductos = $codigo GROUP BY codProductos, precio";
+       <?php
+  for($i = 0; $i < count($_POST['codigo']); $i++){
+     $codigo = $_POST['codigo'][$i];
+    //    $sql = "SELECT * FROM tb_productos";
+    $sql = "SELECT codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE codProductos='$codigo' GROUP BY precio, codProductos";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
-       $precio=$productos['precio'];
-       $cantidad=$productos['SUM(stock)'];
-       $precio1=number_format($precio, 2,".",",");
-       $stock=number_format($cantidad,  2,".",",");
-    //   $stock=round($stock);
 
-     ?>    
-        <style type="text/css">
-        #td{
+      $precio=$productos['precio'];
+       $precio1=number_format($precio, 2,".",",");
+       $cantidad=$productos['SUM(stock)'];
+
+        $stock=number_format($cantidad, 2,".",",");
+      ?>
+               
+
+
+<style type="text/css">
+
+    #td{
         display: none;
     }
-
+   th{
+       width: 100%;
+   }
 </style>
-            <tr id="tr">
+    <tr>
                <td data-label="Codigo"><?php echo $productos['codProductos'] ?>
                 <input  type="hidden" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
                <input type="hidden" name="desc[]" value="<?php  echo $productos['descripcion']; ?>">
@@ -235,23 +256,22 @@ if(isset($_POST['codigo'])){
                </td>
                <td data-label="Productos Disponibles"><?php  echo $stock; ?></td>
                <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="decimal" class="form-control"  name="cant[]" required></td>
-               <td data-label="Precio"><?php  echo $precio1?></td> 
+               <td data-label="Precio"><?php  echo $precio1 ?></td> 
                <td><input type="button" class="borrar btn btn-success my-1" value="Eliminar" /></td>   
             </tr>
-           
-  
-        <?php }
-    }
-    
 
 
-    echo ' 
-   </tbody>
+            </tbody>
         </table>
-
-    '?>
-    
-     <input class="btn btn-lg" type="submit" value="Enviar" id="enviar">
+        <!-- <div class="form-group" style="position: all;">
+                <label>Observaciones (En qué se ocupará el bien entregado)</label>
+               <textarea rows="7"  class="form-control" name="jus"  required> </textarea><br>
+            </div> -->
+        <center><button type="submit" name="form_vale" class="btn btn-success btn-lg my-2 text-center w-25"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar</button> </center>   
+</form>
+ </section>
+<?php }}}}} ?>
+</section>
         <style>
             #enviar{
                 margin-top: 2%;
@@ -268,20 +288,9 @@ if(isset($_POST['codigo'])){
             transform: translateY(5px);
             } 
         </style>
-    </form>
-<?php } ?>
-</section>
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-            
-    <!--   Datatables-->
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>  
 
-    <!-- searchPanes   -->
-    <script src="https://cdn.datatables.net/searchpanes/1.0.1/js/dataTables.searchPanes.min.js"></script>
-    <!-- select -->
-    <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>  
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+   
     <script>
     $(document).ready(function(){
         

@@ -18,7 +18,7 @@ exit();
 }
 
 //sql
-$sql="UPDATE tb_usuarios SET username='$Nusuario', password='$Npassword' WHERE username='$usuario'" ;
+$sql="UPDATE tb_usuarios SET username='$Nusuario', password='$Npassword' WHERE username='$Nusuario'" ;
 $result = mysqli_query($conn, $sql);
 if ($result) {
 session_start();
@@ -26,15 +26,14 @@ session_destroy();
 echo '
     <script>
         alert("Cuenta Actualizada");
-        // window.location ="signin.php"; 
+        window.location ="signin.php"; 
                 </script>
                 ';
-header("Location: signin.php");
 } else {
 	echo '
     <script>
         alert("No se pudo actualizar");
-        // window.location ="../home.php"; 
+        window.location ="../home.php"; 
                 </script>
                 ';
 }

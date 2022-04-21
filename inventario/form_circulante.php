@@ -68,9 +68,7 @@ form{
         }
     
         @media (max-width: 952px){
-form{
-    margin-left: 15%;
-}
+
 .active{
     margin-top: 2%;
     font-size: 12px;
@@ -82,12 +80,7 @@ form{
 </ol>
 
 <div class="container">
-          
-        <div class="row">
-            <div class="col-.5 col-sm-4" style="position: initial">
 
-            </div>
-        </div>
 
 
        <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
@@ -119,12 +112,52 @@ form{
     </div>
 
 </form>
+       <style>
+    #w {
+            display: none;
+       }
+   </style>
   <?php  
 include 'Model/conexion.php';
 if(isset($_POST['codigo'])){ ?>
 <p class="text-center bg-danger my-4" style="color:white;border-radius: 5px;font-size: 1.5em;padding: 3%;">No se Encontró la información que busca, intentelo de nuevo</p>
 
-      <?php  for($i = 0; $i < count($_POST['codigo']); $i++){
+            <style>
+    #w {
+            display: none;
+       }
+   </style>
+  <form id="w" style="width: 100%;background: transparent; height: 100%;margin-bottom: 5%;margin-top: 5%;"action="Controller/añadir_circulante.php" method="POST">
+
+<div style="padding-top:1%;margin:1%;">
+
+<div class="row">
+      <div id="w" class="col-sm-4" style="position: initial">
+                
+  <?php 
+          
+          $sql = "SELECT * FROM tb_circulante ORDER BY fecha_solicitud DESC LIMIT 1";
+          $result = mysqli_query($conn, $sql);
+          while ($datos_sol = mysqli_fetch_array($result)){
+        
+          echo '<p style="color: red; margin-top: -8%; margin-bottom: -0.5%">Última solicitud: '; 
+          echo $datos_sol['codCirculante']; 
+          echo '</p>'; }
+          ?>
+            <label id="inp1">Solicitud N°</b></label>   
+                <input id="inp1"class="form-control" type="number" name="solicitud_no" required="">
+                  <?php     $cliente =$_SESSION['signin'];
+    $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
+    while ($consulta =mysqli_fetch_array($data)) {
+ ?>
+                <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="<?php  echo $consulta['id']?>">
+            <?php } ?>
+    </div>
+<div id="w" class="col-sm-6" style="position: initial">
+</div>
+
+
+  <?php  for($i = 0; $i < count($_POST['codigo']); $i++){
 
     
     $codigo = $_POST['codigo'][$i];
@@ -145,36 +178,10 @@ if(isset($_POST['codigo'])){ ?>
        <style>
         p{
             display: none;
+       }#w{
+            display: block;
        }
    </style>
-  <form style="width: 100%; height: 100%;margin-bottom: 5%;margin-top: 5%;"action="Controller/añadir_circulante.php" method="POST">
-
-<div style="padding-top:1%;margin:1%;">
-
-<div class="row">
-      <div class="col-.5 col-sm-4" style="position: initial">
-                
-  <?php 
-          
-          $sql = "SELECT * FROM tb_compra ORDER BY fecha_registro DESC LIMIT 1";
-          $result = mysqli_query($conn, $sql);
-          while ($datos_sol = mysqli_fetch_array($result)){
-        
-          echo '<p style="color: red; margin-top: -8%; margin-bottom: -0.5%">Última solicitud: '; 
-          echo $datos_sol['nSolicitud']; 
-          echo '</p>'; }
-          ?>
-            <label id="inp1">Solicitud N°</b></label>   
-                <input id="inp1"class="form-control" type="number" name="solicitud_no" required="">
-                <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="
-                <?php $idusuario = $_SESSION['iduser']; echo $idusuario?>">
-    </div>
-
-    
-    </div>
-</div>
-</center>
- 
   <div class="col-xs-4 "  style="background: #bfe7ed;border-radius: 5px;margin: 1%;padding:1%" >
 <div class="well well-sm" style="position: all; margin: 1%">
 
@@ -185,7 +192,7 @@ if(isset($_POST['codigo'])){ ?>
 
                   <div class="form-group" style="position: all; margin: 2%">
                     <label>Descripción de material</label>
-                    <textarea type="text" name="desc[]" class="form-control" placeholder="Descripción" required><?php echo $productos['descripcion']?></textarea>
+                    <textarea rows="5" type="text" name="desc[]" class="form-control" placeholder="Descripción" required><?php echo $productos['descripcion']?></textarea>
                   </div>
 
                      <div class="form-group" style="position: all; margin: 2%">
@@ -219,14 +226,23 @@ if(isset($_POST['codigo'])){ ?>
                 <label>Costo Unitario (Estimado)</label>
                <input  class="form-control" type="number" step="0.01" name="costo[]" placeholder="Costo unitario" value="<?php echo  $productos['precio'] ?>" required><br>
             </div>
-            </div>
+
+            
+    
+          </div>
+
     </div>
-<div class="button21">
+    <?php }}} ?>
+</div>
+</div>
+    
+<div id="w" class="button21">
              <input class="btn btn-lg my-1" type="submit" value="Enviar" id="enviar">
         </div>
+   
+
+     
         
-    <?php }}} ?> 
-        </div> 
 </form>
   <style>
             #enviar{

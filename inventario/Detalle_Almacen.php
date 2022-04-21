@@ -120,13 +120,13 @@ $final2 = 0;
           </div>
         <br><br>
           
-       <table class="table table-responsive " id="example1" style=" width: 100%;">
+       <table class="table table-responsive " id="example1" style=" width: 100%;margin: 2%;">
             
         <thead>
               <tr id="tr">
                 <th style="width: 10%;">#</th>
                 <th style="width: 10%;">Código</th>
-                <th style="width: 20%;text-align: left;">Descripción</th>
+                <th style="width: 50%;text-align: left;">Descripción</th>
                 <th style="width: 10%;">Unidad de Medida</th>
                 <th style="width: 10%;">Cantidad Solicitada</th>
                 <th style="width: 10%;">Cantidad Despachada</th>
@@ -226,7 +226,7 @@ $num_sol = $_POST['id'];
             <input readonly class="form-control"  type="text" value="' .$datos_sol['codAlmacen']. '" name="num_sol">
           </div>
 
-          <div class="col-6 col-sm-2" style="position: initial">
+          <div class="col-6 col-sm-3" style="position: initial">
               <label style="font-weight: bold;">Depto. o Servicio:</label>
               <input readonly class="form-control"  type="text" value="' .$datos_sol['departamento']. '" name="depto">
           </div>
@@ -238,7 +238,7 @@ $num_sol = $_POST['id'];
         </div>
 
           
-          <div class="col-6 col-sm-3" style="position: initial">
+          <div class="col-6 col-sm-2" style="position: initial">
             <label style="font-weight: bold;">Fecha:</label>
               <input readonly class="form-control"  type="text" value="' .date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])). '" name="fech">
           </div>
@@ -270,18 +270,59 @@ $num_sol = $_POST['id'];
               <input readonly class="form-control"  type="hidden" value="<?php echo $datos_sol['departamento']?>" name="depto">
               <input readonly class="form-control"  type="hidden" value="<?php echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])) ?>" name="fech">
 
-        <table class="table table-responsive" style="margin-bottom:3%;">
-            
+        <table class="table table-responsive m-1" style="margin-bottom:3%;width: 100%;">
+                        <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+            <form method="POST" action="Plugin/pdf_compra.php">
+                <button type="submit" class="btn btn-outline-primary" name="Fecha"><i class="bi bi-file-pdf-fill"></i></button>
+            </form>
+            <form method="POST" action="Plugin/almacen.php">
+             <input readonly class="form-control"  type="hidden" value="<?php echo $datos_sol['codAlmacen']?>" name="num_sol">
+              <input readonly class="form-control"  type="hidden" value="<?php echo $datos_sol['departamento']?>" name="depto">
+              <input readonly class="form-control"  type="hidden" value="<?php echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])) ?>" name="fech">
+<?php
+$num_almacen = $datos_sol['codAlmacen'];
+                 $sql = "SELECT * FROM detalle_almacen WHERE tb_almacen = $num_almacen";
+    $result = mysqli_query($conn, $sql);
+    $n=0;
+while ($productos = mysqli_fetch_array($result)){
+      $n++;
+        $r=$n+0;
+        $total    =    $productos['cantidad_solicitada'] * $productos['precio'];
+        $final    +=   $total;
+        $precio   =    $productos['precio'];
+        $precio1  =    number_format($precio, 2,".",",");
+        $total1   =    number_format($total, 2, ".",",");
+        $final1   =    number_format($final, 2, ".",",");
+        
+        $cant_aprobada=$productos['cantidad_solicitada'];
+        $cantidad_despachada=$productos['cantidad_despachada'];
+        $stock=number_format($cant_aprobada, 2,".");
+        $cantidad_desp=number_format($cantidad_despachada, 2,".");
+       
+        ?>
+        <input type="hidden" name="cod[]" value="<?php echo $productos['codigo'] ?>">
+            <input type="hidden" name="nombre[]" value="<?php echo $productos['nombre'] ?>">
+            <input type="hidden" name="um[]" value="<?php echo $productos['unidad_medida'] ?>">
+            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
+            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
+            <input type="hidden" name="cost[]" value="$<?php echo $precio1 ?>">
+            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
+            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" ></td>
+        <?php } ?>
+                <button type="submit" class="btn btn-outline-primary" name="pdf"><i class="bi bi-printer"></i></button>
+            </form>
+
+</div>
             <thead>
               <tr id="tr">
-                <th>#</th>
-                <th>Código</th>
-                <th style="width: 35%;text-align: left;">Descripción</th>
-                <th>Unidad de Medida</th>
-                <th>Cantidad Solicitada</th>
-                <th>Cantidad Despachada</th>
-                <th>Costo unitario</th>
-                <th>Total</th>
+                <th style="width: 10%;">#</th>
+                <th style="width: 10%;">Código</th>
+                <th style="width: 50%;text-align: left;">Descripción</th>
+                <th style="width: 10%;">Unidad de Medida</th>
+                <th style="width: 10%;">Cantidad Solicitada</th>
+                <th style="width: 10%;">Cantidad Despachada</th>
+                <th style="width: 10%;">Costo unitario</th>
+                <th style="width: 20;">Total</th>
               </tr>
                 <td id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>
            </thead>
@@ -343,7 +384,6 @@ while ($productos = mysqli_fetch_array($result)){
         </tfoot>
         </tbody>
     </table>
-    <button id="pdf" name="pdf" type="submit" class="btn btn-lg my-1">Exportar a PDF</button>
 <?php } ?>
 
 

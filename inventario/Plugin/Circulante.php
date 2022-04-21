@@ -1,10 +1,9 @@
-<?php ob_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Circulante</title>
+    <title>Imiprimir Circulante</title>
 </head>
 <body style="font-family: sans-serif;">
     <img src="../img/hospital.png" style="width:20%">
@@ -14,10 +13,8 @@
 
 
 ?>
-<h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD</h3>
-<h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
-<h4 align="center" style="margin-top: 2%;">DEPARTAMENTO DE MANTENIMIENTO</h4>
-<h3 align="center" style="margin-top: 2%;">FONDO CIRCULANTE DE MONTO FIJO</h3>
+<h3 align="center" style="margin-top: -2%;">HOSPITAL NACIONAL "SANTA TERESA" DE ZACATECOLUCA</h3>
+<h3 align="center" style="margin-top: -2%;">FONDO CIRCULANTE DE MONTO FIJO</h3>
 
 <section style="margin: 2%;">
 
@@ -103,24 +100,6 @@ for($i = 0; $i < count($_POST['desc']); $i++)
 </section>
 </body>
 </html>
-            <?php $html=ob_get_clean();
-                 // echo $html 
-require_once 'dompdf/autoload.inc.php';
-// reference the Dompdf namespace
-use Dompdf\Dompdf;
-use Dompdf\Options;
-
-// instantiate and use the dompdf class
-$dompdf = new Dompdf();
-$options = $dompdf->getOptions();
-$options->setIsHtml5ParserEnabled(true);
-$dompdf->setOptions($options);
-$dompdf->loadHtml($html);
-$dompdf->setPaper('letter');
-
-// Render the HTML as PDF
-$dompdf->render();
-
-// Output the generated PDF to Browser
-$dompdf->stream("pdf_circulante.php",array("Attachment"=>0));
-        ?>
+<script type="text/javascript">
+print('');
+</script>

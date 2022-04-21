@@ -93,7 +93,48 @@ $final = 0;
         <br>
           
         <table class="table" style="margin-bottom:3%">
-            
+            <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+            <form method="POST" action="Plugin/pdf_compra.php">
+                <button type="submit" class="btn btn-outline-primary" name="Fecha"><i class="bi bi-file-pdf-fill"></i></button>
+            </form>
+            <form method="POST" action="Plugin/almacen.php">
+             <input readonly class="form-control"  type="hidden" value="<?php echo $datos_sol['codAlmacen']?>" name="num_sol">
+              <input readonly class="form-control"  type="hidden" value="<?php echo $datos_sol['departamento']?>" name="depto">
+              <input readonly class="form-control"  type="hidden" value="<?php echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])) ?>" name="fech">
+<?php
+$num_almacen = $datos_sol['codAlmacen'];
+                 $sql = "SELECT * FROM detalle_almacen WHERE tb_almacen = $num_almacen";
+    $result = mysqli_query($conn, $sql);
+    $n=0;
+while ($productos = mysqli_fetch_array($result)){
+      $n++;
+        $r=$n+0;
+        $total    =    $productos['cantidad_solicitada'] * $productos['precio'];
+        $final    +=   $total;
+        $precio   =    $productos['precio'];
+        $precio1  =    number_format($precio, 2,".",",");
+        $total1   =    number_format($total, 2, ".",",");
+        $final1   =    number_format($final, 2, ".",",");
+        
+        $cant_aprobada=$productos['cantidad_solicitada'];
+        $cantidad_despachada=$productos['cantidad_despachada'];
+        $stock=number_format($cant_aprobada, 2,".");
+        $cantidad_desp=number_format($cantidad_despachada, 2,".");
+       
+        ?>
+        <input type="hidden" name="cod[]" value="<?php echo $productos['codigo'] ?>">
+            <input type="hidden" name="nombre[]" value="<?php echo $productos['nombre'] ?>">
+            <input type="hidden" name="um[]" value="<?php echo $productos['unidad_medida'] ?>">
+            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
+            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
+            <input type="hidden" name="cost[]" value="$<?php echo $precio1 ?>">
+            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
+            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" ></td>
+        <?php } ?>
+                <button type="submit" class="btn btn-outline-primary" name="pdf"><i class="bi bi-printer"></i></button>
+            </form>
+
+</div>
             <thead>
               <tr id="tr">
                 <th style="width: 25%;">Código</th>
@@ -159,22 +200,7 @@ while ($productos = mysqli_fetch_array($result)){
         </tfoot>
         </tbody>
     </table>
-    <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
-      <style>
-        #pdf{
-        margin-left: 38%; 
-        margin-top: 1%;
-        background: rgb(175, 0, 0); 
-        color: #fff; margin-bottom: 2%; 
-        border: rgb(0, 0, 0);
-        }
-        #pdf:hover{
-        background: rgb(128, 4, 4);
-        } 
-        #pdf:active{
-        transform: translateY(5px);
-        } 
-      </style>
+
 </form>
 </section>
       ';

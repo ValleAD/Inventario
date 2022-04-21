@@ -87,16 +87,73 @@ die();
         <input class="btn btn-lg" type="submit" value="Consultar" id="enviar">
     </div>
 </form>
-
+       <style>
+    #w {
+            display: none;
+       }
+   </style>
   <?php  
 include 'Model/conexion.php';
 if(isset($_POST['codigo'])){ ?>
            
     <p class="text-center bg-danger my-4" style="color:white;border-radius: 5px;font-size: 1.5em;padding: 3%;">No se Encontró la información que busca, intentelo de nuevo</p>
 
-  <form style="width: 100%; height: 100%;margin-top: 5%;background: transparent;"action="Controller/añadir_compra.php" method="POST">
+  <form id="w" style="width: 100%; height: 100%;margin-top: 5%;background: transparent;"action="Controller/añadir_compra.php" method="POST">
 
-      <?php  for($i = 0; $i < count($_POST['codigo']); $i++){
+   
+<div style="padding-top:1%;margin: 1%; ">
+
+<div class="row">
+      <div id="w" class="col-5 col-sm-4" style="position: initial">
+                
+         <?php 
+          
+          $sql = "SELECT * FROM tb_compra ORDER BY fecha_registro DESC LIMIT 1";
+          $result = mysqli_query($conn, $sql);
+          while ($datos_sol = mysqli_fetch_array($result)){?>
+        
+        <p style="color: red; margin-top: -8%; margin-bottom: -0.5%">Última solicitud: 
+         <?php echo $datos_sol['nSolicitud']; ?>
+        </p><br>
+      <?php } ?>
+         
+          <label id="inp1">Solicitud N°</b></label>   
+          <input id="inp1"class="form-control" type="number" name="nsolicitud" required> 
+    </div>
+
+    <div id="w" class="col-6.5 col-sm-4" style="position: initial"><br>
+    <font color="black"><label>Dependencia que Solicita</label></font>   
+    <input type="text"  class="form-control" name="dependencia" id="um" required style="color: black;" value="Mantenimiento" readonly>
+                     
+    </div>
+    <div id="w" class="col-6.5 col-sm-4" style="position: initial"><br>
+    <font color="black"><label>Plazo y Numero de Entregas</label></font> 
+      <input  style=" color: black;" class="form-control" type="text" name="plazo" id="como3" required>
+      <br>
+    </div>
+    <div id="w" class="col-6.5 col-sm-4" style="position: initial">
+    <font color="black"><label>Unidad Tecnica</label> </font>
+      <input style=" color: black;"  class="form-control" type="text" name="unidad_tecnica" id="como3" required>
+      <br>
+    </div>
+    <div id="w" class="col-6.5 col-sm-4" style="position: initial">
+    <font color="black"><label>Suministros Solicita</label>  </font>
+      <input style=" color: black;"  class="form-control" type="text" name="descripcion_solicitud" id="como3" required>
+      <br>
+  </div>
+  <div id="w" class="col-6.5 col-sm-4" style="position: initial">
+  <?php     $cliente =$_SESSION['signin'];
+    $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
+    while ($consulta =mysqli_fetch_array($data)) {
+ ?>
+    <font color="black"><label>Encargado</label> </font>
+      <input style="cursor: not-allowed; color: black;"  class="form-control" type="text" name="usuario" id="como3" required readonly value="<?php  echo $consulta['firstname']?> <?php  echo $consulta['lastname']?>">
+      <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="<?php  echo $consulta['id']?>">
+      <br>
+      <?php }?>
+    </div>
+    
+   <?php  for($i = 0; $i < count($_POST['codigo']); $i++){
 
     
     $codigo = $_POST['codigo'][$i];
@@ -114,61 +171,10 @@ if(isset($_POST['codigo'])){ ?>
        <style>
     p{
             display: none;
+       }#w{
+            display: block;
        }
    </style>
-<div style="padding-top:1%;margin: 1%; ">
-
-<div class="row">
-      <div class="col-5 col-sm-4" style="position: initial">
-                
-         <?php 
-          
-          $sql = "SELECT * FROM tb_compra ORDER BY fecha_registro DESC LIMIT 1";
-          $result = mysqli_query($conn, $sql);
-          while ($datos_sol = mysqli_fetch_array($result)){?>
-        
-        <p style="color: red; margin-top: -8%; margin-bottom: -0.5%">Última solicitud: 
-         <?php echo $datos_sol['nSolicitud']; ?>
-        </p><br>
-      <?php } ?>
-         
-          <label id="inp1">Solicitud N°</b></label>   
-          <input id="inp1"class="form-control" type="number" name="nsolicitud" required> 
-    </div>
-
-    <div class="col-6.5 col-sm-4" style="position: initial"><br>
-    <font color="black"><label>Dependencia que Solicita</label></font>   
-    <input type="text"  class="form-control" name="dependencia" id="um" required style="color: black;" value="Mantenimiento" readonly>
-                     
-    </div>
-    <div class="col-6.5 col-sm-4" style="position: initial"><br>
-    <font color="black"><label>Plazo y Numero de Entregas</label></font> 
-      <input  style=" color: black;" class="form-control" type="text" name="plazo" id="como3" required>
-      <br>
-    </div>
-    <div class="col-6.5 col-sm-4" style="position: initial">
-    <font color="black"><label>Unidad Tecnica</label> </font>
-      <input style=" color: black;"  class="form-control" type="text" name="unidad_tecnica" id="como3" required>
-      <br>
-    </div>
-    <div class="col-6.5 col-sm-4" style="position: initial">
-    <font color="black"><label>Suministros Solicita</label>  </font>
-      <input style=" color: black;"  class="form-control" type="text" name="descripcion_solicitud" id="como3" required>
-      <br>
-  </div>
-  <div class="col-6.5 col-sm-4" style="position: initial">
-  <?php     $cliente =$_SESSION['signin'];
-    $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
-    while ($consulta =mysqli_fetch_array($data)) {
- ?>
-    <font color="black"><label>Encargado</label> </font>
-      <input style="cursor: not-allowed; color: black;"  class="form-control" type="text" name="usuario" id="como3" required readonly value="<?php  echo $consulta['firstname']?> <?php  echo $consulta['lastname']?>">
-      <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="<?php  echo $consulta['id']?>">
-      <br>
-      <?php }?>
-    </div>
-    
-
  
 
   <div class="col-xs-4 "  style="background: #bfe7ed;border-radius: 5px;margin: 1%;padding:1%" >
@@ -240,18 +246,18 @@ if(isset($_POST['codigo'])){ ?>
             
             </div>
     </div>
-
+<?php }}} ?>
 <br>
  
-</div>
-<div class="form-group" style="position: all;">
+</div> 
+<div id="w" class="form-group" style="position: all;">
                 <label>Justificación por el OBS solicitado</label>
                <textarea rows="7"  class="form-control" name="jus"  required> </textarea><br>
             </div>
-<div class="button21">
+<div id="w" class="button21">
              <input class="btn btn-lg" type="submit" value="Enviar" id="enviar">
         </div>
-        <?php }}} ?>
+       
   <style>
             #enviar{
                 margin-bottom: 5%;

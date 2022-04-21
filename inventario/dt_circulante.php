@@ -81,7 +81,44 @@ $final = 0;
         <br>
           
         <table class="table" style="margin-bottom:3%">
-            
+             <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+            <form method="POST" action="Plugin/pdf_circulante.php">
+                <button type="submit" class="btn btn-outline-primary" name="Fecha"><i class="bi bi-file-pdf-fill"></i></button>
+            </form>
+            <form method="POST" action="Plugin/Circulante.php">
+                               <?php 
+$num_circulante = $datos_sol['codCirculante'];
+
+ $sql = "SELECT * FROM detalle_circulante WHERE tb_circulante = $num_circulante";
+    $result = mysqli_query($conn, $sql);
+    $n=0;
+while ($productos = mysqli_fetch_array($result)){
+      $n++;
+        $r=$n+0;
+        $total    =    $productos['stock'] * $productos['precio'];
+        $final    +=   $total;
+        $precio   =    $productos['precio'];
+        $codigo   =    $productos['codigo'];
+        $precio2  =    number_format($precio, 2,".",",");
+        $total2   =    number_format($total, 2, ".",",");
+        $final2   =    number_format($final, 2, ".",",");
+        $cant_aprobada=$productos['stock'];
+        $cantidad_despachada=$productos['cantidad_despachada'];
+        $stock=number_format($cant_aprobada, 2,".",",");
+        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");?>
+        <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
+            <input type="hidden" name="desc[]" value="<?php echo $productos['descripcion'] ?>">
+            <input type="hidden" name="um[]" value="<?php echo $productos['unidad_medida']?>">
+            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
+            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
+            <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
+            <input type="hidden" name="tot[]" value="$<?php echo $total2 ?>">
+            <input type="hidden" name="tot_f" value="$<?php echo $final2 ?>" >
+            <?php } ?>
+                <button type="submit" class="btn btn-outline-primary" name="pdf"><i class="bi bi-printer"></i></button>
+            </form>
+
+</div>
             <thead>
               <tr id="tr">
                 <th>Codigo</th>
@@ -140,30 +177,14 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Total"><?php echo $total2 ?></td>
       </tr>
 <?php } ?>
-      <th colspan="5"></th>
-      <th >SubTotal</th>
-      <td style="color: red; font-weight: bold;" ><?php echo $final2 ?></td></tr>
-  
+             <tfoot>
+          <th colspan="5"></th>
+            <th >SubTotal</th>
+            <td style=" color: red; font-weight: bold;" data-label="Subtotal"><?php echo $final2?></td>
+        </tfoot>
          </tbody>
         </table>
-  
-    
-  
-    <input id="pdf" type="submit" class="btn btn-lg my-1" value="Exportar a PDF" name="pdf">
-      <style>
-        #pdf{
-        margin-left: 38%; 
-        background: rgb(175, 0, 0); 
-        color: #fff; margin-bottom: 2%; 
-        border: rgb(0, 0, 0);
-        }
-        #pdf:hover{
-        background: rgb(128, 4, 4);
-        } 
-        #pdf:active{
-        transform: translateY(5px);
-        } 
-      </style>
+
 </form>
 </section>
       ';

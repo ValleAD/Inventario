@@ -7,7 +7,8 @@ session_start();
 error_reporting(0);
 
 if (isset($_SESSION['signin'])) {
-    header("Location: Inventario/inventario/log/signin.php");
+}else{
+	header("window.location: signin.php");
 }
 if (isset($_POST['submit'])) {
 	$username = $_POST['username'];
@@ -43,7 +44,7 @@ if (isset($_POST['submit'])) {
 	}
 
 }else {
-	header("window.location: Inventario/inventario/log/signin.php");
+	header("window.location: signin.php");
 }
 
 ?>

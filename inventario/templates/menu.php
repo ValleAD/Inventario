@@ -2,7 +2,7 @@
 <?php
 include("Model/conexion.php");
 if(!isset($_SESSION['signin'])){
-    header("location: ../log/signin.php");
+    header("location: log/signin.php");
 }
 $tipo_usuario = $_SESSION['tipo_usuario'];
 ?><!DOCTYPE html>
@@ -218,7 +218,7 @@ $u='Cliente';
                         <label style="color:white;">Usuario Actual</label>
                         <b><p style="stroke: white;"><?php echo $consulta['username'] ?></p></b>
                         <label>Nuevo Usuario</label>
-                        <input class="form-control"  required type="text" name="Nusuario">
+                        <input pattern="[A-Za-z_-" class="form-control"  required type="text" name="Nusuario">
                     
                         <label>Nueva Contraseña</label>
                         <input class="form-control" required  type="text" name="Npassword">
