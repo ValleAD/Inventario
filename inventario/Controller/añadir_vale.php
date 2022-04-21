@@ -7,10 +7,10 @@ include ('../Model/conexion.php');
     $odt = $_POST['numero_vale'];
     $usuario = $_POST['usuario'];
     $idusuario = $_POST['idusuario'];
-
+    $jus = $_POST['jus'];
 
     //crud para guardar los productos en la tabla tb_vale
-    $sql = "INSERT INTO tb_vale (codVale, departamento,usuario,idusuario,campo,estado) VALUES ('$odt', '$departamento','$usuario','$idusuario','Solicitud Vale','Pendiente')";
+    $sql = "INSERT INTO tb_vale (codVale, departamento,usuario,idusuario,campo,estado,observaciones) VALUES ('$odt', '$departamento','$usuario','$idusuario','Solicitud Vale','Pendiente','$jus')";
     $result = mysqli_query($conn, $sql); 
       
         

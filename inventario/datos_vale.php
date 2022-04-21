@@ -164,7 +164,7 @@ while ($productos = mysqli_fetch_array($result)){
         </tfoot>
         </tbody>
     </table>
-<!--      <?php  $sql = "SELECT * FROM tb_vale ORDER BY fecha_registro DESC LIMIT 1";
+      <?php  $sql = "SELECT * FROM tb_vale Where codVale ORDER BY fecha_registro DESC LIMIT 1";
     $result = mysqli_query($conn, $sql);
  while ($datos = mysqli_fetch_array($result)){ ?>
     <div class="form-group" style="position: all;border: 1px solid #ccc;border-collapse: collapse;">
@@ -172,7 +172,7 @@ while ($productos = mysqli_fetch_array($result)){
                 <hr style=" border: 1px solid #ccc;border-collapse: collapse;">
                 <p style="padding-left: 1%;"><?php echo $datos['observaciones'] ?></p>
                 <textarea style="display: none;" name="jus" ><?php echo $datos['observaciones'] ?></textarea>
-            </div> -->
+            </div> 
 <?php } ?>
     <input id="pdf" type="submit" class="btn btn-lg" value="Exportar a PDF" name="pdf">
       <style>

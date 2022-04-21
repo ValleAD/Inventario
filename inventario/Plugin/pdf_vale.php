@@ -24,7 +24,7 @@ include ('../Model/conexion.php') ?>
       }
 ?>
 <h3>HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
-<p style="float: right; margin-right: 15%; position: absolute;">Vale No.: <?php echo $vale ?></p>
+<p style="float: right; margin-right: 5%; position: absolute;">Vale No.: <?php echo $vale ?></p>
 <h4>DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h5 align="center">SOLICITUD DE MATERIALES</h5>
  
@@ -32,7 +32,7 @@ include ('../Model/conexion.php') ?>
               
     <p><b>Depto. o Servicio:</b> <?php echo $depto ?></p>
 
-    <p style="float: right; margin-right: 35%;"><b>Fecha:</b> <?php echo $fech ?></p>
+    <p style="float: right; margin-right: 0%;"><b>Fecha:</b> <?php echo $fech ?></p>
         
     <p><b>Encargado:</b> <?php echo $encargado ?></p>
 
@@ -44,7 +44,7 @@ include ('../Model/conexion.php') ?>
             <th style="width: 15%;color:black;font-size: 16px;text-align: center;">U/M</th>
             <th style="width: 15%;color:black;font-size: 14px;text-align: center;">Cantidad Solicitada</th>
             <th style="width: 30%;color:black;font-size: 14px;text-align: center;">Cantidad Despachada</th>
-            <th style="width: 30%;color:black;font-size: 16px;text-align: center;">C/U</th>
+            <th style="width: 30%;color:black;font-size: 16px;text-align: center;">Precio Unitario</th>
             <th style="width: 15%;color:black;font-size: 16px;text-align: center;border-right:1px solid #ccc ;">Total</th>
         </tr>
     </thead> 
