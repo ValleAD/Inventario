@@ -15,56 +15,7 @@ die();
 ?>
 <?php include ('templates/menu.php')?>
 <!DOCTYPE html>
-<!--Es para la version de mobile-->
-<style type="text/css">
-   
-    @media (min-width: 1080px){
-         #section{
-        margin-top: 5%;
-        margin-left: 15%;
-        width: 70%;
 
-       }
-
-    }
-
-      @media (max-width: 952px){
-    #section{
-        margin-top: 5%;
-        margin-left: 12%;
-        width: 75%;
-       }
-    #lab{
-        margin-left: 5%;
-
-    }
-    .w{
-        margin-top: 5%;
-    }
-    #inp{
-            margin-left: 10%;
-    }  #inp1{
-         margin-top: 2%;
-          margin-left: 5%;
-    }  #buscar{
-         margin-top: 2%;
-          margin-left: 25%;
-          margin-bottom: 25%;
-    }
-    #btn{
-        margin-top: 5%;
-        margin-left: 35%;
-        margin-bottom: 15%;
-    }
-    #buscar{
-        margin-top: 5%;
-        margin-left: 35%;
-        margin-bottom: 15%;
-        background: whitesmoke;
-    }
-
-      }
-</style>
 
 <html lang="es">
 <head>
@@ -88,41 +39,31 @@ die();
 </head>
 <body>
 
-<section class=""  style="margin:2%;">
-
-            <form id="form" action="" method="post"  >
-           
-
-
- 
-       <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
-
-   <div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-left: 1%;margin-right: 1%;margin-top: 1%; border-radius: 5px;width: 70%;">
-    <div class="col-xs-4 "  style="background: #bfe7ed;margin-left: 1;margin-right: 1%;margin-top: 1%;border-radius: 5px;width: 100%;" >
-
-        <div class="well well-sm" style="position: all; margin: 1%">
-
-            <div style="position: all; margin: 1%;">
-                        <label>Código del Producto</label> 
-                      <input  class="form-control" required type="number" name="codigo[]"  style="width: 100%;" placeholder="Ingrese el código del Producto">
-                  </div>   
+<section style="margin:2%;">
+    <form id="form" method="post" style="width: auto;">
+        <div class="container" style="background:white;border-radius:15px;">
+            <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
+                <div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-left: 1%;margin-right: 1%;margin-top: 1%; border-radius: 10px;width: 70%;">
+                    <div class="col-xs-4 "  style="background: #bfe7ed;margin-left: 1;margin-right: 1%;margin-top: 1%;border-radius: 5px;width: 100%;" >
+                        <div class="well well-sm" style="position: all; margin: 1%">
+                            <div style="position: all; margin: 1%;">
+                                <label>Código del Producto</label> 
+                                <input  class="form-control" required type="number" name="codigo[]"  style="width: 100%;" placeholder="Ingrese el código del Producto">
+                            </div>   
+                        </div>
+                    </div>            
+                </div>
+                        <div class="col-xs-4">
+                            <div class="well" style="position: all; margin:5%">
+                                <button id="btn-agregar" class="btn btn-block btn-default bg-success" type="button" style="color: white;">Agregar Nueva Casilla</button>                
+                            </div>
+                        </div>
+            </div>
+                <hr/>
+                    <div class="button21">
+                        <input class="btn btn-lg" type="submit" value="Consultar" id="buscar">
+                    </div>
         </div>
-    </div>            
-</div>
-
-<div class="col-xs-4">
-    <div class="well" style="position: all; margin:5%">
-      <button id="btn-agregar" class="btn btn-block btn-default bg-success" type="button" style="color: white;">Agregar Nueva Casilla</button>                
-    </div>
-</div>
-    </div>
-    
-    <hr/>
-    
-    <div class="button21">
-        <input class="btn btn-lg" type="submit" value="Consultar" id="buscar">
-    </div>
-</div>
 </form>
         <style>
             #buscar{
@@ -284,10 +225,10 @@ if(isset($_POST['codigo'])){?>
 
             </tbody>
         </table>
-        <!-- <div class="form-group" style="position: all;">
+        <div class="form-group" style="position: all;">
                 <label>Observaciones (En qué se ocupará el bien entregado)</label>
                <textarea rows="7"  class="form-control" name="jus"  required> </textarea><br>
-            </div> -->
+            </div> 
         <center><button type="submit" name="form_vale" class="btn btn-success btn-lg my-2 text-center w-25"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar</button> </center>   
 </form>
  </section>

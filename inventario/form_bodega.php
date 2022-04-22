@@ -89,40 +89,31 @@ die();
 <body>
 
 <section  style="margin:2%">
-
-            <form id="form" action="form_bodega.php" method="post" >
-          
-
-
-       <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
-
-   <div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-left: 1%;margin-right: 1%;margin-top: 1%; border-radius: 5px;width: 70%;">
-    <div class="col-xs-4 "  style="background: #bfe7ed;margin-left: 1;margin-right: 1%;margin-top: 1%;border-radius: 5px;width: 100%;" >
-
-        <div class="well well-sm" style="position: all; margin: 1%">
-
-            <div style="position: all; margin: 1%;">
-                        <label>Código del Producto</label> 
-                      <input  class="form-control" required type="number" name="codigo[]"  style="width: 100%;" placeholder="Ingrese el código del Producto">
-                  </div>   
+    <form id="form" action="form_bodega.php" method="post" style="width: auto;">
+    <div class="container" style="background:white;border-radius:15px;">
+        <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
+            <div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-left: 1%;margin-right: 1%;margin-top: 1%; border-radius: 10px;width: 70%;">
+                <div class="col-xs-4 "  style="background: #bfe7ed;margin-left: 1;margin-right: 1%;margin-top: 1%;border-radius: 5px;width: 100%;" >
+                    <div class="well well-sm" style="position: all; margin: 1%">
+                        <div style="position: all; margin: 1%;">
+                            <label>Código del Producto</label> 
+                                <input  class="form-control" required type="number" name="codigo[]"  style="width: 100%;" placeholder="Ingrese el código del Producto">
+                        </div>   
+                    </div>
+                </div>            
+            </div>
+                <div class="col-xs-4">
+                    <div class="well" style="position: all; margin:5%">
+                        <button id="btn-agregar" class="btn btn-block btn-default bg-success" type="button" style="color: white;">Agregar Nueva Casilla</button>                
+                    </div>
+                </div>
         </div>
-    </div>            
-</div>
-
-<div class="col-xs-4">
-    <div class="well" style="position: all; margin:5%">
-      <button id="btn-agregar" class="btn btn-block btn-default bg-success" type="button" style="color: white;">Agregar Nueva Casilla</button>                
+            <hr/>
+            <div class="button21">
+                <input class="btn btn-lg" type="submit" value="Consultar" id="buscar">
+            </div>
     </div>
-</div>
-    </div>
-    
-    <hr/>
-    
-    <div class="button21">
-        <input class="btn btn-lg" type="submit" value="Consultar" id="buscar">
-    </div>
-
-</form>
+    </form>
         <style>
             #buscar{
             margin-bottom: 5%;
