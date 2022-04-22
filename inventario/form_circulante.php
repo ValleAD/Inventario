@@ -99,7 +99,7 @@ form{
 </div>
 
 <div class="col-xs-4">
-    <div class="well" style="position: all; margin:5%">
+    <div class="well my-4" style="position: all; margin:5%">
       <button id="btn-agregar" class="btn btn-block btn-default bg-success" type="button" style="color: white;">Agregar Nueva Casilla</button>                
     </div>
 </div>

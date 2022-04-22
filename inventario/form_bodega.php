@@ -88,32 +88,39 @@ die();
 </head>
 <body>
 
-<section  style="margin:2%">
-    <form id="form" action="form_bodega.php" method="post" style="width: auto;">
-    <div class="container" style="background:white;border-radius:15px;">
-        <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
-            <div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-left: 1%;margin-right: 1%;margin-top: 1%; border-radius: 10px;width: 70%;">
-                <div class="col-xs-4 "  style="background: #bfe7ed;margin-left: 1;margin-right: 1%;margin-top: 1%;border-radius: 5px;width: 100%;" >
-                    <div class="well well-sm" style="position: all; margin: 1%">
-                        <div style="position: all; margin: 1%;">
-                            <label>Código del Producto</label> 
-                                <input  class="form-control" required type="number" name="codigo[]"  style="width: 100%;" placeholder="Ingrese el código del Producto">
-                        </div>   
-                    </div>
-                </div>            
-            </div>
-                <div class="col-xs-4">
-                    <div class="well" style="position: all; margin:5%">
-                        <button id="btn-agregar" class="btn btn-block btn-default bg-success" type="button" style="color: white;">Agregar Nueva Casilla</button>                
-                    </div>
-                </div>
+  <form style="width: 73%; height: 100%;margin: auto;padding: 1%; margin-bottom: 2%;" action="" method="POST">
+
+
+<div class="container" >
+ 
+       <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
+
+    <div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-left: 1%;margin-right: 1%;margin-top: 1%; border-radius: 5px;width: 70%;">
+    <div class="col-xs-4 "  style="background: #bfe7ed;margin-left: 1;margin-right: 1%;margin-top: 1%;border-radius: 5px;width: 100%;" >
+
+        <div class="well well-sm" style="position: all; margin: 1%">
+
+            <div style="position: all; margin: 1%;">
+                        <label>Código del Producto</label> 
+                      <input  class="form-control" required type="number" name="codigo[]"  style="width: 100%;" placeholder="Ingrese el código del Producto">
+                  </div>   
         </div>
-            <hr/>
-            <div class="button21">
-                <input class="btn btn-lg" type="submit" value="Consultar" id="buscar">
-            </div>
+    </div>            
+</div>
+
+<div class="col-xs-4">
+    <div class="well my-4" style="position: all; margin:5%">
+      <button id="btn-agregar" class="btn btn-block  bg-success" type="button" style="color: white;">Agregar Nueva Casilla</button>                
     </div>
-    </form>
+</div>
+    </div>
+    
+    <hr/>
+    
+    <div class="button21">
+        <input class="btn btn-lg" type="submit" value="Consultar" id="buscar">
+    </div>
+</form>
         <style>
             #buscar{
             margin-bottom: 5%;
@@ -196,7 +203,6 @@ if(isset($_POST['codigo'])){?>
     $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
     while ($consulta =mysqli_fetch_array($data)) {
  ?>
-    <font color="black"><label>Encargado</label> </font>
       <input style="cursor: not-allowed; color: black;"  class="form-control" type="text" name="usuario" id="como3" required readonly value="<?php  echo $consulta['firstname']?> <?php  echo $consulta['lastname']?>">
       <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="<?php  echo $consulta['id']?>">
       <br>
@@ -300,7 +306,7 @@ if(isset($_POST['codigo'])){?>
         </style>
     </form>
 <?php } ?>
-</section>
+</div>
  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
