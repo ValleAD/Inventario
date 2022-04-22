@@ -47,7 +47,7 @@
                 <th style="width: 15%;color:black;font-size: 16px;text-align: center;">U/M</th>
                 <th style="width: 15%;color:black;font-size: 14px;text-align: center;">Cantidad Solicitada</th>
                 <th style="width: 30%;color:black;font-size: 14px;text-align: center;">Cantidad Despachada</th>
-                <th style="width: 30%;color:black;font-size: 16px;text-align: center;">C/U</th>
+                <th style="width: 30%;color:black;font-size: 16px;text-align: center;">Precio Unitario</th>
                 <th style="width: 15%;color:black;font-size: 16px;text-align: center;border-right:1px solid #ccc ;">Total</th>
             </tr>
         </thead> 

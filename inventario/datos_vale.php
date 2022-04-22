@@ -238,6 +238,27 @@ while ($productos = mysqli_fetch_array($result)){
         </tfoot>
         </tbody>
     </table>
+         <?php 
+
+                       
+        $sql = "SELECT * FROM tb_vale WHERE codVale='$num_vale'  ORDER BY observaciones ASC LIMIT 1";
+    $result = mysqli_query($conn, $sql);
+ while ($datos = mysqli_fetch_array($result)){
+ if ($datos['observaciones']=="") {
+    $jus = "Sin observacion por el momento";
+        
+    }else{
+    $jus = $datos['observaciones'];
+      }
+  ?>
+    <div class="form-group" style="position: all;border: 1px solid #ccc;border-collapse: collapse;">
+                <p style="padding-left: 1%;">Observaciones (En qué se ocupará el bien entregado)</p>
+                <hr style=" border: 1px solid #ccc;border-collapse: collapse;">
+                <p style="padding-left: 1%;"><?php echo $jus ?></p>
+                <textarea style="display: none;" name="jus" ><?php echo $datos['observaciones'] ?></textarea>
+            </div>
+<?php } ?>
+
 </form>
 </section>
 ?>            

@@ -46,9 +46,9 @@ $final = 0;
 $total1 = 0;
 $final1 = 0;
 $cod_compra = $_POST['id'];
-
+$tipo_usuario = $_SESSION['iduser'];
    include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_compra WHERE nSolicitud = $cod_compra";
+    $sql = "SELECT * FROM tb_compra WHERE nSolicitud = '$cod_compra'";
     $result = mysqli_query($conn, $sql);
  while ($productos1 = mysqli_fetch_array($result)){ ?>
 
