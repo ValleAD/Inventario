@@ -251,12 +251,12 @@ if (isset($_POST['Fecha'])){
                     }
                 </style>
                 <div  class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form id="w" method="POST" action="Plugin/Fechas.php">
+            <form id="w" method="POST" action="Plugin/Fechas.php" target="_blank"> 
                 <input type="hidden" name="f1" value="<?php echo $f1 ?>">
                 <input type="hidden" name="f2" value="<?php echo $f2 ?>">
                 <button type="submit" class="btn btn-outline-primary" name="Fecha"><i class="bi bi-printer"></i></button>
             </form>
-            <form id="w" method="POST" action="Plugin/pdf_fecha.php">
+            <form id="w" method="POST" action="Plugin/pdf_fecha.php" target="_blank">
                 <input type="hidden" name="f1" value="<?php echo $f1 ?>">
                 <input type="hidden" name="f2" value="<?php echo $f2 ?>">
                 <button type="submit" class="btn btn-outline-primary" name="pdf"><i class="bi bi-file-pdf-fill"></i></button>
@@ -331,11 +331,11 @@ $categoria=$_POST['cat'];?>
                     }
                 </style>
                 <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form id="w" method="POST" action="Plugin/categorias.php">
+            <form id="w" method="POST" action="Plugin/categorias.php" target="_blank">
 <input type="hidden" name="categoria" value="<?php echo $categoria ?>">
                 <button type="submit" class="btn btn-outline-primary" name="Fecha"><i class="bi bi-printer"></i></button>
             </form>
-            <form id="w" method="POST" action="Plugin/pdf_categoria.php">
+            <form id="w" method="POST" action="Plugin/pdf_categoria.php" target="_blank">
 <input type="hidden" name="categoria" value="<?php echo $categoria ?>">
 <input type="hidden" name="categoria[]" value="<?php echo $categoria?>">
                 <button type="submit" class="btn btn-outline-primary" name="pdf"><i class="bi bi-file-pdf-fill"></i></button>
@@ -405,13 +405,13 @@ $categoria=$_POST['cat'];?>
         
            <a href="unidad_medidad.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a><br>
                  <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form method="POST" action="Plugin/productos.php">
+            <form method="POST" action="Plugin/productos.php" target="_blank">
                 
                 <button type="submit" class="btn btn-outline-primary" name="Fecha"><i class="bi bi-printer"></i></button>
             </form>
-            <form method="POST" action="Plugin/pdf_productos.php">
+            <form method="POST" action="Plugin/pdf_productos.php" target="_blank">
                
-                <button type="submit" class="btn btn-outline-primary" name="pdf"><i class="bi bi-file-pdf-fill"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank"><i class="bi bi-file-pdf-fill"></i></button>
             </form>
     </div>
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">

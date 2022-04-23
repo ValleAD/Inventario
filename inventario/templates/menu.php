@@ -72,8 +72,6 @@ background:burlywood;
                     <?php } ?>
                         <li><a id="b" href="reporte_ingresos.php">Reporte Ingresos</a></li>
                         <li><a id="b" href="reporte_egresos.php">Reporte Egresos</a></li>
-                        <li><a id="b" href="reporte_productos.php?productos">Reporte Productos</a></li>
-                        <li><a id="b" href="reporte_general.php?productos">Reporte General</a></li>
 
                     </ul>
                 </li>
