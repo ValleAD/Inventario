@@ -56,7 +56,7 @@ $result = mysqli_query($conn, $sql);
 
 
 <form action="Controller/Actualizar.php" method="post">
-    <div class="container py-2" style="background: rgba(0, 255, 255, 1); border-radius: 9px; color:#000; font-weight: bold;">
+    <div class="container py-2" style="background: rgba(255, 255, 255, 0.9); border-radius: 9px; color:#000; font-weight: bold;">
   <h3 align="center">Actualizar Producto</h3>
         <div class="row">
             <div class="col-6" style="position: initial; ">
