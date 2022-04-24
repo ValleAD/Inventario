@@ -307,8 +307,9 @@ if (isset($_POST['Fecha'])){
             <input type="text" name="busqueda" class="form-control" style="width: 30%;" id="busqueda" placeholder="Buscar...">
         </section>
 
-        <section id="tabla_resultado">
+        <section id="tabla_resultado" style="position: initial">
         <!-- AQUI SE DESPLEGARA NUESTRA TABLA DE CONSULTA -->
+
         </section>        
         </div>
         <form method="POST" action="vistaProductos.php" class=" my-3 mx-3">  
@@ -443,13 +444,13 @@ function confirmaion(e) {
 <script>
     $(obtener_registros());
 
-function obtener_registros(alumnos)
+function obtener_registros(consulta)
 {
     $.ajax({
         url : 'Buscador_ajax/consulta.php',
         type : 'POST',
         dataType : 'html',
-        data : { alumnos: alumnos },
+        data : { consulta: consulta },
         })
 
     .done(function(resultado){

@@ -42,7 +42,7 @@ include ('../Model/conexion.php');
     <tbody>
   <?php
 
-  $q=$_POST['alumnos']; 
+  $q=$_POST['consulta']; 
    $sql = "SELECT * FROM `tb_productos`  WHERE codProductos LIKE '%".$q."%' OR descripcion LIKE '%".$q."%' OR categoria LIKE '%".$q."%' OR catalogo LIKE '%".$q."%' ";
         $result = mysqli_query($conn, $sql);
         

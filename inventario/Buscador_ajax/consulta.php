@@ -29,9 +29,9 @@ $tabla="";
 $query="SELECT * FROM tb_productos ORDER BY codProductos";
 
 ///////// LO QUE OCURRE AL TECLEAR SOBRE EL INPUT DE BUSQUEDA ////////////
-if(isset($_POST['alumnos']))
+if(isset($_POST['consulta']))
 {
-	$q=$conn->real_escape_string($_POST['alumnos']);
+	$q=$conn->real_escape_string($_POST['consulta']);
 	$query="SELECT * FROM tb_productos WHERE 
 		codProductos LIKE '%".$q."%' OR
 		descripcion LIKE '%".$q."%' OR
@@ -45,9 +45,9 @@ if(isset($_POST['alumnos']))
 $buscarAlumnos=$conn->query($query);
 if ($buscarAlumnos->num_rows > 0)
 {
-	$tabla.= '';  if(isset($_POST['alumnos'])){
+	$tabla.= '';  if(isset($_POST['consulta'])){
                 echo '
- <p></p>
+ <p class="my-7"></p>
 <div class="btn-group mb-3 my-7 mx-5"  role="group" aria-label="Basic outlined example">
             <form id="form1" style=" margin-top:5%" method="POST" action="Plugin/productos.php" target="_blank">';
     $sql = "SELECT * FROM tb_productos GROUP BY precio,codProductos";
@@ -56,7 +56,7 @@ if ($buscarAlumnos->num_rows > 0)
     while ($productos = mysqli_fetch_array($result)){
 
                 echo '
-                <input type="hidden" name="alumnos" value="'. $ee=$_POST['alumnos'].'">
+                <input type="hidden" name="consulta" value="'. $ee=$_POST['consulta'].'">
                 <input type="hidden" name="cod[]" value="'.$productos['codProductos'].'">
             ';} echo '
                 <button type="submit" class="btn btn-outline-primary" name="Fecha"><i class="bi bi-printer"></i></button>
@@ -68,7 +68,7 @@ if ($buscarAlumnos->num_rows > 0)
 
     while ($productos = mysqli_fetch_array($result)){
 echo'             
-                <input type="hidden" name="alumnos" value="'. $ee=$_POST['alumnos'].'">
+                <input type="hidden" name="consulta" value="'. $ee=$_POST['consulta'].'">
                 <input type="hidden" name="cod[]" value="'.$productos['codProductos'] .'">
             ';} echo'
                 <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank"><i class="bi bi-file-pdf-fill"></i></button>
@@ -76,7 +76,7 @@ echo'
     </div>
     ';}echo '
     <div style="position:initial;">
-	<table class="table table-responsive table-striped" id="example" style=" width: 100%">
+	<table class="table table-responsive table-striped" id="example" style=" width: 100%;">
 	 
                 <thead>
                      <tr id="tr">

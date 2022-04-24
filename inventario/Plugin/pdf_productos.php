@@ -33,7 +33,7 @@ include ('../Model/conexion.php'); ?>
     <tbody>
         <?php 
 
-        $q=$_POST['alumnos'];
+        $q=$_POST['consulta'];
         
         
            

@@ -95,11 +95,11 @@ $tipo_usuario = $_SESSION['iduser'];
               <label style="font-weight: bold;">Estado</label>
               <br>
               
-              <div class="input-group mb-3">
-                 <label class="input-group-text" for="inputGroupSelect01"><i class="bi bi-check-circle-fill"></i></label>
-              <input id="inputGroupSelect01" <?php
+              <div class="col-6 " style="position: initial;width: 100%;">
+                 
+              <input   <?php
                 if($productos1['estado']=='Comprado') {
-                     echo ' style="background-color:blueviolet ;width:100%; border-radius:5px;text-align:center; color: white;"';
+                     echo ' style="background-color:blueviolet ;width:100%; border-radius:5px;text-align:center; color: white;';
                 }
             ?> class="form-control" type="text" name="" value="<?php echo $productos1['estado'] ?>"><br>
               <input readonly class="form-control" type="hidden" value="<?php echo $productos1['nSolicitud'] ?>" name="sol_compra">
@@ -118,11 +118,11 @@ $tipo_usuario = $_SESSION['iduser'];
             <input readonly class="form-control"  type="hidden" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro'])) ?>" name="fech">
           
 <table class="table table-responsive table-striped" style=" width: 100% ">
-                <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form method="POST" action="Plugin/compra.php">
+                <div class="btn-group mb-3 my-3 mx-2" style="position: initial" role="group" aria-label="Basic outlined example">
+            <form method="POST" action="Plugin/compra.php" style="position: initial">
                 <button type="submit" class="btn btn-outline-primary" name="Fecha"><i class="bi bi-file-pdf-fill"></i></button>
             </form>
-            <form method="POST" action="Plugin/compra.php">
+            <form method="POST" action="Plugin/compra.php" style="position: initial">
                 <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['nSolicitud'] ?>" name="sol_compra">
             <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['dependencia'] ?>" name="dependencia">
             <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['plazo'] ?>" name="plazo">

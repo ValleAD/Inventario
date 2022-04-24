@@ -108,7 +108,7 @@ die();
            </tbody>
         </table>
     <?php } ?><?php if ($tipo_usuario==2) {?>
-
+<div style="position: initial">
 <table class="table table-responsive table-striped" id="example" style=" width: 100%;">
           <thead>
               <tr id="tr">
@@ -167,6 +167,7 @@ die();
            </tbody>
         </table>
     <?php } ?>
+</div>
        <!-- <a href="Plugin/pdf_circulante.php" class="btn btn-danger">Generar Solicidud Fondo Circulante</a>-->
 
     </section>
