@@ -31,6 +31,12 @@ die();
 </head>
 <body>
     <style type="text/css">
+                #section{
+        margin-top: 5%;
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-bottom: 5%;
+    }
               @media (max-width: 952px){
    #section{
         margin-top: 5%;
@@ -53,7 +59,7 @@ $final = 0;
  while ($datos_sol = mysqli_fetch_array($result)){
 
  echo'   
-<section id="section" style="margin:2%">
+<section id="section" >
 <form method="POST" action="Plugin/pdf_circulante.php" target="_blank">
          
       

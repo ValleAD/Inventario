@@ -227,7 +227,7 @@ if(isset($_POST['codigo'])){?>
         </table>
         <div class="form-group" style="position: all;">
                 <label>Observaciones (En qué se ocupará el bien entregado)</label>
-               <textarea rows="7"  class="form-control" name="jus"  required> </textarea><br>
+               <textarea rows="7"  class="form-control" name="jus"  required=""> </textarea><br>
             </div> 
         <center><button type="submit" name="form_vale" class="btn btn-success btn-lg my-2 text-center w-25"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar</button> </center>   
 </form>

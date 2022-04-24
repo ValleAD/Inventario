@@ -50,7 +50,9 @@ die();
         transform: translateY(5px);
         } 
         #section{
-            margin: 2%;
+            margin-top: 5%;
+            margin-left: 2%;
+            margin-right: 2%;
             padding:0%;
             border-radius: 15px;
             background: white;
@@ -287,7 +289,7 @@ $num_almacen = $datos_sol['codAlmacen'];
 while ($productos = mysqli_fetch_array($result)){
       $n++;
         $r=$n+0;
-        $total    =    $productos['cantidad_solicitada'] * $productos['precio'];
+        $total = ($productos['cantidad_despachada']-$productos['stock']) * $productos['precio'];
         $final    +=   $total;
         $precio   =    $productos['precio'];
         $precio1  =    number_format($precio, 2,".",",");

@@ -57,7 +57,7 @@ h1 {
     margin-right: 2%;
     margin-left: 2%;
   }
-    </style><center><h1 style="margin-top:5px">Solicitudes de Compra</h1></center>
+    </style><center><h1 style="margin-top:5%">Solicitudes de Compra</h1></center>
             <br>
             <?php if ($tipo_usuario==1) {?>
      <div class="mx-5 p-2" id="act" style="background: white; border-radius: 5px;">

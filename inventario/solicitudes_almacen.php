@@ -48,7 +48,7 @@ die();
   color: white;
 }
     </style>
-            <h1 class="text-center mg-t" style="margin-top: -0.5%;" >Solicitudes de Almacen</h1><br>
+            <h1 class="text-center mg-t" style="margin-top: 5%;" >Solicitudes de Almacen</h1><br>
 <section class="mx-5 p-2" style="background-color:white; border-radius:5px;margin-bottom: 3%;">
 <?php if ($tipo_usuario==1) {?>
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">

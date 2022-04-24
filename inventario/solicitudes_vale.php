@@ -46,16 +46,22 @@ die();
     h1 {
   color: white;
 }
+ @media (max-width: 952px){
+   #div{
+        margin-top: 5%;
+        margin-left: 15%;
+        width: 75%;
+    }
     </style>
     <title>Solicitudes De Vale</title>
 </head>
 <body >
-    <center><h1 style="margin-top:5px">Solicitudes Vale</h1></center><br>
+    <center><h1 style="margin-top:5%">Solicitudes Vale</h1></center><br>
           <?php if ($tipo_usuario==1) {?>  
-     <div class="mx-5 p-2 mb-5" style="background-color: white; border-radius:5px;">
+     <div id="div" class="mx-5 p-2 mb-5" style="background-color: white; border-radius:5px;">
 
      
-        <table class="table table-responsive" id="example" style="width:100%">
+        <table class="table table-responsive"  style="width:100%">
             <thead>
               <tr id="tr">
                 <th>#</th>

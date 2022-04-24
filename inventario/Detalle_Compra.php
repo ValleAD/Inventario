@@ -52,7 +52,7 @@ $tipo_usuario = $_SESSION['iduser'];
     $result = mysqli_query($conn, $sql);
  while ($productos1 = mysqli_fetch_array($result)){ ?>
 
-    <div class="mx-4 p-3 " style="background-color: white; border-radius: 5px;">
+    <div class="mx-4 p-3  " style="background-color: white; border-radius: 5px;margin-top: 5%;margin-bottom: 2%;">
      <form id="form" method="POST" action="Detalle_Compra.php" >
         <div class="row">
           <div class="col-6 col-sm-3" style="position: initial">
@@ -188,7 +188,7 @@ while ($productos = mysqli_fetch_array($result)){
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
       
-      $total = $productos['stock'] * $productos['precio'];
+      $total = ($productos['cantidad_despachada']-$productos['stock']) * $productos['precio'];
       $final += $total;
       $precio=$productos['precio'];
       $precio1=number_format($precio, 2,".",",");

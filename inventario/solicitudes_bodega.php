@@ -53,7 +53,7 @@ die();
 
 <body>
 
-            <center><h1 style="margin-top:5px">Solicitudes Bodega</h1></center><br>
+            <center><h1 style="margin-top:5%">Solicitudes Bodega</h1></center><br>
             <?php if ($tipo_usuario==1) {?>
       <section class="mx-5 p-2" style="background-color:white; border-radius: 5px;margin-bottom:3%;">
 

@@ -31,8 +31,11 @@ die();
 </head>
 <body>
     <style type="text/css">
-        #section{
-        margin: 1%;
+              #section{
+        margin-top: 5%;
+        margin-left: 2%;
+        margin-right: 2%;
+        margin-bottom: 2%;
     }
               @media (max-width: 952px){
    #section{

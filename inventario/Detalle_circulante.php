@@ -50,7 +50,9 @@ die();
         transform: translateY(5px);
         } 
         #section{
-            margin: 2%;
+        margin-top: 5%;
+        margin-left: 2%;
+        margin-right: 2%;
             border-radius: 15px;
             background: white;
         }
@@ -137,7 +139,7 @@ $num_circulante = $datos_sol['codCirculante'];
 while ($productos = mysqli_fetch_array($result)){
       $n++;
         $r=$n+0;
-        $total    =    $productos['stock'] * $productos['precio'];
+       $total = ($productos['cantidad_despachada']-$productos['stock']) * $productos['precio'];
         $final    +=   $total;
         $precio   =    $productos['precio'];
         $codigo   =    $productos['codigo'];

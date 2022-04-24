@@ -34,8 +34,10 @@ die();
 <body>
 <style type="text/css">
       #section{
+        margin-top: 5%;
         margin-left: 2%;
         margin-right: 2%;
+        margin-bottom: 2%;
       }
         form{
           margin:0;
@@ -62,7 +64,7 @@ $final2=0;
  while ($datos = mysqli_fetch_array($result)){
 
   echo'   
-<section id="section" style="margin:2%">
+<section id="section" >
   <form method="POST"  action="Plugin/pdf_compra.php" target="_blank">
            
         

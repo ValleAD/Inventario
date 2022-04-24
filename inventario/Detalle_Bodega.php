@@ -31,6 +31,11 @@ die();
 </head>
 <body>
     <style type="text/css">
+                #section{
+        margin-top: 5%;
+        margin-left: 2%;
+        margin-right: 2%;
+    }
               @media (max-width: 952px){
    #section{
         margin-top: 5%;
@@ -58,7 +63,7 @@ if(isset($_POST['detalle'])){
      while ($productos1 = mysqli_fetch_array($result)){
     
      echo'   
-    <section id="section" style="margin:2%; background: rgba(555, 555, 555, .7);border-radius:15px;">
+    <section id="section" style="background: rgba(555, 555, 555, .7);border-radius:15px;">
     <form method="POST" action="" >
              
           
@@ -135,7 +140,7 @@ if(isset($_POST['detalle'])){
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
       
-      $total = $productos['stock'] * $productos['precio'];
+      $total = ($productos['cantidad_despachada']-$productos['stock']) * $productos['precio'];
       $final += $total;
       $codigo=$productos['codigo'];
       $descripcion=$productos['descripcion'];
@@ -270,7 +275,7 @@ if(isset($_POST['submit'])){
      while ($productos1 = mysqli_fetch_array($result)){
     
      echo'   
-    <section id="section" style="margin:2%">
+    <section id="section">
     <form method="POST" action="Controller/añadir_bodega_copy.php">
              
           
