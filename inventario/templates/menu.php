@@ -50,7 +50,7 @@ background:burlywood;
     margin-top: -5%;
 }
  </style>
-      <header>
+      <header style="position: fixed; left: 0;top: 0;right: 0;" >
         <div class="menu_bar">
             <a href="#" class="bt-menu"></span>Menú</a>
         </div>
@@ -64,7 +64,7 @@ background:burlywood;
                     <ul class="children">
                        <li>
                        
-                        <a href="vistaProductos.php?productos" id="b" name="productos">Ver Artículos</a>
+                        <a href="vistaProductos.php" id="b" name="productos">Ver Artículos</a>
                    
                     </li>
                        <?php if($tipo_usuario==1){ ?>

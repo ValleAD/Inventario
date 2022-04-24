@@ -166,8 +166,7 @@ $result = mysqli_query($conn, $sql);
         } 
     </style>
 </table>
-            <?php  if (isset($_GET['productos'])){ 
-            $productos = $_GET['productos'] ?>
+
 <section style="background: rgba(255, 255, 255, 0.9);padding-bottom: 1%;margin: 3%;border-radius: 15px;">
 <font color="black"><h2 class="text-center">Inventario de Productos</h2></font>
 <?php if (isset($_POST['categorias'])){  ?>
@@ -176,47 +175,24 @@ $result = mysqli_query($conn, $sql);
 if (isset($_POST['Fecha'])){  ?>
 <a class="btn btn-success mx-2" href="vistaProductos.php?productos">Ver Productos</a>
 <?php } ?>
-<div class=" row">
 <form method="POST" action="vistaProductos.php" style="margin-left: 2%;">
                  <div class="row">
-                    <div class="col-md-4" style="position: initial;">
+                    <div class="col-5" style="position: initial;">
                         <label>Desde</label>
                      <input type="DATE" class="form-control" name="F1" required>
                     
-                    </div><div class="col-4" style="position: initial">
+                    </div><div class="col-5" style="position: initial">
                         <label>Hasta</label>
                      <input type="DATE" class="form-control" name="F2" required>
                     
                     </div>
-                    <div class="col-md-4" style="position: initial; margin-top: auto;">
+                    <div class="col-md-2" style="position: initial; margin-top: auto;">
                        <button class="btn btn-success" name="Fecha" type="submit">Filtrar Fechas</button>
                     </div>
                 </div>
             </form> 
 
- <form method="POST" action="vistaProductos.php" style="margin-left: 70%;margin-top: -3%;">  
-                 <div class="row">
-                    <div class="col-md-5" style="position: initial">
-                      <select class="form-control" name="cat"  required>
-                    <option selected disabled value="">Seleccione</option>
-                <?php  $sql = "SELECT * FROM tb_productos GROUP BY categoria ";
-        $result = mysqli_query($conn, $sql);
-            while ($productos = mysqli_fetch_array($result)){
-                echo "<option>".$productos['categoria']."</option>";
-
-            }
-         ?></select>
-                    </div>
-                    <div class="col-md-6" style="position: initial;margin-top: 2%;">
-                       <button class="btn btn-success" name="categorias" type="submit">Exportar por Categorias</button>
-                  
-                    </div>
-                </div>
-                
-               
-            </form> 
-            </div>
-
+ 
 
             <?php 
 if (isset($_POST['Fecha'])){
@@ -318,7 +294,46 @@ if (isset($_POST['Fecha'])){
   
 </div>
 
-<?php 
+
+  <br>
+</div>
+    <div class="mx-1 p-2" style=" border-radius: 5px;">
+        
+           <a href="unidad_medidad.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a><br>
+                 <style> p{
+                    display: none;
+                 }</style>
+                    <section>
+            <input type="text" name="busqueda" class="form-control" style="width: 30%;" id="busqueda" placeholder="Buscar...">
+        </section>
+
+        <section id="tabla_resultado">
+        <!-- AQUI SE DESPLEGARA NUESTRA TABLA DE CONSULTA -->
+        </section>        
+        </div>
+        <form method="POST" action="vistaProductos.php" class=" my-3 mx-3">  
+               <div class="row">
+                    <div class="col-10" style="position: initial">
+                      <select class="form-control" name="cat"  required>
+                    <option selected disabled value="">Seleccione</option>
+                <?php  $sql = "SELECT * FROM tb_productos GROUP BY categoria ";
+        $result = mysqli_query($conn, $sql);
+            while ($productos = mysqli_fetch_array($result)){
+                echo "<option>".$productos['categoria']."</option>";
+
+            }
+         ?></select>
+                    </div>
+                    <div class="col-md-2 my-2" style="position: initial">
+                       <button class="btn btn-success" name="categorias" type="submit">Exportar por Categorias</button>
+                  
+                    </div>
+                </div>
+               
+                
+               
+            </form> 
+        <?php 
 
 if (isset($_POST['categorias'])){  
 $categoria=$_POST['cat'];?> 
@@ -344,7 +359,7 @@ $categoria=$_POST['cat'];?>
 </div>
 
  <br> 
-<div class="mx-1 p-2" style="background-color: white; border-radius: 5px;">
+<div class="mx-1 p-2" style="background-color: white;  border-radius: 5px;">
    <table class="table table-responsive table-striped"  style=" width: 100%">
     <thead>
          <tr id="tr">
@@ -399,101 +414,21 @@ $categoria=$_POST['cat'];?>
       <?php   }}} ?>
     </tbody>
 </table>
-  <br>
-
-    <div class="mx-1 p-2" style=" border-radius: 5px;">
-        
-           <a href="unidad_medidad.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a><br>
-                 <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form method="POST" action="Plugin/productos.php" target="_blank">
-                
-                <button type="submit" class="btn btn-outline-primary" name="Fecha"><i class="bi bi-printer"></i></button>
-            </form>
-            <form method="POST" action="Plugin/pdf_productos.php" target="_blank">
-               
-                <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank"><i class="bi bi-file-pdf-fill"></i></button>
-            </form>
-    </div>
-<table class="table table-responsive table-striped" id="example" style=" width: 100%">
-                <thead>
-                     <tr id="tr">
-                    <th style="max-width: 5%;">#</th>
-                     <th style="max-width: 10%;">Código</th>
-                     <th style="max-width: 10%;">Cod. de Catálogo</th>
-                     <th style="max-width: 50%;">Descripción Completa</th>
-                     <th style="max-width: 10%;">U/M</th>
-                     <th style="max-width: 10%;">Cantidad</th>
-                     <th style="max-width: 10%;">Costo Unitario</th>
-                     <th style="max-width: 40%;">Fecha Registro</th>
-                     <th style="max-width: 100%; max-width: 50%;">Categoría</th>
-                    <?php if($tipo_usuario==1){ ?>
-                     <th style="max-width: 10%;">Editar</th>
-                     <th style="max-width: 10%;">Eliminar</th>
-                 <?php } ?>
-                   </tr>
-                </thead>
-                <tbody>
-<?php
-    $sql = "SELECT * FROM tb_productos GROUP BY precio,codProductos";
-    $result = mysqli_query($conn, $sql);
-?>
-
-<?php
-$n=0;
-    while ($productos = mysqli_fetch_array($result)){
-        $n++;
-        $r=$n+0;
-         $precio=$productos['precio'];
-        $precio1=number_format($precio, 2,".",",");
-        $cantidad=$productos['stock'];
-        $stock=number_format($cantidad, 2,".",",");
-?>
-     
-            
-                  
-     <style type="text/css">
-     
-         #td{
-             display: none;
-         }
-        th{
-            width: 100%;
-        }
-     </style>
-         <tr id="tr">
-            <td><?php echo $r ?></td>
-           <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['codProductos']; ?></td>
-           <td  data-label="Codificación de catálogo" style="text-align: center;"><?php  echo $productos['catalogo']; ?></td>
-           <td  data-label="Descripción Completa" style="text-align: left;"><?php  echo $productos['descripcion']; ?></td>
-           <td  data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-           <td  data-label="Cantidad" style="text-align: center;"><?php  echo $stock; ?></td>
-           <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
-           <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
-           <td  data-label="Categoría"><?php  echo $productos['categoria']; ?></td>
-           <?php if($tipo_usuario==1){ ?>
-           <td  data-label="Editar">
-            <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="vistaProductos.php?Editar">             
-                <input type='hidden' name='id' value="<?php  echo $productos['codProductos']; ?>">             
-                <button name='editar' class='btn btn-info btn-sm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
-            </form>  
-            </td>
-            <td  data-label="Eliminar">
-                <a data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm " class="text-primary" href="Controller/Delete_producto.php?id=<?php  echo $productos['stock']; ?>" onclick="return confirmaion()">Eliminar</a>
-            </td>
-        <?php } ?>
-         </tr>
-     
-     <?php } ?> 
-                </tbody>                
-            </table>           
-        </div>
-  <?php } ?>
-            
-
-                         
-</section>
+            </section>       
+</body>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap4.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.bootstrap4.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.js"></script>
+ 
 
     <script type="text/javascript">
 function confirmaion(e) {
@@ -504,6 +439,37 @@ function confirmaion(e) {
         e.preventDefault();
     }
 }
+</script>
+<script>
+    $(obtener_registros());
+
+function obtener_registros(alumnos)
+{
+    $.ajax({
+        url : 'Buscador_ajax/consulta.php',
+        type : 'POST',
+        dataType : 'html',
+        data : { alumnos: alumnos },
+        })
+
+    .done(function(resultado){
+        $("#tabla_resultado").html(resultado);
+    })
+}
+
+$(document).on('keyup', '#busqueda', function()
+{
+    var valorBusqueda=$(this).val();
+    if (valorBusqueda!="")
+    {
+        obtener_registros(valorBusqueda);
+    }
+    else
+        {
+            obtener_registros();
+        }
+});
+
 </script>
 </body>
 </html>

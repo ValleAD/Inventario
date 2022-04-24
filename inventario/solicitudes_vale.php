@@ -49,7 +49,7 @@ die();
     </style>
     <title>Solicitudes De Vale</title>
 </head>
-<body>
+<body style="margin; 0%;padding:0%">
     <center><h1 style="margin-top:5px">Solicitudes Vale</h1></center><br>
           <?php if ($tipo_usuario==1) {?>  
      <div class="mx-5 p-2 mb-5" style="background-color: white; border-radius:5px;">
