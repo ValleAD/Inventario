@@ -1,0 +1,6 @@
+{
+    "require": {
+        "aws/aws-sdk-php": "2.*",
+        "mpdf/mpdf": "^6.1"
+    }
+}
