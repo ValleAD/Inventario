@@ -26,14 +26,7 @@ $tipo_usuario = $_SESSION['tipo_usuario'];
             max-height: 100%;">
 
     <style type="text/css">
-        #b{
-            background: transparent;
-            border: none;
-            width: 100%;
-            padding: 10px 10px;
-            color: whitesmoke;
-            text-align: left;
-        }
+
         #a:hover{
    text-decoration: none;
    color: lawngreen;
@@ -133,6 +126,10 @@ $u='Cliente';
 }
 ?>  
     <button class="btn" id="btn" data-toggle="modal" data-target="#info" style=" background:transparent;float: right;margin-top: 0%; color: white;"><?php echo $consulta['username'];?> <i class="bi bi-caret-down-fill"></i></button>
+    
+                </ul>
+        </nav>
+    </header>
 <!-- Delete -->
 <div class="modal fade" id="info" style="background: rgba(0, 0, 0, 0.3);" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">
@@ -232,9 +229,7 @@ $u='Cliente';
     </div>
 </div>
          <?php } ?>
-            </ul>
-        </nav>
-    </header>
+
     <script src="Plugin/bootstrap/js/jquery.slim.min.js"></script>
    
     <script src="Plugin/bootstrap/js/bootstrap.min.js"></script>

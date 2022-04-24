@@ -29,7 +29,6 @@ die();
          <link rel="stylesheet" href="Plugin/bootstap-icon/bootstrap-icons.min.css">
       <link rel="stylesheet" href="Plugin/bootstap-icon/fontawesome.all.min.css">
       <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <!--  Datatables  -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>  
@@ -78,10 +77,22 @@ die();
     <?php
     include 'Model/conexion.php';
 
-    $sql = "SELECT * FROM tb_vale ORDER BY fecha_registro DESC  ";
-    $result = mysqli_query($conn, $sql);
+  if(!empty($_REQUEST["nume"])){ $_REQUEST["nume"] = $_REQUEST["nume"];}else{ $_REQUEST["nume"] = '1';}
+            if($_REQUEST["nume"] == "" ){$_REQUEST["nume"] = "1";}
+            $articulos=mysqli_query($conn,"SELECT * FROM tb_vale;");
+            $num_registros=@mysqli_num_rows($articulos);
+            $registros= '10';
+            $pagina=$_REQUEST["nume"];
+            if (is_numeric($pagina))
+            $inicio= (($pagina-1)*$registros);
+            else
+            $inicio=0;
+            $busqueda=mysqli_query($conn,"SELECT * FROM tb_vale ORDER BY fecha_registro DESC  LIMIT $inicio,$registros;");
+            $paginas=ceil($num_registros/$registros);
+            
+      
     $n=0;
-    while ($solicitudes = mysqli_fetch_array($result)){
+    while ($solicitudes = mysqli_fetch_array($busqueda)){
         $n++;
         $r=$n+0;
         $idusuario = $solicitudes['idusuario'];
@@ -124,7 +135,33 @@ die();
            
            </tbody>
         </table>
+        <div class="container-fluid  col-12">
+        <ul class="pagination pg-dark " style="float: none;justify-content: right;" >
+            <li class="page-item">
+            <?php
+            if($_REQUEST["nume"] == "1" ){
+            $_REQUEST["nume"] == "0";
+            echo  "";
+            }else{
+            if ($pagina>1)
+            $ant = $_REQUEST["nume"] - 1;
+            echo "<a class='page-link' aria-label='Previous' href='solicitudes_vale.php?nume=1'><span aria-hidden='true'>&laquo;</span><span class='sr-only'>Previous</span></a>"; 
+            echo "<li class='page-item '><a class='page-link' href='solicitudes_vale.php?nume=". ($pagina-1) ."' >".$ant."</a></li>"; }
+            echo "<li class='page-item active'><a class='page-link' >".$_REQUEST["nume"]."</a></li>"; 
+            $sigui = $_REQUEST["nume"] + 1;
+            $ultima = $num_registros / $registros;
+            if ($ultima == $_REQUEST["nume"] +1 ){
+            $ultima == "";}
+            if ($pagina<$paginas && $paginas>1)
+            echo "<li class='page-item'><a class='page-link' href='solicitudes_vale.php?nume=". ($pagina+1) ."'>".$sigui."</a></li>"; 
+            if ($pagina<$paginas && $paginas>1)
+            echo "
+            <li class='page-item'><a class='page-link' aria-label='Next' href='solicitudes_vale.php?nume=". ceil($ultima) ."'><span aria-hidden='true'>&raquo;</span><span class='sr-only'>Next</span></a>
+            </li>";
+            ?>
+        </ul>
     </div>
+  
     <?php } if ($tipo_usuario==2) {?>
     <div class="mx-5 p-2 mb-5" style="background-color: white; border-radius:5px;">
 
@@ -147,10 +184,22 @@ die();
     include 'Model/conexion.php';
     $tipo_usuario = $_SESSION['iduser'];
     
-    $sql = "SELECT * FROM tb_vale WHERE idusuario='$tipo_usuario' ORDER BY fecha_registro DESC  ";
-    $result = mysqli_query($conn, $sql);
+  if(!empty($_REQUEST["nume"])){ $_REQUEST["nume"] = $_REQUEST["nume"];}else{ $_REQUEST["nume"] = '1';}
+            if($_REQUEST["nume"] == "" ){$_REQUEST["nume"] = "1";}
+            $articulos=mysqli_query($conn,"SELECT * FROM tb_vale;");
+            $num_registros=@mysqli_num_rows($articulos);
+            $registros= '10';
+            $pagina=$_REQUEST["nume"];
+            if (is_numeric($pagina))
+            $inicio= (($pagina-1)*$registros);
+            else
+            $inicio=0;
+            $busqueda=mysqli_query($conn,"SELECT * FROM tb_vale WHERE idusuario='$tipo_usuario' ORDER BY fecha_registro DESC  LIMIT $inicio,$registros;");
+            $paginas=ceil($num_registros/$registros);
+            
+      
     $n=0;
-    while ($solicitudes = mysqli_fetch_array($result)){
+    while ($solicitudes = mysqli_fetch_array($busqueda)){
         $n++;
         $r=$n+0;
         
@@ -184,7 +233,33 @@ die();
            
            </tbody>
         </table>
+         <div class="container-fluid  col-12">
+        <ul class="pagination pg-dark  pb-2 pt-2 mb-0" style="float: none;justify-content: right;" >
+            <li class="page-item">
+            <?php
+            if($_REQUEST["nume"] == "1" ){
+            $_REQUEST["nume"] == "0";
+            echo  "";
+            }else{
+            if ($pagina>1)
+            $ant = $_REQUEST["nume"] - 1;
+            echo "<a class='page-link' aria-label='Previous' href='solicitudes_vale.php?nume=1'><span aria-hidden='true'>&laquo;</span><span class='sr-only'>Previous</span></a>"; 
+            echo "<li class='page-item '><a class='page-link' href='solicitudes_vale.php?nume=". ($pagina-1) ."' >".$ant."</a></li>"; }
+            echo "<li class='page-item active'><a class='page-link' >".$_REQUEST["nume"]."</a></li>"; 
+            $sigui = $_REQUEST["nume"] + 1;
+            $ultima = $num_registros / $registros;
+            if ($ultima == $_REQUEST["nume"] +1 ){
+            $ultima == "";}
+            if ($pagina<$paginas && $paginas>1)
+            echo "<li class='page-item'><a class='page-link' href='solicitudes_vale.php?nume=". ($pagina+1) ."'>".$sigui."</a></li>"; 
+            if ($pagina<$paginas && $paginas>1)
+            echo "
+            <li class='page-item'><a class='page-link' aria-label='Next' href='solicitudes_vale.php?nume=". ceil($ultima) ."'><span aria-hidden='true'>&raquo;</span><span class='sr-only'>Next</span></a>
+            </li>";
+            ?>
+        </ul>
     </div>
+    
 <?php } ?>
        <!-- <a href="Plugin/pdf_soli_vale.php" class="btn btn-danger">Generar Solicidud Vale</a> -->
   

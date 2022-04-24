@@ -222,7 +222,7 @@ while ($productos = mysqli_fetch_array($result)){
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
       
-      $total = ($productos['cantidad_despachada']-$productos['stock']) * $productos['precio'];
+      $total = ($productos['stock']-$productos['cantidad_despachada']) * $productos['precio'];
       $final += $total;
       $codigo=$productos['codigo'];
       $descripcion=$productos['descripcion'];
@@ -232,7 +232,7 @@ while ($productos = mysqli_fetch_array($result)){
 
 
        $precio1=number_format($precio, 2,".",",");
-      $total1= number_format($total, 2, ".",",");
+      $total1= cantidad_despachada_format($total, 2, ".",",");
       $final1=number_format($final, 2, ".",",");
 
       $cant_aprobada=$productos['stock'];
