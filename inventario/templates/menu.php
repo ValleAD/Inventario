@@ -2,7 +2,7 @@
 <?php
 include("Model/conexion.php");
 if(!isset($_SESSION['signin'])){
-    header("location: log/signin.php");
+    header("location: ../log/signin.php");
 }
 $tipo_usuario = $_SESSION['tipo_usuario'];
 ?><!DOCTYPE html>
@@ -19,14 +19,14 @@ $tipo_usuario = $_SESSION['tipo_usuario'];
       <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
 </head>
 
-<body style="background-image: url(img/camion.jpg);position: initial;  
+<body style="background-image: url(img/camion.jpg);  
             background-repeat: no-repeat;
-            background-attachment: fixed;
-            width: 100%;
-            max-height: 100%;">
+            background-attachment: fixed;">
 
     <style type="text/css">
-
+        #a{
+            padding: 20px 10px;
+        }
         #a:hover{
    text-decoration: none;
    color: lawngreen;
@@ -39,37 +39,32 @@ $tipo_usuario = $_SESSION['tipo_usuario'];
 .children{
 background:burlywood;
 }
-.btn{
-    margin-top: -5%;
-}
  </style>
-      <header style="position: fixed; left: 0;top: 0;right: 0;" >
+      <header>
         <div class="menu_bar">
-            <a href="#" class="bt-menu"></span>Menú</a>
+            <a href="#" class="bt-menu"><span class="fas fa-bars"></span>Menú</a>
         </div>
 
         <nav>
             <ul>
-                <li><a id="a" href="home.php"></span>Inicio</a></li>
+                <li><a id="a" href="home.php"><span class="icon-house"></span>Inicio</a></li>
                 
                     <li class="submenu">
-                    <a id="a" href="#"></span>Articulos<span> <i id="bi" class="bi bi-caret-down-fill"></i></a>
+                    <a id="a" href="#"><span class="icon-rocket"></span>Articulos<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
-                       <li>
-                       
-                        <a href="vistaProductos.php" id="b" name="productos">Ver Artículos</a>
-                   
-                    </li>
+                       <li><a id="b" href="vistaProductos.php">Ver Artículos</a></li>
                        <?php if($tipo_usuario==1){ ?>
-                        <li><a id="b" href="regi_producto.php?">Nuevo Artículo</a></li>
+                        <li><a id="b" href="regi_producto.php">Nuevo Artículo</a></li>
                     <?php } ?>
                         <li><a id="b" href="reporte_ingresos.php">Reporte Ingresos</a></li>
                         <li><a id="b" href="reporte_egresos.php">Reporte Egresos</a></li>
+                        <li><a id="b" href="reporte_productos.php">Reporte Productos</a></li>
+                        <li><a id="b" href="reporte_general.php">Reporte General</a></li>
 
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a id="a" href="#"></span>Soli. Vale<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <a id="a" href="#"><span class="icon-rocket"></span>Soli. Vale<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_vale.php">Mostrar</a></li>
                         <li><a id="b" href="form_vale.php">Buscar por código</a></li>
@@ -79,7 +74,7 @@ background:burlywood;
                 </li>
                 
                 <li class="submenu">
-                    <a id="a" href="#"></span>Soli. Bodega<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <a id="a" href="#"><span class="icon-rocket"></span>Soli. Bodega<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_bodega.php">Mostrar</a></li>
                         <li><a id="b" href="form_bodega.php">Buscar por codigo</a></li>
@@ -88,7 +83,7 @@ background:burlywood;
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a id="a" href="#">Soli. Compra<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <a id="a" href="#"><span class="icon-rocket"></span>Soli. Compra<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_compra.php">Mostrar</a></li>
                         <li><a id="b" href="form_compra.php">Nuevo</a></li>
@@ -96,21 +91,21 @@ background:burlywood;
                 </li>
                 
                 <li class="submenu">
-                    <a id="a" href="#">Soli. Almacen<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <a id="a" href="#"><span class="icon-rocket"></span>Soli. Almacen<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_almacen.php">Mostrar</a></li>
                         <li><a id="b" href="form_almacen.php">Nuevo</a></li>
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a id="a" href="#">Soli. Circulante<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <a id="a" href="#"><span class="icon-rocket"></span>Soli. Circulante<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_circulante.php">Mostrar</a></li>
                         <li><a id="b" href="form_circulante.php">Nuevo</a></li>
                     </ul>
                 </li>
                  <li class="submenu" style="margin-left: auto;">
-                    <a id="a" href="#" >Empleados<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <a id="a" href="#" ><span class="icon-rocket"></span>Empleados<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
                     <ul class="children">
                         <li><a id="b" href="Empleados.php">Mostrar</a></li>
                     </ul>
@@ -119,17 +114,8 @@ background:burlywood;
     $cliente =$_SESSION['signin'];
     $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
     while ($consulta =mysqli_fetch_array($data)) {
-        if ($consulta['tipo_usuario']==1) {
-    $u='Administrador';
-}else if($consulta['tipo_usuario']==2){
-$u='Cliente';
-}
 ?>  
-    <button class="btn" id="btn" data-toggle="modal" data-target="#info" style=" background:transparent;float: right;margin-top: 0%; color: white;"><?php echo $consulta['username'];?> <i class="bi bi-caret-down-fill"></i></button>
-    
-                </ul>
-        </nav>
-    </header>
+    <button class="btn" data-toggle="modal" data-target="#info" style=" background:transparent;float: right;margin-top: 1%; color: white;"><?php echo $consulta['username'];?> <i class="bi bi-caret-down-fill"></i></button>
 <!-- Delete -->
 <div class="modal fade" id="info" style="background: rgba(0, 0, 0, 0.3);" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">
@@ -168,7 +154,7 @@ $u='Cliente';
                     
                     <p style="color: #fff">Unidad: <?php echo $consulta['unidad'];?></p>
                 </tr>
-                <tr><p style="color: #fff">Cuenta: <?php echo $u;?></p></tr>
+
                </table>
       </div>
     </div>
@@ -187,9 +173,9 @@ $u='Cliente';
             </style>
             </div>
             <div class="modal-footer">
-                <button data-toggle="modal" data-target="#Usuario_Contraseña" class="btn btn-info my-0" >Cambiar Usuario y Contraseña</button>
+                <button data-toggle="modal" data-target="#Usuario_Contraseña" class="btn btn-info" >Cambiar Usuario y Contraseña</button>
 
-        <a href="log/logout.php" type="submit" id="Update" class="btn btn-danger my-0" >Cerrar Sesión</a>
+        <a href="log/logout.php" type="submit" id="Update" class="btn btn-danger" >Cerrar Sesión</a>
       </div>
            
         </div>
@@ -213,7 +199,7 @@ $u='Cliente';
                         <label style="color:white;">Usuario Actual</label>
                         <b><p style="stroke: white;"><?php echo $consulta['username'] ?></p></b>
                         <label>Nuevo Usuario</label>
-                        <input pattern="[A-Za-z_-" class="form-control"  required type="text" name="Nusuario">
+                        <input class="form-control"  required type="text" name="Nusuario">
                     
                         <label>Nueva Contraseña</label>
                         <input class="form-control" required  type="text" name="Npassword">
@@ -222,14 +208,16 @@ $u='Cliente';
                      </div>
             <div class="modal-footer">
 
-        <button type="submit" id="Update" class="btn btn-danger my-1" >Cambiar datos</button>
+        <button type="submit" id="Update" class="btn btn-danger" >Cambiar datos</button>
       </div>
           </form>
         </div>
     </div>
 </div>
          <?php } ?>
-
+            </ul>
+        </nav>
+    </header>
     <script src="Plugin/bootstrap/js/jquery.slim.min.js"></script>
    
     <script src="Plugin/bootstrap/js/bootstrap.min.js"></script>
