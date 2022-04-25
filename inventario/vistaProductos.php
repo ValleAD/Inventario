@@ -205,17 +205,20 @@ $result = mysqli_query($conn, $sql);
             <?php 
 
 if (isset($_POST['Fecha'])){
-?>  <br> 
+         $f1=$_POST['F1']; 
+         $f2=$_POST['F2'];?>  <br> 
 <div class="mx-5 p-2 r-5" style="background-color: white; border-radius: 5px;">
 <div class="mx-1 p-2" style=" border-radius: 5px;">
         
               <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-         <form method="POST" action="Plugin/productos.php" target="_blank">
-             
+         <form method="POST" action="Plugin/Fechas.php" target="_blank">
+             <input type="hidden" name="f1" value="<?php echo $f1 ?>">
+             <input type="hidden" name="f2" value="<?php echo $f2 ?>">
              <button type="submit" class="btn btn-outline-primary" name="Fecha"><i class="bi bi-printer"></i></button>
          </form>
-         <form method="POST" action="Plugin/pdf_productos.php" target="_blank">
-            
+         <form method="POST" action="Plugin/pdf_fecha.php" target="_blank">
+            <input type="hidden" name="f1" value="<?php echo $f1 ?>">
+             <input type="hidden" name="f2" value="<?php echo $f2 ?>">
              <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank"><i class="bi bi-file-pdf-fill"></i></button>
          </form>
  </div>
@@ -344,7 +347,7 @@ if (isset($_POST['Fecha'])){
             </form>   
             <?php 
 
-if (isset($_POST['categorias'])){  ?>  <br> 
+if (isset($_POST['categorias'])){$categoria=$_POST['cat'];  ?>  <br> 
  <div class="col-md-6" style="position: initial">
                        <br>
                        <a style="margin-top: -19%;margin-left: 110%;" href="" class="btn btn-danger" name="categorias" type="submit">Cancelar</a>
@@ -352,12 +355,12 @@ if (isset($_POST['categorias'])){  ?>  <br>
 <div class="mx-5 p-2 r-5" style="background-color: white; border-radius: 5px;">
         
               <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-         <form method="POST" action="Plugin/productos.php" target="_blank">
-             
+         <form method="POST" action="Plugin/categorias.php" target="_blank">
+             <input type="hidden" name="categoria" value="<?php echo $categoria ?>">
              <button type="submit" class="btn btn-outline-primary" name="Fecha"><i class="bi bi-printer"></i></button>
          </form>
-         <form method="POST" action="Plugin/pdf_productos.php" target="_blank">
-            
+         <form method="POST" action="Plugin/pdf_categoria.php" target="_blank">
+            <input type="hidden" name="categoria" value="<?php echo $categoria ?>">
              <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank"><i class="bi bi-file-pdf-fill"></i></button>
          </form>
  </div>
@@ -467,6 +470,6 @@ function confirmaion(e) {
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.js"></script>
     <script>
- 
+
 </body>
 </html>
