@@ -2,7 +2,7 @@
 <?php
 include("Model/conexion.php");
 if(!isset($_SESSION['signin'])){
-    header("location: ../log/signin.php");
+    header("location: log/signin.php");
 }
 $tipo_usuario = $_SESSION['tipo_usuario'];
 ?><!DOCTYPE html>
@@ -115,7 +115,7 @@ background:burlywood;
     $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
     while ($consulta =mysqli_fetch_array($data)) {
 ?>  
-    <button class="btn" data-toggle="modal" data-target="#info" style=" background:transparent;float: right;margin-top: 1%; color: white;"><?php echo $consulta['username'];?> <i class="bi bi-caret-down-fill"></i></button>
+    <button class="btn" data-toggle="modal" data-target="#info" style=" background:transparent;float: right;margin-top: 1%; color: white;" ><?php echo $consulta['username'];?> <i class="bi bi-caret-down-fill"></i></button>
                 </ul>
         </nav>
     </header>
@@ -176,9 +176,9 @@ background:burlywood;
             </style>
             </div>
             <div class="modal-footer">
-                <button data-toggle="modal" data-target="#Usuario_Contraseña" class="btn btn-info" >Cambiar Usuario y Contraseña</button>
+                <button data-toggle="modal" data-target="#Usuario_Contraseña" class="btn btn-info" onclick="return usuario()">Cambiar Usuario y Contraseña</button>
 
-        <a href="log/logout.php" type="submit" id="Update" class="btn btn-danger" >Cerrar Sesión</a>
+        <a href="log/logout.php" type="submit" id="Update" class="btn btn-danger" onclick="return confirmaion()">Cerrar Sesión</a>
       </div>
            
         </div>
@@ -250,6 +250,25 @@ function main () {
     });
 }
 </script>
-    
+        <script type="text/javascript">
+function confirmaion(e) {
+    if (confirm("¿Estas seguro que deseas Cerrar Session ")) {
+        return true;
+    } else {
+        return false;
+        e.preventDefault();
+    }
+}
+</script>
+    <script type="text/javascript">
+function usuario(e) {
+    if (confirm("Deseas cambiar el Usuario y Contraseña")) {
+        return true;
+    } else {
+        return false;
+        e.preventDefault();
+    }
+}
+</script>
 </body>
 </html>
