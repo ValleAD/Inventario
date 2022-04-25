@@ -116,6 +116,9 @@ background:burlywood;
     while ($consulta =mysqli_fetch_array($data)) {
 ?>  
     <button class="btn" data-toggle="modal" data-target="#info" style=" background:transparent;float: right;margin-top: 1%; color: white;"><?php echo $consulta['username'];?> <i class="bi bi-caret-down-fill"></i></button>
+                </ul>
+        </nav>
+    </header>
 <!-- Delete -->
 <div class="modal fade" id="info" style="background: rgba(0, 0, 0, 0.3);" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">
@@ -215,9 +218,7 @@ background:burlywood;
     </div>
 </div>
          <?php } ?>
-            </ul>
-        </nav>
-    </header>
+
     <script src="Plugin/bootstrap/js/jquery.slim.min.js"></script>
    
     <script src="Plugin/bootstrap/js/bootstrap.min.js"></script>
