@@ -40,7 +40,7 @@ $tipo_usuario = $_SESSION['tipo_usuario'];
 background:burlywood;
 }
  </style>
-      <header>
+    <header>
         <div class="menu_bar">
             <a href="#" class="bt-menu"><span class="fas fa-bars"></span>Menú</a>
         </div>
