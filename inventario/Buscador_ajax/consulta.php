@@ -1,15 +1,5 @@
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos</title>
-   <!-- Bootstrap CSS -->
-   <link rel="stylesheet" type="text/css" href="../styles/estilos_tablas.css">
-        <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
-         <link rel="stylesheet" href="Plugin/bootstap-icon/bootstrap-icons.min.css">
-      <link rel="stylesheet" href="Plugin/bootstap-icon/fontawesome.all.min.css">
-      <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
  
 
     <style> #form2{
@@ -81,7 +71,7 @@ echo'
                 <input type="hidden" name="consulta" value="'. $ee=$_POST['consulta'].'">
                 <input type="hidden" name="cod[]" value="'.$productos['codProductos'] .'">
             ';} echo'
-                <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank"><i class="bi bi-file-pdf-fill"></i>
+                <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
