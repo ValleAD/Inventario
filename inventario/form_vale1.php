@@ -71,7 +71,7 @@ die();
 </div>
 <section id="act">
      <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="form_vale2.php">
-      <table class="table table-responsive table-striped" id="example" style=" width: 100%">
+      <table class="table table-responsive table-striped" id="example2" style=" width: 100%">
             <thead>
               <tr id="tr">
                
@@ -142,7 +142,6 @@ die();
 </section>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
 $(function(){
     var textArea = $('#content'),
