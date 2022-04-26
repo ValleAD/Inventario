@@ -428,7 +428,6 @@ function usuario(e) {
             },
         //para usar los botones   
         responsive: "true",
-        dom: 'rtilp',
         paging:false,     
         buttons:[ 
             {

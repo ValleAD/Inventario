@@ -88,7 +88,7 @@ die();
                 </th>
                
               </tr>
-            <td id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>
+           
               
             </thead>
 
