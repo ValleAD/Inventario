@@ -103,17 +103,21 @@ header nav ul li .caret {
 
     .menu_bar .bt-menu {
         display: block;
-        padding: 20px;
+        padding: 5px;
         color: #fff;
         overflow: hidden;
         font-size: 25px;
         font-weight: bold;
         text-decoration: none;
     }
-
+    .menu_bar p{
+        font-size: 2.5rem;
+        margin: 1%;
+    }
     .menu_bar span {
         float: right;
-        font-size: 40px;
+        top: 1;
+        font-size: 10px;
     }
 
     header nav {

@@ -34,14 +34,6 @@ die();
     </style>
 </head>
 <body> 
-
-
-
-
-
-
-
-
 <br>
     <style>
         #ver{
@@ -136,39 +128,43 @@ if (isset($_POST['Fecha'])){
                 <style>
                     form{
                         margin: 0%;
-                    }
-                    #w{
-                        display: none;
-                    }
+                   }
                 </style>
                 <div  class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form id="w" method="POST" action="Plugin/Fechas.php">
                 <input type="hidden" name="f1" value="<?php echo $f1 ?>">
                 <input type="hidden" name="f2" value="<?php echo $f2 ?>">
-                <button type="submit" class="btn btn-outline-primary" name="Fecha"><i class="bi bi-printer"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="Fecha">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+                </button>
             </form>
             <form id="w" method="POST" action="Plugin/pdf_fecha.php">
                 <input type="hidden" name="f1" value="<?php echo $f1 ?>">
                 <input type="hidden" name="f2" value="<?php echo $f2 ?>">
-                <button type="submit" class="btn btn-outline-primary" name="pdf"><i class="bi bi-file-pdf-fill"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="pdf">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+                </button>
             </form>
 
 </div>
 
-                <table class="table table-responsive table-striped"  style=" width: 100%">
+                <table class="table table-responsive table-striped" id="example" style=" width: 100%">
                     
     <thead>
          <tr id="tr">
                      <th style="width:10%">Código</th>
                      <th style="width:10%">Cod. de Catálogo</th>
-                     <th style=" width: 100%; padding-left:3%">Descripción Completa</th>
+                     <th style=" width: 100%;">Descripción Completa</th>
                      <th style="width:10%">U/M</th>
                      <th style="width:10%">Cantidad</th>
                      <th style="width:10%">Costo Unitario</th>
                      <th style="width:10%">Fecha Registro</th>
-                     
                    </tr>
-                   <tr> <td align="center" id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td></tr>
+
     </thead>
     <tbody>
 
@@ -187,10 +183,7 @@ if (isset($_POST['Fecha'])){
               ?>
  <style type="text/css">
      #td{
-    text-align:center;
         display: none;
-    }#w{
-        display: block;
     }
 </style> 
                    <tr>
@@ -213,44 +206,46 @@ if (isset($_POST['Fecha'])){
 
 if (isset($_POST['categorias'])){  
 $categoria=$_POST['cat'];?> 
- <style>
-                    form{
-                        margin: 0%;
-                    }
-                    #w{
-                        display: none;
-                    }
-                </style>
+
                 <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form id="w" method="POST" action="Plugin/categorias.php">
 <input type="hidden" name="categoria" value="<?php echo $categoria ?>">
-                <button type="submit" class="btn btn-outline-primary" name="Fecha"><i class="bi bi-printer"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="Fecha">
+                        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                        </svg>
+
+                </button>
             </form>
             <form id="w" method="POST" action="Plugin/pdf_categoria.php">
 <input type="hidden" name="categoria" value="<?php echo $categoria ?>">
 <input type="hidden" name="categoria[]" value="<?php echo $categoria?>">
-                <button type="submit" class="btn btn-outline-primary" name="pdf"><i class="bi bi-file-pdf-fill"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="pdf"> 
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+
+                </button>
             </form>
 
 </div>
 
  <br> 
 <div class="mx-1 p-2" style="background-color: white; border-radius: 5px;">
-   <table class="table table-responsive table-striped"  style=" width: 100%">
+   <table class="table table-responsive table-striped" id="example" style=" width: 100%">
     <thead>
          <tr id="tr">
                      <th style=" width: 10%">Categoria</th>
                      <th style=" width: 10%">Código</th>
                      <th style=" width: 10%">Cod. de Catálogo</th>
-                     <th style=" width: 100%;padding-left:3%">Descripción Completa</th>
+                     <th style=" width: 100%;">Descripción Completa</th>
                      <th style=" width: 100%">U/M</th>
                      <th style=" width: 100%">Cantidad</th>
                      <th style=" width: 100%">Costo Unitario</th>
                      <th style=" width: 100%">Fecha Registro</th> 
                      </tr>
-                     <tr>
-                     <td align="center" id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>
-                   </tr>
+                     
+                     
     </thead>
     <tbody>
          <?php 
@@ -271,9 +266,6 @@ $categoria=$_POST['cat'];?>
                         #td{
                             display: none;
                         }
-                    #w{
-                        display: block;
-                    }
                 </style>
                    <tr>
                 <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['categoria']; ?></td>
@@ -297,11 +289,19 @@ $categoria=$_POST['cat'];?>
                  <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/tproductos.php">
                 
-                <button type="submit" class="btn btn-outline-primary" name="Fecha"><i class="bi bi-printer"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="Fecha">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+                </button>
             </form>
             <form method="POST" action="Plugin/tpdf_productos.php">
                
-                <button type="submit" class="btn btn-outline-primary" name="pdf"><i class="bi bi-file-pdf-fill"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="pdf">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+                </button>
             </form>
     </div>
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
@@ -318,8 +318,6 @@ $categoria=$_POST['cat'];?>
                      <th style="max-width: 100%; max-width: 50%;">Categoría</th>
                 
                    </tr>
-                   <tr>
-                   <td align="center" id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td></tr>
                 </thead>
                 <tbody>
 <?php

@@ -26,6 +26,8 @@ die();
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.0/dist/sweetalert2.min.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="Plugin/bootstap-icon/bootstrap-icons.css" rel="stylesheet">
+    
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
     <title>Inicio</title>
 </head>
