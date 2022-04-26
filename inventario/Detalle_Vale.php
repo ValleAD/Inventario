@@ -224,12 +224,15 @@ while ($productos = mysqli_fetch_array($result)){
 
     $total = 0;
     $final = 0;
+    $final_despacho = 0;
      $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale";
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
       
-      $total = $productos['cantidad_despachada'] * $productos['precio'];
+      $total = $productos['stock'] * $productos['precio'];
+      $total_despacho = $productos['cantidad_despachada'] * $productos['precio'];
       $final += $total;
+      $final_despacho += $total_despacho;
       $codigo=$productos['codigo'];
       $descripcion=$productos['descripcion'];
       $um=$productos['unidad_medida'];
@@ -240,6 +243,8 @@ while ($productos = mysqli_fetch_array($result)){
        $precio1=number_format($precio, 2,".",",");
       $total1= number_format($total, 2, ".",",");
       $final1=number_format($final, 2, ".",",");
+      $final_des=number_format($final_despacho, 2, ".",",");
+      $tot_despacho=number_format($total_despacho, 2, ".",",");
 
       $cant_aprobada=$productos['stock'];
         $cantidad_despachada=$productos['cantidad_despachada'];
@@ -265,14 +270,37 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Cantidad"><?php echo $stock ?></td>
         <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
         <td  data-label="Costo unitario"><?php echo $precio1 ?></td>
-        <td  data-label="total"><?php echo $total1 ?></td>
+        <td  data-label="total"> <?php
+
+$sql = "SELECT * FROM tb_vale WHERE codVale = $cod_vale";
+$result = mysqli_query($conn, $sql);
+while ($datos = mysqli_fetch_array($result)){
+              if($datos['estado']=='Pendiente') {
+                  echo $final1;
+              }else if($datos['estado']=='Aprobado') {
+                   echo $final_des;
+              }
+            }
+              ?></td>
       </tr>
 
       <?php } ?> 
      <tfoot>
         <th colspan="5"></th>
             <th >SubTotal</th>
-            <td style=" color: red; font-weight: bold;" data-label="Subtotal"><?php echo $final1?></td>
+            <td style=" color: red; font-weight: bold;" data-label="Subtotal">
+               <?php
+
+  $sql = "SELECT * FROM tb_vale WHERE codVale = $cod_vale";
+  $result = mysqli_query($conn, $sql);
+  while ($datos = mysqli_fetch_array($result)){
+                if($datos['estado']=='Pendiente') {
+                    echo $final1;
+                }else if($datos['estado']=='Aprobado') {
+                     echo $tot_despacho;
+                }
+              }
+                ?></td>
         </tfoot>
         </tbody>
     </table>
@@ -473,4 +501,4 @@ while ($productos = mysqli_fetch_array($result)){
       
        
   </body>
-  </html
+  </html>
