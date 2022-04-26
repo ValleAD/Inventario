@@ -73,7 +73,7 @@ die();
             </div>
         </div>
     </div>
-      <table class="table table-responsive table-striped" id="example" style=" width: 100%">
+      <table class="table table-responsive table-striped"  style=" width: 100%">
             <thead>
               <tr id="tr">
                
@@ -87,7 +87,7 @@ die();
                
               </tr>
 
-            <td id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>
+          <!--  <td id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>-->
               
             </thead>
 
