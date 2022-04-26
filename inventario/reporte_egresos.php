@@ -19,20 +19,9 @@ die();
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
 
-
-
-    <link rel="stylesheet" type="text/css" href="styles/style.css" >
-    <!-- Bootstrap CSS -->
-      <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap4.css"/>
-     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.bootstrap4.css"/>
-    <!--font awesome con CDN-->  
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"> 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <title>Egresos</title>
 </head>
 <body style="max-width: 100%;">
@@ -89,11 +78,19 @@ if(isset($_POST['ingresos'])){
 
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
             <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form method="POST" action="Plugin/reporte_egreso.php">
-                <button type="submit" class="btn btn-outline-primary" name="bodega"><i class="bi bi-printer"></i></button>
+ <form method="POST" action="Plugin/reporte_egreso.php">
+                <button type="submit" class="btn btn-outline-primary" name="bodega">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+                </button>
             </form>
             <form method="POST" action="Plugin/pdf_egresos.php">
-                <button type="submit" class="btn btn-outline-primary" name="bodega"><i class="bi bi-file-pdf-fill"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="bodega">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+                </button>
             </form>
 
 </div>
@@ -180,10 +177,18 @@ $n=0;
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
             <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/reporte_egreso.php">
-                <button type="submit" class="btn btn-outline-primary" name="vale"><i class="bi bi-printer"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="vale">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+                </button>
             </form>
             <form method="POST" action="Plugin/pdf_egresos.php">
-                <button type="submit" class="btn btn-outline-primary" name="vale"><i class="bi bi-file-pdf-fill"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="vale">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+                </button>
             </form>
 
 </div>
@@ -282,11 +287,19 @@ if(isset($_POST['ingresos'])){
 
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
             <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form method="POST" action="Plugin/reporte_egreso.php">
-                <button type="submit" class="btn btn-outline-primary" name="bodega"><i class="bi bi-printer"></i></button>
+ <form method="POST" action="Plugin/reporte_egreso.php">
+                <button type="submit" class="btn btn-outline-primary" name="bodega">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+                </button>
             </form>
             <form method="POST" action="Plugin/pdf_egresos.php">
-                <button type="submit" class="btn btn-outline-primary" name="bodega"><i class="bi bi-file-pdf-fill"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="bodega">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+                </button>
             </form>
 
 </div>
@@ -303,7 +316,6 @@ if(isset($_POST['ingresos'])){
                 <th  style="width: 100%">Ingreso Por</th>
                 <th  style="width: 100%">Fecha Registro</th>
               </tr>
-              <tr> <td align="center" id="td" colspan="10"><h4>No se encontraron resultados 😥</h4></td></tr>
               
             </thead>
 
@@ -371,10 +383,18 @@ $n=0;
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
             <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/reporte_egreso.php">
-                <button type="submit" class="btn btn-outline-primary" name="vale"><i class="bi bi-printer"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="vale">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+                </button>
             </form>
             <form method="POST" action="Plugin/pdf_egresos.php">
-                <button type="submit" class="btn btn-outline-primary" name="vale"><i class="bi bi-file-pdf-fill"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="vale">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+                </button>
             </form>
 
 </div>
@@ -443,63 +463,6 @@ $n=0;
 
 
 
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap4.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.bootstrap4.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.js"></script>
-    <script>
-   $(document).ready(function(){
- $('#example').DataTable({        
-        language: {
-                "lengthMenu": "Mostrar _MENU_ registros",
-                "zeroRecords": "No se encontraron resultados",
-                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sSearch": "Buscar:",
-                "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast":"Último",
-                    "sNext":"Siguiente",
-                    "sPrevious": "Anterior"
-                 },
-                 "sProcessing":"Procesando...",
-            },
-        //para usar los botones   
-        responsive: "true",
-        dom: 'Bfrtilp',       
-        buttons:[ 
-            {
-                extend:    'excelHtml5',
-                text:      '<i class="fas fa-file-excel"></i> ',
-                titleAttr: 'Exportar a Excel',
-                className: 'btn btn-success'
-            },
-            {
-                extend:    'pdfHtml5',
-                text:      '<i class="fas fa-file-pdf"></i> ',
-                titleAttr: 'Exportar a PDF',
-                className: 'btn btn-danger'
-            },
-            {
-                extend:    'print',
-                text:      '<i class="fa fa-print"></i> ',
-                titleAttr: 'Imprimir',
-                className: 'btn btn-info'
-            },
-        ]           
-    });     
-
-    });
-    </script>
+   
 </body>
 </html>

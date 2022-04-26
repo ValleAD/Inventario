@@ -78,7 +78,7 @@ if(isset($_POST['ingresos'])){
 <br>
     <h3 style="text-align: center; color: black;">Ingresos de Solicitud Circulante</h3>
 
-<table class="table table-responsive table-striped"  style=" width: 100%">
+<table class="table table-responsive table-striped" id="example"  style=" width: 100%">
     <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/reporte_ingreso.php">
                 <button type="submit" class="btn btn-outline-primary" name="circulante"><i class="bi bi-printer"></i></button>
@@ -99,9 +99,7 @@ if(isset($_POST['ingresos'])){
                 <th  style="width: 100%">Ingreso Por</th>
                 <th  style="width: 100%">Fecha Registro</th>
               </tr>
-
-              <tr> <td align="center" id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td></tr>
-            </thead>
+          </thead>
 
             <tbody>
  <?php
@@ -187,7 +185,6 @@ if(isset($_POST['ingresos'])){
          <th style="width: 15%">Fecha Registro</th>
          
        </tr>
-       <tr> <td align="center" id="td" colspan="10"><h4>No se encontraron resultados 😥</h4></td></tr>
        
      </thead>
 
@@ -281,9 +278,7 @@ width: 100%;
          <th  style="width:100%">Costo Unitario</th>
          <th  style="width:100%">Ingreso Por</th>
          <th  style="width:100%">Fecha Registro</th>
-         
-       </tr>
-       <tr> <td align="center" id="td" colspan="10"><h4>No se encontraron resultados 😥</h4></td></tr>
+            </tr>
      </thead>
 
      <tbody>
@@ -346,7 +341,7 @@ if(isset($_POST['ingresos'])){
 <br>
     <h3 style="text-align: center; color: black;">Ingresos de Solicitud Circulante</h3>
 
-<table class="table table-responsive table-striped"  style=" width: 100%">
+<table class="table table-responsive table-striped" id="example" style=" width: 100%">
     <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/reporte_ingreso.php">
                 <button type="submit" class="btn btn-outline-primary" name="circulante"><i class="bi bi-printer"></i></button>
@@ -367,7 +362,6 @@ if(isset($_POST['ingresos'])){
                 <th  style="width: 100%">Ingreso Por</th>
                 <th  style="width: 100%">Fecha Registro</th>
               </tr>
-              <tr> <td align="center" id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td></tr>
 
               
             </thead>
@@ -452,9 +446,7 @@ if(isset($_POST['ingresos'])){
          <th style="width: 15%">Costo Unitario</th>
          <th style="width: 15%">Ingreso Por</th>
          <th style="width: 15%">Fecha Registro</th>
-         
-       </tr>
-       <tr> <td align="center" id="td" colspan="10"><h4>No se encontraron resultados 😥</h4></td></tr>
+         </tr>
        
      </thead>
 
@@ -542,9 +534,7 @@ width: 100%;
          <th  style="width:100%">Costo Unitario</th>
          <th  style="width:100%">Ingreso Por</th>
          <th  style="width:100%">Fecha Registro</th>
-         
-       </tr>
-       <tr> <td align="center" id="td" colspan="10"><h4>No se encontraron resultados 😥</h4></td></tr>
+         </tr>
      </thead>
 
      <tbody>
@@ -589,5 +579,6 @@ while ($productos = mysqli_fetch_array($result)){
 }
 }
 ?>
+ 
 </body>
 </html>
