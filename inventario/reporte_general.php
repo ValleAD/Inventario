@@ -19,30 +19,11 @@ die();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reporte Egresos General</title>
-   <!-- Bootstrap CSS -->
-   <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css">
-
-     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap4.css"/>
-     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.bootstrap4.css"/>
-    <!--font awesome con CDN-->  
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"> 
+    <title>Reporte Egresos General</title> 
     <style>
-    table thead{
-    background: linear-gradient(to right, #4A00E0, #8E2DE2); 
-    color:white;
-    }
-    </style>
+
 </head>
 <body> 
-
-
-
-
-
-
-
-
 <br>
     <style>
         #ver{
@@ -63,12 +44,6 @@ die();
 
 <section style="background: rgba(255, 255, 255, 0.9);padding-bottom: 1%;margin: 3%;border-radius: 15px;">
 <font color="black"><h2 class="text-center">Reporte General de Solicitudes</h2></font>
-<?php if (isset($_POST['categorias'])){  ?>
-<a class="btn btn-success mx-2" href="reporte_general.php?productos">Ver Productos</a>
-<?php } 
-if (isset($_POST['Fecha'])){  ?>
-<a class="btn btn-success mx-2" href="reporte_general.php?productos">Ver Productos</a>
-<?php } ?>
 <div class=" row">
 <form method="POST" action="reporte_general.php" style="margin-left: 2%;">
                  <div class="row">
@@ -139,38 +114,43 @@ if (isset($_POST['Fecha'])){
                     form{
                         margin: 0%;
                     }
-                    #w{
-                        display: none;
-                    }
+                    
                 </style>
                 <div  class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form id="w" method="POST" action="Plugin/Fechas.php">
                 <input type="hidden" name="f1" value="<?php echo $f1 ?>">
                 <input type="hidden" name="f2" value="<?php echo $f2 ?>">
-                <button type="submit" class="btn btn-outline-primary" name="Fecha"><i class="bi bi-printer"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="Fecha">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+                </button>
             </form>
             <form id="w" method="POST" action="Plugin/pdf_fecha.php">
                 <input type="hidden" name="f1" value="<?php echo $f1 ?>">
                 <input type="hidden" name="f2" value="<?php echo $f2 ?>">
-                <button type="submit" class="btn btn-outline-primary" name="pdf"><i class="bi bi-file-pdf-fill"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="pdf">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+                </button>
             </form>
 
 </div>
 
-                <table class="table table-responsive table-striped"  style=" width: 100%">
+                <table class="table table-responsive table-striped" id="example" style=" width: 100%">
                     
     <thead>
          <tr id="tr">
                      <th style="width:10%">Código</th>
                      <th style="width:10%">Cod. de Catálogo</th>
-                     <th style=" width: 100%; padding-left:3%">Descripción Completa</th>
+                     <th style="width: 100%;">Descripción Completa</th>
                      <th style="width:10%">U/M</th>
                      <th style="width:10%">Cantidad</th>
                      <th style="width:10%">Costo Unitario</th>
                      <th style="width:10%">Fecha Registro</th>
                      
                    </tr>
-                   <tr> <td align="center" id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td></tr>
     </thead>
     <tbody>
 
@@ -191,8 +171,6 @@ if (isset($_POST['Fecha'])){
      #td{
     text-align:center;
         display: none;
-    }#w{
-        display: block;
     }
 </style> 
                    <tr>
@@ -224,34 +202,44 @@ $categoria=$_POST['cat'];?>
                     }
                 </style>
                 <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form id="w" method="POST" action="Plugin/categorias.php">
-<input type="hidden" name="categoria" value="<?php echo $categoria ?>">
-                <button type="submit" class="btn btn-outline-primary" name="Fecha"><i class="bi bi-printer"></i></button>
-            </form>
-            <form id="w" method="POST" action="Plugin/pdf_categoria.php">
-<input type="hidden" name="categoria" value="<?php echo $categoria ?>">
-<input type="hidden" name="categoria[]" value="<?php echo $categoria?>">
-                <button type="submit" class="btn btn-outline-primary" name="pdf"><i class="bi bi-file-pdf-fill"></i></button>
-            </form>
+            <div class="mx-2 p-2 r-5" style="background-color: transparent; border-radius: 5px;">
+            <a href="" class="btn btn-success" name="categorias" type="submit">Ver Productos</a>
+                   
+        
+              <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+         <form method="POST" action="Plugin/categorias.php" target="_blank">
+             <input type="hidden" name="categoria" value="<?php echo $categoria ?>">
+             <button type="submit" class="btn btn-outline-primary" name="Fecha">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+             </button>
+         </form>
+         <form method="POST" action="Plugin/pdf_categoria.php" target="_blank">
+            <input type="hidden" name="categoria" value="<?php echo $categoria ?>">
+             <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+             </button>
+         </form>
+
 
 </div>
 
  <br> 
 <div class="mx-1 p-2" style="background-color: white; border-radius: 5px;">
-   <table class="table table-responsive table-striped"  style=" width: 100%">
+   <table class="table table-responsive table-striped" id="example1"  style=" width: 100%">
     <thead>
          <tr id="tr">
                      <th style=" width: 10%">Categoria</th>
                      <th style=" width: 10%">Código</th>
                      <th style=" width: 10%">Cod. de Catálogo</th>
-                     <th style=" width: 100%;padding-left:3%">Descripción Completa</th>
+                     <th style=" width: 100%;">Descripción Completa</th>
                      <th style=" width: 100%">U/M</th>
                      <th style=" width: 100%">Cantidad</th>
                      <th style=" width: 100%">Costo Unitario</th>
                      <th style=" width: 100%">Fecha Registro</th> 
-                     </tr>
-                     <tr>
-                     <td align="center" id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>
                    </tr>
     </thead>
     <tbody>
@@ -296,11 +284,19 @@ $categoria=$_POST['cat'];?>
                  <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/tproductos.php">
                 
-                <button type="submit" class="btn btn-outline-primary" name="Fecha"><i class="bi bi-printer"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="Fecha">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+                </button>
             </form>
             <form method="POST" action="Plugin/tpdf_productos.php">
                
-                <button type="submit" class="btn btn-outline-primary" name="pdf"><i class="bi bi-file-pdf-fill"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="pdf">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+                </button>
             </form>
     </div>
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
@@ -365,15 +361,7 @@ $n=0;
         </div>
                          
 </section>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap4.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.bootstrap4.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.js"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.js"></script>
+
     <script>
    $(document).ready(function(){
  $('#example').DataTable({        

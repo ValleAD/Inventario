@@ -120,7 +120,11 @@ $tipo_usuario = $_SESSION['iduser'];
 <table class="table table-responsive table-striped" style=" width: 100% ">
                 <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/compra.php">
-                <button type="submit" class="btn btn-outline-primary" name="Fecha"><i class="bi bi-file-pdf-fill"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="Fecha">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+                </button>
             </form>
             <form method="POST" action="Plugin/compra.php">
                 <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['nSolicitud'] ?>" name="sol_compra">
@@ -162,7 +166,11 @@ while ($productos = mysqli_fetch_array($result)){
     $result = mysqli_query($conn, $sql);
  while ($datos = mysqli_fetch_array($result)){ ?>
     <textarea style="display: none;" name="jus" ><?php echo $datos['justificacion'] ?></textarea> <?php } ?>
-                <button type="submit" class="btn btn-outline-primary" name="pdf"><i class="bi bi-printer"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="pdf">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+                </button>
             </form>
 
 </div>

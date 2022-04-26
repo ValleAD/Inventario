@@ -231,7 +231,16 @@ $result = mysqli_query($conn, $sql);
     </div>
 </div>
 
-</div>            
+</div>    
+  <style>
+      
+      @media all and  (min-width: 800px)  {
+        .bi2{
+            width: 100%;
+            
+        }
+      }
+  </style>         
     <?php
     include 'Model/conexion.php';
 
@@ -247,12 +256,14 @@ $u='Cliente';
     $u='Cuenta Desabilitada';
 }
 if ($tipo_usuario==1) {     ?>
-   
+
        
 <div class="card mb-3 border-secondary " style="max-width: 100%;min-width: 100%;position: initial">
   <div class="row g-0">
     <div class="col-1" style="position: initial">
-      <img src="img/logo1.png" class="img-fluid rounded-start" style="padding: 2%;margin-top: 45%; border-radius: 10%; max-width:100%;min-width: 150%;max-height: 30%;min-height: 50%;">
+                <svg  class="bi bi2 my-4 mx-2 text-primary" width="100" height="100" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#person-circle"/>
+                        </svg>
     </div>
     
       <div class="card-body" style="position: initial">
@@ -317,7 +328,9 @@ if ($tipo_usuario==2) {
 <div class="card mb-3 border-secondary " style="max-width: 100%;min-width: 100%;position: initial">
   <div class="row g-0">
     <div class="col-1" style="position: initial">
-      <img src="img/logo1.png" class="img-fluid rounded-start" style="padding: 2%;margin-top: 45%; border-radius: 10%; max-width:100%;min-width: 150%;max-height: 30%;min-height: 50%;">
+                        <svg class="bi bi2 my-4 mx-2 text-primary" width="100" height="100" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#person-circle"/>
+                        </svg>
     </div>
     
       <div class="card-body" style="position: initial">

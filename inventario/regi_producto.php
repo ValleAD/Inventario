@@ -131,7 +131,11 @@ form{
 </style>
 <div class="col-xs-4" style="position: initial">
     <div>
-      <a style="cursor: default;color: white; " id="btn-agregar" class="boton_2" type="button" >Agregar Producto</a>                
+      <a style="cursor: default;color: white; " id="btn-agregar" class="boton_2" type="button" >Agregar Producto
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#plus-circle-fill"/>
+                        </svg>
+      </a>                
     </div>
 </div>
     </div>
@@ -139,8 +143,16 @@ form{
     <hr />
     
     <div class="text-center">
-        <button class="btn btn-success btn-lg my-2" name="submit" style="margin-bottom: 2%;">Guardar</button>  
-        <a id="ver" class="btn btn-lg my-2" href="vistaProductos.php?productos">Ver Productos</a>
+        <button class="btn btn-success btn-lg my-2" name="submit" style="margin-bottom: 2%;">Guardar 
+            <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#save"/>
+                        </svg>
+        </button>  
+        <a id="ver" class="btn btn-lg my-2" href="vistaProductos.php?productos">Ver Productos
+                        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#list-check"/>
+                        </svg>
+        </a>
          <style>
                #ver{
                 margin-left: 2%; 

@@ -12,10 +12,10 @@ $tipo_usuario = $_SESSION['tipo_usuario'];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles/estilo_men.css">
+    <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
    <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+   <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/datatables.min.css"/> 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
       <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
 </head>
 
@@ -42,15 +42,25 @@ background:burlywood;
  </style>
     <header>
         <div class="menu_bar">
-            <a href="#" class="bt-menu"><span class="fas fa-bars"></span>Menú</a>
+            <a style="font-size: 2rem;" href="#" class="bt-menu"><span>
+                <svg class="bi" width="70" height="70" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#list"/>
+                </svg>
+            </span><p>Menú</p></a>
         </div>
 
         <nav>
             <ul>
-                <li><a id="a" href="home.php"><span class="icon-house"></span>Inicio</a></li>
+                <li><a id="a" href="home.php"><span>
+                    <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#house"/>
+                        </svg></span>Inicio</a></li>
                 
                     <li class="submenu">
-                    <a id="a" href="#"><span class="icon-rocket"></span>Articulos<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <a id="a" href="#">Articulos 
+                        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+                        </svg></a>
                     <ul class="children">
                        <li><a id="b" href="vistaProductos.php">Ver Artículos</a></li>
                        <?php if($tipo_usuario==1){ ?>
@@ -64,7 +74,11 @@ background:burlywood;
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a id="a" href="#"><span class="icon-rocket"></span>Soli. Vale<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <a id="a" href="#">Soli. Vale
+                        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+                        </svg>
+                    </a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_vale.php">Mostrar</a></li>
                         <li><a id="b" href="form_vale.php">Buscar por código</a></li>
@@ -74,7 +88,11 @@ background:burlywood;
                 </li>
                 
                 <li class="submenu">
-                    <a id="a" href="#"><span class="icon-rocket"></span>Soli. Bodega<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <a id="a" href="#">Soli. Bodega
+                        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+                        </svg>
+                    </a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_bodega.php">Mostrar</a></li>
                         <li><a id="b" href="form_bodega.php">Buscar por codigo</a></li>
@@ -83,7 +101,11 @@ background:burlywood;
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a id="a" href="#"><span class="icon-rocket"></span>Soli. Compra<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <a id="a" href="#">Soli. Compra
+                        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+                        </svg>
+                    </a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_compra.php">Mostrar</a></li>
                         <li><a id="b" href="form_compra.php">Nuevo</a></li>
@@ -91,21 +113,33 @@ background:burlywood;
                 </li>
                 
                 <li class="submenu">
-                    <a id="a" href="#"><span class="icon-rocket"></span>Soli. Almacen<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <a id="a" href="#">Soli. Almacen
+                        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+                        </svg>
+                    </a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_almacen.php">Mostrar</a></li>
                         <li><a id="b" href="form_almacen.php">Nuevo</a></li>
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a id="a" href="#"><span class="icon-rocket"></span>Soli. Circulante<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                    <a id="a" href="#">Soli. Circulante
+                        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+                        </svg>
+                    </a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_circulante.php">Mostrar</a></li>
                         <li><a id="b" href="form_circulante.php">Nuevo</a></li>
                     </ul>
                 </li>
-                 <li class="submenu" style="margin-left: auto;">
-                    <a id="a" href="#" ><span class="icon-rocket"></span>Empleados<span> <i id="bi" class="bi bi-caret-down-fill"></i></span></a>
+                 <li class="submenu" >
+                    <a id="a" href="#">Empleados
+                        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+                        </svg>
+                    </a>
                     <ul class="children">
                         <li><a id="b" href="Empleados.php">Mostrar</a></li>
                     </ul>
@@ -115,7 +149,11 @@ background:burlywood;
     $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
     while ($consulta =mysqli_fetch_array($data)) {
 ?>  
-    <button class="btn" data-toggle="modal" data-target="#info" style=" background:transparent;float: right;margin-top: 1%; color: white;" ><?php echo $consulta['username'];?> <i class="bi bi-caret-down-fill"></i></button>
+    <button class="btn" data-toggle="modal" data-target="#info" style=" background:transparent;float: right;margin-top: 1%; color: white;" ><?php echo $consulta['username'];?> 
+                        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+                        </svg>
+</button>
                 </ul>
         </nav>
     </header>
@@ -126,14 +164,20 @@ background:burlywood;
             <div class="modal-header">
                 <h5 class="modal-title" style="color:white;">Información del Usuario</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">×</span>
+                  <span aria-hidden="true">
+                      <svg class="bi" width="30" height="30" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#backspace-fill"/>
+                        </svg>
+                  </span>
                 </button>
             </div>
               <div class="modal-body">
                 <div class="card mb-3" style="max-width: 540px;background: transparent;border: none;">
   <div  class="row no-gutters">
     <div class="col-md-4">
-        <img src="img/logo1.png" style="max-width: 100%;" id="img">
+                        <svg class="bi text-white my-5" width="150" height="150" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#person-circle"/>
+                        </svg>
     </div>
     <div style="background: transparent;"class="col-md-8">
       <div  class="card-body">
@@ -176,9 +220,16 @@ background:burlywood;
             </style>
             </div>
             <div class="modal-footer">
-                <button data-toggle="modal" data-target="#Usuario_Contraseña" class="btn btn-info" onclick="return usuario()">Cambiar Usuario y Contraseña</button>
+                <button data-toggle="modal" data-target="#Usuario_Contraseña" class="btn btn-info" onclick="return usuario()">Cambiar Usuario y Contraseña
+                        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#person-circle"/>
+                        </svg>
+                </button>
 
-        <a href="log/logout.php" type="submit" id="Update" class="btn btn-danger" onclick="return confirmaion()">Cerrar Sesión</a>
+        <a href="log/logout.php" type="submit" id="Update" class="btn btn-danger" onclick="return confirmaion()">Cerrar Sesión 
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#box-arrow-right"/>
+                        </svg></a>
       </div>
            
         </div>
@@ -219,11 +270,10 @@ background:burlywood;
 </div>
          <?php } ?>
 
-    <script src="Plugin/bootstrap/js/jquery.slim.min.js"></script>
-   
+       
+    <script src="Plugin/bootstrap/js/jquery-latest.js"></script>
+    <script src="Plugin/bootstrap/js/datatables.min.js"></script>
     <script src="Plugin/bootstrap/js/bootstrap.min.js"></script>
-   
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
     $(document).ready(main);
 
