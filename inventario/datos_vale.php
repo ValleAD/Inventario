@@ -190,6 +190,8 @@ while ($productos = mysqli_fetch_array($result)){
 
 $num_vale = $productos1['codVale'];
 }
+  $total = 0;
+  $final = 0;
  $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale";
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){

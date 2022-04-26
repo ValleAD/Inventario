@@ -71,7 +71,6 @@ CREATE TABLE tb_vale (
   departamento varchar(50) NOT NULL,
   usuario varchar (50)  NOT NULL,
   idusuario int NOT NULL DEFAULT 1,
-  observaciones varchar (500) NOT NULl,
   campo varchar (50)  NOT NULL DEFAULT 'Solicitud Vale',
   estado varchar (50)  NOT NULL,
   observaciones varchar (50)  NOT NULL,

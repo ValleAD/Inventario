@@ -146,6 +146,7 @@ if(isset($_POST['detalle'])){
                 $num_vale = $productos1['codVale'];
                 $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale";
     $result = mysqli_query($conn, $sql);
+    
 while ($productos = mysqli_fetch_array($result)){
       
       $total = $productos['stock'] * $productos['precio'];
@@ -212,11 +213,14 @@ while ($productos = mysqli_fetch_array($result)){
     
     $num_vale = $productos1['codVale'];
     }
+
+    $total = 0;
+    $final = 0;
      $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale";
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
       
-      $total = $productos['stock'] * $productos['precio'];
+      $total = $productos['cantidad_despachada'] * $productos['precio'];
       $final += $total;
       $codigo=$productos['codigo'];
       $descripcion=$productos['descripcion'];
@@ -377,11 +381,13 @@ if(isset($_POST['submit'])){
     
     $num_vale = $productos1['codVale'];
     }
+    $total = 0;
+    $final = 0;
      $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale";
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
       
-      $total = $productos['stock'] * $productos['precio'];
+      $total = $productos['cantidad_despachada'] * $productos['precio'];
       $final += $total;
       $codigo=$productos['codigo'];
       $descripcion=$productos['descripcion'];
