@@ -132,35 +132,7 @@ if(isset($_POST['detalle'])){
     }else{
     $jus = $datos['observaciones'];
       }
- $num_vale = $productos1['codVale'];
-    $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale";
-    $result = mysqli_query($conn, $sql);
-    $final_despacho = 0;
-while ($productos = mysqli_fetch_array($result)){
-      $total = $productos['stock'] * $productos['precio'];
-      $total_despacho = $productos['cantidad_despachada'] * $productos['precio'];
-      $final += $total;
-      $final_despacho += $total_despacho;
 
-      $total1= number_format($total, 2, ".",",");
-      $final1=number_format($final, 2, ".",",");
-      $final_des=number_format($final_despacho, 2, ".",",");
-      $tot_despachado=number_format($total_despacho, 2, ".",",");
-
-}
-       $sql = "SELECT * FROM tb_vale WHERE codVale = $cod_vale";
-  $result = mysqli_query($conn, $sql);
-  while ($datos = mysqli_fetch_array($result)){
-                if($datos['estado']=='Pendiente') {
-                   echo "<input type='hidden' name='tot[]' value='".$total1."'>";
-                   echo "<input type='hidden' name='tot_f' value='".$final1."'>";
-                }else if($datos['estado']=='Aprobado') {
-                     echo "<input type='hidden' name='tot[]' value='".$final_despacho."'>";
-                     echo "<input type='hidden' name='tot_f' value='".$tot_despachado."'>";
-                     
-                }
-
-              }
             
   ?>
   <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
@@ -182,11 +154,13 @@ while ($productos = mysqli_fetch_array($result)){
                 $num_vale = $productos1['codVale'];
                 $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale";
     $result = mysqli_query($conn, $sql);
-    
+    $final_despacho = 0;
 while ($productos = mysqli_fetch_array($result)){
       
       $total = $productos['stock'] * $productos['precio'];
       $final += $total;
+      $total_despacho = $productos['cantidad_despachada'] * $productos['precio'];
+      $final_despacho += $total_despacho;
       $codigo=$productos['codigo'];
       $descripcion=$productos['descripcion'];
       $um=$productos['unidad_medida'];
@@ -202,6 +176,9 @@ while ($productos = mysqli_fetch_array($result)){
         $cantidad_despachada=$productos['cantidad_despachada'];
         $stock=number_format($cant_aprobada, 2,".",",");
         $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+
+      $final_des=number_format($final_despacho, 2, ".",",");
+      $tot_despachado=number_format($total_despacho, 2, ".",",");
        ?>
        <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
             <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
@@ -209,6 +186,19 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
             <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
             <input type="hidden" name="cost[]" value="$<?php echo $precio1 ?>">
+            <?php        $sql = "SELECT * FROM tb_vale WHERE codVale = $cod_vale";
+  $result = mysqli_query($conn, $sql);
+  while ($datos = mysqli_fetch_array($result)){
+                if($datos['estado']=='Pendiente') {
+                   echo "<input type='hidden' name='tot[]' value='".$total1."'>";
+                   echo "<input type='hidden' name='tot_f' value='".$final1."'>";
+                }else if($datos['estado']=='Aprobado') {
+                     echo "<input type='hidden' name='tot[]' value='".$final_des."'>";
+                     echo "<input type='hidden' name='tot_f' value='".$tot_despachado."'>";
+                     
+                }
+
+              } ?>
         <?php } ?>
        <?php  
                        $num_vale = $productos1['codVale'];
@@ -235,37 +225,9 @@ while ($productos = mysqli_fetch_array($result)){
     }else{
     $jus = $datos['observaciones'];
       }
- $num_vale = $productos1['codVale'];
-    $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale";
-    $result = mysqli_query($conn, $sql);
-    $final_despacho = 0;
-while ($productos = mysqli_fetch_array($result)){
-      $total = $productos['stock'] * $productos['precio'];
-      $total_despacho = $productos['cantidad_despachada'] * $productos['precio'];
-      $final += $total;
-      $final_despacho += $total_despacho;
 
-      $total1= number_format($total, 2, ".",",");
-      $final1=number_format($final, 2, ".",",");
-      $final_des=number_format($final_despacho, 2, ".",",");
-      $tot_despachado=number_format($total_despacho, 2, ".",",");
+     }
 
-}
-       $sql = "SELECT * FROM tb_vale WHERE codVale = $cod_vale";
-  $result = mysqli_query($conn, $sql);
-  while ($datos = mysqli_fetch_array($result)){
-                if($datos['estado']=='Pendiente') {
-                   echo "<input type='hidden' name='tot[]' value='".$total1."'>";
-                   echo "<input type='hidden' name='tot_f' value='".$final1."'>";
-                }else if($datos['estado']=='Aprobado') {
-                     echo "<input type='hidden' name='tot[]' value='".$final_despacho."'>";
-                     echo "<input type='hidden' name='tot_f' value='".$tot_despachado."'>";
-                     
-                }
-
-              }
-          }
-            
   ?>
   <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
 <?php } ?>
@@ -304,8 +266,8 @@ while ($productos = mysqli_fetch_array($result)){
       
       $total = $productos['stock'] * $productos['precio'];
       $total_despacho = $productos['cantidad_despachada'] * $productos['precio'];
-      $final += $total;
       $final_despacho += $total_despacho;
+      $final += $total;
       $codigo=$productos['codigo'];
       $descripcion=$productos['descripcion'];
       $um=$productos['unidad_medida'];
@@ -335,6 +297,19 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
             <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
             <input type="hidden" name="cost[]" value="$<?php echo $precio1 ?>">
+            <?php        $sql = "SELECT * FROM tb_vale WHERE codVale = $cod_vale";
+  $result = mysqli_query($conn, $sql);
+  while ($datos = mysqli_fetch_array($result)){
+                if($datos['estado']=='Pendiente') {
+                   echo "<input type='hidden' name='tot[]' value='".$total1."'>";
+                   echo "<input type='hidden' name='tot_f' value='".$final1."'>";
+                }else if($datos['estado']=='Aprobado') {
+                     echo "<input type='hidden' name='tot[]' value='".$final_des."'>";
+                     echo "<input type='hidden' name='tot_f' value='".$tot_despachado."'>";
+                     
+                }
+
+              } ?>
         </td>
         <td  data-label="Descripción"><?php echo $descripcion ?></td>
         <td  data-label="Unidada de Medida"><?php echo $um ?></td>
