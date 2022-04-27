@@ -168,13 +168,11 @@ while ($productos = mysqli_fetch_array($result)){
 </div>
               <thead>
                 <tr id="tr">
-                  <th style="width:30%;">Categoría</th>
                   <th style="width:15%;">Código</th>
                   <th style="width:15%;">Cod. Catálogo</th>
                   <th style="width:70%;">Descripción Completa</th>
                   <th style="width:15%;">U/M</th>
                   <th style="width:15%;">Cantidad</th>
-                  <th style="width: 30%;">Cantidad depachada</th>
                   <th style="width:15%;">Costo Unitario (estimado)</th>
                   <th style="width:30%;">Monto Total (estimado)</th>
                 </tr>
@@ -207,32 +205,29 @@ while ($productos = mysqli_fetch_array($result)){
      
   </style> 
         <tr>
-        <td  data-label="Categoría"><?php echo $productos['categoria'] ?>
-            <input type="hidden" name="categoria[]" value="<?php echo $productos['categoria'] ?>">
+        <td  data-label="Categoría"><?php echo $productos['codigo'] ?>
             <input type="hidden" name="cod[]" value="<?php echo $productos['codigo'] ?>">
             <input type="hidden" name="catalogo[]" value="<?php echo $productos['catalogo'] ?>">
             <input type="hidden" name="desc[]" value="<?php echo $productos['descripcion'] ?>">
             <input type="hidden" name="um[]" value="<?php echo $productos['unidad_medida'] ?>">
             <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
-            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cant_desp ?>">
             <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
             <input type="hidden" name="tot[]" value="$<?php echo $total2 ?>">
             <input type="hidden" name="tot_f" value="$<?php echo $final2 ?>" >
         </td>
-        <td  data-label="Código"><p style="padding:5%"><?php echo $productos['codigo'] ?></p></td>
         <td  data-label="Código"><p style="padding:5%"><?php echo $productos['catalogo'] ?></p></td>
         <td  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
         <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
         <td  data-label="Cantidad"><?php echo $stock ?></td>
-        <td  data-label="Cantidad"><?php echo $cant_desp ?></td>
         <td  data-label="Costo unitario"><?php echo $precio2 ?></td>
         <td  data-label="total"><?php echo $total2 ?></td>
       </tr>
 
       <?php } ?> 
      <tfoot>
-        <th colspan="7"></th>
+        
             <th >SubTotal</th>
+            <th colspan="5"></th>
             <td style=" color: red; font-weight: bold;" data-label="Subtotal"><?php echo $final2?></td>
         </tfoot>
         </tbody>

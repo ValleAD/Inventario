@@ -55,14 +55,12 @@
 <table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse; margin-top: 9%;">
      <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
-            <th style="width: 22%;font-size: 16px;text-align: center;">Categoria</th>
             <th style="width: 22%;font-size: 16px;text-align: center;">Código</th>
             <th style="width: 22%;font-size: 16px;text-align: center;">Código <br>ONU</th>
             <th style="width: 65%;color:black;font-size: 16px;text-align: left;">Descripción Completa <br>(con todas sus especificaciones)</th>
             <th style="width: 15%;color:black;font-size: 16px;text-align: center;">U/M</th>
-            <th style="width: 15%;color:black;font-size: 16px;text-align: center;">Cant.<br>Sol.</th>
-            <th style="width: 15%;color:black;font-size: 16px;text-align: center;">Cant.<br>Desp.</th>
-            <th style="width: 15%;color:black;font-size: 16px;text-align: center;">C/U</th>
+            <th style="width: 15%;color:black;font-size: 16px;text-align: center;">Cantidad</th>
+            <th style="width: 15%;color:black;font-size: 16px;text-align: center;">Precio<br>Unitario</th>
             <th style="width: 15%;color:black;font-size: 16px;text-align: center;border-right:1px solid #ccc ;">Monto</th>
         </tr>
     </thead> 
@@ -88,13 +86,11 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 ?>
   
         <tr>
-            <td style="text-align:center;" style="text-align: center;"><?php  echo $categoria?></td>
-            <td style="text-align:center;" style="text-align: center;"><?php  echo $codigo?></td>
+2            <td style="text-align:center;" style="text-align: center;"><?php  echo $codigo?></td>
             <td style="text-align:center;" style="text-align: center;"><?php  echo $onu?></td>
             <td><?php  echo $des?></td>
             <td style="text-align:center;" style="text-align: center;"><?php  echo $um?></td>
             <td style="text-align:center;"><?php echo $cantidad ?></td>
-            <td><?php echo $cantidad_despachada ?></td>
             <td style="text-align: center;"><?php echo $cost ?></td>
             <td style="text-align: center"><?php  echo $tot ?></td>
         </tr>
@@ -102,7 +98,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
      <?php } } ?> 
     <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
         <td style="text-align: center; font-weight: bold;">Subtotal</td>
-        <td colspan="7"></td>
+        <td colspan="5"></td>
         <td style="text-align: center; font-weight: bold;"><?php echo $tot_f ?></td>
     </tfoot>
 </table>
@@ -110,7 +106,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 
     <table style="width: 100%;height: 10%; border: 1px solid #ccc;border-collapse: collapse;">
         <tbody>
-           <p style="padding-left: 1%;"> Justificación por el OBS solicitado</p>
+           <p style="padding-left: 1%;"> Justificación por el OBS solicitado:</p>
            <hr style=" border: 1px solid #ccc;border-collapse: collapse;">
             <p style="padding-left: 1%;"><?php echo $jus ?></p>
         </tbody>
