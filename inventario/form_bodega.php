@@ -69,29 +69,15 @@ die();
 <html lang="es">
 <head>
     <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-     <link rel="stylesheet" type="text/css" href="styles/estilo.css"> 
-     <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
-          <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <!--  Datatables  -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>  
-    
-    <!-- searchPanes -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/searchpanes/1.0.1/css/searchPanes.dataTables.min.css">
-    <!-- select -->
-    <link href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
-     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"> 
-    <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">  
+     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"> 
     <title>Bodega</title>
 </head>
 <body>
 
-  <form style="width: 73%; height: 100%;margin: auto;padding: 1%; margin-bottom: 2%;" action="" method="POST">
+  <form style="margin: 2%;padding: 1%;" action="" method="POST">
 
 
-<div class="container" >
+<div class="container bg-white" style="border-radius: 15px; " >
  
        <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
 
@@ -221,9 +207,6 @@ if(isset($_POST['codigo'])){?>
                 <th style="width: 15%;">Costo unitario</th>
                 <th>Eliminar Fila</th>
             </tr>
-            <tr>
-            <td id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td> 
-            </tr>
         </thead>
         <tbody>
 
@@ -266,7 +249,7 @@ if(isset($_POST['codigo'])){?>
                <input type="hidden" name="desc[]" value="<?php  echo $productos['descripcion']; ?>">
                <input  type="hidden" name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>">
                 </td>
-               <td data-label="Descripción"><?php echo $productos['descripcion'] ?>
+               <td data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
                <td data-label="Unidad De Medida"><?php echo $productos['unidad_medida'] ?>
                 <input type="hidden"  name="stock[]"  value ="<?php  echo $stock; ?>">
                 <input  type="hidden" name="cu[]" value ="<?php  echo $precio ?>">
@@ -284,7 +267,10 @@ if(isset($_POST['codigo'])){?>
    </tbody>
         </table>
 
-<input class="btn btn-lg" type="submit" value="Enviar" id="enviar">
+<button class="btn btn-lg" type="submit"  id="enviar">Guadar
+                            <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#save"/>
+                        </svg></button>
     <?php }}}?>
     
     
@@ -307,18 +293,9 @@ if(isset($_POST['codigo'])){?>
     </form>
 <?php } ?>
 </div>
- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-            
-    <!--   Datatables-->
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>  
-
-    <!-- searchPanes   -->
-    <script src="https://cdn.datatables.net/searchpanes/1.0.1/js/dataTables.searchPanes.min.js"></script>
-    <!-- select -->
-    <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>  
-    
+</div>
+</div>
+ 
     <script>
     $(document).ready(function(){
         

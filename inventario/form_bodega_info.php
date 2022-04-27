@@ -81,8 +81,6 @@ die();
                <th>Eliminar fila</th>
                
               </tr>
-              <td id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>
-              
             </thead>
 
             <tbody>
@@ -141,7 +139,11 @@ die();
 
             </tbody>
         </table>
-         <center> <button type="submit" name="solicitar" class="btn btn-success btn-lg  text-center w-25 my-3"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar</button></center>    
+         <center> <button type="submit" name="solicitar" class="btn btn-success btn-lg  text-center w-25 my-3"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar
+                        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#save"/>
+                        </svg>
+         </button></center>    
 </form>
  </section>
 
