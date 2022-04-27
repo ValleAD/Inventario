@@ -20,15 +20,7 @@ die();
 <head>
 <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles/estilo.css" > 
- <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
-    <link rel="stylesheet" href="Plugin/assets/css/bootstrap.css" />
-    <link rel="stylesheet" href="Plugin/assets/css/bootstrap-theme.min.css">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
+
     <title>Solicitud Compra</title>
 </head>
 <body>
@@ -36,6 +28,9 @@ die();
       #section{
         margin-left: 2%;
         margin-right: 2%;
+        background: white;
+        padding: 1%;
+        border-radius: 15px;
       }
         form{
           margin:0;
@@ -119,7 +114,10 @@ $final2=0;
           <table class="table" style="margin-bottom:3%">
               <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/compra.php">
-                <button type="submit" class="btn btn-outline-primary" name="Fecha"><i class="bi bi-file-pdf-fill"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="Fecha">                        
+                    <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                        </svg></button>
             </form>
             <form method="POST" action="Plugin/compra.php">
                 <input readonly class="form-control"  type="hidden" value="<?php echo $datos['nSolicitud'] ?>" name="sol_compra">
@@ -161,7 +159,10 @@ while ($productos = mysqli_fetch_array($result)){
     $result = mysqli_query($conn, $sql);
  while ($datos1 = mysqli_fetch_array($result)){  ?>
     <textarea style="display: none;" name="jus" ><?php echo $datos1['justificacion'] ?></textarea> <?php } ?>
-                <button type="submit" class="btn btn-outline-primary" name="pdf"><i class="bi bi-printer"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="pdf">                        
+                    <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                        </svg></button>
             </form>
 
 </div>

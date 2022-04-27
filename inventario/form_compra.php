@@ -250,9 +250,9 @@ if(isset($_POST['codigo'])){ ?>
 <br>
  
 </div> 
-<div id="w" class="form-group" style="position: all;">
+            <div id="w" class="form-floating" style="position: all;" >
                 <label>Justificación por el OBS solicitado</label>
-               <textarea rows="7"  class="form-control" name="jus"  required> </textarea><br>
+              <textarea rows="7" class="form-control" name="jus"  placeholder="" required id="floatingTextarea"></textarea>
             </div>
 <div id="w" class="button21">
              <input class="btn btn-lg" type="submit" value="Enviar" id="enviar">

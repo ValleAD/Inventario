@@ -96,7 +96,10 @@ $final = 0;
         <table class="table" style="margin-bottom:3%">
            <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
               <form method="POST" action="Plugin/pdf_vale.php">
-                <button type="submit" class="btn btn-outline-primary" name="Fecha"><i class="bi bi-file-pdf-fill"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="Fecha">                        
+                    <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                        </svg></button>
             </form>
             <form method="POST" action="Plugin/bodega.php" target="_blank">
            <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
@@ -137,7 +140,11 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
             <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
         <?php } ?>
-                <button type="submit" class="btn btn-outline-primary" name="pdf"><i class="bi bi-printer"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="pdf">
+                                               <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                        </svg>
+            </button>
             </form>
 
 </div> 
