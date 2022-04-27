@@ -49,6 +49,9 @@ die();
         #pdf:active{
         transform: translateY(5px);
         } 
+        form{
+            margin: 2%;
+        }
         #section{
             margin: 2%;
             padding:0%;
@@ -120,13 +123,13 @@ $final2 = 0;
           </div>
         <br><br>
           
-       <table class="table table-responsive " id="example1" style=" width: 100%;margin: 2%;">
+       <table class="table table-responsive " id="example1" style=" width: 100%;">
             
         <thead>
               <tr id="tr">
                 <th style="width: 10%;">#</th>
                 <th style="width: 10%;">Código</th>
-                <th style="width: 50%;text-align: left;">Descripción</th>
+                <th style="width: 50%;">Descripción</th>
                 <th style="width: 10%;">Unidad de Medida</th>
                 <th style="width: 10%;">Cantidad Solicitada</th>
                 <th style="width: 10%;">Cantidad Despachada</th>
@@ -134,7 +137,7 @@ $final2 = 0;
                 <th style="width: 10%;">Nuevo Costo Unitario (estimado)</th>
                 <th style="width: 10%;">Total</th>
               </tr>
-                <td id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>
+                
            </thead>
             <tbody>
 <?php 
@@ -275,7 +278,7 @@ $num_sol = $_POST['id'];
             <form method="POST" action="Plugin/pdf_compra.php">
                 <button type="submit" class="btn btn-outline-primary" name="Fecha">
                 <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
                 </button>
             </form>
@@ -302,6 +305,11 @@ while ($productos = mysqli_fetch_array($result)){
         $cantidad_despachada=$productos['cantidad_despachada'];
         $stock=number_format($cant_aprobada, 2,".");
         $cantidad_desp=number_format($cantidad_despachada, 2,".");
+        $total_despacho = $productos['cantidad_despachada'] * $productos['precio'];
+        $final_despacho = 0;
+      $final_despacho += $total_despacho;
+      $final_des=number_format($final_despacho, 2, ".",",");
+      $tot_despachado=number_format($total_despacho, 2, ".",",");
        
         ?>
         <input type="hidden" name="cod[]" value="<?php echo $productos['codigo'] ?>">
@@ -310,12 +318,22 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
             <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
             <input type="hidden" name="cost[]" value="$<?php echo $precio1 ?>">
-            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
-            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" ></td>
-        <?php } ?>
+                           <?php
+  $sql = "SELECT * FROM tb_almacen WHERE codAlmacen=$num_sol ";
+  $result = mysqli_query($conn, $sql);
+  while ($datos = mysqli_fetch_array($result)){
+                if($datos['estado']=='Pendiente') {
+                   echo "<input type='hidden' name='tot[]' value='".$total1."'>";
+                   echo "<input type='hidden' name='tot_f' value='".$final1."'>";
+                }else if($datos['estado']=='Aprobado') {
+                     echo "<input type='hidden' name='tot[]' value='".$tot_despachado."'>";
+                     echo "<input type='hidden' name='tot_f' value='".$final_des."'>";
+                     
+                }
+              } } ?>
                 <button type="submit" class="btn btn-outline-primary" name="pdf">
                 <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
                 </button>
             </form>
@@ -325,7 +343,7 @@ while ($productos = mysqli_fetch_array($result)){
               <tr id="tr">
                 <th style="width: 10%;">#</th>
                 <th style="width: 10%;">Código</th>
-                <th style="width: 50%;text-align: left;">Descripción</th>
+                <th style="width: 30%;">Descripción</th>
                 <th style="width: 10%;">Unidad de Medida</th>
                 <th style="width: 10%;">Cantidad Solicitada</th>
                 <th style="width: 10%;">Cantidad Despachada</th>
@@ -355,7 +373,11 @@ while ($productos = mysqli_fetch_array($result)){
         $cantidad_despachada=$productos['cantidad_despachada'];
         $stock=number_format($cant_aprobada, 2,".");
         $cantidad_desp=number_format($cantidad_despachada, 2,".");
-       
+       $total_despacho = $productos['cantidad_despachada'] * $productos['precio'];
+        $final_despacho = 0;
+      $final_despacho += $total_despacho;
+      $final_des=number_format($final_despacho, 2, ".",",");
+      $tot_despachado=number_format($total_despacho, 2, ".",",");
         ?>
     <style type="text/css">
      #td{
@@ -373,22 +395,56 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
             <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
             <input type="hidden" name="cost[]" value="$<?php echo $precio1 ?>">
-            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
-            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" ></td>
+             <?php
+  $sql = "SELECT * FROM tb_almacen WHERE codAlmacen=$num_sol ";
+  $result = mysqli_query($conn, $sql);
+  while ($datos = mysqli_fetch_array($result)){
+                if($datos['estado']=='Pendiente') {
+                   echo "<input type='hidden' name='tot[]' value='".$total1."'>";
+                   echo "<input type='hidden' name='tot_f' value='".$final1."'>";
+                }else if($datos['estado']=='Aprobado') {
+                     echo "<input type='hidden' name='tot[]' value='".$tot_despachado."'>";
+                     echo "<input type='hidden' name='tot_f' value='".$final_des."'>";
+                     
+                }
+              } ?></td>
 
         <td  data-label="Nombre del Artículo"><?php echo $productos['nombre'] ?></td>
         <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
         <td  data-label="Cantidad Solicitada"><?php echo $stock ?></td>
         <td  data-label="Cantidad Solicitada"><?php echo $cantidad_desp ?></td>
         <td  data-label="Costo Unitario">$<?php echo $precio1 ?></td>
-        <td  data-label="total">$<?php echo $total1 ?></td>
+        <td  data-label="total">$
+                   <?php
+  $sql = "SELECT * FROM tb_almacen WHERE codAlmacen=$num_sol ";
+  $result = mysqli_query($conn, $sql);
+  while ($datos = mysqli_fetch_array($result)){
+                if($datos['estado']=='Pendiente') {
+                    echo $total1;
+                }else if($datos['estado']=='Aprobado') {
+                     echo $tot_despachado;
+                }
+              }
+                ?>
+        </td>
       </tr>
 
       <?php }?>
       <tfoot>
         <th colspan="6"></th>
             <th >SubTotal</th>
-            <td style=" color: red; font-weight: bold;" data-label="Subtotal"><?php echo $final1?></td>
+           <td style=" color: red; font-weight: bold;" data-label="Subtotal">
+               <?php
+  $sql = "SELECT * FROM tb_almacen WHERE codAlmacen=$num_sol ";
+  $result = mysqli_query($conn, $sql);
+  while ($datos = mysqli_fetch_array($result)){
+                if($datos['estado']=='Pendiente') {
+                    echo $final1;
+                }else if($datos['estado']=='Aprobado') {
+                     echo $final_des;
+                }
+              }
+                ?></td>
         </tfoot>
         </tbody>
     </table>

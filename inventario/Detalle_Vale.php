@@ -193,8 +193,8 @@ while ($productos = mysqli_fetch_array($result)){
                    echo "<input type='hidden' name='tot[]' value='".$total1."'>";
                    echo "<input type='hidden' name='tot_f' value='".$final1."'>";
                 }else if($datos['estado']=='Aprobado') {
-                     echo "<input type='hidden' name='tot[]' value='".$final_des."'>";
-                     echo "<input type='hidden' name='tot_f' value='".$tot_despachado."'>";
+                    echo "<input type='hidden' name='tot[]' value='".$tot_despachado."'>";
+                     echo "<input type='hidden' name='tot_f' value='".$final1."'>";
                      
                 }
 
@@ -304,8 +304,8 @@ while ($productos = mysqli_fetch_array($result)){
                    echo "<input type='hidden' name='tot[]' value='".$total1."'>";
                    echo "<input type='hidden' name='tot_f' value='".$final1."'>";
                 }else if($datos['estado']=='Aprobado') {
-                     echo "<input type='hidden' name='tot[]' value='".$final_des."'>";
-                     echo "<input type='hidden' name='tot_f' value='".$tot_despachado."'>";
+                     echo "<input type='hidden' name='tot[]' value='".$tot_despachado."'>";
+                     echo "<input type='hidden' name='tot_f' value='".$final_des."'>";
                      
                 }
 
@@ -322,9 +322,9 @@ $sql = "SELECT * FROM tb_vale WHERE codVale = $cod_vale";
 $result = mysqli_query($conn, $sql);
 while ($datos = mysqli_fetch_array($result)){
               if($datos['estado']=='Pendiente') {
-                  echo $final1;
+                  echo $total1;
               }else if($datos['estado']=='Aprobado') {
-                   echo $final_des;
+                   echo $tot_despachado;
               }
             }
               ?></td>
@@ -343,7 +343,7 @@ while ($datos = mysqli_fetch_array($result)){
                 if($datos['estado']=='Pendiente') {
                     echo $final1;
                 }else if($datos['estado']=='Aprobado') {
-                     echo $tot_despachado;
+                     echo $final_des;
                 }
               }
                 ?></td>

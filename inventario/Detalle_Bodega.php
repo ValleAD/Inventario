@@ -123,7 +123,7 @@ if(isset($_POST['detalle'])){
               <form method="POST" action="Plugin/pdf_vale.php">
                 <button type="submit" class="btn btn-outline-primary" name="Fecha">
                 <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
                 </button>
             </form>
@@ -156,6 +156,11 @@ while ($productos = mysqli_fetch_array($result)){
         $cantidad_despachada=$productos['cantidad_despachada'];
         $stock=number_format($cant_aprobada, 2,".",",");
         $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+        $total_despacho = $productos['cantidad_despachada'] * $productos['precio'];
+        $final_despacho = 0;
+      $final_despacho += $total_despacho;
+      $final_des=number_format($final_despacho, 2, ".",",");
+      $tot_despachado=number_format($total_despacho, 2, ".",",");
        ?>
        <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
             <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
@@ -163,12 +168,23 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
             <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
             <input type="hidden" name="cost[]" value="$<?php echo $precio1 ?>">
-            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
-            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
+            <?php        $sql = "SELECT * FROM tb_bodega WHERE codBodega = $cod_bodega";
+  $result = mysqli_query($conn, $sql);
+  while ($datos = mysqli_fetch_array($result)){
+                if($datos['estado']=='Pendiente') {
+                   echo "<input type='hidden' name='tot[]' value='".$total1."'>";
+                   echo "<input type='hidden' name='tot_f' value='".$final1."'>";
+                }else if($datos['estado']=='Aprobado') {
+                     echo "<input type='hidden' name='tot[]' value='".$tot_despachado."'>";
+                     echo "<input type='hidden' name='tot_f' value='".$final_des."'>";
+                     
+                }
+
+              } ?>
         <?php } ?>
                 <button type="submit" class="btn btn-outline-primary" name="pdf">
                 <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
                 </button>
             </form>
@@ -224,15 +240,39 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
             <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
             <input type="hidden" name="cost[]" value="$<?php echo $precio1 ?>">
-            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
-            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
+            <?php $sql = "SELECT * FROM tb_bodega WHERE codBodega = $cod_bodega";
+  $result = mysqli_query($conn, $sql);
+  while ($datos = mysqli_fetch_array($result)){
+                if($datos['estado']=='Pendiente') {
+                   echo "<input type='hidden' name='tot[]' value='".$total1."'>";
+                   echo "<input type='hidden' name='tot_f' value='".$final1."'>";
+                }else if($datos['estado']=='Aprobado') {
+                     echo "<input type='hidden' name='tot[]' value='".$tot_despachado."'>";
+                     echo "<input type='hidden' name='tot_f' value='".$final_des."'>";
+                     
+                }
+
+              } ?>
         </td>
         <td  data-label="Descripción"><?php echo $descripcion ?></td>
         <td  data-label="Unidada de Medida"><?php echo $um ?></td>
         <td  data-label="Cantidad"><?php echo $stock ?></td>
         <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
         <td  data-label="Costo unitario"><?php echo $precio1 ?></td>
-        <td  data-label="total"><?php echo $total1 ?></td>
+        <td  data-label="total">
+    <?php
+
+$sql = "SELECT * FROM tb_bodega WHERE codBodega = $cod_bodega";
+$result = mysqli_query($conn, $sql);
+while ($datos = mysqli_fetch_array($result)){
+              if($datos['estado']=='Pendiente') {
+                  echo $total1;
+              }else if($datos['estado']=='Aprobado') {
+                   echo $tot_despachado;
+              }
+            }
+              ?>
+        </td>
       </tr>
 
       </tr>
@@ -240,7 +280,20 @@ while ($productos = mysqli_fetch_array($result)){
       <?php } ?> 
     <tfoot><th colspan="5"></th>
             <th >SubTotal</th>
-            <td style=" color: red; font-weight: bold;" data-label="Subtotal"><?php echo $final1?></td>
+            <td style=" color: red; font-weight: bold;" data-label="Subtotal">
+    <?php
+
+$sql = "SELECT * FROM tb_bodega WHERE codBodega = $cod_bodega";
+$result = mysqli_query($conn, $sql);
+while ($datos = mysqli_fetch_array($result)){
+              if($datos['estado']=='Pendiente') {
+                  echo $final1;
+              }else if($datos['estado']=='Aprobado') {
+                   echo $final_des;
+              }
+            }
+              ?>
+            </td>
         </tfoot>
     </tbody>
 </table>
@@ -362,6 +415,7 @@ while ($productos = mysqli_fetch_array($result)){
        <td  data-label="Código"><?php echo $codigo ?>
 
             <input type="hidden"  name="cod[]" readonly value="<?php echo $codigo ?>">
+            <input type="hidden"  name="cod_bodega[]" readonly value="<?php echo $productos['codigodetallebodega'] ?>">
 
             <input type="hidden" style="width: 100%; background:transparent; border: none; text-align: left; height: 100%;"  name="desc[]" readonly value="<?php echo $descripcion ?>">
 
