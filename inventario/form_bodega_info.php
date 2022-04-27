@@ -78,7 +78,7 @@ die();
                 <th style="width: 15%;">Productos Disponibles</th>
                 <th style="width: 15%;">Cantidad</th>
                 <th style="width: 15%;">Costo unitario</th>
-               <th>Eliminar fila</th>
+               <th>Eliminar Fila</th>
                
               </tr>
             </thead>

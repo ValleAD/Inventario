@@ -85,7 +85,7 @@ form{
                 <label style="color: #000">Descripción Completa</label>
 
             <div class="form-floating" >
-              <textarea class="form-control" name="descr[]"  placeholder="Ingrese la Descripción" id="floatingTextarea"></textarea>
+              <textarea class="form-control" name="descr[]"  placeholder="Ingrese la Descripción" required id="floatingTextarea"></textarea>
             </div>
 
         </div>

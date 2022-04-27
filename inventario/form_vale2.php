@@ -83,7 +83,7 @@ die();
                 <th style="width: 15%;">Productos Disponibles</th>
                 <th style="width: 50%;">Cantidad</th>
                 <th style="width: 15%;">Costo unitario</th>
-               <th>Eliminar fila</th>
+               <th>Eliminar Fila</th>
                
               </tr>
 
@@ -149,11 +149,15 @@ die();
 
             </tbody>
         </table>
-         <div class="form-group" style="position: all;">
-                <label>Observaciones (En qué se ocupará el bien entregado)</label>
-               <textarea rows="7"  class="form-control" name="jus"  required> </textarea><br>
-            </div> 
-       <center><button type="submit" name="form_vale2" class="btn btn-success btn-lg my-2 text-center w-25"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar</button> </center>   
+         <div class="form-floating mb-3 my-2" >
+            <label>Observaciones (En qué se ocupará el bien entregado)</label>
+              <textarea rows="7" class="form-control" name="jus"  placeholder="" required id="floatingTextarea"></textarea>
+            </div>
+       <center><button type="submit" name="form_vale2" class="btn btn-success btn-lg my-2 text-center w-25"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar
+                        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#save"/>
+                        </svg>
+       </button> </center>   
 </form>
  </section>
 

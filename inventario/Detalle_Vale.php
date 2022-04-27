@@ -522,24 +522,10 @@ while ($productos = mysqli_fetch_array($result)){
         </tfoot>
         </tbody>
     </table>
-<?php 
-
-      $sql = "SELECT * FROM tb_vale where codVale = $cod_vale ORDER BY fecha_registro DESC LIMIT 1";
-      $result = mysqli_query($conn, $sql);
-      while ($datos = mysqli_fetch_array($result)){
-        $observaciones = $datos['observaciones'];
-
-
-      ?>
-      <div class="form-group" style="position: all;">
-
-                      <label>Observaciones (En qué se ocupará el bien entregado)</label>
-                    <textarea rows="7"  class="form-control" name="jus"  required><?php echo $observaciones ?> </textarea><br>
-                  </div>
-
-      <?php
-      }
-      ?>
+<div class="form-floating mb-3" >
+            <label>Observaciones (En qué se ocupará el bien entregado)</label>
+              <textarea rows="7" class="form-control" name="jus"  placeholder="" required id="floatingTextarea"></textarea>
+            </div>
     <input id="pdf" type="submit" class="btn btn-lg my-1" value="Guardar Estado" name="detalle_vale">
         <?php } ?>
 </form>
