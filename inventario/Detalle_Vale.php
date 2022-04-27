@@ -501,9 +501,6 @@ while ($productos = mysqli_fetch_array($result)){
       $um=$productos['unidad_medida'];
       $precio=$productos['precio'];
       $fecha=$productos['fecha_registro'];
-
-
-      
       $precio1=number_format($precio, 2,".",",");
       $total1= number_format($total, 2, ".",",");
       $final1=number_format($final, 2, ".",",");
