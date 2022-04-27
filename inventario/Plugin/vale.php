@@ -87,13 +87,15 @@ for($i = 0; $i < count($_POST['cod']); $i++)
     </tfoot>
 </table>
 <br>
-    <table style="width: 100%;height: 10%; border: 1px solid #ccc;border-collapse: collapse;">
-        <tbody>
-           <p style="padding-left: 1%;"> Observaciones (En qué se ocupará el bien entregado)</p>
-           <hr style=" border: 1px solid #ccc;border-collapse: collapse;">
-            <p style="padding-left: 1%;"><?php echo $jus ?></p>
-        </tbody>
-    </table>
+<table style="width: 100%;height: 10%; border: 1px solid #ccc;border-collapse: collapse;">
+            <tbody>
+            <div class="form-group" style="position: all;border: 1px solid #ccc;border-collapse: collapse;">
+               <p style="padding-left: 1%;"> Observaciones (En qué se ocupará el bien entregado)</p>
+               <hr style=" border: 1px solid #ccc;border-collapse: collapse;">
+                <p style="padding-left: 1%;"><?php echo $jus ?></p>
+</div>
+            </tbody>
+        </table>
     <br>
     <p style="float: right;"> Entrega: ________________</p>
     <p style="text-align:left;">Solicita: ________________ </p>
