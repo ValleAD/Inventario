@@ -113,17 +113,12 @@ $final = 0;
   ?>
   <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
 <?php } ?>
-<<<<<<< HEAD
+
 <button type="submit" class="btn btn-outline-primary" name="aprobado">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
-=======
-                <button type="submit" class="btn btn-outline-primary" name="Fecha">
-                        <svg class="bi" width="20" height="20" fill="currentColor">
-                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
-                        </svg>
->>>>>>> ffabb0f4717135ed06a8b312e6c08c79fbe9b058
+
                 </button>
             </form>
             <form method="POST" action="Plugin/vale.php" target="_blank">
@@ -179,18 +174,12 @@ while ($productos = mysqli_fetch_array($result)){
   ?>
   <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
 <?php } ?>
-<<<<<<< HEAD
 <button type="submit" class="btn btn-outline-primary" name="pdf">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
                 </button>
-=======
-                <button type="submit" class="btn btn-outline-primary" name="pdf">                     
-                        <svg class="bi" width="20" height="20" fill="currentColor">
-                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
-                        </svg></button>
->>>>>>> ffabb0f4717135ed06a8b312e6c08c79fbe9b058
+
             </form>
 
 </div>
@@ -269,7 +258,7 @@ while ($productos = mysqli_fetch_array($result)){
     $result = mysqli_query($conn, $sql);
  while ($datos = mysqli_fetch_array($result)){
  if ($datos['observaciones']=="") {
-    $jus = "Sin observacion por el momento";
+    $jus = 'Sin observacion por el momento';
         
     }else{
     $jus = $datos['observaciones'];
@@ -279,7 +268,6 @@ while ($productos = mysqli_fetch_array($result)){
                 <p style="padding-left: 1%;">Observaciones (En qué se ocupará el bien entregado)</p>
                 <hr style=" border: 1px solid #ccc;border-collapse: collapse;">
                 <p style="padding-left: 1%;"><?php echo $jus ?></p>
-                <textarea style="display: none;" name="jus" ><?php echo $datos['observaciones'] ?></textarea>
             </div>
 <?php } ?>
 

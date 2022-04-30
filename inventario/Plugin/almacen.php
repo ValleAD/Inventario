@@ -41,7 +41,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 {
    
     $codigo = $_POST['cod'][$i];
-    $des = $_POST['nombre'][$i];
+    $des = $_POST['desc'][$i];
     $um = $_POST['um'][$i];
     $cant = $_POST['cant'][$i];
     $cantidad = $_POST['cantidad_despachada'][$i];

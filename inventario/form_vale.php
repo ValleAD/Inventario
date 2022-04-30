@@ -205,7 +205,7 @@ if(isset($_POST['codigo'])){?>
                 <input  type="hidden" name="cu[]" value ="<?php  echo $precio ?>">
                </td>
                <td data-label="Productos Disponibles"><?php  echo $stock; ?></td>
-               <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="decimal" class="form-control"  name="cant[]" required></td>
+               <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="number" step="0.01" class="form-control"  name="cant[]" required></td>
                <td data-label="Precio"><?php  echo $precio1 ?></td> 
                <td><input type="button" class="borrar btn btn-success my-1" value="Eliminar" /></td>   
             </tr>

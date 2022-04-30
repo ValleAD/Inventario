@@ -8,7 +8,7 @@ include ('../Model/conexion.php');
  <head>
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
-     <title>Filtro por Fechas</title>
+     <title>Reporte Egreso</title>
  </head>
  <body>
 

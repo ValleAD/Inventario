@@ -76,14 +76,14 @@ die();
             <thead>
               <tr id="tr">
                
-                <th style="width: 10%;">Código</th>
+               <th style="width: 10%;">Código</th>
                 <th style="width: 10%;">Catálogo</th>
-                <th style="width: 50%;">Descripción Completa</th>
-                <th style="width: 10%; text-align: center;">U/M</th>
-                <th style="width: 115%;">Cantidad</th>
-                <th style="width: 175%;">Costo Unitario</th>
-                <th style="width: 145%;">Fecha Registro</th>
-                <th style="width: 145%;" align="center">
+                <th style="width: 100%;">Descripción Completa</th>
+                <th style="width: 10%;">U/M</th>
+                <th style="width: 10%;">Cantidad</th>
+                <th style="width: 10%;">Costo Unitario</th>
+                <th style="width: 20%;">Fecha Registro</th>
+                <th style="width: 10%;" align="center">
                     <button type="submit" name="solicitar" class='btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button> 
                 </th>
                
@@ -139,6 +139,30 @@ die();
 <?php } ?> 
 
             </tbody>
+                        <tfoot>
+
+                <tr id="tr">
+               
+                <th id="th" style="width: 10%;">Código</th>
+                <th id="th" style="width: 10%;">Catálogo</th>
+                <th id="th" style="width: 40%;">Descripción Completa</th>
+                <th id="th" style="width: 10%;">U/M</th>
+                <th id="th" style="width: 10%;">Cantidad</th>
+                <th id="th" style="width: 10%;">Costo Unitario</th>
+                <th id="th" style="width: 20%;">Fecha Registro</th>
+                <th id="th" style="width: 10%;" align="center">
+                    <button type="submit" name="solicitar" class='btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar
+                    </button> 
+                </th>
+               
+              </tr>
+            </tfoot>
+            <style>
+                #th{
+                    background-color: #46466b;
+                    color: white;
+                }
+            </style>
         </table>
 </form>
 </section>

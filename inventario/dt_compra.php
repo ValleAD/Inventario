@@ -99,13 +99,23 @@ $final2=0;
               <label style="font-weight: bold;">Fecha</label>
                   <input readonly class="form-control"  type="text" value="'.date("d-m-Y",strtotime($datos['fecha_registro'])). '" name="fech">';?>
             </div>
-            <div class="col-3" style="position: initial">
+            <div class="col-6 col-sm-3" style="position: initial">
               <label style="font-weight: bold;">Estado</label>
-              <input <?php
-                 if($datos['estado']=='Comprado') {
-                     echo ' style="background-color:blueviolet ;width:100%; border-radius:5px;text-align:center; color: white;"';
+              <br>
+              
+              <div class="input-group mb-3">
+                 <label class="input-group-text" for="inputGroupSelect01">
+                    <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#check-circle-fill"/>
+                </svg>
+                 </label>
+              <input id="inputGroupSelect01" <?php
+                if($datos['estado']=='Comprado') {
+                     echo ' style="background-color:blueviolet ;width:50%; border-radius:5px;text-align:center; color: white;"';
                 }
-            ?> readonly class="form-control"  type="text" value="<?= $datos['estado'] ?>" name="id"> 
+            ?> class="form-control" type="text" name="" value="<?php echo $datos['estado'] ?>"><br>
+              <input readonly class="form-control" type="hidden" value="<?php echo $datos['nSolicitud'] ?>" name="sol_compra">
+                </div>
             </div>
           </div>
         

@@ -5,7 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>PDF Vale</title>
+        <title>Reporte Ingreso en PDF</title>
     </head>
     <body style="font-family: sans-serif;">
         <img src="../img/hospital.png" style="width:20%">
@@ -19,15 +19,15 @@
         <thead>     
             <tr style="border: 1px solid #ddd;color: black;">
         <th style="width: 10%">#</th>
-         <th  style="width:15%">Departamento</th>
-         <th  style="width:15%">Encargado</th>
+         <th  style="width:10%">Departamento</th>
+         <th  style="width:10%">Encargado</th>
          <th  style="width:10%">Codigo</th>
-         <th  style="width:100%">Descripción Completa</th>
-         <th  style="width:100%">U/M</th>
-         <th  style="width:100%">Cantidad</th>
-         <th  style="width:100%">Costo Unitario</th>
-         <th  style="width:100%">Ingreso Por</th>
-         <th  style="width:100%">Fecha Registro</th>
+         <th  style="width:50%">Descripción Completa</th>
+         <th  style="width:10%">U/M</th>
+         <th  style="width:10%">Cantidad</th>
+         <th  style="width:10%">Costo Unitario</th>
+         <th  style="width:10%">Ingreso Por</th>
+         <th  style="width:20%">Fecha Registro</th>
          
        </tr>
 
@@ -52,8 +52,8 @@ while ($productos = mysqli_fetch_array($result)){
 <td data-label="Encargado"><?php  echo $productos['usuario']; ?></td>
 <td data-label="Código de Producto"><?php  echo $productos['codigo']; ?></td>
 <td data-label="Descripción Completa" style="text-align: left"><?php  echo $productos['descripcion']; ?></td>
-<td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-<td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
+<td data-label="Unidad De Medida" style=""><?php  echo $productos['unidad_medida']; ?></td>
+<td data-label="Cantidad" style=""><?php  echo $productos['stock']; ?></td>
 <td data-label="Costo Unitario">$<?php  echo $precio3 ?></td>
 <td data-label="Fuente de Ingreso">Solicitud de Compra</td>
 <td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
@@ -72,16 +72,16 @@ while ($productos = mysqli_fetch_array($result)){
     <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
         <thead>     
             <tr style="border: 1px solid #ddd;color: black;">
-        <th style="width: 10%;font-size: 16px;text-align: center;">#</th>
-         <th style="width: 10%;font-size: 16px;text-align: center;">Departamento</th>
-         <th style="width: 10%;font-size: 16px;text-align: center;">Encargado</th>
-         <th style="width: 10%;font-size: 16px;text-align: center;">Codigo</th>
-         <th style="width: 100%;font-size: 16px;text-align: center;">Descripción Completa</th>
-         <th style="width: 10%;font-size: 16px;text-align: center;">U/M</th>
-         <th style="width: 10%;font-size: 16px;text-align: center;">Cantidad</th>
-         <th style="width: 10%;font-size: 16px;text-align: center;">Costo Unitario</th>
-         <th style="width: 10%;font-size: 16px;text-align: center;">Ingreso Por</th>
-         <th style="width: 10%;font-size: 16px;text-align: center;">Fecha Registro</th>
+        <th style="width: 5%;">#</th>
+         <th style="width: 10%;">Departamento</th>
+         <th style="width: 10%;">Encargado</th>
+         <th style="width: 10%;">Codigo</th>
+         <th style="width: 50%;">Descripción Completa</th>
+         <th style="width: 10%;">U/M</th>
+         <th style="width: 10%;">Cantidad</th>
+         <th style="width: 10%;">Costo Unitario</th>
+         <th style="width: 10%;">Ingreso Por</th>
+         <th style="width: 20%;">Fecha Registro</th>
          
        </tr>
 
@@ -111,13 +111,13 @@ width: 100%;
 }
 </style>
 <tr id="tr">
-    <td data-label="#"><?php echo $r ?></td>
+<td data-label="#"><?php echo $r ?></td>
 <td data-label="Departamento" style="text-align: left"><?php  echo $productos['departamento']; ?></td>
 <td data-label="Encargado" style="text-align: left"><?php  echo $productos['encargado']; ?></td>
 <td data-label="Código Producto"><?php  echo $productos['codigo']; ?></td>
 <td data-label="Descripción" style="text-align: left"><?php  echo $productos['nombre']; ?></td>
-<td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-<td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['cantidad_solicitada']; ?></td>
+<td data-label="Unidad De Medida" style=""><?php  echo $productos['unidad_medida']; ?></td>
+<td data-label="Cantidad" style=""><?php  echo $productos['cantidad_solicitada']; ?></td>
 <td data-label="Costo Unitario">$<?php  echo $precio2 ?></td>
 <td data-label="Fuente de Ingreso">Solicitud a Almacén</td>
 <td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
@@ -141,13 +141,13 @@ width: 100%;
         <thead>     
             <tr style="border: 1px solid #ddd;color: black;">
         
-         <th style="width: 25%;font-size: 16px;text-align: center;">Código</th>
-                <th style="width: 70%;color:black;font-size: 16px;text-align: left;">Descripción Completa</th>
-                <th style="width: 15%;color:black;font-size: 16px;text-align: center;">U/M</th>
-                <th style="width: 15%;color:black;font-size: 14px;text-align: center;">Cantidad Solicitada</th>
-                <th style="width: 30%;color:black;font-size: 14px;text-align: center;">Costo Unitario</th>
-                <th style="width: 30%;color:black;font-size: 16px;text-align: center;">Solicitud por</th>
-                <th style="width: 15%;color:black;font-size: 16px;text-align: center;border-right:1px solid #ccc ;">Total</th>
+                <th style="width: 10%;">Código</th>
+                <th style="width: 50%;color:black;text-align: left;">Descripción Completa</th>
+                <th style="width: 10%;color:black;">U/M</th>
+                <th style="width: 10%;color:black;font-size: 14px;">Cantidad Solicitada</th>
+                <th style="width: 10%;color:black;font-size: 14px;">Costo Unitario</th>
+                <th style="width: 10%;color:black;">Solicitud por</th>
+                <th style="width: 20%;color:black;border-right:1px solid #ccc ;">Fecha</th>
 
         </tr>
     </thead>
@@ -173,8 +173,8 @@ width: 100%;
 
       <td align="center" data-label="Código Producto"><?php  echo $productos['codigo']; ?></td>
       <td data-label="Descripción" style="text-align: left"><?php  echo $productos['descripcion']; ?></td>
-      <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-      <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
+      <td data-label="Unidad De Medida" style=""><?php  echo $productos['unidad_medida']; ?></td>
+      <td data-label="Cantidad" style=""><?php  echo $productos['stock']; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
       <td data-label="Fuente de Ingreso"><?php  echo $productos['campo']; ?></td>
       <td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>

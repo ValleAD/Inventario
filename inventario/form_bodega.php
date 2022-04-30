@@ -196,7 +196,7 @@ if(isset($_POST['codigo'])){?>
             </div>
         </div>
         <br>
- <table class="table table-responsive table-striped" id="example" style=" width: 100%">
+ <table class="table table-responsive table-striped"  style=" width: 100%">
         <thead>
            <tr id="tr" style="text-align: left;">
                 <th style="width: 10%;">Código</th>
@@ -255,7 +255,7 @@ if(isset($_POST['codigo'])){?>
                 <input  type="hidden" name="cu[]" value ="<?php  echo $precio ?>">
                </td>
                <td data-label="Productos Disponibles"><?php  echo $stock; ?></td>
-               <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="decimal" class="form-control"  name="cant[]" required></td>
+               <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="number" step="0.01" class="form-control"  name="cant[]" required></td>
                <td data-label="Precio"><?php  echo $precio1 ?></td> 
                <td><input type="button" class="borrar btn btn-success my-1" value="Eliminar" /></td>  
             </tr>
@@ -267,7 +267,7 @@ if(isset($_POST['codigo'])){?>
    </tbody>
         </table>
 
-<button class="btn btn-lg" type="submit"  id="enviar">Guadar
+<button name="form_bodega" class="btn btn-lg" type="submit"  id="enviar">Guadar
                             <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#save"/>
                         </svg></button>

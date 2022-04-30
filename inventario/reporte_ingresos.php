@@ -81,10 +81,16 @@ if(isset($_POST['ingresos'])){
 <table class="table table-responsive table-striped" id="example"  style=" width: 100%">
     <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/reporte_ingreso.php">
-                <button type="submit" class="btn btn-outline-primary" name="circulante"><i class="bi bi-printer"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="circulante">
+                    <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                 </button>
             </form>
             <form method="POST" action="Plugin/pdf_ingresos.php">
-                <button type="submit" class="btn btn-outline-primary" name="circulante"><i class="bi bi-file-pdf-fill"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="circulante">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+            </button>
             </form>
 
 </div>
@@ -164,10 +170,16 @@ if(isset($_POST['ingresos'])){
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
         <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/reporte_ingreso.php">
-                <button type="submit" class="btn btn-outline-primary" name="almacen"><i class="bi bi-printer"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="almacen">
+                    <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </button>
             </form>
             <form method="POST" action="Plugin/pdf_ingresos.php">
-                <button type="submit" class="btn btn-outline-primary" name="almacen"><i class="bi bi-file-pdf-fill"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="almacen">
+                    <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </button>
             </form>
 
 </div>
@@ -259,10 +271,16 @@ width: 100%;
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
         <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/reporte_ingreso.php">
-                <button type="submit" class="btn btn-outline-primary" name="compra"><i class="bi bi-printer"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="compra">
+                    <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </button>
             </form>
             <form method="POST" action="Plugin/pdf_ingresos.php">
-                <button type="submit" class="btn btn-outline-primary" name="compra"><i class="bi bi-file-pdf-fill"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="compra">
+                    <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </button>
             </form>
 
 </div>
@@ -344,10 +362,15 @@ if(isset($_POST['ingresos'])){
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
     <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/reporte_ingreso.php">
-                <button type="submit" class="btn btn-outline-primary" name="circulante"><i class="bi bi-printer"></i></button>
-            </form>
+                <button type="submit" class="btn btn-outline-primary" name="circulante">
+                    <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                    </form>
             <form method="POST" action="Plugin/pdf_ingresos.php">
-                <button type="submit" class="btn btn-outline-primary" name="circulante"><i class="bi bi-file-pdf-fill"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="circulante">
+                    <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </button>
             </form>
 
 </div>
@@ -427,10 +450,15 @@ if(isset($_POST['ingresos'])){
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
         <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/reporte_ingreso.php">
-                <button type="submit" class="btn btn-outline-primary" name="almacen"><i class="bi bi-printer"></i></button>
-            </form>
+                <button type="submit" class="btn btn-outline-primary" name="almacen">
+                    <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                    </form>
             <form method="POST" action="Plugin/pdf_ingresos.php">
-                <button type="submit" class="btn btn-outline-primary" name="almacen"><i class="bi bi-file-pdf-fill"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="almacen">
+                    <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </button>
             </form>
 
 </div>
@@ -515,10 +543,15 @@ width: 100%;
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
         <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/reporte_ingreso.php">
-                <button type="submit" class="btn btn-outline-primary" name="compra"><i class="bi bi-printer"></i></button>
-            </form>
+                <button type="submit" class="btn btn-outline-primary" name="compra">
+                    <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                    </form>
             <form method="POST" action="Plugin/pdf_ingresos.php">
-                <button type="submit" class="btn btn-outline-primary" name="compra"><i class="bi bi-file-pdf-fill"></i></button>
+                <button type="submit" class="btn btn-outline-primary" name="compra">
+                    <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </button>
             </form>
 
 </div>

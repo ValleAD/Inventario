@@ -185,52 +185,80 @@ if(isset($_POST['codigo'])){ ?>
   <div class="col-xs-4 "  style="background: #bfe7ed;border-radius: 5px;margin: 1%;padding:1%" >
 <div class="well well-sm" style="position: all; margin: 1%">
 
-                  <div class="form-group" style="position: all; margin: 2%">
+                <!--   <div class="form-group" style="position: all; margin: 2%">
                       <label>Código</label> 
                       <input  type="number" name="cod[]" class="form-control" id="busqueda" placeholder="Código de producto " value="<?php echo $productos['codProductos'] ?>" required>
+                  </div> -->
+
+                   <div class="form-group" style="position: all; margin: 2%">
+                    <label>Descripción Completa</label>
+                 <div class="input-group mb-3">
+                 <label class="input-group-text" for="inputGroupSelect01">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#type"/>
+                </svg>
+                 </label>
+                    <textarea rows="4" type="text" name="desc[]" class="form-control" placeholder="Descripción" required><?php echo $productos['descripcion']?></textarea>
+                </div>
                   </div>
 
-                  <div class="form-group" style="position: all; margin: 2%">
-                    <label>Descripción de material</label>
-                    <textarea rows="5" type="text" name="desc[]" class="form-control" placeholder="Descripción" required><?php echo $productos['descripcion']?></textarea>
-                  </div>
-
-                     <div class="form-group" style="position: all; margin: 2%">
+                    <div class="form-group" style="position: all; margin: 2%">
                         <label>Unidad de medida (U/M)</label>
-                        <div class="col-md-16" >
-                            <div class="invalid-feedback">
-                            Por favor seleccione una opción.
-                            </div>
+
+                <div class="input-group mb-3">
+                 <label class="input-group-text" for="inputGroupSelect01">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#card-list"/>
+                </svg>
+                 </label>           
                         <select  class="form-control" name="um[]" id="um" >
                             <option ><?php echo $productos['unidad_medida'] ?></option>
                             <?php
                      $sql = "SELECT * FROM  selects_unidad_medida";
                         $result = mysqli_query($conn, $sql);
 
-                        while ($productos1 = mysqli_fetch_array($result)){ 
+                        while ($productos1 = mysqli_fetch_array($result)){ ?>
 
-                          echo'  <option>'.$productos1['unidad_medida'].'</option>
-                      ';   
-                     } 
-                        ?>
+                        <option><?php echo $productos1['unidad_medida']?></option> 
+                    <?php  }   ?>
                         </select>
                         </div>
                     </div>
             
-            <div class="form-group" style="position: all; margin: 2%">
-                <label>Cantidad Solicitada</label>
-                <input type="decimal" step="0.01" name="soli[]" class="form-control" placeholder="Ingrese la Cantidad" required value="<?php echo $stock?>">
+             <div class="form-group" style="position: all; margin: 2%">
+                <label>Cantidad disponibles</label>
+                <div class="input-group mb-3">
+                 <label class="input-group-text" for="inputGroupSelect01">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#badge-4k"/>
+                </svg>
+                 </label>
+                <input disabled  type="number" step="0.001" name="" class="form-control" placeholder="" required value="<?php echo $stock?>">
             </div>
-
+            </div>
+            <div class="form-group" style="position: all; margin: 2%">
+                <label>Cantidad que va a pedir</label>
+                <div class="input-group mb-3">
+                 <label class="input-group-text" for="inputGroupSelect01">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#badge-4k"/>
+                </svg>
+                 </label>
+                <input  placeholder="Ingrese la Cantidad" type="number" step="0.01" name="cant[]" class="form-control" placeholder="" required value="">
+            </div>
+            </div>
            <div class="form-group" style="position: all; margin: 2%">
                 <label>Costo Unitario (Estimado)</label>
-               <input  class="form-control" type="number" step="0.01" name="costo[]" placeholder="Costo unitario" value="<?php echo  $productos['precio'] ?>" required><br>
+                 <div class="input-group mb-3">
+                 <label class="input-group-text" for="inputGroupSelect01">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#currency-dollar"/>
+                </svg>
+                 </label>
+               <input disabled style="poin"  class="form-control" type="number" step="0.01" name="cu[]" placeholder="Costo unitario" value="<?php echo  $productos['precio'] ?>" required><br>
             </div>
-
-            
-    
-          </div>
-
+            </div>
+            </div>
     </div>
     <?php }}} ?>
 </div>

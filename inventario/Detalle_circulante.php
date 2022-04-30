@@ -121,7 +121,7 @@ $id=$_POST['id'];
       
         <br>
     </form>
-           <form method="POST" action="Plugin/pdf_circulante.php" target="_blank">
+           <form method="POST" style="margin-top: -3.5%" action="Plugin/pdf_circulante.php" target="_blank">
         <table class="table" style="margin-bottom:3%">
                         <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/pdf_circulante.php">

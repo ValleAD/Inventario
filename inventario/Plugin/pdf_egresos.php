@@ -5,6 +5,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Reporte de Egreso en PDF</title>
     </head>
     <body style="font-family: sans-serif;">
         <img src="../img/hospital.png" style="width:20%">

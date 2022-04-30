@@ -1,14 +1,13 @@
 <?php 
 
 include ('../Model/conexion.php');
-
  ?>
  <!DOCTYPE html>
  <html>
  <head>
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
-     <title>Filtro por Fechas</title>
+     <title>Reporte Ingreso</title>
  </head>
  <body>
 

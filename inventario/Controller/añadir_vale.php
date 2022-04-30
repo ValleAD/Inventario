@@ -8,7 +8,17 @@ include ('../Model/conexion.php');
     $usuario = $_POST['usuario'];
     $idusuario = $_POST['idusuario'];
     $jus = $_POST['jus'];
+  $verificar_vale =mysqli_query($conn, "SELECT * FROM detalle_vale WHERE numero_vale ='$odt' ");
 
+if (mysqli_num_rows($verificar_vale)>0) {
+  echo '
+    <script>
+    alert("El codigo ingresado debe se diferente al registrado");
+     window.location ="../form_vale.php"; 
+  </script>
+  ';
+exit();
+}
     //crud para guardar los productos en la tabla tb_vale
     $sql = "INSERT INTO tb_vale (codVale, departamento,usuario,idusuario,campo,estado,observaciones) VALUES ('$odt', '$departamento','$usuario','$idusuario','Solicitud Vale','Pendiente','$jus')";
     $result = mysqli_query($conn, $sql); 
@@ -49,7 +59,17 @@ include ('../Model/conexion.php');
     $usuario = $_POST['usuario'];
     $idusuario = $_POST['idusuario'];
     $jus = $_POST['jus'];
+  $verificar_vale =mysqli_query($conn, "SELECT * FROM detalle_vale WHERE numero_vale ='$odt' ");
 
+if (mysqli_num_rows($verificar_vale)>0) {
+  echo '
+    <script>
+    alert("El codigo ingresado debe se diferente al registrado");
+     window.location ="../form_vale2.php"; 
+  </script>
+  ';
+exit();
+}
 
     //crud para guardar los productos en la tabla tb_vale
     $sql = "INSERT INTO tb_vale (codVale, departamento,usuario,idusuario,campo,estado,observaciones) VALUES ('$odt', '$departamento','$usuario','$idusuario','Solicitud Vale','Pendiente','$jus')";

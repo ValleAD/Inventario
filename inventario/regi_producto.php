@@ -53,8 +53,14 @@ form{
     <div class="col-xs-4 "  style="background: #bfe7ed;margin-left: 1;margin-right: 1%;margin-top: 1%;  border-radius:5px;" >
         <div class="well well-sm" style="position: all; margin: 5%">
 
-            <div class="form-group" style="position: all; margin: 2%">
+            <div class="form-group" style="position: all; ">
             <label for="">Categoría</label><br> 
+             <div class="input-group mb-3">
+                 <label class="input-group-text" for="inputGroupSelect01">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#card-list"/>
+                </svg>
+                 </label>
                     <select  class="form-control" name="categoria[]" id="categoria" required style="cursor: pointer" required>
                         <option selected disabled value="">Seleccione</option>
                      <?php 
@@ -68,34 +74,59 @@ form{
                      } ?>
                        
                     </select>
+
+            </div>
             </div>
 
-            <div class="form-group" style="position: all; margin: 2%">
+            <div class="form-group" style="position: all; ">
                 <label style="color: #000">Código</label> 
+                 <div class="input-group mb-3">
+                 <label class="input-group-text" for="inputGroupSelect01">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#123"/>
+                </svg>
+                 </label>
                 <input type="number" name="cod[]" class="form-control" placeholder="Ingrese código de producto " required>
             </div>
+            </div>
 
-            <div class="form-group" style="margin: 2%">
+            <div class="form-group" style="">
               <label style="color: #000">Codificación de Catálogo</label> 
+                               <div class="input-group mb-3">
+                 <label class="input-group-text" for="inputGroupSelect01">
+                 
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#123"/>
+                </svg>
+                </label>
               <input type="number" name="catal[]" class="form-control" placeholder="Ingrese código" required>
+          </div>
             </div>
 
           
             <div class="form-group">
                 <label style="color: #000">Descripción Completa</label>
-
-            <div class="form-floating" >
+                 <div class="input-group mb-3">
+                 <label class="input-group-text" for="inputGroupSelect01">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#type"/>
+                </svg>
+                 </label>
               <textarea class="form-control" name="descr[]"  placeholder="Ingrese la Descripción" required id="floatingTextarea"></textarea>
-            </div>
+           
 
         </div>
+    </div>
 
         <div class="form-group" >
             <label>Unidad de medida (U/M)</label>
-              <div class="col-md-16" >
-                <div class="invalid-feedback">
-                  Por favor seleccione una opción.
-                </div>
+                <div class="input-group mb-3">
+                 <label class="input-group-text" for="inputGroupSelect01">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#card-list"/>
+                </svg>
+                 </label>
+             
                 <select  class="form-control" name="um[]" id="um" required>
                   <option selected disabled value="">Seleccione</option>
                  <?php 
@@ -108,15 +139,23 @@ form{
                       ';   
                      } ?>
                 </select>  
-              </div>
+            
         </div>
+    </div>
             
            
 
             <div class="form-group">
                 <label>Costo Unitario</label>
+                <div class="input-group mb-3">
+                 <label class="input-group-text" for="inputGroupSelect01">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#currency-dollar"/>
+                </svg>
+                 </label>
                <input class="form-control" type="number" step="0.01" name="cu[]" placeholder="$ 0.00" required><br>
             </div>
+        </div>
         </div>
     </div>            
 </div>

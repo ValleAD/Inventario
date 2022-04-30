@@ -4,7 +4,17 @@ include '../Model/conexion.php';
 
     $solicitud_no = $_POST['solicitud_no'];
     $idusuario = $_POST['idusuario'];
+  $verificar_circulante =mysqli_query($conn, "SELECT * FROM detalle_circulante WHERE tb_circulante ='$solicitud_no' ");
 
+if (mysqli_num_rows($verificar_circulante)>0) {
+  echo '
+    <script>
+    alert("El codigo ingresado debe se difernte al registrado");
+     window.location ="../form_compra.php"; 
+  </script>
+  ';
+exit();
+}
     //crud para guardar los productos en la tabla tb_vale
     $sql = "INSERT INTO tb_circulante (codCirculante,estado,idusuario) VALUES ('$solicitud_no','Pendiente','$idusuario')";
     $result = mysqli_query($conn, $sql); 

@@ -12,6 +12,17 @@ $descripcion_solicitud = $_POST['descripcion_solicitud'];
 $usuario = $_POST['usuario'];
 $idusuario = $_POST['idusuario'];
 $jus = $_POST['jus'];
+  $verificar_compra =mysqli_query($conn, "SELECT * FROM detalle_compra WHERE solicitud_compra ='$nSolicitud' ");
+
+if (mysqli_num_rows($verificar_compra)>0) {
+  echo '
+    <script>
+    alert("El codigo ingresado debe se difernte al registrado");
+     window.location ="../form_compra.php"; 
+  </script>
+  ';
+exit();
+}
 
 
 $insert = "INSERT INTO tb_compra (nSolicitud, dependencia, plazo, unidad_tecnica, descripcion_solicitud, usuario,estado,idusuario,justificacion) VALUES ('$nSolicitud','$dependencia', '$plazo', '$u_t', '$descripcion_solicitud', '$usuario','Comprado','$idusuario','$jus')";
@@ -43,43 +54,7 @@ $result = mysqli_query($conn, $insert);
         location.href = '../form_compra.php';
         </script>
         ";
-      }
+      }  
+}
 
-    }  
-
-    if(isset($_POST['detalle_compra'])){
-      include '../Model/conexion.php';
-$nSolicitud=$_POST['sol_compra'];
-$estado =$_POST['estado'];
-$sql="UPDATE  tb_compra SET estado = '$estado' WHERE nSolicitud='$nSolicitud'" ;
-
-$result = mysqli_query($conn, $sql);
-
-     for($i = 0; $i < count($_POST['cod']); $i++)
-    {
-      $codigo_producto  = $_POST['cod'][$i];
-      $categoria        = $_POST['cat'][$i];
-        $catalogo         = $_POST['catalogo'][$i];
-      //  $nombre_articulo  = $_POST['nombre'][$i];
-      $Descripción      = $_POST['desc'][$i];
-      $u_m              = $_POST['um'][$i];
-      $cost             = $_POST['cost'][$i];
-      $cant_aprobada    = $_POST['cant_aprobada'][$i];
-      $cant_aprobada    = $_POST['cant_aprobada'][$i];
-       $campo            = $_POST['form_compra'][$i];
-       $insert = "INSERT INTO tb_productos (codProductos, categoria, catalogo, descripcion, unidad_medida, stock, precio) VALUES ('$codigo_producto', '$categoria', '$catalogo','$Descripción', '$u_m', '$cant_aprobada', '$cost' )";
-      $query = mysqli_query($conn, $insert);
-      if ($result || $query)  {
-        echo "<script> alert('Su producto fue registrado correctamente')
-        location.href = '../solicitudes_compra.php';
-        </script>
-        ";
-        }else {
-        echo "<script> alert('UUPS!! Algo no fue mal escrito')
-        location.href = '../dt_compra_copy.php';
-        </script>
-        ";
-        }
-    }
-    }
 ?>

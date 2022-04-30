@@ -96,7 +96,11 @@ $tipo_usuario = $_SESSION['iduser'];
               <br>
               
               <div class="input-group mb-3">
-                 <label class="input-group-text" for="inputGroupSelect01"><i class="bi bi-check-circle-fill"></i></label>
+                 <label class="input-group-text" for="inputGroupSelect01">
+                    <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#check-circle-fill"/>
+                </svg>
+                 </label>
               <input id="inputGroupSelect01" <?php
                 if($productos1['estado']=='Comprado') {
                      echo ' style="background-color:blueviolet ;width:100%; border-radius:5px;text-align:center; color: white;"';
