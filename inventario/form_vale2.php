@@ -29,7 +29,23 @@ die();
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"> 
 </head>
 <body>
-	<section style="background:white;margin: 2%;padding: 1%;border-radius: 15px;">
+
+
+ <?php
+    include 'Model/conexion.php';
+   $codigo= $_POST['id'];
+if ($codigo=="") {
+            echo'
+          <script>
+             alert("Debe de selecionar los productos");
+               window.location ="form_vale1.php"; 
+                      </script>
+                      ';
+
+}
+
+  if (isset($_POST['solicitar'])){ ?>
+        <section style="background:white;margin: 2%;padding: 1%;border-radius: 15px;">
  <form style="margin: 0%;position: 0; background: transparent;" method="POST" action="Controller/añadir_vale.php">
     <div class="container-fluid" style="position: initial">
             <div class="row">
@@ -92,12 +108,7 @@ die();
             </thead>
 
             <tbody>
-
- <?php
-    include 'Model/conexion.php';
-
-  if (isset($_POST['solicitar'])){ 
-
+    <?php 
          for($i = 0; $i < count($_POST['id']); $i++){
  
     $codigo= $_POST['id'][$i];
