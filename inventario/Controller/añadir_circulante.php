@@ -10,7 +10,7 @@ if (mysqli_num_rows($verificar_circulante)>0) {
   echo '
     <script>
     alert("El codigo ingresado debe se difernte al registrado");
-     window.location ="../form_compra.php"; 
+     window.location ="../form_circulante.php"; 
   </script>
   ';
 exit();
@@ -23,8 +23,8 @@ for($i = 0; $i < count($_POST['desc']); $i++)
     {
       $descripcion  = $_POST['desc'][$i];
       $u_m              = $_POST['um'][$i];
-      $soli             = $_POST['soli'][$i];
-      $cost             = $_POST['costo'][$i];
+      $soli             = $_POST['cant'][$i];
+      $cost             = $_POST['cu'][$i];
       $num_sol          = $_POST['solicitud_no'];
 
       $insert = "INSERT INTO detalle_Circulante(descripcion, unidad_medida, stock, tb_circulante, precio) VALUES ('$descripcion','$u_m', '$soli', '$num_sol', '$cost')";

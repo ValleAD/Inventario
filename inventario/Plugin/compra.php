@@ -53,7 +53,6 @@
             <th style="width: 70%;color:black;font-size: 16px;text-align: left;">Descripción Completa</th>
             <th style="width: 15%;color:black;font-size: 16px;text-align: center;">U/M</th>
             <th style="width: 15%;color:black;font-size: 14px;text-align: center;">Cantidad Solicitada</th>
-            <th style="width: 30%;color:black;font-size: 14px;text-align: center;">Cantidad Despachada</th>
             <th style="width: 30%;color:black;font-size: 16px;text-align: center;">C/U</th>
             <th style="width: 15%;color:black;font-size: 16px;text-align: center;border-right:1px solid #ccc ;">Total</th>
         </tr>
@@ -71,35 +70,35 @@ for($i = 0; $i < count($_POST['cod']); $i++)
     $um = $_POST['um'][$i];
      $cantidad = $_POST['cant'][$i];
     $cost = $_POST['cost'][$i];
-    $stock = $_POST['cantidad_despachada'][$i];
     $tot = $_POST['tot'][$i];
      $tot_f = $_POST['tot_f'];
 ?>
   
         <tr>
-            <td style="text-align:center;border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $codigo?></td>
-            <td style="border: 1px solid #ccc;border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $des?></td>
-            <td style="text-align:center;border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $um?></td>
-            <td style="text-align:center;border-collapse: collapse; border-right: none; border-left: none;"><?php echo $stock ?></td>
-            <td style="text-align:center;border-collapse: collapse; border-right: none; border-left: none;"><?php echo $cantidad ?></td>
-            <td style="text-align: center;border-collapse: collapse; border-right: none; border-left: none;;"><?php echo $cost ?></td>
-            <td style="text-align: center;border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $tot ?></td>
+            <td><?php  echo $codigo?></td>
+            <td><?php  echo $des?></td>
+            <td><?php  echo $um?></td>
+            <td><?php echo $cantidad ?></td>
+            <td><?php echo $cost ?></td>
+            <td><?php  echo $tot ?></td>
         </tr>
      
     </tbody>  
      <?php } } ?> 
     <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
         <td style="text-align: center; font-weight: bold;">Subtotal</td>
-        <td colspan="5"></td>
+        <td colspan="4"></td>
         <td style="text-align: center; font-weight: bold;"><?php echo $tot_f ?></td>
     </tfoot>
 </table>
 <br>
     <table style="width: 100%;height: 10%; border: 1px solid #ccc;border-collapse: collapse;">
         <tbody>
+            <div style="width: 100%;height: 10%; border: 1px solid #ccc;border-collapse: collapse;">
            <p style="padding-left: 1%;"> Observaciones (En qué se ocupará el bien entregado)</p>
            <hr style=" border: 1px solid #ccc;border-collapse: collapse;">
             <p style="padding-left: 1%;"><?php echo $jus ?></p>
+        </div>
         </tbody>
     </table>
 

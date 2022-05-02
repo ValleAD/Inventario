@@ -134,18 +134,18 @@ if(isset($_POST['codigo'])){ ?>
 <div class="row">
       <div id="w" class="col-sm-4" style="position: initial">
                 
-  <?php 
-          
-          $sql = "SELECT * FROM tb_circulante ORDER BY fecha_solicitud DESC LIMIT 1";
-          $result = mysqli_query($conn, $sql);
-          while ($datos_sol = mysqli_fetch_array($result)){
-        
-          echo '<p style="color: red; margin-top: -8%; margin-bottom: -0.5%">Última solicitud: '; 
-          echo $datos_sol['codCirculante']; 
-          echo '</p>'; }
-          ?>
+  
             <label id="inp1">Solicitud N°</b></label>   
-                <input id="inp1"class="form-control" type="number" name="solicitud_no" required="">
+          <?php 
+                        $sql = "SELECT * FROM tb_circulante  ORDER BY codCirculante DESC LIMIT 1";
+                        $result = mysqli_query($conn, $sql);
+                        $codCirculante=1;
+                        while ($productos = mysqli_fetch_array($result)){    
+
+                            $codCirculante=$productos['codCirculante']+1;
+                     }
+                     ?>
+                <input id="inp1"class="form-control" readonly type="number" name="solicitud_no" required value="<?php echo $codCirculante ?>">   
                   <?php     $cliente =$_SESSION['signin'];
     $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
     while ($consulta =mysqli_fetch_array($data)) {
@@ -212,7 +212,7 @@ if(isset($_POST['codigo'])){ ?>
                 </svg>
                  </label>           
                         <select  class="form-control" name="um[]" id="um" >
-                            <option ><?php echo $productos['unidad_medida'] ?></option>
+                            <option disabled ><?php echo $productos['unidad_medida'] ?></option>
                             <?php
                      $sql = "SELECT * FROM  selects_unidad_medida";
                         $result = mysqli_query($conn, $sql);
@@ -233,7 +233,7 @@ if(isset($_POST['codigo'])){ ?>
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#badge-4k"/>
                 </svg>
                  </label>
-                <input disabled  type="number" step="0.001" name="" class="form-control" placeholder="" required value="<?php echo $stock?>">
+                <input disabled  type="number" step="0.01" name="" class="form-control" placeholder="" required value="<?php echo $stock?>">
             </div>
             </div>
             <div class="form-group" style="position: all; margin: 2%">
@@ -255,7 +255,7 @@ if(isset($_POST['codigo'])){ ?>
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#currency-dollar"/>
                 </svg>
                  </label>
-               <input disabled style="poin"  class="form-control" type="number" step="0.01" name="cu[]" placeholder="Costo unitario" value="<?php echo  $productos['precio'] ?>" required><br>
+               <input  style="poin"  class="form-control" type="number" step="0.01" name="cu[]" placeholder="Costo unitario" value="<?php echo  $productos['precio'] ?>" required><br>
             </div>
             </div>
             </div>

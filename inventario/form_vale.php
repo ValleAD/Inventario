@@ -125,7 +125,15 @@ if(isset($_POST['codigo'])){?>
                   </div>
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Vale N°</b></label>   
-                <input id="inp1"class="form-control" type="number" name="numero_vale" required>
+                <?php 
+                        $sql = "SELECT * FROM tb_vale  ORDER BY codVale DESC LIMIT 1";
+                        $result = mysqli_query($conn, $sql);
+                        $cod_vale=1;
+                        while ($productos = mysqli_fetch_array($result)){    
+                            $cod_vale=$productos['codVale']+1;
+                     }
+                     ?>
+                <input id="inp1"class="form-control" readonly type="number" name="numero_vale" required value="<?php echo $cod_vale ?>">
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Nombre de la persona</label>

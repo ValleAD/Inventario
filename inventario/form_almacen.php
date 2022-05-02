@@ -92,6 +92,19 @@ die();
     #w {
             display: none;
        }
+       #enviar{
+                margin-bottom: 1%;
+            margin-left: 1.5%; 
+            background: rgb(5, 65, 114); 
+            color: #fff; margin-bottom: 2%; 
+            border: rgb(5, 65, 114);
+            }
+            #enviar:hover{
+            background: rgb(9, 100, 175);
+            } 
+            #enviar:active{
+            transform: translateY(5px);
+            } 
    </style>
 
   <?php  
@@ -110,26 +123,26 @@ if(isset($_POST['codigo'])){ ?>
 
 <div class="row">
       <div class="col-5 col-sm-4" style="position: initial">
-            <br>    
-  <?php 
-          
-          $sql = "SELECT * FROM tb_almacen ORDER BY fecha_solicitud DESC LIMIT 1";
-          $result = mysqli_query($conn, $sql);
-          while ($datos_sol = mysqli_fetch_array($result)){?>
-        
-        <p style="color: red; margin-top: -8%; margin-bottom: -0.5%">Última solicitud: 
-         <?php echo $datos_sol['codAlmacen']; ?>
-        </p><br>
-      <?php } ?>
+    
+    
           <label id="inp1">Solicitud N°</b></label>   
-          <input id="inp1"class="form-control" type="number" name="nsolicitud" required> 
+          <?php 
+                        $sql = "SELECT * FROM tb_almacen  ORDER BY codAlmacen DESC LIMIT 1";
+                        $result = mysqli_query($conn, $sql);
+                        $codAlmacen=1;
+                        while ($productos = mysqli_fetch_array($result)){    
+
+                            $codAlmacen=$productos['codAlmacen']+1;
+                     }
+                     ?>
+                <input id="inp1"class="form-control" readonly type="number" name="nsolicitud" required value="<?php echo $codAlmacen ?>">
     </div>
 
-    <div class="col-6.5 col-sm-4" style="position: initial"><br><br>
+    <div class="col-6.5 col-sm-4" style="position: initial">
     <font color="black"><label>Departamento</label></font>   
     <input type="text"  class="form-control" name="depto" id="um" required style="background:transparent;" value="Mantenimiento" readonly>
                      </div>
-  <div class="col-6.5 col-sm-4" style="position: initial"><br><br>
+  <div class="col-6.5 col-sm-4" style="position: initial">
   <?php     $cliente =$_SESSION['signin'];
     $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
     while ($consulta =mysqli_fetch_array($data)) {
@@ -248,7 +261,7 @@ if(isset($_POST['codigo'])){ ?>
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#currency-dollar"/>
                 </svg>
                  </label>
-               <input disabled style="poin"  class="form-control" type="number" step="0.01" name="cu[]" placeholder="Costo unitario" value="<?php echo  $productos['precio'] ?>" required><br>
+               <input  class="form-control" type="number" name="cu[]" placeholder="Costo unitario" value="<?php echo  $productos['precio'] ?>" required ><br>
             </div>
             </div>
             </div>

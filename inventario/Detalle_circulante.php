@@ -127,7 +127,7 @@ $id=$_POST['id'];
             <form method="POST" action="Plugin/pdf_circulante.php">
                 <button type="submit" class="btn btn-outline-primary" name="Fecha">
                 <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
                 </button>
             </form>
@@ -163,7 +163,7 @@ while ($productos = mysqli_fetch_array($result)){
             <?php } ?>
                 <button type="submit" class="btn btn-outline-primary" name="pdf">
                 <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
                 </button>
             </form>
@@ -193,8 +193,7 @@ $num_circulante = $datos_sol['codCirculante'];
 while ($productos = mysqli_fetch_array($result)){
       $n++;
         $r=$n+0;
-        $total    =    $productos['stock'] * $productos['precio'];
-        $final    +=   $total;
+
         $precio   =    $productos['precio'];
         $codigo   =    $productos['codigo'];
         $precio2  =    number_format($precio, 2,".",",");

@@ -19,14 +19,6 @@ die();
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Vista Previa</title>
-	 <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap4.css"/>
-     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.bootstrap4.css"/>
-    <!--font awesome con CDN-->  
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"> 
 </head>
 <body>
 
@@ -53,7 +45,7 @@ if ($codigo=="") {
                 <label id="inp1">Departamento que solicita</b></label>   
                 <select  class="form-control" name="depto" id="depto" required>
                         <option selected disabled value="">Selecione</option>
-                      ';?>
+                    
                       <?php 
                         $sql = "SELECT * FROM selects_departamento";
                         $result = mysqli_query($conn, $sql);
@@ -70,7 +62,15 @@ if ($codigo=="") {
                   </div>
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Vale N°</b></label>   
-                <input id="inp1"class="form-control" type="number" name="numero_vale" required>
+                  <?php 
+                        $sql = "SELECT * FROM tb_vale  ORDER BY codVale DESC LIMIT 1";
+                        $result = mysqli_query($conn, $sql);
+                            $cod_vale=1;
+                        while ($productos = mysqli_fetch_array($result)){    
+                            $cod_vale=$productos['codVale']+1;
+                     }
+                     ?>
+                <input id="inp1"class="form-control" readonly type="number" name="numero_vale" required value="<?php echo $cod_vale ?>">
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Nombre de la persona</label>

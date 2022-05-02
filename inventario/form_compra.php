@@ -105,20 +105,17 @@ if(isset($_POST['codigo'])){ ?>
 
 <div class="row">
       <div id="w" class="col-5 col-sm-4" style="position: initial">
-                
-         <?php 
+         
+          <label id="inp1">Solicitud N°</b></label>  
+           <?php 
           
           $sql = "SELECT * FROM tb_compra ORDER BY fecha_registro DESC LIMIT 1";
           $result = mysqli_query($conn, $sql);
-          while ($datos_sol = mysqli_fetch_array($result)){?>
-        
-        <p style="color: red; margin-top: -8%; margin-bottom: -0.5%">Última solicitud: 
-         <?php echo $datos_sol['nSolicitud']; ?>
-        </p><br>
-      <?php } ?>
-         
-          <label id="inp1">Solicitud N°</b></label>   
-          <input id="inp1"class="form-control" type="number" name="nsolicitud" required> 
+          $compra=1;
+          while ($datos_sol = mysqli_fetch_array($result)){
+            $compra=$datos_sol['nSolicitud']+1;
+            } ?> 
+          <input id="inp1"class="form-control" type="number" name="nsolicitud" value="<?php echo $compra ?>" required> 
     </div>
 
     <div id="w" class="col-6.5 col-sm-4" style="position: initial"><br>

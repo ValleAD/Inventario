@@ -38,12 +38,12 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 
       if ($result || $query) {
         echo "<script> alert('Su solicitud fué realizada correctamente');
-        location.href = '../dt_almacen.php';
+        // location.href = '../dt_almacen.php';
         </script>
         ";
       }else {
         echo "<script> alert('¡Error! algo salió mal');
-        location.href = '../form_almacen.php';
+        // location.href = '../form_almacen.php';
         </script>
         ";
       }

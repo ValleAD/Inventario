@@ -180,7 +180,15 @@ if(isset($_POST['codigo'])){?>
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">O. de T. No.</b></label>   
-                <input id="inp1"class="form-control" type="number" name="odt" required=""  >
+                <?php 
+                        $sql = "SELECT * FROM tb_bodega  ORDER BY codBodega DESC LIMIT 1";
+                        $result = mysqli_query($conn, $sql);
+                        $codBodega=1;
+                        while ($productos = mysqli_fetch_array($result)){    
+                            $codBodega=$productos['codBodega']+1;
+                     }
+                     ?>
+                <input id="inp1"class="form-control" readonly type="number" name="odt" required value="<?php echo $codBodega ?>">
                 
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
