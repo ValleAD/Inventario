@@ -62,9 +62,9 @@ for($i = 0; $i < count($_POST['cod']); $i++)
      
      <?php } } ?> 
     <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
-        <td style="text-align: center; font-weight: bold;">Subtotal</td>
+        <td style="text-align: center; font-size: 12px; font-weight: bold;">Subtotal</td>
         <td colspan="5"></td>
-        <td style="text-align: center; border: 1px solid #ccc; font-weight: bold;"><?php echo $tot_f ?></td>
+        <td style="text-align: center; font-size: 12px; border: 1px solid #ccc; font-weight: bold;"><?php echo $tot_f ?></td>
     </tfoot>
 </table>
     <table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">

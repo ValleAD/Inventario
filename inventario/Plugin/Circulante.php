@@ -64,14 +64,14 @@ for($i = 0; $i < count($_POST['desc']); $i++)
             <td style="text-align:center;font-size: 12px;"><?php echo $cantidad ?></td>
             <td style="font-size:12px"><?php echo $cantidad_despachada ?></td>
             <td style="text-align: center;font-size: 12px;"><?php echo $cost ?></td>
-            <td style="text-align: center"font-size: 12px;><?php  echo $tot ?></td>
+            <td style="text-align: center; font-size: 12px;"><?php  echo $tot ?></td>
         </tr>
      
      <?php } } ?> 
     <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
       
-    <td colspan="6" style="text-align: right; font-weight: bold;">Costo Estimado</td>
-        <td style="text-align: center; font-weight: bold;"><?php echo $tot_f ?></td>
+    <td colspan="6" style="text-align: right;font-size: 12px; font-weight: bold;">Costo Estimado</td>
+        <td style="text-align: center;font-size: 12px; font-weight: bold;"><?php echo $tot_f ?></td>
     </tfoot>
     </tbody>   
 </table>            
