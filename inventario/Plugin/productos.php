@@ -48,7 +48,13 @@ include ('../Model/conexion.php');
 
 
  while ($productos = mysqli_fetch_array($result)){
-    $cat= $productos['categoria'];
+         $cat=$productos['categoria'];
+                if ($cat=="") {
+                    $cat="Sin categorias";
+                
+                }else{
+                $cat=$productos['categoria'];
+                }
     $cod= $productos['codProductos'];
     $catal= $productos['catalogo'];
     $des= $productos['descripcion'];

@@ -33,7 +33,6 @@ $result = mysqli_query($conn, $insert);
   for($i = 0; $i < count($_POST['cod']); $i++)
     {
       $codigo_producto  = $_POST['cod'][$i];
-      $categoria  = $_POST['categoria'][$i];
       $catalogo         = $_POST['cat'][$i];
       $Descripción      = $_POST['desc'][$i];
       $u_m              = $_POST['um'][$i];
@@ -41,7 +40,7 @@ $result = mysqli_query($conn, $insert);
       $cost             = $_POST['cu'][$i];
       $solicitud        = $_POST['nsolicitud'];;
 
-      $insert = "INSERT INTO detalle_compra (codigo,categoria, catalogo, descripcion, unidad_medida, stock,cantidad_despachada, precio, solicitud_compra) VALUES ('$codigo_producto','$categoria','$catalogo', '$Descripción', '$u_m', '$cantidad',0, '$cost', '$solicitud')";
+      $insert = "INSERT INTO detalle_compra (codigo, catalogo, descripcion, unidad_medida, stock,cantidad_despachada, precio, solicitud_compra) VALUES ('$codigo_producto','$catalogo', '$Descripción', '$u_m', '$cantidad',0, '$cost', '$solicitud')";
       $query = mysqli_query($conn, $insert);
 
       if ($query) {

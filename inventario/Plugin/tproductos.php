@@ -49,7 +49,13 @@ include ('../Model/conexion.php');
 
 
  while ($productos = mysqli_fetch_array($result)){
-    $cat= $productos['categoria'];
+         $cat=$productos['categoria'];
+                if ($cat=="") {
+                    $cat="Sin categorias";
+                
+                }else{
+                $cat=$productos['categoria'];
+                };
     $cod= $productos['codProductos'];
     $catal= $productos['catalogo'];
     $des= $productos['descripcion'];
@@ -79,8 +85,8 @@ include ('../Model/conexion.php');
     </tr>
     </tbody>
 </table> 
- </body>
- </html>
 <script type="text/javascript">
 print('');
 </script>
+ </body>
+ </html>

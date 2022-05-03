@@ -18,15 +18,16 @@ include ('../Model/conexion.php'); ?>
 
 <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
-        <tr style="border: 1px solid #ddd;color: black;">
-            <th style="width: 25%;font-size: 14px;text-align: left;">Código</th>
-            <th style="width: 25%;font-size: 14px;text-align: left;">Catálogo</th>
-            <th style="width: 25%;font-size: 14px;text-align: left;">Descripción Completa</th>
-            <th style="width: 25%;font-size: 14px;text-align: left;">U/M</th>
-            <th style="width: 25%;font-size: 14px;text-align: left;">Cantidad</th>
-            <th style="width: 25%;font-size: 14px;text-align: left;">Precio</th>
-            <th style="width: 25%;font-size: 14px;text-align: left;">Fecha</th> 
-            <th style="width: 25%;font-size: 14px;text-align: left;">Categoria</th>
+          <tr>
+
+            <th style="width: 25%;font-size: 14px;">Código</th>
+            <th style="width: 25%;font-size: 14px;">Catálogo</th>
+            <th style="width: 25%;font-size: 14px;">Descripción Completa</th>
+            <th style="width: 25%;font-size: 14px;">U/M</th>
+            <th style="width: 25%;font-size: 14px;">Cantidad</th>
+            <th style="width: 25%;font-size: 14px;">Precio</th>
+            <th style="width: 25%;font-size: 14px;">Fecha</th> 
+            <th style="width: 25%;font-size: 14px;">Categoria</th>
              <tr> <td align="center" id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td></tr>           
         </tr>
     </thead> 
@@ -38,7 +39,13 @@ include ('../Model/conexion.php'); ?>
 
         $result = mysqli_query($conn, $sql);
  while ($productos = mysqli_fetch_array($result)){
-    $cat= $productos['categoria'];
+     $cat=$productos['categoria'];
+                if ($cat=="") {
+                    $cat="Sin categorias";
+                
+                }else{
+                $cat=$productos['categoria'];
+                }
     $cod= $productos['codProductos'];
     $catal= $productos['catalogo'];
     $des= $productos['descripcion'];
@@ -54,17 +61,20 @@ include ('../Model/conexion.php'); ?>
     text-align:center;
         display: none;
     }
+    td{
+        text-align: center;
+    }
 </style>        
- <tr>
+   <tr style="border: 1px solid #ccc;border-collapse: collapse;">
 
-        <td style="text-align:left; font-size: 12px;"><?php echo $cod ?></td>
-        <td style="text-align:left; font-size: 12px;"><?php echo $catal ?></td>
-        <td style="text-align:left; font-size: 12px;"><?php echo $des ?></td>
-        <td style="text-align:left; font-size: 12px;"><?php echo $u_m ?></td>
-        <td style="text-align:left; font-size: 12px;"><?php echo $stock ?></td>
-        <td style="text-align:left; font-size: 12px;"><?php echo $precio1 ?></td>
-        <td style="text-align:left; font-size: 12px;"><?php echo $fech ?></th>
-        <td style="text-align:left; font-size: 12px;"><?php echo $cat ?></td>
+        <td style="font-size: 12px;"><?php echo $cod ?></td>
+        <td style="font-size: 12px;"><?php echo $catal ?></td>
+        <td style="font-size: 12px;"><?php echo $des ?></td>
+        <td style="font-size: 12px;"><?php echo $u_m ?></td>
+        <td style="font-size: 12px;"><?php echo $stock ?></td>
+        <td style="font-size: 12px;"><?php echo $precio1 ?></td>
+        <td style="font-size: 12px;"><?php echo $fech ?></th>
+        <td style="font-size: 12px;"><?php echo $cat ?></td>
         <?php } ?>
     </tr>
     </tbody>

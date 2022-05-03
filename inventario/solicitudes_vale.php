@@ -31,7 +31,22 @@ die();
     <center><h1 style="margin-top:5px">Solicitudes Vale</h1></center><br>
           <?php if ($tipo_usuario==1) {?>  
      <div class="mx-5 p-2 mb-5" style="background-color: white; border-radius:5px;">
-
+              <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+         <form method="POST" action="Plugin/soli_vale.php" target="_blank">
+             <button type="submit" class="btn btn-outline-primary" name="Fecha">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+             </button>
+         </form>
+         <form method="POST" action="Plugin/pdf_soli_vale.php" target="_blank">
+             <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+             </button>
+         </form>
+ </div>
      
         <table class="table table-responsive" id="example" style="width:100%">
             <thead>
@@ -102,6 +117,22 @@ die();
 
      
         <table class="table table-responsive" id="example" style="width:100%">
+         <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+         <form method="POST" action="Plugin/soli_vale.php" target="_blank">
+             <button type="submit" class="btn btn-outline-primary" name="Fecha">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+             </button>
+         </form>
+         <form method="POST" action="Plugin/pdf_soli_vale.php" target="_blank">
+             <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+             </button>
+         </form>
+ </div>
             <thead>
               <tr id="tr">
                 <th>#</th>

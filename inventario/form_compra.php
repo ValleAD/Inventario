@@ -118,12 +118,12 @@ if(isset($_POST['codigo'])){ ?>
           <input id="inp1"class="form-control" type="number" name="nsolicitud" value="<?php echo $compra ?>" required> 
     </div>
 
-    <div id="w" class="col-6.5 col-sm-4" style="position: initial"><br>
+    <div id="w" class="col-6.5 col-sm-4" style="position: initial">
     <font color="black"><label>Dependencia que Solicita</label></font>   
     <input type="text"  class="form-control" name="dependencia" id="um" required style="color: black;" value="Mantenimiento" readonly>
                      
     </div>
-    <div id="w" class="col-6.5 col-sm-4" style="position: initial"><br>
+    <div id="w" class="col-6.5 col-sm-4" style="position: initial">
     <font color="black"><label>Plazo y Numero de Entregas</label></font> 
       <input  style=" color: black;" class="form-control" type="text" name="plazo" id="como3" required>
       <br>
@@ -177,30 +177,6 @@ if(isset($_POST['codigo'])){ ?>
   <div class="col-xs-4 "  style="background: #bfe7ed;border-radius: 5px;margin: 1%;padding:1%" >
 <div class="well well-sm" style="position: all; margin: 1%">
 
-     <div class="form-group" style="position: all; margin: 2%">
-                      <label>Categoría</label> 
-             <div class="input-group mb-3">
-                 <label class="input-group-text" for="inputGroupSelect01">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#card-list"/>
-                </svg>
-                 </label>
-                      <select   class="form-control" name="categoria[]" id="um" required>
-                        <option value="" disabled selected>Seleccione</option>
-                        <?php 
-                        $sql = "SELECT * FROM  selects_categoria";
-                        $result = mysqli_query($conn, $sql);
-
-                        while ($productos1 = mysqli_fetch_array($result)){ ?>
-
-                          <option value=""><?php  echo $productos1['categoria']?></option>
-                     
-                     <?php } ?>
-                       
-                    
-                      </select>
-                  </div> 
-                    </div>
                   <div class="form-group" style="position: all; margin: 2%">
                       <label>Código</label> 
                  <div class="input-group mb-3">

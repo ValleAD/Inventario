@@ -24,6 +24,9 @@ die();
     h1 {
   color: white;
 }
+form{
+    margin: 0%;
+}
     </style>
     <title>Solicitudes De Bodega</title>
 </head>
@@ -32,10 +35,26 @@ die();
 <body>
 
             <center><h1 style="margin-top:5px">Solicitudes Bodega</h1></center><br>
-            <?php if ($tipo_usuario==1) {?>
       <section class="mx-5 p-2" style="background-color:white; border-radius: 5px;margin-bottom:3%;">
-
-            <table class="table table-responsive table-striped" id="example" style=" width: 100%;">
+            <?php if ($tipo_usuario==1) {?>
+              <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+         <form method="POST" action="Plugin/soli_bodega.php" target="_blank">
+             <button type="submit" class="btn btn-outline-primary" name="Fecha">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+             </button>
+         </form>
+         <form method="POST" action="Plugin/pdf_soli_bodega.php" target="_blank">
+             <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+             </button>
+         </form>
+ </div>
+  <table class="table table-responsive table-striped" id="example" style=" width: 100%;">
+          
             <thead>
               <tr id="tr">
              <th>#</th>
@@ -101,13 +120,26 @@ $n=0;
  <?php } ?> 
            </tbody>
         </table>
-      <!--  <a href="Plugin/pdf_soli_bodega.php" class="btn btn-danger">Generar Solicidud Bodega</a>-->
 
-    </section>
 <?php } ?>           
  <?php if ($tipo_usuario==2) {?>
-      <section class="mx-5 p-2" style="background-color:white; border-radius: 5px;margin-bottom:3%;">
 
+              <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+         <form method="POST" action="Plugin/soli_bodega.php" target="_blank">
+             <button type="submit" class="btn btn-outline-primary" name="Fecha">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+             </button>
+         </form>
+         <form method="POST" action="Plugin/pdf_soli_bodega.php" target="_blank">
+             <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+             </button>
+         </form>
+ </div>
             <table class="table table-responsive table-striped" id="example" style=" width: 100%;">
             <thead>
               <tr id="tr">
@@ -168,11 +200,9 @@ $n=0;
  <?php } ?> 
            </tbody>
         </table>
-      <!--  <a href="Plugin/pdf_soli_bodega.php" class="btn btn-danger">Generar Solicidud Bodega</a>-->
 
-    </section>
 <?php } ?>
-
+ </section>
    
 </body>
 </html>

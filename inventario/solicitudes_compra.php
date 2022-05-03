@@ -42,7 +42,22 @@ h1 {
             <?php if ($tipo_usuario==1) {?>
      <div class="mx-5 p-2" id="act" style="background: white; border-radius: 5px;">
         <table class="table table-responsive" id="example" style="width:100%">
-            
+    <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+         <form method="POST" action="Plugin/soli_compra.php" target="_blank">
+             <button type="submit" class="btn btn-outline-primary" name="Fecha">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+             </button>
+         </form>
+         <form method="POST" action="Plugin/pdf_soli_compra.php" target="_blank">
+             <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+             </button>
+         </form>
+ </div>
             <thead>
               <tr id="tr">
                 <th>#</th>
@@ -106,14 +121,28 @@ h1 {
 
            </tbody>
         </table>
-       <!-- <a  href="Plugin/pdf_soli_compra.php" class="btn btn-danger">Generar Solicidud de Compra</a>-->
 
  </div>
 <?php } ?>
             <?php if ($tipo_usuario==2) {?>
      <div class="mx-5 p-2" id="act" style="background: white; border-radius: 5px;">
         <table class="table table-responsive" id="example" style="width:100%">
-            
+        <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+         <form method="POST" action="Plugin/soli_compra.php" target="_blank">
+             <button type="submit" class="btn btn-outline-primary" name="Fecha">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+             </button>
+         </form>
+         <form method="POST" action="Plugin/pdf_soli_compra.php" target="_blank">
+             <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+             </button>
+         </form>
+ </div>
             <thead>
               <tr id="tr">
                 <th>#</th>
@@ -169,7 +198,7 @@ $tipo_usuario = $_SESSION['iduser'];
 
            </tbody>
         </table>
-       <!-- <a  href="Plugin/pdf_soli_compra.php" class="btn btn-danger">Generar Solicidud de Compra</a>-->
+       
 
  </div>
 <?php } ?>

@@ -67,11 +67,18 @@ die();
                     <div class="col-md-5" style="position: initial">
                       <select class="form-control" name="cat"  required>
                     <option selected disabled value="">Seleccione</option>
-                <?php  $sql = "SELECT * FROM tb_productos GROUP BY categoria ";
+            <?php  $sql = "SELECT * FROM tb_productos GROUP BY categoria ";
         $result = mysqli_query($conn, $sql);
             while ($productos = mysqli_fetch_array($result)){
-                echo "<option>".$productos['categoria']."</option>";
-
+                $categoria=$productos['categoria'];
+                if ($categoria1=="") {
+                    $categoria1="Sin categorias";
+                }else{
+                $categoria1=$productos['categoria'];
+                }
+                ?>
+                <option value="<?php echo $categoria ?>" ><?php echo $categoria1 ?></option>
+                <?php 
             }
          ?></select>
                     </div>
@@ -250,6 +257,13 @@ $categoria=$_POST['cat'];?>
                    $sql = "SELECT * FROM tb_productos WHERE categoria='$categoria' ";
         $result = mysqli_query($conn, $sql);
             while ($productos = mysqli_fetch_array($result)){
+                     $cat=$productos['categoria'];
+                if ($cat=="") {
+                    $cat="Sin categorias";
+                
+                }else{
+                $cat=$productos['categoria'];
+                }
                  $precio=$productos['precio'];
                  $precio1=number_format($precio, 2,".",",");
                  $cantidad=$productos['stock'];
@@ -264,7 +278,7 @@ $categoria=$_POST['cat'];?>
                     }
                 </style>
                    <tr>
-                <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['categoria']; ?></td>
+                <td data-label="Codigo" style="text-align: center;"><?php  echo $cat; ?></td>
                 <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['codProductos']; ?></td>
            <td  data-label="Codificación de catálogo" style="text-align: center;"><?php  echo $productos['catalogo']; ?></td>
            <td  data-label="Descripción Completa" style="text-align: left;padding-left:3%"><?php  echo $productos['descripcion']; ?></td>
@@ -325,6 +339,13 @@ $n=0;
     while ($productos = mysqli_fetch_array($result)){
         $n++;
         $r=$n+0;
+             $cat=$productos['categoria'];
+                if ($cat=="") {
+                    $cat="Sin categorias";
+                
+                }else{
+                $cat=$productos['categoria'];
+                }
          $precio=$productos['precio'];
         $precio1=number_format($precio, 2,".",",");
         $cantidad=$productos['stock'];
@@ -351,7 +372,7 @@ $n=0;
            <td  data-label="Cantidad" style="text-align: center;"><?php  echo $stock; ?></td>
            <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
-           <td  data-label="Categoría"><?php  echo $productos['categoria']; ?></td>
+           <td  data-label="Categoría"><?php  echo $cat; ?></td>
           
          </tr>
      

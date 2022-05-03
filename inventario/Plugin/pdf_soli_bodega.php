@@ -20,7 +20,7 @@
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
             <th style="width: 25%;font-size: 14px;text-align: center;">Código</th>
-            <th style="width: 70%;color:black;font-size: 14px;text-align: left;">Departamento Solicitante</th>
+            <th style="width: 50%;color:black;font-size: 14px;text-align: left;">Departamento Solicitante</th>
             <th style="width: 15%;color:black;font-size: 14px;text-align: center;">Fecha</th>
         </tr>
         <td id="td" colspan="8"><h4>No se encontraron resultados</h4></td>
@@ -51,15 +51,6 @@
      <?php }  ?> 
    
 </table>
-<br>
-    <table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
-        <tbody>
-            <tr>
-                <td>Observaciones (En qué se ocupará el bien entregado)</td>
-            </tr>
-            <td style="height: 20%;"></td>
-        </tbody>
-    </table>
     <br>
     <p style="float: right;"> Entrega: ________________</p>
     <p style="text-align:left;">Solicita: ________________ </p>
