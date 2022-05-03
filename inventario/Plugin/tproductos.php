@@ -27,14 +27,14 @@ include ('../Model/conexion.php');
 
     <thead>
         <tr id="tr">
-            <th style="width:5%">Código</th>
-            <th style="width:10%">Cod. de Catálogo</th>
-            <th style=" width: 50%; padding-left:3%">Descripción Completa</th>
-            <th style="width:10%">U/M</th>
-            <th style="width:10%">Cantidad</th>
-            <th style="width:10%">Costo Unitario</th>
-            <th style="width:10%">Fecha Registro</th>
-            <th style="width:10%">Categoria</th>
+            <th style="font-size: 14px;width:5%">Código</th>
+            <th style="font-size: 14px;width:10%">Cod. de Catálogo</th>
+            <th style="font-size: 14px;width: 50%;">Descripción Completa</th>
+            <th style="font-size: 14px;width:10%">U/M</th>
+            <th style="font-size: 14px;width:10%">Cantidad</th>
+            <th style="font-size: 14px;width:10%">Costo Unitario</th>
+            <th style="font-size: 14px;width:10%">Fecha Registro</th>
+            <th style="font-size: 14px;width:10%">Categoria</th>
                    <tr> <td align="center" id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td></tr>
 
         </tr>
@@ -66,15 +66,15 @@ include ('../Model/conexion.php');
         display: none;
     }
 </style>
- <tr>
-        <td><?php echo $cod ?></td>
-        <td><?php echo $catal ?></td>
-        <td><?php echo $des ?></td>
-        <td><?php echo $u_m ?></td>
-        <td><?php echo $stock ?></td>
-        <td><?php echo $precio1 ?></td>
-        <td><?php echo $fech ?></td>
-        <td><?php echo $cat ?></td>
+ <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+        <td style="font-size: 12px;"><?php echo $cod ?></td>
+        <td style="font-size: 12px;"><?php echo $catal ?></td>
+        <td style="font-size: 12px;"><?php echo $des ?></td>
+        <td style="font-size: 12px;"><?php echo $u_m ?></td>
+        <td style="font-size: 12px;"><?php echo $stock ?></td>
+        <td style="font-size: 12px;"><?php echo $precio1 ?></td>
+        <td style="font-size: 12px;"><?php echo $fech ?></td>
+        <td style="font-size: 12px;"><?php echo $cat ?></td>
         <?php } ?>
     </tr>
     </tbody>

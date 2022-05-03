@@ -42,13 +42,13 @@
     <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
         <thead>     
             <tr style="border: 1px solid #ddd;color: black;">
-                <th style="width: 25%;font-size: 16px;text-align: center;">Código</th>
-                <th style="width: 70%;color:black;font-size: 16px;text-align: left;">Descripción Completa</th>
-                <th style="width: 15%;color:black;font-size: 16px;text-align: center;">U/M</th>
+                <th style="width: 25%;font-size: 14px;text-align: center;">Código</th>
+                <th style="width: 70%;color:black;font-size: 14px;text-align: left;">Descripción Completa</th>
+                <th style="width: 15%;color:black;font-size: 14px;text-align: center;">U/M</th>
                 <th style="width: 15%;color:black;font-size: 14px;text-align: center;">Cantidad Solicitada</th>
                 <th style="width: 30%;color:black;font-size: 14px;text-align: center;">Cantidad Despachada</th>
-                <th style="width: 30%;color:black;font-size: 16px;text-align: center;">Precio Unitario</th>
-                <th style="width: 15%;color:black;font-size: 16px;text-align: center;border-right:1px solid #ccc ;">Total</th>
+                <th style="width: 30%;color:black;font-size: 14px;text-align: center;">Precio Unitario</th>
+                <th style="width: 15%;color:black;font-size: 14px;text-align: center;border-right:1px solid #ccc ;">Total</th>
             </tr>
         </thead> 
 
@@ -69,15 +69,14 @@
          $tot_f = $_POST['tot_f'];
     ?>
       
-            <tr>
-                <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $codigo?></td>
-                <td style="border: 1px solid #ccc;border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $des?></td>
-                <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $um?></td>
-                <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $cantidad ?></td>
-
-                <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $stock ?></td>
-                <td style="text-align: center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;;"><?php echo $cost ?></td>
-                <td style="text-align: center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $tot ?></td>
+             <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+                <td style="text-align:center; font-size: 12px; "><?php  echo $codigo?></td>
+                <td style=" font-size: 12px;"><?php  echo $des?></td>
+                <td style="text-align:center; font-size: 12px; "><?php  echo $um?></td>
+                <td style="text-align:center; font-size: 12px; "><?php echo $cantidad ?></td>
+                <td style="text-align:center; font-size: 12px; "><?php echo $stock ?></td>
+                <td style="text-align: center; font-size: 12px; ;"><?php echo $cost ?></td>
+                <td style="text-align: center; font-size: 12px; "><?php  echo $tot ?></td>
             </tr>
          
         </tbody>  

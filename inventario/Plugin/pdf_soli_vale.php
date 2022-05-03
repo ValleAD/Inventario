@@ -19,9 +19,9 @@
 <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
-            <th style="width: 25%;font-size: 16px;text-align: center;">Código</th>
-            <th style="width: 70%;color:black;font-size: 16px;text-align: left;">Departamento Solicitante</th>
-            <th style="width: 15%;color:black;font-size: 16px;text-align: center;">Fecha</th>
+            <th style="width: 25%;font-size: 14px;text-align: center;">Código</th>
+            <th style="width: 70%;color:black;font-size: 14px;text-align: left;">Departamento Solicitante</th>
+            <th style="width: 15%;color:black;font-size: 14px;text-align: center;">Fecha</th>
         </tr>
         
         <td id="td" colspan="3" ><h4 align="center">No se encontraron resultados </h4></td>
@@ -42,10 +42,10 @@
      
   </style> 
   
-        <tr>
-            <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $solicitudes['codVale']?></td>
-            <td style="border: 1px solid #ccc;border-collapse: collapse; border-right: none; border-left: none;"><?php  echo $solicitudes['departamento']?></td>
-            <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
+        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+            <td style="text-align:center;font-size: 12px;"><?php  echo $solicitudes['codVale']?></td>
+            <td style="font-size: 12px;"><?php  echo $solicitudes['departamento']?></td>
+            <td style="text-align:center;font-size: 12px;"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
             </tr>
        <?php }  ?> 
     </tbody>  

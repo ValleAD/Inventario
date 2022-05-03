@@ -19,10 +19,10 @@
 <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
-                <th style=" width: 10%; text-align: left;">No. de Solicitud</th>
-                <th style=" width: 30%; text-align: left;">Departamento Solicitante</th>
-                <th style=" width: 20%; text-align: left;">Encargado</th>
-                <th style=" width: 20%; text-align: left;">Fecha de solicitud</th>
+                <th style=" width: 10%; text-align: left;font-size: 12px;">No. de Solicitud</th>
+                <th style=" width: 30%; text-align: left;font-size: 12px;">Departamento Solicitante</th>
+                <th style=" width: 20%; text-align: left;font-size: 12px;">Encargado</th>
+                <th style=" width: 20%; text-align: left;font-size: 12px;">Fecha de solicitud</th>
         </tr>
         
         <td id="td" colspan="4" ><h4 align="center">No se encontraron resultados </h4></td>
@@ -43,11 +43,11 @@
      
   </style> 
   
-        <tr>
-           <td data-label="No. solicitud" class="delete"><?php  echo $solicitudes['codAlmacen']; ?></td>
-            <td data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
-            <td data-label="Usuario" class="delete"><?php  echo $solicitudes['encargado']; ?></td>
-            <td data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_solicitud'])) ?></td>
+        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+           <td style="font-size: 12px" data-label="No. solicitud" class="delete"><?php  echo $solicitudes['codAlmacen']; ?></td>
+            <td style="font-size: 12px" data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
+            <td style="font-size: 12px" data-label="Usuario" class="delete"><?php  echo $solicitudes['encargado']; ?></td>
+            <td style="font-size: 12px" data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_solicitud'])) ?></td>
             </tr>
        <?php }  ?> 
     </tbody>  

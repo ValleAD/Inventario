@@ -25,16 +25,16 @@ include ('../Model/conexion.php');
 
     <thead>
         <tr id="tr">
-        <th style="width: 10%">#</th>
-         <th  style="width:15%">Departamento</th>
-         <th  style="width:15%">Encargado</th>
-         <th  style="width:10%">Codigo</th>
-         <th  style="width:100%">Descripción Completa</th>
-         <th  style="width:100%">U/M</th>
-         <th  style="width:100%">Cantidad</th>
-         <th  style="width:100%">Costo Unitario</th>
-         <th  style="width:100%">Ingreso Por</th>
-         <th  style="width:100%">Fecha Registro</th>
+         <th  style="font-size: 14px;width: 10%">#</th>
+         <th  style="font-size: 14px;width:15%">Departamento</th>
+         <th  style="font-size: 14px;width:15%">Encargado</th>
+         <th  style="font-size: 14px;width:10%">Codigo</th>
+         <th  style="font-size: 14px;width:100%">Descripción Completa</th>
+         <th  style="font-size: 14px;width:100%">U/M</th>
+         <th  style="font-size: 14px;width:100%">Cantidad</th>
+         <th  style="font-size: 14px;width:100%">Costo Unitario</th>
+         <th  style="font-size: 14px;width:100%">Ingreso Por</th>
+         <th  style="font-size: 14px;width:100%">Fecha Registro</th>
          
        </tr>
 
@@ -54,16 +54,16 @@ while ($productos = mysqli_fetch_array($result)){
         $r=$n+0?>
 
 <tr>
-    <td data-label="#"><?php echo $r ?></td>
-<td data-label="Departamento">Mantenimiento</td>
-<td data-label="Encargado"><?php  echo $productos['usuario']; ?></td>
-<td data-label="Código de Producto"><?php  echo $productos['codigo']; ?></td>
-<td data-label="Descripción Completa" style="text-align: left"><?php  echo $productos['descripcion']; ?></td>
-<td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-<td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
-<td data-label="Costo Unitario">$<?php  echo $precio3 ?></td>
-<td data-label="Fuente de Ingreso">Solicitud de Compra</td>
-<td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
+    <td  style="font-size: 12px;" data-label="#"><?php echo $r ?></td>
+<td  style="font-size: 12px;" data-label="Departamento">Mantenimiento</td>
+<td  style="font-size: 12px;" data-label="Encargado"><?php  echo $productos['usuario']; ?></td>
+<td  style="font-size: 12px;" data-label="Código de Producto"><?php  echo $productos['codigo']; ?></td>
+<td  style="font-size: 12px;" data-label="Descripción Completa" style="text-align: left"><?php  echo $productos['descripcion']; ?></td>
+<td  style="font-size: 12px;" data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
+<td  style="font-size: 12px;" data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
+<td  style="font-size: 12px;" data-label="Costo Unitario">$<?php  echo $precio3 ?></td>
+<td  style="font-size: 12px;" data-label="Fuente de Ingreso">Solicitud de Compra</td>
+<td  style="font-size: 12px;" data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
 </tr>
 
 <?php } ?> 
@@ -79,16 +79,16 @@ while ($productos = mysqli_fetch_array($result)){
 
     <thead>
         <tr id="tr">
-        <th style="width: 10%">#</th>
-         <th style="width: 15%">Departamento</th>
-         <th style="width: 15%">Encargado</th>
-         <th style="width: 15%">Codigo</th>
-         <th style="width: 50%">Descripción Completa</th>
-         <th style="width: 15%">U/M</th>
-         <th style="width: 15%">Cantidad</th>
-         <th style="width: 15%">Costo Unitario</th>
-         <th style="width: 15%">Ingreso Por</th>
-         <th style="width: 15%">Fecha Registro</th>
+         <th style="font-size: 14px;width: 10%">#</th>
+         <th style="font-size: 14px;width: 15%">Departamento</th>
+         <th style="font-size: 14px;width: 15%">Encargado</th>
+         <th style="font-size: 14px;width: 15%">Codigo</th>
+         <th style="font-size: 14px;width: 50%">Descripción Completa</th>
+         <th style="font-size: 14px;width: 15%">U/M</th>
+         <th style="font-size: 14px;width: 15%">Cantidad</th>
+         <th style="font-size: 14px;width: 15%">Costo Unitario</th>
+         <th style="font-size: 14px;width: 15%">Ingreso Por</th>
+         <th style="font-size: 14px;width: 15%">Fecha Registro</th>
          
        </tr>
 
@@ -118,16 +118,16 @@ width: 100%;
 }
 </style>
 <tr id="tr">
-    <td data-label="#"><?php echo $r ?></td>
-<td data-label="Departamento" style="text-align: left"><?php  echo $productos['departamento']; ?></td>
-<td data-label="Encargado" style="text-align: left"><?php  echo $productos['encargado']; ?></td>
-<td data-label="Código Producto"><?php  echo $productos['codigo']; ?></td>
-<td data-label="Descripción" style="text-align: left"><?php  echo $productos['nombre']; ?></td>
-<td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-<td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['cantidad_solicitada']; ?></td>
-<td data-label="Costo Unitario">$<?php  echo $precio2 ?></td>
-<td data-label="Fuente de Ingreso">Solicitud a Almacén</td>
-<td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
+    <td  style="font-size: 12px;" data-label="#"><?php echo $r ?></td>
+<td  style="font-size: 12px;" data-label="Departamento" style="text-align: left"><?php  echo $productos['departamento']; ?></td>
+<td  style="font-size: 12px;" data-label="Encargado" style="text-align: left"><?php  echo $productos['encargado']; ?></td>
+<td  style="font-size: 12px;" data-label="Código Producto"><?php  echo $productos['codigo']; ?></td>
+<td  style="font-size: 12px;" data-label="Descripción" style="text-align: left"><?php  echo $productos['nombre']; ?></td>
+<td  style="font-size: 12px;" data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
+<td  style="font-size: 12px;" data-label="Cantidad" style="text-align: center;"><?php  echo $productos['cantidad_solicitada']; ?></td>
+<td  style="font-size: 12px;" data-label="Costo Unitario">$<?php  echo $precio2 ?></td>
+<td  style="font-size: 12px;" data-label="Fuente de Ingreso">Solicitud a Almacén</td>
+<td  style="font-size: 12px;" data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
 
 
 
@@ -148,15 +148,15 @@ width: 100%;
 
     <thead>
         <tr id="tr">
-                <th style="width: 10%">#</th>
-                <th  style="width: 10%">Codigo</th>
-                <th  style="width: 100%">Descripción Completa</th>
-                <th  style="width: 100%">U/M</th>
-                <th  style="width: 100%">Cantidad</th>
-                <th  style="width: 100%">Costo Unitario</th>
-                <th  style="width: 100%">Ingreso Por</th>
-                <th  style="width: 100%">Fecha Registro</th>
-                   <tr> <td align="center" id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td></tr>
+                <th  style="font-size: 14px;width: 10%">#</th>
+                <th  style="font-size: 14px;width: 10%">Codigo</th>
+                <th  style="font-size: 14px;width: 100%">Descripción Completa</th>
+                <th  style="font-size: 14px;width: 100%">U/M</th>
+                <th  style="font-size: 14px;width: 100%">Cantidad</th>
+                <th  style="font-size: 14px;width: 100%">Costo Unitario</th>
+                <th  style="font-size: 14px;width: 100%">Ingreso Por</th>
+                <th  style="font-size: 14px;width: 100%">Fecha Registro</th>
+                   <tr> <td  style="font-size: 12px;" align="center" id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td></tr>
 
         </tr>
     </thead>
@@ -177,16 +177,16 @@ width: 100%;
         display: none;
     }
 </style> 
-    <tr id="tr" style="border: 1px solid #ccc;">
-        <td style="border: 1px solid #ccc;" data-label="#"><?php echo $r ?></td>
+    <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+        <td  style="font-size: 12px;" style="border: 1px solid #ccc;" data-label="#"><?php echo $r ?></td>
 
-      <td data-label="Código Producto"><?php  echo $productos['codigo']; ?></td>
-      <td data-label="Descripción" style="text-align: left"><?php  echo $productos['descripcion']; ?></td>
-      <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-      <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
-      <td data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
-      <td data-label="Fuente de Ingreso"><?php  echo $productos['campo']; ?></td>
-      <td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
+      <td  style="font-size: 12px;" data-label="Código Producto"><?php  echo $productos['codigo']; ?></td>
+      <td  style="font-size: 12px;" data-label="Descripción" style="text-align: left"><?php  echo $productos['descripcion']; ?></td>
+      <td  style="font-size: 12px;" data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
+      <td  style="font-size: 12px;" data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
+      <td  style="font-size: 12px;" data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
+      <td  style="font-size: 12px;" data-label="Fuente de Ingreso"><?php  echo $productos['campo']; ?></td>
+      <td  style="font-size: 12px;" data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
       
     </tr>
     </tbody>

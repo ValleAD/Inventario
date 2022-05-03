@@ -1,8 +1,6 @@
 <?php ob_start();
 include ('../Model/conexion.php');
-for ($i=0; $i <count($_POST['categoria']) ; $i++) { 
-$categoria =$_POST['categoria'][$i]; 
-}?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,23 +19,31 @@ $categoria =$_POST['categoria'][$i];
 <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;">
-            <th style="width: 25%;font-size: 16px;text-align: left;">Categoria</th>
-            <th style="width: 25%;font-size: 16px;text-align: left;">Código</th>
-            <th style="width: 25%;font-size: 16px;text-align: left;">Catálogo</th>
-            <th style="width: 25%;font-size: 16px;text-align: left;">Descripción Completa</th>
-            <th style="width: 25%;font-size: 16px;text-align: left;">U/M</th>
-            <th style="width: 25%;font-size: 16px;text-align: left;">Cantidad</th>
-            <th style="width: 25%;font-size: 16px;text-align: left;">Precio</th>
-            <th style="width: 25%;font-size: 16px;text-align: left;">Fecha</th> 
+            <th style="width: 25%;font-size: 14px;text-align: left;">Categoria</th>
+            <th style="width: 25%;font-size: 14px;text-align: left;">Código</th>
+            <th style="width: 25%;font-size: 14px;text-align: left;">Catálogo</th>
+            <th style="width: 25%;font-size: 14px;text-align: left;">Descripción Completa</th>
+            <th style="width: 25%;font-size: 14px;text-align: left;">U/M</th>
+            <th style="width: 25%;font-size: 14px;text-align: left;">Cantidad</th>
+            <th style="width: 25%;font-size: 14px;text-align: left;">Precio</th>
+            <th style="width: 25%;font-size: 14px;text-align: left;">Fecha</th> 
              <tr> <td align="center" id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td></tr>           
         </tr>
     </thead> 
     <tbody>
         <?php 
-   $sql = "SELECT * FROM `tb_productos` WHERE  categoria='$categoria'";
+$categoria2 =$_POST['categoria']; 
+
+   $sql = "SELECT * FROM `tb_productos` WHERE categoria='$categoria2'";
         $result = mysqli_query($conn, $sql);
  while ($productos = mysqli_fetch_array($result)){
-    $cat= $productos['categoria'];
+       $cat=$productos['categoria'];
+                if ($cat=="") {
+                    $cat="Sin categorias";
+                
+                }else{
+                $cat=$productos['categoria'];
+                }
     $cod= $productos['codProductos'];
     $catal= $productos['catalogo'];
     $des= $productos['descripcion'];
@@ -54,16 +60,16 @@ $categoria =$_POST['categoria'][$i];
         display: none;
     }
 </style>        
- <tr>
+ <tr style="border: 1px solid #ccc;border-collapse: collapse;">
 
-        <td style="text-align:left; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $cat ?></td>
-        <td style="text-align:left; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $cod ?></td>
-        <td style="text-align:left; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $catal ?></td>
-        <td style="text-align:left; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $des ?></td>
-        <td style="text-align:left; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $u_m ?></td>
-        <td style="text-align:left; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $stock ?></td>
-        <td style="text-align:left; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $precio1 ?></td>
-        <td style="text-align:left; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $fech ?></th>
+        <td style="text-align:left; font-size: 12px;"><?php echo $cat ?></td>
+        <td style="text-align:left; font-size: 12px;"><?php echo $cod ?></td>
+        <td style="text-align:left; font-size: 12px;"><?php echo $catal ?></td>
+        <td style="text-align:left; font-size: 12px;"><?php echo $des ?></td>
+        <td style="text-align:left; font-size: 12px;"><?php echo $u_m ?></td>
+        <td style="text-align:left; font-size: 12px;"><?php echo $stock ?></td>
+        <td style="text-align:left; font-size: 12px;"><?php echo $precio1 ?></td>
+        <td style="text-align:left; font-size: 12px;"><?php echo $fech ?></th>
         <?php } ?>
     </tr>
     </tbody>

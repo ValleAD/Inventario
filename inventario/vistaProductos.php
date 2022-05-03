@@ -353,8 +353,15 @@ if (isset($_POST['Fecha'])){
                 <?php  $sql = "SELECT * FROM tb_productos GROUP BY categoria ";
         $result = mysqli_query($conn, $sql);
             while ($productos = mysqli_fetch_array($result)){
-                echo "<option>".$productos['categoria']."</option>";
-
+                $categoria=$productos['categoria'];
+                if ($categoria1=="") {
+                    $categoria1="Sin categorias";
+                }else{
+                $categoria1=$productos['categoria'];
+                }
+                ?>
+                <option value="<?php echo $categoria ?>" ><?php echo $categoria1 ?></option>
+                <?php 
             }
          ?></select>
                     </div>
@@ -410,7 +417,6 @@ if (isset($_POST['categorias'])){$categoria=$_POST['cat'];  ?>  <br>
     </thead>
     <tbody>
          <?php $categoria=$_POST['cat'];
-
              // code...
          
                    $sql = "SELECT * FROM tb_productos WHERE categoria='$categoria' ";
@@ -420,11 +426,18 @@ if (isset($_POST['categorias'])){$categoria=$_POST['cat'];  ?>  <br>
                  $precio1=number_format($precio, 2,".",",");
                  $cantidad=$productos['stock'];
         $stock=number_format($cantidad, 2,".",",");
+           $categoria1=$productos['categoria'];
+                if ($categoria1=="") {
+                    $categoria1="Sin categorias";
+                
+                }else{
+                $categoria1=$productos['categoria'];
+                }
         
 
                 if ($_POST['cat']==$productos['categoria']) {?>
                    <tr>
-                <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['categoria']; ?></td>
+                <td data-label="Codigo" style="text-align: center;"><?php  echo $categoria1 ?></td>
                 <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['codProductos']; ?></td>
            <td  data-label="Codificación de catálogo" style="text-align: center;"><?php  echo $productos['catalogo']; ?></td>
            <td  data-label="Descripción Completa" style="text-align: left;padding-left:3%"><?php  echo $productos['descripcion']; ?></td>

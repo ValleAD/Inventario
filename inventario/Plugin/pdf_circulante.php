@@ -32,13 +32,13 @@
 <table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
-            <th style="width: 25%;color:black;font-size: 15px;text-align: left;">Codigo</th>
-            <th style="width: 70%;color:black;font-size: 15px;text-align: left;">Descripción de los materiales y/o servicios solicitados</th>
-            <th style="width: 15%;color:black;font-size: 15px;text-align: center;">U/M</th>
-            <th style="width: 15%;color:black;font-size: 15px;text-align: center;">Cant.<br>Sol.</th>
-            <th style="width: 15%;color:black;font-size: 15px;text-align: center;">Cant.<br>Desp.</th>
-            <th style="width: 15%;color:black;font-size: 15px;text-align: center;">C/U</th>
-            <th style="width: 15%;color:black;font-size: 15px;text-align: center;border-right:1px solid #ccc ;">Total</th>
+            <th style="width: 25%;color:black;font-size: 14px;text-align: left;">Codigo</th>
+            <th style="width: 70%;color:black;font-size: 14px;text-align: left;">Descripción de los materiales y/o servicios solicitados</th>
+            <th style="width: 15%;color:black;font-size: 14px;text-align: center;">U/M</th>
+            <th style="width: 15%;color:black;font-size: 14px;text-align: center;">Cant.<br>Sol.</th>
+            <th style="width: 15%;color:black;font-size: 14px;text-align: center;">Cant.<br>Desp.</th>
+            <th style="width: 15%;color:black;font-size: 14px;text-align: center;">C/U</th>
+            <th style="width: 15%;color:black;font-size: 14px;text-align: center;border-right:1px solid #ccc ;">Total</th>
         </tr>
     </thead> 
 
@@ -60,14 +60,14 @@ for($i = 0; $i < count($_POST['desc']); $i++)
     $tot_f = $_POST['tot_f'];
 ?>
   
-        <tr>
-            <td><?php  echo $cod?></td>
-            <td><?php  echo $des?></td>
-            <td style="text-align:center;"><?php  echo $um?></td>
-            <td style="text-align:center;"><?php echo $cantidad ?></td>
-            <td><?php echo $cantidad_despachada ?></td>
-            <td style="text-align: center;"><?php echo $cost ?></td>
-            <td style="text-align: center"><?php  echo $tot ?></td>
+        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+            <td style="font-size:12px"><?php  echo $cod?></td>
+            <td style="font-size:12px"><?php  echo $des?></td>
+            <td style="text-align:center;font-size: 12px;"><?php  echo $um?></td>
+            <td style="text-align:center;font-size: 12px;"><?php echo $cantidad ?></td>
+            <td style="font-size:12px"><?php echo $cantidad_despachada ?></td>
+            <td style="text-align: center;font-size: 12px;"><?php echo $cost ?></td>
+            <td style="text-align: center;font-size: 12px;"><?php  echo $tot ?></td>
         </tr>
      
      <?php } } ?> 

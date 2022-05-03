@@ -29,13 +29,13 @@ $f2 =$_POST['f2']; ?>
 <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;">
-            <th style="width: 25%;font-size: 16px;text-align: left;">Código</th>
-            <th style="width: 25%;font-size: 16px;text-align: left;">Catálogo</th>
-            <th style="width: 25%;font-size: 16px;text-align: left;">Descripción Completa</th>
-            <th style="width: 25%;font-size: 16px;text-align: left;">U/M</th>
-            <th style="width: 25%;font-size: 16px;text-align: left;">Cantidad</th>
-            <th style="width: 25%;font-size: 16px;text-align: left;">Precio</th>
-            <th style="width: 25%;font-size: 16px;text-align: left;">Fecha</th> 
+            <th style="width: 25%;font-size: 14px;text-align: left;">Código</th>
+            <th style="width: 25%;font-size: 14px;text-align: left;">Catálogo</th>
+            <th style="width: 25%;font-size: 14px;text-align: left;">Descripción Completa</th>
+            <th style="width: 25%;font-size: 14px;text-align: left;">U/M</th>
+            <th style="width: 25%;font-size: 14px;text-align: left;">Cantidad</th>
+            <th style="width: 25%;font-size: 14px;text-align: left;">Precio</th>
+            <th style="width: 25%;font-size: 14px;text-align: left;">Fecha</th> 
              <tr> <td align="center" id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td></tr>           
         </tr>
     </thead> 
@@ -60,15 +60,15 @@ $f2 =$_POST['f2']; ?>
         display: none;
     }
 </style>        
- <tr>
+ <tr style="border: 1px solid #ccc;border-collapse: collapse;">
 
-        <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $cod ?></td>
-        <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $catal ?></td>
-        <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $des ?></td>
-        <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $u_m ?></td>
-        <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $stock ?></td>
-        <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $precio1 ?></td>
-        <td style="text-align:center; border: 1px solid #ccc; border-collapse: collapse; border-right: none; border-left: none;"><?php echo $fech ?></th>
+        <td style="text-align:center; font-size: 12px;"><?php echo $cod ?></td>
+        <td style="text-align:center; font-size: 12px;"><?php echo $catal ?></td>
+        <td style="text-align:center; font-size: 12px;"><?php echo $des ?></td>
+        <td style="text-align:center; font-size: 12px;"><?php echo $u_m ?></td>
+        <td style="text-align:center; font-size: 12px;"><?php echo $stock ?></td>
+        <td style="text-align:center; font-size: 12px;"><?php echo $precio1 ?></td>
+        <td style="text-align:center; font-size: 12px;"><?php echo $fech ?></th>
         <?php } ?>
     </tr>
     </tbody>

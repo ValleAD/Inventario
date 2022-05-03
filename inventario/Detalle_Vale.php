@@ -312,6 +312,7 @@ while ($productos = mysqli_fetch_array($result)){
                 <p style="padding-left: 1%;">Observaciones (En qué se ocupará el bien entregado)</p>
                 <hr style=" border: 1px solid #ccc;border-collapse: collapse;">
                 <p style="padding-left: 1%;"><?php echo $jus ?></p>
+                <input type="hidden" name="jus" value="<?php echo $jus ?>">
             </div>
 <?php }  ?>
 </form>
@@ -472,6 +473,7 @@ while ($productos = mysqli_fetch_array($result)){
                 <p style="padding-left: 1%;">Observaciones (En qué se ocupará el bien entregado)</p>
                 <hr style=" border: 1px solid #ccc;border-collapse: collapse;">
                 <p style="padding-left: 1%;"><?php echo $jus ?></p>
+                <input type="hidden" name="jus" value="<?php echo $jus ?>">
             </div>
 <?php }  ?>
 

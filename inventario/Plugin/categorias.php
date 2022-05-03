@@ -1,9 +1,8 @@
 <?php 
 
 include ('../Model/conexion.php');
-$categoria =$_POST['categoria'];
+?>
 
- ?>
  <!DOCTYPE html>
  <html>
  <head>
@@ -26,24 +25,33 @@ $categoria =$_POST['categoria'];
 
     <thead>
         <tr id="tr">
-            <th style="width:5%">Categoria</th>
-            <th style="width:5%">Código</th>
-            <th style="width:10%">Cod. de Catálogo</th>
-            <th style=" width: 50%; padding-left:3%">Descripción Completa</th>
-            <th style="width:10%">U/M</th>
-            <th style="width:10%">Cantidad</th>
-            <th style="width:10%">Costo Unitario</th>
-            <th style="width:10%">Fecha Registro</th>
+            <th style="font-size: 14px;width:5%">Categoria</th>
+            <th style="font-size: 14px;width:5%">Código</th>
+            <th style="font-size: 14px;width:10%">Cod. de Catálogo</th>
+            <th style="font-size: 14px;width: 50%; padding-left:3%">Descripción Completa</th>
+            <th style="font-size: 14px;width:10%">U/M</th>
+            <th style="font-size: 14px;width:10%">Cantidad</th>
+            <th style="font-size: 14px;width:10%">Costo Unitario</th>
+            <th style="font-size: 14px;width:10%">Fecha Registro</th>
                    <tr> <td align="center" id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td></tr>
 
         </tr>
     </thead>
     <tbody>
   <?php 
-   $sql = "SELECT * FROM `tb_productos` WHERE categoria='$categoria'";
+
+$categoria2 =$_POST['categoria']; 
+
+   $sql = "SELECT * FROM `tb_productos` WHERE categoria='$categoria2'";
         $result = mysqli_query($conn, $sql);
  while ($productos = mysqli_fetch_array($result)){
-    $categoria= $productos['categoria'];
+       $categoria1=$productos['categoria'];
+                if ($categoria1=="") {
+                    $categoria1="Sin categorias";
+                
+                }else{
+                $categoria1=$productos['categoria'];
+                }
     $cod= $productos['codProductos'];
     $catal= $productos['catalogo'];
     $des= $productos['descripcion'];
@@ -60,15 +68,15 @@ $categoria =$_POST['categoria'];
         display: none;
     }
 </style>
- <tr>
-        <td><?php echo $categoria ?></td>
-        <td><?php echo $cod ?></td>
-        <td><?php echo $catal ?></td>
-        <td><?php echo $des ?></td>
-        <td><?php echo $u_m ?></td>
-        <td><?php echo $stock ?></td>
-        <td><?php echo $precio1 ?></td>
-        <td><?php echo $fech ?></td>
+ <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+        <td style="font-size: 12px;"><?php echo $categoria1 ?></td>
+        <td style="font-size: 12px;"><?php echo $cod ?></td>
+        <td style="font-size: 12px;"><?php echo $catal ?></td>
+        <td style="font-size: 12px;"><?php echo $des ?></td>
+        <td style="font-size: 12px;"><?php echo $u_m ?></td>
+        <td style="font-size: 12px;"><?php echo $stock ?></td>
+        <td style="font-size: 12px;"><?php echo $precio1 ?></td>
+        <td style="font-size: 12px;"><?php echo $fech ?></td>
         <?php } ?>
     </tr>
     </tbody>

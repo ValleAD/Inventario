@@ -39,13 +39,13 @@ $f2 =$_POST['f2'];
 
     <thead>
         <tr id="tr">
-            <th style="width:5%">Código</th>
-            <th style="width:10%">Cod. de Catálogo</th>
-            <th style=" width: 50%; padding-left:3%">Descripción Completa</th>
-            <th style="width:10%">U/M</th>
-            <th style="width:10%">Cantidad</th>
-            <th style="width:10%">Costo Unitario</th>
-            <th style="width:10%">Fecha Registro</th>
+            <th style="width:5%;font-size: 14px;">Código</th>
+            <th style="width:10%;font-size: 14px;">Cod. de Catálogo</th>
+            <th style="width:50%;font-size: 14px;">Descripción Completa</th>
+            <th style="width:10%;font-size: 14px;">U/M</th>
+            <th style="width:10%;font-size: 14px;">Cantidad</th>
+            <th style="width:10%;font-size: 14px;">Costo Unitario</th>
+            <th style="width:10%;font-size: 14px;">Fecha Registro</th>
                    <tr> <td align="center" id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td></tr>
 
         </tr>
@@ -71,14 +71,19 @@ $f2 =$_POST['f2'];
         display: none;
     }
 </style>
- <tr>
-        <td><?php echo $cod ?></td>
-        <td><?php echo $catal ?></td>
-        <td><?php echo $des ?></td>
-        <td><?php echo $u_m ?></td>
-        <td><?php echo $stock ?></td>
-        <td><?php echo $precio1 ?></td>
-        <td><?php echo $fech ?></td>
+ <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+    <style>
+        td{
+            font-size: 12px;
+        }
+    </style>
+        <td style="font-size:12px"><?php echo $cod ?></td>
+        <td style="font-size:12px"><?php echo $catal ?></td>
+        <td style="font-size:12px"><?php echo $des ?></td>
+        <td style="font-size:12px"><?php echo $u_m ?></td>
+        <td style="font-size:12px"><?php echo $stock ?></td>
+        <td style="font-size:12px"><?php echo $precio1 ?></td>
+        <td style="font-size:12px"><?php echo $fech ?></td>
         <?php } ?>
     </tr>
     </tbody>

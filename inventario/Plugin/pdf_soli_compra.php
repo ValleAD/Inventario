@@ -19,12 +19,12 @@
 <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
-          <th style="width:10%">No. Solicitud</th>
-                <th  style="width:10%">Dependencia</th>
-                <th  style="width:10%">Plazo y No. de Entregas</th>
-                <th  style="width:10%">Unidad Técnica</th>
-                <th  style="width:20%" align="center">Descripción Solicitud</th>
-                <th  style="width:20%">Fecha de Registro</th>
+          <th style="width:10%;font-size: 14px;">No. Solicitud</th>
+                <th  style="width:10%;font-size: 14px;">Dependencia</th>
+                <th  style="width:10%;font-size: 14px;">Plazo y No. de Entregas</th>
+                <th  style="width:10%;font-size: 14px;">Unidad Técnica</th>
+                <th  style="width:20%;font-size: 14px;" align="center">Descripción Solicitud</th>
+                <th  style="width:20%;font-size: 14px;">Fecha de Registro</th>
         </tr>
         
         <td id="td" colspan="6" ><h4 align="center">No se encontraron resultados </h4></td>
@@ -44,13 +44,12 @@
       
      
   </style> 
-  
-        <tr>
-             <td data-label="No. Solicitud" class="delete"><?php  echo $solicitudes['nSolicitud']; ?></td>
-            <td data-label="Dependencia" class="delete"><?php  echo $solicitudes['dependencia']; ?></td>
-            <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['plazo']; ?></td>
-            <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
-            <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
+   <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+            <td style="font-size: 12px" data-label="No. Solicitud" class="delete"><?php  echo $solicitudes['nSolicitud']; ?></td>
+            <td style="font-size: 12px" data-label="Dependencia" class="delete"><?php  echo $solicitudes['dependencia']; ?></td>
+            <td style="font-size: 12px" data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['plazo']; ?></td>
+            <td style="font-size: 12px" data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
+            <td style="font-size: 12px" data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
             <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
             </tr>
        <?php }  ?> 

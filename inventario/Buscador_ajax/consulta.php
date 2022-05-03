@@ -98,6 +98,14 @@ echo'
                 $n=0;
 	while($productos= $buscarAlumnos->fetch_assoc())
 	{
+                $categoria=$productos['categoria'];
+                if ($categoria=="") {
+                    $categoria="Sin categorias";
+                
+                }else{
+                $categoria=$productos['categoria'];
+                }
+            
 		 $n++;
         $r=$n+0;
          $precio=$productos['precio'];
@@ -115,7 +123,7 @@ echo'
 			<td>'.$stock.'</td>
 			<td>'.$precio1.'</td>
 			<td>'.$productos['fecha_registro'].'</td>
-			<td>'.$productos['categoria'].'</td>
+			<td>'.$categoria.'</td>
 			</tr>
 		';} if ($tipo_usuario ==1) {
 				echo '<tr>
@@ -127,7 +135,7 @@ echo'
 			<td>'.$stock.'</td>
 			<td>'.$precio1.'</td>
 			<td>'.$productos['fecha_registro'].'</td>
-			<td>'.$productos['categoria'].'</td>
+			<td>'.$categoria.'</td>
 			
            <td  data-label="Editar">
             <form style="margin: 0%;position: 0; background: transparent;" method="POST" action="vistaProductos.php?Editar">             
