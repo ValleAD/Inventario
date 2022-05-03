@@ -69,7 +69,7 @@ if ($buscarAlumnos->num_rows > 0)
     while ($productos = mysqli_fetch_array($result)){
 echo'             
                 <input type="hidden" name="consulta" value="'. $ee=$_POST['consulta'].'">
-                <input type="hidden" name="cod[]" value="'.$productos['codProductos'] .'">
+                <input type="hidden" name="cod[]" value="'.$productos['cod'] .'">
             ';} echo'
                 <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -145,7 +145,7 @@ echo'
             ' ;
             if ($productos['stock']==0) {?>
                 <form method="POST" action="Controller/Delete_producto.php">
-                    <input type="hidden" name="cod" value="<?php echo $productos['codProductos'] ?>">
+                    <input type="hidden" name="cod" value="<?php echo $productos['cod'] ?>">
                     <input type="hidden" name="id" value="<?php echo $productos['stock'] ?>">
                     <button  data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm " class="text-primary" onclick="return confirmaion()">Eliminar</button>
                 </form>
