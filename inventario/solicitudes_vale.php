@@ -50,7 +50,7 @@ die();
     <?php
     include 'Model/conexion.php';
 
-    $sql = "SELECT * FROM tb_vale ORDER BY fecha_registro DESC  ";
+    $sql = "SELECT * FROM tb_vale ORDER BY fecha_registro ";
     $result = mysqli_query($conn, $sql);
     $n=0;
     while ($solicitudes = mysqli_fetch_array($result)){
@@ -119,7 +119,7 @@ die();
     include 'Model/conexion.php';
     $tipo_usuario = $_SESSION['iduser'];
     
-    $sql = "SELECT * FROM tb_vale WHERE idusuario='$tipo_usuario' ORDER BY fecha_registro DESC  ";
+    $sql = "SELECT * FROM tb_vale WHERE idusuario='$tipo_usuario' ORDER BY fecha_registro ";
     $result = mysqli_query($conn, $sql);
     $n=0;
     while ($solicitudes = mysqli_fetch_array($result)){

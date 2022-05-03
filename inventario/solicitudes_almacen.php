@@ -53,7 +53,7 @@ die();
     <?php
     include 'Model/conexion.php';
     $tipo_usuario = $_SESSION['iduser'];
-    $sql = "SELECT * FROM tb_almacen WHERE  idusuario='$tipo_usuario' ORDER BY fecha_solicitud DESC ";
+    $sql = "SELECT * FROM tb_almacen WHERE  idusuario='$tipo_usuario' ORDER BY fecha_solicitud  ";
     $result = mysqli_query($conn, $sql);
     $n=0;
     while ($datos_sol = mysqli_fetch_assoc($result)){
@@ -117,7 +117,7 @@ die();
     <?php
     include 'Model/conexion.php';
     $tipo_usuario = $_SESSION['iduser'];
-    $sql = "SELECT * FROM tb_almacen WHERE  idusuario='$tipo_usuario' ORDER BY fecha_solicitud DESC ";
+    $sql = "SELECT * FROM tb_almacen WHERE  idusuario='$tipo_usuario' ORDER BY fecha_solicitud  ";
     $result = mysqli_query($conn, $sql);
     $n=0;
     while ($datos_sol = mysqli_fetch_assoc($result)){

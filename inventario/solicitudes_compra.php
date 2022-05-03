@@ -62,7 +62,7 @@ h1 {
     <?php
     include 'Model/conexion.php';
 
-    $sql = "SELECT * FROM tb_compra  ORDER BY fecha_registro DESC ";
+    $sql = "SELECT * FROM tb_compra  ORDER BY fecha_registro  ";
     $result = mysqli_query($conn, $sql);
     $n=0;
     while ($solicitudes = mysqli_fetch_array($result)){
@@ -133,7 +133,7 @@ h1 {
     include 'Model/conexion.php';
 
 $tipo_usuario = $_SESSION['iduser'];
-    $sql = "SELECT * FROM tb_compra WHERE idusuario='$tipo_usuario' ORDER BY fecha_registro DESC ";
+    $sql = "SELECT * FROM tb_compra WHERE idusuario='$tipo_usuario' ORDER BY fecha_registro  ";
     $result = mysqli_query($conn, $sql);
     $n=0;
     while ($solicitudes = mysqli_fetch_array($result)){
