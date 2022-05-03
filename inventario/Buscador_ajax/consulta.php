@@ -1,10 +1,3 @@
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Productos</title>
- 
-
-    <style> #form2{
-                margin-top: 3%;	
-    </style> 
     <?php
 session_start();
  if (!isset($_SESSION['signin'])>0) {
@@ -18,8 +11,10 @@ die();
 
     ';
 }
-$tipo_usuario = $_SESSION['tipo_usuario'];
-include ('../Model/conexion.php');
+$tipo_usuario = $_SESSION['tipo_usuario'];?>
+
+
+<?php include ('../Model/conexion.php');
 
 $tabla="";
 $query="SELECT * FROM tb_productos ORDER BY codProductos";
@@ -79,7 +74,6 @@ echo'
             </form>
     </div>
     ';}echo '
-    <div style="position:initial;">
 	<table class="table table-responsive table-striped" id="example" style=" width: 100%;">
 	 
                 <thead>
@@ -164,7 +158,7 @@ echo'
 	}
 	}
 
-	$tabla.='</tbody></table> </div>';
+	$tabla.='</tbody></table> ';
 } else
 	{
 		$tabla="<h1 class='text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>";
@@ -174,92 +168,3 @@ echo'
 echo $tabla;
 ?>      
      
-    <script>
-   $(document).ready(function(){
- $('#example').DataTable({        
-        language: {
-                "lengthMenu": "Mostrar _MENU_ registros",
-                "zeroRecords": "No se encontraron resultados",
-                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sSearch": "Buscar:",
-                "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast":"Último",
-                    "sNext":"Siguiente",
-                    "sPrevious": "Anterior"
-                 },
-                 "sProcessing":"Procesando...",
-            },
-        //para usar los botones   
-        responsive: "true",
-        dom: 'rtilp',       
-        buttons:[ 
-            {
-                extend:    'excelHtml5',
-                text:      '<i class="fas fa-file-excel"></i> ',
-                titleAttr: 'Exportar a Excel',
-                className: 'btn btn-success'
-            },
-            {
-                extend:    'pdfHtml5',
-                text:      '<i class="fas fa-file-pdf"></i> ',
-                titleAttr: 'Exportar a PDF',
-                className: 'btn btn-danger'
-            },
-            {
-                extend:    'print',
-                text:      '<i class="fa fa-print"></i> ',
-                titleAttr: 'Imprimir',
-                className: 'btn btn-info'
-            },
-        ]           
-    });     
-
-    });
-</script> <script>
-   $(document).ready(function(){
- $('#example1').DataTable({        
-        language: {
-                "lengthMenu": "Mostrar _MENU_ registros",
-                "zeroRecords": "No se encontraron resultados",
-                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sSearch": "Buscar:",
-                "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast":"Último",
-                    "sNext":"Siguiente",
-                    "sPrevious": "Anterior"
-                 },
-                 "sProcessing":"Procesando...",
-            },
-        //para usar los botones   
-        responsive: "true",
-        dom: 'rtilp',       
-        buttons:[ 
-            {
-                extend:    'excelHtml5',
-                text:      '<i class="fas fa-file-excel"></i> ',
-                titleAttr: 'Exportar a Excel',
-                className: 'btn btn-success'
-            },
-            {
-                extend:    'pdfHtml5',
-                text:      '<i class="fas fa-file-pdf"></i> ',
-                titleAttr: 'Exportar a PDF',
-                className: 'btn btn-danger'
-            },
-            {
-                extend:    'print',
-                text:      '<i class="fa fa-print"></i> ',
-                titleAttr: 'Imprimir',
-                className: 'btn btn-info'
-            },
-        ]           
-    });     
-
-    });
-</script>

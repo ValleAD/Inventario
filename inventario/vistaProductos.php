@@ -35,12 +35,7 @@ die();
     <link rel="stylesheet" href="https://cdn.datatables.net/searchpanes/1.0.1/css/searchPanes.dataTables.min.css">
     <!-- select -->
     <link href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
-    <style>
-    table thead{
-    background: linear-gradient(to right, #4A00E0, #8E2DE2); 
-    color:white;
-    }
-    </style>
+
 </head>
 <body> 
   
@@ -179,7 +174,7 @@ $result = mysqli_query($conn, $sql);
         } 
     </style>
 </table>
-  <section style="background: rgba(255, 255, 255, 0.9);padding-bottom: 1%;margin: 3%;border-radius: 15px;">
+  <section style="background: rgba(255, 255, 255, 0.9);margin: 2%; border-radius: 15px;">
 <font color="black"><h2 class="text-center">Inventario de Productos</h2></font>
 <br>
 <form method="POST" action="">
@@ -308,7 +303,7 @@ if (isset($_POST['Fecha'])){
   
 </div>
 
-    <div class="mx-5 p-2 r-5" style=" border-radius: 5px;">
+    <div  style=" border-radius: 5px;">
         <div class="row">
             <div class="col">
            <div class="mx-1 p-2" style=" border-radius: 5px;">
@@ -325,7 +320,7 @@ if (isset($_POST['Fecha'])){
          </form>
          <form id="well" method="POST" action="Plugin/tpdf_productos.php" target="_blank">
             
-             <button type="submit" class="btn btn-outline-primary" name="tproductospdf" target="_blank">
+             <button type="submit" class="btn btn-outline-primary mx-1" name="tproductospdf" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -336,14 +331,17 @@ if (isset($_POST['Fecha'])){
             <section>
             <input type="text" name="busqueda" class="form-control" style="width: 30%;" id="busqueda" placeholder="Buscar...">
         </section>
-        <div   style="margin-top: 1%;margin-right: -4%;margin-left: -4%;">
+<br>
                <section id="tabla_resultado">
         <!-- AQUI SE DESPLEGARA NUESTRA TABLA DE CONSULTA -->
 
         </section>
-        </div>  
+ 
         </form>      
         </div>
+    </div>
+</div>
+</div>
         <form method="POST" action="vistaProductos.php" class=" my-3 mx-3">  
 
  <form method="POST" action="">
