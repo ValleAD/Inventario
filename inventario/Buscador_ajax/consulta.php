@@ -84,19 +84,19 @@ echo'
 	 
                 <thead>
                      <tr id="tr">
-                    <th style="max-width: 5%;">#</th>
-                     <th style="max-width: 10%;">Código</th>
-                     <th style="max-width: 10%;">Cod. de Catálogo</th>
-                     <th style="max-width: 100%;">Descripción Completa</th>
-                     <th style="max-width: 10%;">U/M</th>
-                     <th style="max-width: 10%;">Cantidad</th>
-                     <th style="max-width: 10%;">Costo Unitario</th>
-                     <th style="max-width: 40%;">Fecha Registro</th>
-                     <th style="max-width: 100%; max-width: 50%;">Categoría</th>
+                    <th style="width: 5%;">#</th>
+                     <th style="width: 10%;">Código</th>
+                     <th style="width: 10%;">Cod. de Catálogo</th>
+                     <th style="width: 100%;">Descripción Completa</th>
+                     <th style="width: 10%;">U/M</th>
+                     <th style="width: 10%;">Cantidad</th>
+                     <th style="width: 10%;">Costo Unitario</th>
+                     <th style="width: 10%;">Fecha Registro</th>
+                     <th style="width: 10%; width: 50%;">Categoría</th>
                     ';if($tipo_usuario==1){ 
                     	echo '
-                     <th style="max-width: 10%;">Editar</th>
-                     <th style="max-width: 10%;">Eliminar</th>
+                     <th style="width: 10%;">Editar</th>
+                     <th style="width: 10%;">Eliminar</th>
                  '; } echo'
                    </tr>
                 </thead>
@@ -142,7 +142,21 @@ echo'
             </form>  
             </td>
             <td  data-label="Eliminar">
-                <a data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm " class="text-primary" href="Controller/Delete_producto.php?id='.$productos['stock'].'" onclick="return confirmaion()">Eliminar</a>
+            ' ;
+            if ($productos['stock']==0) {?>
+                <form method="POST" action="Controller/Delete_producto.php">
+                    <input type="hidden" name="cod" value="<?php echo $productos['codProductos'] ?>">
+                    <input type="hidden" name="id" value="<?php echo $productos['stock'] ?>">
+                    <button  data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm " class="text-primary" onclick="return confirmaion()">Eliminar</button>
+                </form>
+           <?php  };
+            if ($productos['stock']!=0) {
+                 echo'
+            <button disabled data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm text-white">Eliminar</button>
+            ';
+            }
+           echo'
+               
             </td>
         
 		 </tr>

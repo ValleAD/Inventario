@@ -12,6 +12,22 @@ for($i = 0; $i < count($_POST['cod']); $i++)
       $Descripción      = $_POST['descr'][$i];
       $u_m              = $_POST['um'][$i];
       $cost             = $_POST['cu'][$i];
+
+          $sql = "SELECT * FROM tb_productos WHERE codProductos='$codigo_producto' AND catalogo='$catalogo' ";
+    $result = mysqli_query($conn, $sql);
+    $codigo=0;
+    while ($productos = mysqli_fetch_array($result)){
+      $codigo=$productos['codProductos'];
+    }
+      if ($codigo_producto==$codigo) {
+        echo '    <script>
+    alert("No puede haber campos repetidos");
+     window.location ="../regi_producto.php"; 
+  </script>';
+  exit();
+
+      }if ($codigo_producto!=$codigo) {
+
 $verificar_usuario =mysqli_query($conn, "SELECT * FROM tb_productos WHERE codProductos ='$codigo_producto'");
 
 if (mysqli_num_rows($verificar_usuario)>0) {
@@ -30,11 +46,7 @@ exit();
         echo "<script> alert('Su producto fue registrado correctamente');
         location.href = '../vistaProductos.php';
         </script>";
-      }else {
-        echo "<script> alert('UUPS!! Algo no fue mal escrito');
-        location.href = '../regi_producto.php';
-        </script>
-        ";
       }
-    }
+  }
+}
 ?>

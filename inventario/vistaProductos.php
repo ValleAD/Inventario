@@ -477,10 +477,15 @@ $(document).on('keyup', '#busqueda', function()
 });
 
 </script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#busqueda').load('Buscador_ajax/consulta.php');
+    });
+</script>
 
     <script type="text/javascript">
 function confirmaion(e) {
-    if (confirm("¿Estas seguro que deseas Eliminar este registro?                                                                                                                   NOTA:                                                                            El Producto que tenga la cantidad igual a 0 sera eliminado ")) {
+    if (confirm("¿Estas seguro que deseas Eliminar este registro?                                                                                                                   NOTA:                                                                            El Producto que tenga la cantidad igual a 0.00 sera eliminado ")) {
         return true;
     } else {
         return false;

@@ -170,10 +170,10 @@ form{
 </style>
 <div class="col-xs-4" style="position: initial">
     <div>
-      <a style="cursor: default;color: white; " id="btn-agregar" class="boton_2" type="button" >Agregar Producto
+      <a style="cursor: default;color: white; " id="btn-agregar" class="boton_2 my-3" type="button" >Agregar Producto
         <svg class="bi" width="20" height="20" fill="currentColor">
-                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#plus-circle-fill"/>
-                        </svg>
+        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#plus-circle-fill"/>
+        </svg>
       </a>                
     </div>
 </div>

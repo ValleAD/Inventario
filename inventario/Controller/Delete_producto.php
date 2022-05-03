@@ -2,10 +2,11 @@
 <?php 
  include '../Model/conexion.php';
 
-$id1 = $_GET['id'];
+$cod = $_POST['cod'];
+$id1 = $_POST['id'];
 if ($id1<1) {
 
-        $eliminar ="DELETE FROM tb_productos WHERE stock='$id1'";
+        $eliminar ="DELETE FROM tb_productos WHERE codProductos='$cod' AND stock='$id1'";
         $result= mysqli_query($conn, $eliminar);
         if ($result) {
             

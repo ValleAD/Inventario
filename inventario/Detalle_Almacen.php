@@ -170,7 +170,7 @@ while ($productos = mysqli_fetch_array($result)){
 </style> 
       <tr>
         <td data-label="#"><?php  echo $r ?></td>
-        <td  data-label="Código">
+        <td  data-label="Código"><?php echo $productos['codigo'] ?>
             <input type="hidden" name="cod[]" value="<?php echo $productos['codigo'] ?>">
             <input type="hidden" name="cod1[]" value="<?php echo $productos['codigoalmacen']?>">
             <input type="hidden" name="um[]" value="<?php echo $productos['unidad_medida'] ?>">

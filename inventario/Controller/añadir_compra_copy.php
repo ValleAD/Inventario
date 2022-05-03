@@ -33,10 +33,20 @@ if ($estado=='Aprobado') {
       $cant             = $_POST['cant'][$i];
       $cant_aprobada    = $_POST['cantidad_despachada'][$i];
       $catT=$cant+$cant_aprobada;
-        $insert = "INSERT INTO tb_productos (codProductos, categoria, descripcion, unidad_medida, stock, precio,solicitudes) VALUES ('$codigo_producto', '$categoria', '$Descripción', '$u_m',  '$cost','$cant_aprobada' ,'Solicitud Compra')";
+              if ($codigo_producto==$codigo_producto) {
+        $sql = "SELECT * FROM tb_productos WHERE codProductos='$codigo_producto' ";
+        $result = mysqli_query($conn, $sql);
+        $ncodigo=1;
+            while ($productos = mysqli_fetch_array($result)){
+              $ncodigo=$productos['codProductos']+1;
+         $insert = "INSERT INTO tb_productos (codProductos,  descripcion, unidad_medida, stock, precio,solicitudes) VALUES ('$ncodigo',  '$Descripción', '$u_m',  '$cost','>$cant_aprobada' ,'Solicitud Compra')";
       $query1 = mysqli_query($conn, $insert);
+       }else{
+        $insert = "INSERT INTO tb_productos (codProductos,  descripcion, unidad_medida, stock, precio,solicitudes) VALUES ('$codigo_producto',  '$Descripción', '$u_m',  '$cost','>$cant_aprobada' ,'Solicitud Compra')";
+      $query1 = mysqli_query($conn, $insert);
+       }
       
-    
+    }
       if ($result || $query || $query1)  {
         echo "<script> alert('El Estado fue Cambiado correctamente')
         // location.href = '../solicitudes_compra.php';
