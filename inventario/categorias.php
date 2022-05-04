@@ -119,8 +119,8 @@ $result = mysqli_query($conn, $sql);
         <thead>
               <tr id="tr">
                 <th>#</th>
-                <th style=" width: 30%">Categoria</th>
-                <th style="width: 100%;">Habilitado</th><?php if($tipo_usuario == 1) { ?>
+                <th style=" width: 50%">Categoria</th>
+                <th style="width: 50%;">Habilitado</th><?php if($tipo_usuario == 1) { ?>
                 <th> Cambiar Habilitado</strong></th>
                 <th>Eliminar</th><?php } ?>
                 
@@ -152,11 +152,11 @@ $result = mysqli_query($conn, $sql);
             <input  <?php
                 if($solicitudes['Habilitado']=='Si') {
                     echo ' style="background-color:blueviolet ;width:33%; border-radius:100px;text-align:center; color: white;margin-top: .2%"';
-                    $c='Categoria Disponble';
+                    $c='Categoría Disponible';
                 } elseif ($solicitudes['Habilitado']  == 'No') {
                
                     echo ' style="background-color:red;width:33%; border-radius:100px;text-align:center;color: white;margin-top: .2%"';
-                    $c='Categoria no Disponble';
+                    $c='Categoría no Disponible';
                 }
             ?>
  type="text" class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="<?=   $c ?>"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $c ?>"></td>
@@ -175,7 +175,11 @@ $result = mysqli_query($conn, $sql);
                 <form action="Controller/Delete-categorias.php" method="POST" style="background:transparent;">
                     <input type="hidden" name="id" value="<?php  echo $solicitudes['id']; ?>">
                     <input type="hidden" name="Habilitado" value="<?php  echo $solicitudes['Habilitado']; ?>">
-                    <button  onclick="return confirmaion()" name="eliminar_categorias" class="btn btn-danger btn-sm " type="submit">ELiminar</button>
+                    <?php if ($solicitudes['Habilitado']=="No") {
+                        echo '<button  onclick="return confirmaion()" name="eliminar_categorias" class="btn btn-danger btn-sm" type="submit">ELiminar</button>';
+                    }else if ($solicitudes['Habilitado']=="Si") {
+                        echo '<button disabled style="cursor: not-allowed;" class="btn btn-danger btn-sm" type="submit">ELiminar</button>';
+                    }?>
                 </form>
                 
             </td></td><?php } ?>

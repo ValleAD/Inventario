@@ -154,7 +154,7 @@ echo'
            <?php  };
             if ($productos['stock']!=0) {
                  echo'
-            <button disabled data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm text-white">Eliminar</button>
+            <button disabled style="cursor: not-allowed;" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm text-white">Eliminar</button>
             ';
             }
            echo'

@@ -16,7 +16,7 @@ if ($result) {
   echo'
     <script>
        alert("Los datos fueron Actualizados");
-         window.location ="../unidad_Medidad.php"; 
+         window.location ="../unidad_medidad.php"; 
                 </script>
                 ';
 }
@@ -24,7 +24,7 @@ else {
   echo '
     <script>
         alert("No se pudo actualizar");
-          window.location ="../unidad_Medidad.php"; 
+          window.location ="../unidad_medidad.php"; 
                 </script>
                 ';
 }

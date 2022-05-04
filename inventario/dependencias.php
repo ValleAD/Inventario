@@ -150,11 +150,11 @@ $result = mysqli_query($conn, $sql);
             <input  <?php
                 if($solicitudes['Habilitado']=='Si') {
                     echo ' style="background-color:blueviolet ;width:33%; border-radius:100px;text-align:center; color: white;margin-top: .2%"';
-                    $c='Dependencia Disponble';
+                    $c='Dependencia Disponible';
                 } elseif ($solicitudes['Habilitado']  == 'No') {
                
                     echo ' style="background-color:red;width:33%; border-radius:100px;text-align:center;color: white;margin-top: .2%"';
-                    $c='Dependencia no Disponble';
+                    $c='Dependencia no Disponible';
                 }
             ?>
  type="text" class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="<?=   $c ?>"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $c ?>"></td>
@@ -173,7 +173,11 @@ $result = mysqli_query($conn, $sql);
                <form action="Controller/Delete-dependencia.php" method="POST" style="background:transparent;">
                     <input type="hidden" name="id" value="<?php  echo $solicitudes['id']; ?>">
                     <input type="hidden" name="Habilitado" value="<?php  echo $solicitudes['Habilitado']; ?>">
-                    <button  onclick="return confirmaion()" name="eliminar_dependencias" class="btn btn-danger btn-sm" type="submit">ELiminar</button>
+                   <?php if ($solicitudes['Habilitado']=="No") {
+                        echo '<button  onclick="return confirmaion()" class="btn btn-danger btn-sm" type="submit">ELiminar</button>';
+                    }else if ($solicitudes['Habilitado']=="Si") {
+                        echo '<button style="cursor: not-allowed;" disabled  onclick="return confirmaion()" name="eliminar_dependencias" class="btn btn-danger btn-sm" type="submit">ELiminar</button>';
+                    }?>
                 </form>
             </td></td><?php } ?>
         </tr>
