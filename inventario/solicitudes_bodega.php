@@ -39,14 +39,14 @@ form{
             <?php if ($tipo_usuario==1) {?>
               <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
          <form method="POST" action="Plugin/soli_bodega.php" target="_blank">
-             <button type="submit" class="btn btn-outline-primary" name="Fecha">
+             <button type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
          <form method="POST" action="Plugin/pdf_soli_bodega.php" target="_blank">
-             <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
+             <button type="submit" class="btn btn-outline-primary" name="id" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -74,7 +74,7 @@ form{
 <tbody>   
     <?php
     include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_bodega ORDER  BY fecha_registro ";
+    $sql = "SELECT * FROM tb_bodega  ";
     $result = mysqli_query($conn, $sql);
 $n=0;
     while ($solicitudes = mysqli_fetch_array($result)){ 
@@ -113,7 +113,16 @@ $n=0;
             <td  data-label="Detalles">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Bodega.php">             
                 <input type='hidden' name='id' value="<?php  echo $solicitudes['codBodega']; ?>">          
-                <input type="submit" name='detalle' class="btn btn-primary" value="Ver Detalles">            
+                <?php  if ($solicitudes['estado']=="Aprobado" || $solicitudes['estado']=="Pendiente") {?>
+                <form method="POST" action="Controller/Delete_producto.php">
+                   <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
+                </form>
+           <?php  };
+            if ($solicitudes['estado']=="Rechazado") {
+                 echo'
+           <button disabled  style="cursor: not-allowed;"  type="submit" name="detalle" class="btn btn-primary">Ver Detalles</button> 
+            ';
+            } ?>           
             </form> 
             </td>
         </tr>
@@ -126,14 +135,28 @@ $n=0;
 
               <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
          <form method="POST" action="Plugin/soli_bodega.php" target="_blank">
-             <button type="submit" class="btn btn-outline-primary" name="Fecha">
+            <?php $sql = "SELECT * FROM tb_bodega WHERE idusuario='$idusuario'";
+    $result = mysqli_query($conn, $sql);
+    $n=0;
+    while ($datos_sol = mysqli_fetch_array($result)){?>
+ <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
+       
+    <?php } ?>
+             <button type="submit" class="btn btn-outline-primary" name="id1">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
          <form method="POST" action="Plugin/pdf_soli_bodega.php" target="_blank">
-             <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
+            <?php $sql = "SELECT * FROM tb_bodega WHERE idusuario='$idusuario'";
+    $result = mysqli_query($conn, $sql);
+    $n=0;
+    while ($datos_sol = mysqli_fetch_array($result)){?>
+ <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
+       
+    <?php } ?>
+             <button type="submit" class="btn btn-outline-primary" name="id1" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -159,9 +182,7 @@ $n=0;
 <tbody>   
     <?php
     include 'Model/conexion.php';
-
-    $tipo_usuario = $_SESSION['iduser'];
-    $sql = "SELECT * FROM tb_bodega WHERE idusuario='$tipo_usuario' ORDER  BY fecha_registro ";
+    $sql = "SELECT * FROM tb_bodega WHERE idusuario='$idusuario' ORDER  BY fecha_registro ";
     $result = mysqli_query($conn, $sql);
 $n=0;
     while ($solicitudes = mysqli_fetch_array($result)){ 
@@ -193,7 +214,16 @@ $n=0;
             <td  data-label="Detalles">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Bodega.php">             
                 <input type='hidden' name='id' value="<?php  echo $solicitudes['codBodega']; ?>">          
-                <input type="submit" name='detalle' class="btn btn-primary" value="Ver Detalles">            
+                <?php  if ($solicitudes['estado']=="Aprobado" || $solicitudes['estado']=="Pendiente") {?>
+                <form method="POST" action="Controller/Delete_producto.php">
+                   <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
+                </form>
+           <?php  };
+            if ($solicitudes['estado']=="Rechazado") {
+                 echo'
+           <button disabled  style="cursor: not-allowed;"  type="submit" name="detalle" class="btn btn-primary">Ver Detalles</button> 
+            ';
+            } ?>            
             </form> 
             </td>
         </tr>

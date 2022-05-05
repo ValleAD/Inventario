@@ -179,6 +179,10 @@ if (isset($_POST['Fecha'])){
     text-align:center;
         display: none;
     }
+
+    #w{
+        display: none;
+    }
 </style> 
                    <tr>
                 <td data-label="Codigo" style="text-align: center;"><?php  echo $productos['codProductos']; ?></td>

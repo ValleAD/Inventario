@@ -44,14 +44,14 @@ h1 {
         <table class="table table-responsive" id="example" style="width:100%">
     <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
          <form method="POST" action="Plugin/soli_compra.php" target="_blank">
-             <button type="submit" class="btn btn-outline-primary" name="Fecha">
+             <button type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
          <form method="POST" action="Plugin/pdf_soli_compra.php" target="_blank">
-             <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
+             <button type="submit" class="btn btn-outline-primary" name="id" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -127,22 +127,36 @@ h1 {
             <?php if ($tipo_usuario==2) {?>
      <div class="mx-5 p-2" id="act" style="background: white; border-radius: 5px;">
         <table class="table table-responsive" id="example" style="width:100%">
-        <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+<div class="btn-group mb-3  mx-2" role="group" aria-label="Basic outlined example">
          <form method="POST" action="Plugin/soli_compra.php" target="_blank">
-             <button type="submit" class="btn btn-outline-primary" name="Fecha">
+            <?php $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario'";
+    $result = mysqli_query($conn, $sql);
+    $n=0;
+    while ($datos_sol = mysqli_fetch_array($result)){?>
+ <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
+       
+    <?php } ?>
+             <button type="submit" class="btn btn-outline-primary" name="id1">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
          <form method="POST" action="Plugin/pdf_soli_compra.php" target="_blank">
-             <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
+    <?php $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario'";
+    $result = mysqli_query($conn, $sql);
+    $n=0;
+    while ($datos_sol = mysqli_fetch_array($result)){?>
+ <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
+       
+    <?php } ?>
+             <button type="submit" class="btn btn-outline-primary" name="id1">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>
- </div>
+</div>
             <thead>
               <tr id="tr">
                 <th>#</th>

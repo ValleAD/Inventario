@@ -115,7 +115,7 @@ if(isset($_POST['codigo'])){ ?>
           while ($datos_sol = mysqli_fetch_array($result)){
             $compra=$datos_sol['nSolicitud']+1;
             } ?> 
-          <input id="inp1"class="form-control" type="number" name="nsolicitud" value="<?php echo $compra ?>" required> 
+          <input readonly id="inp1"class="form-control" type="number" name="nsolicitud" value="<?php echo $compra ?>" required> 
     </div>
 
     <div id="w" class="col-6.5 col-sm-4" style="position: initial">
@@ -267,7 +267,7 @@ if(isset($_POST['codigo'])){ ?>
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#currency-dollar"/>
                 </svg>
                  </label>
-               <input disabled style="poin"  class="form-control" type="number" step="0.01" name="cu[]" placeholder="Costo unitario" value="<?php echo  $productos['precio'] ?>" required><br>
+               <input readonly  class="form-control" type="number" step="0.01" name="cu[]" placeholder="Costo unitario" value="<?php echo  $productos['precio'] ?>" required><br>
             </div>
             </div>
             </div>

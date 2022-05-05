@@ -261,7 +261,7 @@ if(isset($_POST['codigo'])){ ?>
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#currency-dollar"/>
                 </svg>
                  </label>
-               <input  class="form-control" type="number" name="cu[]" placeholder="Costo unitario" value="<?php echo  $productos['precio'] ?>" required ><br>
+               <input readonly  class="form-control" type="number" name="cu[]" placeholder="Costo unitario" value="<?php echo  $productos['precio'] ?>" required ><br>
             </div>
             </div>
             </div>

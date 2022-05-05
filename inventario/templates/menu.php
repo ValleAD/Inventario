@@ -5,6 +5,7 @@ if(!isset($_SESSION['signin'])){
     header("location: log/signin.php");
 }
 $tipo_usuario = $_SESSION['tipo_usuario'];
+$idusuario = $_SESSION['iduser'];
 ?><!DOCTYPE html>
 <html lang="en">
 <head>

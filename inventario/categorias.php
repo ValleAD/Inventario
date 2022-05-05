@@ -114,6 +114,22 @@ $result = mysqli_query($conn, $sql);
         </div>
     </div>
 </div><?php } ?> <br><br><br>
+ <div class="btn-group mb-3  mx-2" role="group" aria-label="Basic outlined example">
+         <form method="POST" action="Plugin/U_D_D_C.php" target="_blank">
+             <button type="submit" class="btn btn-outline-primary" name="categorias">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+             </button>
+         </form>
+         <form method="POST" action="Plugin/U_D_D_C_pdf.php" target="_blank">
+             <button type="submit" class="btn btn-outline-primary" name="categorias" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+             </button>
+         </form>
+</div>
          <table class="table table-responsive table-striped" id="example" style=" width: 100%">
                   
         <thead>
@@ -131,7 +147,7 @@ $result = mysqli_query($conn, $sql);
             
     <?php
     include 'Model/conexion.php';
-    $sql = "SELECT * FROM selects_categoria ORDER BY `id` DESC  ";
+    $sql = "SELECT * FROM selects_categoria ";
     $result = mysqli_query($conn, $sql);
     $n=0;
     while ($solicitudes = mysqli_fetch_array($result)){

@@ -11,6 +11,7 @@ die();
 
     ';
 }
+    include 'Model/conexion.php';
 ?>
 <?php include ('templates/menu.php')?>
 <!DOCTYPE html>
@@ -30,11 +31,38 @@ die();
     h1 {
   color: white;
 }
+form{
+    margin: 0;
+    padding: 1%;
+    }
     </style>
             <h1 class="text-center mg-t" style="margin-top: -0.5%;">Solicitudes de Fondo Circulante</h1><br>
+
 <section class="mx-5 p-2" style="background-color:white;border-radius: 5px; position: initial;margin-bottom: 3%;">
 <?php if ($tipo_usuario==1) {?>
-
+ <div class="btn-group mb-3  mx-2" role="group" aria-label="Basic outlined example">
+        <form method="POST" action="Plugin/soli_circulante.php" target="_blank">
+            <?php $sql = "SELECT * FROM tb_circulante ";
+    $result = mysqli_query($conn, $sql);
+    $n=0;
+    while ($datos_sol = mysqli_fetch_array($result)){?>
+ <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
+       
+    <?php } ?>
+             <button type="submit" class="btn btn-outline-primary" name="id">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+             </button>
+         </form>
+         <form method="POST" action="Plugin/pdf_soli_circulante.php" target="_blank">
+             <button type="submit" class="btn btn-outline-primary" name="id">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+             </button>
+         </form>
+</div>
 <table class="table table-responsive table-striped" id="example" style=" width: 100%;">
           <thead>
               <tr id="tr">
@@ -51,7 +79,6 @@ die();
             
   
     <?php
-    include 'Model/conexion.php';
     $sql = "SELECT * FROM tb_circulante ORDER BY fecha_solicitud";
     $result = mysqli_query($conn, $sql);
     $n=0;
@@ -92,7 +119,36 @@ die();
            </tbody>
         </table>
     <?php } ?><?php if ($tipo_usuario==2) {?>
-
+ <div class="btn-group mb-3  mx-2" role="group" aria-label="Basic outlined example">
+         <form method="POST" action="Plugin/soli_circulante.php" target="_blank">
+            <?php $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario'";
+    $result = mysqli_query($conn, $sql);
+    $n=0;
+    while ($datos_sol = mysqli_fetch_array($result)){?>
+ <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
+       
+    <?php } ?>
+             <button type="submit" class="btn btn-outline-primary" name="id1">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+             </button>
+         </form>
+         <form method="POST" action="Plugin/pdf_soli_circulante.php" target="_blank">
+    <?php $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario'";
+    $result = mysqli_query($conn, $sql);
+    $n=0;
+    while ($datos_sol = mysqli_fetch_array($result)){?>
+ <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
+       
+    <?php } ?>
+             <button type="submit" class="btn btn-outline-primary" name="id1">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+             </button>
+         </form>
+</div>
 <table class="table table-responsive table-striped" id="example" style=" width: 100%;">
           <thead>
               <tr id="tr">
@@ -109,9 +165,8 @@ die();
             
   
     <?php
-    include 'Model/conexion.php';
-    $tipo_usuario = $_SESSION['iduser'];
-    $sql = "SELECT * FROM tb_circulante WHERE idusuario='$tipo_usuario' ORDER BY fecha_solicitud  ";
+
+    $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario' ORDER BY fecha_solicitud  ";
     $result = mysqli_query($conn, $sql);
     $n=0;
     while ($datos_sol = mysqli_fetch_array($result)){

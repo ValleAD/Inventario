@@ -113,6 +113,22 @@ $result = mysqli_query($conn, $sql);
         </div>
     </div>
 </div><?php } ?><br><br><br>
+ <div class="btn-group mb-3  mx-2" role="group" aria-label="Basic outlined example">
+         <form method="POST" action="Plugin/U_D_D_C.php" target="_blank">
+             <button type="submit" class="btn btn-outline-primary" name="dependencia">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+             </button>
+         </form>
+         <form method="POST" action="Plugin/U_D_D_C_pdf.php" target="_blank">
+             <button type="submit" class="btn btn-outline-primary" name="dependencia" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+             </button>
+         </form>
+</div>
           <table class="table table-responsive table-striped" id="example" style=" width: 100%">
                    <thead>
              <tr id="tr">
@@ -188,7 +204,6 @@ $result = mysqli_query($conn, $sql);
         </table>
 
   </section>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script type="text/javascript">
 function confirmaion(e) {
     if (confirm("¿Estas seguro que deseas Eliminar este registro?")) {

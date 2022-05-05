@@ -82,7 +82,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 <br>
 
     <p style="float: right;"> Entrega: ________________</p>
-    <p style="text-align:left;">Solicita: ________________ </p>
+    <p style="text-align:left;">Solicita: ________________ <p><?php echo $encargado ?></p> </p>
     <br>
     <p style="text-align: center;">Autoriza: ________________</p>
 </section>

@@ -29,13 +29,13 @@
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
 <h4 align="center" style="margin-top: 2%;">DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h5 align="center" style="margin-top: 2%;"> SOLICITUD DE MATERIALES</h5>
-<p style="float: right;">Vale No.: <?php echo $vale ?></p>
      
     <section style="margin: 2%;">
+<p style="float: right;">Vale No.: <?php echo $vale ?></p>
                   
         <p><b>Depto. o Servicio:</b> <?php echo $depto ?></p>
 
-        <p style="float: right; margin-right: 35%;"><b>Fecha:</b> <?php echo $fech ?></p>
+        <p style="float: right;"><b>Fecha:</b> <?php echo $fech ?></p>
             
         <p><b>Encargado:</b> <?php echo $encargado ?></p>
 

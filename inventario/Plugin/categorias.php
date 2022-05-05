@@ -20,6 +20,7 @@ include ('../Model/conexion.php');
     <h3>HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
     
 <h4>DEPARTAMENTO DE MANTENIMIENTO</h4><br><br>
+
 <h4>Filtro por Categoria</h4>
     <table class="table table-responsive table-striped"  style=" width: 100%">
 

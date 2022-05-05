@@ -27,7 +27,7 @@ include ('../Model/conexion.php') ?>
               
     <p><b>Depto. o Servicio:</b> <?php echo $depto ?></p>
 
-    <p style="float: right; margin-right: 35%;"><b>Fecha:</b> <?php echo $fech ?></p>
+    <p style="float: right;"><b>Fecha:</b> <?php echo $fech ?></p>
         
     <p><b>Encargado:</b> <?php echo $encargado ?></p>
 
@@ -82,10 +82,10 @@ for($i = 0; $i < count($_POST['cod']); $i++)
     </tbody>                
 </table>
 <br>
-    <p style="float: right;"> Entrega: ________________</p>
-    <p style="text-align:left;">Solicita: ________________ </p>
+    <p style="float: right;"> Entrega: ________________________________</p>
+    <p style="text-align:left;">Solicita: ________________________________ <p><?php echo $encargado ?></p></p>
     <br>
-    <p style="text-align: center;">Autoriza: ________________</p>
+    <p style="text-align: center;">Autoriza: ________________________________</p>
 </section>
 
 </body>

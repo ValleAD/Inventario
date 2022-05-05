@@ -318,7 +318,7 @@ while ($productos = mysqli_fetch_array($result)){
 </form>
         <?php } if ($productos1['estado']=="Pendiente") {?>
 <table class="table table-responsive" style="margin-bottom:3%">
-            <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+            <div class="btn-group mb-3 mx-2" role="group" aria-label="Basic outlined example" style="margin-top:5%">
             <form method="POST" action="Plugin/pdf_vale.php">
             <button type="submit" class="btn btn-outline-primary" name="aprobado">
                 <svg class="bi" width="20" height="20" fill="currentColor">

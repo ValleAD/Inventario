@@ -16,6 +16,7 @@
  
 
 
+<?php if (isset($_POST['id'])) {?>
 <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
@@ -28,7 +29,44 @@
 
     <tbody>
 <?php  include '../Model/conexion.php';
-   $sql = "SELECT * FROM tb_bodega ORDER BY fecha_registro DESC ";
+   $sql = "SELECT * FROM tb_bodega ";
+    $result = mysqli_query($conn, $sql);
+
+    while ($solicitudes = mysqli_fetch_array($result)){
+
+?>  <style type="text/css">
+       #td{
+          display: none;
+      }
+      
+     
+  </style> 
+  
+         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+            <td style="text-align:center; font-size: 12px;"><?php  echo $solicitudes['codBodega']?></td>
+            <td style="font-size: 12px;"><?php  echo $solicitudes['departamento']?></td>
+            <td style="text-align:center; font-size: 12px;"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
+            </tr>
+     
+    </tbody>  
+     <?php }  ?>
+   
+</table>
+          <?php } if (isset($_POST['id1'])) { ?>
+          <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+    <thead>     
+        <tr style="border: 1px solid #ddd;color: black;" >
+            <th style="width: 25%;font-size: 14px;text-align: center;">Código</th>
+            <th style="width: 50%;color:black;font-size: 14px;text-align: left;">Departamento Solicitante</th>
+            <th style="width: 15%;color:black;font-size: 14px;text-align: center;">Fecha</th>
+        </tr>
+        <td id="td" colspan="8"><h4>No se encontraron resultados</h4></td>
+    </thead> 
+
+    <tbody>
+<?php  include '../Model/conexion.php';
+$id=$_POST['idusuario'];
+   $sql = "SELECT * FROM tb_bodega WHERE idusuario='$id' ";
     $result = mysqli_query($conn, $sql);
 
     while ($solicitudes = mysqli_fetch_array($result)){
@@ -51,12 +89,12 @@
      <?php }  ?> 
    
 </table>
-    <br>
+<?php } ?> 
+ <br>
     <p style="float: right;"> Entrega: ________________</p>
     <p style="text-align:left;">Solicita: ________________ </p>
     <br>
     <p style="text-align: center;">Autoriza: ________________</p>
-</section>
 
 </body>
 </html>

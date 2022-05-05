@@ -1,3 +1,4 @@
+<?php ob_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -112,15 +113,29 @@ $idusuario=$_POST['idusuario'];
 <div align="">
     <p style="text-align: center;">Autoriza: <br><br>F. ________________ <br>Dr. William Antonio Fernández Rodríguez <br>Director del Hospital Nacional “ Santa Teresa”</p>
 </div>
-
-   
-    
     <br>
-    
 </section>
 </section>
-<script type="text/javascript">
-print('');
-</script>
 </body>
 </html>
+            <?php $html=ob_get_clean();
+                 // echo $html 
+require_once 'dompdf/autoload.inc.php';
+// reference the Dompdf namespace
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
+// instantiate and use the dompdf class
+$dompdf = new Dompdf();
+$options = $dompdf->getOptions();
+$options->setIsHtml5ParserEnabled(true);
+$dompdf->setOptions($options);
+$dompdf->loadHtml($html);
+$dompdf->setPaper('letter');
+
+// Render the HTML as PDF
+$dompdf->render();
+
+// Output the generated PDF to Browser
+$dompdf->stream("pdf_circulante.php",array("Attachment"=>0));
+        ?>
