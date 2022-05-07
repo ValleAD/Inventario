@@ -77,7 +77,7 @@ die();
   <form style="margin: 2%;padding: 1%;" action="" method="POST">
 
 
-<div class="container bg-white" style="border-radius: 15px; " >
+<div class=" bg-white" style="border-radius: 15px; " >
  
        <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
 
