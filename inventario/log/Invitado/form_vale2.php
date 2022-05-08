@@ -7,27 +7,7 @@ include ('menu.php');
 <head>
 <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-         <link rel="stylesheet" type="text/css" href="../../styles/estilo_men.css">
-      <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/bootstrap.css">
-
-    <!--  Datatables  -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>  
-    
-    <!-- searchPanes -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/searchpanes/1.0.1/css/searchPanes.dataTables.min.css">
-    <!-- select -->
-    <link href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
-     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"> 
-         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-     <style>
-    table thead{
-    background: linear-gradient(to right, #4A00E0, #8E2DE2); 
-    color:white;
-    }
-    </style>
-      <link rel="icon" type="image/png" sizes="32x32"  href="../../../img/log.png"> 
-    <title>Productos</title>
+<title>Productos</title>
 </head>
 
 <body style="background-image: url(../../../img/4k.jpg);  
@@ -74,7 +54,15 @@ background:burlywood;
                   </div>
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Vale N°</b></label>   
-                <input id="inp1"class="form-control" type="number" name="numero_vale" required>
+                                  <?php 
+                        $sql = "SELECT * FROM tb_vale  ORDER BY codVale DESC LIMIT 1";
+                        $result = mysqli_query($conn, $sql);
+                            $cod_vale=1;
+                        while ($productos = mysqli_fetch_array($result)){    
+                            $cod_vale=$productos['codVale']+1;
+                     }
+                     ?>
+                <input id="inp1"class="form-control" readonly type="number" name="numero_vale" required value="<?php echo $cod_vale ?>">
             </div><div class="col-.5 col-sm-4" style="position: initial">
       <label id="inp1">Nombre de la persona</label>
             <input pattern="[A-Za-z]{1,}" class="form-control" type="" name="usuario" required="" type="text"?>
@@ -94,7 +82,6 @@ background:burlywood;
     <th>Eliminar fila</th>
                
               </tr>
-            <td id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>
 
               
             </thead>
@@ -121,11 +108,6 @@ background:burlywood;
 
         $stock=number_format($cantidad, 2,".",",");
       ?>
-
-       
-               
-
-
 <style type="text/css">
 
     #td{
@@ -159,26 +141,7 @@ background:burlywood;
  </section>
 
     <?php } ?>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
-
-<script type="text/javascript" src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap4.js"></script>
-    <script>
-    $(document).ready(function(){
-        $('#example').DataTable({
-            dom:'ltirp',
-            language: {
-                "lengthMenu": "Mostrar _MENU_ registros",
-                "zeroRecords": "No se encontraron resultados",
-                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sSearch": "Buscar:",
-                "sProcessing":"Procesando...", 
-            }
-        });
-
-    });
-    </script>
+   
     <script>
     $(document).on('click', '.borrar', function (event) {
     event.preventDefault();

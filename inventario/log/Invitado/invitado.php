@@ -42,7 +42,7 @@
     <br>
     <br>
     <br>
-      <center> <h1 id="h1" style="margin-top: 10.1%">Bienvenidos al Sistema de Inventario del
+      <center> <h1 id="h1" style="margin-top: 10.1%;color: aqua;">Bienvenidos al Sistema de Inventario del
        <br> 
       Hospital Nacional Santa Teresa de Zacatecoluca</h1></center>
       

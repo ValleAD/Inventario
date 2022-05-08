@@ -55,31 +55,14 @@
 <head>
     <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-     <link rel="stylesheet" type="text/css" href="../../styles/estilo.css"> 
-     <link rel="stylesheet" type="text/css" href="../../styles/estilos_tablas.css"> 
-          <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <!--  Datatables  -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>  
-    
-    <!-- searchPanes -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/searchpanes/1.0.1/css/searchPanes.dataTables.min.css">
-    <!-- select -->
-    <link href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
-     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous"> 
-    <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">  
-    <title>Vale</title>
+<title>Vale</title>
 </head>
 <body>
 
-<section class=""  style="margin:2%;">
+<section class=""  style="margin:2%; background: white;border-radius: 15px;">
 
             <form id="form" action="" method="post"  >
            
-
-
- 
        <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
 
    <div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-left: 1%;margin-right: 1%;margin-top: 1%; border-radius: 5px;width: 70%;">
@@ -181,7 +164,15 @@ if(isset($_POST['codigo'])){?>
                   </div>
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Vale N°</b></label>   
-                <input id="inp1"class="form-control" type="number" name="numero_vale" required>
+                                  <?php 
+                        $sql = "SELECT * FROM tb_vale  ORDER BY codVale DESC LIMIT 1";
+                        $result = mysqli_query($conn, $sql);
+                            $cod_vale=1;
+                        while ($productos = mysqli_fetch_array($result)){    
+                            $cod_vale=$productos['codVale']+1;
+                     }
+                     ?>
+                <input id="inp1"class="form-control" readonly type="number" name="numero_vale" required value="<?php echo $cod_vale ?>">
             </div>
             <div class="col-.5 col-sm-4" style="position: initial">
                 <label id="inp1">Nombre de la persona</label>
@@ -260,7 +251,7 @@ if(isset($_POST['codigo'])){?>
                <td><input type="button" class="borrar btn btn-success my-1" value="Eliminar" /></td>   
             </tr>
 
-
+        <?php } ?>
             </tbody>
         </table>
         <!-- <div class="form-group" style="position: all;">
@@ -270,7 +261,7 @@ if(isset($_POST['codigo'])){?>
         <center><button type="submit" name="form_vale" class="btn btn-success btn-lg my-2 text-center w-25"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar</button> </center>   
 </form>
  </section>
-<?php }}}}} ?>
+<?php }}}} ?>
 </section>
         <style>
             #enviar{

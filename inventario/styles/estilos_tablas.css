@@ -84,6 +84,9 @@
         text-transform: uppercase;
         float: left;
     }
+    .table tbody tr:hover{
+        background: transparent;
+    }
 }
          @media (max-width: 952px){
 .table thead th{ 

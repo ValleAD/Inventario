@@ -159,8 +159,8 @@ if(isset($_POST['codigo'])){?>
    </style> 
         <div class="container-fluid" style="position: initial">
             <div class="row">
-              <div class="col-6.5 col-sm-4" style="position: initial">
-                <label id="inp1">Departamento que solicita</b></label>  
+              <div class="col-sm-4" style="position: initial">
+                <label>Departamento que solicita</b></label>  
                  <select  class="form-control" name="depto" id="depto" required>
                         <option selected disabled value="">Selecione</option>
                       
@@ -178,8 +178,8 @@ if(isset($_POST['codigo'])){?>
                          ?>
                       </select>
             </div>
-            <div class="col-.5 col-sm-4" style="position: initial">
-                <label id="inp1">O. de T. No.</b></label>   
+            <div class="col-sm-4" style="position: initial">
+                <label>O. de T. No.</b></label>   
                 <?php 
                         $sql = "SELECT * FROM tb_bodega  ORDER BY codBodega DESC LIMIT 1";
                         $result = mysqli_query($conn, $sql);
@@ -191,7 +191,7 @@ if(isset($_POST['codigo'])){?>
                 <input id="inp1"class="form-control" readonly type="number" name="odt" required value="<?php echo $codBodega ?>">
                 
             </div>
-            <div class="col-.5 col-sm-4" style="position: initial">
+            <div class="col-sm-4" style="position: initial">
                 <label id="inp1">Nombre de la persona</label>
                 <?php     $cliente =$_SESSION['signin'];
     $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");

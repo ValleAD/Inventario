@@ -301,7 +301,7 @@ function main () {
     });
 }
 </script>
-        <script type="text/javascript">
+<script type="text/javascript">
 function confirmaion(e) {
     if (confirm("¿Estas seguro que deseas Cerrar Session ")) {
         return true;
@@ -311,17 +311,7 @@ function confirmaion(e) {
     }
 }
 </script>
-    <script type="text/javascript">
-function usuario(e) {
-    if (confirm("Deseas cambiar el Usuario y Contraseña")) {
-        return true;
-    } else {
-        return false;
-        e.preventDefault();
-    }
-}
-</script>
-  <script>
+ <script>
    $(document).ready(function(){
  $('#example').DataTable({        
         language: {

@@ -1,19 +1,3 @@
-    <?php
-session_start();
- if (!isset($_SESSION['signin'])>0) {
-    # code...
-    echo ' 
-    <script>
-        window.location ="log/signin.php";
-        session_destroy();  
-                </script>
-die();
-
-    ';
-}
-$tipo_usuario = $_SESSION['tipo_usuario'];?>
-
-
 <?php include ('../Model/conexion.php');
 
 $tabla="";
@@ -38,9 +22,8 @@ if ($buscarAlumnos->num_rows > 0)
 {
 	$tabla.= '';  if(isset($_POST['consulta'])){
                 echo ' <style>#well{display:none;}</style>
-
-<div class="btn-group mb-3"  role="group" aria-label="Basic outlined example">
-            <form id="form1" style=" margin-top:5%" method="POST" action="Plugin/productos.php" target="_blank">';
+<div class="btn-group"  role="group" aria-label="Basic outlined example">
+            <form id="form1" style=" margin-top:3%" method="POST" action="../../Plugin/productos.php" target="_blank">';
     $sql = "SELECT * FROM tb_productos GROUP BY precio,codProductos";
     $result = mysqli_query($conn, $sql);
 
@@ -48,14 +31,15 @@ if ($buscarAlumnos->num_rows > 0)
 
                 echo '
                 <input type="hidden" name="consulta" value="'. $ee=$_POST['consulta'].'">
+
             ';} echo '
                 <button type="submit" class="btn btn-outline-primary" name="Fecha">
                 <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
                 </button>
             </form><br>
-            <form id="form2" style="margin-top:5%;margin-left: 2.6%;" method="POST" action="Plugin/pdf_productos.php" target="_blank">
+            <form id="form2" style="margin-top:5%;margin-left: 2.6%;" method="POST" action="../../Plugin/pdf_productos.php" target="_blank">
               ';
     $sql = "SELECT * FROM tb_productos GROUP BY precio,codProductos";
     $result = mysqli_query($conn, $sql);
@@ -63,16 +47,17 @@ if ($buscarAlumnos->num_rows > 0)
     while ($productos = mysqli_fetch_array($result)){
 echo'             
                 <input type="hidden" name="consulta" value="'. $ee=$_POST['consulta'].'">
+                
             ';} echo'
                 <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
                 </button>
             </form>
     </div>
     ';}echo '
-	<table class="table table-responsive table-striped" id="example" style=" width: 100%;">
+	<table class="table table-responsive table-striped" id="example2" style=" width: 100%;">
 	 
                 <thead>
                      <tr id="tr">
@@ -85,12 +70,6 @@ echo'
                      <th style="width: 10%;">Costo Unitario</th>
                      <th style="width: 10%;">Fecha Registro</th>
                      <th style="width: 10%; width: 50%;">Categoría</th>
-                    ';if($tipo_usuario==1){ 
-                    	echo '
-                     <th style="width: 10%;">Editar</th>
-                     <th style="width: 10%;">Eliminar</th>
-                 '; } echo'
-                   </tr>
                 </thead>
                 <tbody>';
                 $n=0;
@@ -111,7 +90,7 @@ echo'
         $cantidad=$productos['stock'];
         $stock=number_format($cantidad, 2,".",",");
 		$tabla.='
-		 ';if ($tipo_usuario ==2) {echo'
+		 
 		<tr>
 		<td>'.$r.'</td>
 			<td>'.$productos['codProductos'].'</td>
@@ -123,45 +102,8 @@ echo'
 			<td>'.$productos['fecha_registro'].'</td>
 			<td>'.$categoria.'</td>
 			</tr>
-		';} if ($tipo_usuario ==1) {
-				echo '<tr>
-			<td>'.$r.'</td>
-			<td>'.$productos['codProductos'].'</td>
-			<td>'.$productos['catalogo'].'</td>
-			<td>'.$productos['descripcion'].'</td>
-			<td>'.$productos['unidad_medida'].'</td>
-			<td>'.$stock.'</td>
-			<td>'.$precio1.'</td>
-			<td>'.$productos['fecha_registro'].'</td>
-			<td>'.$categoria.'</td>
-			
-           <td  data-label="Editar">
-            <form style="margin: 0%;position: 0; background: transparent;" method="POST" action="vistaProductos.php?Editar">             
-                <input type="hidden" name="id" value="'.$productos['codProductos'] .'">               
-                <button name="editar" class="btn btn-info btn-sm"  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
-            </form>  
-            </td>
-            <td  data-label="Eliminar">
-            ' ;
-            if ($productos['stock']==0) {?>
-                <form method="POST" action="Controller/Delete_producto.php">
-                    <input type="hidden" name="cod" value="<?php echo $productos['cod'] ?>">
-                    <input type="hidden" name="id" value="<?php echo $productos['stock'] ?>">
-                    <button  data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm " class="text-primary" onclick="return confirmaion()">Eliminar</button>
-                </form>
-           <?php  };
-            if ($productos['stock']!=0) {
-                 echo'
-            <button disabled style="cursor: not-allowed;" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm text-white">Eliminar</button>
-            ';
-            }
-           echo'
-               
-            </td>
-        
-		 </tr>
 		';
-	}
+            
 	}
 
 	$tabla.='</tbody></table> ';
@@ -173,4 +115,3 @@ echo'
 
 echo $tabla;
 ?>      
-     

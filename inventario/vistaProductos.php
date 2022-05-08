@@ -19,23 +19,6 @@ die();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos</title>
-   <!-- Bootstrap CSS -->
-     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
-         <link rel="stylesheet" href="Plugin/bootstap-icon/bootstrap-icons.min.css">
-      <link rel="stylesheet" href="Plugin/bootstap-icon/fontawesome.all.min.css">
-      <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-    <!--  Datatables  -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>  
-    
-    <!-- searchPanes -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/searchpanes/1.0.1/css/searchPanes.dataTables.min.css">
-    <!-- select -->
-    <link href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css">
-
 </head>
 <body> 
   
@@ -327,7 +310,6 @@ if (isset($_POST['Fecha'])){
              </button>
          </form>
  </div>
- <form method="POST" action="Plugin/productos.php" target="_blank">
             <section>
             <input type="text" name="busqueda" class="form-control" style="width: 30%;" id="busqueda" placeholder="Buscar...">
         </section>
@@ -335,17 +317,13 @@ if (isset($_POST['Fecha'])){
                <section id="tabla_resultado">
         <!-- AQUI SE DESPLEGARA NUESTRA TABLA DE CONSULTA -->
 
-        </section>
- 
-        </form>      
+        </section>   
         </div>
     </div>
 </div>
-</div>
-        <form method="POST" action="vistaProductos.php" class=" my-3 mx-3">  
+</div>  
 
  <form method="POST" action="">
-                <div class="container">
                  <div class="row">
                     <div class="col-md-4" style="position: initial">
                       <select class="form-control" name="cat" id="w" required>
@@ -370,7 +348,6 @@ if (isset($_POST['Fecha'])){
                   
                     </div>
                 </div>
-            </div>
                 
                
             </form>   

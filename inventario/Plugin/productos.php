@@ -41,12 +41,20 @@ include ('../Model/conexion.php');
     </thead>
     <tbody>
   <?php
-   $sql = "SELECT * FROM `tb_productos`";
+              $cod=$_POST['consulta'];
+
+   $sql = "SELECT * FROM `tb_productos` WHERE 
+        codProductos='$cod' OR
+        categoria='$cod' OR 
+        catalogo='$cod' OR 
+        descripcion='$cod' OR
+        unidad_medida='$cod' OR 
+        stock='$cod' OR 
+        precio='$cod' OR 
+        fecha_registro='$cod'";
+
         $result = mysqli_query($conn, $sql);
         
-
-
-
  while ($productos = mysqli_fetch_array($result)){
          $cat=$productos['categoria'];
                 if ($cat=="") {
