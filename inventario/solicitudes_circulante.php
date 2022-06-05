@@ -30,6 +30,7 @@ die();
 <style>
     h1 {
   color: white;
+  text-shadow: 1px 1px 5px black;
 }
 form{
     margin: 0;
@@ -40,8 +41,8 @@ form{
 
 <section class="mx-5 p-2" style="background-color:white;border-radius: 5px; position: initial;margin-bottom: 3%;">
 <?php if ($tipo_usuario==1) {?>
- <div class="btn-group mb-3  mx-2" role="group" aria-label="Basic outlined example">
-        <form method="POST" action="Plugin/soli_circulante.php" target="_blank">
+ <div class="btn-group mb-3  mx-2" style="position: initial;"  role="group" aria-label="Basic outlined example">
+        <form method="POST" style="background: transparent;" action="Plugin/soli_circulante.php" target="_blank">
             <?php $sql = "SELECT * FROM tb_circulante ";
     $result = mysqli_query($conn, $sql);
     $n=0;
@@ -55,7 +56,7 @@ form{
                 </svg>
              </button>
          </form>
-         <form method="POST" action="Plugin/pdf_soli_circulante.php" target="_blank">
+         <form method="POST"  style="background: transparent;" action="Plugin/pdf_soli_circulante.php" target="_blank">
              <button type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>

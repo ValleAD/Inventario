@@ -29,10 +29,14 @@ die();
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>  
     <title>Empleados</title>
 </head>
-
-
 <body>
-
+    <style type="text/css">
+              @media screen (max-width: 800px){
+    #p{
+        margin-left: 5%;
+    }
+  }
+    </style>
 <?php      
 
 if (isset($_POST['editar'])){       
@@ -275,8 +279,8 @@ if ($tipo_usuario==1) {     ?>
     </div>
     <div class="row">
     <div class="col-md-12" style="position: initial">
-        <p class="card-text"><b>UNIDAD:</b> <?php echo $solicitudes['unidad']; ?></p>
-        <p class="card-text"><b>CUENTA:</b> <?php echo $u; ?></p>
+        <p id="p" class="card-text"><b>UNIDAD:</b> <?php echo $solicitudes['unidad']; ?></p>
+        <p id="p" class="card-text"><b>CUENTA:</b> <?php echo $u; ?></p>
     </div>
 </div>
 </div><br>
@@ -342,8 +346,8 @@ if ($tipo_usuario==2) {
     </div>
     <div class="row">
     <div class="col-md-12" style="position: initial">
-        <p class="card-text"><b>UNIDAD:</b> <?php echo $solicitudes['unidad']; ?></p>
-        <p class="card-text"><b>CUENTA:</b> <?php echo $u; ?></p>
+        <p id="p" class="card-text"><b>UNIDAD:</b> <?php echo $solicitudes['unidad']; ?></p>
+        <p id="p" class="card-text"><b>CUENTA:</b> <?php echo $u; ?></p>
     </div>
 </div>
 </div><br>

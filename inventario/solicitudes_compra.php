@@ -25,6 +25,7 @@ die();
 h1 {
   color: white;
    text-align: center;
+   text-shadow: 1px 1px 5px black;
 }
     </style>
     <title>Solicitudes De Compra</title>
@@ -37,13 +38,13 @@ h1 {
     margin-right: 2%;
     margin-left: 2%;
   }
-    </style><center><h1 style="margin-top:5px">Solicitudes de Compra</h1></center>
+    </style><center><h1 style="margin-top:5px ">Solicitudes de Compra</h1></center>
             <br>
             <?php if ($tipo_usuario==1) {?>
      <div class="mx-5 p-2" id="act" style="background: white; border-radius: 5px;">
         <table class="table table-responsive" id="example" style="width:100%">
     <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-         <form method="POST" action="Plugin/soli_compra.php" target="_blank">
+         <form method="POST" style=" position: initial;" action="Plugin/soli_compra.php" target="_blank">
              <button type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
@@ -127,7 +128,7 @@ h1 {
             <?php if ($tipo_usuario==2) {?>
      <div class="mx-5 p-2" id="act" style="background: white; border-radius: 5px;">
         <table class="table table-responsive" id="example" style="width:100%">
-<div class="btn-group mb-3  mx-2" role="group" aria-label="Basic outlined example">
+<div class="btn-group mb-3  mx-2" style=" position: initial;" role="group" aria-label="Basic outlined example">
          <form method="POST" action="Plugin/soli_compra.php" target="_blank">
             <?php $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);

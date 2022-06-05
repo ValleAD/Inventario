@@ -36,18 +36,22 @@ die();
         body{
             height: 100%;
         }
-        h2{
-                margin-top: 14.2%;
-                max-height: 100%;
+        h1{
+            color: rgba(555, 555, 555, 1);
+            margin: 5% 5% 0% 5%;
+            max-height: 100%;
+            transition: 5s;
+            border-radius: 5px;
+            text-shadow: 1px 1px 5px black;
             }
+
           @media screen and (max-width: 952px){
     form{
         width: 100%;
     }
-       #h1{
-                
-                font-size: 2em;
-                padding: 3%;
+       #h1{ 
+            font-size: 2em;
+            padding: 3%;
             }
             nav{
                 max-width: 100%;
@@ -58,19 +62,11 @@ die();
             max-height: 100%;
         }
     </style>
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <font color="white"><center>
-        <h1 id="h1" style="margin-top: 10.1%;">Bienvenidos al Sistema de Inventario del 
-            <br>
-            Hospital de zacatecoluca
-        </h1>
-    </center></font>
+    <br><br><br><br>
+    <center>
+    <h1 id="h1">Bienvenidos al Sistema de Inventario del<br>Hospital de Zacatecoluca</h1>
+    </center>
     
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

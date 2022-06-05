@@ -22,24 +22,51 @@ $idusuario = $_SESSION['iduser'];
 
 <body style="background-image: url(img/camion.jpg);  
             background-repeat: no-repeat;
+
             background-attachment: fixed;">
 
     <style type="text/css">
         #a{
             padding: 20px 10px;
+            transition: 1s;
         }
+        #b{
+            transition: 1s;
+        }
+
         #a:hover{
    text-decoration: none;
    color: lawngreen;
+    transition: 1s;
+    transform: translateY(2px);
    
 }
  #b:hover{
    text-decoration: none;
-   color:whitesmoke;
+   color:lawngreen;
+   transform: scale(1.1);
+   transition: 2s;
 }
 .children{
 background:burlywood;
 }
+.btn{
+   transition: 1s;
+}
+#button{
+    color: white;
+}
+#button:hover{
+    transform: translateY(2px);
+   transition: 1s;
+   color: lawngreen;
+}
+.btn:hover {
+    transform: translateY(2px);
+   transition: 1s;
+   color: lawngreen;
+}
+
  </style>
     <header>
         <div class="menu_bar">
@@ -89,7 +116,7 @@ background:burlywood;
                 </li>
                 
                 <li class="submenu">
-                    <a id="a" href="#">Soli. Bodega
+                        <a id="a" href="#">Soli. Bodega
                         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
                         </svg>
@@ -150,7 +177,11 @@ background:burlywood;
     $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
     while ($consulta =mysqli_fetch_array($data)) {
 ?>  
-    <button class="btn" data-toggle="modal" data-target="#info" style=" background:transparent;float: right;margin-top: 1%; color: white;" ><?php echo $consulta['username'];?> 
+    <button id="button" class="btn" data-toggle="modal" data-target="#info" style=" background:transparent;float: right;margin-top: 1%;"  >
+        <svg class="bi" width="20" height="20" fill="currentColor">
+        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#person-circle"/>
+                        </svg>
+                         <?php echo $consulta['username'];?> 
                         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
                         </svg>

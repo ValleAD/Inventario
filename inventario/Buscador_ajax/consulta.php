@@ -167,7 +167,8 @@ echo'
 	$tabla.='</tbody></table> ';
 } else
 	{
-		$tabla="<h1 class='text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>";
+		$tabla="<h1 class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.<a class='btn btn-outline-success' href='' style='float: right;'>x</a></h1> 
+        ";
 	}
 
 

@@ -23,6 +23,7 @@ die();
 <style>
     h1 {
   color: white;
+  text-shadow: 1px 1px 5px black;
 }
 form{
     margin: 0%;
@@ -37,7 +38,7 @@ form{
             <center><h1 style="margin-top:5px">Solicitudes Bodega</h1></center><br>
       <section class="mx-5 p-2" style="background-color:white; border-radius: 5px;margin-bottom:3%;">
             <?php if ($tipo_usuario==1) {?>
-              <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+              <div class="btn-group mb-3 my-3 mx-2" style="position: initial;" role="group" aria-label="Basic outlined example">
          <form method="POST" action="Plugin/soli_bodega.php" target="_blank">
              <button type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">

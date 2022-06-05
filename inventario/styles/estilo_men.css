@@ -46,7 +46,10 @@ header nav ul li a {
     text-decoration:none;
     padding: 10px;
 }
-
+header nav ul li #b:hover {
+    background: blue;
+    transition: 3s;
+}
 header nav ul li a span {
     margin-right:10px;
 }
@@ -87,7 +90,15 @@ header nav ul li .caret {
     margin-left:10px;
     margin-right:0px;
 }
-
+@media screen and (min-width: 200px) {
+header nav ul li a {
+    color:#fff;
+    display:block;
+    text-decoration:none;
+    padding: 10px;
+    font-size: 14px;
+}
+}
 @media screen and (max-width: 800px) {
     body {
         padding-top:80px;

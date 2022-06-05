@@ -23,6 +23,7 @@ die();
     <style>
     h1 {
   color: white;
+  text-shadow: 1px 1px 5px black;
 }
 
 
@@ -32,8 +33,8 @@ die();
 <body>
     <center><h1 style="margin-top:5px">Solicitudes Vale</h1></center><br>
           <?php if ($tipo_usuario==1) {?>  
-     <div class="mx-5 p-2 mb-5" style="background-color: white; border-radius:5px;">
-              <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+     <div class="mx-5 p-2 mb-5" style="background-color: white; border-radius:5px; ">
+              <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
          <form id="w" method="POST" class="mx-1" action="Plugin/soli_vale.php" target="_blank">
              <button type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -106,16 +107,21 @@ die();
             ?> class="form-control" type="text" name="" value="<?php echo $solicitudes['estado'] ?>"></td></td>
             <td data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])); ?></td>
             <td  data-label="Detalles">
+                <div style="position: initial;">  
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_vale.php">             
                 <input type='hidden' name='id' value="<?php  echo $solicitudes['codVale']; ?>">  
                 <?php  if ($solicitudes['estado']=="Aprobado" || $solicitudes['estado']=="Pendiente") {?>
+                
                 <form method="POST" action="Controller/Delete_producto.php">
                    <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
                 </form>
+            </div>
            <?php  };
             if ($solicitudes['estado']=="Rechazado") {
                  echo'
+                   
            <button disabled  style="cursor: not-allowed;"  type="submit" name="detalle" class="btn btn-primary">Ver Detalles</button> 
+                
             ';
             } ?>         
                  

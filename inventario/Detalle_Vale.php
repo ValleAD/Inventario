@@ -31,14 +31,14 @@ die();
 </head>
 <body>
     <style type="text/css">
-              @media (max-width: 952px){
+              @media (max-width: 800px){
    #section{
         margin-top: 5%;
         margin-left: 15%;
         width: 75%;
     }
-    th{
-        width: 25%;
+    #p{
+        margin-left: 5%;
     }
   }
     </style>
@@ -61,76 +61,43 @@ if(isset($_POST['detalle'])){
      echo'   
     <section id="section" style="margin:2%;background: rgba(555, 555, 555, 1);border-radius:15px;">
     <form method="POST" action="" style="background:transparent" >
-             
-          
-            <div class="row">
-          
-              <div class="col-6 col-sm-3" style="position: initial">
-          
-                  <label style="font-weight: bold;">Depto. o Servicio:</label>
-                  <input readonly class="form-control"  type="text" value="' .$productos1['departamento']. '" name="depto">
+             '
+             ?>
+             <div class="card border-secondary " style="max-width: 100%;min-width: 100%;position: initial">
+  <div class="row g-0">
     
-              </div>
-    
-              <div class="col-6 col-sm-2" style="position: initial">
-                <label style="font-weight: bold;">N° de Vale:</label>
-                <input readonly class="form-control"  type="text" value="' .$productos1['codVale']. '" name="vale">
-              </div>
-    
-            <div class="col-6 col-sm-2" style="position: initial">
-                <label style="font-weight: bold;">Encargado:</label>
-                <input readonly class="form-control"  type="text" value="' .$productos1['usuario']. '" name="usuario">
-            </div>
-    
-              
-              <div class="col-6 col-sm-2" style="position: initial">
-                <label style="font-weight: bold;">Fecha:</label>
-                  <input readonly class="form-control"  type="text" value="'.date("d-m-Y",strtotime($productos1['fecha_registro'])). '" name="fech">
-              </div>
-              <div class="col-8 col-sm-3" style="position: initial">
-            <label style="font-weight: bold;">Estado:</label>
-                  <div class="input-group mb-3">';?>
-                 <label class="input-group-text" for="inputGroupSelect01">
-                    <?php  if($productos1['estado']=='Pendiente') { ?>
-                            <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#question-octagon-fill"/>
-                </svg>
-                    <?php } elseif($productos1['estado']=='Aprobado') { ?>
-                        <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#check-circle-fill"/>
-                </svg>
-                    <?php } elseif($productos1['estado']=='Rechazado') { ?>
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#x-square-fill"/>
-                </svg>
-            <?php } ?>
-                 </label>
-            
-              <input <?php
+      <div class="card-body" style="position: initial">
+        <div class="row">
+        <div class="col-md-7" style="position: initial">
+        <p class="card-text"><b>Depto. o Servicio:</b> <?php echo $productos1['departamento'] ?></p>
+        <p class="card-text"><b>N° de Vale: </b><?php echo $productos1['codVale'] ?></p>
+    </div>
+    <div class="row">
+    <div class="col-md-12" style="position: initial">
+        <p id="p" class="card-text"><b>Encargado: </b> <?php echo $productos1['usuario'] ?></p>
+        <p id="p" class="card-text"><b>Fecha: </b><?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?></p>
+        <p id="p" class="card-text"><b>Estado: </b> <p <?php
                 if($productos1['estado']=='Pendiente') {
-                    echo ' style="background-color:green ;width:70%; border-radius:5px;text-align:center; color: white;"';
+                    echo ' style="background-color:green ;width:30%; border-radius:5px;text-align:center; color: white;padding:6px;margin-top:-13%; margin-left:18%"';
                 }else if($productos1['estado']=='Aprobado') {
-                     echo ' style="background-color:blueviolet ;width:70%; border-radius:5px;text-align:center; color: white;"';
-                }else if($productos1['estado']=='Rechazado') {
-                     echo ' style="background-color:red ;width:70%; border-radius:5px;text-align:center; color: white;"';
+                     echo ' style="background-color:blueviolet ;width:50%; border-radius:5px;text-align:center; color: white;padding:6px;margin-top:-13%; margin-left:31%""';
                 }
-            ?> class="form-control" type="text" name="" readonly value="<?php echo $productos1['estado'] ?>">
-            <?php if($tipo_usuario==1){ ?>
-               <button type="submit" name="submit" <?php
+            ?>><?php echo $productos1['estado'] ?></p></p>
+      <?php if($tipo_usuario==1){ ?>
+               <button id="p" type="submit" name="submit"  <?php
                 if($productos1['estado']=='Aprobado') {
                      echo ' style="display:none"';
-                }else if($productos1['estado']=='Rechazado') {
-                     echo ' style="display:none"';
                 }
-            ?> style="float: right;" class="btn btn-danger my-3" name="estado" href="dt_compra_copy.php"> Cambiar estado
+            ?>  class="btn btn-danger my-3" name="estado" > Cambiar estado
             <svg class="bi" width="20" height="20" fill="currentColor">
             <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#upload"/>
             </svg>
             </button><?php } ?>
-            </div>
-          </div>
-            </div>
-          </form>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
             <form style="margin-top: -7%;" method="POST" action="Plugin/pdf_vale.php" target="_blank" style="background: transparent;">
 
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
@@ -139,10 +106,6 @@ if(isset($_POST['detalle'])){
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
               </div>
               <?php
-                    if ($productos1['estado']=="Rechazado") {
-                        echo ' 
-<p class="text-center bg-danger" style="color:white;border-radius: 5px;font-size: 2.5em;padding: 3%;margin:5%">SOLICITUD RECHAZADA</p>';
-                    }
                if ($productos1['estado']=="Aprobado") {?>
                 <table class="table table-responsive" style="width: 100%;">
                     <div class="btn-group mb-3  mx-2" style="margin-top:5%" role="group" aria-label="Basic outlined example">
@@ -500,43 +463,34 @@ if(isset($_POST['submit'])){
      echo'   
     <section id="section" style="margin:2%; ">
     <form method="POST" action="Controller/añadir_vale_copy.php">
-             
-          
-            <div class="row">
-          
-              <div class="col-6 col-sm-3" style="position: initial">
-          
-                  <label style="font-weight: bold;">Depto. o Servicio:</label>
-                  <input readonly class="form-control"  type="text" value="' .$productos1['departamento']. '" name="depto">
+    '?>
+    <div class="card border-secondary " style="max-width: 100%;min-width: 100%;position: initial">
+  <div class="row g-0">
     
-              </div>
-    
-              <div class="col-6 col-sm-2" style="position: initial">
-                <label style="font-weight: bold;">N° de Vale:</label>
-                <input readonly class="form-control"  type="text" value="' .$productos1['codVale']. '" name="vale">
-              </div>
-    
-            <div class="col-6 col-sm-2" style="position: initial">
-                <label style="font-weight: bold;">Encargado:</label>
-                <input readonly class="form-control"  type="text" value="' .$productos1['usuario']. '" name="usuario">
-            </div>
-    
-              
-              <div class="col-6 col-sm-2" style="position: initial">
-                <label style="font-weight: bold;">Fecha:</label>
-                  <input readonly class="form-control"  type="text" value="'.date("d-m-Y",strtotime($productos1['fecha_registro'])). '" name="fech">
-              </div>
-              <div class="col-8 col-sm-3" style="position: initial">
-            <label style="font-weight: bold;">Estado:</label>';?>
-           <select  class="form-control"  type="text" name="estado" required>
+      <div class="card-body" style="position: initial">
+        <div class="row">
+        <div class="col-md-7" style="position: initial">
+        <p class="card-text"><b>Depto. o Servicio:</b> <?php echo $productos1['departamento'] ?></p>
+        <p class="card-text"><b>N° de Vale: </b><?php echo $productos1['codVale'] ?></p>
+    </div>
+    <div class="row">
+    <div class="col-md-12" style="position: initial">
+        <p id="p" class="card-text"><b>Encargado: </b> <?php echo $productos1['usuario'] ?></p>
+        <p id="p" class="card-text"><b>Fecha: </b><?php echo $productos1['fecha_registro'] ?></p>
+        <p id="p" class="card-text"><b>Estado: </b>
+<select  class="form-control"  type="text" name="estado" required>
                 <option disabled selected value="">Selecione</option>
                 <option>Aprobado</option>
                 <option>Rechazado</option>
-                </select><br>
-              
-          </div>
-            </div>
-          <br>
+                </select>
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+</div>
+<br>
             <table class="table" style="margin-bottom:3%">
                 
               <thead>
