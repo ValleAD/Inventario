@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Solicitudes Circulante</title>
+      <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+   <link rel="stylesheet" type="text/css" href="../styles/estilos_tablas.css">
 </head>
 <body style="font-family: sans-serif;">
     <img src="../img/hospital.png" style="width:20%">
@@ -13,7 +15,17 @@
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
 <h4 align="center" style="margin-top: 2%;">DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h3 align="center" style="margin-top: 2%;">FONDO CIRCULANTE DE MONTO FIJO</h3>
-
+<style>
+     @media (max-width: 952px){
+   h3, h4, h5{
+    font-size: 1em;
+    text-align: center;
+   }
+   section{
+    margin: 2%;
+   }
+    }
+  </style>
 <section style="margin: 2%;">
 
 <section style="font-size: 14px;">

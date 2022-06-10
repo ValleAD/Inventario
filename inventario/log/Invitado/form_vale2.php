@@ -10,34 +10,69 @@ include ('menu.php');
 <title>Productos</title>
 </head>
 
-<body style="background-image: url(../../../img/4k.jpg);  
-            background-repeat: no-repeat;
-            background-attachment: fixed;">
-                <style type="text/css">
-        #a:hover{
-   text-decoration: none;
-   color: lawngreen;
-}
- #b:hover{
-   text-decoration: none;
-   color:whitesmoke;
-}
-.children{
-background:burlywood;
-}
- </style>
+<body>
+        <style>  
+         section{
+            background: white;
+            border-radius: 15px;
+            margin: 1%;
+            padding: 1%;
+            }
+            #buscar{
+            margin-bottom: 5%;
+            margin-left: 2.5%;
+            margin-top: 0.5%; 
+            background: rgb(5, 65, 114); 
+            color: #fff; margin-bottom: 2%; 
+            border: rgb(5, 65, 114);
+            }
+            #buscar:hover{
+            background: rgb(9, 100, 175);
+            } 
+            #buscar:active{
+            transform: translateY(5px);
+            } 
+            #buscar1{
+                width: 25%;
+            }
+            @media (max-width: 952px){
+   section{
+        margin: -15%6%6%3%;
+        width: 95%;
+    }
+    }#buscar1{
+        width: 100%;
+        margin: 0;
+    }
+    label{
+        margin-top: 3%;
+    }
+  }
+        </style>
+        <br><br><br>
 
-    <font color="white"><h2 class="text-center" >Solicutud Vale</h2></font>
+ <?php
+   $codigo= $_POST['id'];
+if ($codigo=="") {
+            echo'
+          <script>
+             alert("Debe de selecionar los productos");
+               window.location ="form_vale1.php"; 
+                      </script>
+                      ';
 
-	<section style="background:white;margin: 2%;color: black; padding: 1%;border-radius: 15px;">
- <form style="margin: 0%;position: 0; background: transparent;" method="POST" action="Controller/añadir_vale.php">
+}
+
+  if (isset($_POST['solicitar'])){ ?>
+        <section >
+ <form style="background: transparent;" method="POST" action="Controller/añadir_vale.php">
     <div class="container-fluid" style="position: initial">
             <div class="row">
-              <div class="col-6.5 col-sm-4" style="position: initial">
+              <div class="col-md-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>   
                 <select  class="form-control" name="depto" id="depto" required>
                         <option selected disabled value="">Selecione</option>
-                      ';?>
+                    
                       <?php 
                         $sql = "SELECT * FROM selects_departamento";
                         $result = mysqli_query($conn, $sql);
@@ -52,9 +87,9 @@ background:burlywood;
                          ?>
                       </select>
                   </div>
-            <div class="col-.5 col-sm-4" style="position: initial">
+            <div class="col-md-4" style="position: initial">
                 <label id="inp1">Vale N°</b></label>   
-                                  <?php 
+                  <?php 
                         $sql = "SELECT * FROM tb_vale  ORDER BY codVale DESC LIMIT 1";
                         $result = mysqli_query($conn, $sql);
                             $cod_vale=1;
@@ -63,37 +98,39 @@ background:burlywood;
                      }
                      ?>
                 <input id="inp1"class="form-control" readonly type="number" name="numero_vale" required value="<?php echo $cod_vale ?>">
-            </div><div class="col-.5 col-sm-4" style="position: initial">
-      <label id="inp1">Nombre de la persona</label>
-            <input pattern="[A-Za-z]{1,}" class="form-control" type="" name="usuario" required="" type="text"?>
-            <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="0"> 
+            </div>
+            <div class="col-md-4" style="position: initial">
+    <font color="black"><label>Encargado</label> </font>
+      <input style=" color: black;"  class="form-control" type="text" name="usuario" id="como3" required  value="">
+      <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="0">
+      <br>
+               
+            </select>
+                </label>   
             </div>
         </div>
-        <br>
-<table class="table table-responsive table-striped" id="example" style=" width: 100%">
-<thead>
-<tr id="tr" style="text-align: left;">
-    <th style="width: 10%;">Código</th>
-    <th style="width: 20%;">Descripción</th>
-    <th style="width: 10%;">U/M</th>
-    <th style="width: 15%;">Productos Disponibles</th>
-    <th style="width: 15%;">Cantidad</th>
-    <th style="width: 15%;">Costo unitario</th>
-    <th>Eliminar fila</th>
+    </div>
+      <table class="table table-responsive table-striped"  style=" width: 100%">
+            <thead>
+              <tr id="tr">
+               
+                <th style="width: 10%;">Código</th>
+                <th style="width: 50%;">Descripción</th>
+                <th style="width: 10%;">U/M</th>
+                <th style="width: 15%;">Productos Disponibles</th>
+                <th style="width: 50%;">Cantidad</th>
+                <th style="width: 15%;">Costo unitario</th>
+               <th>Eliminar Fila</th>
                
               </tr>
 
+          <!--  <td id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>-->
               
             </thead>
 
             <tbody>
-
- <?php
-  if (isset($_POST['solicitar'])){ 
-
-         for($i = 0; $i < count($_POST['id']); $i++)
-
-    {
+    <?php 
+         for($i = 0; $i < count($_POST['id']); $i++){
  
     $codigo= $_POST['id'][$i];
     //    $sql = "SELECT * FROM tb_productos";
@@ -108,6 +145,11 @@ background:burlywood;
 
         $stock=number_format($cantidad, 2,".",",");
       ?>
+
+       
+               
+
+
 <style type="text/css">
 
     #td{
@@ -117,31 +159,44 @@ background:burlywood;
        width: 100%;
    }
 </style>
-     <td data-label="Codigo"><?php echo $productos['codProductos'] ?>
+    <tr>
+               <td data-label="Codigo"><?php echo $productos['codProductos'] ?>
                 <input  type="hidden" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
                <input type="hidden" name="desc[]" value="<?php  echo $productos['descripcion']; ?>">
                <input  type="hidden" name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>">
                 </td>
-               <td data-label="Descripción"><?php echo $productos['descripcion'] ?>
+               <td data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
                <td data-label="Unidad De Medida"><?php echo $productos['unidad_medida'] ?>
                 <input type="hidden"  name="stock[]"  value ="<?php  echo $stock; ?>">
                 <input  type="hidden" name="cu[]" value ="<?php  echo $precio ?>">
                </td>
                <td data-label="Productos Disponibles"><?php  echo $stock; ?></td>
-               <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="decimal" class="form-control"  name="cant[]" required></td>
-               <td data-label="Precio"><?php  echo $precio1?></td> 
+               <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="number" step="0.01" class="form-control"  name="cant[]" required></td>
+               <td data-label="Precio"><?php  echo $precio1 ?></td> 
                <td><input type="button" class="borrar btn btn-success my-1" value="Eliminar" /></td>   
             </tr>
 <?php }} ?> 
 
             </tbody>
         </table>
-         <center> <button type="submit" name="solicitar" class="btn btn-success btn-lg  text-center w-25"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar</button></center>    
+         <div class="form-floating mb-3 my-2" >
+            <label>Observaciones (En qué se ocupará el bien entregado)</label>
+              <textarea rows="7" class="form-control" name="jus"  placeholder="" required id="floatingTextarea"></textarea>
+            </div>
+          <center>  <div class="col-md-3" style="padding: 0;">
+        <button id="buscar1" type="submit" name="form_vale" class="btn  btn-success btn-lg my-2 text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar
+                        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#save"/>
+                        </svg>
+        </button> 
+</div></center> 
 </form>
  </section>
 
     <?php } ?>
-   
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+
+
     <script>
     $(document).on('click', '.borrar', function (event) {
     event.preventDefault();

@@ -9,43 +9,71 @@ include ('menu.php');
 <title>Productos</title>
 </head>
 
-<body style="background-image: url(../../../img/4k.jpg);  
-            background-repeat: no-repeat;
-            background-attachment: fixed;">
-                <style type="text/css">
-        #a:hover{
-   text-decoration: none;
-   color: lawngreen;
-}
- #b:hover{
-   text-decoration: none;
-   color:whitesmoke;
-}
-.children{
-background:burlywood;
-}
- </style>
+<body>
 
-    <font color="white"><h2 class="text-center" >Solicutud Vale</h2></font>
-<section id="act">
-    
-<form style="margin: 0%;position: 0; background: transparent; color: black;" method='POST' action="form_vale2.php">
-<div class="mx-5 p-2 r-4" style="background-color: white; border-radius: 5px;">
-        <div class="row">
-            <div class="col">
-           
-<table class="table table-responsive table-striped" id="example" style=" width: 100%">
+         <style>  
+         section{
+            background: white;
+            margin: 1%;
+            padding: 1%;
+            border-radius: 15px;
+            }
+            #buscar{
+            margin-bottom: 5%;
+            margin-left: 2.5%;
+            margin-top: 0.5%; 
+            background: rgb(5, 65, 114); 
+            color: #fff; margin-bottom: 2%; 
+            border: rgb(5, 65, 114);
+            }
+            #buscar:hover{
+            background: rgb(9, 100, 175);
+            } 
+            #buscar:active{
+            transform: translateY(5px);
+            } 
+            .a{
+                width: 25%;
+            }
+            @media (max-width: 952px){
+   section{
+        margin: -5%6%6%3%;
+        padding: 2%;
+        width: 95%;
+    }
+    #form{
+        margin: -15%6%6%7%;
+        padding: 2%;
+    }
+    h1{
+        margin-top: -15%;
+        padding-bottom: 5%;
+    }
+    #bu{
+        margin: 2%;
+        margin-bottom: 5%;
+    }
+
+  }
+        </style>
+        <br><br><br>       
+          <font color="white"> <h1 style=" text-align: center;">Solicitud de Vale</h1> </font>
+<section>
+
+     <form style="background: transparent;" method='POST' action="form_vale2.php">
+         <button id="bu" style=" float: right;margin-bottom: 1%;" type="submit" name="solicitar" class='btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button>
+      <table class="table  table-striped" id="example2" style=" width: 100%">
             <thead>
               <tr id="tr">
-              <th style=" width: 10%">Código</th>
+               
+                <th style="width: 10%;">Código</th>
                 <th style="width: 10%;">Catálogo</th>
-                <th style="width: 50%;">Descripción Completa</th>
-                <th style="width: 10%; text-align: center;">U/M</th>
-                <th style="width: 115%;">Cantidad</th>
-                <th style="width: 175%;">Costo Unitario</th>
-                <th style="width: 145%;">Fecha Registro</th>
-                <th style="width: 145%;" align="center">
-                    <button type="submit" name="solicitar" class='btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button> 
+                <th style="width: 40%;">Descripción Completa</th>
+                <th style="width: 10%;">U/M</th>
+                <th style="width: 10%;">Cantidad</th>
+                <th style="width: 10%;">Costo Unitario</th>
+                <th style="width: 20%;">Fecha Registro</th>
+                <th style="width: 10%;" align="center">Solicitar
                 </th>
                
               </tr>
@@ -53,18 +81,8 @@ background:burlywood;
             </thead>
 
             <tbody>
-            <style type="text/css">
-     
-     #td{
-         display: none;
-     }
-    th{
-        width: 100%;
-    }
- </style>
 
  <?php
-
 
     //    $sql = "SELECT * FROM tb_productos";
     $sql = "SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos GROUP BY precio, codProductos";
@@ -107,6 +125,30 @@ background:burlywood;
 <?php } ?> 
 
             </tbody>
+            <tfoot id="tfoot">
+
+                <tr id="tr">
+               
+                <th id="th" style="width: 10%;">Código</th>
+                <th id="th" style="width: 10%;">Catálogo</th>
+                <th id="th" style="width: 40%;">Descripción Completa</th>
+                <th id="th" style="width: 10%;">U/M</th>
+                <th id="th" style="width: 10%;">Cantidad</th>
+                <th id="th" style="width: 10%;">Costo Unitario</th>
+                <th id="th" style="width: 20%;">Fecha Registro</th>
+                <th id="th" style="width: 10%;" align="center">
+                    <button type="submit" name="solicitar" class='btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar
+                    </button> 
+                </th>
+               
+              </tr>
+            </tfoot>
+            <style>
+                #th{
+                    background-color: #46466b;
+                    color: white;
+                }
+            </style>
         </table>
 </form>
 </section>
@@ -120,5 +162,6 @@ function confirmaion(e) {
     }
 }
 </script>
+
 </body>
 </html>

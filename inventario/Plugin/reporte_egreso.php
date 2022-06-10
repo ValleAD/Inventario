@@ -22,6 +22,18 @@ include ('../Model/conexion.php');
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
 <h4 align="center" style="margin-top: 2%;">UNIDAD DE ADQUISICIONES Y CONTRATACIONES INSTITUCIONAL</h4>
 <h4 align="center" style="margin-top: 2%;">EGRESOS DE VALE</h4>
+<style>
+     @media (max-width: 952px){
+   h3, h4, h5{
+    font-size: 1em;
+    text-align: center;
+   }
+   section{
+    margin: 2%;
+   }
+    }
+  </style>
+  <section>
         <table class="table table-responsive table-striped"  style=" width: 100%">
 
     <thead>
@@ -153,7 +165,7 @@ width: 100%;
 
      </tbody>
  </table>
-
+</section>
 <?php }?>
 
  </body>

@@ -26,52 +26,59 @@ die();
     <title>Productos</title>
 </head>
 <body>
-    <div class="container">
-      <table class="table">
-        
-          <font color="white"> <h1 style="margin-top:5px; text-align: center;">Solicitud de Vale</h1> </font>
 
-
-
-
-<style>
- #act {
-    margin-top: 0.5%;
-    margin-right: 2%;
-    margin-left: 2%;
-  }
-</style>
-
-<br>
-    <style>
-        #ver{
-            margin-top: 2%;
-            margin-right: 1%; 
-            background: rgb(5, 65, 114); 
-            color: #fff; 
-            margin-bottom: 0.5%;  
-            border: rgb(5, 65, 114);
-        }
-        #ver:hover{
-            background: rgb(9, 100, 175);
-        } 
-        #ver:active{
-        transform: translateY(5px);
-        } 
-         #act {
-            background: whitesmoke;
+         <style>  
+         section{
+            background: white;
+            margin: 1%;
             padding: 1%;
             border-radius: 15px;
-    margin-top: 0.5%;
-    margin-right: 2%;
-    margin-left: 2%;
+            }
+            #buscar{
+            margin-bottom: 5%;
+            margin-left: 2.5%;
+            margin-top: 0.5%; 
+            background: rgb(5, 65, 114); 
+            color: #fff; margin-bottom: 2%; 
+            border: rgb(5, 65, 114);
+            }
+            #buscar:hover{
+            background: rgb(9, 100, 175);
+            } 
+            #buscar:active{
+            transform: translateY(5px);
+            } 
+            .a{
+                width: 25%;
+            }
+            @media (max-width: 952px){
+   section{
+        margin: -5%6%6%3%;
+        padding: 2%;
+        width: 95%;
+    }
+    #form{
+        margin: -15%6%6%7%;
+        padding: 2%;
+    }
+    h1{
+        margin-top: -15%;
+        padding-bottom: 5%;
+    }
+    #bu{
+        margin: 2%;
+        margin-bottom: 5%;
+    }
+
   }
-    </style>
-</table>
-</div>
-<section id="act">
-     <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="form_vale2.php">
-      <table class="table table-responsive table-striped" id="example2" style=" width: 100%">
+        </style>
+        <br><br><br>       
+          <font color="white"> <h1 style=" text-align: center;">Solicitud de Vale</h1> </font>
+<section>
+
+     <form style="background: transparent;" method='POST' action="form_vale2.php">
+         <button id="bu" style=" float: right;margin-bottom: 1%;" type="submit" name="solicitar" class='btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button>
+      <table class="table  table-striped" id="example2" style=" width: 100%">
             <thead>
               <tr id="tr">
                
@@ -82,9 +89,7 @@ die();
                 <th style="width: 10%;">Cantidad</th>
                 <th style="width: 10%;">Costo Unitario</th>
                 <th style="width: 20%;">Fecha Registro</th>
-                <th style="width: 10%;" align="center">
-                    <button type="submit" name="solicitar" class='btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar
-                    </button> 
+                <th style="width: 10%;" align="center">Solicitar
                 </th>
                
               </tr>
@@ -138,7 +143,7 @@ die();
 <?php } ?> 
 
             </tbody>
-            <tfoot>
+            <tfoot id="tfoot">
 
                 <tr id="tr">
                

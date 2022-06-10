@@ -3,18 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imiprimir Circulante</title>
+    <title>Imiprimir Circulante</title>   
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+   <link rel="stylesheet" type="text/css" href="../styles/estilos_tablas.css">
 </head>
 <body style="font-family: sans-serif;">
     <img src="../img/hospital.png" style="width:20%">
     <img src="../img/log_1.png" style="width:20%; float:right">
-    
+        <style>
+     @media (max-width: 952px){
+   h3, h4{
+    font-size: 1em;
+    text-align: center; 
+   }
+   section{
+    margin: 2%;
+   }
+    }
+</style>
 <?php if(isset($_POST['desc'])){
 
 
 ?>
-<h3 align="center" style="margin-top: -2%;">HOSPITAL NACIONAL "SANTA TERESA" DE ZACATECOLUCA</h3>
-<h3 align="center" style="margin-top: -2%;">FONDO CIRCULANTE DE MONTO FIJO</h3>
+<h3 align="center" >HOSPITAL NACIONAL "SANTA TERESA" DE ZACATECOLUCA</h3>
+<h3 align="center" >FONDO CIRCULANTE DE MONTO FIJO</h3>
 
 <section style="margin: 2%;">
 
@@ -26,16 +38,16 @@
 </section>
 
               
-<table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
+<table class="table" style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
-            <th style="width: 25%;color:black;font-size: 14px;text-align: left;">Codigo</th>
-            <th style="width: 70%;color:black;font-size: 14px;text-align: left;">Descripción de los materiales y/o servicios solicitados</th>
-            <th style="width: 15%;color:black;font-size: 14px;text-align: center;">U/M</th>
-            <th style="width: 15%;color:black;font-size: 14px;text-align: center;">Cant.<br>Sol.</th>
-            <th style="width: 15%;color:black;font-size: 14px;text-align: center;">Cant.<br>Desp.</th>
-            <th style="width: 15%;color:black;font-size: 14px;text-align: center;">C/U</th>
-            <th style="width: 15%;color:black;font-size: 14px;text-align: center;border-right:1px solid #ccc ;">Total</th>
+            <th style="width: 25%;color:black;font-size: 14px;">Codigo</th>
+            <th style="width: 70%;color:black;font-size: 14px;">Descripción de los materiales y/o servicios solicitados</th>
+            <th style="width: 15%;color:black;font-size: 14px;">U/M</th>
+            <th style="width: 15%;color:black;font-size: 14px;">Cant.<br>Sol.</th>
+            <th style="width: 15%;color:black;font-size: 14px;">Cant.<br>Desp.</th>
+            <th style="width: 15%;color:black;font-size: 14px;">C/U</th>
+            <th style="width: 15%;color:black;font-size: 14px;border-right:1px solid #ccc ;">Total</th>
         </tr>
     </thead> 
 
@@ -58,20 +70,19 @@ for($i = 0; $i < count($_POST['desc']); $i++)
 ?>
   
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td style="font-size:12px"><?php  echo $cod?></td>
-            <td style="font-size:12px"><?php  echo $des?></td>
-            <td style="text-align:center;font-size: 12px;"><?php  echo $um?></td>
-            <td style="text-align:center;font-size: 12px;"><?php echo $cantidad ?></td>
-            <td style="font-size:12px"><?php echo $cantidad_despachada ?></td>
-            <td style="text-align: center;font-size: 12px;"><?php echo $cost ?></td>
-            <td style="text-align: center; font-size: 12px;"><?php  echo $tot ?></td>
+            <td data-label="Código" style="font-size:12px"><?php  echo $cod?></td>
+            <td data-label="Descripción" style="font-size:12px"><?php  echo $des?></td>
+            <td data-label="Unidad De Medida" style="font-size: 12px;"><?php  echo $um?></td>
+            <td data-label="Cantidad" style="font-size: 12px;"><?php echo $cantidad ?></td>
+            <td data-label="Cantidad Despachada" style="font-size:12px"><?php echo $cantidad_despachada ?></td>
+            <td data-label="Precio" style="font-size: 12px;"><?php echo $cost ?></td>
+            <td data-label="total" style=" font-size: 12px;"><?php  echo $tot ?></td>
         </tr>
      
      <?php } } ?> 
     <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
-      
-    <td colspan="6" style="text-align: right;font-size: 12px; font-weight: bold;">Costo Estimado</td>
-        <td style="text-align: center;font-size: 12px; font-weight: bold;"><?php echo $tot_f ?></td>
+        <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
+        <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $tot_f ?></td>
     </tfoot>
     </tbody>   
 </table>            

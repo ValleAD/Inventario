@@ -26,7 +26,7 @@
     }
        #h1{
                 
-                font-size: 2em;
+                font-size: 1em;
                 padding: 3%;
             }
             nav{

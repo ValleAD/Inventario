@@ -8,7 +8,8 @@ include ('../Model/conexion.php');
  <head>
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
-     
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+   <link rel="stylesheet" type="text/css" href="../styles/estilos_tablas.css">
  </head>
  <body>
 
@@ -22,12 +23,24 @@ include ('../Model/conexion.php');
 <h4>DEPARTAMENTO DE MANTENIMIENTO</h4><br><br>
 <?php if (isset($_POST['unidad'])) {?>
     <title>Unidad de Medida</title>
-    <h5 align="center">UNIDAD DE MEDIDA</h5><br>
-   <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+    <h5>UNIDAD DE MEDIDA</h5><br>
+    <style>
+     @media (max-width: 952px){
+   h3, h4{
+    font-size: 1em;
+    
+   }
+   section{
+    margin: 2%;
+   }
+    }
+  </style>
+    <section>
+   <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
-          <th style="width:10%;font-size: 14px; text-align: center;">#</th>
-                <th  style="width:100%;font-size: 14px;text-align: left;">UNIDAD DE MEDIDA</th>
+          <th style="width:10%;font-size: 14px; ">#</th>
+                <th  style="width:100%;font-size: 14px;">UNIDAD DE MEDIDA</th>
                
         </tr>
         
@@ -50,8 +63,8 @@ $n++;
      
   </style> 
    <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td style="font-size: 12px;text-align: center;" data-label="No. Solicitud" class="delete"><?php  echo $r; ?></td>
-            <td style="font-size: 12px;text-align: left;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['unidad_medida']; ?></td>
+            <td style="font-size: 12px;" data-label="No. Solicitud" class="delete"><?php  echo $r; ?></td>
+            <td style="font-size: 12px;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['unidad_medida']; ?></td>
             
             </tr>
        <?php }  ?> 
@@ -63,11 +76,11 @@ $n++;
 <?php if (isset($_POST['departamento'])) {?>
     <title>Departamentos</title>
     <h5 align="center">DEPARTAMENTOS</h5><br>
-   <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+   <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
-          <th style="width:10%;font-size: 14px; text-align: center;">#</th>
-                <th  style="width:100%;font-size: 14px;text-align: left;">DEPARTAMENTOS</th>
+          <th style="width:10%;font-size: 14px; ">#</th>
+                <th  style="width:100%;font-size: 14px;">DEPARTAMENTOS</th>
                
         </tr>
         
@@ -91,8 +104,8 @@ $n++;
      
   </style> 
    <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td style="font-size: 12px;text-align: center;" data-label="No. Solicitud" class="delete"><?php  echo $r; ?></td>
-            <td style="font-size: 12px;text-align: left;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
+            <td style="font-size: 12px;" data-label="No. Solicitud" class="delete"><?php  echo $r; ?></td>
+            <td style="font-size: 12px;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
             
             </tr>
        <?php }  ?> 
@@ -103,11 +116,11 @@ $n++;
 <?php } if (isset($_POST['categorias'])) {?>
     <title>Categorias</title>
     <h5 align="center">CATEGORIAS</h5><br>
-   <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+   <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
-          <th style="width:10%;font-size: 14px; text-align: center;">#</th>
-                <th  style="width:100%;font-size: 14px;text-align: left;">CATEGORIAS</th>
+          <th style="width:10%;font-size: 14px; ">#</th>
+                <th  style="width:100%;font-size: 14px;">CATEGORIAS</th>
                
         </tr>
         
@@ -131,8 +144,8 @@ $n++;
      
   </style> 
    <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td style="font-size: 12px;text-align: center;" data-label="No. Solicitud" class="delete"><?php  echo $r; ?></td>
-            <td style="font-size: 12px;text-align: left;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['categoria']; ?></td>
+            <td style="font-size: 12px;" data-label="No. Solicitud" class="delete"><?php  echo $r; ?></td>
+            <td style="font-size: 12px;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['categoria']; ?></td>
             
             </tr>
        <?php }  ?> 
@@ -143,11 +156,11 @@ $n++;
 <?php } if (isset($_POST['dependencia'])) {?>
     <title>Dependencias</title>
     <h5 align="center">DEPENDENCIAS</h5><br>
-   <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+   <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
-          <th style="width:10%;font-size: 14px; text-align: center;">#</th>
-                <th  style="width:100%;font-size: 14px;text-align: left;">DEPENDENCIAS</th>
+          <th style="width:10%;font-size: 14px; ">#</th>
+                <th  style="width:100%;font-size: 14px;">DEPENDENCIAS</th>
                
         </tr>
         
@@ -171,8 +184,8 @@ $n++;
      
   </style> 
    <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td style="font-size: 12px;text-align: center;" data-label="No. Solicitud" class="delete"><?php  echo $r; ?></td>
-            <td style="font-size: 12px;text-align: left;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['dependencia']; ?></td>
+            <td style="font-size: 12px;" data-label="No. Solicitud" class="delete"><?php  echo $r; ?></td>
+            <td style="font-size: 12px;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['dependencia']; ?></td>
             
             </tr>
        <?php }  ?> 
@@ -180,6 +193,7 @@ $n++;
    
    
 </table>
+</section>
 <?php } ?>
 </body>
  </html>

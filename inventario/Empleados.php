@@ -29,13 +29,45 @@ die();
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>  
     <title>Empleados</title>
 </head>
-<body>
+<body id="body">
     <style type="text/css">
-              @media screen (max-width: 800px){
+    section{
+        padding: 1%;
+    }
+    #form{
+        margin: 1%;
+    }
+    h2,h3{
+        color: white;
+        text-shadow: 1px 1px 5px black;
+    }
+ @media (max-width: 952px){
+   #form{
+        margin: -15%6%1%1%;
+        width: 98%;
+    }
+       section{
+        margin: 0%6%1%1%;
+        width: 98%;
+    }
+    #div{
+        padding: 2%;
+    }
+    .card{
+        margin-top: 5%;
+    }
+    #d{
+        margin-left: 22%;
+    }
+    #dh{
+        margin-top: -13%;
+        margin-left: 15%;
+    }
     #p{
         margin-left: 5%;
     }
-  }
+</style>
+<br><br><br>
     </style>
 <?php      
 
@@ -51,11 +83,11 @@ $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
 ?>
 <?php if ($tipo_usuario==2) {?>
-<form action="Controller/Desabilitar-Empleado.php" method="POST" style="background: transparent;  ">
+<form id="form" action="Controller/Desabilitar-Empleado.php" method="POST" style="background: transparent;  ">
   <h3 align="center">Actualizar Informacion del Empleado</h3>
-    <div class="container" style="background: rgba(100, 100, 100, 0.6); width: 70%; margin: auto; border-radius: 9px; color:#fff; font-weight: bold;">
+    <div class="container-fluid" style="background: rgba(100, 100, 100, 0.6);  border-radius: 9px; color:#fff; font-weight: bold;">
         <div class="row">
-            <div class=" col-sm-12" style="position: initial; margin: auto; margin-top: 2%"><p class="small mb-1"><font color="black"><b>Usuario que a Seleccionado:</b></font> <?php echo $productos['username']?></p>
+            <div class=" col-md-12" style="position: initial;"><p class="small mb-1"><font color="black"><b>Usuario que a Seleccionado:</b></font> <?php echo $productos['username']?></p>
                  <input type="hidden" name="id" value="<?php  echo $productos['id']; ?>">
                 <div class="row">
                     <div class="col-md-6" style="position: initial">
@@ -73,7 +105,7 @@ $result = mysqli_query($conn, $sql);
          </div>
         <hr>
         <div class="row">
-            <div class="col-sm-12" style="position: initial; margin: auto; margin-bottom: 2%;">
+            <div class="col-md-12" style="position: initial; margin: auto; margin-bottom: 2%;">
 
                 <button type="submit" name="submit" class ="btn btn-primary" style="background:rgb(12, 139, 8); margin-right: 1%; border: none">Guardar Cambios</button>
                 <a href="Empleados.php" class ="btn btn-primary" style="background:rgb(184, 8, 8); border: none">Cancelar</a>
@@ -82,11 +114,11 @@ $result = mysqli_query($conn, $sql);
     </div>
 </form>
 <?php  } if ($tipo_usuario==1) {?>
-<form action="Controller/Desabilitar-Empleado.php" method="POST" style="background: transparent;  ">
+<form id="form" action="Controller/Desabilitar-Empleado.php" method="POST" style="background: transparent;  ">
   <h3 align="center">Actualizar Informacion del Empleado</h3>
-    <div class="container" style="background: rgba(100, 100, 100, 0.6); width: 70%; margin: auto; border-radius: 9px; color:#fff; font-weight: bold;">
+    <div class="container" style="background: rgba(100, 100, 100, 0.6); border-radius: 9px; color:#fff; font-weight: bold;">
         <div class="row">
-            <div class=" col-sm-12" style="position: initial; margin: auto; margin-top: 2%"><p class="small mb-1"><font color="black"><b>Usuario que a Seleccionado:</b></font> <?php echo $productos['username']?></p>
+            <div class=" col-md-12" style="position: initial; "><p class="small mb-1"><font color="black"><b>Usuario que a Seleccionado:</b></font> <?php echo $productos['username']?></p>
                     <div class="row">
                     <div class="col-md-6" style="position: initial">
                         
@@ -111,7 +143,7 @@ $result = mysqli_query($conn, $sql);
          </div>
         <hr>
         <div class="row">
-            <div class="col-sm-12" style="position: initial; margin: auto; margin-bottom: 2%;">
+            <div class="col-md-12" style="position: initial; margin: auto; margin-bottom: 2%;">
                 <button type="submit" name="info" class ="btn btn-primary" style="background:rgb(12, 139, 8); margin-right: 1%; border: none">Guardar Cambios</button>
                 <a href="Empleados.php" class ="btn btn-primary" style="background:rgb(184, 8, 8); border: none">Cancelar</a>
             </div>
@@ -130,16 +162,15 @@ $result = mysqli_query($conn, $sql);
 } 
 ?>
         <font color="black"><h2 class="text-center " >Empleados Del Sistema</h2></font>
-    <section style="margin:5%;padding: 1%; border-radius: 5px; background: white; ">
+    <section id="" style=" border-radius: 5px; background: white; ">
     <button class="btn btn-secondary" data-toggle="modal" data-target="#Usuarios" style="float: left; color: white;margin-top: 1%;">Nuevo Integrante</button>
 
     <a href="categorias.php" class="btn btn-info" style="float: right;margin-top: 1%; color: white; ">Categorias</a> 
     <a href="dependencias.php" class="btn btn-success" style="float: right;margin-top: 1%; color: white; margin-right: 15px;">Dependencias</a>
     <a href="departamentos.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white; margin-right: 15px;">Departamentos</a>
    
-
-    
-<br><br><br><br>    
+<br><br><br>
+ 
 <!-- Delete -->
 <div class="modal fade" id="Usuarios" style="background: rgba(0, 0, 0, 0.3);" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">
@@ -235,16 +266,7 @@ $result = mysqli_query($conn, $sql);
     </div>
 </div>
 
-</div>    
-  <style>
-      
-      @media all and  (min-width: 800px)  {
-        .bi2{
-            width: 100%;
-            
-        }
-      }
-  </style>         
+</div>          
     <?php
     include 'Model/conexion.php';
 
@@ -262,16 +284,16 @@ $u='Cliente';
 if ($tipo_usuario==1) {     ?>
 
        
-<div class="card mb-3 border-secondary " style="max-width: 100%;min-width: 100%;position: initial">
+<div class="card mb-3 border-secondary " style="max-width: 100%;min-width: 100%; position: initial">
   <div class="row g-0">
     <div class="col-1" style="position: initial">
-                <svg  class="bi bi2 my-4 mx-2 text-primary" width="100" height="100" fill="currentColor">
+                <svg  class="bi bi2 my-4 mx-1 text-primary" width="90" height="90" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#person-circle"/>
                         </svg>
     </div>
     
       <div class="card-body" style="position: initial">
-        <h5 class="card-title">USUARIO: <?php echo $solicitudes['username'] ?></h5>
+        <p class="card-title"><b>USUARIO:</b> <?php echo $solicitudes['username'] ?></p>
         <div class="row">
         <div class="col-md-7" style="position: initial">
         <p class="card-text"><b>NOMBRE COMPLETO: </b><?php echo $solicitudes['firstname']," ",$solicitudes['lastname']; ?></p>
@@ -286,7 +308,7 @@ if ($tipo_usuario==1) {     ?>
 </div><br>
         <div class="row" style="position: initial">
          
-                    <div class="col-md-.1" style="position: initial;padding-left: 1%;">
+                    <div class="col-md-0" style="position: initial;">
             <?php if($tipo_usuario==2) { ?>
                
                  <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Empleados.php">             
@@ -297,11 +319,11 @@ if ($tipo_usuario==1) {     ?>
 <?php } elseif ($tipo_usuario==1) { ?>
      <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Empleados.php">             
           <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">      
-          <button name='editar' class='btn btn-info swal2-styled.swal2-confirm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
+          <button id="d" name='editar' class='btn btn-info swal2-styled.swal2-confirm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
         </form>
    </div>
     <div class="col-md-1" style="position: initial">
-         <a href="Controller/Delete_Empleados.php?id=<?php  echo $solicitudes['id']; ?>" onclick="return confirmaion()" class="btn btn-danger swal2-styled.swal2-confirm">Eliminar</a>
+         <a id="dh" href="Controller/Delete_Empleados.php?id=<?php  echo $solicitudes['id']; ?>" onclick="return confirmaion()" class="btn btn-danger swal2-styled.swal2-confirm">Eliminar</a>
      <?php } ?>
  </div>
 </div>
@@ -353,7 +375,7 @@ if ($tipo_usuario==2) {
 </div><br>
         <div class="row" style="position: initial">
          
-                    <div class="col-md-.1" style="position: initial;padding-left: 1%;">
+                    <div class="col-md-0" style="position: initial;">
             <?php if($tipo_usuario==2) { ?>
                
                  <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Empleados.php">             
@@ -364,11 +386,11 @@ if ($tipo_usuario==2) {
 <?php } elseif ($tipo_usuario==1) { ?>
      <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Empleados.php">             
           <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">      
-          <button name='editar' class='btn btn-info swal2-styled.swal2-confirm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
+          <button id="d" name='editar' class='btn btn-info swal2-styled.swal2-confirm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
         </form>
    </div>
     <div class="col-md-1" style="position: initial">
-         <a href="Controller/Delete_Empleados.php?id=<?php  echo $solicitudes['id']; ?>" onclick="return confirmaion()" class="btn btn-danger swal2-styled.swal2-confirm">Eliminar</a>
+         <a id="dh" href="Controller/Delete_Empleados.php?id=<?php  echo $solicitudes['id']; ?>" onclick="return confirmaion()" class="btn btn-danger swal2-styled.swal2-confirm">Eliminar</a>
      <?php } ?>
  </div>
 </div>

@@ -50,7 +50,8 @@ die();
         width: 100%;
     }
        #h1{ 
-            font-size: 2em;
+            margin-top: 25%;
+            font-size: 1em;
             padding: 3%;
             }
             nav{

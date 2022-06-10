@@ -39,22 +39,44 @@ die();
     form{
         margin: 0%;
     }
+    @media (max-width: 800px){
+        #ssa{
+            margin-left: 7%;
+            margin-bottom: 5%;
+        }
+        #x{
+            margin: 3%5%;
+        }
+    }
     </style>
 <title>Ingresos</title>
 </head>
 <body style="max-width: 100%;">
                <font color="white"><h1 style="margin:5px; text-align: center;">Ingreso de Productos</h1></font>
     <section style="background: rgba(255, 255, 255, 0.9); margin: 2%;border-radius: 15px; padding: 1%";>
-    <div class="row" style="position: relative; max-width: 100%; margin: 2% 0% 0% 10%;">
-        <p style="color: #000; font-weight: bold; margin: 0.2% 4% 2%;">Mostrar Ingresos por:</p>
+    <div style="position: initial;" class="row" style="position: relative; max-width: 100%;">
+        <p id="x" class="mx-3" style="color: #000; font-weight: bold;">Mostrar Ingresos por:</p>
             <form method="POST" style="background:transparent;">
                 <div class="row" style="width:100%">
-                <div class=" col-sm-3" style="position: initial; margin-top: 2%   ;"> 
-                <a href="reporte_ingresos.php" class="btn btn-primary">Inicio</a>
+                
+                    <?php if(isset($_POST['ingresos'])){
+
+                        $mostrar = $_POST['ingresos'];
+                        if($mostrar == "circulante" ){
+                         ?> <div class=" col-md-3" style="position: initial;">
+                <a id="ssa" href="reporte_ingresos.php" class="btn btn-primary">Inicio</a></<div>
+            <?php }
+            if ( $mostrar == "almacen") {
+                echo'<div class=" col-md-3" style="position: initial;">
+                <a id="ssa" href="reporte_ingresos.php" class="btn btn-primary">Inicio</a></<div>';
+            }if ($mostrar == "compra") {
+                echo'<div class=" col-md-3" style="position: initial;">
+                <a id="ssa" href="reporte_ingresos.php" class="btn btn-primary">Inicio</a></<div>';
+            }} ?>
             </div>
 
-            <div class="col-6 col-sm-9" style="position: initial; width:50%px;">
-            <select class="form-control" name="ingresos" id="ingresos" onchange="this.form.submit()">
+            <div class="col-md-7" style="position: initial; width:50%px;">
+            <select id="ssa" class="form-control" name="ingresos" id="ingresos" onchange="this.form.submit()">
                             <option>Seleccionar</option>
                             <option  value="circulante">Solicitud a Fondo Circulante</option>
                             <option value="almacen">Solicitud a Almacén</option>
@@ -62,6 +84,7 @@ die();
                         </select>
             </div>          
                 </div>  
+            </div>
             </form>
     </div> 
     
@@ -79,15 +102,15 @@ if(isset($_POST['ingresos'])){
     <h3 style="text-align: center; color: black;">Ingresos de Solicitud Circulante</h3>
 
 <table class="table table-responsive table-striped" id="example"  style=" width: 100%">
-    <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+    <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/reporte_ingreso.php">
-                <button type="submit" class="btn btn-outline-primary" name="circulante">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                  </button>
             </form>
             <form method="POST" action="Plugin/pdf_ingresos.php">
-                <button type="submit" class="btn btn-outline-primary" name="circulante">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
             </button>
@@ -131,9 +154,9 @@ if(isset($_POST['ingresos'])){
     <!-- <td data-label="Departamento"><?php  echo $productos['departamento']; ?></td>
       <td data-label="Encargado"><?php  echo $productos['usuario']; ?></td> -->
       <td data-label="Código Producto"><?php  echo $productos['codigo']; ?></td>
-      <td data-label="Descripción" style="text-align: left"><?php  echo $productos['descripcion']; ?></td>
-      <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-      <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
+      <td data-label="Descripción"><?php  echo $productos['descripcion']; ?></td>
+      <td data-label="Unidad De Medida" ><?php  echo $productos['unidad_medida']; ?></td>
+      <td data-label="Cantidad" ><?php  echo $productos['stock']; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
       <td data-label="Fuente de Ingreso"><?php  echo $productos['campo']; ?></td>
       <td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
@@ -168,15 +191,15 @@ if(isset($_POST['ingresos'])){
 <h3 style="text-align: center; color: black;">Ingresos de Almacén</h3>
 
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
-        <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+        <div  style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/reporte_ingreso.php">
-                <button type="submit" class="btn btn-outline-primary" name="almacen">
+                <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </button>
             </form>
             <form method="POST" action="Plugin/pdf_ingresos.php">
-                <button type="submit" class="btn btn-outline-primary" name="almacen">
+                <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </button>
@@ -231,12 +254,12 @@ width: 100%;
 </style>
 <tr id="tr">
     <td data-label="#"><?php echo $r ?></td>
-<td data-label="Departamento" style="text-align: left"><?php  echo $productos['departamento']; ?></td>
+<td data-label="Departamento"><?php  echo $productos['departamento']; ?></td>
 <td data-label="Encargado" class="delete"><?php  echo $productos['encargado'],"<br> ","(",$u,")"; ?></td>
 <td data-label="Código Producto"><?php  echo $productos['codigo']; ?></td>
-<td data-label="Descripción" style="text-align: left"><?php  echo $productos['nombre']; ?></td>
-<td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-<td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['cantidad_solicitada']; ?></td>
+<td data-label="Descripción"><?php  echo $productos['nombre']; ?></td>
+<td data-label="Unidad De Medida" ><?php  echo $productos['unidad_medida']; ?></td>
+<td data-label="Cantidad" ><?php  echo $productos['cantidad_solicitada']; ?></td>
 <td data-label="Costo Unitario">$<?php  echo $precio2 ?></td>
 <td data-label="Fuente de Ingreso">Solicitud a Almacén</td>
 <td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
@@ -269,15 +292,15 @@ width: 100%;
 <h3 style="text-align: center; color: black;">Ingresos de Compra</h3>
 
 <table class="table table-responsive table-striped" id="example" style=" width: 100%">
-        <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+        <div  style="position: initial;"class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/reporte_ingreso.php">
-                <button type="submit" class="btn btn-outline-primary" name="compra">
+                <button  style="position: initial;"type="submit" class="btn btn-outline-primary" name="compra">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </button>
             </form>
             <form method="POST" action="Plugin/pdf_ingresos.php">
-                <button type="submit" class="btn btn-outline-primary" name="compra">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="compra">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </button>
@@ -328,9 +351,9 @@ while ($productos = mysqli_fetch_array($result)){
 <td data-label="Departamento">Mantenimiento</td>
 <td data-label="Encargado" class="delete"><?php  echo $productos['usuario'],"<br> ","(",$u,")"; ?></td>
 <td data-label="Código de Producto"><?php  echo $productos['codigo']; ?></td>
-<td data-label="Descripción Completa" style="text-align: left"><?php  echo $productos['descripcion']; ?></td>
-<td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-<td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
+<td data-label="Descripción Completa"><?php  echo $productos['descripcion']; ?></td>
+<td data-label="Unidad De Medida" ><?php  echo $productos['unidad_medida']; ?></td>
+<td data-label="Cantidad" ><?php  echo $productos['stock']; ?></td>
 <td data-label="Costo Unitario">$<?php  echo $precio3 ?></td>
 <td data-label="Fuente de Ingreso">Solicitud de Compra</td>
 <td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
@@ -411,9 +434,9 @@ if(isset($_POST['ingresos'])){
     <!-- <td data-label="Departamento"><?php  echo $productos['departamento']; ?></td>
       <td data-label="Encargado"><?php  echo $productos['usuario']; ?></td> -->
       <td data-label="Código Producto"><?php  echo $productos['codigo']; ?></td>
-      <td data-label="Descripción" style="text-align: left"><?php  echo $productos['descripcion']; ?></td>
-      <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-      <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
+      <td data-label="Descripción"><?php  echo $productos['descripcion']; ?></td>
+      <td data-label="Unidad De Medida" ><?php  echo $productos['unidad_medida']; ?></td>
+      <td data-label="Cantidad" ><?php  echo $productos['stock']; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
       <td data-label="Fuente de Ingreso"><?php  echo $productos['campo']; ?></td>
       <td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
@@ -503,12 +526,12 @@ width: 100%;
 </style>
 <tr id="tr">
     <td data-label="#"><?php echo $r ?></td>
-<td data-label="Departamento" style="text-align: left"><?php  echo $productos['departamento']; ?></td>
-<td data-label="Encargado" style="text-align: left"><?php  echo $productos['encargado']; ?></td>
+<td data-label="Departamento"><?php  echo $productos['departamento']; ?></td>
+<td data-label="Encargado"><?php  echo $productos['encargado']; ?></td>
 <td data-label="Código Producto"><?php  echo $productos['codigo']; ?></td>
-<td data-label="Descripción" style="text-align: left"><?php  echo $productos['nombre']; ?></td>
-<td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-<td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['cantidad_solicitada']; ?></td>
+<td data-label="Descripción"><?php  echo $productos['nombre']; ?></td>
+<td data-label="Unidad De Medida" ><?php  echo $productos['unidad_medida']; ?></td>
+<td data-label="Cantidad" ><?php  echo $productos['cantidad_solicitada']; ?></td>
 <td data-label="Costo Unitario">$<?php  echo $precio2 ?></td>
 <td data-label="Fuente de Ingreso">Solicitud a Almacén</td>
 <td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
@@ -593,9 +616,9 @@ while ($productos = mysqli_fetch_array($result)){
 <td data-label="Departamento">Mantenimiento</td>
 <td data-label="Encargado"><?php  echo $productos['usuario']; ?></td>
 <td data-label="Código de Producto"><?php  echo $productos['codigo']; ?></td>
-<td data-label="Descripción Completa" style="text-align: left"><?php  echo $productos['descripcion']; ?></td>
-<td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-<td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
+<td data-label="Descripción Completa"><?php  echo $productos['descripcion']; ?></td>
+<td data-label="Unidad De Medida" ><?php  echo $productos['unidad_medida']; ?></td>
+<td data-label="Cantidad" ><?php  echo $productos['stock']; ?></td>
 <td data-label="Costo Unitario">$<?php  echo $precio3 ?></td>
 <td data-label="Fuente de Ingreso">Solicitud de Compra</td>
 <td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>

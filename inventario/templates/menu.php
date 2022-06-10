@@ -20,12 +20,18 @@ $idusuario = $_SESSION['iduser'];
       <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
 </head>
 
-<body style="background-image: url(img/camion.jpg);  
-            background-repeat: no-repeat;
-
-            background-attachment: fixed;">
+<body style="background-image: url(img/camion.jpg); 
+background-size: 100% 100%,100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;">
 
     <style type="text/css">
+         @media (max-width: 800px){
+        body{
+            background: black;
+        }
+    }
         #a{
             padding: 20px 10px;
             transition: 1s;
@@ -33,7 +39,10 @@ $idusuario = $_SESSION['iduser'];
         #b{
             transition: 1s;
         }
-
+        #info{
+            font-size: 12px;
+            height: 97%;
+        }
         #a:hover{
    text-decoration: none;
    color: lawngreen;
@@ -203,7 +212,7 @@ background:burlywood;
                   </span>
                 </button>
             </div>
-              <div class="modal-body">
+              <div id="info" class="modal-body">
                 <div class="card mb-3" style="max-width: 540px;background: transparent;border: none;">
   <div  class="row no-gutters">
     <div class="col-md-4">
@@ -341,139 +350,6 @@ function confirmaion(e) {
         e.preventDefault();
     }
 }
-</script>
- <script>
-   $(document).ready(function(){
- $('#example').DataTable({        
-        language: {
-                "lengthMenu": "Mostrar _MENU_ registros",
-                "zeroRecords": "No se encontraron resultados",
-                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sSearch": "Buscar:",
-                "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast":"Último",
-                    "sNext":"Siguiente",
-                    "sPrevious": "Anterior"
-                 },
-                 "sProcessing":"Procesando...",
-            },
-        //para usar los botones   
-        responsive: "true",
-        dom: 'rtilp',       
-        buttons:[ 
-            {
-                extend:    'excelHtml5',
-                text:      '<i class="fas fa-file-excel"></i> ',
-                titleAttr: 'Exportar a Excel',
-                className: 'btn btn-success'
-            },
-            {
-                extend:    'pdfHtml5',
-                text:      '<i class="fas fa-file-pdf"></i> ',
-                titleAttr: 'Exportar a PDF',
-                className: 'btn btn-danger'
-            },
-            {
-                extend:    'print',
-                text:      '<i class="fa fa-print"></i> ',
-                titleAttr: 'Imprimir',
-                className: 'btn btn-info'
-            },
-        ]           
-    });     
-
-    });
-</script> <script>
-   $(document).ready(function(){
- $('#example1').DataTable({        
-        language: {
-                "lengthMenu": "Mostrar _MENU_ registros",
-                "zeroRecords": "No se encontraron resultados",
-                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sSearch": "Buscar:",
-                "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast":"Último",
-                    "sNext":"Siguiente",
-                    "sPrevious": "Anterior"
-                 },
-                 "sProcessing":"Procesando...",
-            },
-        //para usar los botones   
-        responsive: "true",
-        dom: 'rtilp',       
-        buttons:[ 
-            {
-                extend:    'excelHtml5',
-                text:      '<i class="fas fa-file-excel"></i> ',
-                titleAttr: 'Exportar a Excel',
-                className: 'btn btn-success'
-            },
-            {
-                extend:    'pdfHtml5',
-                text:      '<i class="fas fa-file-pdf"></i> ',
-                titleAttr: 'Exportar a PDF',
-                className: 'btn btn-danger'
-            },
-            {
-                extend:    'print',
-                text:      '<i class="fa fa-print"></i> ',
-                titleAttr: 'Imprimir',
-                className: 'btn btn-info'
-            },
-        ]           
-    });     
-
-    });
-</script> <script>
-   $(document).ready(function(){
- $('#example2').DataTable({        
-        language: {
-                "lengthMenu": "Mostrar _MENU_ registros",
-                "zeroRecords": "No se encontraron resultados",
-                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sSearch": "Buscar:",
-                "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast":"Último",
-                    "sNext":"Siguiente",
-                    "sPrevious": "Anterior"
-                 },
-                 "sProcessing":"Procesando...",
-            },
-        //para usar los botones   
-        responsive: "true",
-        paging:false,     
-        buttons:[ 
-            {
-                extend:    'excelHtml5',
-                text:      '<i class="fas fa-file-excel"></i> ',
-                titleAttr: 'Exportar a Excel',
-                className: 'btn btn-success'
-            },
-            {
-                extend:    'pdfHtml5',
-                text:      '<i class="fas fa-file-pdf"></i> ',
-                titleAttr: 'Exportar a PDF',
-                className: 'btn btn-danger'
-            },
-            {
-                extend:    'print',
-                text:      '<i class="fa fa-print"></i> ',
-                titleAttr: 'Imprimir',
-                className: 'btn btn-info'
-            },
-        ]           
-    });     
-
-    });
 </script>
 </body>
 </html>

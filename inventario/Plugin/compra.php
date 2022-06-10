@@ -4,13 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-       <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+   <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
    <link rel="stylesheet" type="text/css" href="../styles/estilos_tablas.css">
     <title>Imprimir Compra</title>
 </head>
 <body style="font-family: sans-serif;">
     <img src="../img/hospital.png" style="width:20%">
     <img src="../img/log_1.png" style="width:20%; float:right">
+    <style>
+     @media (max-width: 952px){
+   h3, h4{
+    font-size: 1em;
+    text-align: center; 
+   }
+   section{
+    margin: 2%;
+   }
+    }
+  </style>
     <?php if(isset($_POST['cod'])){
 
     $solicitud = $_POST['sol_compra'];
@@ -33,7 +44,8 @@
 <h4 align="center" style="margin-top: 2%;">UNIDAD DE ADQUISICIONES Y CONTRATACIONES INSTITUCIONAL</h4>
 <h4 align="center" style="margin-top: 2%;">SOLICITUD DE COMPRA</h4>
  
-<section style="font-size: 14px;">
+<section>
+    <br>
     <div style="float: right">
         <label>FECHA DE IMPRESIÓN:</label><?php echo date("d-m-Y")?><br>
         <label>FECHA DE CREACIÓN: <?php echo $fecha ?></label>
@@ -45,16 +57,16 @@
     <p style="margin-top: -1.5%;"><b>UNIDAD TÉCNICA:</b> <?php echo $unidad ?></p>
     <p style="margin-top: -1.5%;"><b>SUMINISTROS SOLICITADOS:</b> <?php echo $suministro ?></p>
     <p style="margin-top: -1.5%;"><b>ENCARGADO:</b> <?php echo $usuario ?></p>
-</section>
-<table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+
+<table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;">
-            <th style="width: 25%;font-size: 14px;text-align: center;">Código</th>
-            <th style="width: 70%;color:black;font-size: 14px;text-align: left;">Descripción Completa</th>
-            <th style="width: 15%;color:black;font-size: 14px;text-align: center;">U/M</th>
-            <th style="width: 15%;color:black;font-size: 14px;text-align: center;">Cantidad Solicitada</th>
-            <th style="width: 30%;color:black;font-size: 14px;text-align: center;">C/U</th>
-            <th style="width: 15%;color:black;font-size: 14px;text-align: center;border-right:1px solid #ccc ;">Total</th>
+            <th>Código</th>
+            <th>Descripción Completa</th>
+            <th>U/M</th>
+            <th>Cantidad Solicitada</th>
+            <th>C/U</th>
+            <th style="width: 15%;color:black;font-size: 14px;border-right:1px solid #ccc ;">Total</th>
         </tr>
     </thead> 
 
@@ -75,20 +87,19 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 ?>
   
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td style="font-size: 12px;"><?php  echo $codigo?></td>
-            <td style="font-size: 12px;"><?php  echo $des?></td>
-            <td style="font-size: 12px;"><?php  echo $um?></td>
-            <td style="font-size: 12px;"><?php echo $cantidad ?></td>
-            <td style="font-size: 12px;"><?php echo $cost ?></td>
-            <td style="font-size: 12px;"><?php  echo $tot ?></td>
+            <td data-label="Código" style="font-size: 12px;"><?php  echo $codigo?></td>
+            <td data-label="Descripción" style="font-size: 12px;"><?php  echo $des?></td>
+            <td data-label="Unidad De Medida" style="font-size: 12px;"><?php  echo $um?></td>
+            <td data-label="Cantidad" style="font-size: 12px;"><?php echo $cantidad ?></td>
+            <td data-label="Precio" style="font-size: 12px;"><?php echo $cost ?></td>
+            <td data-label="total" style="font-size: 12px;"><?php  echo $tot ?></td>
         </tr>
      
     </tbody>  
      <?php } } ?> 
     <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
-        <td style="text-align: center;font-size: 12px; font-weight: bold;">Subtotal</td>
-        <td colspan="4"></td>
-        <td style="text-align: center;font-size: 12px; font-weight: bold;"><?php echo $tot_f ?></td>
+        <td colspan="5"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
+        <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $tot_f ?></td>
     </tfoot>
 </table>
 <br>

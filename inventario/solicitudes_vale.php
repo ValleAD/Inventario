@@ -31,35 +31,37 @@ die();
     <title>Solicitudes De Vale</title>
 </head>
 <body>
+    <br><br><br>
     <center><h1 style="margin-top:5px">Solicitudes Vale</h1></center><br>
           <?php if ($tipo_usuario==1) {?>  
-     <div class="mx-5 p-2 mb-5" style="background-color: white; border-radius:5px; ">
-              <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
-         <form id="w" method="POST" class="mx-1" action="Plugin/soli_vale.php" target="_blank">
-             <button type="submit" class="btn btn-outline-primary" name="id">
+     <div class="mx-3 p-2 mb-5" style="background-color: white; border-radius:5px; ">
+     
+     
+        <table class="table table-responsive"  style="width:100%;">
+    <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
+         <form id="w"  method="POST" class="mx-1" action="Plugin/soli_vale.php" target="_blank">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
          <form id="w" method="POST" action="Plugin/pdf_soli_vale.php" target="_blank">
-             <button type="submit" class="btn btn-outline-primary" name="id" target="_blank">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>
  </div>
-     
-        <table class="table table-responsive" id="example" style="width:100%">
             <thead>
               <tr id="tr">
                 <th>#</th>
-                <th style="width:30%" ><strong>Código de Vale</strong></th>
-                <th style="width:50%"><strong>Departamento Solicitante</strong></th>
+                <th style="width:20%" ><strong>Código de Vale</strong></th>
+                <th style="width:40%"><strong>Departamento Solicitante</strong></th>
                 <th style="width:10%"><strong>Encargado</strong></th>
-                <th style="width:50%"><strong>Estado</strong></th>
-                <th style="width:10%;"><strong>Fecha de solicitud</strong></th>
+                <th style="width:15%"><strong>Estado</strong></th>
+                <th style="width:20%;"><strong>Fecha</strong></th>
                 <th style="width:10%"><strong>Detalles</strong></th> 
             </tr>
             
@@ -115,18 +117,32 @@ die();
                 <form method="POST" action="Controller/Delete_producto.php">
                    <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
                 </form>
-            </div>
+            <style>
+                 #ver{
+                margin-left: 2%; 
+                background: rgba(0,123,255,.5); 
+                color: #fff; margin-bottom: 2%;  
+                border: rgb(5, 65, 114);
+                border-radius: 4px;
+                padding: 6% 12px;
+               }
+               #ver:hover{
+                transition: 1s;
+                color: lawngreen;
+                transform: translateY(2px);
+               } 
+            </style>
            <?php  };
-            if ($solicitudes['estado']=="Rechazado") {
-                 echo'
+
+            if ($solicitudes['estado']=="Rechazado") {?>
                    
-           <button disabled  style="cursor: not-allowed;"  type="submit" name="detalle" class="btn btn-primary">Ver Detalles</button> 
-                
-            ';
-            } ?>         
+           <button disabled id="ver" style="cursor: not-allowed;"  type="submit" name="detalle" >Ver Detalles</button> 
+        
+           <?php  } ?>         
                  
                      
             </form> 
+        </div>
             </td>
         </tr>
 
@@ -136,48 +152,49 @@ die();
         </table>
     </div>
     <?php } if ($tipo_usuario==2) {?>
-    <div class="mx-5 p-2 mb-5" style="background-color: white; border-radius:5px;">
+    <div class="mx-3 p-2 mb-5" style="background-color: white; border-radius:5px;">
 
      
-        <table class="table table-responsive" id="example" style="width:100%">
-<div class="btn-group mb-3  mx-2" role="group" aria-label="Basic outlined example">
-         <form id="w" method="POST" action="Plugin/soli_vale.php" target="_blank">
-            <?php $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario'";
+        <table class="table table-responsive" style="width:100%">
+             <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
+         <form id="w"  method="POST" class="mx-1" action="Plugin/soli_vale.php" target="_blank">
+             <?php $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     $n=0;
     while ($datos_sol = mysqli_fetch_array($result)){?>
  <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
        
     <?php } ?>
-             <button type="submit" class="btn btn-outline-primary" name="id1">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
          <form id="w" method="POST" action="Plugin/pdf_soli_vale.php" target="_blank">
-    <?php $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario'";
+             <?php $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     $n=0;
     while ($datos_sol = mysqli_fetch_array($result)){?>
  <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
        
     <?php } ?>
-             <button type="submit" class="btn btn-outline-primary" name="id1">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>
-</div>
+ </div>
+
             <thead>
               <tr id="tr">
                 <th>#</th>
-                <th style="width:10%" ><strong>Código de Vale</strong></th>
-                <th style="width:30%"><strong>Departamento Solicitante</strong></th>
-                <th style="width:30%"><strong>Encargado</strong></th>
-                <th style="width:10%"><strong>Estado</strong></th>
-                <th style="width:10%;"><strong>Fecha de solicitud</strong></th>
+                <th style="width:20%" ><strong>Código de Vale</strong></th>
+                <th style="width:20%"><strong>Departamento Solicitante</strong></th>
+                <th style="width:20%"><strong>Encargado</strong></th>
+                <th style="width:15%"><strong>Estado</strong></th>
+                <th style="width:20%;"><strong>Fecha</strong></th>
                 <th style="width:10%"><strong>Detalles</strong></th> 
             </tr>
             
@@ -212,21 +229,40 @@ die();
             ?> class="form-control" type="text" name="" value="<?php echo $solicitudes['estado'] ?>"></td></td>
             <td data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])); ?></td>
             <td  data-label="Detalles">
+                <div style="position: initial;">  
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_vale.php">             
                 <input type='hidden' name='id' value="<?php  echo $solicitudes['codVale']; ?>">  
                 <?php  if ($solicitudes['estado']=="Aprobado" || $solicitudes['estado']=="Pendiente") {?>
+                
                 <form method="POST" action="Controller/Delete_producto.php">
                    <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
                 </form>
+            <style>
+                 #ver{
+                margin-left: 2%; 
+                background: rgba(0,123,255,.5); 
+                color: #fff; margin-bottom: 2%;  
+                border: rgb(5, 65, 114);
+                border-radius: 4px;
+                padding: 6% 12px;
+               }
+               #ver:hover{
+                transition: 1s;
+                color: lawngreen;
+                transform: translateY(2px);
+               } 
+            </style>
            <?php  };
-            if ($solicitudes['estado']=="Rechazado") {
-                 echo'
-           <button disabled  style="cursor: not-allowed;"  type="submit" name="detalle" class="btn btn-primary">Ver Detalles</button> 
-            ';
-            } ?>         
+
+            if ($solicitudes['estado']=="Rechazado") {?>
+                   
+           <button disabled id="ver" style="cursor: not-allowed;"  type="submit" name="detalle" >Ver Detalles</button> 
+        
+           <?php  } ?>         
                  
                      
             </form> 
+        </div>
             </td>
         </tr>
 

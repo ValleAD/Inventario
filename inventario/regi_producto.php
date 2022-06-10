@@ -26,43 +26,84 @@ die();
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
   </head>
     <body >
-<style type="text/css">
-    form{
-    margin: auto;
-}
-        table { table-layout: fixed;}
-        td{width: calc(100%/3);}
+        <style>  
+         #section{
+            margin: 1%;
+            padding: 1%;
+            }
+            #buscar{
+            margin-bottom: 5%;
+            margin-left: 2.5%;
+            margin-top: 0.5%; 
+            background: rgb(5, 65, 114); 
+            color: #fff; margin-bottom: 2%; 
+            border: rgb(5, 65, 114);
+            }
+            #buscar:hover{
+            background: rgb(9, 100, 175);
+            } 
+            #buscar:active{
+            transform: translateY(5px);
+            } 
+            .a{
+                width: 25%;
+            }
+                #lo-que-vamos-a-copiar{
+        margin: 1%;
+        border-radius: 15%;
+        padding: 2%;
+    }
+    .col-xs-4{
+        margin: 2%;
+        padding: 2%;
+    }
+            @media (max-width: 952px){
+   #section{
+        margin: -15%6%6%1%;
+        width: 97%;
+    }
 
-                  @media (max-width: 952px){
-form{
-    margin: auto;
-}
-#Registro{
-    margin: auto;
-}
-}
-</style>
+    th{
+        width: 25%;
+    }
+    #p{
+        margin-top: 5%;
+        margin-left: 7%;
+    }#buscar{
+        width: 100%;
+        margin: auto;
+    }#buscar1{
+        width: 100%;
+        margin: auto;
+    }
 
-<form style="width: 70%; height: 100%;margin-bottom: 5%;margin-top: 5%; padding: 1%" action="Controller/añadir.php" method="POST" style="height: 30%; margin-top: -15">
+    #btn-agregar{
+        width: 100%;
+        margin-top: -7%;
+        padding-right: 15%;
+    }
+  }
+        </style>
+        <br><br><br>
+
+<form id="section" action="Controller/añadir.php" method="POST" >
 <font color=black><h3 style="text-align: center; font-weight: bold">Registro de Productos</h3></font>
-</center>
-<p style="margin-top: 5%;" ></p>
-   <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
+   <div id="Registro"  class="row container-fluid" style="position: initial;"  >
 
-<div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-left: 1%;margin-right: 1%;margin-top: 1%;  border-radius:5px;">
-    <div class="col-xs-4 "  style="background: #bfe7ed;margin-left: 1;margin-right: 1%;margin-top: 1%;  border-radius:5px;" >
-        <div class="well well-sm" style="position: all; margin: 5%">
+<div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;  border-radius:15px;">
+    <div class="col-xs-4 "  style="background: #bfe7ed;  border-radius:15px;" >
+        <div class="well well-sm" style="position: initial;">
 
-            <div class="form-group" style="position: all; ">
+            <div class="form-group" style="position: initial; ">
             <label for="">Categoría</label><br> 
-             <div class="input-group mb-3">
+             <div class="input-group mb-3" style="position: initial;">
                  <label class="input-group-text" for="inputGroupSelect01">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#card-list"/>
                 </svg>
                  </label>
-                    <select  class="form-control" name="categoria[]" id="categoria" required style="cursor: pointer" required>
-                        <option selected disabled value="">Seleccione</option>
+                    <select style="position: initial;" class="form-control" name="categoria[]" id="categoria" required style="cursor: pointer" required>
+                        <option  selected disabled value="">Seleccione</option>
                      <?php 
                         $sql = "SELECT * FROM  selects_categoria";
                         $result = mysqli_query($conn, $sql);
@@ -78,41 +119,41 @@ form{
             </div>
             </div>
 
-            <div class="form-group" style="position: all; ">
+            <div class="form-group" style="position: initial; ">
                 <label style="color: #000">Código</label> 
-                 <div class="input-group mb-3">
+                 <div  class="input-group mb-3" style="position: initial;">
                  <label class="input-group-text" for="inputGroupSelect01">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#123"/>
                 </svg>
                  </label>
-                <input type="number" name="cod[]" class="form-control" placeholder="Ingrese código de producto " required>
+                <input style="position: initial;" type="number" name="cod[]" class="form-control" placeholder="Ingrese código de producto " required>
             </div>
             </div>
 
-            <div class="form-group" style="">
+            <div class="form-group" style="position: initial;">
               <label style="color: #000">Codificación de Catálogo</label> 
-                               <div class="input-group mb-3">
+                               <div style="position: initial;" class="input-group mb-3">
                  <label class="input-group-text" for="inputGroupSelect01">
                  
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#123"/>
                 </svg>
                 </label>
-              <input type="number" name="catal[]" class="form-control" placeholder="Ingrese código" required>
+              <input style="position: initial;" type="number" name="catal[]" class="form-control" placeholder="Ingrese código" required>
           </div>
             </div>
 
           
             <div class="form-group">
                 <label style="color: #000">Descripción Completa</label>
-                 <div class="input-group mb-3">
+                 <div class="input-group mb-3" style="position: initial;">
                  <label class="input-group-text" for="inputGroupSelect01">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#type"/>
                 </svg>
                  </label>
-              <textarea class="form-control" name="descr[]"  placeholder="Ingrese la Descripción" required id="floatingTextarea"></textarea>
+              <textarea style="position: initial;" class="form-control" name="descr[]"  placeholder="Ingrese la Descripción" required id="floatingTextarea"></textarea>
            
 
         </div>
@@ -120,14 +161,14 @@ form{
 
         <div class="form-group" >
             <label>Unidad de medida (U/M)</label>
-                <div class="input-group mb-3">
+                <div class="input-group mb-3" style="position: initial;">
                  <label class="input-group-text" for="inputGroupSelect01">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#card-list"/>
                 </svg>
                  </label>
              
-                <select  class="form-control" name="um[]" id="um" required>
+                <select style="position: initial;" class="form-control" name="um[]" id="um" required>
                   <option selected disabled value="">Seleccione</option>
                  <?php 
                         $sql = "SELECT * FROM  selects_unidad_medida";
@@ -147,13 +188,13 @@ form{
 
             <div class="form-group">
                 <label>Costo Unitario</label>
-                <div class="input-group mb-3">
+                <div class="input-group mb-3" style="position: initial;">
                  <label class="input-group-text" for="inputGroupSelect01">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#currency-dollar"/>
                 </svg>
                  </label>
-               <input class="form-control" type="number" step="0.01" name="cu[]" placeholder="$ 0.00" required><br>
+               <input style="position: initial;" class="form-control" type="number" step="0.01" name="cu[]" placeholder="$ 0.00" required><br>
             </div>
         </div>
         </div>
@@ -168,45 +209,32 @@ form{
     border-radius: 6px;
   }
 </style>
-<div class="col-xs-4" style="position: initial">
+<div class="col-md-6" style="position: initial;padding: 0%;margin: 0%;">
     <div>
-      <a style="cursor: default;color: white; " id="btn-agregar" class="boton_2 my-3" type="button" >Agregar Producto
+      <button style="cursor: default;color: white; " id="btn-agregar" class=" btn boton_2 my-3" type="button" >Agregar Producto
         <svg class="bi" width="20" height="20" fill="currentColor">
         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#plus-circle-fill"/>
         </svg>
-      </a>                
+      </button>                
     </div>
 </div>
     </div>
     
     <hr />
     
-    <div class="text-center">
-        <button class="btn btn-success btn-lg my-2" name="submit" style="margin-bottom: 2%;">Guardar 
+    <div class=" col-md-12 text-center" style="padding: 0%;">
+        <button id="buscar1" class="btn btn-success btn-lg my-2" name="submit" style="margin-bottom: 2%;">Guardar 
             <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#save"/>
                         </svg>
         </button>  
-        <a id="ver" class="btn btn-lg my-2" href="vistaProductos.php?productos">Ver Productos
+        <a id="buscar" class="btn btn-lg my-2" href="vistaProductos.php?productos">Ver Productos
                         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#list-check"/>
                         </svg>
         </a>
-         <style>
-               #ver{
-                margin-left: 2%; 
-                background: rgb(5, 65, 114); 
-                color: #fff; margin-bottom: 2%;  
-                border: rgb(5, 65, 114);
-               }
-               #ver:hover{
-                background: rgb(9, 100, 175);
-               } 
-               #ver:active{
-                transform: translateY(5px);
-               } 
-        </style>
     </div>
+
 </form>
 
 

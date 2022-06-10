@@ -24,28 +24,26 @@ die();
     <title>Solicitud Compra</title>
 </head>
 <body>
-<style type="text/css">
-      #section{
-        margin-left: 2%;
-        margin-right: 2%;
-        background: white;
-        padding: 1%;
-        border-radius: 15px;
-      }
-        form{
-          margin:0;
-      }
-      
-              @media (max-width: 952px){
+        <style>  
+         #section{
+          background: whitesmoke;
+          border-radius: 15px;
+            margin: 1%;
+            }
+            @media (max-width: 800px){
    #section{
-        margin-top: 5%;
-        margin-left: 15%;
-        width: 75%;
-        padding: 2%;
+        margin: -5%0%5%4%;
+        width: 93%;
     }
+    form{
+      padding: 1%;
+    }
+    label{
+        margin-top: 3%;
+    }
+  
   }
-    
-    </style>
+        </style>
 <?php
 
 $total = 0;
@@ -57,64 +55,64 @@ $final2=0;
  while ($datos = mysqli_fetch_array($result)){
 $solicitud=$datos["nSolicitud"];
   echo'   
-<section id="section" style="margin:2%">
+<section id="section">
   <form method="POST"  action="Plugin/pdf_compra.php" target="_blank">
            
         
           <div class="row">
         
-            <div class="col-3" style="position: initial">
+            <div class="col-md-3" style="position: initial">
         
                 <label style="font-weight: bold;">Solicitud No.</label>
                 <input readonly class="form-control"  type="text" value="' .$datos['nSolicitud']. '" name="sol_compra">
   
             </div>
   
-            <div class="col-3" style="position: initial">
+            <div class="col-md-3" style="position: initial">
               <label style="font-weight: bold;">Dependencia Solicitante</label>
               <input readonly class="form-control"  type="text" value="' .$datos['dependencia']. '" name="dependencia">
             </div>
   
-          <div class="col-3" style="position: initial">
+          <div class="col-md-3" style="position: initial">
               <label style="font-weight: bold;">Plazo y No. de Entregas</label>
               <input readonly class="form-control"  type="text" value="' .$datos['plazo']. '" name="plazo">
           </div>
   
-          <div class="col-3" style="position: initial">
+          <div class="col-md-3" style="position: initial">
               <label style="font-weight: bold;">Unidad Técnica</label>
               <input readonly class="form-control"  type="text" value="' .$datos['unidad_tecnica']. '" name="unidad">
           </div>
   
-          <div class="col-3" style="position: initial">
+          <div class="col-md-3" style="position: initial">
               <label style="font-weight: bold;">Suministro Solicitado</label>
               <input readonly class="form-control"  type="text" value="' .$datos['descripcion_solicitud']. '" name="suministro">
           </div>
 
-          <div class="col-3" style="position: initial">
+          <div class="col-md-3" style="position: initial">
               <label style="font-weight: bold;">Encargado</label>
               <input readonly class="form-control"  type="text" value="' .$datos['usuario']. '" name="usuario">
           </div>
   
-            <div class="col-3" style="position: initial">
+            <div class="col-md-3" style="position: initial">
               <label style="font-weight: bold;">Fecha</label>
                   <input readonly class="form-control"  type="text" value="'.date("d-m-Y",strtotime($datos['fecha_registro'])). '" name="fech">';?>
             </div>
-            <div class="col-6 col-sm-3" style="position: initial">
+            <div class="col-md-3" style="position: initial">
               <label style="font-weight: bold;">Estado</label>
               <br>
               
-              <div class="input-group mb-3" style="position:initial;">
+              <div style="position: initial;" class="input-group mb-3" style="position:initial;">
                  <label class="input-group-text" for="inputGroupSelect01">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#check-circle-fill"/>
                 </svg>
                  </label>
-              <input id="inputGroupSelect01"  <?php
+              <input  id="inputGroupSelect01"  <?php
                 if($datos['estado']=='Comprado') {
-                     echo ' style="background-color:blueviolet ;width:50%; border-radius:5px;text-align:center; color: white;"';
+                     echo ' style="background-color:blueviolet ;width:50%; border-radius:5px;text-align:center;position: initial; color: white;"';
                 }
             ?> class="form-control" type="text" name="" value="<?php echo $datos['estado'] ?>"><br>
-              <input readonly class="form-control" type="hidden" value="<?php echo $datos['nSolicitud'] ?>" name="sol_compra">
+              <input  readonly class="form-control" type="hidden" value="<?php echo $datos['nSolicitud'] ?>" name="sol_compra">
                 </div>
             </div>
           </div>
@@ -122,11 +120,11 @@ $solicitud=$datos["nSolicitud"];
           <br>
             
          <table class="table" style="margin-bottom:3%">
-            <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+            <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/pdf_compra">
                      
 
-<button type="submit" class="btn btn-outline-primary" name="aprobado">
+<button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -181,7 +179,7 @@ while ($productos = mysqli_fetch_array($result)){
     $result = mysqli_query($conn, $sql);
  while ($datos = mysqli_fetch_array($result)){ ?>
     <textarea style="display: none;" name="jus" ><?php echo $datos['justificacion'] ?></textarea> <?php } ?>
-<button type="submit" class="btn btn-outline-primary" name="pdf">
+<button style="position: initial;" type="submit" class="btn btn-outline-primary" name="pdf">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
@@ -250,11 +248,10 @@ while ($productos = mysqli_fetch_array($result)){
       </tr>
 
       <?php } ?> 
-     <tfoot>
-        <th colspan="5"></th>
-            <th >SubTotal</th>
-            <td style=" color: red; font-weight: bold;" data-label="Subtotal"><?php echo $final2?></td>
-        </tfoot>
+            <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
+        <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
+        <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final2 ?></td>
+    </tfoot>
         </tbody>
     </table>
          <?php 

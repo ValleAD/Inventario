@@ -30,41 +30,66 @@ die();
     <title>Fondo Circulante</title>
 </head>
 <body>
-    <style type="text/css">
-        textarea{
-            width: 100%; background:transparent; border: none;text-align: left;
-        }
-        input {
-            width: 100%; background:transparent; border: none;
-        }
-         #pdf{
-        margin-left: 38%; 
-        background: rgb(175, 0, 0); 
-        color: #fff; margin-bottom: 2%; 
-        border: rgb(0, 0, 0);
-        }
-        #pdf:hover{
-        background: rgb(128, 4, 4);
-        } 
-        #pdf:active{
-        transform: translateY(5px);
-        } 
-        #section{
-            margin: 2%;
-            border-radius: 15px;
-            background: white;
-        }
-              @media (max-width: 952px){
-   #section{
-        margin-top: 5%;
-        margin-left: 15%;
-        width: 75%;
+                <style>  
+         section{
+            margin: 1%;
+            padding: 1%;
+            }
+            form{
+                margin: 0%;
+            }
+            #wew{
+                margin:1%;
+            }
+            #buscar{
+            margin-bottom: 5%;
+            margin-left: 2.5%;
+            margin-top: 0.5%; 
+            background: rgb(5, 65, 114); 
+            color: #fff; margin-bottom: 2%; 
+            border: rgb(5, 65, 114);
+            }
+            #buscar:hover{
+            background: rgb(9, 100, 175);
+            } 
+            #buscar:active{
+            transform: translateY(5px);
+            } 
+            .a{
+                width: 25%;
+            }
+            @media (max-width: 952px){
+   section{
+        margin: -15%6%6%2%;
+        width: 97%;
     }
-    th{
-        width: 25%;
+    #inp1{
+        margin-top: 5%;
+    }#buscar{
+        width: 100%;
+        margin: auto;
+    }#buscar1{
+        width: 100%;
+        margin: auto;
+    }
+    #lo-que-vamos-a-copiar{
+        width: 100%;
+    }
+    #Registro{
+        width: 100%;
+        margin: 0%;
+    }
+    #btn-agregar{
+        width: 100%;
+        margin-top: -7%;
+        margin-left: 10%;
+    }
+    #wew{
+        margin: 4%;
     }
   }
-    </style>
+        </style>
+        <br><br><br>
     <?php
 
 
@@ -82,18 +107,18 @@ $id=$_POST['id'];
  while ($datos_sol = mysqli_fetch_array($result)){
 
  echo'   
-<section id="section">
+<section >
 <form method="POST" action="" >
          
       
         <div class="row">  
 
-          <div class="col-6 col-sm-6" style="position: initial">
+          <div class="col-md-4" style="position: initial">
             <label style="font-weight: bold;">N° de Solicitud:</label>
             <input readonly class="form-control"  type="text" value="' .$datos_sol['codCirculante']. '" name="num_sol">
           </div>
 
-          <div class="col-6 col-sm-6" style="position: initial">
+          <div class="col-md-4" style="position: initial">
             <label style="font-weight: bold;">Fecha:</label>
               <input readonly class="form-control"  type="text" value="' .date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])). '" name="fech">
           </div>';?>
@@ -123,9 +148,9 @@ $id=$_POST['id'];
     </form>
            <form method="POST" style="margin-top: -3.5%" action="Plugin/pdf_circulante.php" target="_blank">
         <table class="table" style="margin-bottom:3%">
-                        <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form method="POST" action="Plugin/pdf_circulante.php">
-                <button type="submit" class="btn btn-outline-primary" name="Fecha">
+                        <div style="position: initial;" style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+            <form style="position: initial;" method="POST" action="Plugin/pdf_circulante.php">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -161,7 +186,7 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="tot[]" value="$<?php echo $total2 ?>">
             <input type="hidden" name="tot_f" value="$<?php echo $final2 ?>" >
             <?php } ?>
-                <button type="submit" class="btn btn-outline-primary" name="pdf">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="pdf">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>

@@ -12,35 +12,120 @@
 </head>
 
 <body style="background-image: url(../../img/4k.jpg);  
+background-size: 100% 100%,100%;
             background-repeat: no-repeat;
             background-attachment: fixed;">
 
     <style type="text/css">
+        .dropbtn {
+  background-color: transparent;
+  color: white;
+  padding: 20px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+    float: right;
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+         @media (max-width: 800px){
+        body{
+            background: black;
+        }
+    }
+        #a{
+            padding: 20px 10px;
+            transition: 1s;
+        }
+        #b{
+            transition: 1s;
+        }
+        #info{
+            font-size: 12px;
+            height: 97%;
+        }
         #a:hover{
    text-decoration: none;
    color: lawngreen;
+    transition: 1s;
+    transform: translateY(2px);
+   
 }
  #b:hover{
    text-decoration: none;
-   color:whitesmoke;
+   color:lawngreen;
+   transform: scale(1.1);
+   transition: 2s;
 }
 .children{
 background:burlywood;
 }
+.btn{
+   transition: 1s;
+}
+#button{
+    color: white;
+}
+#button:hover{
+    transform: translateY(2px);
+   transition: 1s;
+   color: lawngreen;
+}
+.btn:hover {
+    transform: translateY(2px);
+   transition: 1s;
+   color: lawngreen;
+}
+        h1{
+            color: rgba(555, 555, 555, 1);
+            margin: 5% 5% 0% 5%;
+            max-height: 100%;
+            transition: 5s;
+            border-radius: 5px;
+            text-shadow: 1px 1px 5px black;
+            }
  </style>
  <header>
         <div class="menu_bar">
-            <a href="#" class="bt-menu"><span class="fas fa-bars"></span>Menú</a>
+            <a style="font-size: 2rem;" href="#" class="bt-menu"><span>
+                <svg class="bi" width="70" height="70" fill="currentColor">
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#list"/>
+                </svg>
+            </span><p>Menú</p></a>
         </div>
 
         <nav>
             <ul>
                 <li>
-                    <a id="b" href="invitado.php"><span class="icon-house"></span>Inicio</a></li>
+                    <a id="a" href="invitado.php"><span class="icon-house"></span>Inicio</a></li>
                    
                 </li>
                 <li class="submenu">
-                    <a id="b" href="#">Articulos <svg class="bi" width="20" height="20" fill="currentColor">
+                    <a id="a" href="#">Articulos <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
                         </svg></a>
                     <ul class="children">
@@ -48,7 +133,7 @@ background:burlywood;
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a id="b" href="#">Solicitud Vale <svg class="bi" width="20" height="20" fill="currentColor">
+                    <a id="a" href="#">Solicitud Vale <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
                         </svg></a>
                     <ul class="children">
@@ -59,18 +144,18 @@ background:burlywood;
                         <li><a id="b" href="form_vale1.php">Seleccionar Varios</a></li>
                     </ul>
                 </li>
-                 <li class="submenu" style="float:right;">
-                    
-                    <a id="a" href="#"><svg class="bi" width="20" height="20" fill="currentColor">
+                 
+                    <div class="dropdown">
+                      <div class="dropbtn"><svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#person"/>
                         </svg> Invitado<svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
-                        </svg></a>
-                    <ul class="children">
-                        <li><a onclick="return confirmaion()" id="b" href="logout_invitado.php">Cerrar Session</a></li>
-                        
-                    </ul>
-                </li>
+                        </svg></div>
+                      <div class="dropdown-content">
+                        <a onclick="return confirmaion()"  href="logout_invitado.php">Cerrar Session</a>
+                      </div>
+                    </div>
+                 
             </ul>
         </nav>
     </header>
@@ -113,80 +198,7 @@ function confirmaion(e) {
     }
 }
 </script>
- <script>
-   $(document).ready(function(){
- $('#example').DataTable({        
-        language: {
-                "lengthMenu": "Mostrar _MENU_ registros",
-                "zeroRecords": "No se encontraron resultados",
-                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sSearch": "Buscar:",
-                "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast":"Último",
-                    "sNext":"Siguiente",
-                    "sPrevious": "Anterior"
-                 },
-                 "sProcessing":"Procesando...",
-            },
-        //para usar los botones   
-        responsive: "true",
-        dom: 'rtilp',                  
-    });     
 
-    });
-</script> <script>
-   $(document).ready(function(){
- $('#example1').DataTable({        
-        language: {
-                "lengthMenu": "Mostrar _MENU_ registros",
-                "zeroRecords": "No se encontraron resultados",
-                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sSearch": "Buscar:",
-                "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast":"Último",
-                    "sNext":"Siguiente",
-                    "sPrevious": "Anterior"
-                 },
-                 "sProcessing":"Procesando...",
-            },
-        //para usar los botones   
-        responsive: "true",
-        dom: 'rtilp',          
-
-    });     
-
-    });
-</script> <script>
-   $(document).ready(function(){
- $('#example2').DataTable({        
-        language: {
-                "lengthMenu": "Mostrar _MENU_ registros",
-                "zeroRecords": "No se encontraron resultados",
-                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sSearch": "Buscar:",
-                "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast":"Último",
-                    "sNext":"Siguiente",
-                    "sPrevious": "Anterior"
-                 },
-                 "sProcessing":"Procesando...",
-            },
-        //para usar los botones   
-        responsive: "true",
-        paging:false,                
-    });     
-
-    });
-</script>
 </body>
 </html>
 

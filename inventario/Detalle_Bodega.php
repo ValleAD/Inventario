@@ -30,18 +30,40 @@ die();
     <title>Bodega</title></title>
 </head>
 <body>
-    <style type="text/css">
-              @media (max-width: 952px){
-   #section{
-        margin-top: 5%;
-        margin-left: 15%;
-        width: 75%;
+        <style>  
+         section{
+            margin: 1%;
+            padding: 1%;
+            }
+            @media (max-width: 952px){
+   section{
+        margin: -15%6%6%2%;
+        width: 96%;
     }
     th{
         width: 25%;
     }
+    #p{
+        margin-top: 5%;
+        margin-left: 7%;
+    }#buscar{
+        width: 100%;
+        margin: auto;
+    }#buscar1{
+        width: 100%;
+        margin: auto;
+    }
+    #lo-que-vamos-a-copiar{
+        width: 120px;
+    }
+    #btn-agregar{
+        width: 100%;
+        margin-top: -7%;
+        margin-left: 10%;
+    }
   }
-    </style>
+        </style>
+        <br><br><br>
 <?php
 
 if(isset($_POST['detalle'])){
@@ -58,37 +80,37 @@ if(isset($_POST['detalle'])){
      while ($productos1 = mysqli_fetch_array($result)){
     $odt = $productos1['codBodega'];
      echo'   
-    <section id="section" style="margin:2%; background: rgba(555, 555, 555, .7);border-radius:15px;">
+    <section style=" background: rgba(555, 555, 555, .7);border-radius:15px;">
     <form method="POST" action="" >
              
           
             <div class="row">
           
-              <div class="col-6 col-sm-3" style="position: initial">
+              <div class="col-md-3" style="position: initial">
           
                   <label style="font-weight: bold;">Depto. o Servicio:</label>
                   <input readonly class="form-control"  type="text" value="' .$productos1['departamento']. '" name="depto">
     
               </div>
     
-              <div class="col-6 col-sm-2" style="position: initial">
+              <div class="col-md-2" style="position: initial">
                 <label style="font-weight: bold;">N° de O.D.T.</label>
                 <input readonly class="form-control"  type="text" value="' .$productos1['codBodega']. '" name="bodega">
               </div>
     
-            <div class="col-6 col-sm-2" style="position: initial">
+            <div class="col-md-3" style="position: initial">
                 <label style="font-weight: bold;">Encargado:</label>
                 <input readonly class="form-control"  type="text" value="' .$productos1['usuario']. '" name="usuario">
             </div>
     
               
-              <div class="col-6 col-sm-2" style="position: initial">
+              <div class="col-md-2" style="position: initial">
                 <label style="font-weight: bold;">Fecha:</label>
                   <input readonly class="form-control"  type="text" value="'.date("d-m-Y",strtotime($productos1['fecha_registro'])). '" name="fech">
               </div>
-              <div class="col-8 col-sm-3" style="position: initial">
+              <div class="col-md-2" style="position: initial">
             <label style="font-weight: bold;">Estado:</label>
-             <div class="input-group mb-3">';?>
+             <div  style="position:initial;" class="input-group mb-3">';?>
                  <label class="input-group-text" for="inputGroupSelect01">
                     <?php  if($productos1['estado']=='Pendiente') { ?>
                             <svg class="bi" width="20" height="20" fill="currentColor">
@@ -106,15 +128,15 @@ if(isset($_POST['detalle'])){
                  </label>
               <input <?php
                 if($productos1['estado']=='Pendiente') {
-                    echo ' style="background-color:green ;width:70%; border-radius:5px;text-align:center; color: white;"';
+                    echo ' style="background-color:green ;position:initial;width:70%; border-radius:5px;text-align:center; color: white;"';
                 }else if($productos1['estado']=='Aprobado') {
-                     echo ' style="background-color:blueviolet ;width:70%; border-radius:5px;text-align:center; color: white;"';
+                     echo ' style="background-color:blueviolet ;position:initial;width:70%; border-radius:5px;text-align:center; color: white;"';
                 }else if($productos1['estado']=='Rechazado') {
-                     echo ' style="background-color:red ;width:70%; border-radius:5px;text-align:center; color: white;"';
+                     echo ' style="background-color:red ;position:initial;width:70%; border-radius:5px;text-align:center; color: white;"';
                 }
             ?> class="form-control" type="text" name="" readonly value="<?php echo $productos1['estado'] ?>"><br>
             <?php if($tipo_usuario==1){ ?>
-               <button type="submit" name="submit" <?php
+               <button id="buscar1" type="submit" name="submit" <?php
                 if($productos1['estado']=='Aprobado') {
                      echo ' style="display:none"';
                 }else if($productos1['estado']=='Rechazado') {
@@ -146,11 +168,11 @@ if ($productos1['estado']=="Rechazado") {
                     }
                if ($productos1['estado']=="Aprobado") {?>
                 <table class="table table-responsive" style=" width: 100%">
-                    <div class="btn-group mb-3 mx-2" style="margin-top:4%" role="group" aria-label="Basic outlined example">
+                    <div style="position: initial;" class="btn-group mb-3 mx-2 my-4" style="margin-top:4%" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/pdf_bodega.php">
                     
 
-<button type="submit" class="btn btn-outline-primary" name="aprobado">
+<button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -197,7 +219,7 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
             <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
         <?php } ?>
-<button type="submit" class="btn btn-outline-primary" name="pdf">
+<button  style="position: initial;"type="submit" class="btn btn-outline-primary" name="pdf">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
@@ -273,9 +295,9 @@ while ($productos = mysqli_fetch_array($result)){
 </form>
         <?php } if ($productos1['estado']=="Pendiente") {?>
 <table class="table table-responsive" style="margin-bottom:3%">
-            <div class="btn-group  my-5 mx-2" role="group" aria-label="Basic outlined example">
+            <div  style="position: initial;" class="btn-group  my-5 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/pdf_bodega.php">
-            <button type="submit" class="btn btn-outline-primary" name="aprobado">
+            <button style="position: initial;"  type="submit" class="btn btn-outline-primary" name="aprobado">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -323,7 +345,7 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
         <?php } ?>
 
-<button type="submit" class="btn btn-outline-primary" name="pdf">
+<button style="position: initial;"  type="submit" class="btn btn-outline-primary" name="pdf">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
@@ -417,35 +439,35 @@ if(isset($_POST['submit'])){
         $odt = $productos1['codBodega'];
     
      echo'   
-    <section id="section" style="margin:2%">
+    <section>
     <form method="POST" action="Controller/añadir_bodega_copy.php">
              
           
             <div class="row">
           
-              <div class="col-6 col-sm-3" style="position: initial">
+              <div class="col-md-3" style="position: initial">
           
                   <label style="font-weight: bold;">Depto. o Servicio:</label>
                   <input readonly class="form-control"  type="text" value="' .$productos1['departamento']. '" name="depto">
     
               </div>
     
-              <div class="col-6 col-sm-2" style="position: initial">
+              <div class="col-md-3" style="position: initial">
                 <label style="font-weight: bold;">O.D.T.</label>
                 <input readonly class="form-control"  type="text" value="' .$productos1['codBodega']. '" name="bodega">
               </div>
     
-            <div class="col-6 col-sm-2" style="position: initial">
+            <div class="col-md-3" style="position: initial">
                 <label style="font-weight: bold;">Encargado:</label>
                 <input readonly class="form-control"  type="text" value="' .$productos1['usuario']. '" name="usuario">
             </div>
     
               
-              <div class="col-6 col-sm-2" style="position: initial">
+              <div class="col-md-3" style="position: initial">
                 <label style="font-weight: bold;">Fecha:</label>
                   <input readonly class="form-control"  type="text" value="'.date("d-m-Y",strtotime($productos1['fecha_registro'])). '" name="fech">
               </div>
-              <div class="col-8 col-sm-3" style="position: initial">
+              <div class="col-md-3" style="position: initial">
             <label style="font-weight: bold;">Estado:</label>';?>
            <select  class="form-control"  type="text" name="estado" required>
                 <option disabled selected value="">Selecione</option>
@@ -531,7 +553,7 @@ while ($productos = mysqli_fetch_array($result)){
         </tfoot>
     </tbody>
 </table>
-        <button id="pdf" type="submit" class="btn btn-lg my-1 btn-success"  name="detalle_bodega">Guardar Estado
+        <button id="buscar1" type="submit" class="btn btn-lg my-1 btn-success"  name="detalle_bodega">Guardar Estado
             <svg class="bi" width="20" height="20" fill="currentColor">
             <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#save"/>
             </svg>

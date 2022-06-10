@@ -39,7 +39,7 @@ if ($buscarAlumnos->num_rows > 0)
 	$tabla.= '';  if(isset($_POST['consulta'])){
                 echo ' <style>#well{display:none;}</style>
 
-<div class="btn-group mb-3"  role="group" aria-label="Basic outlined example">
+<div style="position: initial;" class="btn-group mb-3"  role="group" aria-label="Basic outlined example">
             <form id="form1" style=" margin-top:5%" method="POST" action="Plugin/productos.php" target="_blank">';
     $sql = "SELECT * FROM tb_productos GROUP BY precio,codProductos";
     $result = mysqli_query($conn, $sql);
@@ -72,23 +72,23 @@ echo'
             </form>
     </div>
     ';}echo '
-	<table class="table table-responsive table-striped" id="example" style=" width: 100%;">
+	<table class="table  table-striped" id="example" style=" width: 100%;">
 	 
                 <thead>
                      <tr id="tr">
-                    <th style="width: 5%;">#</th>
-                     <th style="width: 10%;">Código</th>
-                     <th style="width: 10%;">Cod. de Catálogo</th>
-                     <th style="width: 100%;">Descripción Completa</th>
-                     <th style="width: 10%;">U/M</th>
-                     <th style="width: 10%;">Cantidad</th>
-                     <th style="width: 10%;">Costo Unitario</th>
-                     <th style="width: 10%;">Fecha Registro</th>
-                     <th style="width: 10%; width: 50%;">Categoría</th>
+                    <th>#</th>
+                     <th>Código</th>
+                     <th>Cod. de Catálogo</th>
+                     <th>Descripción Completa</th>
+                     <th>U/M</th>
+                     <th>Cantidad</th>
+                     <th>Costo Unitario</th>
+                     <th>Fecha Registro</th>
+                     <th>Categoría</th>
                     ';if($tipo_usuario==1){ 
                     	echo '
-                     <th style="width: 10%;">Editar</th>
-                     <th style="width: 10%;">Eliminar</th>
+                     <th>Editar</th>
+                     <th>Eliminar</th>
                  '; } echo'
                    </tr>
                 </thead>
@@ -113,27 +113,27 @@ echo'
 		$tabla.='
 		 ';if ($tipo_usuario ==2) {echo'
 		<tr>
-		<td>'.$r.'</td>
-			<td>'.$productos['codProductos'].'</td>
-			<td>'.$productos['catalogo'].'</td>
-			<td>'.$productos['descripcion'].'</td>
-			<td>'.$productos['unidad_medida'].'</td>
-			<td>'.$stock.'</td>
-			<td>'.$precio1.'</td>
-			<td>'.$productos['fecha_registro'].'</td>
-			<td>'.$categoria.'</td>
+		<td data-label="N°">'.$r.'</td>
+			<td data-label="Código">'.$productos['codProductos'].'</td>
+			<td data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
+			<td data-label="Descripción">'.$productos['descripcion'].'</td>
+			<td data-label="Unidad de Medida">'.$productos['unidad_medida'].'</td>
+			<td data-label="Cantidad">'.$stock.'</td>
+			<td data-label="Precio">'.$precio1.'</td>
+			<td data-label="Fecha">'.$productos['fecha_registro'].'</td>
+			<td data-label="Categoría">'.$categoria.'</td>
 			</tr>
 		';} if ($tipo_usuario ==1) {
 				echo '<tr>
-			<td>'.$r.'</td>
-			<td>'.$productos['codProductos'].'</td>
-			<td>'.$productos['catalogo'].'</td>
-			<td>'.$productos['descripcion'].'</td>
-			<td>'.$productos['unidad_medida'].'</td>
-			<td>'.$stock.'</td>
-			<td>'.$precio1.'</td>
-			<td>'.$productos['fecha_registro'].'</td>
-			<td>'.$categoria.'</td>
+            <td data-label="N°">'.$r.'</td>
+			<td data-label="Código">'.$productos['codProductos'].'</td>
+            <td data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
+            <td data-label="Descripción">'.$productos['descripcion'].'</td>
+            <td data-label="Unidad de Medida">'.$productos['unidad_medida'].'</td>
+            <td data-label="Cantidad">'.$stock.'</td>
+            <td data-label="Precio">'.$precio1.'</td>
+            <td data-label="Fecha">'.$productos['fecha_registro'].'</td>
+            <td data-label="Categoría">'.$categoria.'</td>
 			
            <td  data-label="Editar">
             <form style="margin: 0%;position: 0; background: transparent;" method="POST" action="vistaProductos.php?Editar">             

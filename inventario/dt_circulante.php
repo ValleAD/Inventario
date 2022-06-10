@@ -30,18 +30,27 @@ die();
     <title>Fondo Circulante</title>
 </head>
 <body>
-    <style type="text/css">
-              @media (max-width: 952px){
+        <style>  
+         #section{
+          background: whitesmoke;
+          border-radius: 15px;
+            margin: 1%;
+            }
+            @media (max-width: 800px){
    #section{
-        margin-top: 5%;
-        margin-left: 15%;
-        width: 75%;
+        margin: -5%0%5%4%;
+        width: 93%;
     }
-    th{
-        width: 25%;
+    form{
+      padding: 1%;
     }
+    label{
+        margin-top: 3%;
+    }
+  
   }
-    </style>
+        </style>
+        <br><br><br>
 <?php
 
 $total = 0;
@@ -53,26 +62,26 @@ $final = 0;
  while ($datos_sol = mysqli_fetch_array($result)){
 
  echo'   
-<section id="section" style="margin:2%">
+<section id="section" >
 <form method="POST" action="Plugin/pdf_circulante.php" target="_blank">
          
       
         <div class="row">  
 
-          <div class="col-6 col-sm-4" style="position: initial">
+          <div class="col-md-4" style="position: initial">
             <label style="font-weight: bold;">N° de Solicitud:</label>
             <input readonly class="form-control"  type="text" value="' .$datos_sol['codCirculante']. '" name="num_sol">
           </div>
 
-          <div class="col-6 col-sm-4" style="position: initial">
+          <div class="col-md-4" style="position: initial">
             <label style="font-weight: bold;">Fecha:</label>
               <input readonly class="form-control"  type="text" value="' .date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])). '" name="fech">
           </div>'?>
-           <div class="col-6 col-sm-4" style="position: initial">
+           <div class="col-md-4" style="position: initial">
               <label style="font-weight: bold;">Estado</label>
               <input <?php
                 if($datos_sol['estado']=='Pendiente') {
-                    echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
+                    echo ' style="background-color:green ;width:100%;position: initial; border-radius:5px;text-align:center; color: white;"';
                 }
             ?> readonly class="form-control"  type="text" value="<?= $datos_sol['estado'] ?>" name="id"> 
             </div>
@@ -81,9 +90,11 @@ $final = 0;
         <br>
           
         <table class="table" style="margin-bottom:3%">
-             <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+
             <form method="POST" action="Plugin/pdf_circulante.php">
-                <button type="submit" class="btn btn-outline-primary" name="Fecha">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha">
+
                         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                         </svg>
@@ -119,7 +130,8 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="tot[]" value="$<?php echo $total2 ?>">
             <input type="hidden" name="tot_f" value="$<?php echo $final2 ?>" >
             <?php } ?>
-                <button type="submit" class="btn btn-outline-primary" name="pdf">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="pdf">
+
                         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                         </svg>

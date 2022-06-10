@@ -30,7 +30,7 @@ die();
     <div class="container">
       <table class="table">
         
-           <font color="white"><h1 style="margin-top:5px; text-align: center;">solicitud de Bodega</h1></font>
+           <font color="white"><h1 style="margin-top:5px; text-align: center;">Solicitud de Bodega</h1></font>
 
 
 
@@ -67,24 +67,29 @@ die();
     margin-right: 2%;
     margin-left: 2%;
   }
+   @media (max-width: 800px){
+    #bu{
+        margin: 2%;
+    }
+   }
     </style>
 </table>
 </div>
 <section id="act">
      <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="form_bodega_info.php">
-      <table class="table table-responsive table-striped" id="example2" style=" width: 100%">
+        <button id="bu" style=" float: right;margin-bottom: 1%;" type="submit" name="solicitar" class='btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button> 
+      <table class="table  table-striped" id="example2" style=" width: 100%">
             <thead>
               <tr id="tr">
                
                <th style="width: 10%;">Código</th>
                 <th style="width: 10%;">Catálogo</th>
-                <th style="width: 100%;">Descripción Completa</th>
+                <th style="width: 50%;">Descripción Completa</th>
                 <th style="width: 10%;">U/M</th>
                 <th style="width: 10%;">Cantidad</th>
                 <th style="width: 10%;">Costo Unitario</th>
                 <th style="width: 20%;">Fecha Registro</th>
-                <th style="width: 10%;" align="center">
-                    <button type="submit" name="solicitar" class='btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button> 
+                <th style="width: 10%;" align="center">Solicitar
                 </th>
                
               </tr>
@@ -125,8 +130,8 @@ die();
       <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
       <td data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
       <td data-label="Descripción Completa"><?php  echo $productos['descripcion']; ?></td>
-      <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-      <td data-label="Cantidad" style="text-align: center;"><?php  echo $stock; ?></td>
+      <td data-label="Unidad De Medida" ><?php  echo $productos['unidad_medida']; ?></td>
+      <td data-label="Cantidad" ><?php  echo $stock; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $precio1?></td>
       <td data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
       <td data-label="solicitar" align="center">
@@ -135,11 +140,18 @@ die();
           <input type="hidden" name="precio[]"  value="<?php  echo $productos['precio']; ?>">             
          
       </td>
+  </tr>
      
 <?php } ?> 
 
-            </tbody>
-                        <tfoot>
+            <style>
+                #th{
+                    background-color: #46466b;
+                    color: white;
+                }
+            </style>
+</tbody>
+<tfoot id="tfoot">
 
                 <tr id="tr">
                
@@ -157,12 +169,6 @@ die();
                
               </tr>
             </tfoot>
-            <style>
-                #th{
-                    background-color: #46466b;
-                    color: white;
-                }
-            </style>
         </table>
 </form>
 </section>

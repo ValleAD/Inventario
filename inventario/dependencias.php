@@ -26,7 +26,31 @@ die();
 
 
 <body>
-
+<style>
+    section{
+        padding: 1%;
+    }
+    #form{
+        margin: 1%;
+    }
+    h2,h3{
+        color: white;
+        text-shadow: 1px 1px 5px black;
+    }
+ @media (max-width: 952px){
+   #form{
+        margin: -15%6%1%1%;
+        width: 98%;
+    }
+       section{
+        margin: -15%6%1%1%;
+        width: 98%;
+    }
+    #div{
+        padding: 2%;
+    }
+</style>
+<br><br><br>
 <?php      
 
 if (isset($_POST['editar'])){       
@@ -42,9 +66,9 @@ $result = mysqli_query($conn, $sql);
 ?>
 
 
-<form action="Controller/Desabilitar-dependencias.php" method="POST" style="background: transparent; ">
+<form id="form" action="Controller/Desabilitar-dependencias.php" method="POST" style="background: transparent; ">
   <h3 align="center">Actualizar Dependencias Habilitadas </h3>
-    <div class="container" style="background: rgba(100, 100, 100, 0.6); width: 70%; margin: auto; border-radius: 9px; color:#fff; font-weight: bold;">
+    <div class="container" style="background: rgba(100, 100, 100, 0.6);  border-radius: 9px; color:#fff; font-weight: bold;">
         <div class="row">
             <div class="col-sm-12" style="position: initial; margin: auto; margin-top: 2%"><p class="small mb-1"><font color="black"><b>La Dependencia que has Seleccionado:</b></font> <?php echo $productos['dependencia']?></p>
                 <input type="hidden" name="id" value="<?php  echo $productos['id']; ?>">
@@ -113,16 +137,16 @@ $result = mysqli_query($conn, $sql);
         </div>
     </div>
 </div><?php } ?><br><br><br>
- <div class="btn-group mb-3  mx-2" role="group" aria-label="Basic outlined example">
+ <div style="position: initial;" class="btn-group mb-3  mx-2" role="group" aria-label="Basic outlined example">
          <form method="POST" action="Plugin/U_D_D_C.php" target="_blank">
-             <button type="submit" class="btn btn-outline-primary" name="dependencia">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="dependencia">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
          <form method="POST" action="Plugin/U_D_D_C_pdf.php" target="_blank">
-             <button type="submit" class="btn btn-outline-primary" name="dependencia" target="_blank">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="dependencia" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>

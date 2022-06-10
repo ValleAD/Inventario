@@ -1,4 +1,4 @@
-
+ 
 <?php
 session_start();
  if (!isset($_SESSION['signin'])>0) {
@@ -23,14 +23,26 @@ die();
 
     <title>Departamentos</title>
 </head>
-
-<style type="text/css">
-      #form{
-    background: transparent;margin: 0%;padding: 0%;
-  }
-</style>
 <body>
+<style>
+    section{
+        padding: 1%;
+    }
 
+ @media (max-width: 952px){
+   #form{
+        margin: -15%6%1%1%;
+        width: 98%;
+    }
+       section{
+        margin: -15%6%1%1%;
+        width: 98%;
+    }
+    #div{
+        padding: 2%;
+    }
+</style>
+<br><br><br>
 <?php      
 
 if (isset($_POST['editar'])){       
@@ -46,11 +58,11 @@ $result = mysqli_query($conn, $sql);
 ?>
 
 
-<form action="Controller/Desabilitar-departamentos.php" method="POST" style="background: transparent; ">
+<form id="form" action="Controller/Desabilitar-departamentos.php" method="POST" style="background: transparent; ">
   <h3 align="center">Actualizar Dependencias Habilitadas </h3>
-    <div class="container" style="background: rgba(100, 100, 100, 0.6); width: 70%; margin: auto; border-radius: 9px; color:#fff; font-weight: bold;">
+    <div class="container-fluid" style="background: rgba(100, 100, 100, 0.6);width: 70%; margin: auto;padding-top: 1%; border-radius: 9px; color:#fff; font-weight: bold; margin: auto;">
         <div class="row">
-            <div class="col-sm-12" style="position: initial; margin: auto; margin-top: 2%"><p class="small mb-1"><font color="black"><b>EL Departamento que has Seleccionado:</b></font> <?php echo $productos['departamento']?></p>
+            <div class="col-md-12" style="position: initial;margin: auto;"><p class="small mb-1"><font color="black"><b>EL Departamento que has Seleccionado:</b></font> <?php echo $productos['departamento']?></p>
                 <input type="hidden" name="id" value="<?php  echo $productos['id']; ?>">
                 <label for="" class="small mb-1" style="color: white;">Habilitado</label><br> 
                     <select  class="form-control" name="Habilitado" id="categoria" style="cursor: pointer" required>
@@ -63,7 +75,7 @@ $result = mysqli_query($conn, $sql);
          </div>
         <hr>
         <div class="row">
-            <div class="col-sm-12" style="position: initial; margin: auto; margin-bottom: 2%;">
+            <div class="col-md-12" style="position: initial; margin-bottom: 2%;">
                 <button type="submit" name="Update_Dependencias" class ="btn btn-primary" style="background:rgb(12, 139, 8); margin-right: 1%; border: none">Guardar Cambios</button>
                 <a href="" class ="btn btn-primary" style="background:rgb(184, 8, 8); border: none">Cancelar</a>
             </div>
@@ -116,27 +128,27 @@ $result = mysqli_query($conn, $sql);
         </div>
     </div>
 </div><?php } ?><br><br><br>
- <div class="btn-group mb-3  mx-2" role="group" aria-label="Basic outlined example">
+ <div style="position: initial;" class="btn-group mb-3  mx-2" role="group" aria-label="Basic outlined example">
          <form method="POST" action="Plugin/U_D_D_C.php" target="_blank">
-             <button type="submit" class="btn btn-outline-primary" name="departamento">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="departamento">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
          <form method="POST" action="Plugin/U_D_D_C_pdf.php" target="_blank">
-             <button type="submit" class="btn btn-outline-primary" name="departamento" target="_blank">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="departamento" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>
 </div>
-  <table class="table table-responsive table-striped" id="example" style=" width: 100%">
+  <table class="table table-striped" id="example" style=" width: 100%">
                   
         <thead>
              <tr id="tr">
-                <th>#</th>
+                <th style=" width: 10%">#</th>
                 <th  style=" width: 50%">Departamentos</th>
                 <th  style=" width: 55%"class=" text-center">Habilitado</th><?php if($tipo_usuario == 1) { ?>
                 <th  style=" width: 10%"class=" text-center"> Cambiar Habilitado</th>

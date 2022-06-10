@@ -27,24 +27,28 @@ die();
     <title>Vale</title>
 </head>
 <body>
-    <style type="text/css">
-        #section{
-        margin: 1%;
-        background: white;
-        padding: 1%;
-        border-radius: 15px;
-    }
-              @media (max-width: 952px){
+        <style>  
+         #section{
+          background: whitesmoke;
+          border-radius: 15px;
+            margin: 1%;
+            padding: 1px;
+            }
+            @media (max-width: 800px){
    #section{
-        margin-top: 5%;
-        margin-left: 15%;
-        width: 75%;
+        margin: -5%0%5%4%;
+        width: 93%;
     }
-    th{
-        width: 25%;
+    form{
+      padding: 1%;
     }
+    label{
+        margin-top: 3%;
+    }
+  
   }
-    </style>
+        </style>
+        <br><br><br>
 <?php
 
 $total = 0;
@@ -62,29 +66,29 @@ $final = 0;
       
         <div class="row">
       
-          <div class="col-6 col-sm-3" style="position: initial">
+          <div class="col-md-3" style="position: initial">
       
               <label style="font-weight: bold;">Depto. o Servicio:</label>
               <input readonly class="form-control"  type="text" value="' .$productos1['departamento']. '" name="depto">
 
           </div>
 
-          <div class="col-6 col-sm-2" style="position: initial">
+          <div class="col-md-2" style="position: initial">
             <label style="font-weight: bold;">N° de Vale:</label>
             <input readonly class="form-control"  type="text" value="' .$productos1['codVale']. '" name="vale">
           </div>
 
-        <div class="col-6 col-sm-2" style="position: initial">
+        <div class="col-md-3" style="position: initial">
             <label style="font-weight: bold;">Encargado:</label>
             <input readonly class="form-control"  type="text" value="' .$productos1['usuario']. '" name="usuario">
         </div>
 
           
-          <div class="col-6 col-sm-2" style="position: initial">
+          <div class="col-md-2" style="position: initial">
             <label style="font-weight: bold;">Fecha:</label>
               <input readonly class="form-control"  type="text" value="' .date("d-m-Y",strtotime($productos1['fecha_registro'])). '" name="fech">
           </div>';?>
-           <div class="col-6 col-sm-3" style="position: initial">
+           <div class="col-md-2" style="position: initial">
               <label style="font-weight: bold;">Estado</label>
               <input <?php
                 if($productos1['estado']=='Pendiente') {
@@ -97,7 +101,7 @@ $final = 0;
         <br>
               
         <table class="table" style="margin-bottom:3%">
-            <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+            <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/pdf_vale.php">
                        <?php  
                        $num_vale = $productos1['codVale'];
@@ -114,7 +118,7 @@ $final = 0;
   <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
 <?php } ?>
 
-<button type="submit" class="btn btn-outline-primary" name="aprobado">
+<button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -174,7 +178,7 @@ while ($productos = mysqli_fetch_array($result)){
   ?>
   <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
 <?php } ?>
-<button type="submit" class="btn btn-outline-primary" name="pdf">
+<button style="position: initial;" type="submit" class="btn btn-outline-primary" name="pdf">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
@@ -244,11 +248,10 @@ while ($productos = mysqli_fetch_array($result)){
       </tr>
 
       <?php } ?> 
-     <tfoot>
-        <th colspan="5"></th>
-            <th >SubTotal</th>
-            <td style=" color: red; font-weight: bold;" data-label="Subtotal"><?php echo $final2?></td>
-        </tfoot>
+            <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
+        <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
+        <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final2 ?></td>
+    </tfoot>
         </tbody>
     </table>
          <?php 
@@ -272,8 +275,7 @@ while ($productos = mysqli_fetch_array($result)){
 <?php } ?>
 
 </form>
-</section>
-?>            
+</section>           
   </body>
   </html>
 

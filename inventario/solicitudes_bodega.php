@@ -34,9 +34,9 @@ form{
 
 
 <body>
-
+<br><br><br>
             <center><h1 style="margin-top:5px">Solicitudes Bodega</h1></center><br>
-      <section class="mx-5 p-2" style="background-color:white; border-radius: 5px;margin-bottom:3%;">
+      <section class="mx-3 p-2" style="background-color:white; border-radius: 5px;margin-bottom:3%;">
             <?php if ($tipo_usuario==1) {?>
               <div class="btn-group mb-3 my-3 mx-2" style="position: initial;" role="group" aria-label="Basic outlined example">
          <form method="POST" action="Plugin/soli_bodega.php" target="_blank">
@@ -54,15 +54,15 @@ form{
              </button>
          </form>
  </div>
-  <table class="table table-responsive table-striped" id="example" style=" width: 100%;">
+  <table class="table table-responsive table-striped"  style=" width: 100%;">
           
             <thead>
               <tr id="tr">
              <th>#</th>
                 <th style="width: 10%"><strong>O. de T. No.</strong></th>
-                <th style="width: 40%"><strong>Departamento Solicitante</strong></th>
-                <th style="width: 40%"><strong>Encargado</strong></th>
-                <th style="width: 30%"><strong>Fecha de solicitud</strong></th>
+                <th style="width: 30%"><strong>Departamento Solicitante</strong></th>
+                <th style="width: 20%"><strong>Encargado</strong></th>
+                <th style="width: 20%"><strong>Fecha</strong></th>
                 <th style="width: 15%"><strong>Estado</strong></th>
                 <th  style="width: 50%"><strong>Detalles</strong></th>
                 
@@ -111,23 +111,46 @@ $n=0;
                      echo ' style="background-color:red ;width:100%; border-radius:5px;text-align:center; color: white;"';
                 }
             ?> class="form-control" type="text" name="" readonly value="<?php echo $solicitudes['estado'] ?>"></td>
-            <td  data-label="Detalles">
+             <td  data-label="Detalles">
+                <div style="position: initial;">  
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Bodega.php">             
-                <input type='hidden' name='id' value="<?php  echo $solicitudes['codBodega']; ?>">          
+                <input type='hidden' name='id' value="<?php  echo $solicitudes['codBodega']; ?>">  
                 <?php  if ($solicitudes['estado']=="Aprobado" || $solicitudes['estado']=="Pendiente") {?>
+                
                 <form method="POST" action="Controller/Delete_producto.php">
                    <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
                 </form>
+            <style>
+                 #ver{
+                margin-left: 2%; 
+                background: rgba(0,123,255,.5); 
+                color: #fff; margin-bottom: 2%;  
+                border: rgb(5, 65, 114);
+                border-radius: 4px;
+                padding: 6% 12px;
+               }
+               #ver:hover{
+                transition: 1s;
+                color: lawngreen;
+                transform: translateY(2px);
+               } 
+            </style>
            <?php  };
-            if ($solicitudes['estado']=="Rechazado") {
-                 echo'
-           <button disabled  style="cursor: not-allowed;"  type="submit" name="detalle" class="btn btn-primary">Ver Detalles</button> 
-            ';
-            } ?>           
+
+            if ($solicitudes['estado']=="Rechazado") {?>
+                   
+           <button disabled id="ver" style="cursor: not-allowed;"  type="submit" name="detalle" >Ver Detalles</button> 
+        
+           <?php  } ?>         
+                 
+                     
             </form> 
+        </div>
             </td>
         </tr>
- <?php } ?> 
+
+    <?php }?>   
+           
            </tbody>
         </table>
 

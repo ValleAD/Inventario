@@ -24,8 +24,25 @@ die();
 
 </head>
 <body>
-
-
+<style>
+    #buscar1{
+                width: 25%;
+            }
+            @media (max-width: 952px){
+   section{
+        margin: -15%6%6%3%;
+        width: 95%;
+    }
+    }#buscar1{
+        width: 100%;
+        margin: 0;
+    }
+    label{
+        margin-top: 3%;
+    }
+  }
+</style>
+        <br><br><br>
  <?php
     include 'Model/conexion.php';
    $codigo= $_POST['id'];
@@ -43,7 +60,7 @@ if ($codigo=="") {
  <form style="margin: 0%;position: 0; background: transparent;" method="POST" action="Controller/añadir_bodega.php">
     <div class="container-fluid" style="position: initial">
             <div class="row">
-              <div class="col-6.5 col-sm-4" style="position: initial">
+              <div class=" col-sm-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>   
                 <select  class="form-control" name="depto" id="depto" required>
                         <option selected disabled value="">Selecione</option>
@@ -62,7 +79,7 @@ if ($codigo=="") {
                          ?>
                       </select>
                   </div>
-            <div class="col-.5 col-sm-4" style="position: initial">
+            <div class="col-md-4" style="position: initial">
                 <label id="inp1">O. de T. N°</b></label>   
                 <?php 
                         $sql = "SELECT * FROM tb_bodega  ORDER BY codBodega DESC LIMIT 1";
@@ -74,7 +91,7 @@ if ($codigo=="") {
                      ?>
                 <input id="inp1"class="form-control" readonly type="number" name="odt" required value="<?php echo $codBodega ?>">
             </div>
-            <div class="col-.5 col-sm-4" style="position: initial">
+            <div class="col-md-4" style="position: initial">
                 <label id="inp1">Nombre de la persona</label>
                 <?php     $cliente =$_SESSION['signin'];
     $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
@@ -143,7 +160,7 @@ if ($codigo=="") {
                <input type="hidden" name="desc[]" value="<?php  echo $productos['descripcion']; ?>">
                <input  type="hidden" name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>">
                 </td>
-               <td data-label="Descripción"><?php echo $productos['descripcion'] ?>
+               <td data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
                <td data-label="Unidad De Medida"><?php echo $productos['unidad_medida'] ?>
                 <input type="hidden"  name="stock[]"  value ="<?php  echo $stock; ?>">
                 <input  type="hidden" name="cu[]" value ="<?php  echo $precio ?>">
@@ -157,11 +174,12 @@ if ($codigo=="") {
 
             </tbody>
         </table>
-         <center> <button type="submit" name="solicitar" class="btn btn-success btn-lg  text-center w-25 my-3"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar
+         <center> <div class="col-md-3" style="padding: 0%;" > 
+            <button id="buscar1" type="submit" name="solicitar" class="btn btn-success btn-lg  text-center  my-3"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar
                         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#save"/>
                         </svg>
-         </button></center>    
+         </button></div></center>    
 </form>
  </section>
 

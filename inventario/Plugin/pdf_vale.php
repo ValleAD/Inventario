@@ -39,7 +39,7 @@
             
         <p><b>Encargado:</b> <?php echo $encargado ?></p>
 
-    <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+    <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
         <thead>     
             <tr style="border: 1px solid #ddd;color: black;">
                 <th style="width: 25%;font-size: 14px;text-align: center;">Código</th>

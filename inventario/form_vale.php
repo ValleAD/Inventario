@@ -27,33 +27,11 @@ die();
 </head>
 <body>
 
-<section style="margin:2%;">
-    <form id="form" method="post" style="width: auto;">
-        <div class="container" style="background:white;border-radius:15px;">
-            <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
-                <div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-left: 1%;margin-right: 1%;margin-top: 1%; border-radius: 10px;width: 70%;">
-                    <div class="col-xs-4 "  style="background: #bfe7ed;margin-left: 1;margin-right: 1%;margin-top: 1%;border-radius: 5px;width: 100%;" >
-                        <div class="well well-sm" style="position: all; margin: 1%">
-                            <div style="position: all; margin: 1%;">
-                                <label>Código del Producto</label> 
-                                <input  class="form-control" required type="number" name="codigo[]"  style="width: 100%;" placeholder="Ingrese el código del Producto">
-                            </div>   
-                        </div>
-                    </div>            
-                </div>
-                        <div class="col-xs-4">
-                            <div class="well" style="position: all; margin:5%">
-                                <button id="btn-agregar" class="btn btn-block btn-default bg-success" type="button" style="color: white;">Agregar Nueva Casilla</button>                
-                            </div>
-                        </div>
-            </div>
-                <hr/>
-                    <div class="button21">
-                        <input class="btn btn-lg" type="submit" value="Consultar" id="buscar">
-                    </div>
-        </div>
-</form>
-        <style>
+        <style>  
+         section{
+            margin: 1%;
+            padding: 1%;
+            }
             #buscar{
             margin-bottom: 5%;
             margin-left: 2.5%;
@@ -68,14 +46,73 @@ die();
             #buscar:active{
             transform: translateY(5px);
             } 
+            .a{
+                width: 25%;
+            }
+            @media (max-width: 952px){
+   section{
+        margin: -5%6%6%7%;
+        width: 89%;
+    }
+    #form{
+        margin: -15%6%6%7%;
+        padding: 2%;
+    }
+    th{
+        width: 25%;
+    }
+    #p{
+        margin-top: 5%;
+        margin-left: 7%;
+    }#buscar{
+        width: 100%;
+        margin: auto;
+    }#buscar1{
+        width: 100%;
+        margin: auto;
+    }
+    #lo-que-vamos-a-copiar{
+        width: 120px;
+    }
+    #btn-agregar{
+        width: 100%;
+        margin-top: -7%;
+        margin-left: 10%;
+    }
+  }
         </style>
-        </form>
+        <br><br><br>
+<section id="form" style="background:white;border-radius:15px;">
+    <form method="post" style="width: 100%;">
+            <div id="Registro" class="row" style="margin: 1%;">
+                <div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-right: 1%;margin-top: 1%; border-radius: 5px;width: 82%;">
+                    <div id="lo-que-vamos-a-copiar"  class="col-xs-4 "  style="background: #bfe7ed;margin-right: 1%;margin-top: 1%; width: 82%;border-radius: 5px;" style=" margin: 1%;border-radius: 15px;">
+                        <div class="well well-sm" style="margin: 1%;padding-bottom: 2%;">
+                            
+                                <label>Código del Producto</label> 
+                                <input  class="form-control" required type="number" name="codigo[]"  style="width: 100%;" placeholder="Ingrese el código del Producto">
+                            
+                        </div>
+                    </div>            
+                </div>
+                        <div class="col-xs-4">
+                            <div class="well my-4" style="position: all;">
+                                <button id="btn-agregar" class="btn bg-success" type="button" style="color: white;">Agregar Nueva Casilla</button>                
+                            </div>
+                        </div>
+            </div>
+                <hr/>
+                    <div class="button21">
+                        <input class="btn btn-lg" type="submit" value="Consultar" id="buscar">
+                    </div>
+</form>
+</section>
      
 <?php  
 include 'Model/conexion.php';
 if(isset($_POST['codigo'])){?>
 <br>
-    <section style="background:white;margin: 0%;padding: 1%;border-radius: 15px;">
+    <section style="background:white;padding: 1%;border-radius: 15px;">
 
 
  <form style="margin: 0%;position: 0; background: transparent;" method="POST" action="Controller/añadir_vale.php">
@@ -104,7 +141,7 @@ if(isset($_POST['codigo'])){?>
    </style>
     <div class="container-fluid" style="position: initial">
             <div class="row">
-              <div class="col-6.5 col-sm-4" style="position: initial">
+              <div class="col-md-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>   
                 <select  class="form-control" name="depto" id="depto" required>
                         <option selected disabled value="">Selecione</option>
@@ -123,7 +160,7 @@ if(isset($_POST['codigo'])){?>
                          ?>
                       </select>
                   </div>
-            <div class="col-.5 col-sm-4" style="position: initial">
+            <div class="col-md-4" style="position: initial">
                 <label id="inp1">Vale N°</b></label>   
                 <?php 
                         $sql = "SELECT * FROM tb_vale  ORDER BY codVale DESC LIMIT 1";
@@ -135,7 +172,7 @@ if(isset($_POST['codigo'])){?>
                      ?>
                 <input id="inp1"class="form-control" readonly type="number" name="numero_vale" required value="<?php echo $cod_vale ?>">
             </div>
-            <div class="col-.5 col-sm-4" style="position: initial">
+            <div class="col-md-4" style="position: initial">
                 <label id="inp1">Nombre de la persona</label>
                 <?php     $cliente =$_SESSION['signin'];
     $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
@@ -152,7 +189,7 @@ if(isset($_POST['codigo'])){?>
             </div>
         </div>
     </div>
-      <table class="table table-responsive table-striped"  style=" width: 100%">
+      <table class="table table-striped"  style=" width: 100%">
             <thead>
               <tr id="tr">
                
@@ -226,7 +263,7 @@ if(isset($_POST['codigo'])){?>
                 <label>Observaciones (En qué se ocupará el bien entregado)</label>
               <textarea rows="7" class="form-control" name="jus"  placeholder="Observaciones (En qué se ocupará el bien entregado)" required id="floatingTextarea"></textarea>
             </div>
-        <center><button type="submit" name="form_vale" class="btn btn-success btn-lg my-2 text-center w-25"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar
+        <center><button id="buscar1" type="submit" name="form_vale" class="btn a btn-success btn-lg my-2 text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar
                         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#save"/>
                         </svg>
@@ -235,22 +272,6 @@ if(isset($_POST['codigo'])){?>
  </section>
 <?php }}}} ?>
 </section>
-        <style>
-            #enviar{
-                margin-top: 2%;
-                margin-bottom: 5%;
-            margin-left: 1.5%; 
-            background: rgb(5, 65, 114); 
-            color: #fff; margin-bottom: 2%; 
-            border: rgb(5, 65, 114);
-            }
-            #enviar:hover{
-            background: rgb(9, 100, 175);
-            } 
-            #enviar:active{
-            transform: translateY(5px);
-            } 
-        </style>
 
    
     <script>

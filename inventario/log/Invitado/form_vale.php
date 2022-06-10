@@ -1,56 +1,6 @@
 
 <?php include ('menu.php')?>
 <!DOCTYPE html>
-<!--Es para la version de mobile-->
-<style type="text/css">
-    @media (min-width: 1080px){
-         #section{
-        margin-top: 5%;
-        margin-left: 15%;
-        width: 70%;
-
-       }
-
-    }
-
-      @media (max-width: 952px){
-    #section{
-        margin-top: 5%;
-        margin-left: 12%;
-        width: 75%;
-       }
-    #lab{
-        margin-left: 5%;
-
-    }
-    .w{
-        margin-top: 5%;
-    }
-    #inp{
-            margin-left: 10%;
-    }  #inp1{
-         margin-top: 2%;
-          margin-left: 5%;
-    }  #buscar{
-         margin-top: 2%;
-          margin-left: 25%;
-          margin-bottom: 25%;
-    }
-    #btn{
-        margin-top: 5%;
-        margin-left: 35%;
-        margin-bottom: 15%;
-    }
-    #buscar{
-        margin-top: 5%;
-        margin-left: 35%;
-        margin-bottom: 15%;
-        background: whitesmoke;
-    }
-
-      }
-</style>
-
 <html lang="es">
 <head>
     <meta charset="utf-8">
@@ -59,40 +9,11 @@
 </head>
 <body>
 
-<section class=""  style="margin:2%; background: white;border-radius: 15px;">
-
-            <form id="form" action="" method="post"  >
-           
-       <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
-
-   <div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-left: 1%;margin-right: 1%;margin-top: 1%; border-radius: 5px;width: 70%;">
-    <div class="col-xs-4 "  style="background: #bfe7ed;margin-left: 1;margin-right: 1%;margin-top: 1%;border-radius: 5px;width: 100%;" >
-
-        <div class="well well-sm" style="position: all; margin: 1%">
-
-            <div style="position: all; margin: 1%;">
-                        <label>Código del Producto</label> 
-                      <input  class="form-control" required type="number" name="codigo[]"  style="width: 100%;" placeholder="Ingrese el código del Producto">
-                  </div>   
-        </div>
-    </div>            
-</div>
-
-<div class="col-xs-4">
-    <div class="well" style="position: all; margin:5%">
-      <button id="btn-agregar" class="btn btn-block btn-default bg-success" type="button" style="color: white;">Agregar Nueva Casilla</button>                
-    </div>
-</div>
-    </div>
-    
-    <hr/>
-    
-    <div class="button21">
-        <input class="btn btn-lg" type="submit" value="Consultar" id="buscar">
-    </div>
-</div>
-</form>
-        <style>
+<style>  
+         section{
+            margin: 1%;
+            padding: 1%;
+            }
             #buscar{
             margin-bottom: 5%;
             margin-left: 2.5%;
@@ -107,14 +28,73 @@
             #buscar:active{
             transform: translateY(5px);
             } 
+            .a{
+                width: 25%;
+            }
+            @media (max-width: 952px){
+   section{
+        margin: -5%6%6%7%;
+        width: 89%;
+    }
+    #form{
+        margin: -15%6%6%7%;
+        padding: 2%;
+    }
+    th{
+        width: 25%;
+    }
+    #p{
+        margin-top: 5%;
+        margin-left: 7%;
+    }#buscar{
+        width: 100%;
+        margin: auto;
+    }#buscar1{
+        width: 100%;
+        margin: auto;
+    }
+    #lo-que-vamos-a-copiar{
+        width: 120px;
+    }
+    #btn-agregar{
+        width: 100%;
+        margin-top: -7%;
+        margin-left: 10%;
+    }
+  }
         </style>
-        </form>
+        <br><br><br>
+<section id="form" style="background:white;border-radius:15px;">
+    <form method="post" style="width: 100%;">
+            <div id="Registro" class="row" style="margin: 1%;">
+                <div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;margin-right: 1%;margin-top: 1%; border-radius: 5px;width: 82%;">
+                    <div id="lo-que-vamos-a-copiar"  class="col-xs-4 "  style="background: #bfe7ed;margin-right: 1%;margin-top: 1%; width: 82%;border-radius: 5px;" style=" margin: 1%;border-radius: 15px;">
+                        <div class="well well-sm" style="margin: 1%;padding-bottom: 2%;">
+                            
+                                <label>Código del Producto</label> 
+                                <input  class="form-control" required type="number" name="codigo[]"  style="width: 100%;" placeholder="Ingrese el código del Producto">
+                            
+                        </div>
+                    </div>            
+                </div>
+                        <div class="col-xs-4">
+                            <div class="well my-4" style="position: all;">
+                                <button id="btn-agregar" class="btn bg-success" type="button" style="color: white;">Agregar Nueva Casilla</button>                
+                            </div>
+                        </div>
+            </div>
+                <hr/>
+                    <div class="button21">
+                        <input class="btn btn-lg" type="submit" value="Consultar" id="buscar">
+                    </div>
+</form>
+</section>
      
 <?php  
 include '../../Model/conexion.php';
 if(isset($_POST['codigo'])){?>
 <br>
-    <section style="background:white;margin: 0%;padding: 1%;border-radius: 15px;">
+    <section style="background:white;padding: 1%;border-radius: 15px;">
 
 
  <form style="margin: 0%;position: 0; background: transparent;" method="POST" action="Controller/añadir_vale.php">
@@ -143,7 +123,7 @@ if(isset($_POST['codigo'])){?>
    </style>
     <div class="container-fluid" style="position: initial">
             <div class="row">
-              <div class="col-6.5 col-sm-4" style="position: initial">
+              <div class="col-md-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>   
                 <select  class="form-control" name="depto" id="depto" required>
                         <option selected disabled value="">Selecione</option>
@@ -162,30 +142,32 @@ if(isset($_POST['codigo'])){?>
                          ?>
                       </select>
                   </div>
-            <div class="col-.5 col-sm-4" style="position: initial">
+            <div class="col-md-4" style="position: initial">
                 <label id="inp1">Vale N°</b></label>   
-                                  <?php 
+                <?php 
                         $sql = "SELECT * FROM tb_vale  ORDER BY codVale DESC LIMIT 1";
                         $result = mysqli_query($conn, $sql);
-                            $cod_vale=1;
+                        $cod_vale=1;
                         while ($productos = mysqli_fetch_array($result)){    
                             $cod_vale=$productos['codVale']+1;
                      }
                      ?>
                 <input id="inp1"class="form-control" readonly type="number" name="numero_vale" required value="<?php echo $cod_vale ?>">
             </div>
-            <div class="col-.5 col-sm-4" style="position: initial">
+            <div class="col-md-4" style="position: initial">
                 <label id="inp1">Nombre de la persona</label>
-            
-           <input class="form-control" type="text" name="usuario" id="como3" required  value="">
+
+    <font color="black"><label>Encargado</label> </font>
+      <input style="color: black;"  class="form-control" type="text" name="usuario" id="como3" required  value="">
       <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="0">
       <br>
                
+            </select>
                 </label>   
             </div>
         </div>
     </div>
-      <table class="table table-responsive table-striped"  style=" width: 100%">
+      <table class="table  table-striped"  style=" width: 100%">
             <thead>
               <tr id="tr">
                
@@ -195,7 +177,7 @@ if(isset($_POST['codigo'])){?>
                 <th style="width: 15%;">Productos Disponibles</th>
                 <th style="width: 50%;">Cantidad</th>
                 <th style="width: 15%;">Costo unitario</th>
-               <th>Eliminar fila</th>
+               <th>Eliminar Fila</th>
                
               </tr>
 
@@ -246,40 +228,28 @@ if(isset($_POST['codigo'])){?>
                 <input  type="hidden" name="cu[]" value ="<?php  echo $precio ?>">
                </td>
                <td data-label="Productos Disponibles"><?php  echo $stock; ?></td>
-               <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="decimal" class="form-control"  name="cant[]" required></td>
+               <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="number" step="0.01" class="form-control"  name="cant[]" required></td>
                <td data-label="Precio"><?php  echo $precio1 ?></td> 
                <td><input type="button" class="borrar btn btn-success my-1" value="Eliminar" /></td>   
             </tr>
 
-        <?php } ?>
+<?php } ?>
             </tbody>
         </table>
-        <!-- <div class="form-group" style="position: all;">
+
+            <div class="form-floating mb-3 my-2" >
                 <label>Observaciones (En qué se ocupará el bien entregado)</label>
-               <textarea rows="7"  class="form-control" name="jus"  required> </textarea><br>
-            </div> -->
-        <center><button type="submit" name="form_vale" class="btn btn-success btn-lg my-2 text-center w-25"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar</button> </center>   
+              <textarea rows="7" class="form-control" name="jus"  placeholder="Observaciones (En qué se ocupará el bien entregado)" required id="floatingTextarea"></textarea>
+            </div>
+        <center><button id="buscar1" type="submit" name="form_vale" class="btn a btn-success btn-lg my-2 text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar
+                        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#save"/>
+                        </svg>
+        </button> </center>   
 </form>
  </section>
 <?php }}}} ?>
 </section>
-        <style>
-            #enviar{
-                margin-top: 2%;
-                margin-bottom: 5%;
-            margin-left: 1.5%; 
-            background: rgb(5, 65, 114); 
-            color: #fff; margin-bottom: 2%; 
-            border: rgb(5, 65, 114);
-            }
-            #enviar:hover{
-            background: rgb(9, 100, 175);
-            } 
-            #enviar:active{
-            transform: translateY(5px);
-            } 
-        </style>
-
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
    
     <script>

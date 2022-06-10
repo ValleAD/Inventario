@@ -60,7 +60,7 @@ for($i = 0; $i < count($_POST['cod_bodega']); $i++)
   
    }elseif ($estado=='Rechazado') {
      echo "<script> alert('Producto Rechazado')
-      //  location.href = '../solicitudes_bodega.php';
+        location.href = '../solicitudes_bodega.php';
         </script>
         ";
   }

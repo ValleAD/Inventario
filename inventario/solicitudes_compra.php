@@ -18,8 +18,6 @@ die();
 <head>
 <meta charset="UTF-8">
 
-     <link rel="stylesheet" type="text/css" href="styles/estilos_menu.css" > 
-
     <style>
 
 h1 {
@@ -38,21 +36,24 @@ h1 {
     margin-right: 2%;
     margin-left: 2%;
   }
-    </style><center><h1 style="margin-top:5px ">Solicitudes de Compra</h1></center>
+    </style>
+
+    <br><br><br>
+    <center><h1 style="margin-top:5px ">Solicitudes de Compra</h1></center>
             <br>
             <?php if ($tipo_usuario==1) {?>
-     <div class="mx-5 p-2" id="act" style="background: white; border-radius: 5px;">
+     <div class="mx-3 p-2" id="act" style="background: white; border-radius: 5px;">
         <table class="table table-responsive" id="example" style="width:100%">
-    <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+    <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
          <form method="POST" style=" position: initial;" action="Plugin/soli_compra.php" target="_blank">
-             <button type="submit" class="btn btn-outline-primary" name="id">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
          <form method="POST" action="Plugin/pdf_soli_compra.php" target="_blank">
-             <button type="submit" class="btn btn-outline-primary" name="id" target="_blank">
+             <button style="position: initial;"type="submit" class="btn btn-outline-primary" name="id" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -62,15 +63,15 @@ h1 {
             <thead>
               <tr id="tr">
                 <th>#</th>
-                <th style="width:10%">No. Solicitud</th>
-                <th  style="width:10%">Dependencia</th>
-                <th  style="width:10%">Plazo y No. de Entregas</th>
-                <th  style="width:10%">Unidad Técnica</th>
-                <th  style="width:20%" align="center">Descripción Solicitud</th>
-                <th  style="width:20%" align="center">Encargado</th>
-                <th  style="width:20%">Fecha de Registro</th>
-                <th  style="width:10%">Estado</th>
-                <th  style="width:10%">Detalles</th>
+                <th>No. Solicitud</th>
+                <th>Dependencia</th>
+                <th>Plazo y No. de Entregas</th>
+                <th>Unidad Técnica</th>
+                <th>Descripción Solicitud</th>
+                <th>Encargado</th>
+                <th>Fecha de Registro</th>
+                <th>Estado</th>
+                <th>Detalles</th>
            
     </thead>
         <tbody> 
@@ -98,15 +99,14 @@ h1 {
     }
 </style>
         <tr>
-            <td><?php echo $r ?></td>
+            <td data-label="N°"><?php echo $r ?></td>
             <td data-label="No. Solicitud" class="delete"><?php  echo $solicitudes['nSolicitud']; ?></td>
             <td data-label="Dependencia" class="delete"><?php  echo $solicitudes['dependencia']; ?></td>
             <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['plazo']; ?></td>
-            <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
-            <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
-            <td data-label="Encargado" class="delete"><?php  echo $solicitudes['usuario'],"<br> ","(",$u,")"; ?></td>
-            <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
-            <td data-label="Plazo y No. de Entregas" class="delete"><input readonly <?php
+            <td data-label="Unidad Técnica" class="delete"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
+            <td data-label="Descripción Solicitud" class="delete"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
+            <td data-label="Fecha" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
+            <td data-label="Estado" class="delete"><input readonly <?php
                 if($solicitudes['estado']=='Comprado') {
                      echo ' style="background-color:blueviolet ;width:100%; border-radius:5px;text-align:center; color: white;"';
                 }
@@ -126,9 +126,9 @@ h1 {
  </div>
 <?php } ?>
             <?php if ($tipo_usuario==2) {?>
-     <div class="mx-5 p-2" id="act" style="background: white; border-radius: 5px;">
+     <div class="mx-3 p-2" id="act" style="background: white; border-radius: 5px;">
         <table class="table table-responsive" id="example" style="width:100%">
-<div class="btn-group mb-3  mx-2" style=" position: initial;" role="group" aria-label="Basic outlined example">
+<div style="position: initial;" class="btn-group mb-3  mx-2" style=" position: initial;" role="group" aria-label="Basic outlined example">
          <form method="POST" action="Plugin/soli_compra.php" target="_blank">
             <?php $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
@@ -137,7 +137,7 @@ h1 {
  <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
        
     <?php } ?>
-             <button type="submit" class="btn btn-outline-primary" name="id1">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
@@ -151,7 +151,7 @@ h1 {
  <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
        
     <?php } ?>
-             <button type="submit" class="btn btn-outline-primary" name="id1">
+             <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -161,14 +161,14 @@ h1 {
             <thead>
               <tr id="tr">
                 <th>#</th>
-                <th style="width:10%">No. Solicitud</th>
-                <th  style="width:10%">Dependencia</th>
-                <th  style="width:10%">Plazo y No. de Entregas</th>
-                <th  style="width:10%">Unidad Técnica</th>
-                <th  style="width:20%" align="center">Descripción Solicitud</th>
-                <th  style="width:20%">Fecha de Registro</th>
-                <th  style="width:10%">Estado</th>
-                <th  style="width:10%">Detalles</th>
+                <th>No. Solicitud</th>
+                <th>Dependencia</th>
+                <th>Plazo y No. de Entregas</th>
+                <th>Unidad Técnica</th>
+                <th>Descripción Solicitud</th>
+                <th>Fecha de Registro</th>
+                <th>Estado</th>
+                <th>Detalles</th>
            
     </thead>
         <tbody> 
@@ -190,14 +190,14 @@ $tipo_usuario = $_SESSION['iduser'];
     }
 </style>
         <tr>
-            <td><?php echo $r ?></td>
+            <td data-label="N°"><?php echo $r ?></td>
             <td data-label="No. Solicitud" class="delete"><?php  echo $solicitudes['nSolicitud']; ?></td>
             <td data-label="Dependencia" class="delete"><?php  echo $solicitudes['dependencia']; ?></td>
             <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['plazo']; ?></td>
-            <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
-            <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
-            <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
-            <td data-label="Plazo y No. de Entregas" class="delete"><input readonly <?php
+            <td data-label="Unidad Técnica" class="delete"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
+            <td data-label="Descripción Solicitud" class="delete"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
+            <td data-label="Fecha" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
+            <td data-label="Estado" class="delete"><input readonly <?php
                 if($solicitudes['estado']=='Comprado') {
                      echo ' style="background-color:blueviolet ;width:100%; border-radius:5px;text-align:center; color: white;"';
                 }

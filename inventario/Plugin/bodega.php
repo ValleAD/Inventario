@@ -22,7 +22,16 @@
 <p style="float: right;">Vale No.: <?php echo $vale ?></p>
 <h4>DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h5 align="center">SOLICITUD DE MATERIALES</h5>
- 
+     <style>
+     @media (max-width: 952px){
+   h3, h4,h5{
+    font-size: 1em;
+    text-align: center; 
+   }
+   section{
+    margin: 2%;
+   }
+    }</style>
 <section style="margin: 2%;">
               
     <p><b>Depto. o Servicio:</b> <?php echo $depto ?></p>
@@ -31,7 +40,7 @@
         
     <p><b>Encargado:</b> <?php echo $encargado ?></p>
 
-<table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+<table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;">
             <th style="width: 25%;font-size: 14px;text-align: center;">Código</th>
@@ -62,21 +71,20 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 ?>
   
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td style="font-size: 12px; text-align:center;"><?php  echo $codigo?></td>
-            <td style="font-size: 12px;"><?php  echo $des?></td>
-            <td style="font-size: 12px; text-align:center;"><?php  echo $um?></td>
-            <td style="font-size: 12px; text-align:center;"><?php echo $stock ?></td>
-            <td style="font-size: 12px; text-align:center;"><?php echo $cantidad ?></td>
-            <td style="font-size: 12px; text-align: center;;"><?php echo $cost ?></td>
-            <td style="font-size: 12px; text-align: center;"><?php  echo $tot ?></td>
+            <td data-label="Código"style="font-size: 12px;"><?php  echo $codigo?></td>
+            <td data-label="Descripción"style="font-size: 12px;"><?php  echo $des?></td>
+            <td data-label="Unidad De Medida"style="font-size: 12px;"><?php  echo $um?></td>
+            <td data-label="Cantidad"style="font-size: 12px;"><?php echo $stock ?></td>
+            <td data-label="Cantidad Despachada"style="font-size: 12px;"><?php echo $cantidad ?></td>
+            <td data-label="Precio"style="font-size: 12px;"><?php echo $cost ?></td>
+            <td data-label="total"style="font-size: 12px;"><?php  echo $tot ?></td>
         </tr>
      
     </tbody>  
      <?php } } ?> 
     <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
-        <td style="text-align: center;font-size: 12px; font-weight: bold;">Subtotal</td>
-        <td colspan="5"></td>
-        <td style="text-align: center;font-size: 12px; font-weight: bold;"><?php echo $tot_f ?></td>
+        <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
+        <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $tot_f ?></td>
     </tfoot>
 </table>
 <br>

@@ -36,9 +36,22 @@ form{
     margin: 0;
     padding: 1%;
 }
+#section{
+            margin: 2%;
+            padding:0%;
+            border-radius: 15px;
+            background: white;
+        }
+              @media (max-width: 800px){
+   #section{
+        margin: -15%6%6%7%;
+        width: 85%;
+    }
+    }
     </style>
+    <br><br><br>
             <h1 class="text-center mg-t" style="margin-top: -0.5%;" >Solicitudes de Almacen</h1><br>
-<section class="mx-5 p-2" style="background-color:white; border-radius:5px;margin-bottom: 3%;">
+<section class="mx-3 p-2" style="background-color:white; border-radius:5px;margin-bottom: 3%;">
 <?php if ($tipo_usuario==1) {?>
      <div class="btn-group mb-3  mx-2" role="group" style="position: initial;" aria-label="Basic outlined example">
          <form method="POST" action="Plugin/soli_almacen.php" target="_blank">
@@ -88,12 +101,12 @@ form{
         ?>
 
         <tr>
-            <td><?php echo $r ?></td>
+            <td data-label="N° "><?php echo $r ?></td>
             <td data-label="No. solicitud" class="delete"><?php  echo $datos_sol['codAlmacen']; ?></td>
             <td data-label="Departamento Solicitante" class="delete"><?php  echo $datos_sol['departamento']; ?></td>
             <td data-label="Encargado" class="delete"><?php  echo $datos_sol['encargado'],"<br> ","(",$u,")"; ?></td>
             <td data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])) ?></td>
-            <td data-label="Fecha de solicitud" class="delete"><input readonly <?php
+            <td data-label="Estado" class="delete"><input readonly <?php
                 if($datos_sol['estado']=='Pendiente') {
                     echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
                 }else if($datos_sol['estado']=='Aprobado') {
@@ -184,12 +197,12 @@ form{
         ?>
 
         <tr>
-            <td><?php echo $r ?></td>
+            <td data-label="N°"><?php echo $r ?></td>
             <td data-label="No. solicitud" class="delete"><?php  echo $datos_sol['codAlmacen']; ?></td>
             <td data-label="Departamento Solicitante" class="delete"><?php  echo $datos_sol['departamento']; ?></td>
             <td data-label="Usuario" class="delete"><?php  echo $datos_sol['encargado']; ?></td>
             <td data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])) ?></td>
-            <td data-label="Fecha de solicitud" class="delete"><input readonly <?php
+            <td data-label="Estado" class="delete"><input readonly <?php
                 if($datos_sol['estado']=='Pendiente') {
                     echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
                 }else if($datos_sol['estado']=='Aprobado') {
@@ -218,7 +231,6 @@ form{
  <?php } ?>
            </tbody>
         </table>
-     <!--   <a href="Plugin/pdf_soli_almacen.php" class="btn btn-danger">Generar Solicidud Almacen</a>-->
  
          <?php } ?>
 </section>

@@ -9,6 +9,8 @@ include ('../Model/conexion.php');
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <title>Productos</title>
+        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+   <link rel="stylesheet" type="text/css" href="../styles/estilos_tablas.css">
  </head>
  <body>
 
@@ -22,7 +24,19 @@ include ('../Model/conexion.php');
 <h4 align="center" style="margin-top: 2%;">DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h5 align="center" style="margin-top: 2%;">TODOS LOS PRODUCTOS</h5>
 
-
+<style>
+    <section>
+     @media (max-width: 952px){
+   h3, h4, h5{
+    font-size: 1em;
+    text-align: center;
+   }
+   section{
+    margin: 2%;
+   }
+    }
+  </style>
+  <section>
     <table class="table table-responsive table-striped"  style=" width: 100%">
 
     <thead>
@@ -85,6 +99,7 @@ include ('../Model/conexion.php');
     </tr>
     </tbody>
 </table> 
+</section>
 <script type="text/javascript">
 print('');
 </script>

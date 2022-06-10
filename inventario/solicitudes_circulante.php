@@ -37,9 +37,10 @@ form{
     padding: 1%;
     }
     </style>
+    <br><br><br>
             <h1 class="text-center mg-t" style="margin-top: -0.5%;">Solicitudes de Fondo Circulante</h1><br>
 
-<section class="mx-5 p-2" style="background-color:white;border-radius: 5px; position: initial;margin-bottom: 3%;">
+<section class="mx-3 p-2" style="background-color:white;border-radius: 5px; position: initial;margin-bottom: 3%;">
 <?php if ($tipo_usuario==1) {?>
  <div class="btn-group mb-3  mx-2" style="position: initial;"  role="group" aria-label="Basic outlined example">
         <form method="POST" style="background: transparent;" action="Plugin/soli_circulante.php" target="_blank">
@@ -64,7 +65,7 @@ form{
              </button>
          </form>
 </div>
-<table class="table table-responsive table-striped" id="example" style=" width: 100%;">
+<table class="table table-striped" id="example" style=" width: 100%;">
           <thead>
               <tr id="tr">
              <th>#</th>
@@ -120,7 +121,7 @@ form{
            </tbody>
         </table>
     <?php } ?><?php if ($tipo_usuario==2) {?>
- <div class="btn-group mb-3  mx-2" role="group" aria-label="Basic outlined example">
+ <div class=" mb-3  mx-2" role="group" aria-label="Basic outlined example">
          <form method="POST" action="Plugin/soli_circulante.php" target="_blank">
             <?php $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
@@ -150,7 +151,7 @@ form{
              </button>
          </form>
 </div>
-<table class="table table-responsive table-striped" id="example" style=" width: 100%;">
+<table class="table  table-striped" id="example" style=" width: 100%;">
           <thead>
               <tr id="tr">
              <th>#</th>

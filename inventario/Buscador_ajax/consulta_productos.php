@@ -57,19 +57,19 @@ echo'
             </form>
     </div>
     ';}echo '
-	<table class="table table-responsive table-striped" id="example2" style=" width: 100%;">
+	<table class="table table-striped" id="example2" style=" width: 100%;">
 	 
                 <thead>
                      <tr id="tr">
-                    <th style="width: 5%;">#</th>
-                     <th style="width: 10%;">Código</th>
-                     <th style="width: 10%;">Cod. de Catálogo</th>
-                     <th style="width: 100%;">Descripción Completa</th>
-                     <th style="width: 10%;">U/M</th>
-                     <th style="width: 10%;">Cantidad</th>
-                     <th style="width: 10%;">Costo Unitario</th>
-                     <th style="width: 10%;">Fecha Registro</th>
-                     <th style="width: 10%; width: 50%;">Categoría</th>
+                    <th>#</th>
+                     <th>Código</th>
+                     <th>Cod. de Catálogo</th>
+                     <th>Descripción Completa</th>
+                     <th>U/M</th>
+                     <th>Cantidad</th>
+                     <th>Costo Unitario</th>
+                     <th>Fecha Registro</th>
+                     <th>Categoría</th>
                 </thead>
                 <tbody>';
                 $n=0;

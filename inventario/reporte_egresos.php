@@ -30,25 +30,48 @@ die();
     form{
         margin: 0%;
     }
+    @media (max-width: 800px){
+        body{
+            background: black;
+        }
+        #ssa{
+            margin-left: 7%;
+            margin-bottom: 5%;
+        }
+        #x{
+            margin: 3%5%;
+        }
+    }
 </style>
                <font color="white"><h1 style="margin:5px; text-align: center;">Egresos de Productos</h1></font>
     <section style="background: rgba(255, 255, 255, 0.9); margin: 2%;border-radius: 15px; padding: 1%";>
-    <div class="row" style="position: relative; max-width: 100%; margin: 2% 0% 0% 10%;">
-        <p style="color: #000; font-weight: bold; margin: 0.2% 4% 2%;">Mostrar Egresos por:</p>
+  <div style="position: initial;" class="row" style="position: relative; max-width: 100%;">
+        <p id="x" class="mx-3" style="color: #000; font-weight: bold;">Mostrar Ingresos por:</p>
             <form method="POST" style="background:transparent;">
-               <div class="row" style="width:100%">  
-              <div class=" col-sm-3" style="position: initial; margin-top: 2%   ;">  
-                <a href="reporte_ingresos.php" class="btn btn-primary btn-sm">Inicio</a>
+                <div class="row" style="width:100%">
+                
+                    <?php if(isset($_POST['ingresos'])){
+
+                        $mostrar = $_POST['ingresos'];
+                        if($mostrar == "bodega" ){
+                         ?> <div class=" col-md-3" style="position: initial;">
+                <a id="ssa" href="" class="btn btn-primary">Inicio</a></<div>
+            <?php }
+            if ( $mostrar == "vale") {
+                echo'<div class=" col-md-3" style="position: initial;">
+                <a id="ssa" href="" class="btn btn-primary">Inicio</a></<div>';
+            }} ?>
             </div>
 
-            <div class=" col-sm-9" style="position: initial; ">
-                        <select class="form-control" name="ingresos" id="ingresos" onchange="this.form.submit()">
-                            <option value="">Seleccionar</option>
-                            <option value="bodega">Solicitud a Bodega</option>
-                            <option value="vale">Solicitud a Vale</option>
+            <div class="col-md-12" style="position: initial;">
+            <select id="ssa" class="form-control" name="ingresos" id="ingresos" onchange="this.form.submit()">
+                            <option>Seleccionar</option>
+                            <option  value="bodega">Solicitud  de Bodega</option>
+                            <option value="vale">Solicitud Vale</option>
                         </select>
-                    </div>
-                </div> 
+            </div>          
+                </div>  
+            </div>
             </form>
     </div> 
 <?php
@@ -74,19 +97,19 @@ if(isset($_POST['ingresos'])){
   }
 </style>
     <br>
-    <h3 style="text-align: center; color: black;">Egresos de Bodega</h3>
+    <h3 style="text-align: center;">Egresos de Bodega</h3>
 
-<table class="table table-responsive table-striped" id="example" style=" width: 100%">
-            <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+<table class="table  table-striped" id="example" style=" width: 100%">
+            <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
  <form method="POST" action="Plugin/reporte_egreso.php">
-                <button type="submit" class="btn btn-outline-primary" name="bodega">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="bodega">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
                 </button>
             </form>
             <form method="POST" action="Plugin/pdf_egresos.php">
-                <button type="submit" class="btn btn-outline-primary" name="bodega">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="bodega">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -137,9 +160,9 @@ $n=0;
     <td data-label="Departamento"><?php  echo $productos['departamento']; ?></td>
     <td data-label="Encargado" class="delete"><?php  echo $productos['usuario'],"<br> ","(",$u,")"; ?></td>
       <td data-label="Código Producto"><?php  echo $productos['codigo']; ?></td>
-      <td data-label="Descripción" style="text-align: left"><?php  echo $productos['descripcion']; ?></td>
-      <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-      <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
+      <td data-label="Descripción"><?php  echo $productos['descripcion']; ?></td>
+      <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
+      <td data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
       <td data-label="Fuente de Ingreso"><?php  echo $productos['campo']; ?></td>
       <td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
@@ -174,17 +197,17 @@ $n=0;
 </style><br>
 <h3 style="text-align: center; color: black;">Egresos Por Vale</h3>
 
-<table class="table table-responsive table-striped" id="example" style=" width: 100%">
-            <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+<table class="table  table-striped" id="example" style=" width: 100%">
+            <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/reporte_egreso.php">
-                <button type="submit" class="btn btn-outline-primary" name="vale">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
                 </button>
             </form>
             <form method="POST" action="Plugin/pdf_egresos.php">
-                <button type="submit" class="btn btn-outline-primary" name="vale">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -248,8 +271,8 @@ $n=0;
     <td data-label="Encargado" class="delete"><?php  echo $productos['usuario'],"<br> ","(",$u,")"; ?></td>
     <td data-label="Codigo"><?php  echo $productos['codigo']; ?></td>
     <td data-label="Descripción Completa" style="text-align: left;"><?php  echo $productos['descripcion']; ?></td>
-    <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-    <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
+    <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
+    <td data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
     <td data-label="Costo Unitario">$<?php  echo $precio2 ?></td>
     <td data-label="Costo Unitario"><?php  echo $productos['campo']; ?></td>
     <td data-label="No. Vale"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
@@ -283,19 +306,19 @@ if(isset($_POST['ingresos'])){
   }
 </style>
     <br>
-    <h3 style="text-align: center; color: black;">Egresos de Bodega</h3>
+    <h3color: black;">Egresos de Bodega</h3>
 
-<table class="table table-responsive table-striped" id="example" style=" width: 100%">
-            <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+<table class="table  table-striped" id="example" style=" width: 100%">
+            <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
  <form method="POST" action="Plugin/reporte_egreso.php">
-                <button type="submit" class="btn btn-outline-primary" name="bodega">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="bodega">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
                 </button>
             </form>
             <form method="POST" action="Plugin/pdf_egresos.php">
-                <button type="submit" class="btn btn-outline-primary" name="bodega">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="bodega">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -343,9 +366,9 @@ $n=0;
     <td data-label="Departamento"><?php  echo $productos['departamento']; ?></td>
       <td data-label="Encargado"><?php  echo $productos['usuario']; ?></td>
       <td data-label="Código Producto"><?php  echo $productos['codigo']; ?></td>
-      <td data-label="Descripción" style="text-align: left"><?php  echo $productos['descripcion']; ?></td>
-      <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-      <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
+      <td data-label="Descripción"><?php  echo $productos['descripcion']; ?></td>
+      <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
+      <td data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
       <td data-label="Fuente de Ingreso"><?php  echo $productos['campo']; ?></td>
       <td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
@@ -378,9 +401,9 @@ $n=0;
     width: 100%;
   }
 </style><br>
-<h3 style="text-align: center; color: black;">Egresos Por Vale</h3>
+<h3color: black;">Egresos Por Vale</h3>
 
-<table class="table table-responsive table-striped" id="example" style=" width: 100%">
+<table class="table  table-striped" id="example" style=" width: 100%">
             <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/reporte_egreso.php">
                 <button type="submit" class="btn btn-outline-primary" name="vale">
@@ -447,8 +470,8 @@ $n=0;
     <td data-label="Encargado"><?php  echo $productos['usuario']; ?></td>
     <td data-label="Codigo"><?php  echo $productos['codigo']; ?></td>
     <td data-label="Descripción Completa" style="text-align: left;"><?php  echo $productos['descripcion']; ?></td>
-    <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-    <td data-label="Cantidad" style="text-align: center;"><?php  echo $productos['stock']; ?></td>
+    <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
+    <td data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
     <td data-label="Costo Unitario">$<?php  echo $precio2 ?></td>
     <td data-label="Costo Unitario"><?php  echo $productos['campo']; ?></td>
     <td data-label="No. Vale"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>

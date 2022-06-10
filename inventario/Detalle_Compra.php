@@ -37,6 +37,62 @@ die();
     </style>
 </head>
 <body>
+            <style>  
+         section{
+            margin: 1%;
+            padding: 1%;
+            }
+            #buscar{
+            margin-bottom: 5%;
+            margin-left: 2.5%;
+            margin-top: 0.5%; 
+            background: rgb(5, 65, 114); 
+            color: #fff; margin-bottom: 2%; 
+            border: rgb(5, 65, 114);
+            }
+            #buscar:hover{
+            background: rgb(9, 100, 175);
+            } 
+            #buscar:active{
+            transform: translateY(5px);
+            } 
+            .a{
+                width: 25%;
+            }
+            @media (max-width: 952px){
+   section{
+        margin: -5%6%6%7%;
+        width: 97%;
+    }
+    #form{
+        margin: -15%6%6%1%;
+        padding: 2%;
+        width: 97%;
+    }
+    th{
+        width: 25%;
+    }
+    #p{
+        margin-top: 5%;
+        margin-left: 7%;
+    }#buscar{
+        width: 100%;
+        margin: auto;
+    }#buscar1{
+        width: 100%;
+        margin: auto;
+    }
+    #lo-que-vamos-a-copiar{
+        width: 120px;
+    }
+    #btn-agregar{
+        width: 100%;
+        margin-top: -7%;
+        margin-left: 10%;
+    }
+  }
+        </style>
+        <br><br><br>
       <?php 
        if(isset($_POST['detalle'])){
 
@@ -53,67 +109,66 @@ $tipo_usuario = $_SESSION['iduser'];
  while ($productos1 = mysqli_fetch_array($result)){
  $solicitud =$productos1['nSolicitud'] ?>
 
-    <div class="mx-4 p-3 " style="background-color: white; border-radius: 5px;">
-     <form id="form" method="POST" action="Plugin/pdf_compra.php" >
+    <div id="form"class=" p-3 " style="background-color: white; border-radius: 5px;">
+     <form  method="POST" action="Plugin/pdf_compra.php" >
         <div class="row">
-          <div class="col-6 col-sm-3" style="position: initial">
+          <div class="col-md-3" style="position: initial">
       
               <label style="font-weight: bold;">Solicitud No.</label>
               <input readonly class="form-control" type="text" value="<?php echo $productos1['nSolicitud'] ?>" name="sol_compra">
 
           </div>
 
-          <div class="col-6 col-sm-3" style="position: initial">
+          <div class="col-md-3" style="position: initial">
             <label style="font-weight: bold;">Dependencia Solicitante</label>
             <input readonly class="form-control"  type="text" value="<?php echo $productos1['dependencia'] ?>" name="dependencia">
           </div>
 
-        <div class="col-6 col-sm-3" style="position: initial">
+        <div class="col-md-3" style="position: initial">
             <label style="font-weight: bold;">Plazo y No. de Entregas</label>
             <input readonly class="form-control"  type="text" value="<?php echo $productos1['plazo'] ?>" name="plazo">
         </div>
 
-        <div class="col-6 col-sm-3" style="position: initial">
+        <div class="col-md-3" style="position: initial">
             <label style="font-weight: bold;">Unidad Técnica</label>
             <input readonly class="form-control"  type="text" value="<?php echo $productos1['unidad_tecnica'] ?>" name="unidad">
         </div>
 
-        <div class="col-6 col-sm-3" style="position: initial">
+        <div class="col-md-3" style="position: initial">
             <label style="font-weight: bold;">Suministro Solicitado</label>
             <input readonly class="form-control"  type="text" value="<?php echo $productos1['descripcion_solicitud'] ?>" name="suministro">
         </div>
 
-        <div class="col-6 col-sm-3" style="position: initial">
+        <div class="col-md-3" style="position: initial">
           <label style="font-weight: bold;">Encargado</label>
           <input readonly class="form-control"  type="text" value="<?php echo $productos1['usuario'] ?>" name="usuario">
         </div>
 
-          <div class="col-6 col-sm-3" style="position: initial">
+          <div class="col-md-3" style="position: initial">
             <label style="font-weight: bold;">Fecha</label>
               <input readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro'])) ?>" name="fech">
           </div>
-          <div class="col-6 col-sm-3" style="position: initial">
-              <label style="font-weight: bold;">Estado</label>
-              <br>
-              
-              <div class="input-group mb-3">
+ <div class="col-md-3" style="position: initial">
+            <label style="font-weight: bold;">Estado:</label>
+             <div style="position: initial;" class="input-group mb-3">
                  <label class="input-group-text" for="inputGroupSelect01">
-                    <svg class="bi" width="20" height="20" fill="currentColor">
+                    
+                    <?php if($productos1['estado']=='Comprado') { ?>
+                        <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#check-circle-fill"/>
-                </svg>
+                
+            <?php } ?>
                  </label>
-              <input id="inputGroupSelect01" <?php
-                if($productos1['estado']=='Comprado') {
-                     echo ' style="background-color:blueviolet ;width:100%; border-radius:5px;text-align:center; color: white;"';
-                }
-            ?> class="form-control" type="text" name="" value="<?php echo $productos1['estado'] ?>"><br>
-              <input readonly class="form-control" type="hidden" value="<?php echo $productos1['nSolicitud'] ?>" name="sol_compra">
-                </div>
+              <input  <?php if($productos1['estado']=='Comprado') {
+              echo ' style="background-color:blueviolet ;position: initial;width:70%; border-radius:5px;text-align:center; color: white;"'; }?> class="form-control" type="text" name="" readonly value="<?php echo $productos1['estado'] ?>"><br>
+
+          </div>
             </div>
         </div>
+              <input readonly class="form-control" type="hidden" value="<?php echo $productos1['nSolicitud'] ?>" name="sol_compra">
      
          <table class="table" style="margin-bottom:3%">
-            <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+            <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/pdf_compra.php">
                      
  <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['nSolicitud']?>" name="sol_compra">
@@ -123,7 +178,7 @@ $tipo_usuario = $_SESSION['iduser'];
                 <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['descripcion_solicitud']?>" name="suministro">
                 <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['usuario']?>" name="usuario">
                 <input readonly class="form-control"  type="hidden" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro'])) ?>" name="fech">
-<button type="submit" class="btn btn-outline-primary" name="aprobado">
+<button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -178,7 +233,7 @@ while ($productos = mysqli_fetch_array($result)){
     $result = mysqli_query($conn, $sql);
  while ($datos = mysqli_fetch_array($result)){ ?>
     <textarea style="display: none;" name="jus" ><?php echo $datos['justificacion'] ?></textarea> <?php } ?>
-<button type="submit" class="btn btn-outline-primary" name="pdf">
+<button style="position: initial;" type="submit" class="btn btn-outline-primary" name="pdf">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
