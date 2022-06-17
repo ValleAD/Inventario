@@ -30,6 +30,12 @@ die();
     form{
         margin: 0%;
     }
+    #div{
+        margin: 0%;
+        display: none;
+    } #n{
+        display: none;
+    }
     @media (max-width: 800px){
         body{
             background: black;
@@ -43,8 +49,9 @@ die();
         }
     }
 </style>
-               <font color="white"><h1 style="margin:5px; text-align: center;">Egresos de Productos</h1></font>
+<br><br><br><br>
     <section style="background: rgba(255, 255, 255, 0.9); margin: 2%;border-radius: 15px; padding: 1%";>
+               <h1 style="text-align: center;">Egresos de Productos</h1><br>
   <div style="position: initial;" class="row" style="position: relative; max-width: 100%;">
         <p id="x" class="mx-3" style="color: #000; font-weight: bold;">Mostrar Ingresos por:</p>
             <form method="POST" style="background:transparent;">
@@ -63,7 +70,7 @@ die();
             }} ?>
             </div>
 
-            <div class="col-md-12" style="position: initial;">
+            <div class="col-md-8" style="position: initial;">
             <select id="ssa" class="form-control" name="ingresos" id="ingresos" onchange="this.form.submit()">
                             <option>Seleccionar</option>
                             <option  value="bodega">Solicitud  de Bodega</option>
@@ -96,19 +103,18 @@ if(isset($_POST['ingresos'])){
     width: 100%;
   }
 </style>
-    <br>
     <h3 style="text-align: center;">Egresos de Bodega</h3>
+    <br><h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
 
-<table class="table  table-striped" id="example" style=" width: 100%">
             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
- <form method="POST" action="Plugin/reporte_egreso.php">
+ <form id="n" method="POST" action="Plugin/reporte_egreso.php">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="bodega">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
                 </button>
             </form>
-            <form method="POST" action="Plugin/pdf_egresos.php">
+            <form id="n" method="POST" action="Plugin/pdf_egresos.php">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="bodega">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
@@ -117,24 +123,31 @@ if(isset($_POST['ingresos'])){
             </form>
 
 </div>
+
+<table  class="table  table-striped" id="div" style=" width: 100%">
             <thead>
               <tr id="tr">
-                <th style="width: 10%">#</th>
-                <th  style="width: 15%">Departamento</th>
-                <th  style="width: 15%">Encargado</th>
-                <th  style="width: 10%">Codigo</th>
-                <th  style="width: 100%">Descripción Completa</th>
-                <th  style="width: 100%">U/M</th>
-                <th  style="width: 100%">Cantidad</th>
-                <th  style="width: 100%">Costo Unitario</th>
-                <th  style="width: 100%">Ingreso Por</th>
-                <th  style="width: 100%">Fecha Registro</th>
+                <th>#</th>
+                <th style="width: 10%;">Codigo</th>
+                <th style="width: 10%;">Departamento</th>
+                <th style="width: 10%;">Encargado</th>
+                <th style="width: 10%;">Descripción Completa</th>
+                <th style="width: 10%;">U/M</th>
+                <th style="width: 10%;">Cantidad</th>
+                <th style="width: 10%;">Costo Unitario</th>
+                <th style="width: 10%;">Ingreso Por</th>
+                <th style="width: 10%;">Fecha Registro</th>
+
               </tr>
 
               
-            </thead>
-
+     </thead>
+ </table>
+ <div id="div" style = " max-height: 442px;  overflow-y:scroll;">
+ <table class="table">
             <tbody>
+                        <tr>
+         <td  colspan="10" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
  <?php
 $sql = "SELECT * FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega";
     $result = mysqli_query($conn, $sql);
@@ -152,20 +165,28 @@ $n=0;
         }?>
 
 <style type="text/css">
+    #td{
+        display: none;
+    }
 
-
+   #div{
+    display: block;
+   }
+   #n{
+    display: block;
+   }
 </style>
     <tr id="tr">
         <td data-label="#"><?php echo $r ?></td>
-    <td data-label="Departamento"><?php  echo $productos['departamento']; ?></td>
+    <td data-label="Codigo"><?php  echo $productos['codigo']; ?></td>
+    <td data-label="Departamento" ><?php  echo $productos['departamento']; ?></td>
     <td data-label="Encargado" class="delete"><?php  echo $productos['usuario'],"<br> ","(",$u,")"; ?></td>
-      <td data-label="Código Producto"><?php  echo $productos['codigo']; ?></td>
-      <td data-label="Descripción"><?php  echo $productos['descripcion']; ?></td>
-      <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
-      <td data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
-      <td data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
-      <td data-label="Fuente de Ingreso"><?php  echo $productos['campo']; ?></td>
-      <td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
+    <td style="width: 80%;min-width: 100%;" data-label="Descripción Completa" style="text-align: left;"><?php  echo $productos['descripcion']; ?></td>
+    <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
+    <td data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
+    <td data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
+    <td data-label="Costo Unitario"><?php  echo $productos['campo']; ?></td>
+    <td data-label="No. Vale"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
       
 
     
@@ -175,7 +196,7 @@ $n=0;
 
             </tbody>
         </table>
-
+</div>
 
 <?php 
     }
@@ -196,17 +217,16 @@ $n=0;
   }
 </style><br>
 <h3 style="text-align: center; color: black;">Egresos Por Vale</h3>
-
-<table class="table  table-striped" id="example" style=" width: 100%">
+<h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form method="POST" action="Plugin/reporte_egreso.php">
+            <form id="n" method="POST" action="Plugin/reporte_egreso.php">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
                 </button>
             </form>
-            <form method="POST" action="Plugin/pdf_egresos.php">
+            <form id="n" method="POST" action="Plugin/pdf_egresos.php">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
@@ -215,25 +235,31 @@ $n=0;
             </form>
 
 </div>
+
+<table class="table table-responsive  table-striped" id="div" style=" width: 100%">
             <thead>
               <tr id="tr">
-                <th style="width:10%">#</th>
-                <th style="width: 15%;">No. Vale</th>
-                <th style="width: 15%;">Departamento Solicitante</th>
-                <th style="width: 15%;">Encargado</th>
-                <th style="width: 15%;">Código</th>
-                <th style="width: 100%;">Descripción Completa</th>
-                <th style="width: 15%;">U/M</th>
-                <th style="width: 15%;">Cantidad</th>
-                <th style="width: 100%;">Costo Unitario</th>
-                <th style="width: 100%;">Solictud de Salida</th>
-                <th style="width: 100%;text-align: center">Fecha</th>
+                <th style="width: 10%;">No. Vale</th>
+                <th style="width: 10%;">Codigo</th>
+                <th style="width: 10%;">Departamento</th>
+                <th style="width: 10%;">Encargado</th>
+                <th style="width: 10%;">Descripción Completa</th>
+                <th style="width: 10%;">U/M</th>
+                <th style="width: 10%;">Cantidad</th>
+                <th style="width: 10%;">Costo Unitario</th>
+                <th style="width: 10%;">Ingreso Por</th>
+                <th style="width: 10%;">Fecha Registro</th>
               </tr>
 
               
             </thead>
-
+     </thead>
+ </table>
+ <div id="div" style = " max-height: 442px;  overflow-y:scroll;">
+ <table class="table">
             <tbody>
+                        <tr>
+         <td  colspan="11" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
  <?php
     $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale ";
     $result = mysqli_query($conn, $sql);
@@ -263,23 +289,29 @@ $n=0;
    th{
        width: 100%;
    }
+      #div{
+    display: block;
+   }
+   #n{
+    display: block;
+   }
 </style>
     <tr id="tr">
-        <td data-label="#"><?php echo $r ?></td>
     <td data-label="No. Vale"><?php  echo $productos['numero_vale']; ?></td> 
-    <td data-label="Departamento" style="text-align: left;"><?php  echo $productos['departamento']; ?></td>
-    <td data-label="Encargado" class="delete"><?php  echo $productos['usuario'],"<br> ","(",$u,")"; ?></td>
     <td data-label="Codigo"><?php  echo $productos['codigo']; ?></td>
-    <td data-label="Descripción Completa" style="text-align: left;"><?php  echo $productos['descripcion']; ?></td>
+    <td data-label="Departamento" ><?php  echo $productos['departamento']; ?></td>
+    <td data-label="Encargado" class="delete"><?php  echo $productos['usuario'],"<br> ","(",$u,")"; ?></td>
+    <td style="width: 80%;min-width: 100%;" data-label="Descripción Completa" style="text-align: left;"><?php  echo $productos['descripcion']; ?></td>
     <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
     <td data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
     <td data-label="Costo Unitario">$<?php  echo $precio2 ?></td>
     <td data-label="Costo Unitario"><?php  echo $productos['campo']; ?></td>
     <td data-label="No. Vale"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
 <?php } ?>      
- 
+ </tr>
             </tbody>
         </table>
+    </div>
 <?php
     }
 }
@@ -305,20 +337,46 @@ if(isset($_POST['ingresos'])){
     width: 100%;
   }
 </style>
-    <br>
-    <h3color: black;">Egresos de Bodega</h3>
-
-<table class="table  table-striped" id="example" style=" width: 100%">
+    <h3>Egresos de Bodega</h3>
+    <br><h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
- <form method="POST" action="Plugin/reporte_egreso.php">
-                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="bodega">
+ <form id="n" method="POST" action="Plugin/reporte_egreso.php">
+                    <?php $sql = "SELECT * FROM tb_bodega ";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        $idusuario = $productos['codBodega'];
+        
+    } ?>    
+<?php $sql = "SELECT * FROM detalle_bodega WHERE odt_bodega='$idusuario' ";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        $idusuario = $productos['codigodetallebodega'];
+    } ?>
+                    <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="bodega1">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
                 </button>
             </form>
-            <form method="POST" action="Plugin/pdf_egresos.php">
-                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="bodega">
+            <form id="n" method="POST" action="Plugin/pdf_egresos.php">
+    <?php $sql = "SELECT * FROM tb_bodega ";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        $idusuario = $productos['codBodega'];
+        
+    } ?>    
+<?php $sql = "SELECT * FROM detalle_bodega WHERE odt_bodega='$idusuario' ";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        $idusuario = $productos['codigodetallebodega'];
+    } ?>
+                    <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="bodega1">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -326,23 +384,29 @@ if(isset($_POST['ingresos'])){
             </form>
 
 </div>
+
+<table  class="table  table-striped" id="div" style=" width: 100%">
             <thead>
               <tr id="tr">
-                <th style="width: 10%">#</th>
-                <th  style="width: 15%">Departamento</th>
-                <th  style="width: 15%">Encargado</th>
-                <th  style="width: 10%">Codigo</th>
-                <th  style="width: 100%">Descripción Completa</th>
-                <th  style="width: 100%">U/M</th>
-                <th  style="width: 100%">Cantidad</th>
-                <th  style="width: 100%">Costo Unitario</th>
-                <th  style="width: 100%">Ingreso Por</th>
-                <th  style="width: 100%">Fecha Registro</th>
+                <th>#</th>
+                <th style="width: 10%;">Codigo</th>
+                <th style="width: 10%;">Departamento</th>
+                <th style="width: 10%;">Encargado</th>
+                <th style="width: 10%;">Descripción Completa</th>
+                <th style="width: 10%;">U/M</th>
+                <th style="width: 10%;">Cantidad</th>
+                <th style="width: 10%;">Costo Unitario</th>
+                <th style="width: 10%;">Ingreso Por</th>
+                <th style="width: 10%;">Fecha Registro</th>
               </tr>
               
-            </thead>
-
+     </thead>
+ </table>
+ <div id="div" style = " max-height: 442px;  overflow-y:scroll;">
+ <table class="table">
             <tbody>
+                        <tr>
+         <td  colspan="10" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
  <?php
           $idusuario = $_SESSION['iduser'];
 
@@ -360,18 +424,24 @@ $n=0;
 #td{
     display: none;
 }
+   #div{
+    display: block;
+   }
+   #n{
+    display: block;
+   }
 </style>
     <tr id="tr">
         <td data-label="#"><?php echo $r ?></td>
-    <td data-label="Departamento"><?php  echo $productos['departamento']; ?></td>
-      <td data-label="Encargado"><?php  echo $productos['usuario']; ?></td>
-      <td data-label="Código Producto"><?php  echo $productos['codigo']; ?></td>
-      <td data-label="Descripción"><?php  echo $productos['descripcion']; ?></td>
-      <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
-      <td data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
-      <td data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
-      <td data-label="Fuente de Ingreso"><?php  echo $productos['campo']; ?></td>
-      <td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
+    <td data-label="Codigo"><?php  echo $productos['codigo']; ?></td>
+    <td data-label="Departamento" ><?php  echo $productos['departamento']; ?></td>
+    <td data-label="Encargado" class="delete"><?php  echo $productos['usuario'] ?></td>
+    <td style="width: 80%;min-width: 100%;" data-label="Descripción Completa" style="text-align: left;"><?php  echo $productos['descripcion']; ?></td>
+    <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
+    <td data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
+    <td data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
+    <td data-label="Costo Unitario"><?php  echo $productos['campo']; ?></td>
+    <td data-label="No. Vale"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
       
 
     
@@ -381,7 +451,7 @@ $n=0;
 
             </tbody>
         </table>
-
+</div>
 
 <?php 
     }
@@ -401,19 +471,47 @@ $n=0;
     width: 100%;
   }
 </style><br>
-<h3color: black;">Egresos Por Vale</h3>
+<h3>Egresos Por Vale</h3>
+<h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
 
-<table class="table  table-striped" id="example" style=" width: 100%">
             <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form method="POST" action="Plugin/reporte_egreso.php">
-                <button type="submit" class="btn btn-outline-primary" name="vale">
+            <form  id="n" method="POST" action="Plugin/reporte_egreso.php">
+                    <?php $sql = "SELECT * FROM tb_vale ";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        $idusuario = $productos['codVale'];
+        
+    } ?>    
+<?php $sql = "SELECT * FROM detalle_vale WHERE numero_vale='$idusuario' ";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        $idusuario = $productos['codigodetallevale'];
+    } ?>
+                    <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
+                <button type="submit" class="btn btn-outline-primary" name="vale1">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
                 </button>
             </form>
-            <form method="POST" action="Plugin/pdf_egresos.php">
-                <button type="submit" class="btn btn-outline-primary" name="vale">
+            <form id="n"  method="POST" action="Plugin/pdf_egresos.php">
+                                    <?php $sql = "SELECT * FROM tb_vale ";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        $idusuario = $productos['codVale'];
+        
+    } ?>    
+<?php $sql = "SELECT * FROM detalle_vale WHERE numero_vale='$idusuario' ";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        $idusuario = $productos['codigodetallevale'];
+    } ?>
+                    <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
+                <button type="submit" class="btn btn-outline-primary" name="vale1">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -421,25 +519,29 @@ $n=0;
             </form>
 
 </div>
+<table class="table  table-striped" id="div" style=" width: 100%">
             <thead>
               <tr id="tr">
-                <th style="width:10%">#</th>
-                <th style="width: 15%;">No. Vale</th>
-                <th style="width: 15%;">Departamento Solicitante</th>
-                <th style="width: 15%;">Encargado</th>
-                <th style="width: 15%;">Código</th>
-                <th style="width: 100%;">Descripción Completa</th>
-                <th style="width: 15%;">U/M</th>
-                <th style="width: 15%;">Cantidad</th>
-                <th style="width: 100%;">Costo Unitario</th>
-                <th style="width: 100%;">Solictud de Salida</th>
-                <th style="width: 100%;text-align: center">Fecha</th>
+                <th style="width: 10%;">No. Vale</th>
+                <th style="width: 10%;">Codigo</th>
+                <th style="width: 10%;">Departamento</th>
+                <th style="width: 10%;">Encargado</th>
+                <th style="width: 10%;">Descripción Completa</th>
+                <th style="width: 10%;">U/M</th>
+                <th style="width: 10%;">Cantidad</th>
+                <th style="width: 10%;">Costo Unitario</th>
+                <th style="width: 10%;">Ingreso Por</th>
+                <th style="width: 10%;">Fecha Registro</th>
               </tr>
 
               
-            </thead>
-
+     </thead>
+ </table>
+ <div id="div" style = " max-height: 442px;  overflow-y:scroll;">
+ <table class="table">
             <tbody>
+                        <tr>
+         <td  colspan="11" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
  <?php
           $idusuario = $_SESSION['iduser'];
 
@@ -462,23 +564,30 @@ $n=0;
    th{
        width: 100%;
    }
+   #div{
+    display: block;
+   }
+   #n{
+    display: block;
+   }
 </style>
     <tr id="tr">
-        <td data-label="#"><?php echo $r ?></td>
     <td data-label="No. Vale"><?php  echo $productos['numero_vale']; ?></td> 
-    <td data-label="Departamento" style="text-align: left;"><?php  echo $productos['departamento']; ?></td>
-    <td data-label="Encargado"><?php  echo $productos['usuario']; ?></td>
     <td data-label="Codigo"><?php  echo $productos['codigo']; ?></td>
-    <td data-label="Descripción Completa" style="text-align: left;"><?php  echo $productos['descripcion']; ?></td>
+    <td data-label="Departamento" ><?php  echo $productos['departamento']; ?></td>
+    <td data-label="Encargado" class="delete"><?php  echo $productos['usuario'] ?></td>
+    <td style="width: 80%;min-width: 100%;" data-label="Descripción Completa" style="text-align: left;"><?php  echo $productos['descripcion']; ?></td>
     <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
     <td data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
     <td data-label="Costo Unitario">$<?php  echo $precio2 ?></td>
     <td data-label="Costo Unitario"><?php  echo $productos['campo']; ?></td>
     <td data-label="No. Vale"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
+</tr>
 <?php } ?>      
  
             </tbody>
         </table>
+    </div>
 <?php
     }
 }

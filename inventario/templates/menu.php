@@ -27,18 +27,17 @@ background-size: 100% 100%,100%;
     background-attachment: fixed;">
 
     <style type="text/css">
+
          @media (max-width: 800px){
+        }
         body{
             background: black;
         }
     }
         #a{
             padding: 20px 10px;
-            transition: 1s;
         }
-        #b{
-            transition: 1s;
-        }
+
         #info{
             font-size: 12px;
             height: 97%;
@@ -53,8 +52,6 @@ background-size: 100% 100%,100%;
  #b:hover{
    text-decoration: none;
    color:lawngreen;
-   transform: scale(1.1);
-   transition: 2s;
 }
 .children{
 background:burlywood;
@@ -80,7 +77,7 @@ background:burlywood;
     <header>
         <div class="menu_bar">
             <a style="font-size: 2rem;" href="#" class="bt-menu"><span>
-                <svg class="bi" width="70" height="70" fill="currentColor">
+                <svg class="bi w" width="50" height="50" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#list"/>
                 </svg>
             </span><p>Menú</p></a>
@@ -91,7 +88,7 @@ background:burlywood;
                 <li><a id="a" href="home.php"><span>
                     <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#house"/>
-                        </svg></span>Inicio</a></li>
+                        </svg></span> Inicio</a></li>
                 
                     <li class="submenu">
                     <a id="a" href="#">Articulos 
@@ -186,7 +183,9 @@ background:burlywood;
     $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
     while ($consulta =mysqli_fetch_array($data)) {
 ?>  
-    <button id="button" class="btn" data-toggle="modal" data-target="#info" style=" background:transparent;float: right;margin-top: 1%;"  >
+
+<li class="submenu" >
+    <div id="button" style="padding: 10px;" class="btn c" data-toggle="modal" data-target="#info" style=" background:transparent;text-align: center;"  >
         <svg class="bi" width="20" height="20" fill="currentColor">
         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#person-circle"/>
                         </svg>
@@ -194,7 +193,9 @@ background:burlywood;
                         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
                         </svg>
-</button>
+</div>
+</li>
+
                 </ul>
         </nav>
     </header>
@@ -221,29 +222,31 @@ background:burlywood;
                         </svg>
     </div>
     <div style="background: transparent;"class="col-md-8">
-      <div  class="card-body">
-       <table id="table">
-                               
-                <tr>
-                    
-                    <p style="color: #fff">Usuario: <?php  echo $consulta['username'];?></p>
-                </tr>
-                <tr>
-                    <p style="color: #fff">Nombre: <?php echo $consulta['firstname'];?></p>
-                </tr>
-                <tr>
-                    <p style="color: #fff">Apellidos: <?php echo $consulta['lastname'];?></p>
-                </tr>
-                <tr>
-                    
-                    <p style="color: #fff">Establecimiento:<br> <?php echo $consulta['Establecimiento'];?></p>
-                </tr>
-                <tr>
-                    
-                    <p style="color: #fff">Unidad: <?php echo $consulta['unidad'];?></p>
-                </tr>
-
-               </table>
+      <div  class="card-body" style="justify-items: center;">
+        <div class="row">
+            <div class="col-md-12">
+                <p style="color: #fff"><b>Usuario:</b> <?php  echo $consulta['username'];?></p>
+            </div>
+        </div>
+            <div class="row">
+        <div class="col-md-12">
+               <p style="color: #fff"><b>Nombre:</b> <?php echo $consulta['firstname'];?></p>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col-md-6">
+            <p style="color: #fff"><b>Apellidos:</b> <?php echo $consulta['lastname'];?></p>
+            </div>
+            <div class="col-md-12">
+            <p style="color: #fff"><b>Establecimiento:</b> <?php echo $consulta['Establecimiento'];?></p> 
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                    <p style="color: #fff"><b>Unidad ó Departamento:</b> <?php echo $consulta['unidad'];?></p>
+            </div>
+        </div>     
       </div>
     </div>
   </div>
@@ -267,7 +270,7 @@ background:burlywood;
                         </svg>
                 </button>
 
-        <a href="log/logout.php" type="submit" id="Update" class="btn btn-danger" onclick="return confirmaion()">Cerrar Sesión 
+        <a href="log/logout.php" type="submit" id="Update" class="btn btn-danger" onclick="return confirmaion1()">Cerrar Sesión 
         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#box-arrow-right"/>
                         </svg></a>
@@ -309,6 +312,7 @@ background:burlywood;
         </div>
     </div>
 </div>
+</div>
          <?php } ?>
 
        
@@ -342,7 +346,7 @@ function main () {
 }
 </script>
 <script type="text/javascript">
-function confirmaion(e) {
+function confirmaion1(e) {
     if (confirm("¿Estas seguro que deseas Cerrar Session ")) {
         return true;
     } else {

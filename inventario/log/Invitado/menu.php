@@ -78,7 +78,6 @@ background-size: 100% 100%,100%;
  #b:hover{
    text-decoration: none;
    color:lawngreen;
-   transform: scale(1.1);
    transition: 2s;
 }
 .children{

@@ -33,6 +33,10 @@ die();
     #form{
         margin: 1%;
     }
+    #div{
+        margin: 0%;
+    }
+    }
     h2,h3{
         color: white;
         text-shadow: 1px 1px 5px black;
@@ -45,10 +49,6 @@ die();
        section{
         margin: -15%6%1%1%;
         width: 98%;
-    }
-    #div{
-        padding: 2%;
-    }
 </style>
 <br><br><br>
 <?php      
@@ -104,10 +104,10 @@ $result = mysqli_query($conn, $sql);
             <h2 class="text-center " >Dependencias Del Departamento</h2><br>
     <section style="margin:1%;padding: 1%; border-radius: 5px; background: white; ">
 
-<?php if($tipo_usuario == 1) { ?>
-    <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="float: left;margin-top: 1%; color: white;margin-bottom: 1%;">Nueva Dependencia</button>
     <a href="categorias.php" class="btn btn-info" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; ">Categorias</a>
     <a href="departamentos.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Departamentos</a>
+<?php if($tipo_usuario == 1) { ?>
+    <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="float: left;margin-top: 1%; color: white;margin-bottom: 1%;">Nueva Dependencia</button>
 <!-- Delete -->
 <div class="modal fade" id="Usuarios" style="background: rgba(0, 0, 0, 0.3);" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">
@@ -136,7 +136,7 @@ $result = mysqli_query($conn, $sql);
            </form> 
         </div>
     </div>
-</div><?php } ?><br><br><br>
+</div><?php } ?>
  <div style="position: initial;" class="btn-group mb-3  mx-2" role="group" aria-label="Basic outlined example">
          <form method="POST" action="Plugin/U_D_D_C.php" target="_blank">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="dependencia">
@@ -153,20 +153,31 @@ $result = mysqli_query($conn, $sql);
              </button>
          </form>
 </div>
-          <table class="table table-responsive table-striped" id="example" style=" width: 100%">
+          <table class="table   table-striped" id="div" style=" width: 100%">
                    <thead>
              <tr id="tr">
-                <th>#</th>
-                <th  style=" width: 20%">Dependencia</th>
-                <th  style=" width: 100%">Habilitado</th><?php if($tipo_usuario == 1) { ?>
-                <th  style=" width: 100%"> Cambiar Habilitado</th>
-                <th  style=" width: 100%">Eliminar</th><?php } ?>
+                <?php if($tipo_usuario == 1) { ?>
+                <th style="width: 10%;">#</th>
+                <th  style=" width: 25%">Dependencia</th>
+                <th  style=" width: 50%">Habilitado</th>
+                <th  style=" width: 10%"> Cambiar Habilitado</th>
+                <th  style=" width: 10%">Eliminar</th><?php } ?>
+                <?php if($tipo_usuario == 2) { ?>
+                <th style="width: 10%;">#</th>
+                <th  style=" width: 30%">Dependencia</th>
+                <th  style="width: 60%">Habilitado</th>
+                <th></th>
+                <?php } ?>
                 
             </tr>
            
      </thead>
+ </table>
+ <div id="div" style = " max-height: 442px;  overflow-y:scroll;">
+    <table class="table">
             <tbody>
-            
+             <tr>
+         <td  colspan="7" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
     <?php
     include 'Model/conexion.php';
 
@@ -183,10 +194,10 @@ $result = mysqli_query($conn, $sql);
    
 </style>
         <tr>
-            <td data-label="#"><?php echo $r ?></td>
-            <td data-label="Dependencia"><?php  echo $solicitudes['dependencia']; ?></td>
+            <td style="width: 10%;min-width: 100%;" data-label="#"><?php echo $r ?></td>
+            <td style="width: 30%;min-width: 100%;" data-label="Dependencia"><?php  echo $solicitudes['dependencia']; ?></td>
 
-            <td data-label="Habilitado" align="center">
+            <td style="width: 60%;min-width: 100%;" data-label="Habilitado" align="center">
             <input  <?php
                 if($solicitudes['Habilitado']=='Si') {
                     echo ' style="background-color:blueviolet ;width:33%; border-radius:100px;text-align:center; color: white;margin-top: .2%"';
@@ -197,9 +208,8 @@ $result = mysqli_query($conn, $sql);
                     $c='Dependencia no Disponible';
                 }
             ?>
- type="text" class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="<?=   $c ?>"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $c ?>"></td>
-</td><?php if($tipo_usuario == 1) { ?>
-            <td data-label="Editar">
+ type="text" class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="<?=   $c ?>"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $c ?>"></td><?php if($tipo_usuario == 1) { ?>
+            <td style="width: 10%;" data-label="Editar">
                  <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="dependencias.php">             
           <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">             
           <button name='editar' class='btn btn-info btn-sm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
@@ -209,7 +219,7 @@ $result = mysqli_query($conn, $sql);
 <!--**********************************************************************************************************************************************************************************-->
   <!--Botones para actualizar y eliminar-->
 
-            <td  data-label="Eliminar" >
+            <td style="width: 10%;min-width: 100%;"  data-label="Eliminar" >
                <form action="Controller/Delete-dependencia.php" method="POST" style="background:transparent;">
                     <input type="hidden" name="id" value="<?php  echo $solicitudes['id']; ?>">
                     <input type="hidden" name="Habilitado" value="<?php  echo $solicitudes['Habilitado']; ?>">
@@ -226,7 +236,7 @@ $result = mysqli_query($conn, $sql);
  <?php } ?> 
            </tbody>
         </table>
-
+</div>
   </section>
         <script type="text/javascript">
 function confirmaion(e) {

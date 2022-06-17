@@ -29,7 +29,9 @@ die();
     #form{
         margin: 2%;
     }
-
+    #div{
+        margin: 0%;
+    }
     section{
         padding: 1%;
     }
@@ -37,9 +39,6 @@ die();
    #form{
         margin: -15%6%1%1%;
         width: 98%;
-    }
-    #div{
-        padding: 2%;
     }
 </style>
 <br><br><br>
@@ -96,12 +95,12 @@ $result = mysqli_query($conn, $sql);
 ?><br>
         <h2 class="text-center ;" style="color:black;">Categorias</h2>
     <section style="margin:1%;background: rgba(255, 255, 255, 0.9);border-radius: 15px; position: initial; ">
+    <a href="dependencias.php" class="btn btn-success" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Dependencias</a>
+    <a href="departamentos.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Departamentos</a>
 <?php if($tipo_usuario == 1) { ?>
     <div id="div">
     <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="float: left;margin-top: 1%; color: white;margin-bottom: 1%;">Nueva Categoria</button>
 
-    <a href="dependencias.php" class="btn btn-success" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Dependencias</a>
-    <a href="departamentos.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Departamentos</a>
      </div>
 <!-- Delete -->
 <div class="modal fade" id="Usuarios" style="background: rgba(0, 0, 0, 0.3);" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
@@ -131,7 +130,7 @@ $result = mysqli_query($conn, $sql);
            </form> 
         </div>
     </div>
-</div><?php } ?> <br><br><br>
+</div><?php } ?> 
 </div>
 
  <div style="position: initial;" class="btn-group mb-3  mx-2" role="group" aria-label="Basic outlined example">
@@ -151,20 +150,24 @@ $result = mysqli_query($conn, $sql);
          </form>
 </div>
 
-         <table class="table  table-striped" id="example" style=" width: 100%">
+         <table class="table  table-striped" id="div" style=" width: 100%">
                   
         <thead>
               <tr id="tr">
-                <th style=" width: 7%">#</th>
-                <th style=" width: 12%">Categoria</th>
-                <th style=" width: 30%">Habilitado</th><?php if($tipo_usuario == 1) { ?>
-                <th style=" width: 7%">Cambiar Habilitado</strong></th>
-                <th style=" width: 7%">Eliminar</th><?php } ?>
+                <th style="width: 10%;">#</th>
+                <th>Categoria</th>
+                <th style="width: 60%;">Habilitado</th><?php if($tipo_usuario == 1) { ?>
+                <th>Cambiar Habilitado</strong></th>
+                <th>Eliminar</th><?php } ?>
                 
             </tr>
      </thead>
+ </table>
+ <div id="div" style = " max-height: 442px;  overflow-y:scroll;">
+ <table class="table">
             <tbody>
-            
+             <tr>
+         <td  colspan="7" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
     <?php
     include 'Model/conexion.php';
     $sql = "SELECT * FROM selects_categoria ";
@@ -181,10 +184,10 @@ $result = mysqli_query($conn, $sql);
    
 </style>
         <tr>
-            <td data-label="N°"><?php echo $r ?></td>
-            <td data-label="Categoria"><?php  echo $solicitudes['categoria']; ?></td>
+            <td style="width: 10%;min-width: 100%;" data-label="N°"><?php echo $r ?></td>
+            <td style="width: 20%;min-width: 100%;" data-label="Categoria"><?php  echo $solicitudes['categoria']; ?></td>
 
- <td data-label="Habilitado">
+ <td style="width: 50%;min-width: 100%;" data-label="Habilitado">
             <input id="b"  <?php
                 if($solicitudes['Habilitado']=='Si') {
                     echo ' style="background-color:blueviolet ;width:33%; border-radius:100px;text-align:center; color: white;margin-top: .2%"';
@@ -218,14 +221,14 @@ $result = mysqli_query($conn, $sql);
                     }?>
                 </form>
                 
-            </td></td><?php } ?>
+            </td><?php } ?>
         </tr>
       
 
  <?php } ?> 
            </tbody>
         </table>
-
+</div>
 </section>
     
         <script type="text/javascript">

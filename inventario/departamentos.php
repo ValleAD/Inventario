@@ -1,4 +1,3 @@
- 
 <?php
 session_start();
  if (!isset($_SESSION['signin'])>0) {
@@ -29,6 +28,10 @@ die();
         padding: 1%;
     }
 
+    
+    #div{
+        margin: 0%;
+    }
  @media (max-width: 952px){
    #form{
         margin: -15%6%1%1%;
@@ -37,9 +40,6 @@ die();
        section{
         margin: -15%6%1%1%;
         width: 98%;
-    }
-    #div{
-        padding: 2%;
     }
 </style>
 <br><br><br>
@@ -96,10 +96,10 @@ $result = mysqli_query($conn, $sql);
         <h2 class="text-center " >Departamentos del Sistema</h2><br>
     <section style="margin:1%;padding: 1%; border-radius: 5px; background: white; ">
 
-<?php if($tipo_usuario == 1) { ?>
-    <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="float: left;margin-top: 1%; color: white;margin-bottom: 1%;">Nuevo Departamento</button>
     <a href="categorias.php" class="btn btn-info" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; ">Categorias</a> 
     <a href="dependencias.php" class="btn btn-success" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Dependencias</a>
+<?php if($tipo_usuario == 1) { ?>
+    <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="float: left;margin-top: 1%; color: white;margin-bottom: 1%;">Nuevo Departamento</button>
 <!-- Delete -->
 <div class="modal fade" id="Usuarios" style="background: rgba(0, 0, 0, 0.3);" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">
@@ -128,7 +128,7 @@ $result = mysqli_query($conn, $sql);
         </div>
     </div>
 </div><?php } ?><br><br><br>
- <div style="position: initial;" class="btn-group mb-3  mx-2" role="group" aria-label="Basic outlined example">
+ <div id="aq" style="position: initial;" class="btn-group mb-3  mx-2" role="group" aria-label="Basic outlined example">
          <form method="POST" action="Plugin/U_D_D_C.php" target="_blank">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="departamento">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -144,20 +144,25 @@ $result = mysqli_query($conn, $sql);
              </button>
          </form>
 </div>
-  <table class="table table-striped" id="example" style=" width: 100%">
+  <table class="table table-striped" id="div" style=" width: 100%">
                   
         <thead>
              <tr id="tr">
-                <th style=" width: 10%">#</th>
-                <th  style=" width: 50%">Departamentos</th>
-                <th  style=" width: 55%"class=" text-center">Habilitado</th><?php if($tipo_usuario == 1) { ?>
-                <th  style=" width: 10%"class=" text-center"> Cambiar Habilitado</th>
-                <th  style=" width: 10%;text-align:center;">Eliminar</th><?php } ?>
+                <th style=" width: 30%">#</th>
+                <th  style=" width: 40%">Departamentos</th>
+                <th  style=" width: 40%">Habilitado</th><?php if($tipo_usuario == 1) { ?>
+                <th  style=" width: 30%"> Cambiar Habilitado</th>
+                <th  style=" width: 30%;">Eliminar</th><?php } ?>
                 
             </tr>
       
      </thead>
+ </table>
+ <div id="div" style = " max-height: 442px;  overflow-y:scroll;">
+ <table class="table">
             <tbody>
+         <tr>
+         <td  colspan="5" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
             
     <?php
     include 'Model/conexion.php';
@@ -169,12 +174,12 @@ $result = mysqli_query($conn, $sql);
         $n++;
         $r=$n+0;
         ?>
-
+        <style>#td{display: none;}</style>
         <tr>
             <td><?php echo $r ?></td>
-            <td data-label="Departamento" style="text-align: left;"><?php  echo $solicitudes['departamento']; ?></td>
+            <td data-label="Departamento" ><?php  echo $solicitudes['departamento']; ?></td>
 
-            <td align="center">
+            <td data-label="Habilitado">
             <input <?php
                 if($solicitudes['Habilitado']=='Si') {
                     echo ' style="background-color:blueviolet ;width:43%; border-radius:100px;text-align:center; color: white;margin-top: .2%"';
@@ -185,8 +190,7 @@ $result = mysqli_query($conn, $sql);
                     $c='Departamento no Disponible';
                 }
             ?>
- type="text" class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="<?=   $c ?>"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $c ?>"></td>
-</td><?php if($tipo_usuario == 1) { ?>
+ type="text" class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="<?=   $c ?>"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $c ?>"></td><?php if($tipo_usuario == 1) { ?>
             <td>
                  <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="departamentos.php">             
           <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">             
@@ -196,7 +200,7 @@ $result = mysqli_query($conn, $sql);
 
 <!--**********************************************************************************************************************************************************************************-->
   <!--Botones para actualizar y eliminar-->
-
+</td>
             <td>
                <form action="Controller/Delete-departamentos.php" method="POST">
                     <input type="hidden" name="id" value="<?php  echo $solicitudes['id']; ?>">
@@ -207,14 +211,14 @@ $result = mysqli_query($conn, $sql);
                         echo '<button style="cursor: not-allowed;" disabled  onclick="return confirmaion()" name="eliminar_dependencias" class="btn btn-danger btn-sm" type="submit">ELiminar</button>';
                     }?>
                 </form>
-            </td></td><?php } ?>
+            </td><?php } ?>
         </tr>
       
 
  <?php } ?> 
            </tbody>
         </table>
-
+</div>
   </section>
         <script type="text/javascript">
 function confirmaion(e) {

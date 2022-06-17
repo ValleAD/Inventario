@@ -35,6 +35,10 @@ die();
           background: whitesmoke;
           border-radius: 15px;
             margin: 1%;
+            padding: 1%;
+            }
+            form{
+                background: transparent;
             }
             @media (max-width: 800px){
    #section{
@@ -89,7 +93,7 @@ $final = 0;
       
         <br>
           
-        <table class="table" style="margin-bottom:3%">
+
              <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
 
             <form method="POST" action="Plugin/pdf_circulante.php">
@@ -139,19 +143,23 @@ while ($productos = mysqli_fetch_array($result)){
             </form>
 
 </div>
+        <table class="table" >
             <thead>
               <tr id="tr">
                 <th>Codigo</th>
-                <th style="width: 35%;">Descripción del Artículo</th>
+                <th >Descripción del Artículo</th>
                 <th>Unidad de Medida</th>
                 <th>Cantidad Solicitada</th>
-                <th style="width: 30%;">Cantidad depachada</th>
+                <th >Cantidad depachada</th>
                 <th>Costo unitario</th>
                 <th>Total</th>
               </tr>
-                <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
            </thead>
+       </table>
+       <div id="div" style = "max-height: 442px; overflow-y:scroll;">
+        <table class="table">
             <tbody>
+                <td id="td" colspan="8"><h4>No se encontraron resultados 😥</h4></td>
 <?php 
 $num_circulante = $datos_sol['codCirculante'];
 }
@@ -197,14 +205,16 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Total"><?php echo $total2 ?></td>
       </tr>
 <?php } ?>
-             <tfoot>
-          <th colspan="5"></th>
-            <th >SubTotal</th>
-            <td style=" color: red; font-weight: bold;" data-label="Subtotal"><?php echo $final2?></td>
-        </tfoot>
-         </tbody>
-        </table>
-
+</tbody>
+</table>
+</div>
+  <table class="table">
+            <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
+        <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
+        <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final2 ?></td>
+    </tfoot>
+        </tbody>
+    </table>
 </form>
 </section>
       ';

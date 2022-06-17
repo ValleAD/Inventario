@@ -20,53 +20,67 @@ die();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
-    <style>
+
+    <title>Solicitudes De Vale</title>
+</head>
+<body>
+        <style>
+            #div{
+                margin: 0%;
+                display: none;
+            }
     h1 {
   color: white;
   text-shadow: 1px 1px 5px black;
 }
-
+#sass{
+    display: none;
+}
 
     </style>
-    <title>Solicitudes De Vale</title>
-</head>
-<body>
     <br><br><br>
     <center><h1 style="margin-top:5px">Solicitudes Vale</h1></center><br>
+     <div  class="mx-3 p-2 mb-5" style="background-color: white; border-radius:5px; ">
+        <h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
           <?php if ($tipo_usuario==1) {?>  
-     <div class="mx-3 p-2 mb-5" style="background-color: white; border-radius:5px; ">
      
-     
-        <table class="table table-responsive"  style="width:100%;">
-    <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
-         <form id="w"  method="POST" class="mx-1" action="Plugin/soli_vale.php" target="_blank">
-             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
+
+    <div  class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
+         <form id="sass" method="POST" class="mx-1" action="Plugin/soli_vale.php" target="_blank">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">    
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
-         <form id="w" method="POST" action="Plugin/pdf_soli_vale.php" target="_blank">
+         <form id="sass" method="POST" action="Plugin/pdf_soli_vale.php" target="_blank" class="mx-1">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>
- </div>
+ </div>     
+ <table class="table" id="div" style="width: 100%;">
             <thead>
               <tr id="tr">
-                <th>#</th>
-                <th style="width:20%" ><strong>Código de Vale</strong></th>
-                <th style="width:40%"><strong>Departamento Solicitante</strong></th>
-                <th style="width:10%"><strong>Encargado</strong></th>
-                <th style="width:15%"><strong>Estado</strong></th>
-                <th style="width:20%;"><strong>Fecha</strong></th>
-                <th style="width:10%"><strong>Detalles</strong></th> 
+                <th style="width: 7%;">#</th>
+                <th style="width: 10%;"><strong>Código de Vale</strong></th>
+                <th style="width: 20%"><strong>Departamento Solicitante</strong></th>
+                <th style="width: 20%;"><strong>Encargado</strong></th>
+                <th style="width: 15%"><strong>Fecha</strong></th>
+                <th style="width: 14%;"><strong>Estado</strong></th>
+                <th style="width: 20%;"><strong>Detalles</strong></th> 
             </tr>
             
      </thead>
+ </table>
+
+<div id="div" style = " max-height: 442px;  overflow-y:scroll; ">
+ <table class="table">
         <tbody>     
+
+
     <?php
     include 'Model/conexion.php';
 
@@ -88,17 +102,25 @@ die();
         }
         ?>
         <style type="text/css">
-            #w{
+            #sass{
+                display: block;
+            }
+
+            #td{
                 display: none;
+            }
+            #div{
+                display: block;
             }
         </style>
         <tr>
-            <td><?php echo $r ?></td>
-            <td data-label="Código" class="delete"><?php  echo $solicitudes['codVale']; ?></td>
-            <td data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
+            <td style="width: 10%;min-width: 100%;"><?php echo $r ?></td>
+            <td style="width: 10%;min-width: 100%;" data-label="Código" class="delete"><?php  echo $solicitudes['codVale']; ?></td>
+            <td style="width: 30%;min-width: 100%;" data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
 
-             <td data-label="Encargado" class="delete"><?php  echo $solicitudes['usuario'],"<br> ","(",$u,")"; ?></td>
-            <td data-label="Departamento Solicitante" class="delete"><input readonly <?php
+             <td style="width: 30%;min-width: 100%;" data-label="Encargado" class="delete"><?php  echo $solicitudes['usuario'],"<br> ","(",$u,")"; ?></td>
+            <td style="width: 20%;min-width: 100%;" data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])); ?></td>
+            <td style="width: 20%;min-width: 100%;" data-label="Departamento Solicitante" class="delete"><input readonly <?php
                 if($solicitudes['estado']=='Pendiente') {
                     echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
                 }else if($solicitudes['estado']=='Aprobado') {
@@ -107,8 +129,7 @@ die();
                      echo ' style="background-color:red ;width:100%; border-radius:5px;text-align:center; color: white;"';
                 }
             ?> class="form-control" type="text" name="" value="<?php echo $solicitudes['estado'] ?>"></td></td>
-            <td data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])); ?></td>
-            <td  data-label="Detalles">
+            <td style="width: 20%;min-width: 100%;"  data-label="Detalles">
                 <div style="position: initial;">  
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_vale.php">             
                 <input type='hidden' name='id' value="<?php  echo $solicitudes['codVale']; ?>">  
@@ -151,13 +172,18 @@ die();
            </tbody>
         </table>
     </div>
+</div>
+    </div>
     <?php } if ($tipo_usuario==2) {?>
-    <div class="mx-3 p-2 mb-5" style="background-color: white; border-radius:5px;">
+        <style>
+            #ssas{
+                display: none;
+            }
+        </style>
 
-     
-        <table class="table table-responsive" style="width:100%">
-             <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
-         <form id="w"  method="POST" class="mx-1" action="Plugin/soli_vale.php" target="_blank">
+      
+             <div   class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
+         <form id="ssas"  method="POST" class="mx-1" action="Plugin/soli_vale.php" target="_blank">
              <?php $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     $n=0;
@@ -171,7 +197,7 @@ die();
                 </svg>
              </button>
          </form>
-         <form id="w" method="POST" action="Plugin/pdf_soli_vale.php" target="_blank">
+         <form id="ssas"  class="mx-1"  method="POST" action="Plugin/pdf_soli_vale.php" target="_blank">
              <?php $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     $n=0;
@@ -186,20 +212,26 @@ die();
              </button>
          </form>
  </div>
-
+        <table class="table" id="div">
             <thead>
               <tr id="tr">
-                <th>#</th>
-                <th style="width:20%" ><strong>Código de Vale</strong></th>
-                <th style="width:20%"><strong>Departamento Solicitante</strong></th>
-                <th style="width:20%"><strong>Encargado</strong></th>
-                <th style="width:15%"><strong>Estado</strong></th>
-                <th style="width:20%;"><strong>Fecha</strong></th>
-                <th style="width:10%"><strong>Detalles</strong></th> 
+                <th style="width: 7%;">#</th>
+                <th style="width: 10%;"><strong>Código de Vale</strong></th>
+                <th style="width: 20%"><strong>Departamento Solicitante</strong></th>
+                <th style="width: 20%;"><strong>Encargado</strong></th>
+                <th style="width: 15%"><strong>Fecha</strong></th>
+                <th style="width: 14%;"><strong>Estado</strong></th>
+                <th style="width: 20%;"><strong>Detalles</strong></th>  
             </tr>
             
      </thead>
+ </table>
+<div id="div" style = " max-height: 442px; overflow-y:scroll;">
+    <table class="table">
         <tbody>     
+            <tr id="td">
+                <td  colspan="7" id="td"><h4 align="center">No se encontraron ningun  resultados 😥</h4></td>
+            </tr>
     <?php
     include 'Model/conexion.php';
     
@@ -211,14 +243,25 @@ die();
         $r=$n+0;
         
         ?>
-        
+        <style>
+            #td{
+                display: none;
+            }
+            #ssas{
+                display: block;
+            }
+            #div{
+                display: block;
+            }
+        </style>
         <tr>
-            <td><?php echo $r ?></td>
-            <td data-label="Código" class="delete"><?php  echo $solicitudes['codVale']; ?></td>
-            <td data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
+            <td style="width: 10%;min-width: 100%;"><?php echo $r ?></td>
+            <td style="width: 10%;min-width: 100%;" data-label="Código" class="delete"><?php  echo $solicitudes['codVale']; ?></td>
+            <td style="width: 30%;min-width: 100%;" data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
 
-            <td data-label="Encargado" class="delete"><?php  echo $solicitudes['usuario']; ?></td>
-            <td data-label="Departamento Solicitante" class="delete"><input readonly <?php
+             <td style="width: 30%;min-width: 100%;" data-label="Encargado" class="delete"><?php  echo $solicitudes['usuario'] ?></td>
+            <td style="width: 20%;min-width: 100%;" data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])); ?></td>
+            <td style="width: 20%;min-width: 100%;" data-label="Departamento Solicitante" class="delete"><input readonly <?php
                 if($solicitudes['estado']=='Pendiente') {
                     echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
                 }else if($solicitudes['estado']=='Aprobado') {
@@ -227,8 +270,7 @@ die();
                      echo ' style="background-color:red ;width:100%; border-radius:5px;text-align:center; color: white;"';
                 }
             ?> class="form-control" type="text" name="" value="<?php echo $solicitudes['estado'] ?>"></td></td>
-            <td data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])); ?></td>
-            <td  data-label="Detalles">
+            <td style="width: 20%;min-width: 100%;"  data-label="Detalles">
                 <div style="position: initial;">  
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_vale.php">             
                 <input type='hidden' name='id' value="<?php  echo $solicitudes['codVale']; ?>">  
@@ -264,20 +306,17 @@ die();
             </form> 
         </div>
             </td>
-        </tr>
-
     <?php }?>   
-           
+
+
+           </tr>
            </tbody>
         </table>
     </div>
 <?php } ?>
-       <!-- <a href="Plugin/pdf_soli_vale.php" class="btn btn-danger">Generar Solicidud Vale</a> -->
-  
+
 
 </section>
 
-    
-    </div>
 </body>
 </html>

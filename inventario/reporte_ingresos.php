@@ -39,6 +39,9 @@ die();
     form{
         margin: 0%;
     }
+    #div{
+        display: none;
+    }
     @media (max-width: 800px){
         #ssa{
             margin-left: 7%;
@@ -52,8 +55,9 @@ die();
 <title>Ingresos</title>
 </head>
 <body style="max-width: 100%;">
-               <font color="white"><h1 style="margin:5px; text-align: center;">Ingreso de Productos</h1></font>
+    <br><br><br><br>
     <section style="background: rgba(255, 255, 255, 0.9); margin: 2%;border-radius: 15px; padding: 1%";>
+               <h1 style=" text-align: center;">Ingreso de Productos</h1><br>
     <div style="position: initial;" class="row" style="position: relative; max-width: 100%;">
         <p id="x" class="mx-3" style="color: #000; font-weight: bold;">Mostrar Ingresos por:</p>
             <form method="POST" style="background:transparent;">
@@ -101,15 +105,14 @@ if(isset($_POST['ingresos'])){
 <br>
     <h3 style="text-align: center; color: black;">Ingresos de Solicitud Circulante</h3>
 
-<table class="table table-responsive table-striped" id="example"  style=" width: 100%">
     <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form method="POST" action="Plugin/reporte_ingreso.php">
+            <form id="div" method="POST" action="Plugin/reporte_ingreso.php">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                  </button>
             </form>
-            <form method="POST" action="Plugin/pdf_ingresos.php">
+            <form id="div" method="POST" action="Plugin/pdf_ingresos.php">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
@@ -117,20 +120,26 @@ if(isset($_POST['ingresos'])){
             </form>
 
 </div>
+<h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
+
+<div id="div" style = " max-height: 442px;  overflow-y:scroll;">
+<table class="table table-striped" id="example"  style=" width: 100%">
             <thead>
               <tr id="tr">
                 <th style="width: 10%">#</th>
                 <th  style="width: 10%">Codigo</th>
-                <th  style="width: 100%">Descripción Completa</th>
-                <th  style="width: 100%">U/M</th>
-                <th  style="width: 100%">Cantidad</th>
-                <th  style="width: 100%">Costo Unitario</th>
-                <th  style="width: 100%">Ingreso Por</th>
-                <th  style="width: 100%">Fecha Registro</th>
+                <th  style="width: 30%">Descripción Completa</th>
+                <th  style="width: 10%">U/M</th>
+                <th  style="width: 10%">Cantidad</th>
+                <th  style="width: 10%">Costo Unitario</th>
+                <th  style="width: 10%">Ingreso Por</th>
+                <th  style="width: 10%">Fecha Registro</th>
               </tr>
           </thead>
 
             <tbody>
+         <tr>
+         <td  colspan="8" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
  <?php
 
             $idusuario = $_SESSION['iduser'];
@@ -146,6 +155,9 @@ if(isset($_POST['ingresos'])){
 <style type="text/css">
 #td{
     display: none;
+}
+#div{
+    display: block;
 }
 
 </style>
@@ -169,6 +181,7 @@ if(isset($_POST['ingresos'])){
 
             </tbody>
         </table>
+    </div>
 
 
 <?php 
@@ -190,15 +203,14 @@ if(isset($_POST['ingresos'])){
 </style><br>
 <h3 style="text-align: center; color: black;">Ingresos de Almacén</h3>
 
-<table class="table table-responsive table-striped" id="example" style=" width: 100%">
         <div  style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form method="POST" action="Plugin/reporte_ingreso.php">
+            <form id="div" method="POST" action="Plugin/reporte_ingreso.php">
                 <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </button>
             </form>
-            <form method="POST" action="Plugin/pdf_ingresos.php">
+            <form id="div" method="POST" action="Plugin/pdf_ingresos.php">
                 <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
@@ -206,24 +218,29 @@ if(isset($_POST['ingresos'])){
             </form>
 
 </div>
+<h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
+<div id="div" style = " max-height: 442px;  overflow-y:scroll;">
+<table class="table table-striped" id="example" style=" width: 100%">
      <thead>
        <tr>
         <th style="width: 10%">#</th>
-         <th style="width: 15%">Departamento</th>
-         <th style="width: 15%">Encargado</th>
-         <th style="width: 15%">Codigo</th>
-         <th style="width: 50%">Descripción Completa</th>
-         <th style="width: 15%">U/M</th>
-         <th style="width: 15%">Cantidad</th>
-         <th style="width: 15%">Costo Unitario</th>
-         <th style="width: 15%">Ingreso Por</th>
-         <th style="width: 15%">Fecha Registro</th>
+         <th style="width: 20%">Departamento</th>
+         <th style="width: 30%">Encargado</th>
+         <th style="width: 20%">Codigo</th>
+         <th style="width: 30%">Descripción Completa</th>
+         <th style="width: 20%">U/M</th>
+         <th style="width: 20%">Cantidad</th>
+         <th style="width: 20%">Costo Unitario</th>
+         <th style="width: 20%">Ingreso Por</th>
+         <th style="width: 20%">Fecha Registro</th>
          
        </tr>
        
      </thead>
 
      <tbody>
+                <tr>
+         <td  colspan="10" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
 <?php
 
          $idusuario = $_SESSION['iduser'];
@@ -251,6 +268,9 @@ while ($productos = mysqli_fetch_array($result)){
 th{
 width: 100%;
 }
+#div{
+    display: block;
+}
 </style>
 <tr id="tr">
     <td data-label="#"><?php echo $r ?></td>
@@ -272,6 +292,7 @@ width: 100%;
 
      </tbody>
  </table>
+</div>
 
 <?php
     }
@@ -291,15 +312,14 @@ width: 100%;
 </style><br>
 <h3 style="text-align: center; color: black;">Ingresos de Compra</h3>
 
-<table class="table table-responsive table-striped" id="example" style=" width: 100%">
         <div  style="position: initial;"class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form method="POST" action="Plugin/reporte_ingreso.php">
+            <form id="div" method="POST" action="Plugin/reporte_ingreso.php">
                 <button  style="position: initial;"type="submit" class="btn btn-outline-primary" name="compra">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </button>
             </form>
-            <form method="POST" action="Plugin/pdf_ingresos.php">
+            <form id="div" method="POST" action="Plugin/pdf_ingresos.php">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="compra">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
@@ -307,22 +327,27 @@ width: 100%;
             </form>
 
 </div>
+<h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
+<div id="div" style = " max-height: 442px;  overflow-y:scroll;">
+<table class="table table-striped" id="example" style=" width: 100%">
      <thead>
        <tr>
         <th style="width: 10%">#</th>
          <th  style="width:15%">Departamento</th>
-         <th  style="width:15%">Encargado</th>
+         <th  style="width:30%">Encargado</th>
          <th  style="width:10%">Codigo</th>
-         <th  style="width:100%">Descripción Completa</th>
-         <th  style="width:100%">U/M</th>
-         <th  style="width:100%">Cantidad</th>
-         <th  style="width:100%">Costo Unitario</th>
-         <th  style="width:100%">Ingreso Por</th>
-         <th  style="width:100%">Fecha Registro</th>
+         <th  style="width:30%">Descripción Completa</th>
+         <th  style="width:10%">U/M</th>
+         <th  style="width:10%">Cantidad</th>
+         <th  style="width:10%">Costo Unitario</th>
+         <th  style="width:10%">Ingreso Por</th>
+         <th  style="width:10%">Fecha Registro</th>
             </tr>
      </thead>
 
      <tbody>
+                <tr>
+         <td  colspan="10" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
 <?php
 
 
@@ -345,6 +370,9 @@ while ($productos = mysqli_fetch_array($result)){
     #td{
         display: none;
     }
+    #div{
+        display: block;
+    }
 </style>
 <tr>
     <td data-label="#"><?php echo $r ?></td>
@@ -363,6 +391,7 @@ while ($productos = mysqli_fetch_array($result)){
 
      </tbody>
  </table>
+</div>
 
 
 <?php
@@ -382,39 +411,73 @@ if(isset($_POST['ingresos'])){
 <br>
     <h3 style="text-align: center; color: black;">Ingresos de Solicitud Circulante</h3>
 
-<table class="table table-responsive table-striped" id="example" style=" width: 100%">
-    <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form method="POST" action="Plugin/reporte_ingreso.php">
-                <button type="submit" class="btn btn-outline-primary" name="circulante">
+    <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+            <form id="div" method="POST" action="Plugin/reporte_ingreso.php">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante1">
+                <?php $sql = "SELECT * FROM tb_circulante ";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        $idusuario = $productos['codCirculante'];
+        
+    } ?>    
+<?php $sql = "SELECT * FROM detalle_circulante WHERE tb_circulante='$idusuario' ";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        $idusuario = $productos['codigodetallecirculante'];
+    } ?>
+                    <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
-                    </form>
-            <form method="POST" action="Plugin/pdf_ingresos.php">
-                <button type="submit" class="btn btn-outline-primary" name="circulante">
-                    <svg class="bi" width="20" height="20" fill="currentColor">
+                 </button>
+            </form>
+            <form id="div" method="POST" action="Plugin/pdf_ingresos.php">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante1">
+<?php $sql = "SELECT * FROM tb_circulante ";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        $idusuario = $productos['codCirculante'];
+        
+    } ?>    
+<?php $sql = "SELECT * FROM detalle_circulante WHERE tb_circulante='$idusuario' ";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        $idusuario = $productos['codigodetallecirculante'];
+    } ?>
+                    <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
+                <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
-                </button>
+            </button>
             </form>
 
 </div>
+<h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
+<div id="div" style = " max-height: 442px;  overflow-y:scroll;">
+<table class="table table-striped" id="example" style=" width: 100%">
             <thead>
               <tr id="tr">
                 <th style="width: 10%">#</th>
                 <th  style="width: 10%">Codigo</th>
-                <th  style="width: 100%">Descripción Completa</th>
-                <th  style="width: 100%">U/M</th>
-                <th  style="width: 100%">Cantidad</th>
-                <th  style="width: 100%">Costo Unitario</th>
-                <th  style="width: 100%">Ingreso Por</th>
-                <th  style="width: 100%">Fecha Registro</th>
+                <th  style="width: 30%">Descripción Completa</th>
+                <th  style="width: 10%">U/M</th>
+                <th  style="width: 10%">Cantidad</th>
+                <th  style="width: 10%">Costo Unitario</th>
+                <th  style="width: 10%">Ingreso Por</th>
+                <th  style="width: 10%">Fecha Registro</th>
               </tr>
 
               
             </thead>
 
             <tbody>
+        <tr>
+         <td  colspan="8" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
  <?php
-            $idusuario = $_SESSION['iduser'];
+            
+$idusuario = $_SESSION['iduser'];
    $sql = "SELECT * FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante WHERE db.idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
         $n=0;
@@ -427,6 +490,9 @@ if(isset($_POST['ingresos'])){
 
 #td{
     display: none;
+}
+#div{
+    display: block;
 }
 </style>
     <tr id="tr">
@@ -449,6 +515,7 @@ if(isset($_POST['ingresos'])){
 
             </tbody>
         </table>
+    </div>
 
 
 <?php 
@@ -470,38 +537,71 @@ if(isset($_POST['ingresos'])){
 </style><br>
 <h3 style="text-align: center; color: black;">Ingresos de Almacén</h3>
 
-<table class="table table-responsive table-striped" id="example" style=" width: 100%">
-        <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form method="POST" action="Plugin/reporte_ingreso.php">
-                <button type="submit" class="btn btn-outline-primary" name="almacen">
+        <div  style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+            <form id="div" method="POST" action="Plugin/reporte_ingreso.php">
+<?php $sql = "SELECT * FROM tb_almacen ";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        $idusuario = $productos['codAlmacen'];
+        
+    } ?>    
+<?php $sql = "SELECT * FROM detalle_almacen WHERE tb_almacen='$idusuario' ";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        $idusuario = $productos['codigoalmacen'];
+    } ?>
+                    <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
+                <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen1">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
-                    </form>
-            <form method="POST" action="Plugin/pdf_ingresos.php">
-                <button type="submit" class="btn btn-outline-primary" name="almacen">
+                </button>
+            </form>
+            <form id="div" method="POST" action="Plugin/pdf_ingresos.php">
+<?php $sql = "SELECT * FROM tb_almacen ";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        $idusuario = $productos['codAlmacen'];
+        
+    } ?>    
+<?php $sql = "SELECT * FROM detalle_almacen WHERE tb_almacen='$idusuario' ";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        $idusuario = $productos['codigoalmacen'];
+    } ?>
+                    <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
+                <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen1">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </button>
             </form>
 
 </div>
+<h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
+<div id="div" style = " max-height: 442px;  overflow-y:scroll;">
+<table class="table table-striped" id="example" style=" width: 100%">
      <thead>
        <tr>
         <th style="width: 10%">#</th>
-         <th style="width: 15%">Departamento</th>
-         <th style="width: 15%">Encargado</th>
-         <th style="width: 15%">Codigo</th>
-         <th style="width: 50%">Descripción Completa</th>
-         <th style="width: 15%">U/M</th>
-         <th style="width: 15%">Cantidad</th>
-         <th style="width: 15%">Costo Unitario</th>
-         <th style="width: 15%">Ingreso Por</th>
-         <th style="width: 15%">Fecha Registro</th>
+         <th style="width: 20%">Departamento</th>
+         <th style="width: 30%">Encargado</th>
+         <th style="width: 20%">Codigo</th>
+         <th style="width: 30%">Descripción Completa</th>
+         <th style="width: 20%">U/M</th>
+         <th style="width: 20%">Cantidad</th>
+         <th style="width: 20%">Costo Unitario</th>
+         <th style="width: 20%">Ingreso Por</th>
+         <th style="width: 20%">Fecha Registro</th>
          </tr>
        
      </thead>
 
      <tbody>
+                <tr>
+         <td  colspan="10" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
 <?php
 
          $idusuario = $_SESSION['iduser'];
@@ -522,6 +622,9 @@ while ($productos = mysqli_fetch_array($result)){
 }
 th{
 width: 100%;
+}
+#div{
+    display:block;
 }
 </style>
 <tr id="tr">
@@ -544,6 +647,7 @@ width: 100%;
 
      </tbody>
  </table>
+</div>
 
 <?php
     }
@@ -563,37 +667,70 @@ width: 100%;
 </style><br>
 <h3 style="text-align: center; color: black;">Ingresos de Compra</h3>
 
-<table class="table table-responsive table-striped" id="example" style=" width: 100%">
-        <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form method="POST" action="Plugin/reporte_ingreso.php">
-                <button type="submit" class="btn btn-outline-primary" name="compra">
+        <div  style="position: initial;"class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+            <form id="div" method="POST" action="Plugin/reporte_ingreso.php">
+                <?php $sql = "SELECT * FROM tb_compra ";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        $idusuario = $productos['nSolicitud'];
+        
+    } ?>    
+<?php $sql = "SELECT * FROM detalle_compra WHERE solicitud_compra='$idusuario' ";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        $idusuario = $productos['codigodetallecompra'];
+    } ?>
+                    <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
+                <button  style="position: initial;"type="submit" class="btn btn-outline-primary" name="compra1">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
-                    </form>
-            <form method="POST" action="Plugin/pdf_ingresos.php">
-                <button type="submit" class="btn btn-outline-primary" name="compra">
+                </button>
+            </form>
+            <form id="div" method="POST" action="Plugin/pdf_ingresos.php">
+                <?php $sql = "SELECT * FROM tb_compra ";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        $idusuario = $productos['nSolicitud'];
+        
+    } ?>    
+<?php $sql = "SELECT * FROM detalle_compra WHERE solicitud_compra='$idusuario' ";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        $idusuario = $productos['codigodetallecompra'];
+    } ?>
+                    <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">                
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="compra1">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </button>
             </form>
 
 </div>
+<h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
+<div id="div" style = " max-height: 442px;  overflow-y:scroll;">
+<table class="table table-striped" id="example" style=" width: 100%">
      <thead>
        <tr>
         <th style="width: 10%">#</th>
          <th  style="width:15%">Departamento</th>
-         <th  style="width:15%">Encargado</th>
+         <th  style="width:30%">Encargado</th>
          <th  style="width:10%">Codigo</th>
-         <th  style="width:100%">Descripción Completa</th>
-         <th  style="width:100%">U/M</th>
-         <th  style="width:100%">Cantidad</th>
-         <th  style="width:100%">Costo Unitario</th>
-         <th  style="width:100%">Ingreso Por</th>
-         <th  style="width:100%">Fecha Registro</th>
+         <th  style="width:30%">Descripción Completa</th>
+         <th  style="width:10%">U/M</th>
+         <th  style="width:10%">Cantidad</th>
+         <th  style="width:10%">Costo Unitario</th>
+         <th  style="width:10%">Ingreso Por</th>
+         <th  style="width:10%">Fecha Registro</th>
          </tr>
      </thead>
 
      <tbody>
+                <tr>
+         <td  colspan="10" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
 <?php
 
          $idusuario = $_SESSION['iduser'];
@@ -609,6 +746,9 @@ while ($productos = mysqli_fetch_array($result)){
 <style>
     #td{
         display: none;
+    }
+    #div{
+        display: block;
     }
 </style>
 <tr>
@@ -628,6 +768,7 @@ while ($productos = mysqli_fetch_array($result)){
 
      </tbody>
  </table>
+</div>
 
 
 <?php

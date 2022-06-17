@@ -32,9 +32,13 @@ die();
 <body>
         <style>  
          #section{
-          background: whitesmoke;
+            background: whitesmoke;
           border-radius: 15px;
             margin: 1%;
+            padding: 1%;
+            }
+            form{
+                background: transparent;
             }
             @media (max-width: 800px){
    #section{
@@ -50,7 +54,7 @@ die();
   
   }
         </style>
-        <br><br><br>
+        <br><br><br><br>
 <?php
 
 $total = 0;
@@ -100,8 +104,6 @@ $final = 0;
         </div>
       
         <br>
-          
-        <table class="table" style="margin-bottom:3%">
             <div  style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/pdf_compra.php">
                 <button style="position: initial;"  type="submit" class="btn btn-outline-primary" name="Fecha">
@@ -152,6 +154,8 @@ while ($productos = mysqli_fetch_array($result)){
             </form>
 
 </div>
+</form>
+<table class="table">
             <thead>
               <tr id="tr">
                 <th style="width: 25%;">Código</th>
@@ -164,6 +168,9 @@ while ($productos = mysqli_fetch_array($result)){
               </tr>
                 <td id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>
            </thead>
+       </table>
+       <div id="div" style = "max-height: 442px; overflow-y:scroll;margin-bottom: 1%;">
+       <table class="table">
             <tbody>
 <?php 
 $num_almacen = $datos_sol['codAlmacen'];
@@ -210,12 +217,15 @@ while ($productos = mysqli_fetch_array($result)){
       </tr>
 
       <?php }?>
+  </tbody>
+</table>
+</div>
+<table class="table">
       <tfoot>
             <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
         <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
         <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final1 ?></td>
     </tfoot>
-        </tbody>
     </table>
 
 </form>

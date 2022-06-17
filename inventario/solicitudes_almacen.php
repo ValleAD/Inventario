@@ -28,6 +28,9 @@ die();
 
 <body>
 <style>
+        #ssas{
+        display: none;
+    }
     h1 {
   color: white;
   text-shadow: 1px 1px 5px black;
@@ -35,6 +38,9 @@ die();
 form{
     margin: 0;
     padding: 1%;
+}
+#div{
+    display: none;
 }
 #section{
             margin: 2%;
@@ -51,38 +57,47 @@ form{
     </style>
     <br><br><br>
             <h1 class="text-center mg-t" style="margin-top: -0.5%;" >Solicitudes de Almacen</h1><br>
-<section class="mx-3 p-2" style="background-color:white; border-radius:5px;margin-bottom: 3%;">
+<section  class="mx-3 p-2" style="background-color:white; border-radius:5px;margin-bottom: 3%;">
+    <h1 id="td"class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
 <?php if ($tipo_usuario==1) {?>
-     <div class="btn-group mb-3  mx-2" role="group" style="position: initial;" aria-label="Basic outlined example">
-         <form method="POST" action="Plugin/soli_almacen.php" target="_blank">
-             <button type="submit" class="btn btn-outline-primary" name="id">
+     <div  style="position: initial;" class="btn-group mb-3  mx-2" role="group" style="position: initial;" aria-label="Basic outlined example">
+         <form method="POST" action="Plugin/soli_almacen.php" id="ssas" target="_blank">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
-         <form method="POST" action="Plugin/pdf_soli_almacen.php" target="_blank">
-             <button type="submit" class="btn btn-outline-primary"  target="_blank" name="id">
+         <form method="POST" action="Plugin/pdf_soli_almacen.php" id="ssas" target="_blank">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary"  target="_blank" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>
 </div>
-<table class="table table-responsive table-striped" id="example" style=" width: 100%">
+
+<table class="table  table-striped" id="div" style=" width: 100%">
           <thead>
               <tr id="tr">
-                <th>#</th>
+              <th style=" width: 7%">#</th>
                 <th style=" width: 10%">No. de Solicitud</th>
                 <th style=" width: 30%" >Departamento Solicitante</th>
-                <th style=" width: 20%">Usuario</th>
-                <th style=" width: 20%;">Fecha de solicitud</th>
-                <th style=" width: 15%">Estado</th>
-                <th style=" width: 10%" >Detalles</th>
+                <th style=" width: 15%">Usuario</th>
+                <th style=" ">Fecha de solicitud</th>
+                <th style=" ">Estado</th>
+                <th style=" " >Detalles</th>
                 
             </tr>
             </thead>
+        </table>
+
+<div id="div" style = " max-height: 442px;  overflow-y:scroll;">
+    <table class="table">
             <tbody>
+            <tr id="td" >
+                <td colspan="9"><h4 align="center">No se encontraron ningun  resultados 😥</h4></td>
+            </tr>
    
     <?php
     include 'Model/conexion.php';
@@ -99,12 +114,22 @@ form{
             $u='Cliente';
         }
         ?>
-
+        <style>
+            #td{
+                display: none;
+            }
+            #ssas{
+                display: block;
+            }
+            #div{
+                display: block;
+            }
+        </style>
         <tr>
-            <td data-label="N° "><?php echo $r ?></td>
-            <td data-label="No. solicitud" class="delete"><?php  echo $datos_sol['codAlmacen']; ?></td>
-            <td data-label="Departamento Solicitante" class="delete"><?php  echo $datos_sol['departamento']; ?></td>
-            <td data-label="Encargado" class="delete"><?php  echo $datos_sol['encargado'],"<br> ","(",$u,")"; ?></td>
+            <td style=" width: 7%;min-width: 100%;" data-label="N°"><?php echo $r ?></td>
+            <td style=" width: 7%;min-width: 100%;" data-label="No. solicitud" class="delete"><?php  echo $datos_sol['codAlmacen']; ?></td>
+            <td style=" width: 30%;min-width: 100%;" data-label="Departamento Solicitante" class="delete"><?php  echo $datos_sol['departamento']; ?></td>
+            <td style=" width: 20%;min-width: 100%;" data-label="Usuario" class="delete"><?php  echo $datos_sol['encargado']; ?></td>
             <td data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])) ?></td>
             <td data-label="Estado" class="delete"><input readonly <?php
                 if($datos_sol['estado']=='Pendiente') {
@@ -136,13 +161,13 @@ form{
 
            </tbody>
         </table>
-     <!--   <a href="Plugin/pdf_soli_almacen.php" class="btn btn-danger">Generar Solicidud Almacen</a>-->
+</div>
  
          <?php } ?>
 
          <?php if ($tipo_usuario==2) {?>
-             <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-         <form method="POST" action="Plugin/soli_almacen.php" target="_blank">
+             <div  style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+         <form method="POST" action="Plugin/soli_almacen.php" id="ssas" target="_blank">
             <?php $sql = "SELECT * FROM tb_almacen WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     $n=0;
@@ -150,13 +175,13 @@ form{
  <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
        
     <?php } ?>
-             <button type="submit" class="btn btn-outline-primary" name="id1">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
-         <form method="POST" action="Plugin/pdf_soli_almacen.php" target="_blank">
+         <form method="POST" action="Plugin/pdf_soli_almacen.php" id="ssas" target="_blank">
             <?php $sql = "SELECT * FROM tb_almacen WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     $n=0;
@@ -164,43 +189,67 @@ form{
  <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
        
     <?php } ?>
-             <button type="submit" class="btn btn-outline-primary" name="id1" target="_blank">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>
  </div>
-<table class="table table-responsive table-striped" id="example" style=" width: 100%">
+
+<table class="table  table-striped" id="div" style=" width: 100%">
           <thead>
               <tr id="tr">
-                <th>#</th>
+              <th style=" width: 7%">#</th>
                 <th style=" width: 10%">No. de Solicitud</th>
                 <th style=" width: 30%" >Departamento Solicitante</th>
-                <th style=" width: 20%">Usuario</th>
-                <th style=" width: 20%;">Fecha de solicitud</th>
-                <th style=" width: 15%">Estado</th>
-                <th style=" width: 10%" >Detalles</th>
+                <th style=" width: 15%">Usuario</th>
+                <th style=" ">Fecha de solicitud</th>
+                <th style=" ">Estado</th>
+                <th style=" " >Detalles</th>
                 
             </tr>
             </thead>
+        </table>
+
+<div id="div" style = " max-height: 442px;  overflow-y:scroll;">
+    <table class="table">
             <tbody>
+            <tr id="td" >
+                <td colspan="9"><h4 align="center">No se encontraron ningun  resultados 😥</h4></td>
+            </tr>
    
     <?php
     include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_almacen WHERE  idusuario='$idusuario' ORDER BY fecha_solicitud  ";
+$sql = "SELECT * FROM tb_almacen WHERE  idusuario='$idusuario' ORDER BY fecha_solicitud  ";
     $result = mysqli_query($conn, $sql);
     $n=0;
     while ($datos_sol = mysqli_fetch_assoc($result)){
         $n++;
         $r=$n+0;
+        if ($datos_sol['idusuario']==1) {
+        $u='Administrador';
+        }
+        else {
+            $u='Cliente';
+        }
         ?>
-
+        <style>
+            #td{
+                display: none;
+            }
+            #ssas{
+                display: block;
+            }
+            #div{
+                display: block;
+            }
+        </style>
         <tr>
-            <td data-label="N°"><?php echo $r ?></td>
-            <td data-label="No. solicitud" class="delete"><?php  echo $datos_sol['codAlmacen']; ?></td>
-            <td data-label="Departamento Solicitante" class="delete"><?php  echo $datos_sol['departamento']; ?></td>
-            <td data-label="Usuario" class="delete"><?php  echo $datos_sol['encargado']; ?></td>
+            <td style=" width: 7%;min-width: 100%;" data-label="N°"><?php echo $r ?></td>
+            <td style=" width: 7%;min-width: 100%;" data-label="No. solicitud" class="delete"><?php  echo $datos_sol['codAlmacen']; ?></td>
+            <td style=" width: 30%;min-width: 100%;" data-label="Departamento Solicitante" class="delete"><?php  echo $datos_sol['departamento']; ?></td>
+            <td style=" width: 20%;min-width: 100%;" data-label="Usuario" class="delete"><?php  echo $datos_sol['encargado']; ?></td>
             <td data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])) ?></td>
             <td data-label="Estado" class="delete"><input readonly <?php
                 if($datos_sol['estado']=='Pendiente') {
@@ -215,7 +264,7 @@ form{
             <td  data-label="Detalles">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Almacen.php">             
                 <input type='hidden' name='id' value="<?php  echo $datos_sol['codAlmacen']; ?>">             
-               <?php  if ($datos_sol['estado']=="Aprobado" || $datos_sol['estado']=="Pendiente") {?>
+                <?php  if ($datos_sol['estado']=="Aprobado" || $datos_sol['estado']=="Pendiente") {?>
                 <form method="POST" action="Controller/Delete_producto.php">
                    <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
                 </form>
@@ -229,9 +278,10 @@ form{
             </td>
         </tr>
  <?php } ?>
+
            </tbody>
         </table>
- 
+</div>
          <?php } ?>
 </section>
  

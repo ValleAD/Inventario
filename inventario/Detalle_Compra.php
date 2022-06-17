@@ -39,7 +39,7 @@ die();
 <body>
             <style>  
          section{
-            margin: 1%;
+            margin: 2%;
             padding: 1%;
             }
             #buscar{
@@ -109,7 +109,7 @@ $tipo_usuario = $_SESSION['iduser'];
  while ($productos1 = mysqli_fetch_array($result)){
  $solicitud =$productos1['nSolicitud'] ?>
 
-    <div id="form"class=" p-3 " style="background-color: white; border-radius: 5px;">
+    <div id="form"class=" p-3 mx-3" style="background-color: white; border-radius: 5px;">
      <form  method="POST" action="Plugin/pdf_compra.php" >
         <div class="row">
           <div class="col-md-3" style="position: initial">
@@ -166,8 +166,7 @@ $tipo_usuario = $_SESSION['iduser'];
             </div>
         </div>
               <input readonly class="form-control" type="hidden" value="<?php echo $productos1['nSolicitud'] ?>" name="sol_compra">
-     
-         <table class="table" style="margin-bottom:3%">
+    
             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/pdf_compra.php">
                      
@@ -242,19 +241,23 @@ while ($productos = mysqli_fetch_array($result)){
             </form>
 
 </div>
+         <table class="table">
             <thead>
               <tr id="tr">
                 <th>Código</th>
                 <th style="width: 35%;">Descripción</th>
                 <th>Unidad de Medida</th>
                 <th>Cantidad</th>
-                <th>Cantidad Depachada</th>
+                <th >Cantidad Depachada</th>
 
                 <th>Costo unitario</th>
                 <th>Total</th>
               </tr>
                 <td id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>
            </thead>
+       </table>
+<div id="div" style = " max-height: 442px; overflow-y:scroll;"> 
+           <table class="table">
             <tbody>
                 <?php 
 
@@ -293,7 +296,7 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="tot[]" value="$<?php echo $total2 ?>">
             <input type="hidden" name="tot_f" value="$<?php echo $final2 ?>" >
         </td>
-        <td  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
+        <td style="width: 35%;;min-width: 100%;"  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
         <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
         <td  data-label="Cantidad"><?php echo $stock ?></td>
         <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
@@ -302,12 +305,15 @@ while ($productos = mysqli_fetch_array($result)){
       </tr>
 
       <?php } ?> 
+  </tbody>
+</table>
+</div>
+<table class="table">
      <tfoot>
         <th colspan="5"></th>
             <th >SubTotal</th>
             <td style=" color: red; font-weight: bold;" data-label="Subtotal"><?php echo $final2?></td>
         </tfoot>
-        </tbody>
     </table>
          <?php 
 
@@ -332,7 +338,7 @@ while ($productos = mysqli_fetch_array($result)){
 <?php } ?>
 
      </form>    
-    </div>
+    
      <?php } ?>  
           <style>
         #pdf{

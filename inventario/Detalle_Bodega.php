@@ -34,6 +34,11 @@ die();
          section{
             margin: 1%;
             padding: 1%;
+            background: whitesmoke;
+            border-radius: 15px;
+            }
+            form{
+                background: transparent;
             }
             @media (max-width: 952px){
    section{
@@ -80,7 +85,7 @@ if(isset($_POST['detalle'])){
      while ($productos1 = mysqli_fetch_array($result)){
     $odt = $productos1['codBodega'];
      echo'   
-    <section style=" background: rgba(555, 555, 555, .7);border-radius:15px;">
+    <section border-radius:15px;">
     <form method="POST" action="" >
              
           
@@ -167,7 +172,6 @@ if ($productos1['estado']=="Rechazado") {
 <p class="text-center bg-danger" style="color:white;border-radius: 5px;font-size: 2.5em;padding: 3%;style="margin-top:5%">SOLICITUD RECHAZADA</p>';
                     }
                if ($productos1['estado']=="Aprobado") {?>
-                <table class="table table-responsive" style=" width: 100%">
                     <div style="position: initial;" class="btn-group mb-3 mx-2 my-4" style="margin-top:4%" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/pdf_bodega.php">
                     
@@ -228,19 +232,24 @@ while ($productos = mysqli_fetch_array($result)){
             </form>
 
 </div>
+            <table class="table">
                     <thead>
                         <tr id="tr">
-                  <th style="width: 10%;">Código</th>
-                  <th style="width: 50%;">Descripción</th>
-                  <th style="width: 10%;">Unidad de Medida</th>
-                  <th style="width: 10%;">Cantidad Solicitada</th>
-                  <th style="width: 10%;">Cantidad Depachada</th>
-                  <th style="width: 10%;">Costo unitario</th>
-                  <th style="width: 10%;">Total</th>
+                  <th>Código</th>
+                  <th>Descripción</th>
+                  <th>Unidad de Medida</th>
+                  <th>Cantidad Solicitada</th>
+                  <th>Cantidad Depachada</th>
+                  <th>Costo unitario</th>
+                  <th>Total</th>
                 </tr>
-                <td id="td" colspan="6"><h4>No se encontraron resultados 😥</h4></td>
               </thead>
+          </table>
+          <div id="div" style = " max-height: 442px; overflow-y:scroll;"> 
+          <table class="table">
                 <tbody>
+
+                <td id="td" colspan="6"><h4>No se encontraron resultados 😥</h4></td>
                     <?php 
                      $total = 0;
   $final = 0;
@@ -285,16 +294,18 @@ while ($productos = mysqli_fetch_array($result)){
       </tr>
 
       <?php } ?> 
-     <tfoot>
-        <th colspan="5"></th>
-            <th >SubTotal</th>
-            <td style=" color: red; font-weight: bold;" data-label="Subtotal"><?php echo $final2?></td>
-        </tfoot>
+        </tbody>
+    </table>
+</div>
+      <table class="table">
+            <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
+        <td colspan="7"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
+        <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final2 ?></td>
+    </tfoot>
         </tbody>
     </table>
 </form>
         <?php } if ($productos1['estado']=="Pendiente") {?>
-<table class="table table-responsive" style="margin-bottom:3%">
             <div  style="position: initial;" class="btn-group  my-5 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/pdf_bodega.php">
             <button style="position: initial;"  type="submit" class="btn btn-outline-primary" name="aprobado">
@@ -354,19 +365,23 @@ while ($productos = mysqli_fetch_array($result)){
             </form>
 
 </div>
+        <table class="table">
             <thead>
               <tr id="tr">
-                <th style="width: 10%;">Código</th>
-                <th style="width: 50%;">Descripción</th>
-                <th style="width: 10%;">Unidad de Medida</th>
-                <th style="width: 10%;">Cantidad Solicitada</th>
-                <th style="width: 10%;">Cantidad Depachada</th>
-                <th style="width: 10%;">Costo unitario</th>
-                <th style="width: 10%;">Total</th>
+                <th>Código</th>
+                <th>Descripción</th>
+                <th>Unidad de Medida</th>
+                <th>Cantidad Solicitada</th>
+                <th>Cantidad Depachada</th>
+                <th>Costo unitario</th>
+                <th>Total</th>
                 </tr>
-                <td id="td" colspan="6"><h4>No se encontraron resultados 😥</h4></td>
               </thead>
+          </table>
+          <div id="div" style = " max-height: 442px; overflow-y:scroll;"> 
+            <table class="table">
                 <tbody>
+                <td id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>
                 <?php 
 
 
@@ -413,11 +428,14 @@ while ($productos = mysqli_fetch_array($result)){
       </tr>
 
       <?php } ?> 
-     <tfoot>
-        <th colspan="5"></th>
-            <th >SubTotal</th>
-            <td style=" color: red; font-weight: bold;" data-label="Subtotal"><?php echo $final2?></td>
-        </tfoot>
+  </tbody>
+</table>
+</div>
+  <table class="table">
+            <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
+        <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
+        <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final2 ?></td>
+    </tfoot>
         </tbody>
     </table>
 
@@ -452,7 +470,7 @@ if(isset($_POST['submit'])){
     
               </div>
     
-              <div class="col-md-3" style="position: initial">
+              <div class="col-md-2" style="position: initial">
                 <label style="font-weight: bold;">O.D.T.</label>
                 <input readonly class="form-control"  type="text" value="' .$productos1['codBodega']. '" name="bodega">
               </div>
@@ -463,11 +481,11 @@ if(isset($_POST['submit'])){
             </div>
     
               
-              <div class="col-md-3" style="position: initial">
+              <div class="col-md-2" style="position: initial">
                 <label style="font-weight: bold;">Fecha:</label>
                   <input readonly class="form-control"  type="text" value="'.date("d-m-Y",strtotime($productos1['fecha_registro'])). '" name="fech">
               </div>
-              <div class="col-md-3" style="position: initial">
+              <div class="col-md-2" style="position: initial">
             <label style="font-weight: bold;">Estado:</label>';?>
            <select  class="form-control"  type="text" name="estado" required>
                 <option disabled selected value="">Selecione</option>
@@ -483,16 +501,16 @@ if(isset($_POST['submit'])){
                 
               <thead>
                 <tr id="tr">
-                  <th style="width: 45%;">Código</th>
-                  <th style="width: 125%;text-align: left;">Descripción</th>
-                  <th style="width: 10%;">Unidad de Medida</th>
-                  <th style="width: 30%;">Cantidad Solicitada</th>
-                  <th style="width: 30%;">Cantidad Depachada</th>
-                <th style="width: 30%;">Costo Unitario (estimado)Actual</th>
-               <!-- <th style="width: 30%;">Nuevo Costo Unitario (estimado)</th>-->
-                  <th style="width: 30%;">Total</th>
+                  <th style="width: 10%;">Código</th>
+                  <th style="width: 50%;text-align: left;">Descripción</th>
+                  <th style="width: 20%;">Unidad de Medida</th>
+                  <th style="width: 20%;">Cantidad Solicitada</th>
+                  <th style="width: 20%;">Cantidad Depachada</th>
+                <th style="width: 20%;">Costo Unitario (estimado)Actual</th>
+               <!-- <th style="width: 20%;">Nuevo Costo Unitario (estimado)</th>-->
+                  <th style="width: 20%;">Total</th>
                 </tr>
-                <td id="td" colspan="6"><h4>No se encontraron resultados 😥</h4></td>
+                <td id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>
               </thead>
                 <tbody>
          <?php            

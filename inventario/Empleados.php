@@ -33,6 +33,7 @@ die();
     <style type="text/css">
     section{
         padding: 1%;
+        margin: 1%;
     }
     #form{
         margin: 1%;
@@ -60,8 +61,8 @@ die();
         margin-left: 22%;
     }
     #dh{
-        margin-top: -13%;
-        margin-left: 15%;
+        margin-top: -20%;
+        margin-left: 22%;
     }
     #p{
         margin-left: 5%;
@@ -93,11 +94,11 @@ $result = mysqli_query($conn, $sql);
                     <div class="col-md-6" style="position: initial">
                         
                        <label id="label" class="small mb-1">Nombre</label><br>
-                        <input pattern="[A-Za-z ]{1,}" class="form-control" type="text"  name="Nombres"  required>
+                        <input  class="form-control" type="text"  name="Nombres"  required>
                     </div>
                     <div class="col-md-6" style="position: initial">
                       <label id="label" class="small mb-1">Apellido</label><br>
-                        <input pattern="[A-Za-z_ ]{1,}" class="form-control" type="text"  name="Apellidos" required >
+                        <input  class="form-control" type="text"  name="Apellidos" required >
                     </div>
                 </div>
             
@@ -123,11 +124,11 @@ $result = mysqli_query($conn, $sql);
                     <div class="col-md-6" style="position: initial">
                         
                        <label id="label" class="small mb-1">Nombre (No es obligatorio)</label><br>
-                        <input pattern="[A-Za-z ]{1,}" class="form-control" type="text"  name="Nombres" >
+                        <input  class="form-control" type="text"  name="Nombres" >
                     </div>
                     <div class="col-md-6" style="position: initial">
                       <label id="label" class="small mb-1">Apellido (No es obligatorio)</label><br>
-                        <input pattern="[A-Za-z ]{1,}" class="form-control" type="text"  name="Apellidos" >
+                        <input  class="form-control" type="text"  name="Apellidos" >
                     </div>
                 </div>
             
@@ -186,7 +187,7 @@ $result = mysqli_query($conn, $sql);
               <div class="row">
                     <div class="col-md-6" style="position: initial">
                        <label id="label" class="small mb-1">Nombre de usuario</label><br>
-                        <input pattern="[A-Za-z0-9_-]{1,}" class="form-control" type="text"  name="usuario"  required>
+                        <input  class="form-control" type="text"  name="usuario"  required>
                     </div>
                     <div class="col-md-6" style="position: initial">
                       <label id="label" class="small mb-1">Nombre</label><br>
@@ -215,12 +216,12 @@ $result = mysqli_query($conn, $sql);
                 <div class="row">
                     <div id="label" class="col-md-6" style="position: initial">
                       <label class="small mb-1">Contraseña</label><br>
-                        <input pattern="[A-Za-z0-9_-]{1,}" class="form-control" id="show" type="password"  name="password"  required>
+                        <input  class="form-control" id="show" type="password"  name="password"  required>
                       <div class="custom-control custom-checkbox"><input class="custom-control-input" onclick="myFuntion();" id="rememberPasswordCheck" type="checkbox" /><label class="custom-control-label" for="rememberPasswordCheck">Mostrar Contraseña</label></div>
                   </div>
                   <div class="col-md-6" style="position: initial">
                       <label id="label"  class="small mb-1">Confirmar Contraseña</label><br>
-                        <input pattern="[A-Za-z0-9_-]{1,}" class="form-control" id="show1" type="password"  name="cpassword" required>
+                        <input  class="form-control" id="show1" type="password"  name="cpassword" required>
                         <div class="custom-control custom-checkbox"><input class="custom-control-input" onclick=" myFuntion1();" id="PasswordCheck" type="checkbox" /><label class="custom-control-label" for="PasswordCheck">Mostrar Contraseña</label></div>
                   </div>
                 </div>
@@ -228,7 +229,7 @@ $result = mysqli_query($conn, $sql);
                 <div class="row">
                     
                     <div class="col-md-6" style="position: initial">
-                        <label id="label"  class="small mb-1">Unidad ó Departamento</label><br>
+                        <label id="label"  class="small mb-1">Departamento</label><br>
             <select class="form-control" name="Unidad">
                 <option selected disabled >Seleccionar</option>
                    <?php  
@@ -238,6 +239,7 @@ $result = mysqli_query($conn, $sql);
       echo'  <option>'.$productos['departamento'].'</option>
   ';   
  }?>
+ 
             </select>
                 </div>
                 <div class="col-md-6" style="position: initial">
@@ -281,8 +283,8 @@ $u='Cliente';
 } if($solicitudes['Habilitado']=="No"){
     $u='Cuenta Desabilitada';
 }
-if ($tipo_usuario==1) {     ?>
-
+?>
+<?php  if ($tipo_usuario==1) { ?>
        
 <div class="card mb-3 border-secondary " style="max-width: 100%;min-width: 100%; position: initial">
   <div class="row g-0">
@@ -309,33 +311,25 @@ if ($tipo_usuario==1) {     ?>
         <div class="row" style="position: initial">
          
                     <div class="col-md-0" style="position: initial;">
-            <?php if($tipo_usuario==2) { ?>
-               
-                 <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Empleados.php">             
-          <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">      
-          <button name='editar' class='btn btn-info swal2-styled.swal2-confirm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
-        </form>
-   </div>
-<?php } elseif ($tipo_usuario==1) { ?>
      <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Empleados.php">             
           <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">      
           <button id="d" name='editar' class='btn btn-info swal2-styled.swal2-confirm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
-        </form>
-   </div>
+        </form></div>
     <div class="col-md-1" style="position: initial">
-         <a id="dh" href="Controller/Delete_Empleados.php?id=<?php  echo $solicitudes['id']; ?>" onclick="return confirmaion()" class="btn btn-danger swal2-styled.swal2-confirm">Eliminar</a>
-     <?php } ?>
- </div>
+                <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Controller/Delete_Empleados.php">
+            <input type="hidden" name="id" value="<?php  echo $solicitudes['id']; ?>">
+            <input type="hidden" name="idusuario" value="<?php echo $solicitudes['tipo_usuario'] ?>">
+            <input id="dh" type="submit"onclick="return confirmaion()" class="btn btn-danger swal2-styled.swal2-confirm" value="Eliminar">
+     </form>
+   </div>
+ 
 </div>
     </div>
-  </div>
 </div>
-
- <?php } }?> 
-    <?php 
-    include 'Model/conexion.php';
-    $idusuario = $_SESSION['iduser'];
-    $sql = "SELECT * FROM tb_usuarios WHERE id='$idusuario'";
+</div>
+     <?php }} ?><?php if($tipo_usuario==2) { ?>
+<?php 
+    $sql = "SELECT * FROM tb_usuarios WHERE id='$idusuario' ORDER BY `id` ";
     $result = mysqli_query($conn, $sql);
 
     while ($solicitudes = mysqli_fetch_assoc($result)){
@@ -346,21 +340,20 @@ $u='Cliente';
 } if($solicitudes['Habilitado']=="No"){
     $u='Cuenta Desabilitada';
 }
-if ($tipo_usuario==2) {
+?>
 
-        ?>
-   
        
-<div class="card mb-3 border-secondary " style="max-width: 100%;min-width: 100%;position: initial">
+            
+<div class="card mb-3 border-secondary " style="max-width: 100%;min-width: 100%; position: initial">
   <div class="row g-0">
     <div class="col-1" style="position: initial">
-                        <svg class="bi bi2 my-4 mx-2 text-primary" width="100" height="100" fill="currentColor">
-                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#person-circle"/>
+                <svg  class="bi bi2 my-4 mx-1 text-primary" width="90" height="90" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#person-circle"/>
                         </svg>
     </div>
     
       <div class="card-body" style="position: initial">
-        <h5 class="card-title">USUARIO: <?php echo $solicitudes['username'] ?></h5>
+        <p class="card-title"><b>USUARIO:</b> <?php echo $solicitudes['username'] ?></p>
         <div class="row">
         <div class="col-md-7" style="position: initial">
         <p class="card-text"><b>NOMBRE COMPLETO: </b><?php echo $solicitudes['firstname']," ",$solicitudes['lastname']; ?></p>
@@ -376,29 +369,19 @@ if ($tipo_usuario==2) {
         <div class="row" style="position: initial">
          
                     <div class="col-md-0" style="position: initial;">
-            <?php if($tipo_usuario==2) { ?>
                
                  <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Empleados.php">             
-          <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">      
-          <button name='editar' class='btn btn-info swal2-styled.swal2-confirm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
-        </form>
-   </div>
-<?php } elseif ($tipo_usuario==1) { ?>
-     <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Empleados.php">             
           <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">      
           <button id="d" name='editar' class='btn btn-info swal2-styled.swal2-confirm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
         </form>
    </div>
-    <div class="col-md-1" style="position: initial">
-         <a id="dh" href="Controller/Delete_Empleados.php?id=<?php  echo $solicitudes['id']; ?>" onclick="return confirmaion()" class="btn btn-danger swal2-styled.swal2-confirm">Eliminar</a>
-     <?php } ?>
- </div>
 </div>
-    </div>
-  </div>
+</div>
+</div>
 </div>
 
- <?php } }?> 
+ <?php  } } ?> 
+
 
   </section>
    

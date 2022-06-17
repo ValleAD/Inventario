@@ -34,6 +34,11 @@ die();
          section{
             margin: 1%;
             padding: 1%;
+            background: whitesmoke;
+            border-radius: 15px;
+            }
+            form{
+                background: transparent;
             }
             #buscar{
             margin-bottom: 5%;
@@ -141,14 +146,14 @@ $final2 = 0;
         <thead>
               <tr id="tr">
                 <th style="width: 10%;">#</th>
-                <th style="width: 10%;">Código</th>
+                <th style="width: 40%;">Código</th>
                 <th style="width: 50%;">Descripción</th>
-                <th style="width: 10%;">Unidad de Medida</th>
-                <th style="width: 10%;">Cantidad Solicitada</th>
-                <th style="width: 10%;">Cantidad Despachada</th>
-                <th style="width: 10%;">Costo Unitario (estimado)Actual</th>
-                <th style="width: 10%;">Nuevo Costo Unitario (estimado)</th>
-                <th style="width: 10%;">Total</th>
+                <th style="width: 40%;">Unidad de Medida</th>
+                <th style="width: 40%;">Cantidad Solicitada</th>
+                <th style="width: 40%;">Cantidad Despachada</th>
+                <th style="width: 40%;">Costo Unitario (estimado)Actual</th>
+                <th style="width: 40%;">Nuevo Costo Unitario (estimado)</th>
+                <th style="width: 40%;">Total</th>
               </tr>
                 
            </thead>
@@ -204,7 +209,7 @@ while ($productos = mysqli_fetch_array($result)){
         
   <?php }?>
             <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
-        <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
+        <td colspan="8"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
         <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final2 ?></td>
     </tfoot>
         </tbody>
@@ -217,7 +222,7 @@ while ($productos = mysqli_fetch_array($result)){
             </svg>
     </button>
 </form>
-</section><?php
+<?php
     }
 if(isset($_POST['detalle'])){
 $total = 0;
@@ -278,17 +283,17 @@ $n_sol=$datos_sol['codAlmacen'];
                 </svg>
             <?php } ?>
                  </label>
-              <input  <?php
+             <input <?php
                 if($datos_sol['estado']=='Pendiente') {
-                    echo ' style="background-color:green ;width:70%;position: initial; border-radius:5px;text-align:center; color: white;"';
+                    echo ' style="background-color:green ;position: initial;width:70%; border-radius:5px;text-align:center; color: white;"';
                 }else if($datos_sol['estado']=='Aprobado') {
-                     echo ' style="background-color:blueviolet ;width:70%;position: initial; border-radius:5px;text-align:center; color: white;"';
+                     echo ' style="background-color:blueviolet ;position: initial;width:70%; border-radius:5px;text-align:center; color: white;"';
                 }else if($datos_sol['estado']=='Rechazado') {
-                     echo ' style="background-color:red ;width:70%; border-radius:5px;text-align:center; color: white;"';
+                     echo ' style="background-color:red ;style="position: initial;width:70%; border-radius:5px;text-align:center; color: white;"';
                 }
             ?> class="form-control" type="text" name="" readonly value="<?php echo $datos_sol['estado'] ?>"><br>
             <?php if($tipo_usuario==1){ ?>
-               <button id="buscar1" style="position: initial;"  type="submit" name="submit" <?php
+               <button id="buscar1" type="submit" name="submit" <?php
                 if($datos_sol['estado']=='Aprobado') {
                      echo ' style="display:none"';
                 }else if($datos_sol['estado']=='Rechazado') {
@@ -314,9 +319,8 @@ if ($datos_sol['estado']=="Rechazado") {
                         echo ' <form style="margin: 0%;position: 0; background: transparent;" method="POST" action="Controller/añadir_vale.php">
 <p class="text-center bg-danger" style="color:white;border-radius: 5px;font-size: 2.5em;padding: 3%;margin-top:5%">SOLICITUD RECHAZADA</p>';
                     }
-               if ($datos_sol['estado']=="Aprobado") {?>
-                <table class="table table-responsive" style="width:100%">
-                    <div class="btn-group mb-3 mx-2" style="margin-top:4%" role="group" aria-label="Basic outlined example">
+               if ($datos_sol['estado']=="Aprobado") {?><br><br>
+                    <div style="position: initial;" class="btn-group mb-3 mx-2" style="margin-top:4%" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/pdf_almacen.php">
                     
 
@@ -375,11 +379,12 @@ while ($productos = mysqli_fetch_array($result)){
 
             </form>
 
-</div>
+</div> 
+<table class="table">
                     <thead>
                         <tr id="tr">
                   <th style="width: 10%;">Código</th>
-                  <th style="width: 50%;">Descripción</th>
+                  <th style="width: 30%;">Descripción</th>
                   <th style="width: 10%;">Unidad de Medida</th>
                   <th style="width: 10%;">Cantidad Solicitada</th>
                   <th style="width: 10%;">Cantidad Depachada</th>
@@ -388,6 +393,9 @@ while ($productos = mysqli_fetch_array($result)){
                 </tr>
                 <td id="td" colspan="6"><h4>No se encontraron resultados 😥</h4></td>
               </thead>
+</table>
+<div id="div" style = " max-height: 442px; overflow-y:scroll;"> 
+<table class="table">
                 <tbody>
                     <?php 
                      $total = 0;
@@ -424,7 +432,7 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="tot[]" value="$<?php echo $total2 ?>">
             <input type="hidden" name="tot_f" value="$<?php echo $final2 ?>" >
         </td>
-        <td  data-label="Descripción"><?php echo $productos['nombre'] ?></td>
+        <td style="width: 30%;;min-width: 100%;"  data-label="Descripción"><?php echo $productos['nombre'] ?></td>
         <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
         <td  data-label="Cantidad"><?php echo $stock ?></td>
         <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
@@ -433,18 +441,20 @@ while ($productos = mysqli_fetch_array($result)){
       </tr>
 
       <?php } ?> 
+        </tbody>
+    </table>
+</div>
+    <table class="table">
             <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
         <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
         <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final2 ?></td>
     </tfoot>
-        </tbody>
-    </table>
+</table>
 </form>
         <?php } if ($datos_sol['estado']=="Pendiente") {?>
-<table class="table table-responsive" style="margin-bottom:3%">
-            <div class="btn-group mb-3 mx-2" style="margin-top:5%" role="group" aria-label="Basic outlined example">
+            <div style="position: initial;" class="btn-group mb-3 mx-2 my-5" style="margin-top:15%" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/pdf_almacen.php">
-            <button type="submit" class="btn btn-outline-primary" name="aprobado">
+            <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -492,7 +502,7 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
         <?php } ?>
 
-<button type="submit" class="btn btn-outline-primary" name="pdf">
+<button style="position: initial;" type="submit" class="btn btn-outline-primary" name="pdf">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
@@ -501,29 +511,32 @@ while ($productos = mysqli_fetch_array($result)){
             </form>
 
 </div>
-            <thead>
-              <tr id="tr">
-                <th style="width: 10%;">Código</th>
-                <th style="width: 50%;">Descripción</th>
-                <th style="width: 10%;">Unidad de Medida</th>
-                <th style="width: 10%;">Cantidad Solicitada</th>
-                <th style="width: 10%;">Cantidad Depachada</th>
-                <th style="width: 10%;">Costo unitario</th>
-                <th style="width: 10%;">Total</th>
+
+<table class="table">
+                    <thead>
+                        <tr id="tr">
+                  <th style="width: 10%;">Código</th>
+                  <th style="width: 30%;">Descripción</th>
+                  <th style="width: 10%;">Unidad de Medida</th>
+                  <th style="width: 10%;">Cantidad Solicitada</th>
+                  <th style="width: 10%;">Cantidad Depachada</th>
+                  <th style="width: 10%;">Costo unitario</th>
+                  <th style="width: 10%;">Total</th>
                 </tr>
                 <td id="td" colspan="6"><h4>No se encontraron resultados 😥</h4></td>
               </thead>
+</table>
+<div id="div" style = " max-height: 442px; overflow-y:scroll;"> 
+<table class="table">
                 <tbody>
-                <?php 
-
-
-  $total = 0;
+                    <?php 
+                     $total = 0;
   $final = 0;
  $sql = "SELECT * FROM detalle_almacen WHERE tb_almacen = $n_sol";
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
       
-        $total    =    $productos['cantidad_solicitada'] * $productos['precio'];
+        $total    =    $productos['cantidad_despachada'] * $productos['precio'];
         $final    +=   $total;
         $precio   =    $productos['precio'];
         $precio2  =    number_format($precio, 2,".",",");
@@ -551,7 +564,7 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="tot[]" value="$<?php echo $total2 ?>">
             <input type="hidden" name="tot_f" value="$<?php echo $final2 ?>" >
         </td>
-        <td  data-label="Descripción"><?php echo $productos['nombre'] ?></td>
+        <td style="width: 30%;min-width: 100%;"  data-label="Descripción"><?php echo $productos['nombre'] ?></td>
         <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
         <td  data-label="Cantidad"><?php echo $stock ?></td>
         <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
@@ -560,14 +573,15 @@ while ($productos = mysqli_fetch_array($result)){
       </tr>
 
       <?php } ?> 
+        </tbody>
+    </table>
+</div>
+    <table class="table">
             <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
         <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
         <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final2 ?></td>
     </tfoot>
-        </tbody>
-    </table>
-
-</form>
+</table>
              <?php  }       
 } }?>  
 </section>        

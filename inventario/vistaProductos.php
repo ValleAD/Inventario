@@ -22,6 +22,19 @@ die();
 </head>
 <body> 
   <style>
+    #div{
+        margin: 0%;
+        display: none;
+    }
+    #ssas{
+        display: none;
+    }
+    .well{
+        display: none;
+    }
+    #w{
+        display: none;
+    }
  @media (max-width: 952px){
    #cat{
     margin-top: 2%;
@@ -31,6 +44,9 @@ die();
    }
    #h3{
     color: white;
+   }
+   #hidden{
+    margin-top: 3%;
    }
     }
   </style>
@@ -142,10 +158,10 @@ $result = mysqli_query($conn, $sql);
         } 
     </style>
 </table>
-  <section style="background: rgba(255, 255, 255, 0.9);margin: 5%2%2%2%; border-radius: 15px;">
+  <section style="background: rgba(255, 255, 255, 0.9);margin: 7%1%1%1%;padding: 1%; border-radius: 15px;">
 <h2 id="h2" class="text-center">Inventario de Productos</h2>
 <br>
-<form method="POST" action="">
+<form method="POST" action="" class="well hidden">
                 <div class="container">
                  <div class="row">
                     <div class="col-md-3" style="position: initial;">
@@ -153,12 +169,12 @@ $result = mysqli_query($conn, $sql);
                      <input type="DATE" class="form-control" name="F1" required>
                     
                     </div><div class="col-md-3" style="position: initial">
-                        <label class="my-2">Hasta</label>
+                        <label class="">Hasta</label>
                      <input type="DATE" class="form-control" name="F2" required>
                     
                     </div>
-                    <div id="v" class="col-md-6 mx-0" style="position: initial;">
-                       <button id="cat" class="btn btn-success" name="Fecha" type="submit">Filtrar Fechas</button>
+                    <div  class="col-md-6 " style="position: initial;margin-top: 3.3%;">
+                       <input type="submit"  class="btn btn-success" name="Fecha" value="Filtrar Fechas">
                     </div>
                 </div>
             </div>
@@ -166,30 +182,23 @@ $result = mysqli_query($conn, $sql);
                
             </form>   
             <?php 
-
 if (isset($_POST['Fecha'])){
          $f1=$_POST['F1']; 
          $f2=$_POST['F2'];?>  <br> 
+         <style>
+            #div{
+                display: none;
+            }
+             #hidden{
+                display: none;
+             }
+         </style>
+  <div class="mx-2">
          <input type="hidden" name="f1" value="<?php echo $f1 ?>">
              <input type="hidden" name="f2" value="<?php echo $f2 ?>">
                    <center> <h1>Filtro por Fechas</h1></center>
 
-        <div class="mx-2">
-
-                <table class="table  table-striped" id="example1" style=" width: 100%">
-    <thead>
-         <tr id="tr">
-                     <th>Código</th>
-                     <th>Cod. de Catálogo</th>
-                     <th>Descripción Completa</th>
-                     <th>U/M</th>
-                     <th>Cantidad</th>
-                     <th>Costo Unitario</th>
-                     <th>Fecha Registro</th>
-                     
-                   </tr>
-    </thead>
-    <tbody>
+      </div>
          <?php  
          $f1=$_POST['F1']; 
          $f2=$_POST['F2'];
@@ -210,7 +219,7 @@ if (isset($_POST['Fecha'])){
                 <div  class="mx-1 p-2 r-5" style="background-color: transparent; border-radius: 5px;">
         <a href="" class="btn btn-success" name="categorias" type="submit">Ver Productos</a>
               <div  style="position: initial;margin-top: 0%;margin-left: 1%;" class="btn-group" role="group" aria-label="Basic outlined example">
-         <form id="w" method="POST" action="Plugin/Fechas.php" target="_blank">
+         <form class="well" method="POST" action="Plugin/Fechas.php" target="_blank">
              <input type="hidden" name="f1" value="<?php echo $f1 ?>">
              <input type="hidden" name="f2" value="<?php echo $f2 ?>">
              <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha">
@@ -219,10 +228,10 @@ if (isset($_POST['Fecha'])){
                 </svg>
              </button>
          </form>
-         <form id="w" method="POST" action="Plugin/pdf_fecha.php" target="_blank">
+         <form class="well" method="POST" action="Plugin/pdf_fecha.php" target="_blank">
             <input type="hidden" name="f1" value="<?php echo $f1 ?>">
              <input type="hidden" name="f2" value="<?php echo $f2 ?>">
-             <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
+             <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -230,12 +239,27 @@ if (isset($_POST['Fecha'])){
          </form>
  </div>
 </div>
+                <table class="table  table-striped" id="div" style=" width: 100%">
+    <thead>
+         <tr id="tr">
+                     <th style="width: 10%;">Código</th>
+                     <th style="width: 10%;">Cod. de Catálogo</th>
+                     <th style="width: 40%;">Descripción Completa</th>
+                     <th style="width: 10%;">U/M</th>
+                     <th style="width: 10%;">Cantidad</th>
+                     <th style="width: 10%;">Costo Unitario</th>
+                     <th style="width: 10%;">Fecha Registro</th>
+                     
+                   </tr>
+    </thead></table>
+<div id="div" style = " max-height: 442px;  overflow-y:scroll;">
+    <table class="table">
+    <tbody>
+ <tr>
+         <td  colspan="7" id="td1" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
 <style>
                     form{
                         margin: 0%;
-                    }
-                    #w{
-                        display: none;
                     }
                 </style>
              <?php       
@@ -253,11 +277,14 @@ if (isset($_POST['Fecha'])){
                   #w{
                     display: block;
                   }
+                  #td1{
+                    display: none;
+                  }
               </style>
                    <tr>
                 <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
            <td  data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
-           <td  data-label="Descripción Completa" style="text-align: left;padding-left:3%"><?php  echo $productos['descripcion']; ?></td>
+           <td style="width: 40%;;min-width: 100%;"  data-label="Descripción Completa" style="text-align: left;padding-left:3%"><?php  echo $productos['descripcion']; ?></td>
            <td  data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
            <td  data-label="Cantidad" ><?php  echo $stock ?></td>
            <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
@@ -269,44 +296,52 @@ if (isset($_POST['Fecha'])){
 </table>
   
 </div>
-<a  href="unidad_medidad.php" class="btn btn-primary"  style="position: initial; float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a>
 
-           <div class="mx-1 p-2" style=" border-radius: 5px;">
+
+
+           <div class="mx-1 p-2 hidden" id="hidden" style=" border-radius: 5px;">
         
-        <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-         <form id="well" method="POST" action="Plugin/tproductos.php" target="_blank">
+        <div style="position: initial;" class="btn-group mb-3 my-3 mx-2 " role="group" aria-label="Basic outlined example">
+         <form id="well" class="well" method="POST" action="Plugin/tproductos.php" target="_blank">
              
-             <button type="submit" class="btn btn-outline-primary" name="tproductos">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="tproductos">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
-         <form id="well" method="POST" action="Plugin/tpdf_productos.php" target="_blank">
+         <form id="well" class="well" method="POST" action="Plugin/tpdf_productos.php" target="_blank">
             
-             <button type="submit" class="btn btn-outline-primary mx-1" name="tproductospdf" target="_blank">
+             <button  style="position: initial;"type="submit" class="btn btn-outline-primary mx-1" name="tproductospdf" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>
- </div>
-            <section>
-            <input type="text" name="busqueda" class="form-control" style="width: 30%;" id="busqueda" placeholder="Buscar...">
+ </div>     
+ <a  href="unidad_medidad.php" class="btn btn-primary"  style="position: initial; float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a>
+ <div class="row">   
+ <div class="col-md-3"style="position: initial;">
+            <section class="well" >
+            <input type="text" name="busqueda" class="form-control"  id="busqueda" placeholder="Buscar...">
         </section>
-<br>
-               <section id="tabla_resultado">
+    </div>
+</div>
+<br>    
+
+
+               <section id="tabla_resultado" >
         <!-- AQUI SE DESPLEGARA NUESTRA TABLA DE CONSULTA -->
 
         </section>     
-        </div>
-    </div>
+       </div>
 
 
- <form method="POST" action="">
+
+ <form method="POST" action="" class="well" style="padding: 1%;">
                  <div class="row">
                     <div class="col-md-4 mx-2" style="position: initial">
-                      <select class="form-control" name="cat" id="w" required>
+                      <select id="hidden" class="form-control" name="cat"  required>
                     <option selected disabled value="">Seleccione</option>
                 <?php  $sql = "SELECT * FROM tb_productos GROUP BY categoria ";
         $result = mysqli_query($conn, $sql);
@@ -323,8 +358,8 @@ if (isset($_POST['Fecha'])){
             }
          ?></select>
                     </div>
-                    <div class="col-md-6 mx-2 my-2" style="position: initial">
-                       <button id="cat" class="btn btn-success" name="categorias" type="submit">Exportar por Categorias</button>
+                    <div class="col-md-6 mx-2 " style="position: initial">
+                       <button id="hidden" class="btn btn-success" name="categorias" type="submit">Exportar por Categorias</button>
                   
                     </div>
                 </div>
@@ -334,11 +369,16 @@ if (isset($_POST['Fecha'])){
             <?php 
 
 if (isset($_POST['categorias'])){$categoria=$_POST['cat'];  ?>  <br> 
-<div class="mx-2 p-2 r-5" style="background-color: transparent; border-radius: 5px;">
-            <a href="" class="btn btn-success" name="categorias" type="submit">Ver Productos</a>
+         <style>
+             .hidden{
+                display: none;
+             }
+         </style>
+<div class="mx-2 p-2 r-5" id="hidden" style="background-color: transparent; border-radius: 5px;">
                    
         
          <form method="POST" action="Plugin/categorias.php" target="_blank">
+            <a href="" class="btn btn-success" name="categorias" type="submit">Ver Productos</a>
               <div  style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
              <input type="hidden" name="categoria" value="<?php echo $categoria ?>">
              <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha">
@@ -356,22 +396,25 @@ if (isset($_POST['categorias'])){$categoria=$_POST['cat'];  ?>  <br>
              </button>
          </form>
  </div>
-</div>
- <div class="mx-2">
-                <table class="table  table-striped" id="example1" style=" width: 100%">
+
+ 
+                <table class="table  table-striped" id="div" style=" width: 100%">
     <thead>
          <tr id="tr">
-                     <th>Categoria</th>
-                     <th>Código</th>
-                     <th>Cod. de Catálogo</th>
-                     <th>Descripción Completa</th>
-                     <th>U/M</th>
-                     <th>Cantidad</th>
-                     <th>Costo Unitario</th>
-                     <th>Fecha Registro</th>
+                     <th style="width: 10%;">Categoria</th>
+                     <th style="width: 10%;">Código</th>
+                     <th style="width: 10%;">Cod. de Catálogo</th>
+                     <th style="width: 30%;">Descripción Completa</th>
+                     <th style="width: 10%;">U/M</th>
+                     <th style="width: 10%;">Cantidad</th>
+                     <th style="width: 10%;">Costo Unitario</th>
+                     <th style="width: 10%;">Fecha Registro</th>
                      
                    </tr>
     </thead>
+</table>
+    <div id="div" style = " max-height: 442px;  overflow-y:scroll;">
+        <table class="table">
     <tbody>
          <?php $categoria=$_POST['cat'];
              // code...
@@ -397,7 +440,7 @@ if (isset($_POST['categorias'])){$categoria=$_POST['cat'];  ?>  <br>
                 <td data-label="Categoría"><?php  echo $categoria1 ?></td>
                 <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
            <td  data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
-           <td  data-label="Descripción Completa"><?php  echo $productos['descripcion']; ?></td>
+           <td style="width: 30%;min-width: 100%;"  data-label="Descripción Completa"><?php  echo $productos['descripcion']; ?></td>
            <td  data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
            <td  data-label="Cantidad"><?php  echo $stock ?></td>
            <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
@@ -410,7 +453,9 @@ if (isset($_POST['categorias'])){$categoria=$_POST['cat'];  ?>  <br>
   
             </div>
 
-        <br>
+        </div>
+
+   
 
                          
 </section>

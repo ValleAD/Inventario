@@ -25,6 +25,10 @@ h1 {
    text-align: center;
    text-shadow: 1px 1px 5px black;
 }
+#div{
+    margin: 0%;
+    display: none;
+}
     </style>
     <title>Solicitudes De Compra</title>
 </head>
@@ -32,27 +36,34 @@ h1 {
     <style type="text/css">
         
      #act {
-    margin-top: 0.5%;
-    margin-right: 2%;
-    margin-left: 2%;
+    margin-right: 1%;
+    margin-left: 1%;
+    padding: 1%;
+    border-radius: 15px;
+    background: white;
+  }
+  #ssas{
+    display: none;
   }
     </style>
 
     <br><br><br>
     <center><h1 style="margin-top:5px ">Solicitudes de Compra</h1></center>
+    <section id="act">
+        <h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
             <br>
             <?php if ($tipo_usuario==1) {?>
-     <div class="mx-3 p-2" id="act" style="background: white; border-radius: 5px;">
-        <table class="table table-responsive" id="example" style="width:100%">
-    <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-         <form method="POST" style=" position: initial;" action="Plugin/soli_compra.php" target="_blank">
+     
+
+    <div  style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+         <form id="ssas" method="POST" style=" position: initial;" action="Plugin/soli_compra.php" target="_blank">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
-         <form method="POST" action="Plugin/pdf_soli_compra.php" target="_blank">
+         <form id="ssas" method="POST" action="Plugin/pdf_soli_compra.php" class="mx-1" target="_blank">
              <button style="position: initial;"type="submit" class="btn btn-outline-primary" name="id" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
@@ -60,51 +71,54 @@ h1 {
              </button>
          </form>
  </div>
+        <table class="table table-responsive " id="div" style="width:100%">
             <thead>
               <tr id="tr">
-                <th>#</th>
-                <th>No. Solicitud</th>
-                <th>Dependencia</th>
-                <th>Plazo y No. de Entregas</th>
-                <th>Unidad Técnica</th>
-                <th>Descripción Solicitud</th>
-                <th>Encargado</th>
-                <th>Fecha de Registro</th>
-                <th>Estado</th>
-                <th>Detalles</th>
-           
+               
+                <th style="width: 10%;">No. Solicitud</th>
+                <th style="width: 15%;">Dependencia</th>
+                <th style="width: 10%;">Plazo y No. de Entregas</th>
+                <th style="width: 10%;">Unidad Técnica</th>
+                <th style="width: 10%;">Descripción Solicitud</th>
+                <th style="width: 10%;">Encargado</th>
+                <th style="width: 10%;">Fecha de Registro</th>
+                <th style="width: 10%;">Estado</th>
+                <th style="width: 10%;">Detalles</th>
+           </tr>
     </thead>
+</table>
+<div id="div" style = " max-height: 442px;  overflow-y:scroll;">
+<table class="table">
         <tbody> 
-            
+
     <?php
     include 'Model/conexion.php';
 
-    $sql = "SELECT * FROM tb_compra  ORDER BY fecha_registro  ";
+    $sql = "SELECT * FROM tb_compra ORDER BY fecha_registro  ";
     $result = mysqli_query($conn, $sql);
     $n=0;
     while ($solicitudes = mysqli_fetch_array($result)){
         $n++;
         $r=$n+0;
-        $idusuario = $solicitudes['idusuario'];
-        if ($idusuario==1) {
-        $u='Administrador';
-        }
-        else {
-            $u='Cliente';
-        }
         ?>
         <style type="text/css">
      #td{
         display: none;
     }
+    #ssas{
+        display: block;
+    }
+    #div{
+        display: block;
+    }
 </style>
         <tr>
-            <td data-label="N°"><?php echo $r ?></td>
             <td data-label="No. Solicitud" class="delete"><?php  echo $solicitudes['nSolicitud']; ?></td>
             <td data-label="Dependencia" class="delete"><?php  echo $solicitudes['dependencia']; ?></td>
             <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['plazo']; ?></td>
             <td data-label="Unidad Técnica" class="delete"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
             <td data-label="Descripción Solicitud" class="delete"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
+            <td data-label="Encargado" class="delete"><?php  echo $solicitudes['usuario']; ?></td>
             <td data-label="Fecha" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
             <td data-label="Estado" class="delete"><input readonly <?php
                 if($solicitudes['estado']=='Comprado') {
@@ -122,14 +136,13 @@ h1 {
 
            </tbody>
         </table>
-
+       
  </div>
 <?php } ?>
             <?php if ($tipo_usuario==2) {?>
-     <div class="mx-3 p-2" id="act" style="background: white; border-radius: 5px;">
-        <table class="table table-responsive" id="example" style="width:100%">
-<div style="position: initial;" class="btn-group mb-3  mx-2" style=" position: initial;" role="group" aria-label="Basic outlined example">
-         <form method="POST" action="Plugin/soli_compra.php" target="_blank">
+        
+<div  style="position: initial;" class="btn-group mb-3  mx-2" style=" position: initial;" role="group" aria-label="Basic outlined example">
+         <form id="ssas" method="POST" action="Plugin/soli_compra.php" target="_blank">
             <?php $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     $n=0;
@@ -143,7 +156,7 @@ h1 {
                 </svg>
              </button>
          </form>
-         <form method="POST" action="Plugin/pdf_soli_compra.php" target="_blank">
+         <form id="ssas" method="POST" action="Plugin/pdf_soli_compra.php" class="mx-1" target="_blank">
     <?php $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     $n=0;
@@ -158,21 +171,26 @@ h1 {
              </button>
          </form>
 </div>
+        <table class="table table-responsive " id="div" style="width:100%">
             <thead>
               <tr id="tr">
-                <th>#</th>
-                <th>No. Solicitud</th>
-                <th>Dependencia</th>
-                <th>Plazo y No. de Entregas</th>
-                <th>Unidad Técnica</th>
-                <th>Descripción Solicitud</th>
-                <th>Fecha de Registro</th>
-                <th>Estado</th>
-                <th>Detalles</th>
-           
+               
+                <th style="width: 10%;">No. Solicitud</th>
+                <th style="width: 15%;">Dependencia</th>
+                <th style="width: 10%;">Plazo y No. de Entregas</th>
+                <th style="width: 10%;">Unidad Técnica</th>
+                <th style="width: 10%;">Descripción Solicitud</th>
+                <th style="width: 10%;">Encargado</th>
+                <th style="width: 10%;">Fecha de Registro</th>
+                <th style="width: 10%;">Estado</th>
+                <th style="width: 10%;">Detalles</th>
+           </tr>
     </thead>
+</table>
+<div id="div" style = " max-height: 442px;  overflow-y:scroll;">
+<table class="table">
         <tbody> 
-            
+
     <?php
     include 'Model/conexion.php';
 
@@ -188,14 +206,21 @@ $tipo_usuario = $_SESSION['iduser'];
      #td{
         display: none;
     }
+    #ssas{
+        display: block;
+    }
+    #div{
+        display: block;
+    }
 </style>
         <tr>
-            <td data-label="N°"><?php echo $r ?></td>
             <td data-label="No. Solicitud" class="delete"><?php  echo $solicitudes['nSolicitud']; ?></td>
-            <td data-label="Dependencia" class="delete"><?php  echo $solicitudes['dependencia']; ?></td>
+            <td style="width: 15%;min-width: 100%;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['dependencia']; ?></td>
             <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['plazo']; ?></td>
             <td data-label="Unidad Técnica" class="delete"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
-            <td data-label="Descripción Solicitud" class="delete"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
+            <td style="width: 10%;min-width: 100%;" data-label="Descripción" class="delete"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
+
+            <td data-label="Encargado" class="delete"><?php  echo $solicitudes['usuario']; ?></td>
             <td data-label="Fecha" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
             <td data-label="Estado" class="delete"><input readonly <?php
                 if($solicitudes['estado']=='Comprado') {
@@ -214,9 +239,11 @@ $tipo_usuario = $_SESSION['iduser'];
            </tbody>
         </table>
        
-
  </div>
+
+
 <?php } ?>
+ </section>
    
 </body>
 </html>

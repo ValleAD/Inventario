@@ -5,6 +5,7 @@ include ('../Model/conexion.php'); ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Productos</title>
 </head>
 <body style="font-family: sans-serif;">
@@ -16,7 +17,7 @@ include ('../Model/conexion.php'); ?>
 <h4 align="center" style="margin-top: 2%;">DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h5 align="center" style="margin-top: 2%;">TODOS LOS PRODUCTOS</h5>
 
-<table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+<table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
           <tr>
 

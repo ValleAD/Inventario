@@ -21,6 +21,9 @@ die();
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
 <style>
+    #ssas{
+        display: none;
+    }
     h1 {
   color: white;
   text-shadow: 1px 1px 5px black;
@@ -28,50 +31,55 @@ die();
 form{
     margin: 0%;
 }
+#div{
+    margin: 0%;
+    display: none;
+}
     </style>
     <title>Solicitudes De Bodega</title>
 </head>
 
 
 <body>
-<br><br><br>
+<br><br><br><br>
             <center><h1 style="margin-top:5px">Solicitudes Bodega</h1></center><br>
-      <section class="mx-3 p-2" style="background-color:white; border-radius: 5px;margin-bottom:3%;">
+      <section class="mx-3 p-2" style="background-color:white; border-radius: 5px;">
+        <h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
             <?php if ($tipo_usuario==1) {?>
-              <div class="btn-group mb-3 my-3 mx-2" style="position: initial;" role="group" aria-label="Basic outlined example">
-         <form method="POST" action="Plugin/soli_bodega.php" target="_blank">
-             <button type="submit" class="btn btn-outline-primary" name="id">
+              <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" style="position: initial;" role="group" aria-label="Basic outlined example">
+         <form id="ssas" method="POST" action="Plugin/soli_bodega.php" target="_blank">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
-         <form method="POST" action="Plugin/pdf_soli_bodega.php" target="_blank">
-             <button type="submit" class="btn btn-outline-primary" name="id" target="_blank">
+         <form id="ssas" method="POST" action="Plugin/pdf_soli_bodega.php" class="mx-1" target="_blank">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>
  </div>
-  <table class="table table-responsive table-striped"  style=" width: 100%;">
+  <table class="table table-striped" id="div"  style=" width: 100%;">
           
             <thead>
               <tr id="tr">
-             <th>#</th>
-                <th style="width: 10%"><strong>O. de T. No.</strong></th>
-                <th style="width: 30%"><strong>Departamento Solicitante</strong></th>
-                <th style="width: 20%"><strong>Encargado</strong></th>
-                <th style="width: 20%"><strong>Fecha</strong></th>
-                <th style="width: 15%"><strong>Estado</strong></th>
-                <th  style="width: 50%"><strong>Detalles</strong></th>
+             <th style="width: 10%;">#</th>
+                <th style="width: 10%;"><strong>O. de T. No.</strong></th>
+                <th style="width: 10%;"><strong>Departamento Solicitante</strong></th>
+                <th style="width: 10%;"><strong>Encargado</strong></th>
+                <th style="width: 10%;"><strong>Fecha</strong></th>
+                <th style="width: 10%;"><strong>Estado</strong></th>
+                <th style="width: 10%;"><strong>Detalles</strong></th>
                 
             </tr>
-            
-    <style type="text/css">
-        
-    </style>
          </thead>
+     </table>
+
+  <div id="div" style = "max-height: 442px; overflow-y:scroll;margin: 0%;">
+    <table class="table">
 <tbody>   
     <?php
     include 'Model/conexion.php';
@@ -92,8 +100,12 @@ $n=0;
      #td{
         display: none;
     }
-    
-   
+    #ssas{
+        display: block;
+    }
+   #div{
+    display: block;
+   }
 </style>
 
         <tr>
@@ -118,7 +130,7 @@ $n=0;
                 <?php  if ($solicitudes['estado']=="Aprobado" || $solicitudes['estado']=="Pendiente") {?>
                 
                 <form method="POST" action="Controller/Delete_producto.php">
-                   <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
+                   <button style="position: initial;"  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
                 </form>
             <style>
                  #ver{
@@ -154,11 +166,12 @@ $n=0;
            </tbody>
         </table>
 
+</div>
 <?php } ?>           
  <?php if ($tipo_usuario==2) {?>
 
-              <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-         <form method="POST" action="Plugin/soli_bodega.php" target="_blank">
+              <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+         <form id="ssas" method="POST" action="Plugin/soli_bodega.php" target="_blank">
             <?php $sql = "SELECT * FROM tb_bodega WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     $n=0;
@@ -166,13 +179,13 @@ $n=0;
  <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
        
     <?php } ?>
-             <button type="submit" class="btn btn-outline-primary" name="id1">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
-         <form method="POST" action="Plugin/pdf_soli_bodega.php" target="_blank">
+         <form id="ssas" method="POST" action="Plugin/pdf_soli_bodega.php" class="mx-1" target="_blank">
             <?php $sql = "SELECT * FROM tb_bodega WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     $n=0;
@@ -180,30 +193,33 @@ $n=0;
  <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
        
     <?php } ?>
-             <button type="submit" class="btn btn-outline-primary" name="id1" target="_blank">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>
  </div>
-            <table class="table table-responsive table-striped" id="example" style=" width: 100%;">
+            <table class="table  table-striped" id="div" style=" width: 100%;">
             <thead>
               <tr id="tr">
-             <th>#</th>
-                <th style="width: 10%"><strong>O. de T. No.</strong></th>
-                <th style="width: 40%"><strong>Departamento Solicitante</strong></th>
-                <th style="width: 30%"><strong>Fecha de solicitud</strong></th>
-                <th style="width: 15%"><strong>Estado</strong></th>
-                <th  style="width: 50%"><strong>Detalles</strong></th>
+             <th style="width: 10%;">#</th>
+                <th style="width: 10%;"><strong>O. de T. No.</strong></th>
+                <th style="width: 10%;"><strong>Departamento Solicitante</strong></th>
+                <th style="width: 10%;"><strong>Fecha de solicitud</strong></th>
+                <th style="width: 10%;"><strong>Estado</strong></th>
+                <th style="width: 10%;"><strong>Detalles</strong></th>
                 
             </tr>
-            
-    <style type="text/css">
-        
-    </style>
+
          </thead>
+     </table>
+            <div id="div" style = " max-height: 442px;  overflow-y:scroll;margin: 0%;">
+                <table class="table">
 <tbody>   
+                <tr id="td" >
+                <td colspan="6"><h4 align="center">No se encontraron ningun  resultados 😥</h4></td>
+            </tr>
     <?php
     include 'Model/conexion.php';
     $sql = "SELECT * FROM tb_bodega WHERE idusuario='$idusuario' ORDER  BY fecha_registro ";
@@ -217,8 +233,13 @@ $n=0;
      #td{
         display: none;
     }
+    #ssas{
+        display: block;
+    }
     
-   
+   #div{
+    display: block;
+   }
 </style>
 
         <tr>
@@ -254,7 +275,7 @@ $n=0;
  <?php } ?> 
            </tbody>
         </table>
-
+</div>
 <?php } ?>
  </section>
    

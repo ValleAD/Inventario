@@ -30,7 +30,9 @@ die();
     #form{
         margin: 2%;
     }
-
+    #div{
+        margin: 0%;
+    }
     section{
         padding: 1%;
     }
@@ -128,7 +130,7 @@ $result = mysqli_query($conn, $sql);
            </form> 
         </div>
     </div>
-</div><?php } ?><br><br><br>
+</div><?php } ?>
  <div  style="position: initial;" class="btn-group mb-3  mx-2" role="group" aria-label="Basic outlined example">
          <form method="POST" action="Plugin/U_D_D_C.php" target="_blank">
              <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="unidad">
@@ -145,20 +147,24 @@ $result = mysqli_query($conn, $sql);
              </button>
          </form>
 </div>
-         <table class="table  table-striped" id="example" style=" width: 100%;">
+         <table class="table  table-striped" id="div" style=" width: 100%;">
                    <thead>
              <tr id="tr">
                 <th>#</th>
                 <th style=" width: 40%" >Unidad de Medida</th>
-                <th  style=" width: 60%">Habilitado</th><?php if($tipo_usuario == 1) { ?>
-                <th  style=" width: 10%"> Cambiar Habilitado</th>
-                <th  style=" width: 10%">Eliminar</th><?php } ?>
+                <th  style=" width: 40%">Habilitado</th><?php if($tipo_usuario == 1) { ?>
+                <th  style=" width: 20%"> Cambiar Habilitado</th>
+                <th  style=" width: 15%">Eliminar</th><?php } ?>
                 
             </tr>
            
      </thead>
+ </table>
+ <div id="div" style = " max-height: 442px;  overflow-y:scroll;">
+ <table class="table">
             <tbody>
-            
+             <tr>
+         <td  colspan="7" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
     <?php
     include 'Model/conexion.php';
 
@@ -178,11 +184,11 @@ $result = mysqli_query($conn, $sql);
 </style>
         <tr>
             <td data-label="N°"><?php echo $r ?></td>
-            <td data-label="Nombres">
+            <td style="width: 30%;;min-width: 100%;" data-label="Nombres">
                 <?php  echo $solicitudes['unidad_medida']; ?>
                 <input readonly style="width:100%;border:none;background: transparent;" type="hidden" name="cod" value="<?php  echo $solicitudes['unidad_medida']; ?>"></td>
 
-            <td data-label="Habilitado"   align="center">
+            <td style="width: 50%;;min-width: 100%;" data-label="Habilitado"   align="center">
             <input <?php
                 if($solicitudes['Habilitado']=='Si') {
                     echo ' style="background-color:blueviolet ;width:33%; border-radius:100px;text-align:center; color: white;margin-top: .2%"';
@@ -194,18 +200,18 @@ $result = mysqli_query($conn, $sql);
                 }
             ?>
  type="text" class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="<?=   $c ?>"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $c ?>"></td>
-</td><?php if($tipo_usuario == 1) { ?>
-            <td data-label="Editar"  align="center">
+<?php if($tipo_usuario == 1) { ?>
+            <td style="width: 15%;;min-width: 100%;" data-label="Editar"  align="center">
                  <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="">             
           <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">             
           <button name='editar' class='btn btn-info btn-sm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
-        </form>
+        </form></td>
             
 
 <!--**********************************************************************************************************************************************************************************-->
   <!--Botones para actualizar y eliminar-->
 
-            <td data-label="Eliminar"  align="center">
+            <td style="width: 15%;;min-width: 100%;" data-label="Eliminar"  align="center">
                <form action="Controller/Delete-unidad_medida.php" method="POST" style="background:transparent;">
                     <input type="hidden" name="id" value="<?php  echo $solicitudes['id']; ?>">
                     <?php if ($solicitudes['Habilitado']=="No") {
@@ -216,13 +222,14 @@ $result = mysqli_query($conn, $sql);
                     <input type="hidden" name="Habilitado" value="<?php  echo $solicitudes['Habilitado']; ?>">
                     
                 </form>
-            </td></td><?php } ?>
+            </td><?php } ?>
         </tr>
       
 
  <?php } ?> 
            </tbody>
         </table>
+    </div>
 
   </section>
         <script type="text/javascript">

@@ -36,7 +36,12 @@ if(isset($_POST['consulta']))
 $buscarAlumnos=$conn->query($query);
 if ($buscarAlumnos->num_rows > 0)
 {
-	$tabla.= '';  if(isset($_POST['consulta'])){
+	$tabla.= '         <style>
+             #ssas{display: block;}
+             #td{display: none;}
+             #div{display: block;}
+             .well{display:block;}
+         </style>';  if(isset($_POST['consulta'])){
                 echo ' <style>#well{display:none;}</style>
 
 <div style="position: initial;" class="btn-group mb-3"  role="group" aria-label="Basic outlined example">
@@ -72,31 +77,49 @@ echo'
             </form>
     </div>
     ';}echo '
-	<table class="table  table-striped" id="example" style=" width: 100%;">
+	<table class="table table-responsive  table-striped" id="div" style=" width: 100%;">
 	 
                 <thead>
-                     <tr id="tr">
-                    <th>#</th>
-                     <th>Código</th>
-                     <th>Cod. de Catálogo</th>
-                     <th>Descripción Completa</th>
-                     <th>U/M</th>
-                     <th>Cantidad</th>
-                     <th>Costo Unitario</th>
-                     <th>Fecha Registro</th>
-                     <th>Categoría</th>
-                    ';if($tipo_usuario==1){ 
-                    	echo '
-                     <th>Editar</th>
-                     <th>Eliminar</th>
+                     <tr id="tr">';if($tipo_usuario==2){ 
+                        echo '
+                    <th style="width:10%"  id="th">Código</th>
+                     <th style="width:10%"  id="th">Cod. Catálogo</th>
+                     <th style="width: 20%;" id="th"> Descripción Completa</th>
+                     <th style="width:10%"  id="th">U/M</th>
+                     <th style="width:10%"  id="th">Cantidad</th>
+                     <th style="width:10%"  id="th">Costo Unitario</th>
+                     <th style="width:10%"  id="th">Fecha Registro</th>
+                    <th id="th" style="width:30%">Categoría</th>
+                    ';}if($tipo_usuario==1){ 
+                        echo '
+                     <th style="width:7%"  id="th">Código</th>
+                     <th style="width:7%"  id="th">Cod. Catálogo</th>
+                     <th style="width: 27%;" id="th"> Descripción Completa</th>
+                     <th style="width:10%"  id="th">U/M</th>
+                     <th style="width:10%"  id="th">Cantidad</th>
+                     <th style="width:10%"  id="th">Costo Unitario</th>
+                     <th style="width:10%"  id="th">Fecha Registro</th>
+                    <th id="th" style="width:10%">Categoría</th>
+
+                    
+                     <th style="width:10%" id="th">Editar</th>
+                     <th style="width:10%" id="th">Eliminar</th>
                  '; } echo'
                    </tr>
-                </thead>
-                <tbody>';
+</table>
+<div id="div" style = " max-height: 442px;  overflow-y:scroll;">
+    <table class="table">
+    <tbody>';
                 $n=0;
 	while($productos= $buscarAlumnos->fetch_assoc())
 	{
                 $categoria=$productos['categoria'];
+                $des=$productos['descripcion'];
+                if ($des=="") {
+                    $des="DESCRIPTION NO DISPONIBLE";
+                }else{
+                   $des=$productos['descripcion']; 
+                }
                 if ($categoria=="") {
                     $categoria="Sin categorias";
                 
@@ -113,46 +136,44 @@ echo'
 		$tabla.='
 		 ';if ($tipo_usuario ==2) {echo'
 		<tr>
-		<td data-label="N°">'.$r.'</td>
-			<td data-label="Código">'.$productos['codProductos'].'</td>
-			<td data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
-			<td data-label="Descripción">'.$productos['descripcion'].'</td>
-			<td data-label="Unidad de Medida">'.$productos['unidad_medida'].'</td>
-			<td data-label="Cantidad">'.$stock.'</td>
-			<td data-label="Precio">'.$precio1.'</td>
-			<td data-label="Fecha">'.$productos['fecha_registro'].'</td>
-			<td data-label="Categoría">'.$categoria.'</td>
+			<td style="width:15%;min-width: 100%;" id="th" data-label="Código">'.$productos['codProductos'].'</td>
+			<td style="width:15%;min-width: 100%;" id="th" data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
+			<td style="width:29%;min-width: 100%;" id="th" data-label="Descripción">'.$des.'</td>
+			<td style="width:15%;min-width: 100%;" id="th" data-label="Unidad de Medida">'.$productos['unidad_medida'].'</td>
+			<td style="width:15%;min-width: 100%;" id="th" data-label="Cantidad">'.$stock.'</td>
+			<td style="width:15%;min-width: 100%;" id="th" data-label="Precio">'.$precio1.'</td>
+			<td style="width:15%;min-width: 100%;" id="th" data-label="Fecha">'.$productos['fecha_registro'].'</td>
+			<td style="width:30%;min-width: 100%;" id="th" data-label="Categoría">'.$categoria.'</td>
 			</tr>
 		';} if ($tipo_usuario ==1) {
 				echo '<tr>
-            <td data-label="N°">'.$r.'</td>
-			<td data-label="Código">'.$productos['codProductos'].'</td>
-            <td data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
-            <td data-label="Descripción">'.$productos['descripcion'].'</td>
-            <td data-label="Unidad de Medida">'.$productos['unidad_medida'].'</td>
-            <td data-label="Cantidad">'.$stock.'</td>
-            <td data-label="Precio">'.$precio1.'</td>
-            <td data-label="Fecha">'.$productos['fecha_registro'].'</td>
-            <td data-label="Categoría">'.$categoria.'</td>
+			<td style="width:7%;min-width: 100%;" id="th" data-label="Código">'.$productos['codProductos'].'</td>
+            <td style="width:7%;min-width: 100%;" id="th" data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
+            <td style="width:30%;min-width: 100%;" id="th" data-label="Descripción">'.$productos['descripcion'].'</td>
+            <td style="width:10%;min-width: 100%;" id="th" data-label="Unidad de Medida">'.$productos['unidad_medida'].'</td>
+            <td style="width:10%;min-width: 100%;" id="th" data-label="Cantidad">'.$stock.'</td>
+            <td style="width:10%;min-width: 100%;" id="th" data-label="Precio">'.$precio1.'</td>
+            <td style="width:10%;min-width: 100%;" id="th" data-label="Fecha">'.$productos['fecha_registro'].'</td>
+            <td style="width:11%;min-width: 100%;" id="th" data-label="Categoría">'.$categoria.'</td>
 			
-           <td  data-label="Editar">
+           <td style="width:10%;min-width: 100%;" id="th"  data-label="Editar">
             <form style="margin: 0%;position: 0; background: transparent;" method="POST" action="vistaProductos.php?Editar">             
                 <input type="hidden" name="id" value="'.$productos['codProductos'] .'">               
-                <button name="editar" class="btn btn-info btn-sm"  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
+                <button  id="th" name="editar" class="btn btn-success btn-sm"  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
             </form>  
             </td>
-            <td  data-label="Eliminar">
+            <td style="width:10%;min-width: 100%;" id="th"  data-label="Eliminar">
             ' ;
             if ($productos['stock']==0) {?>
                 <form method="POST" action="Controller/Delete_producto.php">
                     <input type="hidden" name="cod" value="<?php echo $productos['cod'] ?>">
                     <input type="hidden" name="id" value="<?php echo $productos['stock'] ?>">
-                    <button  data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm " class="text-primary" onclick="return confirmaion()">Eliminar</button>
+                    <button   id="th" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm " class="text-primary" onclick="return confirmaion()">Eliminar</button>
                 </form>
            <?php  };
             if ($productos['stock']!=0) {
                  echo'
-            <button disabled style="cursor: not-allowed;" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm text-white">Eliminar</button>
+            <button   id="th" style="cursor: not-allowed;background: rgba(255, 0, 0, 0.5); border: none;" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm text-white">Eliminar</button>
             ';
             }
            echo'
@@ -164,10 +185,10 @@ echo'
 	}
 	}
 
-	$tabla.='</tbody></table> ';
+	$tabla.='</tbody></table></div> ';
 } else
 	{
-		$tabla="<h1 class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.<a class='btn btn-outline-success' href='' style='float: right;'>x</a></h1> 
+		$tabla="<h1 class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1> 
         ";
 	}
 

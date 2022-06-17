@@ -27,24 +27,16 @@ die();
     <title>Solicitud Bodega</title>
 </head>
 <body>
-    <div class="container">
-      <table class="table">
-        
-           <font color="white"><h1 style="margin-top:5px; text-align: center;">Solicitud de Bodega</h1></font>
+
 
 
 
 
 <style>
- #act {
-    margin-top: 0.5%;
-    margin-right: 2%;
-    margin-left: 2%;
-  }
-</style>
+    #div{
+        display: none;
+    }
 
-<br>
-    <style>
         #ver{
             margin-top: 2%;
             margin-right: 1%; 
@@ -68,35 +60,37 @@ die();
     margin-left: 2%;
   }
    @media (max-width: 800px){
-    #bu{
+    .bu{
         margin: 2%;
     }
    }
     </style>
-</table>
-</div>
+<br><br><br>
+           <h1 style="margin-top:5px; text-align: center;">Solicitud de Bodega</h1>
+
 <section id="act">
+    <h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
      <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="form_bodega_info.php">
-        <button id="bu" style=" float: right;margin-bottom: 1%;" type="submit" name="solicitar" class='btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button> 
-      <table class="table  table-striped" id="example2" style=" width: 100%">
+       <table class="table  table-striped" id="div" style=" width: 100%">
             <thead>
               <tr id="tr">
                
-               <th style="width: 10%;">Código</th>
+                <th style="width: 10%;">Código</th>
                 <th style="width: 10%;">Catálogo</th>
-                <th style="width: 50%;">Descripción Completa</th>
+                <th style="width: 35%;">Descripción Completa</th>
                 <th style="width: 10%;">U/M</th>
                 <th style="width: 10%;">Cantidad</th>
                 <th style="width: 10%;">Costo Unitario</th>
                 <th style="width: 20%;">Fecha Registro</th>
-                <th style="width: 10%;" align="center">Solicitar
+                <th style="width: 10%;" align="center"><button id="div" style=" float: right;margin-bottom: 1%;" type="submit" name="solicitar" class='btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button>
                 </th>
                
               </tr>
-           
-              
-            </thead>
 
+            </thead>
+</table>
+  <div id="div" style = "max-height: 442px; overflow-y:scroll;">
+<table class="table">
             <tbody>
 
  <?php
@@ -104,7 +98,7 @@ die();
 
 
     //    $sql = "SELECT * FROM tb_productos";
-    $sql = "SELECT cod, codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos  GROUP BY precio, codProductos";
+    $sql = "SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos GROUP BY precio, codProductos";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
@@ -125,51 +119,30 @@ die();
    th{
        width: 100%;
    }
+   #div{
+    display: block;
+   }
 </style>
     <tr id="tr">
-      <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
-      <td data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
-      <td data-label="Descripción Completa"><?php  echo $productos['descripcion']; ?></td>
-      <td data-label="Unidad De Medida" ><?php  echo $productos['unidad_medida']; ?></td>
-      <td data-label="Cantidad" ><?php  echo $stock; ?></td>
-      <td data-label="Costo Unitario">$<?php  echo $precio1?></td>
-      <td data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
-      <td data-label="solicitar" align="center">
+      <td style="width: 12%" data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
+      <td style="width: 12%" data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
+      <td style="width: 35%" data-label="Descripción Completa"><?php  echo $productos['descripcion']; ?></td>
+      <td style="width: 12%" data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
+      <td style="width: 12%" data-label="Cantidad" style="text-align: center;"><?php  echo $stock; ?></td>
+      <td style="width: 12%" data-label="Costo Unitario">$<?php  echo $precio1?></td>
+      <td style="width: 12%" data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
+      <td style="width: 12%" data-label="solicitar" align="center">
                     
           <input type="checkbox" name="id[]"  value="<?php  echo $productos['cod']; ?>">
           <input type="hidden" name="precio[]"  value="<?php  echo $productos['precio']; ?>">             
          
       </td>
-  </tr>
      
 <?php } ?> 
-
-            <style>
-                #th{
-                    background-color: #46466b;
-                    color: white;
-                }
-            </style>
-</tbody>
-<tfoot id="tfoot">
-
-                <tr id="tr">
-               
-                <th id="th" style="width: 10%;">Código</th>
-                <th id="th" style="width: 10%;">Catálogo</th>
-                <th id="th" style="width: 40%;">Descripción Completa</th>
-                <th id="th" style="width: 10%;">U/M</th>
-                <th id="th" style="width: 10%;">Cantidad</th>
-                <th id="th" style="width: 10%;">Costo Unitario</th>
-                <th id="th" style="width: 20%;">Fecha Registro</th>
-                <th id="th" style="width: 10%;" align="center">
-                    <button type="submit" name="solicitar" class='btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar
-                    </button> 
-                </th>
-               
-              </tr>
-            </tfoot>
+</tr>
+            </tbody>
         </table>
+    </div>
 </form>
 </section>
 

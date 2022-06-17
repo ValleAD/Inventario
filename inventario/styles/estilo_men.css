@@ -12,11 +12,10 @@ body {
  html {
     scrollbar-width: thin;
     scrollbar-color: pink red;
+    
 }
-    h1,h2,h3,h4,h5,h6{
-        color: white;
-        text-shadow: 1px 1px 5px black;
-    }
+
+
 
 /* Whole customized */
 html::-webkit-scrollbar {
@@ -33,6 +32,42 @@ html::-webkit-scrollbar-thumb {
 }
 
 html::-webkit-scrollbar-thumb:hover {
+    background: rgb(105,105,108);
+background: linear-gradient(90deg, rgba(105,105,108,1) 0%, rgba(115,115,126,1) 35%, rgba(0,212,255,1) 100%);
+}
+#div::-webkit-scrollbar {
+    width: 8px;
+}
+
+#div::-webkit-scrollbar-track {
+    background-color: rgba(105,106,105,0.2);
+}
+
+#div::-webkit-scrollbar-thumb {
+    background-color: darkgray;
+    border-radius: 100vw;
+}
+
+#div::-webkit-scrollbar-thumb:hover {
+    background: rgb(105,105,108);
+background: linear-gradient(90deg, rgba(105,105,108,1) 0%, rgba(115,115,126,1) 35%, rgba(0,212,255,1) 100%);
+}
+/* Whole customized */
+ header nav::-webkit-scrollbar {
+    width: 1.2vw;
+    overflow-y: scroll;
+}
+
+ header nav::-webkit-scrollbar-track {
+    background-color: rgba(105,106,105,0.2);
+}
+
+ header nav::-webkit-scrollbar-thumb {
+    background-color: darkgray;
+    border-radius: 100vw;
+}
+
+ header nav::-webkit-scrollbar-thumb:hover {
     background: rgb(105,105,108);
 background: linear-gradient(90deg, rgba(105,105,108,1) 0%, rgba(115,115,126,1) 35%, rgba(0,212,255,1) 100%);
 }
@@ -67,9 +102,13 @@ header nav ul li:hover {
     background:#E6344A;
     transition: 5s;
 }
+header nav ul li #b {
+    transition: 1s;
+}
 header nav ul li #b:hover {
     background: rgba(255, 0, 0, .5);
-    transition: 5s;
+    transition: 0.7s;
+    font-size: 16.5px;
 }
 
 header nav ul li a {
@@ -79,8 +118,9 @@ header nav ul li a {
     padding: 10px;
 }
 
-header nav ul li a span {
+header nav ul li a span .w {
     margin-right:10px;
+    width: 100%;
 }
 
 header nav ul li:hover .children {
@@ -97,7 +137,6 @@ header nav ul li .children {
 
 header nav ul li .children li {
     display:block;
-    overflow: hidden;
     border-bottom: 1px solid rgba(255,255,255,.5);
 }
 
@@ -119,12 +158,22 @@ header nav ul li .caret {
     margin-left:10px;
     margin-right:0px;
 }
+}
 
+@media screen and (max-width: 1119px) {
+
+ #th{
+    font-size: 12px;
+ }
+}
 @media screen and (max-width: 800px) {
+
     body {
         padding-top:80px;
     }
-
+ #button{
+    display: block;
+ }
     .menu_bar {
         display:block;
         width:100%;
@@ -156,7 +205,7 @@ header nav ul li .caret {
         position: fixed;
         right:100%;
         margin: 0;
-        overflow: scroll;
+        overflow-y: scroll;
     }
 
     header nav ul li {
@@ -184,8 +233,5 @@ header nav ul li .caret {
     header nav ul li .caret {
         float: right;
     }
-        h1,h2,h3,h4,h5,h6{
-        color: white;
-        text-shadow: 1px 1px 5px white;
-    }
+      
 }

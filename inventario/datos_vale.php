@@ -32,7 +32,11 @@ die();
           background: whitesmoke;
           border-radius: 15px;
             margin: 1%;
-            padding: 1px;
+            padding: 2px;
+            }
+            form{
+                background: transparent;
+                padding: 1%;
             }
             @media (max-width: 800px){
    #section{
@@ -97,10 +101,9 @@ $final = 0;
             ?> readonly class="form-control"  type="text" value="<?= $productos1['estado'] ?>" name="id"> 
             </div>
         </div>
-        
+        </form>
         <br>
-              
-        <table class="table" style="margin-bottom:3%">
+              <div style="padding:1%">
             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/pdf_vale.php">
                        <?php  
@@ -187,20 +190,24 @@ while ($productos = mysqli_fetch_array($result)){
             </form>
 
 </div>
+        <table class="table" style="" >
             <thead>
               <tr id="tr">
                 <th>Código</th>
-                <th style="width: 35%;">Descripción</th>
+                <th>Descripción</th>
                 <th>Unidad de Medida</th>
                 <th>Cantidad</th>
-                <th style="width: 30%;">Cantidad Depachada</th>
+                <th >Cantidad Depachada</th>
 
                 <th>Costo unitario</th>
                 <th>Total</th>
               </tr>
-                <td id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>
            </thead>
+       </table>
+       <div id="div" style = "max-height: 442px; overflow-y:scroll;margin-top: -1.5%;">
+        <table class="table">
             <tbody>
+                <td id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>
                 <?php 
 
 $num_vale = $productos1['codVale'];
@@ -248,12 +255,16 @@ while ($productos = mysqli_fetch_array($result)){
       </tr>
 
       <?php } ?> 
+  </tbody>
+    </table>
+</div>
+<table class="table">
             <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
         <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
         <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final2 ?></td>
     </tfoot>
-        </tbody>
-    </table>
+</table>
+ 
          <?php 
 
                        
@@ -273,8 +284,8 @@ while ($productos = mysqli_fetch_array($result)){
                 <p style="padding-left: 1%;"><?php echo $jus ?></p>
             </div>
 <?php } ?>
+</div>
 
-</form>
 </section>           
   </body>
   </html>

@@ -18,8 +18,6 @@ die();
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="styles/style.css" > 
-     <link rel="stylesheet" type="text/css" href="styles/estilos_menu.css" > 
      <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -28,6 +26,9 @@ die();
 
 <body>
 <style>
+    #ssas{
+        display: none;
+    }
     h1 {
   color: white;
   text-shadow: 1px 1px 5px black;
@@ -42,8 +43,8 @@ form{
 
 <section class="mx-3 p-2" style="background-color:white;border-radius: 5px; position: initial;margin-bottom: 3%;">
 <?php if ($tipo_usuario==1) {?>
- <div class="btn-group mb-3  mx-2" style="position: initial;"  role="group" aria-label="Basic outlined example">
-        <form method="POST" style="background: transparent;" action="Plugin/soli_circulante.php" target="_blank">
+ <div class="btn-group mb-3  mx-2" style="position: initial;"  role="group" aria-label="Basic outlined example"> 
+        <form id="ssas" method="POST" style="background: transparent;" action="Plugin/soli_circulante.php" target="_blank">
             <?php $sql = "SELECT * FROM tb_circulante ";
     $result = mysqli_query($conn, $sql);
     $n=0;
@@ -51,34 +52,36 @@ form{
  <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
        
     <?php } ?>
-             <button type="submit" class="btn btn-outline-primary" name="id">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
-         <form method="POST"  style="background: transparent;" action="Plugin/pdf_soli_circulante.php" target="_blank">
-             <button type="submit" class="btn btn-outline-primary" name="id">
+         <form id="ssas"  method="POST"   style="background: transparent;" action="Plugin/pdf_soli_circulante.php" target="_blank">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>
 </div>
-<table class="table table-striped" id="example" style=" width: 100%;">
+<div id="div" style = " max-height: 370px; overflow-y: auto;margin-bottom: 1%;">
+<table class="table  table-striped" id="example" style=" width: 100%;">
           <thead>
               <tr id="tr">
              <th>#</th>
-                <th  style=" width: 10%"><strong>No. de Solicitud</strong></th>
-                <th  style=" width: 100%;  text-transform: capitalize"><strong>Fecha de solicitud</strong></th>
-                <!-- <th  style=" width: 100%;  text-transform: capitalize"><strong>Estado</strong></th> -->
-                <th  style=" width: 100%"><strong>Detalles</strong></th>
+                <th><strong>No. de Solicitud</strong></th>
+                <th  style=" text-transform: capitalize"><strong>Fecha de solicitud</strong></th>
+                <!-- <th  style=" text-transform: capitalize"><strong>Estado</strong></th> -->
+                <th><strong>Detalles</strong></th>
                 
             </tr>
-            <tr> <td align="center" id="td" colspan="3"><h4>No se encontraron resultados 😥</h4></td></tr>
             </thead>
+        </table>
+<div id="div" style = " max-height: 442px;  overflow-y:scroll;">
+        <table class="table">
             <tbody>
-            
   
     <?php
     $sql = "SELECT * FROM tb_circulante ORDER BY fecha_solicitud";
@@ -92,7 +95,9 @@ form{
      #td{
         display: none;
     }
-    
+    #ssas{
+        display: block;
+    }
    
 </style>
 
@@ -100,51 +105,42 @@ form{
             <td><?php echo $r ?></td>
             <td data-label="No. solicitud" class="delete"><?php  echo $datos_sol['codCirculante']; ?></td>
             <td data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])) ?></td>
-            <!--  <td data-label="Fecha de solicitud" class="delete"><input readonly <?php
-                if($datos_sol['estado']=='Pendiente') {
-                    echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
-                }else if($datos_sol['estado']=='Aprobado') {
-                     echo ' style="background-color:blueviolet ;width:100%; border-radius:5px;text-align:center; color: white;"';
-                }else if($datos_sol['estado']=='Rechazado') {
-                     echo ' style="background-color:red ;width:100%; border-radius:5px;text-align:center; color: white;"';
-                }
-            ?> class="form-control" readonly type="text" name="" value="<?php echo $datos_sol['estado'] ?>"><br> -->
-              </td>
             <td  data-label="Detalles">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_circulante.php">             
                 <input type='hidden' name='id' value="<?php  echo $datos_sol['codCirculante']; ?>">             
                 <input type="submit" name='detalle' class="btn btn-primary" value="Ver Detalles">               
             </form> 
+    <?php } ?>
             </td>
         </tr>
- <?php } ?> 
            </tbody>
         </table>
+</div>
     <?php } ?><?php if ($tipo_usuario==2) {?>
- <div class=" mb-3  mx-2" role="group" aria-label="Basic outlined example">
-         <form method="POST" action="Plugin/soli_circulante.php" target="_blank">
-            <?php $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario'";
+ <div class="btn-group mb-3  mx-2" style="position: initial;"  role="group" aria-label="Basic outlined example"> 
+        <form id="ssas" method="POST" style="background: transparent;" action="Plugin/soli_circulante.php" target="_blank">
+            <?php $sql = "SELECT * FROM tb_circulante ";
     $result = mysqli_query($conn, $sql);
     $n=0;
     while ($datos_sol = mysqli_fetch_array($result)){?>
  <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
        
     <?php } ?>
-             <button type="submit" class="btn btn-outline-primary" name="id1">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
-         <form method="POST" action="Plugin/pdf_soli_circulante.php" target="_blank">
-    <?php $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario'";
+         <form id="ssas"  method="POST"   style="background: transparent;" action="Plugin/pdf_soli_circulante.php" target="_blank">
+                <?php $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     $n=0;
     while ($datos_sol = mysqli_fetch_array($result)){?>
  <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
        
     <?php } ?>
-             <button type="submit" class="btn btn-outline-primary" name="id1">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -155,16 +151,18 @@ form{
           <thead>
               <tr id="tr">
              <th>#</th>
-                <th  style=" width: 10%"><strong>No. de Solicitud</strong></th>
-                <th  style=" width: 100%;  text-transform: capitalize"><strong>Fecha de solicitud</strong></th>
-                <!-- <th  style=" width: 100%;  text-transform: capitalize"><strong>Estado</strong></th> -->
-                <th  style=" width: 100%"><strong>Detalles</strong></th>
+                <th><strong>No. de Solicitud</strong></th>
+                <th  style=" text-transform: capitalize"><strong>Fecha de solicitud</strong></th>
+                <!-- <th  style=" text-transform: capitalize"><strong>Estado</strong></th> -->
+                <th><strong>Detalles</strong></th>
                 
             </tr>
-            <tr> <td align="center" id="td" colspan="3"><h4>No se encontraron resultados 😥</h4></td></tr>
             </thead>
+        </table>
+<div id="div" style = " max-height: 442px;  overflow-y:scroll;">
+        <table class="table">
             <tbody>
-            
+           
   
     <?php
 
@@ -179,6 +177,9 @@ form{
      #td{
         display: none;
     }
+    #ssas{
+        display: block;
+    }
     
    
 </style>
@@ -187,16 +188,6 @@ form{
             <td><?php echo $r ?></td>
             <td data-label="No. solicitud" class="delete"><?php  echo $datos_sol['codCirculante']; ?></td>
             <td data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])) ?></td>
-            <!--  <td data-label="Fecha de solicitud" class="delete"><input readonly <?php
-                if($datos_sol['estado']=='Pendiente') {
-                    echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
-                }else if($datos_sol['estado']=='Aprobado') {
-                     echo ' style="background-color:blueviolet ;width:100%; border-radius:5px;text-align:center; color: white;"';
-                }else if($datos_sol['estado']=='Rechazado') {
-                     echo ' style="background-color:red ;width:100%; border-radius:5px;text-align:center; color: white;"';
-                }
-            ?> class="form-control" readonly type="text" name="" value="<?php echo $datos_sol['estado'] ?>"><br> -->
-              </td>
             <td  data-label="Detalles">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_circulante.php">             
                 <input type='hidden' name='id' value="<?php  echo $datos_sol['codCirculante']; ?>">             
@@ -207,11 +198,10 @@ form{
  <?php } ?> 
            </tbody>
         </table>
+    </div>
+       
     <?php } ?>
-       <!-- <a href="Plugin/pdf_circulante.php" class="btn btn-danger">Generar Solicidud Fondo Circulante</a>-->
-
-    </section>
-
+</section>
    
 </body>
 </html>

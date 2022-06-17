@@ -29,6 +29,7 @@ die();
           background: whitesmoke;
           border-radius: 15px;
             margin: 1%;
+            padding: 1%;
             }
             @media (max-width: 800px){
    #section{
@@ -44,6 +45,7 @@ die();
   
   }
         </style>
+        <br><br><br>
 <?php
 
 $total = 0;
@@ -119,7 +121,6 @@ $solicitud=$datos["nSolicitud"];
         
           <br>
             
-         <table class="table" style="margin-bottom:3%">
             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/pdf_compra">
                      
@@ -188,6 +189,7 @@ while ($productos = mysqli_fetch_array($result)){
             </form>
 
 </div>
+        <table class="table">
             <thead>
               <tr id="tr">
                 <th>Código</th>
@@ -201,6 +203,9 @@ while ($productos = mysqli_fetch_array($result)){
               </tr>
                 <td id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>
            </thead>
+       </table>
+<div id="div" style = " max-height: 442px; overflow-y:scroll;margin-top: -1.5%;">
+           <table class="table">
             <tbody>
                 <?php 
 
@@ -239,7 +244,7 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="tot[]" value="$<?php echo $total2 ?>">
             <input type="hidden" name="tot_f" value="$<?php echo $final2 ?>" >
         </td>
-        <td  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
+        <td style="width: 35%;" data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
         <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
         <td  data-label="Cantidad"><?php echo $stock ?></td>
         <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
@@ -248,11 +253,15 @@ while ($productos = mysqli_fetch_array($result)){
       </tr>
 
       <?php } ?> 
-            <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
-        <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
-        <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final2 ?></td>
-    </tfoot>
-        </tbody>
+  </tbody>
+</table>
+</div>
+<table class="table">
+     <tfoot>
+        <th colspan="5"></th>
+            <th >SubTotal</th>
+            <td style=" color: red; font-weight: bold;" data-label="Subtotal"><?php echo $final2?></td>
+        </tfoot>
     </table>
          <?php 
 
