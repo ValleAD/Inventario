@@ -77,7 +77,7 @@ background:burlywood;
     <header>
         <div class="menu_bar">
             <a style="font-size: 2rem;" href="#" class="bt-menu"><span>
-                <svg class="bi w" width="50" height="50" fill="currentColor">
+                <svg class="bi" width="50" height="50" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#list"/>
                 </svg>
             </span><p>Menú</p></a>

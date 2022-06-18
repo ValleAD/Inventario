@@ -201,17 +201,17 @@ if(isset($_POST['codigo'])){ ?>
                 </div>
                   </div>
 
-                    <div class="form-group" style="position:initial; ">
+<div id="w" class="form-group" style="position: initial; margin: 2%">
                         <label>Unidad de medida (U/M)</label>
 
-                <div style="position: initial;" class="input-group ">
+                <div style="position: initial;" class="input-group mb-3">
                  <label class="input-group-text" for="inputGroupSelect01">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#card-list"/>
                 </svg>
                  </label>           
                         <select style="position: initial;"  class="form-control" name="um[]" id="um" >
-                            <option disabled ><?php echo $productos['unidad_medida'] ?></option>
+                            <option ><?php echo $productos['unidad_medida'] ?></option>
                             <?php
                      $sql = "SELECT * FROM  selects_unidad_medida";
                         $result = mysqli_query($conn, $sql);
@@ -259,8 +259,8 @@ if(isset($_POST['codigo'])){ ?>
             </div>
             </div>
     </div>
-    <?php }}} ?>
 </div>
+    <?php }}} ?>
     
 <div id="w" class="button21">
              <input class="btn btn-success btn-lg my-1" type="submit" value="Enviar" id="buscar1">

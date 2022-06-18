@@ -26,7 +26,10 @@ die();
 
 <body>
 <style>
-    #ssas{
+    #div{
+        display: none;
+    }
+     #ssas{
         display: none;
     }
     h1 {
@@ -42,6 +45,7 @@ form{
             <h1 class="text-center mg-t" style="margin-top: -0.5%;">Solicitudes de Fondo Circulante</h1><br>
 
 <section class="mx-3 p-2" style="background-color:white;border-radius: 5px; position: initial;margin-bottom: 3%;">
+     <h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
 <?php if ($tipo_usuario==1) {?>
  <div class="btn-group mb-3  mx-2" style="position: initial;"  role="group" aria-label="Basic outlined example"> 
         <form id="ssas" method="POST" style="background: transparent;" action="Plugin/soli_circulante.php" target="_blank">
@@ -67,7 +71,7 @@ form{
          </form>
 </div>
 <div id="div" style = " max-height: 370px; overflow-y: auto;margin-bottom: 1%;">
-<table class="table  table-striped" id="example" style=" width: 100%;">
+<table class="table  table-striped" id="div" style=" width: 100%;">
           <thead>
               <tr id="tr">
              <th>#</th>
@@ -147,7 +151,7 @@ form{
              </button>
          </form>
 </div>
-<table class="table  table-striped" id="example" style=" width: 100%;">
+<table class="table  table-striped" id="div" style=" width: 100%;">
           <thead>
               <tr id="tr">
              <th>#</th>

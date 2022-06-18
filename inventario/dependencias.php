@@ -137,7 +137,7 @@ $result = mysqli_query($conn, $sql);
         </div>
     </div>
 </div><?php } ?>
- <div style="position: initial;" class="btn-group mb-3  mx-2" role="group" aria-label="Basic outlined example">
+ <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
          <form method="POST" action="Plugin/U_D_D_C.php" target="_blank">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="dependencia">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -158,13 +158,13 @@ $result = mysqli_query($conn, $sql);
              <tr id="tr">
                 <?php if($tipo_usuario == 1) { ?>
                 <th style="width: 10%;">#</th>
-                <th  style=" width: 25%">Dependencia</th>
-                <th  style=" width: 50%">Habilitado</th>
+                <th  style=" width: 10%">Dependencia</th>
+                <th  style=" width: 10%">Habilitado</th>
                 <th  style=" width: 10%"> Cambiar Habilitado</th>
                 <th  style=" width: 10%">Eliminar</th><?php } ?>
                 <?php if($tipo_usuario == 2) { ?>
-                <th style="width: 10%;">#</th>
-                <th  style=" width: 30%">Dependencia</th>
+                <th style="width: 60%;">#</th>
+                <th  style=" width: 60%">Dependencia</th>
                 <th  style="width: 60%">Habilitado</th>
                 <th></th>
                 <?php } ?>
@@ -200,16 +200,16 @@ $result = mysqli_query($conn, $sql);
             <td style="width: 60%;min-width: 100%;" data-label="Habilitado" align="center">
             <input  <?php
                 if($solicitudes['Habilitado']=='Si') {
-                    echo ' style="background-color:blueviolet ;width:33%; border-radius:100px;text-align:center; color: white;margin-top: .2%"';
+                    echo ' style="background-color:blueviolet;font-size: 11px; width:33%; border-radius:100px;text-align:center; color: white;margin-top: .2%"';
                     $c='Dependencia Disponible';
                 } elseif ($solicitudes['Habilitado']  == 'No') {
                
-                    echo ' style="background-color:red;width:33%; border-radius:100px;text-align:center;color: white;margin-top: .2%"';
+                    echo ' style="background-color:red;width:33%; border-radius:100px;text-align:center;color: white;font-size: 11px; margin-top: .2%"';
                     $c='Dependencia no Disponible';
                 }
             ?>
  type="text" class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="<?=   $c ?>"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $c ?>"></td><?php if($tipo_usuario == 1) { ?>
-            <td style="width: 10%;" data-label="Editar">
+            <td style="width: 10%;min-width: 100%;" data-label="Editar">
                  <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="dependencias.php">             
           <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">             
           <button name='editar' class='btn btn-info btn-sm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
@@ -226,7 +226,7 @@ $result = mysqli_query($conn, $sql);
                    <?php if ($solicitudes['Habilitado']=="No") {
                         echo '<button  onclick="return confirmaion()" class="btn btn-danger btn-sm" type="submit">ELiminar</button>';
                     }else if ($solicitudes['Habilitado']=="Si") {
-                        echo '<button style="cursor: not-allowed;" disabled  onclick="return confirmaion()" name="eliminar_dependencias" class="btn btn-danger btn-sm" type="submit">ELiminar</button>';
+                        echo '<button   id="th" style="cursor: not-allowed;background: rgba(255, 0, 0, 0.5); border: none;" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm text-white">Eliminar</button>';
                     }?>
                 </form>
             </td></td><?php } ?>

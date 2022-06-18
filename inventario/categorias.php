@@ -133,7 +133,7 @@ $result = mysqli_query($conn, $sql);
 </div><?php } ?> 
 </div>
 
- <div style="position: initial;" class="btn-group mb-3  mx-2" role="group" aria-label="Basic outlined example">
+ <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
          <form method="POST" action="Plugin/U_D_D_C.php" target="_blank">
              <button style="position: initial;"n type="submit" class="btn btn-outline-primary mx-1" name="categorias">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -154,11 +154,18 @@ $result = mysqli_query($conn, $sql);
                   
         <thead>
               <tr id="tr">
+                <?php if($tipo_usuario == 1) { ?>
                 <th style="width: 10%;">#</th>
-                <th>Categoria</th>
-                <th style="width: 60%;">Habilitado</th><?php if($tipo_usuario == 1) { ?>
-                <th>Cambiar Habilitado</strong></th>
-                <th>Eliminar</th><?php } ?>
+                <th  style=" width: 10%">Categorias</th>
+                <th  style=" width: 10%">Habilitado</th>
+                <th  style=" width: 10%"> Cambiar Habilitado</th>
+                <th  style=" width: 10%">Eliminar</th><?php } ?>
+                <?php if($tipo_usuario == 2) { ?>
+                <th style="width: 60%;">#</th>
+                <th  style=" width: 60%">Categorias</th>
+                <th  style="width: 60%">Habilitado</th>
+                <th></th>
+                <?php } ?>
                 
             </tr>
      </thead>
@@ -190,11 +197,11 @@ $result = mysqli_query($conn, $sql);
  <td style="width: 50%;min-width: 100%;" data-label="Habilitado">
             <input id="b"  <?php
                 if($solicitudes['Habilitado']=='Si') {
-                    echo ' style="background-color:blueviolet ;width:33%; border-radius:100px;text-align:center; color: white;margin-top: .2%"';
+                    echo ' style="background-color:blueviolet ;width:33%; border-radius:100px;font-size: 11px;text-align:center; color: white;margin-top: .2%"';
                     $c='Categoría Disponible';
                 } elseif ($solicitudes['Habilitado']  == 'No') {
                
-                    echo ' style="background-color:red;width:33%; border-radius:100px;text-align:center;color: white;margin-top: .2%"';
+                    echo ' style="background-color:red;width:33%; border-radius:100px;font-size: 11px;text-align:center;color: white;margin-top: .2%"';
                     $c='Categoría no Disponible';
                 }
             ?>
@@ -217,7 +224,7 @@ $result = mysqli_query($conn, $sql);
                     <?php if ($solicitudes['Habilitado']=="No") {
                         echo '<button  onclick="return confirmaion()" name="eliminar_categorias" class="btn btn-danger btn-sm" type="submit">ELiminar</button>';
                     }else if ($solicitudes['Habilitado']=="Si") {
-                        echo '<button disabled style="cursor: not-allowed;" class="btn btn-danger btn-sm" type="submit">ELiminar</button>';
+                        echo '<button   id="th" style="cursor: not-allowed;background: rgba(255, 0, 0, 0.5); border: none;" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm text-white">Eliminar</button>';
                     }?>
                 </form>
                 

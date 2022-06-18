@@ -131,7 +131,7 @@ $result = mysqli_query($conn, $sql);
         </div>
     </div>
 </div><?php } ?>
- <div  style="position: initial;" class="btn-group mb-3  mx-2" role="group" aria-label="Basic outlined example">
+ <div  style="position: initial;" class="btn-group mb-3 my-3  mx-2" role="group" aria-label="Basic outlined example">
          <form method="POST" action="Plugin/U_D_D_C.php" target="_blank">
              <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="unidad">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -150,11 +150,18 @@ $result = mysqli_query($conn, $sql);
          <table class="table  table-striped" id="div" style=" width: 100%;">
                    <thead>
              <tr id="tr">
-                <th>#</th>
-                <th style=" width: 40%" >Unidad de Medida</th>
-                <th  style=" width: 40%">Habilitado</th><?php if($tipo_usuario == 1) { ?>
-                <th  style=" width: 20%"> Cambiar Habilitado</th>
-                <th  style=" width: 15%">Eliminar</th><?php } ?>
+                <?php if($tipo_usuario == 1) { ?>
+                <th style="width: 10%;">#</th>
+                <th  style=" width: 10%">Unidad de Medida</th>
+                <th  style=" width: 10%">Habilitado</th>
+                <th  style=" width: 10%"> Cambiar Habilitado</th>
+                <th  style=" width: 10%">Eliminar</th><?php } ?>
+                <?php if($tipo_usuario == 2) { ?>
+                <th style="width: 21%;">#</th>
+                <th  style=" width: 25%">Unidad de Medida</th>
+                <th  style="width: 20%">Habilitado</th>
+                
+                <?php } ?>
                 
             </tr>
            
@@ -184,24 +191,24 @@ $result = mysqli_query($conn, $sql);
 </style>
         <tr>
             <td data-label="N°"><?php echo $r ?></td>
-            <td style="width: 30%;;min-width: 100%;" data-label="Nombres">
+            <td style="width: 30%;min-width: 100%;" data-label="Nombres">
                 <?php  echo $solicitudes['unidad_medida']; ?>
                 <input readonly style="width:100%;border:none;background: transparent;" type="hidden" name="cod" value="<?php  echo $solicitudes['unidad_medida']; ?>"></td>
 
-            <td style="width: 50%;;min-width: 100%;" data-label="Habilitado"   align="center">
+            <td style="width: 50%;min-width: 100%;" data-label="Habilitado"   align="center">
             <input <?php
                 if($solicitudes['Habilitado']=='Si') {
-                    echo ' style="background-color:blueviolet ;width:33%; border-radius:100px;text-align:center; color: white;margin-top: .2%"';
+                    echo ' style="background-color:blueviolet ;width:33%; border-radius:100px;font-size: 13px;text-align:center; color: white;margin-top: .2%"';
                     $c='Unidad Disponible';
                 } elseif ($solicitudes['Habilitado']  == 'No') {
                
-                    echo ' style="background-color:red;width:33%; border-radius:100px;text-align:center;color: white;margin-top: .2%"';
+                    echo ' style="background-color:red;width:33%; border-radius:100px;font-size: 13px;text-align:center;color: white;margin-top: .2%"';
                     $c='Unidad no Disponible';
                 }
             ?>
  type="text" class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="<?=   $c ?>"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $c ?>"></td>
 <?php if($tipo_usuario == 1) { ?>
-            <td style="width: 15%;;min-width: 100%;" data-label="Editar"  align="center">
+            <td style="width: 15%;min-width: 100%;" data-label="Editar"  align="center">
                  <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="">             
           <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">             
           <button name='editar' class='btn btn-info btn-sm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
@@ -211,13 +218,13 @@ $result = mysqli_query($conn, $sql);
 <!--**********************************************************************************************************************************************************************************-->
   <!--Botones para actualizar y eliminar-->
 
-            <td style="width: 15%;;min-width: 100%;" data-label="Eliminar"  align="center">
+            <td style="width: 15%;min-width: 100%;" data-label="Eliminar"  align="center">
                <form action="Controller/Delete-unidad_medida.php" method="POST" style="background:transparent;">
                     <input type="hidden" name="id" value="<?php  echo $solicitudes['id']; ?>">
                     <?php if ($solicitudes['Habilitado']=="No") {
                         echo '<button  onclick="return confirmaion()" class="btn btn-danger btn-sm" type="submit">ELiminar</button>';
                     }else if ($solicitudes['Habilitado']=="Si") {
-                        echo '<button style="cursor: not-allowed;" disabled  onclick="return confirmaion()" name="eliminar_dependencias" class="btn btn-danger btn-sm" type="submit">ELiminar</button>';
+                        echo '<button   id="th" style="cursor: not-allowed;background: rgba(255, 0, 0, 0.5); border: none;" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm text-white">Eliminar</button>';
                     }?>
                     <input type="hidden" name="Habilitado" value="<?php  echo $solicitudes['Habilitado']; ?>">
                     

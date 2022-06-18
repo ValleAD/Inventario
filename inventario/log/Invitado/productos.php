@@ -14,11 +14,18 @@ include ('menu.php');
 
 <body>
 <style>
-      <style>
+  <style>
+    #div{
+        margin: 0%;
+        display: none;
+    }
     #ssas{
         display: none;
     }
     .well{
+        display: none;
+    }
+    #w{
         display: none;
     }
  @media (max-width: 952px){
@@ -31,9 +38,12 @@ include ('menu.php');
    #h3{
     color: white;
    }
-
-</style>
-  <section style="background: rgba(255, 255, 255, 0.9);margin: 7%2%2%2%; border-radius: 15px;">
+   #hidden{
+    margin-top: 3%;
+   }
+    }
+  </style>
+  <section style="background: rgba(255, 255, 255, 0.9);margin: 7%1%1%1%;padding: 1%; border-radius: 15px;">
 <h2 id="h2" class="text-center">Inventario de Productos</h2>
 <br>
 <form method="POST" action="" class="well hidden">
@@ -49,7 +59,7 @@ include ('menu.php');
                     
                     </div>
                     <div  class="col-md-6 " style="position: initial;margin-top: 3.3%;">
-                       <input type="submit" id="cat" class="btn btn-success" name="Fecha" value="Filtrar Fechas">
+                       <input type="submit"  class="btn btn-success" name="Fecha" value="Filtrar Fechas">
                     </div>
                 </div>
             </div>
@@ -61,6 +71,9 @@ if (isset($_POST['Fecha'])){
          $f1=$_POST['F1']; 
          $f2=$_POST['F2'];?>  <br> 
          <style>
+            #div{
+                display: none;
+            }
              #hidden{
                 display: none;
              }
@@ -70,24 +83,7 @@ if (isset($_POST['Fecha'])){
              <input type="hidden" name="f2" value="<?php echo $f2 ?>">
                    <center> <h1>Filtro por Fechas</h1></center>
 
-      
-
-                <table class="table  table-striped" id="example1" style=" width: 100%">
-    <thead>
-         <tr id="tr">
-                     <th>Código</th>
-                     <th>Cod. de Catálogo</th>
-                     <th>Descripción Completa</th>
-                     <th>U/M</th>
-                     <th>Cantidad</th>
-                     <th>Costo Unitario</th>
-                     <th>Fecha Registro</th>
-                     
-                   </tr>
-    </thead>
-    <tbody>
-        <tr>
-         <td  colspan="7" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
+      </div>
          <?php  
          $f1=$_POST['F1']; 
          $f2=$_POST['F2'];
@@ -108,7 +104,7 @@ if (isset($_POST['Fecha'])){
                 <div  class="mx-1 p-2 r-5" style="background-color: transparent; border-radius: 5px;">
         <a href="" class="btn btn-success" name="categorias" type="submit">Ver Productos</a>
               <div  style="position: initial;margin-top: 0%;margin-left: 1%;" class="btn-group" role="group" aria-label="Basic outlined example">
-         <form id="w" method="POST" action="Plugin/Fechas.php" target="_blank">
+         <form class="well" method="POST" action="Plugin/Fechas.php" target="_blank">
              <input type="hidden" name="f1" value="<?php echo $f1 ?>">
              <input type="hidden" name="f2" value="<?php echo $f2 ?>">
              <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha">
@@ -117,10 +113,10 @@ if (isset($_POST['Fecha'])){
                 </svg>
              </button>
          </form>
-         <form id="w" method="POST" action="Plugin/pdf_fecha.php" target="_blank">
+         <form class="well" method="POST" action="Plugin/pdf_fecha.php" target="_blank">
             <input type="hidden" name="f1" value="<?php echo $f1 ?>">
              <input type="hidden" name="f2" value="<?php echo $f2 ?>">
-             <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
+             <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -128,12 +124,27 @@ if (isset($_POST['Fecha'])){
          </form>
  </div>
 </div>
+                <table class="table  table-striped" id="div" style=" width: 100%">
+    <thead>
+         <tr id="tr">
+                     <th style="width: 20%">Código</th>
+                     <th style="width: 10%">Cod. de Catálogo</th>
+                     <th  style="width: 23%">Descripción Completa</th>
+                     <th style="width: 1%">U/M</th>
+                     <th style="width: 25%">Cantidad</th>
+                     <th style="width: 1%">Costo Unitario</th>
+                     <th style="width: 50%">Fecha Registro</th>
+                     
+                   </tr>
+    </thead></table>
+<div id="div" style = " max-height: 442px;  overflow-y:scroll;">
+    <table class="table">
+    <tbody>
+ <tr>
+         <td  colspan="7" id="td1" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
 <style>
                     form{
                         margin: 0%;
-                    }
-                    #w{
-                        display: none;
                     }
                 </style>
              <?php       
@@ -151,14 +162,14 @@ if (isset($_POST['Fecha'])){
                   #w{
                     display: block;
                   }
-                  #td{
+                  #td1{
                     display: none;
                   }
               </style>
                    <tr>
                 <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
            <td  data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
-           <td  data-label="Descripción Completa" style="text-align: left;padding-left:3%"><?php  echo $productos['descripcion']; ?></td>
+           <td style="width: 40%;min-width: 100%;"  data-label="Descripción Completa" style="text-align: left;padding-left:3%"><?php  echo $productos['descripcion']; ?></td>
            <td  data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
            <td  data-label="Cantidad" ><?php  echo $stock ?></td>
            <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
@@ -172,10 +183,11 @@ if (isset($_POST['Fecha'])){
 </div>
 
 
+
            <div class="mx-1 p-2 hidden" id="hidden" style=" border-radius: 5px;">
         
         <div style="position: initial;" class="btn-group mb-3 my-3 mx-2 " role="group" aria-label="Basic outlined example">
-         <form id="well" class="well" method="POST" action="../../Plugin/tproductos.php" target="_blank">
+         <form id="well" class="well" method="POST" action="Plugin/tproductos.php" target="_blank">
              
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="tproductos">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -183,7 +195,7 @@ if (isset($_POST['Fecha'])){
                 </svg>
              </button>
          </form>
-         <form id="well" class="well" method="POST" action="../../Plugin/tpdf_productos.php" target="_blank">
+         <form id="well" class="well" method="POST" action="Plugin/tpdf_productos.php" target="_blank">
             
              <button  style="position: initial;"type="submit" class="btn btn-outline-primary mx-1" name="tproductospdf" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -192,6 +204,7 @@ if (isset($_POST['Fecha'])){
              </button>
          </form>
  </div>     
+ <a  href="unidad_medidad.php" class="btn btn-primary"  style="position: initial; float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a>
  <div class="row">   
  <div class="col-md-3"style="position: initial;">
             <section class="well" >
@@ -199,13 +212,15 @@ if (isset($_POST['Fecha'])){
         </section>
     </div>
 </div>
-<br>
-               <section id="tabla_resultado">
+<br>    
+
+
+               <section id="tabla_resultado" >
         <!-- AQUI SE DESPLEGARA NUESTRA TABLA DE CONSULTA -->
 
         </section>     
-       
-</div>
+       </div>
+
 
 
  <form method="POST" action="" class="well" style="padding: 1%;">
@@ -229,7 +244,7 @@ if (isset($_POST['Fecha'])){
          ?></select>
                     </div>
                     <div class="col-md-6 mx-2 " style="position: initial">
-                       <button id="hidden" s class="btn btn-success" name="categorias" type="submit">Exportar por Categorias</button>
+                       <button id="hidden" class="btn btn-success" name="categorias" type="submit">Exportar por Categorias</button>
                   
                     </div>
                 </div>
@@ -267,21 +282,24 @@ if (isset($_POST['categorias'])){$categoria=$_POST['cat'];  ?>  <br>
          </form>
  </div>
 
- <div class="mx-2">
-                <table class="table  table-striped" id="example1" style=" width: 100%">
+ 
+                <table class="table  table-striped" id="div" style=" width: 100%">
     <thead>
          <tr id="tr">
-                     <th>Categoria</th>
-                     <th>Código</th>
-                     <th>Cod. de Catálogo</th>
-                     <th>Descripción Completa</th>
-                     <th>U/M</th>
-                     <th>Cantidad</th>
-                     <th>Costo Unitario</th>
-                     <th>Fecha Registro</th>
+                     <th style="width: 10%;">Categoria</th>
+                     <th style="width: 10%;">Código</th>
+                     <th style="width: 10%;">Cod. de Catálogo</th>
+                     <th style="width: 30%;">Descripción Completa</th>
+                     <th style="width: 10%;">U/M</th>
+                     <th style="width: 10%;">Cantidad</th>
+                     <th style="width: 10%;">Costo Unitario</th>
+                     <th style="width: 10%;">Fecha Registro</th>
                      
                    </tr>
     </thead>
+</table>
+    <div id="div" style = " max-height: 442px;  overflow-y:scroll;">
+        <table class="table">
     <tbody>
          <?php $categoria=$_POST['cat'];
              // code...
@@ -307,7 +325,7 @@ if (isset($_POST['categorias'])){$categoria=$_POST['cat'];  ?>  <br>
                 <td data-label="Categoría"><?php  echo $categoria1 ?></td>
                 <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
            <td  data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
-           <td  data-label="Descripción Completa"><?php  echo $productos['descripcion']; ?></td>
+           <td style="width: 30%;min-width: 100%;"  data-label="Descripción Completa"><?php  echo $productos['descripcion']; ?></td>
            <td  data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
            <td  data-label="Cantidad"><?php  echo $stock ?></td>
            <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
@@ -319,6 +337,8 @@ if (isset($_POST['categorias'])){$categoria=$_POST['cat'];  ?>  <br>
 </table>
   
             </div>
+
+        </div>
 
    
 

@@ -204,11 +204,12 @@ header nav ul li .caret {
         height: calc(100% - 80px);
         position: fixed;
         right:100%;
-        margin: 0;
+        top: 13.1%;
         overflow-y: scroll;
     }
 
     header nav ul li {
+        padding: 1%;
         display: block;
         border-bottom:1px solid rgba(255,255,255,.5);
     }

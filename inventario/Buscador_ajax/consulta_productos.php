@@ -65,13 +65,13 @@ echo'
 	 
                 <thead>
                      <tr id="tr">
-                     <th  id="th">Código</th>
-                     <th  id="th">Cod. Catálogo</th>
-                     <th  id="th" style="width: 30%;">Descripción Completa</th>
-                     <th  id="th">U/M</th>
-                     <th  id="th">Cantidad</th>
-                     <th  id="th">Costo Unitario</th>
-                     <th  id="th">Fecha Registro</th>
+                     <th style="width:1%" id="th">Código</th>
+                     <th style="width:10%" id="th">Cod. Catálogo</th>
+                     <th style="width:23%" id="th" >Descripción Completa</th>
+                     <th style="width:6%" id="th">U/M</th>
+                     <th style="width:6%" id="th">Cantidad</th>
+                     <th style="width:6%" id="th">Costo Unitario</th>
+                     <th style="width:6%" id="th">Fecha Registro</th>
                      <th id="th" style="width:20%">Categoría</th>
                  </tr>
                 </thead>

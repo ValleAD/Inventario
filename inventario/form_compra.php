@@ -80,6 +80,9 @@ die();
         margin-top: -7%;
         margin-left: 10%;
     }
+        #wew{
+        margin: 4%;
+    }
   }
         </style>
         <br><br><br>
@@ -111,6 +114,9 @@ die();
        <style>
     #w {
             display: none;
+       }
+        #wew {
+            display: block;
        }
    </style>
   <?php  
@@ -169,7 +175,7 @@ if(isset($_POST['codigo'])){ ?>
       <br>
       <?php }?>
     </div>
-    
+  
    <?php  for($i = 0; $i < count($_POST['codigo']); $i++){
 
     
@@ -184,20 +190,25 @@ if(isset($_POST['codigo'])){ ?>
        $cantidad=$productos['SUM(stock)'];
         $stock=number_format($cantidad, 1,".");
 
-       ?>5
+       ?>
        <style>
     p{
             display: none;
        }#w{
             display: block;
+       }#wew{
+        display: block;
+       }
+       .well{
+        display: block;
        }
    </style>
  
 
-<div id="wew" class=" col-md-3"  style="background: #bfe7ed;position: initial; border-radius: 5px;" >
-<div class="well well-sm" style="position: initial;margin: 1%; ">
+<div id="wew" class=" col-md-3 "  style="background: #bfe7ed;position: initial; border-radius: 5px;" >
+<div class="  well well-sm" style="position: initial;">
 
-                  <div class="form-group" style="position: initial; margin: 2%">
+                  <div class="form-group" style="position: ; margin: 2%">
                       <label>Código</label> 
                  <div style="position: initial;" class="input-group mb-3">
                  <label class="input-group-text" for="inputGroupSelect01">
@@ -209,19 +220,7 @@ if(isset($_POST['codigo'])){ ?>
                   </div>
                   </div>
 
-                  <div class="form-group" style="position: initial; margin: 2%">
-                        <label>Codificación de Catálogo de NA</label>
-                 <div style="position: initial;" class="input-group mb-3">
-                 <label class="input-group-text" for="inputGroupSelect01">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#123"/>
-                </svg>
-                 </label>
-                      <input style="position: initial;"  type="number" name="cat[]" class="form-control" placeholder="Código" value="<?php echo $productos['catalogo']?>">
-                  </div>
-                  </div>
-
-                  <div class="form-group" style="position: initial; margin: 2%">
+                 <div class="form-group" style="position: ; margin: 2%">
                     <label>Descripción Completa</label>
                  <div style="position: initial;" class="input-group mb-3">
                  <label class="input-group-text" for="inputGroupSelect01">
@@ -231,10 +230,10 @@ if(isset($_POST['codigo'])){ ?>
                  </label>
                     <textarea style="position: initial;" rows="4" type="text" name="desc[]" class="form-control" placeholder="Descripción" required><?php echo $productos['descripcion']?></textarea>
                 </div>
-                  </div>
+                  </div>    
 
                   
-                     <div class="form-group" style="position: initial; margin: 2%">
+                    <div class="form-group" style="position: ; margin: 2%">
                         <label>Unidad de medida (U/M)</label>
 
                 <div style="position: initial;" class="input-group mb-3">
@@ -257,7 +256,7 @@ if(isset($_POST['codigo'])){ ?>
                         </div>
                     </div>
             
-            <div class="form-group" style="position: initial; margin: 2%">
+            <div class="form-group" style="position: ; margin: 2%">
                 <label>Cantidad disponibles</label>
                 <div style="position: initial;" class="input-group mb-3">
                  <label class="input-group-text" for="inputGroupSelect01">
@@ -268,7 +267,7 @@ if(isset($_POST['codigo'])){ ?>
                 <input style="position: initial;" disabled  type="number" step="0.001" name="" class="form-control" placeholder="" required value="<?php echo $stock?>">
             </div>
             </div>
-            <div class="form-group" style="position: initial; margin: 2%">
+            <div class="form-group" style="position: ; margin: 2%">
                 <label>Cantidad que va a pedir</label>
                 <div style="position: initial;" class="input-group mb-3">
                  <label class="input-group-text" for="inputGroupSelect01">
@@ -279,24 +278,21 @@ if(isset($_POST['codigo'])){ ?>
                 <input style="position: initial;"  placeholder="Ingrese la Cantidad" type="number" step="0.01" name="cant[]" class="form-control" placeholder="" required value="">
             </div>
             </div>
-           <div class="form-group" style="position: initial; margin: 2%">
+           <div class="form-group" style="position: ; margin: 2%">
                 <label>Costo Unitario (Estimado)</label>
                  <div style="position: initial;" class="input-group mb-3">
-                 <label class="input-group-text" for="inputGroupSelect01">
+                 <label style="position: initial;" class="input-group-text" for="inputGroupSelect01">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#currency-dollar"/>
                 </svg>
                  </label>
-               <input style="position: initial;" readonly  class="form-control" type="number" step="0.01" name="cu[]" placeholder="Costo unitario" value="<?php echo  $productos['precio'] ?>" required><br>
+               <input style="position: initial;" style="position: initial;" readonly  class="form-control" type="number" name="cu[]" placeholder="Costo unitario" value="<?php echo  $productos['precio'] ?>" required ><br>
             </div>
             </div>
             </div>
     </div>
-<?php }}} ?>
-<br>
- 
-</div> 
-
+ <?php }} ?>
+</div>
             <div id="w" class="form-floating" style="position: initial;" >
                 <label>Justificación por el OBS solicitado</label>
               <textarea rows="7" class="form-control" name="jus"  placeholder="" required id="floatingTextarea"></textarea>
@@ -304,7 +300,7 @@ if(isset($_POST['codigo'])){ ?>
 <div id="w" class="button21">
              <input class="btn btn-lg btn-success my-3" type="submit" value="Enviar" id="buscar1">
         </div>
-       
+    <?php } ?>   
   <style>
             #enviar{
                 margin-bottom: 5%;

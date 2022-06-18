@@ -12,12 +12,18 @@ include ('menu.php');
 <body>
 
          <style>  
-         section{
-            background: white;
-            margin: 1%;
+            #div{
+                margin: 0%;
+                display: none;
+            }
+         section {
+            background: whitesmoke;
             padding: 1%;
             border-radius: 15px;
-            }
+    margin-top: 0.5%;
+    margin-right: 2%;
+    margin-left: 2%;
+  }
             #buscar{
             margin-bottom: 5%;
             margin-left: 2.5%;
@@ -49,7 +55,7 @@ include ('menu.php');
         margin-top: -15%;
         padding-bottom: 5%;
     }
-    #bu{
+    #div{
         margin: 2%;
         margin-bottom: 5%;
     }
@@ -59,10 +65,10 @@ include ('menu.php');
         <br><br><br>       
           <font color="white"> <h1 style=" text-align: center;">Solicitud de Vale</h1> </font>
 <section>
-
+<h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
      <form style="background: transparent;" method='POST' action="form_vale2.php">
-         <button id="bu" style=" float: right;margin-bottom: 1%;" type="submit" name="solicitar" class='btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button>
-      <table class="table  table-striped" id="example2" style=" width: 100%">
+         
+      <table class="table  table-striped" id="div" style=" width: 100%">
             <thead>
               <tr id="tr">
                
@@ -73,16 +79,19 @@ include ('menu.php');
                 <th style="width: 10%;">Cantidad</th>
                 <th style="width: 10%;">Costo Unitario</th>
                 <th style="width: 20%;">Fecha Registro</th>
-                <th style="width: 10%;" align="center">Solicitar
+                <th style="width: 10%;" align="center"><button id="div" style=" float: right;margin-bottom: 1%;" type="submit" name="solicitar" class='btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button>
                 </th>
                
               </tr>
 
             </thead>
-
+</table>
+  <div id="div" style = "max-height: 442px; overflow-y:scroll;">
+<table class="table">
             <tbody>
 
  <?php
+
 
     //    $sql = "SELECT * FROM tb_productos";
     $sql = "SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos GROUP BY precio, codProductos";
@@ -106,11 +115,14 @@ include ('menu.php');
    th{
        width: 100%;
    }
+   #div{
+    display: block;
+   }
 </style>
     <tr id="tr">
       <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
       <td data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
-      <td data-label="Descripción Completa"><?php  echo $productos['descripcion']; ?></td>
+      <td style="width: 35%" data-label="Descripción Completa"><?php  echo $productos['descripcion']; ?></td>
       <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
       <td data-label="Cantidad" style="text-align: center;"><?php  echo $stock; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $precio1?></td>
@@ -123,33 +135,10 @@ include ('menu.php');
       </td>
      
 <?php } ?> 
-
+</tr>
             </tbody>
-            <tfoot id="tfoot">
-
-                <tr id="tr">
-               
-                <th id="th" style="width: 10%;">Código</th>
-                <th id="th" style="width: 10%;">Catálogo</th>
-                <th id="th" style="width: 40%;">Descripción Completa</th>
-                <th id="th" style="width: 10%;">U/M</th>
-                <th id="th" style="width: 10%;">Cantidad</th>
-                <th id="th" style="width: 10%;">Costo Unitario</th>
-                <th id="th" style="width: 20%;">Fecha Registro</th>
-                <th id="th" style="width: 10%;" align="center">
-                    <button type="submit" name="solicitar" class='btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar
-                    </button> 
-                </th>
-               
-              </tr>
-            </tfoot>
-            <style>
-                #th{
-                    background-color: #46466b;
-                    color: white;
-                }
-            </style>
         </table>
+    </div>
 </form>
 </section>
 <script type="text/javascript">

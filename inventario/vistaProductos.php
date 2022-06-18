@@ -239,16 +239,16 @@ if (isset($_POST['Fecha'])){
          </form>
  </div>
 </div>
-                <table class="table  table-striped" id="div" style=" width: 100%">
+                <table class="table table-responsive  table-striped" id="div" style=" width: 100%">
     <thead>
          <tr id="tr">
-                     <th style="width: 10%;">Código</th>
-                     <th style="width: 10%;">Cod. de Catálogo</th>
-                     <th style="width: 40%;">Descripción Completa</th>
-                     <th style="width: 10%;">U/M</th>
-                     <th style="width: 10%;">Cantidad</th>
-                     <th style="width: 10%;">Costo Unitario</th>
-                     <th style="width: 10%;">Fecha Registro</th>
+                     <th style="width: 20%">Código</th>
+                     <th style="width: 10%">Cod. de Catálogo</th>
+                     <th  style="width: 23%">Descripción Completa</th>
+                     <th style="width: 1%">U/M</th>
+                     <th style="width: 25%">Cantidad</th>
+                     <th style="width: 1%">Costo Unitario</th>
+                     <th style="width: 50%">Fecha Registro</th>
                      
                    </tr>
     </thead></table>
@@ -284,7 +284,7 @@ if (isset($_POST['Fecha'])){
                    <tr>
                 <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
            <td  data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
-           <td style="width: 40%;;min-width: 100%;"  data-label="Descripción Completa" style="text-align: left;padding-left:3%"><?php  echo $productos['descripcion']; ?></td>
+           <td  data-label="Descripción Completa" ><?php  echo $productos['descripcion']; ?></td>
            <td  data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
            <td  data-label="Cantidad" ><?php  echo $stock ?></td>
            <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
