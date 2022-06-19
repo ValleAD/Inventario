@@ -197,7 +197,7 @@ if(isset($_POST['codigo'])){ ?>
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#type"/>
                 </svg>
                  </label>
-                    <textarea style="position: initial;" rows="4" type="text" name="desc[]" class="form-control" placeholder="Descripción" required><?php echo $productos['descripcion']?></textarea>
+                    <textarea style="position: initial;" rows="5" type="text" name="desc[]" class="form-control" placeholder="Descripción" required><?php echo $productos['descripcion']?></textarea>
                 </div>
                   </div>
 
