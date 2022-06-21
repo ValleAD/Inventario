@@ -133,9 +133,10 @@ if(isset($_POST['ingresos'])){
                 <th style="width: 10%;">Encargado</th>
                 <th style="width: 10%;">Descripción Completa</th>
                 <th style="width: 10%;">U/M</th>
-                <th style="width: 10%;">Cantidad</th>
+                <th style="width: 10%;">Cantidad solicitada</th>
+                <th style="width: 10%;">Cantidad despachada</th>
                 <th style="width: 10%;">Costo Unitario</th>
-                <th style="width: 10%;">Ingreso Por</th>
+                <!--<th style="width: 10%;">Ingreso Por</th>-->
                 <th style="width: 10%;">Fecha Registro</th>
 
               </tr>
@@ -147,7 +148,7 @@ if(isset($_POST['ingresos'])){
  <table class="table">
             <tbody>
                         <tr>
-         <td  colspan="10" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
+         <td  colspan="11" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
  <?php
 $sql = "SELECT * FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega";
     $result = mysqli_query($conn, $sql);
@@ -184,8 +185,9 @@ $n=0;
     <td style="width: 80%;min-width: 100%;" data-label="Descripción Completa" style="text-align: left;"><?php  echo $productos['descripcion']; ?></td>
     <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
     <td data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
+    <td data-label="Cantidad"><?php  echo $productos['cantidad_despachada']; ?></td>
     <td data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
-    <td data-label="Costo Unitario"><?php  echo $productos['campo']; ?></td>
+    <!--<td data-label="Costo Unitario"><?php  //echo $productos['campo'];--> ?></td>-->
     <td data-label="No. Vale"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
       
 
@@ -245,9 +247,10 @@ $n=0;
                 <th style="width: 10%;">Encargado</th>
                 <th style="width: 10%;">Descripción Completa</th>
                 <th style="width: 10%;">U/M</th>
-                <th style="width: 10%;">Cantidad</th>
+                <th style="width: 10%;">Cantidad solicitada</th>
+                <th style="width: 10%;">Cantidad despachada</th>
                 <th style="width: 10%;">Costo Unitario</th>
-                <th style="width: 10%;">Ingreso Por</th>
+               <!-- <th style="width: 10%;">Ingreso Por</th>-->
                 <th style="width: 10%;">Fecha Registro</th>
               </tr>
 
@@ -304,8 +307,9 @@ $n=0;
     <td style="width: 80%;min-width: 100%;" data-label="Descripción Completa" style="text-align: left;"><?php  echo $productos['descripcion']; ?></td>
     <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
     <td data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
+    <td data-label="Cantidad"><?php  echo $productos['cantidad_despachada']; ?></td>
     <td data-label="Costo Unitario">$<?php  echo $precio2 ?></td>
-    <td data-label="Costo Unitario"><?php  echo $productos['campo']; ?></td>
+    <!--<td data-label="Costo Unitario"> <?php // echo $productos['campo']; ?></td>-->
     <td data-label="No. Vale"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
 <?php } ?>      
  </tr>
@@ -394,9 +398,9 @@ if(isset($_POST['ingresos'])){
                 <th style="width: 10%;">Encargado</th>
                 <th style="width: 10%;">Descripción Completa</th>
                 <th style="width: 10%;">U/M</th>
-                <th style="width: 10%;">Cantidad</th>
+                <th style="width: 10%;">Cantidad solicitada</th>
+                <th style="width: 10%;">Cantidad despachada</th>
                 <th style="width: 10%;">Costo Unitario</th>
-                <th style="width: 10%;">Ingreso Por</th>
                 <th style="width: 10%;">Fecha Registro</th>
               </tr>
               
@@ -406,7 +410,7 @@ if(isset($_POST['ingresos'])){
  <table class="table">
             <tbody>
                         <tr>
-         <td  colspan="10" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
+         <td  colspan="11" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
  <?php
           $idusuario = $_SESSION['iduser'];
 
@@ -439,8 +443,9 @@ $n=0;
     <td style="width: 80%;min-width: 100%;" data-label="Descripción Completa" style="text-align: left;"><?php  echo $productos['descripcion']; ?></td>
     <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
     <td data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
+    <td data-label="Cantidad"><?php  echo $productos['cantidad_despachada']; ?></td>
     <td data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
-    <td data-label="Costo Unitario"><?php  echo $productos['campo']; ?></td>
+    <!--<td data-label="Costo Unitario"><?php  //echo $productos['campo']; ?></td>-->
     <td data-label="No. Vale"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
       
 
@@ -528,9 +533,10 @@ $n=0;
                 <th style="width: 10%;">Encargado</th>
                 <th style="width: 10%;">Descripción Completa</th>
                 <th style="width: 10%;">U/M</th>
-                <th style="width: 10%;">Cantidad</th>
+                <th style="width: 10%;">Cantidad solicitada</th>
+                <th style="width: 10%;">Cantidad despachada</th>
                 <th style="width: 10%;">Costo Unitario</th>
-                <th style="width: 10%;">Ingreso Por</th>
+                <!--<th style="width: 10%;">Ingreso Por</th>-->
                 <th style="width: 10%;">Fecha Registro</th>
               </tr>
 
@@ -579,8 +585,9 @@ $n=0;
     <td style="width: 80%;min-width: 100%;" data-label="Descripción Completa" style="text-align: left;"><?php  echo $productos['descripcion']; ?></td>
     <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
     <td data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
+    <td data-label="Cantidad"><?php  echo $productos['cantidad_despachada']; ?></td>
     <td data-label="Costo Unitario">$<?php  echo $precio2 ?></td>
-    <td data-label="Costo Unitario"><?php  echo $productos['campo']; ?></td>
+    <!--<td data-label="Costo Unitario"><?php // echo $productos['campo']; ?></td>-->
     <td data-label="No. Vale"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
 </tr>
 <?php } ?>      
