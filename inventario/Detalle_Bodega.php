@@ -171,7 +171,7 @@ if ($productos1['estado']=="Rechazado") {
                         echo ' <form style="margin: 0%;position: 0; background: transparent;" method="POST" action="Controller/añadir_vale.php">
 <p class="text-center bg-danger" style="color:white;border-radius: 5px;font-size: 2.5em;padding: 3%;style="margin-top:5%">SOLICITUD RECHAZADA</p>';
                     }
-               if ($productos1['estado']=="Aprobado") {?>
+               if ($productos1['estado']=="Aprobado") {?><br>
                     <div style="position: initial;" class="btn-group mb-3 mx-2 my-4" style="margin-top:4%" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/pdf_bodega.php">
                     

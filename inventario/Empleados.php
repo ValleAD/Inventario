@@ -164,8 +164,9 @@ $result = mysqli_query($conn, $sql);
 ?>
         <font color="black"><h2 class="text-center " >Empleados Del Sistema</h2></font>
     <section id="" style=" border-radius: 5px; background: white; ">
+        <?php if ($tipo_usuario==1) {?>
     <button class="btn btn-secondary" data-toggle="modal" data-target="#Usuarios" style="float: left; color: white;margin-top: 1%;">Nuevo Integrante</button>
-
+<?php } ?>
     <a href="categorias.php" class="btn btn-info" style="float: right;margin-top: 1%; color: white; ">Categorias</a> 
     <a href="dependencias.php" class="btn btn-success" style="float: right;margin-top: 1%; color: white; margin-right: 15px;">Dependencias</a>
     <a href="departamentos.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white; margin-right: 15px;">Departamentos</a>

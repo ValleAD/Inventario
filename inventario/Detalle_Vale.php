@@ -192,7 +192,7 @@ if(isset($_POST['detalle'])){
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
               </div>
               <?php
-               if ($productos1['estado']=="Aprobado") {?>
+               if ($productos1['estado']=="Aprobado") {?><br>
                     <div style="position: initial;" class="btn-group  my-4 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/pdf_vale.php">
                        <?php  
@@ -379,7 +379,7 @@ while ($productos = mysqli_fetch_array($result)){
 <!-- Aqui Comienza Para cambiar el estado de pendiente al cual se le fue otrogado-->
 </form>
         <?php } if ($productos1['estado']=="Pendiente") {?>
-            <div style="position: initial;" class="btn-group mb-3 mx-2" role="group" aria-label="Basic outlined example" style="margin-top:5%">
+            <div style="position: initial;" class="btn-group mb-3 my-5 mx-2" role="group" aria-label="Basic outlined example" style="margin-top:5%">
             <form method="POST" action="Plugin/pdf_vale.php">
             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
                 <svg class="bi" width="20" height="20" fill="currentColor">

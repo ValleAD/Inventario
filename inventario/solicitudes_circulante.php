@@ -74,11 +74,10 @@ form{
 <table class="table  table-striped" id="div" style=" width: 100%;">
           <thead>
               <tr id="tr">
-             <th>#</th>
-                <th><strong>No. de Solicitud</strong></th>
-                <th  style=" text-transform: capitalize"><strong>Fecha de solicitud</strong></th>
-                <!-- <th  style=" text-transform: capitalize"><strong>Estado</strong></th> -->
-                <th><strong>Detalles</strong></th>
+             <th style="width: 10%;">#</th>
+                <th style="width: 10%;"><strong>No. de Solicitud</strong></th>
+                <th  style="width: 10%;"><strong>Fecha de solicitud</strong></th>
+                <th style="width: 10%;"><strong>Detalles</strong></th>
                 
             </tr>
             </thead>
@@ -102,7 +101,9 @@ form{
     #ssas{
         display: block;
     }
-   
+   #div{
+    display: block;
+   }
 </style>
 
         <tr>
@@ -154,11 +155,10 @@ form{
 <table class="table  table-striped" id="div" style=" width: 100%;">
           <thead>
               <tr id="tr">
-             <th>#</th>
-                <th><strong>No. de Solicitud</strong></th>
-                <th  style=" text-transform: capitalize"><strong>Fecha de solicitud</strong></th>
-                <!-- <th  style=" text-transform: capitalize"><strong>Estado</strong></th> -->
-                <th><strong>Detalles</strong></th>
+             <th style="width: 10%;">#</th>
+                <th style="width: 10%;"><strong>No. de Solicitud</strong></th>
+                <th  style="width: 10%;"><strong>Fecha de solicitud</strong></th>
+                <th style="width: 10%;"><strong>Detalles</strong></th>
                 
             </tr>
             </thead>
@@ -185,7 +185,9 @@ form{
         display: block;
     }
     
-   
+   #div{
+    display: block;
+   }
 </style>
 
         <tr>

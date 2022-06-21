@@ -82,11 +82,11 @@ form{
               <tr id="tr">
               <th style=" width: 7%">#</th>
                 <th style=" width: 10%">No. de Solicitud</th>
-                <th style=" width: 30%" >Departamento Solicitante</th>
+                <th style=" width: 20%" >Departamento Solicitante</th>
                 <th style=" width: 15%">Usuario</th>
-                <th style=" ">Fecha de solicitud</th>
-                <th style=" ">Estado</th>
-                <th style=" " >Detalles</th>
+                <th style="width: 15%">Fecha de solicitud</th>
+                <th style="width: 2%">Estado</th>
+                <th style="width: 15%" >Detalles</th>
                 
             </tr>
             </thead>
@@ -202,11 +202,11 @@ form{
               <tr id="tr">
               <th style=" width: 7%">#</th>
                 <th style=" width: 10%">No. de Solicitud</th>
-                <th style=" width: 30%" >Departamento Solicitante</th>
+                <th style=" width: 20%" >Departamento Solicitante</th>
                 <th style=" width: 15%">Usuario</th>
-                <th style=" ">Fecha de solicitud</th>
-                <th style=" ">Estado</th>
-                <th style=" " >Detalles</th>
+                <th style="width: 15%">Fecha de solicitud</th>
+                <th style="width: 2%">Estado</th>
+                <th style="width: 15%" >Detalles</th>
                 
             </tr>
             </thead>

@@ -320,7 +320,7 @@ if ($datos_sol['estado']=="Rechazado") {
 <p class="text-center bg-danger" style="color:white;border-radius: 5px;font-size: 2.5em;padding: 3%;margin-top:5%">SOLICITUD RECHAZADA</p>';
                     }
                if ($datos_sol['estado']=="Aprobado") {?><br><br>
-                    <div style="position: initial;" class="btn-group mb-3 mx-2" style="margin-top:4%" role="group" aria-label="Basic outlined example">
+                    <div style="position: initial;" class="btn-group mb-3 mx-2 my-4" style="margin-top:4%" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/pdf_almacen.php">
                     
 
@@ -451,7 +451,7 @@ while ($productos = mysqli_fetch_array($result)){
     </tfoot>
 </table>
 </form>
-        <?php } if ($datos_sol['estado']=="Pendiente") {?>
+        <?php } if ($datos_sol['estado']=="Pendiente") {?><br>
             <div style="position: initial;" class="btn-group mb-3 mx-2 my-5" style="margin-top:15%" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/pdf_almacen.php">
             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">

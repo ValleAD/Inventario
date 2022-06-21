@@ -82,24 +82,24 @@ echo'
                 <thead>
                      <tr id="tr">';if($tipo_usuario==2){ 
                         echo '
-                    <th style="width:10%"  id="th">Código</th>
-                     <th style="width:10%"  id="th">Cod. Catálogo</th>
-                     <th style="width: 20%;" id="th"> Descripción Completa</th>
-                     <th style="width:10%"  id="th">U/M</th>
-                     <th style="width:10%"  id="th">Cantidad</th>
-                     <th style="width:10%"  id="th">Costo Unitario</th>
-                     <th style="width:10%"  id="th">Fecha Registro</th>
-                    <th id="th" style="width:30%">Categoría</th>
+                     <th style="width:1%" id="th">Código</th>
+                     <th style="width:10%" id="th">Cod. Catálogo</th>
+                     <th style="width:23%" id="th" >Descripción Completa</th>
+                     <th style="width:6%" id="th">U/M</th>
+                     <th style="width:6%" id="th">Cantidad</th>
+                     <th style="width:6%" id="th">Costo Unitario</th>
+                     <th style="width:6%" id="th">Fecha Registro</th>
+                     <th id="th" style="width:20%">Categoría</th>
                     ';}if($tipo_usuario==1){ 
                         echo '
                      <th style="width:7%"  id="th">Código</th>
                      <th style="width:7%"  id="th">Cod. Catálogo</th>
-                     <th style="width: 27%;" id="th"> Descripción Completa</th>
-                     <th style="width:10%"  id="th">U/M</th>
-                     <th style="width:10%"  id="th">Cantidad</th>
+                     <th style="width: 24%;" id="th"> Descripción Completa</th>
+                     <th style="width:8%"  id="th">U/M</th>
+                     <th style="width:7%"  id="th">Cantidad</th>
                      <th style="width:10%"  id="th">Costo Unitario</th>
                      <th style="width:10%"  id="th">Fecha Registro</th>
-                    <th id="th" style="width:10%">Categoría</th>
+                    <th id="th" style="width:8%">Categoría</th>
 
                     
                      <th style="width:10%" id="th">Editar</th>
@@ -136,14 +136,14 @@ echo'
 		$tabla.='
 		 ';if ($tipo_usuario ==2) {echo'
 		<tr>
-			<td style="width:15%;min-width: 100%;" id="th" data-label="Código">'.$productos['codProductos'].'</td>
-			<td style="width:15%;min-width: 100%;" id="th" data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
-			<td style="width:29%;min-width: 100%;" id="th" data-label="Descripción">'.$des.'</td>
-			<td style="width:15%;min-width: 100%;" id="th" data-label="Unidad de Medida">'.$productos['unidad_medida'].'</td>
-			<td style="width:15%;min-width: 100%;" id="th" data-label="Cantidad">'.$stock.'</td>
-			<td style="width:15%;min-width: 100%;" id="th" data-label="Precio">'.$precio1.'</td>
-			<td style="width:15%;min-width: 100%;" id="th" data-label="Fecha">'.$productos['fecha_registro'].'</td>
-			<td style="width:30%;min-width: 100%;" id="th" data-label="Categoría">'.$categoria.'</td>
+            <td style="width: 10%;min-width: 100%;" id="th" data-label="Código">'.$productos['codProductos'].'</td>
+            <td style="width: 10%;min-width: 100%;" id="th" data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
+            <td style="width: 47%;min-width: 100%;" id="th" data-label="Descripción">'.$des.'</td>
+            <td style="width: 10%;min-width: 100%;" id="th" data-label="Unidad de Medida">'.$productos['unidad_medida'].'</td>
+            <td style="width: 10%;min-width: 100%;" id="th" data-label="Cantidad">'.$stock.'</td>
+            <td style="width: 10%;min-width: 100%;" id="th" data-label="Precio">'.$precio1.'</td>
+            <td style="width: 20%;min-width: 100%;" id="th" data-label="Fecha">'.$productos['fecha_registro'].'</td>
+            <td style="width: 30%;min-width: 100%;" id="th" data-label="Categoría">'.$categoria.'</td>
 			</tr>
 		';} if ($tipo_usuario ==1) {
 				echo '<tr>
