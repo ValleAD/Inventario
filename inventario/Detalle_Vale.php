@@ -168,6 +168,8 @@ if(isset($_POST['detalle'])){
                 }else if($productos1['estado']=='Rechazado') {
                      echo ' style="display:none"';
                 }
+
+
             ?> style="float: right;" class="btn btn-danger my-3" name="estado" > Cambiar estado
             <svg class="bi" width="20" height="20" fill="currentColor">
             <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#upload"/>
@@ -178,6 +180,9 @@ if(isset($_POST['detalle'])){
         </div>
           
             <br>
+
+
+            <!--Vista solo para ver lo detallado del informe-->
           </form>
             <form style="margin-top: -7%;" method="POST" action="Plugin/pdf_vale.php" target="_blank" style="background: transparent;">
 
@@ -266,6 +271,7 @@ while ($productos = mysqli_fetch_array($result)){
   <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
 <?php } ?>
 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="pdf">
+
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
@@ -278,7 +284,7 @@ while ($productos = mysqli_fetch_array($result)){
                 <table class="table " style="width: 100%;">
                     <thead>
                         <tr id="tr">
-                  <th >Código</th>
+                  <th >Códigosss</th>
                   <th >Descripción</th>
                   <th >Unidad de Medida</th>
                   <th >Cantidad Solicitada</th>
@@ -366,6 +372,11 @@ while ($productos = mysqli_fetch_array($result)){
                 <input type="hidden" name="jus" value="<?php echo $jus ?>">
             </div>
 <?php }  ?>
+<!-- Aqui Termina La vista de Detalles sin Modificar -->
+
+
+
+<!-- Aqui Comienza Para cambiar el estado de pendiente al cual se le fue otrogado-->
 </form>
         <?php } if ($productos1['estado']=="Pendiente") {?>
             <div style="position: initial;" class="btn-group mb-3 mx-2" role="group" aria-label="Basic outlined example" style="margin-top:5%">
