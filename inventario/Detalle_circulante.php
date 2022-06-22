@@ -150,7 +150,7 @@ $id=$_POST['id'];
         <br>
     </form>
            <form method="POST" style="margin-top: -3.5%" action="Plugin/pdf_circulante.php" target="_blank">
-
+<table class="table">
                         <div style="position: initial;" style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form style="position: initial;" method="POST" action="Plugin/pdf_circulante.php">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha">
@@ -197,7 +197,6 @@ while ($productos = mysqli_fetch_array($result)){
             </form>
 
 </div>
-                    <table class="table">
             <thead>
               <tr id="tr">
                 <th>#</th>

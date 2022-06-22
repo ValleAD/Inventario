@@ -31,17 +31,17 @@ include ('menu.php');
         <h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
 
     <div  class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
-         <form id="sass" method="POST" class="mx-1" action="Plugin/soli_vale.php" target="_blank">
+         <form id="sass" method="POST" class="mx-1" action="../../Plugin/soli_vale.php" target="_blank">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">    
                 <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
-         <form id="sass" method="POST" action="Plugin/pdf_soli_vale.php" target="_blank" class="mx-1">
+         <form id="sass" method="POST" action="../../Plugin/pdf_soli_vale.php" target="_blank" class="mx-1">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>
@@ -67,7 +67,6 @@ include ('menu.php');
 
 
     <?php
-    include 'Model/conexion.php';
 
     $sql = "SELECT * FROM tb_vale ORDER BY fecha_registro ";
     $result = mysqli_query($conn, $sql);

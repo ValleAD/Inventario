@@ -172,6 +172,7 @@ if ($productos1['estado']=="Rechazado") {
 <p class="text-center bg-danger" style="color:white;border-radius: 5px;font-size: 2.5em;padding: 3%;style="margin-top:5%">SOLICITUD RECHAZADA</p>';
                     }
                if ($productos1['estado']=="Aprobado") {?><br>
+               <table class="table">
                     <div style="position: initial;" class="btn-group mb-3 mx-2 my-4" style="margin-top:4%" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/pdf_bodega.php">
                     
@@ -232,7 +233,6 @@ while ($productos = mysqli_fetch_array($result)){
             </form>
 
 </div>
-            <table class="table">
                     <thead>
                         <tr id="tr">
                   <th>Código</th>
@@ -306,7 +306,8 @@ while ($productos = mysqli_fetch_array($result)){
     </table>
 </form>
         <?php } if ($productos1['estado']=="Pendiente") {?>
-            <div  style="position: initial;" class="btn-group  my-5 mx-2" role="group" aria-label="Basic outlined example">
+            <table class="table">
+            <div  style="position: initial;" class="btn-group  my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/pdf_bodega.php">
             <button style="position: initial;"  type="submit" class="btn btn-outline-primary" name="aprobado">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -365,7 +366,6 @@ while ($productos = mysqli_fetch_array($result)){
             </form>
 
 </div>
-        <table class="table">
             <thead>
               <tr id="tr">
                 <th>Código</th>

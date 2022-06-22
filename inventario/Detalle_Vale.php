@@ -193,6 +193,7 @@ if(isset($_POST['detalle'])){
               </div>
               <?php
                if ($productos1['estado']=="Aprobado") {?><br>
+               <table class="table " style="width: 100%;">
                     <div style="position: initial;" class="btn-group  my-4 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/pdf_vale.php">
                        <?php  
@@ -281,7 +282,7 @@ while ($productos = mysqli_fetch_array($result)){
 
 </div>
 
-                <table class="table " style="width: 100%;">
+                
                     <thead>
                         <tr id="tr">
                   <th >Códigosss</th>
@@ -379,6 +380,7 @@ while ($productos = mysqli_fetch_array($result)){
 <!-- Aqui Comienza Para cambiar el estado de pendiente al cual se le fue otrogado-->
 </form>
         <?php } if ($productos1['estado']=="Pendiente") {?>
+            <table class="table ">
             <div style="position: initial;" class="btn-group mb-3 my-5 mx-2" role="group" aria-label="Basic outlined example" style="margin-top:5%">
             <form method="POST" action="Plugin/pdf_vale.php">
             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
@@ -451,7 +453,7 @@ while ($productos = mysqli_fetch_array($result)){
             </form>
 
 </div>
-<table class="table ">
+
             <thead>
               <tr id="tr">
                 <th >Código</th>

@@ -40,7 +40,7 @@ $result = mysqli_query($conn, $insert);
       $cost             = $_POST['cu'][$i];
       $solicitud        = $_POST['nsolicitud'];;
 
-      $insert = "INSERT INTO detalle_compra (codigo, catalogo, descripcion, unidad_medida, stock,cantidad_despachada, precio, solicitud_compra) VALUES ('$codigo_producto','$catalogo', '$Descripción', '$u_m', '$cantidad',0, '$cost', '$solicitud')";
+      $insert = "INSERT INTO detalle_compra (categoria,codigo, catalogo, descripcion, unidad_medida, stock,cantidad_despachada, precio, solicitud_compra) VALUES ('$codigo_producto','$catalogo', '$Descripción', '$u_m', '$cantidad',0, '$cost', '$solicitud')";
       $query = mysqli_query($conn, $insert);
 
       if ($query) {

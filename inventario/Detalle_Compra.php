@@ -38,6 +38,9 @@ die();
 </head>
 <body>
             <style>  
+                #div{
+                    margin: 0%;
+                }
          section{
             margin: 2%;
             padding: 1%;
@@ -166,8 +169,9 @@ $tipo_usuario = $_SESSION['iduser'];
             </div>
         </div>
               <input readonly class="form-control" type="hidden" value="<?php echo $productos1['nSolicitud'] ?>" name="sol_compra">
-    
+    <table class="table" id="div">
             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+                
             <form method="POST" action="Plugin/pdf_compra.php">
                      
  <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['nSolicitud']?>" name="sol_compra">
@@ -241,7 +245,6 @@ while ($productos = mysqli_fetch_array($result)){
             </form>
 
 </div>
-         <table class="table">
             <thead>
               <tr id="tr">
                 <th>Código</th>
@@ -257,7 +260,7 @@ while ($productos = mysqli_fetch_array($result)){
            </thead>
        </table>
 <div id="div" style = " max-height: 442px; overflow-y:scroll;"> 
-           <table class="table">
+           <table class="table" id="div">
             <tbody>
                 <?php 
 
@@ -310,10 +313,10 @@ while ($productos = mysqli_fetch_array($result)){
 </div>
 <table class="table">
      <tfoot>
-        <th colspan="5"></th>
-            <th >SubTotal</th>
-            <td style=" color: red; font-weight: bold;" data-label="Subtotal"><?php echo $final2?></td>
-        </tfoot>
+            <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
+        <td colspan="6"style="text-align: left;font-size: 14px; font-weight: bold;">Subtotal</td>
+        <td style="color: red;font-size: 14px; font-weight: bold;"><?php echo $final2 ?></td>
+    </tfoot>
     </table>
          <?php 
 

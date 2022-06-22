@@ -101,7 +101,7 @@ $final = 0;
             ?> readonly class="form-control"  type="text" value="<?= $productos1['estado'] ?>" name="id"> 
             </div>
         </div>
-        </form>
+        
         <br>
               <div style="padding:1%">
             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
@@ -285,7 +285,7 @@ while ($productos = mysqli_fetch_array($result)){
             </div>
 <?php } ?>
 </div>
-
+</form>
 </section>           
   </body>
   </html>

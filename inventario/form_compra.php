@@ -219,6 +219,17 @@ if(isset($_POST['codigo'])){ ?>
                       <input style="position: initial;"  type="number" name="cod[]" class="form-control" id="busqueda" placeholder="Código de producto " value="<?php echo $productos['codProductos'] ?>" required>
                   </div>
                   </div>
+                <div class="form-group" style="position: ; margin: 2%">
+                      <label>Código Catalogo</label> 
+                 <div style="position: initial;" class="input-group mb-3">
+                 <label class="input-group-text" for="inputGroupSelect01">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#123"/>
+                </svg>
+                 </label>
+                      <input style="position: initial;"  type="number" name="cat[]" class="form-control" id="busqueda" placeholder="Código de producto " value="<?php echo $productos['catalogo'] ?>" required>
+                  </div>
+                  </div>
 
                  <div class="form-group" style="position: ; margin: 2%">
                     <label>Descripción Completa</label>

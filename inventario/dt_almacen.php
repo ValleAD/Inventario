@@ -104,6 +104,7 @@ $final = 0;
         </div>
       
         <br>
+        <table class="table">
             <div  style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/pdf_compra.php">
                 <button style="position: initial;"  type="submit" class="btn btn-outline-primary" name="Fecha">
@@ -155,7 +156,6 @@ while ($productos = mysqli_fetch_array($result)){
 
 </div>
 </form>
-<table class="table">
             <thead>
               <tr id="tr">
                 <th style="width: 25%;">Código</th>
