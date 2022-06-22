@@ -12,6 +12,9 @@
 </head>
 <body>
         <style>  
+            #div{
+                margin: 0%;
+            }
          section{
             margin: 1%;
             padding: 1%;
@@ -152,7 +155,7 @@ if(isset($_POST['detalle'])){
               </div>
               <?php
                if ($productos1['estado']=="Aprobado") {?><br><br>
-                <table class="table " style="width: 100%;">
+                <table class="table " style="width: 100%;" id="div">
                     <div style="position: initial;" class="btn-group  my-4 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="../../Plugin/pdf_vale.php">
                        <?php  
@@ -241,16 +244,19 @@ while ($productos = mysqli_fetch_array($result)){
 </div>
                     <thead>
                         <tr id="tr">
-                  <th style="width: 10%;">Código</th>
-                  <th style="width: 50%;">Descripción</th>
-                  <th style="width: 10%;">Unidad de Medida</th>
-                  <th style="width: 10%;">Cantidad Solicitada</th>
-                  <th style="width: 10%;">Cantidad Depachada</th>
-                  <th style="width: 10%;">Costo unitario</th>
-                  <th style="width: 10%;">Total</th>
+                  <th >Códigosss</th>
+                  <th >Descripción</th>
+                  <th >Unidad de Medida</th>
+                  <th >Cantidad Solicitada</th>
+                  <th >Cantidad Depachada</th>
+                  <th >Costo unitario</th>
+                  <th >Total</th>
                 </tr>
                 <td id="td" colspan="6"><h4>No se encontraron resultados 😥</h4></td>
               </thead>
+          </table>
+          <div id="div" style = " max-height: 442px; overflow-y:scroll;"> 
+            <table class="table" id="div">
                 <tbody>
                     <?php 
                      $total = 0;
@@ -296,12 +302,15 @@ while ($productos = mysqli_fetch_array($result)){
       </tr>
 
       <?php } ?> 
+  </tbody>
+</table>
+</div>
+<table class="table" id="div">
      <tfoot>
             <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
         <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
         <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final2 ?></td>
     </tfoot>
-        </tbody>
     </table>
              <?php 
 
@@ -323,12 +332,17 @@ while ($productos = mysqli_fetch_array($result)){
                 <input type="hidden" name="jus" value="<?php echo $jus ?>">
             </div>
 <?php }  ?>
+<!-- Aqui Termina La vista de Detalles sin Modificar -->
+
+
+
+<!-- Aqui Comienza Para cambiar el estado de pendiente al cual se le fue otrogado-->
 </form>
-        <?php } if ($productos1['estado']=="Pendiente") {?>
-<table class="table " style="margin-bottom:3%">
-            <div class="btn-group mb-3 mx-2" role="group" aria-label="Basic outlined example" style="margin-top:5%">
+        <?php } if ($productos1['estado']=="Pendiente") {?><br>
+            <table class="table " id="div">
+            <div style="position: initial;" class="btn-group mb-3 my-5 mx-2" role="group" aria-label="Basic outlined example" style="margin-top:5%">
             <form method="POST" action="../../Plugin/pdf_vale.php">
-            <button type="submit" class="btn btn-outline-primary" name="aprobado">
+            <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -389,7 +403,7 @@ while ($productos = mysqli_fetch_array($result)){
   ?>
   <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
 <?php } ?>
-<button type="submit" class="btn btn-outline-primary" name="pdf">
+<button style="position: initial;" type="submit" class="btn btn-outline-primary" name="pdf">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
@@ -398,18 +412,22 @@ while ($productos = mysqli_fetch_array($result)){
             </form>
 
 </div>
+
             <thead>
               <tr id="tr">
-                <th style="width: 10%;">Código</th>
-                <th style="width: 50%;">Descripción</th>
-                <th style="width: 10%;">Unidad de Medida</th>
-                <th style="width: 10%;">Cantidad Solicitada</th>
-                <th style="width: 10%;">Cantidad Depachada</th>
-                <th style="width: 10%;">Costo unitario</th>
-                <th style="width: 10%;">Total</th>
+                <th >Código</th>
+                <th >Descripción</th>
+                <th >Unidad de Medida</th>
+                <th >Cantidad Solicitada</th>
+                <th >Cantidad Depachada</th>
+                <th >Costo unitario</th>
+                <th >Total</th>
                 </tr>
                 <td id="td" colspan="6"><h4>No se encontraron resultados 😥</h4></td>
               </thead>
+          </table>
+          <div id="div" style = " max-height: 442px; overflow-y:scroll;"> 
+          <table class="table" id="div">
                 <tbody>
                 <?php 
 
@@ -457,12 +475,17 @@ while ($productos = mysqli_fetch_array($result)){
       </tr>
 
       <?php } ?> 
+  </tbody>
+</table>
+</div>
+<table class="table">
+     <tfoot>
             <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
-        <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
-        <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final2 ?></td>
+        <td colspan="6"style="text-align: left;font-size: 14px; font-weight: bold;">Subtotal</td>
+        <td style="color: red;font-size: 14px; font-weight: bold;"><?php echo $final2 ?></td>
     </tfoot>
-        </tbody>
     </table>
+    <br>
          <?php 
 
                        
@@ -485,7 +508,9 @@ while ($productos = mysqli_fetch_array($result)){
 <?php }  ?>
 
 </form>
- <?php  }} }?>
+             <?php  }?>
+
+             <?php  } }?>
 
 
 </form>

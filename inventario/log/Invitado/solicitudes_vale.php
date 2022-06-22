@@ -49,13 +49,13 @@ include ('menu.php');
  <table class="table" id="div" style="width: 100%;">
             <thead>
               <tr id="tr">
-                <th style="width: 7%;">#</th>
-                <th style="width: 10%;"><strong>Código de Vale</strong></th>
+                <th style="width: 5%;">#</th>
+                <th style="width: 1%;"><strong>Código de Vale</strong></th>
                 <th style="width: 20%"><strong>Departamento Solicitante</strong></th>
-                <th style="width: 20%;"><strong>Encargado</strong></th>
-                <th style="width: 15%"><strong>Fecha</strong></th>
-                <th style="width: 14%;"><strong>Estado</strong></th>
-                <th style="width: 20%;"><strong>Detalles</strong></th> 
+                <th style="width: 10%;"><strong>Encargado</strong></th>
+                <th style="width: 10%"><strong>Fecha</strong></th>
+                <th style="width: 10%;"><strong>Estado</strong></th>
+                <th style="width: 10%;"><strong>Detalles</strong></th> 
             </tr>
             
      </thead>
