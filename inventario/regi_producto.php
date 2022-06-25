@@ -194,7 +194,8 @@ die();
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#currency-dollar"/>
                 </svg>
                  </label>
-               <input style="position: initial;" class="form-control" type="number" step="0.01" name="cu[]" placeholder="$ 0.00" required><br>
+               <input style="position: initial;" class="form-control" type="number" step="0.01" name="cu[]" placeholder="$ 0.00" required>
+
             </div>
         </div>
         </div>
