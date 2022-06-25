@@ -83,13 +83,14 @@ form{
 <tbody>   
     <?php
     include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_bodega  ";
+    $sql = "SELECT * FROM tb_bodega";
     $result = mysqli_query($conn, $sql);
 $n=0;
     while ($solicitudes = mysqli_fetch_array($result)){ 
+        $idusuario=$solicitudes['idusuario'];
         $n++;
         $r=$n+0;
-        if ($tipo_usuario==1) {
+        if ($idusuario==1) {
         $u='Administrador';
         }
         else {

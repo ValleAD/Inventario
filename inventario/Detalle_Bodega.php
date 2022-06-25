@@ -70,7 +70,7 @@ die();
         </style>
         <br><br><br>
 <?php
-
+$final2=0;
 if(isset($_POST['detalle'])){
 
     $total = 0;
