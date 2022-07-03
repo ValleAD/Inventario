@@ -164,7 +164,6 @@ cantidad_solicitada decimal(6,2) NOT NULL  DEFAULT '0.00',
 cantidad_despachada decimal(6,2) NOT NULL  DEFAULT '0.00',
 tb_almacen int(20) NOT NULL,
 precio decimal(6,2) NOT NULL  DEFAULT '0.00',
-fecha_registro text,
     PRIMARY KEY (codigoalmacen),
      CONSTRAINT fk_tb_almacen_detalle_almacen FOREIGN KEY (tb_almacen)
     REFERENCES tb_almacen(codAlmacen)
