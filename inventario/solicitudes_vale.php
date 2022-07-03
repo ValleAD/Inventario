@@ -119,7 +119,7 @@ die();
             <td style="width: 30%;min-width: 100%;" data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
 
              <td style="width: 30%;min-width: 100%;" data-label="Encargado" class="delete"><?php  echo $solicitudes['usuario'],"<br> ","(",$u,")"; ?></td>
-            <td style="width: 20%;min-width: 100%;" data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])); ?></td>
+           <td style="width: 20%;min-width: 100%;" data-label="Fecha de solicitud" class="delete"><?php  echo $solicitudes['fecha_registro']; ?></td>
             <td style="width: 20%;min-width: 100%;" data-label="Departamento Solicitante" class="delete"><input readonly <?php
                 if($solicitudes['estado']=='Pendiente') {
                     echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
@@ -260,7 +260,7 @@ die();
             <td style="width: 30%;min-width: 100%;" data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
 
              <td style="width: 30%;min-width: 100%;" data-label="Encargado" class="delete"><?php  echo $solicitudes['usuario'] ?></td>
-            <td style="width: 20%;min-width: 100%;" data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])); ?></td>
+           <td style="width: 20%;min-width: 100%;"  data-label="Fecha de solicitud" class="delete"><?php  echo $solicitudes['fecha_registro']; ?></td>
             <td style="width: 20%;min-width: 100%;" data-label="Departamento Solicitante" class="delete"><input readonly <?php
                 if($solicitudes['estado']=='Pendiente') {
                     echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';

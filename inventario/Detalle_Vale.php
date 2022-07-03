@@ -121,18 +121,18 @@ if(isset($_POST['detalle'])){
     
               <div class="col-md-2" style="position: initial">
                 <label style="font-weight: bold;">N° de Vale:</label>
-                <input readonly class="form-control"  type="text" value="' .$productos1['codVale']. '" name="vale">
+               <p>' .$productos1['codVale']. '</p>
               </div>
     
             <div class="col-md-3" style="position: initial">
                 <label style="font-weight: bold;">Encargado:</label>
-                <input readonly class="form-control"  type="text" value="' .$productos1['usuario']. '" name="usuario">
+               <p>' .$productos1['usuario']. '</p>
             </div>
     
               
               <div class="col-md-2" style="position: initial">
                 <label style="font-weight: bold;">Fecha:</label>
-                  <input readonly class="form-control"  type="text" value="'.date("d-m-Y",strtotime($productos1['fecha_registro'])). '" name="fech">
+                 <p>' .$productos1['fecha_registro']. '</p>
               </div>
               <div class="col-md-2" style="position: initial">
             <label style="font-weight: bold;">Estado:</label>

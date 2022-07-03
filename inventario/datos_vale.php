@@ -73,28 +73,28 @@ $final = 0;
       
         <div class="row">
       
-          <div class="col-md-3" style="position: initial">
-      
-              <label style="font-weight: bold;">Depto. o Servicio:</label>
-              <input readonly class="form-control"  type="text" value="' .$productos1['departamento']. '" name="depto">
-
-          </div>
-
-          <div class="col-md-2" style="position: initial">
-            <label style="font-weight: bold;">N° de Vale:</label>
-            <input readonly class="form-control"  type="text" value="' .$productos1['codVale']. '" name="vale">
-          </div>
-
-        <div class="col-md-3" style="position: initial">
-            <label style="font-weight: bold;">Encargado:</label>
-            <input readonly class="form-control"  type="text" value="' .$productos1['usuario']. '" name="usuario">
-        </div>
-
+              <div class="col-md-3" style="position: initial">
           
-          <div class="col-md-2" style="position: initial">
-            <label style="font-weight: bold;">Fecha:</label>
-              <input readonly class="form-control"  type="text" value="' .date("d-m-Y",strtotime($productos1['fecha_registro'])). '" name="fech">
-          </div>';?>
+                  <label style="font-weight: bold;">Depto. o Servicio:</label>
+                  <p>' .$productos1['departamento']. '</p>
+    
+              </div>
+    
+              <div class="col-md-2" style="position: initial">
+                <label style="font-weight: bold;">N° de Vale:</label>
+               <p>' .$productos1['codVale']. '</p>
+              </div>
+    
+            <div class="col-md-3" style="position: initial">
+                <label style="font-weight: bold;">Encargado:</label>
+               <p>' .$productos1['usuario']. '</p>
+            </div>
+    
+              
+              <div class="col-md-2" style="position: initial">
+                <label style="font-weight: bold;">Fecha:</label>
+                 <p>' .$productos1['fecha_registro']. '</p>
+              </div>';?>
            <div class="col-md-2" style="position: initial">
               <label style="font-weight: bold;">Estado</label>
               <input <?php

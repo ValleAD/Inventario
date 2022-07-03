@@ -203,8 +203,6 @@ while ($productos = mysqli_fetch_array($result)){
       $descripcion=$productos['descripcion'];
       $um=$productos['unidad_medida'];
       $precio=$productos['precio'];
-      $fecha=$productos['fecha_registro'];
-
 
        $precio1=number_format($precio, 2,".",",");
       $total1= number_format($total, 2, ".",",");
@@ -335,7 +333,6 @@ while ($productos = mysqli_fetch_array($result)){
       $descripcion=$productos['descripcion'];
       $um=$productos['unidad_medida'];
       $precio=$productos['precio'];
-      $fecha=$productos['fecha_registro'];
 
 
        $precio1=number_format($precio, 2,".",",");
