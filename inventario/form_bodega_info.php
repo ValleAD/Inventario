@@ -159,6 +159,7 @@ if ($codigo=="") {
                 <input  type="hidden" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
                <input type="hidden" name="desc[]" value="<?php  echo $productos['descripcion']; ?>">
                <input  type="hidden" name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>">
+               <input  type="hidden" name="fech[]" value ="<?php  echo $productos['fecha_registro']; ?>">
                 </td>
                <td data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
                <td data-label="Unidad De Medida"><?php echo $productos['unidad_medida'] ?>

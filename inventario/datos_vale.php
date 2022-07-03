@@ -28,6 +28,9 @@ die();
 </head>
 <body>
         <style>  
+            #div{
+                margin: 0%
+            }
          #section{
           background: whitesmoke;
           border-radius: 15px;
@@ -190,7 +193,7 @@ while ($productos = mysqli_fetch_array($result)){
             </form>
 
 </div>
-        <table class="table" style="" >
+        <table class="table" style="" id="div">
             <thead>
               <tr id="tr">
                 <th>Código</th>
@@ -204,8 +207,8 @@ while ($productos = mysqli_fetch_array($result)){
               </tr>
            </thead>
        </table>
-       <div id="div" style = "max-height: 442px; overflow-y:scroll;margin-top: -1.5%;">
-        <table class="table">
+       <div id="div" style = "max-height: 442px; overflow-y:scroll;">
+        <table class="table" id="div">
             <tbody>
                 <td id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>
                 <?php 
@@ -258,12 +261,12 @@ while ($productos = mysqli_fetch_array($result)){
   </tbody>
     </table>
 </div>
-<table class="table">
+<table class="table" id="div">
             <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
         <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
         <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final2 ?></td>
     </tfoot>
-</table>
+</table><br>
  
          <?php 
 

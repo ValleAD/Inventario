@@ -94,24 +94,24 @@ if(isset($_POST['detalle'])){
               <div class="col-md-3" style="position: initial">
           
                   <label style="font-weight: bold;">Depto. o Servicio:</label>
-                  <input readonly class="form-control"  type="text" value="' .$productos1['departamento']. '" name="depto">
+                  <p>' .$productos1['departamento']. '</p>
     
               </div>
     
               <div class="col-md-2" style="position: initial">
                 <label style="font-weight: bold;">N° de O.D.T.</label>
-                <input readonly class="form-control"  type="text" value="' .$productos1['codBodega']. '" name="bodega">
+                <p>' .$productos1['codBodega']. '</p>
               </div>
     
             <div class="col-md-3" style="position: initial">
                 <label style="font-weight: bold;">Encargado:</label>
-                <input readonly class="form-control"  type="text" value="' .$productos1['usuario']. '" name="usuario">
+                <p>' .$productos1['usuario']. '</p>
             </div>
     
               
               <div class="col-md-2" style="position: initial">
                 <label style="font-weight: bold;">Fecha:</label>
-                  <input readonly class="form-control"  type="text" value="'.date("d-m-Y",strtotime($productos1['fecha_registro'])). '" name="fech">
+                  <p>' .$productos1['fecha_registro']. '</p>
               </div>
               <div class="col-md-2" style="position: initial">
             <label style="font-weight: bold;">Estado:</label>
@@ -463,31 +463,35 @@ if(isset($_POST['submit'])){
           
             <div class="row">
           
-              <div class="col-md-3" style="position: initial">
+            <div class="col-md-3" style="position: initial">
           
                   <label style="font-weight: bold;">Depto. o Servicio:</label>
-                  <input readonly class="form-control"  type="text" value="' .$productos1['departamento']. '" name="depto">
+                  <input readonly class="form-control"  type="hidden" value="' .$productos1['departamento']. '" name="depto">
+                  <p>' .$productos1['departamento']. '</p>
     
               </div>
     
               <div class="col-md-2" style="position: initial">
-                <label style="font-weight: bold;">O.D.T.</label>
-                <input readonly class="form-control"  type="text" value="' .$productos1['codBodega']. '" name="bodega">
+                <label style="font-weight: bold;">N° de O.D.T.</label>
+                <input readonly class="form-control"  type="hidden" value="' .$productos1['codBodega']. '" name="bodega">
+                <p>' .$productos1['codBodega']. '</p>
               </div>
     
             <div class="col-md-3" style="position: initial">
                 <label style="font-weight: bold;">Encargado:</label>
-                <input readonly class="form-control"  type="text" value="' .$productos1['usuario']. '" name="usuario">
+                <input readonly class="form-control"  type="hidden" value="' .$productos1['usuario']. '" name="usuario">
+                <p>' .$productos1['usuario']. '</p>
             </div>
     
               
               <div class="col-md-2" style="position: initial">
                 <label style="font-weight: bold;">Fecha:</label>
-                  <input readonly class="form-control"  type="text" value="'.date("d-m-Y",strtotime($productos1['fecha_registro'])). '" name="fech">
+                  <input readonly class="form-control"  type="hidden" value="'.$productos1['fecha_registro']. '" name="fech">
+                  <p>' .$productos1['fecha_registro']. '</p>
               </div>
               <div class="col-md-2" style="position: initial">
             <label style="font-weight: bold;">Estado:</label>';?>
-           <select  class="form-control"  type="text" name="estado" required>
+           <select style="background: transparent;" class="form-control"  type="text" name="estado" required>
                 <option disabled selected value="">Selecione</option>
                 <option>Aprobado</option>
                 <option>Rechazado</option>
@@ -554,7 +558,7 @@ while ($productos = mysqli_fetch_array($result)){
 
             <input type="hidden"  step="0.01"   name="tot_f" readonly value="$<?php echo $final1 ?>" >
     </td>
-    <td  data-label="Descripción"><?php echo $descripcion ?></td>
+    <td  data-label="Descripción" style="text-transform: uppercase;"><?php echo $descripcion ?></td>
         <td  data-label="Unidada de Medida"><?php echo $um ?></td>
         <td  data-label="Cantidad"><?php echo $stock ?></td>
         <td  data-label="Cantidad"><input style="background:transparent; border: 1 solid #000;  width: 100%; text-align: center" class="form-control" type="decimal" required  name="cantidad_despachada[]" required value=""></td>

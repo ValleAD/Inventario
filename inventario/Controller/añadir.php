@@ -3,7 +3,7 @@
 //CRUD para guardar datos enviados
 // de re_producto.php y se guarde en la tabla tb_productos mysql
 include '../Model/conexion.php';
-$fecha=date("d-m-Y");
+$fecha=date("d/m/Y");
 for($i = 0; $i < count($_POST['cod']); $i++) 
     {
       $codigo_producto  = $_POST['cod'][$i];

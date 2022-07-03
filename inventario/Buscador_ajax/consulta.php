@@ -84,7 +84,7 @@ echo'
                         echo '
                      <th style="width:1%" id="th">Código</th>
                      <th style="width:10%" id="th">Cod. Catálogo</th>
-                     <th style="width:23%" id="th" >Descripción Completa</th>
+                     <th style="width:23% " id="th" >Descripción Completa</th>
                      <th style="width:6%" id="th">U/M</th>
                      <th style="width:6%" id="th">Cantidad</th>
                      <th style="width:6%" id="th">Costo Unitario</th>

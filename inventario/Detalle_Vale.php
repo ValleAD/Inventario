@@ -115,7 +115,7 @@ if(isset($_POST['detalle'])){
               <div class="col-md-3" style="position: initial">
           
                   <label style="font-weight: bold;">Depto. o Servicio:</label>
-                  <input readonly class="form-control"  type="text" value="' .$productos1['departamento']. '" name="depto">
+                  <p>' .$productos1['departamento']. '</p>
     
               </div>
     

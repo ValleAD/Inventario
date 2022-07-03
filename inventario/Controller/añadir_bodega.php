@@ -1,7 +1,7 @@
 <?php
 
 include ('../Model/conexion.php');
-     
+     $fecha=date("d-m-Y");
 if (isset($_POST['form_bodega'])) {
 
 
@@ -21,7 +21,7 @@ if (mysqli_num_rows($verificar_bodega)>0) {
 exit();
 }
     //crud para guardar los productos en la tabla tb_vale
-    $sql = "INSERT INTO tb_bodega (codBodega, departamento,usuario,idusuario,estado) VALUES ('$orden_trabajo', '$departamento','$usuario','$idusuario','Pendiente')";
+    $sql = "INSERT INTO tb_bodega (codBodega, departamento,usuario,idusuario,fecha_registro,estado) VALUES ('$orden_trabajo', '$departamento','$usuario','$idusuario' '$fecha','Pendiente')";
     $result = mysqli_query($conn, $sql); 
       
         
@@ -37,7 +37,7 @@ exit();
     $orden_trabajo = $_POST['odt'];
 
   
-      $insert = "INSERT INTO detalle_bodega (codigo,descripcion,unidad_medida,stock,precio,odt_bodega) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$orden_trabajo')";
+      $insert = "INSERT INTO detalle_bodega (codigo,descripcion,unidad_medida,stock,precio,odt_bodega) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$orden_trabajo','$fecha')";
       $query = mysqli_query($conn, $insert);
 
       if ($result || $query) {
@@ -72,7 +72,7 @@ if (mysqli_num_rows($verificar_bodega)>0) {
 exit();
 }
     //crud para guardar los productos en la tabla tb_vale
-    $sql = "INSERT INTO tb_bodega (codBodega, departamento,usuario,idusuario,estado) VALUES ('$orden_trabajo', '$departamento','$usuario','$idusuario','Pendiente')";
+    $sql = "INSERT INTO tb_bodega (codBodega, departamento,usuario,idusuario,fecha_registro,estado) VALUES ('$orden_trabajo', '$departamento','$usuario','$idusuario','$fecha','Pendiente')";
     $result = mysqli_query($conn, $sql); 
       
         
@@ -88,7 +88,8 @@ exit();
     $orden_trabajo = $_POST['odt'];
 
   
-      $insert = "INSERT INTO detalle_bodega (codigo,descripcion,unidad_medida,stock,precio,odt_bodega) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$orden_trabajo')";
+      $insert = "INSERT INTO detalle_bodega (codigo,descripcion,unidad_medida,stock,precio,odt_bodega,fecha_registro) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$orden_trabajo','$fecha
+        ')";
       $query = mysqli_query($conn, $insert);
 
       if ($result || $query) {

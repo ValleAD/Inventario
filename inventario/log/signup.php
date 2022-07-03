@@ -9,7 +9,8 @@ if (isset($_SESSION['signup'])) {
 }
 
 if (isset($_POST['submit'])) {
-		$username = $_POST['usuario'];
+
+	$username = $_POST['usuario'];
 	$firstname = $_POST['nombre'];
 	$lastname = $_POST['Apellido'];
 	$Establecimiento = $_POST['Establecimientos'];
@@ -18,7 +19,8 @@ if (isset($_POST['submit'])) {
 	$cpassword = $_POST['cpassword'];
 	$tipo_usuario = ($_POST['tipo_usuario']);
 	
-	$verificar_usuario =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username ='$username' AND firstname='$firstname' AND lastname='$lastname' AND Establecimiento='$Establecimiento' AND unidad='$unidad' AND password='$password' AND tipo_usuario='$tipo_usuario'");
+
+			$verificar_usuario =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username ='$username'");
 
 if (mysqli_num_rows($verificar_usuario)>0) {
 	echo '
@@ -27,9 +29,9 @@ if (mysqli_num_rows($verificar_usuario)>0) {
 		 window.location ="signup.php"; 
 	</script>
 	';
-exit();
+	exit();
 }
-	if ($password == $cpassword) {
+if ($password == $cpassword) {
 	$sql = "SELECT * FROM tb_usuarios WHERE username='$username' AND firstname='$firstname' AND lastname='$lastname'  AND password='$password'";
 	
 	$result1 = mysqli_query($conn, $sql);
@@ -42,36 +44,13 @@ exit();
 				                </script>';
 			}
 	if (!$result->num_rows > 0) {
-		
-		//$password= hash('MD5',$password);
-		$sql = "INSERT INTO tb_usuarios (username,firstname,lastname,Establecimiento,Unidad, password,tipo_usuario,Habilitado)
+			$sql = "INSERT INTO tb_usuarios (username,firstname,lastname,Establecimiento,Unidad, password,tipo_usuario,Habilitado)
 				VALUES ('$username','$firstname', '$lastname','$Establecimiento','$unidad',  '$password','$tipo_usuario','Si')";
-		$result = mysqli_query($conn, $sql);
-
-		if ($result) {
-				echo '
-				 <script>
-				        alert("!Error¡ Correo o contraseña incorrectos.");
-				        window.location ="../Empleados.php"";
-				        session_destroy();  
-				</script>';
-				$username = "";
-				$firstname = "";
-				$lastname = "";
-				$email = "";
-				$_POST['password'] = "";
-				$_POST['cpassword'] = "";
-			} else {
-				 echo '
-				    <script>
-				        alert("!Error¡ Correo o contraseña incorrectos.");
-				        window.location ="signup.php";
-				        session_destroy();  
-				                </script>';
-				}
-		 
+		$result = mysqli_query($conn, $sql);	 
 	}
 	
+	}else{
+		$eror= '<p class="alert-heading"><i class="text-danger  bi bi-exclamation-triangle-fill"></i> Las Contraseñas no Coinsiden</p> ';
 	}
 }
 
@@ -103,7 +82,7 @@ exit();
     <link rel="icon" type="image/png" sizes="32x32"  href="../img/log.png">
 	<title>Register</title>
 </head>
-<body style="background-image: url(../img/bg3.jpg);">
+<body style="background-image: url(../img/bg3.jpg);background-size: 100% 100%,100%;background-repeat: no-repeat;background-position: center;background-attachment: fixed;">
 	 <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
@@ -118,18 +97,18 @@ exit();
                                           		<div class="row">
                     <div class="col-md-6" style="position: initial">
                        <label class="small mb-1">Nombre de usuario</label><br>
-                        <input pattern="[A-Za-z0-9_-]{1,}" class="form-control" type="text"  name="usuario"  required>
+                        <input pattern="[A-Za-z0-9_-]{1,}"   class="form-control" type="text"  name="usuario"  required>
                     </div>
                     <div class="col-md-6" style="position: initial">
                       <label class="small mb-1">Nombre</label><br>
-                        <input pattern="[A-Za-z0-9_- ´]{1,}" class="form-control" type="text"  name="nombre" required>
+                        <input  class="form-control" type="text"  name="nombre" required>
                     </div>
                 </div>
                 <div class="row">
 
                     <div class="col-md-6" style="position: initial">
                      <label class="small mb-1">Apellido</label><br>
-                        <input pattern="[A-Za-z0-9- ´]{1,}" class="form-control" type="text"  name="Apellido"  required>
+                        <input class="form-control" type="text"  name="Apellido"  required>
                         
                                                 
                                         
@@ -137,9 +116,8 @@ exit();
                     </div>
                     <div class="col-md-6" style="position: initial">
                       <label class="small mb-1">Establecimiento</label><br>
-                       <select class="form-control" name="Establecimientos">
-                <option selected disabled >Seleccionar</option>
-                <option>Hospital Nacional Zacatecoluca PA "Santa Tereza"</option>
+                       <select required class="form-control" name="Establecimientos">
+                <option selected  >Hospital Nacional Zacatecoluca PA "Santa Tereza"</option>
             </select>
                      
                     </div>
@@ -161,8 +139,8 @@ exit();
                     
                     <div class="col-md-6" style="position: initial">
                         <label  class="small mb-1">Unidad ó Departamento</label><br>
-            <select class="form-control" name="Unidad">
-                <option selected disabled >Seleccionar</option>
+            <select class="form-control" name="Unidad" required>
+                <option selected disabled value="">Seleccionar</option>
                    <?php  
    $sql = "SELECT * FROM selects_departamento";
     $result = mysqli_query($conn, $sql);
@@ -181,10 +159,21 @@ exit();
                                                </select>
                         </div>
                     </div>
-                <div>
                     <div class="form-group" style="margin-top: 2%;">
                         <button type="submit" name="submit" class="btn btn-primary btn-block">Registrarse</button>
                     </div>
+                                    <?php if (isset($_POST['submit'])) { ?>
+                           <div class="mx-2 mt-2 alert alert-warning alert-dismissible fade show" style="height:50px" role="alert">
+						  <strong><?php echo $eror ?></strong>
+						  <form action="" method="POST">
+						  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						    <span aria-hidden="true">&times;</span>
+						  </button>
+						  </form>
+						</div><?php } ?>                    
+                <div>
+
+                    
 
                     </div>
                      <style type="text/css">
@@ -194,9 +183,8 @@ exit();
                     </style>
                 
                 </form> 
-                                          	</div>
 
-								</form>
+								
                                   
                                     <div class="card-footer text-center">
                                         <div class="small"><a href="signin.php">¿Ya tienes una cuenta? Go to login</a></div>
@@ -204,12 +192,6 @@ exit();
                                     </main>
                                 </div>
                             </div>
-                </div></div></div></main></div></div>
-
-
-
-	
-	
 	<style type="text/css">
 
 		.container{
@@ -218,6 +200,8 @@ exit();
 }
    
 </style>
+<script src="../Plugin/bootstrap/js/jquery-latest.js"></script>
+<script src="../Plugin/bootstrap/js/bootstrap.min.js"></script>
 <!--Es para la Contraseña Normarl-->
 	<script type="text/javascript">
 					function myFuntion() {

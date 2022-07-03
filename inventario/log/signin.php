@@ -32,14 +32,26 @@ if (isset($_POST['submit'])) {
 		$_SESSION['iduser'] = $row['id'];
 		header("Location: ../home.php");
 		}else{
-			$eror= '<p class="alert-heading"><i style="width: 50%;font-size: 2rem;" class="text-danger bi bi-exclamation-triangle-fill"></i></p>No Puede Entrar Usuario Desabilitado';
+			$eror= '<p class="alert-heading">       
+			 <svg class="bi" width="20" height="20" fill="currentColor">
+        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#exclamation-triangle-fill"/>
+                        </svg>
+                        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+                        </svg>No Puede Entrar Usuario Desabilitado</p>';
 		
 	session_destroy();  
 		}
 		
 		
 	} else {
-		$eror= '<p class="alert-heading"><i style="width: 50%;font-size: 2rem;" class="text-danger  bi bi-exclamation-triangle-fill"></i></p> Usuario o Contraseña son Incorrectos ';
+		$eror= '<p class="alert-heading">        
+		<svg class="bi" width="20" height="20" fill="currentColor">
+        <use xlink:href="../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#exclamation-triangle-fill"/>
+                        </svg>
+                        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+                        </svg> Usuario o Contraseña son Incorrectos </p>';
 
 	}
 
@@ -63,7 +75,10 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
 	<title>Sign In </title>
 </head>
-<body style="background-image: url(../img/bg1.jpg)">
+<body style="background-image: url(../img/bg1.jpg);background-size: 100% 100%,100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;">
 <style type="text/css">
 
 	}
@@ -107,7 +122,7 @@ if (isset($_POST['submit'])) {
 						</div><?php } ?>
                                     <div class="card-footer text-center">
                                         <div class="small"><a href="signup.php">No tienes cuenta ? Registrarse</a></div>
-                                        <div class="small"><form action="Invitado/invitado.php">
+                                        <div class="small mt-2"><form action="Invitado/invitado.php">
                                         	<button class="btn btn-info" type="submit">Modo inviado</button>
                                         </form></div>
                                     </div>
@@ -138,8 +153,7 @@ if (isset($_POST['submit'])) {
 
 					}
 				</script>
-	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+<script src="../Plugin/bootstrap/js/jquery-latest.js"></script>
+<script src="../Plugin/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
