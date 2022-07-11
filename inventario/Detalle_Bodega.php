@@ -70,13 +70,13 @@ die();
         </style>
         <br><br><br>
 <?php
-$final2=0;
-if(isset($_POST['detalle'])){
-
     $total = 0;
     $final = 0;
     $total1 = 0;
     $final1 = 0;
+    $final2=0;
+if(isset($_POST['detalle'])){
+
     $cod_bodega = $_POST['id'];
     
        include 'Model/conexion.php';
@@ -99,7 +99,8 @@ if(isset($_POST['detalle'])){
               </div>
     
               <div class="col-md-2" style="position: initial">
-                <label style="font-weight: bold;">N° de O.D.T.</label>
+                <label style="font-weight: bold;">N° de O.D.T.</label>  
+                <input readonly class="form-control"  type="hidden" value="' .$productos1['codBodega']. '" name="bodega">   
                 <p>' .$productos1['codBodega']. '</p>
               </div>
     
@@ -164,7 +165,7 @@ if(isset($_POST['detalle'])){
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['fecha_registro']?>" name="fech">
               </div>
               <?php 
 if ($productos1['estado']=="Rechazado") {
@@ -188,7 +189,7 @@ if ($productos1['estado']=="Rechazado") {
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['fecha_registro']?>" name="fech">
            
                 <?php
 
@@ -249,8 +250,6 @@ while ($productos = mysqli_fetch_array($result)){
 
                 <td id="td" colspan="6"><h4>No se encontraron resultados 😥</h4></td>
                     <?php 
-                     $total = 0;
-  $final = 0;
  $sql = "SELECT * FROM detalle_bodega WHERE odt_bodega = $odt";
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
@@ -318,7 +317,7 @@ while ($productos = mysqli_fetch_array($result)){
                         <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['fecha_registro']?>" name="fech">
           
                 <?php
 
@@ -441,10 +440,6 @@ while ($productos = mysqli_fetch_array($result)){
 } }
 if(isset($_POST['submit'])){
 
-    $total = 0;
-    $final = 0;
-    $total1 = 0;
-    $final1 = 0;
     $cod_bodega = $_POST['bodega'];
     
        include 'Model/conexion.php';

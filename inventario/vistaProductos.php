@@ -319,7 +319,7 @@ if (isset($_POST['Fecha'])){
              </button>
          </form>
  </div>     
- <a  href="unidad_medidad.php" class="btn btn-primary"  style="position: initial; float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a>
+ <a  href="unidad_medidad.php" class="btn btn-primary" id="w"  style="position: initial; float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a>
  <div class="row">   
  <div class="col-md-3"style="position: initial;">
             <section class="well" >
@@ -347,13 +347,13 @@ if (isset($_POST['Fecha'])){
         $result = mysqli_query($conn, $sql);
             while ($productos = mysqli_fetch_array($result)){
                 $categoria=$productos['categoria'];
-                if ($categoria1=="") {
-                    $categoria1="Sin categorias";
+                if ($categoria=="") {
+                    $categoria="Sin categorias";
                 }else{
-                $categoria1=$productos['categoria'];
+                $categoria=$productos['categoria'];
                 }
                 ?>
-                <option value="<?php echo $categoria ?>" ><?php echo $categoria1 ?></option>
+                <option value="<?php echo $categoria ?>" ><?php echo $categoria ?></option>
                 <?php 
             }
          ?></select>
@@ -398,7 +398,7 @@ if (isset($_POST['categorias'])){$categoria=$_POST['cat'];  ?>  <br>
  </div>
 
  
-                <table class="table  table-striped" id="div" style=" width: 100%">
+  <table class="table  table-striped" id="div" style=" width: 100%">
     <thead>
          <tr id="tr">
                      <th style="width: 10%;">Categoria</th>
@@ -416,6 +416,8 @@ if (isset($_POST['categorias'])){$categoria=$_POST['cat'];  ?>  <br>
     <div id="div" style = " max-height: 442px;  overflow-y:scroll;">
         <table class="table">
     <tbody>
+        <tr>
+        <td id="td1" colspan="6"><h4>No se encontraron resultados 😥</h4></td>
          <?php $categoria=$_POST['cat'];
              // code...
          
@@ -426,18 +428,22 @@ if (isset($_POST['categorias'])){$categoria=$_POST['cat'];  ?>  <br>
                  $precio1=number_format($precio, 2,".",",");
                  $cantidad=$productos['stock'];
         $stock=number_format($cantidad, 2,".",",");
-           $categoria1=$productos['categoria'];
-                if ($categoria1=="") {
-                    $categoria1="Sin categorias";
+           $categoria=$productos['categoria'];
+                if ($categoria=="") {
+                    $categoria="Sin categorias";
                 
                 }else{
-                $categoria1=$productos['categoria'];
+                $categoria=$productos['categoria'];
                 }
         
 
                 if ($_POST['cat']==$productos['categoria']) {?>
-                   <tr>
-                <td data-label="Categoría"><?php  echo $categoria1 ?></td>
+                    <style type="text/css">
+                        #td1{
+                            display: none;
+                        }
+                    </style>
+                <td data-label="Categoría"><?php  echo $categoria ?></td>
                 <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
            <td  data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
            <td style="width: 30%;min-width: 100%;"  data-label="Descripción Completa"><?php  echo $productos['descripcion']; ?></td>
@@ -454,8 +460,6 @@ if (isset($_POST['categorias'])){$categoria=$_POST['cat'];  ?>  <br>
             </div>
 
         </div>
-
-   
 
                          
 </section>

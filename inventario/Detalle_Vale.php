@@ -92,12 +92,13 @@ die();
         <br><br><br>
 <?php
 
-if(isset($_POST['detalle'])){
-
     $total = 0;
     $final = 0;
     $total1 = 0;
     $final1 = 0;
+    $final2 = 0;
+if(isset($_POST['detalle'])){
+    
     $cod_vale = $_POST['id'];
     
        include 'Model/conexion.php';
@@ -121,6 +122,7 @@ if(isset($_POST['detalle'])){
     
               <div class="col-md-2" style="position: initial">
                 <label style="font-weight: bold;">N° de Vale:</label>
+                <input readonly class="form-control"  type="hidden" value="' .$productos1['codVale']. '" name="vale">
                <p>' .$productos1['codVale']. '</p>
               </div>
     
@@ -189,7 +191,7 @@ if(isset($_POST['detalle'])){
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['fecha_registro']?>" name="fech">
               </div>
               <?php
                if ($productos1['estado']=="Aprobado") {?><br>
@@ -222,7 +224,7 @@ if(isset($_POST['detalle'])){
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['fecha_registro']?>" name="fech">
            
                 <?php
 
@@ -300,8 +302,7 @@ while ($productos = mysqli_fetch_array($result)){
             <table class="table">
                 <tbody>
                     <?php 
-                     $total = 0;
-  $final = 0;
+
  $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale";
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
@@ -394,7 +395,7 @@ while ($productos = mysqli_fetch_array($result)){
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['fecha_registro']?>" name="fech">
 
           
                 <?php
@@ -473,8 +474,7 @@ while ($productos = mysqli_fetch_array($result)){
                 <?php 
 
 
-  $total = 0;
-  $final = 0;
+ 
  $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale";
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
@@ -556,10 +556,7 @@ while ($productos = mysqli_fetch_array($result)){
 
 if(isset($_POST['submit'])){
 
-    $total = 0;
-    $final = 0;
-    $total1 = 0;
-    $final1 = 0;
+
     $cod_vale = $_POST['vale'];
     
        include 'Model/conexion.php';
@@ -575,27 +572,31 @@ if(isset($_POST['submit'])){
           
             <div class="row">
           
-              <div class="col-md-3" style="position: initial">
+            <div class="col-md-3" style="position: initial">
           
                   <label style="font-weight: bold;">Depto. o Servicio:</label>
-                  <input readonly class="form-control"  type="text" value="' .$productos1['departamento']. '" name="depto">
+                  <input readonly class="form-control"  type="hidden" value="' .$productos1['departamento']. '" name="depto">
+                  <p>' .$productos1['departamento']. '</p>
     
               </div>
     
               <div class="col-md-2" style="position: initial">
-                <label style="font-weight: bold;">N° de Vale:</label>
-                <input readonly class="form-control"  type="text" value="' .$productos1['codVale']. '" name="vale">
+                <label style="font-weight: bold;">N° de O.D.T.</label>
+                <input readonly class="form-control"  type="hidden" value="' .$productos1['codVale']. '" name="bodega">
+                <p>' .$productos1['codVale']. '</p>
               </div>
     
             <div class="col-md-3" style="position: initial">
                 <label style="font-weight: bold;">Encargado:</label>
-                <input readonly class="form-control"  type="text" value="' .$productos1['usuario']. '" name="usuario">
+                <input readonly class="form-control"  type="hidden" value="' .$productos1['usuario']. '" name="usuario">
+                <p>' .$productos1['usuario']. '</p>
             </div>
     
               
               <div class="col-md-2" style="position: initial">
                 <label style="font-weight: bold;">Fecha:</label>
-                  <input readonly class="form-control"  type="text" value="'.date("d-m-Y",strtotime($productos1['fecha_registro'])). '" name="fech">
+                  <input readonly class="form-control"  type="hidden" value="'.$productos1['fecha_registro']. '" name="fech">
+                  <p>' .$productos1['fecha_registro']. '</p>
               </div>
               <div class="col-md-2" style="position: initial">
             <label style="font-weight: bold;">Estado:</label>';?>
@@ -628,8 +629,7 @@ if(isset($_POST['submit'])){
     
     $num_vale = $productos1['codVale'];
     }
-    $total = 0;
-    $final = 0;
+
      $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale";
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){

@@ -224,7 +224,7 @@ if (isset($_POST['Fecha'])){
              </button>
          </form>
  </div>     
- <a  href="unidad_medidad.php" class="btn btn-primary"  style="position: initial; float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a>
+ <a  href="unidad_medidad.php" class="btn btn-primary" id="w" style="position: initial; float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a>
  <div class="row">   
  <div class="col-md-3"style="position: initial;">
             <section class="well" >
@@ -321,6 +321,8 @@ if (isset($_POST['categorias'])){$categoria=$_POST['cat'];  ?>  <br>
     <div id="div" style = " max-height: 442px;  overflow-y:scroll;">
         <table class="table">
     <tbody>
+         <tr>
+        <td id="td1" colspan="6"><h4>No se encontraron resultados 😥</h4></td>
          <?php $categoria=$_POST['cat'];
              // code...
          
@@ -341,7 +343,11 @@ if (isset($_POST['categorias'])){$categoria=$_POST['cat'];  ?>  <br>
         
 
                 if ($_POST['cat']==$productos['categoria']) {?>
-                   <tr>
+                  <style type="text/css">
+                      #td1{
+                        display: none;
+                      }
+                  </style>
                 <td data-label="Categoría"><?php  echo $categoria1 ?></td>
                 <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
            <td  data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
