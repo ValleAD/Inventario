@@ -79,10 +79,10 @@ die();
   }
         </style>
         <br><br><br>       
-          <font color="white"> <h1 style=" text-align: center;">Solicitud de Vale</h1> </font>
+          <font color="white"> <h1 style=" text-align: center;">Solicitud de Compra</h1> </font>
 <section>
 <h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
-     <form style="background: transparent;" method='POST' action="form_vale2.php">
+     <form style="background: transparent;" method='POST' action="form_compra2.php">
          
       <table class="table  table-striped" id="div" style=" width: 100%">
             <thead>

@@ -60,6 +60,7 @@ die();
 
 $total = 0;
 $final = 0;
+$final2 = 0;
 
    include 'Model/conexion.php';
     $sql = "SELECT * FROM tb_vale ORDER BY fecha_registro DESC LIMIT 1";
@@ -149,7 +150,6 @@ while ($productos = mysqli_fetch_array($result)){
       $descripcion=$productos['descripcion'];
       $um=$productos['unidad_medida'];
       $precio=$productos['precio'];
-      $fecha=$productos['fecha_registro'];
 
 
        $precio1=number_format($precio, 2,".",",");
@@ -215,8 +215,6 @@ while ($productos = mysqli_fetch_array($result)){
 
 $num_vale = $productos1['codVale'];
 }
-  $total = 0;
-  $final = 0;
  $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale";
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){

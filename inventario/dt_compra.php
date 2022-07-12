@@ -52,7 +52,7 @@ $total = 0;
 $final = 0;
 $final2=0;
    include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_compra ORDER BY fecha_registro DESC LIMIT 1 ";
+    $sql = "SELECT * FROM tb_compra ORDER BY nSolicitud DESC LIMIT 1 ";
     $result = mysqli_query($conn, $sql);
  while ($datos = mysqli_fetch_array($result)){
 $solicitud=$datos["nSolicitud"];
@@ -154,7 +154,6 @@ while ($productos = mysqli_fetch_array($result)){
       $descripcion=$productos['descripcion'];
       $um=$productos['unidad_medida'];
       $precio=$productos['precio'];
-      $fecha=$productos['fecha_registro'];
 
 
        $precio1=number_format($precio, 2,".",",");

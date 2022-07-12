@@ -1,7 +1,6 @@
 <?php
 
 include ('../Model/conexion.php');
-$fecha=date("d/m/Y");
      if (isset($_POST['form_vale'])) {
 
     $departamento = $_POST['depto'];
@@ -21,7 +20,7 @@ if (mysqli_num_rows($verificar_vale)>0) {
 exit();
 }
     //crud para guardar los productos en la tabla tb_vale
-    $sql = "INSERT INTO tb_vale (codVale, departamento,usuario,idusuario,campo,estado,observaciones,fecha_registro) VALUES ('$odt', '$departamento','$usuario','$idusuario','Solicitud Vale','Pendiente','$jus','$fecha')";
+    $sql = "INSERT INTO tb_vale (codVale, departamento,usuario,idusuario,campo,estado,observaciones) VALUES ('$odt', '$departamento','$usuario','$idusuario','Solicitud Vale','Pendiente','$jus')";
     $result = mysqli_query($conn, $sql); 
       
         
@@ -37,7 +36,7 @@ exit();
     $numero_vale = $_POST['numero_vale'];
 
   
-      $insert = "INSERT INTO detalle_vale (codigo,descripcion,unidad_medida,stock,precio,numero_vale,fecha_registro) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$numero_vale','$fecha')";
+      $insert = "INSERT INTO detalle_vale (codigo,descripcion,unidad_medida,stock,precio,numero_vale) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$numero_vale')";
       $query = mysqli_query($conn, $insert);
 
       if ($result || $query) {
@@ -73,7 +72,7 @@ exit();
 }
 
     //crud para guardar los productos en la tabla tb_vale
-    $sql = "INSERT INTO tb_vale (codVale, departamento,usuario,idusuario,campo,estado,observaciones,fecha_registro) VALUES ('$odt', '$departamento','$usuario','$idusuario','Solicitud Vale','Pendiente','$jus','$fecha')";
+    $sql = "INSERT INTO tb_vale (codVale, departamento,usuario,idusuario,campo,estado,observaciones) VALUES ('$odt', '$departamento','$usuario','$idusuario','Solicitud Vale','Pendiente','$jus')";
     $result = mysqli_query($conn, $sql); 
       
         
@@ -89,7 +88,7 @@ exit();
     $numero_vale = $_POST['numero_vale'];
 
   
-      $insert = "INSERT INTO detalle_vale (codigo,descripcion,unidad_medida,stock,precio,numero_vale,fecha_registro) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$numero_vale','$fecha')";
+      $insert = "INSERT INTO detalle_vale (codigo,descripcion,unidad_medida,stock,precio,numero_vale) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$numero_vale')";
       $query = mysqli_query($conn, $insert);
 
       if ($result || $query) {

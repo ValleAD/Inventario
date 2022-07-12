@@ -104,6 +104,7 @@ $total = 0;
 $final = 0;
 $total1 = 0;
 $final1 = 0;
+$final2= 0;
 $cod_compra = $_POST['id'];
 $tipo_usuario = $_SESSION['iduser'];
    include 'Model/conexion.php';
@@ -210,7 +211,7 @@ while ($productos = mysqli_fetch_array($result)){
       $descripcion=$productos['descripcion'];
       $um=$productos['unidad_medida'];
       $precio=$productos['precio'];
-      $fecha=$productos['fecha_registro'];
+      
 
 
        $precio1=number_format($precio, 2,".",",");

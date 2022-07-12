@@ -127,17 +127,16 @@ if ($codigo=="") {
             </div>
         </div>
     </div>
-      <table class="table table-responsive table-striped"  style=" width: 100%">
+      <table class="table  table-striped"  style=" width: 100%">
             <thead>
               <tr id="tr">
-               
-                <th style="width: 10%;">Código</th>
-                <th style="width: 50%;">Descripción</th>
-                <th style="width: 10%;">U/M</th>
-                <th style="width: 15%;">Productos Disponibles</th>
-                <th style="width: 50%;">Cantidad</th>
-                <th style="width: 15%;">Costo unitario</th>
-               <th>Eliminar Fila</th>
+                <th>Código</th>
+                <th >Descripción</th>
+                <th>U/M</th>
+                <th >Productos Disponibles</th>
+                <th>Cantidad</th>
+                <th>Costo unitario</th>
+               <th >Eliminar Fila</th>
                
               </tr>
 

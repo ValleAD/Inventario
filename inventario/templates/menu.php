@@ -143,6 +143,7 @@ background:burlywood;
                     <ul class="children">
                         <li><a id="b" href="solicitudes_compra.php">Mostrar</a></li>
                         <li><a id="b" href="form_compra.php">Nuevo</a></li>
+                        <li><a id="b" href="form_compra1.php">Seleccionar varios</a></li>
                     </ul>
                 </li>
                 

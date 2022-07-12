@@ -76,67 +76,66 @@ if ($codigo=="") {
 
   if (isset($_POST['solicitar'])){ ?>
         <section >
- <form style="background: transparent;" method="POST" action="Controller/añadir_vale.php">
+ <form style="background: transparent;" method="POST" action="Controller/añadir_compra.php">
     <div class="container-fluid" style="position: initial">
-            <div class="row">
-              <div class="col-md-4" style="position: initial">
-                <label id="inp1">Departamento que solicita</b></label>   
-                <select  class="form-control" name="depto" id="depto" required>
-                        <option selected disabled value="">Selecione</option>
-                    
-                      <?php 
-                        $sql = "SELECT * FROM selects_departamento";
-                        $result = mysqli_query($conn, $sql);
+<div class="row">
+      <div id="w" class="col-md-4" style="position: initial">
+         
+          <label id="inp1">Solicitud N°</label>  
+           <?php 
+          
+          $sql = "SELECT * FROM tb_compra";
+          $result = mysqli_query($conn, $sql);
+          $compra=1;
+          while ($datos_sol = mysqli_fetch_array($result)){
+            $compra=$datos_sol['nSolicitud']+1;
+            } ?> 
+          <input readonly class="form-control" type="number" name="nsolicitud" value="<?php echo $compra ?>" required> 
+    </div>
 
-                        while ($productos = mysqli_fetch_array($result)){ 
-
-                          echo'  <option>'.$productos['departamento'].'</option>
-                      ';   
-                     }
-
-
-                         ?>
-                      </select>
-                  </div>
-            <div class="col-md-4" style="position: initial">
-                <label id="inp1">Vale N°</b></label>   
-                  <?php 
-                        $sql = "SELECT * FROM tb_vale  ORDER BY codVale DESC LIMIT 1";
-                        $result = mysqli_query($conn, $sql);
-                            $cod_vale=1;
-                        while ($productos = mysqli_fetch_array($result)){    
-                            $cod_vale=$productos['codVale']+1;
-                     }
-                     ?>
-                <input id="inp1"class="form-control" readonly type="number" name="numero_vale" required value="<?php echo $cod_vale ?>">
-            </div>
-            <div class="col-md-4" style="position: initial">
-                <label id="inp1">Nombre de la persona</label>
-                <?php     $cliente =$_SESSION['signin'];
+    <div id="w" class="col-md-4" style="position: initial">
+    <font color="black"><label id="inp1">Dependencia que Solicita</label></font>   
+    <input type="text"  class="form-control" name="dependencia" id="um" required style="color: black;" value="Mantenimiento" readonly>
+                     
+    </div>
+    <div id="w" class="col-md-4" style="position: initial">
+    <font color="black"><label id="inp1">Plazo y Numero de Entregas</label></font> 
+      <input  style=" color: black;" class="form-control" type="text" name="plazo" id="como3" required>
+      <br>
+    </div>
+    <div id="w" class="col-md-4" style="position: initial">
+    <label >Unidad Tecnica</label>
+      <input style=" color: black;"  class="form-control" type="text" name="unidad_tecnica" id="como3" required>
+      <br>
+    </div>
+    <div id="w" class="col-md-4" style="position: initial">
+    <label >Suministros Solicita</label> 
+      <input style=" color: black;"  class="form-control" type="text" name="descripcion_solicitud" id="como3" required>
+      <br>
+  </div>
+  <div id="w" class="col-md-4" style="position: initial">
+  <?php     $cliente =$_SESSION['signin'];
     $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
     while ($consulta =mysqli_fetch_array($data)) {
  ?>
-    <font color="black"><label>Encargado</label> </font>
-      <input style="cursor: not-allowed; color: black;"  class="form-control" type="text" name="usuario" id="como3" required readonly value="<?php  echo $consulta['firstname']?> <?php  echo $consulta['lastname']?>">
-      <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="<?php  echo $consulta['id']?>">
+   <label >Encargado</label> 
+      <input style="cursor: initialowed; color: black;"  class="form-control" type="text" name="usuario" id="como3" required readonly value="<?php  echo $consulta['firstname']?> <?php  echo $consulta['lastname']?>">
+      <input style="cursor: initialowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="<?php  echo $consulta['id']?>">
       <br>
-      <?php }?> 
-               
-            </select>
-                </label>   
-            </div>
+      <?php }?>
+    </div>
         </div>
     </div>
-      <table class="table table-responsive table-striped"  style=" width: 100%">
+      <table class="table  table-striped"  style=" width: 100%">
             <thead>
               <tr id="tr">
                
-                <th style="width: 10%;">Código</th>
-                <th style="width: 50%;">Descripción</th>
-                <th style="width: 10%;">U/M</th>
-                <th style="width: 15%;">Productos Disponibles</th>
-                <th style="width: 50%;">Cantidad</th>
-                <th style="width: 15%;">Costo unitario</th>
+                <th>Código</th>
+                <th>Descripción</th>
+                <th>U/M</th>
+                <th>Productos Disponibles</th>
+                <th>Cantidad</th>
+                <th>Costo unitario</th>
                <th>Eliminar Fila</th>
                
               </tr>
@@ -178,7 +177,9 @@ if ($codigo=="") {
 </style>
     <tr>
                <td data-label="Codigo"><?php echo $productos['codProductos'] ?>
-                <input  type="hidden" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
+                <input  type="hidden" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>">
+                <input  type="hidden" class="form-control" readonly name="cat[]" value ="<?php  echo $productos['catalogo']; ?>">
+                <input  type="hidden" class="form-control" readonly name="cate[]" value ="<?php  echo $productos['categoria']; ?>"></td>
                <input type="hidden" name="desc[]" value="<?php  echo $productos['descripcion']; ?>">
                <input  type="hidden" name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>">
                 </td>
@@ -196,12 +197,12 @@ if ($codigo=="") {
 
             </tbody>
         </table>
-         <div class="form-floating mb-3 my-2" >
-            <label>Observaciones (En qué se ocupará el bien entregado)</label>
+            <div id="w" class="form-floating" style="position: initial;" >
+                <label>Justificación por el OBS solicitado</label>
               <textarea rows="7" class="form-control" name="jus"  placeholder="" required id="floatingTextarea"></textarea>
             </div>
           <center>  <div class="col-md-3" style="padding: 0;">
-        <button id="buscar1" type="submit" name="form_vale" class="btn  btn-success btn-lg my-2 text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar
+        <button id="buscar1" type="submit" name="form_compra2" class="btn  btn-success btn-lg my-2 text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar
                         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#save"/>
                         </svg>

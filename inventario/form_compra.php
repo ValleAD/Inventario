@@ -227,6 +227,7 @@ if(isset($_POST['codigo'])){ ?>
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#123"/>
                 </svg>
                  </label>
+                 <input  type="hidden" class="form-control" readonly name="cate[]" value ="<?php  echo $productos['categoria']; ?>">
                       <input style="position: initial;"  type="number" name="cat[]" class="form-control" id="busqueda" placeholder="Código de producto " value="<?php echo $productos['catalogo'] ?>" required>
                   </div>
                   </div>
