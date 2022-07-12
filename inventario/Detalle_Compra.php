@@ -220,8 +220,8 @@ while ($productos = mysqli_fetch_array($result)){
 
       $cant_aprobada=$productos['stock'];
         $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,".",",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+        $stock=number_format($cant_aprobada, 2,".",".");
+        $cantidad_desp=number_format($cantidad_despachada, 2,".",".");
        ?>
 
         <input type="hidden" name="cod[]" value="<?php echo $productos['codigo'] ?>">
@@ -280,8 +280,8 @@ while ($productos = mysqli_fetch_array($result)){
         $final2   =    number_format($final, 2, ".",",");  
         $cant_aprobada=$productos['stock'];
         $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,",");?>
+        $stock=number_format($cant_aprobada, 2,".");
+        $cantidad_desp=number_format($cantidad_despachada, 2,".");?>
     <style type="text/css">
      #td{
         display: none;
