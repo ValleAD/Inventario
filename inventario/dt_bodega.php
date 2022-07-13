@@ -59,6 +59,7 @@ die();
 
 $total = 0;
 $final = 0;
+$final2 = 0;
 
    include 'Model/conexion.php';
     $sql = "SELECT * FROM tb_Bodega ORDER BY fecha_registro DESC LIMIT 1";
@@ -72,28 +73,29 @@ $final = 0;
       
         <div class="row">
       
-          <div class="col-md-3" style="position: initial">
-      
-              <label style="font-weight: bold;">Depto. o Servicio:</label>
-              <input readonly class="form-control"  type="text" value="' .$productos1['departamento']. '" name="depto">
-
-          </div>
-
-          <div class="col-md-2" style="position: initial">
-            <label style="font-weight: bold;">O. de T. No.</label>
-            <input readonly class="form-control"  type="text" value="' .$productos1['codBodega']. '" name="bodega">
-          </div>
-
-        <div class="col-md-3" style="position: initial">
-            <label style="font-weight: bold;">Encargado:</label>
-            <input readonly class="form-control"  type="text" value="' .$productos1['usuario']. '" name="usuario">
-        </div>
-
+              <div class="col-md-3" style="position: initial">
           
-          <div class="col-md-2" style="position: initial">
-            <label style="font-weight: bold;">Fecha:</label>
-              <input readonly class="form-control"  type="text" value="' .date("d-m-Y",strtotime($productos1['fecha_registro'])). '" name="fech">
-          </div>
+                  <label style="font-weight: bold;">Depto. o Servicio:</label>
+                  <p>' .$productos1['departamento']. '</p>
+    
+              </div>
+    
+              <div class="col-md-2" style="position: initial">
+                <label style="font-weight: bold;">N° de O.D.T.</label>  
+                <input readonly class="form-control"  type="hidden" value="' .$productos1['codBodega']. '" name="bodega">   
+                <p>' .$productos1['codBodega']. '</p>
+              </div>
+    
+            <div class="col-md-3" style="position: initial">
+                <label style="font-weight: bold;">Encargado:</label>
+                <p>' .$productos1['usuario']. '</p>
+            </div>
+    
+              
+              <div class="col-md-2" style="position: initial">
+                <label style="font-weight: bold;">Fecha:</label>
+                  <p>' .date("d-m-Y",strtotime($productos1['fecha_registro'])).  '</p>
+              </div>
           <div class="col-md-2" style="position: initial">
             <label style="font-weight: bold;">Estado:</label>
               <input ';

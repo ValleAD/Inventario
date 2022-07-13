@@ -116,41 +116,41 @@ $tipo_usuario = $_SESSION['iduser'];
     <div id="form"class=" p-3 mx-3" style="background-color: white; border-radius: 5px;">
      <form  method="POST" action="Plugin/pdf_compra.php" >
         <div class="row">
+            <div class="col-md-3" style="position: initial">
+        
+                <label style="font-weight: bold;">Solicitud No.</label>
+                  <p><?php echo $productos1['nSolicitud'] ?></p>
+  
+            </div>
+  
+            <div class="col-md-3" style="position: initial">
+              <label style="font-weight: bold;">Dependencia Solicitante</label>
+                <p><?php echo $productos1['dependencia']?></p>
+            </div>
+  
           <div class="col-md-3" style="position: initial">
-      
-              <label style="font-weight: bold;">Solicitud No.</label>
-              <input readonly class="form-control" type="text" value="<?php echo $productos1['nSolicitud'] ?>" name="sol_compra">
-
+              <label style="font-weight: bold;">Plazo y No. de Entregas</label>
+                <p><?php echo $productos1['plazo']?></p>
+          </div>
+  
+          <div class="col-md-3" style="position: initial">
+              <label style="font-weight: bold;">Unidad Técnica</label>
+                <p><?php echo $productos1['unidad_tecnica']?></p>
+          </div>
+  
+          <div class="col-md-3" style="position: initial">
+              <label style="font-weight: bold;">Suministro Solicitado</label>
+                <p><?php echo $productos1['descripcion_solicitud']?> </p>
           </div>
 
           <div class="col-md-3" style="position: initial">
-            <label style="font-weight: bold;">Dependencia Solicitante</label>
-            <input readonly class="form-control"  type="text" value="<?php echo $productos1['dependencia'] ?>" name="dependencia">
+              <label style="font-weight: bold;">Encargado</label>
+                <p><?php echo $productos1['usuario']?></p>
           </div>
-
-        <div class="col-md-3" style="position: initial">
-            <label style="font-weight: bold;">Plazo y No. de Entregas</label>
-            <input readonly class="form-control"  type="text" value="<?php echo $productos1['plazo'] ?>" name="plazo">
-        </div>
-
-        <div class="col-md-3" style="position: initial">
-            <label style="font-weight: bold;">Unidad Técnica</label>
-            <input readonly class="form-control"  type="text" value="<?php echo $productos1['unidad_tecnica'] ?>" name="unidad">
-        </div>
-
-        <div class="col-md-3" style="position: initial">
-            <label style="font-weight: bold;">Suministro Solicitado</label>
-            <input readonly class="form-control"  type="text" value="<?php echo $productos1['descripcion_solicitud'] ?>" name="suministro">
-        </div>
-
-        <div class="col-md-3" style="position: initial">
-          <label style="font-weight: bold;">Encargado</label>
-          <input readonly class="form-control"  type="text" value="<?php echo $productos1['usuario'] ?>" name="usuario">
-        </div>
 
           <div class="col-md-3" style="position: initial">
             <label style="font-weight: bold;">Fecha</label>
-              <input readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro'])) ?>" name="fech">
+              <p><?php echo date("d-m-Y",strtotime($productos1['fecha_registro'])) ?></p>
           </div>
  <div class="col-md-3" style="position: initial">
             <label style="font-weight: bold;">Estado:</label>

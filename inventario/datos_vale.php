@@ -94,7 +94,7 @@ $final2 = 0;
               
               <div class="col-md-2" style="position: initial">
                 <label style="font-weight: bold;">Fecha:</label>
-                 <p>' .$productos1['fecha_registro']. '</p>
+                 <p>' .date("d-m-Y",strtotime($productos1['fecha_registro'])).  '</p>
               </div>';?>
            <div class="col-md-2" style="position: initial">
               <label style="font-weight: bold;">Estado</label>

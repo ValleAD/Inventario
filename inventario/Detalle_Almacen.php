@@ -111,23 +111,24 @@ $final2 = 0;
           <div class="col-md-3" style="position: initial">
             <label style="font-weight: bold;">N° de Solicitud:</label>
             <input readonly class="form-control"  type="text" value="' .$datos_sol['codAlmacen']. '" name="num_sol">
+            <p>'.$datos_sol['codAlmacen'].'</p>
           </div>
 
           <div class="col-md-2" style="position: initial">
               <label style="font-weight: bold;">Depto. o Servicio:</label>
-              <input readonly class="form-control"  type="text" value="' .$datos_sol['departamento']. '" name="depto">
+            <p>'.$datos_sol['codAlmacen'].'</p>
           </div>
 
         
         <div class="col-md-3" style="position: initial">
             <label style="font-weight: bold;">Encargado:</label>
-            <input readonly class="form-control" required  type="text" value="' .$datos_sol['encargado']. '" name="encargado">
+            <p>'.$datos_sol['codAlmacen'].'</p>
         </div>
 
           
           <div class="col-md-2" style="position: initial">
             <label style="font-weight: bold;">Fecha:</label>
-              <input readonly class="form-control"  type="text" value="' .date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])). '" name="fech">';?>
+            <p>' .date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])). '</p>';?>
           </div>
           <div class="col-md-2" style="position: initial">
             <label style="font-weight: bold;">Estado:</label>
@@ -246,24 +247,25 @@ $n_sol=$datos_sol['codAlmacen'];
 
           <div class="col-md-3" style="position: initial">
             <label style="font-weight: bold;">N° de Solicitud:</label>
-            <input readonly class="form-control"  type="text" value="' .$datos_sol['codAlmacen']. '" name="num_sol">
+            <input readonly class="form-control"  type="hidden" value="' .$datos_sol['codAlmacen']. '" name="num_sol">
+            <p>'.$datos_sol['codAlmacen'].'</p>
           </div>
 
           <div class="col-md-2" style="position: initial">
               <label style="font-weight: bold;">Depto. o Servicio:</label>
-              <input readonly class="form-control"  type="text" value="' .$datos_sol['departamento']. '" name="depto">
+            <p>'.$datos_sol['codAlmacen'].'</p>
           </div>
 
         
         <div class="col-md-3" style="position: initial">
             <label style="font-weight: bold;">Encargado:</label>
-            <input readonly class="form-control"  type="text" value="' .$datos_sol['encargado']. '" name="encargado">
+            <p>'.$datos_sol['codAlmacen'].'</p>
         </div>
 
           
           <div class="col-md-2" style="position: initial">
             <label style="font-weight: bold;">Fecha:</label>
-              <input readonly class="form-control"  type="text" value="' .date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])). '" name="fech">
+            <p>' .date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])). '</p>
           </div>
           <div class="col-md-2" style="position: initial">
             <label style="font-weight: bold;">Estado:</label>
@@ -351,7 +353,7 @@ while ($productos = mysqli_fetch_array($result)){
       $descripcion=$productos['nombre'];
       $um=$productos['unidad_medida'];
       $precio=$productos['precio'];
-      $fecha=$productos['fecha_registro'];
+      
 
 
        $precio1=number_format($precio, 2,".",",");
@@ -482,7 +484,7 @@ while ($productos = mysqli_fetch_array($result)){
       $descripcion=$productos['nombre'];
       $um=$productos['unidad_medida'];
       $precio=$productos['precio'];
-      $fecha=$productos['fecha_registro'];
+      
 
 
        $precio1=number_format($precio, 2,".",",");

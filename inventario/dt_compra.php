@@ -52,7 +52,7 @@ $total = 0;
 $final = 0;
 $final2=0;
    include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_compra ORDER BY nSolicitud DESC LIMIT 1 ";
+    $sql = "SELECT * FROM tb_compra ORDER BY fecha_registro DESC LIMIT 1 ";
     $result = mysqli_query($conn, $sql);
  while ($datos = mysqli_fetch_array($result)){
 $solicitud=$datos["nSolicitud"];
@@ -66,38 +66,39 @@ $solicitud=$datos["nSolicitud"];
             <div class="col-md-3" style="position: initial">
         
                 <label style="font-weight: bold;">Solicitud No.</label>
-                <input readonly class="form-control"  type="text" value="' .$datos['nSolicitud']. '" name="sol_compra">
+                  <p>' .$datos['nSolicitud'] '</p>
   
             </div>
   
             <div class="col-md-3" style="position: initial">
               <label style="font-weight: bold;">Dependencia Solicitante</label>
-              <input readonly class="form-control"  type="text" value="' .$datos['dependencia']. '" name="dependencia">
+                <p>' .$datos['dependencia']. '</p>
             </div>
   
           <div class="col-md-3" style="position: initial">
               <label style="font-weight: bold;">Plazo y No. de Entregas</label>
-              <input readonly class="form-control"  type="text" value="' .$datos['plazo']. '" name="plazo">
+                <p>' .$datos['plazo']. '</p>
           </div>
   
           <div class="col-md-3" style="position: initial">
               <label style="font-weight: bold;">Unidad Técnica</label>
-              <input readonly class="form-control"  type="text" value="' .$datos['unidad_tecnica']. '" name="unidad">
+                <p>' .$datos['unidad_tecnica']. '</p>
           </div>
   
           <div class="col-md-3" style="position: initial">
               <label style="font-weight: bold;">Suministro Solicitado</label>
-              <input readonly class="form-control"  type="text" value="' .$datos['descripcion_solicitud']. '" name="suministro">
+                <p>' .$datos['descripcion_solicitud']. '</p>
           </div>
 
           <div class="col-md-3" style="position: initial">
               <label style="font-weight: bold;">Encargado</label>
-              <input readonly class="form-control"  type="text" value="' .$datos['usuario']. '" name="usuario">
+                <p>' .$datos['usuario']. '</p>
           </div>
   
             <div class="col-md-3" style="position: initial">
               <label style="font-weight: bold;">Fecha</label>
-                  <input readonly class="form-control"  type="text" value="'.date("d-m-Y",strtotime($datos['fecha_registro'])). '" name="fech">';?>
+              <p>'.date("d-m-Y",strtotime($datos['fecha_registro'])). '</p>
+                  ';?>
             </div>
             <div class="col-md-3" style="position: initial">
               <label style="font-weight: bold;">Estado</label>

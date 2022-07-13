@@ -21,7 +21,7 @@ if (mysqli_num_rows($verificar_bodega)>0) {
 exit();
 }
     //crud para guardar los productos en la tabla tb_vale
-    $sql = "INSERT INTO tb_bodega (codBodega, departamento,usuario,idusuario,estado) VALUES ('$orden_trabajo', '$departamento','$usuario','$idusuario' '$fecha','Pendiente')";
+    $sql = "INSERT INTO tb_bodega (codBodega, departamento,usuario,idusuario,estado) VALUES ('$orden_trabajo', '$departamento','$usuario','$idusuario','Pendiente')";
     $result = mysqli_query($conn, $sql); 
       
         
@@ -88,8 +88,7 @@ exit();
     $orden_trabajo = $_POST['odt'];
 
   
-      $insert = "INSERT INTO detalle_bodega (codigo,descripcion,unidad_medida,stock,precio,odt_bodega) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$orden_trabajo','$fecha
-        ')";
+      $insert = "INSERT INTO detalle_bodega (codigo,descripcion,unidad_medida,stock,precio,odt_bodega) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$orden_trabajo')";
       $query = mysqli_query($conn, $insert);
 
       if ($result || $query) {
