@@ -96,7 +96,6 @@ die();
     $final = 0;
     $total1 = 0;
     $final1 = 0;
-    $final2 = 0;
 if(isset($_POST['detalle'])){
     
     $cod_vale = $_POST['id'];
@@ -233,13 +232,12 @@ if(isset($_POST['detalle'])){
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
       
-      $total = $productos['stock'] * $productos['precio'];
+      $total = $productos['cantidad_despachada'] * $productos['precio'];
       $final += $total;
       $codigo=$productos['codigo'];
       $descripcion=$productos['descripcion'];
       $um=$productos['unidad_medida'];
       $precio=$productos['precio'];
-      $fecha=$productos['fecha_registro'];
 
 
        $precio1=number_format($precio, 2,".",",");
@@ -287,7 +285,7 @@ while ($productos = mysqli_fetch_array($result)){
                 
                     <thead>
                         <tr id="tr">
-                  <th >Códigosss</th>
+                  <th >Código</th>
                   <th >Descripción</th>
                   <th >Unidad de Medida</th>
                   <th >Cantidad Solicitada</th>
@@ -307,12 +305,8 @@ while ($productos = mysqli_fetch_array($result)){
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
       
-        $total    =    $productos['cantidad_despachada'] * $productos['precio'];
-        $final    +=   $total;
         $precio   =    $productos['precio'];
-        $precio2  =    number_format($precio, 2,".",",");
-        $total2   =    number_format($total, 2, ".",",");
-        $final2   =    number_format($final, 2, ".",",");  
+        $precio2  =    number_format($precio, 2,".",","); 
         $cant_aprobada=$productos['stock'];
         $cantidad_despachada=$productos['cantidad_despachada'];
         $stock=number_format($cant_aprobada, 2,",");
@@ -332,15 +326,15 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
             <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
             <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
-            <input type="hidden" name="tot[]" value="$<?php echo $total2 ?>">
-            <input type="hidden" name="tot_f" value="$<?php echo $final2 ?>" >
+            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
+            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
         </td>
         <td  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
         <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
         <td  data-label="Cantidad"><?php echo $stock ?></td>
         <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
         <td  data-label="Costo unitario"><?php echo $precio2 ?></td>
-        <td  data-label="total"><?php echo $total2 ?></td>
+        <td  data-label="total"><?php echo $total1 ?></td>
       </tr>
 
       <?php } ?> 
@@ -351,7 +345,7 @@ while ($productos = mysqli_fetch_array($result)){
      <tfoot>
             <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
         <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
-        <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final2 ?></td>
+        <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final1 ?></td>
     </tfoot>
     </table>
              <?php 
@@ -411,7 +405,6 @@ while ($productos = mysqli_fetch_array($result)){
       $descripcion=$productos['descripcion'];
       $um=$productos['unidad_medida'];
       $precio=$productos['precio'];
-      $fecha=$productos['fecha_registro'];
 
 
        $precio1=number_format($precio, 2,".",",");
@@ -479,12 +472,9 @@ while ($productos = mysqli_fetch_array($result)){
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
       
-        $total    =    $productos['stock'] * $productos['precio'];
-        $final    +=   $total;
+        
         $precio   =    $productos['precio'];
         $precio2  =    number_format($precio, 2,".",",");
-        $total2   =    number_format($total, 2, ".",",");
-        $final2   =    number_format($final, 2, ".",",");  
         $cant_aprobada=$productos['stock'];
         $cantidad_despachada=$productos['cantidad_despachada'];
         $stock=number_format($cant_aprobada, 2,",");
@@ -504,15 +494,15 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
             <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
             <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
-            <input type="hidden" name="tot[]" value="$<?php echo $total2 ?>">
-            <input type="hidden" name="tot_f" value="$<?php echo $final2 ?>" >
+            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
+            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
         </td>
         <td  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
         <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
         <td  data-label="Cantidad"><?php echo $stock ?></td>
         <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
         <td  data-label="Costo unitario"><?php echo $precio2 ?></td>
-        <td  data-label="total"><?php echo $total2 ?></td>
+        <td  data-label="total"><?php echo $total1 ?></td>
       </tr>
 
       <?php } ?> 
@@ -522,7 +512,7 @@ while ($productos = mysqli_fetch_array($result)){
 <table class="table">
             <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
         <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
-        <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final2 ?></td>
+        <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final1 ?></td>
     </tfoot>
     </table>
     <br>
@@ -582,7 +572,7 @@ if(isset($_POST['submit'])){
     
               <div class="col-md-2" style="position: initial">
                 <label style="font-weight: bold;">N° de O.D.T.</label>
-                <input readonly class="form-control"  type="hidden" value="' .$productos1['codVale']. '" name="bodega">
+                <input readonly class="form-control"  type="hidden" value="' .$productos1['codVale']. '" name="vale">
                 <p>' .$productos1['codVale']. '</p>
               </div>
     
@@ -599,12 +589,10 @@ if(isset($_POST['submit'])){
                   <p>' .date("d-m-Y",strtotime($productos1['fecha_registro'])).  '</p>
               </div>
               <div class="col-md-2" style="position: initial">
-            <label style="font-weight: bold;">Estado:</label>';?>
-           <select  class="form-control"  type="text" name="estado" required>
-                <option disabled selected value="">Selecione</option>
-                <option>Aprobado</option>
-                <option>Rechazado</option>
-                </select><br>
+            <label style="font-weight: bold;">Estado:</label>';?><br>
+            <input id="input" type="radio" name="estado" value="Aprobado"> <label for="input">Aprobado</label><br>
+            <input id="input1" type="radio" name="estado" value="Rechazado"> <label for="input1">Rechazado</label> 
+           
               
           </div>
             </div>
@@ -614,7 +602,7 @@ if(isset($_POST['submit'])){
               <thead>
                 <tr id="tr">
                   <th>Código</th>
-                  <th style="width:30%">Descripción</th>
+                  <th style="width:25%">Descripción</th>
                   <th>Unidad de Medida</th>
                   <th>Cantidad Solicitada</th>
                   <th>Cantidad Depachada</th>
@@ -634,13 +622,12 @@ if(isset($_POST['submit'])){
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
       
-      $total = $productos['cantidad_despachada'] * $productos['precio'];
+      $total = $productos['stock'] * $productos['precio'];
       $final += $total;
       $codigo=$productos['codigo'];
       $descripcion=$productos['descripcion'];
       $um=$productos['unidad_medida'];
       $precio=$productos['precio'];
-      $fecha=$productos['fecha_registro'];
       $precio1=number_format($precio, 2,".",",");
       $total1= number_format($total, 2, ".",",");
       $final1=number_format($final, 2, ".",",");

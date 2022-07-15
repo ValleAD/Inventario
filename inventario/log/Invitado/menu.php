@@ -120,7 +120,10 @@ background:burlywood;
         <nav>
             <ul>
                 <li>
-                    <a id="a" href="invitado.php"><span class="icon-house"></span>Inicio</a></li>
+                    <li><a id="a" href="home.php"><span>
+                    <svg style="margin-top: -10%;" class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#house"/>
+                        </svg></span> Inicio</a></li>
                    
                 </li>
                 <li class="submenu">

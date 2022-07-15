@@ -104,7 +104,7 @@ if (isset($_POST['Fecha'])){
                 <div  class="mx-1 p-2 r-5" style="background-color: transparent; border-radius: 5px;">
         <a href="" class="btn btn-success" name="categorias" type="submit">Ver Productos</a>
               <div  style="position: initial;margin-top: 0%;margin-left: 1%;" class="btn-group" role="group" aria-label="Basic outlined example">
-         <form class="well" method="POST" action="Plugin/Fechas.php" target="_blank">
+         <form class="well" method="POST" action="../../Plugin/Fechas.php" target="_blank">
              <input type="hidden" name="f1" value="<?php echo $f1 ?>">
              <input type="hidden" name="f2" value="<?php echo $f2 ?>">
              <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha">
@@ -113,7 +113,7 @@ if (isset($_POST['Fecha'])){
                 </svg>
              </button>
          </form>
-         <form class="well" method="POST" action="Plugin/pdf_fecha.php" target="_blank">
+         <form class="well" method="POST" action="../../Plugin/pdf_fecha.php" target="_blank">
             <input type="hidden" name="f1" value="<?php echo $f1 ?>">
              <input type="hidden" name="f2" value="<?php echo $f2 ?>">
              <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
@@ -156,7 +156,6 @@ if (isset($_POST['Fecha'])){
 
         $cantidad=$productos['stock'];
         $stock=number_format($cantidad,  2,".",",");
-       //  $stock=round($stock);
               ?>
               <style type="text/css">
                   #w{
@@ -204,7 +203,6 @@ if (isset($_POST['Fecha'])){
              </button>
          </form>
  </div>     
- <a  href="unidad_medidad.php" class="btn btn-primary"  style="position: initial; float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a>
  <div class="row">   
  <div class="col-md-3"style="position: initial;">
             <section class="well" >
@@ -262,7 +260,7 @@ if (isset($_POST['categorias'])){$categoria=$_POST['cat'];  ?>  <br>
 <div class="mx-2 p-2 r-5" id="hidden" style="background-color: transparent; border-radius: 5px;">
                    
         
-         <form method="POST" action="Plugin/categorias.php" target="_blank">
+         <form method="POST" action="../../Plugin/categorias.php" target="_blank">
             <a href="" class="btn btn-success" name="categorias" type="submit">Ver Productos</a>
               <div  style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
              <input type="hidden" name="categoria" value="<?php echo $categoria ?>">
@@ -272,7 +270,7 @@ if (isset($_POST['categorias'])){$categoria=$_POST['cat'];  ?>  <br>
                 </svg>
              </button>
          </form>
-         <form method="POST" action="Plugin/pdf_categoria.php" target="_blank">
+         <form method="POST" action="../../Plugin/pdf_categoria.php" target="_blank">
             <input type="hidden" name="categoria" value="<?php echo $categoria ?>">
              <button style="position: initial;"  type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">

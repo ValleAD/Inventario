@@ -188,7 +188,8 @@ echo'
 	$tabla.='</tbody></table></div> ';
 } else
 	{
-		$tabla="<h1 class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1> 
+		$tabla="
+        <h1 class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1> 
         ";
 	}
 

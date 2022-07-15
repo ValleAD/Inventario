@@ -110,7 +110,7 @@ $final2 = 0;
 
           <div class="col-md-3" style="position: initial">
             <label style="font-weight: bold;">N° de Solicitud:</label>
-            <input readonly class="form-control"  type="text" value="' .$datos_sol['codAlmacen']. '" name="num_sol">
+            <input readonly class="form-control"  type="hidden" value="' .$datos_sol['codAlmacen']. '" name="num_sol">
             <p>'.$datos_sol['codAlmacen'].'</p>
           </div>
 
@@ -540,7 +540,7 @@ while ($productos = mysqli_fetch_array($result)){
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
       
-        $total    =    $productos['cantidad_despachada'] * $productos['precio'];
+        $total    =    $productos['cantidad_solicitada'] * $productos['precio'];
         $final    +=   $total;
         $precio   =    $productos['precio'];
         $precio2  =    number_format($precio, 2,".",",");
