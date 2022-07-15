@@ -590,10 +590,9 @@ if(isset($_POST['submit'])){
               </div>
               <div class="col-md-2" style="position: initial">
             <label style="font-weight: bold;">Estado:</label>';?><br>
-            <input id="input" type="radio" name="estado" value="Aprobado"> <label for="input">Aprobado</label><br>
-            <input id="input1" type="radio" name="estado" value="Rechazado"> <label for="input1">Rechazado</label> 
-           
-              
+            <input  id="input" type="radio" name="estado" value="Aprobado"> <label id="label1" for="input" >Aprobado</label><br>
+            <input id="input1" type="radio" name="estado" value="Rechazado"> <label id="label1" for="input1">Rechazado</label> 
+
           </div>
             </div>
 <br>

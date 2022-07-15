@@ -208,7 +208,6 @@ $result = mysqli_query($conn, $sql);
                     <div class="col-md-6" style="position: initial">
                       <label id="label" class="small mb-1">Establecimiento</label><br>
                        <select class="form-control" name="Establecimientos">
-                <option selected disabled >Seleccionar</option>
                 <option>Hospital Nacional Zacatecoluca PA "Santa Tereza"</option>
             </select>
                      
@@ -229,27 +228,28 @@ $result = mysqli_query($conn, $sql);
                 <br>
                 <div class="row">
                     
-                    <div class="col-md-6" style="position: initial">
+                    <div class="col-md-12" style="position: initial">
                         <label id="label"  class="small mb-1">Departamento</label><br>
-            <select class="form-control" name="Unidad">
-                <option selected disabled >Seleccionar</option>
+                         
+               <div id="div" style = " max-height: 150px;width: 100%; overflow-y:scroll;"> 
+                
                    <?php  
    $sql = "SELECT * FROM selects_departamento";
     $result = mysqli_query($conn, $sql);
-    while ($productos = mysqli_fetch_array($result)){ 
-      echo'  <option>'.$productos['departamento'].'</option>
-  ';   
- }?>
+    while ($productos = mysqli_fetch_array($result)){ ?>  
+                             <input   id="<?php echo $productos['id'] ?>" type="radio" name="unidad" value="<?php echo $productos['departamento'] ?>"> <label style="width: 100%;" id="label1" for="<?php echo $productos['id'] ?>" > <?php echo $productos['departamento'] ?></label><br>
+ <?php }?>
+                         </div>
  
-            </select>
+          
                 </div>
-                <div class="col-md-6" style="position: initial">
-                                                <label id="label" class="small mb-1">Tipo de Usuarios (Roles De Usuario)</label>
-                                                <select class="form-control" name="tipo_usuario" required>
-                                                    <option selected disabled>Selecione</option>
-                                                    <option value="1">Admistrador</option>
-                                                    <option value="2">Cliente</option>
-                                               </select>
+                <br>
+                <div class="col-md-12" style="position: initial">
+                 <label id="label" class="small mb-1">Tipo de Usuarios (Roles De Usuario)</label>
+             <br>
+            <input  id="input" type="radio" name="tipo_usuario" value="1"> <label id="label1" for="input" >Admistrador</label>
+            <input id="input1" type="radio" name="tipo_usuario" value="2"> <label id="label1" for="input1">Cliente</label> 
+
                         </div>
                     </div>
                 <div>
