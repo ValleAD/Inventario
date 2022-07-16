@@ -52,7 +52,7 @@ die();
         width: 89%;
     }
     #form{
-        margin: -15%6%6%7%;
+        margin: -5%,3%;
         padding: 2%;
     }
     th{
@@ -181,7 +181,7 @@ if(isset($_POST['codigo'])){?>
     </div>
 
         <br>
- <table class="table table-responsive table-striped"  style=" width: 100%">
+ <table class="table table-striped"  style=" width: 100%">
         <thead>
            <tr id="tr" style="text-align: left;">
                 <th style="width: 10%;">Código</th>

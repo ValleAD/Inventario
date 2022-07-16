@@ -248,23 +248,17 @@ if(isset($_POST['codigo'])){ ?>
                     <div class="form-group" style="position: ; margin: 2%">
                         <label>Unidad de medida (U/M)</label>
 
-                <div style="position: initial;" class="input-group mb-3">
-                 <label class="input-group-text" for="inputGroupSelect01">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#card-list"/>
-                </svg>
-                 </label>           
-                        <select style="position: initial;"  class="form-control" name="um[]" id="um" >
-                            <option ><?php echo $productos['unidad_medida'] ?></option>
+                       <div id="div" style = " max-height: 150px;width: 100%; overflow-y:scroll;"> 
+                        
                             <?php
                      $sql = "SELECT * FROM  selects_unidad_medida";
                         $result = mysqli_query($conn, $sql);
 
                         while ($productos1 = mysqli_fetch_array($result)){ ?>
 
-                        <option><?php echo $productos1['unidad_medida']?></option> 
+                        <input required  id="<?php echo $productos1['id'] ?>" type="radio" name="um[]" value="<?php echo $productos1['unidad_medida'] ?>"> <label style="width: 100%;" id="label1" for="<?php echo $productos1['id'] ?>" > <?php echo $productos1['unidad_medida'] ?></label><br>
                     <?php  }   ?>
-                        </select>
+
                         </div>
                     </div>
             

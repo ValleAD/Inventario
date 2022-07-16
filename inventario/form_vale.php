@@ -50,12 +50,9 @@ die();
                 width: 25%;
             }
             @media (max-width: 952px){
-   section{
-        margin: -5%6%6%7%;
-        width: 89%;
-    }
+
     #form{
-        margin: -15%6%6%7%;
+        margin: -5%,3%;
         padding: 2%;
     }
     th{
@@ -143,13 +140,13 @@ if(isset($_POST['codigo'])){?>
             <div class="row">
               <div class="col-md-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>   
-               <div id="div" style = " max-height: 150px;width: 100%; overflow-y:scroll;"> 
+               <div id="div" style = " max-height: 75px;width: 100%; overflow-y:scroll;"> 
                 
                    <?php  
    $sql = "SELECT * FROM selects_departamento";
     $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){ ?>  
-                             <input required id="<?php echo $productos['id'] ?>" type="radio" name="depto" value="<?php echo $productos['departamento'] ?>"> <label style="width: 100%;" id="label1" for="<?php echo $productos['id'] ?>" > <?php echo $productos['departamento'] ?></label><br>
+                             <input required  id="<?php echo $productos['id'] ?>" type="radio" name="depto" value="<?php echo $productos['departamento'] ?>"> <label style="width: 100%;" id="label1" for="<?php echo $productos['id'] ?>" > <?php echo $productos['departamento'] ?></label><br>
  <?php }?>
                          </div>
                      

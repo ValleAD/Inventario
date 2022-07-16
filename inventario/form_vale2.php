@@ -47,16 +47,14 @@ die();
             }
             @media (max-width: 952px){
    section{
-        margin: -15%6%6%3%;
+        margin: -5%6%6%3%;
         width: 95%;
     }
     }#buscar1{
         width: 100%;
         margin: 0;
     }
-    label{
-        margin-top: 3%;
-    }
+    
   }
         </style>
         <br><br><br>
@@ -81,7 +79,7 @@ if ($codigo=="") {
             <div class="row">
               <div class="col-md-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>   
-               <div id="div" style = " max-height: 150px;width: 100%; overflow-y:scroll;"> 
+               <div id="div" style = " max-height: 85px;width: 100%; overflow-y:scroll;"> 
                 
                    <?php  
    $sql = "SELECT * FROM selects_departamento";
@@ -120,6 +118,7 @@ if ($codigo=="") {
             </div>
         </div>
     </div>
+    <br>
       <table class="table  table-striped"  style=" width: 100%">
             <thead>
               <tr id="tr">
@@ -174,7 +173,7 @@ if ($codigo=="") {
                <input type="hidden" name="desc[]" value="<?php  echo $productos['descripcion']; ?>">
                <input  type="hidden" name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>">
                 </td>
-               <td data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
+               <td style="min-width: 100%;" data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
                <td data-label="Unidad De Medida"><?php echo $productos['unidad_medida'] ?>
                 <input type="hidden"  name="stock[]"  value ="<?php  echo $stock; ?>">
                 <input  type="hidden" name="cu[]" value ="<?php  echo $precio ?>">

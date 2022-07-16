@@ -37,9 +37,7 @@ die();
         width: 100%;
         margin: 0;
     }
-    label{
-        margin-top: 3%;
-    }
+
   }
 </style>
         <br><br><br>
@@ -62,7 +60,7 @@ if ($codigo=="") {
             <div class="row">
               <div class=" col-sm-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>   
-               <div id="div" style = " max-height: 150px;width: 100%; overflow-y:scroll;"> 
+               <div id="div" style = " max-height: 75px;width: 100%; overflow-y:scroll;"> 
                 
                    <?php  
    $sql = "SELECT * FROM selects_departamento";
@@ -100,7 +98,7 @@ if ($codigo=="") {
                 </label>   
             </div>
         </div>
-    </div>
+    </div><br>
       <table class="table table-striped"  style=" width: 100%">
             <thead>
               <tr id="tr">

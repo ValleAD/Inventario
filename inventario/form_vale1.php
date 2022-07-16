@@ -32,6 +32,9 @@ die();
                 margin: 0%;
                 display: none;
             }
+        .div{
+        display: none;
+            }
          section {
             background: whitesmoke;
             padding: 1%;
@@ -59,22 +62,23 @@ die();
             }
             @media (max-width: 952px){
    section{
-        margin: -5%6%6%3%;
+        margin: 5%6%6%3%;
         padding: 2%;
         width: 95%;
     }
     #form{
-        margin: -15%6%6%7%;
+        margin: -1%6%6%7%;
         padding: 2%;
     }
     h1{
-        margin-top: -15%;
-        padding-bottom: 5%;
+        margin-top: -9%;
     }
     #div{
-        margin: 2%;
-        margin-bottom: 5%;
+        margin: 0%;
+        display: none;
     }
+    .div{
+        display: block;
 
   }
         </style>
@@ -83,8 +87,8 @@ die();
 <section>
 <h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
      <form style="background: transparent;" method='POST' action="form_vale2.php">
-         
-      <table class="table  table-striped" id="div" style=" width: 100%">
+        <button style=" float: right;margin-bottom: 1%;" type="submit" name="solicitar" class=' div btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button><br class="div"><br class="div">
+       <table class="table  table-striped" id="div" style=" width: 100%">
             <thead>
               <tr id="tr">
                
@@ -139,15 +143,13 @@ die();
     <tr id="tr">
       <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
       <td data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
-      <td style="width: 35%" data-label="Descripción Completa"><?php  echo $productos['descripcion']; ?></td>
-      <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-      <td data-label="Cantidad" style="text-align: center;"><?php  echo $stock; ?></td>
+      <td style="width: 35%;min-width: 100%" data-label="Descripción Completa"><?php  echo $productos['descripcion']; ?></td>
+      <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
+      <td data-label="Cantidad"><?php  echo $stock; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $precio1?></td>
       <td data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
-      <td data-label="solicitar" align="center">
-                    
-          <input type="checkbox" name="id[]"  value="<?php  echo $productos['cod']; ?>">
-          <input type="hidden" name="precio[]"  value="<?php  echo $productos['precio']; ?>">             
+      <td data-label="solicitar">
+     <input   id="<?php echo $productos['cod'] ?>" type="checkbox" name="id[]" value="<?php echo $productos['cod'] ?>"> <label  id="l" for="<?php echo $productos['cod'] ?>" > </label>               
          
       </td>
      

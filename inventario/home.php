@@ -33,9 +33,7 @@ die();
 </head>
 <body>
     <style type="text/css">
-        body{
-            height: 100%;
-        }
+
         h1{
             color: rgba(555, 555, 555, 1);
             margin: 5% 5% 0% 5%;
@@ -46,9 +44,7 @@ die();
             }
 
           @media screen and (max-width: 952px){
-    form{
-        width: 100%;
-    }
+
        #h1{ 
             margin-top: 25%;
             font-size: 1em;
@@ -66,7 +62,12 @@ die();
     <br><br><br><br>
     <center>
     <h1 id="h1">Bienvenidos al Sistema de Inventario del<br>Hospital de Zacatecoluca</h1>
-    </center>
+    </center><form class="form" style="margin-left: 12%;">
+        <input type="text" required>
+        <label class="lbl-nombre">
+            <span class="text-nomb">Nombre</span>
+        </label>
+    </form>
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
