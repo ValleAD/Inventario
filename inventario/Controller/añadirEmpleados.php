@@ -23,7 +23,15 @@ exit();
 	if ($password == $cpassword) {
 	$sql = "SELECT * FROM tb_usuarios WHERE username='$username' AND firstname='$firstname' AND lastname='$lastname'  AND password='$password'";
 	
-	$result = mysqli_query($conn, $sql);
+		$result1 = mysqli_query($conn, $sql);
+	if ($result1) {
+				echo '
+				 <script>
+				   alert("Usuario Creado");
+				        window.location ="../Empleados.php";
+				        session_destroy();  
+				                </script>';
+			}
 	if (!$result->num_rows > 0) {
 		
 		$sql = "INSERT INTO tb_usuarios (username,firstname,lastname,Establecimiento,Unidad, password,tipo_usuario,Habilitado)

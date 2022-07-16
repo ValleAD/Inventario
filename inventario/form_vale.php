@@ -149,14 +149,14 @@ if(isset($_POST['codigo'])){?>
    $sql = "SELECT * FROM selects_departamento";
     $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){ ?>  
-                             <input   id="<?php echo $productos['id'] ?>" type="radio" name="unidad" value="<?php echo $productos['departamento'] ?>"> <label style="width: 100%;" id="label1" for="<?php echo $productos['id'] ?>" > <?php echo $productos['departamento'] ?></label><br>
+                             <input required id="<?php echo $productos['id'] ?>" type="radio" name="depto" value="<?php echo $productos['departamento'] ?>"> <label style="width: 100%;" id="label1" for="<?php echo $productos['id'] ?>" > <?php echo $productos['departamento'] ?></label><br>
  <?php }?>
                          </div>
                      
  
           
                 </div>
-            
+
             <div class="col-md-4" style="position: initial">
                 <label id="inp1">Vale N°</b></label>   
                 <?php 

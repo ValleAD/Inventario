@@ -143,22 +143,15 @@ if(isset($_POST['codigo'])){?>
             <div class="row">
               <div class="col-md-4" style="position: initial">
                 <label>Departamento que solicita</b></label>  
-                 <select  class="form-control" name="depto" id="depto" required>
-                        <option selected disabled value="">Selecione</option>
-                      
-
-                      <?php 
-                        $sql = "SELECT * FROM selects_departamento";
-                        $result = mysqli_query($conn, $sql);
-
-                        while ($productos = mysqli_fetch_array($result)){ ?>
-
-                          <option><?php  echo$productos['departamento']?></option> 
-                     <?php }?>
-
-
-                         ?>
-                      </select>
+               <div id="div" style = " max-height: 150px;width: 100%; overflow-y:scroll;"> 
+                
+                   <?php  
+   $sql = "SELECT * FROM selects_departamento";
+    $result = mysqli_query($conn, $sql);
+    while ($productos = mysqli_fetch_array($result)){ ?>  
+                             <input required id="<?php echo $productos['id'] ?>" type="radio" name="depto" value="<?php echo $productos['departamento'] ?>"> <label style="width: 100%;" id="label1" for="<?php echo $productos['id'] ?>" > <?php echo $productos['departamento'] ?></label><br>
+ <?php }?>
+                         </div>
             </div>
             <div class="col-md-4" style="position: initial">
                 <label>O. de T. No.</b></label>   
@@ -256,7 +249,7 @@ if(isset($_POST['codigo'])){?>
    </tbody>
         </table>
 
-        <center><button id="buscar1" type="submit" name="form_vale" class="btn a btn-success btn-lg my-2 text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar
+        <center><button id="buscar1" type="submit" name="form_bodega" class="btn a btn-success btn-lg my-2 text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar
                         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#save"/>
                         </svg>

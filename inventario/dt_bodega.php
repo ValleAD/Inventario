@@ -62,7 +62,7 @@ $final = 0;
 $final2 = 0;
 
    include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_Bodega ORDER BY fecha_registro DESC LIMIT 1";
+    $sql = "SELECT * FROM tb_Bodega ORDER BY codBodega DESC LIMIT 1";
     $result = mysqli_query($conn, $sql);
  while ($productos1 = mysqli_fetch_array($result)){
 

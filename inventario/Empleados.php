@@ -231,13 +231,13 @@ $result = mysqli_query($conn, $sql);
                     <div class="col-md-12" style="position: initial">
                         <label id="label"  class="small mb-1">Departamento</label><br>
                          
-               <div id="div" style = " max-height: 150px;width: 100%; overflow-y:scroll;"> 
+               <div id="div" style = " max-height: 442px; overflow-y:scroll;"> 
                 
                    <?php  
    $sql = "SELECT * FROM selects_departamento";
     $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){ ?>  
-                             <input   id="<?php echo $productos['id'] ?>" type="radio" name="unidad" value="<?php echo $productos['departamento'] ?>"> <label style="width: 100%;" id="label1" for="<?php echo $productos['id'] ?>" > <?php echo $productos['departamento'] ?></label><br>
+                             <input required  id="<?php echo $productos['id'] ?>" type="radio" name="Unidad" value="<?php echo $productos['departamento'] ?>"> <label style="width: 100%;" id="label1" for="<?php echo $productos['id'] ?>" > <?php echo $productos['departamento'] ?></label><br>
  <?php }?>
                          </div>
  
@@ -247,8 +247,8 @@ $result = mysqli_query($conn, $sql);
                 <div class="col-md-12" style="position: initial">
                  <label id="label" class="small mb-1">Tipo de Usuarios (Roles De Usuario)</label>
              <br>
-            <input  id="input" type="radio" name="tipo_usuario" value="1"> <label id="label1" for="input" >Admistrador</label>
-            <input id="input1" type="radio" name="tipo_usuario" value="2"> <label id="label1" for="input1">Cliente</label> 
+            <input required id="input" type="radio" name="tipo_usuario" value="1"> <label id="label1" for="input" > Admistrador</label>
+            <input required id="input1" type="radio" name="tipo_usuario" value="2"> <label id="label1" for="input1"> Cliente</label> 
 
                         </div>
                     </div>
@@ -269,7 +269,8 @@ $result = mysqli_query($conn, $sql);
     </div>
 </div>
 
-</div>          
+</div>         
+ <div id="div" style = " max-height: 442px;width: 100%; overflow-y:scroll;overflow-x: hidden;">  
     <?php
     include 'Model/conexion.php';
 
@@ -383,7 +384,7 @@ $u='Cliente';
 
  <?php  } } ?> 
 
-
+</div>
   </section>
    
         <script type="text/javascript">
