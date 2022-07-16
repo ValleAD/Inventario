@@ -184,15 +184,15 @@ $result = mysqli_query($conn, $sql);
                 </button>
                 </div>
                 <div class="modal-body">
-                <form action="Controller/añadirEmpleados.php" method="POST">
+                <form action="Controller/añadirEmpleados.php" method="POST" autocomplete="off">
               <div class="row">
                     <div class="col-md-6" style="position: initial">
                        <label id="label" class="small mb-1">Nombre de usuario</label><br>
-                        <input  class="form-control" type="text"  name="usuario"  required>
+                        <input  class="form-control" type="text" autocomplete="off"  name="usuario"  required>
                     </div>
                     <div class="col-md-6" style="position: initial">
                       <label id="label" class="small mb-1">Nombre</label><br>
-                        <input pattern="[A-Za-z0-9_- ]{1,}" class="form-control" type="text"  name="nombre" required>
+                        <input pattern="[A-Za-z0-9_- ]{1,}" class="form-control" autocomplete="off" type="text"  name="nombre" required>
                     </div>
                 </div>
                 <div class="row">
@@ -207,8 +207,7 @@ $result = mysqli_query($conn, $sql);
                     </div>
                     <div class="col-md-6" style="position: initial">
                       <label id="label" class="small mb-1">Establecimiento</label><br>
-                       <select class="form-control" name="Establecimientos">
-                <option>Hospital Nacional Zacatecoluca PA "Santa Tereza"</option>
+                       <input class="form-control" readonly name="Establecimiento" value='Hospital Nacional Zacatecoluca PA "Santa Tereza"'>
             </select>
                      
                     </div>
@@ -231,7 +230,7 @@ $result = mysqli_query($conn, $sql);
                     <div class="col-md-12" style="position: initial">
                         <label id="label"  class="small mb-1">Departamento</label><br>
                          
-               <div id="div" style = " max-height: 442px; overflow-y:scroll;"> 
+               <div id="div" style = " max-height: 150px; overflow-y:scroll;margin-bottom: 5%;"> 
                 
                    <?php  
    $sql = "SELECT * FROM selects_departamento";

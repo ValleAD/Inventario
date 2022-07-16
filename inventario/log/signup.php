@@ -116,9 +116,7 @@ if ($password == $cpassword) {
                     </div>
                     <div class="col-md-6" style="position: initial">
                       <label class="small mb-1">Establecimiento</label><br>
-                       <select required class="form-control" name="Establecimientos">
-                <option selected  >Hospital Nacional Zacatecoluca PA "Santa Tereza"</option>
-            </select>
+                     <input class="form-control" readonly name="Establecimiento" value='Hospital Nacional Zacatecoluca PA "Santa Tereza"'>
                      
                     </div>
                 </div>
@@ -135,30 +133,33 @@ if ($password == $cpassword) {
                   </div>
                 </div>
                 <br>
-                <div class="row">
+<div class="row">
                     
-                    <div class="col-md-6" style="position: initial">
-                        <label  class="small mb-1">Unidad ó Departamento</label><br>
-            <select class="form-control" name="Unidad" required>
-                <option selected disabled value="">Seleccionar</option>
+                    <div class="col-md-12" style="position: initial">
+                        <label id="label"  class="small mb-1">Departamento</label><br>
+                         
+               <div id="div" style = " max-height: 150px; overflow-y:scroll;margin-bottom: 5%;"> 
+                
                    <?php  
    $sql = "SELECT * FROM selects_departamento";
     $result = mysqli_query($conn, $sql);
-    while ($productos = mysqli_fetch_array($result)){ 
-      echo'  <option>'.$productos['departamento'].'</option>
-  ';   
- }?>
-            </select>
+    while ($productos = mysqli_fetch_array($result)){ ?>  
+                             <input required  id="<?php echo $productos['id'] ?>" type="radio" name="Unidad" value="<?php echo $productos['departamento'] ?>"> <label style="width: 100%;" id="label1" for="<?php echo $productos['id'] ?>" > <?php echo $productos['departamento'] ?></label><br>
+ <?php }?>
+                         </div>
+ 
+          
                 </div>
-                <div class="col-md-6" style="position: initial">
-                                                <label class="small mb-1">Tipo de Usuarios (Roles De Usuario)</label>
-                                                <select class="form-control" name="tipo_usuario" required>
-                                                    <option selected disabled>Selecione</option>
-                                                    <option value="1">Admistrador</option>
-                                                    <option value="2">Cliente</option>
-                                               </select>
+                <br>
+                <div class="col-md-12" style="position: initial">
+                 <label id="label" class="small mb-1">Tipo de Usuarios (Roles De Usuario)</label>
+             <br>
+            <input required id="input" type="radio" name="tipo_usuario" value="1"> <label id="label1" for="input" > Admistrador</label>
+            <input required id="input1" type="radio" name="tipo_usuario" value="2"> <label id="label1" for="input1"> Cliente</label> 
+
                         </div>
                     </div>
+                <div>
                     <div class="form-group" style="margin-top: 2%;">
                         <button type="submit" name="submit" class="btn btn-primary btn-block">Registrarse</button>
                     </div>
