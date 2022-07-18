@@ -76,7 +76,7 @@ echo'
                  </tr>
                 </thead>
             </table>
-            <div id="div" style = " max-height: 442px;  overflow-y:scroll;">
+            <div id="div" style = " max-height: 442px;  overflow-y:scroll;overflow-x:none;">
             <table class="table">
                 <tbody>';
                 $n=0;
