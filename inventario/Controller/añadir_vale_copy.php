@@ -4,14 +4,13 @@
 // de re_producto.php y se guarde en la tabla tb_productos mysql
 include '../Model/conexion.php';
 //estado compra
+
+
 if(isset($_POST['detalle_vale'])){
-
-
- $nSolicitud=$_POST['vale'];
+   $nSolicitud=$_POST['vale'];
 $estado = $_POST['estado'];
 $jus = $_POST['jus'];
 $sql="UPDATE  tb_vale SET estado = '$estado', observaciones='$jus' WHERE codVale='$nSolicitud'" ;
-
 $result = mysqli_query($conn, $sql);
 if ($estado=='Aprobado') {
      for($i = 0; $i < count($_POST['cod']); $i++)
@@ -58,13 +57,21 @@ if ($estado=='Aprobado') {
             return false;
         }
      
-       }elseif ($estado=='Rechazado') {
+       }
+    
+    }
+        if(isset($_GET['estado1'])){
+$nSolicitud=$_GET['vale'];
+$estado = $_GET['estado1'];
+$sql="UPDATE  tb_vale SET estado = '$estado' WHERE codVale='$nSolicitud'" ;
+$result = mysqli_query($conn, $sql);
+if ($estado=='Rechazado') {
          echo "<script> alert('Producto Rechazado')
            location.href = '../solicitudes_vale.php';
             </script>
             ";
       }
-    
-    }
+
+}
 
   ?>

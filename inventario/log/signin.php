@@ -78,17 +78,19 @@ if (isset($_POST['submit'])) {
 <body style="background-image: url(../img/bg1.jpg);background-size: 100% 100%,100%;
     background-repeat: no-repeat;
     background-position: center;
-    background-attachment: fixed;">
+    background-attachment: fixed;
+    font-family: Gill Sans Ultra Bold;">
 <style type="text/css">
 
 	}
 	button{
-		max-width:100%;
 		margin-top:  5%;
-		width: 40%;
 	}
 
-
+button:hover{
+	transition: 2s;
+	font-size: 1.5em;
+}
 </style>
    
   <div id="layoutAuthentication">
@@ -104,10 +106,10 @@ if (isset($_POST['submit'])) {
                                             <div class="form-group"><label class="small mb-1" for="inputEmailAddress">Usuario</label>
                                             	<input pattern="[A-Za-z0-9_-]{1,}" id="input" method="POST" class="form-control py-4" id="inputEmailAddress" placeholder="Ingrese el usuario" type="text" name="username" value="<?php echo $username; ?>" required></div>
                                             <div class="form-group"><label class="small mb-1" for="inputPassword">Password</label>
-                                            <input pattern="[A-Za-z0-9_-]{1,}"  class="form-control py-4" id="show" type="password" placeholder="Ingrese la Contraseña" id="input"  method="POST" class="form-control" type="password" name="password" value="<?php echo $_POST['password']; ?>" required ></div>
-                                            <div class="form-group">
-                                                <div class="custom-control custom-checkbox"><input class="custom-control-input" onclick="myFuntion();" id="rememberPasswordCheck" type="checkbox" /><label class="custom-control-label" for="rememberPasswordCheck">Mostrar Contraseña</label></div>
-                                            </div>
+                                            <input pattern="[A-Za-z0-9_-]{1,}"  class="form-control py-4" id="show" type="password" placeholder="Ingrese la Contraseña" id="input"  method="POST" class="form-control" type="password" name="password" value="<?php echo $_POST['password']; ?>" required >
+                                            <input id="e"  onclick="myFuntion();" type="checkbox" name="id[]"> <label style="margin-top: 1.5%;"  id="h" for="e" ></label>
+                                        </div>
+                                            
                                             <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
                                             	<button  type="submit" class="btn btn-primary btn-block "name="submit" >Ingresar</button></div>
                                             	
@@ -123,7 +125,7 @@ if (isset($_POST['submit'])) {
                                     <div class="card-footer text-center">
                                         <div class="small"><a href="signup.php">No tienes cuenta ? Registrarse</a></div>
                                         <div class="small mt-2"><form action="Invitado/invitado.php">
-                                        	<button class="btn btn-info" type="submit">Modo inviado</button>
+                                        	<button class="btn btn-info" type="submit">Modo Inviado</button>
                                         </form></div>
                                     </div>
                                 </div>

@@ -166,7 +166,50 @@ $result = mysqli_query($conn, $sql);
     <section id="" style=" border-radius: 5px; background: white; ">
         <?php if ($tipo_usuario==1) {?>
     <button class="btn btn-secondary" data-toggle="modal" data-target="#Usuarios" style="float: left; color: white;margin-top: 1%;">Nuevo Integrante</button>
-<?php } ?>
+     <div style="position: initial;" class="btn-group mt-3 mx-2 " role="group" aria-label="Basic outlined example">
+         <form id="well" class="well" method="POST" action="Plugin/Empleados.php" target="_blank">
+             
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Empleados">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+             </button>
+         </form>
+         <form id="well" class="well" method="POST" action="Plugin/pdf_Empledos.php" target="_blank">
+            
+             <button  style="position: initial;"type="submit" class="btn btn-outline-primary mx-1" name="user" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+             </button>
+         </form>
+ </div>     
+<?php } if ($tipo_usuario==2) {   
+    $sql = "SELECT * FROM tb_usuarios WHERE id='$idusuario' ORDER BY `id` ";
+    $result = mysqli_query($conn, $sql);
+    while ($productos = mysqli_fetch_array($result)){?>
+<div style="position: initial;" class="btn-group mt-3 mx-2 " role="group" aria-label="Basic outlined example">
+         <form id="well" class="well" method="POST" action="Plugin/Empleados.php" target="_blank">
+             <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos['username']?>" name="usuario">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="users">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+             </button>
+         </form>
+     <?php } $sql = "SELECT * FROM tb_usuarios WHERE id='$idusuario' ORDER BY `id` ";
+    $result = mysqli_query($conn, $sql);
+    while ($productos = mysqli_fetch_array($result)){ ?>
+         <form id="well" class="well" method="POST" action="Plugin/pdf_Empledos.php" target="_blank">
+             <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos['username']?>" name="user1">               
+             <button  style="position: initial;"type="submit" class="btn btn-outline-primary mx-1" name="user2" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+             </button>
+         </form>
+ </div>  
+ <?php } }?>   
     <a href="categorias.php" class="btn btn-info" style="float: right;margin-top: 1%; color: white; ">Categorias</a> 
     <a href="dependencias.php" class="btn btn-success" style="float: right;margin-top: 1%; color: white; margin-right: 15px;">Dependencias</a>
     <a href="departamentos.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white; margin-right: 15px;">Departamentos</a>
@@ -216,12 +259,12 @@ $result = mysqli_query($conn, $sql);
                     <div id="label" class="col-md-6" style="position: initial">
                       <label class="small mb-1">Contraseña</label><br>
                         <input  class="form-control" id="show" type="password"  name="password"  required>
-                      <div class="custom-control custom-checkbox"><input class="custom-control-input" onclick="myFuntion();" id="rememberPasswordCheck" type="checkbox" /><label class="custom-control-label" for="rememberPasswordCheck">Mostrar Contraseña</label></div>
+                      <input id="e"  onclick="myFuntion();" type="checkbox" name="id[]"> <label style="margin-top: 1.5%;"  id="h" for="e" ></label>
                   </div>
                   <div class="col-md-6" style="position: initial">
                       <label id="label"  class="small mb-1">Confirmar Contraseña</label><br>
                         <input  class="form-control" id="show1" type="password"  name="cpassword" required>
-                        <div class="custom-control custom-checkbox"><input class="custom-control-input" onclick=" myFuntion1();" id="PasswordCheck" type="checkbox" /><label class="custom-control-label" for="PasswordCheck">Mostrar Contraseña</label></div>
+                       <input id="s"  onclick="myFuntion1();" type="checkbox" name="id[]"> <label style="margin-top: 1.5%;"  id="h" for="s" ></label>
                   </div>
                 </div>
                 <br>
@@ -287,7 +330,7 @@ $u='Cliente';
 ?>
 <?php  if ($tipo_usuario==1) { ?>
        
-<div class="card mb-3 border-secondary " style="max-width: 100%;min-width: 100%; position: initial">
+<div class="card mb-3 border-secondary " style="max-width: 100%;min-width: 100%; position: initial;float: left;">
   <div class="row g-0">
     <div class="col-1" style="position: initial">
                 <svg  class="bi bi2 my-4 mx-1 text-primary" width="90" height="90" fill="currentColor">

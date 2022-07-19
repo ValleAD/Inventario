@@ -132,9 +132,8 @@ $final2 = 0;
           </div>
           <div class="col-md-2" style="position: initial">
             <label style="font-weight: bold;">Estado:</label><br>
-            <input  id="input" type="radio" name="estado" value="Aprobado"> <label id="label1" for="input" >Aprobado</label><br>
-            <input id="input1" type="radio" name="estado" value="Rechazado"> <label id="label1" for="input1">Rechazado</label> 
-              
+            <input  id="input" type="radio" name="estado" value="Aprobado"> <label id="label1" for="input" > Aprobado</label><br>
+           <a type="hidden" onclick="return confirmaion2()" href="Controller/añadir_almacen_copy.php?almacen=<?php echo $datos_sol['codAlmacen']?>&estado1=Rechazado"> <label id="label2" for="input1"> Rechazado</label> </a>  
           </div>
       </div>
         <br><br>

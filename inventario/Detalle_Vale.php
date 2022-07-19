@@ -556,9 +556,9 @@ if(isset($_POST['submit'])){
     
      echo'   
     <section>
-    <form method="POST" action="Controller/añadir_vale_copy.php">
+ 
     
-                 
+                    <form method="POST" action="Controller/añadir_vale_copy.php">
           
             <div class="row">
           
@@ -590,12 +590,18 @@ if(isset($_POST['submit'])){
               </div>
               <div class="col-md-2" style="position: initial">
             <label style="font-weight: bold;">Estado:</label>';?><br>
-            <input  id="input" type="radio" name="estado" value="Aprobado"> <label id="label1" for="input" >Aprobado</label><br>
-            <input id="input1" type="radio" name="estado" value="Rechazado"> <label id="label1" for="input1">Rechazado</label> 
+            <input  id="input" type="radio" name="estado" value="Aprobado" required> <label id="label1" for="input" > Aprobado</label><br>
 
+            <a type="hidden" onclick="return confirmaion2()" href="Controller/añadir_vale_copy.php?vale=<?php echo $productos1['codVale']?>&estado1=Rechazado"> <label id="label2" for="input1"> Rechazado</label> </a>
           </div>
             </div>
 <br>
+
+
+     <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['fecha_registro']?>" name="fech">
             <table class="table" style="margin-bottom:3%">
                 
               <thead>

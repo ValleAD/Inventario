@@ -479,9 +479,8 @@ if(isset($_POST['submit'])){
               </div>
               <div class="col-md-2" style="position: initial">
             <label style="font-weight: bold;">Estado:</label>';?><br>
-            <input  id="input" type="radio" name="estado" value="Aprobado"> <label id="label1" for="input" >Aprobado</label><br>
-            <input id="input1" type="radio" name="estado" value="Rechazado"> <label id="label1" for="input1">Rechazado</label> 
-              
+            <input  id="input" type="radio" name="estado" value="Aprobado"> <label id="label1" for="input" style="text-align: left;" > Aprobado</label><br>
+            <a type="hidden" onclick="return confirmaion2()" href="Controller/añadir_bodega_copy.php?bodega=<?php echo $productos1['codBodega']?>&estado1=Rechazado"> <label id="label2" for="input1"> Rechazado</label> </a>   
           </div>
             </div>
           

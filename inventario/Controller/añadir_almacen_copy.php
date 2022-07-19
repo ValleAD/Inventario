@@ -49,12 +49,19 @@ if ($estado=='Aprobado') {
         return false;
         }
     }
-  }elseif ($estado=='Rechazado') {
-     echo "<script> alert('Producto Rechazado')
-        location.href = '../solicitudes_almacen.php';
-        </script>
-        ";
   }
   }
-   
+   if(isset($_GET['estado1'])){
+$nSolicitud=$_GET['almacen'];
+$estado = $_GET['estado1'];
+$sql="UPDATE  tb_almacen SET estado = '$estado' WHERE codAlmacen='$nSolicitud'" ;
+$result = mysqli_query($conn, $sql);
+if ($estado=='Rechazado') {
+         echo "<script> alert('Producto Rechazado')
+           location.href = '../solicitudes_almacen.php';
+            </script>
+            ";
+      }
+
+}
   ?>

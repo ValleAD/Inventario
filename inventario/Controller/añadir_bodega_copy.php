@@ -58,12 +58,20 @@ for($i = 0; $i < count($_POST['cod_bodega']); $i++)
     }
 
   
-   }elseif ($estado=='Rechazado') {
-     echo "<script> alert('Producto Rechazado')
-        location.href = '../solicitudes_bodega.php';
-        </script>
-        ";
-  }
+   }
+}
+if(isset($_GET['estado1'])){
+$nSolicitud=$_GET['bodega'];
+$estado = $_GET['estado1'];
+$sql="UPDATE  tb_bodega SET estado = '$estado' WHERE codBodega='$nSolicitud'" ;
+$result = mysqli_query($conn, $sql);
+if ($estado=='Rechazado') {
+         echo "<script> alert('Producto Rechazado')
+           location.href = '../solicitudes_bodega.php';
+            </script>
+            ";
+      }
+
 }
 
   ?>

@@ -271,7 +271,7 @@ background:burlywood;
                         </svg>
                 </button>
 
-        <a href="log/logout.php" type="submit" id="Update" class="btn btn-danger" onclick="return confirmaion1()">Cerrar Sesión 
+        <a href="log/logout.php" type="submit" id="Update" class="btn btn-danger"?>Cerrar Sesión 
         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#box-arrow-right"/>
                         </svg></a>
@@ -348,7 +348,18 @@ function main () {
 </script>
 <script type="text/javascript">
 function confirmaion1(e) {
-    if (confirm("¿Estas seguro que deseas Cerrar Session ")) {
+    if (confirm("¿Estas seguro que deseas Cerrar Session?")) {
+        return true;
+    } else {
+        return false;
+        e.preventDefault();
+    }
+}
+</script>
+
+<script type="text/javascript">
+function confirmaion2(e) {
+    if (confirm("¿Estas seguro que deseas Rechazar la Solicitud?")) {
         return true;
     } else {
         return false;
