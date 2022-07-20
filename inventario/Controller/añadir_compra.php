@@ -50,7 +50,7 @@ $result = mysqli_query($conn, $insert);
         ";
       }else {
         echo "<script> alert('UUPS!! Algo no fue mal escrito');
-        // location.href = '../form_compra.php';
+        location.href = '../form_compra.php';
         </script>
         ";
       }  

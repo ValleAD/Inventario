@@ -227,9 +227,9 @@ if(isset($_POST['codigo'])){ ?>
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#badge-4k"/>
                 </svg>
                  </label>
-                 <input style="position: initial;" disabled  type="hidden" name="cod[]" class="form-control" required value="<?php echo $productos1['codProductos']?>">
-                 <input style="position: initial;" disabled  type="hidden" name="cat[]" class="form-control" required value="<?php echo $productos1['catalogo']?>">
-                 <input style="position: initial;" disabled  type="hidden" name="cate[]" class="form-control" required value="<?php echo $productos1['categoria']?>">
+                 <input  type="hidden" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>">
+                <input  type="hidden" class="form-control" readonly name="cat[]" value ="<?php  echo $productos['catalogo']; ?>">
+                <input  type="hidden" class="form-control" readonly name="cate[]" value ="<?php  echo $productos['categoria']; ?>"></td>
                 <input style="position: initial;" disabled  type="number" step="0.01" name="" class="form-control" placeholder="" required value="<?php echo $stock?>">
             </div>
             </div>
