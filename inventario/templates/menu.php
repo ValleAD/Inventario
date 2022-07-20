@@ -156,6 +156,7 @@ background:burlywood;
                     <ul class="children">
                         <li><a id="b" href="solicitudes_almacen.php">Mostrar</a></li>
                         <li><a id="b" href="form_almacen.php">Nuevo</a></li>
+                        <li><a id="b" href="form_almacen1.php">Seleccionar varios</a></li>
                     </ul>
                 </li>
                 <li class="submenu">
@@ -167,6 +168,7 @@ background:burlywood;
                     <ul class="children">
                         <li><a id="b" href="solicitudes_circulante.php">Mostrar</a></li>
                         <li><a id="b" href="form_circulante.php">Nuevo</a></li>
+                        <li><a id="b" href="form_circulante1.php">Seleccionar varios</a></li>
                     </ul>
                 </li>
                  <li class="submenu" >

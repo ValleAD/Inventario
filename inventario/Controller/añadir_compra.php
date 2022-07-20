@@ -60,6 +60,7 @@ $result = mysqli_query($conn, $insert);
     {
       $codigo_producto  = $_POST['cod'][$i]+1;
       $Descripción      = $_POST['desc'][$i];
+      $catalogo         = $_POST['cat'][$i];
       $cat               =$_POST['cate'][$i];
       $u_m             = $_POST['um'][$i];
       $cantidad      = $_POST['cant'][$i];

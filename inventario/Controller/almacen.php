@@ -2,7 +2,7 @@
 
 //CRUD para guardar datos enviados
 // de re_producto.php y se guarde en la tabla tb_productos mysql
-if(isset($_POST['submit'])){
+
 include '../Model/conexion.php';
 
     $solicitud_no     = $_POST['nsolicitud'];
@@ -48,6 +48,18 @@ for($i = 0; $i < count($_POST['cod']); $i++)
         ";
       }
     }
-  }
+  for($i = 0; $i < count($_POST['cod']); $i++)
+    {
+      $codigo_producto  = $_POST['cod'][$i]+1;
+      $Descripción      = $_POST['desc'][$i];
+      $catalogo         = $_POST['cat'][$i];
+      $cat               =$_POST['cate'][$i];
+      $u_m             = $_POST['um'][$i];
+      $cantidad      = $_POST['cant'][$i];
+      $cost            = $_POST['cu'][$i];
+
+      $insert1 = "INSERT INTO tb_productos (codProductos, catalogo, descripcion, unidad_medida, stock, precio,categoria) VALUES ('$codigo_producto','$catalogo', '$Descripción', '$u_m', '$cantidad', '$cost', '$cat')";
+      $query1 = mysqli_query($conn, $insert1);
+    }
     
 ?>

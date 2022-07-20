@@ -42,4 +42,17 @@ for($i = 0; $i < count($_POST['desc']); $i++)
         ";
       }
     }
+    for($i = 0; $i < count($_POST['cod']); $i++)
+    {
+      $codigo_producto  = $_POST['cod'][$i]+1;
+      $Descripción      = $_POST['desc'][$i];
+      $cat               =$_POST['cat'][$i];
+      $cate               =$_POST['cate'][$i];
+      $u_m             = $_POST['um'][$i];
+      $cantidad      = $_POST['cant'][$i];
+      $cost            = $_POST['cu'][$i];
+
+      $insert1 = "INSERT INTO tb_productos (codProductos, catalogo, descripcion, unidad_medida, stock, precio,categoria) VALUES ('$codigo_producto','$cat', '$Descripción', '$u_m', '$cantidad', '$cost', '$cate')";
+      $query1 = mysqli_query($conn, $insert1);
+    }
 ?>

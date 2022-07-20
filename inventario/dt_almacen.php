@@ -61,7 +61,7 @@ $total = 0;
 $final = 0;
 
    include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_almacen ORDER BY fecha_solicitud DESC LIMIT 1";
+    $sql = "SELECT * FROM tb_almacen ORDER BY codAlmacen DESC LIMIT 1";
     $result = mysqli_query($conn, $sql);
  while ($datos_sol = mysqli_fetch_array($result)){
 
