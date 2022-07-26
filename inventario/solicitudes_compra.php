@@ -76,7 +76,7 @@ h1 {
               <tr id="tr">
                
                 <th style="width: 10%;">No. Solicitud</th>
-                <th style="width: 15%;">Dependencia</th>
+                <th style="width: 15    %;">Dependencia</th>
                 <th style="width: 10%;">Plazo y No. de Entregas</th>
                 <th style="width: 10%;">Unidad Técnica</th>
                 <th style="width: 10%;">Descripción Solicitud</th>
@@ -114,7 +114,7 @@ h1 {
 </style>
         <tr>
             <td data-label="No. Solicitud" class="delete"><?php  echo $solicitudes['nSolicitud']; ?></td>
-            <td data-label="Dependencia" class="delete"><?php  echo $solicitudes['dependencia']; ?></td>
+            <td style="width: 20%;min-width: 100%" data-label="Dependencia" class="delete"><?php  echo $solicitudes['dependencia']; ?></td>
             <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['plazo']; ?></td>
             <td data-label="Unidad Técnica" class="delete"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
             <td data-label="Descripción Solicitud" class="delete"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
@@ -215,7 +215,7 @@ $tipo_usuario = $_SESSION['iduser'];
 </style>
         <tr>
             <td data-label="No. Solicitud" class="delete"><?php  echo $solicitudes['nSolicitud']; ?></td>
-            <td style="width: 15%;min-width: 100%;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['dependencia']; ?></td>
+            <td style="width: 20%;min-width: 100%;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['dependencia']; ?></td>
             <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['plazo']; ?></td>
             <td data-label="Unidad Técnica" class="delete"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
             <td style="width: 10%;min-width: 100%;" data-label="Descripción" class="delete"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
