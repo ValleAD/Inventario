@@ -158,7 +158,7 @@ $result = mysqli_query($conn, $sql);
         } 
     </style>
 </table>
-  <section style="background: rgba(255, 255, 255, 0.9);margin: 7%1%1%1%;padding: 1%; border-radius: 15px;">
+  <section style="background: rgba(255, 255, 255, 0.9);margin: 4%1%1%1%;padding: 1%; border-radius: 15px;">
 <h2 id="h2" class="text-center">Inventario de Productos</h2>
 <br>
 <form method="POST" action="" class="well hidden">
@@ -401,10 +401,10 @@ if (isset($_POST['categorias'])){$categoria=$_POST['cat'];  ?>  <br>
   <table class="table  table-striped" id="div" style=" width: 100%">
     <thead>
          <tr id="tr">
-                     <th style="width: 10%;">Categoria</th>
+                     <th style="width: 10%;">Categorias</th>
                      <th style="width: 10%;">Código</th>
                      <th style="width: 10%;">Cod. de Catálogo</th>
-                     <th style="width: 30%;">Descripción Completa</th>
+                     <th style="width: 50%;">Descripción Completa</th>
                      <th style="width: 10%;">U/M</th>
                      <th style="width: 10%;">Cantidad</th>
                      <th style="width: 10%;">Costo Unitario</th>

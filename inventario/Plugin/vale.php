@@ -55,7 +55,7 @@
 <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;">
-            <th style="width: 25%;font-size: 14px">Código</th>
+            <th style="width: 25%;color:black;font-size: 14px">Código</th>
             <th style="width: 70%;color:black;font-size: 14px;">Descripción Completa</th>
             <th style="width: 15%;color:black;font-size: 14px">U/M</th>
             <th style="width: 15%;color:black;font-size: 14px">Cantidad Solicitada</th>
@@ -86,8 +86,8 @@ for($i = 0; $i < count($_POST['cod']); $i++)
             <td data-label="Código" style="font-size: 12px;"><?php  echo $codigo?></td>
             <td data-label="Descripción" style="font-size: 12px;"><?php  echo $des?></td>
             <td data-label="Unidad De Medida" style="font-size: 12px;"><?php  echo $um?></td>
-            <td data-label="Cantidad Despachada" style="font-size: 12px;"><?php echo $stock ?></td>
-            <td data-label="Cantidad Dispinible" style="font-size: 12px;"><?php echo $cantidad ?></td>
+            <td data-label="Cantidad Despachada" style="font-size: 12px;"><?php echo $cantidad ?></td>
+            <td data-label="Cantidad Dispinible" style="font-size: 12px;"><?php echo $stock ?></td>
             <td data-label="Precio" style="font-size: 12px;"><?php echo $cost ?></td>
             <td data-label="total" style="font-size: 12px;"><?php  echo $tot ?></td>
         </tr>

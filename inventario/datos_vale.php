@@ -199,7 +199,7 @@ while ($productos = mysqli_fetch_array($result)){
                 <th>Código</th>
                 <th>Descripción</th>
                 <th>Unidad de Medida</th>
-                <th>Cantidad</th>
+                <th>Cantidad solicitada</th>
                 <th >Cantidad Depachada</th>
 
                 <th>Costo unitario</th>
