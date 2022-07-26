@@ -97,7 +97,7 @@ die();
                
                 <th style="width: 10%;">Código</th>
                 <th style="width: 10%;">Catálogo</th>
-                <th style="width: 40%;">Descripción Completa</th>
+                <th style="width: 35%;">Descripción Completa</th>
                 <th style="width: 10%;">U/M</th>
                 <th style="width: 10%;">Cantidad</th>
                 <th style="width: 10%;">Costo Unitario</th>
@@ -146,15 +146,18 @@ die();
     <tr id="tr">
       <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
       <td data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
-      <td style="min-width: 100%;width: 35%" data-label="Descripción Completa"><?php  echo $productos['descripcion']; ?></td>
+      <td style="min-width: 100%;width: 30%" data-label="Descripción Completa"><?php  echo $productos['descripcion']; ?></td>
       <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
       <td data-label="Cantidad"><?php  echo $stock; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $precio1?></td>
       <td data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
       <td data-label="solicitar" >
-                    
-          <input  id="<?php echo $productos['cod'] ?>" type="checkbox" name="id[]" value="<?php echo $productos['cod'] ?>"> <label id="l" for="<?php echo $productos['cod'] ?>" > </label>            
-         
+  <?php if ($stock==0.00) {?>
+                  Sin Productos
+              <?php  } if ($stock!= 0.00) {?>
+                 <input   id="<?php echo $productos['cod'] ?>" type="checkbox" name="id[]" value="<?php echo $productos['cod'] ?>"> <label  id="l" for="<?php echo $productos['cod'] ?>" > </label>  
+             <?php  }?>
+                  
       </td>
      
 <?php } ?> 

@@ -243,7 +243,7 @@ if(isset($_POST['codigo'])){?>
             </tr>
            
   
-        <?php } ?>
+        <?php }} ?>
     
 
    </tbody>
@@ -254,7 +254,7 @@ if(isset($_POST['codigo'])){?>
                         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#save"/>
                         </svg>
         </button> </center>  
-    <?php }}}?>
+    <?php }}?>
 
 <?php } ?>
 </div>

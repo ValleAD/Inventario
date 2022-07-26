@@ -115,7 +115,7 @@ background:burlywood;
                     </a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_vale.php">Mostrar</a></li>
-                        <li><a id="b" href="form_vale.php">Buscar por código</a></li>
+                        <!-- <li><a id="b" href="form_vale.php">Buscar por código</a></li> -->
                         <li><a id="b" href="form_vale1.php">Seleccionar varios</a></li>
                         <!-- <li><a id="b" href="form_vale_anterior.php">Vale anterior</a></li> -->
                     </ul>
@@ -129,7 +129,7 @@ background:burlywood;
                     </a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_bodega.php">Mostrar</a></li>
-                        <li><a id="b" href="form_bodega.php">Buscar por codigo</a></li>
+                        <!-- <li><a id="b" href="form_bodega.php">Buscar por codigo</a></li> -->
                         <li><a id="b" href="form_bodega_varios.php">Seleccionar varios</a></li>
 
                     </ul>
@@ -142,7 +142,7 @@ background:burlywood;
                     </a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_compra.php">Mostrar</a></li>
-                        <li><a id="b" href="form_compra.php">Nuevo</a></li>
+                        <!-- <li><a id="b" href="form_compra.php">Nuevo</a></li> -->
                         <li><a id="b" href="form_compra1.php">Seleccionar varios</a></li>
                     </ul>
                 </li>
@@ -155,7 +155,7 @@ background:burlywood;
                     </a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_almacen.php">Mostrar</a></li>
-                        <li><a id="b" href="form_almacen.php">Nuevo</a></li>
+                        <!-- <li><a id="b" href="form_almacen.php">Nuevo</a></li> -->
                         <li><a id="b" href="form_almacen1.php">Seleccionar varios</a></li>
                     </ul>
                 </li>
@@ -167,7 +167,7 @@ background:burlywood;
                     </a>
                     <ul class="children">
                         <li><a id="b" href="solicitudes_circulante.php">Mostrar</a></li>
-                        <li><a id="b" href="form_circulante.php">Nuevo</a></li>
+                        <!-- <li><a id="b" href="form_circulante.php">Nuevo</a></li> -->
                         <li><a id="b" href="form_circulante1.php">Seleccionar varios</a></li>
                     </ul>
                 </li>

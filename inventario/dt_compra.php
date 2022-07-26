@@ -60,51 +60,58 @@ $solicitud=$datos["nSolicitud"];
 <section id="section">
   <form method="POST"  action="Plugin/pdf_compra.php" target="_blank">
            
-        
+                <input readonly class="form-control"  type="hidden" value="'. $datos['nSolicitud'].'" name="sol_compra">
+                <input readonly class="form-control"  type="hidden" value="'. $datos['dependencia'].'" name="dependencia">
+                <input readonly class="form-control"  type="hidden" value="'. $datos['plazo'].'" name="plazo">
+                <input readonly class="form-control"  type="hidden" value="'. $datos['unidad_tecnica'].'" name="unidad">
+                <input readonly class="form-control"  type="hidden" value="'. $datos['descripcion_solicitud'].'" name="suministro">
+                <input readonly class="form-control"  type="hidden" value="'. $datos['usuario'].'" name="usuario">
+                <input readonly class="form-control"  type="hidden" value="'. date("d-m-Y",strtotime($datos['fecha_registro'])) .'" name="fech">
+
           <div class="row">
         
-            <div class="col-md-3" style="position: initial">
+            <div class="col-md-3 mb-3" style="position: initial">
         
-                <label style="font-weight: bold;">Solicitud No.</label>
-                  <p>' .$datos['nSolicitud'] '</p>
+                <label style="font-weight: bold;">Solicitud No.</label><br>
+                 '. $datos['nSolicitud'].'
   
             </div>
   
-            <div class="col-md-3" style="position: initial">
-              <label style="font-weight: bold;">Dependencia Solicitante</label>
-                <p>' .$datos['dependencia']. '</p>
+            <div class="col-md-3 mb-3" style="position: initial">
+              <label style="font-weight: bold;">Dependencia Solicitante</label><br>
+                ' .$datos['dependencia']. '
             </div>
   
-          <div class="col-md-3" style="position: initial">
-              <label style="font-weight: bold;">Plazo y No. de Entregas</label>
-                <p>' .$datos['plazo']. '</p>
+          <div class="col-md-3 mb-3" style="position: initial">
+              <label style="font-weight: bold;">Plazo y No. de Entregas</label><br>
+                ' .$datos['plazo']. '
           </div>
   
-          <div class="col-md-3" style="position: initial">
-              <label style="font-weight: bold;">Unidad Técnica</label>
-                <p>' .$datos['unidad_tecnica']. '</p>
+          <div class="col-md-3 mb-3" style="position: initial">
+              <label style="font-weight: bold;">Unidad Técnica</label><br>
+                ' .$datos['unidad_tecnica']. '
           </div>
   
-          <div class="col-md-3" style="position: initial">
-              <label style="font-weight: bold;">Suministro Solicitado</label>
-                <p>' .$datos['descripcion_solicitud']. '</p>
+          <div class="col-md-3 mb-3" style="position: initial">
+              <label style="font-weight: bold;">Suministro Solicitado</label><br>
+                ' .$datos['descripcion_solicitud']. '
           </div>
 
-          <div class="col-md-3" style="position: initial">
-              <label style="font-weight: bold;">Encargado</label>
-                <p>' .$datos['usuario']. '</p>
+          <div class="col-md-3 mb-3" style="position: initial">
+              <label style="font-weight: bold;">Encargado</label><br>
+                ' .$datos['usuario']. '
           </div>
   
-            <div class="col-md-3" style="position: initial">
-              <label style="font-weight: bold;">Fecha</label>
-              <p>'.date("d-m-Y",strtotime($datos['fecha_registro'])). '</p>
+            <div class="col-md-3 mb-3" style="position: initial">
+              <label style="font-weight: bold;">Fecha</label><br>
+              '.date("d-m-Y",strtotime($datos['fecha_registro'])). '
                   ';?>
             </div>
             <div class="col-md-3" style="position: initial">
-              <label style="font-weight: bold;">Estado</label>
+              <label style="font-weight: bold;">Estado</label><br>
               <br>
               
-              <div style="position: initial;" class="input-group mb-3" style="position:initial;">
+              <div style="position: initial;" class="input-group" style="position:initial;">
                  <label class="input-group-text" for="inputGroupSelect01">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#check-circle-fill"/>
@@ -124,7 +131,7 @@ $solicitud=$datos["nSolicitud"];
             <table class="table">
             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form method="POST" action="Plugin/pdf_compra">
-                     
+             
 
 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -134,15 +141,14 @@ $solicitud=$datos["nSolicitud"];
                 </button>
             </form>
             <form method="POST" action="Plugin/compra.php" target="_blank">
-
-                <input readonly class="form-control"  type="hidden" value="<?php echo $datos['nSolicitud']?>" name="sol_compra">
+ <input readonly class="form-control"  type="hidden" value="<?php echo $datos['nSolicitud']?>" name="sol_compra">
                 <input readonly class="form-control"  type="hidden" value="<?php echo $datos['dependencia']?>" name="dependencia">
                 <input readonly class="form-control"  type="hidden" value="<?php echo $datos['plazo']?>" name="plazo">
                 <input readonly class="form-control"  type="hidden" value="<?php echo $datos['unidad_tecnica']?>" name="unidad">
                 <input readonly class="form-control"  type="hidden" value="<?php echo $datos['descripcion_solicitud']?>" name="suministro">
                 <input readonly class="form-control"  type="hidden" value="<?php echo $datos['usuario']?>" name="usuario">
                 <input readonly class="form-control"  type="hidden" value="<?php echo date("d-m-Y",strtotime($datos['fecha_registro'])) ?>" name="fech">
-
+                
                 <?php
 
                 $sql = "SELECT * FROM detalle_compra WHERE solicitud_compra = $solicitud";

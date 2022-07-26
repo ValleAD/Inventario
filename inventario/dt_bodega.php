@@ -69,7 +69,10 @@ $final2 = 0;
  echo'   
 <section id="section" style="margin:2%">
 <form method="POST" action="Plugin/pdf_bodega.php" target="_blank">
-         
+          <input type="hidden" readonly class="form-control"  type="text" value="'. $productos1['departamento'].'" name="depto">
+                <input type="hidden" readonly class="form-control"  type="text" value="'. $productos1['codBodega'].'" name="bodega">
+                <input type="hidden" readonly class="form-control"  type="text" value="'. $productos1['usuario'].'" name="usuario">
+                <input type="hidden" readonly class="form-control"  type="text" value="'. date("d-m-Y",strtotime($productos1['fecha_registro'])).'" name="fech">
       
         <div class="row">
       
@@ -116,10 +119,7 @@ $final2 = 0;
                         </svg></button>
             </form>
             <form method="POST" action="Plugin/bodega.php" target="_blank">
-           <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
+          
                 <?php
 
                 $odt = $productos1['codBodega'];

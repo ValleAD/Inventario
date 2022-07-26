@@ -250,7 +250,7 @@ if(isset($_POST['codigo'])){?>
                <td><input type="button" class="borrar btn btn-success my-1" value="Eliminar" /></td>   
             </tr>
 
-<?php } ?>
+<?php }} ?>
             </tbody>
         </table>
 
@@ -265,7 +265,7 @@ if(isset($_POST['codigo'])){?>
         </button> </center>   
 </form>
  </section>
-<?php }}}} ?>
+<?php }}} ?>
 </section>
 
    
