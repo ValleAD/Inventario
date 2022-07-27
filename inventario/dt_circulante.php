@@ -167,11 +167,10 @@ $num_circulante = $datos_sol['codCirculante'];
 while ($productos = mysqli_fetch_array($result)){
       
         $total    =    $productos['stock'] * $productos['precio'];
-        $final    +=   $total;
         $precio   =    $productos['precio'];
         $precio2  =    number_format($precio, 2,".",",");
         $total2   =    number_format($total, 2, ".",",");
-        $final2   =    number_format($final, 2, ".",",");
+        
         $cant_aprobada=$productos['stock'];
         $cantidad_despachada=$productos['cantidad_despachada'];
         $stock=number_format($cant_aprobada, 2,".",",");

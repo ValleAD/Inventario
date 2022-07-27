@@ -185,14 +185,12 @@ $odt = $productos1['codBodega'];
 while ($productos = mysqli_fetch_array($result)){
       
       $total        =  $productos['stock'] * $productos['precio'];
-      $final        += $total;
       $codigo       =  $productos['codigo'];
       $descripcion  =  $productos['descripcion'];
       $um           =  $productos['unidad_medida'];
       $precio       =  $productos['precio'];
       $precio2      =  number_format($precio, 2,".",",");
-      $total2       =  number_format($total, 2, ".",",");
-      $final2       =  number_format($final, 2, ".",",");
+      $total1       =  number_format($total, 2, ".",",");
       $cant_aprobada=$productos['stock'];
         $cantidad_despachada=$productos['cantidad_despachada'];
         $stock=number_format($cant_aprobada, 2,".",",");
@@ -209,15 +207,15 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
             <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
             <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
-            <input type="hidden" name="tot[]" value="$<?php echo $total2 ?>">
-            <input type="hidden" name="tot_f" value="$<?php echo $final2 ?>" >
+            <input type="hidden" name="tot[]" value="$<?php echo $total ?>">
+            <input type="hidden" name="tot_f" value="$<?php echo $final ?>" >
         </td>
         <td   data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
         <td   data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
         <td   data-label="Cantidad"><?php echo $stock ?></td>
         <td   data-label="Cantidad"><?php echo $cantidad_desp ?></td>
         <td   data-label="Costo unitario"><?php echo $precio2 ?></td>
-        <td   data-label="total"><?php echo $total2 ?></td>
+        <td   data-label="total"><?php echo $total1 ?></td>
       </tr>
 
       <?php } ?> </tbody>
@@ -226,7 +224,7 @@ while ($productos = mysqli_fetch_array($result)){
 <table class="table">
            <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
         <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
-        <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final2 ?></td>
+        <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final1 ?></td>
     </tfoot>
      </table>   
 </form>

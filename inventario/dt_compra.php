@@ -52,7 +52,7 @@ $total = 0;
 $final = 0;
 $final2=0;
    include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_compra ORDER BY fecha_registro DESC LIMIT 1 ";
+    $sql = "SELECT * FROM tb_compra ORDER BY nSolicitud DESC LIMIT 1 ";
     $result = mysqli_query($conn, $sql);
  while ($datos = mysqli_fetch_array($result)){
 $solicitud=$datos["nSolicitud"];

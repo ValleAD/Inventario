@@ -129,10 +129,10 @@ while ($productos = mysqli_fetch_array($result)){
       $n++;
         $r=$n+0;
         $total    =    $productos['cantidad_solicitada'] * $productos['precio'];
+        $total1   =    number_format($total, 2, ".",",");
         $final    +=   $total;
         $precio   =    $productos['precio'];
         $precio1  =    number_format($precio, 2,".",",");
-        $total1   =    number_format($total, 2, ".",",");
         $final1   =    number_format($final, 2, ".",",");
         
         $cant_aprobada=$productos['cantidad_solicitada'];
@@ -183,7 +183,8 @@ $num_almacen = $datos_sol['codAlmacen'];
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
       
-        $final    +=   $total;
+       $total    =    $productos['cantidad_solicitada'] * $productos['precio'];
+        $total1   =    number_format($total, 2, ".",",");
         $precio   =    $productos['precio'];
         $precio1  =    number_format($precio, 2,".",",");
         
