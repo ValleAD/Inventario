@@ -85,83 +85,58 @@ die();
         <br><br><br>       
           <font color="white"> <h1 style=" text-align: center;">Solicitud de Vale</h1> </font>
 <section>
-<h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
+
      <form style="background: transparent;" method='POST' action="form_vale2.php">
+
+        <div class="row" >   
+ <div class="col-md-3 mb-2"style="position: initial;" >
+            <section class="well" >
+            <input  type="text" name="busqueda" class="form-control"  id="busqueda" placeholder="Buscar el código del Producto">
+        </section>
+    </div>
+</div>
+<button style=" float: right;margin-bottom: 1%;" type="submit" name="solicitar" class=' div btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button><br class="div"><br class="div">
+               <div id="tabla_resultado" style="margin: 0">
+        <!-- AQUI SE DESPLEGARA NUESTRA TABLA DE CONSULTA -->
+
+        </div>     
+       </div>
         <button style=" float: right;margin-bottom: 1%;" type="submit" name="solicitar" class=' div btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button><br class="div"><br class="div">
-       <table class="table  table-striped" id="div" style=" width: 100%">
-            <thead>
-              <tr id="tr">
-               
-                <th style="width: 5%;">Código</th>
-                <th style="width: 10%;">Catálogo</th>
-                <th style="width: 17%;">Descripción Completa</th>
-                <th style="width: 10%;">U/M</th>
-                <th style="width: 10%;">Cantidad</th>
-                <th style="width: 10%;">Costo Unitario</th>
-                <th style="width: 10%;">Fecha Registro</th>
-                <th style="width: 10%;" align="center"><button id="div" style=" float: right;margin-bottom: 1%;" type="submit" name="solicitar" class='btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button>
-                </th>
-              </tr>
-
-            </thead>
-</table>
-  <div id="div" style = "max-height: 442px; overflow-y:scroll;">
-<table class="table">
-            <tbody>
-
- <?php
-    include 'Model/conexion.php';
-
-
-    //    $sql = "SELECT * FROM tb_productos";
-    $sql = "SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos GROUP BY precio, codProductos";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-
-        $precio=$productos['precio'];
-       $precio1=number_format($precio, 2,".",",");
-       $cantidad=$productos['SUM(stock)'];
-        $stock=number_format($cantidad, 2,".",",");
-      ?>
-               
-
-
-<style type="text/css">
-
-    #td{
-        display: none;
-    }
-   th{
-       width: 100%;
-   }
-   #div{
-    display: block;
-   }
-</style>
-    <tr id="tr">
-      <td style="width: 5%;min-width: 100%" data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
-      <td style="width: 10%;min-width: 100%" data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
-      <td style="width: 25%;min-width: 100%" data-label="Descripción Completa"><?php  echo $productos['descripcion']; ?></td>
-      <td data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
-      <td data-label="Cantidad"><?php  echo $stock; ?></td>
-      <td data-label="Costo Unitario">$<?php  echo $precio1?></td>
-      <td data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
-
-      <td data-label="solicitar">
-           <?php if ($stock==0.00) {?>
-                  Sin Productos
-              <?php  } if ($stock!= 0.00) {?>
-                 <input   id="<?php echo $productos['cod'] ?>" type="checkbox" name="id[]" value="<?php echo $productos['cod'] ?>"> <label  id="l" for="<?php echo $productos['cod'] ?>" > </label>  
-             <?php  }?>
-      </td>
-<?php } ?> 
-</tr>
-            </tbody>
-        </table>
+       
     </div>
 </form>
 </section>
+ <script>
+    $(obtener_registros());
+
+function obtener_registros(consulta)
+{
+    $.ajax({
+        url : 'Buscador_ajax/Consulta1.php',
+        type : 'POST',
+        dataType : 'html',
+        data : { consulta: consulta },
+        })
+
+    .done(function(resultado){
+        $("#tabla_resultado").html(resultado);
+    })
+}
+
+$(document).on('keyup', '#busqueda', function()
+{
+    var valorBusqueda=$(this).val();
+    if (valorBusqueda!="")
+    {
+        obtener_registros(valorBusqueda);
+    }
+    else
+        {
+            obtener_registros();
+        }
+});
+
+</script>
 <script type="text/javascript">
 function confirmaion(e) {
     if (confirm("¿Estas seguro que deseas Eliminar este registro?")) {
@@ -172,6 +147,5 @@ function confirmaion(e) {
     }
 }
 </script>
-
 </body>
 </html>

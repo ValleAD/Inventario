@@ -273,7 +273,15 @@ die();
                 <form method="POST" action="Controller/Delete_producto.php">
                    <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
                 </form>
-            <style>
+            
+           <?php  };
+
+            if ($solicitudes['estado']=="Rechazado") {?>
+                   
+           <button disabled id="ver" style="cursor: not-allowed;"  type="submit" name="detalle" >Ver Detalles</button> 
+        
+           <?php  } ?>         
+                 <style>
                  #ver{
                 margin-left: 2%; 
                 background: rgba(0,123,255,.5); 
@@ -288,14 +296,6 @@ die();
                 transform: translateY(2px);
                } 
             </style>
-           <?php  };
-
-            if ($solicitudes['estado']=="Rechazado") {?>
-                   
-           <button disabled id="ver" style="cursor: not-allowed;"  type="submit" name="detalle" >Ver Detalles</button> 
-        
-           <?php  } ?>         
-                 
                      
             </form> 
         </div>
