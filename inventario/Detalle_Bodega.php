@@ -253,7 +253,9 @@ while ($productos = mysqli_fetch_array($result)){
  $sql = "SELECT * FROM detalle_bodega WHERE odt_bodega = $odt";
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
-      
+
+  $total = $productos['cantidad_despachada'] * $productos['precio'];
+  $total1= number_format($total, 2, ".",",");
         $precio   =    $productos['precio'];
         $precio2  =    number_format($precio, 2,".",","); 
         $cant_aprobada=$productos['stock'];
