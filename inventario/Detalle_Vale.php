@@ -159,7 +159,7 @@ if(isset($_POST['detalle'])){
                 }else if($productos1['estado']=='Aprobado') {
                      echo ' style="background-color:blueviolet ;position: initial;width:70%; border-radius:5px;text-align:center; color: white;"';
                 }else if($productos1['estado']=='Rechazado') {
-                     echo ' style="background-color:red ;style="position: initial;width:70%; border-radius:5px;text-align:center; color: white;"';
+                     echo ' style="background:red;color:white ;style="position: initial;width:70%; border-radius:5px;text-align:center; color: white;"';
                 }
             ?> class="form-control" type="text" name="" readonly value="<?php echo $productos1['estado'] ?>"><br>
             <?php if($tipo_usuario==1){ ?>
@@ -313,8 +313,8 @@ while ($productos = mysqli_fetch_array($result)){
         $precio2  =    number_format($precio, 2,".",","); 
         $cant_aprobada=$productos['stock'];
         $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,",");?>
+        $stock=number_format($cant_aprobada, 2,".",",");
+        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");?>
     <style type="text/css">
      #td{
         display: none;
@@ -481,8 +481,173 @@ while ($productos = mysqli_fetch_array($result)){
         $precio2  =    number_format($precio, 2,".",",");
         $cant_aprobada=$productos['stock'];
         $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,",");?>
+        $stock=number_format($cant_aprobada, 2,".",",");
+        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");?>
+    <style type="text/css">
+     #td{
+        display: none;
+    }
+    
+   
+</style> 
+      <tr>
+       <td  data-label="Código"><?php echo $productos['codigo'] ?>
+            <input type="hidden" name="cod[]" value="<?php echo $productos['codigo'] ?>">
+            <input type="hidden" name="desc[]" value="<?php echo $productos['descripcion'] ?>">
+            <input type="hidden" name="um[]" value="<?php echo $productos['unidad_medida']?>">
+            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
+            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
+            <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
+            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
+            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
+        </td>
+        <td  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
+        <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
+        <td  data-label="Cantidad"><?php echo $stock ?></td>
+        <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
+        <td  data-label="Costo unitario"><?php echo $precio2 ?></td>
+        <td  data-label="total"><?php echo $total1 ?></td>
+      </tr>
+
+      <?php } ?> 
+  </tbody>
+</table>
+</div>
+<table class="table">
+            <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
+        <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
+        <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final1 ?></td>
+    </tfoot>
+    </table>
+    <br>
+         <?php 
+
+                       
+        $sql = "SELECT * FROM tb_vale WHERE codVale='$num_vale'  ORDER BY observaciones ASC LIMIT 1";
+    $result = mysqli_query($conn, $sql);
+ while ($datos = mysqli_fetch_array($result)){
+ if ($datos['observaciones']=="") {
+    $jus = 'Sin observacion por el momento';
+        
+    }else{
+    $jus = $datos['observaciones'];
+      }
+  ?>
+    <div class="form-group" style="position: all;border: 1px solid #ccc;border-collapse: collapse;">
+                <p style="padding-left: 1%;">Observaciones (En qué se ocupará el bien entregado)</p>
+                <hr style=" border: 1px solid #ccc;border-collapse: collapse;">
+                <p style="padding-left: 1%;"><?php echo $jus ?></p>
+                <input type="hidden" name="jus" value="<?php echo $jus ?>">
+            </div>
+<?php }  ?>
+
+</form>
+             <?php  }?>
+              <?php  if ($productos1['estado']=="Rechazado") {?>
+            <table class="table ">
+            <div style="position: initial;" class="btn-group mb-3 my-5 mx-2" role="group" aria-label="Basic outlined example" style="margin-top:5%">
+            <form method="POST" action="Plugin/pdf_vale.php">
+            <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+
+                </button>
+            </form>
+            <form method="POST" action="Plugin/vale.php" target="_blank">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['fecha_registro']?>" name="fech">
+
+          
+                <?php
+
+                
+                $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale";
+    $result = mysqli_query($conn, $sql);
+while ($productos = mysqli_fetch_array($result)){
+      
+      $total = $productos['stock'] * $productos['precio'];
+      $final += $total;
+      $codigo=$productos['codigo'];
+      $descripcion=$productos['descripcion'];
+      $um=$productos['unidad_medida'];
+      $precio=$productos['precio'];
+
+
+       $precio1=number_format($precio, 2,".",",");
+      $total1= number_format($total, 2, ".",",");
+      $final1=number_format($final, 2, ".",",");
+
+      $cant_aprobada=$productos['stock'];
+        $cantidad_despachada=$productos['cantidad_despachada'];
+        $stock=number_format($cant_aprobada, 2,".",",");
+        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+       ?>
+       <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
+            <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
+            <input type="hidden" name="um[]" value="<?php echo $um ?>">
+            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
+            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
+            <input type="hidden" name="cost[]" value="$<?php echo $precio1 ?>">
+            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
+            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
+        <?php } ?>
+       <?php  
+        $sql = "SELECT * FROM tb_vale WHERE codVale='$num_vale'  ORDER BY observaciones ASC LIMIT 1";
+    $result = mysqli_query($conn, $sql);
+ while ($datos = mysqli_fetch_array($result)){
+ if ($datos['observaciones']=="") {
+    $jus = "Sin observacion por el momento";
+        
+    }else{
+    $jus = $datos['observaciones'];
+      }
+  ?>
+  <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
+<?php } ?>
+<button style="position: initial;" type="submit" class="btn btn-outline-primary" name="pdf">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+                </button>
+
+            </form>
+
+</div>
+
+            <thead>
+              <tr id="tr">
+                <th >Código</th>
+                <th >Descripción</th>
+                <th >Unidad de Medida</th>
+                <th >Cantidad Solicitada</th>
+                <th >Cantidad Depachada</th>
+                <th >Costo unitario</th>
+                <th >Total</th>
+                </tr>
+                <td id="td" colspan="6"><h4>No se encontraron resultados 😥</h4></td>
+              </thead>
+          </table>
+          <div id="div" style = " max-height: 442px; overflow-y:scroll;"> 
+          <table class="table">
+                <tbody>
+                <?php 
+
+
+ 
+ $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale";
+    $result = mysqli_query($conn, $sql);
+while ($productos = mysqli_fetch_array($result)){
+      
+        
+        $precio   =    $productos['precio'];
+        $precio2  =    number_format($precio, 2,".",",");
+        $cant_aprobada=$productos['stock'];
+        $cantidad_despachada=$productos['cantidad_despachada'];
+        $stock=number_format($cant_aprobada, 2,".",",");
+        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");?>
     <style type="text/css">
      #td{
         display: none;
@@ -545,8 +710,8 @@ while ($productos = mysqli_fetch_array($result)){
              <?php  }?>
 
              <?php  
-           
-} }
+  }         
+ }
 
 if(isset($_POST['submit'])){
 

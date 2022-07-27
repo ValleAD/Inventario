@@ -220,18 +220,17 @@ if(isset($_POST['codigo'])){ ?>
                 <div class="form-group" style="position: ; margin: 2%">
                         <label>Unidad de medida (U/M)</label>
 
-                       <div id="div" style = " max-height: 150px;width: 100%; overflow-y:scroll;"> 
-                        
+                        <select id="div" class="form-control" class="form-select" multiple aria-label="" name="um[]" required>
+
                             <?php
                      $sql = "SELECT * FROM  selects_unidad_medida";
                         $result = mysqli_query($conn, $sql);
 
                         while ($productos1 = mysqli_fetch_array($result)){ ?>
 
-                        <input required  id="<?php echo $productos1['id'] ?>" type="radio" name="um[]" value="<?php echo $productos1['unidad_medida'] ?>"> <label style="width: 100%;" id="label1" for="<?php echo $productos1['id'] ?>" > <?php echo $productos1['unidad_medida'] ?></label><br>
+                       <option value="<?php echo $productos1['unidad_medida'] ?>" style="padding: 1%;border-radius: 5px;  color: #0774D9;"><?php echo $productos1['unidad_medida'] ?></option>
                     <?php  }   ?>
-
-                        </div>
+                     </select>
                     </div>
             
             <div class="form-group" style="position: ; margin: 2%">

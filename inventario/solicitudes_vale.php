@@ -133,19 +133,13 @@ die();
                 <div style="position: initial;">  
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_vale.php">             
                 <input type='hidden' name='id' value="<?php  echo $solicitudes['codVale']; ?>">  
-                <?php  if ($solicitudes['estado']=="Aprobado" || $solicitudes['estado']=="Pendiente") {?>
+                <?php  if ($solicitudes['estado']=="Aprobado" || $solicitudes['estado']=="Pendiente" || $solicitudes['estado']=="Rechazado") {?>
                 
                 <form method="POST" action="Controller/Delete_producto.php">
                    <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
                 </form>
 
-           <?php  };
-
-            if ($solicitudes['estado']=="Rechazado") {?>
-                   
-            <button disabled id="ver" style="cursor: not-allowed;"  type="submit" name="detalle" >Ver Detalles</button> 
-        
-           <?php  } ?>         
+           <?php  };?>         
                  
                      
             </form> 
