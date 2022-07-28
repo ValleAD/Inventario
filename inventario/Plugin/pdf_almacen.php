@@ -19,6 +19,19 @@
 <h3 align="center" style="margin-top: -2%;">HOSPITAL NACIONAL SANTA TERESA  DE ZACATECOLUCA</h3>
 <h4 align="center" style="margin-top: -2%;">ALMACÉN DE MEDICAMENTOS, INSUMOS MÉDICOS,</h4>
 <h4 align="center" style="margin-top: -2%;">PAPELERÍA Y OTROS ARTICULOS</h4>
+
+
+<table style="width: 100%;">
+        <tbody>
+            
+            <tr>
+                <td><b>FECHA: </b><?php echo $fech?> </td>
+            </tr>
+            <tr style="border: 1px solid #ddd;color: black;" >
+                <td style="height: 35px;"><b>AUTORIZA:</b> DIRECTOR HOSPITAL NACIONAL "SANTA TERESA"</td>
+            </tr>
+        </tbody>
+    </table>
  
 <section style="margin: 2%;">
               
@@ -67,16 +80,14 @@ for($i = 0; $i < count($_POST['cod']); $i++)
         <td style="text-align: center;font-size: 12px; font-weight: bold;"><?php echo $tot_f ?></td>
     </tfoot>
 </table>
-    <table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
+
+
+    <table style="width: 100%; margin-top:15%;">
         <tbody>
+           
             <tr style="border: 1px solid #ddd;color: black;" >
-                <td style="height: 35px;"><b>DEPARTAMENTO QUE SOLICITA:</b> MANTENIMIENTO</td>
-            </tr>
-            <tr style="border: 1px solid #ddd;color: black;" >
-                <td style="height: 35px;"><b>FECHA: </b><?php echo $fech?> <div align="center" style="margin-top: -2.5%;">FIRMA</div> <div style="float: right; margin-top: -3%;">SELLO</div></td>
-            </tr>
-            <tr style="border: 1px solid #ddd;color: black;" >
-                <td style="height: 35px;"><b>AUTORIZA:</b> DIRECTOR HOSPITAL NACIONAL "SANTA TERESA"</td>
+                <td style="height: 35px;"><b><div style="float: right; margin-top: 13%;">FIRMA:________________________</div></td>&nbsp
+                <td style="height: 35px;"><b><div style="float: right; margin-top: 10%;">SELLO:________________________________</div></td>
             </tr>
         </tbody>
     </table>

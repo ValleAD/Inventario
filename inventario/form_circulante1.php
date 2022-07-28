@@ -115,7 +115,7 @@ die();
 function obtener_registros(consulta)
 {
     $.ajax({
-        url : 'Buscador_ajax/Consulta1.php',
+        url : 'Buscador_ajax/consulta_circulante.php',
         type : 'POST',
         dataType : 'html',
         data : { consulta: consulta },
