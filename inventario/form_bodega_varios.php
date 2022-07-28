@@ -90,26 +90,14 @@ die();
 
 <section id="act">
     <h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
+    <?php include ('Buscador_ajax/cabezera.php') ?>
      <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="form_bodega_info.php">
 
-        <div class="row" >   
- <div class="col-md-3 mb-2"style="position: initial;" >
-            <section class="well" >
-            <input  type="text" name="busqueda" class="form-control"  id="busqueda" placeholder="Buscar el código del Producto">
-        </section>
-    </div>
-</div>
-<button style=" float: right;margin-bottom: 1%;" type="submit" name="solicitar" class=' div btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button><br class="div"><br class="div">
-               <div id="tabla_resultado" style="margin: 0">
-        <!-- AQUI SE DESPLEGARA NUESTRA TABLA DE CONSULTA -->
-
-        </div>     
-       </div>
-        <button style=" float: right;margin-bottom: 1%;" type="submit" name="solicitar" class=' div btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button><br class="div"><br class="div">
-       
-    </div>
+ <button style=" float: right;margin-bottom: 1%;" type="submit" name="solicitar" class=" div btn btn-success btn-sm text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button><br class="div"><br class="div">
+ <?php include ('Buscador_ajax/Consulta1.php') ?>
 </form>
 </section>
+<<<<<<< HEAD
  <script>
     $(obtener_registros());
 
@@ -152,5 +140,7 @@ function confirmaion(e) {
     }
 }
 </script>
+=======
+>>>>>>> 9d52e5d86dbc0dcee84dcf507d09d851da396162
 </body>
 </html>

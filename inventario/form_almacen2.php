@@ -68,7 +68,7 @@ if ($codigo=="") {
             echo'
           <script>
              alert("Debe de selecionar los productos");
-               window.location ="form_vale1.php"; 
+               window.location ="form_almacen1.php"; 
                       </script>
                       ';
 

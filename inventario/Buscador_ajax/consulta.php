@@ -115,6 +115,11 @@ echo'
 	{
                 $categoria=$productos['categoria'];
                 $des=$productos['descripcion'];
+                if ($productos['unidad_medida']=="") {
+                    $unidad=" Sin Unidad";
+                }else{
+                   $unidad=$productos['unidad_medida']; 
+                }
                 if ($des=="") {
                     $des="DESCRIPTION NO DISPONIBLE";
                 }else{
@@ -139,7 +144,7 @@ echo'
             <td style="width: 10%;min-width: 100%;" id="th" data-label="Código">'.$productos['codProductos'].'</td>
             <td style="width: 10%;min-width: 100%;" id="th" data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
             <td style="width: 47%;min-width: 100%;" id="th" data-label="Descripción">'.$des.'</td>
-            <td style="width: 10%;min-width: 100%;" id="th" data-label="Unidad de Medida">'.$productos['unidad_medida'].'</td>
+            <td style="width: 10%;min-width: 100%;" id="th" data-label="Unidad de Medida">'.$unidad.'</td>
             <td style="width: 10%;min-width: 100%;" id="th" data-label="Cantidad">'.$stock.'</td>
             <td style="width: 10%;min-width: 100%;" id="th" data-label="Precio">'.$precio1.'</td>
             <td style="width: 20%;min-width: 100%;" id="th" data-label="Fecha">'.$productos['fecha_registro'].'</td>
