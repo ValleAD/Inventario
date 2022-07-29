@@ -45,7 +45,7 @@ die();
           <?php if ($tipo_usuario==1) {?>  
      
  <?php include ('Buscador_ajax/cabezeraVale1.php') ?>  
-    <div  class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
+    <div id="x" class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
          <form id="sass" method="POST" class="mx-1" action="Plugin/soli_vale.php" target="_blank">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">    
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -60,12 +60,33 @@ die();
                 </svg>
              </button>
          </form>
+ </div>   
+ <?php if (isset($_POST['Consultar'])) {$columna=$_POST['columna'];$tipo=$_POST['tipo'];?>
+    <div  class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
+         <form id="sass" method="POST" class="mx-1" action="Plugin/soli_vale.php" target="_blank">
+            <input type="hidden" name="columna" value="<?php echo $columna ?>">
+            <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Consultar">    
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+             </button>
+         </form>
+         <form id="sass" method="POST" action="Plugin/pdf_soli_vale.php" target="_blank" class="mx-1">
+            <input type="hidden" name="columna" value="<?php echo $columna ?>">
+            <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Consultar" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+             </button>
+         </form>
  </div>     
+<?php  } ?>  
  <?php include ('Buscador_ajax/cabezeraVale.php'); ?>  
  <table class="table table-striped" id="div" style="width: 100%;">
             <thead>
               <tr id="tr">
-                <th style="width: 2%;">#</th>
                 <th style="width: 10%;"><strong>Código de Vale</strong></th>
                 <th style="width: 10%"><strong>Departamento Solicitante</strong></th>
                 <th style="width: 20%;"><strong>Encargado</strong></th>
@@ -87,11 +108,17 @@ die();
 
     $sql = "SELECT * FROM tb_vale ORDER BY fecha_registro ";
     $result = mysqli_query($conn, $sql);
-    $n=0;
+
     while ($solicitudes = mysqli_fetch_array($result)){
-        $n++;
-        $r=$n+0;
+
         $idusuario = $solicitudes['idusuario'];
+                 $des=$solicitudes['departamento'];
+                if ($des=="") {
+                    $des="Departamentos No disponible";
+                }else{
+
+                   $des=$solicitudes['departamento']; 
+                }
         if ($idusuario==1) {
         $u='Administrador';
         }
@@ -115,9 +142,8 @@ die();
             }
         </style>
         <tr>
-            <td style="width: 10%;min-width: 100%;"><?php echo $r ?></td>
-            <td style="width: 10%;min-width: 100%;" data-label="Código" class="delete"><?php  echo $solicitudes['codVale']; ?></td>
-            <td style="width: 30%;min-width: 100%;" data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
+            <td style="width: 20%;min-width: 100%;" data-label="Código" class="delete"><?php  echo $solicitudes['codVale']; ?></td>
+            <td style="width: 30%;min-width: 100%;" data-label="Departamento Solicitante" class="delete"><?php  echo $des; ?></td>
 
              <td style="width: 30%;min-width: 100%;" data-label="Encargado" class="delete"><?php  echo $solicitudes['usuario'],"<br> ","(",$u,")"; ?></td>
            <td style="width: 20%;min-width: 100%;" data-label="Fecha de solicitud" class="delete"><?php  echo $solicitudes['fecha_registro']; ?></td>
@@ -177,7 +203,7 @@ die();
         </style>
 
        <?php include ('Buscador_ajax/cabezeraVale1.php') ?>
-             <div   class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
+             <div  id="x" class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
          <form id="ssas"  method="POST" class="mx-1" action="Plugin/soli_vale.php" target="_blank">
              <?php $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
@@ -207,12 +233,47 @@ die();
              </button>
          </form>
  </div>
-  <?php include ('Buscador_ajax/cabezeraVale.php') ?>
+ <?php if (isset($_POST['Consultar1'])) {$columna=$_POST['columna'];$tipo=$_POST['tipo'];?>
+                  <div   class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
+         <form id="ssas"  method="POST" class="mx-1" action="Plugin/soli_vale.php" target="_blank">
+             <?php $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario'";
+    $result = mysqli_query($conn, $sql);
+    $n=0;
+    while ($datos_sol = mysqli_fetch_array($result)){?>
+ <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
+       
+    <?php } ?>
+          <input type="hidden" name="columna" value="<?php echo $columna ?>">
+            <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Consultar1">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+             </button>
+         </form>
+         <form id="ssas"  class="mx-1"  method="POST" action="Plugin/pdf_soli_vale.php" target="_blank">
+             <?php $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario'";
+    $result = mysqli_query($conn, $sql);
+    $n=0;
+    while ($datos_sol = mysqli_fetch_array($result)){?>
+ <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
+       
+    <?php } ?>
+                <input type="hidden" name="columna" value="<?php echo $columna ?>">
+            <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Consultar1" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+             </button>
+         </form>
+ </div>
+ 
+  <?php } include ('Buscador_ajax/cabezeraVale.php') ?>
   <div id="x">
         <table class="table" id="div">
             <thead>
               <tr id="tr">
-                <th style="width: 7%;">#</th>
                 <th style="width: 10%;"><strong>Código de Vale</strong></th>
                 <th style="width: 20%"><strong>Departamento Solicitante</strong></th>
                 <th style="width: 20%;"><strong>Encargado</strong></th>
@@ -234,10 +295,9 @@ die();
     
     $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario' ORDER BY fecha_registro ";
     $result = mysqli_query($conn, $sql);
-    $n=0;
+
     while ($solicitudes = mysqli_fetch_array($result)){
-        $n++;
-        $r=$n+0;
+
         
         ?>
         <style>
@@ -252,7 +312,6 @@ die();
             }
         </style>
         <tr>
-            <td style="width: 10%;min-width: 100%;"><?php echo $r ?></td>
             <td style="width: 10%;min-width: 100%;" data-label="Código" class="delete"><?php  echo $solicitudes['codVale']; ?></td>
             <td style="width: 30%;min-width: 100%;" data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
 
