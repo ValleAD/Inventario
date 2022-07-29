@@ -36,7 +36,6 @@
             <th style="width: 70%;color:black;font-size: 14px;text-align: left;">Descripción de los materiales y/o servicios solicitados</th>
             <th style="width: 15%;color:black;font-size: 14px;text-align: center;">U/M</th>
             <th style="width: 15%;color:black;font-size: 14px;text-align: center;">Cant.<br>Sol.</th>
-            <th style="width: 15%;color:black;font-size: 14px;text-align: center;">Cant.<br>Desp.</th>
             <th style="width: 15%;color:black;font-size: 14px;text-align: center;">C/U</th>
             <th style="width: 15%;color:black;font-size: 14px;text-align: center;border-right:1px solid #ccc ;">Total</th>
         </tr>
@@ -65,7 +64,6 @@ for($i = 0; $i < count($_POST['desc']); $i++)
             <td style="font-size:12px"><?php  echo $des?></td>
             <td style="text-align:center;font-size: 12px;"><?php  echo $um?></td>
             <td style="text-align:center;font-size: 12px;"><?php echo $cantidad ?></td>
-            <td style="font-size:12px"><?php echo $cantidad_despachada ?></td>
             <td style="text-align: center;font-size: 12px;"><?php echo $cost ?></td>
             <td style="text-align: center;font-size: 12px;"><?php  echo $tot ?></td>
         </tr>
@@ -73,7 +71,7 @@ for($i = 0; $i < count($_POST['desc']); $i++)
      <?php } } ?> 
     <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
       
-    <td colspan="6" style="text-align: right;font-size: 12px; font-weight: bold;">Costo Estimado</td>
+    <td colspan="5" style="text-align: right;font-size: 12px; font-weight: bold;">Costo Estimado</td>
         <td style="text-align: center;font-size: 12px; font-weight: bold;"><?php echo $tot_f ?></td>
     </tfoot>
     </tbody>   

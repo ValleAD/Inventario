@@ -71,7 +71,7 @@
             <td style="width:11%;min-width: 100%;" id="th" data-label="solicitar">
             ';?>
             <?php 
-            if($productos['codProductos']==1) {
+            if($productos['codProductos']==0) {
                    echo 'Sin Productos';
                 }if ($stock!= 0.00) {
                 echo'

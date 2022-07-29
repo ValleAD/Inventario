@@ -131,6 +131,7 @@ if ($codigo=="") {
               <tr id="tr">
                
                 <th>Código</th>
+                <th>Cátalogo</th>
                 <th>Descripción</th>
                 <th>U/M</th>
                 <th>Productos Disponibles</th>
@@ -183,6 +184,8 @@ if ($codigo=="") {
                <input type="hidden" name="desc[]" value="<?php  echo $productos['descripcion']; ?>">
                <input  type="hidden" name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>">
                 </td>
+                <td data-label="Catalogo"><?php echo $productos['catalogo']; ?></td>
+
                <td data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
                <td data-label="Unidad De Medida"><?php echo $productos['unidad_medida'] ?>
                 <input type="hidden"  name="stock[]"  value ="<?php  echo $stock; ?>">

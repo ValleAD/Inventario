@@ -148,7 +148,6 @@ $final2 = 0;
                 <th style="width: 40%;">Cantidad Solicitada</th>
                 <th style="width: 40%;">Cantidad Despachada</th>
                 <th style="width: 40%;">Costo Unitario (estimado)Actual</th>
-                <th style="width: 40%;">Nuevo Costo Unitario (estimado)</th>
                 <th style="width: 40%;">Total</th>
               </tr>
                 
@@ -198,14 +197,13 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Cantidad Despachada"><input type="number" step="0.01" class="form-control" style="background:transparent; border: 1 solid #000;  width: 100%; text-align: center" name="cantidad_despachada[]" required ></td>
 
         <td  data-label="Costo Unitario">$<?php echo $precio2 ?></td>
-        <td  data-label="Costo Unitario"><input type="number" step="0.01" class="form-control" style="background:transparent; border: 1 solid #000;  width: 100%; text-align: center" name="cost[]" required ></td>
 
         <td  data-label="total">$<?php echo $total2 ?></td>
       </tr>
         
   <?php }?>
             <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
-        <td colspan="8"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
+        <td colspan="7"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
         <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final2 ?></td>
     </tfoot>
         </tbody>
@@ -444,7 +442,7 @@ while ($productos = mysqli_fetch_array($result)){
 </div>
     <table class="table">
             <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
-        <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
+        <td colspan="5"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
         <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final2 ?></td>
     </tfoot>
 </table>
@@ -577,7 +575,7 @@ while ($productos = mysqli_fetch_array($result)){
 </div>
     <table class="table">
             <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
-        <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
+        <td colspan="5"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
         <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final2 ?></td>
     </tfoot>
 </table>

@@ -83,7 +83,7 @@ form{
 <tbody>   
     <?php
     include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_bodega";
+    $sql = "SELECT * FROM tb_bodega order by codBodega desc";
     $result = mysqli_query($conn, $sql);
 $n=0;
     while ($solicitudes = mysqli_fetch_array($result)){ 

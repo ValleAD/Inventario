@@ -106,7 +106,8 @@ die();
     <?php
     include 'Model/conexion.php';
 
-    $sql = "SELECT * FROM tb_vale ORDER BY fecha_registro ";
+    $sql = "SELECT * FROM tb_vale ORDER BY codVale   DESC";
+    
     $result = mysqli_query($conn, $sql);
 
     while ($solicitudes = mysqli_fetch_array($result)){

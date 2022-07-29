@@ -21,13 +21,15 @@ exit();
 
 for($i = 0; $i < count($_POST['desc']); $i++) 
     {
+      $codigo_producto  = $_POST['cod'][$i];
+
       $descripcion  = $_POST['desc'][$i];
       $u_m              = $_POST['um'][$i];
       $soli             = $_POST['cant'][$i];
       $cost             = $_POST['cu'][$i];
       $num_sol          = $_POST['solicitud_no'];
 
-      $insert = "INSERT INTO detalle_Circulante(descripcion, unidad_medida, stock, tb_circulante, precio) VALUES ('$descripcion','$u_m', '$soli', '$num_sol', '$cost')";
+      $insert = "INSERT INTO detalle_Circulante(codigo, descripcion, unidad_medida, stock, tb_circulante, precio) VALUES ('$codigo_producto','$descripcion','$u_m', '$soli', '$num_sol', '$cost')";
       $query = mysqli_query($conn, $insert);
 
       if ($result || $query) {
@@ -42,17 +44,5 @@ for($i = 0; $i < count($_POST['desc']); $i++)
         ";
       }
     }
-    for($i = 0; $i < count($_POST['cod']); $i++)
-    {
-      $codigo_producto  = $_POST['cod'][$i]+1;
-      $Descripción      = $_POST['desc'][$i];
-      $cat               =$_POST['cat'][$i];
-      $cate               =$_POST['cate'][$i];
-      $u_m             = $_POST['um'][$i];
-      $cantidad      = $_POST['cant'][$i];
-      $cost            = $_POST['cu'][$i];
-
-      $insert1 = "INSERT INTO tb_productos (codProductos, catalogo, descripcion, unidad_medida, stock, precio,categoria) VALUES ('$codigo_producto','$cat', '$Descripción', '$u_m', '$cantidad', '$cost', '$cate')";
-      $query1 = mysqli_query($conn, $insert1);
-    }
+    
 ?>
