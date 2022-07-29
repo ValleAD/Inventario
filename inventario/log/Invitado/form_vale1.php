@@ -129,8 +129,7 @@ include ('menu.php');
       <td data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
       <td data-label="solicitar" align="center">
                     
-          <input type="checkbox" name="id[]"  value="<?php  echo $productos['cod']; ?>">
-          <input type="hidden" name="precio[]"  value="<?php  echo $productos['precio']; ?>">             
+          <?php echo ' <input   id="'.$productos["cod"] .'" type="checkbox" name="id[]" value="'.$productos["cod"] .'"> <label  id="l" for="'.$productos["cod"] .'" > </label>  ' ?>             
          
       </td>
      
