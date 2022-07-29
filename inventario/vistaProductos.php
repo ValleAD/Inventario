@@ -11,7 +11,8 @@ die();
 
     ';
 }
-?><?php include ('templates/menu.php') ?>
+?>
+<?php include ('templates/menu.php') ?>
 <?php include ('Model/conexion.php') ?>
 <!DOCTYPE html>
 <html lang="es">

@@ -46,7 +46,8 @@ die();
      
 
     <div  class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
-         <form id="sass" method="POST" class="mx-1" action="Plugin/soli_vale.php" target="_blank">
+        
+    <form id="sass" method="POST" class="mx-1" action="Plugin/soli_vale.php" target="_blank">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">    
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
@@ -84,7 +85,8 @@ die();
     <?php
     include 'Model/conexion.php';
 
-    $sql = "SELECT * FROM tb_vale ORDER BY fecha_registro ";
+    $sql = "SELECT * FROM tb_vale ORDER BY fecha_registro DESC" ;
+    
     $result = mysqli_query($conn, $sql);
     $n=0;
     while ($solicitudes = mysqli_fetch_array($result)){
