@@ -1,4 +1,5 @@
-<?php
+
+    <?php
 session_start();
  if (!isset($_SESSION['signin'])>0) {
     # code...
@@ -17,37 +18,39 @@ $tipo_usuario = $_SESSION['tipo_usuario'];?>
 <?php include ('../Model/conexion.php');
 
 $tabla="";
-$query="SELECT * FROM tb_productos ORDER BY codProductos";
+$query="SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida,stock, precio, fecha_registro FROM tb_productos GROUP BY precio, codProductos";
 
 ///////// LO QUE OCURRE AL TECLEAR SOBRE EL INPUT DE BUSQUEDA ////////////
 if(isset($_POST['consulta']))
 {
-	$q=$conn->real_escape_string($_POST['consulta']);
-	$query="SELECT * FROM tb_productos WHERE 
-		codProductos LIKE '%".$q."%' OR
-		descripcion LIKE '%".$q."%' OR
-		categoria LIKE '%".$q."%' OR
-		unidad_medida LIKE '%".$q."%' OR
-		stock LIKE '%".$q."%' OR
-		fecha_registro LIKE '%".$q."%' OR
-		catalogo LIKE '%".$q."%' ";
+    $q=$conn->real_escape_string($_POST['consulta']);
+    $query="SELECT * FROM tb_productos WHERE 
+        codProductos LIKE '%".$q."%'";
 }
 
 $buscarAlumnos=$conn->query($query);
 if ($buscarAlumnos->num_rows > 0)
 {
-	$tabla.= '         <style>
+    $tabla.= '         <style>
              #ssas{display: block;}
              #td{display: none;}
              #div{display: block;}
              .well{display:block;}
          </style>';  if(isset($_POST['consulta'])){
-                echo ' <style>#well{display:none;}</style>
+                echo ' <style>#well{display:none;}
+
+            #x{
+                display: block;
+            }
+            #y{
+                display: none;
+            }
+        </style>
 
 
     ';}echo '
-	<table class="table table-responsive  table-striped" id="div" style=" width: 100%;">
-	 
+    <table class="table table-responsive  table-striped" id="div" style=" width: 100%;">
+     
                 <thead>
                      <tr id="tr">
                 <th style="width: 5%;">Código</th>
@@ -65,10 +68,9 @@ if ($buscarAlumnos->num_rows > 0)
 <div id="div" style = " max-height: 442px;  overflow-y:scroll;overflow-x:none;">
     <table class="table">
     <tbody>';
-
                 $n=0;
-	while($productos= $buscarAlumnos->fetch_assoc())
-	{
+    while($productos= $buscarAlumnos->fetch_assoc())
+    {
                 $categoria=$productos['categoria'];
                 $des=$productos['descripcion'];
                 if ($des=="") {
@@ -83,14 +85,12 @@ if ($buscarAlumnos->num_rows > 0)
                 $categoria=$productos['categoria'];
                 }
             
-		 $n++;
-        $r=$n+0;
-         $precio=$productos['precio'];
-        $precio1=number_format($precio, 2,".",",");
-        $cantidad=$productos['stock'];
+        $precio=$productos['precio'];
+       $precio1=number_format($precio, 2,".",",");
+       $cantidad=$productos['stock'];
         $stock=number_format($cantidad, 2,".",",");
-		$tabla.='
-		<tr>
+        $tabla.='
+        <tr>
               
             <td style="width:7%;min-width: 100%;" id="th" data-label="Código">'.$productos['codProductos'].'</td>
             <td style="width:7%;min-width: 100%;" id="th" data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
@@ -100,26 +100,22 @@ if ($buscarAlumnos->num_rows > 0)
             <td style="width:10%;min-width: 100%;" id="th" data-label="Precio">'.$precio1.'</td>
             <td style="width:10%;min-width: 100%;" id="th" data-label="Fecha">'.$productos['fecha_registro'].'</td>
             <td style="width:11%;min-width: 100%;" id="th" data-label="solicitar">
-            ';?>
-            <?php 
-            if($productos['codProductos']==1) {
-                   $tabla.='Sin Productos';
-                }if ($stock!= 0.00) {
-                $tabla.='
+            
+            
                  <input   id="'.$productos["cod"] .'" type="checkbox" name="id[]" value="'.$productos["cod"] .'"> <label  id="l" for="'.$productos["cod"] .'" > </label>  
            
          </tr>
         ';
     }
-	}
 
-	$tabla.='</tbody></table></div> ';
+    $tabla.='</tbody></table></div> ';
 } else
-	{
-		$tabla="
-        <h1 class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1> 
+    {
+        $tabla="
+        <h1 class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda. <a href='' style='font-size: 30px' class='close'>&times;</a></h1> 
+
         ";
-	}
+    }
 
 
 echo $tabla;

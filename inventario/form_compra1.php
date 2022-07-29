@@ -91,7 +91,43 @@ die();
 <?php include ('Buscador_ajax/cabezera.php') ?>
      <form style="background: transparent;" method='POST' action="form_compra2.php">
          <button style=" float: right;margin-bottom: 1%;" type="submit" name="solicitar" class=" div btn btn-success btn-sm text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button><br class="div"><br class="div">
-<?php include ('Buscador_ajax/Consulta1.php') ?>
+<div id="x">
+               <div id="tabla_resultado" style="margin: 0">
+        <!-- AQUI SE DESPLEGARA NUESTRA TABLA DE CONSULTA -->
+
+        </div>     
+    </div>
+     <script>
+    $(obtener_registros());
+
+function obtener_registros(consulta)
+{
+    $.ajax({
+        url : 'Buscador_ajax/Consulta_compra.php',
+        type : 'POST',
+        dataType : 'html',
+        data : { consulta: consulta },
+        })
+
+    .done(function(resultado){
+        $("#tabla_resultado").html(resultado);
+    })
+}
+
+$(document).on('keyup', '#busqueda', function()
+{
+    var valorBusqueda=$(this).val();
+    if (valorBusqueda!="")
+    {
+        obtener_registros(valorBusqueda);
+    }
+    else
+        {
+            obtener_registros();
+        }
+});
+
+</script>
 </form>
 </section>
 </body>

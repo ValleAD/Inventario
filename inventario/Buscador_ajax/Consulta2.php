@@ -100,17 +100,12 @@ if ($buscarAlumnos->num_rows > 0)
             <td style="width:10%;min-width: 100%;" id="th" data-label="Precio">'.$precio1.'</td>
             <td style="width:10%;min-width: 100%;" id="th" data-label="Fecha">'.$productos['fecha_registro'].'</td>
             <td style="width:11%;min-width: 100%;" id="th" data-label="solicitar">
-            ';?>
-            <?php 
-            if($productos['codProductos']==1) {
-                   $tabla.='Sin Productos';
-                }if ($stock!= 0.00) {
-                $tabla.='
+            
+            
                  <input   id="'.$productos["cod"] .'" type="checkbox" name="id[]" value="'.$productos["cod"] .'"> <label  id="l" for="'.$productos["cod"] .'" > </label>  
            
          </tr>
         ';
-    }
     }
 
     $tabla.='</tbody></table></div> ';
