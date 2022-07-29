@@ -44,10 +44,9 @@ die();
         <h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
           <?php if ($tipo_usuario==1) {?>  
      
-
-    <div  class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
-        
-    <form id="sass" method="POST" class="mx-1" action="Plugin/soli_vale.php" target="_blank">
+ <?php include ('Buscador_ajax/cabezeraVale1.php') ?>  
+    <div  class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
+         <form id="sass" method="POST" class="mx-1" action="Plugin/soli_vale.php" target="_blank">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">    
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
@@ -62,6 +61,7 @@ die();
              </button>
          </form>
  </div>     
+ <?php include ('Buscador_ajax/cabezeraVale.php'); ?>  
  <table class="table table-striped" id="div" style="width: 100%;">
             <thead>
               <tr id="tr">
@@ -177,8 +177,8 @@ die();
             }
         </style>
 
-      
-             <div   class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
+       <?php include ('Buscador_ajax/cabezeraVale1.php') ?>
+             <div   class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
          <form id="ssas"  method="POST" class="mx-1" action="Plugin/soli_vale.php" target="_blank">
              <?php $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
@@ -208,6 +208,8 @@ die();
              </button>
          </form>
  </div>
+  <?php include ('Buscador_ajax/cabezeraVale.php') ?>
+  <div id="x">
         <table class="table" id="div">
             <thead>
               <tr id="tr">
@@ -309,10 +311,10 @@ die();
            </tbody>
         </table>
     </div>
+</div>
 <?php } ?>
 
 
-</section>
 
 </body>
 </html>
