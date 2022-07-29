@@ -50,6 +50,7 @@ $result = mysqli_query($conn, $insert);
       $Descripción      = $_POST['desc'][$i];
       $u_m              = $_POST['um'][$i];
       $cantidad         = $_POST['cant'][$i];
+      $stock      = $_POST['stock'][$i];
       $cost             = $_POST['cu'][$i];
       $solicitud        = $_POST['nsolicitud'];;
 
@@ -73,7 +74,9 @@ $result = mysqli_query($conn, $insert);
     {
       $codigo_producto  = $_POST['cod'][$i];
       $cantidad      = $_POST['cant'][$i];
-$sql="UPDATE  tb_productos SET stock = '$cantidad' WHERE codProductos='$codigo_producto'" ;
+      $stock      = $_POST['stock'][$i];
+      $stockt = $cantidad+ $stock;
+$sql="UPDATE  tb_productos SET stock = '$stockt' WHERE codProductos='$codigo_producto'" ;
 
 $result = mysqli_query($conn, $sql);
     }

@@ -32,11 +32,9 @@ die();
          section{
             margin: 5%;
             padding: 1%;
-
             }
             form{
                 margin: 0%;
-                 color: black;
             }
             #buscar{
             margin-bottom: 5%;
@@ -282,13 +280,7 @@ if(isset($_POST['codigo'])){ ?>
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#badge-4k"/>
                 </svg>
                  </label>
-                  <?php 
-            if($productos['codProductos']==1) {
-                   echo 'Sin Productos';
-                }if ($stock!= 0.00) {
-                echo'
-                 <input style="position: initial;"  placeholder="Ingrese la Cantidad" type="number" step="0.01" name="cant[]" class="form-control" placeholder="" required value=""> ';}?>
-                
+                <input style="position: initial;"  placeholder="Ingrese la Cantidad" type="number" step="0.01" name="cant[]" class="form-control" placeholder="" required value="">
             </div>
             </div>
            <div class="form-group" style="position: ; margin: 2%">
@@ -304,34 +296,16 @@ if(isset($_POST['codigo'])){ ?>
             </div>
             </div>
     </div>
- <?php }}} ?>
+ <?php }} ?>
 </div>
- <?php 
-    for($i = 0; $i < count($_POST['codigo']); $i++){
-
-    
-    $codigo = $_POST['codigo'][$i];
-    $sql = "SELECT * WHERE codProductos = $codigo ";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos1 = mysqli_fetch_array($result)){
-        $cantidad=$productos1['SUM(stock)'];
-        $stock=number_format($cantidad, 1,".");
-
-    
-            if($productos1['codProductos']==1) {
-                   echo 'Sin Productos';
-                }if ($stock!= 0.00) {;?>
             <div id="w" class="form-floating" style="position: initial;" >
                 <label>Justificación por el OBS solicitado</label>
               <textarea rows="7" class="form-control" name="jus"  placeholder="" required id="floatingTextarea"></textarea>
             </div>
 <div id="w" class="button21">
-             <input class="btn btn-lg btn-success my-3" type="submit" name="form_compra" value="Enviar" id="buscar1">
+             <input class="btn btn-lg btn-success my-3" type="submit" value="Enviar" id="buscar1">
         </div>
-    <?php } }
-}
-?>   
+    <?php } ?>   
   <style>
             #enviar{
                 margin-bottom: 5%;
