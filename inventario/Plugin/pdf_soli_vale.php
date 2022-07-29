@@ -15,7 +15,15 @@
 <h5 align="center">REPORTE DE SOLICITUD DE VALE</h5>
  <?php if (isset($_POST['Consultar'])) {
     $columna=$_POST['columna'];
-    $tipo=$_POST['tipo'];?>
+    $tipo=$_POST['tipo'];
+        $tipo=$_POST['tipo'];
+     if ($tipo=="desc"){
+       $tipo1='Descendente'; 
+    }
+    if ($tipo=="asc") {
+        $tipo1='Ascendente';
+     } ?>
+    <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p><br><br>
     <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
@@ -62,7 +70,15 @@
 <?php } ?>
  <?php if (isset($_POST['Consultar1'])) {
     $columna=$_POST['columna'];
-    $tipo=$_POST['tipo'];?>
+    $tipo=$_POST['tipo'];
+        $tipo=$_POST['tipo'];
+     if ($tipo=="desc"){
+       $tipo1='Descendente'; 
+    }
+    if ($tipo=="asc") {
+        $tipo1='Ascendente';
+     } ?>
+    <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p><br><br>
     <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
@@ -128,6 +144,13 @@ $idusuario=$_POST['idusuario'];
 
   $n=0;
     while ($solicitudes = mysqli_fetch_array($result)){
+         $des=$solicitudes['departamento'];
+                if ($des=="") {
+                    $des="Departamentos No disponible";
+                }else{
+
+                   $des=$solicitudes['departamento']; 
+                }
 ?>  <style type="text/css">
        #td{
           display: none;
@@ -138,7 +161,7 @@ $idusuario=$_POST['idusuario'];
   
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
             <td style="text-align:center;font-size: 12px;"><?php  echo $solicitudes['codVale']?></td>
-            <td style="font-size: 12px;"><?php  echo $solicitudes['departamento']?></td>
+            <td style="font-size: 12px;"><?php  echo $des?></td>
             <td style="text-align:center;font-size: 12px;"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
             </tr>
        <?php }  ?> 
@@ -165,6 +188,13 @@ $idusuario=$_POST['idusuario'];
     $result = mysqli_query($conn, $sql);
 $n=0;
     while ($solicitudes = mysqli_fetch_array($result)){
+         $des=$solicitudes['departamento'];
+                if ($des=="") {
+                    $des="Departamentos No disponible";
+                }else{
+
+                   $des=$solicitudes['departamento']; 
+                }
 ?>  <style type="text/css">
        #td{
           display: none;
@@ -175,7 +205,7 @@ $n=0;
   
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
             <td style="text-align:center;font-size: 12px;"><?php  echo $solicitudes['codVale']?></td>
-            <td style="font-size: 12px;"><?php  echo $solicitudes['departamento']?></td>
+            <td style="font-size: 12px;"><?php  echo $des?></td>
             <td style="text-align:center;font-size: 12px;"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
             </tr>
        <?php }  ?> 

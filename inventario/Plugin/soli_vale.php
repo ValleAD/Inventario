@@ -29,7 +29,15 @@
 
 <?php if (isset($_POST['Consultar'])) {
     $columna=$_POST['columna'];
-    $tipo=$_POST['tipo'];?>
+    $tipo=$_POST['tipo'];
+        $tipo=$_POST['tipo'];
+     if ($tipo=="desc"){
+       $tipo1='Descendente'; 
+    }
+    if ($tipo=="asc") {
+        $tipo1='Ascendente';
+     } ?>
+    <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p>
     <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
@@ -76,7 +84,14 @@
 <?php } ?>
  <?php if (isset($_POST['Consultar1'])) {
     $columna=$_POST['columna'];
-    $tipo=$_POST['tipo'];?>
+    $tipo=$_POST['tipo'];
+     if ($tipo=="desc"){
+       $tipo1='Descendente'; 
+    }
+    if ($tipo=="asc") {
+        $tipo1='Ascendente';
+     } ?>
+    <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p>
     <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
