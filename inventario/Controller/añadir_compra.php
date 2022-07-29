@@ -12,6 +12,19 @@ $descripcion_solicitud = $_POST['descripcion_solicitud'];
 $usuario = $_POST['usuario'];
 $idusuario = $_POST['idusuario'];
 $jus = $_POST['jus'];
+if (isset($_POST['form_compra2'])) {
+    $verificar_compra =mysqli_query($conn, "SELECT * FROM detalle_compra WHERE solicitud_compra ='$nSolicitud' ");
+
+if (mysqli_num_rows($verificar_compra)>0) {
+  echo '
+    <script>
+    alert("El codigo ingresado debe se difernte al registrado");
+     window.location ="../form_compra1.php"; 
+  </script>
+  ';
+exit();
+}
+}if (isset($_POST['form_compra'])) {
   $verificar_compra =mysqli_query($conn, "SELECT * FROM detalle_compra WHERE solicitud_compra ='$nSolicitud' ");
 
 if (mysqli_num_rows($verificar_compra)>0) {
@@ -23,7 +36,7 @@ if (mysqli_num_rows($verificar_compra)>0) {
   ';
 exit();
 }
-
+}
 
 $insert = "INSERT INTO tb_compra (nSolicitud, dependencia, plazo, unidad_tecnica, descripcion_solicitud, usuario,estado,idusuario,justificacion) VALUES ('$nSolicitud','$dependencia', '$plazo', '$u_t', '$descripcion_solicitud', '$usuario','Comprado','$idusuario','$jus')";
 $result = mysqli_query($conn, $insert);
@@ -45,12 +58,12 @@ $result = mysqli_query($conn, $insert);
 
       if ($query) {
         echo "<script> alert('Su producto fue registrado correctamente');
-        location.href = '../dt_compra.php';
+        // location.href = '../dt_compra.php';
         </script>
         ";
       }else {
         echo "<script> alert('UUPS!! Algo no fue mal escrito');
-        location.href = '../form_compra.php';
+        location.href = '../form_compra1.php';
         </script>
         ";
       }  
@@ -58,16 +71,11 @@ $result = mysqli_query($conn, $insert);
 
   for($i = 0; $i < count($_POST['cod']); $i++)
     {
-      $codigo_producto  = $_POST['cod'][$i]+1;
-      $Descripción      = $_POST['desc'][$i];
-      $catalogo         = $_POST['cat'][$i];
-      $cat               =$_POST['cate'][$i];
-      $u_m             = $_POST['um'][$i];
+      $codigo_producto  = $_POST['cod'][$i];
       $cantidad      = $_POST['cant'][$i];
-      $cost            = $_POST['cu'][$i];
+$sql="UPDATE  tb_productos SET stock = '$cantidad' WHERE codProductos='$codigo_producto'" ;
 
-      $insert1 = "INSERT INTO tb_productos (codProductos, catalogo, descripcion, unidad_medida, stock, precio,categoria) VALUES ('$codigo_producto','$catalogo', '$Descripción', '$u_m', '$cantidad', '$cost', '$cat')";
-      $query1 = mysqli_query($conn, $insert1);
+$result = mysqli_query($conn, $sql);
     }
 
 ?>
