@@ -97,7 +97,6 @@ die();
  <?php include ('Buscador_ajax/Consulta1.php') ?>
 </form>
 </section>
-<<<<<<< HEAD
  <script>
     $(obtener_registros());
 
@@ -140,7 +139,5 @@ function confirmaion(e) {
     }
 }
 </script>
-=======
->>>>>>> 9d52e5d86dbc0dcee84dcf507d09d851da396162
 </body>
 </html>
