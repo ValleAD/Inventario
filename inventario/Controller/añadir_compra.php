@@ -59,7 +59,7 @@ $result = mysqli_query($conn, $insert);
 
       if ($query) {
         echo "<script> alert('Su producto fue registrado correctamente');
-        // location.href = '../dt_compra.php';
+        location.href = '../dt_compra.php';
         </script>
         ";
       }else {
@@ -75,7 +75,7 @@ $result = mysqli_query($conn, $insert);
       $codigo_producto  = $_POST['cod'][$i];
       $cantidad      = $_POST['cant'][$i];
       $stock      = $_POST['stock'][$i];
-      $stockt = $cantidad+ $stock;
+      $stockt = $cantidad + $stock;
 $sql="UPDATE  tb_productos SET stock = '$stockt' WHERE codProductos='$codigo_producto'" ;
 
 $result = mysqli_query($conn, $sql);
