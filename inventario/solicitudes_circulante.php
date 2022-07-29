@@ -188,7 +188,7 @@ while ($datos_sol = mysqli_fetch_array($result)){
             <tbody>
   
     <?php
-    $sql = "SELECT * FROM tb_circulante ORDER BY fecha_solicitud";
+    $sql = "SELECT * FROM tb_circulante ORDER BY codCirculante DESC";
     $result = mysqli_query($conn, $sql);
     while ($datos_sol = mysqli_fetch_array($result)){
         ?>

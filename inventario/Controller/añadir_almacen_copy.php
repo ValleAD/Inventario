@@ -17,7 +17,7 @@ if ($estado=='Aprobado') {
       $precio = $_POST['cost'][$i];
       $cantidad_despachada    = $_POST['cantidad_despachada'][$i];
 
-       $sql="UPDATE  detalle_almacen SET  cantidad_despachada='$cantidad_despachada',precio='$precio' WHERE codigoalmacen='$codigo_producto'" ;
+       $sql="UPDATE  detalle_almacen SET  cantidad_despachada='$cantidad_despachada' WHERE codigoalmacen='$codigo_producto'" ;
 
       $query = mysqli_query($conn, $sql);
 }
@@ -35,7 +35,7 @@ if ($estado=='Aprobado') {
       // $catT=$cant-$cant_aprobada;
        $insert = "INSERT INTO tb_productos (codProductos,  descripcion, unidad_medida, stock, precio,solicitudes) VALUES ('$codigo_producto',  '$Descripción', '$u_m',  '$cost','>$cant' ,'Solicitud Compra')";
       $query1 = mysqli_query($conn, $insert);
-      if ($result ||$query ||$query1)  {
+      if ($result ||$query)  {
         echo "<script> alert('El Estado fue Cambiado correctamente')
         location.href = '../solicitudes_almacen.php';
         </script>
