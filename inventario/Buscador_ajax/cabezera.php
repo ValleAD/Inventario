@@ -1,3 +1,4 @@
+<div id="div">
 <form method="POST" action="" style="float: right;margin-left: 0.5%;">
     <input type="hidden" name="columna" value="codProductos">
     <input type="hidden" name="tipo" value="desc">
@@ -47,6 +48,7 @@
             <input  type="text" name="busqueda" class="form-control" style="float: left;"  id="busqueda" placeholder="Buscar el código del Producto">
        
     </div>
+</div>
 </div>
      <script>
     $(obtener_registros());

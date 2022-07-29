@@ -88,7 +88,7 @@ die();
         <br><br><br>       
           <font color="white"> <h1 style=" text-align: center;">Solicitud de Almacen</h1> </font>
 <section>
-<h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
+
 <?php include ('Buscador_ajax/cabezera.php') ?>
 
      <form style="background: transparent;" method='POST' action="form_almacen2.php">
@@ -97,47 +97,6 @@ die();
 
 </form>
 </section>
- <script>
-    $(obtener_registros());
-
-function obtener_registros(consulta)
-{
-    $.ajax({
-        url : 'Buscador_ajax/consulta_almacen.php',
-        type : 'POST',
-        dataType : 'html',
-        data : { consulta: consulta },
-        })
-
-    .done(function(resultado){
-        $("#tabla_resultado").html(resultado);
-    })
-}
-
-$(document).on('keyup', '#busqueda', function()
-{
-    var valorBusqueda=$(this).val();
-    if (valorBusqueda!="")
-    {
-        obtener_registros(valorBusqueda);
-    }
-    else
-        {
-            obtener_registros();
-        }
-});
-
-</script>
-<script type="text/javascript">
-function confirmaion(e) {
-    if (confirm("¿Estas seguro que deseas Eliminar este registro?")) {
-        return true;
-    } else {
-        return false;
-        e.preventDefault();
-    }
-}
-</script>
 
 </body>
 </html>
