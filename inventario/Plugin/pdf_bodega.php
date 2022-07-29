@@ -81,11 +81,11 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 
     </tbody>                
 </table>
-<br>
+<br><br><br>
     <p style="float: right;"> Entrega: ________________________________</p>
-    <p style="text-align:left;">Solicita: ________________________________ <p><?php echo $encargado ?></p></p>
-    <br>
-    <p style="text-align: center;">Autoriza: ________________________________</p>
+    <p style="text-align:left;">Solicita: <?php echo $encargado ?></p></p>
+    
+    <p style="text-align: center; margin-top: 15%;">Autoriza: ________________________________</p>
 </section>
 
 </body>
