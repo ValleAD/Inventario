@@ -41,15 +41,41 @@
     <?php } }?>
 </form>
 <p style="float: right;margin-left: 0.5%;margin-top: .5%;">Ordenar por</p>
-
-        <div class="row" >   
+       <div class="row" >   
  <div class="col-md-3 mb-2"style="position: initial;" >
-    <form method="POST" action="">
-            <input  type="text" name="q" class="form-control"  id="consulta" placeholder="Buscar el código del Producto">
-
+            
+            <input  type="text" name="busqueda" class="form-control" style="float: left;"  id="busqueda" placeholder="Buscar el código del Producto">
+       
     </div>
-     <div class="col-md-2 mb-2"style="position: initial;" >
-            <input type="submit" class="form-control btn btn-outline-primary" name="consulta" value="Buscar">
-</form>
-     </div>
 </div>
+     <script>
+    $(obtener_registros());
+
+function obtener_registros(consulta)
+{
+    $.ajax({
+        url : 'Buscador_ajax/Consulta2.php',
+        type : 'POST',
+        dataType : 'html',
+        data : { consulta: consulta },
+        })
+
+    .done(function(resultado){
+        $("#tabla_resultado").html(resultado);
+    })
+}
+
+$(document).on('keyup', '#busqueda', function()
+{
+    var valorBusqueda=$(this).val();
+    if (valorBusqueda!="")
+    {
+        obtener_registros(valorBusqueda);
+    }
+    else
+        {
+            obtener_registros();
+        }
+});
+
+</script>

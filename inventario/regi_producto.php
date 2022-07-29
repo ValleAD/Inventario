@@ -102,7 +102,7 @@ die();
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#card-list"/>
                 </svg>
                  </label>
-                    <select style="position: initial;" class="form-control" name="categoria[]" id="categoria" required style="cursor: pointer" required>
+                    <select style="position: initial;" class="form-control" name="categoria[]" multiple aria-label="" id="div" required style="cursor: pointer" required>
                         <option  selected disabled value="">Seleccione</option>
                      <?php 
                         $sql = "SELECT * FROM  selects_categoria";
@@ -168,7 +168,7 @@ die();
                 </svg>
                  </label>
              
-                <select style="position: initial;" class="form-control" name="um[]" id="um" required>
+                <select style="position: initial;" class="form-control" multiple aria-label="" id="div" name="um[]" id="um" required>
                   <option selected disabled value="">Seleccione</option>
                  <?php 
                         $sql = "SELECT * FROM  selects_unidad_medida";
