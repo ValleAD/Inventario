@@ -1,7 +1,7 @@
 <?php if ($tipo_usuario==1) { ?>
 	                <div id="div">
-<form method="POST" action="" style="float: right;margin-left: 0.5%;">
-    <input type="hidden" name="columna" value="codVale">
+<form method="POST" action="" style="float: right;margin-left: -1%;margin-top: -1%;">
+    <input type="hidden" name="columna" value="codAlmacen">
     <input type="hidden" name="tipo" value="desc">
     
        <button id="desc" type="submit" name="Consultar" class="form-control">Descendente</button>
@@ -22,8 +22,8 @@
 </form>
 
 
-<form method="POST" action="" style="float: right;margin-left: 0.5%;">
-    <input type="hidden" name="columna" value="codVale">
+<form method="POST" action="" style="float: right;margin-left: 1;margin-top: -1%;">
+    <input type="hidden" name="columna" value="codAlmacen">
     <input type="hidden" name="tipo" value="asc">
     
        <button id="asc" type="submit" name="Consultar" class="form-control">Ascendente</button>
@@ -42,14 +42,14 @@
 <button id="asc1" name="Consultar" class="form-control" type="button" style="background-color:green ;position: initial; border-radius:5px;text-align:center; color: white;">Ascendente</button>
     <?php } }?>
 </form>
-<p style="float: right;margin-left: 0.5%;margin-top: .5%;">Ordenar por</p>
+<p style="float: right;margin-left: 0.5%;margin-top:0.5%;">Ordenar por</p>
       
 </div>        
 
 	<?php } if ($tipo_usuario==2) {?>
 		<div id="div">
-<form method="POST" action="" style="float: right;margin-left: 0.5%;">
-    <input type="hidden" name="columna" value="codVale">
+<form method="POST" action="" style="float: right;margin-left: -1%;margin-top: -1%;">
+    <input type="hidden" name="columna" value="codAlmacen">
     <input type="hidden" name="tipo" value="desc">
     
        <button id="desc" type="submit" name="Consultar1" class="form-control">Descendente</button>
@@ -70,8 +70,8 @@
 </form>
 
 
-<form method="POST" action="" style="float: right;margin-left: 0.5%;">
-    <input type="hidden" name="columna" value="codVale">
+<form method="POST" action="" style="float: right;margin-left: 1%;margin-top: -1%;">
+    <input type="hidden" name="columna" value="codAlmacen">
     <input type="hidden" name="tipo" value="asc">
     
        <button id="asc" type="submit" name="Consultar1" class="form-control">Ascendente</button>
@@ -90,7 +90,7 @@
 <button id="asc1" name="Consultar1" class="form-control" type="button" style="background-color:green ;position: initial; border-radius:5px;text-align:center; color: white;">Ascendente</button>
     <?php } }?>
 </form>
-<p style="float: right;margin-left: 0.5%;margin-top: .5%;">Ordenar por</p>
+<p style="float: right;margin-left: -1%;margin-top: 0.5%;">Ordenar por</p>
       
 </div>
 		<?php } ?>

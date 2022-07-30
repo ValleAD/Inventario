@@ -46,7 +46,9 @@ form{
       <section class="mx-3 p-2" style="background-color:white; border-radius: 5px;">
         <h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
             <?php if ($tipo_usuario==1) {?>
-              <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" style="position: initial;" role="group" aria-label="Basic outlined example">
+                 <?php include ('Buscador_ajax/cabezeraBodega.php'); ?>  
+
+              <div id="x" style="position: initial;" class="btn-group mb-3 my-1 mx-2" style="position: initial;" role="group" aria-label="Basic outlined example">
          <form id="ssas" method="POST" action="Plugin/soli_bodega.php" target="_blank">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -62,11 +64,34 @@ form{
              </button>
          </form>
  </div>
+ <?php if (isset($_POST['Consultar'])) {$columna=$_POST['columna'];$tipo=$_POST['tipo'];?>
+              <div style="position: initial;" class="btn-group mb-3 my-1 mx-2" style="position: initial;" role="group" aria-label="Basic outlined example">
+         <form id="ssas" method="POST" action="Plugin/soli_bodega.php" target="_blank">
+             <input type="hidden" name="columna" value="<?php echo $columna ?>">
+            <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Consultar">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+             </button>
+         </form>
+         <form id="ssas" method="POST" action="Plugin/pdf_soli_bodega.php" class="mx-1" target="_blank">
+             <input type="hidden" name="columna" value="<?php echo $columna ?>">
+            <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Consultar" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+             </button>
+         </form>
+ </div>
+<?php } ?>
+  <?php include ('Buscador_ajax/tableBodega.php'); ?>  
+<div id="x">
   <table class="table table-striped" id="div"  style=" width: 100%;">
           
             <thead>
               <tr id="tr">
-             <th style="width: 10%;">#</th>
                 <th style="width: 10%;"><strong>O. de T. No.</strong></th>
                 <th style="width: 10%;"><strong>Departamento Solicitante</strong></th>
                 <th style="width: 10%;"><strong>Encargado</strong></th>
@@ -85,11 +110,16 @@ form{
     include 'Model/conexion.php';
     $sql = "SELECT * FROM tb_bodega order by codBodega desc";
     $result = mysqli_query($conn, $sql);
-$n=0;
+
     while ($solicitudes = mysqli_fetch_array($result)){ 
+         $des=$solicitudes['departamento'];
         $idusuario=$solicitudes['idusuario'];
-        $n++;
-        $r=$n+0;
+if ($des=="") {
+                    $des="Departamentos No disponible";
+                }else{
+
+                   $des=$solicitudes['departamento']; 
+                }
         if ($idusuario==1) {
         $u='Administrador';
         }
@@ -110,9 +140,8 @@ $n=0;
 </style>
 
         <tr>
-            <td><?php echo $r ?></td>
             <td data-label="Código" class="delete"><?php  echo $solicitudes['codBodega']; ?></td>
-            <td data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
+            <td data-label="Departamento Solicitante" class="delete"><?php  echo $des; ?></td>
             <td data-label="Encargado" class="delete"><?php  echo $solicitudes['usuario'],"<br> ","(",$u,")"; ?></td>
             <td data-label="Fecha de solicitud" class="delete"><?php  echo $solicitudes['fecha_registro']; ?></td>
                <td><input readonly <?php
@@ -128,34 +157,8 @@ $n=0;
                 <div style="position: initial;">  
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Bodega.php">             
                 <input type='hidden' name='id' value="<?php  echo $solicitudes['codBodega']; ?>">  
-                <?php  if ($solicitudes['estado']=="Aprobado" || $solicitudes['estado']=="Pendiente") {?>
                 
-                <form method="POST" action="Controller/Delete_producto.php">
-                   <button style="position: initial;"  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
-                </form>
-            <style>
-                 #ver{
-                margin-left: 2%; 
-                background: rgba(0,123,255,.5); 
-                color: #fff; margin-bottom: 2%;  
-                border: rgb(5, 65, 114);
-                border-radius: 4px;
-                padding: 6% 12px;
-               }
-               #ver:hover{
-                transition: 1s;
-                color: lawngreen;
-                transform: translateY(2px);
-               } 
-            </style>
-           <?php  };
-
-            if ($solicitudes['estado']=="Rechazado") {?>
-                   
-           <button disabled id="ver" style="cursor: not-allowed;"  type="submit" name="detalle" >Ver Detalles</button> 
-        
-           <?php  } ?>         
-                 
+                   <button style="position: initial;"  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button>
                      
             </form> 
         </div>
@@ -168,12 +171,14 @@ $n=0;
         </table>
 
 </div>
+</div>
 <?php } ?>           
  <?php if ($tipo_usuario==2) {?>
 
-              <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-         <form id="ssas" method="POST" action="Plugin/soli_bodega.php" target="_blank">
-            <?php $sql = "SELECT * FROM tb_bodega WHERE idusuario='$idusuario'";
+                <?php include ('Buscador_ajax/cabezeraBodega.php') ?>
+             <div  id="x" class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
+         <form id="ssas"  method="POST" class="mx-1" action="Plugin/soli_bodega.php" target="_blank">
+             <?php $sql = "SELECT * FROM tb_bodega WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     $n=0;
     while ($datos_sol = mysqli_fetch_array($result)){?>
@@ -186,8 +191,8 @@ $n=0;
                 </svg>
              </button>
          </form>
-         <form id="ssas" method="POST" action="Plugin/pdf_soli_bodega.php" class="mx-1" target="_blank">
-            <?php $sql = "SELECT * FROM tb_bodega WHERE idusuario='$idusuario'";
+         <form id="ssas"  class="mx-1"  method="POST" action="Plugin/pdf_soli_bodega.php" target="_blank">
+             <?php $sql = "SELECT * FROM tb_bodega WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     $n=0;
     while ($datos_sol = mysqli_fetch_array($result)){?>
@@ -201,10 +206,47 @@ $n=0;
              </button>
          </form>
  </div>
+ <?php if (isset($_POST['Consultar1'])) {$columna=$_POST['columna'];$tipo=$_POST['tipo'];?>
+                  <div   class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
+         <form id="ssas"  method="POST" class="mx-1" action="Plugin/soli_bodega.php" target="_blank">
+             <?php $sql = "SELECT * FROM tb_bodega WHERE idusuario='$idusuario'";
+    $result = mysqli_query($conn, $sql);
+    $n=0;
+    while ($datos_sol = mysqli_fetch_array($result)){?>
+ <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
+       
+    <?php } ?>
+          <input type="hidden" name="columna" value="<?php echo $columna ?>">
+            <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Consultar1">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+             </button>
+         </form>
+         <form id="ssas"  class="mx-1"  method="POST" action="Plugin/pdf_soli_bodega.php" target="_blank">
+             <?php $sql = "SELECT * FROM tb_bodega WHERE idusuario='$idusuario'";
+    $result = mysqli_query($conn, $sql);
+    $n=0;
+    while ($datos_sol = mysqli_fetch_array($result)){?>
+ <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
+       
+    <?php } ?>
+                <input type="hidden" name="columna" value="<?php echo $columna ?>">
+            <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Consultar1" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+             </button>
+         </form>
+ </div>
+
+  <?php } include ('Buscador_ajax/tableBodega.php'); ?>  
+<div id="x">
             <table class="table  table-striped" id="div" style=" width: 100%;">
             <thead>
               <tr id="tr">
-             <th style="width: 10%;">#</th>
                 <th style="width: 10%;"><strong>O. de T. No.</strong></th>
                 <th style="width: 10%;"><strong>Departamento Solicitante</strong></th>
                 <th style="width: 10%;"><strong>Fecha de solicitud</strong></th>
@@ -223,12 +265,17 @@ $n=0;
             </tr>
     <?php
     include 'Model/conexion.php';
-    $sql = "SELECT * FROM tb_bodega WHERE idusuario='$idusuario' ORDER  BY fecha_registro ";
+    $sql = "SELECT * FROM tb_bodega WHERE idusuario='$idusuario' ORDER  BY codBodega desc ";
     $result = mysqli_query($conn, $sql);
 $n=0;
     while ($solicitudes = mysqli_fetch_array($result)){ 
-        $n++;
-        $r=$n+0;
+         $des=$solicitudes['departamento'];
+if ($des=="") {
+                    $des="Departamentos No disponible";
+                }else{
+
+                   $des=$solicitudes['departamento']; 
+                }
         ?>
         <style type="text/css">
      #td{
@@ -244,9 +291,9 @@ $n=0;
 </style>
 
         <tr>
-            <td><?php echo $r ?></td>
+
             <td data-label="Código" class="delete"><?php  echo $solicitudes['codBodega']; ?></td>
-            <td data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
+            <td data-label="Departamento Solicitante" class="delete"><?php  echo $des ?></td>
             <td data-label="Fecha de solicitud" class="delete"><?php  echo date("d/m/Y",strtotime($solicitudes['fecha_registro'])); ?></td>
                <td><input readonly <?php
                 if($solicitudes['estado']=='Pendiente') {
@@ -260,22 +307,16 @@ $n=0;
             <td  data-label="Detalles">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Bodega.php">             
                 <input type='hidden' name='id' value="<?php  echo $solicitudes['codBodega']; ?>">          
-                <?php  if ($solicitudes['estado']=="Aprobado" || $solicitudes['estado']=="Pendiente") {?>
-                <form method="POST" action="Controller/Delete_producto.php">
-                   <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
-                </form>
-           <?php  };
-            if ($solicitudes['estado']=="Rechazado") {
-                 echo'
-           <button disabled  style="cursor: not-allowed;"  type="submit" name="detalle" class="btn btn-primary">Ver Detalles</button> 
-            ';
-            } ?>            
+                     <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
+
+          
             </form> 
             </td>
         </tr>
- <?php } ?> 
+    <?php } ?>
            </tbody>
         </table>
+</div>
 </div>
 <?php } ?>
  </section>

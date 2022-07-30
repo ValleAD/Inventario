@@ -1,7 +1,7 @@
 <?php if ($tipo_usuario==1) { ?>
 	                <div id="div">
 <form method="POST" action="" style="float: right;margin-left: 0.5%;">
-    <input type="hidden" name="columna" value="codVale">
+    <input type="hidden" name="columna" value="codBodega">
     <input type="hidden" name="tipo" value="desc">
     
        <button id="desc" type="submit" name="Consultar" class="form-control">Descendente</button>
@@ -23,7 +23,7 @@
 
 
 <form method="POST" action="" style="float: right;margin-left: 0.5%;">
-    <input type="hidden" name="columna" value="codVale">
+    <input type="hidden" name="columna" value="codBodega">
     <input type="hidden" name="tipo" value="asc">
     
        <button id="asc" type="submit" name="Consultar" class="form-control">Ascendente</button>
@@ -49,7 +49,7 @@
 	<?php } if ($tipo_usuario==2) {?>
 		<div id="div">
 <form method="POST" action="" style="float: right;margin-left: 0.5%;">
-    <input type="hidden" name="columna" value="codVale">
+    <input type="hidden" name="columna" value="codBodega">
     <input type="hidden" name="tipo" value="desc">
     
        <button id="desc" type="submit" name="Consultar1" class="form-control">Descendente</button>
@@ -71,7 +71,7 @@
 
 
 <form method="POST" action="" style="float: right;margin-left: 0.5%;">
-    <input type="hidden" name="columna" value="codVale">
+    <input type="hidden" name="columna" value="codBodega">
     <input type="hidden" name="tipo" value="asc">
     
        <button id="asc" type="submit" name="Consultar1" class="form-control">Ascendente</button>

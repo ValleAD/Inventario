@@ -44,7 +44,7 @@ die();
         <h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
           <?php if ($tipo_usuario==1) {?>  
      
- <?php include ('Buscador_ajax/cabezeraVale1.php') ?>  
+ <?php include ('Buscador_ajax/cabezeraVale.php') ?>  
     <div id="x" class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
          <form id="sass" method="POST" class="mx-1" action="Plugin/soli_vale.php" target="_blank">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">    
@@ -83,7 +83,7 @@ die();
          </form>
  </div>     
 <?php  } ?>  
- <?php include ('Buscador_ajax/cabezeraVale.php'); ?>  
+ <?php include ('Buscador_ajax/tablaVale.php'); ?>  
  <table class="table table-striped" id="div" style="width: 100%;">
             <thead>
               <tr id="tr">
@@ -203,7 +203,7 @@ die();
             }
         </style>
 
-       <?php include ('Buscador_ajax/cabezeraVale1.php') ?>
+       <?php include ('Buscador_ajax/cabezeraVale.php') ?>
              <div  id="x" class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
          <form id="ssas"  method="POST" class="mx-1" action="Plugin/soli_vale.php" target="_blank">
              <?php $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario'";
@@ -270,7 +270,7 @@ die();
          </form>
  </div>
  
-  <?php } include ('Buscador_ajax/cabezeraVale.php') ?>
+  <?php } include ('Buscador_ajax/tablaVale.php') ?>
   <div id="x">
         <table class="table" id="div">
             <thead>
@@ -294,12 +294,18 @@ die();
     <?php
     include 'Model/conexion.php';
     
-    $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario' ORDER BY fecha_registro ";
+    $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario' ORDER BY codVale desc ";
     $result = mysqli_query($conn, $sql);
 
     while ($solicitudes = mysqli_fetch_array($result)){
 
-        
+        $des=$solicitudes['departamento'];
+                if ($des=="") {
+                    $des="Departamentos No disponible";
+                }else{
+
+                   $des=$solicitudes['departamento']; 
+                }
         ?>
         <style>
             #td{
@@ -314,7 +320,7 @@ die();
         </style>
         <tr>
             <td style="width: 10%;min-width: 100%;" data-label="Código" class="delete"><?php  echo $solicitudes['codVale']; ?></td>
-            <td style="width: 30%;min-width: 100%;" data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
+            <td style="width: 30%;min-width: 100%;" data-label="Departamento Solicitante" class="delete"><?php  echo $des; ?></td>
 
              <td style="width: 30%;min-width: 100%;" data-label="Encargado" class="delete"><?php  echo $solicitudes['usuario'] ?></td>
            <td style="width: 20%;min-width: 100%;"  data-label="Fecha de solicitud" class="delete"><?php  echo $solicitudes['fecha_registro']; ?></td>
