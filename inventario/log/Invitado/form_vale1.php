@@ -1,4 +1,4 @@
-<?php require '../../Model/conexion.php';
+<?php require '../../Model/conexion.php';$tipo_usuario=0;
 include ('menu.php');
 ?>
 <!DOCTYPE html>
@@ -13,8 +13,11 @@ include ('menu.php');
 
          <style>  
             #div{
-                margin: 0%;
+                margin: 0;
                 display: none;
+            }
+                    .div{
+        display: none;
             }
          section {
             background: whitesmoke;
@@ -65,79 +68,10 @@ include ('menu.php');
         <br><br><br>       
           <font color="white"> <h1 style=" text-align: center;">Solicitud de Vale</h1> </font>
 <section>
-<h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
+<?php include ('../../Buscador_ajax/cabezera_invitado.php') ?>
      <form style="background: transparent;" method='POST' action="form_vale2.php">
-         
-      <table class="table  table-striped" id="div" style=" width: 100%">
-            <thead>
-              <tr id="tr">
-               
-                <th style="width: 10%;">Código</th>
-                <th style="width: 10%;">Catálogo</th>
-                <th style="width: 40%;">Descripción Completa</th>
-                <th style="width: 10%;">U/M</th>
-                <th style="width: 10%;">Cantidad</th>
-                <th style="width: 10%;">Costo Unitario</th>
-                <th style="width: 20%;">Fecha Registro</th>
-                <th style="width: 10%;" align="center"><button id="div" style=" float: right;margin-bottom: 1%;" type="submit" name="solicitar" class='btn btn-success btn-sm text-center'  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button>
-                </th>
-               
-              </tr>
+         <?php include ('../../Buscador_ajax/Consulta1.php') ?>
 
-            </thead>
-</table>
-  <div id="div" style = "max-height: 442px; overflow-y:scroll;">
-<table class="table">
-            <tbody>
-
- <?php
-
-
-    //    $sql = "SELECT * FROM tb_productos";
-    $sql = "SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos GROUP BY precio, codProductos";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-
-        $precio=$productos['precio'];
-       $precio1=number_format($precio, 2,".",",");
-       $cantidad=$productos['SUM(stock)'];
-        $stock=number_format($cantidad, 2,".",",");
-      ?>
-               
-
-
-<style type="text/css">
-
-    #td{
-        display: none;
-    }
-   th{
-       width: 100%;
-   }
-   #div{
-    display: block;
-   }
-</style>
-    <tr id="tr">
-      <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
-      <td data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
-      <td style="width: 35%" data-label="Descripción Completa"><?php  echo $productos['descripcion']; ?></td>
-      <td data-label="Unidad De Medida" style="text-align: center;"><?php  echo $productos['unidad_medida']; ?></td>
-      <td data-label="Cantidad" style="text-align: center;"><?php  echo $stock; ?></td>
-      <td data-label="Costo Unitario">$<?php  echo $precio1?></td>
-      <td data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
-      <td data-label="solicitar" align="center">
-                    
-          <?php echo ' <input   id="'.$productos["cod"] .'" type="checkbox" name="id[]" value="'.$productos["cod"] .'"> <label  id="l" for="'.$productos["cod"] .'" > </label>  ' ?>             
-         
-      </td>
-     
-<?php } ?> 
-</tr>
-            </tbody>
-        </table>
-    </div>
 </form>
 </section>
 <script type="text/javascript">

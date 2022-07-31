@@ -8,6 +8,7 @@
                 display: none;
             }
         </style>
+        <h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda. <a href='' style='font-size: 30px' class='close'>&times;</a></h1> 
            <div id="y">    
         <table class="table  table-responsive  table-striped" id="div" style=" width: 100%;">
      
@@ -94,7 +95,7 @@
                 display: none;
             }
         </style>
-
+<h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda. <a href='' style='font-size: 30px' class='close'>&times;</a></h1> 
            <div id="y">    
         <table class="table  table-responsive  table-striped" id="div" style=" width: 100%;">
      
