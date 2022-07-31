@@ -127,7 +127,6 @@
        
  while ($solicitudes = mysqli_fetch_array($result)){
         
-        $idusuario = $solicitudes['idusuario'];
          $des=$solicitudes['departamento'];
                 if ($des=="") {
                     $des="Departamentos No disponible";
@@ -136,6 +135,7 @@
                    $des=$solicitudes['departamento']; 
                 }
         if ($idusuario==1) {
+        $idusuario = $solicitudes['idusuario'];
         $u='Administrador';
         }
         else {

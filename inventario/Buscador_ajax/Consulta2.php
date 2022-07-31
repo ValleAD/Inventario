@@ -25,7 +25,7 @@ if(isset($_POST['consulta']))
 {
     $q=$conn->real_escape_string($_POST['consulta']);
     $query="SELECT * FROM tb_productos WHERE 
-        codProductos LIKE '%".$q."%'";
+        codProductos ='$q'";
 }
 
 $buscarAlumnos=$conn->query($query);

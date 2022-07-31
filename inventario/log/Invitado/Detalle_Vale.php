@@ -138,7 +138,7 @@ if(isset($_POST['detalle'])){
                 }else if($productos1['estado']=='Rechazado') {
                      echo ' style="background-color:red ;style="position: initial;width:70%; border-radius:5px;text-align:center; color: white;"';
                 }
-            ?> class="form-control" type="text" name="" readonly value="<?php echo $productos1['estado'] ?>"><br>
+            ?> class="form-control" type="text" name="estado" readonly value="<?php echo $productos1['estado'] ?>"><br>
 
           </div>
             </div>
@@ -151,6 +151,7 @@ if(isset($_POST['detalle'])){
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['estado']?>" name="estado">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
               </div>
               <?php
@@ -184,6 +185,7 @@ if(isset($_POST['detalle'])){
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['estado']?>" name="estado">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
            
                 <?php
@@ -199,7 +201,7 @@ while ($productos = mysqli_fetch_array($result)){
       $descripcion=$productos['descripcion'];
       $um=$productos['unidad_medida'];
       $precio=$productos['precio'];
-      $fecha=$productos['fecha_registro'];
+      
 
 
        $precio1=number_format($precio, 2,".",",");
@@ -353,6 +355,7 @@ while ($productos = mysqli_fetch_array($result)){
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['estado']?>" name="estado">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
 
           
@@ -369,7 +372,7 @@ while ($productos = mysqli_fetch_array($result)){
       $descripcion=$productos['descripcion'];
       $um=$productos['unidad_medida'];
       $precio=$productos['precio'];
-      $fecha=$productos['fecha_registro'];
+      
 
 
        $precio1=number_format($precio, 2,".",",");

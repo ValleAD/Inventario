@@ -139,18 +139,6 @@ if ($codigo=="") {
             <tbody>
 
     <?php 
-    if(isset($_POST['n'])){
-        for($i = 0; $i < count($_POST['n']); $i++){
-$n= $_POST['n'][$i];
-echo $n;
-
-    $sql = "SELECT codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE codProductos='$n' GROUP BY precio, codProductos";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        }
-}
-}
          for($i = 0; $i < count($_POST['id']); $i++){
  
     $codigo= $_POST['id'][$i];

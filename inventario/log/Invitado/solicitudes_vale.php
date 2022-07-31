@@ -1,4 +1,5 @@
 <?php require '../../Model/conexion.php';
+$tipo_usuario=0;
 include ('menu.php');
 ?>
 
@@ -27,83 +28,128 @@ include ('menu.php');
     </style>
     <br><br><br>
     <center><h1 style="margin-top:5px">Solicitudes Vale</h1></center><br>
-     <div  class="mx-3 p-1 mb-1" style="background-color: white; border-radius:5px; ">
-        <h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
+     <div  class="mx-3 p-2 mb-1" style="background-color: white; border-radius:5px; ">
+        <h1 id="td" class=' text-center bg-danger my-4' style=' font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda. <a href='' style='font-size: 30px' class='close'>&times;</a></h1> 
 
-    <div  class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
-         <form id="sass" method="POST" class="mx-1" action="../../Plugin/soli_vale.php" target="_blank">
-             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">    
+<style>
+            #ssas{
+                display: none;
+            }
+        </style>
+
+       <?php include ('../../Buscador_ajax/cabezeraVale_invitado.php') ?>
+             <div  id="x" class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
+         <form id="ssas"  method="POST" class="mx-1" action="../../Plugin/soli_vale.php" target="_blank">
+            
+
+ <input type="hidden" name="idusuario" value="0">
+       
+
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
-         <form id="sass" method="POST" action="../../Plugin/pdf_soli_vale.php" target="_blank" class="mx-1">
-             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id" target="_blank">
+         <form id="ssas"  class="mx-1"  method="POST" action="../../Plugin/pdf_soli_vale.php" target="_blank">
+            
+
+ <input type="hidden" name="idusuario" value="0">
+       
+
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>
- </div>     
- <table class="table" id="div" style="width: 100%;">
+ </div>
+ <?php if (isset($_POST['Consultar1'])) {$columna=$_POST['columna'];$tipo=$_POST['tipo'];?>
+                  <div   class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
+         <form id="ssas"  method="POST" class="mx-1" action="../../Plugin/soli_vale.php" target="_blank">
+            
+   
+ <input type="hidden" name="idusuario" value="0">
+       
+   
+          <input type="hidden" name="columna" value="<?php echo $columna ?>">
+            <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Consultar1">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+             </button>
+         </form>
+         <form id="ssas"  class="mx-1"  method="POST" action="../../Plugin/pdf_soli_vale.php" target="_blank">
+            
+   
+ <input type="hidden" name="idusuario" value="0">
+       
+   
+                <input type="hidden" name="columna" value="<?php echo $columna ?>">
+            <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Consultar1" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+             </button>
+         </form>
+ </div>
+ 
+  <?php } include ('../../Buscador_ajax/tablaVale_invitado.php') ?>
+  <div id="x">
+        <table class="table" id="div">
             <thead>
               <tr id="tr">
-                <th style="width: 5%;">#</th>
-                <th style="width: 1%;"><strong>Código de Vale</strong></th>
+                <th style="width: 10%;"><strong>Código de Vale</strong></th>
                 <th style="width: 20%"><strong>Departamento Solicitante</strong></th>
-                <th style="width: 10%;"><strong>Encargado</strong></th>
-                <th style="width: 10%"><strong>Fecha</strong></th>
-                <th style="width: 10%;"><strong>Estado</strong></th>
-                <th style="width: 10%;"><strong>Detalles</strong></th> 
+                <th style="width: 20%;"><strong>Encargado</strong></th>
+                <th style="width: 15%"><strong>Fecha</strong></th>
+                <th style="width: 14%;"><strong>Estado</strong></th>
+                <th style="width: 20%;"><strong>Detalles</strong></th>  
             </tr>
             
      </thead>
  </table>
-
-<div id="div" style = " max-height: 442px;  overflow-y:scroll; ">
- <table class="table">
+<div id="div" style = " max-height: 442px; overflow-y:scroll;">
+    <table class="table">
         <tbody>     
-
-
+            
     <?php
-
-    $sql = "SELECT * FROM tb_vale ORDER BY fecha_registro ";
+   
+    
+    $sql = "SELECT * FROM tb_vale WHERE idusuario=0 Order by codVale DESC";
     $result = mysqli_query($conn, $sql);
-    $n=0;
+
     while ($solicitudes = mysqli_fetch_array($result)){
-        $n++;
-        $r=$n+0;
-        $idusuario = $solicitudes['idusuario'];
-        if ($idusuario==1) {
-        $u='Administrador';
-        }
-        else {
-            $u='Cliente';
-        }
-        if ($idusuario==0) {
+
+        $des=$solicitudes['departamento'];
+                if ($des=="") {
+                    $des="Departamentos No disponible";
+                }else{
+
+                   $des=$solicitudes['departamento']; 
+                }
+                 if ($tipo_usuario==0) {
             $u='Invitado';
         }
         ?>
-        <style type="text/css">
-            #sass{
-                display: block;
-            }
-
+        <style>
             #td{
                 display: none;
+            }
+            #ssas{
+                display: block;
             }
             #div{
                 display: block;
             }
         </style>
         <tr>
-            <td style="width: 10%;min-width: 100%;"><?php echo $r ?></td>
             <td style="width: 10%;min-width: 100%;" data-label="Código" class="delete"><?php  echo $solicitudes['codVale']; ?></td>
-            <td style="width: 30%;min-width: 100%;" data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
-
-             <td style="width: 30%;min-width: 100%;" data-label="Encargado" class="delete"><?php  echo $solicitudes['usuario'],"<br> ","(",$u,")"; ?></td>
-            <td style="width: 20%;min-width: 100%;" data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])); ?></td>
+            <td style="width: 30%;min-width: 100%;" data-label="Departamento Solicitante" class="delete"><?php  echo $des; ?></td>
+            <td style="width: 30%;min-width: 100%;" data-label="Encargado" class="delete"><?php  echo $solicitudes['usuario'],"<br> ","(",$u,")"; ?></td>
+           <td style="width: 20%;min-width: 100%;"  data-label="Fecha de solicitud" class="delete"><?php  echo $solicitudes['fecha_registro']; ?></td>
             <td style="width: 20%;min-width: 100%;" data-label="Departamento Solicitante" class="delete"><input readonly <?php
                 if($solicitudes['estado']=='Pendiente') {
                     echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
@@ -117,12 +163,15 @@ include ('menu.php');
                 <div style="position: initial;">  
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_vale.php">             
                 <input type='hidden' name='id' value="<?php  echo $solicitudes['codVale']; ?>">  
-                <?php  if ($solicitudes['estado']=="Aprobado" || $solicitudes['estado']=="Pendiente") {?>
                 
-                <form method="POST" action="Controller/Delete_producto.php">
+
                    <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
-                </form>
-            <style>
+              
+            
+          
+        
+                 
+                 <style>
                  #ver{
                 margin-left: 2%; 
                 background: rgba(0,123,255,.5); 
@@ -137,30 +186,21 @@ include ('menu.php');
                 transform: translateY(2px);
                } 
             </style>
-           <?php  };
-
-            if ($solicitudes['estado']=="Rechazado") {?>
-                   
-           <button disabled id="ver" style="cursor: not-allowed;"  type="submit" name="detalle" >Ver Detalles</button> 
-        
-           <?php  } ?>         
-                 
                      
             </form> 
         </div>
             </td>
-        </tr>
 
+
+           </tr>
     <?php }?>   
-           
            </tbody>
         </table>
     </div>
 </div>
+
     </div>
 
-
-
-</section>
+    
 </body>
 </html>

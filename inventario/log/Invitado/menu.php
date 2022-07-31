@@ -120,7 +120,7 @@ background:burlywood;
         <nav>
             <ul>
                 <li>
-                    <li><a id="a" href="home.php"><span>
+                    <li><a id="a" href="invitado.php"><span>
                     <svg style="margin-top: -10%;" class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#house"/>
                         </svg></span> Inicio</a></li>
@@ -142,7 +142,7 @@ background:burlywood;
                     <li><a id="b" href="solicitudes_vale.php">Mostrar</a></li>
                         
                         
-                        <li><a id="b" href="form_vale.php">Buscar por código</a></li>
+                       <!--  <li><a id="b" href="form_vale.php">Buscar por código</a></li> -->
                         <li><a id="b" href="form_vale1.php">Seleccionar Varios</a></li>
                     </ul>
                 </li>

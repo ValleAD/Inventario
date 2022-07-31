@@ -24,13 +24,7 @@ if(isset($_POST['consulta']))
 {
 	$q=$conn->real_escape_string($_POST['consulta']);
 	$query="SELECT * FROM tb_productos WHERE 
-		codProductos LIKE '%".$q."%' OR
-		descripcion LIKE '%".$q."%' OR
-		categoria LIKE '%".$q."%' OR
-		unidad_medida LIKE '%".$q."%' OR
-		stock LIKE '%".$q."%' OR
-		fecha_registro LIKE '%".$q."%' OR
-		catalogo LIKE '%".$q."%' ";
+		codProductos ='$q' ";
 }
 
 $buscarAlumnos=$conn->query($query);
@@ -194,7 +188,7 @@ echo'
 } else
 	{
 		$tabla="
-        <h1 class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1> 
+        <h1 class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda. <a href='' style='font-size: 30px' class='close'>&times;</a></h1>  
         ";
 	}
 

@@ -70,22 +70,15 @@ if ($codigo=="") {
             <div class="row">
               <div class="col-md-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>   
-                <select  class="form-control" name="depto" id="depto" required>
-                        <option selected disabled value="">Selecione</option>
-                    
-                      <?php 
-                        $sql = "SELECT * FROM selects_departamento";
-                        $result = mysqli_query($conn, $sql);
-
-                        while ($productos = mysqli_fetch_array($result)){ 
-
-                          echo'  <option>'.$productos['departamento'].'</option>
-                      ';   
-                     }
-
-
-                         ?>
-                      </select>
+               <div id="div" style = " max-height: 85px;width: 100%; overflow-y:scroll;"> 
+                
+                   <?php  
+   $sql = "SELECT * FROM selects_departamento";
+    $result = mysqli_query($conn, $sql);
+    while ($productos = mysqli_fetch_array($result)){ ?>  
+                             <input required  id="<?php echo $productos['id'] ?>" type="radio" name="depto" value="<?php echo $productos['departamento'] ?>"> <label style="width: 100%;" id="label1" for="<?php echo $productos['id'] ?>" > <?php echo $productos['departamento'] ?></label><br>
+ <?php }?>
+                         </div>
                   </div>
             <div class="col-md-4" style="position: initial">
                 <label id="inp1">Vale N°</b></label>   
@@ -100,27 +93,28 @@ if ($codigo=="") {
                 <input id="inp1"class="form-control" readonly type="number" name="numero_vale" required value="<?php echo $cod_vale ?>">
             </div>
             <div class="col-md-4" style="position: initial">
+                <label id="inp1">Nombre de la persona</label>
+               
     <font color="black"><label>Encargado</label> </font>
-      <input style=" color: black;"  class="form-control" type="text" name="usuario" id="como3" required  value="">
+          <input style=" color: black;"  class="form-control" type="text" name="usuario" id="como3" required  value="">
       <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="0">
       <br>
-               
             </select>
                 </label>   
             </div>
         </div>
     </div>
-      <table class="table table-responsive table-striped"  style=" width: 100%">
+    <br>
+      <table class="table  table-striped"  style=" width: 100%">
             <thead>
               <tr id="tr">
-               
-                <th style="width: 10%;">Código</th>
-                <th style="width: 50%;">Descripción</th>
-                <th style="width: 10%;">U/M</th>
-                <th style="width: 15%;">Productos Disponibles</th>
-                <th style="width: 50%;">Cantidad</th>
-                <th style="width: 15%;">Costo unitario</th>
-               <th>Eliminar Fila</th>
+                <th>Código</th>
+                <th >Descripción</th>
+                <th>U/M</th>
+                <th >Productos Disponibles</th>
+                <th>Cantidad</th>
+                <th>Costo unitario</th>
+               <th >Eliminar Fila</th>
                
               </tr>
 
@@ -129,10 +123,14 @@ if ($codigo=="") {
             </thead>
 
             <tbody>
+
     <?php 
+
          for($i = 0; $i < count($_POST['id']); $i++){
  
     $codigo= $_POST['id'][$i];
+    
+    
     //    $sql = "SELECT * FROM tb_productos";
     $sql = "SELECT codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE cod='$codigo' GROUP BY precio, codProductos";
     $result = mysqli_query($conn, $sql);
@@ -165,7 +163,7 @@ if ($codigo=="") {
                <input type="hidden" name="desc[]" value="<?php  echo $productos['descripcion']; ?>">
                <input  type="hidden" name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>">
                 </td>
-               <td data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
+               <td style="min-width: 100%;" data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
                <td data-label="Unidad De Medida"><?php echo $productos['unidad_medida'] ?>
                 <input type="hidden"  name="stock[]"  value ="<?php  echo $stock; ?>">
                 <input  type="hidden" name="cu[]" value ="<?php  echo $precio ?>">

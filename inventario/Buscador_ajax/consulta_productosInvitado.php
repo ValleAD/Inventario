@@ -20,7 +20,7 @@ if ($buscarAlumnos->num_rows > 0)
                 .well{display:block;}</style>';  if(isset($_POST['consulta'])){
                 echo ' <style>#well{display:none;}</style>
 <div style="position:initial" class="btn-group mb-3 mx-2"  role="group" aria-label="Basic outlined example">
-            <form id="form1" style="  method="POST" action="Plugin/productos.php" target="_blank">';
+            <form id="form1" style="  method="POST" action="../../Plugin/productos.php" target="_blank">';
     $sql = "SELECT * FROM tb_productos GROUP BY precio,codProductos";
     $result = mysqli_query($conn, $sql);
 
@@ -32,11 +32,11 @@ if ($buscarAlumnos->num_rows > 0)
             ';} echo '
                 <button style="position:initial" type="submit" class="btn btn-outline-primary" name="Fecha">
                 <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
                 </button>
             </form><br>
-            <form id="form2" style="" method="POST" action="Plugin/pdf_productos.php" target="_blank">
+            <form id="form2" style="" method="POST" action="../../Plugin/pdf_productos.php" target="_blank">
               ';
     $sql = "SELECT * FROM tb_productos GROUP BY precio,codProductos";
     $result = mysqli_query($conn, $sql);
@@ -48,7 +48,7 @@ echo'
             ';} echo'
                 <button style="position:initial" type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
                 </button>
             </form>
@@ -116,7 +116,7 @@ echo'
 	$tabla.='</tbody></table></div> ';
 } else
 	{
-		$tabla="<h1 class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda. <a href='' style='font-size: 30px' class='close'>&times;</a></h1> 
+		$tabla="<h1 class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda. <a href='' style='font-size: 30px' class='close'>&times;</a></h1> ";
 	}
 
 

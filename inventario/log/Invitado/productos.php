@@ -348,7 +348,7 @@ if (isset($_POST['categorias'])){$categoria=$_POST['cat'];  ?>  <br>
 function obtener_registros(consulta)
 {
     $.ajax({
-        url : '../../Buscador_ajax/consulta_productos.php',
+        url : '../../Buscador_ajax/consulta_productosInvitado.php',
         type : 'POST',
         dataType : 'html',
         data : { consulta: consulta },
