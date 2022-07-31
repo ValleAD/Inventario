@@ -75,10 +75,18 @@
             ?> class="form-control" readonly type="text" name="" value="<?php echo $solicitudes['estado'] ?>"><br>
               </td>
             <td  data-label="Detalles">
-            <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Almacen.php">             
-                <input type='hidden' name='id' value="<?php  echo $solicitudes['codAlmacen']; ?>">             
-                   <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
-         
+                        <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Almacen.php">             
+                <input type='hidden' name='id' value="<?php  echo $datos_sol['codAlmacen']; ?>">             
+                                <?php  if ($solicitudes['estado']=="Aprobado" || $solicitudes['estado']=="Pendiente") {?>        
+                     <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
+
+          <?php } if ($solicitudes['estado']=="Rechazado") {?>
+                   
+           <button disabled id="ver" style="cursor: not-allowed;"  type="submit" name="detalle" >Ver Detalles</button> 
+        
+           <?php  } ?>               
+            </form> 
+        </td>
          <?php } ?></tr>
     </tbody>
 </table>
@@ -163,10 +171,18 @@
             ?> class="form-control" readonly type="text" name="" value="<?php echo $solicitudes['estado'] ?>"><br>
               </td>
             <td  data-label="Detalles">
-            <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Almacen.php">             
-                <input type='hidden' name='id' value="<?php  echo $solicitudes['codAlmacen']; ?>">             
-             
-                   <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button>          
+                            <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Almacen.php">             
+                <input type='hidden' name='id' value="<?php  echo $datos_sol['codAlmacen']; ?>">             
+                                <?php  if ($solicitudes['estado']=="Aprobado" || $solicitudes['estado']=="Pendiente") {?>        
+                     <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
+
+          <?php } if ($solicitudes['estado']=="Rechazado") {?>
+                   
+           <button disabled id="ver" style="cursor: not-allowed;"  type="submit" name="detalle" >Ver Detalles</button> 
+        
+           <?php  } ?>               
+            </form> 
+            </td>         
 </tr>
 <?php } ?>
     </tbody>

@@ -31,6 +31,8 @@
     $suministro = $_POST['suministro'];
     $usuario = $_POST['usuario'];
     $fecha = $_POST['fech'];
+    $estado=$_POST['estado'];
+
    if ($_POST['jus']=="") {
     $jus = "Sin Justificación por el momento";
         
@@ -44,20 +46,26 @@
 <h4 align="center" style="margin-top: 2%;">UNIDAD DE ADQUISICIONES Y CONTRATACIONES INSTITUCIONAL</h4>
 <h4 align="center" style="margin-top: 2%;">SOLICITUD DE COMPRA</h4>
  
-<section>
-    <br>
-    <div style="float: right">
-        <label>FECHA DE IMPRESIÓN:</label><?php echo date("d-m-Y")?><br>
-        <label>FECHA DE CREACIÓN: <?php echo $fecha ?></label>
-    </div>
-              
-    <p style="margin-top: -1.5%;"><b>Solicitud No.:</b> <?php echo $solicitud ?></p>
-    <p style="margin-top: -1.5%;"><b>DEPENDECIA SOLICITANTE:</b> <?php echo $dependencia ?></p> 
-    <p style="margin-top: -1.5%;"><b>PLAZO Y NÚMERO DE ENTREGAS:</b> <?php echo $plazo ?></p>
-    <p style="margin-top: -1.5%;"><b>UNIDAD TÉCNICA:</b> <?php echo $unidad ?></p>
-    <p style="margin-top: -1.5%;"><b>SUMINISTROS SOLICITADOS:</b> <?php echo $suministro ?></p>
-    <p style="margin-top: -1.5%;"><b>ENCARGADO:</b> <?php echo $usuario ?></p>
 
+<br>
+<table style="width: 100%;" >
+    <tr>
+        <td style="width: 30%;"><b>Solicitud No.:</b> <?php echo $solicitud ?></td>
+        <td ><b>Depenencia Solicitante:</b> <?php echo $dependencia ?></td>
+        <td align="right"><b>Plazo y No. de Entregas:</b> <?php echo $plazo ?></td>
+    </tr>
+    <tr>
+        <td style="width: 30%;"><b>Unidad Técnica:</b> <?php echo $unidad ?></td>
+        <td ><b>Suministro Solicitado:</b> <?php echo $suministro ?></td>
+        <td align="right"><b>Encargado:</b> <?php echo $usuario ?></td>
+    </tr>
+    <tr>
+    <td style="width: 30%;"><b>Estado:</b> <?php echo $estado ?></td>
+    <td ><b>Fecha De Creación: </b> <?php echo $fecha ?></td>
+    <td align="right"><b>Fecha De Impreción:</b> <?php echo date("d-m-Y")?></td>
+    </tr>
+</table>
+<br>
 <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;">

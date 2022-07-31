@@ -19,6 +19,8 @@
     $suministro = $_POST['suministro'];
     $usuario = $_POST['usuario'];
     $fecha = $_POST['fech'];
+    $estado=$_POST['estado'];
+
    if ($_POST['jus']=="") {
     $jus = "Sin Justificación por el momento";
         
@@ -27,31 +29,31 @@
       }
       
 ?>
-<h3 align="center" style="margin-top: -2%;">MINISTERIO DE SALUD</h3>
-<h3 align="center" style="margin-top: -2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
-<h4 align="center" style="margin-top: -2%;">UNIDAD DE ADQUISICIONES Y CONTRATACIONES INSTITUCIONAL</h4>
-<h4 align="center" style="margin-top: -2%;">SOLICITUD DE COMPRA</h4>
+<h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD</h3>
+<h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
+<h4 align="center" style="margin-top: 2%;">UNIDAD DE ADQUISICIONES Y CONTRATACIONES INSTITUCIONAL</h4>
+<h4 align="center" style="margin-top: 2%;">SOLICITUD DE COMPRA</h4>
  
-<section style="margin: 2%;">
 
-<section style="font-size: 14px;">
-    <div style="float: right">
-        <label>FECHA DE IMPRESIÓN:</label><?php echo date("d-m-Y")?><br>
-        <label>FECHA DE CREACIÓN: <?php echo $fecha ?></label>
-    </div>
-              
-    <p style="margin-top: -1.5%;"><b>Solicitud No.:</b> <?php echo $solicitud ?></p>
-    <p style="margin-top: -1.5%;"><b>DEPENDECIA SOLICITANTE:</b> <?php echo $dependencia ?></p> 
-    <p style="margin-top: -1.5%;"><b>PLAZO Y NÚMERO DE ENTREGAS:</b> <?php echo $plazo ?></p>
-    <p style="margin-top: -1.5%;"><b>UNIDAD TÉCNICA:</b> <?php echo $unidad ?></p>
-    <p style="margin-top: -1.5%;"><b>SUMINISTROS SOLICITADOS:</b> <?php echo $suministro ?></p>
-    <p style="margin-top: -1.5%;"><b>ENCARGADO:</b> <?php echo $usuario ?></p>
-</section>
-
-<div style="float: right; font-size: 13px;">
-    <p align="left">Montos estimados <br>presupuestados <br>en dólares</p>
-</div>
-
+<br>
+<table style="width: 100%;font-size: 11px;" >
+    <tr>
+        <td style="width: 30%;"><b>Solicitud No.:</b> <?php echo $solicitud ?></td>
+        <td ><b>Depenencia Solicitante:</b> <?php echo $dependencia ?></td>
+        <td align="right"><b>Plazo y No. de Entregas:</b> <?php echo $plazo ?></td>
+    </tr>
+    <tr>
+        <td style="width: 30%;"><b>Unidad Técnica:</b> <?php echo $unidad ?></td>
+        <td ><b>Suministro Solicitado:</b> <?php echo $suministro ?></td>
+        <td align="right"><b>Encargado:</b> <?php echo $usuario ?></td>
+    </tr>
+    <tr>
+    <td style="width: 30%;"><b>Estado:</b> <?php echo $estado ?></td>
+    <td ><b>Fecha De Creación: </b> <?php echo $fecha ?></td>
+    <td align="right"><b>Fecha De Impreción:</b> <?php echo date("d-m-Y")?></td>
+    </tr>
+</table>
+<br>
 <table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse; margin-top: 9%;">
      <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
@@ -83,7 +85,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 ?>
   
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-2            <td style="font-size: 12px;text-align:center;"><?php  echo $codigo?></td>
+            <td style="font-size: 12px;text-align:center;"><?php  echo $codigo?></td>
             <td style="font-size: 12px;"><?php  echo $des?></td>
             <td style="font-size: 12px;text-align:center;"><?php  echo $um?></td>
             <td style="font-size: 12px;text-align:center;"><?php echo $cantidad ?></td>
@@ -107,7 +109,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
             <p style="padding-left: 1%;"><?php echo $jus ?></p>
         </tbody>
     </table>                
-</section>
+
 
 </body>
 </html>

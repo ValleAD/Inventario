@@ -17,34 +17,31 @@
     $fech = $_POST['fech'];
     $encargado = $_POST['usuario'];
      $vale = $_POST['bodega'];
+     $estado=$_POST['estado'];
+
+      
 ?>
-<h3 >HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
-<p style="float: right;">Vale No.: <?php echo $vale ?></p>
+<h3>HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
+
 <h4>DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h5 align="center">SOLICITUD DE MATERIALES</h5>
-     <style>
-     @media (max-width: 952px){
-   h3, h4,h5{
-    font-size: 1em;
-    text-align: center; 
-   }
-   section{
-    margin: 2%;
-   }
-    }</style>
-<section style="margin: 2%;">
-              
-    <p><b>Depto. o Servicio:</b> <?php echo $depto ?></p>
+ 
+<p style="float: right;">O. de T.: <?php echo $vale ?></p>
+<p><b>Depto. o Servicio:</b> <?php echo $depto ?></p>  
+   <table style="width: 100%;">
+       <tr>
+           <td style="text-align: left;;width:50%;"><b>Encargado:</b> <?php echo $encargado ?></td>
+           <td><b>Fecha:</b> <?php echo $fech ?><br></td>
+           <td style="text-align: right;"><b>Estado:</b> <?php echo $estado ?></td>
+       </tr>
+   </table> 
 
-    <p style="float: right;"><b>Fecha:</b> <?php echo $fech ?></p>
-        
-    <p><b>Encargado:</b> <?php echo $encargado ?></p>
-
+        <br> 
 <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;">
-            <th style="width: 25%;font-size: 14px;text-align: center;">Código</th>
-            <th style="width: 70%;color:black;font-size: 14px;text-align: left;">Descripción Completa</th>
+            <th style="width: 25%;color:black;font-size: 14px;text-align: center;">Código</th>
+            <th style="width: 70%;color:black;font-size: 14px;text-align: center;">Descripción Completa</th>
             <th style="width: 15%;color:black;font-size: 14px;text-align: center;">U/M</th>
             <th style="width: 15%;color:black;font-size: 14px;text-align: center;">Cantidad Solicitada</th>
             <th style="width: 30%;color:black;font-size: 14px;text-align: center;">Cantidad Despachada</th>

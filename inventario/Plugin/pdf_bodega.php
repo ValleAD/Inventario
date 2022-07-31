@@ -16,21 +16,26 @@ include ('../Model/conexion.php') ?>
     $fech = $_POST['fech'];
     $encargado = $_POST['usuario'];
      $vale = $_POST['bodega'];
+     $estado=$_POST['estado'];
+
       
 ?>
 <h3>HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
-<p style="float: right; margin-right: 15%; position: absolute;">O. de T.: <?php echo $vale ?></p>
+
 <h4>DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h5 align="center">SOLICITUD DE MATERIALES</h5>
  
-<section style="margin: 2%;">
-              
-    <p><b>Depto. o Servicio:</b> <?php echo $depto ?></p>
+<p style="float: right; position: absolute;">O. de T.: <?php echo $vale ?></p>
+<p><b>Depto. o Servicio:</b> <?php echo $depto ?></p>  
+   <table style="width: 100%;">
+       <tr>
+           <td style="text-align: left;;width:50%;"><b>Encargado:</b> <?php echo $encargado ?></td>
+           <td><b>Fecha:</b> <?php echo $fech ?><br></td>
+           <td style="text-align: right;"><b>Estado:</b> <?php echo $estado ?></td>
+       </tr>
+   </table> 
 
-    <p style="float: right;"><b>Fecha:</b> <?php echo $fech ?></p>
-        
-    <p><b>Encargado:</b> <?php echo $encargado ?></p>
-
+        <br>   
 <table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
@@ -86,7 +91,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
     <p style="text-align:left;">Solicita: <?php echo $encargado ?></p></p>
     
     <p style="text-align: center; margin-top: 15%;">Autoriza: ________________________________</p>
-</section>
+
 
 </body>
 </html>

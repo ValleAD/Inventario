@@ -286,7 +286,7 @@ $n_sol=$datos_sol['codAlmacen'];
                 }else if($datos_sol['estado']=='Rechazado') {
                      echo ' style="background-color:red ;style="position: initial;width:70%; border-radius:5px;text-align:center; color: white;"';
                 }
-            ?> class="form-control" type="text" name="" readonly value="<?php echo $datos_sol['estado'] ?>"><br>
+            ?> class="form-control" type="text" name="estado" readonly value="<?php echo $datos_sol['estado'] ?>"><br>
             <?php if($tipo_usuario==1){ ?>
                <button id="buscar1" type="submit" name="submit" <?php
                 if($datos_sol['estado']=='Aprobado') {
@@ -305,10 +305,11 @@ $n_sol=$datos_sol['codAlmacen'];
           
       </form>
       <form method="POST" style="margin-top:-7%" action="Plugin/pdf_almacen.php" target="_blank">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $datos_sol['departamento']?>" name="depto">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $datos_sol['codAlmacen']?>" name="num_sol">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $datos_sol['encargado']?>" name="nombre">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud']))?>" name="fech">
+                <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['departamento']?>" name="depto">
+                <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['codAlmacen']?>" name="num_sol">
+                <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['encargado']?>" name="nombre">
+                <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['estado']?>" name="estado">
+                <input type="hidden" readonly class="form-control" value="<?php echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud']))?>" name="fech">
           <?php 
 if ($datos_sol['estado']=="Rechazado") {
                         echo ' <form style="margin: 0%;position: 0; background: transparent;" method="POST" action="Controller/añadir_vale.php">
@@ -328,10 +329,11 @@ if ($datos_sol['estado']=="Rechazado") {
                 </button>
             </form>
             <form method="POST" action="Plugin/almacen.php" target="_blank">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $datos_sol['departamento']?>" name="depto">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $datos_sol['codAlmacen']?>" name="num_sol">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $datos_sol['encargado']?>" name="nombre">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud']))?>" name="fech">
+                <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['departamento']?>" name="depto">
+                <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['codAlmacen']?>" name="num_sol">
+                <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['encargado']?>" name="nombre">
+                <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['estado']?>" name="estado">
+                <input type="hidden" readonly class="form-control" value="<?php echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud']))?>" name="fech">
            
                 <?php
 
@@ -462,6 +464,7 @@ while ($productos = mysqli_fetch_array($result)){
                         <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $datos_sol['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $datos_sol['codAlmacen']?>" name="num_sol">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $datos_sol['encargado']?>" name="encargado">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $datos_sol['estado']?>" name="estado">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud']))?>" name="fech">
           
                 <?php

@@ -17,6 +17,7 @@
     $fech = $_POST['fech'];
     $encargado = $_POST['usuario'];
     $vale = $_POST['vale'];
+    $estado=$_POST['estado'];
     if ($_POST['jus']=="") {
     $jus = "Sin observacion por el momento";
         
@@ -28,30 +29,27 @@
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
 <h4 align="center" style="margin-top: 2%;">DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h5 align="center" style="margin-top: 2%;"> SOLICITUD DE MATERIALES</h5>
-<p style="float: right;">Vale No.: <?php echo $vale ?></p>
+
      <style>
      @media (max-width: 952px){
    h3, h4, h5{
     font-size: 1em;
     text-align: center;
    }
-   section{
-    margin: 2%;
-   }
-   #hs{
-    display: none;
-   }
+
     }
   </style>
-
-
-              
-    <p><b>Depto. o Servicio:</b> <?php echo $depto ?></p>
-
-    <p style="float: right;"><b>Fecha:</b> <?php echo $fech ?></p>
-        
-    <p><b>Encargado:</b> <?php echo $encargado ?></p>
-
+<br>
+   <p style="float: right;">Vale No.: <?php echo $vale ?></p>
+<p><b>Depto. o Servicio:</b> <?php echo $depto ?></p>  
+   <table style="width: 100%;">
+       <tr>
+           <td style="text-align: left;width: 40%;"><b>Encargado:</b> <?php echo $encargado ?></td>
+           <td style="text-align: center;"><b>Fecha:</b> <?php echo $fech ?><br></td>
+           <td style="text-align: right;"><b>Estado:</b> <?php echo $estado ?></td>
+       </tr>
+   </table> 
+        <br> 
 <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;">

@@ -97,7 +97,9 @@ background:burlywood;
                         </svg></a>
                     <ul class="children">
                        <li><a id="b" href="vistaProductos.php">Ver Artículos</a></li>
-                       
+                       <?php if($tipo_usuario==1){ ?>
+                        <li><a id="b" href="regi_producto.php">Nuevo Artículo</a></li>
+                    <?php } ?>
                         <li><a id="b" href="reporte_ingresos.php">Reporte Ingresos</a></li>
                         <li><a id="b" href="reporte_egresos.php">Reporte Egresos</a></li>
                         <li><a id="b" href="reporte_productos.php">Reporte Productos</a></li>

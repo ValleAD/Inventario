@@ -11,7 +11,8 @@
     <img src="../img/log_1.png" style="width:20%; float:right">
     
 <?php if(isset($_POST['desc'])){
-
+    $depto = $_POST['num_sol'];
+    $fech = $_POST['fech'];
 
 ?>
 <h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD</h3>
@@ -27,8 +28,13 @@
 <br>
 <p>Atentamente solicito a usted la compra <b>Urgente</b> de los materiales y/o servicios que se detallan a continuación, a través del Fondo Circulante de Monto Fijo.</p>
 </section>
-
-              
+<table style="width: 100%;margin-bottom: 2%;">
+    <tr>
+        <td><b>N° de Solicitud:</b> <?php echo $depto ?></td>
+        <td align="right"><b>Fecha:</b> <?php echo $fech ?></td>
+    </tr>
+</table>
+      
 <table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >

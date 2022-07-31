@@ -164,7 +164,7 @@ $tipo_usuario = $_SESSION['iduser'];
             <?php } ?>
                  </label>
               <input  <?php if($productos1['estado']=='Comprado') {
-              echo ' style="background-color:blueviolet ;position: initial;width:70%; border-radius:5px;text-align:center; color: white;"'; }?> class="form-control" type="text" name="" readonly value="<?php echo $productos1['estado'] ?>"><br>
+              echo ' style="background-color:blueviolet ;position: initial;width:70%; border-radius:5px;text-align:center; color: white;"'; }?> class="form-control" type="text" name="estado" readonly value="<?php echo $productos1['estado'] ?>"><br>
 
           </div>
             </div>
@@ -181,6 +181,7 @@ $tipo_usuario = $_SESSION['iduser'];
                 <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['unidad_tecnica']?>" name="unidad">
                 <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['descripcion_solicitud']?>" name="suministro">
                 <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['usuario']?>" name="usuario">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['estado']?>" name="estado">
                 <input readonly class="form-control"  type="hidden" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro'])) ?>" name="fech">
 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -197,6 +198,7 @@ $tipo_usuario = $_SESSION['iduser'];
                 <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['unidad_tecnica']?>" name="unidad">
                 <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['descripcion_solicitud']?>" name="suministro">
                 <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['usuario']?>" name="usuario">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['estado']?>" name="estado">
                 <input readonly class="form-control"  type="hidden" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro'])) ?>" name="fech">
 
                 <?php

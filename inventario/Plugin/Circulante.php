@@ -22,22 +22,26 @@
     }
 </style>
 <?php if(isset($_POST['desc'])){
-
+    $depto = $_POST['num_sol'];
+    $fech = $_POST['fech'];
 
 ?>
 <h3 align="center" >HOSPITAL NACIONAL "SANTA TERESA" DE ZACATECOLUCA</h3>
 <h3 align="center" >FONDO CIRCULANTE DE MONTO FIJO</h3>
 
-<section style="margin: 2%;">
 
-<section style="font-size: 14px;">
 <p>Encargado del Fondo Circulante de Monto Fijo Recursos Propios</p>
 <p>Hospital Nacional "Santa Teresa" de Zacatecoluca</p>
 <br>
 <p>Atentamente solicito a usted la compra <b>Urgente</b> de los materiales y/o servicios que se detallan a continuación, a través del Fondo Circulante de Monto Fijo.</p>
-</section>
 
-              
+
+     <table style="width: 100%;">
+    <tr>
+        <td><b>N° de Solicitud:</b> <?php echo $depto ?></td>
+        <td align="right"><b>Fecha:</b> <?php echo $fech ?></td>
+    </tr>
+</table>         
 <table class="table" style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
@@ -87,7 +91,7 @@ for($i = 0; $i < count($_POST['desc']); $i++)
     </tbody>   
 </table>            
     
-<section sytle="font-size: 14px;">
+<br>
 <p>Todo lo anteriormente detallado, es indispensable para desarrollar nuestras funciones.</p>  
 <p>Sin más particular</p>
 
@@ -103,12 +107,6 @@ for($i = 0; $i < count($_POST['desc']); $i++)
     <p style="text-align: center;">Autoriza: <br><br>F. ________________ <br>Dr. William Antonio Fernández Rodríguez <br>Director del Hospital Nacional “ Santa Teresa”</p>
 </div>
 
-   
-    
-    <br>
-    
-</section>
-</section>
 </body>
 </html>
 <script type="text/javascript">

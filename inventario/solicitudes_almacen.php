@@ -166,16 +166,14 @@ form{
             <td  data-label="Detalles">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Almacen.php">             
                 <input type='hidden' name='id' value="<?php  echo $datos_sol['codAlmacen']; ?>">             
-                <?php  if ($datos_sol['estado']=="Aprobado" || $datos_sol['estado']=="Pendiente") {?>
-                <form method="POST" action="Controller/Delete_producto.php">
-                   <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
-                </form>
-           <?php  };
-            if ($datos_sol['estado']=="Rechazado") {
-                 echo'
-           <button disabled  style="cursor: not-allowed;"  type="submit" name="detalle" class="btn btn-primary">Ver Detalles</button> 
-            ';
-            } ?>                
+                                <?php  if ($datos_sol['estado']=="Aprobado" || $datos_sol['estado']=="Pendiente") {?>        
+                     <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
+
+          <?php } if ($datos_sol['estado']=="Rechazado") {?>
+                   
+           <button disabled id="ver" style="cursor: not-allowed;"  type="submit" name="detalle" >Ver Detalles</button> 
+        
+           <?php  } ?>               
             </form> 
             </td>
         </tr>
@@ -322,15 +320,16 @@ $sql = "SELECT * FROM tb_almacen WHERE  idusuario='$idusuario' ORDER BY fecha_so
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Almacen.php">             
                 <input type='hidden' name='id' value="<?php  echo $datos_sol['codAlmacen']; ?>">             
                 <?php  if ($datos_sol['estado']=="Aprobado" || $datos_sol['estado']=="Pendiente") {?>
-                <form method="POST" action="Controller/Delete_producto.php">
-                   <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
-                </form>
-           <?php  };
-            if ($datos_sol['estado']=="Rechazado") {
-                 echo'
-           <button disabled  style="cursor: not-allowed;"  type="submit" name="detalle" class="btn btn-primary">Ver Detalles</button> 
-            ';
-            } ?>                
+            <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Almacen.php">             
+                <input type='hidden' name='id' value="<?php  echo $datos_sol['codAlmacen']; ?>">             
+                                <?php  if ($datos_sol['estado']=="Aprobado" || $datos_sol['estado']=="Pendiente") {?>        
+                     <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
+
+          <?php } if ($datos_sol['estado']=="Rechazado") {?>
+                   
+           <button disabled id="ver" style="cursor: not-allowed;"  type="submit" name="detalle" >Ver Detalles</button> 
+        
+           <?php  } }?>               
             </form> 
             </td>
         </tr>
@@ -342,6 +341,20 @@ $sql = "SELECT * FROM tb_almacen WHERE  idusuario='$idusuario' ORDER BY fecha_so
 </div>
          <?php } ?>
 </section>
- 
+  <style>
+                 #ver{
+                margin-left: 2%; 
+                background: rgba(0,123,255,.5); 
+                color: #fff; margin-bottom: 2%;  
+                border: rgb(5, 65, 114);
+                border-radius: 4px;
+                padding: 6% 12px;
+               }
+               #ver:hover{
+                transition: 1s;
+                color: lawngreen;
+                transform: translateY(2px);
+               } 
+            </style>
 </body>
 </html>

@@ -157,9 +157,14 @@ if ($des=="") {
                 <div style="position: initial;">  
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Bodega.php">             
                 <input type='hidden' name='id' value="<?php  echo $solicitudes['codBodega']; ?>">  
-                
-                   <button style="position: initial;"  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button>
-                     
+                                <?php  if ($solicitudes['estado']=="Aprobado" || $solicitudes['estado']=="Pendiente") {?>        
+                     <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
+
+          <?php } if ($solicitudes['estado']=="Rechazado") {?>
+                   
+           <button disabled id="ver" style="cursor: not-allowed;"  type="submit" name="detalle" >Ver Detalles</button> 
+        
+           <?php  } ?>  
             </form> 
         </div>
             </td>
@@ -306,10 +311,15 @@ if ($des=="") {
             ?> class="form-control" type="text" name="" readonly value="<?php echo $solicitudes['estado'] ?>"></td>
             <td  data-label="Detalles">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Bodega.php">             
-                <input type='hidden' name='id' value="<?php  echo $solicitudes['codBodega']; ?>">          
+                <input type='hidden' name='id' value="<?php  echo $solicitudes['codBodega']; ?>">  
+                                <?php  if ($solicitudes['estado']=="Aprobado" || $solicitudes['estado']=="Pendiente") {?>        
                      <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
 
-          
+          <?php } if ($solicitudes['estado']=="Rechazado") {?>
+                   
+           <button disabled id="ver" style="cursor: not-allowed;"  type="submit" name="detalle" >Ver Detalles</button> 
+        
+           <?php  } ?>  
             </form> 
             </td>
         </tr>
@@ -320,6 +330,20 @@ if ($des=="") {
 </div>
 <?php } ?>
  </section>
-   
+    <style>
+                 #ver{
+                margin-left: 2%; 
+                background: rgba(0,123,255,.5); 
+                color: #fff; margin-bottom: 2%;  
+                border: rgb(5, 65, 114);
+                border-radius: 4px;
+                padding: 6% 12px;
+               }
+               #ver:hover{
+                transition: 1s;
+                color: lawngreen;
+                transform: translateY(2px);
+               } 
+            </style>
 </body>
 </html>

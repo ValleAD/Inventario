@@ -123,7 +123,7 @@ $id=$_POST['id'];
 
           <div class="col-md-4" style="position: initial">
             <label style="font-weight: bold;">Fecha:</label>
-              <input readonly class="form-control"  type="text" value="' .date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])). '" name="fech">
+              <input readonly class="form-control"  type="text" value="' .($datos_sol['fecha_solicitud']). '" name="fech">
           </div>';?>
            <!-- <div class="col-8 col-sm-4" style="position: initial">
             <label style="font-weight: bold;">Estado:</label>
@@ -135,7 +135,7 @@ $id=$_POST['id'];
                 }else if($datos_sol['estado']=='Rechazado') {
                      echo ' style="background-color:red ;width:100%; border-radius:5px;text-align:center; color: white;"';
                 }
-            ?> class="form-control" type="text" name="" readonly value="<?php echo $datos_sol['estado'] ?>"><br>
+            ?> class="form-control" type="text" name="estado" readonly value="<?php echo $datos_sol['estado'] ?>"><br>
             <?php if($tipo_usuario==1){ ?>
                <button type="submit" name="submit" <?php
                 if($datos_sol['estado']=='Aprobado') {
@@ -153,6 +153,8 @@ $id=$_POST['id'];
 <table class="table">
                         <div style="position: initial;" style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form style="position: initial;" method="POST" action="Plugin/pdf_circulante.php">
+            <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['codCirculante']?>" name="num_sol">
+            <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['fecha_solicitud']?>" name="fech">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
@@ -189,6 +191,8 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="tot[]" value="$<?php echo $total2 ?>">
             <input type="hidden" name="tot_f" value="$<?php echo $final2 ?>" >
             <?php } ?>
+            <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['codCirculante']?>" name="num_sol">
+            <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['fecha_solicitud']?>" name="fech">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="pdf">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>

@@ -16,6 +16,7 @@
     $depto = $_POST['depto'];
     $fech = $_POST['fech'];
      $vale = $_POST['num_sol'];
+     $estado=$_POST['estado'];
       
 ?>
     <style>
@@ -32,13 +33,13 @@
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA  DE ZACATECOLUCA</h3>
 <h4 align="center" style="margin-top: 2%;">ALMACÉN DE MEDICAMENTOS, INSUMOS MÉDICOS,</h4>
 <h4 align="center" style="margin-top: 2%;">PAPELERÍA Y OTROS ARTICULOS</h4>
- 
- <table class="table" style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
+  <p align="right"><b>Estado: </b><?php echo $estado ?></p>
+ <table class="table" style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;text-align: center;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
-            <th style="width: 25%;font-size: 14px;">Código</th>
-            <th style="width: 15%;color:black;font-size: 14px;">U/M</th>
+            <th style="width: 25%;color: black;font-size: 14px;">Código</th>
             <th style="width: 70%;color:black;font-size: 14px;">Descripción</th>
+            <th style="width: 15%;color:black;font-size: 14px;">U/M</th>
             <th style="width: 15%;color:black;font-size: 14px;">Cant.<br>Sol.</th>
             <th style="width: 15%;color:black;font-size: 14px;">Cant.<br>Desp.</th>
             <th style="width: 15%;color:black;font-size: 14px;">C/U</th>
@@ -63,8 +64,8 @@ for($i = 0; $i < count($_POST['cod']); $i++)
   
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
             <td data-label="Código" style=" font-size: 12px; "><?php  echo $codigo?></td>
-            <td data-label="Unidad De Medida" style=" font-size: 12px; "><?php  echo $um?></td>
             <td data-label="Descripción" style=" font-size: 12px; "><?php  echo $des?></td>
+            <td data-label="Unidad De Medida" style=" font-size: 12px; "><?php  echo $um?></td>
             <td data-label="Cantidad" style=" font-size: 12px; "><?php echo $cant ?></td>
             <td data-label="Cantidad Despachada" style=" font-size: 12px; "><?php echo $cantidad ?></td>
             <td data-label="Precio" style=" font-size: 12px; "><?php echo $precio ?></td>
@@ -77,6 +78,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
         <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $tot_f ?></td>
     </tfoot>
 </table>
+<br>
     <table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
         <tbody>
             <tr style="border: 1px solid #ddd;color: black;" >
