@@ -1,4 +1,6 @@
-<?php require '../../Model/conexion.php';
+                <label for="" style="color:white;" class=" mb-1">Habilitado</label><br> 
+                 <input  id="input" type="radio" name="Habilitado" value="Si" style="" required> <label  style="color: white;" id="label1" for="input" > Habilitar  Categoria</label>
+                  <input  id="input1" type="radio" name="Habilitado" value="No" style="" required> <label style="color: white;" id="label1" for="input1" > Desbilitar  Categoria</label><br><?php require '../../Model/conexion.php';
 include ('menu.php');
 ?>
 

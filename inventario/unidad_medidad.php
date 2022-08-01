@@ -44,6 +44,7 @@ die();
     #div{
         padding: 2%;
     }
+
 </style>
 <br><br><br>
 <?php      
@@ -68,12 +69,9 @@ $result = mysqli_query($conn, $sql);
             <div class="col-sm-12" style="position: initial;"><p class="small mb-1"><font color="black"><b>La Categoria que has Seleccionado:</b></font> <?php echo $productos['unidad_medida']?></p>
                 <input type="hidden" name="id" value="<?php  echo $productos['id']; ?>">
                 <label for="" class="small mb-1" style="color: white;">Habilitado</label><br> 
-                    <select  class="form-control" name="Habilitado" id="categoria" style="cursor: pointer" required>
-                        <option disabled selected value="">[Seleccione]</option>
-                        <option>Si</option>
-                        <option>No</option>
-                        
-                    </select>
+                <label for="" style="color:white;" class=" mb-1">Habilitado</label><br> 
+                 <input  id="input" type="radio" name="Habilitado" value="Si" style="" required> <label  style="color: white;" id="label1" for="input" > Habilitar  Categoria</label>
+                  <input  id="input1" type="radio" name="Habilitado" value="No" style="" required> <label style="color: white;" id="label1" for="input1" > Desbilitar  Categoria</label><br>
             </div>
          </div>
         <hr>
@@ -113,7 +111,7 @@ $result = mysqli_query($conn, $sql);
                 </button>
             </div>
               <div class="modal-body">
-                <form action="Controller/Añadir-unidad.php" method="POST" style="margin:0;background: transparent;">
+                <form id="nombre" action="Controller/Añadir-unidad.php" method="POST" style="margin:0;background: transparent;">
 
             <label id="label">Nombres</label>              
             <input class="form-control" name="unidad" type="text" required>
@@ -123,6 +121,11 @@ $result = mysqli_query($conn, $sql);
                 #label{
                     color: white;
                 }
+                 @media (max-width: 952px){
+                #label{
+                    margin-top: 1%;
+                }
+            }
             </style>
             <div class="modal-footer">
         <button name="submit" type="submit" id="Update" class="btn btn-danger" >Agregar</button> 
@@ -151,13 +154,11 @@ $result = mysqli_query($conn, $sql);
                    <thead>
              <tr id="tr">
                 <?php if($tipo_usuario == 1) { ?>
-                <th style="width: 10%;">#</th>
                 <th  style=" width: 10%">Unidad de Medida</th>
                 <th  style=" width: 10%">Habilitado</th>
                 <th  style=" width: 10%"> Cambiar Habilitado</th>
                 <th  style=" width: 10%">Eliminar</th><?php } ?>
                 <?php if($tipo_usuario == 2) { ?>
-                <th style="width: 21%;">#</th>
                 <th  style=" width: 25%">Unidad de Medida</th>
                 <th  style="width: 20%">Habilitado</th>
                 
@@ -168,7 +169,7 @@ $result = mysqli_query($conn, $sql);
      </thead>
  </table>
  <div id="div" style = " max-height: 442px;  overflow-y:scroll;">
- <table class="table">
+ <table class="table table-striped" border=".5">
             <tbody>
              <tr>
          <td  colspan="7" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
@@ -177,10 +178,9 @@ $result = mysqli_query($conn, $sql);
 
     $sql = "SELECT * FROM selects_unidad_medida ORDER BY `id` DESC ";
     $result = mysqli_query($conn, $sql);
-    $n=0;
+
     while ($solicitudes = mysqli_fetch_array($result)){
-        $n++;
-        $r=$n+0;
+
 
         ?>
         <style type="text/css">
@@ -190,48 +190,44 @@ $result = mysqli_query($conn, $sql);
    
 </style>
         <tr>
-            <td data-label="N°"><?php echo $r ?></td>
-            <td style="width: 30%;min-width: 100%;" data-label="Nombres">
+            <td style="width: 30%;min-width: 100%;text-align: left;" data-label="Nombres">
                 <?php  echo $solicitudes['unidad_medida']; ?>
                 <input readonly style="width:100%;border:none;background: transparent;" type="hidden" name="cod" value="<?php  echo $solicitudes['unidad_medida']; ?>"></td>
 
             <td style="width: 50%;min-width: 100%;" data-label="Habilitado"   align="center">
-            <input <?php
+            <p <?php
                 if($solicitudes['Habilitado']=='Si') {
-                    echo ' style="background-color:blueviolet ;width:33%; border-radius:100px;font-size: 13px;text-align:center; color: white;margin-top: .2%"';
+                    echo ' style="background-color:blueviolet ;max-width:100%; border-radius:5px;text-align:center; color: white;"';
                     $c='Unidad Disponible';
                 } elseif ($solicitudes['Habilitado']  == 'No') {
                
-                    echo ' style="background-color:red;width:33%; border-radius:100px;font-size: 13px;text-align:center;color: white;margin-top: .2%"';
+                    echo ' style="background-color:red;max-width:100% border-radius:5px;text-align:center;color: white;"';
                     $c='Unidad no Disponible';
                 }
             ?>
- type="text" class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="<?=   $c ?>"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $c ?>"></td>
-<?php if($tipo_usuario == 1) { ?>
-            <td style="width: 15%;min-width: 100%;" data-label="Editar"  align="center">
+ type="text" class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="<?=   $c ?>"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"><?=   $c ?></p></td><?php if($tipo_usuario == 1) { ?>
+            <td style="width: 10%;min-width: 100%;" data-label="Editar">
                  <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="">             
           <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">             
-          <button name='editar' class='btn btn-info btn-sm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
-        </form></td>
+          <button name='editar' class='btn btn-success' style="width: 50%;"  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
+        </form>
             
 
 <!--**********************************************************************************************************************************************************************************-->
   <!--Botones para actualizar y eliminar-->
 
-            <td style="width: 15%;min-width: 100%;" data-label="Eliminar"  align="center">
-               <form action="Controller/Delete-unidad_medida.php" method="POST" style="background:transparent;">
+            <td style="width: 10%;min-width: 100%;"  data-label="Eliminar" >
+               <form action="Controller/Delete-dependencia.php" method="POST" style="background:transparent;">
                     <input type="hidden" name="id" value="<?php  echo $solicitudes['id']; ?>">
-                    <?php if ($solicitudes['Habilitado']=="No") {
-                        echo '<button  onclick="return confirmaion()" class="btn btn-danger btn-sm" type="submit">ELiminar</button>';
-                    }else if ($solicitudes['Habilitado']=="Si") {
-                        echo '<button   id="th" style="cursor: not-allowed;background: rgba(255, 0, 0, 0.5); border: none;" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm text-white">Eliminar</button>';
-                    }?>
                     <input type="hidden" name="Habilitado" value="<?php  echo $solicitudes['Habilitado']; ?>">
-                    
+                   <?php if ($solicitudes['Habilitado']=="No") {
+                        echo '<button  onclick="return confirmaion()" class="btn btn-danger  w-40" type="submit">ELiminar</button>';
+                    }else if ($solicitudes['Habilitado']=="Si") {
+                        echo '<button type="button"  id="th" style="cursor: not-allowed;background: rgba(255, 0, 0, 0.5); border: none;" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger  text-white w-40">Eliminar</button>';
+                    }?>
                 </form>
-            </td><?php } ?>
+            </td></td><?php } ?>
         </tr>
-      
 
  <?php } ?> 
            </tbody>

@@ -1,4 +1,12 @@
-<div id="div">
+
+       <div class="row p-2" >   
+ <div class="col-md-3 mb-2"style="position: initial;" >
+            
+            <input  type="text" name="busqueda" class="form-control" style="float: left;"  id="busqueda" placeholder="Buscar el código del Producto">
+       
+    </div>
+    <div class="col-md-9 mb-2" style="position: initial;float: right;" >
+        <div id="div">
 <form method="POST" action="" style="float: right;margin-left: 0.5%;">
     <input type="hidden" name="columna" value="codProductos">
     <input type="hidden" name="tipo" value="desc">
@@ -42,12 +50,8 @@
     <?php } }?>
 </form>
 <p style="float: right;margin-left: 0.5%;margin-top: .5%;">Ordenar por</p>
-       <div class="row" >   
- <div class="col-md-3 mb-2"style="position: initial;" >
-            
-            <input  type="text" name="busqueda" class="form-control" style="float: left;"  id="busqueda" placeholder="Buscar el código del Producto">
-       
-    </div>
+
+</div>
 </div>
 </div>
      <script>

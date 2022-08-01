@@ -84,6 +84,7 @@ die();
  </div>     
 <?php  } ?>  
  <?php include ('Buscador_ajax/tablaVale.php'); ?>  
+ <div id="x">
  <table class="table table-striped" id="div" style="width: 100%;">
             <thead>
               <tr id="tr">

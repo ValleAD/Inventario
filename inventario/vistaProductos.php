@@ -319,7 +319,7 @@ if (isset($_POST['Fecha'])){
              </button>
          </form>
  </div>     
- <a  href="unidad_medidad.php" class="btn btn-primary" id="w"  style="position: initial; float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a>
+ <a  href="unidad_medidad.php" class="btn btn-primary" id="td"  style="position: initial; float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a>
  <div class="row">   
  <div class="col-md-3"style="position: initial;">
             <section class="well" >

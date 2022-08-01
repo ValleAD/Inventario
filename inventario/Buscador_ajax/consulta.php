@@ -32,7 +32,7 @@ if ($buscarAlumnos->num_rows > 0)
 {
 	$tabla.= '         <style>
              #ssas{display: block;}
-             #td{display: none;}
+            
              #div{display: block;}
              .well{display:block;}
          </style>';  if(isset($_POST['consulta'])){
@@ -134,6 +134,7 @@ echo'
         $stock=number_format($cantidad, 2,".",",");
 		$tabla.='
 		 ';if ($tipo_usuario ==2) {echo'
+         <style> #td{display: none;}</style>
 		<tr>
             <td style="width: 10%;min-width: 100%;" id="th" data-label="Código">'.$productos['codProductos'].'</td>
             <td style="width: 10%;min-width: 100%;" id="th" data-label="Código del Catálogo">'.$productos['catalogo'].'</td>

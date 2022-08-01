@@ -20,7 +20,7 @@ die();
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-
+<link rel="stylesheet" type="text/css" href="styles/estilo_men.css">
     <title>Dependencias</title>
 </head>
 
@@ -72,16 +72,13 @@ $result = mysqli_query($conn, $sql);
         <div class="row">
             <div class="col-sm-12" style="position: initial; margin: auto; margin-top: 2%"><p class="small mb-1"><font color="black"><b>La Dependencia que has Seleccionado:</b></font> <?php echo $productos['dependencia']?></p>
                 <input type="hidden" name="id" value="<?php  echo $productos['id']; ?>">
-                <label for="" style="color:white;" class="small mb-1">Habilitado</label><br> 
-                    <select  class="form-control" name="Habilitado" id="categoria" style="cursor: pointer" required>
-                        <option disabled selected value="">[Seleccione]</option>
-                        <option>Si</option>
-                        <option>No</option>
-                        
-                    </select>
+                <label for="" style="color:white;" class=" mb-1">Habilitado</label><br> 
+                 <input  id="input" type="radio" name="Habilitado" value="Si" style="" required> <label  style="color: white;" id="label1" for="input" > Habilitar  Categoria</label>
+                  <input  id="input1" type="radio" name="Habilitado" value="No" style="" required> <label style="color: white;" id="label1" for="input1" > Desbilitar  Categoria</label><br>
+
             </div>
          </div>
-        <hr>
+        <hr style="background: white;">
         <div class="row">
             <div class="col-sm-12" style="position: initial; margin: auto; margin-bottom: 2%;">
                 <button type="submit" name="Update_Dependencias" class ="btn btn-primary" style="background:rgb(12, 139, 8); margin-right: 1%; border: none">Guardar Cambios</button>
@@ -129,6 +126,11 @@ $result = mysqli_query($conn, $sql);
                 #label{
                     color: white;
                 }
+                 @media (max-width: 952px){
+                #label{
+                    margin-top: 1%;
+                }
+            }
             </style>
             <div class="modal-footer">
         <button name="submit" type="submit" id="Update" class="btn btn-danger" >Agregar</button> 
@@ -198,21 +200,21 @@ $result = mysqli_query($conn, $sql);
             <td style="width: 30%;min-width: 100%;" data-label="Dependencia"><?php  echo $solicitudes['dependencia']; ?></td>
 
             <td style="width: 60%;min-width: 100%;" data-label="Habilitado" align="center">
-            <input  <?php
+            <p <?php
                 if($solicitudes['Habilitado']=='Si') {
-                    echo ' style="background-color:blueviolet;font-size: 11px; width:33%; border-radius:100px;text-align:center; color: white;margin-top: .2%"';
-                    $c='Dependencia Disponible';
+                    echo ' style="background-color:blueviolet ;max-width:100%; border-radius:5px;text-align:center; color: white;"';
+                    $c='Unidad Disponible';
                 } elseif ($solicitudes['Habilitado']  == 'No') {
                
-                    echo ' style="background-color:red;width:33%; border-radius:100px;text-align:center;color: white;font-size: 11px; margin-top: .2%"';
-                    $c='Dependencia no Disponible';
+                    echo ' style="background-color:red;max-width:100% border-radius:5px;text-align:center;color: white;"';
+                    $c='Unidad no Disponible';
                 }
             ?>
- type="text" class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="<?=   $c ?>"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"  value="<?=   $c ?>"></td><?php if($tipo_usuario == 1) { ?>
+ type="text" class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="<?=   $c ?>"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"><?=   $c ?></p></td><?php if($tipo_usuario == 1) { ?>
             <td style="width: 10%;min-width: 100%;" data-label="Editar">
-                 <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="dependencias.php">             
+                 <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="">             
           <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">             
-          <button name='editar' class='btn btn-info btn-sm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
+          <button name='editar' class='btn btn-success' style="width: 50%;"  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
         </form>
             
 
@@ -224,9 +226,9 @@ $result = mysqli_query($conn, $sql);
                     <input type="hidden" name="id" value="<?php  echo $solicitudes['id']; ?>">
                     <input type="hidden" name="Habilitado" value="<?php  echo $solicitudes['Habilitado']; ?>">
                    <?php if ($solicitudes['Habilitado']=="No") {
-                        echo '<button  onclick="return confirmaion()" class="btn btn-danger btn-sm" type="submit">ELiminar</button>';
+                        echo '<button  onclick="return confirmaion()" class="btn btn-danger  w-40" type="submit">ELiminar</button>';
                     }else if ($solicitudes['Habilitado']=="Si") {
-                        echo '<button   id="th" style="cursor: not-allowed;background: rgba(255, 0, 0, 0.5); border: none;" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm text-white">Eliminar</button>';
+                        echo '<button type="button"  id="th" style="cursor: not-allowed;background: rgba(255, 0, 0, 0.5); border: none;" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger  text-white w-40">Eliminar</button>';
                     }?>
                 </form>
             </td></td><?php } ?>

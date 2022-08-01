@@ -72,15 +72,13 @@
             <td style="width:11%;min-width: 100%;" id="th" data-label="solicitar">
             ';?>
             <?php 
-            if($productos['codProductos']==0) {
-                   echo 'Sin Productos';
-                }if ($stock!= 0.00) {
+
                 echo'
                  <input   id="'.$productos["cod"] .'" type="checkbox" name="id[]" value="'.$productos["cod"] .'"> <label  id="l" for="'.$productos["cod"] .'" > </label>  
            
          </tr>
         ';
-    }
+    
     }
 
     echo'</tbody></table></div></div>';
@@ -96,7 +94,7 @@
             }
         </style>
 <h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda. <a href='' style='font-size: 30px' class='close'>&times;</a></h1> 
-           <div id="y">    
+           <div id="x">    
         <table class="table  table-responsive  table-striped" id="div" style=" width: 100%;">
      
                 <thead>
