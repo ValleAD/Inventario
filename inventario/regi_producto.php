@@ -213,11 +213,9 @@ die();
 </style>
 <div class="col-md-6" style="position: initial;padding: 0%;margin: 0%;">
     <div>
-      <button style="cursor: default;color: white; " id="btn-agregar" class=" btn boton_2 my-3" type="button" >Agregar Producto
-        <svg class="bi" width="20" height="20" fill="currentColor">
-        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#plus-circle-fill"/>
-        </svg>
-      </button>                
+      <input style="cursor: default;color: white; " id="btn-agregar" class=" btn boton_2 my-3"   value="Agregar Producto">
+        
+      
     </div>
 </div>
     </div>
@@ -248,6 +246,9 @@ die();
         
 // El encargado de agregar más formularios
 $("#btn-agregar").click(function(){
+    for (var i = Things.length - 1; i >= 0; i--) {
+        Things[i];
+    }
     // Agregamos el formulario
     $("#Registro").prepend(formulario_registro);
 

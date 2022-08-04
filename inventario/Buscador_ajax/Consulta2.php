@@ -18,15 +18,21 @@ $tipo_usuario = $_SESSION['tipo_usuario'];?>
 <?php include ('../Model/conexion.php');
 
 $tabla="";
-$query="SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida,stock, precio, fecha_registro FROM tb_productos GROUP BY precio, codProductos";
+$query="SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos GROUP BY codProductos HAVING COUNT(*) ORDER BY codProductos desc ";
 
 ///////// LO QUE OCURRE AL TECLEAR SOBRE EL INPUT DE BUSQUEDA ////////////
 if(isset($_POST['consulta']))
 {
     $q=$conn->real_escape_string($_POST['consulta']);
-    $query="SELECT * FROM tb_productos WHERE 
-        codProductos LIKE '%".$q."%'";
+    $query="SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos  WHERE 
+        codProductos LIKE '%".$q."%' GROUP BY codProductos HAVING COUNT(*) ORDER BY codProductos desc ";
+        $result = mysqli_query($conn, $query);
+         while ($productos = mysqli_fetch_array($result)){
+         $cantidad=$productos['SUM(stock)'];
+        $stock=number_format($cantidad, 2,".",",");
+    }
 }
+
 
 $buscarAlumnos=$conn->query($query);
 if ($buscarAlumnos->num_rows > 0)
@@ -87,7 +93,7 @@ if ($buscarAlumnos->num_rows > 0)
             
         $precio=$productos['precio'];
        $precio1=number_format($precio, 2,".",",");
-       $cantidad=$productos['stock'];
+       $cantidad=$productos['SUM(stock)'];
         $stock=number_format($cantidad, 2,".",",");
         $tabla.='
         <tr>

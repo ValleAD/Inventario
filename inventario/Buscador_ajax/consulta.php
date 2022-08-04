@@ -17,14 +17,19 @@ $tipo_usuario = $_SESSION['tipo_usuario'];?>
 <?php include ('../Model/conexion.php');
 
 $tabla="";
-$query="SELECT * FROM tb_productos ORDER BY codProductos desc";
+$query="SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos GROUP BY codProductos HAVING COUNT(*) ORDER BY codProductos desc ";
 
 ///////// LO QUE OCURRE AL TECLEAR SOBRE EL INPUT DE BUSQUEDA ////////////
 if(isset($_POST['consulta']))
 {
-	$q=$conn->real_escape_string($_POST['consulta']);
-	$query="SELECT * FROM tb_productos WHERE 
-		codProductos LIKE '%".$q."%' ";
+    $q=$conn->real_escape_string($_POST['consulta']);
+    $query="SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos  WHERE 
+        codProductos LIKE '%".$q."%' GROUP BY codProductos HAVING COUNT(*) ORDER BY codProductos desc ";
+        $result = mysqli_query($conn, $query);
+         while ($productos = mysqli_fetch_array($result)){
+         $cantidad=$productos['SUM(stock)'];
+        $stock=number_format($cantidad, 2,".",",");
+    }
 }
 
 $buscarAlumnos=$conn->query($query);
@@ -130,7 +135,7 @@ echo'
         $r=$n+0;
          $precio=$productos['precio'];
         $precio1=number_format($precio, 2,".",",");
-        $cantidad=$productos['stock'];
+        $cantidad=$productos['SUM(stock)'];
         $stock=number_format($cantidad, 2,".",",");
 		$tabla.='
 		 ';if ($tipo_usuario ==2) {echo'
@@ -164,14 +169,14 @@ echo'
             </td>
             <td style="width:10%;min-width: 100%;" id="th"  data-label="Eliminar">
             ' ;
-            if ($productos['stock']==0) {?>
+            if ($productos['SUM(stock)']==0) {?>
                 <form method="POST" action="Controller/Delete_producto.php">
                     <input type="hidden" name="cod" value="<?php echo $productos['cod'] ?>">
-                    <input type="hidden" name="id" value="<?php echo $productos['stock'] ?>">
+                    <input type="hidden" name="id" value="<?php echo $productos['SUM(stock)'] ?>">
                     <button   id="th" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm " class="text-primary" onclick="return confirmaion()">Eliminar</button>
                 </form>
            <?php  };
-            if ($productos['stock']!=0) {
+            if ($productos['SUM(stock)']!=0) {
                  echo'
             <button   id="th" style="cursor: not-allowed;background: rgba(255, 0, 0, 0.5); border: none;" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm text-white">Eliminar</button>
             ';

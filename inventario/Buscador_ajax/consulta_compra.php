@@ -18,7 +18,7 @@ $tipo_usuario = $_SESSION['tipo_usuario'];?>
 <?php include ('../Model/conexion.php');
 
 $tabla="";
-$query="SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida,stock, precio, fecha_registro FROM tb_productos GROUP BY precio, codProductos";
+$query="SELECT SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos GROUP BY precio, codProductos";
 
 ///////// LO QUE OCURRE AL TECLEAR SOBRE EL INPUT DE BUSQUEDA ////////////
 if(isset($_POST['consulta']))
@@ -87,7 +87,7 @@ if ($buscarAlumnos->num_rows > 0)
             
         $precio=$productos['precio'];
        $precio1=number_format($precio, 2,".",",");
-       $cantidad=$productos['stock'];
+       $cantidad=$productos['SUM(stock)'];
         $stock=number_format($cantidad, 2,".",",");
         $tabla.='
         <tr>

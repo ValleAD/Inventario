@@ -1,15 +1,21 @@
 <?php include ('../Model/conexion.php');
 
 $tabla="";
-$query="SELECT * FROM tb_productos ORDER BY codProductos";
+$query="SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos GROUP BY codProductos HAVING COUNT(*) ORDER BY codProductos desc ";
 
 ///////// LO QUE OCURRE AL TECLEAR SOBRE EL INPUT DE BUSQUEDA ////////////
 if(isset($_POST['consulta']))
 {
-	$q=$conn->real_escape_string($_POST['consulta']);
-	$query="SELECT * FROM tb_productos WHERE 
-		codProductos  LIKE '%".$q."%'";
+    $q=$conn->real_escape_string($_POST['consulta']);
+    $query="SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos  WHERE 
+        codProductos LIKE '%".$q."%' GROUP BY codProductos HAVING COUNT(*) ORDER BY codProductos desc ";
+        $result = mysqli_query($conn, $query);
+         while ($productos = mysqli_fetch_array($result)){
+         $cantidad=$productos['SUM(stock)'];
+        $stock=number_format($cantidad, 2,".",",");
+    }
 }
+
 
 $buscarAlumnos=$conn->query($query);
 if ($buscarAlumnos->num_rows > 0)
