@@ -228,7 +228,7 @@ if (isset($_POST['Fecha'])){
  <div class="row">   
  <div class="col-md-3"style="position: initial;">
             <section class="well" >
-            <input type="text" name="busqueda" class="form-control"  id="busqueda" placeholder="Buscar...">
+            <input type="number" name="busqueda" class="form-control"  id="busqueda" placeholder="Buscar...">
         </section>
     </div>
 </div>
