@@ -184,33 +184,33 @@ if(isset($_POST['codigo'])){?>
         </div>
     </div>
     <br>
-      <table class="table table-striped"  style=" width: 100%">
+      <table class="table  table-striped"  style=" width: 100%">
             <thead>
               <tr id="tr">
-               
-                <th style="width: 10%;">Código</th>
-                <th style="width: 50%;">Descripción</th>
-                <th style="width: 10%;">U/M</th>
-                <th style="width: 15%;">Productos Disponibles</th>
-                <th style="width: 50%;">Cantidad</th>
-                <th style="width: 15%;">Costo unitario</th>
-               <th>Eliminar Fila</th>
+                <th>Código</th>
+                <th >Descripción</th>
+                <th>U/M</th>
+                <th >Productos Disponibles</th>
+                <th>Cantidad</th>
+                <th>Costo unitario</th>
+               <th >Eliminar Fila</th>
                
               </tr>
 
-            <td id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>
+          <!--  <td id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>-->
               
             </thead>
 
             <tbody>
 
+    <?php 
+         for($i = 0; $i < count($_POST['codigo']); $i++){
  
-
-       <?php
-  for($i = 0; $i < count($_POST['codigo']); $i++){
-     $codigo = $_POST['codigo'][$i];
+    $codigo= $_POST['codigo'][$i];
+    
+    
     //    $sql = "SELECT * FROM tb_productos";
-    $sql = "SELECT codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE codProductos='$codigo' GROUP BY precio, codProductos";
+    $sql = "SELECT codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE cod='$codigo' GROUP BY precio, codProductos";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
@@ -221,6 +221,8 @@ if(isset($_POST['codigo'])){?>
 
         $stock=number_format($cantidad, 2,".",",");
       ?>
+
+       
                
 
 
@@ -239,18 +241,18 @@ if(isset($_POST['codigo'])){?>
                <input type="hidden" name="desc[]" value="<?php  echo $productos['descripcion']; ?>">
                <input  type="hidden" name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>">
                 </td>
-               <td data-label="Descripción"><?php echo $productos['descripcion'] ?>
+               <td style="min-width: 100%;" data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
                <td data-label="Unidad De Medida"><?php echo $productos['unidad_medida'] ?>
                 <input type="hidden"  name="stock[]"  value ="<?php  echo $stock; ?>">
                 <input  type="hidden" name="cu[]" value ="<?php  echo $precio ?>">
                </td>
                <td data-label="Productos Disponibles"><?php  echo $stock; ?></td>
-               <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="number" step="0.01" class="form-control"  name="cant[]" required></td>
+               <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="number" step="0.01" min="0.00" max="<?php echo $stock ?>"  class="form-control"  name="cant[]" required></td>
                <td data-label="Precio"><?php  echo $precio1 ?></td> 
                <td><input type="button" class="borrar btn btn-success my-1" value="Eliminar" /></td>   
             </tr>
+<?php }} ?> 
 
-<?php }} ?>
             </tbody>
         </table>
 

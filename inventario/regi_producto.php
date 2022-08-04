@@ -102,8 +102,8 @@ die();
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#card-list"/>
                 </svg>
                  </label>
-                    <select style="position: initial;" class="form-control" name="categoria[]"  id="div" required style="cursor: pointer" required>
-                        <option  selected disabled value="">Seleccione</option>
+                    <select style="position: initial;" class="form-control" multiple aria-label="multiple select example" name="categoria[]"  id="div" required style="cursor: pointer" required>
+                        
                      <?php 
                         $sql = "SELECT * FROM  selects_categoria";
                         $result = mysqli_query($conn, $sql);
@@ -168,8 +168,9 @@ die();
                 </svg>
                  </label>
              
-                <select style="position: initial;" class="form-control"  id="div" name="um[]" id="um" required>
-                  <option selected disabled value="">Seleccione</option>
+                <select style="position: initial;" class="form-control" multiple aria-label="multiple select example"  id="div" name="um[]" id="um" required>
+                  
+
                  <?php 
                         $sql = "SELECT * FROM  selects_unidad_medida";
                         $result = mysqli_query($conn, $sql);

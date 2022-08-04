@@ -17,14 +17,14 @@ $tipo_usuario = $_SESSION['tipo_usuario'];?>
 <?php include ('../Model/conexion.php');
 
 $tabla="";
-$query="SELECT * FROM tb_productos ORDER BY codProductos";
+$query="SELECT * FROM tb_productos ORDER BY codProductos desc";
 
 ///////// LO QUE OCURRE AL TECLEAR SOBRE EL INPUT DE BUSQUEDA ////////////
 if(isset($_POST['consulta']))
 {
 	$q=$conn->real_escape_string($_POST['consulta']);
 	$query="SELECT * FROM tb_productos WHERE 
-		codProductos ='$q' ";
+		codProductos LIKE '%".$q."%' ";
 }
 
 $buscarAlumnos=$conn->query($query);

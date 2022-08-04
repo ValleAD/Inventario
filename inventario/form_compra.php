@@ -248,7 +248,7 @@ if(isset($_POST['codigo'])){ ?>
                     <div class="form-group" style="position: ; margin: 2%">
                         <label>Unidad de medida (U/M)</label>
 
-                 <select id="div" class="form-control" class="form-select" multiple aria-label="" name="um[]" required>
+                 <select id="div" class="form-control" class="form-select" multiple aria-label="multiple select example" name="um[]" required>
 
                             <?php
                      $sql = "SELECT * FROM  selects_unidad_medida";
@@ -269,7 +269,7 @@ if(isset($_POST['codigo'])){ ?>
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#badge-4k"/>
                 </svg>
                  </label>
-                <input style="position: initial;" disabled  type="number" step="0.001" name="" class="form-control" placeholder="" required value="<?php echo $stock?>">
+                <input style="position: initial;" disabled  type="number" step="0.001"   name="" class="form-control" placeholder="" required value="<?php echo $stock?>">
             </div>
             </div>
             <div class="form-group" style="position: ; margin: 2%">
@@ -280,7 +280,7 @@ if(isset($_POST['codigo'])){ ?>
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#badge-4k"/>
                 </svg>
                  </label>
-                <input style="position: initial;"  placeholder="Ingrese la Cantidad" type="number" step="0.01" name="cant[]" class="form-control" placeholder="" required value="">
+                <input style="position: initial;"  placeholder="Ingrese la Cantidad" type="number" step="0.01" min="0.00" max="<?php echo $stock ?>" name="cant[]" class="form-control" placeholder="" required value="">
             </div>
             </div>
            <div class="form-group" style="position: ; margin: 2%">
