@@ -56,7 +56,7 @@ form{
     }
     </style>
     <br><br><br>
-            <h1 class="text-center mg-t" style="margin-top: -0.5%;" >Solicitudes de Almacen</h1><br>
+            <h1 class="text-center mg-t" style="margin-top: 2%;">Solicitudes de Almacen</h1><br>
 <section  class="mx-3 p-2" style="background-color:white; border-radius:5px;margin-bottom: 3%;">
     <h1 id="td"class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>        
 <?php if ($tipo_usuario==1) {?>

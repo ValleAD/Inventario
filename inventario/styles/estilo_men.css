@@ -8,6 +8,7 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
+
 }
  html {
     scrollbar-width: thin;
@@ -179,10 +180,16 @@ header nav ul li .caret {
 }
 
 @media screen and (max-width: 1119px) {
-
+#h2{
+    margin-top: 35%;
+}
  #th{
     font-size: 12px;
  }
+
+}
+@media screen and (max-width: 801px) {
+
 }
 @media screen and (max-width: 800px) {
 

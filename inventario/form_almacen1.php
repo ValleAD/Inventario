@@ -86,7 +86,7 @@ die();
   }
         </style>
         <br><br><br>       
-          <font color="white"> <h1 style=" text-align: center;">Solicitud de Almacen</h1> </font>
+          <font color="white"> <h1 style=" text-align: center;margin-top: 2%">Solicitud de Almacen</h1> </font>
 <section>
 
 <?php include ('Buscador_ajax/cabezera.php') ?>

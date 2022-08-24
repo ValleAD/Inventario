@@ -83,7 +83,7 @@ die();
   }
         </style>
         <br><br><br>       
-          <font color="white"> <h1 style=" text-align: center;">Solicitud de Vale</h1> </font>
+          <font color="white"> <h1 style=" text-align: center;margin-top: 2%;">Solicitud de Vale</h1> </font>
 <section>
 
 

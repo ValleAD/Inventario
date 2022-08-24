@@ -1,20 +1,4 @@
 
-    <?php
-session_start();
- if (!isset($_SESSION['signin'])>0) {
-    # code...
-    echo ' 
-    <script>
-        window.location ="log/signin.php";
-        session_destroy();  
-                </script>
-die();
-
-    ';
-}
-$tipo_usuario = $_SESSION['tipo_usuario'];?>
-
-
 <?php include ('../Model/conexion.php');
 
 $tabla="";
@@ -108,7 +92,7 @@ if ($buscarAlumnos->num_rows > 0)
             <td style="width:11%;min-width: 100%;" id="th" data-label="solicitar">
             
             
-                 <input   id="'.$productos["cod"] .'" type="checkbox" name="id[]" value="'.$productos["cod"] .'"> <label  id="l" for="'.$productos["cod"] .'" > </label>  
+                 <input   id="'.$productos["codProductos"] .'" type="checkbox" name="id[]" value="'.$productos["codProductos"] .'"> <label  id="l" for="'.$productos["codProductos"] .'" > </label>  
            
          </tr>
         ';

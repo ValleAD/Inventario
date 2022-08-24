@@ -40,6 +40,9 @@ die();
         margin: -15%6%1%1%;
         width: 98%;
     }
+    h2{
+    margin-top: 35%;
+}
 </style>
 <br><br><br>
 <?php      
@@ -172,7 +175,7 @@ $result = mysqli_query($conn, $sql);
      </thead>
  </table>
  <div id="div" style = " max-height: 442px;  overflow-y:scroll;">
- <table class="table table-striped" border=".5">
+ <table class="table table-striped" >
             <tbody>
              <tr>
          <td  colspan="7" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>

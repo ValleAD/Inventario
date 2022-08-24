@@ -101,7 +101,7 @@ echo'
         $r=$n+0;
          $precio=$productos['precio'];
         $precio1=number_format($precio, 2,".",",");
-        $cantidad=$productos['stock'];
+        $cantidad=$productos['SUM(stock)'];
         $stock=number_format($cantidad, 2,".",",");
 		$tabla.='
 		 

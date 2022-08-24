@@ -7,7 +7,7 @@ if(!isset($_SESSION['signin'])){
 $tipo_usuario = $_SESSION['tipo_usuario'];
 $idusuario = $_SESSION['iduser'];
 ?><!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -317,7 +317,7 @@ background:burlywood;
 </div>
 </div>
          <?php } ?>
-
+<?php include ('templates/loader.php') ?>
        
     <script src="Plugin/bootstrap/js/jquery-latest.js"></script>
     <script src="Plugin/bootstrap/js/datatables.min.js"></script>

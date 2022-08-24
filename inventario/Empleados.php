@@ -41,6 +41,7 @@ die();
     h2,h3{
         color: white;
         text-shadow: 1px 1px 5px black;
+        margin-top: 2%
     }
  @media (max-width: 952px){
    #form{

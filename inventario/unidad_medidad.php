@@ -44,6 +44,7 @@ die();
     #div{
         padding: 2%;
     }
+   
 
 </style>
 <br><br><br>
@@ -94,7 +95,7 @@ $result = mysqli_query($conn, $sql);
 } 
 ?>
 
-            <h2 class="text-center " >Unidades Del Sistema</h2><br>
+            <h2  class="text-center my-5">Unidades Del Sistema</h2><br>
     <section style="margin:1%;padding: 1%; border-radius: 5px; background: white; ">
 
 <?php if($tipo_usuario == 1) { ?>
@@ -169,7 +170,7 @@ $result = mysqli_query($conn, $sql);
      </thead>
  </table>
  <div id="div" style = " max-height: 442px;  overflow-y:scroll;">
- <table class="table table-striped" border=".5">
+ <table class="table table-striped" >
             <tbody>
              <tr>
          <td  colspan="7" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>

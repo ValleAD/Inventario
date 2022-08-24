@@ -39,7 +39,7 @@ die();
 
     </style>
     <br><br><br>
-    <center><h1 style="margin-top:5px">Solicitudes Vale</h1></center><br>
+    <center><h1 style="margin-top:2%">Solicitudes Vale</h1></center><br>
      <div  class="mx-3 p-2 mb-5" style="background-color: white; border-radius:5px; ">
         <h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
           <?php if ($tipo_usuario==1) {?>  

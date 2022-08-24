@@ -28,7 +28,11 @@ die();
     <body >
         <style>  
          #section{
-            margin: 1%;
+
+            margin-top: 3%;
+            margin-bottom: 1%;
+            margin-left: 1%;
+            margin-right: 1%;
             padding: 1%;
             }
             #buscar{
@@ -87,6 +91,7 @@ die();
         <br><br><br>
 
 <form id="section" action="Controller/añadir.php" method="POST" >
+    
 <font color=black><h3 style="text-align: center; font-weight: bold">Registro de Productos</h3></font>
    <div id="Registro"  class="row container-fluid" style="position: initial;"  >
 
@@ -127,21 +132,23 @@ die();
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#123"/>
                 </svg>
                  </label>
-                <input style="position: initial;" type="number" name="cod[]" class="form-control" placeholder="Ingrese código de producto " required>
+                <input style="position: initial;" type="number" name="cod[]" class="form-control" id="busqueda" placeholder="Ingrese código de producto " required>
             </div>
+                 <section id="tabla_resultado" style="margin: 0px;"></section>
             </div>
 
             <div class="form-group" style="position: initial;">
               <label style="color: #000">Codificación de Catálogo</label> 
-                               <div style="position: initial;" class="input-group mb-3">
+                <div style="position: initial;" class="input-group mb-3">
                  <label class="input-group-text" for="inputGroupSelect01">
                  
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#123"/>
                 </svg>
                 </label>
-              <input style="position: initial;" type="number" name="catal[]" class="form-control" placeholder="Ingrese código" required>
+              <input style="position: initial;" type="number" name="catal[]" class="form-control" id="busq" placeholder="Ingrese código" required>
           </div>
+               <section id="resultado" style="margin: 0px;"></section>
             </div>
 
           
@@ -154,9 +161,8 @@ die();
                 </svg>
                  </label>
               <textarea style="position: initial;" class="form-control" name="descr[]"  placeholder="Ingrese la Descripción" required id="floatingTextarea"></textarea>
-           
-
         </div>
+
     </div>
 
         <div class="form-group" >
@@ -223,6 +229,7 @@ die();
     <hr />
     
     <div class=" col-md-12 text-center" style="padding: 0%;">
+        
         <button id="buscar1" class="btn btn-success btn-lg my-2" name="submit" style="margin-bottom: 2%;">Guardar 
             <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#save"/>
@@ -234,7 +241,9 @@ die();
                         </svg>
         </a>
     </div>
-
+<input type="hidden" name="dia" value="<?php echo date('d') ?>">
+<input type="hidden" name="mes" value="<?php echo date('m') ?>">
+<input type="hidden" name="año" value="<?php echo date('Y') ?>">
 </form>
 
 
@@ -272,5 +281,68 @@ $("#btn-agregar").click(function(){
         });
     })
 </script>
+<script>
+        $(obtener_registros());
+
+function obtener_registros(consulta)
+{
+    $.ajax({
+        url : 'Buscador_ajax/newProducto.php',
+        type : 'POST',
+        dataType : 'html',
+        data : { consulta: consulta },
+        })
+
+    .done(function(resultado){
+        $("#tabla_resultado").html(resultado);
+    })
+}
+
+$(document).on('keyup', '#busqueda', function()
+{
+    var valorBusqueda=$(this).val();
+    if (valorBusqueda!="")
+    {
+        obtener_registros(valorBusqueda);
+    }
+    else
+        {
+            obtener_registros();
+        }
+});
+
+</script>
+<script>
+        $(obtener_registros1());
+
+function obtener_registros1(consulta)
+{
+    $.ajax({
+        url : 'Buscador_ajax/newProducto1.php',
+        type : 'POST',
+        dataType : 'html',
+        data : { consulta: consulta },
+        })
+
+    .done(function(resultado){
+        $("#resultado").html(resultado);
+    })
+}
+
+$(document).on('keyup', '#busq', function()
+{
+    var valorBusqueda=$(this).val();
+    if (valorBusqueda!="")
+    {
+        obtener_registros1(valorBusqueda);
+    }
+    else
+        {
+            obtener_registros1();
+        }
+});
+
+</script>
+
   </body>
   </html>

@@ -86,7 +86,7 @@ die();
    }
     </style>
 <br><br><br>
-           <h1 style=" text-align: center;">Solicitud de Bodega</h1>
+           <h1 style="color: white; text-align: center;margin-top: 2%">Solicitud de Bodega</h1>
 
 <section id="act">
     <?php include ('Buscador_ajax/cabezera.php') ?>

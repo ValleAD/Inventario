@@ -35,7 +35,7 @@ CREATE TABLE tb_productos (
   fecha_registro date NOT NULL DEFAULT current_timestamp()
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
-
+ALTER TABLE `tb_productos` ADD `Dia` INT(2) NOT NULL AFTER `fecha_registro`, ADD `Mes` INT(2) NOT NULL AFTER `Dia`, ADD `Año` INT(4) NOT NULL AFTER `Mes`;
 
 
 CREATE TABLE tb_usuarios (

@@ -32,26 +32,24 @@ if (isset($_POST['submit'])) {
 		$_SESSION['iduser'] = $row['id'];
 		header("Location: ../home.php");
 		}else{
-			$eror= '<p class="alert-heading">       
-			 <svg class="bi" width="20" height="20" fill="currentColor">
-        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#exclamation-triangle-fill"/>
-                        </svg>
-                        <svg class="bi" width="20" height="20" fill="currentColor">
-                        <use xlink:href="../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
-                        </svg>No Puede Entrar Usuario Desabilitado</p>';
+			$eror= '<div class="mx-2 alert alert-warning alert-dismissible fade show" role="alert">
+						  <strong>No Puede Entrar el Usuario Esta Desabilitado</strong>
+						  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						    <span aria-hidden="true">&times;</span>
+						  </button>
+						</div>';
 		
 	session_destroy();  
 		}
 		
 		
 	} else {
-		$eror= '<p class="alert-heading">        
-		<svg class="bi" width="20" height="20" fill="currentColor">
-        <use xlink:href="../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#exclamation-triangle-fill"/>
-                        </svg>
-                        <svg class="bi" width="20" height="20" fill="currentColor">
-                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
-                        </svg> Usuario o Contraseña son Incorrectos </p>';
+		$eror= '<div class="mx-2 alert alert-warning alert-dismissible fade show" role="alert">
+						  <strong>Usuario o Contraseña Son Incorrectos</strong>
+						  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+						    <span aria-hidden="true">&times;</span>
+						  </button>
+						</div>';
 
 	}
 
@@ -83,13 +81,12 @@ if (isset($_POST['submit'])) {
 <style type="text/css">
 
 	}
-	button{
-		margin-top:  5%;
-	}
+
 
 button:hover{
-	transition: 2s;
-	font-size: 1.5em;
+	color: white;
+	background:rgb(9, 94, 61);
+
 }
 </style>
    
@@ -116,12 +113,8 @@ button:hover{
                                         </form>
                                     </div>
                                     <?php if (isset($_POST['submit'])) { ?>
-                           <div class="mx-2 alert alert-warning alert-dismissible fade show" role="alert">
-						  <strong><?php echo $eror ?></strong>
-						  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						    <span aria-hidden="true">&times;</span>
-						  </button>
-						</div><?php } ?>
+                                    	<?php echo $eror ?>
+                           <?php } ?>
                                     <div class="card-footer text-center">
                                         <div class="small"><a href="signup.php">No tienes cuenta ? Registrarse</a></div>
                                         <div class="small mt-2"><form action="Invitado/invitado.php">
