@@ -17,14 +17,14 @@ $tipo_usuario = $_SESSION['tipo_usuario'];?>
 <?php include ('../Model/conexion.php');
 
 $tabla="";
-$query="SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos GROUP BY codProductos,precio HAVING COUNT(*) ORDER BY codProductos desc ";
+$query="SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos GROUP BY codProductos,precio HAVING COUNT(*) ORDER BY fecha_registro DESC ";
 
 ///////// LO QUE OCURRE AL TECLEAR SOBRE EL INPUT DE BUSQUEDA ////////////
 if(isset($_POST['consulta']))
 {
     $q=$conn->real_escape_string($_POST['consulta']);
     $query="SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos  WHERE 
-        codProductos LIKE '%".$q."%' GROUP BY codProductos,precio HAVING COUNT(*) ORDER BY codProductos desc ";
+        codProductos LIKE '%".$q."%' GROUP BY codProductos,precio HAVING COUNT(*) ORDER BY codProductos,fecha_registro desc ";
         $result = mysqli_query($conn, $query);
          while ($productos = mysqli_fetch_array($result)){
          $cantidad=$productos['SUM(stock)'];

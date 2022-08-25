@@ -179,7 +179,8 @@ header nav ul li .caret {
 }
 }
 
-@media screen and (max-width: 1119px) {
+@media screen and (min-width: 1119px) {
+
 #h2{
     margin-top: 35%;
 }
@@ -188,11 +189,16 @@ header nav ul li .caret {
  }
 
 }
-@media screen and (max-width: 801px) {
-
+@media screen and (min-width: 801px) {
+    #submit{
+    margin-top: 9%;
+}
 }
 @media screen and (max-width: 800px) {
-
+    #submit{
+        margin-top: 3%;
+    width: 100%;
+}
     body {
         padding-top:80px;
     }

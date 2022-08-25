@@ -241,9 +241,9 @@ die();
                         </svg>
         </a>
     </div>
-<input type="hidden" name="dia" value="<?php echo date('d') ?>">
-<input type="hidden" name="mes" value="<?php echo date('m') ?>">
-<input type="hidden" name="año" value="<?php echo date('Y') ?>">
+<input type="hidden" name="dia" id="dia">
+<input type="hidden" name="mes" value="10">
+<input type="hidden" name="año" id="ano">
 </form>
 
 
@@ -343,6 +343,21 @@ $(document).on('keyup', '#busq', function()
 });
 
 </script>
+<script type="text/javascript">
+    window.onload = function(){
+  var fecha = new Date(); //Fecha actual
+  var mes = fecha.getMonth()+1; //obteniendo mes
+  var dia = fecha.getDate(); //obteniendo dia
+  var ano = fecha.getFullYear(); //obteniendo año
+  if(dia<10)
+    dia='0'+dia; //agrega cero si el menor de 10
+  if(mes<10)
+    mes='0'+mes //agrega cero si el menor de 10
+  document.getElementById('dia').value=dia;
+  document.getElementById('mes').value=mes;
+  document.getElementById('ano').value=ano;
+}
 
+</script>
   </body>
   </html>

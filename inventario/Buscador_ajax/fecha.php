@@ -12,8 +12,8 @@
                      <input type="DATE" id="fechaActual1" class="form-control" name="F2" required>
                     
                     </div>
-                    <div  class="col-md-4 " style="position: initial;margin-top: 2.5%;">
-                       <input type="submit"  class=" btn btn-success" name="Fecha" value="Filtrar Fechas">
+                    <div  class="col-md-4 " style="position: initial">
+                      <input type="submit"  class="btn btn-success " id="submit"  name="Fecha" value="Filtrar Fechas">
                     </div>
                     
                 </div>
@@ -34,7 +34,13 @@
                         </select>
                         <?php if (isset($_POST['dia'])){?>
                             <style type="text/css">#dia{display: none;}</style>
-                        <button type="button" readonly style="width: 100%;background-color:green ;position: initial; border-radius:5px;text-align:center; color: white;" class="form-control "><?php echo $_POST['dia'] ?></button>
+                        <button type="button" readonly style="width: 100%;background-color:green ;position: initial; border-radius:5px;text-align:center; color: white;" class="form-control "><?php echo $_POST['dia'] ?>
+                        <a href="" style="float: right;color: white;">
+                                <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#arrow-counterclockwise"/>
+                        </svg>
+                            </a>
+                        </button>
 
                         <?php } ?>
                     </div>
@@ -69,7 +75,13 @@ echo '<option value="'.$i.'">'.$Meses[($i)-1].'</option>';
                             if ($mes==12) { $mes="Diciembre";}?>
 
                             <style type="text/css">#mes{display: none;}</style>
-                        <button type="button" readonly style="width: 100%;background-color:green ;position: initial; border-radius:5px;text-align:center; color: white;" class="form-control "><?php echo $mes ?></button>
+                        <button type="button" readonly style="width: 100%;background-color:green ;position: initial; border-radius:5px;text-align:center; color: white;" class="form-control "><?php echo $mes ?>
+                            <a href="" style="float: right;color: white;">
+                                <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#arrow-counterclockwise"/>
+                        </svg>
+                            </a>
+                        </button>
                         <?php } ?>
                     </div>
     <div class="col-md-4" style="position: initial;">
@@ -82,7 +94,13 @@ echo '<option value="'.$i.'">'.$Meses[($i)-1].'</option>';
                         </select>
                         <?php if (isset($_POST['año'])){?>
                             <style type="text/css">#año{display: none;}</style>
-                        <button type="button" readonly style="width: 100%;background-color:green ;position: initial; border-radius:5px;text-align:center; color: white;" class="form-control "><?php echo $_POST['año'] ?></button>
+                        <button type="button" readonly style="width: 100%;background-color:green ;position: initial; border-radius:5px;text-align:center; color: white;" class="form-control "><?php echo $_POST['año'] ?>
+                            <a href="" style="float: right;color: white;">
+                                <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#arrow-counterclockwise"/>
+                        </svg>
+                            </a>   
+                        </button>
                         <?php } ?>
                     </div>
                     </div>
@@ -178,7 +196,7 @@ echo '<option value="'.$i.'">'.$Meses[($i)-1].'</option>';
   
 </div> 
             <?php 
-            if (isset($_POST['mes'])){ $mes=$_POST['mes'];
+            if (isset($_POST['mes'])){ $mes=$_POST['mes'];$mes1=$_POST['mes'];
             if ($mes==1)  { $mes="Enero";}
             if ($mes==2)  { $mes="Febrero";}
             if ($mes==3)  { $mes="Marzo";}
@@ -190,8 +208,22 @@ echo '<option value="'.$i.'">'.$Meses[($i)-1].'</option>';
             if ($mes==9)  { $mes="Septiembre";}
             if ($mes==10) { $mes="Octubre";}
             if ($mes==11) { $mes="Noviembre";}
-            if ($mes==12) { $mes="Diciembre";}?><br>
-                <p align="center"><b>El Mes selecionado: </b><?php echo $mes ?></p>
+            if ($mes==12) { $mes="Diciembre";}
+            if ($mes1=="Enero")     { $mes1=1;}
+            if ($mes1=="Febrero")   { $mes1=2;}
+            if ($mes1=="Marzo")     { $mes1=3;}
+            if ($mes1=="Abril")     { $mes1=4;}
+            if ($mes1=="Mayo")      { $mes1=5;}
+            if ($mes1=="Junio")     { $mes1=6;}
+            if ($mes1=="Junio")     { $mes1=7;}
+            if ($mes1=="Agosto")    { $mes1=8;}
+            if ($mes1=="Septiembre"){ $mes1=9;}
+            if ($mes1=="Octubre")   { $mes1==10;}
+            if ($mes1=="Noviembre") { $mes1==11;}
+            if ($mes1=="Diciembre") { $mes1==12;}
+            if ($mes1 <=9) {$mes2=0;}
+            if ($mes1 >=10) {$mes2="";} ?><br>
+                <p align="center"><b>El Mes selecionado: </b><?php echo $mes." ("."<b>Mes en Numero: </b>".$mes2.$mes1.")" ?></p>
 
                                 <style type="text/css">
                     .hidden{
@@ -256,9 +288,9 @@ echo '<option value="'.$i.'">'.$Meses[($i)-1].'</option>';
             if ($mes=="Junio")     { $mes=7;}
             if ($mes=="Agosto")    { $mes=8;}
             if ($mes=="Septiembre"){ $mes=9;}
-            if ($mes=="Octubre")   { $mes==10;}
-            if ($mes=="Noviembre") { $mes==11;}
-            if ($mes=="Diciembre") { $mes==12;}
+            if ($mes=="Octubre")   { $mes=10;}
+            if ($mes=="Noviembre") { $mes=11;}
+            if ($mes=="Diciembre") { $mes=12;}
                    $sql = "SELECT * FROM `tb_productos` WHERE mes =$mes";
         $result = mysqli_query($conn, $sql);
             while ($productos = mysqli_fetch_array($result)){
