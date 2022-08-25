@@ -21,66 +21,31 @@ $idusuario = $_SESSION['iduser'];
 </head>
 
 <body style="background-image: url(img/camion.jpg); 
-background-size: 100% 100%,100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;">
+background-size: 100% 100%,100%;background-repeat: no-repeat;background-position: center;background-attachment: fixed;">
 
     <style type="text/css">
 
-         @media (max-width: 800px){
-        }
-        body{
-            background: black;
-        }
-    }
-        #a{
-            padding: 20px 10px;
-        }
-
-        #info{
-            font-size: 12px;
-            height: 97%;
-        }
-        #a:hover{
-   text-decoration: none;
-   color: lawngreen;
-    transition: 1s;
-    transform: translateY(2px);
-   
-}
- #b:hover{
-   text-decoration: none;
-   color:lawngreen;
-}
-.children{
-background:burlywood;
-}
-.btn{
-   transition: 1s;
-}
-#button{
-    color: white;
-}
-#button:hover{
-    transform: translateY(2px);
-   transition: 1s;
-   color: lawngreen;
-}
-.btn:hover {
-    transform: translateY(2px);
-   transition: 1s;
-   color: lawngreen;
-}
+         @media (max-width: 800px){.bi{float: right;}}
+        body{background: black;}
+        #a{padding: 20px 10px;}
+        #info{font-size: 12px;height: 97%;}
+        #a:hover{text-decoration: none;color: lawngreen;transition: 1s;transform: translateY(2px);}
+        #b:hover{text-decoration: none;color:lawngreen;}
+        .children{background:burlywood;}
+        .btn{transition: 1s;}
+        #button{color: white;}
+        #button:hover{transform: translateY(2px);transition: 1s;color: lawngreen;}
+        .btn:hover {transform: translateY(2px);transition: 1s;color: lawngreen;}
 
  </style>
     <header>
         <div class="menu_bar">
-            <a style="font-size: 2rem;" href="#" class="bt-menu"><span>
-                <svg class="bi" width="50" height="50" fill="currentColor">
+            <a style="font-size: 2rem;" href="#" class="bt-menu">
+
+                <svg  class="bi" width="50" height="50" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#list"/>
                 </svg>
-            </span><p>Menú</p></a>
+            <p>Menú</p></a>
         </div>
 
         <nav>
@@ -189,7 +154,7 @@ background:burlywood;
 
 <li class="submenu" >
     <div id="button" style="padding: 10px;" class="btn c" data-toggle="modal" data-target="#info" style=" background:transparent;text-align: center;"  >
-        <svg class="bi" width="20" height="20" fill="currentColor">
+        <svg class="bi1" width="20" height="20" fill="currentColor">
         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#person-circle"/>
                         </svg>
                          <?php echo $consulta['username'];?> 

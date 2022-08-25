@@ -28,32 +28,14 @@ die();
 </head>
 <body>
         <style>  
-            #div{
-                margin: 0%
-            }
-         #section{
-          background: whitesmoke;
-          border-radius: 15px;
-            margin: 1%;
-            padding: 2px;
-            }
-            form{
-                background: transparent;
-                padding: 1%;
-            }
-            @media (max-width: 800px){
-   #section{
-        margin: -5%0%5%4%;
-        width: 93%;
-    }
-    form{
-      padding: 1%;
-    }
-    label{
-        margin-top: 3%;
-    }
-  
-  }
+        #div{margin: 0%}
+        #section{background: whitesmoke;border-radius: 15px;margin: 1%;padding: 2px;}
+        form{background: transparent;padding: 1%;}
+        @media (max-width: 800px){
+        #section{margin: -5%0%5%4%;width: 93%;}
+        form{padding: 1%;}
+        label{
+        margin-top: 3%;}}
         </style>
         <br><br><br>
 <?php

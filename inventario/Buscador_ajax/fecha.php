@@ -1,3 +1,4 @@
+<style type="text/css">#h2{margin: 0%;}</style>
 <div id="categoria">
 <form method="POST" action="" class="well hidden">
                 

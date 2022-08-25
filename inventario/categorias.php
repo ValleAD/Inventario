@@ -26,23 +26,13 @@ die();
 
 <body>
 <style>
-    #form{
-        margin: 2%;
-    }
-    #div{
-        margin: 0%;
-    }
-    section{
-        padding: 1%;
-    }
+    #form{margin: 2%;}
+    #div{margin: 0%;}
+    section{padding: 1%;}
  @media (max-width: 952px){
-   #form{
-        margin: -15%6%1%1%;
-        width: 98%;
-    }
+   #form{margin: -15%6%1%1%;width: 98%;}
     h2{
-    margin-top: 35%;
-}
+    margin-top: 35%;}
 </style>
 <br><br><br>
 <?php      
@@ -84,9 +74,7 @@ $result = mysqli_query($conn, $sql);
 </form>
 
 <style>
-  #act {
-    margin-top: 0.5%;
-  }
+  #act {margin-top: 0.5%;}
 </style>
 <?php 
   }

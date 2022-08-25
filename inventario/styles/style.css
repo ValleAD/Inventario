@@ -1,43 +1,14 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-body{
-    margin: 0%;
-    margin-bottom: 0px  ;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
+*{margin: 0;padding: 0;box-sizing: border-box;}
+body{margin: 0%;margin-bottom: 0px  ;background-size: contain;background-repeat: no-repeat;background-position: center;background-attachment: fixed;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;}
 
-button:hover {
-	background:rgb(9, 94, 61);
-}
-button:active {
-	transform: translateY(5px);
-}
+button:hover {background:rgb(9, 94, 61);}
+button:active {transform: translateY(5px);}
 
 
-form {
-    margin-left: 160px;
-    margin-right: 160px;
-    border-radius: 14px;
-    background: rgba(255, 255, 255, 0.9);
-    color: white;
-}
+form {margin-left: 160px;margin-right: 160px;border-radius: 14px;background: rgba(255, 255, 255, 0.9);color: white;}
+section{margin-left: 10%;margin-right: 10%;}
 
-section{
-    margin-left: 10%;
-    margin-right: 10%;
-}
-li{
-    color: black;
-}
-div{
-color: black;
-}
+li{color: black;}
+div{color: black;}
 
 

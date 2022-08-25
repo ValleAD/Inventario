@@ -28,6 +28,7 @@ die();
         display: none;
     }
 
+
  @media (max-width: 952px){
     #dia, #mes, #año{
         text-align: left;

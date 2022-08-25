@@ -171,7 +171,7 @@ if(isset($_POST['ingresos'])){
       <td data-label="Cantidad" ><?php  echo $productos['stock']; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
       <td data-label="Fuente de Ingreso"><?php  echo $productos['campo']; ?></td>
-      <td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
+      <td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_solicitud'])); ?></td>
       
 
     
@@ -282,7 +282,7 @@ width: 100%;
 <td data-label="Cantidad" ><?php  echo $productos['cantidad_solicitada']; ?></td>
 <td data-label="Costo Unitario">$<?php  echo $precio2 ?></td>
 <td data-label="Fuente de Ingreso">Solicitud a Almacén</td>
-<td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
+<td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_solicitud'])); ?></td>
 
 
 
@@ -505,7 +505,7 @@ $idusuario = $_SESSION['iduser'];
       <td data-label="Cantidad" ><?php  echo $productos['stock']; ?></td>
       <td data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
       <td data-label="Fuente de Ingreso"><?php  echo $productos['campo']; ?></td>
-      <td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
+      <td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_solicitud'])); ?></td>
       
 
     
@@ -637,7 +637,7 @@ width: 100%;
 <td data-label="Cantidad" ><?php  echo $productos['cantidad_solicitada']; ?></td>
 <td data-label="Costo Unitario">$<?php  echo $precio2 ?></td>
 <td data-label="Fuente de Ingreso">Solicitud a Almacén</td>
-<td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
+<td data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_solicitud'])); ?></td>
 
 
 
