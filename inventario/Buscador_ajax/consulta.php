@@ -162,7 +162,7 @@ echo'
             <td style="width:11%;min-width: 100%;" id="th" data-label="Categoría">'.$categoria.'</td>
 			
            <td style="width:10%;min-width: 100%;" id="th"  data-label="Editar">
-            <form style="margin: 0%;position: 0; background: transparent;" method="POST" action="vistaProductos.php?Editar">             
+            <form style="margin: 0%;position: 0; background: transparent;" method="POST" action="vistaProductos.php">             
                 <input type="hidden" name="id" value="'.$productos['codProductos'] .'">               
                 <button  id="th" name="editar" class="btn btn-success btn-sm"  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
             </form>  

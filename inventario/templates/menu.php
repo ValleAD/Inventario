@@ -36,6 +36,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
         #button{color: white;}
         #button:hover{transform: translateY(2px);transition: 1s;color: lawngreen;}
         .btn:hover {transform: translateY(2px);transition: 1s;color: lawngreen;}
+        #sn{font-size: 1.5em;}
 
  </style>
     <header>
@@ -193,26 +194,26 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
       <div  class="card-body" style="justify-items: center;">
         <div class="row">
             <div class="col-md-12">
-                <p style="color: #fff"><b>Usuario:</b> <?php  echo $consulta['username'];?></p>
+                <p id="sn" style="color: #fff"><b>Usuario:</b> <?php  echo $consulta['username'];?></p>
             </div>
         </div>
             <div class="row">
         <div class="col-md-12">
-               <p style="color: #fff"><b>Nombre:</b> <?php echo $consulta['firstname'];?></p>
+               <p id="sn" style="color: #fff"><b>Nombre:</b> <?php echo $consulta['firstname'];?></p>
             </div>
         </div>
     
         <div class="row">
             <div class="col-md-6">
-            <p style="color: #fff"><b>Apellidos:</b> <?php echo $consulta['lastname'];?></p>
+            <p id="sn" style="color: #fff"><b>Apellidos:</b> <?php echo $consulta['lastname'];?></p>
             </div>
             <div class="col-md-12">
-            <p style="color: #fff"><b>Establecimiento:</b> <?php echo $consulta['Establecimiento'];?></p> 
+            <p id="sn" style="color: #fff"><b>Establecimiento:</b> <?php echo $consulta['Establecimiento'];?></p> 
             </div>
         </div>
         <div class="row">
             <div class="col-md-12">
-                    <p style="color: #fff"><b>Unidad ó Departamento:</b> <?php echo $consulta['unidad'];?></p>
+                    <p id="sn" style="color: #fff"><b>Unidad ó Departamento:</b> <?php echo $consulta['unidad'];?></p>
             </div>
         </div>     
       </div>

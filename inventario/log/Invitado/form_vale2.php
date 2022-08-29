@@ -96,7 +96,7 @@ if ($codigo=="") {
                 <label id="inp1">Nombre de la persona</label>
                
     <font color="black"><label>Encargado</label> </font>
-          <input style=" color: black;"  class="form-control" type="text" name="usuario" id="como3" required  value="">
+          <input style=" color: black;"  class="form-control" type="text" name="usuario" id="como3" required  value="<?php echo $invitado ?>" readonly>
       <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="0">
       <br>
             </select>

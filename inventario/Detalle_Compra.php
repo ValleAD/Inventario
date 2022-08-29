@@ -333,7 +333,7 @@ while ($productos = mysqli_fetch_array($result)){
     }else{
     $jus = $datos['justificacion'];
       }
-  ?>
+  ?><br>
     <div class="form-group" style="position: all;border: 1px solid #ccc;border-collapse: collapse;">
                 <p style="padding-left: 1%;">Observaciones (En qué se ocupará el bien entregado)</p>
                 <hr style=" border: 1px solid #ccc;border-collapse: collapse;">

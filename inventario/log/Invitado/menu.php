@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<?php
+session_start();
+$invitado = $_SESSION['Invitado1'];
+
+?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -150,7 +154,7 @@ background:burlywood;
                     <div class="dropdown">
                       <div class="dropbtn"><svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#person"/>
-                        </svg> Invitado<svg class="bi" width="20" height="20" fill="currentColor">
+                        </svg> <?php echo $invitado; ?><svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
                         </svg></div>
                       <div class="dropdown-content">

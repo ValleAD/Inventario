@@ -841,7 +841,7 @@ while ($productos = mysqli_fetch_array($result)){
     <td  data-label="Descripción"><?php echo $descripcion ?></td>
         <td  data-label="Unidada de Medida"><?php echo $um ?></td>
         <td  data-label="Cantidad"><?php echo $stock ?></td>
-        <td  data-label="Cantidad"><input style="background:transparent; border: 1 solid #000;  width: 100%; text-align: center" class="form-control" type="decimal" required  name="cantidad_despachada[]" required value=""></td>
+        <td  data-label="Cantidad"><input style="background:transparent; border: 1 solid #000;  width: 100%; text-align: center" class="form-control"  required type="number" step="0.01" min="0.00" max="<?php echo $stock ?>"  name="cantidad_despachada[]"  value=""></td>
         <td  data-label="Costo unitario"><?php echo $precio1 ?></td>
         <td  data-label="total"><?php echo $total1 ?></td>
 

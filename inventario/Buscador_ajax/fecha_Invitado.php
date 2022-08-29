@@ -38,7 +38,7 @@
                         <button type="button" readonly style="width: 100%;background-color:green ;position: initial; border-radius:5px;text-align:center; color: white;" class="form-control "><?php echo $_POST['dia'] ?>
                         <a href="" style="float: right;color: white;">
                                 <svg class="bi" width="20" height="20" fill="currentColor">
-                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#arrow-counterclockwise"/>
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#arrow-counterclockwise"/>
                         </svg>
                             </a>
                         </button>
@@ -79,7 +79,7 @@ echo '<option value="'.$i.'">'.$Meses[($i)-1].'</option>';
                         <button type="button" readonly style="width: 100%;background-color:green ;position: initial; border-radius:5px;text-align:center; color: white;" class="form-control "><?php echo $mes ?>
                             <a href="" style="float: right;color: white;">
                                 <svg class="bi" width="20" height="20" fill="currentColor">
-                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#arrow-counterclockwise"/>
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#arrow-counterclockwise"/>
                         </svg>
                             </a>
                         </button>
@@ -98,7 +98,7 @@ echo '<option value="'.$i.'">'.$Meses[($i)-1].'</option>';
                         <button type="button" readonly style="width: 100%;background-color:green ;position: initial; border-radius:5px;text-align:center; color: white;" class="form-control "><?php echo $_POST['año'] ?>
                             <a href="" style="float: right;color: white;">
                                 <svg class="bi" width="20" height="20" fill="currentColor">
-                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#arrow-counterclockwise"/>
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#arrow-counterclockwise"/>
                         </svg>
                             </a>   
                         </button>
@@ -121,19 +121,19 @@ echo '<option value="'.$i.'">'.$Meses[($i)-1].'</option>';
         <div  class="mx-1 p-2 r-5" style="background-color: transparent; border-radius: 5px;">
         <a href="" class="btn btn-success" name="categorias" type="submit">Ver Productos</a>
               <div  style="position: initial;margin-top: 0%;margin-left: 1%;" class="btn-group" role="group" aria-label="Basic outlined example">
-         <form class="well" method="POST" action="Plugin/Fechas.php" target="_blank">
+         <form class="well" method="POST" action="../../Plugin/Fechas.php" target="_blank">
              <input type="hidden" name="dia" value="<?php echo $dia ?>">
              <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Dia">
                  <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
-         <form class="well" method="POST" action="Plugin/pdf_fecha.php" target="_blank">
+         <form class="well" method="POST" action="../../Plugin/pdf_fecha.php" target="_blank">
             <input type="hidden" name="dia" value="<?php echo $dia ?>">
              <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Dia" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>
@@ -238,19 +238,19 @@ echo '<option value="'.$i.'">'.$Meses[($i)-1].'</option>';
         <div  class="mx-1 p-2 r-5" style="background-color: transparent; border-radius: 5px;">
         <a href="" class="btn btn-success" name="categorias" type="submit">Ver Productos</a>
               <div  style="position: initial;margin-top: 0%;margin-left: 1%;" class="btn-group" role="group" aria-label="Basic outlined example">
-         <form class="well" method="POST" action="Plugin/Fechas.php" target="_blank">
+         <form class="well" method="POST" action="../../Plugin/Fechas.php" target="_blank">
              <input type="hidden" name="mes" value="<?php echo $mes ?>">
              <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Mes">
                  <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
-         <form class="well" method="POST" action="Plugin/pdf_fecha.php" target="_blank">
+         <form class="well" method="POST" action="../../Plugin/pdf_fecha.php" target="_blank">
             <input type="hidden" name="mes" value="<?php echo $mes ?>">
              <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Mes" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>
@@ -341,19 +341,19 @@ echo '<option value="'.$i.'">'.$Meses[($i)-1].'</option>';
         <div  class="mx-1 p-2 r-5" style="background-color: transparent; border-radius: 5px;">
         <a href="" class="btn btn-success" name="categorias" type="submit">Ver Productos</a>
               <div  style="position: initial;margin-top: 0%;margin-left: 1%;" class="btn-group" role="group" aria-label="Basic outlined example">
-         <form class="well" method="POST" action="Plugin/Fechas.php" target="_blank">
+         <form class="well" method="POST" action="../../Plugin/Fechas.php" target="_blank">
              <input type="hidden" name="año" value="<?php echo $año ?>">
              <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Año">
                  <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
-         <form class="well" method="POST" action="Plugin/pdf_fecha.php" target="_blank">
+         <form class="well" method="POST" action="../../Plugin/pdf_fecha.php" target="_blank">
             <input type="hidden" name="año" value="<?php echo $año ?>">
              <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Año" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>
@@ -455,21 +455,21 @@ if (isset($_POST['Fecha'])){
                 <div  class="mx-1 p-2 r-5" style="background-color: transparent; border-radius: 5px;">
         <a href="" class="btn btn-success" name="categorias" type="submit">Ver Productos</a>
               <div  style="position: initial;margin-top: 0%;margin-left: 1%;" class="btn-group" role="group" aria-label="Basic outlined example">
-         <form class="well" method="POST" action="Plugin/Fechas.php" target="_blank">
+         <form class="well" method="POST" action="../../Plugin/Fechas.php" target="_blank">
              <input type="hidden" name="f1" value="<?php echo $f1 ?>">
              <input type="hidden" name="f2" value="<?php echo $f2 ?>">
              <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha">
                  <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
-         <form class="well" method="POST" action="Plugin/pdf_fecha.php" target="_blank">
+         <form class="well" method="POST" action="../../Plugin/pdf_fecha.php" target="_blank">
             <input type="hidden" name="f1" value="<?php echo $f1 ?>">
              <input type="hidden" name="f2" value="<?php echo $f2 ?>">
              <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>

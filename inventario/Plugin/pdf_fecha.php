@@ -225,19 +225,11 @@ include ('../Model/conexion.php');
     </tbody>
 </table> 
     <?php  } if (isset($_POST['Fecha'])) {$f1 =$_POST['f1'];$f2 =$_POST['f2'];?>
-    <center>
- <div class="container" style="float:left;">
-          <div class="row">
-                    <div class="col-md-6" style="position: initial">
-                        <label>Desde</label>
-                   <p><?php echo $f1 ?></p>
-                    </div><div class="col-md-6" style="position: initial">
-                        <label>Hasta</label>
-                    <p><?php echo $f2 ?></p>                
-                    </div>
-                    
-                </div> 
-</div> </center>
+    <table style="width: 100%;"><tr>
+        <td><b>Desde:</b> <?php echo $f1 ?></td>
+        <td style="text-align: right;"><b>Hasta:</b> <?php echo $f2 ?></td>
+</tr>
+</table>
     <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
 
     <thead>

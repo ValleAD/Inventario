@@ -67,6 +67,7 @@ $result = mysqli_query($conn, $sql);
 ?>
 
 <br><br><br>
+<style type="text/css">section{display: none;}</style>
 <form action="Controller/Actualizar.php" method="post">
     <div class="container" style="background: rgba(0, 0, 0, 0.6); border-radius: 9px; color:#fff; font-weight: bold;">
   <h3 id="h3" align="center">Actualizar Producto</h3>
@@ -104,7 +105,7 @@ $result = mysqli_query($conn, $sql);
                            ?>
                         </select>
         <label class="my-2">Costo unitario</label>
-                <input class="form-control" type="text" name="precio" id="act" value="<?php  echo $precio1 ?>">
+                <input class="form-control" type="number" name="precio" id="act" value="<?php  echo $precio1 ?>">
     </div>
     <div class="col-md-6" style="position: initial; margin-top: 2%">
          <label>Código</label>
@@ -113,7 +114,7 @@ $result = mysqli_query($conn, $sql);
         <label class="my-2">Descripción</label>
                 <textarea rows="1" class="form-control" type="text"  name="descripcion"><?php  echo $productos1['descripcion']; ?></textarea>
                 <label class="my-2">Cantidad Actual</label>
-                <input class="form-control" type="decimal" step="0.1" name="stock" id="act" value="<?php echo $stock?>">
+                <input class="form-control" type="number" step="0.1" name="stock" id="act" value="<?php echo $stock?>">
                 
     </div>
 </div>

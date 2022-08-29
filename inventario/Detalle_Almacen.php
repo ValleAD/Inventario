@@ -170,7 +170,8 @@ while ($productos = mysqli_fetch_array($result)){
         $final2   =    number_format($final, 2, ".",",");
         $cant_aprobada=$productos['cantidad_solicitada'];
         $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,",");
+        $stock=number_format($cant_aprobada, 2,".",",");
+        $cantidad_desp= number_format($cant_aprobada, 2,".",",");
         
 
  ?>
@@ -194,7 +195,7 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
         <td  data-label="Cantidad Solicitada"><?php echo $stock ?></td>
 
-        <td  data-label="Cantidad Despachada"><input type="number" step="0.01" class="form-control" style="background:transparent; border: 1 solid #000;  width: 100%; text-align: center" name="cantidad_despachada[]" required ></td>
+        <td  data-label="Cantidad Despachada"><input type="number" step="0.01" min="0.00" max="<?php echo $cantidad_desp ?>"  class="form-control" style="background:transparent; border: 1 solid #000;  width: 100%; text-align: center" name="cantidad_despachada[]" required ></td>
 
         <td  data-label="Costo Unitario">$<?php echo $precio2 ?></td>
 
@@ -410,8 +411,8 @@ while ($productos = mysqli_fetch_array($result)){
         $final2   =    number_format($final, 2, ".",",");  
         $cant_aprobada=$productos['cantidad_solicitada'];
         $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,",");?>
+        $stock=number_format($cant_aprobada, 2,".",",");
+        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");?>
     <style type="text/css">
      #td{
         display: none;
@@ -544,8 +545,8 @@ while ($productos = mysqli_fetch_array($result)){
         $final2   =    number_format($final, 2, ".",",");  
         $cant_aprobada=$productos['cantidad_solicitada'];
         $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,",");?>
+        $stock=number_format($cant_aprobada, 2,".",",");
+        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");?>
     <style type="text/css">
      #td{
         display: none;

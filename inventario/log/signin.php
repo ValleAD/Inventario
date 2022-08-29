@@ -117,9 +117,29 @@ button:hover{
                            <?php } ?>
                                     <div class="card-footer text-center">
                                         <div class="small"><a href="signup.php">No tienes cuenta ? Registrarse</a></div>
-                                        <div class="small mt-2"><form action="Invitado/invitado.php">
-                                        	<button class="btn btn-info" type="submit">Modo Inviado</button>
-                                        </form></div>
+                                        <div class="small mt-2">
+
+                                        	<form action="" method="POST">
+                                        	<button class="btn btn-info" type="submit" name="Invitado">Modo Inviado</button>
+                                        	
+                                        </form>
+                                        <?php if (isset($_POST['Invitado'])) {
+                                        		?>
+                                        		<style type="text/css">.btn-info{display: none;}</style>
+                                        		<br>
+                                        		<form action="" method="POST">
+                                        			<label>Ingrese su Nombre Completo</label>
+                                        			<input class="form-control" type="text" name="Invitadocliente" onkeypress="return validar(event)" /><br>
+                                        			<input class="form-control btn btn-success" type="submit" name="Invitado1" value="Entrar">
+                                        		</form>
+                                        		<?php 
+                                        	}if (isset($_POST['Invitado1'])) {
+                                        		$d=$_POST['Invitadocliente'];
+                                        		
+                                        			$_SESSION['Invitado1'] = $d;
+                                        		 header("Location: Invitado/invitado.php");
+                                        		} ?>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -148,6 +168,15 @@ button:hover{
 
 					}
 				</script>
+				<script type="text/javascript">
+function validar(e) { // 1
+tecla = (document.all) ? e.keyCode : e.which; // 2
+if (tecla==8) return true; // 3
+patron =/[A-Za-z\s]/; // 4
+te = String.fromCharCode(tecla); // 5
+return patron.test(te); // 6
+}
+</script>
 <script src="../Plugin/bootstrap/js/jquery-latest.js"></script>
 <script src="../Plugin/bootstrap/js/bootstrap.min.js"></script>
 </body>
