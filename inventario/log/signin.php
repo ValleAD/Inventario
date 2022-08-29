@@ -125,12 +125,27 @@ button:hover{
                                         </form>
                                         <?php if (isset($_POST['Invitado'])) {
                                         		?>
-                                        		<style type="text/css">.btn-info{display: none;}</style>
+                                        		<style type="text/css">.btn-info, .card-body, a{display: none;}</style>
                                         		<br>
                                         		<form action="" method="POST">
-                                        			<label>Ingrese su Nombre Completo</label>
-                                        			<input class="form-control" type="text" name="Invitadocliente" onkeypress="return validar(event)" /><br>
-                                        			<input class="form-control btn btn-success" type="submit" name="Invitado1" value="Entrar">
+	<div class="form-group" style="position: ; margin: 2%">
+                      <label>Ingrese su Nombre Completo</label> 
+                 <div style="position: initial;" class="input-group mb-3">
+                 
+                      <input style="position: initial;" id="limpiar" type="text" onkeypress="return validar(event)" name="Invitadocliente" class="form-control"  required>
+                      <label onclick="return validar1()" class="input-group-text input" for="inputGroupSelect01">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#x"/>
+                </svg>
+                 </label>
+                  </div>
+                  </div>
+                                        			<br>
+                       	<div style="position: initial;" class="input-group mb-3">
+                  				<input style="position: initial;" onclick="return regresar()" type="button" class="form-control btn btn-danger"  required value="Regresar">
+                  				<input class="form-control btn btn-success" type="submit" name="Invitado1" value="Entrar">
+                  		</div>
+                                        			
                                         		</form>
                                         		<?php 
                                         	}if (isset($_POST['Invitado1'])) {
@@ -153,9 +168,25 @@ button:hover{
 						.container{
 							margin-bottom: 5%;
 					}
-				
+					.input{
+						background: pink;
+					}
+				.input:hover{
+					background: pink;
+					color: white;
+
+				}
 					
 				</style>
+				<script type="text/javascript">
+					function regresar() {
+						  window.location =""; 
+					}
+						var limpiar = document.getElementById('limpiar');
+					function validar1() {
+						limpiar.value = '';
+					}
+				</script>
 				<script type="text/javascript">
 					function myFuntion() {
 						var show = document.getElementById('show');
@@ -167,6 +198,9 @@ button:hover{
 						}
 
 					}
+				</script>
+				<script language="javascript" type="text/javascript">
+					
 				</script>
 				<script type="text/javascript">
 function validar(e) { // 1

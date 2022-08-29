@@ -186,7 +186,15 @@ $result = mysqli_query($conn, $sql);
  <div class="row">   
  <div class="col-md-3"style="position: initial;">
             <section class="well" >
+                <div style="position: initial;" class="input-group">
+                 
             <input type="number" name="busqueda" class="form-control"  id="busqueda" placeholder="Buscar Codigo del Producto">
+                      <label onclick="return validar1()" class="input-group-text input" for="inputGroupSelect01">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#x"/>
+                </svg>
+                 </label>
+                  
         </section>
     </div>
 </div>
@@ -224,6 +232,10 @@ function obtener_registros(consulta)
 $(document).on('keyup', '#busqueda', function()
 {
     var valorBusqueda=$(this).val();
+    var limpiar = document.getElementById('busqueda');
+                    function validar1() {
+                        limpiar.value = '';
+                    }
     if (valorBusqueda!="")
     {
         obtener_registros(valorBusqueda);
@@ -251,6 +263,11 @@ function confirmaion(e) {
     }
 }
 </script>
-
+ <script type="text/javascript">
+         var limpiar = document.getElementById('busqueda');
+                    function validar1() {
+                        limpiar.value = '';
+                    }
+ </script>
 </body>
 </html>
