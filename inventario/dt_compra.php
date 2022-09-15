@@ -66,6 +66,7 @@ $solicitud=$datos["nSolicitud"];
                 <input readonly class="form-control"  type="hidden" value="'. $datos['unidad_tecnica'].'" name="unidad">
                 <input readonly class="form-control"  type="hidden" value="'. $datos['descripcion_solicitud'].'" name="suministro">
                 <input readonly class="form-control"  type="hidden" value="'. $datos['usuario'].'" name="usuario">
+                <input type="hidden" readonly class="form-control"  type="text" value="'.$datos['estado'].'" name="estado">
                 <input readonly class="form-control"  type="hidden" value="'. date("d-m-Y",strtotime($datos['fecha_registro'])) .'" name="fech">
 
           <div class="row">
@@ -147,6 +148,7 @@ $solicitud=$datos["nSolicitud"];
                 <input readonly class="form-control"  type="hidden" value="<?php echo $datos['unidad_tecnica']?>" name="unidad">
                 <input readonly class="form-control"  type="hidden" value="<?php echo $datos['descripcion_solicitud']?>" name="suministro">
                 <input readonly class="form-control"  type="hidden" value="<?php echo $datos['usuario']?>" name="usuario">
+                <input readonly class="form-control"  type="hidden" value="<?php echo $datos['estado']?>" name="estado">
                 <input readonly class="form-control"  type="hidden" value="<?php echo date("d-m-Y",strtotime($datos['fecha_registro'])) ?>" name="fech">
                 
                 <?php

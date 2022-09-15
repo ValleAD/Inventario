@@ -72,6 +72,7 @@ $final2 = 0;
           <input type="hidden" readonly class="form-control"  type="text" value="'. $productos1['departamento'].'" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="'. $productos1['codBodega'].'" name="bodega">
                 <input type="hidden" readonly class="form-control"  type="text" value="'. $productos1['usuario'].'" name="usuario">
+                <input type="hidden" readonly class="form-control"  type="text" value="'.$productos1['estado'].'" name="estado">
                 <input type="hidden" readonly class="form-control"  type="text" value="'. date("d-m-Y",strtotime($productos1['fecha_registro'])).'" name="fech">
       
         <div class="row">
@@ -112,7 +113,7 @@ $final2 = 0;
         <br>
           <table class="table">
            <div  style="position: initial;"class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-              <form method="POST" action="Plugin/pdf_vale.php">
+              <form method="POST" action="Plugin/pdf_bodega.php">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha">                        
                     <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
