@@ -76,7 +76,6 @@ $final = 0;
             <label style="font-weight: bold;">N° de Solicitud:</label>
             <input readonly class="form-control"  type="hidden" value="' .$datos_sol['codAlmacen']. '" name="num_sol">
             <input readonly class="form-control"  type="hidden" value="' .$datos_sol['departamento']. '" name="depto">
-            <input type="hidden" readonly class="form-control"  type="text" value="'.$datos_sol['estado'].'" name="estado">
             <input readonly class="form-control"  type="hidden" value="' .date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])). '" name="fech">
             <p>'.$datos_sol['codAlmacen'].'</p>
           </div>
@@ -120,7 +119,6 @@ $final = 0;
             <form method="POST" action="Plugin/almacen.php">
              <input readonly class="form-control"  type="hidden" value="<?php echo $datos_sol['codAlmacen']?>" name="num_sol">
               <input readonly class="form-control"  type="hidden" value="<?php echo $datos_sol['departamento']?>" name="depto">
-              <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $datos_sol['estado']?>" name="estado">
               <input readonly class="form-control"  type="hidden" value="<?php echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])) ?>" name="fech">
 <?php
 $num_almacen = $datos_sol['codAlmacen'];

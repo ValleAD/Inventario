@@ -7,8 +7,7 @@
             #x{
                 display: none;
             }
-        </style>  
-        <div id="x">
+        </style>    
         <table class="table  table-responsive  table-striped" id="div" style=" width: 100%;">
      
                 <thead>
@@ -81,7 +80,6 @@
     </tbody>
 </table>
 </div>
-</div>
 <?php } ?>
 
 <?php 
@@ -94,7 +92,7 @@
             }
         </style>
 
-           <div id="x">    
+           <div id="y">    
         <table class="table  table-responsive  table-striped" id="div" style=" width: 100%;">
      
                 <thead>

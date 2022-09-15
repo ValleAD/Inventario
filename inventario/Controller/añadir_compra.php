@@ -46,8 +46,8 @@ $result = mysqli_query($conn, $insert);
   for($i = 0; $i < count($_POST['cod']); $i++)
     {
       $codigo_producto  = $_POST['cod'][$i];
+      $catalogo         = $_POST['cat'][$i];
       $Descripción      = $_POST['desc'][$i];
-      $catalogo      = $_POST['cat'][$i];
       $u_m              = $_POST['um'][$i];
       $cantidad         = $_POST['cant'][$i];
       $stock      = $_POST['stock'][$i];

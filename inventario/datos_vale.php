@@ -60,7 +60,6 @@ $final2 = 0;
           <input type="hidden" readonly class="form-control"  type="text" value="'.$productos1['departamento'].'" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="'.$productos1['codVale'].'" name="vale">
                 <input type="hidden" readonly class="form-control"  type="text" value="'.$productos1['usuario'].'" name="usuario">
-                <input type="hidden" readonly class="form-control"  type="text" value="'.$productos1['estado'].'" name="estado">
                 <input type="hidden" readonly class="form-control"  type="text" value="'.date("d-m-Y",strtotime($productos1['fecha_registro'])).'" name="fech">
                 
                   <label style="font-weight: bold;">Depto. o Servicio:</label>
@@ -123,7 +122,6 @@ $final2 = 0;
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php $productos1['estado']?>" name="estado">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
                 <?php
 

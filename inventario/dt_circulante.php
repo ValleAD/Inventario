@@ -105,8 +105,6 @@ $final = 0;
                 </button>
             </form>
             <form method="POST" action="Plugin/Circulante.php">
-                <input type="hidden" name="num_sol" value="<?php echo $datos_sol['codCirculante'] ?>">
-                <input type="hidden" name="fech" value="<?php echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])) ?>">
                                <?php 
 $num_circulante = $datos_sol['codCirculante'];
 

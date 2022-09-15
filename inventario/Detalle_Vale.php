@@ -180,7 +180,7 @@ if(isset($_POST['detalle'])){
             <svg class="bi" width="20" height="20" fill="currentColor">
             <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#upload"/>
             </svg>
-            </button><input type="hidden" readonly class="form-control"  value="<?php echo $productos1['estado']?>" name="estado"><?php } ?>
+            </button><?php } ?>
           </div>
             </div>
         </div>

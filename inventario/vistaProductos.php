@@ -188,15 +188,16 @@ $result = mysqli_query($conn, $sql);
             <section class="well" >
                 <div style="position: initial;" class="input-group">
                  
-            <input type="number" style="position: initial;" name="busqueda" class="form-control"  id="busqueda" placeholder="Buscar Codigo del Producto">
+            <input type="number" name="busqueda" class="form-control"  id="busqueda" placeholder="Buscar Codigo del Producto">
                       <label onclick="return validar1()" class="input-group-text input" for="inputGroupSelect01">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#x"/>
                 </svg>
                  </label>
-                 </div> 
+                  
         </section>
     </div>
+</div>
 <br>    
 
 

@@ -34,9 +34,7 @@ h1 {
 </head>
 <body>
     <style type="text/css">
-       #x{
-        di
-       } 
+        
      #act {
     margin-right: 1%;
     margin-left: 1%;
@@ -54,7 +52,6 @@ h1 {
     <section id="act">
         <h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
             <?php if ($tipo_usuario==1) {?>
-                <div id="x">
            <?php include ('Buscador_ajax/cabezeraCompra.php') ?>
      
 
@@ -297,7 +294,7 @@ $tipo_usuario = $_SESSION['iduser'];
        
  </div>
 </div>
-</div>
+
 <?php } ?>
 
  </section>
