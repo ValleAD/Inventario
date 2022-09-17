@@ -6,57 +6,6 @@ session_start();
 
 error_reporting(0);
 
-if (isset($_SESSION['signin'])) {
-}else{
-	header("window.location: signin.php");
-}
-if (isset($_POST['submit'])) {
-	$username = $_POST['username'];
-//	$email = $_POST['email'];
-	$password = ($_POST['password']);
-	//$password = MD5($pass);
-	$sql = "SELECT * FROM tb_usuarios WHERE username='$username' AND password='$password'";
-	$result = mysqli_query($conn, $sql);
-	if ($result->num_rows > 0) {
-		$row = mysqli_fetch_assoc($result);
-		if($_SESSION['signin']==$row['username']){
-          
-        
-            $_SESSION['signin'] = $row['username'];
-		$_SESSION['tipo_usuario'] = $row['tipo_usuario'];
-		$_SESSION['iduser'] = $row['id'];
-		
-       }if ($row ['Habilitado']=="Si") { 
-			$_SESSION['signin'] = $row['username'];
-		$_SESSION['tipo_usuario'] = $row['tipo_usuario'];
-		$_SESSION['iduser'] = $row['id'];
-		header("Location: ../home.php");
-		}else{
-			$eror= '<div class="mx-2 alert alert-warning alert-dismissible fade show" role="alert">
-						  <strong>No Puede Entrar el Usuario Esta Desabilitado</strong>
-						  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						    <span aria-hidden="true">&times;</span>
-						  </button>
-						</div>';
-		
-	session_destroy();  
-		}
-		
-		
-	} else {
-		$eror= '<div class="mx-2 alert alert-warning alert-dismissible fade show" role="alert">
-						  <strong>Usuario o Contraseña Son Incorrectos</strong>
-						  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						    <span aria-hidden="true">&times;</span>
-						  </button>
-						</div>';
-
-	}
-
-}else {
-	header("window.location: signin.php");
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -69,8 +18,7 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="../Plugin/bootstrap/css/bootstrap.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" type="image/png" sizes="32x32"  href="../img/log.png">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="../Plugin/bootstrap/css/sweetalert2.min.css">
 	<title>Sign In </title>
 </head>
 <body style="background-image: url(../img/bg1.jpg);background-size: 100% 100%,100%;
@@ -89,7 +37,7 @@ button:hover{
 
 }
 </style>
-   
+
   <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
@@ -99,18 +47,21 @@ button:hover{
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
                                     <div class="card-body">
-                                        <form method="POST" class="needs-validation" >
-                                            <div class="form-group"><label class="small mb-1" for="inputEmailAddress">Usuario</label>
-                                            	<input pattern="[A-Za-z0-9_-]{1,}" id="input" method="POST" class="form-control py-4" id="inputEmailAddress" placeholder="Ingrese el usuario" type="text" name="username" value="<?php echo $username; ?>" required></div>
-                                            <div class="form-group"><label class="small mb-1" for="inputPassword">Password</label>
-                                            <input pattern="[A-Za-z0-9_-]{1,}"  class="form-control py-4" id="show" type="password" placeholder="Ingrese la Contraseña" id="input"  method="POST" class="form-control" type="password" name="password" value="<?php echo $_POST['password']; ?>" required >
+									   <form id="formlogin" method="POST" >
+									   	<p id="respa1"></p>
+									   	 <div class="form-group">
+									   	<label class="small mb-1">Usuario:</label>
+									   	<input type="text" class="form-control py-4" name="username" placeholder="Ingrese el Usuario" id="username">
+									   </div>
+									   <div class="form-group">
+                                            	<label class="small mb-1" for="inputPassword">Password</label>
+                                           		<input   class="form-control py-4" id="password" type="password" placeholder="Ingrese la Contraseña"   method="POST" class="form-control" type="password" name="password">
                                             <input id="e"  onclick="myFuntion();" type="checkbox" name="id[]"> <label style="margin-top: 1.5%;"  id="h" for="e" ></label>
+
                                         </div>
-                                            
-                                            <div class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-                                            	<button  type="submit" class="btn btn-primary btn-block "name="submit" >Ingresar</button></div>
-                                            	
-                                        </form>
+									   	<button type="submit" class="btn btn-primary btn-block ">Enviar</button>
+									   	<p id="respa1"></p>
+									   </form>
                                     </div>
                                     <?php if (isset($_POST['submit'])) { ?>
                                     	<?php echo $eror ?>
@@ -189,7 +140,7 @@ button:hover{
 				</script>
 				<script type="text/javascript">
 					function myFuntion() {
-						var show = document.getElementById('show');
+						var show = document.getElementById('password');
 						if (show.type=='password') {
 							show.type='text';
 						}
@@ -211,7 +162,42 @@ te = String.fromCharCode(tecla); // 5
 return patron.test(te); // 6
 }
 </script>
+
 <script src="../Plugin/bootstrap/js/jquery-latest.js"></script>
 <script src="../Plugin/bootstrap/js/bootstrap.min.js"></script>
+<script src="../Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
+
+<script type="text/javascript">
+
+   $('#formlogin').submit(function(e) {
+   	e.preventDefault();
+   	var username=$.trim($('#username').val())
+   	var password=$.trim($('#password').val())
+   	
+                    
+   	if (username.length=="" || password=="") {
+   		Swal.fire({
+  icon: 'warning',
+  title: 'Debes de Ingesar el Usuario o Contraseña',
+  footer: 'Sistema De Inventario',
+});
+   	} else {
+        var dataen ='username='+username +'&password='+password;
+
+   		$.ajax({
+        url : 'login.php',
+        type : 'POST',
+        data : dataen,
+        success:function(resp) {
+        	 $('#respa1').html(resp);
+        	
+}
+      });
+   	}
+
+   });
+
+</script>
+
 </body>
 </html>

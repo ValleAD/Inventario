@@ -4,56 +4,6 @@ include '../Model/conexion.php';
 session_start();
 error_reporting(0);
 
-if (isset($_SESSION['signup'])) {
-    header("Location: signin.php");
-}
-
-if (isset($_POST['submit'])) {
-
-	$username = $_POST['usuario'];
-	$firstname = $_POST['nombre'];
-	$lastname = $_POST['Apellido'];
-	$Establecimiento = $_POST['Establecimientos'];
-	$unidad = $_POST['Unidad'];
-	$password = $_POST['password'];
-	$cpassword = $_POST['cpassword'];
-	$tipo_usuario = ($_POST['tipo_usuario']);
-	
-
-			$verificar_usuario =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username ='$username'");
-
-if (mysqli_num_rows($verificar_usuario)>0) {
-	echo '
-		<script>
-		alert("Este Usuario ya esta Registrado, intente con otro diferente");
-		 window.location ="signup.php"; 
-	</script>
-	';
-	exit();
-}
-if ($password == $cpassword) {
-	$sql = "SELECT * FROM tb_usuarios WHERE username='$username' AND firstname='$firstname' AND lastname='$lastname'  AND password='$password'";
-	
-	$result1 = mysqli_query($conn, $sql);
-	if ($result1) {
-				echo '
-				 <script>
-				   alert("Usuario Creado");
-				        window.location ="signin.php";
-				        session_destroy();  
-				                </script>';
-			}
-	if (!$result->num_rows > 0) {
-			$sql = "INSERT INTO tb_usuarios (username,firstname,lastname,Establecimiento,Unidad, password,tipo_usuario,Habilitado)
-				VALUES ('$username','$firstname', '$lastname','$Establecimiento','$unidad',  '$password','$tipo_usuario','Si')";
-		$result = mysqli_query($conn, $sql);	 
-	}
-	
-	}else{
-		$eror= '<p class="alert-heading"><i class="text-danger  bi bi-exclamation-triangle-fill"></i> Las Contraseñas no Coinsiden</p> ';
-	}
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -78,6 +28,8 @@ if ($password == $cpassword) {
 	<link rel="stylesheet" type="text/css" href="../styles/estilo_men.css">
 
     <link rel="stylesheet" href="../Plugin/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../Plugin/bootstrap/css/sweetalert2.min.css">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" type="image/png" sizes="32x32"  href="../img/log.png">
 	<title>Register</title>
@@ -92,23 +44,24 @@ if ($password == $cpassword) {
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Account</h3></div>
                                     <div class="card-body">
-                                        <form method="POST" action="">
+                                        <form method="POST"  id="regiLogin">
+                                            <p id="respa1"></p>
                                           	<div class="container">
                                           		<div class="row">
                     <div class="col-md-6" style="position: initial">
                        <label class="small mb-1">Nombre de usuario</label><br>
-                        <input pattern="[A-Za-z0-9_-]{1,}"   class="form-control" type="text"  name="usuario"  required>
+                        <input pattern="[A-Za-z0-9_-]{1,}"   class="form-control" type="text"  name="usuario" id="usuario" >
                     </div>
                     <div class="col-md-6" style="position: initial">
                       <label class="small mb-1">Nombre</label><br>
-                        <input  class="form-control" type="text"  name="nombre" required>
+                        <input  class="form-control" type="text"  name="nombre" id="nombre" >
                     </div>
                 </div>
                 <div class="row">
 
                     <div class="col-md-6" style="position: initial">
                      <label class="small mb-1">Apellido</label><br>
-                        <input class="form-control" type="text"  name="Apellido"  required>
+                        <input class="form-control" type="text"  name="Apellido" id="apellido" >
                         
                                                 
                                         
@@ -116,19 +69,19 @@ if ($password == $cpassword) {
                     </div>
                     <div class="col-md-6" style="position: initial">
                       <label class="small mb-1">Establecimiento</label><br>
-                     <input class="form-control" readonly name="Establecimiento" value='Hospital Nacional Zacatecoluca PA "Santa Tereza"'>
+                     <input class="form-control" readonly name="Establecimiento" id="Establecimiento" value='Hospital Nacional Zacatecoluca PA "Santa Tereza"'>
                      
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6" style="position: initial">
                       <label class="small mb-1">Contraseña</label><br>
-                        <input pattern="[A-Za-z0-9_-]{1,}" class="form-control" id="show" type="password"  name="password"  required>
+                        <input pattern="[A-Za-z0-9_-]{1,}" class="form-control" id="show" type="password"  name="password"  >
                       <input id="e"  onclick="myFuntion();" type="checkbox" name="id[]"> <label style="margin-top: 1.5%;"  id="h" for="e" ></label>
                   </div>
                   <div class="col-md-6" style="position: initial">
                       <label class="small mb-1">Confirmar Contraseña</label><br>
-                        <input pattern="[A-Za-z0-9_-]{1,}" class="form-control" id="show1" type="password"  name="cpassword" required>
+                        <input pattern="[A-Za-z0-9_-]{1,}" class="form-control" id="show1" type="password"  name="cpassword" >
                         <input id="s"  onclick="myFuntion1();" type="checkbox" name="id[]"> <label style="margin-top: 1.5%;"  id="h" for="s" ></label>
                   </div>
                 </div>
@@ -138,15 +91,18 @@ if ($password == $cpassword) {
                     <div class="col-md-12" style="position: initial">
                         <label id="label"  class="small mb-1">Departamento</label><br>
                          
-               <div id="div" style = " max-height: 150px; overflow-y:scroll;margin-bottom: 5%;"> 
+               
                 
+                             <select id="unidad" name="unidad" class="form-control">
+                             	<option selected disabled>Selecionar</option>
                    <?php  
    $sql = "SELECT * FROM selects_departamento";
     $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){ ?>  
-                             <input required  id="<?php echo $productos['id'] ?>" type="radio" name="Unidad" value="<?php echo $productos['departamento'] ?>"> <label style="width: 100%;" id="label1" for="<?php echo $productos['id'] ?>" > <?php echo $productos['departamento'] ?></label><br>
+                             	<option><?php echo $productos['departamento'] ?></option>
  <?php }?>
-                         </div>
+                             </select><br>
+                       
  
           
                 </div>
@@ -154,8 +110,11 @@ if ($password == $cpassword) {
                 <div class="col-md-12" style="position: initial">
                  <label id="label" class="small mb-1">Tipo de Usuarios (Roles De Usuario)</label>
              <br>
-            <input required id="input" type="radio" name="tipo_usuario" value="1"> <label id="label1" for="input" > Admistrador</label>
-            <input required id="input1" type="radio" name="tipo_usuario" value="2"> <label id="label1" for="input1"> Cliente</label> 
+             <div class="input-group">
+             	<input type="text" name="tipo_usuario" class="form-control" disabled placeholder="Ingrese El tipo de Usuario" id="Tipo">
+             	<label class="btn input-group-text bg-success" onclick="return tipo()" style="color: white;">Seleccionar </label>
+             </div><br>
+            
 
                         </div>
                     </div>
@@ -163,15 +122,7 @@ if ($password == $cpassword) {
                     <div class="form-group" style="margin-top: 2%;">
                         <button type="submit" name="submit" class="btn btn-primary btn-block">Registrarse</button>
                     </div>
-                                    <?php if (isset($_POST['submit'])) { ?>
-                           <div class="mx-2 mt-2 alert alert-warning alert-dismissible fade show" style="height:50px" role="alert">
-						  <strong><?php echo $eror ?></strong>
-						  <form action="" method="POST">
-						  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						    <span aria-hidden="true">&times;</span>
-						  </button>
-						  </form>
-						</div><?php } ?>                    
+                          
                 <div>
 
                     
@@ -229,5 +180,68 @@ if ($password == $cpassword) {
 
 					}
 				</script>
+<script src="../Plugin/bootstrap/js/jquery-latest.js"></script>
+<script src="../Plugin/bootstrap/js/bootstrap.min.js"></script>
+<script src="../Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
+<script type="text/javascript">
+function tipo() {
+	var tipo_usuario1=$.trim($('#tipo_usuario1').val())
+   		Swal.fire({
+  icon: 'question', 
+  showCloseButton: true,
+  showConfirmButton: false,
+  html: '<form method="POST"  id="t"><select id="tipo_usuario1" name="tipo_usuario" class="form-control" required>'+
+            			'<option selected disabled>Seleccinar</option>'+
+            			'<option value="1">Administrador</option>'+
+            			'<option value="2">Cliente</option>'+
+            		'</select><br> <button type="submit" name="submit" onclick="return t()" class="btn btn-success btn-block">Agregar</button> </form>',
+});
+}
+function t() {
+        var tipo_usuario1=$.trim($('#tipo_usuario1').val())
+        if(tipo_usuario1=="1"){
+ var limpiar = document.getElementById('Tipo'); limpiar.value = "Administrador"
+
+    }else{
+        var limpiar = document.getElementById('Tipo');limpiar.value = "Cliente"
+    
+    }
+    return false;
+}
+   
+   $('#regiLogin').submit(function(e) {
+   	e.preventDefault();
+   	var usuario=$.trim($('#usuario').val())
+   	var nombre=$.trim($('#nombre').val())
+   	var apellido=$.trim($('#apellido').val())
+   	var Establecimiento=$.trim($('#Establecimiento').val())
+   	var unidad=$.trim($('#unidad').val())
+   	var password=$.trim($('#show').val())
+   	var password1=$.trim($('#show1').val())
+   	var tipo_usuario=$.trim($('#Tipo').val())
+
+   	if (usuario=="" || nombre=="" || apellido=="" || password=="" || password1=="" || unidad=="" || tipo_usuario=="") {
+   		Swal.fire({
+  icon: 'warning',
+  title: 'Falta Informacion por Completar',
+  footer: 'Sistema De Inventario',
+});
+   	} else {
+        var dataen ='usuario='+usuario +'&nombre='+nombre +'&apellido='+apellido +'&Establecimiento='+Establecimiento+
+        '&unidad='+unidad +'&password='+password+'&password1='+password1+'&tipo_usuario='+tipo_usuario;
+
+   		$.ajax({
+        url : 'regiLogin.php',
+        type : 'POST',
+        data : dataen,
+        success:function(resp) {
+        	 $('#respa1').html(resp);
+}
+      });
+   	}
+
+   });
+
+</script>
 </body>
 </html>

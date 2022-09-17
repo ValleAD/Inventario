@@ -5,6 +5,7 @@ if(!isset($_SESSION['signin'])){
     header("location: log/signin.php");
 }
 $tipo_usuario = $_SESSION['tipo_usuario'];
+echo $tipo_usuario;
 $idusuario = $_SESSION['iduser'];
 ?><!DOCTYPE html>
 <html lang="es">
@@ -146,6 +147,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                     <ul class="children">
                         <li><a id="b" href="Empleados.php">Mostrar</a></li>
                     </ul>
+
                 </li>
                <?php
     $cliente =$_SESSION['signin'];
@@ -282,6 +284,8 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
     </div>
 </div>
 </div>
+
+
          <?php } ?>
 <?php include ('templates/loader.php') ?>
        
@@ -335,5 +339,6 @@ function confirmaion2(e) {
     }
 }
 </script>
+
 </body>
 </html>

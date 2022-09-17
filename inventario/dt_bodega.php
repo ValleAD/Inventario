@@ -114,13 +114,18 @@ $final2 = 0;
           <table class="table">
            <div  style="position: initial;"class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
               <form method="POST" action="Plugin/pdf_bodega.php">
+
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha">                        
                     <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                         </svg></button>
             </form>
             <form method="POST" action="Plugin/bodega.php" target="_blank">
-          
+                           <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['estado']?>" name="estado">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
                 <?php
 
                 $odt = $productos1['codBodega'];
@@ -145,6 +150,7 @@ while ($productos = mysqli_fetch_array($result)){
         $stock=number_format($cant_aprobada, 2,".",",");
         $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
        ?>
+
        <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
             <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
             <input type="hidden" name="um[]" value="<?php echo $um ?>">

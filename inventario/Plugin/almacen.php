@@ -13,9 +13,10 @@
     <img src="../img/log_1.png" style="width:20%; float:right">
     <?php if(isset($_POST['cod'])){
 
+     $vale = $_POST['num_sol'];
+     $encargado = $_POST['encargado'];
     $depto = $_POST['depto'];
     $fech = $_POST['fech'];
-     $vale = $_POST['num_sol'];
      $estado=$_POST['estado'];
       
 ?>
@@ -33,7 +34,23 @@
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA  DE ZACATECOLUCA</h3>
 <h4 align="center" style="margin-top: 2%;">ALMACÉN DE MEDICAMENTOS, INSUMOS MÉDICOS,</h4>
 <h4 align="center" style="margin-top: 2%;">PAPELERÍA Y OTROS ARTICULOS</h4>
-  <p align="right"><b>Estado: </b><?php echo $estado ?></p>
+<br>
+<table  style="width: 100%;text-align: center;">
+    <tr>
+        <td><b>N° Bodega</b></td>
+        <td><b>Departamento</b></td>
+        <td><b>Encargado</b></td>
+        <td><b>Fecha</b></td>
+        <td><b>Estado</b></td>
+    </tr>
+    <tr>
+        <td><?php echo $vale ?></td>
+        <td><?php echo $depto ?></td>
+        <td><?php echo $encargado ?></td>
+        <td><?php echo $fech ?></td>
+        <td><?php echo $estado ?></td>
+    </tr>
+</table>
  <table class="table" style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;text-align: center;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
