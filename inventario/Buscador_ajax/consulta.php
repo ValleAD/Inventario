@@ -83,7 +83,7 @@ echo'
                         echo '
                      <th style="width:1%" id="th">Código</th>
                      <th style="width:10%" id="th">Cod. Catálogo</th>
-                     <th style="width:23% " id="th" >Descripción Completa</th>
+                     <th style="width:26% " id="th" >Descripción Completa</th>
                      <th style="width:6%" id="th">U/M</th>
                      <th style="width:6%" id="th">Cantidad</th>
                      <th style="width:6%" id="th">Costo Unitario</th>
@@ -93,12 +93,12 @@ echo'
                         echo '
                      <th style="width:7%"  id="th">Código</th>
                      <th style="width:7%"  id="th">Cod. Catálogo</th>
-                     <th style="width: 24%;" id="th"> Descripción Completa</th>
+                     <th style="width: 27%;" id="th"> Descripción Completa</th>
                      <th style="width:8%"  id="th">U/M</th>
-                     <th style="width:7%"  id="th">Cantidad</th>
+                     <th style="width:8%"  id="th">Cantidad</th>
                      <th style="width:10%"  id="th">Costo Unitario</th>
                      <th style="width:10%"  id="th">Fecha Registro</th>
-                    <th id="th" style="width:8%">Categoría</th>
+                    <th id="th" style="width:9%">Categoría</th>
 
                     
                      <th style="width:10%" id="th">Editar</th>
@@ -106,7 +106,7 @@ echo'
                  '; } echo'
                    </tr>
 </table>
-<div id="div" style = " max-height: 442px;  overflow-y:scroll;overflow-x:none;">
+<div id="div" style = " max-height: 442px;max-width: 100%;  overflow-y:scroll;overflow-x:none;">
     <table class="table">
     <tbody>';
                 $n=0;

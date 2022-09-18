@@ -34,7 +34,7 @@ error_reporting(0);
     <link rel="icon" type="image/png" sizes="32x32"  href="../img/log.png">
 	<title>Register</title>
 </head>
-<body style="background-image: url(../img/bg3.jpg);background-size: 100% 100%,100%;background-repeat: no-repeat;background-position: center;background-attachment: fixed;">
+<body  style="background-image: url(../img/bg3.jpg);background-size: 100% 100%,100%;background-repeat: no-repeat;background-position: center;background-attachment: fixed;">
 	 <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
@@ -45,7 +45,6 @@ error_reporting(0);
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Create Account</h3></div>
                                     <div class="card-body">
                                         <form method="POST"  id="regiLogin">
-                                            <p id="respa1"></p>
                                           	<div class="container">
                                           		<div class="row">
                     <div class="col-md-6" style="position: initial">
@@ -90,18 +89,11 @@ error_reporting(0);
                     
                     <div class="col-md-12" style="position: initial">
                         <label id="label"  class="small mb-1">Departamento</label><br>
-                         
-               
+             <div class="input-group">
+                <input type="text" name="unidad" id="Unidad" class="form-control" disabled placeholder="Ingrese El Departamento o Unidad" id="Tipo" value="<?php echo $unidad ?>">
+                <label class="btn input-group-text bg-primary" onclick="return unidad()" style="color: white;">Seleccionar</label>
                 
-                             <select id="unidad" name="unidad" class="form-control">
-                             	<option selected disabled>Selecionar</option>
-                   <?php  
-   $sql = "SELECT * FROM selects_departamento";
-    $result = mysqli_query($conn, $sql);
-    while ($productos = mysqli_fetch_array($result)){ ?>  
-                             	<option><?php echo $productos['departamento'] ?></option>
- <?php }?>
-                             </select><br>
+             </div>
                        
  
           
@@ -111,8 +103,9 @@ error_reporting(0);
                  <label id="label" class="small mb-1">Tipo de Usuarios (Roles De Usuario)</label>
              <br>
              <div class="input-group">
-             	<input type="text" name="tipo_usuario" class="form-control" disabled placeholder="Ingrese El tipo de Usuario" id="Tipo">
-             	<label class="btn input-group-text bg-success" onclick="return tipo()" style="color: white;">Seleccionar </label>
+             	<input type="text" name="tipo_usuario" class="form-control" disabled placeholder="Ingrese El tipo de Usuario" id="Tipo" value="<?php echo $tipo_usuario ?>">
+             	<label class="btn input-group-text bg-success" id="btn1" style="color: white;">Seleccionar</label>
+                
              </div><br>
             
 
@@ -184,30 +177,78 @@ error_reporting(0);
 <script src="../Plugin/bootstrap/js/bootstrap.min.js"></script>
 <script src="../Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
 <script type="text/javascript">
-function tipo() {
-	var tipo_usuario1=$.trim($('#tipo_usuario1').val())
-   		Swal.fire({
+
+
+    function unidad() {
+        var unidad=$.trim($('#unidad').val())
+
+        var segundos = 10;
+     Swal.fire({
   icon: 'question', 
   showCloseButton: true,
   showConfirmButton: false,
-  html: '<form method="POST"  id="t"><select id="tipo_usuario1" name="tipo_usuario" class="form-control" required>'+
-            			'<option selected disabled>Seleccinar</option>'+
-            			'<option value="1">Administrador</option>'+
-            			'<option value="2">Cliente</option>'+
-            		'</select><br> <button type="submit" name="submit" onclick="return t()" class="btn btn-success btn-block">Agregar</button> </form>',
-});
-}
-function t() {
-        var tipo_usuario1=$.trim($('#tipo_usuario1').val())
-        if(tipo_usuario1=="1"){
- var limpiar = document.getElementById('Tipo'); limpiar.value = "Administrador"
-
-    }else{
-        var limpiar = document.getElementById('Tipo');limpiar.value = "Cliente"
-    
+  html: '<form method="POST"  id="t"><p>Departamento o Unidad</p><select id="unidad" name="unidad"  class="form-control" required>'+
+                     '<option selected disabled value="">Seleccinar</option>'+
+                     '<?php $sql = "SELECT * FROM selects_departamento"; $result = mysqli_query($conn, $sql);while ($productos = mysqli_fetch_array($result)){ ?><option><?php echo $productos['departamento'] ?></option><?php }?>'+
+                 '</select><br> <button type="submit" name="" onclick="return Unidad()" class="btn btn-success btn-block">Agregar</button></form>',
+    });
+     
     }
-    return false;
+
+    function Unidad() {
+        var unidad=$.trim($('#unidad').val())
+                  if(unidad==""){
+                             Swal.fire({
+  icon: 'warning', 
+  text: "Debe de Ingrear el Departamento o Unidad"
+    });
+        }
+ var limpiar = document.getElementById('Unidad'); limpiar.value = unidad
+        Swal.fire({icon: 'success',  text: unidad+" Agregado/@",});
+
+return false;
+    }
+
+        $('#btn1').click(function(){
+            var tipo_usuario1=$.trim($('#tipo_usuario1').val())
+
+                 Swal.fire({
+  icon: 'question', 
+  showCloseButton: true,
+  showConfirmButton: false,
+  html: '<form method="POST"  id="t"><p>Tipo de Usuarios (Roles De Usuario)</p><select id="tipo_usuario1" name="tipo_usuario" class="form-control" required>'+
+                                          '<option selected disabled value="">Seleccinar</option>'+
+
+                     '<option value="1">Administrador</option>'+
+                     '<option value="2">Cliente</option>'+
+                 '</select><br> <button type="submit" name="submit" onclick="return t()" class="btn btn-success btn-block">Agregar</button><p id="tiempo"></p>  </form>',
+    });
+    
+});
+                 function t() {
+        var tipo_usuario1=$.trim($('#tipo_usuario1').val())
+        var tipo=document.getElementById('btn1'); 
+          if(tipo_usuario1==""){
+    Swal.fire({
+  icon: 'warning', 
+  text: "Debe de Ingrear el Tipo de Usuarios (Roles De Usuario)"
+    });
 }
+        if(tipo_usuario1=="1"){
+
+ var limpiar = document.getElementById('Tipo'); limpiar.value = "Administrador"
+        Swal.fire({icon: 'success',  text: "Administrador Agregado",});
+    }if(tipo_usuario1=="2"){
+        var limpiar = document.getElementById('Tipo');limpiar.value = "Cliente"
+        Swal.fire({icon: 'success',  text: "Cliente Agregado",});
+    
+    } 
+            return false;
+            }
+    
+</script>
+<script type="text/javascript">
+
    
    $('#regiLogin').submit(function(e) {
    	e.preventDefault();
@@ -219,8 +260,16 @@ function t() {
    	var password=$.trim($('#show').val())
    	var password1=$.trim($('#show1').val())
    	var tipo_usuario=$.trim($('#Tipo').val())
+    if (tipo_usuario=="Administrador") {
+        var tipo_usuario1=$.trim($('#Tipo').val()).value="1"
+                
+    }
+    if (tipo_usuario=="Cliente") {
+        var tipo_usuario1=$.trim($('#Tipo').val()).value="2"
+        
+    }  	
 
-   	if (usuario=="" || nombre=="" || apellido=="" || password=="" || password1=="" || unidad=="" || tipo_usuario=="") {
+    if (usuario=="" || nombre=="" || apellido=="" || password=="" || password1=="" || unidad=="" || tipo_usuario=="") {
    		Swal.fire({
   icon: 'warning',
   title: 'Falta Informacion por Completar',
@@ -228,7 +277,7 @@ function t() {
 });
    	} else {
         var dataen ='usuario='+usuario +'&nombre='+nombre +'&apellido='+apellido +'&Establecimiento='+Establecimiento+
-        '&unidad='+unidad +'&password='+password+'&password1='+password1+'&tipo_usuario='+tipo_usuario;
+        '&unidad='+unidad +'&password='+password+'&password1='+password1+'&tipo_usuario='+tipo_usuario1;
 
    		$.ajax({
         url : 'regiLogin.php',

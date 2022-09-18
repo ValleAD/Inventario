@@ -198,13 +198,13 @@ $result = mysqli_query($conn, $sql);
         </section>
     </div>
 <br>    
+       </div>
 
 
                <section id="tabla_resultado" >
         <!-- AQUI SE DESPLEGARA NUESTRA TABLA DE CONSULTA -->
 
         </section>     
-       </div>
 
 
 <?php include('Buscador_ajax/categoria.php') ?>
