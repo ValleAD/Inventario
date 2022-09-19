@@ -74,6 +74,8 @@
             <?php 
 
                 echo'
+                <input type="checkbox" name="test" id="test">
+                
                  <input   id="'.$productos["codProductos"] .'" type="checkbox" name="id[]" value="'.$productos["codProductos"] .'"> <label  id="l" for="'.$productos["codProductos"] .'" > </label>  
            
          </tr>

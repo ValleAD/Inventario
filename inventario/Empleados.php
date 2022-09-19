@@ -31,6 +31,9 @@ die();
 </head>
 <body id="body">
     <style type="text/css">
+ .card{
+            width: 18%;position: initial; margin: 1%;float: left;
+        } 
     section{
         padding: 1%;
         margin: 1%;
@@ -43,7 +46,12 @@ die();
         text-shadow: 1px 1px 5px black;
         margin-top: 2%
     }
- @media (max-width: 952px){
+     @media (max-width: 518px){
+      .card{
+            width: 100%;position: initial; margin: 1%;
+        }  
+     
+
    #form{
         margin: -15%6%1%1%;
         width: 98%;
@@ -62,7 +70,6 @@ die();
         margin-left: 22%;
     }
     #dh{
-        margin-top: -20%;
         margin-left: 22%;
     }
     #p{
@@ -313,7 +320,7 @@ $result = mysqli_query($conn, $sql);
 </div>
 
 </div>         
- <div id="div" style = " max-height: 442px;width: 100%; overflow-y:scroll;overflow-x: hidden;">  
+ <div id="div" style = " max-height: 550px;width: 100%; overflow-y:scroll;overflow-x: hidden;">  
     <?php
     include 'Model/conexion.php';
 
@@ -331,46 +338,34 @@ $u='Cliente';
 ?>
 <?php  if ($tipo_usuario==1) { ?>
        
-<div class="card mb-3 border-secondary " style="max-width: 100%;min-width: 100%; position: initial;float: left;">
-  <div class="row g-0">
-    <div class="col-1" style="position: initial">
-                <svg  class="bi bi2 my-4 mx-1 text-primary" width="90" height="90" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#person-circle"/>
-                        </svg>
-    </div>
+<div class="card" style="font-size: 12px;">
+    
+             
+    
     
       <div class="card-body" style="position: initial">
         <p class="card-title"><b>USUARIO:</b> <?php echo $solicitudes['username'] ?></p>
-        <div class="row">
-        <div class="col-md-7" style="position: initial">
+        
         <p class="card-text"><b>NOMBRE COMPLETO: </b><?php echo $solicitudes['firstname']," ",$solicitudes['lastname']; ?></p>
         <p class="card-text"><b>ESTABLECIMIENTO:</b> <?php echo $solicitudes['Establecimiento']; ?></p>
+
+
+        <p class="card-text"><b>UNIDAD:</b> <?php echo $solicitudes['unidad']; ?></p>
+        <p class="card-text"><b>CUENTA:</b> <?php echo $u; ?></p>
+
+
     </div>
-    <div class="row">
-    <div class="col-md-12" style="position: initial">
-        <p id="p" class="card-text"><b>UNIDAD:</b> <?php echo $solicitudes['unidad']; ?></p>
-        <p id="p" class="card-text"><b>CUENTA:</b> <?php echo $u; ?></p>
-    </div>
-</div>
-</div><br>
-        <div class="row" style="position: initial">
-         
-                    <div class="col-md-0" style="position: initial;">
-     <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Empleados.php">             
+    <div style="position: initial;" class="btn-group m-2 " role="group" aria-label="Basic outlined example">
+     <form style="margin: 0%;background: transparent;" method='POST' action="Empleados.php">             
           <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">      
           <button id="d" name='editar' class='btn btn-info swal2-styled.swal2-confirm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
-        </form></div>
-    <div class="col-md-1" style="position: initial">
-                <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Controller/Delete_Empleados.php">
+        </form>
+        <form style="margin: 0%;background: transparent;margin-left: .5em; " method='POST' action="Controller/Delete_Empleados.php">
             <input type="hidden" name="id" value="<?php  echo $solicitudes['id']; ?>">
             <input type="hidden" name="idusuario" value="<?php echo $solicitudes['tipo_usuario'] ?>">
             <input id="dh" type="submit"onclick="return confirmaion()" class="btn btn-danger swal2-styled.swal2-confirm" value="Eliminar">
-     </form>
-   </div>
- 
-</div>
-    </div>
-</div>
+        </form>
+        </div>
 </div>
      <?php }} ?><?php if($tipo_usuario==2) { ?>
 <?php 

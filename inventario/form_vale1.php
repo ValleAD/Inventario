@@ -11,6 +11,9 @@ die();
 
     ';
 }
+if (isset($_POST['miForm'])) {
+    echo $_POST['employee'];
+}
 ?>
 <?php include ('templates/menu.php')?>
 
@@ -21,6 +24,7 @@ die();
 
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
+    <link rel="stylesheet" type="text/css" href="../Plugin/bootstrap/css/sweetalert2.min.css">
   
 
     <title>Productos</title>
@@ -28,6 +32,12 @@ die();
 <body>
 
          <style>  
+            .btn-group{
+                font-size: 12px;
+                float: right;
+                position: initial;
+            }
+
             #div{
                 margin: 0%;
                 display: none;
@@ -89,11 +99,17 @@ die();
 
 <?php include ('Buscador_ajax/cabezera.php') ?>
 
-     <form style="background: transparent;" method='POST' action="form_vale2.php">
- <button style=" float: right;margin-bottom: 1%;" type="submit" name="solicitar" class=" div btn btn-success btn-sm text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button><br class="div"><br class="div">
+     <form name="f1" style="background: transparent;" method='POST' action="form_vale2.php">
+ 
+ <button onclick = "return Validate()" style=" float: right;margin-bottom: 1%;" type="submit" name="solicitar" class=" btn btn-success btn-sm text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button><br class="div">
+
+
         <?php include ('Buscador_ajax/Consulta1.php') ?>
 </form>
-
 </section>
+
+<script src="Plugin/bootstrap/js/jquery-latest.js"></script>
+<script src="Plugin/bootstrap/js/bootstrap.min.js"></script>
+<script src="Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
 </body>
 </html>

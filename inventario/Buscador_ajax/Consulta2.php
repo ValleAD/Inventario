@@ -39,6 +39,7 @@ if ($buscarAlumnos->num_rows > 0)
 
 
     ';}echo '
+
     <table class="table table-responsive  table-striped" id="div" style=" width: 100%;">
      
                 <thead>
@@ -50,13 +51,30 @@ if ($buscarAlumnos->num_rows > 0)
                 <th style="width: 10%;">Cantidad</th>
                 <th style="width: 10%;">Costo Unitario</th>
                 <th style="width: 10%;">Fecha Registro</th>
-                <th style="width: 10%;" align="center"><button id="div" style=" float: right;margin-bottom: 1%;" type="submit" name="solicitar" class="btn btn-success btn-sm text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button>
+                <th style="width: 10%;" align="center">
+                         <div style="position: initial;" class="btn-group mt-3 mx-2 " role="group" aria-label="Basic outlined example">
+         
+             
+             <button id="div1" onclick="return checkAll()" style="position: initial;" type="button" class="btn btn-outline-primary" name="Empleados">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#arrow-left-circle-fill"/>
+                </svg>
+             </button>
+         
+         
+             <button  id="div2" onclick="return desmarcarTodo()" style="position: initial;"type="button" class="btn btn-outline-primary mx-1" name="user" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+             </button>
+         </form>
+ </div>
                   </th> 
                    </tr>
 </thead>
 </table>
 <div id="div" style = " max-height: 442px;  overflow-y:scroll;overflow-x:none;">
-    <table class="table">
+    <table id="tblElecProducts" class="table">
     <tbody>';
                 $n=0;
     while($productos= $buscarAlumnos->fetch_assoc())
@@ -92,7 +110,7 @@ if ($buscarAlumnos->num_rows > 0)
             <td style="width:11%;min-width: 100%;" id="th" data-label="solicitar">
             
             
-                 <input   id="'.$productos["codProductos"] .'" type="checkbox" name="id[]" value="'.$productos["codProductos"] .'"> <label  id="l" for="'.$productos["codProductos"] .'" > </label>  
+                 <input class="pl"  id="'.$productos["codProductos"] .'" type="checkbox" name="id[]" value="'.$productos["codProductos"] .'"> <label  id="l" for="'.$productos["codProductos"] .'" > </label>  
            
          </tr>
         ';
@@ -110,4 +128,4 @@ if ($buscarAlumnos->num_rows > 0)
 
 echo $tabla;
 ?>      
-     
+     <script src="Plugin/bootstrap/js/validarInput.js"></script>

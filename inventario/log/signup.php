@@ -187,6 +187,7 @@ error_reporting(0);
   icon: 'question', 
   showCloseButton: true,
   showConfirmButton: false,
+  footer: 'Sistema De Inventario',
   html: '<form method="POST"  id="t"><p>Departamento o Unidad</p><select id="unidad" name="unidad"  class="form-control" required>'+
                      '<option selected disabled value="">Seleccinar</option>'+
                      '<?php $sql = "SELECT * FROM selects_departamento"; $result = mysqli_query($conn, $sql);while ($productos = mysqli_fetch_array($result)){ ?><option><?php echo $productos['departamento'] ?></option><?php }?>'+
@@ -200,7 +201,8 @@ error_reporting(0);
                   if(unidad==""){
                              Swal.fire({
   icon: 'warning', 
-  text: "Debe de Ingrear el Departamento o Unidad"
+  text: "Debe de Ingrear el Departamento o Unidad",
+  footer: 'Sistema De Inventario',
     });
         }
  var limpiar = document.getElementById('Unidad'); limpiar.value = unidad
@@ -216,6 +218,7 @@ return false;
   icon: 'question', 
   showCloseButton: true,
   showConfirmButton: false,
+  footer: 'Sistema De Inventario',
   html: '<form method="POST"  id="t"><p>Tipo de Usuarios (Roles De Usuario)</p><select id="tipo_usuario1" name="tipo_usuario" class="form-control" required>'+
                                           '<option selected disabled value="">Seleccinar</option>'+
 
@@ -231,19 +234,20 @@ return false;
           if(tipo_usuario1==""){
     Swal.fire({
   icon: 'warning', 
-  text: "Debe de Ingrear el Tipo de Usuarios (Roles De Usuario)"
+  text: "Debe de Ingrear el Tipo de Usuarios (Roles De Usuario)",
+  footer: 'Sistema De Inventario',
     });
 }
         if(tipo_usuario1=="1"){
 
  var limpiar = document.getElementById('Tipo'); limpiar.value = "Administrador"
-        Swal.fire({icon: 'success',  text: "Administrador Agregado",});
+        Swal.fire({icon: 'success',  text: "Administrador Agregado",footer: 'Sistema De Inventario',});
     }if(tipo_usuario1=="2"){
         var limpiar = document.getElementById('Tipo');limpiar.value = "Cliente"
-        Swal.fire({icon: 'success',  text: "Cliente Agregado",});
+        Swal.fire({icon: 'success',  text: "Cliente Agregado",footer: 'Sistema De Inventario',});
     
     } 
-            return false;
+    return false;
             }
     
 </script>
