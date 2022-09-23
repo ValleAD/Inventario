@@ -19,6 +19,7 @@ die();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <title>Productos</title>
 </head>
 <body> 
@@ -158,10 +159,11 @@ $result = mysqli_query($conn, $sql);
   <section  style="background: rgba(255, 255, 255, 0.9);margin: 7%1%1%1%;padding: 1%; border-radius: 15px;">
 <h2 id="h2" class="text-center">Inventario de Productos</h2>
 <br>
+<div id="OcultarDiv">
 <?php include('Buscador_ajax/fecha.php') ?>
 
 
-
+<div id="OcultarDiv">
            <div class="mx-1 p-2 hidden" id="hidden" style=" border-radius: 5px;">
         
         <div style="position: initial;" class="btn-group mb-3 my-3 mx-2 " role="group" aria-label="Basic outlined example">
@@ -198,18 +200,19 @@ $result = mysqli_query($conn, $sql);
         </section>
     </div>
 <br>    
+</div>
        </div>
-
+   </div>
+</div>
 
                <section id="tabla_resultado" >
         <!-- AQUI SE DESPLEGARA NUESTRA TABLA DE CONSULTA -->
 
         </section>     
 
-
-<?php include('Buscador_ajax/categoria.php') ?>
-
-                         
+<div id="OcultarDiv">
+    <?php include('Buscador_ajax/categoria.php') ?>
+   </div>                      
 </section>
  <script>
     $(obtener_registros());

@@ -147,6 +147,9 @@ error_reporting(0);
 </style>
 <script src="../Plugin/bootstrap/js/jquery-latest.js"></script>
 <script src="../Plugin/bootstrap/js/bootstrap.min.js"></script>
+<script src="../Plugin/bootstrap/js/jquery-latest.js"></script>
+<script src="../Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
+
 <!--Es para la Contraseña Normarl-->
 	<script type="text/javascript">
 					function myFuntion() {
@@ -172,11 +175,6 @@ error_reporting(0);
 						}
 
 					}
-				</script>
-<script src="../Plugin/bootstrap/js/jquery-latest.js"></script>
-<script src="../Plugin/bootstrap/js/bootstrap.min.js"></script>
-<script src="../Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
-<script type="text/javascript">
 
 
     function unidad() {
@@ -186,49 +184,46 @@ error_reporting(0);
      Swal.fire({
   icon: 'question', 
   showCloseButton: true,
-  showConfirmButton: false,
+  showConfirmButton: true,
   footer: 'Sistema De Inventario',
   html: '<form method="POST"  id="t"><p>Departamento o Unidad</p><select id="unidad" name="unidad"  class="form-control" required>'+
                      '<option selected disabled value="">Seleccinar</option>'+
                      '<?php $sql = "SELECT * FROM selects_departamento"; $result = mysqli_query($conn, $sql);while ($productos = mysqli_fetch_array($result)){ ?><option><?php echo $productos['departamento'] ?></option><?php }?>'+
-                 '</select><br> <button type="submit" name="" onclick="return Unidad()" class="btn btn-success btn-block">Agregar</button></form>',
-    });
-     
-    }
-
-    function Unidad() {
-        var unidad=$.trim($('#unidad').val())
+                 '</select></form>',
+    }).then((result) => {
+  if (result.isConfirmed) {
+                var unidad=$.trim($('#unidad').val())
                   if(unidad==""){
                              Swal.fire({
   icon: 'warning', 
   text: "Debe de Ingrear el Departamento o Unidad",
   footer: 'Sistema De Inventario',
     });
-        }
+        }else{
  var limpiar = document.getElementById('Unidad'); limpiar.value = unidad
         Swal.fire({icon: 'success',  text: unidad+" Agregado/@",});
-
-return false;
     }
 
+  }});
+     
+    }
         $('#btn1').click(function(){
             var tipo_usuario1=$.trim($('#tipo_usuario1').val())
 
                  Swal.fire({
   icon: 'question', 
   showCloseButton: true,
-  showConfirmButton: false,
+  showConfirmButton: true,
   footer: 'Sistema De Inventario',
   html: '<form method="POST"  id="t"><p>Tipo de Usuarios (Roles De Usuario)</p><select id="tipo_usuario1" name="tipo_usuario" class="form-control" required>'+
                                           '<option selected disabled value="">Seleccinar</option>'+
 
                      '<option value="1">Administrador</option>'+
                      '<option value="2">Cliente</option>'+
-                 '</select><br> <button type="submit" name="submit" onclick="return t()" class="btn btn-success btn-block">Agregar</button><p id="tiempo"></p>  </form>',
-    });
-    
-});
-                 function t() {
+                 '</select></form>',
+    }).then((result) => {
+  if (result.isConfirmed) {
+
         var tipo_usuario1=$.trim($('#tipo_usuario1').val())
         var tipo=document.getElementById('btn1'); 
           if(tipo_usuario1==""){
@@ -241,19 +236,20 @@ return false;
         if(tipo_usuario1=="1"){
 
  var limpiar = document.getElementById('Tipo'); limpiar.value = "Administrador"
+    
         Swal.fire({icon: 'success',  text: "Administrador Agregado",footer: 'Sistema De Inventario',});
     }if(tipo_usuario1=="2"){
         var limpiar = document.getElementById('Tipo');limpiar.value = "Cliente"
         Swal.fire({icon: 'success',  text: "Cliente Agregado",footer: 'Sistema De Inventario',});
     
     } 
-    return false;
-            }
-    
-</script>
-<script type="text/javascript">
-
    
+  }
+});
+    
+});
+
+
    $('#regiLogin').submit(function(e) {
    	e.preventDefault();
    	var usuario=$.trim($('#usuario').val())

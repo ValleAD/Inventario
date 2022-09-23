@@ -4,11 +4,11 @@
         $columna=$_POST['columna'];
         $tipo=$_POST['tipo'];?>
         <style>
-            #x{
+            #x, #ssas{
                 display: none;
             }
         </style>  
-        <div id="x">
+        <div>
         <table class="table  table-responsive  table-striped" id="div" style=" width: 100%;">
      
                 <thead>
@@ -94,7 +94,7 @@
             }
         </style>
 
-           <div id="x">    
+           <div>    
         <table class="table  table-responsive  table-striped" id="div" style=" width: 100%;">
      
                 <thead>

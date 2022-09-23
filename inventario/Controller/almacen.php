@@ -1,4 +1,16 @@
-<?php
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="../Plugin/bootstrap/css/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="../Plugin/bootstrap/css/bootstrap.css">
+    <script src="../Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
+    <script src="../Plugin/bootstrap/js/jquery-latest.js"></script>
+    <script src="../Plugin/bootstrap/js/bootstrap.min.js"></script>
+    </head>
+    <body><?php
 
 //CRUD para guardar datos enviados
 // de re_producto.php y se guarde en la tabla tb_productos mysql
@@ -12,12 +24,18 @@ include '../Model/conexion.php';
       $verificar_almacen =mysqli_query($conn, "SELECT * FROM detalle_almacen WHERE tb_almacen ='$solicitud_no' ");
 
 if (mysqli_num_rows($verificar_almacen)>0) {
-  echo '
-    <script>
-    alert("El codigo ingresado debe se difernte al registrado");
-     window.location ="../form_almacen.php"; 
-  </script>
-  ';
+  echo "<script>
+    Swal.fire(
+      'NOTA IMPORTANTE:',
+      'El codigo ingresado debe se difernte al registrado',
+      'warning'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../form_almacen.php';                               
+               }
+                });
+
+        </script>";
 exit();
 }
     //crud para guardar los productos en la tabla tb_vale
@@ -37,17 +55,36 @@ for($i = 0; $i < count($_POST['cod']); $i++)
       $query = mysqli_query($conn, $insert);
 
       if ($result || $query) {
-        echo "<script> alert('Su solicitud fué realizada correctamente');
-        location.href = '../dt_almacen.php';
-        </script>
-        ";
+        echo "<script>
+    Swal.fire(
+      'Realizado',
+      'Su solicitud fué realizada correctamente',
+      'success'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../dt_almacen.php';                               
+               }
+                });
+
+        </script>";
       }else {
-        echo "<script> alert('¡Error! algo salió mal');
-        location.href = '../form_almacen.php';
-        </script>
-        ";
+        echo "<script>
+    Swal.fire(
+      'ERROR',
+      '¡Error! algo salió mal',
+      'error'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../form_almacen.php';                               
+               }
+                });
+
+        </script>";
+        
       }
     }
     mysqli_close($conn);
     
 ?>
+</body>
+</html>

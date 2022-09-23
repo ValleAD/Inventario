@@ -18,6 +18,7 @@ die();
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    
 	<title>Vista Previa</title>
 </head>
 <body>
@@ -114,7 +115,7 @@ if ($codigo=="") {
       <?php include('Buscador_ajax/tablaProductos.php') ?>
            
           <center>  <div class="col-md-3" style="padding: 0;">
-        <button id="buscar1" type="submit" name="form_compra2" class="btn  btn-success btn-lg my-2 text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar
+        <button type="submit" name="form_compra2" class="btn  btn-success btn-lg my-2 text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar
                         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#save"/>
                         </svg>

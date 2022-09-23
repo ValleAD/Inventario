@@ -5,7 +5,7 @@ session_start();
     echo '
     <script>
        
-         window.location ="log/signin.php";
+         window.location ="../log/signin.php";
         session_destroy();  
                 </script>
 die();
@@ -27,6 +27,10 @@ die();
   </head>
     <body >
         <style>  
+            
+            #buscar1{
+                display: block;
+            }
          #section{
 
             margin-top: 3%;
@@ -35,32 +39,22 @@ die();
             margin-right: 1%;
             padding: 1%;
             }
-            #buscar{
-            margin-bottom: 5%;
-            margin-left: 2.5%;
-            margin-top: 0.5%; 
-            background: rgb(5, 65, 114); 
-            color: #fff; margin-bottom: 2%; 
-            border: rgb(5, 65, 114);
-            }
-            #buscar:hover{
-            background: rgb(9, 100, 175);
-            } 
-            #buscar:active{
-            transform: translateY(5px);
-            } 
+            #ver{
+                margin-left: 2%; 
+                background: rgb(5, 65, 114); 
+                color: #fff; margin-bottom: 2%;  
+                border: rgb(5, 65, 114);
+               }
+               #ver:hover{
+                background: rgb(9, 100, 175);
+               } 
+               #ver:active{
+                transform: translateY(5px);
+               } 
             .a{
                 width: 25%;
             }
-                #lo-que-vamos-a-copiar{
-        margin: 1%;
-        border-radius: 15%;
-        padding: 2%;
-    }
-    .col-xs-4{
-        margin: 2%;
-        padding: 2%;
-    }
+
             @media (max-width: 952px){
    #section{
         margin: -15%6%6%1%;
@@ -73,33 +67,22 @@ die();
     #p{
         margin-top: 5%;
         margin-left: 7%;
-    }#buscar{
-        width: 100%;
-        margin: auto;
-    }#buscar1{
-        width: 100%;
-        margin: auto;
-    }
-
-    #btn-agregar{
-        width: 100%;
-        margin-top: -7%;
-        padding-right: 15%;
     }
   }
         </style>
         <br><br><br>
 
-<form id="section" action="Controller/añadir.php" method="POST" >
-    
-<font color=black><h3 style="text-align: center; font-weight: bold">Registro de Productos</h3></font>
-   <div id="Registro"  class="row container-fluid" style="position: initial;"  >
+<form id="section" action="Controller/añadir.php" method="POST" style="height: 30%; margin-top: -15">
+<font color=marballe><h3 style="text-align: center; font-weight: bold">Registro de Productos</h3></font>
+</center>
+<div class="mx-2 alert alert-warning alert-dismissible fade show" role="alert" style="position: initial;"><b>NOTA IMPORTANTE: </b> El codigo Que sera ingresado en este formulario no debe de ir Repetido cuando Presionen  el boton "Agregar Producto"</div>
+   <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
 
-<div id="lo-que-vamos-a-copiar"  style="background:#bfe7ed;  border-radius:15px;">
-    <div class="col-xs-4 "  style="background: #bfe7ed;  border-radius:15px;" >
-        <div class="well well-sm" style="position: initial;">
+<div id="lo-que-vamos-a-copiar"  style="background:#FAE2E2;margin-left: 1%;margin-right: 1%;margin-top: 1%;  border-radius:5px;">
+    <div class="col-xs-4 "  style="background: #FAE2E2;margin-left: 1;margin-right: 1%;margin-top: 1%;  border-radius:5px;" >
+        <div class="well well-sm" style="position: all; margin: 5%">
 
-            <div class="form-group" style="position: initial; ">
+            <div class="form-group" style="position: all; margin: 2%">
             <label for="">Categoría</label><br> 
              <div class="input-group mb-3" style="position: initial;">
                  <label class="input-group-text" for="inputGroupSelect01">
@@ -107,7 +90,8 @@ die();
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#card-list"/>
                 </svg>
                  </label>
-                    <select style="position: initial;" class="form-control" multiple aria-label="multiple select example" name="categoria[]"  id="div" required style="cursor: pointer" required>
+                    <select style="position: initial;" class="form-control"  name="categoria[]"  id="div" required style="cursor: pointer" required>
+                        <option disabled selected value="">Seleccionar</option>
                         
                      <?php 
                         $sql = "SELECT * FROM  selects_categoria";
@@ -124,7 +108,7 @@ die();
             </div>
             </div>
 
-            <div class="form-group" style="position: initial; ">
+            <div class="form-group" style="position: all; margin: 2%">
                 <label style="color: #000">Código</label> 
                  <div  class="input-group mb-3" style="position: initial;">
                  <label class="input-group-text" for="inputGroupSelect01">
@@ -132,14 +116,14 @@ die();
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#123"/>
                 </svg>
                  </label>
-                <input style="position: initial;" type="number" name="cod[]" class="form-control" id="busqueda" placeholder="Ingrese código de producto " required>
+                <input style="position: initial;"  type="number" name="cod[]" class="form-control" id="busqueda" placeholder="Ingrese código de producto " required>
             </div>
                  <section id="tabla_resultado" style="margin: 0px;"></section>
             </div>
 
-            <div class="form-group" style="position: initial;">
+            <div class="form-group" style="margin: 2%">
               <label style="color: #000">Codificación de Catálogo</label> 
-                <div style="position: initial;" class="input-group mb-3">
+               <div style="position: initial;" class="input-group mb-3">
                  <label class="input-group-text" for="inputGroupSelect01">
                  
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -151,7 +135,7 @@ die();
                <section id="resultado" style="margin: 0px;"></section>
             </div>
 
-          
+
             <div class="form-group">
                 <label style="color: #000">Descripción Completa</label>
                  <div class="input-group mb-3" style="position: initial;">
@@ -174,8 +158,8 @@ die();
                 </svg>
                  </label>
              
-                <select style="position: initial;" class="form-control" multiple aria-label="multiple select example"  id="div" name="um[]" id="um" required>
-                  
+                <select style="position: initial;" class="form-control"   id="div" name="um[]" id="um" required>
+                  <option disabled selected value="">Seleccionar</option>
 
                  <?php 
                         $sql = "SELECT * FROM  selects_unidad_medida";
@@ -189,11 +173,9 @@ die();
                 </select>  
             
         </div>
-    </div>
+        </div>
             
-           
-
-            <div class="form-group">
+            <div class="form-group" >
                 <label>Costo Unitario</label>
                 <div class="input-group mb-3" style="position: initial;">
                  <label class="input-group-text" for="inputGroupSelect01">
@@ -202,48 +184,30 @@ die();
                 </svg>
                  </label>
                <input style="position: initial;" class="form-control" type="number" step="0.01" name="cu[]" placeholder="$ 0.00" required>
-
+                    <input type="hidden" name="dia" id="dia">
+                    <input type="hidden" name="mes" id="mes">
+                    <input type="hidden" name="año" id="ano">
             </div>
-        </div>
+            </div>
+
         </div>
     </div>            
 </div>
-<style type="text/css">
-  .boton_2{
-    padding: 10px;
-    font-weight: 600;
-    font-size: 20px;
-    background-color: #28a745;
-    border-radius: 6px;
-  }
-</style>
-<div class="col-md-6" style="position: initial;padding: 0%;margin: 0%;">
-    <div>
-      <input style="cursor: default;color: white; " id="btn-agregar" class=" btn boton_2 my-3"   value="Agregar Producto">
-        
-      
+ 
+<div class="col-xs-4" style="position: initial">
+    <div class="well" style="margin-top: 7%">
+      <button id="btn-agregar" class="btn btn-block btn-default bg-success" type="button" style="color: white;">Agregar Producto</button>                
     </div>
 </div>
     </div>
     
     <hr />
     
-    <div class=" col-md-12 text-center" style="padding: 0%;">
-        
-        <button id="buscar1" class="btn btn-success btn-lg my-2" name="submit" style="margin-bottom: 2%;">Guardar 
-            <svg class="bi" width="20" height="20" fill="currentColor">
-                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#save"/>
-                        </svg>
-        </button>  
-        <a id="buscar" class="btn btn-lg my-2" href="vistaProductos.php?productos">Ver Productos
-                        <svg class="bi" width="20" height="20" fill="currentColor">
-                        <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#list-check"/>
-                        </svg>
-        </a>
+    <div class="text-center">
+        <button class="btn btn-success btn-lg" name="submit" style="margin-bottom: 2%;">Guardar</button>  
+        <a id="ver" class="btn btn-lg" href="vistaProductos.php">Ver Productos</a>
+
     </div>
-<input type="hidden" name="dia" id="dia">
-<input type="hidden" name="mes" value="10">
-<input type="hidden" name="año" id="ano">
 </form>
 
 
@@ -255,9 +219,6 @@ die();
         
 // El encargado de agregar más formularios
 $("#btn-agregar").click(function(){
-    for (var i = Things.length - 1; i >= 0; i--) {
-        Things[i];
-    }
     // Agregamos el formulario
     $("#Registro").prepend(formulario_registro);
 
@@ -279,10 +240,8 @@ $("#btn-agregar").click(function(){
         $("#frm-registro").submit(function(){
             return $(this).validate();
         });
-    })
-</script>
-<script>
-        $(obtener_registros());
+    });
+            $(obtener_registros());
 
 function obtener_registros(consulta)
 {
@@ -311,8 +270,6 @@ $(document).on('keyup', '#busqueda', function()
         }
 });
 
-</script>
-<script>
         $(obtener_registros1());
 
 function obtener_registros1(consulta)
@@ -342,8 +299,6 @@ $(document).on('keyup', '#busq', function()
         }
 });
 
-</script>
-<script type="text/javascript">
     window.onload = function(){
   var fecha = new Date(); //Fecha actual
   var mes = fecha.getMonth()+1; //obteniendo mes
@@ -353,9 +308,11 @@ $(document).on('keyup', '#busq', function()
     dia='0'+dia; //agrega cero si el menor de 10
   if(mes<10)
     mes='0'+mes //agrega cero si el menor de 10
-  document.getElementById('dia').value=dia;
-  document.getElementById('mes').value=mes;
-  document.getElementById('ano').value=ano;
+var limpiar = document.getElementById('dia'); limpiar.value = dia
+var limpiar1 = document.getElementById('mes'); limpiar1.value = mes;
+var limpiar4 = document.getElementById('ano'); limpiar4.value = ano;
+
+
 }
 
 </script>

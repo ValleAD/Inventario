@@ -19,6 +19,7 @@ die();
 <head>
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <title>Categorias</title>
 </head>
@@ -48,21 +49,25 @@ $result = mysqli_query($conn, $sql);
 
     while ($categoria = mysqli_fetch_array($result)){
 ?>
-
+<style type="text/css">section{display: none;}</style>
 
 <form id="form" action="Controller/Desabilitar-categorias.php" method="POST" style="background: transparent; ">
+    <div id="" class="container-fluid" style="background: rgba(0, 0, 0, 0.5);  border-radius: 15px; color:#fff; font-weight: bold;">
   <h3 align="center">Actualizar Categorias</h3>
-    <div id="" class="container-fluid" style="background: rgba(100, 100, 100, 0.6);  border-radius: 15px; color:#fff; font-weight: bold;">
         <div class="row">
             <div id="div" class=" col-md-12" style="position: initial;"><p class="small mb-1"><font color="black"><b>La Categoria que has Seleccionado:</b></font> <?php echo $categoria['categoria']?></p>
                 <input type="hidden" name="id" value="<?php  echo $categoria['id']; ?>">
                 <label for="" style="color:white;" class=" mb-1">Habilitado</label><br> 
-                 <input  id="input" type="radio" name="Habilitado" value="Si" style="" required> <label  style="color: white;" id="label1" for="input" > Habilitar  Categoria</label>
+                 <?php if ($categoria['Habilitado']=="No") {?>
+                    <input  id="input" type="radio" name="Habilitado" value="Si" style="" required> <label  style="color: white;" id="label1" for="input" > Habilitar  Categoria</label>
+                <?php }if ($categoria['Habilitado']=="Si") {?>
+                 
                   <input  id="input1" type="radio" name="Habilitado" value="No" style="" required> <label style="color: white;" id="label1" for="input1" > Desbilitar  Categoria</label><br>
+              <?php } ?>
             </div>
          </div>
 
-        <hr>
+        <hr style="background: white;">
         <div class="row">
             <div class=" col-md-12" style="position: initial;margin-bottom: 2%;">
                 <button type="submit" name="Update_categorias" class ="btn btn-primary" style="background:rgb(12, 139, 8); margin-right: 1%; border: none">Guardar Cambios</button>
@@ -80,8 +85,8 @@ $result = mysqli_query($conn, $sql);
   }
 } 
 ?><br>
-        <h2 class="text-center ;" style="color:black;">Categorias</h2>
     <section style="margin:1%;background: rgba(255, 255, 255, 0.9);border-radius: 15px; position: initial; ">
+        <h2 class="text-center ;" style="color:black;">Categorias</h2>
     <a href="dependencias.php" class="btn btn-success" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Dependencias</a>
     <a href="departamentos.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Departamentos</a>
 <?php if($tipo_usuario == 1) { ?>

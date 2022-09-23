@@ -92,10 +92,9 @@ die();
     <?php include ('Buscador_ajax/cabezera.php') ?>
      <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="form_bodega_info.php">
 
- <button style=" float: right;margin-bottom: 1%;" type="submit" name="solicitar" class=" div btn btn-success btn-sm text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button><br class="div"><br class="div">
+    
  <?php include ('Buscador_ajax/Consulta1.php') ?>
 </form>
 </section>
-
 </body>
 </html>

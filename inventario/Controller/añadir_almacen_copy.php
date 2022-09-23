@@ -1,4 +1,16 @@
-<?php
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="../Plugin/bootstrap/css/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="../Plugin/bootstrap/css/bootstrap.css">
+    <script src="../Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
+    <script src="../Plugin/bootstrap/js/jquery-latest.js"></script>
+    <script src="../Plugin/bootstrap/js/bootstrap.min.js"></script>
+    </head>
+    <body><?php
 
 //CRUD para guardar datos enviados
 // de re_producto.php y se guarde en la tabla tb_productos mysql
@@ -14,41 +26,42 @@ if ($estado=='Aprobado') {
  for($i = 0; $i < count($_POST['cod']); $i++)
     {
       $codigo_producto  = $_POST['cod1'][$i];
-      $precio = $_POST['cost'][$i];
       $cantidad_despachada    = $_POST['cantidad_despachada'][$i];
 
        $sql="UPDATE  detalle_almacen SET  cantidad_despachada='$cantidad_despachada' WHERE codigoalmacen='$codigo_producto'" ;
 
       $query = mysqli_query($conn, $sql);
 }
-     for($i = 0; $i < count($_POST['cod']); $i++)
-    {
-      $codigo_producto  = $_POST['cod'][$i];
-      // $categoria        = $_POST['cat'][$i];
-        //$catalogo         = $_POST['catalogo'][$i];
-      //  $nombre_articulo  = $_POST['nombre'][$i];
-      $Descripción      = $_POST['desc'][$i];
-      $u_m              = $_POST['um'][$i];
-      $cost             = $_POST['cost'][$i];
-      $cant             = $_POST['cant'][$i];
-      // $cant_aprobada    = $_POST['cantidad_despachada'][$i];
-      // $catT=$cant-$cant_aprobada;
-       $insert = "INSERT INTO tb_productos (codProductos,  descripcion, unidad_medida, stock, precio,solicitudes) VALUES ('$codigo_producto',  '$Descripción', '$u_m',  '$cost','>$cant' ,'Solicitud Compra')";
-      $query1 = mysqli_query($conn, $insert);
-      if ($result ||$query)  {
-        echo "<script> alert('El Estado fue Cambiado correctamente')
-        location.href = '../solicitudes_almacen.php';
-        </script>
-        ";
-        return true;
-        }else {
-        echo "<script> alert('UUPS!! Algo no fue mal escrito')
-        location.href = '../solicitudes_almacen.php';
-        </script>
-        ";
-        return false;
+
+  
+      if ($result || $query)  {
+                echo "<script>
+    Swal.fire(
+      'Realizado',
+      'El Estado fue Cambiado correctamente',
+      'success'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../solicitudes_almacen.php';                               
+               }
+                });
+
+        </script>";
+      }else {
+        echo "<script>
+    Swal.fire(
+      'ERROR',
+      '¡Error! algo salió mal',
+      'error'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../solicitudes_almacen.php';                               
+               }
+                });
+
+        </script>";
         }
-    }
+    
   }
   }
    if(isset($_GET['estado1'])){
@@ -57,11 +70,21 @@ $estado = $_GET['estado1'];
 $sql="UPDATE  tb_almacen SET estado = '$estado' WHERE codAlmacen='$nSolicitud'" ;
 $result = mysqli_query($conn, $sql);
 if ($estado=='Rechazado') {
-         echo "<script> alert('Producto Rechazado')
-           location.href = '../solicitudes_almacen.php';
-            </script>
-            ";
+    echo "<script>
+    Swal.fire(
+      'Realizado',
+      'Producto Rechazado',
+      'success'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../solicitudes_almacen.php';                               
+               }
+                });
+
+        </script>";
       }
 
 }
   ?>
+</body>
+</html>

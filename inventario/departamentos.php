@@ -19,7 +19,7 @@ die();
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-
+<link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css">
     <title>Departamentos</title>
 </head>
 <body>
@@ -28,7 +28,7 @@ die();
         padding: 1%;
     }
 
-    
+    #form{margin: 1%;}
     #div{
         margin: 0%;
     }
@@ -55,21 +55,26 @@ $result = mysqli_query($conn, $sql);
 
 
     while ($productos = mysqli_fetch_array($result)){
+
 ?>
 
-
+<style type="text/css">section{display: none;}</style>
 <form id="form" action="Controller/Desabilitar-departamentos.php" method="POST" style="background: transparent; ">
-  <h3 align="center">Actualizar Dependencias Habilitadas </h3>
-    <div class="container-fluid" style="background: rgba(100, 100, 100, 0.6);width: 70%; margin: auto;padding-top: 1%; border-radius: 9px; color:#fff; font-weight: bold; margin: auto;">
+    <div class="container-fluid" style="background: rgba(0, 0, 0, 0.5); margin: auto;padding-top: 1%; border-radius: 9px; color:#fff; font-weight: bold; margin: auto;">
+  <h3 align="center">Actualizar Departamentos Habilitadas </h3>
         <div class="row">
             <div class="col-md-12" style="position: initial;margin: auto;"><p class="small mb-1"><font color="black"><b>EL Departamento que has Seleccionado:</b></font> <?php echo $productos['departamento']?></p>
                 <input type="hidden" name="id" value="<?php  echo $productos['id']; ?>">
                 <label for="" style="color:white;" class=" mb-1">Habilitado</label><br> 
-                 <input  id="input" type="radio" name="Habilitado" value="Si" style="" required> <label  style="color: white;" id="label1" for="input" > Habilitar  Categoria</label>
-                  <input  id="input1" type="radio" name="Habilitado" value="No" style="" required> <label style="color: white;" id="label1" for="input1" > Desbilitar  Categoria</label><br>
+                <?php if ($productos['Habilitado']=="No") {?>
+                    <input  id="input" type="radio" name="Habilitado" value="Si" style="" required> <label  style="color: white;" id="label1" for="input" > Habilitar  Departamento</label>
+                <?php }if ($productos['Habilitado']=="Si") {?>
+                 
+                  <input  id="input1" type="radio" name="Habilitado" value="No" style="" required> <label style="color: white;" id="label1" for="input1" > Desbilitar  Departamento</label><br>
+              <?php } ?>
             </div>
          </div>
-        <hr>
+        <hr style="background: white;">
         <div class="row">
             <div class="col-md-12" style="position: initial; margin-bottom: 2%;">
                 <button type="submit" name="Update_Dependencias" class ="btn btn-primary" style="background:rgb(12, 139, 8); margin-right: 1%; border: none">Guardar Cambios</button>
@@ -89,8 +94,8 @@ $result = mysqli_query($conn, $sql);
   }
 } 
 ?>
-        <h2 class="text-center " >Departamentos del Sistema</h2><br>
     <section style="margin:1%;padding: 1%; border-radius: 5px; background: white; ">
+        <h2 class="text-center " >Departamentos del Sistema</h2><br>
 
     <a href="categorias.php" class="btn btn-info" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; ">Categorias</a> 
     <a href="dependencias.php" class="btn btn-success" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Dependencias</a>

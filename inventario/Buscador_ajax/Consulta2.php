@@ -39,7 +39,7 @@ if ($buscarAlumnos->num_rows > 0)
 
 
     ';}echo '
-
+ 
     <table class="table table-responsive  table-striped" id="div" style=" width: 100%;">
      
                 <thead>
@@ -54,19 +54,9 @@ if ($buscarAlumnos->num_rows > 0)
                 <th style="width: 10%;" align="center">
                          <div style="position: initial;" class="btn-group mt-3 mx-2 " role="group" aria-label="Basic outlined example">
          
-             
-             <button id="div1" onclick="return checkAll()" style="position: initial;" type="button" class="btn btn-outline-primary" name="Empleados">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#arrow-left-circle-fill"/>
-                </svg>
-             </button>
-         
-         
-             <button  id="div2" onclick="return desmarcarTodo()" style="position: initial;"type="button" class="btn btn-outline-primary mx-1" name="user" target="_blank">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
-                </svg>
-             </button>
+             <div class="form-group" style="position: initial;"> <button onclick = "return Validate()"   type="submit" name="solicitar" class=" form-control btn btn-success btn-sm text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button><br class="div"></div>
+
+  
          </form>
  </div>
                   </th> 
@@ -98,7 +88,7 @@ if ($buscarAlumnos->num_rows > 0)
        $cantidad=$productos['SUM(stock)'];
         $stock=number_format($cantidad, 2,".",",");
         $tabla.='
-        <tr>
+        <tr id="tr">
               
             <td style="width:7%;min-width: 100%;" id="th" data-label="Código">'.$productos['codProductos'].'</td>
             <td style="width:7%;min-width: 100%;" id="th" data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
@@ -110,7 +100,7 @@ if ($buscarAlumnos->num_rows > 0)
             <td style="width:11%;min-width: 100%;" id="th" data-label="solicitar">
             
             
-                 <input class="pl"  id="'.$productos["codProductos"] .'" type="checkbox" name="id[]" value="'.$productos["codProductos"] .'"> <label  id="l" for="'.$productos["codProductos"] .'" > </label>  
+                 <input class="case"  id="'.$productos["codProductos"] .'" type="checkbox" name="id[]" value="'.$productos["codProductos"] .'"> <label  id="l" for="'.$productos["codProductos"] .'" > </label>  
            
          </tr>
         ';

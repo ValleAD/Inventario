@@ -31,9 +31,9 @@ die();
 </head>
 <body id="body">
     <style type="text/css">
- .card{
-            width: 18%;position: initial; margin: 1%;float: left;
-        } 
+        .table1 tbody td{text-align: left;}
+        .table1 tbody #td1{text-align: center;}
+        #Empleados{display: none;}
     section{
         padding: 1%;
         margin: 1%;
@@ -46,10 +46,9 @@ die();
         text-shadow: 1px 1px 5px black;
         margin-top: 2%
     }
-     @media (max-width: 518px){
-      .card{
-            width: 100%;position: initial; margin: 1%;
-        }  
+     @media (max-width: 800px){
+        #Empleados{display: block;}
+ .table{display: none;}
      
 
    #form{
@@ -63,17 +62,11 @@ die();
     #div{
         padding: 2%;
     }
-    .card{
-        margin-top: 5%;
-    }
     #d{
         margin-left: 22%;
     }
     #dh{
         margin-left: 22%;
-    }
-    #p{
-        margin-left: 5%;
     }
 </style>
 <br><br><br>
@@ -91,6 +84,7 @@ $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
 ?>
+    <style type="text/css">section, h2{display: none;}</style>
 <?php if ($tipo_usuario==2) {?>
 <form id="form" action="Controller/Desabilitar-Empleado.php" method="POST" style="background: transparent;  ">
   <h3 align="center">Actualizar Informacion del Empleado</h3>
@@ -123,9 +117,10 @@ $result = mysqli_query($conn, $sql);
     </div>
 </form>
 <?php  } if ($tipo_usuario==1) {?>
+
 <form id="form" action="Controller/Desabilitar-Empleado.php" method="POST" style="background: transparent;  ">
-  <h3 align="center">Actualizar Informacion del Empleado</h3>
     <div class="container" style="background: rgba(100, 100, 100, 0.6); border-radius: 9px; color:#fff; font-weight: bold;">
+  <h3 align="center">Actualizar Informacion del Empleado</h3>
         <div class="row">
             <div class=" col-md-12" style="position: initial; "><p class="small mb-1"><font color="black"><b>Usuario que a Seleccionado:</b></font> <?php echo $productos['username']?></p>
                     <div class="row">
@@ -144,8 +139,8 @@ $result = mysqli_query($conn, $sql);
                 <label id="label" class="small mb-1">Habilitado (Obligatorio) </label><br> 
                     <select required class="form-control" name="Habilitado" id="categoria" style="cursor: pointer">
                         <option value="">[Seleccione]</option>
-                        <option>Si</option>
-                        <option>No</option>
+                        <option value="Si">Si, Podra Ingresar al Sistema</option>
+                        <option value="No">No, Se le Bloqueará el Acceso al Sistema</option>
                         
                     </select>
             </div>
@@ -171,7 +166,7 @@ $result = mysqli_query($conn, $sql);
 } 
 ?>
         <font color="black"><h2 class="text-center " >Empleados Del Sistema</h2></font>
-    <section id="" style=" border-radius: 5px; background: white; ">
+    <section  style=" border-radius: 5px; background: white; ">
         <?php if ($tipo_usuario==1) {?>
     <button class="btn btn-secondary" data-toggle="modal" data-target="#Usuarios" style="float: left; color: white;margin-top: 1%;">Nuevo Integrante</button>
      <div style="position: initial;" class="btn-group mt-3 mx-2 " role="group" aria-label="Basic outlined example">
@@ -320,11 +315,11 @@ $result = mysqli_query($conn, $sql);
 </div>
 
 </div>         
- <div id="div" style = " max-height: 550px;width: 100%; overflow-y:scroll;overflow-x: hidden;">  
+ <div id="div" style = " max-height: 550px;width: 100%; overflow-y:scroll;overflow-x: hidden;padding-right: 1%  ;">  
     <?php
     include 'Model/conexion.php';
 
-    $sql = "SELECT * FROM tb_usuarios ORDER BY `id` ";
+    $sql = "SELECT * FROM tb_usuarios ";
     $result = mysqli_query($conn, $sql);
 
     while ($solicitudes = mysqli_fetch_assoc($result)){
@@ -338,24 +333,40 @@ $u='Cliente';
 ?>
 <?php  if ($tipo_usuario==1) { ?>
        
-<div class="card" style="font-size: 12px;">
-    
-             
-    
-    
+<div class="card" style="font-size: 12px;margin-bottom: 1%;position: initial;">
       <div class="card-body" style="position: initial">
-        <p class="card-title"><b>USUARIO:</b> <?php echo $solicitudes['username'] ?></p>
-        
-        <p class="card-text"><b>NOMBRE COMPLETO: </b><?php echo $solicitudes['firstname']," ",$solicitudes['lastname']; ?></p>
-        <p class="card-text"><b>ESTABLECIMIENTO:</b> <?php echo $solicitudes['Establecimiento']; ?></p>
-
-
-        <p class="card-text"><b>UNIDAD:</b> <?php echo $solicitudes['unidad']; ?></p>
-        <p class="card-text"><b>CUENTA:</b> <?php echo $u; ?></p>
-
-
-    </div>
-    <div style="position: initial;" class="btn-group m-2 " role="group" aria-label="Basic outlined example">
+        <table class="table1" style="width:100%">
+            <tr><td rowspan="2" id="td1" style="width: 20%;"><svg  class="bi bi2 my-4 mx-1 text-primary" width="90" height="90" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#person-circle"/>
+                        </svg></td></tr>
+            <tr>
+            <td style="width: 60%;"> 
+                <p class="card-title"><b>USUARIO:</b> <?php echo $solicitudes['username'] ?></p>
+                <p class="card-text"><b>NOMBRE COMPLETO: </b><?php echo $solicitudes['firstname']," ",$solicitudes['lastname']; ?></p>
+                <p class="card-text"><b>ESTABLECIMIENTO:</b> <?php echo $solicitudes['Establecimiento']; ?></p></td>
+           
+            
+            <td><p  class="card-text"><b>UNIDAD:</b> <?php echo $solicitudes['unidad']; ?></p>
+                <p  class="card-text"><b>CUENTA:</b> <?php echo $u; ?></p><div style="position: initial;" class="btn-group m-2 " role="group" aria-label="Basic outlined example">
+     <form style="margin: 0%;background: transparent;" method='POST' action="Empleados.php">             
+          <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">      
+          <button id="d" name='editar' class='btn btn-info swal2-styled.swal2-confirm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
+        </form>
+        <form style="margin: 0%;background: transparent;margin-left: .5em; " method='POST' action="Controller/Delete_Empleados.php">
+            <input type="hidden" name="id" value="<?php  echo $solicitudes['id']; ?>">
+            <input type="hidden" name="idusuario" value="<?php echo $solicitudes['tipo_usuario'] ?>">
+            <input id="dh" type="submit"onclick="return confirmaion()" class="btn btn-danger swal2-styled.swal2-confirm" value="Eliminar">
+        </form>
+        </div></td>
+        </tr>
+        </table>
+             <div id="Empleados">
+                <p class="card-title"><b>USUARIO:</b> <?php echo $solicitudes['username'] ?> </p>
+                <p class="card-text"><b>NOMBRE COMPLETO: </b><?php echo $solicitudes['firstname']," ",$solicitudes['lastname']; ?></p>
+                <p class="card-text"><b>ESTABLECIMIENTO:</b> <?php echo $solicitudes['Establecimiento']; ?></p>
+                <p  class="card-text"><b>UNIDAD:</b> <?php echo $solicitudes['unidad']; ?></p>
+                <p  class="card-text"><b>CUENTA:</b> <?php echo $u; ?></p>
+                <div style="position: initial;" class="btn-group  " role="group" aria-label="Basic outlined example">
      <form style="margin: 0%;background: transparent;" method='POST' action="Empleados.php">             
           <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">      
           <button id="d" name='editar' class='btn btn-info swal2-styled.swal2-confirm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
@@ -366,8 +377,17 @@ $u='Cliente';
             <input id="dh" type="submit"onclick="return confirmaion()" class="btn btn-danger swal2-styled.swal2-confirm" value="Eliminar">
         </form>
         </div>
+             </div>  
+
+
+    
+
+    </div>
 </div>
-     <?php }} ?><?php if($tipo_usuario==2) { ?>
+
+     <?php }} ?>
+</div>
+     <?php if($tipo_usuario==2) { ?>
 <?php 
     $sql = "SELECT * FROM tb_usuarios WHERE id='$idusuario' ORDER BY `id` ";
     $result = mysqli_query($conn, $sql);
@@ -422,7 +442,6 @@ $u='Cliente';
 
  <?php  } } ?> 
 
-</div>
   </section>
    
         <script type="text/javascript">

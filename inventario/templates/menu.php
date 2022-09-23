@@ -16,6 +16,7 @@ $idusuario = $_SESSION['iduser'];
     <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
    <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
    <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/datatables.min.css"/> 
+    <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/sweetalert2.min.css">
 
       <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
 </head>
@@ -24,8 +25,10 @@ $idusuario = $_SESSION['iduser'];
 background-size: 100% 100%,100%;background-repeat: no-repeat;background-position: center;background-attachment: fixed;">
 
     <style type="text/css">
+       
 
-         @media (max-width: 800px){.bi{float: right;}}
+         @media (max-width: 800px){.bi{float: right;}#buscar1{float: right;display: block;margin-top: 3%;margin-bottom: 3%}}
+        
         body{background: black;}
         #a{padding: 20px 10px;}
         #info{font-size: 12px;height: 97%;}
@@ -35,7 +38,8 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
         .btn{transition: 1s;}
         #button{color: white;}
         #button:hover{transform: translateY(2px);transition: 1s;color: lawngreen;}
-        .btn:hover {transform: translateY(2px);transition: 1s;color: lawngreen;}
+        #wwe{margin: 1%;position: initial;}
+        
         #sn{font-size: 1.5em;}
 
  </style>
@@ -240,7 +244,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                         </svg>
                 </button>
 
-        <a href="log/logout.php" type="submit" id="Update" class="btn btn-danger"?>Cerrar Sesión 
+        <a href="log/logout.php" type="submit" id="Update" onclick="return confirmaion1()" class="btn btn-danger"?>Cerrar Sesión 
         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#box-arrow-right"/>
                         </svg></a>
@@ -287,10 +291,11 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 
          <?php } ?>
 <?php include ('templates/loader.php') ?>
-       
     <script src="Plugin/bootstrap/js/jquery-latest.js"></script>
     <script src="Plugin/bootstrap/js/datatables.min.js"></script>
     <script src="Plugin/bootstrap/js/bootstrap.min.js"></script>
+    <script src="Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
+
 <script type="text/javascript">
     $(document).ready(main);
 

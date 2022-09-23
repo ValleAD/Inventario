@@ -1,4 +1,16 @@
-<?php
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="../Plugin/bootstrap/css/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="../Plugin/bootstrap/css/bootstrap.css">
+    <script src="../Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
+    <script src="../Plugin/bootstrap/js/jquery-latest.js"></script>
+    <script src="../Plugin/bootstrap/js/bootstrap.min.js"></script>
+    </head>
+    <body><?php
 
 //CRUD para guardar datos enviados
 // de re_producto.php y se guarde en la tabla tb_productos mysql
@@ -43,18 +55,32 @@ for($i = 0; $i < count($_POST['cod_bodega']); $i++)
 
   }
 
- if ($query1 || $query2 || $query_update  || $result)  {
-        echo "<script> alert('El Estado fue Cambiado correctamente')
-       location.href = '../solicitudes_bodega.php';
-        </script>
-        ";
-        return true;
-        }else {
-        echo "<script> alert('UUPS!! Algo no fue mal escrito')
-        location.href = '../solicitudes_bodega.php';
-        </script>
-        ";
-        return false;
+ if ($query2 || $query_update  || $result)  {
+                echo "<script>
+    Swal.fire(
+      'Realizado',
+      'El Estado fue Cambiado correctamente',
+      'success'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../solicitudes_bodega.php';                               
+               }
+                });
+
+        </script>";
+      }else {
+        echo "<script>
+    Swal.fire(
+      'ERROR',
+      '¡Error! algo salió mal',
+      'error'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../solicitudes_bodega.php';                               
+               }
+                });
+
+        </script>";
     }
 
   
@@ -66,12 +92,22 @@ $estado = $_GET['estado1'];
 $sql="UPDATE  tb_bodega SET estado = '$estado' WHERE codBodega='$nSolicitud'" ;
 $result = mysqli_query($conn, $sql);
 if ($estado=='Rechazado') {
-         echo "<script> alert('Producto Rechazado')
-           location.href = '../solicitudes_bodega.php';
-            </script>
-            ";
+     echo "<script>
+    Swal.fire(
+      'Realizado',
+      'Producto Rechazado',
+      'success'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../solicitudes_bodega.php';                               
+               }
+                });
+
+        </script>";
       }
 
 }
 
   ?>
+</body>
+</html>

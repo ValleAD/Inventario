@@ -22,9 +22,7 @@ if (isset($_POST['miForm'])) {
 <head>
 <meta charset="UTF-8">
 
-     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-
-    <link rel="stylesheet" type="text/css" href="../Plugin/bootstrap/css/sweetalert2.min.css">
+     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"> 
   
 
     <title>Productos</title>
@@ -95,21 +93,45 @@ if (isset($_POST['miForm'])) {
         <br><br><br>       
           <font color="white"> <h1 style=" text-align: center;margin-top: 2%;">Solicitud de Vale</h1> </font>
 <section>
-
-
-<?php include ('Buscador_ajax/cabezera.php') ?>
-
-     <form name="f1" style="background: transparent;" method='POST' action="form_vale2.php">
- 
- <button onclick = "return Validate()" style=" float: right;margin-bottom: 1%;" type="submit" name="solicitar" class=" btn btn-success btn-sm text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button><br class="div">
-
+        <?php include ('Buscador_ajax/cabezera.php') ?>
+    <form name="f1" style="background: transparent;" method='POST' action="form_vale2.php">
 
         <?php include ('Buscador_ajax/Consulta1.php') ?>
 </form>
 </section>
 
-<script src="Plugin/bootstrap/js/jquery-latest.js"></script>
+     <script>
+    $(obtener_registros());
+
+function obtener_registros(consulta)
+{
+    $.ajax({
+        url : 'Buscador_ajax/Consulta2.php',
+        type : 'POST',
+        dataType : 'html',
+        data : { consulta: consulta },
+        })
+
+    .done(function(resultado){
+        $("#tabla_resultado").html(resultado);
+    })
+}
+
+$(document).on('keyup', '#busqueda', function()
+{
+    var valorBusqueda=$(this).val();
+    if (valorBusqueda!="")
+    {
+        obtener_registros(valorBusqueda);
+    }
+    else
+        {
+            obtener_registros();
+        }
+});
+
+</script>
 <script src="Plugin/bootstrap/js/bootstrap.min.js"></script>
-<script src="Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
+
 </body>
 </html>

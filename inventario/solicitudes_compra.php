@@ -27,7 +27,7 @@ h1 {
 }
 #div{
     margin: 0%;
-    display: block;
+    display: none;
 }
     </style>
     <title>Solicitudes De Compra</title>
@@ -53,20 +53,21 @@ h1 {
     <center><h1 style="margin-top:2% ">Solicitudes de Compra</h1></center>
     <section id="act">
         <h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
-            <?php if ($tipo_usuario==1) {?>
-                <div id="x">
-           <?php include ('Buscador_ajax/cabezeraCompra.php') ?>
      
+           <?php include ('Buscador_ajax/cabezeraCompra.php') ?>
+               
+            <?php if ($tipo_usuario==1) {?>
+     <div id="div">
 
     <div id="x" style="position: initial;" class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example">
-         <form id="ssas" method="POST" style=" position: initial;" action="Plugin/soli_compra.php" target="_blank">
+         <form id="x" method="POST" style=" position: initial;" action="Plugin/soli_compra.php" target="_blank">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
-         <form id="ssas" method="POST" action="Plugin/pdf_soli_compra.php" class="mx-1" target="_blank">
+         <form id="x" method="POST" action="Plugin/pdf_soli_compra.php" class="mx-1" target="_blank">
              <button style="position: initial;"type="submit" class="btn btn-outline-primary" name="id" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
@@ -74,6 +75,7 @@ h1 {
              </button>
          </form>
  </div>
+</div>
   <?php if (isset($_POST['Consultar'])) {$columna=$_POST['columna'];$tipo=$_POST['tipo'];?>
       <div  style="position: initial;" class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example">
          <form id="ssas" method="POST" style=" position: initial;" action="Plugin/soli_compra.php" target="_blank">
@@ -96,8 +98,9 @@ h1 {
          </form>
  </div>
 <?php } ?>
+
  <?php include ('Buscador_ajax/tablaCompra.php') ?>
-        <div id="x">
+     <div id="x">
         <table class="table table-responsive " id="div" style="width:100%">
             <thead>
               <tr id="tr">
@@ -162,7 +165,7 @@ h1 {
         </table>
        
  </div>
- </div>
+ 
 <?php } ?>
             <?php if ($tipo_usuario==2) {?>
         <?php include ('Buscador_ajax/cabezeraCompra.php') ?>

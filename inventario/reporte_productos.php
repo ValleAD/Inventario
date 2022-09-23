@@ -67,11 +67,11 @@ die();
     }
   </style>
   <section style="background: rgba(255, 255, 255, 0.9);margin: 7%2%2%2%; padding: 1%; border-radius: 15px;">
-<h2 id="h2" class="text-center">Reporte General de Productos</h2>
-<br>
+<h2 id="h2" class="text-center">Reporte de Productos</h2>
+<br><div id="OcultarDiv">
 <?php include('Buscador_ajax/fecha.php') ?>
 
-
+<div id="OcultarDiv">
 
            <div class="mx-1 p-2 hidden" id="hidden" style=" border-radius: 5px;">
         
@@ -102,7 +102,8 @@ die();
     </div>
 </div>
 <br>    
-
+</div>
+</div>
 
                <section id="tabla_resultado" >
         <!-- AQUI SE DESPLEGARA NUESTRA TABLA DE CONSULTA -->
@@ -110,8 +111,9 @@ die();
         </section>     
        </div>
 
-
-<?php include('Buscador_ajax/categoria.php') ?>      
+<div id="OcultarDiv">
+<?php include('Buscador_ajax/categoria.php') ?>  
+</div>    
 </section>
 <script>
         $(obtener_registros());

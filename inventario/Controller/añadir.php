@@ -1,4 +1,16 @@
-<?php
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="../Plugin/bootstrap/css/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="../Plugin/bootstrap/css/bootstrap.css">
+    <script src="../Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
+    <script src="../Plugin/bootstrap/js/jquery-latest.js"></script>
+    <script src="../Plugin/bootstrap/js/bootstrap.min.js"></script>
+    </head>
+    <body><?php
 
 //CRUD para guardar datos enviados
 // de re_producto.php y se guarde en la tabla tb_productos mysql
@@ -15,41 +27,55 @@ for($i = 0; $i < count($_POST['cod']); $i++)
       $dia              = $_POST['dia'];
       $mes              = $_POST['mes'];
       $año              = $_POST['año'];
-
-          $sql = "SELECT * FROM tb_productos WHERE codProductos='$codigo_producto' AND catalogo='$catalogo' ";
-    $result = mysqli_query($conn, $sql);
-    $codigo=0;
-    while ($productos = mysqli_fetch_array($result)){
-      $codigo=$productos['codProductos'];
-    }
-      if ($codigo_producto==$codigo) {
-        echo '    <script>
-    alert("No puede haber campos repetidos");
-     window.location ="../regi_producto.php"; 
-  </script>';
-  exit();
-
-      }if ($codigo_producto!=$codigo) {
-
 $verificar_usuario =mysqli_query($conn, "SELECT * FROM tb_productos WHERE codProductos ='$codigo_producto'");
 
 if (mysqli_num_rows($verificar_usuario)>0) {
-  echo '
-    <script>
-    alert("Este Producto ya esta Registrado, intente con otro diferente");
-     window.location ="../regi_producto.php"; 
-  </script>
-  ';
+         echo "<script>
+    Swal.fire(
+      'NOTA IMPORTANTE:',
+      'Este Producto ya esta Registrado, intente con otro diferente',
+      'warning'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../regi_producto.php';                               
+               }
+                });
+
+        </script>";
+
 exit();
 }
       $insert = "INSERT INTO tb_productos (codProductos, categoria, catalogo, descripcion, unidad_medida,  precio,dia,mes,año) VALUES ('$codigo_producto', '$categoria', '$catalogo', '$Descripción', '$u_m', '$cost','$dia','$mes','$año')";
       $query = mysqli_query($conn, $insert);
 
       if ($query) {
-        echo "<script> alert('Su producto fue registrado correctamente');
-        location.href = '../vistaProductos.php';
+        echo "<script>
+    Swal.fire(
+      'Realizado',
+      'Su producto fue registrado correctamente',
+      'success'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../vistaProductos.php';                               
+               }
+                });
+
         </script>";
-      }
-  }
-}
+      }else {
+        echo "<script>
+    Swal.fire(
+      'ERROR',
+      '¡Error! algo salió mal',
+      'error'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../regi_producto.php';                               
+               }
+                });
+
+        </script>";
+        }
+    }
 ?>
+</body>
+</html>

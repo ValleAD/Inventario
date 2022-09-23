@@ -176,6 +176,7 @@ return patron.test(te); // 6
    	
                     
    	if (username.length=="" || password=="") {
+   		
    		Swal.fire({
   icon: 'warning',
   title: 'Debes de Ingesar el Usuario o Contraseña',

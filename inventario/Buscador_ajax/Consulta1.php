@@ -8,9 +8,10 @@
                 display: none;
             }
         </style>
-        <h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda. <a href='' style='font-size: 30px' class='close'>&times;</a></h1> 
+        <h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda. <a href='' style='font-size: 30px' class='close'>&times;</a></h1> <div id="buscar1" class="col-md-12" style="position: initial;"> <button onclick = "return Validate()"   type="submit" name="solicitar" class=" form-control btn btn-success btn-sm text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button><br class="div"></div>
            <div id="y">    
-        <table class="table  table-responsive  table-striped" id="div" style=" width: 100%;">
+
+        <table  class="table  table-responsive  table-striped" id="div" style=" width: 100%;">
      
                 <thead>
                      <tr id="tr">
@@ -21,13 +22,20 @@
                 <th style="width: 10%;">Cantidad</th>
                 <th style="width: 10%;">Costo Unitario</th>
                 <th style="width: 10%;">Fecha Registro</th>
-                <th style="width: 10%;" align="center"><button id="div" style=" float: right;margin-bottom: 1%;" type="submit" name="solicitar" class="btn btn-success btn-sm text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button>
+                <th style="width: 10%;" align="center">
+
+
+         
+            <div class="form-group" style="position: initial;"> <button onclick = "return Validate()"   type="submit" name="solicitar" class=" form-control btn btn-success btn-sm text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button><br class="div"></div>
+ 
+        
+
                   </th> 
                    </tr>
 </thead>
 </table>
 <div id="div" style = " max-height: 442px;  overflow-y:scroll;overflow-x:none;">
-    <table class="table">
+    <table class="table" id="tblElecProducts">
     <tbody><?php 
         $sql = "SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos GROUP BY precio, codProductos Order by $columna $tipo";
         $result = mysqli_query($conn, $sql);
@@ -74,9 +82,7 @@
             <?php 
 
                 echo'
-                <input type="checkbox" name="test" id="test">
-                
-                 <input   id="'.$productos["codProductos"] .'" type="checkbox" name="id[]" value="'.$productos["codProductos"] .'"> <label  id="l" for="'.$productos["codProductos"] .'" > </label>  
+                <input class="case"  id="'.$productos["codProductos"] .'" type="checkbox" name="id[]" value="'.$productos["codProductos"] .'"> <label  id="l" for="'.$productos["codProductos"] .'" > </label> 
            
          </tr>
         ';

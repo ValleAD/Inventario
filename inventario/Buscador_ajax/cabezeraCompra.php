@@ -1,5 +1,5 @@
-<?php if ($tipo_usuario==1) { ?>
 	                <div id="div">
+<?php if ($tipo_usuario==1) { ?>
 <form method="POST" action="" style="float: right;margin-left: 0.5%;">
     <input type="hidden" name="columna" value="nsolicitud">
     <input type="hidden" name="tipo" value="desc">
@@ -44,7 +44,7 @@
 </form>
 <p style="float: right;margin-left: 0.5%;margin-top: .5%;">Ordenar por</p>
       
-</div>        
+       
 
 	<?php } if ($tipo_usuario==2) {?>
 		<div id="div">
@@ -94,3 +94,4 @@
       
 </div>
 		<?php } ?>
+    </div>

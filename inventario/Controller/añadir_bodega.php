@@ -1,4 +1,16 @@
-<?php
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="../Plugin/bootstrap/css/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="../Plugin/bootstrap/css/bootstrap.css">
+    <script src="../Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
+    <script src="../Plugin/bootstrap/js/jquery-latest.js"></script>
+    <script src="../Plugin/bootstrap/js/bootstrap.min.js"></script>
+    </head>
+    <body><?php
 
 include ('../Model/conexion.php');
      
@@ -12,12 +24,18 @@ if (isset($_POST['form_bodega'])) {
       $verificar_bodega =mysqli_query($conn, "SELECT * FROM detalle_bodega WHERE odt_bodega ='$orden_trabajo' ");
 
 if (mysqli_num_rows($verificar_bodega)>0) {
-  echo '
-    <script>
-    alert("El codigo ingresado debe se diferente al registrado");
-     window.location ="../form_bodega.php"; 
-  </script>
-  ';
+         echo "<script>
+    Swal.fire(
+      'NOTA IMPORTANTE:',
+      'Este Producto ya esta Registrado, intente con otro diferente',
+      'warning'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../form_bodega.php';                               
+               }
+                });
+
+        </script>";
 exit();
 }
     //crud para guardar los productos en la tabla tb_vale
@@ -41,17 +59,31 @@ exit();
       $query = mysqli_query($conn, $insert);
 
       if ($result || $query) {
-        echo "<script> alert('Su solicitud fué realizada correctamente');
-       location.href = '../dt_bodega.php';
-        </script>
-        ";
-      }if ($result) {
-        
+       echo "<script>
+    Swal.fire(
+      'Realizado',
+      'Su producto fue registrado correctamente',
+      'success'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../dt_bodega.php';                               
+               }
+                });
+
+        </script>";
       }else {
-        echo "<script> alert('¡Error! algo salió mal');
-       location.href = '../form_bodega.php';
-        </script>
-        ";
+        echo "<script>
+    Swal.fire(
+      'ERROR',
+      '¡Error! algo salió mal',
+      'error'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../form_bodega.php';                               
+               }
+                });
+
+        </script>";
       }
     }
 }
@@ -63,12 +95,18 @@ if (isset($_POST['solicitar'])) {
       $verificar_bodega =mysqli_query($conn, "SELECT * FROM detalle_bodega WHERE odt_bodega ='$orden_trabajo' ");
 
 if (mysqli_num_rows($verificar_bodega)>0) {
-  echo '
-    <script>
-    alert("El codigo ingresado debe se diferente al registrado");
-     window.location ="../form_bodega_varios.php"; 
-  </script>
-  ';
+         echo "<script>
+    Swal.fire(
+      'NOTA IMPORTANTE:',
+      'Este Producto ya esta Registrado, intente con otro diferente',
+      'warning'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../form_bodega_varios.php';                               
+               }
+                });
+
+        </script>";
 exit();
 }
     //crud para guardar los productos en la tabla tb_vale
@@ -92,17 +130,31 @@ exit();
       $query = mysqli_query($conn, $insert);
 
       if ($result || $query) {
-        echo "<script> alert('Su solicitud fué realizada correctamente');
-       location.href = '../dt_bodega.php';
-        </script>
-        ";
-      }if ($result) {
-        
+       echo "<script>
+    Swal.fire(
+      'Realizado',
+      'Su producto fue registrado correctamente',
+      'success'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../dt_bodega.php';                               
+               }
+                });
+
+        </script>";
       }else {
-        echo "<script> alert('¡Error! algo salió mal');
-       location.href = '../form_bodega_varios.php';
-        </script>
-        ";
+        echo "<script>
+    Swal.fire(
+      'ERROR',
+      '¡Error! algo salió mal',
+      'error'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../form_bodega_varios.php';                               
+               }
+                });
+
+        </script>";
       }
     }
 
@@ -110,3 +162,5 @@ exit();
     
 
 ?>
+</body>
+</html>

@@ -7,6 +7,7 @@
     </div>
     <div class="col-md-9 mb-2" style="position: initial;float: right;" >
         <div id="div">
+
 <form method="POST" action="" style="float: right;margin-left: 0.5%;">
     <input type="hidden" name="columna" value="codProductos">
     <input type="hidden" name="tipo" value="desc">
@@ -52,7 +53,9 @@
 <p style="float: right;margin-left: 0.5%;margin-top: .5%;">Ordenar por</p>
 
 </div>
+
 </div>
+   
 </div>
      <script>
     $(obtener_registros());

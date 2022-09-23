@@ -34,7 +34,7 @@
                                  ?>
                         </select>
                         <?php if (isset($_POST['dia'])){?>
-                            <style type="text/css">#dia{display: none;}</style>
+                            <style type="text/css">#dia, #tabla_resultado{display: none;}</style>
                         <button type="button" readonly style="width: 100%;background-color:green ;position: initial; border-radius:5px;text-align:center; color: white;" class="form-control "><?php echo $_POST['dia'] ?>
                         <a href="" style="float: right;color: white;">
                                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -75,7 +75,7 @@ echo '<option value="'.$i.'">'.$Meses[($i)-1].'</option>';
                             if ($mes==11) { $mes="Noviembre";}
                             if ($mes==12) { $mes="Diciembre";}?>
 
-                            <style type="text/css">#mes{display: none;}</style>
+                            <style type="text/css">#mes, #tabla_resultado{display: none;}</style>
                         <button type="button" readonly style="width: 100%;background-color:green ;position: initial; border-radius:5px;text-align:center; color: white;" class="form-control "><?php echo $mes ?>
                             <a href="" style="float: right;color: white;">
                                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -94,7 +94,7 @@ echo '<option value="'.$i.'">'.$Meses[($i)-1].'</option>';
                             } ?>
                         </select>
                         <?php if (isset($_POST['año'])){?>
-                            <style type="text/css">#año{display: none;}</style>
+                            <style type="text/css">#año, #tabla_resultado{display: none;}</style>
                         <button type="button" readonly style="width: 100%;background-color:green ;position: initial; border-radius:5px;text-align:center; color: white;" class="form-control "><?php echo $_POST['año'] ?>
                             <a href="" style="float: right;color: white;">
                                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -422,7 +422,7 @@ if (isset($_POST['Fecha'])){
          $f2=$_POST['F2'];?>  <br> 
          <style>
 
-             #hidden{
+             #hidden, #tabla_resultado{
                 display: none;
              }
             .h{

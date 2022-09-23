@@ -1,4 +1,16 @@
-<?php
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="../Plugin/bootstrap/css/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="../Plugin/bootstrap/css/bootstrap.css">
+    <script src="../Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
+    <script src="../Plugin/bootstrap/js/jquery-latest.js"></script>
+    <script src="../Plugin/bootstrap/js/bootstrap.min.js"></script>
+    </head>
+    <body><?php
 
 //CRUD para guardar datos enviados
 // de re_producto.php y se guarde en la tabla tb_productos mysql
@@ -16,24 +28,36 @@ if (isset($_POST['form_compra2'])) {
     $verificar_compra =mysqli_query($conn, "SELECT * FROM detalle_compra WHERE solicitud_compra ='$nSolicitud' ");
 
 if (mysqli_num_rows($verificar_compra)>0) {
-  echo '
-    <script>
-    alert("El codigo ingresado debe se difernte al registrado");
-     window.location ="../form_compra1.php"; 
-  </script>
-  ';
+         echo "<script>
+    Swal.fire(
+      'NOTA IMPORTANTE:',
+      'Este Producto ya esta Registrado, intente con otro diferente',
+      'warning'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../form_compra1.php';                               
+               }
+                });
+
+        </script>";
 exit();
 }
 }if (isset($_POST['form_compra'])) {
   $verificar_compra =mysqli_query($conn, "SELECT * FROM detalle_compra WHERE solicitud_compra ='$nSolicitud' ");
 
 if (mysqli_num_rows($verificar_compra)>0) {
-  echo '
-    <script>
-    alert("El codigo ingresado debe se difernte al registrado");
-     window.location ="../form_compra.php"; 
-  </script>
-  ';
+         echo "<script>
+    Swal.fire(
+      'NOTA IMPORTANTE:',
+      'Este Producto ya esta Registrado, intente con otro diferente',
+      'warning'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../form_compra.php';                               
+               }
+                });
+
+        </script>";
 exit();
 }
 }
@@ -58,15 +82,31 @@ $result = mysqli_query($conn, $insert);
       $query = mysqli_query($conn, $insert);
 
       if ($query) {
-        echo "<script> alert('Su producto fue registrado correctamente');
-        location.href = '../dt_compra.php';
-        </script>
-        ";
+                 echo "<script>
+    Swal.fire(
+      'Realizado',
+      'El Estado fue Cambiado correctamente',
+      'success'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../dt_compra.php';                               
+               }
+                });
+
+        </script>";
       }else {
-        echo "<script> alert('UUPS!! Algo no fue mal escrito');
-        location.href = '../form_compra1.php';
-        </script>
-        ";
+        echo "<script>
+    Swal.fire(
+      'ERROR',
+      '¡Error! algo salió mal',
+      'error'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../form_compra.php';                               
+               }
+                });
+
+        </script>";
       }  
 }
 
@@ -82,3 +122,5 @@ $result = mysqli_query($conn, $sql);
     }
 
 ?>
+</body>
+</html>

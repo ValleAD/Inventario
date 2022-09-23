@@ -28,7 +28,7 @@ if(isset($_POST['consulta'])){
          while ($productos = mysqli_fetch_array($result)){
             $codigo=$productos['codProductos'];
             if ($_POST['consulta']==$codigo) {
-                echo '<div class=" alert alert-warning alert-dismissible fade show" role="alert">
+                echo '<div class=" alert alert-warning alert-dismissible fade show" style="position: initial" role="alert">
                           <strong>Este codigo ya Existe</strong>
                           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>

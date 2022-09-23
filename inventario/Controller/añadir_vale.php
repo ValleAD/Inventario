@@ -1,4 +1,16 @@
-<?php
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="../Plugin/bootstrap/css/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="../Plugin/bootstrap/css/bootstrap.css">
+    <script src="../Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
+    <script src="../Plugin/bootstrap/js/jquery-latest.js"></script>
+    <script src="../Plugin/bootstrap/js/bootstrap.min.js"></script>
+    </head>
+    <body><?php
 
 include ('../Model/conexion.php');
      if (isset($_POST['form_vale'])) {
@@ -11,12 +23,18 @@ include ('../Model/conexion.php');
   $verificar_vale =mysqli_query($conn, "SELECT * FROM detalle_vale WHERE numero_vale ='$odt' ");
 
 if (mysqli_num_rows($verificar_vale)>0) {
-  echo '
-    <script>
-    alert("El codigo ingresado debe se diferente al registrado");
-     window.location ="../form_vale.php"; 
-  </script>
-  ';
+          echo "<script>
+    Swal.fire(
+      'NOTA IMPORTANTE:',
+      'Este Producto ya esta Registrado, intente con otro diferente',
+      'warning'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../form_vale.php';                               
+               }
+                });
+
+        </script>";
 exit();
 }
     //crud para guardar los productos en la tabla tb_vale
@@ -40,15 +58,31 @@ exit();
       $query = mysqli_query($conn, $insert);
 
       if ($result || $query) {
-        echo "<script> alert('Su solicitud fué realizada correctamente');
-       location.href = '../datos_vale.php';
-        </script>
-        ";
+                       echo "<script>
+    Swal.fire(
+      'Realizado',
+      'El Estado fue Cambiado correctamente',
+      'success'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../datos_vale.php';                               
+               }
+                });
+
+        </script>";
       }else {
-        echo "<script> alert('¡Error! algo salió mal');
-       location.href = '../form_vale.php';
-        </script>
-        ";
+        echo "<script>
+    Swal.fire(
+      'ERROR',
+      '¡Error! algo salió mal',
+      'error'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../form_vale.php';                               
+               }
+                });
+
+        </script>";
       }
     }
 }
@@ -62,12 +96,18 @@ exit();
   $verificar_vale =mysqli_query($conn, "SELECT * FROM detalle_vale WHERE numero_vale ='$odt' ");
 
 if (mysqli_num_rows($verificar_vale)>0) {
-  echo '
-    <script>
-    alert("El codigo ingresado debe se diferente al registrado");
-     window.location ="../form_vale2.php"; 
-  </script>
-  ';
+          echo "<script>
+    Swal.fire(
+      'NOTA IMPORTANTE:',
+      'Este Producto ya esta Registrado, intente con otro diferente',
+      'warning'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../form_vale2.php';                               
+               }
+                });
+
+        </script>";
 exit();
 }
 
@@ -92,18 +132,36 @@ exit();
       $query = mysqli_query($conn, $insert);
 
       if ($result || $query) {
-        echo "<script> alert('Su solicitud fué realizada correctamente');
-       location.href = '../datos_vale.php';
-        </script>
-        ";
+                      echo "<script>
+    Swal.fire(
+      'Realizado',
+      'El Estado fue Cambiado correctamente',
+      'success'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../datos_vale.php';                               
+               }
+                });
+
+        </script>";
       }else {
-        echo "<script> alert('¡Error! algo salió mal');
-       location.href = '../form_vale2.php';
-        </script>
-        ";
+        echo "<script>
+    Swal.fire(
+      'ERROR',
+      '¡Error! algo salió mal',
+      'error'
+    ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../form_vale2.php';                               
+               }
+                });
+
+        </script>";
       }
     }
 }
 
 
 ?>
+</body>
+</html>

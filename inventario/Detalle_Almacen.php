@@ -131,8 +131,8 @@ $final2 = 0;
             <p>' .date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])). '</p>';?>
           </div>
           <div class="col-md-2" style="position: initial">
-            <label style="font-weight: bold;">Estado:</label><br>
-            <input  id="input" type="radio" name="estado" value="Aprobado"> <label id="label1" for="input" > Aprobado</label><br>
+            <label style="font-weight: bold;">Estado:</label><br>*Requerido para este Formulario.
+            <input  id="input" type="radio" name="estado" value="Aprobado" required> <label id="label1" for="input" > Aprobado</label><br>No Requerido para este Formulario.
            <a type="hidden" onclick="return confirmaion2()" href="Controller/añadir_almacen_copy.php?almacen=<?php echo $datos_sol['codAlmacen']?>&estado1=Rechazado"> <label id="label2" for="input1"> Rechazado</label> </a>  
           </div>
       </div>

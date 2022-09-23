@@ -767,9 +767,8 @@ if(isset($_POST['submit'])){
                   <p>' .date("d-m-Y",strtotime($productos1['fecha_registro'])).  '</p>
               </div>
               <div class="col-md-2" style="position: initial">
-            <label style="font-weight: bold;">Estado:</label>';?><br>
-            <input  id="input" type="radio" name="estado" value="Aprobado" required> <label id="label1" for="input" > Aprobado</label><br>
-
+            <label style="font-weight: bold;">Estado:</label>';?><br>* Requerido para este Formulario.
+            <input  id="input" type="radio" name="estado" value="Aprobado" required> <label id="label1" for="input" > Aprobado</label><br>No Requerido para este Formulario.
             <a type="hidden" onclick="return confirmaion2()" href="Controller/añadir_vale_copy.php?vale=<?php echo $productos1['codVale']?>&estado1=Rechazado"> <label id="label2" for="input1"> Rechazado</label> </a>
           </div>
             </div>

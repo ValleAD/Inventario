@@ -1,20 +1,52 @@
-    function checkAll() {
-        var inputs = document.querySelectorAll('.pl'); 
-        for (var i = 0; i < inputs.length; i++) { 
-            inputs[i].checked = true
-        } 
-        return false
- }
-        function desmarcarTodo() {
-            for (let i=0; i<document.f1.elements.length; i++) {
-                if(document.f1.elements[i].type == "checkbox") {
-                    document.f1.elements[i].checked = false
-                }
-            }
-        }
- function Validate() {
+$("#selectall").on("change", function() {
+  $(".case").prop("checked", this.checked);
+});
+
+$(".case").on("change", function() {
+  if ($(".case").length == $(".case:checked").length) {
+    $("#selectall").prop("checked", true);
+  } else {
+    $("#selectall").prop("checked", false);
+  }
+});
+$("#selectall2").on("change", function() {
+  $(".case").prop("checked", this.checked);
+});
+
+$(".case").on("change", function() {
+  if ($(".case").length == $(".case:checked").length) {
+    $("#selectall2").prop("checked", true);
+  } else {
+    $("#selectall2").prop("checked", false);
+  }
+});
+
+$("#selectall3").on("change", function() {
+  $(".case").prop("checked", this.checked);
+});
+
+$(".case").on("change", function() {
+  if ($(".case").length == $(".case:checked").length) {
+    $("#selectall3").prop("checked", true);
+  } else {
+    $("#selectall3").prop("checked", false);
+  }
+});
+$("#selectall4").on("change", function() {
+  $(".case").prop("checked", this.checked);
+});
+
+$(".case").on("change", function() {
+  if ($(".case").length == $(".case:checked").length) {
+    $("#selectall4").prop("checked", true);
+  } else {
+    $("#selectall4").prop("checked", false);
+  }
+});
+
+      function Validate() {
         var selected_data = 0;
- 
+        var tr =document.getElementById('tr')
         //Reference the Table.
         var tblElecProducts = document.getElementById("tblElecProducts");
  
@@ -25,18 +57,24 @@
         for (var i = 0; i < chks.length; i++) {
             if (chks[i].checked) {
                 selected_data++;
+                tr.style.background="#000"
             }
         }
  
         if (selected_data > 0) {
-            alert(selected_data + " CheckBoxe(s) are checked.");
+                        if(confirm(selected_data + " CheckBoxe(s) are checked.")){
+
             return true;
+        }else{
+            return false
+        }
+        
         } else {
             Swal.fire({
               icon: 'error',
               title: 'No se a Selecionado Ningun Producto',
               footer: 'Sistema De Inventario',
          });
-            return false;
         }
-    };
+        return false;
+    };     

@@ -32,15 +32,13 @@
 
 if (isset($_POST['categorias'])){$categoria=$_POST['cat'];  ?>  <br> 
          <style>
-             .hidden{
+             .hidden, #tabla_resultado, .h{
                 display: none;
              }
              #as{
                 display: block;
              }
-             .h{
-                display: none;
-             }
+             
          </style>
 <div class="mx-2 p-2 r-5" id="hidden" style="background-color: transparent; border-radius: 5px;">
                    
