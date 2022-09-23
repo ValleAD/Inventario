@@ -118,5 +118,4 @@ if ($buscarAlumnos->num_rows > 0)
 
 echo $tabla;
 ?>      
-     <script src="Plugin/bootstrap/js/validarInput.js"></script>
-     
+     <script src="../../Plugin/bootstrap/js/validarInput.js"></script>

@@ -23,11 +23,12 @@ $eliminar ="DELETE FROM selects_unidad_medida WHERE id='$id' AND Habilitado='$id
 $result= mysqli_query($conn, $eliminar);
         if ($result) {
                   echo "<script>
-    Swal.fire(
-      'Realizado',
-      'Su Unidad de Medida fue Eliminada correctamente',
-      'success'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'Realizado',
+      text:'Su Unidad de Medida fue Eliminada correctamente',
+      icon:'success',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../unidad_medidad.php';                               
                }
@@ -36,11 +37,12 @@ if (resultado.value) {
         </script>";
       }else {
         echo "<script>
-    Swal.fire(
-      'ERROR',
-      '¡Error! algo salió mal',
-      'error'
-    ).then((resultado) =>{
+    Swal.fire({
+     title: 'ERROR',
+     text: '¡Error! algo salió mal',
+     icon: 'error',
+     allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../unidad_medidad.php';                               
                }

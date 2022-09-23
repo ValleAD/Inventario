@@ -26,11 +26,12 @@ $result = mysqli_query($conn, $sql);
 
 if ($result) {
                  echo "<script>
-    Swal.fire(
-      'Realizado',
-      'La Unidad de Medida ha sido Desabilitada correctamente',
-      'success'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'Realizado',
+      text:'La Unidad de Medida ha sido Desabilitada correctamente',
+      icon:'success',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../unidad_medidad.php';                               
                }
@@ -39,11 +40,12 @@ if (resultado.value) {
         </script>";
       }else {
         echo "<script>
-    Swal.fire(
-      'ERROR',
-      '¡Error! algo salió mal',
-      'error'
-    ).then((resultado) =>{
+    Swal.fire({
+     title: 'ERROR',
+     text: '¡Error! algo salió mal',
+     icon: 'error',
+     allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../unidad_medidad.php';                               
                }

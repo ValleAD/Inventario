@@ -31,11 +31,13 @@ $verificar_usuario =mysqli_query($conn, "SELECT * FROM tb_productos WHERE codPro
 
 if (mysqli_num_rows($verificar_usuario)>0) {
          echo "<script>
-    Swal.fire(
-      'NOTA IMPORTANTE:',
-      'Este Producto ya esta Registrado, intente con otro diferente',
-      'warning'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'NOTA IMPORTANTE:',
+      text:'Este Producto ya esta Registrado, intente con otro diferente',
+      icon:'warning',
+      closeOnClickOutside: false,
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../regi_producto.php';                               
                }
@@ -50,11 +52,12 @@ exit();
 
       if ($query) {
         echo "<script>
-    Swal.fire(
-      'Realizado',
-      'Su producto fue registrado correctamente',
-      'success'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'Realizado',
+      text:'Su producto fue registrado correctamente',
+      icon:'success',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../vistaProductos.php';                               
                }
@@ -63,11 +66,12 @@ if (resultado.value) {
         </script>";
       }else {
         echo "<script>
-    Swal.fire(
-      'ERROR',
-      '¡Error! algo salió mal',
-      'error'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'ERROR',
+      text:'¡Error! algo salió mal',
+      icon'error',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../regi_producto.php';                               
                }

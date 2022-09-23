@@ -34,11 +34,12 @@ $result = mysqli_query($conn, $sql);
 
 if ($result) {
   echo "<script>
-    Swal.fire(
-      'Actualizado',
-      'Los Datos Fueron Actualizados Correctamente',
-      'success'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'Actualizado',
+      text:'Los Datos Fueron Actualizados Correctamente',
+      icon:'success',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../vistaProductos.php';                               
                }
@@ -47,11 +48,12 @@ if (resultado.value) {
         </script>";
 }else {
   echo "<script>
-    Swal.fire(
-      'ERROR',
-      'Nos Se pudo Actualizar',
-      'error'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'ERROR',
+      text:'Nos Se pudo Actualizar',
+      icon:'error',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../vistaProductos.php';                               
                }

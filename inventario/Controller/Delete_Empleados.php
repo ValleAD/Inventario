@@ -18,11 +18,12 @@ $id1 = $_POST['id'];
 $id2 = $_POST['idusuario'];
 if ($id2==1) {
                           echo "<script>
-    Swal.fire(
-      'Realizado',
-      'La Cuenta Administrador no de puede Eliminar',
-      'success'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'Realizado',
+      text:'La Cuenta Administrador no de puede Eliminar',
+      icon:'success',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../Empleados.php';                               
                }
@@ -40,11 +41,12 @@ $eliminar ="DELETE FROM tb_usuarios WHERE id='$id1' and tipo_usuario='$id2'";
 $result= mysqli_query($conn, $eliminar);
 if ($result) {
                   echo "<script>
-    Swal.fire(
-      'Realizado',
-      'Empleado ha sido Eliminado',
-      'success'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'Realizado',
+      text:'Empleado ha sido Eliminado',
+      icon:'success',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../Empleados.php';                               
                }
@@ -53,11 +55,12 @@ if (resultado.value) {
         </script>";
       }else {
         echo "<script>
-    Swal.fire(
-      'ERROR',
-      '¡Error! algo salió mal',
-      'error'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'ERROR',
+      text:'¡Error! algo salió mal',
+      icon:'error',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../Empleados.php';                               
                }

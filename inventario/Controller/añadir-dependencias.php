@@ -18,11 +18,12 @@ include ('../Model/conexion.php');
 
 if (mysqli_num_rows($verificar_usuario)>0) {
 echo "<script>
-    Swal.fire(
-      'NOTA IMPORTANTE:',
-      'Esta dependencias ya fue registrado anteriormente, intentelo con otra dependencias',
-      'warning'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'NOTA IMPORTANTE:',
+      text:'Esta dependencias ya fue registrado anteriormente, intentelo con otra dependencias',
+      allowOutsideClick: false,
+      icon:'warning'
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../dependencias.php';                               
                }
@@ -37,11 +38,12 @@ exit();
 		$result = mysqli_query($conn, $sql);
 		if ($result) {
     	 echo "<script>
-    Swal.fire(
-      'Registrado',
-      'Dependencia Creada',
-      'success'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'Registrado',
+      text:'Dependencia Creada',
+      allowOutsideClick: false,
+      icon:'success'
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../dependencias.php';                               
                }
@@ -50,11 +52,12 @@ if (resultado.value) {
         </script>";
 } else {
 echo "<script>
-    Swal.fire(
-      'ERROR',
-      'No se pudo crear la Dependencia',
-      'error'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'ERROR',
+      text:'No se pudo crear la Dependencia',
+      allowOutsideClick: false,
+      icon:'error'
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../dependencias.php';                               
                }

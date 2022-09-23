@@ -8,7 +8,7 @@
                 display: none;
             }
         </style>
-        <h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda. <a href='' style='font-size: 30px' class='close'>&times;</a></h1> <div id="buscar1" class="col-md-12" style="position: initial;"> <button onclick = "return Validate()"   type="submit" name="solicitar" class=" form-control btn btn-success btn-sm text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button><br class="div"></div>
+        <h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda. <a href='' style='font-size: 30px' class='close'>&times;</a></h1> <div id="buscar1" class="col-md-12" style="position: initial;"> <button onclick = "return Validate()" id="vale"  type="submit" name="solicitar" class=" form-control btn btn-success btn-sm text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button><br class="div"></div>
            <div id="y">    
 
         <table  class="table  table-responsive  table-striped" id="div" style=" width: 100%;">

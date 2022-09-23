@@ -1,48 +1,3 @@
-$("#selectall").on("change", function() {
-  $(".case").prop("checked", this.checked);
-});
-
-$(".case").on("change", function() {
-  if ($(".case").length == $(".case:checked").length) {
-    $("#selectall").prop("checked", true);
-  } else {
-    $("#selectall").prop("checked", false);
-  }
-});
-$("#selectall2").on("change", function() {
-  $(".case").prop("checked", this.checked);
-});
-
-$(".case").on("change", function() {
-  if ($(".case").length == $(".case:checked").length) {
-    $("#selectall2").prop("checked", true);
-  } else {
-    $("#selectall2").prop("checked", false);
-  }
-});
-
-$("#selectall3").on("change", function() {
-  $(".case").prop("checked", this.checked);
-});
-
-$(".case").on("change", function() {
-  if ($(".case").length == $(".case:checked").length) {
-    $("#selectall3").prop("checked", true);
-  } else {
-    $("#selectall3").prop("checked", false);
-  }
-});
-$("#selectall4").on("change", function() {
-  $(".case").prop("checked", this.checked);
-});
-
-$(".case").on("change", function() {
-  if ($(".case").length == $(".case:checked").length) {
-    $("#selectall4").prop("checked", true);
-  } else {
-    $("#selectall4").prop("checked", false);
-  }
-});
 
       function Validate() {
         var selected_data = 0;
@@ -62,7 +17,7 @@ $(".case").on("change", function() {
         }
  
         if (selected_data > 0) {
-                        if(confirm(selected_data + " CheckBoxe(s) are checked.")){
+                        if(confirm(selected_data + " Registros Selecionados.")){
 
             return true;
         }else{

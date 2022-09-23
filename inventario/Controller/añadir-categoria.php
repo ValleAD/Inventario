@@ -18,11 +18,12 @@ include ('../Model/conexion.php');
 
 if (mysqli_num_rows($verificar_usuario)>0) {
 	 echo "<script>
-    Swal.fire(
-      'NOTA IMPORTANTE:',
-      'Esta Categoria ya fue registrado anteriormente, intentelo con otra Categoria',
-      'warning'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'NOTA IMPORTANTE:',
+      text:'Esta Categoria ya fue registrado anteriormente, intentelo con otra Categoria',
+      icon:'warning',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../categorias.php';                               
                }
@@ -38,11 +39,12 @@ exit();
 		if ($result) {
     
  echo "<script>
-    Swal.fire(
-      'Realizado',
-      'Categoria Creada',
-      'success'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'Realizado',
+      text:'Categoria Creada',
+      icon:'success',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../categorias.php';                               
                }
@@ -51,11 +53,12 @@ if (resultado.value) {
         </script>";
       }else {
         echo "<script>
-    Swal.fire(
-      'ERROR',
-      '¡Error! algo salió mal',
-      'error'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'ERROR',
+      text:'¡Error! algo salió mal',
+      icon:'error',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../categorias.php';                               
                }

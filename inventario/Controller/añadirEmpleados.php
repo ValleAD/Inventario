@@ -25,11 +25,12 @@ include ('../Model/conexion.php');
 
 if (mysqli_num_rows($verificar_usuario)>0) {
 	         echo "<script>
-    Swal.fire(
-      'NOTA IMPORTANTE:',
-      'Este Producto ya esta Registrado, intente con otro diferente',
-      'warning'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'NOTA IMPORTANTE:',
+      text:'Este Producto ya esta Registrado, intente con otro diferente',
+      icon:'warning',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../Empleados.php';                               
                }
@@ -41,11 +42,12 @@ exit();
 	if ($password == $cpassword) {
 			$sql = "SELECT * FROM tb_usuarios WHERE username='$username' AND firstname='$firstname' AND lastname='$lastname'  AND password='$password'";
 	    echo "<script>
-    Swal.fire(
-      'Registrado',
-      'Empleado Creado',
-      'success'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'Registrado',
+      text:'Empleado Creado',
+      icon:'success',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../Empleados.php';                               
                }
@@ -64,11 +66,12 @@ if (resultado.value) {
 
 		}else{
 			 echo "<script>
-    Swal.fire(
-      'ERROR',
-      'No se pudo Crear el Empleado',
-      'error'
-    ).then((resultado) =>{
+    Swal.fire({
+     title: 'ERROR',
+     text: 'No se pudo Crear el Empleado',
+     icon: 'error',
+     allowOutsideClick: false
+   } ).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../Empleados.php';                               
                }
@@ -79,11 +82,12 @@ if (resultado.value) {
 		} 
 	}else{
 		echo "<script>
-    Swal.fire(
-      'ERROR',
-      'Contraseña Incorrecta',
-      'error'
-    ).then((resultado) =>{
+    Swal.fire({
+     title: 'ERROR',
+     text: 'Contraseña Incorrecta',
+     icon: 'error',
+     allowOutsideClick: false
+   } ).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../Empleados.php';                               
                }

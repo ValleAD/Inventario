@@ -25,11 +25,12 @@ if (isset($_POST['form_bodega'])) {
 
 if (mysqli_num_rows($verificar_bodega)>0) {
          echo "<script>
-    Swal.fire(
-      'NOTA IMPORTANTE:',
-      'Este Producto ya esta Registrado, intente con otro diferente',
-      'warning'
-    ).then((resultado) =>{
+    Swal.fire({
+      title'NOTA IMPORTANTE:',
+      text'Este Producto ya esta Registrado, intente con otro diferente',
+      icon'warning',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../form_bodega.php';                               
                }
@@ -60,11 +61,12 @@ exit();
 
       if ($result || $query) {
        echo "<script>
-    Swal.fire(
-      'Realizado',
-      'Su producto fue registrado correctamente',
-      'success'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'Realizado',
+      text:'Su producto fue registrado correctamente',
+      icon:'success',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../dt_bodega.php';                               
                }
@@ -73,11 +75,12 @@ if (resultado.value) {
         </script>";
       }else {
         echo "<script>
-    Swal.fire(
-      'ERROR',
-      '¡Error! algo salió mal',
-      'error'
-    ).then((resultado) =>{
+    Swal.fire({
+     title: 'ERROR',
+     text: '¡Error! algo salió mal',
+     icon: 'error',
+     allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../form_bodega.php';                               
                }
@@ -96,11 +99,12 @@ if (isset($_POST['solicitar'])) {
 
 if (mysqli_num_rows($verificar_bodega)>0) {
          echo "<script>
-    Swal.fire(
-      'NOTA IMPORTANTE:',
-      'Este Producto ya esta Registrado, intente con otro diferente',
-      'warning'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'NOTA IMPORTANTE:',
+      text:'Este Producto ya esta Registrado, intente con otro diferente',
+      icon:'warning',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../form_bodega_varios.php';                               
                }
@@ -131,11 +135,12 @@ exit();
 
       if ($result || $query) {
        echo "<script>
-    Swal.fire(
-      'Realizado',
-      'Su producto fue registrado correctamente',
-      'success'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'Realizado',
+      text:'Su producto fue registrado correctamente',
+      icon:'success',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../dt_bodega.php';                               
                }
@@ -144,11 +149,12 @@ if (resultado.value) {
         </script>";
       }else {
         echo "<script>
-    Swal.fire(
-      'ERROR',
-      '¡Error! algo salió mal',
-      'error'
-    ).then((resultado) =>{
+    Swal.fire({
+     title: 'ERROR',
+     text: '¡Error! algo salió mal',
+     icon: 'error',
+     allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../form_bodega_varios.php';                               
                }

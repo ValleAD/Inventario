@@ -23,10 +23,11 @@ $result= mysqli_query($conn, $eliminar);
         if ($result) {
                   echo "<script>
     Swal.fire(
-      'Realizado',
-      'Su Dependencia fue Eliminada correctamente',
-      'success'
-    ).then((resultado) =>{
+      title:'Realizado',
+      text:'Su Dependencia fue Eliminada correctamente',
+      icon:'success',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../dependencias.php';                               
                }
@@ -36,10 +37,11 @@ if (resultado.value) {
       }else {
         echo "<script>
     Swal.fire(
-      'ERROR',
-      '¡Error! algo salió mal',
-      'error'
-    ).then((resultado) =>{
+      title:'ERROR',
+      text:'¡Error! algo salió mal',
+      icon:'error',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../dependencias.php';                               
                }

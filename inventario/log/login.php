@@ -18,7 +18,8 @@ echo"
        Swal.fire({
   icon: 'warning',
   title: 'Contraseña Incorrecta',
-  footer: 'Sistema de Inventario'
+  footer: 'Sistema de Inventario',
+  allowOutsideClick: false
 });
   </script>
                 ";
@@ -33,7 +34,8 @@ echo"
        Swal.fire({
   icon: 'success',
   title: 'Bienvenido/@ '+username,
-  footer: 'Sistema de Inventario'
+  footer: 'Sistema de Inventario',
+  allowOutsideClick: false
 }).then((resultado) =>{
 if (resultado.value) {
 	window.location.href='../home.php';
@@ -52,7 +54,8 @@ else{
        Swal.fire({
   icon: 'success',
   title: username+' Es Incorrecto',
-  footer: 'Sistema de Inventario'
+  footer: 'Sistema de Inventario',
+  allowOutsideClick: false
 });
   </script>";
 		}
@@ -67,7 +70,8 @@ else{
        Swal.fire({
   icon: 'warning',
   title: username+' Esta Desabilitado Contatece con el Administrador del Sistema',
-  footer: 'Sistema de Inventario'
+  footer: 'Sistema de Inventario',
+  allowOutsideClick: false
 });
   </script>
                 ";
@@ -83,7 +87,8 @@ else{
        Swal.fire({
   icon: 'error',
   title: 'Usuario o Contraseña estan Incorrectos',
-  footer: 'Sistema de Inventario'
+  footer: 'Sistema de Inventario',
+  allowOutsideClick: false
 
 });
   </script>

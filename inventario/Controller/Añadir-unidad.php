@@ -18,10 +18,11 @@ include ('../Model/conexion.php');
 
 if (mysqli_num_rows($verificar_usuario)>0) {
 		 echo "<script>
-    Swal.fire(
-      'NOTA IMPORTANTE:',
-      'Esta Unidad de Medida ya fue registrado anteriormente, intentelo con otra Unidad de Medida',
-      'warning'
+    Swal.fire({
+      title:'NOTA IMPORTANTE:',
+      text:'Esta Unidad de Medida ya fue registrado anteriormente, intentelo con otra Unidad de Medida',
+      allowOutsideClick: false,
+      icon:'warning'
     ).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../unidad_medidad.php';                               
@@ -38,10 +39,11 @@ exit();
 		if ($result) {
     
  echo "<script>
-    Swal.fire(
-      'Realizado',
-      'La Unidad de Medida fué realizada correctamente',
-      'success'
+    Swal.fire({
+      title:'Realizado',
+      text:'La Unidad de Medida fué realizada correctamente',
+      allowOutsideClick: false,
+      icon:'success'
     ).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../unidad_medidad.php';                               
@@ -51,10 +53,11 @@ if (resultado.value) {
         </script>";
       }else {
         echo "<script>
-    Swal.fire(
-      'ERROR',
-      'No se pudo crear la unidad',
-      'error'
+    Swal.fire({
+      title:'ERROR',
+      text:'No se pudo crear la unidad',
+      allowOutsideClick: false,
+      icon:'error'
     ).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../unidad_medidad.php';                               

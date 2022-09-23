@@ -17,6 +17,7 @@ if (mysqli_num_rows($verificar_usuario)>0) {
   icon: 'warning',
   title: 'Usuario: $username Ya Esta Registrado',
   footer: 'Sistema De Inventario',
+  allowOutsideClick: false
 }); 
 	</script>";
 	exit();
@@ -32,7 +33,8 @@ echo"
        Swal.fire({
   icon: 'success',
   title: 'Usuario Fue Creado Exitosamente',
-  footer: 'Sistema de Inventario'
+  footer: 'Sistema de Inventario',
+  allowOutsideClick: false
 }).then((resultado) =>{
 if (resultado.value) {
 	window.location.href='signin.php';
@@ -57,6 +59,7 @@ if (resultado.value) {
   icon: 'warning',
   title: 'Contraseña Incorrecta',
   footer: 'Sistema De Inventario',
+  allowOutsideClick: false
 }); 
 	</script>";
 	}

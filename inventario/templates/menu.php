@@ -26,8 +26,8 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 
     <style type="text/css">
        
-
-         @media (max-width: 800px){.bi{float: right;}#buscar1{float: right;display: block;margin-top: 3%;margin-bottom: 3%}}
+  #vale{display: none;}
+         @media (max-width: 800px){.bi{float: right;}#buscar1{float: right;display: block;margin-top: 3%;margin-bottom: 3%}  #vale{display: block;}}
         
         body{background: black;}
         #a{padding: 20px 10px;}

@@ -27,6 +27,7 @@ include ('menu.php');
     margin-right: 2%;
     margin-left: 2%;
   }
+  #vale{display: none;}
             #buscar{
             margin-bottom: 5%;
             margin-left: 2.5%;
@@ -45,6 +46,8 @@ include ('menu.php');
                 width: 25%;
             }
             @media (max-width: 952px){
+#vale{display: block;}
+
    section{
         margin: -5%6%6%3%;
         padding: 2%;

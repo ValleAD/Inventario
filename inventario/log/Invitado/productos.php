@@ -30,6 +30,7 @@ include ('menu.php');
     #w{
         display: none;
     }
+
  @media (max-width: 952px){
    #cat{
     margin-top: 2%;
@@ -48,13 +49,13 @@ include ('menu.php');
   <section style="background: rgba(255, 255, 255, 0.9);margin: 7%1%1%1%;padding: 1%; border-radius: 15px;">
 <h2 id="h2" class="text-center">Inventario de Productos</h2>
 <br>
- 
+ <div id="div">
             <?php 
             include ('../../Buscador_ajax/fecha_Invitado.php');
 ?>
+</div>
 
-
-
+<div id="div">
            <div class="mx-1 p-2 hidden" id="hidden" style=" border-radius: 5px;">
         
         <div style="position: initial;" class="btn-group mb-3 my-3 mx-2 " role="group" aria-label="Basic outlined example">
@@ -74,7 +75,9 @@ include ('menu.php');
                 </svg>
              </button>
          </form>
- </div>     
+ </div>  
+ </div> 
+ </div>  
  <div class="row">   
  <div class="col-md-3"style="position: initial;">
             <section class="well" >
@@ -89,7 +92,7 @@ include ('menu.php');
         <!-- AQUI SE DESPLEGARA NUESTRA TABLA DE CONSULTA -->
 
         </section>     
-       </div>
+    
 
 
 
@@ -208,7 +211,7 @@ if (isset($_POST['categorias'])){$categoria=$_POST['cat'];  ?>  <br>
   
             </div>
 
-        </div>
+    
 
    
 

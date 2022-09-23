@@ -23,11 +23,12 @@ $eliminar ="DELETE FROM selects_departamento WHERE id='$id' AND Habilitado='$id1
 $result= mysqli_query($conn, $eliminar);
         if ($result) {
                   echo "<script>
-    Swal.fire(
-      'Realizado',
-      'Su Departamentos fue Eliminado correctamente',
-      'success'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'Realizado',
+     text: 'Su Departamentos fue Eliminado correctamente',
+    icon:'success',
+    allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../departamentos.php';                               
                }
@@ -36,11 +37,12 @@ if (resultado.value) {
         </script>";
       }else {
         echo "<script>
-    Swal.fire(
-      'ERROR',
-      '¡Error! algo salió mal',
-      'error'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'ERROR',
+     text: '¡Error! algo salió mal',
+      icon:'error',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../departamentos.php';                               
                }

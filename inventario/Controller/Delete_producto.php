@@ -25,11 +25,12 @@ if ($id1<1) {
         if ($result) {
             
         echo "<script>
-    Swal.fire(
-      'Eliminado',
-      'El Producto fue Eliminado Sastisfactoriamente',
-      'success'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'Eliminado',
+      text:'El Producto fue Eliminado Sastisfactoriamente',
+      icon:'success',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../vistaProductos.php';                               
                }
@@ -40,10 +41,12 @@ if (resultado.value) {
 } else {
        echo "
         <script>
-            Swal.fire(
-      'EL Producto no se pudo Eliminar',
-      'error'
-    ).then((resultado) =>{
+            Swal.fire({
+        title: 'ERROR',
+      text:'EL Producto no se pudo Eliminar',
+      icon:'error',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../vistaProductos.php';                               
                }

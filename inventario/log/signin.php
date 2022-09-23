@@ -181,6 +181,7 @@ return patron.test(te); // 6
   icon: 'warning',
   title: 'Debes de Ingesar el Usuario o Contraseña',
   footer: 'Sistema De Inventario',
+  allowOutsideClick: false,
 });
    	} else {
         var dataen ='username='+username +'&password='+password;

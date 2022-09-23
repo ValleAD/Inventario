@@ -29,11 +29,12 @@ if (isset($_POST['form_compra2'])) {
 
 if (mysqli_num_rows($verificar_compra)>0) {
          echo "<script>
-    Swal.fire(
-      'NOTA IMPORTANTE:',
-      'Este Producto ya esta Registrado, intente con otro diferente',
-      'warning'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'NOTA IMPORTANTE:',
+      text:'Este Producto ya esta Registrado, intente con otro diferente',
+      icon:'warning',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../form_compra1.php';                               
                }
@@ -47,11 +48,12 @@ exit();
 
 if (mysqli_num_rows($verificar_compra)>0) {
          echo "<script>
-    Swal.fire(
-      'NOTA IMPORTANTE:',
-      'Este Producto ya esta Registrado, intente con otro diferente',
-      'warning'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'NOTA IMPORTANTE:',
+      text:'Este Producto ya esta Registrado, intente con otro diferente',
+      icon:'warning',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../form_compra.php';                               
                }
@@ -83,11 +85,12 @@ $result = mysqli_query($conn, $insert);
 
       if ($query) {
                  echo "<script>
-    Swal.fire(
-      'Realizado',
-      'El Estado fue Cambiado correctamente',
-      'success'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'Realizado',
+      text:'El Estado fue Cambiado correctamente',
+      icon:'success',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../dt_compra.php';                               
                }
@@ -96,11 +99,12 @@ if (resultado.value) {
         </script>";
       }else {
         echo "<script>
-    Swal.fire(
-      'ERROR',
-      '¡Error! algo salió mal',
-      'error'
-    ).then((resultado) =>{
+    Swal.fire({
+     title: 'ERROR',
+      text:'¡Error! algo salió mal',
+      icon:'error',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../form_compra.php';                               
                }

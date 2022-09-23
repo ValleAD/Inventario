@@ -24,11 +24,12 @@ include ('../Model/conexion.php');
 
 if (mysqli_num_rows($verificar_vale)>0) {
           echo "<script>
-    Swal.fire(
-      'NOTA IMPORTANTE:',
-      'Este Producto ya esta Registrado, intente con otro diferente',
-      'warning'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'NOTA IMPORTANTE:',
+      text:'Este Producto ya esta Registrado, intente con otro diferente',
+      icon:'warning',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../form_vale.php';                               
                }
@@ -59,11 +60,12 @@ exit();
 
       if ($result || $query) {
                        echo "<script>
-    Swal.fire(
-      'Realizado',
-      'El Estado fue Cambiado correctamente',
-      'success'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'Realizado',
+      text:'El Estado fue Cambiado correctamente',
+      icon:'success',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../datos_vale.php';                               
                }
@@ -72,11 +74,12 @@ if (resultado.value) {
         </script>";
       }else {
         echo "<script>
-    Swal.fire(
-      'ERROR',
-      '¡Error! algo salió mal',
-      'error'
-    ).then((resultado) =>{
+    Swal.fire({
+     title: 'ERROR',
+     text: '¡Error! algo salió mal',
+     icon: 'error',
+     allowOutsideClick: false
+   } ).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../form_vale.php';                               
                }
@@ -97,11 +100,12 @@ if (resultado.value) {
 
 if (mysqli_num_rows($verificar_vale)>0) {
           echo "<script>
-    Swal.fire(
-      'NOTA IMPORTANTE:',
-      'Este Producto ya esta Registrado, intente con otro diferente',
-      'warning'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'NOTA IMPORTANTE:',
+      text:'Este Producto ya esta Registrado, intente con otro diferente',
+      icon:'warning',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../form_vale2.php';                               
                }
@@ -133,11 +137,12 @@ exit();
 
       if ($result || $query) {
                       echo "<script>
-    Swal.fire(
-      'Realizado',
-      'El Estado fue Cambiado correctamente',
-      'success'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'Realizado',
+      text:'El Estado fue Cambiado correctamente',
+      icon:'success',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../datos_vale.php';                               
                }
@@ -146,11 +151,12 @@ if (resultado.value) {
         </script>";
       }else {
         echo "<script>
-    Swal.fire(
-      'ERROR',
-      '¡Error! algo salió mal',
-      'error'
-    ).then((resultado) =>{
+    Swal.fire({
+     title: 'ERROR',
+     text: '¡Error! algo salió mal',
+     icon: 'error',
+     allowOutsideClick: false
+   } ).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../form_vale2.php';                               
                }

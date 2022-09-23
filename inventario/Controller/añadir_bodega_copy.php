@@ -57,11 +57,12 @@ for($i = 0; $i < count($_POST['cod_bodega']); $i++)
 
  if ($query2 || $query_update  || $result)  {
                 echo "<script>
-    Swal.fire(
-      'Realizado',
-      'El Estado fue Cambiado correctamente',
-      'success'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'Realizado',
+      text:'El Estado fue Cambiado correctamente',
+      icon:'success',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../solicitudes_bodega.php';                               
                }
@@ -70,11 +71,12 @@ if (resultado.value) {
         </script>";
       }else {
         echo "<script>
-    Swal.fire(
-      'ERROR',
-      '¡Error! algo salió mal',
-      'error'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'ERROR',
+      text:'¡Error! algo salió mal',
+      icon:'error',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../solicitudes_bodega.php';                               
                }
@@ -93,11 +95,12 @@ $sql="UPDATE  tb_bodega SET estado = '$estado' WHERE codBodega='$nSolicitud'" ;
 $result = mysqli_query($conn, $sql);
 if ($estado=='Rechazado') {
      echo "<script>
-    Swal.fire(
-      'Realizado',
-      'Producto Rechazado',
-      'success'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'Realizado',
+      text:'Producto Rechazado',
+      icon:'success',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../solicitudes_bodega.php';                               
                }

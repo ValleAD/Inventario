@@ -25,11 +25,12 @@ $result = mysqli_query($conn, $sql);
 
 if ($result) {
                  echo "<script>
-    Swal.fire(
-      'Realizado',
-      'Datos Fueron Actualizados Correctamente',
-      'success'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'Realizado',
+      text:'Datos Fueron Actualizados Correctamente',
+      icon:'success',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../Empleados.php';                               
                }
@@ -45,11 +46,12 @@ $result = mysqli_query($conn, $sql);
 
 if ($result) {
                  echo "<script>
-    Swal.fire(
-      'Realizado',
-      'Datos Fueron Actualizados Correctamente',
-      'success'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'Realizado',
+      text:'Datos Fueron Actualizados Correctamente',
+      icon:'success',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../Empleados.php';                               
                }
@@ -58,11 +60,12 @@ if (resultado.value) {
         </script>";
       }else {
         echo "<script>
-    Swal.fire(
-      'ERROR',
-      '¡Error! algo salió mal',
-      'error'
-    ).then((resultado) =>{
+    Swal.fire({
+     title: 'ERROR',
+     text: '¡Error! algo salió mal',
+     icon: 'error',
+     allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../Empleados.php';                               
                }
@@ -83,11 +86,12 @@ $sql="UPDATE tb_usuarios SET firstname='$u',lastname='$ap' WHERE id='$id1'" ;
 $result = mysqli_query($conn, $sql);
 if ($result) {
                  echo "<script>
-    Swal.fire(
-      'Realizado',
-      'Datos Fueron Actualizados Correctamente',
-      'success'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'Realizado',
+      text:'Datos Fueron Actualizados Correctamente',
+      icon:'success',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../Empleados.php';                               
                }
@@ -96,11 +100,12 @@ if (resultado.value) {
         </script>";
       }else {
         echo "<script>
-    Swal.fire(
-      'ERROR',
-      '¡Error! algo salió mal',
-      'error'
-    ).then((resultado) =>{
+    Swal.fire({
+     title: 'ERROR',
+     text: '¡Error! algo salió mal',
+     icon: 'error',
+     allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../Empleados.php';                               
                }

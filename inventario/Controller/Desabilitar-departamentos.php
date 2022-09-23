@@ -26,10 +26,11 @@ require '../Model/conexion.php';
       if ($result) {
                         echo "<script>
     Swal.fire(
-      'Realizado',
-      'El Departamento ha sido Desabilitada correctamente',
-      'success'
-    ).then((resultado) =>{
+      title:'Realizado',
+      text:'El Departamento ha sido Desabilitada correctamente',
+      icon:'success',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../departamentos.php';                               
                }
@@ -39,10 +40,11 @@ if (resultado.value) {
       }else {
         echo "<script>
     Swal.fire(
-      'ERROR',
-      '¡Error! algo salió mal',
-      'error'
-    ).then((resultado) =>{
+      title:'ERROR',
+      text:'¡Error! algo salió mal',
+      icon:'error',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../departamentos.php';                               
                }

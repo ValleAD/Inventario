@@ -1,4 +1,16 @@
-  <?php
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title></title>
+        <link rel="stylesheet" type="text/css" href="../../../Plugin/bootstrap/css/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../Plugin/bootstrap/css/bootstrap.css">
+    <script src="../../../Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
+    <script src="../../../Plugin/bootstrap/js/jquery-latest.js"></script>
+    <script src="../../../Plugin/bootstrap/js/bootstrap.min.js"></script>
+    </head>
+    <body>  <?php
 
 //CRUD para guardar datos enviados
 // de re_producto.php y se guarde en la tabla tb_productos mysql
@@ -14,12 +26,19 @@ include '../../../Model/conexion.php';
   $verificar_vale =mysqli_query($conn, "SELECT * FROM detalle_vale WHERE numero_vale ='$odt' ");
 
 if (mysqli_num_rows($verificar_vale)>0) {
-  echo '
-    <script>
-    alert("El codigo ingresado debe se diferente al registrado");
-     window.location ="../form_vale2.php"; 
-  </script>
-  ';
+          echo "<script>
+    Swal.fire({
+      title:'NOTA IMPORTANTE:',
+      text:'Este Producto ya esta Registrado, intente con otro diferente',
+      icon:'warning',
+      allowOutsideClick: false
+    }).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../form_vale1.php';                               
+               }
+                });
+
+        </script>";
 exit();
 }
     //crud para guardar los productos en la tabla tb_vale
@@ -43,16 +62,36 @@ exit();
       $query = mysqli_query($conn, $insert);
 
       if ($result || $query) {
-        echo "<script> alert('Su solicitud fué realizada correctamente');
-       location.href = '../datos_vale.php';
-        </script>
-        ";
+                              echo "<script>
+    Swal.fire({
+      title:'Realizado',
+      text:'El Estado fue Cambiado correctamente',
+      icon:'success',
+      allowOutsideClick: false
+    }).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../datos_vale.php';                               
+               }
+                });
+
+        </script>";
       }else {
-        echo "<script> alert('¡Error! algo salió mal');
-       location.href = '../form_vale.php';
-        </script>
-        ";
+        echo "<script>
+    Swal.fire({
+     title: 'ERROR',
+     text: '¡Error! algo salió mal',
+     icon: 'error',
+     allowOutsideClick: false
+   } ).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../form_vale1.php';                               
+               }
+                });
+
+        </script>";
       }
     }
 
 ?>
+</body>
+</html>

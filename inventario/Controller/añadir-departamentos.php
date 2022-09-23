@@ -18,11 +18,12 @@ include ('../Model/conexion.php');
 
 if (mysqli_num_rows($verificar_usuario)>0) {
 	 echo "<script>
-    Swal.fire(
-      'NOTA IMPORTANTE:',
-      'Esta departamentos ya fue registrado anteriormente, intentelo con otro departamentos',
-      'warning'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'NOTA IMPORTANTE:',
+      text:'Esta departamentos ya fue registrado anteriormente, intentelo con otro departamentos',
+      icon:'warning',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../departamentos.php';                               
                }
@@ -37,11 +38,12 @@ exit();
 		$result = mysqli_query($conn, $sql);
 		if ($result) {
  echo "<script>
-    Swal.fire(
-      'Realizado',
-      'Su solicitud fué realizada correctamente',
-      'success'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'Realizado',
+      text:'Su solicitud fué realizada correctamente',
+      icon:'success',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../departamentos.php';                               
                }
@@ -50,11 +52,12 @@ if (resultado.value) {
         </script>";
       }else {
         echo "<script>
-    Swal.fire(
-      'ERROR',
-      '¡Error! algo salió mal',
-      'error'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'ERROR',
+      text:'¡Error! algo salió mal',
+      icon:'error',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../departamentos.php';                               
                }

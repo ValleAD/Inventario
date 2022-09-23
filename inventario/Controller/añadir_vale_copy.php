@@ -57,11 +57,12 @@ if ($estado=='Aprobado') {
             
           if ($query1 || $query2 || $query_update  || $result)  {
                   echo "<script>
-    Swal.fire(
-      'Realizado',
-      'Su producto fue registrado correctamente',
-      'success'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'Realizado',
+      text:'Su producto fue registrado correctamente',
+      icon:'success',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../solicitudes_vale.php';                               
                }
@@ -70,11 +71,12 @@ if (resultado.value) {
         </script>";
       }else {
         echo "<script>
-    Swal.fire(
-      'ERROR',
-      '¡Error! algo salió mal',
-      'error'
-    ).then((resultado) =>{
+    Swal.fire({
+     title: 'ERROR',
+     text: '¡Error! algo salió mal',
+     icon: 'error',
+     allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../solicitudes_vale.php';                               
                }
@@ -93,11 +95,12 @@ $sql="UPDATE  tb_vale SET estado = '$estado' WHERE codVale='$nSolicitud'" ;
 $result = mysqli_query($conn, $sql);
 if ($estado=='Rechazado') {
             echo "<script>
-    Swal.fire(
-      'Realizado',
-      'Producto Rechazado',
-      'success'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'Realizado',
+      text:'Producto Rechazado',
+      icon:'success',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../solicitudes_vale.php';                               
                }

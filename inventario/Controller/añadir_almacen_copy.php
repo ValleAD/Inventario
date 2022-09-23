@@ -36,11 +36,12 @@ if ($estado=='Aprobado') {
   
       if ($result || $query)  {
                 echo "<script>
-    Swal.fire(
-      'Realizado',
-      'El Estado fue Cambiado correctamente',
-      'success'
-    ).then((resultado) =>{
+    Swal.fire({
+      'title:Realizado',
+      text:'El Estado fue Cambiado correctamente',
+      icon:'success,
+      allowOutsideClick: false'
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../solicitudes_almacen.php';                               
                }
@@ -49,11 +50,12 @@ if (resultado.value) {
         </script>";
       }else {
         echo "<script>
-    Swal.fire(
-      'ERROR',
-      '¡Error! algo salió mal',
-      'error'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'ERROR',
+     text: '¡Error! algo salió mal',
+     icon: 'error',
+     allowOutsideClick: false
+   } ).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../solicitudes_almacen.php';                               
                }
@@ -71,11 +73,12 @@ $sql="UPDATE  tb_almacen SET estado = '$estado' WHERE codAlmacen='$nSolicitud'" 
 $result = mysqli_query($conn, $sql);
 if ($estado=='Rechazado') {
     echo "<script>
-    Swal.fire(
-      'Realizado',
-      'Producto Rechazado',
-      'success'
-    ).then((resultado) =>{
+    Swal.fire({
+      'title:Realizado',
+      text:'Producto Rechazado',
+      icon:'success,
+      allowOutsideClick: false'
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../solicitudes_almacen.php';                               
                }

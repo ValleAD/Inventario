@@ -60,7 +60,7 @@
 function obtener_registros(consulta)
 {
     $.ajax({
-        url : '../../Buscador_ajax/Consulta2.php',
+        url : '../../Buscador_ajax/Consulta_invitado.php',
         type : 'POST',
         dataType : 'html',
         data : { consulta: consulta },

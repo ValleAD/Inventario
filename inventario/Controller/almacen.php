@@ -25,11 +25,12 @@ include '../Model/conexion.php';
 
 if (mysqli_num_rows($verificar_almacen)>0) {
   echo "<script>
-    Swal.fire(
-      'NOTA IMPORTANTE:',
-      'El codigo ingresado debe se difernte al registrado',
-      'warning'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'NOTA IMPORTANTE:',
+      text:'El codigo ingresado debe se difernte al registrado',
+      icon:'warning',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../form_almacen.php';                               
                }
@@ -56,11 +57,12 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 
       if ($result || $query) {
         echo "<script>
-    Swal.fire(
-      'Realizado',
-      'Su solicitud fué realizada correctamente',
-      'success'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'Realizado',
+      text:'Su solicitud fué realizada correctamente',
+      icon:'success',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../dt_almacen.php';                               
                }
@@ -69,11 +71,12 @@ if (resultado.value) {
         </script>";
       }else {
         echo "<script>
-    Swal.fire(
-      'ERROR',
-      '¡Error! algo salió mal',
-      'error'
-    ).then((resultado) =>{
+    Swal.fire({
+      title:'ERROR',
+      text:'¡Error! algo salió mal',
+      icon:'error',
+      allowOutsideClick: false
+    }).then((resultado) =>{
 if (resultado.value) {
         window.location.href='../form_almacen.php';                               
                }

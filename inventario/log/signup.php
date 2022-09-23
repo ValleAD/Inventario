@@ -190,6 +190,7 @@ error_reporting(0);
                      '<option selected disabled value="">Seleccinar</option>'+
                      '<?php $sql = "SELECT * FROM selects_departamento"; $result = mysqli_query($conn, $sql);while ($productos = mysqli_fetch_array($result)){ ?><option><?php echo $productos['departamento'] ?></option><?php }?>'+
                  '</select></form>',
+                 allowOutsideClick: false
     }).then((result) => {
   if (result.isConfirmed) {
                 var unidad=$.trim($('#unidad').val())
@@ -198,10 +199,11 @@ error_reporting(0);
   icon: 'warning', 
   text: "Debe de Ingrear el Departamento o Unidad",
   footer: 'Sistema De Inventario',
+  allowOutsideClick: false
     });
         }else{
  var limpiar = document.getElementById('Unidad'); limpiar.value = unidad
-        Swal.fire({icon: 'success',  text: unidad+" Agregado/@",});
+        Swal.fire({icon: 'success',  text: unidad+" Agregado/@",allowOutsideClick: false,});
     }
 
   }});
@@ -221,6 +223,7 @@ error_reporting(0);
                      '<option value="1">Administrador</option>'+
                      '<option value="2">Cliente</option>'+
                  '</select></form>',
+                 allowOutsideClick: false
     }).then((result) => {
   if (result.isConfirmed) {
 
@@ -231,16 +234,17 @@ error_reporting(0);
   icon: 'warning', 
   text: "Debe de Ingrear el Tipo de Usuarios (Roles De Usuario)",
   footer: 'Sistema De Inventario',
+  allowOutsideClick: false
     });
 }
         if(tipo_usuario1=="1"){
 
  var limpiar = document.getElementById('Tipo'); limpiar.value = "Administrador"
     
-        Swal.fire({icon: 'success',  text: "Administrador Agregado",footer: 'Sistema De Inventario',});
+        Swal.fire({icon: 'success',  text: "Administrador Agregado",footer: 'Sistema De Inventario',allowOutsideClick: false});
     }if(tipo_usuario1=="2"){
         var limpiar = document.getElementById('Tipo');limpiar.value = "Cliente"
-        Swal.fire({icon: 'success',  text: "Cliente Agregado",footer: 'Sistema De Inventario',});
+        Swal.fire({icon: 'success',  text: "Cliente Agregado",footer: 'Sistema De Inventario',allowOutsideClick: false});
     
     } 
    
@@ -274,6 +278,7 @@ error_reporting(0);
   icon: 'warning',
   title: 'Falta Informacion por Completar',
   footer: 'Sistema De Inventario',
+  allowOutsideClick: false
 });
    	} else {
         var dataen ='usuario='+usuario +'&nombre='+nombre +'&apellido='+apellido +'&Establecimiento='+Establecimiento+
