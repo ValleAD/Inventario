@@ -106,7 +106,7 @@ $result = mysqli_query($conn, $sql);
                            ?>
                         </select>
         <label class="my-2">Costo unitario</label>
-                <input class="form-control" type="number" name="precio" id="act" value="<?php  echo $precio1 ?>">
+                <input class="form-control" type="number" name="precio" id="act" step="0.01" value="<?php  echo $precio1 ?>">
     </div>
     <div class="col-md-6" style="position: initial; margin-top: 2%">
          <label>Código</label>
@@ -115,7 +115,7 @@ $result = mysqli_query($conn, $sql);
         <label class="my-2">Descripción</label>
                 <textarea rows="1" class="form-control" type="text"  name="descripcion"><?php  echo $productos1['descripcion']; ?></textarea>
                 <label class="my-2">Cantidad Actual</label>
-                <input class="form-control" type="number" step="0.1" name="stock" id="act" value="<?php echo $stock?>">
+                <input class="form-control" type="number" step="0.01" name="stock" id="act" value="<?php echo $stock?>">
                 
     </div>
 </div>
@@ -253,19 +253,11 @@ $(document).on('keyup', '#busqueda', function()
     $(document).ready(function(){
         $('#busqueda').load('Buscador_ajax/consulta.php');
     });
-</script>
 
-    <script type="text/javascript">
-function confirmaion(e) {
-    if (confirm("¿Estas seguro que deseas Eliminar este registro?                                                                                                                   NOTA:                                                                            El Producto que tenga la cantidad igual a 0.00 sera eliminado ")) {
-        return true;
-    } else {
-        return false;
-        e.preventDefault();
-    }
-}
-</script>
- <script type="text/javascript">
+
+
+
+
          var limpiar = document.getElementById('busqueda');
                     function validar1() {
                         limpiar.value = '';

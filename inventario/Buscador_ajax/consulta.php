@@ -107,7 +107,7 @@ echo'
                    </tr>
 </table>
 <div id="div" style = " max-height: 442px;max-width: 100%;  overflow-y:scroll;overflow-x:none;">
-    <table class="table">
+    <table class="table" >
     <tbody>';
                 $n=0;
 	while($productos= $buscarAlumnos->fetch_assoc())
@@ -133,6 +133,7 @@ echo'
             
 		 $n++;
         $r=$n+0;
+        $cod=$productos['cod'];
          $precio=$productos['precio'];
         $precio1=number_format($precio, 2,".",",");
         $cantidad=$productos['SUM(stock)'];
@@ -151,7 +152,8 @@ echo'
             <td style="width: 30%;min-width: 100%;" id="th" data-label="Categoría">'.$categoria.'</td>
 			</tr>
 		';} if ($tipo_usuario ==1) {
-				echo '<tr>
+				echo ''?><tr data-stock="<?php echo $stock ?>" data-id="<?php echo $productos['cod']; ?>" id="<?php echo $productos['codProductos']; ?>">
+                    <?php echo '
 			<td style="width:7%;min-width: 100%;" id="th" data-label="Código">'.$productos['codProductos'].'</td>
             <td style="width:7%;min-width: 100%;" id="th" data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
             <td style="width:30%;min-width: 100%;" id="th" data-label="Descripción">'.$productos['descripcion'].'</td>
@@ -170,11 +172,11 @@ echo'
             <td style="width:10%;min-width: 100%;" id="th"  data-label="Eliminar">
             ' ;
             if ($productos['SUM(stock)']==0) {?>
-                <form method="POST" action="Controller/Delete_producto.php">
-                    <input type="hidden" name="cod" value="<?php echo $productos['cod'] ?>">
-                    <input type="hidden" name="id" value="<?php echo $productos['SUM(stock)'] ?>">
-                    <button   id="th" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm " class="text-primary" onclick="return confirmaion()">Eliminar</button>
-                </form>
+               
+                   
+                <a  data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm btn-del" href="Controller/Delete_producto.php?cod=<?php echo $productos['cod'] ?>&id=<?php echo $productos['SUM(stock)'] ?>">Eliminar</a>
+            
+                
            <?php  };
             if ($productos['SUM(stock)']!=0) {
                  echo'
@@ -202,4 +204,25 @@ echo'
 
 echo $tabla;
 ?>      
+<script type="text/javascript">
+    $('.btn-del').on('click', function(e) {
+        e.preventDefault();
+        const href=$(this).attr('href');
+            Swal.fire({
+      title:'IMPORTANTE',
+      text:'Realmente deseas Eliminar este registro',
+      icon:'warning',
+      showCancelButton:true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor:'#d33',
+      confirmButtonText: 'Eliminar',
+      allowOutsideClick: false
+    }).then((resultado) =>{
+if (resultado.value) {
+        document.location.href= href;                               
+               }
+                });
+    })
+   
+</script>
      

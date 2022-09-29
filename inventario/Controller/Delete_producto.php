@@ -15,8 +15,8 @@
     <?php 
  include '../Model/conexion.php';
 
-$cod = $_POST['cod'];
-$id1 = $_POST['id'];
+$cod = $_GET['cod'];
+$id1 = $_GET['id'];
 if ($id1<1) {
 
         $eliminar ="DELETE FROM tb_productos WHERE cod='$cod' AND stock='$id1'";
