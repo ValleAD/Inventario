@@ -174,7 +174,7 @@ echo'
             if ($productos['SUM(stock)']==0) {?>
                
                    
-                <a  data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm btn-del" href="Controller/Delete_producto.php?cod=<?php echo $productos['cod'] ?>&id=<?php echo $productos['SUM(stock)'] ?>">Eliminar</a>
+                <a  data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm btn-del" id="<?php echo $productos['codProductos'] ?>" href="Controller/Delete_producto.php?cod=<?php echo $productos['cod'] ?>&id=<?php echo $productos['SUM(stock)'] ?>">Eliminar</a>
             
                 
            <?php  };
@@ -208,9 +208,10 @@ echo $tabla;
     $('.btn-del').on('click', function(e) {
         e.preventDefault();
         const href=$(this).attr('href');
+        const cod=$(this).attr('id');
             Swal.fire({
       title:'IMPORTANTE',
-      text:'Realmente deseas Eliminar este registro',
+      html: 'Realmente deseas Eliminar este registro<br><br><b>El código a Eliminar es: </b>'+cod,
       icon:'warning',
       showCancelButton:true,
       confirmButtonColor: '#3085d6',

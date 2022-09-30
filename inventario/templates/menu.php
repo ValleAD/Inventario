@@ -41,14 +41,19 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
         #wwe{margin: 1%;position: initial;}
         
         #sn{font-size: 1.5em;}
+        .menu_bar2{display: none;}
+        
 
  </style>
     <header>
         <div class="menu_bar">
             <a style="font-size: 2rem;" href="#" class="bt-menu">
 
-                <svg  class="bi" width="50" height="50" fill="currentColor">
+                <svg  class="bi menu_bar1" width="50" height="50" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#list"/>
+                </svg>
+                <svg  class="bi menu_bar2" width="50" height="50" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#x"/>
                 </svg>
             <p>Menú</p></a>
         </div>
@@ -302,13 +307,33 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 var contador = 1;
 
 function main () {
-    $('.menu_bar').click(function(){
+    $('.menu_bar1').click(function(){
+        $('.menu_bar1').hide();
+        $('.menu_bar2').show();
+        
         if (contador == 1) {
             $('nav').animate({
                 left: '0'
             });
             contador = 0;
         } else {
+            $('.menu_bar1').show();
+            contador = 1;
+            $('nav').animate({
+                left: '-100%'
+            });
+        }
+    });
+    $('.menu_bar2').click(function(){
+        $('.menu_bar2').hide();
+        
+        if (contador == 1) {
+            $('nav').animate({
+                left: '0'
+            });
+            contador = 0;
+        } else {
+            $('.menu_bar1').show();
             contador = 1;
             $('nav').animate({
                 left: '-100%'

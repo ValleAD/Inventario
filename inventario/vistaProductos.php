@@ -29,7 +29,10 @@ die();
         display: none;
     }
 
-
+    .input:hover{
+        background: pink;
+        color: white;
+    }
  @media (max-width: 952px){
     #dia, #mes, #año{
         text-align: left;

@@ -46,8 +46,8 @@ die();
           @media screen and (max-width: 952px){
 
        #h1{ 
-            margin-top: 25%;
-            font-size: 1em;
+            margin-top: 5%;
+            font-size: 2em;
             padding: 3%;
             }
             nav{
