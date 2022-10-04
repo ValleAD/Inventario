@@ -35,14 +35,7 @@ include ('../Model/conexion.php'); ?>
               $cod=$_POST['consulta'];
 
    $sql = "SELECT * FROM `tb_productos` WHERE 
-        codProductos='$cod' OR
-        categoria='$cod' OR 
-        catalogo='$cod' OR 
-        descripcion='$cod' OR
-        unidad_medida='$cod' OR 
-        stock='$cod' OR
-        precio='$cod' OR  
-        fecha_registro='$cod'";
+       codProductos LIKE '%".$cod."%' or descripcion LIKE '%".$cod."%' ";
 
         $result = mysqli_query($conn, $sql);
  while ($productos = mysqli_fetch_array($result)){

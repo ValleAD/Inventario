@@ -24,7 +24,7 @@ if(isset($_POST['consulta']))
 {
     $q=$conn->real_escape_string($_POST['consulta']);
     $query="SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos  WHERE 
-        codProductos LIKE '%".$q."%' GROUP BY codProductos,precio HAVING COUNT(*) ORDER BY codProductos,fecha_registro desc ";
+        codProductos LIKE '%".$q."%' or descripcion LIKE '%".$q."%' GROUP BY codProductos,precio HAVING COUNT(*) ORDER BY codProductos,fecha_registro desc ";
         $result = mysqli_query($conn, $query);
          while ($productos = mysqli_fetch_array($result)){
          $cantidad=$productos['SUM(stock)'];
@@ -71,6 +71,21 @@ echo'
                 <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+                </button>
+            </form>
+        <form id="form2" style="margin-top:5%;margin-left: 2.6%;" method="POST" action="Plugin/Buscador_Excel.php" target="_blank">
+              ';
+    $sql = "SELECT * FROM tb_productos GROUP BY precio,codProductos";
+    $result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+echo'             
+                <input type="hidden" name="consulta" value="'. $ee=$_POST['consulta'].'">
+            ';} echo'
+                <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                 </svg>
                 </button>
             </form>

@@ -186,6 +186,14 @@ $result = mysqli_query($conn, $sql);
                 </svg>
              </button>
          </form>
+         <form id="well" class="well" method="POST" action="Plugin/Excel.php" target="_blank">
+            
+             <button style="position: initial;"type="submit" class="btn btn-outline-primary" name="tproductospdf" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
+                </svg>
+             </button>
+         </form>
  </div>     
  <a  href="unidad_medidad.php" class="btn btn-primary" id="td"  style="position: initial; float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a>
  <div class="row">   
@@ -193,7 +201,7 @@ $result = mysqli_query($conn, $sql);
             <section class="well" >
                 <div style="position: initial;" class="input-group">
                  
-            <input type="number" style="position: initial;" name="busqueda" class="form-control"  id="busqueda" placeholder="Buscar Codigo del Producto">
+            <input type="text" style="position: initial;" name="busqueda" class="form-control"  id="busqueda" placeholder="Buscar Código o Descripción">
                       <label onclick="return validar1()" class="input-group-text input" for="inputGroupSelect01">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#x"/>
@@ -265,6 +273,7 @@ $(document).on('keyup', '#busqueda', function()
                     function validar1() {
                         limpiar.value = '';
                     }
+    
  </script>
 </body>
 </html>
