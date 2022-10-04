@@ -46,14 +46,14 @@ die();
      
  <?php include ('Buscador_ajax/cabezeraVale.php') ?>  
     <div id="x" class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
-         <form id="sass" method="POST" class="mx-1" action="Plugin/soli_vale.php" target="_blank">
+         <form id="sass" method="POST" class="mx-1" action="Plugin/PDF/Almacen/soli_vale.php" target="_blank">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">    
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
-         <form id="sass" method="POST" action="Plugin/pdf_soli_vale.php" target="_blank" class="mx-1">
+         <form id="sass" method="POST" action="Plugin/PDF/Vale/pdf_soli_vale.php" target="_blank" class="mx-1">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
@@ -63,7 +63,7 @@ die();
  </div>   
  <?php if (isset($_POST['Consultar'])) {$columna=$_POST['columna'];$tipo=$_POST['tipo'];?>
     <div  class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
-         <form id="sass" method="POST" class="mx-1" action="Plugin/soli_vale.php" target="_blank">
+         <form id="sass" method="POST" class="mx-1" action="Plugin/PDF/Almacen/soli_vale.php" target="_blank">
             <input type="hidden" name="columna" value="<?php echo $columna ?>">
             <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Consultar">    
@@ -72,7 +72,7 @@ die();
                 </svg>
              </button>
          </form>
-         <form id="sass" method="POST" action="Plugin/pdf_soli_vale.php" target="_blank" class="mx-1">
+         <form id="sass" method="POST" action="Plugin/PDF/Vale/pdf_soli_vale.php" target="_blank" class="mx-1">
             <input type="hidden" name="columna" value="<?php echo $columna ?>">
             <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Consultar" target="_blank">
@@ -206,7 +206,7 @@ die();
 
        <?php include ('Buscador_ajax/cabezeraVale.php') ?>
              <div  id="x" class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
-         <form id="ssas"  method="POST" class="mx-1" action="Plugin/soli_vale.php" target="_blank">
+         <form id="ssas"  method="POST" class="mx-1" action="Plugin/PDF/Almacen/soli_vale.php" target="_blank">
              <?php $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     $n=0;
@@ -220,7 +220,7 @@ die();
                 </svg>
              </button>
          </form>
-         <form id="ssas"  class="mx-1"  method="POST" action="Plugin/pdf_soli_vale.php" target="_blank">
+         <form id="ssas"  class="mx-1"  method="POST" action="Plugin/PDF/Vale/pdf_soli_vale.php" target="_blank">
              <?php $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     $n=0;
@@ -237,7 +237,7 @@ die();
  </div>
  <?php if (isset($_POST['Consultar1'])) {$columna=$_POST['columna'];$tipo=$_POST['tipo'];?>
                   <div   class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
-         <form id="ssas"  method="POST" class="mx-1" action="Plugin/soli_vale.php" target="_blank">
+         <form id="ssas"  method="POST" class="mx-1" action="Plugin/Imprimir/Vale/soli_vale.php" target="_blank">
              <?php $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     $n=0;
@@ -253,7 +253,7 @@ die();
                 </svg>
              </button>
          </form>
-         <form id="ssas"  class="mx-1"  method="POST" action="Plugin/pdf_soli_vale.php" target="_blank">
+         <form id="ssas"  class="mx-1"  method="POST" action="Plugin/PDF/Vale/pdf_soli_vale.php" target="_blank">
              <?php $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     $n=0;

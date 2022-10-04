@@ -67,7 +67,7 @@ $final = 0;
 
  echo'   
 <section id="section" >
-<form method="POST" action="Plugin/pdf_circulante.php" target="_blank">
+<form method="POST" action="Plugin/PDF/Circulante/pdf_circulante.php" target="_blank">
          
       
         <div class="row">  
@@ -96,7 +96,7 @@ $final = 0;
 <table class="table">
              <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
 
-            <form method="POST" action="Plugin/pdf_circulante.php">
+            <form method="POST" action="Plugin/PDF/Circulante/pdf_circulante.php">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha">
 
                         <svg class="bi" width="20" height="20" fill="currentColor">
@@ -104,7 +104,7 @@ $final = 0;
                         </svg>
                 </button>
             </form>
-            <form method="POST" action="Plugin/Circulante.php">
+            <form method="POST" action="Plugin/Imprimir/Circulante/Circulante.php">
                 <input type="hidden" name="num_sol" value="<?php echo $datos_sol['codCirculante'] ?>">
                 <input type="hidden" name="fech" value="<?php echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])) ?>">
                                <?php 

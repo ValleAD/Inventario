@@ -305,11 +305,12 @@ $n_sol=$datos_sol['codAlmacen'];
         </div>
           
       </form>
-      <form method="POST" style="margin-top:-7%" action="Plugin/pdf_almacen.php" target="_blank">
+      <form method="POST" style="margin-top:-7%" action="Plugin/PDF/Almacen/pdf_almacen.php" target="_blank">
                 <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['codAlmacen']?>" name="num_sol">
                 <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['encargado']?>" name="nombre">
                 <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['estado']?>" name="estado">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $datos_sol['encargado']?>" name="encargado">
                 <input type="hidden" readonly class="form-control" value="<?php echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud']))?>" name="fech">
           <?php 
 if ($datos_sol['estado']=="Rechazado") {
@@ -319,7 +320,7 @@ if ($datos_sol['estado']=="Rechazado") {
                if ($datos_sol['estado']=="Aprobado") {?><br><br>
                <table class="table">
                     <div style="position: initial;" class="btn-group mb-3 mx-2 my-4" style="margin-top:4%" role="group" aria-label="Basic outlined example">
-            <form method="POST" action="Plugin/pdf_almacen.php">
+            <form method="POST" action="Plugin/PDF/Almacen/pdf_almacen.php">
                     
 
 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
@@ -329,10 +330,10 @@ if ($datos_sol['estado']=="Rechazado") {
 
                 </button>
             </form>
-            <form method="POST" action="Plugin/almacen.php" target="_blank">
+            <form method="POST" action="Plugin/Imprimir/Almacen/almacen.php" target="_blank">
                 <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['codAlmacen']?>" name="num_sol">
-                <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['encargado']?>" name="nombre">
+                <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['encargado']?>" name="encargado">
                 <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['estado']?>" name="estado">
                 <input type="hidden" readonly class="form-control" value="<?php echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud']))?>" name="fech">
            
@@ -453,7 +454,7 @@ while ($productos = mysqli_fetch_array($result)){
         <?php } if ($datos_sol['estado']=="Pendiente") {?><br>
         <table class="table">
             <div style="position: initial;" class="btn-group mb-3 mx-2 my-5" style="margin-top:15%" role="group" aria-label="Basic outlined example">
-            <form method="POST" action="Plugin/pdf_almacen.php">
+            <form method="POST" action="Plugin/PDF/Almacen/pdf_almacen.php">
             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
@@ -461,7 +462,7 @@ while ($productos = mysqli_fetch_array($result)){
 
                 </button>
             </form>
-            <form method="POST" action="Plugin/almacen.php" target="_blank">
+            <form method="POST" action="Plugin/Imprimir/Almacen/almacen.php" target="_blank">
                         <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $datos_sol['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $datos_sol['codAlmacen']?>" name="num_sol">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $datos_sol['encargado']?>" name="encargado">

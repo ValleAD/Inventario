@@ -132,14 +132,14 @@ $result = mysqli_query($conn, $sql);
 </div>
 
  <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-         <form method="POST" action="Plugin/U_D_D_C.php" target="_blank">
+         <form method="POST" action="Plugin/Imprimir/U_D_D_C/U_D_D_C.php" target="_blank">
              <button style="position: initial;"n type="submit" class="btn btn-outline-primary mx-1" name="categorias">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
-         <form method="POST" action="Plugin/U_D_D_C_pdf.php" target="_blank">
+         <form method="POST" action="Plugin/PDF/U_D_D_C/U_D_D_C_pdf.php" target="_blank">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="categorias" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>

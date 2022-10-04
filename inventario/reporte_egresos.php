@@ -107,14 +107,14 @@ if(isset($_POST['ingresos'])){
     <br><h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
 
             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
- <form id="n" method="POST" action="Plugin/reporte_egreso.php">
+ <form id="n" method="POST" action="Plugin/PDF/Almacen/reporte_egreso.php">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="bodega">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
                 </button>
             </form>
-            <form id="n" method="POST" action="Plugin/pdf_egresos.php">
+            <form id="n" method="POST" action="Plugin/PDF/Almacen/pdf_egresos.php">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="bodega">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
@@ -221,14 +221,14 @@ $n=0;
 <h3 style="text-align: center; color: black;">Egresos Por Vale</h3>
 <h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form id="n" method="POST" action="Plugin/reporte_egreso.php">
+            <form id="n" method="POST" action="Plugin/PDF/Almacen/reporte_egreso.php">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
                 </button>
             </form>
-            <form id="n" method="POST" action="Plugin/pdf_egresos.php">
+            <form id="n" method="POST" action="Plugin/PDF/Almacen/pdf_egresos.php">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
@@ -344,7 +344,7 @@ if(isset($_POST['ingresos'])){
     <h3>Egresos de Bodega</h3>
     <br><h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
- <form id="n" method="POST" action="Plugin/reporte_egreso.php">
+ <form id="n" method="POST" action="Plugin/PDF/Almacen/reporte_egreso.php">
                     <?php $sql = "SELECT * FROM tb_bodega ";
     $result = mysqli_query($conn, $sql);
 
@@ -365,7 +365,7 @@ if(isset($_POST['ingresos'])){
                 </svg>
                 </button>
             </form>
-            <form id="n" method="POST" action="Plugin/pdf_egresos.php">
+            <form id="n" method="POST" action="Plugin/PDF/Egresos/pdf_egresos.php">
     <?php $sql = "SELECT * FROM tb_bodega ";
     $result = mysqli_query($conn, $sql);
 
@@ -480,7 +480,7 @@ $n=0;
 <h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
 
             <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form  id="n" method="POST" action="Plugin/reporte_egreso.php">
+            <form  id="n" method="POST" action="Plugin/Imprimir/Egresos/reporte_egreso.php">
                     <?php $sql = "SELECT * FROM tb_vale ";
     $result = mysqli_query($conn, $sql);
 
@@ -501,7 +501,7 @@ $n=0;
                 </svg>
                 </button>
             </form>
-            <form id="n"  method="POST" action="Plugin/pdf_egresos.php">
+            <form id="n"  method="POST" action="Plugin/PDF/Almacen/pdf_egresos.php">
                                     <?php $sql = "SELECT * FROM tb_vale ";
     $result = mysqli_query($conn, $sql);
 

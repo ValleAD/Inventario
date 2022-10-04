@@ -173,7 +173,7 @@ $tipo_usuario = $_SESSION['iduser'];
     <table class="table" id="div">
             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
                 
-            <form method="POST" action="Plugin/pdf_compra.php">
+            <form method="POST" action="Plugin/PDF/Compra/pdf_compra.php">
                      
  <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['nSolicitud']?>" name="sol_compra">
                 <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['dependencia']?>" name="dependencia">
@@ -190,7 +190,7 @@ $tipo_usuario = $_SESSION['iduser'];
 
                 </button>
             </form>
-            <form method="POST" action="Plugin/compra.php" target="_blank">
+            <form method="POST" action="Plugin/Imprimir/Compra/compra.php" target="_blank">
 
                 <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['nSolicitud']?>" name="sol_compra">
                 <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['dependencia']?>" name="dependencia">

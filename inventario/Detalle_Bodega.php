@@ -160,7 +160,7 @@ if(isset($_POST['detalle'])){
             <br>
           </form>
 
-              <form method="POST" style="margin-top:-7%" action="Plugin/pdf_bodega.php" target="_blank">
+              <form method="POST" style="margin-top:-7%" action="Plugin/PDF/Bodega/pdf_bodega.php" target="_blank">
 
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">
@@ -186,7 +186,7 @@ if ($productos1['estado']=="Rechazado") {
 
                 </button>
             </form>
-            <form style="" method="POST" action="Plugin/bodega.php" target="_blank">
+            <form style="" method="POST" action="Plugin/PDF/Bodega/bodega.php" target="_blank">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
@@ -305,7 +305,7 @@ while ($productos = mysqli_fetch_array($result)){
         <?php } if ($productos1['estado']=="Pendiente") {?>
             <table class="table">
             <div  style="position: initial;" class="btn-group  my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form method="POST" action="Plugin/pdf_bodega.php">
+            <form method="POST" action="Plugin/PDF/PDF/pdf_bodega.php">
             <button style="position: initial;"  type="submit" class="btn btn-outline-primary" name="aprobado">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
@@ -313,7 +313,7 @@ while ($productos = mysqli_fetch_array($result)){
 
                 </button>
             </form>
-            <form method="POST" action="Plugin/bodega.php" target="_blank">
+            <form method="POST" action="Plugin/Imprimir/Bodega/bodega.php" target="_blank">
                         <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">

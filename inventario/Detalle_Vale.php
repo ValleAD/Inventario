@@ -190,7 +190,7 @@ if(isset($_POST['detalle'])){
 
             <!--Vista solo para ver lo detallado del informe-->
           </form>
-            <form style="margin-top: -7%;" method="POST" action="Plugin/pdf_vale.php" target="_blank" style="background: transparent;">
+        <form style="margin-top: -7%;" method="POST" action="Plugin/PDF/Vale/pdf_vale.php" target="_blank" style="background: transparent;">
 
                 <input type="hidden" readonly class="form-control"  value="<?php echo $des?>" name="depto">
                 <input type="hidden" readonly class="form-control"  value="<?php echo $productos1['codVale']?>" name="vale">
@@ -202,7 +202,7 @@ if(isset($_POST['detalle'])){
                if ($productos1['estado']=="Aprobado") {?><br>
                <table class="table " style="width: 100%;">
                     <div style="position: initial;" class="btn-group  my-4 mx-2" role="group" aria-label="Basic outlined example">
-            <form method="POST" action="Plugin/pdf_vale.php">
+            <form method="POST" action="Plugin/PDF/Vale/pdf_vale.php">
                        <?php  
                        $num_vale = $productos1['codVale'];
         $sql = "SELECT * FROM tb_vale WHERE codVale='$num_vale'  ORDER BY observaciones ASC LIMIT 1";
@@ -225,7 +225,7 @@ if(isset($_POST['detalle'])){
 
                 </button>
             </form>
-            <form method="POST" action="Plugin/vale.php" target="_blank">
+            <form method="POST" action="Plugin/Imprimir/Vale/vale.php" target="_blank">
                 <input type="hidden" readonly class="form-control"  value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  value="<?php echo $productos1['codVale']?>" name="vale">
                 <input type="hidden" readonly class="form-control"  value="<?php echo $productos1['usuario']?>" name="usuario">
@@ -388,7 +388,7 @@ while ($productos = mysqli_fetch_array($result)){
         <?php } if ($productos1['estado']=="Pendiente") {?>
             <table class="table ">
             <div style="position: initial;" class="btn-group mb-3 my-5 mx-2" role="group" aria-label="Basic outlined example" style="margin-top:5%">
-            <form method="POST" action="Plugin/pdf_vale.php">
+            <form method="POST" action="Plugin/PDF/Vale/pdf_vale.php">
             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
@@ -396,7 +396,7 @@ while ($productos = mysqli_fetch_array($result)){
 
                 </button>
             </form>
-            <form method="POST" action="Plugin/vale.php" target="_blank">
+            <form method="POST" action="Plugin/Imprimir/Vale/vale.php" target="_blank">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
@@ -554,7 +554,7 @@ while ($productos = mysqli_fetch_array($result)){
               <?php  if ($productos1['estado']=="Rechazado") {?>
             <table class="table ">
             <div style="position: initial;" class="btn-group mb-3 my-5 mx-2" role="group" aria-label="Basic outlined example" style="margin-top:5%">
-            <form method="POST" action="Plugin/pdf_vale.php">
+            <form method="POST" action="Plugin/PDF/Vale/pdf_vale.php">
             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
@@ -562,7 +562,7 @@ while ($productos = mysqli_fetch_array($result)){
 
                 </button>
             </form>
-            <form method="POST" action="Plugin/vale.php" target="_blank">
+            <form method="POST" action="Plugin/Imprimir/Vale/vale.php" target="_blank">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">

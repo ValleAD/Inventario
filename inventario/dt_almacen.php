@@ -67,7 +67,7 @@ $final = 0;
 
  echo'   
 <section id="section" >
-<form method="POST" action="Plugin/pdf_almacen.php" target="_blank">
+<form method="POST" action="Plugin/PDF/Almacen/pdf_almacen.php" target="_blank">
          
       
         <div class="row">  
@@ -111,14 +111,14 @@ $final = 0;
         <br>
         <table class="table">
             <div  style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form method="POST" action="Plugin/pdf_compra.php">
+            <form method="POST" action="Plugin/PDF/Almacen/pdf_compra.php">
                 <button style="position: initial;"  type="submit" class="btn btn-outline-primary" name="Fecha">
                         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                         </svg>
                 </button>
             </form>
-            <form method="POST" action="Plugin/almacen.php">
+            <form method="POST" action="Plugin/Imprimir/Almacen/almacen.php">
              <input readonly class="form-control"  type="hidden" value="<?php echo $datos_sol['codAlmacen']?>" name="num_sol">
               <input readonly class="form-control"  type="hidden" value="<?php echo $datos_sol['departamento']?>" name="depto">
               <input readonly class="form-control"  type="hidden" value="<?php echo $datos_sol['encargado']?>" name="encargado">

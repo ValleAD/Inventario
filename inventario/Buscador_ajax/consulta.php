@@ -44,7 +44,7 @@ if ($buscarAlumnos->num_rows > 0)
                 echo ' <style>#well{display:none;}</style>
 
 <div style="position: initial;" class="btn-group mb-3"  role="group" aria-label="Basic outlined example">
-            <form id="form1" style=" margin-top:5%" method="POST" action="Plugin/productos.php" target="_blank">';
+            <form id="form1" style=" margin-top:5%" method="POST" action="Plugin/Imprimir/Producto/productos.php" target="_blank">';
     $sql = "SELECT * FROM tb_productos GROUP BY precio,codProductos";
     $result = mysqli_query($conn, $sql);
 
@@ -59,7 +59,7 @@ if ($buscarAlumnos->num_rows > 0)
                 </svg>
                 </button>
             </form><br>
-            <form id="form2" style="margin-top:5%;margin-left: 2.6%;" method="POST" action="Plugin/pdf_productos.php" target="_blank">
+            <form id="form2" style="margin-top:5%;margin-left: 2.6%;" method="POST" action="Plugin/PDF/Productos/pdf_productos.php" target="_blank">
               ';
     $sql = "SELECT * FROM tb_productos GROUP BY precio,codProductos";
     $result = mysqli_query($conn, $sql);

@@ -68,7 +68,7 @@ $final2 = 0;
 
  echo'   
 <section id="section" style="margin:2%">
-<form method="POST" action="Plugin/pdf_bodega.php" target="_blank">
+<form method="POST" action="Plugin/PDF/Bodega/pdf_bodega.php" target="_blank">
           <input type="hidden" readonly class="form-control"  type="text" value="'. $productos1['departamento'].'" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="'. $productos1['codBodega'].'" name="bodega">
                 <input type="hidden" readonly class="form-control"  type="text" value="'. $productos1['usuario'].'" name="usuario">
@@ -113,14 +113,14 @@ $final2 = 0;
         <br>
           <table class="table">
            <div  style="position: initial;"class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-              <form method="POST" action="Plugin/pdf_bodega.php">
+              <form method="POST" action="Plugin/PDF/Bodega/pdf_bodega.php">
 
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha">                        
                     <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                         </svg></button>
             </form>
-            <form method="POST" action="Plugin/bodega.php" target="_blank">
+            <form method="POST" action="Plugin/Imprimir/Bodega/bodega.php" target="_blank">
                            <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">

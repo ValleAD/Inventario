@@ -49,14 +49,14 @@ form{
                  <?php include ('Buscador_ajax/cabezeraBodega.php'); ?>  
 
               <div id="x" style="position: initial;" class="btn-group mb-3 my-1 mx-2" style="position: initial;" role="group" aria-label="Basic outlined example">
-         <form id="ssas" method="POST" action="Plugin/soli_bodega.php" target="_blank">
+         <form id="ssas" method="POST" action="Plugin/PDF/Almacen/soli_bodega.php" target="_blank">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
-         <form id="ssas" method="POST" action="Plugin/pdf_soli_bodega.php" class="mx-1" target="_blank">
+         <form id="ssas" method="POST" action="Plugin/PDF/Almacen/pdf_soli_bodega.php" class="mx-1" target="_blank">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
@@ -66,7 +66,7 @@ form{
  </div>
  <?php if (isset($_POST['Consultar'])) {$columna=$_POST['columna'];$tipo=$_POST['tipo'];?>
               <div style="position: initial;" class="btn-group mb-3 my-1 mx-2" style="position: initial;" role="group" aria-label="Basic outlined example">
-         <form id="ssas" method="POST" action="Plugin/soli_bodega.php" target="_blank">
+         <form id="ssas" method="POST" action="Plugin/PDF/Almacen/soli_bodega.php" target="_blank">
              <input type="hidden" name="columna" value="<?php echo $columna ?>">
             <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Consultar">
@@ -75,7 +75,7 @@ form{
                 </svg>
              </button>
          </form>
-         <form id="ssas" method="POST" action="Plugin/pdf_soli_bodega.php" class="mx-1" target="_blank">
+         <form id="ssas" method="POST" action="Plugin/PDF/Almacen/pdf_soli_bodega.php" class="mx-1" target="_blank">
              <input type="hidden" name="columna" value="<?php echo $columna ?>">
             <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Consultar" target="_blank">
@@ -182,7 +182,7 @@ if ($des=="") {
 
                 <?php include ('Buscador_ajax/cabezeraBodega.php') ?>
              <div  id="x" class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
-         <form id="ssas"  method="POST" class="mx-1" action="Plugin/soli_bodega.php" target="_blank">
+         <form id="ssas"  method="POST" class="mx-1" action="Plugin/PDF/Almacen/soli_bodega.php" target="_blank">
              <?php $sql = "SELECT * FROM tb_bodega WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     $n=0;
@@ -196,7 +196,7 @@ if ($des=="") {
                 </svg>
              </button>
          </form>
-         <form id="ssas"  class="mx-1"  method="POST" action="Plugin/pdf_soli_bodega.php" target="_blank">
+         <form id="ssas"  class="mx-1"  method="POST" action="Plugin/PDF/Bodega/pdf_soli_bodega.php" target="_blank">
              <?php $sql = "SELECT * FROM tb_bodega WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     $n=0;
@@ -213,7 +213,7 @@ if ($des=="") {
  </div>
  <?php if (isset($_POST['Consultar1'])) {$columna=$_POST['columna'];$tipo=$_POST['tipo'];?>
                   <div   class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
-         <form id="ssas"  method="POST" class="mx-1" action="Plugin/soli_bodega.php" target="_blank">
+         <form id="ssas"  method="POST" class="mx-1" action="Plugin/Imprimir/Bodega/soli_bodega.php" target="_blank">
              <?php $sql = "SELECT * FROM tb_bodega WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     $n=0;
@@ -229,7 +229,7 @@ if ($des=="") {
                 </svg>
              </button>
          </form>
-         <form id="ssas"  class="mx-1"  method="POST" action="Plugin/pdf_soli_bodega.php" target="_blank">
+         <form id="ssas"  class="mx-1"  method="POST" action="Plugin/PDF/Almacen/pdf_soli_bodega.php" target="_blank">
              <?php $sql = "SELECT * FROM tb_bodega WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     $n=0;

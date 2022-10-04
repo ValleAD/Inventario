@@ -57,7 +57,7 @@ die();
            <div class="mx-1 p-2 hidden" id="hidden" style=" border-radius: 5px;">
         
         <div style="position: initial;" class="btn-group mb-3 my-3 mx-2 " role="group" aria-label="Basic outlined example">
-         <form id="well" class="well" method="POST" action="Plugin/tproductos.php" target="_blank">
+         <form id="well" class="well" method="POST" action="Plugin/Imprimir/Producto/tproductos.php" target="_blank">
              
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="tproductos">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -65,7 +65,7 @@ die();
                 </svg>
              </button>
          </form>
-         <form id="well" class="well" method="POST" action="Plugin/tpdf_productos.php" target="_blank">
+         <form id="well" class="well" method="POST" action="Plugin/PDF/Productos/tpdf_productos.php" target="_blank">
             
              <button  style="position: initial;"type="submit" class="btn btn-outline-primary mx-1" name="tproductospdf" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">

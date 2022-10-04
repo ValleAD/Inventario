@@ -51,7 +51,7 @@ $final2 = 0;
 
  echo'   
 <section id="section">
-<form method="POST" action="Plugin/pdf_vale.php" target="_blank">
+<form method="POST" action="Plugin/PDF/Vale/pdf_vale.php" target="_blank">
          
       
         <div class="row">
@@ -96,7 +96,7 @@ $final2 = 0;
         <br>
               <div style="padding:1%">
             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form method="POST" action="Plugin/pdf_vale.php">
+            <form method="POST" action="Plugin/PDF/Vale/pdf_vale.php">
                        <?php  
                        $num_vale = $productos1['codVale'];
         $sql = "SELECT * FROM tb_vale WHERE codVale='$num_vale'  ORDER BY observaciones ASC LIMIT 1";
@@ -119,7 +119,7 @@ $final2 = 0;
 
                 </button>
             </form>
-            <form method="POST" action="Plugin/vale.php" target="_blank">
+            <form method="POST" action="Plugin/Imprimir/Vale/vale.php" target="_blank">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">

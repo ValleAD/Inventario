@@ -149,7 +149,7 @@ $id=$_POST['id'];
       
         <br>
     </form>
-           <form method="POST" style="margin-top: -3.5%" action="Plugin/pdf_circulante.php" target="_blank">
+           <form method="POST" style="margin-top: -3.5%" action="Plugin/PDF/Circulante/pdf_circulante.php" target="_blank">
 <table class="table">
                         <div style="position: initial;" style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form style="position: initial;" method="POST" action="Plugin/pdf_circulante.php">
@@ -161,7 +161,7 @@ $id=$_POST['id'];
                 </svg>
                 </button>
             </form>
-            <form method="POST" action="Plugin/Circulante.php">
+            <form method="POST" action="Plugin/Imprimir/Circulante/Circulante.php">
                                <?php 
 $num_circulante = $datos_sol['codCirculante'];
 

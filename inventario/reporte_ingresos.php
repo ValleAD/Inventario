@@ -106,13 +106,13 @@ if(isset($_POST['ingresos'])){
     <h3 style="text-align: center; color: black;">Ingresos de Solicitud Circulante</h3>
 
     <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form id="div" method="POST" action="Plugin/reporte_ingreso.php">
+            <form id="div" method="POST" action="Plugin/PDF/Almacen/reporte_ingreso.php">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                  </button>
             </form>
-            <form id="div" method="POST" action="Plugin/pdf_ingresos.php">
+            <form id="div" method="POST" action="Plugin/PDF/Almacen/pdf_ingresos.php">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
@@ -204,13 +204,13 @@ if(isset($_POST['ingresos'])){
 <h3 style="text-align: center; color: black;">Ingresos de Almacén</h3>
 
         <div  style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form id="div" method="POST" action="Plugin/reporte_ingreso.php">
+            <form id="div" method="POST" action="Plugin/PDF/Almacen/reporte_ingreso.php">
                 <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </button>
             </form>
-            <form id="div" method="POST" action="Plugin/pdf_ingresos.php">
+            <form id="div" method="POST" action="Plugin/PDF/Almacen/pdf_ingresos.php">
                 <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
@@ -313,13 +313,13 @@ width: 100%;
 <h3 style="text-align: center; color: black;">Ingresos de Compra</h3>
 
         <div  style="position: initial;"class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form id="div" method="POST" action="Plugin/reporte_ingreso.php">
+            <form id="div" method="POST" action="Plugin/PDF/Almacen/reporte_ingreso.php">
                 <button  style="position: initial;"type="submit" class="btn btn-outline-primary" name="compra">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </button>
             </form>
-            <form id="div" method="POST" action="Plugin/pdf_ingresos.php">
+            <form id="div" method="POST" action="Plugin/PDF/Almacen/pdf_ingresos.php">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="compra">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
@@ -412,7 +412,7 @@ if(isset($_POST['ingresos'])){
     <h3 style="text-align: center; color: black;">Ingresos de Solicitud Circulante</h3>
 
     <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form id="div" method="POST" action="Plugin/reporte_ingreso.php">
+            <form id="div" method="POST" action="Plugin/PDF/Almacen/reporte_ingreso.php">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante1">
                 <?php $sql = "SELECT * FROM tb_circulante ";
     $result = mysqli_query($conn, $sql);
@@ -432,7 +432,7 @@ if(isset($_POST['ingresos'])){
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                  </button>
             </form>
-            <form id="div" method="POST" action="Plugin/pdf_ingresos.php">
+            <form id="div" method="POST" action="Plugin/PDF/Almacen/pdf_ingresos.php">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante1">
 <?php $sql = "SELECT * FROM tb_circulante ";
     $result = mysqli_query($conn, $sql);
@@ -538,7 +538,7 @@ $idusuario = $_SESSION['iduser'];
 <h3 style="text-align: center; color: black;">Ingresos de Almacén</h3>
 
         <div  style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form id="div" method="POST" action="Plugin/reporte_ingreso.php">
+            <form id="div" method="POST" action="Plugin/PDF/Almacen/reporte_ingreso.php">
 <?php $sql = "SELECT * FROM tb_almacen ";
     $result = mysqli_query($conn, $sql);
 
@@ -558,7 +558,7 @@ $idusuario = $_SESSION['iduser'];
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </button>
             </form>
-            <form id="div" method="POST" action="Plugin/pdf_ingresos.php">
+            <form id="div" method="POST" action="Plugin/Imprimir/Ingresos/pdf_ingresos.php">
 <?php $sql = "SELECT * FROM tb_almacen ";
     $result = mysqli_query($conn, $sql);
 
@@ -668,7 +668,7 @@ width: 100%;
 <h3 style="text-align: center; color: black;">Ingresos de Compra</h3>
 
         <div  style="position: initial;"class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form id="div" method="POST" action="Plugin/reporte_ingreso.php">
+            <form id="div" method="POST" action="Plugin/Imprimir/Ingresos/reporte_ingreso.php">
                 <?php $sql = "SELECT * FROM tb_compra ";
     $result = mysqli_query($conn, $sql);
 
@@ -688,7 +688,7 @@ width: 100%;
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </button>
             </form>
-            <form id="div" method="POST" action="Plugin/pdf_ingresos.php">
+            <form id="div" method="POST" action="Plugin/PDF/Almacen/pdf_ingresos.php">
                 <?php $sql = "SELECT * FROM tb_compra ";
     $result = mysqli_query($conn, $sql);
 

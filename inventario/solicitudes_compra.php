@@ -60,14 +60,14 @@ h1 {
      <div id="div">
 
     <div id="x" style="position: initial;" class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example">
-         <form id="x" method="POST" style=" position: initial;" action="Plugin/soli_compra.php" target="_blank">
+         <form id="x" method="POST" style=" position: initial;" action="Plugin/Imprimir/Compra/soli_compra.php" target="_blank">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
-         <form id="x" method="POST" action="Plugin/pdf_soli_compra.php" class="mx-1" target="_blank">
+         <form id="x" method="POST" action="Plugin/PDF/Compra/pdf_soli_compra.php" class="mx-1" target="_blank">
              <button style="position: initial;"type="submit" class="btn btn-outline-primary" name="id" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
@@ -78,7 +78,7 @@ h1 {
 </div>
   <?php if (isset($_POST['Consultar'])) {$columna=$_POST['columna'];$tipo=$_POST['tipo'];?>
       <div  style="position: initial;" class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example">
-         <form id="ssas" method="POST" style=" position: initial;" action="Plugin/soli_compra.php" target="_blank">
+         <form id="ssas" method="POST" style=" position: initial;" action="Plugin/Imprimir/Compra/soli_compra.php" target="_blank">
           <input type="hidden" name="columna" value="<?php echo $columna ?>">
             <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Consultar">
@@ -87,7 +87,7 @@ h1 {
                 </svg>
              </button>
          </form>
-         <form id="ssas" method="POST" action="Plugin/pdf_soli_compra.php" class="mx-1" target="_blank">
+         <form id="ssas" method="POST" action="Plugin/PDF/Compra/pdf_soli_compra.php" class="mx-1" target="_blank">
           <input type="hidden" name="columna" value="<?php echo $columna ?>">
             <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
              <button style="position: initial;"type="submit" class="btn btn-outline-primary" name="Consultar" target="_blank">
@@ -170,7 +170,7 @@ h1 {
             <?php if ($tipo_usuario==2) {?>
         <?php include ('Buscador_ajax/cabezeraCompra.php') ?>
 <div  id="x" style="position: initial;" class="btn-group mb-3  mx-2" style=" position: initial;" role="group" aria-label="Basic outlined example">
-         <form id="ssas" method="POST" action="Plugin/soli_compra.php" target="_blank">
+         <form id="ssas" method="POST" action="Plugin/Imprimir/Compra/soli_compra.php" target="_blank">
             <?php $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     while ($datos_sol = mysqli_fetch_array($result)){?>
@@ -183,7 +183,7 @@ h1 {
                 </svg>
              </button>
          </form>
-         <form id="ssas" method="POST" action="Plugin/pdf_soli_compra.php" class="mx-1" target="_blank">
+         <form id="ssas" method="POST" action="Plugin/PDF/Compra/pdf_soli_compra.php" class="mx-1" target="_blank">
     <?php $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     while ($datos_sol = mysqli_fetch_array($result)){?>
@@ -199,7 +199,7 @@ h1 {
 </div>
  <?php if (isset($_POST['Consultar1'])) {$columna=$_POST['columna'];$tipo=$_POST['tipo'];?>
  <div  style="position: initial;" class="btn-group mb-3  mx-2" style=" position: initial;" role="group" aria-label="Basic outlined example">
-         <form id="ssas" method="POST" action="Plugin/soli_compra.php" target="_blank">
+         <form id="ssas" method="POST" action="Plugin/Imprimir/Compra/soli_compra.php" target="_blank">
             <?php $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     while ($datos_sol = mysqli_fetch_array($result)){?>
@@ -214,7 +214,7 @@ h1 {
                 </svg>
              </button>
          </form>
-         <form id="ssas" method="POST" action="Plugin/pdf_soli_compra.php" class="mx-1" target="_blank">
+         <form id="ssas" method="POST" action="Plugin/PDF/Compra/pdf_soli_compra.php" class="mx-1" target="_blank">
     <?php $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     while ($datos_sol = mysqli_fetch_array($result)){?>

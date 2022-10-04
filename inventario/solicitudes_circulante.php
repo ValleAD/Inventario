@@ -50,14 +50,14 @@ form{
   <?php if ($tipo_usuario==1) { ?>
      <?php include ('Buscador_ajax/cabezeraCirculante.php') ?>
      <div id="x" class="btn-group mb-3   mx-2" style="position: initial;"  role="group" aria-label="Basic outlined example"> 
-        <form id="ssas" method="POST" style="background: transparent;" action="Plugin/soli_circulante.php" target="_blank">
+        <form id="ssas" method="POST" style="background: transparent;" action="Plugin/PDF/Almacen/soli_circulante.php" target="_blank">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
-         <form id="ssas"  method="POST"   style="background: transparent;" action="Plugin/pdf_soli_circulante.php" target="_blank">
+         <form id="ssas"  method="POST"   style="background: transparent;" action="Plugin/PDF/Circulante/pdf_soli_circulante.php" target="_blank">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
@@ -66,7 +66,7 @@ form{
          </form>
 </div> <?php if (isset($_POST['Consultar'])) {$columna=$_POST['columna'];$tipo=$_POST['tipo'];?>
      <div class="btn-group mb-3  mx-2" style="position: initial;"  role="group" aria-label="Basic outlined example"> 
-        <form id="ssas" method="POST" style="background: transparent;" action="Plugin/soli_circulante.php" target="_blank">
+        <form id="ssas" method="POST" style="background: transparent;" action="Plugin/PDF/Almacen/soli_circulante.php" target="_blank">
             <input type="hidden" name="columna" value="<?php echo $columna ?>">
             <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Consultar">
@@ -75,7 +75,7 @@ form{
                 </svg>
              </button>
          </form>
-         <form id="ssas"  method="POST"   style="background: transparent;" action="Plugin/pdf_soli_circulante.php" target="_blank">
+         <form id="ssas"  method="POST"   style="background: transparent;" action="Plugin/PDF/Circulante/pdf_soli_circulante.php" target="_blank">
              <input type="hidden" name="columna" value="<?php echo $columna ?>">
             <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Consultar">
@@ -137,7 +137,7 @@ form{
     <?php } ?><?php if ($tipo_usuario==2) {?>
             <?php include ('Buscador_ajax/cabezeraCirculante.php') ?>
  <div id="x" class="btn-group mb-3   mx-2" style="position: initial;"  role="group" aria-label="Basic outlined example"> 
-        <form id="ssas" method="POST" style="background: transparent;" action="Plugin/soli_circulante.php" target="_blank">
+        <form id="ssas" method="POST" style="background: transparent;" action="Plugin/PDF/Almacen/soli_circulante.php" target="_blank">
             <?php $sql = "SELECT * FROM tb_circulante ";
     $result = mysqli_query($conn, $sql);
     while ($datos_sol = mysqli_fetch_array($result)){?>
@@ -150,7 +150,7 @@ form{
                 </svg>
              </button>
          </form>
-         <form id="ssas"  method="POST"   style="background: transparent;" action="Plugin/pdf_soli_circulante.php" target="_blank">
+         <form id="ssas"  method="POST"   style="background: transparent;" action="Plugin/PDF/Circulante/pdf_soli_circulante.php" target="_blank">
                 <?php $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     while ($datos_sol = mysqli_fetch_array($result)){?>
@@ -167,7 +167,7 @@ form{
  <?php if (isset($_POST['Consultar1'])) {$columna=$_POST['columna'];$tipo=$_POST['tipo'];?>
 
  <div class="btn-group mb-3   mx-2" style="position: initial;"  role="group" aria-label="Basic outlined example"> 
-        <form id="ssas" method="POST" style="background: transparent;" action="Plugin/soli_circulante.php" target="_blank">
+        <form id="ssas" method="POST" style="background: transparent;" action="Plugin/Imprimir/Circulante/soli_circulante.php" target="_blank">
             <?php $sql = "SELECT * FROM tb_circulante ";
     $result = mysqli_query($conn, $sql);
     while ($datos_sol = mysqli_fetch_array($result)){?>
@@ -182,7 +182,7 @@ form{
                 </svg>
              </button>
          </form>
-         <form id="ssas"  method="POST"   style="background: transparent;" action="Plugin/pdf_soli_circulante.php" target="_blank">
+         <form id="ssas"  method="POST"   style="background: transparent;" action="Plugin/PDF/Circulante/pdf_soli_circulante.php" target="_blank">
                 <?php $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     while ($datos_sol = mysqli_fetch_array($result)){?>

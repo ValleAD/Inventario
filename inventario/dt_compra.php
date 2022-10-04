@@ -58,7 +58,7 @@ $final2=0;
 $solicitud=$datos["nSolicitud"];
   echo'   
 <section id="section">
-  <form method="POST"  action="Plugin/pdf_compra.php" target="_blank">
+  <form method="POST"  action="Plugin/PDF/Compra/pdf_compra.php" target="_blank">
            
                 <input readonly class="form-control"  type="hidden" value="'. $datos['nSolicitud'].'" name="sol_compra">
                 <input readonly class="form-control"  type="hidden" value="'. $datos['dependencia'].'" name="dependencia">
@@ -131,7 +131,7 @@ $solicitud=$datos["nSolicitud"];
           <br>
             <table class="table">
             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form method="POST" action="Plugin/pdf_compra">
+            <form method="POST" action="Plugin/PDF/Compra/pdf_compra">
              
 
 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
@@ -141,7 +141,7 @@ $solicitud=$datos["nSolicitud"];
 
                 </button>
             </form>
-            <form method="POST" action="Plugin/compra.php" target="_blank">
+            <form method="POST" action="Plugin/Imprimir/Almacen/compra.php" target="_blank">
  <input readonly class="form-control"  type="hidden" value="<?php echo $datos['nSolicitud']?>" name="sol_compra">
                 <input readonly class="form-control"  type="hidden" value="<?php echo $datos['dependencia']?>" name="dependencia">
                 <input readonly class="form-control"  type="hidden" value="<?php echo $datos['plazo']?>" name="plazo">
