@@ -62,8 +62,7 @@ include '../../../Model/conexion.php'; ?>
   </style> 
   
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td data-label="No. solicitud" class="delete"><?php  echo $solicitudes['codCirculante']; ?></td>
-           <td style="font-size: 12px;text-align: center;"><?php  echo $solicitudes['codCirculante']?></td>
+            <td data-label="No. solicitud" class="delete" style="text-align:center; font-size: 12px;"><?php  echo $solicitudes['codCirculante']; ?></td>
             <td style="text-align:center; font-size: 12px;"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_solicitud'])) ?></td>
        <?php }  ?> 
     </tbody>  

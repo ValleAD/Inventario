@@ -1,6 +1,6 @@
 <?php
-include '../Model/conexion.php';
-require 'vendor/autoload.php';
+include '../../../Model/conexion.php';
+require ' ../../../../vendor/autoload.php';
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 $spreadsheet = new Spreadsheet();

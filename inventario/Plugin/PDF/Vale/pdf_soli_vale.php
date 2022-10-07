@@ -8,8 +8,8 @@ include '../../../Model/conexion.php'; ?>
     <title>PDF Vale</title>
 </head>
 <body style="font-family: sans-serif;">
-    <img src="../../../../img/hospital.png" style="width:20%">
-    <img src="../../../../img/log_1.png" style="width:20%; float:right">
+    <img src="../../../img/hospital.png" style="width:20%">
+    <img src="../../../img/log_1.png" style="width:20%; float:right">
 
 <h3>HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
 <h4>DEPARTAMENTO DE MANTENIMIENTO</h4>

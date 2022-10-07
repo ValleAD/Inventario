@@ -13,6 +13,8 @@ $idusuario = $_SESSION['iduser'];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles/estilo_men.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <link rel="stylesheet" type="text/css" href="styles/estilo.css">
     <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
    <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
    <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/datatables.min.css"/> 
@@ -71,14 +73,14 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
                         </svg></a>
                     <ul class="children">
-                       <li><a id="b" href="vistaProductos.php">Ver Artículos</a></li>
+                       <li><a id="b" href="Vistas/Productos/vistaProductos.php">Ver Artículos</a></li>
                        <?php if($tipo_usuario==1){ ?>
-                        <li><a id="b" href="regi_producto.php">Nuevo Artículo</a></li>
+                        <li><a id="b" href="Vistas/Productos/regi_producto.php">Nuevo Artículo</a></li>
                     <?php } ?>
-                        <li><a id="b" href="reporte_ingresos.php">Reporte Ingresos</a></li>
-                        <li><a id="b" href="reporte_egresos.php">Reporte Egresos</a></li>
-                        <li><a id="b" href="reporte_productos.php">Reporte Productos</a></li>
-                        <li><a id="b" href="reporte_general.php">Reporte General</a></li>
+                        <li><a id="b" href="Vistas/Reportes/reporte_ingresos.php">Reporte Ingresos</a></li>
+                        <li><a id="b" href="Vistas/Reportes/reporte_egresos.php">Reporte Egresos</a></li>
+                        <li><a id="b" href="Vistas/Reportes/reporte_productos.php">Reporte Productos</a></li>
+                        <li><a id="b" href="Vistas/Reportes/reporte_general.php">Reporte General</a></li>
 
                     </ul>
                 </li>
@@ -89,10 +91,8 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                         </svg>
                     </a>
                     <ul class="children">
-                        <li><a id="b" href="solicitudes_vale.php">Mostrar</a></li>
-                        <!-- <li><a id="b" href="form_vale.php">Buscar por código</a></li> -->
-                        <li><a id="b" href="form_vale1.php">Seleccionar varios</a></li>
-                        <!-- <li><a id="b" href="form_vale_anterior.php">Vale anterior</a></li> -->
+                        <li><a id="b" href="Vistas/Vale/solicitudes_vale.php">Mostrar</a></li>
+                        <li><a id="b" href="Vistas/Vale/form_vale1.php">Seleccionar varios</a></li>
                     </ul>
                 </li>
                 
@@ -105,7 +105,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                     <ul class="children">
                         <li><a id="b" href="solicitudes_bodega.php">Mostrar</a></li>
                         <!-- <li><a id="b" href="form_bodega.php">Buscar por codigo</a></li> -->
-                        <li><a id="b" href="form_bodega_varios.php">Seleccionar varios</a></li>
+                        <li><a id="b" href="Vistas/Bodega/form_bodega_varios.php">Seleccionar varios</a></li>
 
                     </ul>
                 </li>
@@ -116,9 +116,8 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                         </svg>
                     </a>
                     <ul class="children">
-                        <li><a id="b" href="solicitudes_compra.php">Mostrar</a></li>
-                        <!-- <li><a id="b" href="form_compra.php">Nuevo</a></li> -->
-                        <li><a id="b" href="form_compra1.php">Seleccionar varios</a></li>
+                        <li><a id="b" href="Vistas/Compra/solicitudes_compra.php">Mostrar</a></li>
+                        <li><a id="b" href="Vistas/Compra/form_compra1.php">Seleccionar varios</a></li>
                     </ul>
                 </li>
                 
@@ -129,9 +128,9 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                         </svg>
                     </a>
                     <ul class="children">
-                        <li><a id="b" href="solicitudes_almacen.php">Mostrar</a></li>
+                        <li><a id="b" href="Vistas/Almacen/solicitudes_almacen.php">Mostrar</a></li>
                         <!-- <li><a id="b" href="form_almacen.php">Nuevo</a></li> -->
-                        <li><a id="b" href="form_almacen1.php">Seleccionar varios</a></li>
+                        <li><a id="b" href="Vistas/Almacen/form_almacen1.php">Seleccionar varios</a></li>
                     </ul>
                 </li>
                 <li class="submenu">
@@ -141,9 +140,9 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                         </svg>
                     </a>
                     <ul class="children">
-                        <li><a id="b" href="solicitudes_circulante.php">Mostrar</a></li>
+                        <li><a id="b" href="Vistas/Circulante/solicitudes_circulante.php">Mostrar</a></li>
                         <!-- <li><a id="b" href="form_circulante.php">Nuevo</a></li> -->
-                        <li><a id="b" href="form_circulante1.php">Seleccionar varios</a></li>
+                        <li><a id="b" href="Vistas/Circulante/form_circulante1.php">Seleccionar varios</a></li>
                     </ul>
                 </li>
                  <li class="submenu" >
@@ -153,7 +152,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                         </svg>
                     </a>
                     <ul class="children">
-                        <li><a id="b" href="Empleados.php">Mostrar</a></li>
+                        <li><a id="b" href="Vistas/Empleados/Empleados.php">Mostrar</a></li>
                     </ul>
 
                 </li>

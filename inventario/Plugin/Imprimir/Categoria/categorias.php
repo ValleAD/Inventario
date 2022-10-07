@@ -15,8 +15,8 @@ include ('../../../Model/conexion.php');
    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
    <link rel="stylesheet" type="text/css" href="../../../styles/estilos_tablas.css">
 
-<img src="../../../../img/hospital.png" style="width:20%">
-    <img src="../../../../img/log_1.png" style="width:20%; float:right">
+<img src="../../../img/hospital.png" style="width:20%">
+    <img src="../../../img/log_1.png" style="width:20%; float:right">
     <h3>HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
     
 <h4>DEPARTAMENTO DE MANTENIMIENTO</h4><br><br>
@@ -70,14 +70,14 @@ $categoria2 =$_POST['categoria'];
     }
 </style>
  <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-        <td style="font-size: 12px;"><?php echo $categoria1 ?></td>
-        <td style="font-size: 12px;"><?php echo $cod ?></td>
-        <td style="font-size: 12px;"><?php echo $catal ?></td>
-        <td style="font-size: 12px;"><?php echo $des ?></td>
-        <td style="font-size: 12px;"><?php echo $u_m ?></td>
-        <td style="font-size: 12px;"><?php echo $stock ?></td>
-        <td style="font-size: 12px;"><?php echo $precio1 ?></td>
-        <td style="font-size: 12px;"><?php echo $fech ?></td>
+        <td data-label="Categoría" style="font-size: 12px;"><?php echo $categoria1 ?></td>
+        <td data-label="Código" style="font-size: 12px;"><?php echo $cod ?></td>
+        <td data-label="Catalogo" style="font-size: 12px;"><?php echo $catal ?></td>
+        <td data-label="Descripción" style="font-size: 12px;"><?php echo $des ?></td>
+        <td data-label="Unidad De Medida" style="font-size: 12px;"><?php echo $u_m ?></td>
+        <td data-label="Cantidad" style="font-size: 12px;"><?php echo $stock ?></td>
+        <td data-label="Precio" style="font-size: 12px;"><?php echo $precio1 ?></td>
+        <td data-label="Fecha" style="font-size: 12px;"><?php echo $fech ?></td>
         <?php } ?>
     </tr>
     </tbody>

@@ -29,6 +29,7 @@ include ('../../../Model/conexion.php');
             <th style="width:10%;font-size: 14px;">Nombre Completo</th>
             <th style="width:20%;font-size: 14px;">Establecimiento</th>
             <th style="width:10%;font-size: 14px;">Departamento a que Pertenece</th>
+            <th style="width:10%;font-size: 14px;">Cuenta</th>
                    <tr> <td align="center" id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td></tr>
 
         </tr>
@@ -50,6 +51,13 @@ include ('../../../Model/conexion.php');
                 }else{
                 $unidad=$productos['unidad'];
                 }
+        if ($productos['tipo_usuario']==1) {
+            $u='Administrador';
+    }else if($productos['tipo_usuario']==2){
+        $u='Cliente';
+    } if($productos['Habilitado']=="No"){
+    $u='Cuenta Desabilitada';
+}
     ?>
      <style type="text/css">
      #td{
@@ -58,17 +66,18 @@ include ('../../../Model/conexion.php');
     }
 </style>
  <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-        <td style="font-size: 12px;"><?php echo $username ?></td>
-        <td style="font-size: 12px;"><?php echo $productos['firstname']," ",$productos['lastname']; ?></td>
-        <td style="font-size: 12px;"><?php echo $Establecimiento ?></td>
-        <td style="font-size: 12px;"><?php echo $unidad ?></td>
+       <td data-label="Usuario" style="font-size: 12px;"><?php echo $username ?></td>
+        <td data-label="Nombre Completo" style="font-size: 12px;"><?php echo $productos['firstname']," ",$productos['lastname']; ?></td>
+        <td data-label="Establecimiento" style="font-size: 12px;"><?php echo $Establecimiento ?></td>
+        <td data-label="Departamento a que Pertenece" style="font-size: 12px;"><?php echo $unidad ?></td>
+        <td data-label="Cuenta" style="font-size: 12px;"><?php echo $u ?></td>
         <?php } ?>
     </tr>
     </tbody>
 </table> 
 <?php }
-   if (isset($_POST['usuario'])) {
-              $Empleado=$_POST['users']; ?>
+   if (isset($_POST['user2'])) {
+              $cod=$_POST['user1']; ?>
 
 <table class="table table-responsive table-striped"  style=" width: 100%">
 
@@ -78,6 +87,7 @@ include ('../../../Model/conexion.php');
             <th style="width:10%;font-size: 14px;">Nombre Completo</th>
             <th style="width:20%;font-size: 14px;">Establecimiento</th>
             <th style="width:10%;font-size: 14px;">Departamento a que Pertenece</th>
+            <th style="width:10%;font-size: 14px;">Cuenta</th>
                    <tr> <td align="center" id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td></tr>
 
         </tr>
@@ -85,7 +95,7 @@ include ('../../../Model/conexion.php');
     <tbody>
   <?php
 
-   $sql = "SELECT * FROM `tb_usuarios` WHERE username='$Empleado'";
+   $sql = "SELECT * FROM `tb_usuarios` WHERE username LIKE '%".$cod."%' or lastname LIKE '%".$cod."%' or firstname LIKE '%".$cod."%'";
 
         $result = mysqli_query($conn, $sql);
         
@@ -99,6 +109,13 @@ include ('../../../Model/conexion.php');
                 }else{
                 $unidad=$productos['unidad'];
                 }
+        if ($productos['tipo_usuario']==1) {
+            $u='Administrador';
+    }else if($productos['tipo_usuario']==2){
+        $u='Cliente';
+    } if($productos['Habilitado']=="No"){
+    $u='Cuenta Desabilitada';
+}
     ?>
      <style type="text/css">
      #td{
@@ -107,10 +124,11 @@ include ('../../../Model/conexion.php');
     }
 </style>
  <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-        <td style="font-size: 12px;"><?php echo $username ?></td>
-        <td style="font-size: 12px;"><?php echo $productos['firstname']," ",$productos['lastname']; ?></td>
-        <td style="font-size: 12px;"><?php echo $Establecimiento ?></td>
-        <td style="font-size: 12px;"><?php echo $unidad ?></td>
+        <td data-label="Usuario" style="font-size: 12px;"><?php echo $username ?></td>
+        <td data-label="Nombre Completo" style="font-size: 12px;"><?php echo $productos['firstname']," ",$productos['lastname']; ?></td>
+        <td data-label="Establecimiento" style="font-size: 12px;"><?php echo $Establecimiento ?></td>
+        <td data-label="Departamento a que Pertenece" style="font-size: 12px;"><?php echo $unidad ?></td>
+        <td data-label="Cuenta" style="font-size: 12px;"><?php echo $u ?></td>
         <?php } ?>
     </tr>
     </tbody>

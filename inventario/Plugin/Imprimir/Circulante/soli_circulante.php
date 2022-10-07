@@ -34,7 +34,8 @@
 <br>
 <p>Atentamente solicito a usted la compra <b>Urgente</b> de los materiales y/o servicios que se detallan a continuación, a través del Fondo Circulante de Monto Fijo.</p>
 </section>
- <?php if (isset($_POST['Consultar'])) {
+ <?php include '../../../Model/conexion.php';
+  if (isset($_POST['Consultar'])) {
     $columna=$_POST['columna'];
     $tipo=$_POST['tipo'];
         $tipo=$_POST['tipo'];
@@ -57,7 +58,7 @@
     </thead> 
 
     <tbody>
-<?php  include '../../../../../../Model/conexion.php';
+<?php  
     $sql = "SELECT * FROM tb_circulante  Order by $columna $tipo";
     $result = mysqli_query($conn, $sql);
 
@@ -73,8 +74,7 @@
   
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
             <td data-label="No. solicitud" class="delete"><?php  echo $solicitudes['codCirculante']; ?></td>
-           <td style="font-size: 12px;text-align: center;"><?php  echo $solicitudes['codCirculante']?></td>
-            <td style="text-align:center; font-size: 12px;"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_solicitud'])) ?></td>
+            <td data-label="Fecha de solicitud" style="font-size: 12px;"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_solicitud'])) ?></td>
        <?php }  ?> 
     </tbody>  
 </table>
@@ -102,7 +102,7 @@
     </thead> 
 
     <tbody>
-<?php  include '../../../Model/conexion.php';
+<?php
 $idusuario=$_POST['idusuario'];
     $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario'  Order by $columna $tipo";
     $result = mysqli_query($conn, $sql);
@@ -118,8 +118,8 @@ $idusuario=$_POST['idusuario'];
   </style> 
   
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td style="text-align: center;" data-label="No. solicitud" class="delete"><?php  echo $solicitudes['codCirculante']; ?></td>
-            <td style="text-align: center;" data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_solicitud'])) ?></td>
+             <td data-label="No. solicitud" class="delete"><?php  echo $solicitudes['codCirculante']; ?></td>
+            <td data-label="Fecha de solicitud" style="font-size: 12px;"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_solicitud'])) ?></td>
             
        <?php }  ?> 
     </tbody>  
@@ -135,8 +135,7 @@ $idusuario=$_POST['idusuario'];
     </thead> 
 
     <tbody>
-<?php  include '../../../Model/conexion.php';
-   $sql = "SELECT * FROM tb_circulante Order by codCirculante DESC";
+<?php     $sql = "SELECT * FROM tb_circulante Order by codCirculante DESC";
     $result = mysqli_query($conn, $sql);
     $n=0;
     while ($solicitudes = mysqli_fetch_array($result)){
@@ -171,7 +170,7 @@ $idusuario=$_POST['idusuario'];
     </thead> 
 
     <tbody>
-<?php  include '../../../Model/conexion.php';
+<?php  
 $idusuario=$_POST['idusuario'];
    $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario' Order by codCirculante DESC";
     $result = mysqli_query($conn, $sql);
@@ -188,8 +187,8 @@ $idusuario=$_POST['idusuario'];
   </style> 
   
          <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td style="font-size: 12px;text-align: center;"><?php  echo $solicitudes['codCirculante']?></td>
-            <td style="text-align:center; font-size: 12px;"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_solicitud'])) ?></td>
+             <td data-label="No. solicitud" class="delete"><?php  echo $solicitudes['codCirculante']; ?></td>
+            <td data-label="Fecha de solicitud" style="font-size: 12px;"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_solicitud'])) ?></td>
             </tr>
      
      <?php }  ?> 

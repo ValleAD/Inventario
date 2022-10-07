@@ -10,8 +10,8 @@ include ('../../../Model/conexion.php');
 </head>
 <body style="font-family: sans-serif;">
 
-<img src="../../../../img/hospital.png" style="width:20%">
-    <img src="../img/../../../log_1.png" style="width:20%; float:right">
+<img src="../../../img/hospital.png" style="width:20%">
+    <img src="../../../img/log_1.png" style="width:20%; float:right">
 <h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD</h3>
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
 <h4 align="center" style="margin-top: 2%;">DEPARTAMENTO DE MANTENIMIENTO</h4>
@@ -289,7 +289,7 @@ include ('../../../Model/conexion.php');
 </html>
             <?php $html=ob_get_clean();
                  // echo $html 
-require_once 'dompdf/autoload.inc.php';
+require_once '../../dompdf/autoload.inc.php';
 // reference the Dompdf namespace
 use Dompdf\Dompdf;
 use Dompdf\Options;
