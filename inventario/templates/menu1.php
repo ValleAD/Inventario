@@ -2,7 +2,7 @@
 <?php
 include("../../Model/conexion.php");
 if(!isset($_SESSION['signin'])){
-    header("location: log/signin.php");
+    header("location: ../../log/signin.php");
 }
 $tipo_usuario = $_SESSION['tipo_usuario'];
 $idusuario = $_SESSION['iduser'];
