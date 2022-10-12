@@ -67,7 +67,7 @@ $spreadsheet->getActiveSheet()
     ->setCellValue('A1',"MINISTERIO DE SALUD")
     ->setCellValue('A2',"HOSPITAL NACIONAL SANTA TERESA")
     ->setCellValue('A3',"DEPARTAMENTO DE MANTENIMIENTO")
-    ->setCellValue('A4',"SOLICITUD DE MATERIALES");
+    ->setCellValue('A4',"FILTRO DE PRODUCTOS");
 //Tamaño de la letra
 $spreadsheet->getActiveSheet()->getStyle('A1')->getFont()->setSize(16);
 $spreadsheet->getActiveSheet()->getStyle('A2')->getFont()->setSize(16);
