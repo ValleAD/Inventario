@@ -106,7 +106,7 @@ if ($codigo=="") {
     </div>
     <br>
      
-     <?php include('../../Buscador_ajax/tablaProductos.php') ?>
+     <?php include('../../Buscador_ajax/Tablas/Productos/tablaProductos.php') ?>
          <div class="form-floating mb-3 my-2" >
             <label>Observaciones (En qué se ocupará el bien entregado)</label>
               <textarea rows="7" class="form-control" name="jus"  placeholder="" required id="floatingTextarea"></textarea>

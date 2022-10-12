@@ -4,7 +4,7 @@ session_start();
     # code...
     echo '
     <script>
-         window.location ="log/signin.php";
+         window.location ="../../log/signin.php";
         session_destroy();  
                 </script>
 die();
@@ -328,7 +328,7 @@ while ($productos = mysqli_fetch_array($result)){
         </tbody>
     </table>
 </div>
-      <table class="table">
+      <table class="table table-striped">
             <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
         <td colspan="7"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
         <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final1 ?></td>
@@ -454,7 +454,7 @@ while ($productos = mysqli_fetch_array($result)){
               </thead>
           </table>
           <div id="div" style = " max-height: 442px; overflow-y:scroll;"> 
-            <table class="table">
+            <table class="table table-striped">
                 <tbody>
                 <td id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>
                 <?php 

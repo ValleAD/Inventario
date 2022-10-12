@@ -4,7 +4,7 @@ if (!isset($_SESSION['signin']) && !isset($_SESSION['habilitado'] ) ) {
     # code...
     echo '
     <script>
-        window.location ="log/signin.php";
+       window.location ="../../log/signin.php";
         session_destroy();  
                 </script>
 die();

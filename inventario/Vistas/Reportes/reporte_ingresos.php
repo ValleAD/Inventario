@@ -4,7 +4,7 @@ session_start();
     # code...
     echo '
     <script>
-        window.location ="log/signin.php";
+        window.location ="../../log/signin.php";
         session_destroy();  
                 </script>
 die();
@@ -97,13 +97,13 @@ if(isset($_POST['ingresos'])){
     <h3 style="text-align: center; color: black;">Ingresos de Solicitud Circulante</h3>
 
     <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form id="div" method="POST" action="../../Plugin/PDF/Almacen/reporte_ingreso.php">
+            <form id="div" method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                  </button>
             </form>
-            <form id="div" method="POST" action="../../Plugin/PDF/Almacen/pdf_ingresos.php">
+            <form id="div" method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
@@ -200,13 +200,13 @@ if(isset($_POST['ingresos'])){
 <h3 style="text-align: center; color: black;">Ingresos de Almacén</h3>
 
         <div  style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form id="div" method="POST" action="../../Plugin/PDF/Almacen/reporte_ingreso.php">
+            <form id="div" method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php">
                 <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </button>
             </form>
-            <form id="div" method="POST" action="../../Plugin/PDF/Almacen/pdf_ingresos.php">
+            <form id="div" method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php">
                 <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
@@ -314,13 +314,13 @@ width: 100%;
 <h3 style="text-align: center; color: black;">Ingresos de Compra</h3>
 
         <div  style="position: initial;"class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form id="div" method="POST" action="../../Plugin/PDF/Almacen/reporte_ingreso.php">
+            <form id="div" method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php">
                 <button  style="position: initial;"type="submit" class="btn btn-outline-primary" name="compra">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </button>
             </form>
-            <form id="div" method="POST" action="../../Plugin/PDF/Almacen/pdf_ingresos.php">
+            <form id="div" method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="compra">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
@@ -416,62 +416,27 @@ if(isset($_POST['ingresos'])){
 
 <br>
     <h3 style="text-align: center; color: black;">Ingresos de Solicitud Circulante</h3>
-
-    <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form id="div" method="POST" action="../../Plugin/PDF/Almacen/reporte_ingreso.php">
-                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante1">
-                <?php $sql = "SELECT * FROM tb_circulante ";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $idusuario = $productos['codCirculante'];
-        
-    } ?>    
-<?php $sql = "SELECT * FROM detalle_circulante WHERE tb_circulante='$idusuario' ";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $idusuario = $productos['codigodetallecirculante'];
-    } ?>
+            <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+            <form id="n" method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php">
+                    <?php $idusuario = $_SESSION['iduser'];?>
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                    <svg class="bi" width="20" height="20" fill="currentColor">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante1">
+                <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
-                 </button>
+                </svg>
+                </button>
             </form>
-            <form id="div" method="POST" action="../../Plugin/PDF/Almacen/pdf_ingresos.php">
-                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante1">
-<?php $sql = "SELECT * FROM tb_circulante ";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $idusuario = $productos['codCirculante'];
-        
-    } ?>    
-<?php $sql = "SELECT * FROM detalle_circulante WHERE tb_circulante='$idusuario' ";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $idusuario = $productos['codigodetallecirculante'];
-    } ?>
+            <form id="n" method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php">
+                    <?php $idusuario = $_SESSION['iduser'];?>
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante1">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
-            </button>
+                </svg>
+                </button>
             </form>
-    <form  style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Ingresos/Circulante/Excel.php" target="_blank">
-    <?php $sql = "SELECT * FROM tb_circulante ";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $idusuario = $productos['codCirculante'];
-        
-    } ?>    
-<?php $sql = "SELECT * FROM detalle_circulante WHERE tb_circulante='$idusuario' ";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $idusuario = $productos['codigodetallecirculante'];
-    } ?>
+                    <form id="form2" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Ingresos/Circulante/Excel.php" target="_blank">
+                    <?php $idusuario = $_SESSION['iduser'];?>
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
                 <button type="submit" class="btn btn-outline-primary" name="circulante1" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -562,45 +527,32 @@ $idusuario = $_SESSION['iduser'];
 </style><br>
 <h3 style="text-align: center; color: black;">Ingresos de Almacén</h3>
 
-        <div  style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form id="div" method="POST" action="../../Plugin/PDF/Almacen/reporte_ingreso.php">
-<?php $sql = "SELECT * FROM tb_almacen ";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $idusuario = $productos['codAlmacen'];
-        
-    } ?>    
-<?php $sql = "SELECT * FROM detalle_almacen WHERE tb_almacen='$idusuario' ";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $idusuario = $productos['codigoalmacen'];
-    } ?>
+                    <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+            <form id="n" method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php">
+                    <?php $idusuario = $_SESSION['iduser'];?>
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen1">
-                    <svg class="bi" width="20" height="20" fill="currentColor">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen1">
+                <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
                 </button>
             </form>
-            <form id="div" method="POST" action="../../Plugin/Imprimir/Ingresos/pdf_ingresos.php">
-<?php $sql = "SELECT * FROM tb_almacen ";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $idusuario = $productos['codAlmacen'];
-        
-    } ?>    
-<?php $sql = "SELECT * FROM detalle_almacen WHERE tb_almacen='$idusuario' ";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $idusuario = $productos['codigoalmacen'];
-    } ?>
+            <form id="n" method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php">
+                    <?php $idusuario = $_SESSION['iduser'];?>
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen1">
-                    <svg class="bi" width="20" height="20" fill="currentColor">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen1">
+                <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+                </button>
+            </form>
+                    <form id="form2" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Ingresos/Almacen/Excel.php" target="_blank">
+                    <?php $idusuario = $_SESSION['iduser'];?>
+                    <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
+                <button type="submit" class="btn btn-outline-primary" name="almacen1" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
+                </svg>
                 </button>
             </form>
 
@@ -690,48 +642,34 @@ width: 100%;
 </style><br>
 <h3 style="text-align: center; color: black;">Ingresos de Compra</h3>
 
-        <div  style="position: initial;"class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form id="div" method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php">
-                <?php $sql = "SELECT * FROM tb_compra ";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $idusuario = $productos['nSolicitud'];
-        
-    } ?>    
-<?php $sql = "SELECT * FROM detalle_compra WHERE solicitud_compra='$idusuario' ";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $idusuario = $productos['codigodetallecompra'];
-    } ?>
+            <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+            <form id="n" method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php">
+                    <?php $idusuario = $_SESSION['iduser'];?>
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                <button  style="position: initial;"type="submit" class="btn btn-outline-primary" name="compra1">
-                    <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
-                </button>
-            </form>
-            <form id="div" method="POST" action="../../Plugin/PDF/Almacen/pdf_ingresos.php">
-                <?php $sql = "SELECT * FROM tb_compra ";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $idusuario = $productos['nSolicitud'];
-        
-    } ?>    
-<?php $sql = "SELECT * FROM detalle_compra WHERE solicitud_compra='$idusuario' ";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $idusuario = $productos['codigodetallecompra'];
-    } ?>
-                    <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">                
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="compra1">
-                    <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
                 </button>
             </form>
-
+            <form id="n" method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php">
+                    <?php $idusuario = $_SESSION['iduser'];?>
+                    <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="compra1">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+                </button>
+            </form>
+                    <form id="form2" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Ingresos/Compra/Excel.php" target="_blank">
+                    <?php $idusuario = $_SESSION['iduser'];?>
+                    <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
+                <button type="submit" class="btn btn-outline-primary" name="compra1" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
+                </svg>
+                </button>
+            </form>
 </div>
 <h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
 <div id="div" style = " max-height: 442px;  overflow-y:scroll;">

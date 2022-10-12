@@ -4,7 +4,7 @@ session_start();
     # code...
     echo '
     <script>
-        window.location ="log/signin.php";
+       window.location ="../../log/signin.php";
         session_destroy();  
                 </script>
 die();
@@ -99,7 +99,7 @@ $final2 = 0;
  echo'   
 
     <section >
-<form  method="POST" action="Controller/añadir_almacen_copy.php" >
+<form  method="POST" action="../../Controller/Almacen/añadir_almacen_copy.php" >
          
       
         <div class="row">  
@@ -309,10 +309,7 @@ $n_sol=$datos_sol['codAlmacen'];
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $datos_sol['encargado']?>" name="encargado">
                 <input type="hidden" readonly class="form-control" value="<?php echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud']))?>" name="fech">
           <?php 
-if ($datos_sol['estado']=="Rechazado") {
-                        echo ' <form style="margin: 0%;position: 0; background: transparent;" method="POST" action="Controller/añadir_vale.php">
-<p class="text-center bg-danger" style="color:white;border-radius: 5px;font-size: 2.5em;padding: 3%;margin-top:5%">SOLICITUD RECHAZADA</p>';
-                    }
+
                if ($datos_sol['estado']=="Aprobado") {?><br><br>
                <table class="table">
                     <div style="position: initial;" class="btn-group mb-3 mx-2 my-4" style="margin-top:4%" role="group" aria-label="Basic outlined example">
@@ -375,6 +372,55 @@ while ($productos = mysqli_fetch_array($result)){
 
             </form>
 
+                        <form style="" method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php" target="_blank">
+                <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['departamento']?>" name="depto">
+                <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['codAlmacen']?>" name="num_sol">
+                <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['encargado']?>" name="encargado">
+                <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['estado']?>" name="estado">
+                <input type="hidden" readonly class="form-control" value="<?php echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud']))?>" name="fech">
+           
+                <?php
+
+                
+                 $sql = "SELECT * FROM detalle_almacen WHERE tb_almacen = $n_sol";
+    $result = mysqli_query($conn, $sql);
+while ($productos = mysqli_fetch_array($result)){
+      
+      $codigo=$productos['codigo'];
+      $descripcion=$productos['nombre'];
+      $um=$productos['unidad_medida'];
+      $precio=$productos['precio'];
+
+       $precio1=number_format($precio, 2,".",",");
+      $total1= number_format($total, 2, ".",",");
+      $final1=number_format($final, 2, ".",",");
+
+      $cant_aprobada=$productos['cantidad_solicitada'];
+        $cantidad_despachada=$productos['cantidad_despachada'];
+        $stock=number_format($cant_aprobada, 2,".",",");
+        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+       ?>
+       <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
+            <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
+            <input type="hidden" name="um[]" value="<?php echo $um ?>">
+            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
+            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
+            <input type="hidden" name="cost[]" value="<?php echo $precio1 ?>">
+            <input type="hidden" name="tot[]" value="<?php echo $total1 ?>">
+            <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
+        <?php } ?>
+                   <?php  $sql = "SELECT * FROM tb_compra ORDER BY justificacion DESC LIMIT 1";
+    $result = mysqli_query($conn, $sql);
+ while ($datos = mysqli_fetch_array($result)){ ?>
+    <textarea style="display: none;" name="jus" ><?php echo $datos['justificacion'] ?></textarea> <?php } ?>
+<button  style="position: initial;"type="submit" class="btn btn-outline-primary" name="detalle_almacen">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
+                </svg>
+                </button>
+
+            </form>
+
 </div> 
 
                     <thead>
@@ -399,9 +445,8 @@ while ($productos = mysqli_fetch_array($result)){
  $sql = "SELECT * FROM detalle_almacen WHERE tb_almacen = $n_sol";
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
-      
-        $total    =    $productos['cantidad_despachada'] * $productos['precio'];
-        $final    +=   $total;
+            $total = $productos['cantidad_despachada'] * $productos['precio'];
+      $final += $total;
         $precio   =    $productos['precio'];
         $precio2  =    number_format($precio, 2,".",",");
         $total2   =    number_format($total, 2, ".",",");
@@ -508,6 +553,54 @@ while ($productos = mysqli_fetch_array($result)){
 
             </form>
 
+                        <form style="" method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php" target="_blank">
+                <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['departamento']?>" name="depto">
+                <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['codAlmacen']?>" name="num_sol">
+                <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['encargado']?>" name="encargado">
+                <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['estado']?>" name="estado">
+                <input type="hidden" readonly class="form-control" value="<?php echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud']))?>" name="fech">
+           
+                <?php
+
+                
+                 $sql = "SELECT * FROM detalle_almacen WHERE tb_almacen = $n_sol";
+    $result = mysqli_query($conn, $sql);
+while ($productos = mysqli_fetch_array($result)){
+      
+      $codigo=$productos['codigo'];
+      $descripcion=$productos['nombre'];
+      $um=$productos['unidad_medida'];
+      $precio=$productos['precio'];
+
+       $precio1=number_format($precio, 2,".",",");
+      $total1= number_format($total, 2, ".",",");
+      $final1=number_format($final, 2, ".",",");
+
+      $cant_aprobada=$productos['cantidad_solicitada'];
+        $cantidad_despachada=$productos['cantidad_despachada'];
+        $stock=number_format($cant_aprobada, 2,".",",");
+        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+       ?>
+       <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
+            <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
+            <input type="hidden" name="um[]" value="<?php echo $um ?>">
+            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
+            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
+            <input type="hidden" name="cost[]" value="<?php echo $precio1 ?>">
+            <input type="hidden" name="tot[]" value="<?php echo $total1 ?>">
+            <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
+        <?php } ?>
+                   <?php  $sql = "SELECT * FROM tb_compra ORDER BY justificacion DESC LIMIT 1";
+    $result = mysqli_query($conn, $sql);
+ while ($datos = mysqli_fetch_array($result)){ ?>
+    <textarea style="display: none;" name="jus" ><?php echo $datos['justificacion'] ?></textarea> <?php } ?>
+<button  style="position: initial;"type="submit" class="btn btn-outline-primary" name="detalle_almacen">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
+                </svg>
+                </button>
+
+            </form>
 </div>
 
 
@@ -534,8 +627,8 @@ while ($productos = mysqli_fetch_array($result)){
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
       
-        $total    =    $productos['cantidad_solicitada'] * $productos['precio'];
-        $final    +=   $total;
+      $total = $productos['cantidad_solicitada'] * $productos['precio'];
+      $final += $total;
         $precio   =    $productos['precio'];
         $precio2  =    number_format($precio, 2,".",",");
         $total2   =    number_format($total, 2, ".",",");

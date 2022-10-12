@@ -55,9 +55,17 @@ if (isset($_POST['categorias'])){$categoria=$_POST['cat'];  ?>  <br>
          </form>
          <form method="POST" action="../../Plugin/PDF/Categoria/pdf_categoria.php" target="_blank">
             <input type="hidden" name="categoria" value="<?php echo $categoria ?>">
-             <button style="position: initial;"  type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
+             <button style="position: initial;"  type="submit" class="btn btn-outline-primary mx-1" name="pdf" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+             </button>
+         </form>
+         <form method="POST" action="../../Plugin/Excel/Productos/Categorias.php" target="_blank">
+            <input type="hidden" name="categoria" value="<?php echo $categoria ?>">
+             <button style="position: initial;"  type="submit" class="btn btn-outline-primary " name="pdf" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                 </svg>
              </button>
          </form>

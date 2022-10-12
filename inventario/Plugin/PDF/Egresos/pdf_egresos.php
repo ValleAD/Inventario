@@ -8,8 +8,8 @@
         <title>Reporte de Egreso en PDF</title>
     </head>
     <body style="font-family: sans-serif;">
-        <img src="../../../../img/hospital.png" style="width:20%">
-        <img src="../../../../img/log_1.png" style="width:20%; float:right">
+        <img src="../../../img/hospital.png" style="width:20%">
+        <img src="../../../img/log_1.png" style="width:20%; float:right">
            <?php if (isset($_POST['vale'])) {?>
         <h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD</h3>
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
@@ -156,7 +156,7 @@ width: 100%;
 <?php
 
 
-    $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE D.codigodetallevale='$idusuario'";
+ $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE V.idusuario='$idusuario'";
 $result = mysqli_query($conn, $sql);
 $n=0;
 while ($productos = mysqli_fetch_array($result)){
@@ -210,7 +210,7 @@ while ($productos = mysqli_fetch_array($result)){
 <?php
 
 
-$sql = "SELECT * FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega WHERE b.codigodetallebodega='$idusuario'";
+        $sql = "SELECT * FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega WHERE db.idusuario='$idusuario'";
 $result = mysqli_query($conn, $sql);
 $n=0;
 while ($productos = mysqli_fetch_array($result)){

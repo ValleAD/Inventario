@@ -4,8 +4,7 @@ session_start();
     # code...
     echo '
     <script>
-        
-         window.location ="log/signin.php";
+        window.location ="../../log/signin.php";
         session_destroy();  
                 </script>
 die();

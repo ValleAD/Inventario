@@ -127,7 +127,7 @@ form{
      </table>
 
   <div id="div" style = "max-height: 442px; overflow-y:scroll;margin: 0%;">
-    <table class="table">
+    <table class="table table-striped">
 <tbody>   
     <?php
     $sql = "SELECT * FROM tb_bodega order by codBodega desc";

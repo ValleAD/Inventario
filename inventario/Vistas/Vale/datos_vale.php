@@ -4,7 +4,7 @@ session_start();
     # code...
     echo '
     <script>
-         window.location ="log/signin.php";
+         window.location ="../../log/signin.php";
         session_destroy();  
                 </script>
 die();
@@ -179,13 +179,15 @@ while ($productos = mysqli_fetch_array($result)){
 
             </form>
  <form id="ssas" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php" target="_blank">
+                <input type="hidden" readonly class="form-control"  value="<?php echo $productos1['departamento']?>" name="depto">
+                <input type="hidden" readonly class="form-control"  value="<?php echo $productos1['codVale']?>" name="vale">
+                <input type="hidden" readonly class="form-control"  value="<?php echo $productos1['usuario']?>" name="usuario">
+                <input type="hidden" readonly class="form-control"  value="<?php echo $productos1['estado']?>" name="estado">
+                <input type="hidden" readonly class="form-control"  value="<?php echo $productos1['fecha_registro']?>" name="fech">
         <?php $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale";
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
 
-  
-      $total = $productos['cantidad_despachada'] * $productos['precio'];
-      $final += $total;
       $codigo=$productos['codigo'];
       $descripcion=$productos['descripcion'];
       $um=$productos['unidad_medida'];
@@ -210,6 +212,19 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="tot[]" value="<?php echo $total1 ?>">
             <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
         <?php } ?>
+<?php  
+        $sql = "SELECT * FROM tb_vale WHERE codVale='$num_vale'  ORDER BY observaciones ASC LIMIT 1";
+    $result = mysqli_query($conn, $sql);
+ while ($datos = mysqli_fetch_array($result)){
+ if ($datos['observaciones']=="") {
+    $jus = "Sin observacion por el momento";
+        
+    }else{
+    $jus = $datos['observaciones'];
+      }
+  ?>
+  <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
+<?php } ?>
                 <button type="submit" class="btn btn-outline-primary" name="DT" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
@@ -243,8 +258,7 @@ $num_vale = $productos1['codVale'];
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
     
-    $total = $productos['stock'] * $productos['precio'];
-      $total1= number_format($total, 2, ".",",");
+
         $precio   =    $productos['precio'];
         $precio2  =    number_format($precio, 2,".",",");  
         $cant_aprobada=$productos['stock'];

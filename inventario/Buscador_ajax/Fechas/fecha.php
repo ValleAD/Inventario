@@ -136,6 +136,15 @@ echo '<option value="'.$i.'">'.$Meses[($i)-1].'</option>';
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
+         </form>         
+
+         <form class="well" method="POST" action="../../Plugin/Excel/Productos/Fechas.php" target="_blank">
+            <input type="hidden" name="dia" value="<?php echo $dia ?>">
+             <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Dia" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
+                </svg>
+             </button>
          </form>
  </div>
 </div>
@@ -248,9 +257,18 @@ echo '<option value="'.$i.'">'.$Meses[($i)-1].'</option>';
          </form>
          <form class="well" method="POST" action="../../Plugin/PDF/Fecha/pdf_fecha.php" target="_blank">
             <input type="hidden" name="mes" value="<?php echo $mes ?>">
-             <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Mes" target="_blank">
+             <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="mes" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+             </button>
+         </form>
+                  <form class="well" method="POST" action="../../Plugin/Excel/Productos/Fechas.php" target="_blank">
+            <input type="hidden" name="mes" value="<?php echo $mes ?>">
+            <input type="hidden" name="mes1" value="<?php echo $mes1 ?>">
+             <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Mes" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                 </svg>
              </button>
          </form>
@@ -351,9 +369,17 @@ echo '<option value="'.$i.'">'.$Meses[($i)-1].'</option>';
          </form>
          <form class="well" method="POST" action="../../Plugin/PDF/Fecha/pdf_fecha.php" target="_blank">
             <input type="hidden" name="año" value="<?php echo $año ?>">
-             <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Año" target="_blank">
+             <button   style="position: initial;" type="submit" class="btn btn-outline-primary mx-1" name="Año" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+             </button>
+         </form>
+                  <form class="well" method="POST" action="../../Plugin/Excel/Productos/Fechas.php" target="_blank">
+            <input type="hidden" name="año" value="<?php echo $año ?>">
+             <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Año" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                 </svg>
              </button>
          </form>
@@ -467,9 +493,18 @@ if (isset($_POST['Fecha'])){
          <form class="well" method="POST" action="../../Plugin/PDF/Fecha/pdf_fecha.php" target="_blank">
             <input type="hidden" name="f1" value="<?php echo $f1 ?>">
              <input type="hidden" name="f2" value="<?php echo $f2 ?>">
-             <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha" target="_blank">
+             <button   style="position: initial;" type="submit" class="btn btn-outline-primary mx-1" name="Fecha" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+             </button>
+         </form>
+                  <form class="well" method="POST" action="../../Plugin/Excel/Productos/Fechas.php" target="_blank">
+            <input type="hidden" name="f1" value="<?php echo $f1 ?>">
+             <input type="hidden" name="f2" value="<?php echo $f2 ?>">
+             <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                 </svg>
              </button>
          </form>

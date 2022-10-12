@@ -4,7 +4,7 @@ session_start();
     # code...
     echo '
     <script>
-        window.location ="log/signin.php";
+        window.location ="../../log/signin.php";
         session_destroy();  
                 </script>
 die();
@@ -208,7 +208,7 @@ die();
             }
         </style>
 
-       <?php include ('../../Buscador_ajax/CabezerascabezeraVale.php') ?>
+       <?php include ('../../Buscador_ajax/Cabezeras/cabezeraVale.php') ?>
              <div  id="x" class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
          <form id="ssas"  method="POST" class="mx-1" action="../../Plugin/Imprimir/Vale/soli_vale.php" target="_blank">
              <?php $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario'";
@@ -235,6 +235,20 @@ die();
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+             </button>
+         </form>
+                  <form id="ssas"    method="POST" action="../../Plugin/Excel/Vale/Excel.php" target="_blank">
+             <?php $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario'";
+    $result = mysqli_query($conn, $sql);
+    $n=0;
+    while ($datos_sol = mysqli_fetch_array($result)){?>
+ <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
+       
+    <?php } ?>
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                 </svg>
              </button>
          </form>
@@ -313,7 +327,6 @@ die();
                 <td  colspan="7" id="td"><h4 align="center">No se encontraron ningun  resultados 😥</h4></td>
             </tr>
     <?php
-    include 'Model/conexion.php';
     
     $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario' ORDER BY codVale desc ";
     $result = mysqli_query($conn, $sql);

@@ -71,9 +71,9 @@ include ('menu.php');
         <br><br><br>       
           <font color="white"> <h1 style=" text-align: center;">Solicitud de Vale</h1> </font>
 <section>
-<?php include ('../../Buscador_ajax/cabezera_invitado.php') ?>
+<?php include ('../../Buscador_ajax/Cabezeras/cabezera_invitado.php') ?>
      <form style="background: transparent;" method='POST' action="form_vale2.php">
-         <?php include ('../../Buscador_ajax/Consulta1.php') ?>
+         <?php include ('../../Buscador_ajax/Consultas/Consulta1.php') ?>
 
 </form>
 </section>

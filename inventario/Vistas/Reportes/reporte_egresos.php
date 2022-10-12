@@ -4,7 +4,7 @@ session_start();
     # code...
     echo '
     <script>
-        window.location ="log/signin.php";
+       window.location ="../../log/signin.php";
         session_destroy();  
                 </script>
 die();
@@ -357,20 +357,8 @@ if(isset($_POST['ingresos'])){
     <h3>Egresos de Bodega</h3>
     <br><h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
- <form id="n" method="POST" action="../../Plugin/PDF/Almacen/reporte_egreso.php">
-                    <?php $sql = "SELECT * FROM tb_bodega ";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $idusuario = $productos['codBodega'];
-        
-    } ?>    
-<?php $sql = "SELECT * FROM detalle_bodega WHERE odt_bodega='$idusuario' ";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $idusuario = $productos['codigodetallebodega'];
-    } ?>
+            <form id="n" method="POST" action="../../Plugin/Imprimir/Egresos/reporte_egreso.php">
+                    <?php $idusuario = $_SESSION['iduser'];?>
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="bodega1">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -379,19 +367,7 @@ if(isset($_POST['ingresos'])){
                 </button>
             </form>
             <form id="n" method="POST" action="../../Plugin/PDF/Egresos/pdf_egresos.php">
-    <?php $sql = "SELECT * FROM tb_bodega ";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $idusuario = $productos['codBodega'];
-        
-    } ?>    
-<?php $sql = "SELECT * FROM detalle_bodega WHERE odt_bodega='$idusuario' ";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $idusuario = $productos['codigodetallebodega'];
-    } ?>
+                    <?php $idusuario = $_SESSION['iduser'];?>
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="bodega1">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -400,19 +376,7 @@ if(isset($_POST['ingresos'])){
                 </button>
             </form>
                     <form id="form2" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Egresos/Bodega/Excel.php" target="_blank">
-    <?php $sql = "SELECT * FROM tb_bodega ";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $idusuario = $productos['codBodega'];
-        
-    } ?>    
-<?php $sql = "SELECT * FROM detalle_bodega WHERE odt_bodega='$idusuario' ";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $idusuario = $productos['codigodetallebodega'];
-    } ?>
+                    <?php $idusuario = $_SESSION['iduser'];?>
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
                 <button type="submit" class="btn btn-outline-primary" name="bodega1" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -513,21 +477,9 @@ $n=0;
 <h3>Egresos Por Vale</h3>
 <h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
 
-            <div class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+            <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form  id="n" method="POST" action="../../Plugin/Imprimir/Egresos/reporte_egreso.php">
-                    <?php $sql = "SELECT * FROM tb_vale ";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $idusuario = $productos['codVale'];
-        
-    } ?>    
-<?php $sql = "SELECT * FROM detalle_vale WHERE numero_vale='$idusuario' ";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $idusuario = $productos['codigodetallevale'];
-    } ?>
+                    <?php $idusuario = $_SESSION['iduser'];?>
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
                 <button type="submit" class="btn btn-outline-primary" name="vale1">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -535,20 +487,8 @@ $n=0;
                 </svg>
                 </button>
             </form>
-            <form id="n"  method="POST" action="../../Plugin/PDF/Almacen/pdf_egresos.php">
-                                    <?php $sql = "SELECT * FROM tb_vale ";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $idusuario = $productos['codVale'];
-        
-    } ?>    
-<?php $sql = "SELECT * FROM detalle_vale WHERE numero_vale='$idusuario' ";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $idusuario = $productos['codigodetallevale'];
-    } ?>
+            <form id="n"  method="POST" action="../../Plugin/PDF/Egresos/pdf_egresos.php">
+                    <?php $idusuario = $_SESSION['iduser'];?>
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
                 <button type="submit" class="btn btn-outline-primary" name="vale1">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -557,19 +497,8 @@ $n=0;
                 </button>
             </form>
                     <form id="form2" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Egresos/Vale/Excel.php" target="_blank">
-    <?php $sql = "SELECT * FROM tb_vale ";
-    $result = mysqli_query($conn, $sql);
+                    <?php $idusuario = $_SESSION['iduser'];?>   
 
-    while ($productos = mysqli_fetch_array($result)){
-        $idusuario = $productos['codVale'];
-        
-    } ?>    
-<?php $sql = "SELECT * FROM detalle_vale WHERE numero_vale='$idusuario' ";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $idusuario = $productos['codigodetallevale'];
-    } ?>
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
                 <button type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">

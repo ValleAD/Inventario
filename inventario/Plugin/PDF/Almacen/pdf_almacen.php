@@ -35,7 +35,7 @@
 <br>
 <table  style="width: 100%;text-align: center;">
     <tr>
-        <td><b>N° Bodega</b></td>
+        <td><b>N° Almacen</b></td>
         <td><b>Departamento</b></td>
         <td><b>Encargado</b></td>
         <td><b>Fecha</b></td>

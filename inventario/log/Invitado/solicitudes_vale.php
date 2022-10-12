@@ -21,7 +21,7 @@ include ('menu.php');
   color: white;
   text-shadow: 1px 1px 5px black;
 }
-#sass{
+#ssas{
     display: none;
 }
 
@@ -31,72 +31,67 @@ include ('menu.php');
      <div  class="mx-3 p-2 mb-1" style="background-color: white; border-radius:5px; ">
         <h1 id="td" class=' text-center bg-danger my-4' style=' font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda. <a href='' style='font-size: 30px' class='close'>&times;</a></h1> 
 
-<style>
-            #ssas{
-                display: none;
-            }
-        </style>
 
-       <?php include ('../../Buscador_ajax/cabezeraVale_invitado.php') ?>
+       <?php include ('../../Buscador_ajax/Cabezeras/cabezeraVale_invitado.php') ?>
              <div  id="x" class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
-         <form id="ssas"  method="POST" class="mx-1" action="../../Plugin/soli_vale.php" target="_blank">
-            
-
- <input type="hidden" name="idusuario" value="0">
-       
-
-             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1">
+         <form id="ssas" method="POST" class="mx-1" action="../../Plugin/Imprimir/Vale/soli_vale.php" target="_blank">
+            <input type="hidden" name="idusuario" value="0">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1">    
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
-         <form id="ssas"  class="mx-1"  method="POST" action="../../Plugin/pdf_soli_vale.php" target="_blank">
-            
-
- <input type="hidden" name="idusuario" value="0">
-       
-
+         <form id="ssas" method="POST" action="../../Plugin/PDF/Vale/pdf_soli_vale.php" target="_blank" class="mx-1">
+            <input type="hidden" name="idusuario" value="0">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>
+        <form id="ssas" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Vale/Excel.php" target="_blank">
+            <input type="hidden" name="idusuario" value="0">
+                <button type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
+                </svg>
+                </button>
+            </form>
  </div>
  <?php if (isset($_POST['Consultar1'])) {$columna=$_POST['columna'];$tipo=$_POST['tipo'];?>
                   <div   class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
-         <form id="ssas"  method="POST" class="mx-1" action="../../Plugin/soli_vale.php" target="_blank">
-            
-   
- <input type="hidden" name="idusuario" value="0">
-       
-   
-          <input type="hidden" name="columna" value="<?php echo $columna ?>">
+
+         <form id="ssas" method="POST" class="mx-1" action="../../Plugin/Imprimir/Vale/soli_vale.php" target="_blank">
+            <input type="hidden" name="columna" value="<?php echo $columna ?>">
             <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
-             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Consultar1">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Consultar">    
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
-         <form id="ssas"  class="mx-1"  method="POST" action="../../Plugin/pdf_soli_vale.php" target="_blank">
-            
-   
- <input type="hidden" name="idusuario" value="0">
-       
-   
-                <input type="hidden" name="columna" value="<?php echo $columna ?>">
+         <form id="ssas" method="POST" action="../../Plugin/PDF/Vale/pdf_soli_vale.php" target="_blank" class="mx-1">
+            <input type="hidden" name="columna" value="<?php echo $columna ?>">
             <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
-             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Consultar1" target="_blank">
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Consultar" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>
+        <form id="ssas" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Vale/Excel.php" target="_blank">
+            <input type="hidden" name="columna" value="<?php echo $columna ?>">
+            <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
+                <button type="submit" class="btn btn-outline-primary" name="Consultar" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
+                </svg>
+                </button>
+            </form>
  </div>
  
-  <?php } include ('../../Buscador_ajax/tablaVale_invitado.php') ?>
+  <?php } include ('../../Buscador_ajax/Tablas/Invitado/tablaVale_invitado.php') ?>
   <div id="x">
         <table class="table" id="div">
             <thead>

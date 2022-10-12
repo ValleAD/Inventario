@@ -103,7 +103,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                         </svg>
                     </a>
                     <ul class="children">
-                        <li><a id="b" href="solicitudes_bodega.php">Mostrar</a></li>
+                        <li><a id="b" href="Vistas/Bodega/solicitudes_bodega.php">Mostrar</a></li>
                         <!-- <li><a id="b" href="form_bodega.php">Buscar por codigo</a></li> -->
                         <li><a id="b" href="Vistas/Bodega/form_bodega_varios.php">Seleccionar varios</a></li>
 
@@ -294,7 +294,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 
 
          <?php } ?>
-<?php include ('templates/loader.php') ?>
+<?php include ('loader.php') ?>
     <script src="Plugin/bootstrap/js/jquery-latest.js"></script>
     <script src="Plugin/bootstrap/js/datatables.min.js"></script>
     <script src="Plugin/bootstrap/js/bootstrap.min.js"></script>
@@ -348,16 +348,20 @@ function main () {
 </script>
 <script type="text/javascript">
 function confirmaion1(e) {
-    if (confirm("¿Estas seguro que deseas Cerrar Session?")) {
-        return true;
-    } else {
+        Swal.fire({
+  icon: 'warning',
+  text: 'Seguro que deseas Cerrar Session',
+  showCancelButton:true,
+  confirmButtonText: 'Cerrar Session',
+  footer: 'Sistema De Inventario',
+  allowOutsideClick: false,
+}).then((resultado) =>{
+if (resultado.value) {
+    window.location.href='log/logout.php';
+        }
+        });
         return false;
-        e.preventDefault();
-    }
 }
-</script>
-
-<script type="text/javascript">
 function confirmaion2(e) {
     if (confirm("¿Estas seguro que deseas Rechazar la Solicitud?")) {
         return true;

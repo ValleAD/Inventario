@@ -20,7 +20,7 @@
     $usuario = $_POST['usuario'];
     $fecha = $_POST['fech'];
     $estado=$_POST['estado'];
-
+    
    if ($_POST['jus']=="") {
     $jus = "Sin Justificación por el momento";
         

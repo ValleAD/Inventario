@@ -5,7 +5,7 @@ session_start();
     # code...
     echo '
     <script>
-        window.location ="log/signin.php";
+        window.location ="../../log/signin.php";
         session_destroy();  
                 </script>
 die();
@@ -241,6 +241,58 @@ while ($productos = mysqli_fetch_array($result)){
 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="pdf">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+                </button>
+
+            </form>
+                                <form style="" method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php" target="_blank">
+                <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['nSolicitud']?>" name="sol_compra">
+                <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['dependencia']?>" name="dependencia">
+                <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['plazo']?>" name="plazo">
+                <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['unidad_tecnica']?>" name="unidad">
+                <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['descripcion_solicitud']?>" name="suministro">
+                <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['usuario']?>" name="usuario">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['estado']?>" name="estado">
+                <input readonly class="form-control"  type="hidden" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro'])) ?>" name="fech">
+                <input readonly class="form-control"  type="hidden" value="<?php echo date("d-m-Y") ?>" name="fech_imp">
+           
+                <?php
+
+                
+                $sql = "SELECT * FROM detalle_compra WHERE solicitud_compra = $solicitud";
+    $result = mysqli_query($conn, $sql);
+while ($productos = mysqli_fetch_array($result)){
+      
+      $codigo=$productos['codigo'];
+      $descripcion=$productos['descripcion'];
+      $um=$productos['unidad_medida'];
+      $precio=$productos['precio'];
+
+       $precio1=number_format($precio, 2,".",",");
+      $total1= number_format($total, 2, ".",",");
+      $final1=number_format($final, 2, ".",",");
+
+      $cant_aprobada=$productos['stock'];
+        $cantidad_despachada=$productos['cantidad_despachada'];
+        $stock=number_format($cant_aprobada, 2,".",",");
+        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+       ?>
+       <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
+            <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
+            <input type="hidden" name="um[]" value="<?php echo $um ?>">
+            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
+            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
+            <input type="hidden" name="cost[]" value="<?php echo $precio1 ?>">
+            <input type="hidden" name="tot[]" value="<?php echo $total1 ?>">
+            <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
+        <?php } ?>
+                   <?php  $sql = "SELECT * FROM tb_compra ORDER BY justificacion DESC LIMIT 1";
+    $result = mysqli_query($conn, $sql);
+ while ($datos = mysqli_fetch_array($result)){ ?>
+    <textarea style="display: none;" name="jus" ><?php echo $datos['justificacion'] ?></textarea> <?php } ?>
+<button  style="position: initial;"type="submit" class="btn btn-outline-primary" name="detalle_compra">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                 </svg>
                 </button>
 
