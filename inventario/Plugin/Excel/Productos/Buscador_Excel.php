@@ -188,9 +188,11 @@ $spreadsheet->getActiveSheet()->getStyle('H7')
 $spreadsheet->getActiveSheet()->getStyle('A7:H7')->applyFromArray($tableHead);
 $spreadsheet->getActiveSheet()->getPageSetup()
 ->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
-$cod=$_POST['consulta'];
+$q=$_POST['consulta'];
 
-   $sql = "SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM `tb_productos` WHERE codProductos LIKE '%".$cod."%' or descripcion LIKE '%".$cod."%' ";
+   $sql = "SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos  WHERE 
+        codProductos LIKE '%".$q."%' or descripcion LIKE '%".$q."%' GROUP BY codProductos,precio HAVING COUNT(*) ";
+
 $result = mysqli_query($conn, $sql);
 
 $fila = 8;
