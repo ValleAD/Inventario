@@ -27,7 +27,10 @@ die();
 <body> 
 <br>
   <style>
-  .input:hover{
+  #input{
+    background: black;
+  }
+  #input:hover{
         background: pink;
         color: white;
     }
@@ -93,7 +96,7 @@ die();
             <div style="position: initial;" class="input-group">
                  
             <input type="text" style="position: initial;" name="busqueda" class="form-control"  id="busqueda" placeholder="Buscar Código ó Descripción">
-                      <label onclick="return validar1()" class="input-group-text input" for="inputGroupSelect01">
+                      <label id="input" onclick="return validar1()" class="input-group-text " for="inputGroupSelect01">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#x"/>
                 </svg>
