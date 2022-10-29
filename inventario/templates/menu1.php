@@ -168,6 +168,12 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                         </svg>
 </div>
 </li>
+                 <?php if ($cliente=="egchoto") { ?>
+<li class="submenu" style="float:right;" >
+                    <a style="background:#023859" id="a" href="../../Database/Respaldos_sql/Respaldos.php">Exportar bd</a>
+
+                </li>
+<?php } ?>
 
                 </ul>
         </nav>
