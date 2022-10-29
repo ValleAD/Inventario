@@ -232,8 +232,8 @@ error_reporting(0);
           if(tipo_usuario1==""){
     Swal.fire({
   icon: 'warning', 
-  text: "Debe de Ingrear el Tipo de Usuarios (Roles De Usuario)",
-  footer: 'Sistema De Inventario',
+  text: "Debe de Ingrear el Tipo de Usuarios (Roles De Usuario).",
+  footer: 'Sistema De Inventario.',
   allowOutsideClick: false
     });
 }
@@ -241,10 +241,10 @@ error_reporting(0);
 
  var limpiar = document.getElementById('Tipo'); limpiar.value = "Administrador"
     
-        Swal.fire({icon: 'success',  text: "Administrador Agregado",footer: 'Sistema De Inventario',allowOutsideClick: false});
+        Swal.fire({icon: 'success',  text: "Administrador Agregado exitosamente!!",footer: 'Sistema De Inventario',allowOutsideClick: false});
     }if(tipo_usuario1=="2"){
         var limpiar = document.getElementById('Tipo');limpiar.value = "Cliente"
-        Swal.fire({icon: 'success',  text: "Cliente Agregado",footer: 'Sistema De Inventario',allowOutsideClick: false});
+        Swal.fire({icon: 'success',  text: "Cliente Agregado exitosamente!!",footer: 'Sistema De Inventario.',allowOutsideClick: false});
     
     } 
    
