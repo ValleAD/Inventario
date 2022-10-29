@@ -56,7 +56,8 @@ die();
 
     <br><br><br><br>
     <center>
-    <h1 id="h1">Bienvenidos al Sistema de Inventario del<br>Hospital de Zacatecoluca</h1>
+    <h1 id="h1">Bienvenidos al Sistema de Inventario del
+      <br>Hospital de Zacatecoluca</h1>
     </center>
 
 
