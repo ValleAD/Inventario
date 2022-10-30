@@ -791,7 +791,7 @@ CREATE TABLE `tb_usuarios` (
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 INSERT INTO tb_usuarios VALUES("1","Admin","Admin","Master","Hospital Nacional Zacatecoluca PA \"Santa Tereza\"","Sin Unidad","Admin","Si","1");
-INSERT INTO tb_usuarios VALUES("2","Usuario","Ernesto","Gonzales Choto","Hospital Nacional Zacatecoluca PA \"Santa Tereza\"","Departamento Mantenimiento Local","123","Si","1");
+INSERT INTO tb_usuarios VALUES("2","egchoto","Ernesto","Gonzales Choto","Hospital Nacional Zacatecoluca PA \"Santa Tereza\"","Departamento Mantenimiento Local","neto982006","Si","1");
 INSERT INTO tb_usuarios VALUES("3","Usuario1","Baltazar Alexander","Marinero Perez","Hospital Nacional Zacatecoluca PA \"Santa Tereza\"","Sección Equipo Básico","123","Si","2");
 INSERT INTO tb_usuarios VALUES("4","Usuario2","Fransico Tolentino","López","Hospital Nacional Zacatecoluca PA \"Santa Tereza\"","Sección Planta Física y Mobiliario","123","Si","2");
 INSERT INTO tb_usuarios VALUES("5","Usuario3","René Adán","Villaltá Perez","Hospital Nacional Zacatecoluca PA \"Santa Tereza\"","Sección Planta Física y Mobiliario","123","Si","2");

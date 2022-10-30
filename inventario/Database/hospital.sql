@@ -291,7 +291,7 @@ VALUES ('Área Saneamiento Ambiental','Si'),
 
 INSERT INTO `tb_usuarios` (`username`, `firstname`, `lastname`, `Establecimiento`,  `unidad`,`password`,`Habilitado`, `tipo_usuario`) 
 VALUES ('Admin', 'Admin', 'Master', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Sin Unidad', 'Admin','Si', '1'),
-       ('Usuario', 'Ernesto', 'Gonzales Choto', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Departamento Mantenimiento Local', '123','Si', '1'),
+       ('egchoto', 'Ernesto', 'Gonzales Choto', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Departamento Mantenimiento Local', 'neto982006','Si', '1'),
        ('Usuario1', 'Baltazar Alexander', 'Marinero Perez', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Sección Equipo Básico', '123','Si', '2'),
        ('Usuario2', 'Fransico Tolentino', 'López', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Sección Planta Física y Mobiliario' , '123','Si', '2'),
        ('Usuario3', 'René Adán', 'Villaltá Perez', 'Hospital Nacional Zacatecoluca PA "Santa Tereza"', 'Sección Planta Física y Mobiliario' , '123','Si', '2'),
