@@ -175,7 +175,7 @@ return patron.test(te); // 6
    	var password=$.trim($('#password').val())
    	
                     
-   	if (username.length=="" || password=="") {
+   	if (username.length=="" || password.length=="") {
    		
    		Swal.fire({
   icon: 'warning',
