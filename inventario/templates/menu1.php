@@ -170,7 +170,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 </li>
                  <?php if ($cliente=="egchoto") { ?>
 <li class="submenu" style="float:right;" >
-                    <a style="background:#023859" id="a" href="../../Database/Respaldos_sql/Respaldos.php">Exportar bd</a>
+                    <a style="background:#023859" title="Respaldo de la base de datos completa" id="a" href="../../Database/Respaldos_sql/Respaldos.php">Exportar bd</a>
 
                 </li>
 <?php } ?>

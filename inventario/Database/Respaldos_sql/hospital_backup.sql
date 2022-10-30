@@ -1,712 +1,78 @@
-DROP TABLE detalle_almacen;
-
-CREATE TABLE `detalle_almacen` (
-  `codigoalmacen` int(3) NOT NULL AUTO_INCREMENT,
-  `codigo` int(15) NOT NULL,
-  `nombre` mediumtext NOT NULL,
-  `unidad_medida` mediumtext NOT NULL,
-  `cantidad_solicitada` decimal(6,2) NOT NULL DEFAULT 0.00,
-  `cantidad_despachada` decimal(6,2) NOT NULL DEFAULT 0.00,
-  `tb_almacen` int(20) NOT NULL,
-  `precio` decimal(6,2) NOT NULL DEFAULT 0.00,
-  PRIMARY KEY (`codigoalmacen`),
-  KEY `fk_tb_almacen_detalle_almacen` (`tb_almacen`),
-  CONSTRAINT `fk_tb_almacen_detalle_almacen` FOREIGN KEY (`tb_almacen`) REFERENCES `tb_almacen` (`codAlmacen`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE DATABASE IF NOT EXISTS `hospital` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `hospital` ;
 
 
-
-
-DROP TABLE detalle_bodega;
-
-CREATE TABLE `detalle_bodega` (
-  `codigodetallebodega` int(3) NOT NULL AUTO_INCREMENT,
-  `codigo` int(15) NOT NULL,
-  `descripcion` mediumtext NOT NULL,
-  `unidad_medida` mediumtext NOT NULL DEFAULT 'C/U',
-  `stock` decimal(6,2) unsigned NOT NULL DEFAULT 0.00,
-  `cantidad_despachada` decimal(6,2) NOT NULL DEFAULT 0.00,
-  `precio` decimal(6,2) NOT NULL DEFAULT 0.00,
-  `odt_bodega` int(15) DEFAULT NULL,
-  PRIMARY KEY (`codigodetallebodega`),
-  KEY `fk_tb_bodega_detalle_bodega` (`odt_bodega`),
-  CONSTRAINT `fk_tb_bodega_detalle_bodega` FOREIGN KEY (`odt_bodega`) REFERENCES `tb_bodega` (`codBodega`)
-) ENGINE=InnoDB AUTO_INCREMENT=495 DEFAULT CHARSET=utf8mb4;
-
-INSERT INTO detalle_bodega VALUES("342","70121708","MEDIDOR DE FLUJO DE COMBUSTIBLE, DIGITAL","C/U","1.00","1.00","99.99","5");
-INSERT INTO detalle_bodega VALUES("343","70140024","ABRAZADERA DE ACERO INOXIDABLE SIN FIN PARA MANGUE","C/U","2.00","2.00","0.80","32");
-INSERT INTO detalle_bodega VALUES("344","70212414","ANCLA PLASTICA DE 5/16\"","C/U","4.00","4.00","0.00","33");
-INSERT INTO detalle_bodega VALUES("345","70212483","TORNILLO GOLOSO DE 1\" X 10 mm","C/U","4.00","4.00","0.03","40");
-INSERT INTO detalle_bodega VALUES("346","70213315","BROCHA DE 2\"","C/U","1.00","1.00","0.50","42");
-INSERT INTO detalle_bodega VALUES("347","70205886","TUBO LED DE 18 WATTS, T8, 120 VOLTIOS","C/U","18.00","18.00","3.80","45");
-INSERT INTO detalle_bodega VALUES("348","70205288","SOPORTE PARA LAMPARA FLOURESCENTE TIPO RIEL","C/U","18.00","18.00","0.50","46");
-INSERT INTO detalle_bodega VALUES("349","70205090","CABLE ELECTRICO TSJ 14/2 (VULCAN)","mts","18.00","18.00","0.70","102");
-INSERT INTO detalle_bodega VALUES("350","70205572","CINTA AISLANTE # 23, ROLLO","C/U","1.00","1.00","14.50","113");
-INSERT INTO detalle_bodega VALUES("351","70212423","TORNILLO PARA TABLAROCA DE 1/2\"","cto","30.00","30.00","2.00","123");
-INSERT INTO detalle_bodega VALUES("352","70208527","CHAPA CILÍNDRICA DE PALANCA CON LLAVE","C/U","2.00","2.00","22.30","148");
-INSERT INTO detalle_bodega VALUES("353","70211071","TUBO DE ABASTO DE ACERO INOXIDABLE PARA SANITARIO","C/U","1.00","1.00","2.60","151");
-INSERT INTO detalle_bodega VALUES("354","70211049","VÁLVULA PARA DUCHA DE 1 /2\"","C/U","1.00","1.00","11.40","170");
-INSERT INTO detalle_bodega VALUES("355","70208492","BRAZO HIDRAULICO TIPO LIVIANO PARA CIERRE DE PUERT","C/U","1.00","1.00","24.50","179");
-INSERT INTO detalle_bodega VALUES("356","70208300","TABLA ROCA DE YESO PARA INTERIORES DE 1.22 METROS","C/U","10.00","10.00","8.56","188");
-INSERT INTO detalle_bodega VALUES("357","70208307","POSTE METÁLICO GALVANIZADO DE 3.05 METROS PARA TAB","C/U","20.00","20.00","1.90","209");
-INSERT INTO detalle_bodega VALUES("358","70212426","TORNILLO PARA TABLAROCA DE 1 1/2\"","C/U","200.00","200.00","0.02","215");
-INSERT INTO detalle_bodega VALUES("359","70212020","CLAVO CORRIENTE DE 1\" CON CABEZA","lb","30.00","30.00","2.00","218");
-INSERT INTO detalle_bodega VALUES("360","70212413","ANCLA PLASTICA DE 3/8\"","C/U","50.00","50.00","0.00","224");
-INSERT INTO detalle_bodega VALUES("361","70212829","PEGAMENTO ACERO PLASTICO, TUBO","C/U","1.00","1.00","9.70","228");
-INSERT INTO detalle_bodega VALUES("362","70212483","TORNILLO GOLOSO DE 1\" X 10 mm","C/U","50.00","50.00","0.03","229");
-INSERT INTO detalle_bodega VALUES("363","70210289","PLYWOOD BANACK CLASE B DE 4 PIES X 8 PIES X 1/4\",","C/U","1.00","1.00","25.05","230");
-INSERT INTO detalle_bodega VALUES("364","70212454","RODO DE 8\" CON BASE FIJA","C/U","2.00","2.00","15.00","231");
-INSERT INTO detalle_bodega VALUES("365","70211145","CAMISA DE 2\" P.V.C","C/U","2.00","2.00","1.20","236");
-INSERT INTO detalle_bodega VALUES("366","70212716","HOJA DE SIERRA PARA HIERRO DIENTE FINO","C/U","1.00","1.00","2.20","245");
-INSERT INTO detalle_bodega VALUES("367","70211309","PEGAMENTO PARA P.V.C, 1 /8 DE GALÓN","C/U","1.00","1.00","9.00","255");
-INSERT INTO detalle_bodega VALUES("368","70212763","LIJA PARA AGUA No. 100, PLIEGO","C/U","1.00","1.00","0.50","257");
-INSERT INTO detalle_bodega VALUES("369","70211104","CODO LISO DE 2\" X 90 DE P.V.C.","C/U","2.00","2.00","0.90","260");
-INSERT INTO detalle_bodega VALUES("370","70211155","TUBERÍA DE 2\" DE 160 P.S.I. DE P.V.C","mts","1.00","1.00","1.50","263");
-INSERT INTO detalle_bodega VALUES("371","70225269","GRASA","lb","1.00","1.00","10.00","264");
-INSERT INTO detalle_bodega VALUES("372","70120211","CAPACITOR DE MARCHA DE 5O MFD, 440 VAC","C/U","1.00","1.00","4.50","268");
-INSERT INTO detalle_bodega VALUES("373","70120212","CAPACITOR DE MARCHA DE 5MFD 370V","C/U","1.00","1.00","1.50","269");
-INSERT INTO detalle_bodega VALUES("374","70208110","CELOSÍA DE VIDRIO NEVADO DE 1 METRO","C/U","30.00","30.00","1.30","273");
-INSERT INTO detalle_bodega VALUES("375","70212748","LIJA PARA HIERRO No. 80,PLIEGO","C/U","1.00","1.00","0.80","278");
-INSERT INTO detalle_bodega VALUES("376","70208115","OPERADOR DE VENTANA","C/U","11.00","11.00","2.50","280");
-INSERT INTO detalle_bodega VALUES("377","70211071","TUBO DE ABASTO DE ACERO INOXIDABLE PARA SANITARIO","C/U","1.00","1.00","2.60","281");
-INSERT INTO detalle_bodega VALUES("378","70211051","VÁLVULA DE CONTROL CROMADA DE 1 / 2\"A LA PARED","C/U","1.00","1.00","2.50","282");
-INSERT INTO detalle_bodega VALUES("379","70211900","KIT DE ACCESORIOS PARA SERVICIO SANITARIO STANDARD","C/U","1.00","1.00","5.70","284");
-INSERT INTO detalle_bodega VALUES("380","70211005","SANITARIO COLOR BLANCO COMPLETO STANDARD","C/U","2.00","2.00","52.40","287");
-INSERT INTO detalle_bodega VALUES("381","70211049","VÁLVULA PARA DUCHA DE 1 /2\"","C/U","3.00","3.00","11.40","294");
-INSERT INTO detalle_bodega VALUES("382","43703018","TUBO DE ABASTO PARA LAVAMANOS FLEXIBLE DE 3/8\" X1/","C/U","3.00","3.00","12.50","297");
-INSERT INTO detalle_bodega VALUES("383","70211076","LLAVE DE 1/2\" CROMADO PARA LAVAMANOS 1a CALIDAD","C/U","3.00","3.00","6.00","301");
-INSERT INTO detalle_bodega VALUES("384","70211071","TUBO DE ABASTO DE ACERO INOXIDABLE PARA SANITARIO","C/U","1.00","1.00","2.60","302");
-INSERT INTO detalle_bodega VALUES("385","43703010","TAPON MACHO DE 2\" PVC CON ROSCA","C/U","2.00","0.00","1.50","303");
-INSERT INTO detalle_bodega VALUES("386","70211300","CINTA TEFLÓN","C/U","1.00","0.00","0.30","304");
-INSERT INTO detalle_bodega VALUES("387","70208527","CHAPA CILÍNDRICA DE PALANCA CON LLAVE","C/U","6.00","6.00","22.30","308");
-INSERT INTO detalle_bodega VALUES("388","70212075","HIERRO ANGULO DE 1 1/2\" X 1 1/2\" X 3 /16\", BAJO N","mts","2.00","2.00","4.60","309");
-INSERT INTO detalle_bodega VALUES("389","70211300","CINTA TEFLÓN","C/U","2.00","2.00","0.30","310");
-INSERT INTO detalle_bodega VALUES("390","70211051","VÁLVULA DE CONTROL CROMADA DE 1 / 2\"A LA PARED","C/U","3.00","3.00","2.50","312");
-INSERT INTO detalle_bodega VALUES("391","70211071","TUBO DE ABASTO DE ACERO INOXIDABLE PARA SANITARIO","C/U","2.00","2.00","2.60","313");
-INSERT INTO detalle_bodega VALUES("392","70208527","CHAPA CILÍNDRICA DE PALANCA CON LLAVE","C/U","6.00","6.00","22.30","314");
-INSERT INTO detalle_bodega VALUES("393","70205570","CINTA AISLANTE PVC 19 mm x 20 ydas x 0.177 mm, APR","C/U","1.00","1.00","5.00","315");
-INSERT INTO detalle_bodega VALUES("394","70205099","CABLE DUPLEX No. 12","mts","5.00","5.00","0.80","316");
-INSERT INTO detalle_bodega VALUES("395","70205190","CAJA RECTANGULAR DE PVC 4\" X 2\"","C/U","1.00","1.00","0.40","317");
-INSERT INTO detalle_bodega VALUES("396","70205453","CONECTOR RECTO DE 1/2\" METALICO","C/U","3.00","3.00","0.20","319");
-INSERT INTO detalle_bodega VALUES("397","70205296","TOMACORRIENTE HEMBRA, DOBLE, POLARIZADO","C/U","1.00","1.00","1.00","322");
-INSERT INTO detalle_bodega VALUES("398","31161502","ANCLA PLASTICA PARA TABLA ROCA","C/U","4.00","4.00","0.23","323");
-INSERT INTO detalle_bodega VALUES("399","70212415","ANCLA PLASTICA DE 1/4\"","C/U","4.00","4.00","0.00","326");
-INSERT INTO detalle_bodega VALUES("400","70212483","TORNILLO GOLOSO DE 1\" X 10 mm","C/U","8.00","8.00","0.03","333");
-INSERT INTO detalle_bodega VALUES("401","70212838","LUBRICANTE WD-40, SPRAY DE 11 ONZAS","C/U","1.00","1.00","2.60","339");
-INSERT INTO detalle_bodega VALUES("402","70225269","GRASA","lb","1.00","1.00","10.00","342");
-INSERT INTO detalle_bodega VALUES("403","70207162","CINTA ARNOLD PRIMERA CALIDAD, ROLLO","C/U","1.00","1.00","2.30","354");
-INSERT INTO detalle_bodega VALUES("404","70205310","TOMA CORRIENTE HEMBRA, DOBLE, POLARIZADO, GRADO HO","C/U","10.00","10.00","7.50","356");
-INSERT INTO detalle_bodega VALUES("405","70205499","TECNODUCTO DE 3/4\" Mt","mts","50.00","50.00","0.50","357");
-INSERT INTO detalle_bodega VALUES("406","70205603","CUERPO TERMINAL DE 1\"","C/U","5.00","5.00","2.20","358");
-INSERT INTO detalle_bodega VALUES("407","70205570","CINTA AISLANTE PVC 19 mm x 20 ydas x 0.177 mm, APR","C/U","10.00","10.00","5.00","359");
-INSERT INTO detalle_bodega VALUES("408","70205170","CAJA TERMICA DE 4 CIRCUITOS, 2 POLOS, 240 VOLTIOS,","C/U","4.00","4.00","27.20","365");
-INSERT INTO detalle_bodega VALUES("409","70205190","CAJA RECTANGULAR DE PVC 4\" X 2\"","C/U","10.00","10.00","0.40","387");
-INSERT INTO detalle_bodega VALUES("410","70205192","CAJA OCTAGONAL PVC","C/U","10.00","10.00","0.70","388");
-INSERT INTO detalle_bodega VALUES("411","70205066","CABLE THHN No. 14 AWG, COLOR ROJO","mts","40.00","40.00","0.50","390");
-INSERT INTO detalle_bodega VALUES("412","70205063","CABLE THHN NO 12 AWG, COLOR VERDE","mts","50.00","50.00","0.59","396");
-INSERT INTO detalle_bodega VALUES("413","70205060","CABLE THHN No. 12 AWG, COLOR ROJO","mts","50.00","50.00","0.70","397");
-INSERT INTO detalle_bodega VALUES("414","70205062","CABLE THHN NO 12 AWG, COLOR BLANCO","mts","50.00","50.00","0.70","401");
-INSERT INTO detalle_bodega VALUES("415","70205056","CABLE THHN No. 10 AWG, COLOR BLANCO","mts","25.00","25.00","1.00","402");
-INSERT INTO detalle_bodega VALUES("416","70205058","CABLE THHN NO 10 AWG, COLOR VERDE","mts","25.00","25.00","1.00","405");
-INSERT INTO detalle_bodega VALUES("417","70205054","CABLE THHN No.10 AWG, COLOR ROJO","mts","25.00","25.00","1.00","409");
-INSERT INTO detalle_bodega VALUES("418","70205130","DADO TERMICO DE 20 AMPERIOS,1 DE POLO DE PRIMERA C","C/U","4.00","4.00","5.42","411");
-INSERT INTO detalle_bodega VALUES("419","70205870","LUMINARIA EMPOTRAR, PANEL LED 2 X 4, 60WATTS,100-2","C/U","10.00","10.00","50.95","412");
-INSERT INTO detalle_bodega VALUES("420","70120211","CAPACITOR DE MARCHA DE 5O MFD, 440 VAC","C/U","1.00","1.00","4.50","418");
-INSERT INTO detalle_bodega VALUES("421","70205284","RECEPTACULO DE BAQUELITA FIJO","C/U","2.00","2.00","0.90","419");
-INSERT INTO detalle_bodega VALUES("422","70205227","FOCO AHORRADOR DE ENERGIA DE 25 WATTS, 110 VOLTIOS","C/U","2.00","2.00","3.30","420");
-INSERT INTO detalle_bodega VALUES("423","70213041","PINTURA DE AGUA COLOR GRIS METEORO","Galon","1.00","0.00","28.40","422");
-INSERT INTO detalle_bodega VALUES("424","70212838","LUBRICANTE WD-40, SPRAY DE 11 ONZAS","C/U","1.00","0.00","2.60","425");
-INSERT INTO detalle_bodega VALUES("425","70205190","CAJA RECTANGULAR DE PVC 4\" X 2\"","C/U","1.00","1.00","0.40","426");
-INSERT INTO detalle_bodega VALUES("426","70205331","PLACA DOBLE DE BAQUELITA (PARA TOMA POLARIZADO)","C/U","1.00","1.00","0.30","427");
-INSERT INTO detalle_bodega VALUES("427","70205453","CONECTOR RECTO DE 1/2\" METALICO","C/U","1.00","1.00","0.20","430");
-INSERT INTO detalle_bodega VALUES("428","70205572","CINTA AISLANTE # 23, ROLLO","C/U","1.00","1.00","14.50","432");
-INSERT INTO detalle_bodega VALUES("429","70212829","PEGAMENTO ACERO PLASTICO, TUBO","C/U","1.00","1.00","9.70","433");
-INSERT INTO detalle_bodega VALUES("430","70205296","TOMACORRIENTE HEMBRA, DOBLE, POLARIZADO","C/U","1.00","1.00","1.00","445");
-INSERT INTO detalle_bodega VALUES("431","70205331","PLACA DOBLE DE BAQUELITA (PARA TOMA POLARIZADO)","C/U","1.00","1.00","0.30","449");
-INSERT INTO detalle_bodega VALUES("432","70205453","CONECTOR RECTO DE 1/2\" METALICO","C/U","2.00","2.00","0.20","450");
-INSERT INTO detalle_bodega VALUES("433","70205097","CABLE ELECTRICO TSJ 12/3 (VULCAN)","mts","6.00","6.00","1.40","451");
-INSERT INTO detalle_bodega VALUES("434","70212414","ANCLA PLASTICA DE 5/16\"","C/U","3.00","3.00","0.00","452");
-INSERT INTO detalle_bodega VALUES("435","70212463","TORNILLO GOLOSO DE 2\"","C/U","3.00","3.00","0.20","453");
-INSERT INTO detalle_bodega VALUES("436","70205192","CAJA OCTAGONAL PVC","C/U","1.00","1.00","0.70","478");
-INSERT INTO detalle_bodega VALUES("437","70205296","TOMACORRIENTE HEMBRA, DOBLE, POLARIZADO","C/U","1.00","1.00","1.00","482");
-INSERT INTO detalle_bodega VALUES("438","70205331","PLACA DOBLE DE BAQUELITA (PARA TOMA POLARIZADO)","C/U","1.00","1.00","0.30","483");
-INSERT INTO detalle_bodega VALUES("439","70205097","CABLE ELECTRICO TSJ 12/3 (VULCAN)","mts","6.00","6.00","1.40","486");
-INSERT INTO detalle_bodega VALUES("440","70212414","ANCLA PLASTICA DE 5/16\"","C/U","3.00","3.00","0.00","496");
-INSERT INTO detalle_bodega VALUES("441","70212463","TORNILLO GOLOSO DE 2\"","C/U","3.00","3.00","0.20","497");
-INSERT INTO detalle_bodega VALUES("442","70205456","CONECTOR RECTO DE 3/4\", METALICO","C/U","2.00","2.00","0.90","500");
-INSERT INTO detalle_bodega VALUES("443","70205190","CAJA RECTANGULAR DE PVC 4\" X 2\"","C/U","1.00","1.00","0.40","501");
-INSERT INTO detalle_bodega VALUES("444","70205572","CINTA AISLANTE # 23, ROLLO","C/U","1.00","1.00","14.50","502");
-INSERT INTO detalle_bodega VALUES("445","70208080","MASILLA PARA TABLA ROCA","Galon","10.00","10.00","3.90","504");
-INSERT INTO detalle_bodega VALUES("446","70205357","SWITCH SUPERFICIAL PARA TIMBRE","C/U","1.00","1.00","1.40","512");
-INSERT INTO detalle_bodega VALUES("447","70211287","NIPLE DE HIERRO GALVANIZADO TODO ROSCA DE 1/2\" X 1","C/U","2.00","2.00","0.40","514");
-INSERT INTO detalle_bodega VALUES("448","70211076","LLAVE DE 1/2\" CROMADO PARA LAVAMANOS 1a CALIDAD","C/U","2.00","2.00","6.00","515");
-INSERT INTO detalle_bodega VALUES("449","43703018","TUBO DE ABASTO PARA LAVAMANOS FLEXIBLE DE 3/8\" X1/","C/U","2.00","2.00","12.50","516");
-INSERT INTO detalle_bodega VALUES("450","70211051","VÁLVULA DE CONTROL CROMADA DE 1 / 2\"A LA PARED","C/U","2.00","2.00","2.50","517");
-INSERT INTO detalle_bodega VALUES("451","70211900","KIT DE ACCESORIOS PARA SERVICIO SANITARIO STANDARD","C/U","1.00","1.00","5.70","518");
-INSERT INTO detalle_bodega VALUES("452","70212033","CLAVO DE ACERO DE 1 1/2\"","C/U","4.00","4.00","0.00","519");
-INSERT INTO detalle_bodega VALUES("453","70212709","REMACHE POP, DE 1/8\" X 1/2\"","C/U","50.00","50.00","1.70","529");
-INSERT INTO detalle_bodega VALUES("454","70205233","TUBO FLUORESCENTES DE 20 WATTS, 120 VOLTIOS","C/U","4.00","4.00","1.00","554");
-INSERT INTO detalle_bodega VALUES("455","70205886","TUBO LED DE 18 WATTS, T8, 120 VOLTIOS","C/U","6.00","6.00","3.80","1520");
-INSERT INTO detalle_bodega VALUES("456","70208750","LOSETA PARA CIELO FALSO, DE YESO, DE (4 X 2) PIES","C/U","2.00","2.00","3.40","1701");
-INSERT INTO detalle_bodega VALUES("457","70205227","FOCO AHORRADOR DE ENERGIA DE 25 WATTS, 110 VOLTIOS","C/U","2.00","2.00","3.30","2301");
-INSERT INTO detalle_bodega VALUES("458","70208300","TABLA ROCA DE YESO PARA INTERIORES DE 1.22 METROS","C/U","2.00","2.00","8.56","2451");
-INSERT INTO detalle_bodega VALUES("459","70212426","TORNILLO PARA TABLAROCA DE 1 1/2\"","C/U","200.00","200.00","0.02","2641");
-INSERT INTO detalle_bodega VALUES("460","70208527","CHAPA CILÍNDRICA DE PALANCA CON LLAVE","C/U","2.00","2.00","22.30","2971");
-INSERT INTO detalle_bodega VALUES("461","70212727","PASADOR METALICO DE 2 1/2\"","C/U","2.00","2.00","3.50","2972");
-INSERT INTO detalle_bodega VALUES("462","70210211","COSTANERA DE CEDRO DE 3 VARAS","C/U","1.00","1.00","16.35","3041");
-INSERT INTO detalle_bodega VALUES("463","70120080","INTERRUPTOR TERMOMAGNETICO TRIFASICO, 400 AMPERIOS","C/U","1.00","1.00","1.00","3042");
-INSERT INTO detalle_bodega VALUES("464","70170069","RODO FIJO DE 125 MILIMETROS (5 PULGADAS)","C/U","1.00","1.00","2.75","3043");
-INSERT INTO detalle_bodega VALUES("465","70101779","BISAGRA DE 2\"","C/U","2.00","2.00","0.40","3081");
-INSERT INTO detalle_bodega VALUES("466","70212800","ELECTRODO 3/32\" PARA HIERRO DULCE","lb","0.50","0.50","1.00","3082");
-INSERT INTO detalle_bodega VALUES("467","70211005","SANITARIO COLOR BLANCO COMPLETO STANDARD","C/U","1.00","1.00","52.40","3091");
-INSERT INTO detalle_bodega VALUES("468","70211071","TUBO DE ABASTO DE ACERO INOXIDABLE PARA SANITARIO","C/U","2.00","2.00","2.60","3101");
-INSERT INTO detalle_bodega VALUES("469","70211051","VÁLVULA DE CONTROL CROMADA DE 1 / 2\"A LA PARED","C/U","2.00","2.00","2.50","3131");
-INSERT INTO detalle_bodega VALUES("470","70211900","KIT DE ACCESORIOS PARA SERVICIO SANITARIO STANDARD","C/U","2.00","2.00","5.70","3141");
-INSERT INTO detalle_bodega VALUES("471","70211300","CINTA TEFLÓN","C/U","2.00","2.00","0.30","3151");
-INSERT INTO detalle_bodega VALUES("472","70212825","TUBO SILICON DE ALTA TEMPERATURA COLOR ROJO","C/U","1.00","1.00","1.90","3152");
-INSERT INTO detalle_bodega VALUES("473","70208527","CHAPA CILÍNDRICA DE PALANCA CON LLAVE","C/U","1.00","1.00","22.30","3871");
-INSERT INTO detalle_bodega VALUES("474","70205242","FOCO CORRIENTE DE 60 WATTS","cto","1.00","1.00","0.40","4051");
-INSERT INTO detalle_bodega VALUES("475","70208630","PISO DE (33 X 33) CMS, PARA TRAFICO PESADO, VARIO","C/U","720.00","720.00","1.25","4191");
-INSERT INTO detalle_bodega VALUES("476","70210500","PEGAMENTO PARA MADERA","Galon","0.50","0.50","14.00","4261");
-INSERT INTO detalle_bodega VALUES("477","70212425","TORNILLO PARA TABLAROCA DE 2\"","C/U","24.00","24.00","0.03","4301");
-INSERT INTO detalle_bodega VALUES("478","70205089","CABLE ELECTRICO TSJ 12/2 (VULCAN)","mts","5.00","5.00","1.00","4321");
-INSERT INTO detalle_bodega VALUES("479","70205190","CAJA RECTANGULAR DE PVC 4\" X 2\"","C/U","1.00","1.00","0.40","4331");
-INSERT INTO detalle_bodega VALUES("480","70205319","TOMA CORRIENTE MACHO, TIPO CHINO DE 15 AMPERIOS","C/U","1.00","1.00","1.30","4491");
-INSERT INTO detalle_bodega VALUES("481","70205331","PLACA DOBLE DE BAQUELITA (PARA TOMA POLARIZADO)","C/U","1.00","1.00","0.30","4511");
-INSERT INTO detalle_bodega VALUES("482","70205456","CONECTOR RECTO DE 3/4\", METALICO","C/U","1.00","1.00","0.90","4512");
-INSERT INTO detalle_bodega VALUES("483","70212992","ALAMBRE ESPIGADO GALVANIZADO No. 16 ROLLO","C/U","1.00","1.00","36.00","4521");
-INSERT INTO detalle_bodega VALUES("484","70205094","CABLE ELECTRICO TSJ 10/3 (VULCAN)","mts","18.00","18.00","4.00","4821");
-INSERT INTO detalle_bodega VALUES("485","70205296","TOMACORRIENTE HEMBRA, DOBLE, POLARIZADO","C/U","1.00","1.00","1.00","4822");
-INSERT INTO detalle_bodega VALUES("486","70211460","TAPON HEMBRA LISO PVC 3\"","C/U","1.00","1.00","6.40","5151");
-INSERT INTO detalle_bodega VALUES("487","70211130","TEE DE 1/2\" DE PVC","C/U","4.00","4.00","0.20","5161");
-INSERT INTO detalle_bodega VALUES("488","70211808","ADAPTADOR MACHO CPVC DE 1/2\"","C/U","2.00","2.00","0.20","5181");
-INSERT INTO detalle_bodega VALUES("489","70211105","CODO LISO DE 1 /2\" X 90 DE P.V.C","C/U","2.00","2.00","0.10","31601");
-INSERT INTO detalle_bodega VALUES("490","70211051","VÁLVULA DE CONTROL CROMADA DE 1 / 2\"A LA PARED","C/U","2.00","2.00","2.50","45111");
-INSERT INTO detalle_bodega VALUES("491","70211071","TUBO DE ABASTO DE ACERO INOXIDABLE PARA SANITARIO","C/U","3.00","3.00","2.60","70222");
-INSERT INTO detalle_bodega VALUES("492","70211073","TUBO DE ABASTO DE ACERO INOXIDABLE PARA LAVAMANOS","C/U","2.00","2.00","2.60","90222");
-INSERT INTO detalle_bodega VALUES("493","70211076","LLAVE DE 1/2\" CROMADO PARA LAVAMANOS 1a CALIDAD","C/U","2.00","2.00","6.00","150322");
-INSERT INTO detalle_bodega VALUES("494","70120208","CAPACITOR DE MARCHA DE 40MFD, 440VAC 60HZ","C/U","1.00","1.00","3.80","203220");
-
-
-
-DROP TABLE detalle_circulante;
-
-CREATE TABLE `detalle_circulante` (
-  `codigodetallecirculante` int(3) NOT NULL AUTO_INCREMENT,
-  `codigo` int(15) NOT NULL,
-  `descripcion` mediumtext NOT NULL,
-  `unidad_medida` mediumtext NOT NULL DEFAULT 'C/U',
-  `stock` decimal(6,2) NOT NULL,
-  `cantidad_despachada` decimal(6,2) NOT NULL,
-  `precio` decimal(6,2) NOT NULL DEFAULT 0.00,
-  `tb_circulante` int(15) DEFAULT NULL,
-  PRIMARY KEY (`codigodetallecirculante`),
-  KEY `fk_tb_circulante_detalle_circulante` (`tb_circulante`),
-  CONSTRAINT `fk_tb_circulante_detalle_circulante` FOREIGN KEY (`tb_circulante`) REFERENCES `tb_circulante` (`codCirculante`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-
-
-
-DROP TABLE detalle_compra;
-
-CREATE TABLE `detalle_compra` (
-  `codigodetallecompra` int(3) NOT NULL AUTO_INCREMENT,
-  `categoria` mediumtext NOT NULL,
-  `codigo` int(15) NOT NULL,
-  `catalogo` int(20) NOT NULL,
-  `descripcion` mediumtext NOT NULL,
-  `unidad_medida` mediumtext NOT NULL DEFAULT 'C/U',
-  `stock` decimal(6,2) unsigned NOT NULL DEFAULT 0.00,
-  `cantidad_despachada` decimal(6,2) NOT NULL DEFAULT 0.00,
-  `precio` decimal(6,2) NOT NULL DEFAULT 0.00,
-  `solicitud_compra` int(8) DEFAULT NULL,
-  PRIMARY KEY (`codigodetallecompra`),
-  KEY `fk_tb_compra_detalle_compra` (`solicitud_compra`),
-  CONSTRAINT `fk_tb_compra_detalle_compra` FOREIGN KEY (`solicitud_compra`) REFERENCES `tb_compra` (`nSolicitud`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-
-
-
-DROP TABLE detalle_vale;
-
-CREATE TABLE `detalle_vale` (
-  `codigodetallevale` int(3) NOT NULL AUTO_INCREMENT,
-  `codigo` int(15) NOT NULL,
-  `descripcion` mediumtext NOT NULL,
-  `unidad_medida` mediumtext NOT NULL DEFAULT 'C/U',
-  `stock` decimal(6,2) NOT NULL DEFAULT 0.00,
-  `cantidad_despachada` decimal(6,2) NOT NULL DEFAULT 0.00,
-  `precio` decimal(6,2) NOT NULL DEFAULT 0.00,
-  `numero_vale` int(15) DEFAULT NULL,
-  PRIMARY KEY (`codigodetallevale`),
-  KEY `fk_tb_vale_detalle_vale` (`numero_vale`),
-  CONSTRAINT `fk_tb_vale_detalle_vale` FOREIGN KEY (`numero_vale`) REFERENCES `tb_vale` (`codVale`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-
-
-
-DROP TABLE selects_categoria;
-
-CREATE TABLE `selects_categoria` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
-  `Habilitado` mediumtext NOT NULL,
-  `categoria` mediumtext NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
-
-INSERT INTO selects_categoria VALUES("1","Si","Agropecuarios y Forestales");
-INSERT INTO selects_categoria VALUES("2","Si","Cuero y Caucho");
-INSERT INTO selects_categoria VALUES("3","Si","Combustibles y Lubricantes");
-INSERT INTO selects_categoria VALUES("4","Si","Minerales no Metálicos");
-INSERT INTO selects_categoria VALUES("5","Si","Minerales Metálicos");
-INSERT INTO selects_categoria VALUES("6","Si","Herramientas y Repuestos");
-INSERT INTO selects_categoria VALUES("7","Si","Materiales Eléctricos");
-INSERT INTO selects_categoria VALUES("8","Si","Mobiliario");
-INSERT INTO selects_categoria VALUES("9","Si","Químicos");
-
-
-
-DROP TABLE selects_departamento;
-
-CREATE TABLE `selects_departamento` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
-  `Habilitado` mediumtext NOT NULL,
-  `departamento` mediumtext NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4;
-
-INSERT INTO selects_departamento VALUES("1","Si","Área Saneamiento Ambiental");
-INSERT INTO selects_departamento VALUES("2","Si","Área Servicios Auxiliares");
-INSERT INTO selects_departamento VALUES("3","Si","Área Clínica De Úlceras Y Heridas");
-INSERT INTO selects_departamento VALUES("4","Si","Área Residencial Médica");
-INSERT INTO selects_departamento VALUES("5","Si","Área Epidemiología");
-INSERT INTO selects_departamento VALUES("6","Si","Área COVID 19");
-INSERT INTO selects_departamento VALUES("7","Si","Bienestar magisterial");
-INSERT INTO selects_departamento VALUES("8","Si","Cirugia Hombre");
-INSERT INTO selects_departamento VALUES("9","Si","Dirección Hospital");
-INSERT INTO selects_departamento VALUES("10","Si","Departamento Lavandería y Ropería");
-INSERT INTO selects_departamento VALUES("11","Si","Departamento Mantenimiento Local");
-INSERT INTO selects_departamento VALUES("12","Si","Departamento Estadística y Documento Médicos");
-INSERT INTO selects_departamento VALUES("13","Si","Departamento Activo Fijo");
-INSERT INTO selects_departamento VALUES("14","Si","División Administrativa");
-INSERT INTO selects_departamento VALUES("15","Si","Departamento Recursos Humanos");
-INSERT INTO selects_departamento VALUES("16","Si","Departamento Terapia Dialítica");
-INSERT INTO selects_departamento VALUES("17","Si","Fisioterapia");
-INSERT INTO selects_departamento VALUES("18","Si","Farmacia");
-INSERT INTO selects_departamento VALUES("19","Si","Ginecologia");
-INSERT INTO selects_departamento VALUES("20","Si","Laboratorio Clinico");
-INSERT INTO selects_departamento VALUES("21","Si","Pediatría");
-INSERT INTO selects_departamento VALUES("22","Si","Radiologia e imagenes");
-INSERT INTO selects_departamento VALUES("23","Si","Subdirección Hospital");
-INSERT INTO selects_departamento VALUES("24","Si","Sección Equipo Médico");
-INSERT INTO selects_departamento VALUES("25","Si","Sección Equipo Básico");
-INSERT INTO selects_departamento VALUES("26","Si","Sección Planta Física y Monitoreo");
-INSERT INTO selects_departamento VALUES("27","Si","Servicio Centro Quirúrgico");
-INSERT INTO selects_departamento VALUES("28","Si","Servicio Medicina Hombres");
-INSERT INTO selects_departamento VALUES("29","Si","Servicio Medicina Mujeres");
-INSERT INTO selects_departamento VALUES("30","Si","Servicio Almacén");
-INSERT INTO selects_departamento VALUES("31","Si","Servicio Consulta Externa");
-INSERT INTO selects_departamento VALUES("32","Si","Servicio Trabajo Social");
-INSERT INTO selects_departamento VALUES("33","Si","Servicio Obstetricia");
-INSERT INTO selects_departamento VALUES("34","Si","Unidad Sala de Operación");
-INSERT INTO selects_departamento VALUES("35","Si","Unidad Sala de Partos");
-INSERT INTO selects_departamento VALUES("36","Si","Unidad Neonatos");
-INSERT INTO selects_departamento VALUES("37","Si","Unidad Máxima Urgencia");
-INSERT INTO selects_departamento VALUES("38","Si","Unidad Financiara Institucional");
-INSERT INTO selects_departamento VALUES("39","Si","Unidad Auditoria Interna");
-INSERT INTO selects_departamento VALUES("40","Si","Unidad Asesora de Suministro Médicos");
-INSERT INTO selects_departamento VALUES("41","Si","Unidad Atención Integral e Integrada ala Salud Sexual Reproductiva");
-INSERT INTO selects_departamento VALUES("42","Si","Unidad Cuidados Especiales");
-
-
-
-DROP TABLE selects_dependencia;
-
-CREATE TABLE `selects_dependencia` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
-  `Habilitado` mediumtext NOT NULL,
-  `dependencia` mediumtext NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
-
-INSERT INTO selects_dependencia VALUES("1","Si","Dirección Hospital");
-INSERT INTO selects_dependencia VALUES("2","Si","Departamento Mantenimiento Local");
-INSERT INTO selects_dependencia VALUES("3","Si","División Administrativa");
-INSERT INTO selects_dependencia VALUES("4","Si","Departamento Servicios Generales");
-INSERT INTO selects_dependencia VALUES("5","Si","Departamento Enfermeria");
-INSERT INTO selects_dependencia VALUES("6","Si","Sevicio Medicina Interna");
-INSERT INTO selects_dependencia VALUES("7","Si","Sevicio Centro Quirúrgico");
-INSERT INTO selects_dependencia VALUES("8","Si","Sevicio Centro Obstétrico");
-INSERT INTO selects_dependencia VALUES("9","Si","Subdirección Hospital");
-INSERT INTO selects_dependencia VALUES("10","Si","Servicio Consulta Externa");
-INSERT INTO selects_dependencia VALUES("11","Si","Unidad Enfermeria");
-
-
-
-DROP TABLE selects_unidad_medida;
-
-CREATE TABLE `selects_unidad_medida` (
-  `id` int(3) NOT NULL AUTO_INCREMENT,
-  `Habilitado` mediumtext NOT NULL,
-  `unidad_medida` mediumtext NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
-
-INSERT INTO selects_unidad_medida VALUES("1","Si","C/M");
-INSERT INTO selects_unidad_medida VALUES("2","Si","Cto");
-INSERT INTO selects_unidad_medida VALUES("3","Si","CUARTO GAL");
-INSERT INTO selects_unidad_medida VALUES("4","Si","C/U");
-INSERT INTO selects_unidad_medida VALUES("5","Si","Galón");
-INSERT INTO selects_unidad_medida VALUES("6","Si","Lb");
-INSERT INTO selects_unidad_medida VALUES("7","Si","Mts");
-INSERT INTO selects_unidad_medida VALUES("8","Si","Pgo");
-INSERT INTO selects_unidad_medida VALUES("9","Si","Qq");
-INSERT INTO selects_unidad_medida VALUES("10","Si","PAR");
-
-
-
-DROP TABLE tb_almacen;
 
 CREATE TABLE `tb_almacen` (
   `codAlmacen` int(12) NOT NULL,
-  `departamento` mediumtext NOT NULL,
-  `encargado` mediumtext NOT NULL,
-  `estado` mediumtext NOT NULL,
+  `departamento` text COLLATE utf8_spanish_ci NOT NULL,
+  `encargado` text COLLATE utf8_spanish_ci NOT NULL,
+  `estado` text COLLATE utf8_spanish_ci NOT NULL,
   `idusuario` int(11) NOT NULL DEFAULT 1,
   `fecha_solicitud` date NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`codAlmacen`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 
-
-
-DROP TABLE tb_bodega;
 
 CREATE TABLE `tb_bodega` (
   `codBodega` int(11) NOT NULL,
-  `departamento` mediumtext NOT NULL,
-  `usuario` mediumtext NOT NULL,
-  `campo` mediumtext NOT NULL DEFAULT ' Solicitud Bodega',
+  `departamento` text COLLATE utf8_spanish_ci NOT NULL,
+  `usuario` text COLLATE utf8_spanish_ci NOT NULL,
+  `campo` text COLLATE utf8_spanish_ci NOT NULL DEFAULT ' Solicitud Bodega',
   `fecha_registro` date NOT NULL DEFAULT current_timestamp(),
-  `estado` mediumtext NOT NULL,
+  `estado` text COLLATE utf8_spanish_ci NOT NULL,
   `idusuario` int(11) NOT NULL DEFAULT 2,
   PRIMARY KEY (`codBodega`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-INSERT INTO tb_bodega VALUES("5","Dirección Hospital","Ernesto Gonzalez Choto","Solicitud Bodega","2022-04-04","Rechazado","1");
-INSERT INTO tb_bodega VALUES("32","Unidad Financiara Institucional","Baltazar Alexander Marinero Perez","Solicitud Bodega","2022-03-30","Aprobado","2");
-INSERT INTO tb_bodega VALUES("33","Departamento Mantenimiento Local","René Adán Villalta Pérez","Solicitud Bodega","2022-02-20","Aprobado","2");
-INSERT INTO tb_bodega VALUES("40","Radiologia e imagenes","Baltazar Alexander Marinero Perez","Solicitud Bodega","2022-05-16","Aprobado","2");
-INSERT INTO tb_bodega VALUES("42","Dirección Hospital","Baltazar Alexander Marinero Perez","Solicitud Bodega","2022-04-04","Rechazado","2");
-INSERT INTO tb_bodega VALUES("45","Subdirección Hospital","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-21","Pendiente","1");
-INSERT INTO tb_bodega VALUES("46","Servicio Consulta Externa","Baltazar Alexander Marinero Perez","Solicitud Bodega","2022-05-24","Aprobado","2");
-INSERT INTO tb_bodega VALUES("102","Departamento Activo Fijo","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-15","Pendiente","1");
-INSERT INTO tb_bodega VALUES("113","Servicio Almacén","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-15","Pendiente","1");
-INSERT INTO tb_bodega VALUES("123","Subdirección Hospital","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-15","Pendiente","1");
-INSERT INTO tb_bodega VALUES("148","Sección Equipo Básico","Baltazar Alexander Marinero Perez","Solicitud Bodega","2022-03-30","Aprobado","2");
-INSERT INTO tb_bodega VALUES("151","Unidad Sala de Partos","Baltazar Alexander Marinero Perez","Solicitud Bodega","2022-04-05","Aprobado","2");
-INSERT INTO tb_bodega VALUES("170","Unidad Máxima Urgencia","Anderson Eduardo López Rodriguez","Solicitud Bodega","2022-04-04","Pendiente","2");
-INSERT INTO tb_bodega VALUES("179","EMERGENCIA","Yenifer Marisol Campos Yanez","Solicitud Bodega","2022-04-06","Aprobado","2");
-INSERT INTO tb_bodega VALUES("188","Unidad Máxima Urgencia","Yenifer Marisol Campos Yanez","Solicitud Bodega","2022-04-04","Aprobado","2");
-INSERT INTO tb_bodega VALUES("209","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-15","Pendiente","1");
-INSERT INTO tb_bodega VALUES("215","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-10","Pendiente","1");
-INSERT INTO tb_bodega VALUES("218","Área COVID 19","Yenifer Marisol Campos Yanez","Solicitud Bodega","2022-04-06","Aprobado","2");
-INSERT INTO tb_bodega VALUES("224","bienestar magisterial","Yenifer Marisol Campos Yanez","Solicitud Bodega","2022-04-06","Aprobado","2");
-INSERT INTO tb_bodega VALUES("228","Unidad Neonatos","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-15","Pendiente","1");
-INSERT INTO tb_bodega VALUES("229","Unidad Neonatos","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-25","Aprobado","1");
-INSERT INTO tb_bodega VALUES("230","Unidad Financiara Institucional","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-25","Aprobado","1");
-INSERT INTO tb_bodega VALUES("231","LABORATORIO CLINICO","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-01","Pendiente","1");
-INSERT INTO tb_bodega VALUES("236","Departamento Estadística y Documento Médicos","Miguel Antonio Corvera Torres","Solicitud Bodega","2022-03-25","Aprobado","2");
-INSERT INTO tb_bodega VALUES("245","Servicio Consulta Externa","Yenifer Marisol Campos Yanez","Solicitud Bodega","2022-04-04","Aprobado","2");
-INSERT INTO tb_bodega VALUES("255","Servicio Consulta Externa","René Adán Villalta Pérez","Solicitud Bodega","2022-03-30","Aprobado","2");
-INSERT INTO tb_bodega VALUES("257","Aérea Servicios Auxiliares","Miguel Antonio Corvera Torres","Solicitud Bodega","2022-03-01","Aprobado","2");
-INSERT INTO tb_bodega VALUES("260","Departamento Recursos Humanos","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-25","Aprobado","1");
-INSERT INTO tb_bodega VALUES("263","Servicio Almacén","René Adán Villalta Pérez","Solicitud Bodega","2022-03-25","Aprobado","2");
-INSERT INTO tb_bodega VALUES("264","Área COVID 19","Miguel Antonio Corvera Torres","Solicitud Bodega","2022-02-20","Aprobado","2");
-INSERT INTO tb_bodega VALUES("268","EMERGENCIA","Yenifer Marisol Campos Yanez","Solicitud Bodega","2022-04-06","Aprobado","2");
-INSERT INTO tb_bodega VALUES("269","Unidad Sala de Partos","Yenifer Marisol Campos Yanez","Solicitud Bodega","2022-04-06","Aprobado","2");
-INSERT INTO tb_bodega VALUES("273","Unidad Máxima Urgencia","Yenifer Marisol Campos Yanez","Solicitud Bodega","2022-04-04","Aprobado","2");
-INSERT INTO tb_bodega VALUES("278","Unidad Máxima Urgencia","Yenifer Marisol Campos Yanez","Solicitud Bodega","2022-04-04","Aprobado","2");
-INSERT INTO tb_bodega VALUES("280","Área COVID 19","Yenifer Marisol Campos Yanez","Solicitud Bodega","2022-04-04","Aprobado","2");
-INSERT INTO tb_bodega VALUES("281","Unidad Sala de Operación","Ernesto Gonzalez Choto","Solicitud Bodega","2022-04-06","Aprobado","1");
-INSERT INTO tb_bodega VALUES("282","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-04-06","Aprobado","1");
-INSERT INTO tb_bodega VALUES("284","Servicio Consulta Externa","Anderson Eduardo López Rodriguez","Solicitud Bodega","2022-03-29","Aprobado","2");
-INSERT INTO tb_bodega VALUES("287","Departamento Lavandería y Ropería","Yenifer Marisol Campos Yanez","Solicitud Bodega","2022-03-29","Aprobado","2");
-INSERT INTO tb_bodega VALUES("294","Unidad Sala de Operación","Miguel Antonio Corvera Torres","Solicitud Bodega","2022-03-30","Aprobado","2");
-INSERT INTO tb_bodega VALUES("297","Departamento Mantenimiento Local","Anderson Eduardo López Rodriguez","Solicitud Bodega","2022-03-01","Aprobado","2");
-INSERT INTO tb_bodega VALUES("301","Departamento Mantenimiento Local","Fransico Tolentino López","Solicitud Bodega","2022-03-30","Aprobado","2");
-INSERT INTO tb_bodega VALUES("302","Departamento Lavandería y Ropería","René Adán Villalta Pérez","Solicitud Bodega","2022-03-01","Aprobado","2");
-INSERT INTO tb_bodega VALUES("303","Servicio Medicina Hombres","Ronald Alexander Lopez Cisnero","Solicitud Bodega","2022-04-29","Aprobado","2");
-INSERT INTO tb_bodega VALUES("304","Departamento Mantenimiento Local","Anderson Eduardo López Rodriguez","Solicitud Bodega","2022-04-05","Aprobado","2");
-INSERT INTO tb_bodega VALUES("308","Aérea Servicios Auxiliares","Fransico Tolentino López","Solicitud Bodega","2022-04-04","Aprobado","2");
-INSERT INTO tb_bodega VALUES("309","Departamento Mantenimiento Local","Miguel Antonio Corvera Torres","Solicitud Bodega","2022-04-05","Rechazado","2");
-INSERT INTO tb_bodega VALUES("310","Departamento Mantenimiento Local","Anderson Eduardo López Rodriguez","Solicitud Bodega","2022-04-01","Aprobado","2");
-INSERT INTO tb_bodega VALUES("312","Aérea Servicios Auxiliares","Miguel Antonio Corvera Torres","Solicitud Bodega","2022-04-04","Pendiente","2");
-INSERT INTO tb_bodega VALUES("313","Unidad Neonatos","Anderson Eduardo López Rodriguez","Solicitud Bodega","2022-05-31","Aprobado","2");
-INSERT INTO tb_bodega VALUES("314","DIVISIÓN ADMINISTRATIVA","Miguel Antonio Corvera Torres","Solicitud Bodega","2022-05-31","Aprobado","2");
-INSERT INTO tb_bodega VALUES("315","Servicio Almacén","José Domingo Echeverría","Solicitud Bodega","2022-04-06","Aprobado","2");
-INSERT INTO tb_bodega VALUES("316","Servicio Medicina Mujeres","René Adán Villalta Pérez","Solicitud Bodega","2022-04-04","Aprobado","2");
-INSERT INTO tb_bodega VALUES("317","Servicio Medicina Mujeres","René Adán Villalta Pérez","Solicitud Bodega","2022-04-08","Aprobado","2");
-INSERT INTO tb_bodega VALUES("319","Servicio Centro Quirúrgico","Napoleón Alfredo Rodas","Solicitud Bodega","2022-04-04","Pendiente","2");
-INSERT INTO tb_bodega VALUES("322","Departamento Mantenimiento Local","Miguel Antonio Corvera Torres","Solicitud Bodega","2022-04-06","Aprobado","2");
-INSERT INTO tb_bodega VALUES("323","FISIOTERAPIA","Anderson Eduardo López Rodriguez","Solicitud Bodega","2022-04-07","Aprobado","2");
-INSERT INTO tb_bodega VALUES("326","Radiologia e imagenes","Yenifer Marisol Campos Yanez","Solicitud Bodega","2022-04-07","Aprobado","2");
-INSERT INTO tb_bodega VALUES("333","LABORATORIO CLINICO","Anderson Eduardo López Rodriguez","Solicitud Bodega","2022-02-20","Aprobado","2");
-INSERT INTO tb_bodega VALUES("339","Departamento Mantenimiento Local","Anderson Eduardo López Rodriguez","Solicitud Bodega","2022-02-20","Aprobado","2");
-INSERT INTO tb_bodega VALUES("342","Área Residencial Médica","Ernesto Gonzalez Choto","Solicitud Bodega","2022-02-20","Aprobado","1");
-INSERT INTO tb_bodega VALUES("354","Aérea Servicios Auxiliares","Miguel Antonio Corvera Torres","Solicitud Bodega","0000-00-00","Aprobado","2");
-INSERT INTO tb_bodega VALUES("356","Departamento Mantenimiento Local","René Adán Villalta Pérez","Solicitud Bodega","2022-02-20","Aprobado","2");
-INSERT INTO tb_bodega VALUES("357","Departamento Mantenimiento Local","Napoleon Alfredo Rodas","Solicitud Bodega","2022-02-20","Aprobado","2");
-INSERT INTO tb_bodega VALUES("358","DIVISIÓN ADMINISTRATIVA","Napoleon Alfredo Rodas","Solicitud Bodega","2022-02-20","Aprobado","2");
-INSERT INTO tb_bodega VALUES("359","Aérea Servicios Auxiliares","Miguel Antonio Corvera Torres","Solicitud Bodega","2022-04-01","Aprobado","2");
-INSERT INTO tb_bodega VALUES("365","Unidad Sala de Operación","Anderson Eduardo López Rodriguez","Solicitud Bodega","0000-00-00","Aprobado","2");
-INSERT INTO tb_bodega VALUES("387","Sección Equipo Médico","José Domingo Echeverría","Solicitud Bodega","0000-00-00","Aprobado","2");
-INSERT INTO tb_bodega VALUES("388","Departamento Mantenimiento Local","Napoleon Alfredo Rodas","Solicitud Bodega","0000-00-00","Aprobado","2");
-INSERT INTO tb_bodega VALUES("390","Unidad Sala de Partos","Anderson Eduardo López Rodriguez","Solicitud Bodega","0000-00-00","Aprobado","2");
-INSERT INTO tb_bodega VALUES("396","Servicio Consulta Externa","Baltazar Alexander Marinero Perez","Solicitud Bodega","2022-04-29","Aprobado","2");
-INSERT INTO tb_bodega VALUES("397","Servicio Almacén","Yenifer Marisol Campos Yanez","Solicitud Bodega","2022-04-29","Aprobado","2");
-INSERT INTO tb_bodega VALUES("401","Radiologia e imagenes","Baltazar Alexander Marinero Perez","Solicitud Bodega","2022-05-16","Aprobado","2");
-INSERT INTO tb_bodega VALUES("402","EMERGENCIA","Napoleon Alfredo Rodas","Solicitud Bodega","2022-05-11","Aprobado","2");
-INSERT INTO tb_bodega VALUES("405","Unidad Sala de Operación","Kilmar Waldir Pérez Marin","Solicitud Bodega","2022-04-29","Aprobado","2");
-INSERT INTO tb_bodega VALUES("409","Departamento Estadística y Documento Médicos","Fransico Tolentino López","Solicitud Bodega","2022-05-20","Aprobado","2");
-INSERT INTO tb_bodega VALUES("411","EMERGENCIA","Miguel Antonio Corvera Torres","Solicitud Bodega","2022-05-06","Aprobado","2");
-INSERT INTO tb_bodega VALUES("412","Departamento Mantenimiento Local","René Adán Villalta Pérez","Solicitud Bodega","2022-05-17","Pendiente","2");
-INSERT INTO tb_bodega VALUES("418","Dirección Hospital","Fransico Tolentino López","Solicitud Bodega","2022-05-30","Aprobado","2");
-INSERT INTO tb_bodega VALUES("419","Dirección Hospital","Fransico Tolentino López","Solicitud Bodega","2022-05-25","Aprobado","2");
-INSERT INTO tb_bodega VALUES("420","EMERGENCIA","Fransico Tolentino López","Solicitud Bodega","2022-05-04","Aprobado","2");
-INSERT INTO tb_bodega VALUES("422","Dirección Hospital","Miguel Antonio Corvera Torres","Solicitud Bodega","2022-05-06","Aprobado","2");
-INSERT INTO tb_bodega VALUES("425","cirugia Hombre","Napoleon Alfredo Rodas","Solicitud Bodega","2022-05-06","Aprobado","2");
-INSERT INTO tb_bodega VALUES("426","Servicio Trabajo Social","Miguel Antonio Corvera Torres","Solicitud Bodega","2022-05-09","Aprobado","2");
-INSERT INTO tb_bodega VALUES("427","Departamento Mantenimiento Local","Miguel Antonio Corvera Torres","Solicitud Bodega","2022-05-11","Aprobado","2");
-INSERT INTO tb_bodega VALUES("430","LABORATORIO CLINICO","Fransico Tolentino López","Solicitud Bodega","2022-05-16","Aprobado","2");
-INSERT INTO tb_bodega VALUES("432","FARMACIA","Fransico Tolentino López","Solicitud Bodega","2022-05-11","Aprobado","2");
-INSERT INTO tb_bodega VALUES("433","bienestar magisterial","Miguel Antonio Corvera Torres","Solicitud Bodega","2022-05-11","Aprobado","2");
-INSERT INTO tb_bodega VALUES("445","Dirección Hospital","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-15","Pendiente","1");
-INSERT INTO tb_bodega VALUES("449","Aérea Servicios Auxiliares","Kevin Alexander Guevara Marinero","Solicitud Bodega","2022-05-25","Aprobado","2");
-INSERT INTO tb_bodega VALUES("450","Unidad Sala de Partos","Napoleon Alfredo Rodas","Solicitud Bodega","2022-05-17","Aprobado","2");
-INSERT INTO tb_bodega VALUES("451","Departamento Mantenimiento Local","Napoleon Alfredo Rodas","Solicitud Bodega","2022-05-17","Aprobado","2");
-INSERT INTO tb_bodega VALUES("452","Área COVID 19","Miguel Antonio Corvera Torres","Solicitud Bodega","2022-05-17","Aprobado","2");
-INSERT INTO tb_bodega VALUES("453","FISIOTERAPIA","René Adán Villalta Pérez","Solicitud Bodega","2022-05-20","Aprobado","2");
-INSERT INTO tb_bodega VALUES("478","Servicio Consulta Externa","René Adán Villalta Pérez","Solicitud Bodega","2022-05-24","Pendiente","2");
-INSERT INTO tb_bodega VALUES("482","Departamento Mantenimiento Local","Yenifer Marisol Campos Yanez","Solicitud Bodega","2022-05-23","Aprobado","2");
-INSERT INTO tb_bodega VALUES("483","Departamento Mantenimiento Local","Baltazar Alexander Marinero Perez","Solicitud Bodega","2022-05-20","Aprobado","2");
-INSERT INTO tb_bodega VALUES("486","Sección Equipo Básico","Baltazar Alexander Marinero Perez","Solicitud Bodega","2022-05-24","Aprobado","2");
-INSERT INTO tb_bodega VALUES("496","Servicio Obstetricia","Anderson Eduardo López Rodriguez","Solicitud Bodega","2022-05-25","Aprobado","2");
-INSERT INTO tb_bodega VALUES("497","Departamento Mantenimiento Local","José Domingo Echeverría","Solicitud Bodega","2022-05-25","Aprobado","2");
-INSERT INTO tb_bodega VALUES("500","Unidad Neonatos","René Adán Villalta Pérez","Solicitud Bodega","2022-05-27","Aprobado","2");
-INSERT INTO tb_bodega VALUES("501","Departamento Mantenimiento Local","José Domingo Echeverría","Solicitud Bodega","2022-05-31","Aprobado","2");
-INSERT INTO tb_bodega VALUES("502","Servicio Obstetricia","Fransico Tolentino López","Solicitud Bodega","2022-05-27","Aprobado","2");
-INSERT INTO tb_bodega VALUES("504","Pediatría","Napoleon Alfredo Rodas","Solicitud Bodega","2022-05-01","Aprobado","2");
-INSERT INTO tb_bodega VALUES("512","Área COVID 19","Napoleon Alfredo Rodas","Solicitud Bodega","2022-05-31","Aprobado","2");
-INSERT INTO tb_bodega VALUES("514","Departamento Mantenimiento Local","Anderson Eduardo López Rodriguez","Solicitud Bodega","2022-05-30","Aprobado","2");
-INSERT INTO tb_bodega VALUES("515","Pediatría","René Adán Villalta Pérez","Solicitud Bodega","2022-05-31","Aprobado","2");
-INSERT INTO tb_bodega VALUES("516","FISIOTERAPIA","Fransico Tolentino López","Solicitud Bodega","2022-05-01","Aprobado","2");
-INSERT INTO tb_bodega VALUES("517","Radiologia e imagenes","Yenifer Marisol Campos Yanez","Solicitud Bodega","2022-05-31","Aprobado","2");
-INSERT INTO tb_bodega VALUES("518","bienestar magisterial","René Adán Villalta Pérez","Solicitud Bodega","2022-05-31","Aprobado","2");
-INSERT INTO tb_bodega VALUES("519","Departamento Mantenimiento Local","Kevin Alexander Guevara Marinero","Solicitud Bodega","2022-05-01","Aprobado","2");
-INSERT INTO tb_bodega VALUES("529","GINECOLOGIA","Napoleon Alfredo Rodas","Solicitud Bodega","2022-05-01","Aprobado","2");
-INSERT INTO tb_bodega VALUES("554","Dirección Hospital","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-15","Pendiente","1");
-INSERT INTO tb_bodega VALUES("1520","Sección Planta Física y Monitoreo","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-28","Aprobado","1");
-INSERT INTO tb_bodega VALUES("1701","Unidad Máxima Urgencia","Anderson Eduardo López Rodriguez","Solicitud Bodega","2022-04-04","Pendiente","2");
-INSERT INTO tb_bodega VALUES("2301","Unidad Financiara Institucional","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-15","Pendiente","1");
-INSERT INTO tb_bodega VALUES("2451","Servicio Medicina Mujeres","Yenifer Marisol Campos Yanez","Solicitud Bodega","2022-04-06","Aprobado","2");
-INSERT INTO tb_bodega VALUES("2641","Área COVID 19","Miguel Antonio Corvera Torres","Solicitud Bodega","2022-02-20","Aprobado","2");
-INSERT INTO tb_bodega VALUES("2971","Departamento Mantenimiento Local","Anderson Eduardo López Rodriguez","Solicitud Bodega","2022-03-01","Rechazado","2");
-INSERT INTO tb_bodega VALUES("2972","Departamento Mantenimiento Local","Anderson Eduardo López Rodriguez","Solicitud Bodega","2022-03-01","Aprobado","2");
-INSERT INTO tb_bodega VALUES("3041","Departamento Mantenimiento Local","Anderson Eduardo López Rodriguez","Solicitud Bodega","2022-04-05","Pendiente","2");
-INSERT INTO tb_bodega VALUES("3042","Departamento Mantenimiento Local","Anderson Eduardo López Rodriguez","Solicitud Bodega","2022-04-05","Aprobado","2");
-INSERT INTO tb_bodega VALUES("3043","Departamento Mantenimiento Local","Anderson Eduardo López Rodriguez","Solicitud Bodega","2022-04-06","Aprobado","2");
-INSERT INTO tb_bodega VALUES("3081","Aérea Servicios Auxiliares","Fransico Tolentino López","Solicitud Bodega","2022-04-04","Aprobado","2");
-INSERT INTO tb_bodega VALUES("3082","Aérea Servicios Auxiliares","Fransico Tolentino López","Solicitud Bodega","2022-02-20","Aprobado","2");
-INSERT INTO tb_bodega VALUES("3091","Departamento Mantenimiento Local","Miguel Antonio Corvera Torres","Solicitud Bodega","2022-04-05","Aprobado","2");
-INSERT INTO tb_bodega VALUES("3101","Departamento Mantenimiento Local","Anderson Eduardo López Rodriguez","Solicitud Bodega","2022-04-01","Aprobado","2");
-INSERT INTO tb_bodega VALUES("3131","Unidad Neonatos","Anderson Eduardo López Rodriguez","Solicitud Bodega","2022-05-31","Aprobado","2");
-INSERT INTO tb_bodega VALUES("3141","DIVISIÓN ADMINISTRATIVA","Miguel Antonio Corvera Torres","Solicitud Bodega","2022-02-20","Aprobado","2");
-INSERT INTO tb_bodega VALUES("3151","Servicio Almacén","José Domingo Echeverría","Solicitud Bodega","2022-04-06","Pendiente","2");
-INSERT INTO tb_bodega VALUES("3152","FISIOTERAPIA","Fransico Tolentino López","Solicitud Bodega","2022-04-07","Aprobado","2");
-INSERT INTO tb_bodega VALUES("3871","Departamento Mantenimiento Local","José Domingo Echeverría","Solicitud Bodega","2022-05-05","Aprobado","2");
-INSERT INTO tb_bodega VALUES("4051","Departamento Mantenimiento Local","José Domingo Echeverría","Solicitud Bodega","2022-05-09","Aprobado","2");
-INSERT INTO tb_bodega VALUES("4191","Dirección Hospital","Fransico Tolentino López","Solicitud Bodega","2022-05-25","Aprobado","2");
-INSERT INTO tb_bodega VALUES("4261","Servicio Trabajo Social","Miguel Antonio Corvera Torres","Solicitud Bodega","2022-05-25","Aprobado","2");
-INSERT INTO tb_bodega VALUES("4301","LABORATORIO CLINICO","Fransico Tolentino López","Solicitud Bodega","2022-05-16","Aprobado","2");
-INSERT INTO tb_bodega VALUES("4321","FARMACIA","Fransico Tolentino López","Solicitud Bodega","2022-05-11","Aprobado","2");
-INSERT INTO tb_bodega VALUES("4331","bienestar magisterial","Miguel Antonio Corvera Torres","Solicitud Bodega","2022-05-17","Aprobado","2");
-INSERT INTO tb_bodega VALUES("4491","Aérea Servicios Auxiliares","Kevin Alexander Guevara Marinero","Solicitud Bodega","2022-05-25","Aprobado","2");
-INSERT INTO tb_bodega VALUES("4511","Departamento Mantenimiento Local","Napoleon Alfredo Rodas","Solicitud Bodega","2022-05-17","Aprobado","2");
-INSERT INTO tb_bodega VALUES("4512","Pediatría","Napoleon Alfredo Rodas","Solicitud Bodega","0000-00-00","Aprobado","2");
-INSERT INTO tb_bodega VALUES("4521","Área COVID 19","Miguel Antonio Corvera Torres","Solicitud Bodega","0000-00-00","Aprobado","2");
-INSERT INTO tb_bodega VALUES("4821","Departamento Mantenimiento Local","Yenifer Marisol Campos Yanez","Solicitud Bodega","2022-05-23","Aprobado","2");
-INSERT INTO tb_bodega VALUES("4822","Departamento Mantenimiento Local","Yenifer Marisol Campos Yanez","Solicitud Bodega","2022-05-31","Aprobado","2");
-INSERT INTO tb_bodega VALUES("5151","Pediatría","Yenifer Marisol Campos Yanez","Solicitud Bodega","2022-05-31","Aprobado","2");
-INSERT INTO tb_bodega VALUES("5161","FISIOTERAPIA","Fransico Tolentino López","Solicitud Bodega","2022-05-01","Aprobado","2");
-INSERT INTO tb_bodega VALUES("5181","Departamento Mantenimiento Local","José Domingo Echeverría","Solicitud Bodega","2022-05-01","Aprobado","2");
-INSERT INTO tb_bodega VALUES("31601","Servicio Medicina Mujeres","René Adán Villalta Pérez","Solicitud Bodega","2022-04-05","Aprobado","2");
-INSERT INTO tb_bodega VALUES("45111","Pediatría","Napoleon Alfredo Rodas","Solicitud Bodega","2022-05-18","Aprobado","2");
-INSERT INTO tb_bodega VALUES("70222","Departamento Mantenimiento Local","Yenifer Marisol Campos Yanez","Solicitud Bodega","2022-04-05","Aprobado","2");
-INSERT INTO tb_bodega VALUES("90222","Unidad Máxima Urgencia","Yenifer Marisol Campos Yanez","Solicitud Bodega","2022-04-05","Aprobado","2");
-INSERT INTO tb_bodega VALUES("150322","Departamento Mantenimiento Local","Yenifer Marisol Campos Yanez","Solicitud Bodega","2022-04-05","Aprobado","2");
-INSERT INTO tb_bodega VALUES("203220","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-03","Pendiente","1");
-INSERT INTO tb_bodega VALUES("210422","DIVISIÓN ADMINISTRATIVA","Yenifer Marisol Campos Yanez","Solicitud Bodega","2022-04-01","Aprobado","2");
-INSERT INTO tb_bodega VALUES("212121","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-02-25","Pendiente","1");
-INSERT INTO tb_bodega VALUES("250222","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-02-26","Pendiente","1");
-INSERT INTO tb_bodega VALUES("403220","Departamento Mantenimiento Local","Ernesto Choto","Solicitud Bodega","2022-03-05","Pendiente","2");
-INSERT INTO tb_bodega VALUES("403221","Departamento Mantenimiento Local","Ernesto Choto","Solicitud Bodega","2022-03-05","Pendiente","2");
-INSERT INTO tb_bodega VALUES("403222","Departamento Mantenimiento Local","Ernesto Choto","Solicitud Bodega","2022-03-05","Pendiente","2");
-INSERT INTO tb_bodega VALUES("403223","Departamento Mantenimiento Local","Ernesto Choto","Solicitud Bodega","2022-03-05","Pendiente","2");
-INSERT INTO tb_bodega VALUES("403225","Departamento Mantenimiento Local","Ernesto Choto","Solicitud Bodega","2022-03-05","Pendiente","2");
-INSERT INTO tb_bodega VALUES("403226","Departamento Mantenimiento Local","Ernesto Choto","Solicitud Bodega","2022-03-05","Pendiente","2");
-INSERT INTO tb_bodega VALUES("403227","Departamento Mantenimiento Local","Ernesto Choto","Solicitud Bodega","2022-03-05","Pendiente","2");
-INSERT INTO tb_bodega VALUES("1032201","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-02","Pendiente","1");
-INSERT INTO tb_bodega VALUES("1032202","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-02","Pendiente","1");
-INSERT INTO tb_bodega VALUES("1032203","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-02","Pendiente","1");
-INSERT INTO tb_bodega VALUES("1032204","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-02","Pendiente","1");
-INSERT INTO tb_bodega VALUES("1032205","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-02","Pendiente","1");
-INSERT INTO tb_bodega VALUES("1032206","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-02","Pendiente","1");
-INSERT INTO tb_bodega VALUES("1032207","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-02","Pendiente","1");
-INSERT INTO tb_bodega VALUES("1032208","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-02","Pendiente","1");
-INSERT INTO tb_bodega VALUES("1032209","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-02","Pendiente","1");
-INSERT INTO tb_bodega VALUES("1032210","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-02","Pendiente","1");
-INSERT INTO tb_bodega VALUES("1032211","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-02","Pendiente","1");
-INSERT INTO tb_bodega VALUES("1032212","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-02","Pendiente","1");
-INSERT INTO tb_bodega VALUES("1032213","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-02","Pendiente","1");
-INSERT INTO tb_bodega VALUES("1032214","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-02","Pendiente","1");
-INSERT INTO tb_bodega VALUES("1032215","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-02","Pendiente","1");
-INSERT INTO tb_bodega VALUES("1032216","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-02","Pendiente","1");
-INSERT INTO tb_bodega VALUES("1032217","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-02","Pendiente","1");
-INSERT INTO tb_bodega VALUES("1032220","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-02","Pendiente","1");
-INSERT INTO tb_bodega VALUES("1032222","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-02","Pendiente","1");
-INSERT INTO tb_bodega VALUES("1032224","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-02","Pendiente","1");
-INSERT INTO tb_bodega VALUES("1032225","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-02","Pendiente","1");
-INSERT INTO tb_bodega VALUES("1032226","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-02","Pendiente","1");
-INSERT INTO tb_bodega VALUES("1032227","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-02","Pendiente","1");
-INSERT INTO tb_bodega VALUES("1062022","Unidad Neonatos","Miguel Antonio Corvera Torres","Solicitud Bodega","2022-05-01","Aprobado","2");
-INSERT INTO tb_bodega VALUES("1532022","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-02-25","Pendiente","1");
-INSERT INTO tb_bodega VALUES("2032201","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-03","Pendiente","1");
-INSERT INTO tb_bodega VALUES("2032202","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-03","Pendiente","1");
-INSERT INTO tb_bodega VALUES("2032203","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-03","Pendiente","1");
-INSERT INTO tb_bodega VALUES("2032204","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-03","Pendiente","1");
-INSERT INTO tb_bodega VALUES("2032205","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-03","Pendiente","1");
-INSERT INTO tb_bodega VALUES("2032206","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-03","Pendiente","1");
-INSERT INTO tb_bodega VALUES("2032207","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-03","Pendiente","1");
-INSERT INTO tb_bodega VALUES("2032208","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-03","Pendiente","1");
-INSERT INTO tb_bodega VALUES("2032209","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-03","Pendiente","1");
-INSERT INTO tb_bodega VALUES("2032210","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-03","Pendiente","1");
-INSERT INTO tb_bodega VALUES("2032211","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-03","Pendiente","1");
-INSERT INTO tb_bodega VALUES("2032212","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-03","Pendiente","1");
-INSERT INTO tb_bodega VALUES("2032213","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-03","Pendiente","1");
-INSERT INTO tb_bodega VALUES("2032214","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-03","Pendiente","1");
-INSERT INTO tb_bodega VALUES("2032216","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-03","Pendiente","1");
-INSERT INTO tb_bodega VALUES("2032217","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-03","Pendiente","1");
-INSERT INTO tb_bodega VALUES("2502221","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-02-26","Pendiente","1");
-INSERT INTO tb_bodega VALUES("2502222","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-02-26","Pendiente","1");
-INSERT INTO tb_bodega VALUES("2502223","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-02-26","Pendiente","1");
-INSERT INTO tb_bodega VALUES("2502224","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-02-26","Pendiente","1");
-INSERT INTO tb_bodega VALUES("2502225","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-02-26","Pendiente","1");
-INSERT INTO tb_bodega VALUES("2502226","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-02-26","Pendiente","1");
-INSERT INTO tb_bodega VALUES("2502227","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-02-26","Pendiente","1");
-INSERT INTO tb_bodega VALUES("2502228","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-02-26","Pendiente","1");
-INSERT INTO tb_bodega VALUES("2502229","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-02-26","Pendiente","1");
-INSERT INTO tb_bodega VALUES("2822221","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-01","Pendiente","1");
-INSERT INTO tb_bodega VALUES("3032200","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-04","Pendiente","1");
-INSERT INTO tb_bodega VALUES("3032201","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-04","Pendiente","1");
-INSERT INTO tb_bodega VALUES("3032202","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-04","Pendiente","1");
-INSERT INTO tb_bodega VALUES("3032203","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-04","Pendiente","1");
-INSERT INTO tb_bodega VALUES("3032204","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-04","Pendiente","1");
-INSERT INTO tb_bodega VALUES("3032205","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-04","Pendiente","1");
-INSERT INTO tb_bodega VALUES("3032206","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-04","Pendiente","1");
-INSERT INTO tb_bodega VALUES("3032207","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-04","Pendiente","1");
-INSERT INTO tb_bodega VALUES("3032208","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-04","Pendiente","1");
-INSERT INTO tb_bodega VALUES("3032209","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-04","Pendiente","1");
-INSERT INTO tb_bodega VALUES("3032210","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-04","Pendiente","1");
-INSERT INTO tb_bodega VALUES("3032211","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-04","Pendiente","1");
-INSERT INTO tb_bodega VALUES("3032212","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-04","Pendiente","1");
-INSERT INTO tb_bodega VALUES("3032213","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-04","Pendiente","1");
-INSERT INTO tb_bodega VALUES("3032214","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-04","Pendiente","1");
-INSERT INTO tb_bodega VALUES("3032215","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-04","Pendiente","1");
-INSERT INTO tb_bodega VALUES("3032216","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-04","Pendiente","1");
-INSERT INTO tb_bodega VALUES("3032217","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-04","Pendiente","1");
-INSERT INTO tb_bodega VALUES("3032218","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-04","Pendiente","1");
-INSERT INTO tb_bodega VALUES("3032219","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-04","Pendiente","1");
-INSERT INTO tb_bodega VALUES("15320221","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-02-25","Pendiente","1");
-INSERT INTO tb_bodega VALUES("15320223","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-02-25","Pendiente","1");
-INSERT INTO tb_bodega VALUES("15320224","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-02-25","Pendiente","1");
-INSERT INTO tb_bodega VALUES("28022201","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-01","Pendiente","1");
-INSERT INTO tb_bodega VALUES("28022202","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-01","Pendiente","1");
-INSERT INTO tb_bodega VALUES("28022203","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-01","Pendiente","1");
-INSERT INTO tb_bodega VALUES("28022204","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-01","Pendiente","1");
-INSERT INTO tb_bodega VALUES("28022205","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-01","Pendiente","1");
-INSERT INTO tb_bodega VALUES("28022206","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-01","Pendiente","1");
-INSERT INTO tb_bodega VALUES("28022208","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-01","Pendiente","1");
-INSERT INTO tb_bodega VALUES("28022209","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-01","Pendiente","1");
-INSERT INTO tb_bodega VALUES("28022210","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-01","Pendiente","1");
-INSERT INTO tb_bodega VALUES("28022211","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-01","Pendiente","1");
-INSERT INTO tb_bodega VALUES("28022212","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-01","Pendiente","1");
-INSERT INTO tb_bodega VALUES("28022214","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-01","Pendiente","1");
-INSERT INTO tb_bodega VALUES("28022216","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-01","Pendiente","1");
-INSERT INTO tb_bodega VALUES("28022218","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-01","Pendiente","1");
-INSERT INTO tb_bodega VALUES("28022219","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-01","Pendiente","1");
-INSERT INTO tb_bodega VALUES("28022220","Departamento Mantenimiento Local","Ernesto Gonzalez Choto","Solicitud Bodega","2022-03-01","Pendiente","1");
-INSERT INTO tb_bodega VALUES("405030522","Departamento Mantenimiento Local","José Domingo Echeverría","Solicitud Bodega","2022-05-03","Aprobado","2");
-INSERT INTO tb_bodega VALUES("406030522","Unidad Sala de Operación","Miguel Antonio Corvera Torres","Solicitud Bodega","2022-05-03","Aprobado","2");
-INSERT INTO tb_bodega VALUES("407030522","Departamento Mantenimiento Local","René Adán Villalta Pérez","Solicitud Bodega","2022-05-03","Aprobado","2");
-INSERT INTO tb_bodega VALUES("408030522","Departamento Mantenimiento Local","Fransico Tolentino López","Solicitud Bodega","2022-05-03","Aprobado","2");
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 
-
-DROP TABLE tb_circulante;
 
 CREATE TABLE `tb_circulante` (
   `codCirculante` int(15) NOT NULL,
-  `campo` mediumtext NOT NULL DEFAULT 'Solicitud Circulante',
-  `estado` mediumtext NOT NULL,
+  `campo` text COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Solicitud Circulante',
+  `estado` text COLLATE utf8_spanish_ci NOT NULL,
   `idusuario` int(11) NOT NULL DEFAULT 1,
   `fecha_solicitud` date NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`codCirculante`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 
-
-
-DROP TABLE tb_compra;
 
 CREATE TABLE `tb_compra` (
   `nSolicitud` int(11) NOT NULL,
-  `dependencia` mediumtext NOT NULL,
-  `plazo` mediumtext DEFAULT NULL,
-  `unidad_tecnica` mediumtext NOT NULL,
-  `descripcion_solicitud` mediumtext NOT NULL,
-  `usuario` mediumtext NOT NULL,
-  `campo` mediumtext NOT NULL DEFAULT 'Solicitud Compra',
-  `estado` mediumtext NOT NULL,
+  `dependencia` text COLLATE utf8_spanish_ci NOT NULL,
+  `plazo` text COLLATE utf8_spanish_ci DEFAULT NULL,
+  `unidad_tecnica` text COLLATE utf8_spanish_ci NOT NULL,
+  `descripcion_solicitud` text COLLATE utf8_spanish_ci NOT NULL,
+  `usuario` text COLLATE utf8_spanish_ci NOT NULL,
+  `campo` text COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Solicitud Compra',
+  `estado` text COLLATE utf8_spanish_ci NOT NULL,
   `idusuario` int(11) NOT NULL DEFAULT 1,
-  `justificacion` mediumtext NOT NULL,
+  `justificacion` text COLLATE utf8_spanish_ci NOT NULL,
   `fecha_registro` date NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`nSolicitud`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+INSERT INTO tb_compra VALUES("0","1","","1","1","1","Solicitud Compra","1","1","1","2022-10-29");
+INSERT INTO tb_compra VALUES("1","1","","1","1","1","Solicitud Compra","1","1","1","2022-10-29");
 
-
-
-DROP TABLE tb_productos;
 
 CREATE TABLE `tb_productos` (
   `cod` int(3) NOT NULL AUTO_INCREMENT,
   `codProductos` int(15) NOT NULL,
   `catalogo` int(15) NOT NULL,
-  `descripcion` mediumtext NOT NULL,
-  `unidad_medida` mediumtext NOT NULL DEFAULT 'C/U',
+  `descripcion` text COLLATE utf8_spanish_ci NOT NULL,
+  `unidad_medida` text COLLATE utf8_spanish_ci NOT NULL DEFAULT 'C/U',
   `stock` decimal(6,2) unsigned NOT NULL DEFAULT 0.00,
   `precio` decimal(6,2) NOT NULL DEFAULT 0.00,
-  `categoria` mediumtext NOT NULL,
+  `categoria` text COLLATE utf8_spanish_ci NOT NULL,
   `fecha_registro` date NOT NULL DEFAULT current_timestamp(),
   `Dia` int(2) NOT NULL,
   `Mes` int(2) NOT NULL,
   `Año` int(4) NOT NULL,
   PRIMARY KEY (`cod`)
-) ENGINE=InnoDB AUTO_INCREMENT=702 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=702 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 INSERT INTO tb_productos VALUES("1","31161502","70212419","ANCLA PLASTICA PARA TABLA ROCA","C/U","56.00","0.23","Herramientas y Repuestos","2022-05-17","17","5","2022");
 INSERT INTO tb_productos VALUES("2","43703002","72154119","NIPLE GALVANIZADO DE 1\" X 1 1/2\"","C/U","7.00","1.50","Minerales Metálicos","2022-03-07","7","3","2022");
@@ -1411,24 +777,21 @@ INSERT INTO tb_productos VALUES("700","80200230","26111701","BATERIA RECARGABLE 
 INSERT INTO tb_productos VALUES("701","80804065","46181525","CAPA IMPERMEABLES DE 1 PIEZA VARIOS COLORES Y TALLAS","C/U","12.00","11.95","Equipo y Herramientas de Mantto","2022-05-17","17","5","2022");
 
 
-
-DROP TABLE tb_usuarios;
-
 CREATE TABLE `tb_usuarios` (
   `id` int(3) NOT NULL AUTO_INCREMENT,
-  `username` mediumtext NOT NULL,
-  `firstname` mediumtext NOT NULL,
-  `lastname` mediumtext NOT NULL,
-  `Establecimiento` mediumtext NOT NULL,
-  `unidad` mediumtext NOT NULL,
-  `password` mediumtext NOT NULL,
-  `Habilitado` mediumtext NOT NULL,
+  `username` text COLLATE utf8_spanish_ci NOT NULL,
+  `firstname` text COLLATE utf8_spanish_ci NOT NULL,
+  `lastname` text COLLATE utf8_spanish_ci NOT NULL,
+  `Establecimiento` text COLLATE utf8_spanish_ci NOT NULL,
+  `unidad` text COLLATE utf8_spanish_ci NOT NULL,
+  `password` text COLLATE utf8_spanish_ci NOT NULL,
+  `Habilitado` text COLLATE utf8_spanish_ci NOT NULL,
   `tipo_usuario` int(15) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 INSERT INTO tb_usuarios VALUES("1","Admin","Admin","Master","Hospital Nacional Zacatecoluca PA \"Santa Tereza\"","Sin Unidad","Admin","Si","1");
-INSERT INTO tb_usuarios VALUES("2","egchoto","Ernesto","Gonzales Choto","Hospital Nacional Zacatecoluca PA \"Santa Tereza\"","Departamento Mantenimiento Local","neto982006","Si","1");
+INSERT INTO tb_usuarios VALUES("2","Usuario","Ernesto","Gonzales Choto","Hospital Nacional Zacatecoluca PA \"Santa Tereza\"","Departamento Mantenimiento Local","123","Si","1");
 INSERT INTO tb_usuarios VALUES("3","Usuario1","Baltazar Alexander","Marinero Perez","Hospital Nacional Zacatecoluca PA \"Santa Tereza\"","Sección Equipo Básico","123","Si","2");
 INSERT INTO tb_usuarios VALUES("4","Usuario2","Fransico Tolentino","López","Hospital Nacional Zacatecoluca PA \"Santa Tereza\"","Sección Planta Física y Mobiliario","123","Si","2");
 INSERT INTO tb_usuarios VALUES("5","Usuario3","René Adán","Villaltá Perez","Hospital Nacional Zacatecoluca PA \"Santa Tereza\"","Sección Planta Física y Mobiliario","123","Si","2");
@@ -1444,21 +807,196 @@ INSERT INTO tb_usuarios VALUES("14","Usuario12","kilmar Waldir","Pérez Marin","
 INSERT INTO tb_usuarios VALUES("15","Usuario13","Ronald Alexander","Lopez Cisnero","Hospital Nacional Zacatecoluca PA \"Santa Tereza\"","Departamento Mantenimiento Local","123","Si","2");
 
 
-
-DROP TABLE tb_vale;
-
 CREATE TABLE `tb_vale` (
   `codVale` int(11) NOT NULL,
-  `departamento` mediumtext NOT NULL,
-  `usuario` mediumtext NOT NULL,
+  `departamento` text COLLATE utf8_spanish_ci NOT NULL,
+  `usuario` text COLLATE utf8_spanish_ci NOT NULL,
   `idusuario` int(11) NOT NULL DEFAULT 1,
-  `campo` mediumtext NOT NULL DEFAULT 'Solicitud Vale',
-  `estado` mediumtext NOT NULL,
-  `observaciones` mediumtext NOT NULL,
+  `campo` text COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Solicitud Vale',
+  `estado` text COLLATE utf8_spanish_ci NOT NULL,
+  `observaciones` text COLLATE utf8_spanish_ci NOT NULL,
   `fecha_registro` date NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`codVale`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 
 
+CREATE TABLE `detalle_compra` (
+  `codigodetallecompra` int(3) NOT NULL AUTO_INCREMENT,
+  `categoria` text COLLATE utf8_spanish_ci NOT NULL,
+  `codigo` int(15) NOT NULL,
+  `catalogo` int(20) NOT NULL,
+  `descripcion` text COLLATE utf8_spanish_ci NOT NULL,
+  `unidad_medida` text COLLATE utf8_spanish_ci NOT NULL DEFAULT 'C/U',
+  `stock` decimal(6,2) unsigned NOT NULL DEFAULT 0.00,
+  `cantidad_despachada` decimal(6,2) NOT NULL DEFAULT 0.00,
+  `precio` decimal(6,2) NOT NULL DEFAULT 0.00,
+  `solicitud_compra` int(8) DEFAULT NULL,
+  PRIMARY KEY (`codigodetallecompra`),
+  KEY `fk_tb_compra_detalle_compra` (`solicitud_compra`),
+  CONSTRAINT `fk_tb_compra_detalle_compra` FOREIGN KEY (`solicitud_compra`) REFERENCES `tb_compra` (`nSolicitud`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+INSERT INTO detalle_compra VALUES("1","1","1","1","1","C/U","0.00","0.00","0.00","0");
+INSERT INTO detalle_compra VALUES("2","","0","0","","C/U","0.00","0.00","0.00","0");
+
+
+CREATE TABLE `detalle_almacen` (
+  `codigoalmacen` int(3) NOT NULL AUTO_INCREMENT,
+  `codigo` int(15) NOT NULL,
+  `nombre` text COLLATE utf8_spanish_ci NOT NULL,
+  `unidad_medida` text COLLATE utf8_spanish_ci NOT NULL,
+  `cantidad_solicitada` decimal(6,2) NOT NULL DEFAULT 0.00,
+  `cantidad_despachada` decimal(6,2) NOT NULL DEFAULT 0.00,
+  `tb_almacen` int(20) NOT NULL,
+  `precio` decimal(6,2) NOT NULL DEFAULT 0.00,
+  PRIMARY KEY (`codigoalmacen`),
+  KEY `fk_tb_almacen_detalle_almacen` (`tb_almacen`),
+  CONSTRAINT `fk_tb_almacen_detalle_almacen` FOREIGN KEY (`tb_almacen`) REFERENCES `tb_almacen` (`codAlmacen`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+
+CREATE TABLE `detalle_bodega` (
+  `codigodetallebodega` int(3) NOT NULL AUTO_INCREMENT,
+  `codigo` int(15) NOT NULL,
+  `descripcion` text COLLATE utf8_spanish_ci NOT NULL,
+  `unidad_medida` text COLLATE utf8_spanish_ci NOT NULL DEFAULT 'C/U',
+  `stock` decimal(6,2) unsigned NOT NULL DEFAULT 0.00,
+  `cantidad_despachada` decimal(6,2) NOT NULL DEFAULT 0.00,
+  `precio` decimal(6,2) NOT NULL DEFAULT 0.00,
+  `odt_bodega` int(15) DEFAULT NULL,
+  PRIMARY KEY (`codigodetallebodega`),
+  KEY `fk_tb_bodega_detalle_bodega` (`odt_bodega`),
+  CONSTRAINT `fk_tb_bodega_detalle_bodega` FOREIGN KEY (`odt_bodega`) REFERENCES `tb_bodega` (`codBodega`)
+) ENGINE=InnoDB AUTO_INCREMENT=495 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+
+CREATE TABLE `detalle_vale` (
+  `codigodetallevale` int(3) NOT NULL AUTO_INCREMENT,
+  `codigo` int(15) NOT NULL,
+  `descripcion` text COLLATE utf8_spanish_ci NOT NULL,
+  `unidad_medida` text COLLATE utf8_spanish_ci NOT NULL DEFAULT 'C/U',
+  `stock` decimal(6,2) NOT NULL DEFAULT 0.00,
+  `cantidad_despachada` decimal(6,2) NOT NULL DEFAULT 0.00,
+  `precio` decimal(6,2) NOT NULL DEFAULT 0.00,
+  `numero_vale` int(15) DEFAULT NULL,
+  PRIMARY KEY (`codigodetallevale`),
+  KEY `fk_tb_vale_detalle_vale` (`numero_vale`),
+  CONSTRAINT `fk_tb_vale_detalle_vale` FOREIGN KEY (`numero_vale`) REFERENCES `tb_vale` (`codVale`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+
+CREATE TABLE `detalle_circulante` (
+  `codigodetallecirculante` int(3) NOT NULL AUTO_INCREMENT,
+  `codigo` int(15) NOT NULL,
+  `descripcion` text COLLATE utf8_spanish_ci NOT NULL,
+  `unidad_medida` text COLLATE utf8_spanish_ci NOT NULL DEFAULT 'C/U',
+  `stock` decimal(6,2) NOT NULL,
+  `cantidad_despachada` decimal(6,2) NOT NULL,
+  `precio` decimal(6,2) NOT NULL DEFAULT 0.00,
+  `tb_circulante` int(15) DEFAULT NULL,
+  PRIMARY KEY (`codigodetallecirculante`),
+  KEY `fk_tb_circulante_detalle_circulante` (`tb_circulante`),
+  CONSTRAINT `fk_tb_circulante_detalle_circulante` FOREIGN KEY (`tb_circulante`) REFERENCES `tb_circulante` (`codCirculante`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+
+CREATE TABLE `selects_dependencia` (
+  `id` int(3) NOT NULL AUTO_INCREMENT,
+  `Habilitado` text COLLATE utf8_spanish_ci NOT NULL,
+  `dependencia` text COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+
+
+CREATE TABLE `selects_categoria` (
+  `id` int(3) NOT NULL AUTO_INCREMENT,
+  `Habilitado` text COLLATE utf8_spanish_ci NOT NULL,
+  `categoria` text COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+INSERT INTO selects_categoria VALUES("1","Si","Agropecuarios y Forestales");
+INSERT INTO selects_categoria VALUES("2","Si","Cuero y Caucho");
+INSERT INTO selects_categoria VALUES("3","Si","Combustibles y Lubricantes");
+INSERT INTO selects_categoria VALUES("4","Si","Minerales no Metálicos");
+INSERT INTO selects_categoria VALUES("5","Si","Minerales Metálicos");
+INSERT INTO selects_categoria VALUES("6","Si","Herramientas y Repuestos");
+INSERT INTO selects_categoria VALUES("7","Si","Materiales Eléctricos");
+INSERT INTO selects_categoria VALUES("8","Si","Mobiliario");
+INSERT INTO selects_categoria VALUES("9","Si","Químicos");
+
+
+CREATE TABLE `selects_unidad_medida` (
+  `id` int(3) NOT NULL AUTO_INCREMENT,
+  `Habilitado` text COLLATE utf8_spanish_ci NOT NULL,
+  `unidad_medida` text COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+INSERT INTO selects_unidad_medida VALUES("1","Si","C/M");
+INSERT INTO selects_unidad_medida VALUES("2","Si","Cto");
+INSERT INTO selects_unidad_medida VALUES("3","Si","CUARTO GAL");
+INSERT INTO selects_unidad_medida VALUES("4","Si","C/U");
+INSERT INTO selects_unidad_medida VALUES("5","Si","Galón");
+INSERT INTO selects_unidad_medida VALUES("6","Si","Lb");
+INSERT INTO selects_unidad_medida VALUES("7","Si","Mts");
+INSERT INTO selects_unidad_medida VALUES("8","Si","Pgo");
+INSERT INTO selects_unidad_medida VALUES("9","Si","Qq");
+INSERT INTO selects_unidad_medida VALUES("10","Si","PAR");
+
+
+CREATE TABLE `selects_departamento` (
+  `id` int(3) NOT NULL AUTO_INCREMENT,
+  `Habilitado` text COLLATE utf8_spanish_ci NOT NULL,
+  `departamento` text COLLATE utf8_spanish_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+INSERT INTO selects_departamento VALUES("1","Si","Área Saneamiento Ambiental");
+INSERT INTO selects_departamento VALUES("2","Si","Área Servicios Auxiliares");
+INSERT INTO selects_departamento VALUES("3","Si","Área Clínica De Úlceras Y Heridas");
+INSERT INTO selects_departamento VALUES("4","Si","Área Residencial Médica");
+INSERT INTO selects_departamento VALUES("5","Si","Área Epidemiología");
+INSERT INTO selects_departamento VALUES("6","Si","Área COVID 19");
+INSERT INTO selects_departamento VALUES("7","Si","Bienestar magisterial");
+INSERT INTO selects_departamento VALUES("8","Si","Cirugia Hombre");
+INSERT INTO selects_departamento VALUES("9","Si","Dirección Hospital");
+INSERT INTO selects_departamento VALUES("10","Si","Departamento Lavandería y Ropería");
+INSERT INTO selects_departamento VALUES("11","Si","Departamento Mantenimiento Local");
+INSERT INTO selects_departamento VALUES("12","Si","Departamento Estadística y Documento Médicos");
+INSERT INTO selects_departamento VALUES("13","Si","Departamento Activo Fijo");
+INSERT INTO selects_departamento VALUES("14","Si","División Administrativa");
+INSERT INTO selects_departamento VALUES("15","Si","Departamento Recursos Humanos");
+INSERT INTO selects_departamento VALUES("16","Si","Departamento Terapia Dialítica");
+INSERT INTO selects_departamento VALUES("17","Si","Fisioterapia");
+INSERT INTO selects_departamento VALUES("18","Si","Farmacia");
+INSERT INTO selects_departamento VALUES("19","Si","Ginecologia");
+INSERT INTO selects_departamento VALUES("20","Si","Laboratorio Clinico");
+INSERT INTO selects_departamento VALUES("21","Si","Pediatría");
+INSERT INTO selects_departamento VALUES("22","Si","Radiologia e imagenes");
+INSERT INTO selects_departamento VALUES("23","Si","Subdirección Hospital");
+INSERT INTO selects_departamento VALUES("24","Si","Sección Equipo Médico");
+INSERT INTO selects_departamento VALUES("25","Si","Sección Equipo Básico");
+INSERT INTO selects_departamento VALUES("26","Si","Sección Planta Física y Monitoreo");
+INSERT INTO selects_departamento VALUES("27","Si","Servicio Centro Quirúrgico");
+INSERT INTO selects_departamento VALUES("28","Si","Servicio Medicina Hombres");
+INSERT INTO selects_departamento VALUES("29","Si","Servicio Medicina Mujeres");
+INSERT INTO selects_departamento VALUES("30","Si","Servicio Almacén");
+INSERT INTO selects_departamento VALUES("31","Si","Servicio Consulta Externa");
+INSERT INTO selects_departamento VALUES("32","Si","Servicio Trabajo Social");
+INSERT INTO selects_departamento VALUES("33","Si","Servicio Obstetricia");
+INSERT INTO selects_departamento VALUES("34","Si","Unidad Sala de Operación");
+INSERT INTO selects_departamento VALUES("35","Si","Unidad Sala de Partos");
+INSERT INTO selects_departamento VALUES("36","Si","Unidad Neonatos");
+INSERT INTO selects_departamento VALUES("37","Si","Unidad Máxima Urgencia");
+INSERT INTO selects_departamento VALUES("38","Si","Unidad Financiara Institucional");
+INSERT INTO selects_departamento VALUES("39","Si","Unidad Auditoria Interna");
+INSERT INTO selects_departamento VALUES("40","Si","Unidad Asesora de Suministro Médicos");
+INSERT INTO selects_departamento VALUES("41","Si","Unidad Atención Integral e Integrada ala Salud Sexual Reproductiva");
+INSERT INTO selects_departamento VALUES("42","Si","Unidad Cuidados Especiales");
