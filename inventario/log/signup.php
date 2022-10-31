@@ -50,7 +50,10 @@ error_reporting(0);
                     <div class="col-md-6" style="position: initial">
                        <label class="small mb-1">Nombre de usuario</label><br>
                         <input pattern="[A-Za-z0-9_-]{1,}"   class="form-control" type="text"  name="usuario" id="usuario" >
+                 <section id="tabla_resultado" style="margin: 0px;"></section>
                     </div>
+                     
+            
                     <div class="col-md-6" style="position: initial">
                       <label class="small mb-1">Nombre</label><br>
                         <input  class="form-control" type="text"  name="nombre" id="nombre" >
@@ -68,7 +71,7 @@ error_reporting(0);
                     </div>
                     <div class="col-md-6" style="position: initial">
                       <label class="small mb-1">Establecimiento</label><br>
-                     <input class="form-control" readonly name="Establecimiento" id="Establecimiento" value='Hospital Nacional Zacatecoluca PA "Santa Tereza"'>
+                     <input class="form-control" readonly name="Establecimiento" id="Establecimiento" title='Hospital Nacional Zacatecoluca PA "Santa Tereza"' value='Hospital Nacional Zacatecoluca PA "Santa Tereza"'>
                      
                     </div>
                 </div>
@@ -90,7 +93,7 @@ error_reporting(0);
                     <div class="col-md-12" style="position: initial">
                         <label id="label"  class="small mb-1">Departamento</label><br>
              <div class="input-group">
-                <input type="text" name="unidad" id="Unidad" class="form-control" disabled placeholder="Ingrese El Departamento o Unidad" id="Tipo" value="<?php echo $unidad ?>">
+                <input type="text" name="unidad"  class="form-control" disabled placeholder="Ingrese El Departamento o Unidad" id="Unidad" value="">
                 <label class="btn input-group-text bg-primary" onclick="return unidad()" style="color: white;">Seleccionar</label>
                 
              </div>
@@ -103,7 +106,7 @@ error_reporting(0);
                  <label id="label" class="small mb-1">Tipo de Usuarios (Roles De Usuario)</label>
              <br>
              <div class="input-group">
-             	<input type="text" name="tipo_usuario" class="form-control" disabled placeholder="Ingrese El tipo de Usuario" id="Tipo" value="<?php echo $tipo_usuario ?>">
+             	<input type="text" name="tipo_usuario" class="form-control" disabled placeholder="Ingrese El tipo de Usuario" id="Tipo" >
              	<label class="btn input-group-text bg-success" id="btn1" style="color: white;">Seleccionar</label>
                 
              </div><br>
@@ -137,6 +140,7 @@ error_reporting(0);
                                     </main>
                                 </div>
                             </div>
+                            <p id="respa1"></p>
 	<style type="text/css">
 
 		.container{
@@ -194,6 +198,7 @@ error_reporting(0);
     }).then((result) => {
   if (result.isConfirmed) {
                 var unidad=$.trim($('#unidad').val())
+
                   if(unidad==""){
                              Swal.fire({
   icon: 'warning', 
@@ -202,7 +207,7 @@ error_reporting(0);
   allowOutsideClick: false
     });
         }else{
- var limpiar = document.getElementById('Unidad'); limpiar.value = unidad
+ var limpiar = document.getElementById('Unidad'); limpiar.value = unidad 
         Swal.fire({icon: 'success',  text: unidad+" Agregado/@",allowOutsideClick: false,});
     }
 
@@ -240,6 +245,7 @@ error_reporting(0);
         if(tipo_usuario1=="1"){
 
  var limpiar = document.getElementById('Tipo'); limpiar.value = "Administrador"
+
     
         Swal.fire({icon: 'success',  text: "Administrador Agregado exitosamente!!",footer: 'Sistema De Inventario',allowOutsideClick: false});
     }if(tipo_usuario1=="2"){
@@ -260,20 +266,19 @@ error_reporting(0);
    	var nombre=$.trim($('#nombre').val())
    	var apellido=$.trim($('#apellido').val())
    	var Establecimiento=$.trim($('#Establecimiento').val())
-   	var unidad=$.trim($('#unidad').val())
+   	var unidad=$.trim($('#Unidad').val()); 
    	var password=$.trim($('#show').val())
    	var password1=$.trim($('#show1').val())
    	var tipo_usuario=$.trim($('#Tipo').val())
     if (tipo_usuario=="Administrador") {
         var tipo_usuario1=$.trim($('#Tipo').val()).value="1"
-                
     }
     if (tipo_usuario=="Cliente") {
         var tipo_usuario1=$.trim($('#Tipo').val()).value="2"
         
     }  	
 
-    if (usuario=="" || nombre=="" || apellido=="" || password=="" || password1=="" || unidad=="" || tipo_usuario=="") {
+    if (usuario.length=="" || nombre.length=="" || apellido.length=="" || password.length=="" || password1.length=="" || unidad.length==""|| tipo_usuario.length=="" ) {
    		Swal.fire({
   icon: 'warning',
   title: 'Falta Informacion por Completar',
@@ -281,6 +286,7 @@ error_reporting(0);
   allowOutsideClick: false
 });
    	} else {
+        
         var dataen ='usuario='+usuario +'&nombre='+nombre +'&apellido='+apellido +'&Establecimiento='+Establecimiento+
         '&unidad='+unidad +'&password='+password+'&password1='+password1+'&tipo_usuario='+tipo_usuario1;
 
@@ -295,7 +301,34 @@ error_reporting(0);
    	}
 
    });
+            $(obtener_registros());
 
+function obtener_registros(consulta)
+{
+    $.ajax({
+        url : '../Buscador_ajax/signup/signup.php',
+        type : 'POST',
+        dataType : 'html',
+        data : { consulta: consulta },
+        })
+
+    .done(function(resultado){
+        $("#tabla_resultado").html(resultado);
+    })
+}
+
+$(document).on('keyup', '#usuario', function()
+{
+    var valorBusqueda=$(this).val();
+    if (valorBusqueda!="")
+    {
+        obtener_registros(valorBusqueda);
+    }
+    else
+        {
+            obtener_registros();
+        }
+});
 </script>
 </body>
 </html>
