@@ -1,4 +1,4 @@
-<table class="table  table-striped"  style=" width: 100%">
+<table class="table  table-striped" id="exam" style=" width: 100%">
             <thead>
               <tr id="tr">
                 <th>Código</th>

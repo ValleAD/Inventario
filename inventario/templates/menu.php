@@ -17,7 +17,6 @@ $idusuario = $_SESSION['iduser'];
     <link rel="stylesheet" type="text/css" href="styles/estilo.css">
     <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
    <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
-   <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/datatables.min.css"/> 
     <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/sweetalert2.min.css">
 
       <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
@@ -79,8 +78,6 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                     <?php } ?>
                         <li><a id="b" href="Vistas/Reportes/reporte_ingresos.php">Reporte Ingresos</a></li>
                         <li><a id="b" href="Vistas/Reportes/reporte_egresos.php">Reporte Egresos</a></li>
-                        <li><a id="b" href="Vistas/Reportes/reporte_productos.php">Reporte Productos</a></li>
-                        <li><a id="b" href="Vistas/Reportes/reporte_general.php">Reporte General</a></li>
 
                     </ul>
                 </li>
@@ -302,7 +299,6 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
          <?php } ?>
 <?php include ('loader.php') ?>
     <script src="Plugin/bootstrap/js/jquery-latest.js"></script>
-    <script src="Plugin/bootstrap/js/datatables.min.js"></script>
     <script src="Plugin/bootstrap/js/bootstrap.min.js"></script>
     <script src="Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
 

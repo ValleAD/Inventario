@@ -109,7 +109,7 @@ if(isset($_POST['ingresos'])){
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
             </button>
             </form>
-            <form id="n" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Ingresos/Circulante/Excel.php" target="_blank">
+            <form id="div" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Ingresos/Circulante/Excel.php" target="_blank">
                 <button type="submit" class="btn btn-outline-primary" name="circulante" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
@@ -212,7 +212,7 @@ if(isset($_POST['ingresos'])){
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </button>
             </form>
-            <form id="n" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Ingresos/Almacen/Excel.php" target="_blank">
+            <form id="div" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Ingresos/Almacen/Excel.php" target="_blank">
                 <button type="submit" class="btn btn-outline-primary" name="almacen" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
@@ -326,7 +326,7 @@ width: 100%;
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </button>
             </form>
-            <form id="n" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Ingresos/Compra/Excel.php" target="_blank">
+            <form id="div" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Ingresos/Compra/Excel.php" target="_blank">
                 <button type="submit" class="btn btn-outline-primary" name="compra" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
@@ -417,7 +417,7 @@ if(isset($_POST['ingresos'])){
 <br>
     <h3 style="text-align: center; color: black;">Ingresos de Solicitud Circulante</h3>
             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form id="n" method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php">
+            <form id="div" method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php">
                     <?php $idusuario = $_SESSION['iduser'];?>
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante1">
@@ -426,7 +426,7 @@ if(isset($_POST['ingresos'])){
                 </svg>
                 </button>
             </form>
-            <form id="n" method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php">
+            <form id="div" method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php">
                     <?php $idusuario = $_SESSION['iduser'];?>
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante1">
@@ -528,7 +528,7 @@ $idusuario = $_SESSION['iduser'];
 <h3 style="text-align: center; color: black;">Ingresos de Almacén</h3>
 
                     <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form id="n" method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php">
+            <form id="div" method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php">
                     <?php $idusuario = $_SESSION['iduser'];?>
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen1">
@@ -537,7 +537,7 @@ $idusuario = $_SESSION['iduser'];
                 </svg>
                 </button>
             </form>
-            <form id="n" method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php">
+            <form id="div" method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php">
                     <?php $idusuario = $_SESSION['iduser'];?>
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen1">
@@ -643,7 +643,7 @@ width: 100%;
 <h3 style="text-align: center; color: black;">Ingresos de Compra</h3>
 
             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form id="n" method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php">
+            <form id="div" method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php">
                     <?php $idusuario = $_SESSION['iduser'];?>
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="compra1">
@@ -652,7 +652,7 @@ width: 100%;
                 </svg>
                 </button>
             </form>
-            <form id="n" method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php">
+            <form id="div" method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php">
                     <?php $idusuario = $_SESSION['iduser'];?>
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="compra1">

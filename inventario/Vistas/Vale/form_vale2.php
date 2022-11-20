@@ -135,7 +135,6 @@ if ($codigo=="") {
  </section>
 
     <?php } ?>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
 
 
     <script>
@@ -144,6 +143,36 @@ if ($codigo=="") {
     $(this).closest('tr').remove();
 });
 
+</script>
+<script>
+       $(document).ready(function () {
+    $('#exam').DataTable({
+
+responsive: true,
+autoWidth:false,
+            deferRender: true,
+            scroller: true,
+            scrollY: 400,
+            scrollCollapse: true,
+            
+                    language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                 },
+                 "sProcessing":"Procesando...",
+            },
+
+    });
+});
 </script>
 </body>
 </html>

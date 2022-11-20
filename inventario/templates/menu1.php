@@ -14,11 +14,14 @@ $idusuario = $_SESSION['iduser'];
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../../styles/estilo_men.css">
     <link rel="stylesheet" type="text/css" href="../../styles/estilos_tablas.css"> 
-   <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/bootstrap.css">
-   <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/datatables.min.css"/> 
+    <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/datatables.min.css"/> 
+    <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/sweetalert2.min.css">
-
-      <link rel="icon" type="image/png" sizes="32x32"  href="../../img/log.png">
+    <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/select.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/rowGroup.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/responsive.bootstrap4.min.css">
+    <link rel="icon" type="image/png" sizes="32x32"  href="../../img/log.png">
 </head>
 
 <body style="background-image: url(../../img/camion.jpg); 
@@ -45,7 +48,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
         
 
  </style>
-    <header>
+    <header >
         <div class="menu_bar">
             <a style="font-size: 2rem;" href="#" class="bt-menu">
 
@@ -77,9 +80,6 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                     <?php } ?>
                         <li><a id="b" href="../Reportes/reporte_ingresos.php">Reporte Ingresos</a></li>
                         <li><a id="b" href="../Reportes/reporte_egresos.php">Reporte Egresos</a></li>
-                        <li><a id="b" href="../Reportes/reporte_productos.php">Reporte Productos</a></li>
-                        <li><a id="b" href="../Reportes/reporte_general.php">Reporte General</a></li>
-
                     </ul>
                 </li>
                 <li class="submenu">
@@ -296,10 +296,14 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 
          <?php } ?>
     <script src="../../Plugin/bootstrap/js/jquery-latest.js"></script>
-    <script src="../../Plugin/bootstrap/js/datatables.min.js"></script>
     <script src="../../Plugin/bootstrap/js/bootstrap.min.js"></script>
     <script src="../../Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
 
+    <script src="../../Plugin/bootstrap/js/datatables.min.js"></script>
+    <script src="../../Plugin/bootstrap/js/dataTables.select.min.js"></script>
+    <script src="../../Plugin/bootstrap/js/dataTables.rowGroup.min.js"></script>
+    <script src="../../Plugin/bootstrap/js/dataTables.responsive.min.js"></script>
+    <script src="../../Plugin/bootstrap/js/responsive.bootstrap4.min.js"></script>
 <script type="text/javascript">
     $(document).ready(main);
 
@@ -512,7 +516,6 @@ display: none;
   <p id="loader">n</p>
   <p id="loader">g</p>
 </div>
-<script src="Plugin/bootstrap/js/jquery-latest.js"></script>
  <script type="text/javascript">
 
 
@@ -520,6 +523,7 @@ $(window).on('load', function () {
     $('.loader').delay(1000).fadeOut('slow');
     
 });
+
       </script>
 </body>
 </html>

@@ -28,7 +28,7 @@ header nav::-webkit-scrollbar-thumb:hover {background: rgb(105,105,108);
 background: linear-gradient(90deg, rgba(105,105,108,1) 0%, rgba(115,115,126,1) 35%, rgba(0,212,255,1) 100%);}
 .menu_bar {display:none;}
 
-header {width: 100%;position: fixed;top: 0;}
+header {width: 100%;position: fixed;top: 0;z-index: 1000;}
 header nav {background:#023859;z-index:1000;max-width: 100%;width:100%;}
 header nav ul {list-style:none;}
 header nav ul li {display:inline-block;position: relative;}

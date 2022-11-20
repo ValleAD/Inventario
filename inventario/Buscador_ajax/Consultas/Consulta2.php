@@ -40,7 +40,7 @@ if ($buscarAlumnos->num_rows > 0)
 
     ';}echo '
  
-    <table class="table table-responsive  table-striped" id="div" style=" width: 100%;">
+    <table class="table table-responsive  table-striped" id="tblElecProducts" style=" width: 100%;">
      
                 <thead>
                      <tr id="tr">
@@ -57,9 +57,6 @@ if ($buscarAlumnos->num_rows > 0)
                   </th> 
                    </tr>
 </thead>
-</table>
-<div id="div" style = " max-height: 442px;  overflow-y:scroll;overflow-x:none;">
-    <table id="tblElecProducts" class="table">
     <tbody>';
                 $n=0;
     while($productos= $buscarAlumnos->fetch_assoc())
@@ -84,7 +81,6 @@ if ($buscarAlumnos->num_rows > 0)
         $stock=number_format($cantidad, 2,".",",");
         $tabla.='
         <tr id="tr">
-              
             <td style="width:7%;min-width: 100%;" id="th" data-label="Código">'.$productos['codProductos'].'</td>
             <td style="width:7%;min-width: 100%;" id="th" data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
             <td style="width:20%;min-width: 100%;" id="th" data-label="Descripción">'.$productos['descripcion'].'</td>
@@ -105,7 +101,7 @@ if ($buscarAlumnos->num_rows > 0)
 <?php 
     
     }
-    $tabla.='</tbody></table></div> ';
+    $tabla.='</tbody></table> ';
 } else
     {
         $tabla="
@@ -117,5 +113,48 @@ if ($buscarAlumnos->num_rows > 0)
 
 echo $tabla;
 ?>      
+<script>
+       $(document).ready(function () {
+    $('#tblElecProducts').DataTable({
+        // columnDefs: [ {
+        //     orderable: true,
+        //     className: 'select-checkbox',
+        //     targets:   0
+        // } ],
+        // select: {
+        //     style:    'os',
+        //     selector: 'td:first-child'
+        // },
+        // order: [[ 1, 'asc' ]],
+       rowGroup: {
+            dataSrc: 6
+        },
+
+        "paging": false,
+        autoWidth:false,
+        responsive: true,
+            deferRender: true,
+            scroller: true,
+            scrollY: 400,
+            scrollCollapse: true,
+
+                    language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                 },
+                 "sProcessing":"Procesando...",
+            },
+
+    });
+});
+</script>
      <script src="../../Plugin/bootstrap/js/validarInput.js"></script>
-     

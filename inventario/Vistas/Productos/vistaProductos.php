@@ -19,11 +19,17 @@ die();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.13.1/datatables.min.css"/>
+ 
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.13.1/datatables.min.js"></script>
     <title>Productos</title>
 </head>
 <body> 
   <style>
+
+#h2{
+    margin: 0;
+}
     #div{
         margin: 0%;
         display: none;
@@ -46,9 +52,7 @@ die();
    #h3{
     color: white;
    }
-   #hidden{
-    margin-top: 3%;
-   }
+
     }
   </style>
 <?php      
@@ -162,13 +166,127 @@ $result = mysqli_query($conn, $sql);
   <section  style="background: rgba(255, 255, 255, 0.9);margin: 7%1%1%1%;padding: 1%; border-radius: 15px;">
 <h2 id="h2" class="text-center">Inventario de Productos</h2>
 <br>
-<div id="OcultarDiv">
-<?php include('../../Buscador_ajax/Fechas/fecha.php') ?>
 
+                 <div class="row">
+                    <div class="col-md-3" style="position: initial; margin-top: 0%">
+ <div class="card">
+    <div class="card-body">
+        <form method="POST" action="" class="well hidden">
+                        <label>Desde</label>
+                     <input type="DATE" id="fechaActual" class="form-control" name="F1" required>
 
-<div id="OcultarDiv">
-           <div class="mx-1 p-2 hidden" id="hidden" style=" border-radius: 5px;">
-        
+                        <label class="">Hasta</label>
+                     <input type="DATE" id="fechaActual1" class="form-control" name="F2" required>
+                      <input type="submit"  class="btn btn-success my-2 w-100" id="submit"  name="Fecha" value="Filtrar Fechas">
+                  </form>
+                                     <form method="POST" action="" class="mt-5">
+                               <label>Exportar Dia (1-31)</label>
+                         <select  class="form-control" name="dia" id="dia" onchange="this.form.submit()">
+                        <option disabled selected>Seleccione el Dia</option>
+                            <?php for ($i=1; $i <=31 ; $i++) { 
+                                echo "<option>$i</option>";
+                            }
+                                 ?>
+                        </select>
+                        <?php if (isset($_POST['dia'])){?>
+                            <style type="text/css">#dia, #tabla_resultado{display: none;}</style>
+                        <button type="button" readonly style="width: 100%;background-color:green ;position: initial; border-radius:5px;text-align:center; color: white;" class="form-control "><?php echo $_POST['dia'] ?>
+                        <a href="" style="float: right;color: white;">
+                                <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#arrow-counterclockwise"/>
+                        </svg>
+                            </a>
+                        </button>
+
+                        <?php } ?>
+                                <label>Exportar Mes (Enero-Diciembre)</label>
+                        <select  class="form-control"  name="mes" id="mes" onchange="this.form.submit()">
+                        <option disabled selected>Seleccione el Mes</option>
+                        <?php    
+$Meses = array('Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+       'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre');
+
+for ($i=1; $i<=12; $i++) {
+     if ($i == date('m'))
+echo '<option value="'.$i.'">'.$Meses[($i)-1].'</option>';
+     else
+echo '<option value="'.$i.'">'.$Meses[($i)-1].'</option>';
+     }
+?>
+                        </select>
+                        <?php if (isset($_POST['mes'])){ $mes=$_POST['mes'];    
+                            if ($mes==1)  { $mes="Enero";}
+                            if ($mes==2)  { $mes="Febrero";}
+                            if ($mes==3)  { $mes="Marzo";}
+                            if ($mes==4)  { $mes="Abril";}
+                            if ($mes==5)  { $mes="Mayo";}
+                            if ($mes==6)  { $mes="Junio";}
+                            if ($mes==7)  { $mes="Junio";}
+                            if ($mes==8)  { $mes="Agosto";}
+                            if ($mes==9)  { $mes="Septiembre";}
+                            if ($mes==10) { $mes="Octubre";}
+                            if ($mes==11) { $mes="Noviembre";}
+                            if ($mes==12) { $mes="Diciembre";}?>
+
+                            <style type="text/css">#mes, #tabla_resultado{display: none;}</style>
+                            
+                        <button type="button" readonly style="width: 100%;background-color:green ;position: initial; border-radius:5px;text-align:center; color: white;" class="form-control "><?php echo $mes ?>
+                            <a href="" style="float: right;color: white;">
+                                <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#arrow-counterclockwise"/>
+                        </svg>
+                            </a>
+                        </button>
+                        <?php } ?>
+                                <label>Exportar Año (2022-3000)</label>
+        <select  class="form-control" name="año" id="año" onchange="this.form.submit()">
+                        <option disabled selected>Seleccione el Año</option>
+                            <?php for ($i=2022; $i <=3000 ; $i++) { 
+                                echo "<option>$i</option>";
+                            } ?>
+                        </select>
+                        <?php if (isset($_POST['año'])){?>
+                            <style type="text/css">#año, #tabla_resultado{display: none;}</style>
+                        <button type="button" readonly style="width: 100%;background-color:green ;position: initial; border-radius:5px;text-align:center; color: white;" class="form-control "><?php echo $_POST['año'] ?>
+                            <a href="" style="float: right;color: white;">
+                                <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#arrow-counterclockwise"/>
+                        </svg>
+                            </a>   
+                        </button>
+                        <?php } ?>
+                  </form>
+                   <form method="POST" action="" class="well hidden">
+                     <select id="hidden" class="form-control mt-5" name="cat"  required>
+                    <option selected disabled value="">Seleccione</option>
+                <?php  $sql = "SELECT * FROM tb_productos GROUP BY categoria ";
+        $result = mysqli_query($conn, $sql);
+            while ($productos = mysqli_fetch_array($result)){
+                $categoria=$productos['categoria'];
+                if ($categoria=="") {
+                    $categoria="Sin categorias";
+                }else{
+                $categoria=$productos['categoria'];
+                }
+                ?>
+                <option value="<?php echo $categoria ?>" ><?php echo $categoria ?></option>
+                <?php 
+            }
+         ?></select>
+         
+                       <button id="hidden" class="btn btn-secondary my-2 w-100" name="categorias" type="submit">Exportar por Categorias</button>
+
+                   </form>
+
+                   
+                  </div>
+              </div>          
+          </div>
+                    <div class="col-md-9" style="position: initial;">
+            <div class="card productos">
+    <div class="card-body p-1">
+
+                    <div class=" "  style=" border-radius: ">
         <div style="position: initial;" class="btn-group mb-3 my-3 mx-2 " role="group" aria-label="Basic outlined example">
          <form id="well" class="well" method="POST" action="../../Plugin/Imprimir/Producto/tproductos.php" target="_blank">
              
@@ -194,36 +312,43 @@ $result = mysqli_query($conn, $sql);
                 </svg>
              </button>
          </form>
- </div>     
- <a  href="../Unidad/unidad_medidad.php" class="btn btn-primary" id="td"  style="position: initial; float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a>
- <div class="row">   
- <div class="col-md-3"style="position: initial;">
+    
+
+ <div class="col-md-12"style="position: initial;">
             <section class="well" >
+                <form method="POST" action="" class="well hidden"> 
                 <div style="position: initial;" class="input-group">
-                 
-            <input type="text" style="position: initial;" name="busqueda" class="form-control"  id="busqueda" placeholder="Buscar Código ó Descripción">
-                      <label onclick="return validar1()" class="input-group-text input" for="inputGroupSelect01">
+            <input required type="text" style="position: initial;" name="Busqueda"  class="form-control"  placeholder="Buscar Código ó Descripción">
+                      <button name="Consultar2" type="submit" onclick="return validar1()" class="input-group-text input" for="inputGroupSelect01">
                 <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#x"/>
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#search"/>
                 </svg>
-                 </label>
+                 </button>
                  </div> 
+             </form>
         </section>
     </div>
-<br>    
 </div>
-       </div>
-   </div>
+     <a  href="../Unidad/unidad_medidad.php" class="btn btn-primary"  style="position: initial; float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a>
 </div>
+</div>
+     </div>
+          
 
-               <section id="tabla_resultado" >
+
+<?php include('../../Buscador_ajax/Fechas/fecha.php') ?>
+<?php include('../../Buscador_ajax/Categorias/categoria.php') ?>
+
+
+            <section id="tabla_resultado"  style="margin-top: 2%;">
         <!-- AQUI SE DESPLEGARA NUESTRA TABLA DE CONSULTA -->
 
-        </section>     
+        </section>
+                    </div>
+                </div>
+        
 
-<div id="OcultarDiv">
-    <?php include('../../Buscador_ajax/Categorias/categoria.php') ?>
-   </div>                      
+                 
 </section>
  <script>
     $(obtener_registros());
@@ -239,6 +364,9 @@ function obtener_registros(consulta)
 
     .done(function(resultado){
         $("#tabla_resultado").html(resultado);
+    })
+        .done(function(resultado){
+        $("#tabla_resultado1").html(resultado);
     })
 }
 
@@ -273,7 +401,10 @@ $(document).on('keyup', '#busqueda', function()
                     function validar1() {
                         limpiar.value = '';
                     }
-    
+    $(document).ready( function () {
+    $('#div').DataTable();
+} );
  </script>
+
 </body>
 </html>

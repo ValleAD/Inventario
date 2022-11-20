@@ -30,82 +30,24 @@ if(isset($_POST['consulta']))
          $cantidad=$productos['SUM(stock)'];
         $stock=number_format($cantidad, 2,".",",");
     }
+    ?>
+
+    <?php 
 }
 
 $buscarAlumnos=$conn->query($query);
 if ($buscarAlumnos->num_rows > 0)
 {
 	$tabla.= '         <style>
-             #ssas{display: block;}
-            
-             #div{display: block;}
-             .well{display:block;}
-         </style>';  if(isset($_POST['consulta'])){
-                echo ' <style>#well{display:none;}</style>
 
-<div style="position: initial;" class="btn-group mb-3"  role="group" aria-label="Basic outlined example">
-            <form id="form1" style=" margin-top:5%" method="POST" action="../../Plugin/Imprimir/Producto/productos.php" target="_blank">';
-    $sql = "SELECT * FROM tb_productos GROUP BY precio,codProductos";
-    $result = mysqli_query($conn, $sql);
+         </style>'; echo '
+    <div class="card productos">
+    <div class="card-body">
 
-    while ($productos = mysqli_fetch_array($result)){
-
-                echo '
-                <input type="hidden" name="consulta" value="'. $ee=$_POST['consulta'].'">
-            ';} echo '
-                <button type="submit" class="btn btn-outline-primary" name="Fecha">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
-                </svg>
-                </button>
-            </form><br>
-            <form id="form2" style="margin-top:5%;margin-left: 2.6%;" method="POST" action="../../Plugin/PDF/Productos/pdf_productos.php" target="_blank">
-              ';
-    $sql = "SELECT * FROM tb_productos GROUP BY precio,codProductos";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-echo'             
-                <input type="hidden" name="consulta" value="'. $ee=$_POST['consulta'].'">
-            ';} echo'
-                <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
-                </svg>
-                </button>
-            </form>
-        <form id="form2" style="margin-top:5%;margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Productos/Buscador_Excel.php" target="_blank">
-              ';
-    $sql = "SELECT * FROM tb_productos GROUP BY precio,codProductos";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-echo'             
-                <input type="hidden" name="consulta" value="'. $ee=$_POST['consulta'].'">
-            ';} echo'
-                <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
-                </svg>
-                </button>
-            </form>
-    </div>
-    ';}echo '
-	<table class="table table-responsive  table-striped" id="div" style=" width: 100%;">
+	<table class=" table display   table-striped" id="example" style=" width: 100%;">
 	 
                 <thead>
-                     <tr id="tr">';if($tipo_usuario==2){ 
-                        echo '
-                     <th style="width:1%" id="th">Código</th>
-                     <th style="width:10%" id="th">Cod. Catálogo</th>
-                     <th style="width:26% " id="th" >Descripción Completa</th>
-                     <th style="width:6%" id="th">U/M</th>
-                     <th style="width:6%" id="th">Cantidad</th>
-                     <th style="width:6%" id="th">Costo Unitario</th>
-                     <th style="width:6%" id="th">Fecha Registro</th>
-                     <th id="th" style="width:20%">Categoría</th>
-                    ';}if($tipo_usuario==1){ 
-                        echo '
+                     <tr id="tr">
                      <th style="width:7%"  id="th">Código</th>
                      <th style="width:7%"  id="th">Cod. Catálogo</th>
                      <th style="width: 27%;" id="th"> Descripción Completa</th>
@@ -115,15 +57,17 @@ echo'
                      <th style="width:10%"  id="th">Fecha Registro</th>
                     <th id="th" style="width:9%">Categoría</th>
 
+                        ';if($tipo_usuario==1){ 
+                        echo '
                     
                      <th style="width:10%" id="th">Editar</th>
                      <th style="width:10%" id="th">Eliminar</th>
                  '; } echo'
                    </tr>
-</table>
-<div id="div" style = " max-height: 442px;max-width: 100%;  overflow-y:scroll;overflow-x:none;">
-    <table class="table" >
-    <tbody>';
+                   </thead>
+                   <tbody>
+
+';
                 $n=0;
 	while($productos= $buscarAlumnos->fetch_assoc())
 	{
@@ -154,8 +98,9 @@ echo'
         $cantidad=$productos['SUM(stock)'];
         $stock=number_format($cantidad, 2,".",",");
 		$tabla.='
-		 ';if ($tipo_usuario ==2) {echo'
+		 
          <style> #td{display: none;}</style>
+         
 		<tr>
             <td style="width: 10%;min-width: 100%;" id="th" data-label="Código">'.$productos['codProductos'].'</td>
             <td style="width: 10%;min-width: 100%;" id="th" data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
@@ -165,49 +110,39 @@ echo'
             <td style="width: 10%;min-width: 100%;" id="th" data-label="Precio">'.$precio1.'</td>
             <td style="width: 20%;min-width: 100%;" id="th" data-label="Fecha">'.$productos['fecha_registro'].'</td>
             <td style="width: 30%;min-width: 100%;" id="th" data-label="Categoría">'.$categoria.'</td>
-			</tr>
-		';} if ($tipo_usuario ==1) {
-				echo ''?><tr data-stock="<?php echo $stock ?>" data-id="<?php echo $productos['cod']; ?>" id="<?php echo $productos['codProductos']; ?>">
-                    <?php echo '
-			<td style="width:7%;min-width: 100%;" id="th" data-label="Código">'.$productos['codProductos'].'</td>
-            <td style="width:7%;min-width: 100%;" id="th" data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
-            <td style="width:30%;min-width: 100%;" id="th" data-label="Descripción">'.$productos['descripcion'].'</td>
-            <td style="width:10%;min-width: 100%;" id="th" data-label="Unidad de Medida">'.$productos['unidad_medida'].'</td>
-            <td style="width:10%;min-width: 100%;" id="th" data-label="Cantidad">'.$stock.'</td>
-            <td style="width:10%;min-width: 100%;" id="th" data-label="Precio">'.$precio1.'</td>
-            <td style="width:10%;min-width: 100%;" id="th" data-label="Fecha">'.$productos['fecha_registro'].'</td>
-            <td style="width:11%;min-width: 100%;" id="th" data-label="Categoría">'.$categoria.'</td>
-			
-           <td style="width:10%;min-width: 100%;" id="th"  data-label="Editar">
-            <form style="margin: 0%;position: 0; background: transparent;" method="POST" action="vistaProductos.php">             
+		
+		';
+        if ($tipo_usuario==1) {
+            $tabla.='
+			<td>
+                <form style="margin: 0%;position: 0;float:right; background: transparent;" method="POST" action="vistaProductos.php">             
                 <input type="hidden" name="id" value="'.$productos['codProductos'] .'">               
                 <button  id="th" name="editar" class="btn btn-success btn-sm"  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
-            </form>  
-            </td>
-            <td style="width:10%;min-width: 100%;" id="th"  data-label="Eliminar">
-            ' ;
-            if ($productos['SUM(stock)']==0) {?>
+            </form> </td>
+            <td>
+            ';
+                        if ($productos['SUM(stock)']==0) {
                
                    
-                <a  data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm btn-del" id="<?php echo $productos['codProductos'] ?>" href="Controller/Delete_producto.php?cod=<?php echo $productos['cod'] ?>&id=<?php echo $productos['SUM(stock)'] ?>">Eliminar</a>
+              $tabla.='  <a  data-bs-toggle="tooltip" style="float:right;" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm btn-del" id="'.$productos['codProductos'] .'" href="Controller/Delete_producto.php?cod='.$productos['cod'].'&id='. $productos['SUM(stock)'] .'">Eliminar</a>';
             
                 
-           <?php  };
-            if ($productos['SUM(stock)']!=0) {
-                 echo'
-            <button   id="th" style="cursor: not-allowed;background: rgba(255, 0, 0, 0.5); border: none;" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm text-white">Eliminar</button>
+            };
+                        if ($productos['SUM(stock)']!=0) {
+               $tabla.='
+            <button   id="th" style="cursor: not-allowed;float:right;background: rgba(255, 0, 0, 0.5); border: none;" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm text-white">Eliminar</button>
             ';
             }
-           echo'
-               
-            </td>
+        }?>
+        </td>     
         
 		 </tr>
-		';
+               
+		
+	
+<?php 
 	}
-	}
-
-	$tabla.='</tbody></table></div> ';
+	$tabla.='</tbody></table></div></div>';
 } else
 	{
 		$tabla="
@@ -218,7 +153,8 @@ echo'
 
 
 echo $tabla;
-?>      
+?>     
+
 <script type="text/javascript">
     $('.btn-del').on('click', function(e) {
         e.preventDefault();
@@ -240,5 +176,204 @@ if (resultado.value) {
                 });
     })
    
+   $(document).ready(function () {
+    $('#example').DataTable({
+            rowGroup: {
+            dataSrc: 6
+        },
+            responsive: true,
+            autoWidth:false,
+            deferRender: true,
+            scroller: true,
+            scrollY: 400,
+            dom: 'lrtip',
+            "searching": false,
+            scrollCollapse: true,
+                    language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                 },
+                 "sProcessing":"Procesando...",
+            },
+
+    });
+});   $(document).ready(function () {
+    $('#example1').DataTable({
+
+responsive: true,
+autoWidth:false,
+            deferRender: true,
+            scroller: true,
+            scrollY: 400,
+            dom: 'lrtip',
+            "searching": false,
+            scrollCollapse: true,
+                    language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                 },
+                 "sProcessing":"Procesando...",
+            },
+
+    });
+});
+   $(document).ready(function () {
+    $('#example2').DataTable({
+
+responsive: true,
+autoWidth:false,
+            deferRender: true,
+            scroller: true,
+            scrollY: 400,
+            dom: 'lrtip',
+            "searching": false,
+            scrollCollapse: true,
+                    language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                 },
+                 "sProcessing":"Procesando...",
+            },
+
+    });
+});   $(document).ready(function () {
+    $('#example3').DataTable({
+
+responsive: true,
+autoWidth:false,
+            deferRender: true,
+            scroller: true,
+            scrollY: 400,
+            dom: 'lrtip',
+            "searching": false,
+            scrollCollapse: true,
+                    language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                 },
+                 "sProcessing":"Procesando...",
+            },
+
+    });
+});   $(document).ready(function () {
+    $('#example4').DataTable({
+
+responsive: true,
+autoWidth:false,
+            deferRender: true,
+            scroller: true,
+            scrollY: 400,
+            dom: 'lrtip',
+            "searching": false,
+            scrollCollapse: true,
+                    language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                 },
+                 "sProcessing":"Procesando...",
+            },
+
+    });
+});   $(document).ready(function () {
+    $('#example5').DataTable({
+
+responsive: true,
+autoWidth:false,
+            deferRender: true,
+            scroller: true,
+            scrollY: 400,
+            dom: 'lrtip',
+            "searching": false,
+            scrollCollapse: true,
+                    language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                 },
+                 "sProcessing":"Procesando...",
+            },
+
+    });
+});   $(document).ready(function () {
+    $('#example6').DataTable({
+
+responsive: true,
+autoWidth:false,
+            deferRender: true,
+            scroller: true,
+            scrollY: 400,
+            dom: 'lrtip',
+            "searching": false,
+            scrollCollapse: true,
+                    language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                 },
+                 "sProcessing":"Procesando...",
+            },
+
+    });
+});
 </script>
-     
