@@ -51,35 +51,32 @@ die();
 <br><br><br><br>
     <section style="background: rgba(255, 255, 255, 0.9); margin: 2%;border-radius: 15px; padding: 1%";>
                <h1 style="text-align: center;">Egresos de Productos</h1><br>
-  <div style="position: initial;" class="row" style="position: relative; max-width: 100%;">
-        <p id="x" class="mx-3" style="color: #000; font-weight: bold;">Mostrar Ingresos por:</p>
             <form method="POST" style="background:transparent;">
-                <div class="row" style="width:100%">
-                
-                    <?php if(isset($_POST['ingresos'])){
+<div class="card">
+<div class="card-body">
+                <div class="row" >
+               <div class="col-md-2" style="position: initial; width:50%px;">
+        <p id="x" class="mx-3" style="color: #000; font-weight: bold;">Mostrar Ingresos por:</p>
+    </div>          <?php if(isset($_POST['ingresos'])){$mostrar = $_POST['ingresos'];
+                        if ($mostrar=="bodega" || $mostrar=="vale" ) {?>
 
-                        $mostrar = $_POST['ingresos'];
-                        if($mostrar == "bodega" ){
-                         ?> <div class=" col-md-3" style="position: initial;">
-                <a id="ssa" href="" class="btn btn-primary">Inicio</a></<div>
-            <?php }
-            if ( $mostrar == "vale") {
-                echo'<div class=" col-md-3" style="position: initial;">
-                <a id="ssa" href="" class="btn btn-primary">Inicio</a></<div>';
-            }} ?>
-            </div>
-
-            <div class="col-md-8" style="position: initial;">
-            <select id="ssa" class="form-control" name="ingresos" id="ingresos" onchange="this.form.submit()">
+                    <div class=" col-md-1" style="position: initial;">
+                <a  href="" class="btn btn-primary">Inicio</a>
+                    </div>
+            <?php } } ?>
+            
+            <div class="col-md-3 " style="position: initial;">
+            <select class="form-control" name="ingresos" id="ingresos" onchange="this.form.submit()">
                             <option>Seleccionar</option>
-                            <option  value="bodega">Solicitud  de Bodega</option>
-                            <option value="vale">Solicitud Vale</option>
+                            <option value="bodega">Solicitud a Bodega</option>
+                            <option value="vale">Solicitud de Vale</option>
                         </select>
             </div>          
                 </div>  
             </div>
-            </form>
-    </div> 
+        </div>
+            </form> 
+            <br>
 <?php
 if ($tipo_usuario==1) {
 
@@ -102,25 +99,26 @@ if(isset($_POST['ingresos'])){
     width: 100%;
   }
 </style>
+<div class="card">
+<div class="card-body">
     <h3 style="text-align: center;">Egresos de Bodega</h3>
-    <br><h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
 
             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
- <form id="n" method="POST" action="../../Plugin/PDF/Almacen/reporte_egreso.php">
+ <form  method="POST" action="../../Plugin/PDF/Almacen/reporte_egreso.php">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="bodega">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
                 </button>
             </form>
-            <form id="n" method="POST" action="../../Plugin/PDF/Almacen/pdf_egresos.php">
+            <form  method="POST" action="../../Plugin/PDF/Almacen/pdf_egresos.php" class="mx-1">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="bodega">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
                 </button>
             </form>
-            <form id="n" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Egresos/Bodega/Excel.php" target="_blank">
+            <form   method="POST" action="../../Plugin/Excel/Egresos/Bodega/Excel.php" target="_blank">
                 <button type="submit" class="btn btn-outline-primary" name="bodega" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
@@ -130,10 +128,10 @@ if(isset($_POST['ingresos'])){
 
 </div>
 
-<table  class="table  table-striped" id="div" style=" width: 100%">
+<table  class="table  table-striped" id="example" style=" width: 100%">
             <thead>
               <tr id="tr">
-                <th>#</th>
+                <th style="width: 5%;">#</th>
                 <th style="width: 10%;">Codigo</th>
                 <th style="width: 10%;">Departamento</th>
                 <th style="width: 10%;">Encargado</th>
@@ -149,12 +147,7 @@ if(isset($_POST['ingresos'])){
 
               
      </thead>
- </table>
- <div id="div" style = " max-height: 442px;  overflow-y:scroll;">
- <table class="table">
             <tbody>
-                        <tr>
-         <td  colspan="11" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
  <?php
 $sql = "SELECT * FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega";
     $result = mysqli_query($conn, $sql);
@@ -205,43 +198,32 @@ $n=0;
             </tbody>
         </table>
 </div>
+</div>
 
 <?php 
     }
     else if($mostrar == "vale"){
 ?>
-<style>
-  #act {
-    margin-top: 0.5%;
-    margin-right: 3%;
-    margin-left: 3%;
-    padding: 1%;
-    border-radius: 5px;
-    background-color: white;
 
-  }
-    input{
-    width: 100%;
-  }
-</style><br>
-<h3 style="text-align: center; color: black;">Egresos Por Vale</h3>
-<h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
+<div class="card">
+<div class="card-body">
+<h3 style="text-align: center; color: black;">Egresos Por Vale </h3>
             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form id="n" method="POST" action="../../Plugin/PDF/Almacen/reporte_egreso.php">
+            <form  method="POST" action="../../Plugin/PDF/Almacen/reporte_egreso.php">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
                 </button>
             </form>
-            <form id="n" method="POST" action="../../Plugin/PDF/Almacen/pdf_egresos.php">
+            <form  method="POST" action="../../Plugin/PDF/Almacen/pdf_egresos.php" class="mx-1">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
                 </button>
             </form>
-                    <form id="n" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Egresos/Vale/Excel.php" target="_blank">
+                    <form   method="POST" action="../../Plugin/Excel/Egresos/Vale/Excel.php" target="_blank">
                 <button type="submit" class="btn btn-outline-primary" name="vale" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
@@ -251,7 +233,7 @@ $n=0;
 
 </div>
 
-<table class="table table-responsive  table-striped" id="div" style=" width: 100%">
+<table class="table table-responsive  table-striped" id="example" style=" width: 100%">
             <thead>
               <tr id="tr">
                 <th style="width: 10%;">No. Vale</th>
@@ -270,12 +252,7 @@ $n=0;
               
             </thead>
      </thead>
- </table>
- <div id="div" style = " max-height: 442px;  overflow-y:scroll;">
- <table class="table">
             <tbody>
-                        <tr>
-         <td  colspan="11" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
  <?php
     $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale ";
     $result = mysqli_query($conn, $sql);
@@ -329,6 +306,7 @@ $n=0;
             </tbody>
         </table>
     </div>
+    </div>
 <?php
     }
 }
@@ -354,10 +332,11 @@ if(isset($_POST['ingresos'])){
     width: 100%;
   }
 </style>
+<div class="card">
+<div class="card-body">
     <h3>Egresos de Bodega</h3>
-    <br><h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form id="n" method="POST" action="../../Plugin/Imprimir/Egresos/reporte_egreso.php">
+            <form  method="POST" action="../../Plugin/Imprimir/Egresos/reporte_egreso.php">
                     <?php $idusuario = $_SESSION['iduser'];?>
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="bodega1">
@@ -366,7 +345,7 @@ if(isset($_POST['ingresos'])){
                 </svg>
                 </button>
             </form>
-            <form id="n" method="POST" action="../../Plugin/PDF/Egresos/pdf_egresos.php">
+            <form  method="POST" action="../../Plugin/PDF/Egresos/pdf_egresos.php">
                     <?php $idusuario = $_SESSION['iduser'];?>
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="bodega1">
@@ -375,7 +354,7 @@ if(isset($_POST['ingresos'])){
                 </svg>
                 </button>
             </form>
-                    <form id="form2" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Egresos/Bodega/Excel.php" target="_blank">
+                    <form id="form2"  method="POST" action="../../Plugin/Excel/Egresos/Bodega/Excel.php" target="_blank">
                     <?php $idusuario = $_SESSION['iduser'];?>
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
                 <button type="submit" class="btn btn-outline-primary" name="bodega1" target="_blank">
@@ -387,10 +366,10 @@ if(isset($_POST['ingresos'])){
 
 </div>
 
-<table  class="table  table-striped" id="div" style=" width: 100%">
+<table  class="table  table-striped" id="example" style=" width: 100%">
             <thead>
               <tr id="tr">
-                <th>#</th>
+                <th style="width: 5%;">#</th>
                 <th style="width: 10%;">Codigo</th>
                 <th style="width: 10%;">Departamento</th>
                 <th style="width: 10%;">Encargado</th>
@@ -403,12 +382,7 @@ if(isset($_POST['ingresos'])){
               </tr>
               
      </thead>
- </table>
- <div id="div" style = " max-height: 442px;  overflow-y:scroll;">
- <table class="table">
             <tbody>
-                        <tr>
-         <td  colspan="11" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
  <?php
           $idusuario = $_SESSION['iduser'];
 
@@ -455,30 +429,18 @@ $n=0;
             </tbody>
         </table>
 </div>
+</div>
 
 <?php 
     }
     else if($mostrar == "vale"){
 ?>
-<style>
-  #act {
-    margin-top: 0.5%;
-    margin-right: 3%;
-    margin-left: 3%;
-    padding: 1%;
-    border-radius: 5px;
-    background-color: white;
-
-  }
-    input{
-    width: 100%;
-  }
-</style><br>
+<div class="card">
+<div class="card-body">
 <h3>Egresos Por Vale</h3>
-<h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
 
             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form  id="n" method="POST" action="../../Plugin/Imprimir/Egresos/reporte_egreso.php">
+            <form   method="POST" action="../../Plugin/Imprimir/Egresos/reporte_egreso.php">
                     <?php $idusuario = $_SESSION['iduser'];?>
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
                 <button type="submit" class="btn btn-outline-primary" name="vale1">
@@ -487,7 +449,7 @@ $n=0;
                 </svg>
                 </button>
             </form>
-            <form id="n"  method="POST" action="../../Plugin/PDF/Egresos/pdf_egresos.php">
+            <form   method="POST" action="../../Plugin/PDF/Egresos/pdf_egresos.php">
                     <?php $idusuario = $_SESSION['iduser'];?>
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
                 <button type="submit" class="btn btn-outline-primary" name="vale1">
@@ -496,7 +458,7 @@ $n=0;
                 </svg>
                 </button>
             </form>
-                    <form id="form2" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Egresos/Vale/Excel.php" target="_blank">
+                    <form id="form2"  method="POST" action="../../Plugin/Excel/Egresos/Vale/Excel.php" target="_blank">
                     <?php $idusuario = $_SESSION['iduser'];?>   
 
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
@@ -509,7 +471,7 @@ $n=0;
 
 
 </div>
-<table class="table  table-striped" id="div" style=" width: 100%">
+<table class="table  table-striped" id="example" style=" width: 100%">
             <thead>
               <tr id="tr">
                 <th style="width: 10%;">No. Vale</th>
@@ -527,12 +489,7 @@ $n=0;
 
               
      </thead>
- </table>
- <div id="div" style = " max-height: 442px;  overflow-y:scroll;">
- <table class="table">
             <tbody>
-                        <tr>
-         <td  colspan="11" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
  <?php
           $idusuario = $_SESSION['iduser'];
 
@@ -580,6 +537,7 @@ $n=0;
             </tbody>
         </table>
     </div>
+    </div>
 <?php
     }
 }
@@ -587,6 +545,38 @@ $n=0;
 
 
 
-   
+   <script>$(document).ready(function () {
+
+       $('#example').DataTable({
+            rowGroup: {
+            dataSrc: 9
+        },
+            responsive: true,
+            autoWidth:false,
+            deferRender: true,
+            scroller: true,
+            scrollY: 400,
+            dom: 'lrtip',
+            "searching": false,
+            scrollCollapse: true,
+                    language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                 },
+                 "sProcessing":"Procesando...",
+            },
+
+    });
+}); 
+</script> 
 </body>
 </html>

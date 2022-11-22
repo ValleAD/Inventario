@@ -34,9 +34,7 @@ h1 {
 </head>
 <body>
     <style type="text/css">
-       #x{
-        di
-       } 
+
      #act {
     margin-right: 1%;
     margin-left: 1%;
@@ -44,20 +42,15 @@ h1 {
     border-radius: 15px;
     background: white;
   }
-  #ssas{
-    display: none;
-  }
+
     </style>
 
     <br><br><br>
     <center><h1 style="margin-top:2% ">Solicitudes de Compra</h1></center>
     <section id="act">
-        <h1 id="td" class=' text-center bg-danger my-4' style='font-size:1.5em; padding:3%; border-radius:5px;color :white;'>No se encontraron coincidencias con sus criterios de búsqueda.</h1>
-     
-           <?php include ('../../Buscador_ajax/Cabezeras/cabezeraCompra.php') ?>
-               
+              
             <?php if ($tipo_usuario==1) {?>
-     <div id="div">
+
 
     <div id="x" style="position: initial;" class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example">
          <form id="x" method="POST" style=" position: initial;" action="../../Plugin/Imprimir/Compra/soli_compra.php" target="_blank">
@@ -81,43 +74,49 @@ h1 {
                 </svg>
                 </button>
             </form>
- </div>
+ 
 </div>
-  <?php if (isset($_POST['Consultar'])) {$columna=$_POST['columna'];$tipo=$_POST['tipo'];?>
-      <div  style="position: initial;" class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example">
-         <form id="ssas" method="POST" style=" position: initial;" action="../../Plugin/Imprimir/Compra/soli_compra.php" target="_blank">
-          <input type="hidden" name="columna" value="<?php echo $columna ?>">
-            <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
-             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Consultar">
+ <?php }else{
+?>
+<div  id="x" style="position: initial;" class="btn-group mb-3  mx-2" style=" position: initial;" role="group" aria-label="Basic outlined example">
+         <form id="ssas" method="POST" action="../../Plugin/Imprimir/Compra/soli_compra.php" target="_blank">
+            <?php $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario'";
+    $result = mysqli_query($conn, $sql);
+    while ($datos_sol = mysqli_fetch_array($result)){?>
+ <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
+       
+    <?php } ?>
+             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
          <form id="ssas" method="POST" action="../../Plugin/PDF/Compra/pdf_soli_compra.php" class="mx-1" target="_blank">
-          <input type="hidden" name="columna" value="<?php echo $columna ?>">
-            <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
-             <button style="position: initial;"type="submit" class="btn btn-outline-primary" name="Consultar" target="_blank">
+    <?php $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario'";
+    $result = mysqli_query($conn, $sql);
+    while ($datos_sol = mysqli_fetch_array($result)){?>
+ <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
+       
+    <?php } ?>
+             <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>
-                 <form id="ssas" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Compra/Excel.php" target="_blank">
+<form id="ssas" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Compra/Excel.php" target="_blank">
             <input type="hidden" name="columna" value="<?php echo $columna ?>">
             <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
-                <button type="submit" class="btn btn-outline-primary" name="Consultar" target="_blank">
+                <button type="submit" class="btn btn-outline-primary" name="compra1" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                 </svg>
                 </button>
             </form>
- </div>
+</div>
 <?php } ?>
-
- <?php include ('../../Buscador_ajax/Tablas/Compra/tablaCompra.php') ?>
-     <div id="x">
-        <table class="table table-responsive " id="div" style="width:100%">
+        <table class="table table-responsive " id="exam" style="width:100%">
             <thead>
               <tr id="tr">
                
@@ -132,9 +131,6 @@ h1 {
                 <th style="width: 10%;">Detalles</th>
            </tr>
     </thead>
-</table>
-<div id="div" style = " max-height: 442px;  overflow-y:scroll;">
-<table class="table">
         <tbody> 
 
     <?php
@@ -181,169 +177,39 @@ h1 {
        
  </div>
  
-<?php } ?>
-            <?php if ($tipo_usuario==2) {?>
-        <?php include ('../../Buscador_ajax/Cabezeras/cabezeraCompra.php') ?>
-<div  id="x" style="position: initial;" class="btn-group mb-3  mx-2" style=" position: initial;" role="group" aria-label="Basic outlined example">
-         <form id="ssas" method="POST" action="../../Plugin/Imprimir/Compra/soli_compra.php" target="_blank">
-            <?php $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario'";
-    $result = mysqli_query($conn, $sql);
-    while ($datos_sol = mysqli_fetch_array($result)){?>
- <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
-       
-    <?php } ?>
-             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
-                </svg>
-             </button>
-         </form>
-         <form id="ssas" method="POST" action="../../Plugin/PDF/Compra/pdf_soli_compra.php" class="mx-1" target="_blank">
-    <?php $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario'";
-    $result = mysqli_query($conn, $sql);
-    while ($datos_sol = mysqli_fetch_array($result)){?>
- <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
-       
-    <?php } ?>
-             <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
-                </svg>
-             </button>
-         </form>
-<form id="ssas" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Compra/Excel.php" target="_blank">
-            <input type="hidden" name="columna" value="<?php echo $columna ?>">
-            <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
-                <button type="submit" class="btn btn-outline-primary" name="compra1" target="_blank">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
-                </svg>
-                </button>
-            </form>
-</div>
- <?php if (isset($_POST['Consultar1'])) {$columna=$_POST['columna'];$tipo=$_POST['tipo'];?>
- <div  style="position: initial;" class="btn-group mb-3  mx-2" style=" position: initial;" role="group" aria-label="Basic outlined example">
-         <form id="ssas" method="POST" action="../../Plugin/Imprimir/Compra/soli_compra.php" target="_blank">
-            <?php $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario'";
-    $result = mysqli_query($conn, $sql);
-    while ($datos_sol = mysqli_fetch_array($result)){?>
- <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
-       
-    <?php } ?>
-          <input type="hidden" name="columna" value="<?php echo $columna ?>">
-            <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
-             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Consultar1">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
-                </svg>
-             </button>
-         </form>
-         <form id="ssas" method="POST" action="../../Plugin/PDF/Compra/pdf_soli_compra.php" class="mx-1" target="_blank">
-    <?php $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario'";
-    $result = mysqli_query($conn, $sql);
-    while ($datos_sol = mysqli_fetch_array($result)){?>
- <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
-       
-    <?php } ?>
-          <input type="hidden" name="columna" value="<?php echo $columna ?>">
-            <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
-             <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Consultar1">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
-                </svg>
-             </button>
-         </form>
-    <form id="ssas" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Compra/Excel.php" target="_blank">
-<?php $sql = "SELECT * FROM tb_compra WHERE idusuario='$idusuario'";
-    $result = mysqli_query($conn, $sql);
-    $n=0;
-    while ($datos_sol = mysqli_fetch_array($result)){?>
- <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
-       
-    <?php } ?>
-            <input type="hidden" name="columna" value="<?php echo $columna ?>">
-            <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
-                <button type="submit" class="btn btn-outline-primary" name="Consultar1" target="_blank">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
-                </svg>
-                </button>
-            </form>
-</div>
-<?php } ?>
-<?php include ('../../Buscador_ajax/Tablas/Compra/tablaCompra.php') ?>
-<div id="x">
-        <table class="table table-responsive " id="div" style="width:100%">
-            <thead>
-              <tr id="tr">
-               
-                <th style="width: 10%;">No. Solicitud</th>
-                <th style="width: 10%;">Dependencia</th>
-                <th style="width: 10%;">Plazo y No. de Entregas</th>
-                <th style="width: 10%;">Unidad Técnica</th>
-                <th style="width: 10%;">Descripción Solicitud</th>
-                <th style="width: 10%;">Encargado</th>
-                <th style="width: 10%;">Fecha de Registro</th>
-                <th style="width: 10%;">Estado</th>
-                <th style="width: 10%;">Detalles</th>
-           </tr>
-    </thead>
-</table>
-<div id="div" style = " max-height: 442px;  overflow-y:scroll;">
-<table class="table">
-        <tbody> 
 
-    <?php
-    include 'Model/conexion.php';
-
-$tipo_usuario = $_SESSION['iduser'];
-    $sql = "SELECT * FROM tb_compra WHERE idusuario='$tipo_usuario' ORDER BY nSolicitud DESC  ";
-    $result = mysqli_query($conn, $sql);
-    while ($solicitudes = mysqli_fetch_array($result)){
-        ?>
-        <style type="text/css">
-     #td{
-        display: none;
-    }
-    #ssas{
-        display: block;
-    }
-    #div{
-        display: block;
-    }
-</style>
-        <tr>
-            <td data-label="No. Solicitud" class="delete"><?php  echo $solicitudes['nSolicitud']; ?></td>
-            <td style="width: 11%;min-width: 100%;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['dependencia']; ?></td>
-            <td data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['plazo']; ?></td>
-            <td data-label="Unidad Técnica" class="delete"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
-            <td style="width: 10%;min-width: 100%;" data-label="Descripción" class="delete"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
-
-            <td data-label="Encargado" class="delete"><?php  echo $solicitudes['usuario']; ?></td>
-            <td data-label="Fecha" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
-            <td data-label="Estado" class="delete"><input readonly <?php
-                if($solicitudes['estado']=='Comprado') {
-                     echo ' style="background-color:blueviolet ;width:100%; border-radius:5px;text-align:center; color: white;"';
-                }
-            ?> class="form-control" type="text" name="" value="<?php echo $solicitudes['estado'] ?>"></td>
-            <td  data-label="Detalles">
-            <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Compra.php">             
-                <input type='hidden' name='id' value="<?php  echo $solicitudes['nSolicitud']; ?>">             
-                <input type="submit" name='detalle' class="btn btn-primary" value="Ver Detalles">           
-            </form> 
-            </td>
-        </tr>
-         <?php } ?> 
-
-           </tbody>
-        </table>
-       
- </div>
-</div>
-</div>
-<?php } ?>
 
  </section>
-   
+   <script>$(document).ready(function () {
+
+       $('#exam').DataTable({
+            rowGroup: {
+            dataSrc: 6
+        },
+            responsive: true,
+            autoWidth:false,
+            deferRender: true,
+            scroller: true,
+            scrollY: 400,
+            scrollCollapse: true,
+                    language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                 },
+                 "sProcessing":"Procesando...",
+            },
+
+    });
+}); 
+</script>
 </body>
 </html>

@@ -81,11 +81,11 @@ die();
    }
     </style>
 <br><br><br>
-           <h1 style="color: white; text-align: center;margin-top: 2%">Solicitud de Bodega</h1>
 
 <section id="act">
+           <h1 style=" text-align: center;">Solicitud de Bodega</h1>
     <?php include ('../../Buscador_ajax/Cabezeras/cabezera.php') ?>
-     <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="form_bodega_info.php">
+     <form id="frm-example" style="margin: 0%;position: 0; background: transparent;" method='POST' action="form_bodega_info.php">
 
     
  <?php include ('../../Buscador_ajax/Consultas/Consulta1.php') ?>

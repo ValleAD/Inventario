@@ -18,14 +18,15 @@
     <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;text-align: center;font-size: 12px;">
         <thead>     
             <tr style="border: 1px solid #ddd;color: black;">
-         <th>#</th>
+        <th style="width: 5%">#</th>
          <th>Departamento</th>
          <th>Encargado</th>
          <th>Codigo</th>
-         <th style="width:30%">Descripción Completa</th>
+         <th>Descripción Completa</th>
          <th>U/M</th>
          <th>Cantidad</th>
-         <th>Costo Unitario</th>         
+         <th>Costo Unitario</th>
+         <th>Fecha Registro</th>       
        </tr>
 
      </thead>
@@ -52,7 +53,7 @@ while ($productos = mysqli_fetch_array($result)){
     <td style="font-size: 11px;" data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
     <td style="font-size: 11px;" data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
     <td style="font-size: 11px;" data-label="Costo Unitario">$<?php  echo $precio3 ?></td>
-    <td style="font-size: 11px;" data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
+    <td style="font-size: 11px;" data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_solicitud'])); ?></td>
 </tr>
 
 <?php } ?> 
@@ -189,11 +190,11 @@ width: 100%;
     <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;text-align: center;font-size: 12px;">
         <thead>     
             <tr style="border: 1px solid #ddd;color: black;">
-         <th>#</th>
+        <th style="width: 10%">#</th>
          <th>Departamento</th>
          <th>Encargado</th>
          <th>Codigo</th>
-         <th style="width:30%">Descripción Completa</th>
+         <th>Descripción Completa</th>
          <th>U/M</th>
          <th>Cantidad</th>
          <th>Costo Unitario</th>
@@ -225,7 +226,7 @@ while ($productos = mysqli_fetch_array($result)){
     <td style="font-size: 11px;" data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
     <td style="font-size: 11px;" data-label="Cantidad"><?php  echo $productos['stock']; ?></td>
     <td style="font-size: 11px;" data-label="Costo Unitario">$<?php  echo $precio3 ?></td>
-    <td style="font-size: 11px;" data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_registro'])); ?></td>
+    <td style="font-size: 11px;" data-label="Fecha Registro"><?php  echo date("d-m-Y",strtotime($productos['fecha_solicitud'])); ?></td>
 </tr>
 
 <?php } ?> 
@@ -370,5 +371,5 @@ width: 100%;
     $dompdf->render();
 
     // Output the generated PDF to Browser
-    $dompdf->stream("pdf_vale.php",array("Attachment"=>0));
+    $dompdf->stream("pdf_vale.pdf",array("Attachment"=>0));
             ?>

@@ -126,5 +126,5 @@ $dompdf->setPaper('letter');
 $dompdf->render();
 
 // Output the generated PDF to Browser
-$dompdf->stream("pdf_circulante.php",array("Attachment"=>0));
+$dompdf->stream("pdf_circulante.pdf",array("Attachment"=>0));
         ?>

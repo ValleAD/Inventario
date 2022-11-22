@@ -253,5 +253,5 @@ $dompdf->setPaper('letter');
 $dompdf->render();
 
 // Output the generated PDF to Browser
-$dompdf->stream("Reporte de solicitud vale.php",array("Attachment"=>0));
+$dompdf->stream("Reporte de solicitud vale.pdf",array("Attachment"=>0));
         ?>

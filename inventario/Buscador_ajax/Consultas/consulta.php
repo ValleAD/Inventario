@@ -124,7 +124,7 @@ if ($buscarAlumnos->num_rows > 0)
                         if ($productos['SUM(stock)']==0) {
                
                    
-              $tabla.='  <a  data-bs-toggle="tooltip" style="float:right;" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm btn-del" id="'.$productos['codProductos'] .'" href="Controller/Delete_producto.php?cod='.$productos['cod'].'&id='. $productos['SUM(stock)'] .'">Eliminar</a>';
+              $tabla.='  <a  data-bs-toggle="tooltip" style="float:right;" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm btn-del" id="'.$productos['codProductos'] .'" href="../../Controller/Productos/Delete_producto.php?cod='.$productos['cod'].'&id='. $productos['SUM(stock)'] .'">Eliminar</a>';
             
                 
             };
@@ -181,6 +181,7 @@ if (resultado.value) {
             rowGroup: {
             dataSrc: 6
         },
+        lengthMenu: [[10, -1], [10,"Todos los registros"]],
             responsive: true,
             autoWidth:false,
             deferRender: true,
@@ -209,6 +210,7 @@ if (resultado.value) {
 });   $(document).ready(function () {
     $('#example1').DataTable({
 
+lengthMenu: [[10, -1], [10,"Todos los registros"]],
 responsive: true,
 autoWidth:false,
             deferRender: true,
@@ -238,6 +240,7 @@ autoWidth:false,
    $(document).ready(function () {
     $('#example2').DataTable({
 
+lengthMenu: [[10, -1], [10,"Todos los registros"]],
 responsive: true,
 autoWidth:false,
             deferRender: true,
@@ -266,6 +269,7 @@ autoWidth:false,
 });   $(document).ready(function () {
     $('#example3').DataTable({
 
+lengthMenu: [[10, -1], [10,"Todos los registros"]],
 responsive: true,
 autoWidth:false,
             deferRender: true,
@@ -294,6 +298,7 @@ autoWidth:false,
 });   $(document).ready(function () {
     $('#example4').DataTable({
 
+lengthMenu: [[10, -1], [10,"Todos los registros"]],
 responsive: true,
 autoWidth:false,
             deferRender: true,
@@ -322,6 +327,7 @@ autoWidth:false,
 });   $(document).ready(function () {
     $('#example5').DataTable({
 
+lengthMenu: [[10, -1], [10,"Todos los registros"]],
 responsive: true,
 autoWidth:false,
             deferRender: true,
@@ -350,6 +356,7 @@ autoWidth:false,
 });   $(document).ready(function () {
     $('#example6').DataTable({
 
+lengthMenu: [[10, -1], [10,"Todos los registros"]],
 responsive: true,
 autoWidth:false,
             deferRender: true,

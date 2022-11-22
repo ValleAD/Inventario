@@ -1,4 +1,8 @@
-
+<style type="text/css">
+     #submit{
+          margin: 0;
+     }
+</style>
 <?php include ('../../Model/conexion.php');
 
 $tabla="";
@@ -39,11 +43,26 @@ if ($buscarAlumnos->num_rows > 0)
 
 
     ';}echo '
- 
+<div class="card">
+     <div class="card-body">
+          <div class="row">
+               <div class="col-4">
+                    <h3>Seleccione los Productos</h3>
+               </div>
+               <div class="col-8">
+                    
+            <button id="submit" style="width: 20%; float: right;font-size: 16px"   type="submit" name="solicitar" class=" form-control btn btn-success btn-sm text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button>
+               </div>
+          </div>
+     </div>
+</div>
+<div class="card mt-3">
+     <div class="card-body">
     <table class="table table-responsive  table-striped" id="tblElecProducts" style=" width: 100%;">
      
                 <thead>
                      <tr id="tr">
+                <th style="width: 5%;"></th>
                 <th style="width: 5%;">Código</th>
                 <th style="width: 10%;">Catálogo</th>
                 <th style="width: 25%;">Descripción Completa</th>
@@ -51,8 +70,7 @@ if ($buscarAlumnos->num_rows > 0)
                 <th style="width: 15%;">Cantidad</th>
                 <th style="width: 15%;">Costo Unitario</th>
                 <th style="width: 10%;">Fecha Registro</th>
-                <th style="width: 10%;" align="center">
-                    <button onclick = "return Validate()"   type="submit" name="solicitar" class=" form-control btn btn-success btn-sm text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button>
+                   
 
                   </th> 
                    </tr>
@@ -81,6 +99,7 @@ if ($buscarAlumnos->num_rows > 0)
         $stock=number_format($cantidad, 2,".",",");
         $tabla.='
         <tr id="tr">
+        <td style="width:7%;min-width: 100%;"></td>
             <td style="width:7%;min-width: 100%;" id="th" data-label="Código">'.$productos['codProductos'].'</td>
             <td style="width:7%;min-width: 100%;" id="th" data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
             <td style="width:20%;min-width: 100%;" id="th" data-label="Descripción">'.$productos['descripcion'].'</td>
@@ -88,20 +107,16 @@ if ($buscarAlumnos->num_rows > 0)
             <td style="width:10%;min-width: 100%;" id="th" data-label="Cantidad">'.$stock.'</td>
             <td style="width:10%;min-width: 100%;" id="th" data-label="Precio">'.$precio1.'</td>
             <td style="width:10%;min-width: 100%;" id="th" data-label="Fecha">'.$productos['fecha_registro'].'</td>
-            <td style="width:11%;min-width: 100%;" id="th" data-label="solicitar">';?>
+           '?>
             
-            <?php if ($productos['SUM(stock)']!=0) {
-                $tabla.='<input class="case"  id="'.$productos["codProductos"] .'" type="checkbox" name="id[]" value="'.$productos["codProductos"] .'"> <label  id="l" for="'.$productos["codProductos"] .'" > </label>  ';
-            } else{
-                $tabla.='<button type="button" class="btn btn-danger" style="opacity: .7;">No Permitido</button>';
-        }?>
+
                  
            
          </tr>
 <?php 
     
     }
-    $tabla.='</tbody></table> ';
+    $tabla.='</tbody></table> </div></div> ';
 } else
     {
         $tabla="
@@ -114,30 +129,25 @@ if ($buscarAlumnos->num_rows > 0)
 echo $tabla;
 ?>      
 <script>
-       $(document).ready(function () {
-    $('#tblElecProducts').DataTable({
-        // columnDefs: [ {
-        //     orderable: true,
-        //     className: 'select-checkbox',
-        //     targets:   0
-        // } ],
-        // select: {
-        //     style:    'os',
-        //     selector: 'td:first-child'
-        // },
-        // order: [[ 1, 'asc' ]],
-       rowGroup: {
-            dataSrc: 6
-        },
-
-        "paging": false,
-        autoWidth:false,
-        responsive: true,
+   var table = $('#tblElecProducts').DataTable( {
+    columnDefs: [ {
+        orderable: false,
+        className: 'select-checkbox',
+        targets:   0
+    } ],
+        select: {
+        style:    'multi'
+    },
+    lengthMenu: [[10, -1], [10,"Todos los registros"]],
+    responsive: true,
+autoWidth:false,
             deferRender: true,
             scroller: true,
             scrollY: 400,
             scrollCollapse: true,
-
+        rowGroup: {
+            dataSrc: 7
+        },
                     language: {
                 "lengthMenu": "Mostrar _MENU_ registros",
                 "zeroRecords": "No se encontraron resultados",
@@ -153,8 +163,31 @@ echo $tabla;
                  },
                  "sProcessing":"Procesando...",
             },
+});
+    $('#submit').on('click', function (event) {
 
+  
+  $('#frm-example').find('input[type="hidden"]').remove();
+  var seleccionados = table.rows({ selected: true });
+  
+  if(!seleccionados.data().length){
+    alert("No ha seleccionado ningún producto");
+      event.preventDefault();
+  }
+  
+  else{
+    seleccionados.every(function(key,data){
+      console.log(this.data());
+
+      $('<input>', {
+          type: 'block',
+          value: this.data()[1],
+          name: 'id[]'
+      }).appendTo('#frm-example');
+      
+      $("#frm-example").submit(); //submiteas el form
     });
+  }
 });
 </script>
      <script src="../../Plugin/bootstrap/js/validarInput.js"></script>

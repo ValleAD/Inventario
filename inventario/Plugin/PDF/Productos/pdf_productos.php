@@ -99,5 +99,5 @@ $dompdf->setPaper('letter');
 $dompdf->render();
 
 // Output the generated PDF to Browser
-$dompdf->stream("pdf_categoria.php",array("Attachment"=>0));
+$dompdf->stream("pdf_categoria.pdf",array("Attachment"=>0));
         ?>

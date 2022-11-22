@@ -13,7 +13,7 @@
            <?php if (isset($_POST['vale'])) {?>
         <h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD</h3>
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
-<h4 align="center" style="margin-top: 2%;">EGRESOS DE COMPRAS</h4>
+<h4 align="center" style="margin-top: 2%;">EGRESOS DE VALE</h4>
     <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
         <thead>     
             <tr style="border: 1px solid #ddd;color: black;">
@@ -133,7 +133,7 @@ width: 100%;
            <?php if (isset($_POST['vale1'])) {$idusuario=$_POST['idusuario'];?>
         <h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD</h3>
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
-<h4 align="center" style="margin-top: 2%;">EGRESOS DE COMPRAS</h4>
+<h4 align="center" style="margin-top: 2%;">EGRESOS DE VALE</h4>
     <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
         <thead>     
             <tr style="border: 1px solid #ddd;color: black;">
@@ -273,5 +273,5 @@ width: 100%;
     $dompdf->render();
 
     // Output the generated PDF to Browser
-    $dompdf->stream("pdf_vale.php",array("Attachment"=>0));
+    $dompdf->stream("pdf_vale.pdf",array("Attachment"=>0));
             ?>

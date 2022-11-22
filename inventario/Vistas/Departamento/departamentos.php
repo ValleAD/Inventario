@@ -59,6 +59,7 @@ $result = mysqli_query($conn, $sql);
 
 <style type="text/css">section{display: none;}</style>
 <form id="form" action="../../Controller/Departamento/Desabilitar-departamentos.php" method="POST" style="background: transparent; ">
+
     <div class="container-fluid" style="background: rgba(0, 0, 0, 0.5); margin: auto;padding-top: 1%; border-radius: 9px; color:#fff; font-weight: bold; margin: auto;">
   <h3 align="center">Actualizar Departamentos Habilitadas </h3>
         <div class="row">
@@ -94,6 +95,8 @@ $result = mysqli_query($conn, $sql);
 } 
 ?>
     <section style="margin:1%;padding: 1%; border-radius: 5px; background: white; ">
+        <div class="card">
+<div class="card-body">
         <h2 class="text-center " >Departamentos del Sistema</h2><br>
 
     <a href="../Categoria/categorias.php" class="btn btn-info" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; ">Categorias</a> 
@@ -141,22 +144,22 @@ $result = mysqli_query($conn, $sql);
                 </svg>
              </button>
          </form>
-         <form method="POST" action="../../Plugin/PDF/U_D_D_C/U_D_D_C_pdf.php" target="_blank">
+         <form method="POST" action="../../Plugin/PDF/U_D_D_C/U_D_D_C_pdf.php" target="_blank" class="mx-1">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="departamento" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>
-                 <form id="form2" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Departamento/Excel.php" target="_blank">
-                <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
+                 <form id="form2" method="POST" action="../../Plugin/Excel/Departamento/Excel.php" >
+                <button type="submit" class="btn btn-outline-primary" name="pdf">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                 </svg>
                 </button>
             </form>
 </div>
-  <table class="table table-striped" id="div" style=" width: 100%">
+  <table class="table table-striped" id="examp" style=" width: 100%">
                   
         <thead>
              <tr id="tr">
@@ -176,13 +179,7 @@ $result = mysqli_query($conn, $sql);
             </tr>
       
      </thead>
- </table>
- <div id="div" style = " max-height: 442px;  overflow-y:scroll;">
- <table class="table">
-            <tbody>
-         <tr>
-         <td  colspan="5" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
-            
+     <tbody>    
     <?php
 
     $sql = "SELECT * FROM selects_departamento ORDER BY `id` DESC";
@@ -239,6 +236,37 @@ $result = mysqli_query($conn, $sql);
 </div>
   </section>
         <script type="text/javascript">
+                        $(document).ready(function () {
+
+       $('#examp').DataTable({
+            rowGroup: {
+            dataSrc: 2
+        },
+            responsive: true,
+            autoWidth:false,
+            deferRender: true,
+            scroller: true,
+            scrollY: 400,
+            dom: 'flrtip',
+            scrollCollapse: true,
+                    language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                 },
+                 "sProcessing":"Procesando...",
+            },
+
+    });
+}); 
 function confirmaion(e) {
     if (confirm("¿Estas seguro que deseas Eliminar este registro?")) {
         return true;

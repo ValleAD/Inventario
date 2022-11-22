@@ -287,8 +287,8 @@ echo '<option value="'.$i.'">'.$Meses[($i)-1].'</option>';
     <div class="card-body p-1">
 
                     <div class=" "  style=" border-radius: ">
-        <div style="position: initial;" class="btn-group mb-3 my-3 mx-2 " role="group" aria-label="Basic outlined example">
-         <form id="well" class="well" method="POST" action="../../Plugin/Imprimir/Producto/tproductos.php" target="_blank">
+        <div style="position: initial;" class="btn-group  mb-3 my-3 mx-2 " role="group" aria-label="Basic outlined example">
+         <form class="botones" method="POST" action="../../Plugin/Imprimir/Producto/tproductos.php" target="_blank">
              
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="tproductos">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -296,7 +296,7 @@ echo '<option value="'.$i.'">'.$Meses[($i)-1].'</option>';
                 </svg>
              </button>
          </form>
-         <form id="well" class="well" method="POST" action="../../Plugin/PDF/Productos/tpdf_productos.php" target="_blank">
+         <form class="botones" method="POST" action="../../Plugin/PDF/Productos/tpdf_productos.php" target="_blank">
             
              <button  style="position: initial;"type="submit" class="btn btn-outline-primary mx-1" name="tproductospdf" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -304,7 +304,7 @@ echo '<option value="'.$i.'">'.$Meses[($i)-1].'</option>';
                 </svg>
              </button>
          </form>
-         <form id="well" class="well" method="POST" action="../../Plugin/Excel/Productos/Excel.php" target="_blank">
+         <form class="botones" method="POST" action="../../Plugin/Excel/Productos/Excel.php" target="_blank">
             
              <button style="position: initial;"type="submit" class="btn btn-outline-primary" name="tproductospdf" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -314,7 +314,7 @@ echo '<option value="'.$i.'">'.$Meses[($i)-1].'</option>';
          </form>
     
 
- <div class="col-md-12"style="position: initial;">
+ <div class="col-md-10"style="position: initial;">
             <section class="well" >
                 <form method="POST" action="" class="well hidden"> 
                 <div style="position: initial;" class="input-group">
@@ -329,7 +329,10 @@ echo '<option value="'.$i.'">'.$Meses[($i)-1].'</option>';
         </section>
     </div>
 </div>
-     <a  href="../Unidad/unidad_medidad.php" class="btn btn-primary"  style="position: initial; float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a>
+                    <?php if ($cliente=="egchoto") { ?>
+    <a title="Respaldo de la base de datos completa" id="b" class="btn btn-outline-primary"  style="position: initial; float: right;margin-top: 1%; margin-bottom: 1%; margin-right: 15px;" href="../../Database/Respaldos_sql/Respaldos.php">Exportar bd</a>
+                    <?php } ?>
+     <a  href="../Unidad/unidad_medidad.php" class="btn btn-outline-secondary" id="b" style="position: initial; float: right;margin-top: 1%;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a>
 </div>
 </div>
      </div>

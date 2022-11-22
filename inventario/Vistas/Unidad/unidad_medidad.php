@@ -100,8 +100,9 @@ $result = mysqli_query($conn, $sql);
 ?>
 
     <section style="margin:1%;padding: 1%; border-radius: 5px; background: white; ">
-            <h2  class="text-center my-5">Unidades Del Sistema</h2><br>
-
+            <h2  class="text-center ">Unidades Del Sistema</h2><br>
+<div class="card">
+<div class="card-body">
 <?php if($tipo_usuario == 1) { ?>
     <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="float: left;margin-top: 1%; color: white;margin-bottom: 1%;">Nueva Unidad</button>
    
@@ -139,6 +140,7 @@ $result = mysqli_query($conn, $sql);
         </div>
     </div>
 </div><?php } ?>
+
  <div  style="position: initial;" class="btn-group mb-3 my-3  mx-2" role="group" aria-label="Basic outlined example">
          <form method="POST" action="../../Plugin/Imprimir/U_D_D_C/U_D_D_C.php" target="_blank">
              <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="unidad">
@@ -147,14 +149,14 @@ $result = mysqli_query($conn, $sql);
                 </svg>
              </button>
          </form>
-         <form method="POST" action="../../Plugin/PDF/U_D_D_C/U_D_D_C_pdf.php" target="_blank">
+         <form method="POST" action="../../Plugin/PDF/U_D_D_C/U_D_D_C_pdf.php" target="_blank" class="mx-1">
              <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="unidad" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>
-                 <form id="form2" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Unidad/Excel.php" target="_blank">
+                 <form  method="POST" action="../../Plugin/Excel/Unidad/Excel.php" >
                 <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
@@ -162,7 +164,7 @@ $result = mysqli_query($conn, $sql);
                 </button>
             </form>
 </div>
-         <table class="table  table-striped" id="div" style=" width: 100%;">
+         <table class="table  table-striped" id="examp" style=" width: 100%;">
                    <thead>
              <tr id="tr">
                 <?php if($tipo_usuario == 1) { ?>
@@ -179,12 +181,6 @@ $result = mysqli_query($conn, $sql);
             </tr>
            
      </thead>
- </table>
- <div id="div" style = " max-height: 442px;  overflow-y:scroll;">
- <table class="table table-striped" >
-            <tbody>
-             <tr>
-         <td  colspan="7" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
     <?php
 
     $sql = "SELECT * FROM selects_unidad_medida ORDER BY `id` DESC ";
@@ -223,7 +219,7 @@ $result = mysqli_query($conn, $sql);
           <button name='editar' class='btn btn-success' style="width: 50%;"  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
         </form>
             
-
+</td>
 <!--**********************************************************************************************************************************************************************************-->
   <!--Botones para actualizar y eliminar-->
 
@@ -237,16 +233,49 @@ $result = mysqli_query($conn, $sql);
                         echo '<button type="button"  id="th" style="cursor: not-allowed;background: rgba(255, 0, 0, 0.5); border: none;" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger  text-white w-40">Eliminar</button>';
                     }?>
                 </form>
-            </td></td><?php } ?>
+            <?php } ?>
+        </td>
         </tr>
 
  <?php } ?> 
            </tbody>
         </table>
     </div>
+    </div>
 
   </section>
+
         <script type="text/javascript">
+            $(document).ready(function () {
+
+       $('#examp').DataTable({
+            rowGroup: {
+            dataSrc: 1
+        },
+            responsive: true,
+            autoWidth:false,
+            deferRender: true,
+            scroller: true,
+            scrollY: 400,
+            scrollCollapse: true,
+                    language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                 },
+                 "sProcessing":"Procesando...",
+            },
+
+    });
+}); 
 function confirmaion(e) {
     if (confirm("¿Estas seguro que deseas Eliminar este registro?")) {
         return true;
@@ -256,6 +285,6 @@ function confirmaion(e) {
     }
 }
 let linkDelete =document.querySelectorAll("delete");
-
+</script>
 </body>
 </html>

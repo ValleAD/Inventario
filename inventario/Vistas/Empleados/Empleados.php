@@ -184,7 +184,7 @@ $result = mysqli_query($conn, $sql);
                 </svg>
              </button>
          </form>
-                 <form id="well"  method="POST" action="../../Plugin/Excel/Empleados/Excel.php" target="_blank">
+                 <form id="well"  method="POST" action="../../Plugin/Excel/Empleados/Excel.php" >
                 <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
@@ -217,7 +217,7 @@ $result = mysqli_query($conn, $sql);
                 </svg>
              </button>
          </form>
-                 <form id="form2" style="margin-top:5%;margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Empleados/Excel.php" target="_blank">
+                 <form id="form2" method="POST" action="../../Plugin/Excel/Empleados/Excel.php" target="_blank">
                 <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
@@ -344,13 +344,15 @@ $result = mysqli_query($conn, $sql);
 </div>
 
 </div>         
+<?php if ($tipo_usuario==1) {?>
 
                <section id="tabla_resultado" >
         <!-- AQUI SE DESPLEGARA NUESTRA TABLA DE CONSULTA -->
 
         </section>
+<?php } ?>
 
-     <?php if($tipo_usuario==2) { ?>
+     <?php if($tipo_usuario==2) { ?><br>
 <?php 
     $sql = "SELECT * FROM tb_usuarios WHERE id='$idusuario' ORDER BY `id` ";
     $result = mysqli_query($conn, $sql);
@@ -361,9 +363,7 @@ if ($solicitudes['tipo_usuario']==1) {
 }else if($solicitudes['tipo_usuario']==2){
 $u='Cliente';
 } if($solicitudes['Habilitado']=="No"){
-    $u='Cuenta Desabilitada';
-}
-?>
+    $u='Cuenta Desabilitada';} ?>
 
        
             

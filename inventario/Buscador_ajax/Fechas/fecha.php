@@ -384,8 +384,8 @@
 <?php if (isset($_POST['Consultar2'])) {
 
 ?>
-<style>.productos{
-display: none;}</style>
+<style>.botones{display: none;}</style>
+<br>
                   <div class="card ">
     <div class="card-body">
         <a href="" class="btn btn-success" name="categorias" type="submit">Ver Productos</a>
@@ -452,6 +452,10 @@ echo'
                      <th style="width:8%"  id="th">Cantidad</th>
                      <th style="width:10%"  id="th">Costo Unitario</th>
                      <th style="width:10%"  id="th">Fecha Registro</th>
+                     <?php if($tipo_usuario==1){ 
+                        echo '<th style="width:10%" id="th">Editar</th>
+                     <th style="width:10%" id="th">Eliminar</th>'; 
+                 }  ?>
                 </tr>
             </thead>
             <tbody>
@@ -475,6 +479,29 @@ $q=$conn->real_escape_string($_POST['Busqueda']);
            <td  data-label="Cantidad" ><?php  echo $stock ?></td>
            <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
+           <?php if ($tipo_usuario==1) {
+            echo'
+            <td>
+                <form style="margin: 0%;position: 0;float:right; background: transparent;" method="POST" action="vistaProductos.php">             
+                <input type="hidden" name="id" value="'.$productos['codProductos'] .'">               
+                <button  id="th" name="editar" class="btn btn-success btn-sm"  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
+            </form> </td>
+            <td>
+            ';
+                        if ($productos['SUM(stock)']==0) {
+               
+                   
+              echo'  <a  data-bs-toggle="tooltip" style="float:right;" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm btn-del" id="'.$productos['codProductos'] .'" href="../../Controller/Productos/Delete_producto.php?cod='.$productos['cod'].'&id='. $productos['SUM(stock)'] .'">Eliminar</a>';
+            
+                
+            };
+                        if ($productos['SUM(stock)']!=0) {
+               echo'
+            <button   id="th" style="cursor: not-allowed;float:right;background: rgba(255, 0, 0, 0.5); border: none;" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm text-white">Eliminar</button>
+            ';
+            }
+        }?>
+        </td> 
                 </tr>
             <?php } ?>
             </tbody>

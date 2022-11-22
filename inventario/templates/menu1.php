@@ -6,6 +6,7 @@ if(!isset($_SESSION['signin'])){
 }
 $tipo_usuario = $_SESSION['tipo_usuario'];
 $idusuario = $_SESSION['iduser'];
+$cliente =$_SESSION['signin'];
 ?><!DOCTYPE html>
 <html lang="es">
 <head>
@@ -80,6 +81,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                     <?php } ?>
                         <li><a id="b" href="../Reportes/reporte_ingresos.php">Reporte Ingresos</a></li>
                         <li><a id="b" href="../Reportes/reporte_egresos.php">Reporte Egresos</a></li>
+
                     </ul>
                 </li>
                 <li class="submenu">
@@ -152,7 +154,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 
                 </li>
                <?php
-    $cliente =$_SESSION['signin'];
+    
     $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
     while ($consulta =mysqli_fetch_array($data)) {
 ?>  
@@ -168,12 +170,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                         </svg>
 </div>
 </li>
-                 <?php if ($cliente=="egchoto") { ?>
-<li class="submenu" style="float:right;" >
-                    <a style="background:#023859" title="Respaldo de la base de datos completa" id="a" href="../../Database/Respaldos_sql/Respaldos.php">Exportar bd</a>
 
-                </li>
-<?php } ?>
 
                 </ul>
         </nav>
@@ -304,6 +301,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
     <script src="../../Plugin/bootstrap/js/dataTables.rowGroup.min.js"></script>
     <script src="../../Plugin/bootstrap/js/dataTables.responsive.min.js"></script>
     <script src="../../Plugin/bootstrap/js/responsive.bootstrap4.min.js"></script>
+   
 <script type="text/javascript">
     $(document).ready(main);
 

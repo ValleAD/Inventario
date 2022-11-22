@@ -291,7 +291,7 @@ Values ('Área Saneamiento Ambiental', 'Si'),
 
 INSERT INTO `tb_usuarios` (`username`, `firstname`, `lastname`, `Establecimiento`,  `unidad`,`password`,`Habilitado`, `tipo_usuario`)
 Values ('Admin', 'Admin', 'Master', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Sin Unidad', 'Admin','Si', '1'),
-       ('Egchoto', 'Ernesto', 'Gonzales Choto', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Departamento Mantenimiento Local', 'Neto982006','Si', '1'),
+       ('Egchoto', 'ernesto', 'Gonzales Choto', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Departamento Mantenimiento Local', 'neto982006','Si', '1'),
        ('Usuario1', 'Baltazar Alexander', 'Marinero Pérez', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Sección Equipo Básico', '123','Si', '2'),
        ('Usuario2', 'Fráncico Tolentino', 'López', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Sección Planta Física Y Mobiliario' , '123','Si', '2'),
        ('Usuario3', 'René Adán', 'Villalta Pérez', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Sección Planta Física Y Mobiliario' , '123','Si', '2'),
@@ -795,7 +795,7 @@ INSERT INTO `tb_productos` (`codProductos`, `catalogo`, `descripcion`, `unidad_m
 (70211475, 40142612, 'Adaptador Hembra De PVC De 2"', 'C/U', '98.00', '0.70', 'Herramientas Y Repuestos', '2022-02-25', 25, 2, 2022),
 (70211481, 30181809, 'Sifón Continuo PVC De 1 1/2"', 'C/U', '8.00', '4.30', 'Herramientas Y Repuestos', '2022-03-09', 9, 3, 2022),
 (70211483, 30181809, 'Sifón Continuo PVC De 2"', 'C/U', '8.00', '4.50', 'Herramientas Y Repuestos', '2022-03-09', 9, 3, 2022),
-(70211484, 30181809, '70211484sifon Flexible Tipo Acordeón De 1 1/4" PVC', 'C/U', '25.00', '4.00', 'Herramientas Y Repuestos', '2022-03-11', 11, 3, 2022),
+(70211484, 30181809, 'Sifon Flexible Tipo Acordeón De 1 1/4" PVC', 'C/U', '25.00', '4.00', 'Herramientas Y Repuestos', '2022-03-11', 11, 3, 2022),
 (70211487, 40141716, 'Sifón A La Pared Plástico Cromado De 1 1/2"', 'C/U', '19.00', '2.20', 'Herramientas Y Repuestos', '2022-02-24', 24, 2, 2022),
 (70211534, 40142615, 'Reductor De 2 1/2" A 1" De P.V.C.', 'C/U', '10.00', '1.30', 'Herramientas Y Repuestos', '2022-03-08', 8, 3, 2022),
 (70211538, 40173608, 'Reductor De 1 1/2 A 1/2 P.V.C', 'C/U', '23.00', '0.80', 'Herramientas Y Repuestos', '2022-02-25', 25, 2, 2022),

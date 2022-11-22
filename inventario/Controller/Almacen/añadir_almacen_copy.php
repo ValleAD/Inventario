@@ -67,22 +67,21 @@ if (resultado.value) {
     
   }
 }
-  
-   if(isset($_GET['estado1'])){
+if(isset($_GET['estado1'])){
 $nSolicitud=$_GET['almacen'];
 $estado = $_GET['estado1'];
 $sql="UPDATE  tb_almacen SET estado = '$estado' WHERE codAlmacen='$nSolicitud'" ;
 $result = mysqli_query($conn, $sql);
 if ($estado=='Rechazado') {
-    echo "<script>
+     echo "<script>
     Swal.fire({
-      'title:Realizado',
+      title:'Realizado',
       text:'Producto Rechazado',
       icon:'success',
       allowOutsideClick: false
     }).then((resultado) =>{
 if (resultado.value) {
-        window.location.href='../../Vistas/Almacen/solicitudes_almacen.php';                               
+        window.location.href='../../Vistas/Bodega/solicitudes_almacen.php';                               
                }
                 });
 
@@ -90,6 +89,7 @@ if (resultado.value) {
       }
 
 }
+
   ?>
 </body>
 </html>

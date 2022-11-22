@@ -90,7 +90,7 @@ die();
 <section>
 <?php include ('../../Buscador_ajax/Cabezeras/cabezera.php') ?>
 
-     <form style="background: transparent;" method='POST' action="form_circulante2.php">
+     <form id="frm-example" style="background: transparent;" method='POST' action="form_circulante2.php">
          <button style=" float: right;margin-bottom: 1%;" type="submit" name="solicitar" class=" div btn btn-success btn-sm text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button><br class="div"><br class="div">
 
 <?php include ('../../Buscador_ajax/Consultas/Consulta1.php') ?>

@@ -68,7 +68,7 @@ header nav ul li .caret {float: right;}}
 input[type="radio"]{display: none;}
 #label1{color: #0774D9;padding: 5px 15px 5px 51px;display: inline-block;position: inherit;font-size: 1em;border-radius: 3px;cursor: pointer;-webkit-transition: all .3s ease;-o-transition: all .3s ease;transition: all .3s ease;}
 #label1:hover{background: rgba(0, 116, 217, .4);}
-#label1:before{content: "";width: 17px;height: 17px;display: inline-block;background: none;border: 3px solid white;border-radius: 50%;position: inherit;margin-left: -8%;left: 17px;top: 10px;}
+#label1:before{content: "";width: 17px;height: 17px;display: inline-block;background: none;position: inherit;margin-left: -8%;left: 17px;top: 10px;}
 input[type="radio"]:checked + #label1{padding: 5px 15px;background: #0774D9;border-radius: 2px;color: #fff;}
 input[type="radio"]:checked + #label1:before{color: #fff;display: none;}
 

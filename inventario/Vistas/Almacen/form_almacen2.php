@@ -77,7 +77,8 @@ if ($codigo=="") {
   if (isset($_POST['solicitar'])){ ?>
         <section >
  <form style="background: transparent;" method="POST" action="../../Controller/Almacen/almacen.php">
-    <div class="container-fluid" style="position: initial">
+        <div class="card">
+            <div class="card-body">
 <div class="row">
       <div class="col-md-4" style="position: initial">
     
@@ -111,8 +112,12 @@ if ($codigo=="") {
       <?php }?>
     </div>
 </div>
+</div>
+</div> <br>
+        <div class="card">
+            <div class="card-body">
       <?php include('../../Buscador_ajax/Tablas/Productos/tablaProductos.php') ?>
-           
+           </div></div>
           <center>  <div class="col-md-3" style="padding: 0;">
         <button type="submit" name="form_compra2" class="btn  btn-success btn-lg my-2 text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar
                         <svg class="bi" width="20" height="20" fill="currentColor">

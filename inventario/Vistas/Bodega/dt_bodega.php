@@ -106,7 +106,6 @@ $final2 = 0;
         </div>
       
         <br>
-          <table class="table">
            <div  style="position: initial;"class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
               <form method="POST" action="../../Plugin/PDF/Bodega/pdf_bodega.php">
 
@@ -209,6 +208,7 @@ while ($productos = mysqli_fetch_array($result)){
             </form>
 
 </div> 
+          <table class="table" id="examp">
         <thead>
                 <tr id="tr">
                   <th >Código</th>
@@ -220,11 +220,8 @@ while ($productos = mysqli_fetch_array($result)){
                   <th >Total</th>
                 </tr>
               </thead>
-          </table>
-          <div id="div" style = "max-height: 442px; overflow-y:scroll;">
-          <table class="table">
+          
             <tbody>
-                <td id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td>
 <?php 
 $odt = $productos1['codBodega'];
 }
@@ -268,17 +265,47 @@ while ($productos = mysqli_fetch_array($result)){
 
       <?php } ?> </tbody>
     </table>
-</div>
-<table class="table">
-           <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
-        <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
-        <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final1 ?></td>
-    </tfoot>
-     </table>   
+
+  
 </form>
 </section>
       
-            
+      <script>
+$(document).ready(function () {
+    var table = $('#examp').DataTable({
+    lengthMenu: [[10, -1], [10,"Todos los registros"]],
+    responsive: true,
+            autoWidth:false,
+            deferRender: true,
+            scroller: true,
+            scrollY: 400,
+            dom: 'lrtip',
+            "searching": false,
+            scrollCollapse: true,
+                    language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                 },
+                 "sProcessing":"Procesando...",
+            },
+    });
+ 
+    $('#buscar1').click(function () {
+        var data = table.$('input').serialize();
+        
+    });
+});
+</script>
+        
   </body>
   </html>
 

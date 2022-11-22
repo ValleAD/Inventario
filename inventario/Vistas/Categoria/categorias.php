@@ -86,12 +86,11 @@ $result = mysqli_query($conn, $sql);
 } 
 ?><br>
     <section style="margin:1%;background: rgba(255, 255, 255, 0.9);border-radius: 15px; position: initial; ">
+
         <h2 class="text-center ;" style="color:black;">Categorias</h2>
-    <a href="../Dependencia/dependencias.php" class="btn btn-success" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Dependencias</a>
-    <a href="../Departamento/departamentos.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Departamentos</a>
+
 <?php if($tipo_usuario == 1) { ?>
-    <div id="div">
-    <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="float: left;margin-top: 1%; color: white;margin-bottom: 1%;">Nueva Categoria</button>
+
 
      </div>
 <!-- Delete -->
@@ -111,17 +110,6 @@ $result = mysqli_query($conn, $sql);
                       
                
             </div>
-            <style type="text/css">
-                #label{
-                    color: white;
-                }
-                 @media (max-width: 952px){
-                #label{
-                    margin-top: 1%;
-                   
-                }
-            }
-            </style>
             <div class="modal-footer">
         <button name="submit" type="submit" id="Update" class="btn btn-danger" >Agregar</button> 
       </div>
@@ -130,8 +118,13 @@ $result = mysqli_query($conn, $sql);
     </div>
 </div><?php } ?> 
 </div>
-
+<br>
+<div class="card">
+<div class="card-body">
  <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+
+    <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios">Nueva Categoria</button>
+
          <form method="POST" action="../../Plugin/Imprimir/U_D_D_C/U_D_D_C.php" target="_blank">
              <button style="position: initial;"n type="submit" class="btn btn-outline-primary mx-1" name="categorias">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -139,14 +132,14 @@ $result = mysqli_query($conn, $sql);
                 </svg>
              </button>
          </form>
-         <form method="POST" action="../../Plugin/PDF/U_D_D_C/U_D_D_C_pdf.php" target="_blank">
+         <form method="POST" action="../../Plugin/PDF/U_D_D_C/U_D_D_C_pdf.php" target="_blank" class="mx-1">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="categorias" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>
-        <form id="form2" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Categorias/Excel.php" target="_blank">
+        <form id="form2" method="POST" action="../../Plugin/Excel/Categorias/Excel.php" >
                 <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
@@ -154,8 +147,9 @@ $result = mysqli_query($conn, $sql);
                 </button>
             </form>
 </div>
-
-         <table class="table  table-striped" id="div" style=" width: 100%">
+    <a href="../Dependencia/dependencias.php" class="btn btn-success" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Dependencias</a>
+    <a href="../Departamento/departamentos.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Departamentos</a>
+         <table class="table  table-striped" id="examp" style=" width: 100%">
                   
         <thead>
               <tr id="tr">
@@ -173,12 +167,7 @@ $result = mysqli_query($conn, $sql);
                 
             </tr>
      </thead>
- </table>
- <div id="div" style = " max-height: 442px;  overflow-y:scroll;">
- <table class="table table-striped" >
-            <tbody>
-             <tr>
-         <td  colspan="7" id="td" ><h4 align="center">No se encontraron ningun  resultados 😥</h4></td></tr>
+     <tbody>
     <?php
     $sql = "SELECT * FROM selects_categoria ";
     $result = mysqli_query($conn, $sql);
@@ -207,16 +196,15 @@ $result = mysqli_query($conn, $sql);
                     $c='Categoria no Disponible';
                 }
             ?>
- type="text" class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="<?=   $c ?>"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"><?=   $c ?></p></td><?php if($tipo_usuario == 1) { ?>
+ type="text" class="btn" data-bs-toggle="tooltip" data-bs-placement="top" title="<?=   $c ?>"  name="Habilitado" style="width:100%;border:none; background: transparent; text-align: center;"><?=   $c ?></p></td>
+ <?php if($tipo_usuario == 1) { ?>
             <td style="width: 10%;min-width: 100%;" data-label="Editar">
                  <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="">             
           <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">             
           <button name='editar' class='btn btn-success' style="width: 50%;"  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
         </form>
             
-
-<!--**********************************************************************************************************************************************************************************-->
-  <!--Botones para actualizar y eliminar-->
+</td>
 
             <td style="width: 10%;min-width: 100%;"  data-label="Eliminar" >
                <form action="Controller/Categoria/Delete-categorias.php" method="POST" style="background:transparent;">
@@ -228,16 +216,46 @@ $result = mysqli_query($conn, $sql);
                         echo '<button type="button"  id="th" style="cursor: not-allowed;background: rgba(255, 0, 0, 0.5); border: none;" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger  text-white w-40">Eliminar</button>';
                     }?>
                 </form>
-            </td></td><?php } ?>
+            </td><?php } ?>
         </tr>
 
  <?php } ?> 
            </tbody>
         </table>
+    </div>
 </div>
 </section>
     
         <script type="text/javascript">
+        $(document).ready(function () {
+                   $('#examp').DataTable({
+            rowGroup: {
+            dataSrc: 1
+        },
+            responsive: true,
+            autoWidth:false,
+            deferRender: true,
+            scroller: true,
+            scrollY: 400,
+            scrollCollapse: true,
+                    language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                 },
+                 "sProcessing":"Procesando...",
+            },
+
+    });
+});
 function confirmaion(e) {
     if (confirm("¿Estas seguro que deseas Eliminar este registro?")) {
         return true;

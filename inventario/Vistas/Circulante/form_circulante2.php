@@ -16,10 +16,10 @@ die();
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Vista Previa</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     
+    <title>Vista Previa</title>
 </head>
 <body>
         <style>  
@@ -68,7 +68,7 @@ if ($codigo=="") {
             echo'
           <script>
              alert("Debe de selecionar los productos");
-               window.location ="form_circulante1.php"; 
+               window.location ="form_almacen1.php"; 
                       </script>
                       ';
 
@@ -77,7 +77,8 @@ if ($codigo=="") {
   if (isset($_POST['solicitar'])){ ?>
         <section >
  <form style="background: transparent;" method="POST" action="../../Controller/Circulante/añadir_circulante.php">
-    <div class="container-fluid" style="position: initial">
+        <div class="card">
+            <div class="card-body">
 <div class="row">
       <div id="w," class="col-md-3" style="position: initial">
                 
@@ -99,12 +100,15 @@ if ($codigo=="") {
                 <input style="cursor: notinitialowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="<?php  echo $consulta['id']?>">
             <?php } ?>
     </div>
-
-</div><br>   
+</div>
+</div>
+</div> <br>
+        <div class="card">
+            <div class="card-body">
       <?php include('../../Buscador_ajax/Tablas/Productos/tablaProductos.php') ?>
-
+           </div></div>
           <center>  <div class="col-md-3" style="padding: 0;">
-        <button id="buscar1" type="submit" name="form_compra2" class="btn  btn-success btn-lg my-2 text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar
+        <button type="submit" name="form_compra2" class="btn  btn-success btn-lg my-2 text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar
                         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#save"/>
                         </svg>
@@ -114,7 +118,6 @@ if ($codigo=="") {
  </section>
 
     <?php } ?>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
 
 
     <script>

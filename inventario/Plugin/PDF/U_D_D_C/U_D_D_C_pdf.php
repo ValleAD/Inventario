@@ -205,5 +205,5 @@ $dompdf->setPaper('letter');
 $dompdf->render();
 
 // Output the generated PDF to Browser
-$dompdf->stream("".$w.".php",array("Attachment"=>0));
+$dompdf->stream($w.".pdf",array("Attachment"=>0));
         ?>

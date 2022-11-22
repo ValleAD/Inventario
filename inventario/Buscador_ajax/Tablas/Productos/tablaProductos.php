@@ -7,7 +7,6 @@
                 <th >Productos Disponibles</th>
                 <th>Cantidad</th>
                 <th>Costo unitario</th>
-               <th >Eliminar Fila</th>
                
               </tr>
 
@@ -62,11 +61,48 @@
                 <input  type="hidden" name="cu[]" value ="<?php  echo $precio ?>">
                </td>
                <td data-label="Productos Disponibles"><?php  echo $stock; ?></td>
-               <td data-label="Cantidad"><input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="number" step="0.01" min="0.00" max="<?php echo $stock ?>"  class="form-control"  name="cant[]" required></td>
+               <td data-label="Cantidad">
+                <input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="number" step="0.01" min="0.00" max="<?php echo $stock ?>"  class="form-control"  name="cant[]" required>
+            </td>
                <td data-label="Precio"><?php  echo $precio1 ?></td> 
-               <td><input type="button" class="borrar btn btn-success my-1" value="Eliminar" /></td>   
+              
             </tr>
 <?php }} ?> 
 
             </tbody>
         </table>
+<script>
+$(document).ready(function () {
+    var table = $('#exam').DataTable({
+    lengthMenu: [[ -1], ["Todos los registros"]],
+    responsive: true,
+            autoWidth:false,
+            deferRender: true,
+            scroller: true,
+            scrollY: 400,
+            dom: 'lrtip',
+            "searching": false,
+            scrollCollapse: true,
+                    language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                 },
+                 "sProcessing":"Procesando...",
+            },
+    });
+ 
+    $('#buscar1').click(function () {
+        var data = table.$('input').serialize();
+        
+    });
+});
+</script>

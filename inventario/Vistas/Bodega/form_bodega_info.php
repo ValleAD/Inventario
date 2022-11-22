@@ -55,7 +55,9 @@ if ($codigo=="") {
   if (isset($_POST['solicitar'])){ ?>
     <section style="background:white;margin: 2%;padding: 1%;border-radius: 15px;">
  <form style="margin: 0%;position: 0; background: transparent;" method="POST" action="../../Controller/Bodega/añadir_bodega.php">
-    <div class="container-fluid" style="position: initial">
+   
+                <div class="card">
+            <div class="card-body">
             <div class="row">
               <div class=" col-sm-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>   
@@ -97,8 +99,13 @@ if ($codigo=="") {
                 </label>   
             </div>
         </div>
-    </div><br>
+    </div>     
+    </div>
+              <div class="card mt-3">
+                  <div class="card-body">
       <?php include('../../Buscador_ajax/Tablas/Productos/tablaProductos.php') ?>
+  </div>
+</div>
          <center> <div class="col-md-3" style="padding: 0%;" > 
             <button id="buscar1" type="submit" name="solicitar" class="btn btn-success btn-lg  text-center  my-3"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar
                         <svg class="bi" width="20" height="20" fill="currentColor">
@@ -110,8 +117,8 @@ if ($codigo=="") {
 
     <?php } ?>
 
-    <script>
-    $(document).on('click', '.borrar', function (event) {
+<script>
+   $(document).on('click', '.borrar', function (event) {
     event.preventDefault();
     $(this).closest('tr').remove();
 });

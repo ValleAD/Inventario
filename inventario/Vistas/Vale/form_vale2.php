@@ -119,18 +119,32 @@ if ($codigo=="") {
         </div>
     </div>
     <br>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="card">
+            <div class="card-body">
       <?php include('../../Buscador_ajax/Tablas/Productos/tablaProductos.php') ?>
+  </div>
+</div>
+</div>
+<div class="col-md-3">
+             <div class="card">
+            <div class="card-body">   
+
+
          <div class="form-floating mb-3 my-2" >
             <label>Observaciones (En qué se ocupará el bien entregado)</label>
               <textarea rows="7" class="form-control" name="jus"  placeholder="" required id="floatingTextarea"></textarea>
             </div>
-          <center>  <div class="col-md-3" style="padding: 0;">
         <button id="buscar1" type="submit" name="form_vale" class="btn  btn-success btn-lg my-2 text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar
                         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#save"/>
                         </svg>
         </button> 
-</div></center> 
+    </div>
+</div>
+</div>
+        </div>
 </form>
  </section>
 
@@ -144,35 +158,6 @@ if ($codigo=="") {
 });
 
 </script>
-<script>
-       $(document).ready(function () {
-    $('#exam').DataTable({
 
-responsive: true,
-autoWidth:false,
-            deferRender: true,
-            scroller: true,
-            scrollY: 400,
-            scrollCollapse: true,
-            
-                    language: {
-                "lengthMenu": "Mostrar _MENU_ registros",
-                "zeroRecords": "No se encontraron resultados",
-                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sSearch": "Buscar:",
-                "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast":"Último",
-                    "sNext":"Siguiente",
-                    "sPrevious": "Anterior"
-                 },
-                 "sProcessing":"Procesando...",
-            },
-
-    });
-});
-</script>
 </body>
 </html>

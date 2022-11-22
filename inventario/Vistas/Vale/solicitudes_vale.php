@@ -207,7 +207,9 @@ die();
 <script>
        $(document).ready(function () {
     $('#exam').DataTable({
-
+            rowGroup: {
+            dataSrc: 3
+        },
 responsive: true,
 autoWidth:false,
             deferRender: true,

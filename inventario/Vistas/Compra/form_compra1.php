@@ -44,20 +44,7 @@ die();
     margin-right: 2%;
     margin-left: 2%;
   }
-            #buscar{
-            margin-bottom: 5%;
-            margin-left: 2.5%;
-            margin-top: 0.5%; 
-            background: rgb(5, 65, 114); 
-            color: #fff; margin-bottom: 2%; 
-            border: rgb(5, 65, 114);
-            }
-            #buscar:hover{
-            background: rgb(9, 100, 175);
-            } 
-            #buscar:active{
-            transform: translateY(5px);
-            } 
+ 
             .a{
                 width: 25%;
             }
@@ -86,10 +73,10 @@ die();
   }
         </style>
         <br><br><br>       
-          <font color="white"> <h1 style=" text-align: center;margin-top: 2%">Solicitud de Compra</h1> </font>
 <section>
+          <h1 style=" text-align: center;">Solicitud de Compra</h1> <br>
 <?php include ('../../Buscador_ajax/Cabezeras/cabezera.php') ?>
-     <form style="background: transparent;" method='POST' action="form_compra2.php">
+     <form id="frm-example" style="background: transparent;" method='POST' action="form_compra2.php">
 
 <?php include ('../../Buscador_ajax/Consultas/Consulta1.php') ?>
 </form>
