@@ -13,6 +13,9 @@ CREATE TABLE `tb_almacen` (
   PRIMARY KEY (`codAlmacen`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+INSERT INTO tb_almacen VALUES("1","Mantenimiento","Admin Master","Rechazado","1","2022-11-20","","","","","","");
+INSERT INTO tb_almacen VALUES("2","Mantenimiento","Admin Master","Rechazado","1","2022-11-21","","","","","","");
+INSERT INTO tb_almacen VALUES("3","Mantenimiento","Master Admin","Aprobado","1","2022-11-21","","","","","","");
 
 
 CREATE TABLE `tb_bodega` (
@@ -31,7 +34,7 @@ INSERT INTO tb_bodega VALUES("343","70140024","Abrazadera De Acero Inoxidable Si
 INSERT INTO tb_bodega VALUES("344","70212414","Ancla Plástica De 5/16\"","C/U","4.00","4.00","0.00");
 INSERT INTO tb_bodega VALUES("345","70212483","Tornillo Goloso De 1\" X 10 Mm","C/U","4.00","4.00","0.03");
 INSERT INTO tb_bodega VALUES("346","70213315","Brocha De 2\"","C/U","1.00","1.00","0.50");
-INSERT INTO tb_bodega VALUES("347","70205886","Tubo Led De 18 Watts, T8, 120 Voltios","C/U","18.00","18.00","3.80");
+INSERT INTO tb_bodega VALUES("347","70205886","Tubo Led De 18 Watts, T8, 120 Voltios","C/U","18.00","1.00","3.80");
 INSERT INTO tb_bodega VALUES("348","70205288","Soporte Para Lampara Fluorescente Tipo Riel","C/U","18.00","18.00","0.50");
 INSERT INTO tb_bodega VALUES("349","70205090","Cable Eléctrico Tsj 14/2 (Vulcan)","Mts","18.00","18.00","0.70");
 INSERT INTO tb_bodega VALUES("350","70205572","Cinta Aislante # 23, Rollo","C/U","1.00","1.00","14.50");
@@ -179,6 +182,8 @@ INSERT INTO tb_bodega VALUES("491","70211071","Tubo De Abasto De Acero Inoxidabl
 INSERT INTO tb_bodega VALUES("492","70211073","Tubo De Abasto De Acero Inoxidable Para Lavamanos","C/U","2.00","2.00","2.60");
 INSERT INTO tb_bodega VALUES("493","70211076","Llave De 1/2\" Cromado Para Lavamanos 1a Calidad","C/U","2.00","2.00","6.00");
 INSERT INTO tb_bodega VALUES("494","70120208","Capacitor De Marcha De 40mfd, 440vac 60hz","C/U","1.00","1.00","3.80");
+INSERT INTO tb_bodega VALUES("495","80804065","Capa Impermeables De 1 Pieza Varios Colores Y Tallas","C/U","4.00","0.00","11.95");
+INSERT INTO tb_bodega VALUES("496","80804065","Capa Impermeables De 1 Pieza Varios Colores Y Tallas","C/U","1.00","0.00","11.95");
 
 
 CREATE TABLE `tb_circulante` (
@@ -190,6 +195,9 @@ CREATE TABLE `tb_circulante` (
   PRIMARY KEY (`codCirculante`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+INSERT INTO tb_circulante VALUES("0","Solicitud Circulante","Pendiente","0","2022-11-21");
+INSERT INTO tb_circulante VALUES("1","Solicitud Circulante","Pendiente","1","2022-11-21");
+INSERT INTO tb_circulante VALUES("2","Solicitud Circulante","Pendiente","3","2022-11-21");
 
 
 CREATE TABLE `tb_compra` (
@@ -207,6 +215,10 @@ CREATE TABLE `tb_compra` (
   PRIMARY KEY (`nSolicitud`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+INSERT INTO tb_compra VALUES("1","Mantenimiento","1","1","1","Admin Master","Solicitud Compra","Comprado","1","1","2022-11-21");
+INSERT INTO tb_compra VALUES("2","Mantenimiento","2","2","2","Admin Master","Solicitud Compra","Comprado","1","2","2022-11-21");
+INSERT INTO tb_compra VALUES("3","Mantenimiento","1","1","1","Baltazar Alexander Marinero Pérez","Solicitud Compra","Comprado","3","1","2022-11-21");
+INSERT INTO tb_compra VALUES("4","Mantenimiento","1","1","1","Master Admin","Solicitud Compra","Comprado","1","1","2022-11-21");
 
 
 CREATE TABLE `tb_productos` (
@@ -458,7 +470,7 @@ INSERT INTO tb_productos VALUES("230","70205825","0","Cable De Extensión En esp
 INSERT INTO tb_productos VALUES("231","70205826","39121310","Caja Telefónica Modular","C/U","95.00","0.90","Materiales Eléctricos","2022-02-11","11","2","2022");
 INSERT INTO tb_productos VALUES("232","70205870","39101609","Luminaria Empotrar, Panel Led 2 X 4, 60watts,100-227 Vac, 6500k, 4800 Lumens","C/U","0.00","50.95","Materiales Eléctricos","2022-05-23","23","5","2022");
 INSERT INTO tb_productos VALUES("233","70205880","39101609","Luminaria Led De Alta Eficiencia Para Exteriores, De 50 Watts, 100-277 Vac","C/U","12.00","30.94","Materiales Eléctricos","2022-05-18","18","5","2022");
-INSERT INTO tb_productos VALUES("234","70205886","39111705","Tubo Led De 18 Watts, T8, 120 Voltios","C/U","150.00","3.80","Materiales Eléctricos","2022-02-24","24","2","2022");
+INSERT INTO tb_productos VALUES("234","70205886","39111705","Tubo Led De 18 Watts, T8, 120 Voltios","C/U","137.00","3.80","Materiales Eléctricos","2022-02-24","24","2","2022");
 INSERT INTO tb_productos VALUES("235","70206050","11101716","Estaño 60x40 Con Resina De 1 Mm En Carrete De 500g","C/U","3.00","32.00","Materiales Eléctricos","2022-02-11","11","2","2022");
 INSERT INTO tb_productos VALUES("236","70207003","12142102","Limpiador De Sistema De Tubería De Aire Acondicionado","Kg","32.00","24.70","Químicos","2022-02-11","11","2","2022");
 INSERT INTO tb_productos VALUES("237","70207022","12142102","Gas Refrigerante R410a, (Tambo De 25 Libras)","C/U","5.00","119.90","Químicos","2022-02-24","24","2","2022");
@@ -710,7 +722,7 @@ INSERT INTO tb_productos VALUES("482","70211472","40141719","Adaptador Hembra De
 INSERT INTO tb_productos VALUES("483","70211475","40142612","Adaptador Hembra De PVC De 2\"","C/U","98.00","0.70","Herramientas Y Repuestos","2022-02-25","25","2","2022");
 INSERT INTO tb_productos VALUES("484","70211481","30181809","Sifón Continuo PVC De 1 1/2\"","C/U","8.00","4.30","Herramientas Y Repuestos","2022-03-09","9","3","2022");
 INSERT INTO tb_productos VALUES("485","70211483","30181809","Sifón Continuo PVC De 2\"","C/U","8.00","4.50","Herramientas Y Repuestos","2022-03-09","9","3","2022");
-INSERT INTO tb_productos VALUES("486","70211484","30181809","70211484sifon Flexible Tipo Acordeón De 1 1/4\" PVC","C/U","25.00","4.00","Herramientas Y Repuestos","2022-03-11","11","3","2022");
+INSERT INTO tb_productos VALUES("486","70211484","30181809","Sifon Flexible Tipo Acordeón De 1 1/4\" PVC","C/U","25.00","4.00","Herramientas Y Repuestos","2022-03-11","11","3","2022");
 INSERT INTO tb_productos VALUES("487","70211487","40141716","Sifón A La Pared Plástico Cromado De 1 1/2\"","C/U","19.00","2.20","Herramientas Y Repuestos","2022-02-24","24","2","2022");
 INSERT INTO tb_productos VALUES("488","70211534","40142615","Reductor De 2 1/2\" A 1\" De P.V.C.","C/U","10.00","1.30","Herramientas Y Repuestos","2022-03-08","8","3","2022");
 INSERT INTO tb_productos VALUES("489","70211538","40173608","Reductor De 1 1/2 A 1/2 P.V.C","C/U","23.00","0.80","Herramientas Y Repuestos","2022-02-25","25","2","2022");
@@ -772,7 +784,6 @@ INSERT INTO tb_productos VALUES("545","70212426","31161509","Tornillo Para Tabla
 INSERT INTO tb_productos VALUES("546","70212440","31161512","Tornillo Punta Broca De 1\"","C/U","1.00","0.02","Minerales Metálicos","2022-02-11","11","2","2022");
 INSERT INTO tb_productos VALUES("547","70212442","31161512","Tornillo Punta Broca De 1 1/2\"","Cto","42.00","1.70","Minerales Metálicos","2022-02-11","11","2","2022");
 INSERT INTO tb_productos VALUES("548","70212443","31161512","Tornillo Punta Broca De 1 1/4\"","C/U","600.00","0.10","Minerales Metálicos","2022-02-11","11","2","2022");
-INSERT INTO tb_productos VALUES("549","70212444","31161512","Tornillo Punta Broca De 2\"","C/U","0.00","0.00","Minerales Metálicos","2022-02-11","11","2","2022");
 INSERT INTO tb_productos VALUES("550","70212453","1162702","Rodo De 8\" Con Base Giratorio","C/U","4.00","15.00","Herramientas Y Repuestos","2022-05-23","23","5","2022");
 INSERT INTO tb_productos VALUES("551","70212454","31162702","Rodo De 8\" Con Base Fija","C/U","10.00","15.00","Herramientas Y Repuestos","2022-02-11","11","2","2022");
 INSERT INTO tb_productos VALUES("552","70212455","31162702","Rodo De 6\" Con Base Giratorio","C/U","8.00","21.40","Herramientas Y Repuestos","2022-02-11","11","2","2022");
@@ -907,7 +918,7 @@ INSERT INTO tb_productos VALUES("680","70305402","27112843","Broca Centro De 5/1
 INSERT INTO tb_productos VALUES("681","70305720","27112502","Grifa Armador Para Varilla De 1/4¨, Par","C/U","1.00","12.61","Equipo Y Herramientas De Mantto","2022-05-05","5","5","2022");
 INSERT INTO tb_productos VALUES("682","70305931","40142002","Manguera Industrial Para Acetileno 1/4\" (Roja)","C/U","65.00","38.00","Equipo Y Herramientas De Mantto","2022-02-11","11","2","2022");
 INSERT INTO tb_productos VALUES("683","70330015","27113203","Ponchadora Para Estructurado, Con Cableado Cortador","C/U","1.00","28.74","Equipo Y Herramientas De Mantto","2022-05-17","17","5","2022");
-INSERT INTO tb_productos VALUES("684","80200415","39111702","Lampara De Frente, Incorporado","C/U","6.00","9.95","Equipo Y Herramientas De Mantto","2022-05-05","5","5","2022");
+INSERT INTO tb_productos VALUES("684","80200415","39111702","Lampara De Frente, Incorporado","C/U","7.00","9.95","Equipo Y Herramientas De Mantto","2022-05-05","5","5","2022");
 INSERT INTO tb_productos VALUES("685","70330040","0","Pasta Para Soldar, Frasco De 50g","C/U","6.00","2.30","Químicos","2022-02-11","11","2","2022");
 INSERT INTO tb_productos VALUES("686","70408004","46181704","Casco De Seguridad Para Obra, De Polietileno","C/U","13.00","4.10","Equipo Y Herramientas De Mantto","2022-05-05","5","5","2022");
 INSERT INTO tb_productos VALUES("687","70408010","46181802","Anteojos De Seguridad Claros","C/U","20.00","1.40","Equipo Y Herramientas De Mantto","2022-02-11","11","2","2022");
@@ -924,7 +935,7 @@ INSERT INTO tb_productos VALUES("697","79001200","99999","Accesorios Para Silla 
 INSERT INTO tb_productos VALUES("698","80200211","26111701","Batería Recargable Pequeña De 1.5 V Tipo A.","C/U","2.00","0.90","Materiales Eléctricos","2022-02-11","11","2","2022");
 INSERT INTO tb_productos VALUES("699","80200215","26111701","Batería Recargable Mediana De 1.2 V Tipo A","C/U","12.00","1.00","Materiales Eléctricos","2022-02-11","11","2","2022");
 INSERT INTO tb_productos VALUES("700","80200230","26111701","Batería Recargable Cuadrada De 9v Manos Libres, Tipo Casería, Luz Led","C/U","6.00","3.40","Materiales Eléctricos","2022-02-11","11","2","2022");
-INSERT INTO tb_productos VALUES("701","80804065","46181525","Capa Impermeables De 1 Pieza Varios Colores Y Tallas","C/U","12.00","11.95","Equipo Y Herramientas De Mantto","2022-05-17","17","5","2022");
+INSERT INTO tb_productos VALUES("701","80804065","46181525","Capa Impermeables De 1 Pieza Varios Colores Y Tallas","C/U","15.00","11.95","Equipo Y Herramientas De Mantto","2022-05-17","17","5","2022");
 
 
 CREATE TABLE `tb_usuarios` (
@@ -940,7 +951,7 @@ CREATE TABLE `tb_usuarios` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
-INSERT INTO tb_usuarios VALUES("1","Admin","Admin","Master","Hospital Nacional Zacatecoluca \"Santa Teresa\"","Sin Unidad","Admin","Si","1");
+INSERT INTO tb_usuarios VALUES("1","Admin","Master","Admin","Hospital Nacional Zacatecoluca \"Santa Teresa\"","Sin Unidad","Admin","Si","1");
 INSERT INTO tb_usuarios VALUES("2","egchoto","Ernesto","Gonzales Choto","Hospital Nacional Zacatecoluca \"Santa Teresa\"","Departamento Mantenimiento Local","neto982006","Si","1");
 INSERT INTO tb_usuarios VALUES("3","Usuario1","Baltazar Alexander","Marinero Pérez","Hospital Nacional Zacatecoluca \"Santa Teresa\"","Sección Equipo Básico","123","Si","2");
 INSERT INTO tb_usuarios VALUES("4","Usuario2","Fráncico Tolentino","López","Hospital Nacional Zacatecoluca \"Santa Teresa\"","Sección Planta Física Y Mobiliario","123","Si","2");
@@ -969,21 +980,25 @@ CREATE TABLE `tb_vale` (
   PRIMARY KEY (`codVale`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
-INSERT INTO tb_vale VALUES("1","Área Saneamiento Ambiental","Admin Master","1","Solicitud Vale","Pendiente","2","2022-11-19");
-INSERT INTO tb_vale VALUES("2","Área Saneamiento Ambiental","Baltazar Alexander Marinero Pérez","3","Solicitud Vale","Pendiente","1","2022-11-19");
-INSERT INTO tb_vale VALUES("3","Área Saneamiento Ambiental","Baltazar Alexander Marinero Pérez","3","Solicitud Vale","Pendiente","1","2022-11-19");
-INSERT INTO tb_vale VALUES("4","Área Saneamiento Ambiental","Ernesto Gonzales Choto","2","Solicitud Vale","Pendiente","1","2022-11-19");
-INSERT INTO tb_vale VALUES("5","Área Saneamiento Ambiental","Ernesto Gonzales Choto","2","Solicitud Vale","Pendiente","1","2022-11-19");
-INSERT INTO tb_vale VALUES("6","Área Saneamiento Ambiental","Ernesto Gonzales Choto","2","Solicitud Vale","Pendiente","q","2022-11-19");
-INSERT INTO tb_vale VALUES("7","Área Saneamiento Ambiental","Ernesto Gonzales Choto","2","Solicitud Vale","Pendiente","11","2022-11-20");
-INSERT INTO tb_vale VALUES("8","Área Saneamiento Ambiental","Ernesto Gonzales Choto","2","Solicitud Vale","Pendiente","1","2022-11-20");
-INSERT INTO tb_vale VALUES("9","Área Saneamiento Ambiental","Ernesto Gonzales Choto","2","Solicitud Vale","Pendiente","1","2022-11-20");
-INSERT INTO tb_vale VALUES("10","Área Saneamiento Ambiental","Ernesto Gonzales Choto","2","Solicitud Vale","Pendiente","1","2022-11-20");
-INSERT INTO tb_vale VALUES("11","Área Saneamiento Ambiental","Ernesto Gonzales Choto","2","Solicitud Vale","Pendiente","1","2022-11-20");
-INSERT INTO tb_vale VALUES("12","Área Saneamiento Ambiental","Ernesto Gonzales Choto","2","Solicitud Vale","Pendiente","1","2022-11-20");
-INSERT INTO tb_vale VALUES("13","Área Saneamiento Ambiental","Ernesto Gonzales Choto","2","Solicitud Vale","Pendiente","1","2022-11-20");
-INSERT INTO tb_vale VALUES("14","Área Saneamiento Ambiental","Ernesto Gonzales Choto","2","Solicitud Vale","Pendiente","1","2022-11-20");
-INSERT INTO tb_vale VALUES("15","Área Saneamiento Ambiental","Ernesto Gonzales Choto","2","Solicitud Vale","Pendiente","1","2022-11-20");
+INSERT INTO tb_vale VALUES("1","Área Saneamiento Ambiental","Master Admin","1","Solicitud Vale","Pendiente","1","2022-11-21");
+INSERT INTO tb_vale VALUES("2","Área Saneamiento Ambiental","Master Admin","1","Solicitud Vale","Pendiente","1","2022-11-21");
+INSERT INTO tb_vale VALUES("3","Área Saneamiento Ambiental","Master Admin","1","Solicitud Vale","Pendiente","1","2022-11-21");
+INSERT INTO tb_vale VALUES("4","Área Saneamiento Ambiental","Master Admin","1","Solicitud Vale","Pendiente","hgghxjktyuhugyftydre","2022-11-21");
+INSERT INTO tb_vale VALUES("5","Área Saneamiento Ambiental","Master Admin","1","Solicitud Vale","Pendiente","11","2022-11-21");
+INSERT INTO tb_vale VALUES("6","Área Saneamiento Ambiental","Master Admin","1","Solicitud Vale","Pendiente","1","2022-11-21");
+INSERT INTO tb_vale VALUES("7","Área Saneamiento Ambiental","Master Admin","1","Solicitud Vale","Pendiente","1","2022-11-21");
+INSERT INTO tb_vale VALUES("8","Área Servicios Auxiliares","Master Admin","1","Solicitud Vale","Pendiente","1","2022-11-21");
+INSERT INTO tb_vale VALUES("9","Área Saneamiento Ambiental","Master Admin","1","Solicitud Vale","Pendiente","1","2022-11-21");
+INSERT INTO tb_vale VALUES("10","Área Servicios Auxiliares","Master Admin","1","Solicitud Vale","Pendiente","11","2022-11-21");
+INSERT INTO tb_vale VALUES("11","Área Servicios Auxiliares","Master Admin","1","Solicitud Vale","Pendiente","1","2022-11-21");
+INSERT INTO tb_vale VALUES("12","Área Clínica De Úlceras Y Heridas","Master Admin","1","Solicitud Vale","Pendiente","1","2022-11-21");
+INSERT INTO tb_vale VALUES("13","Área Saneamiento Ambiental","Master Admin","1","Solicitud Vale","Pendiente","1","2022-11-21");
+INSERT INTO tb_vale VALUES("14","Área Servicios Auxiliares","Master Admin","1","Solicitud Vale","Pendiente","1","2022-11-21");
+INSERT INTO tb_vale VALUES("15","Área Servicios Auxiliares","Master Admin","1","Solicitud Vale","Pendiente","1","2022-11-21");
+INSERT INTO tb_vale VALUES("16","Área Servicios Auxiliares","Master Admin","1","Solicitud Vale","Pendiente","1","2022-11-21");
+INSERT INTO tb_vale VALUES("17","Área Servicios Auxiliares","Master Admin","1","Solicitud Vale","Pendiente","1","2022-11-21");
+INSERT INTO tb_vale VALUES("18","Área Saneamiento Ambiental","Master Admin","1","Solicitud Vale","Pendiente","1","2022-11-21");
+INSERT INTO tb_vale VALUES("19","Área Servicios Auxiliares","Master Admin","1","Solicitud Vale","Pendiente","1","2022-11-21");
 
 
 CREATE TABLE `detalle_compra` (
@@ -1000,8 +1015,12 @@ CREATE TABLE `detalle_compra` (
   PRIMARY KEY (`codigodetallecompra`),
   KEY `fk_tb_compra_detalle_compra` (`solicitud_compra`),
   CONSTRAINT `fk_tb_compra_detalle_compra` FOREIGN KEY (`solicitud_compra`) REFERENCES `tb_compra` (`nSolicitud`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+INSERT INTO detalle_compra VALUES("1","","80804065","46181525","Capa Impermeables De 1 Pieza Varios Colores Y Tallas","C/U","1.00","0.00","11.95","1");
+INSERT INTO detalle_compra VALUES("2","","80200415","39111702","Lampara De Frente, Incorporado","C/U","2.00","0.00","9.95","2");
+INSERT INTO detalle_compra VALUES("3","","80804065","46181525","Capa Impermeables De 1 Pieza Varios Colores Y Tallas","C/U","1.00","0.00","11.95","3");
+INSERT INTO detalle_compra VALUES("4","","80804065","46181525","Capa Impermeables De 1 Pieza Varios Colores Y Tallas","C/U","1.00","0.00","11.95","4");
 
 
 CREATE TABLE `detalle_almacen` (
@@ -1016,8 +1035,11 @@ CREATE TABLE `detalle_almacen` (
   PRIMARY KEY (`codigoalmacen`),
   KEY `fk_tb_almacen_detalle_almacen` (`tb_almacen`),
   CONSTRAINT `fk_tb_almacen_detalle_almacen` FOREIGN KEY (`tb_almacen`) REFERENCES `tb_almacen` (`codAlmacen`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+INSERT INTO detalle_almacen VALUES("1","80200230","Batería Recargable Cuadrada De 9v Manos Libres, Tipo Casería, Luz Led","C/U","1.00","0.00","1","3.40");
+INSERT INTO detalle_almacen VALUES("2","80804065","Capa Impermeables De 1 Pieza Varios Colores Y Tallas","C/U","1.00","0.00","2","11.95");
+INSERT INTO detalle_almacen VALUES("3","80804065","Capa Impermeables De 1 Pieza Varios Colores Y Tallas","C/U","5.00","1.00","3","11.95");
 
 
 CREATE TABLE `detalle_bodega` (
@@ -1032,7 +1054,7 @@ CREATE TABLE `detalle_bodega` (
   PRIMARY KEY (`codigodetallebodega`),
   KEY `fk_tb_bodega_detalle_bodega` (`odt_bodega`),
   CONSTRAINT `fk_tb_bodega_detalle_bodega` FOREIGN KEY (`odt_bodega`) REFERENCES `tb_bodega` (`codBodega`)
-) ENGINE=InnoDB AUTO_INCREMENT=495 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=497 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 
 
@@ -1048,74 +1070,15 @@ CREATE TABLE `detalle_vale` (
   PRIMARY KEY (`codigodetallevale`),
   KEY `fk_tb_vale_detalle_vale` (`numero_vale`),
   CONSTRAINT `fk_tb_vale_detalle_vale` FOREIGN KEY (`numero_vale`) REFERENCES `tb_vale` (`codVale`)
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
-INSERT INTO detalle_vale VALUES("1","80804065","Capa Impermeables De 1 Pieza Varios Colores Y Tallas","C/U","3.00","0.00","11.95","1");
-INSERT INTO detalle_vale VALUES("2","31161502","Ancla Plástica Para Tabla Roca","C/U","11.00","0.00","0.23","3");
-INSERT INTO detalle_vale VALUES("3","31161502","Ancla Plástica Para Tabla Roca","C/U","1.00","0.00","0.23","4");
-INSERT INTO detalle_vale VALUES("4","31161502","Ancla Plástica Para Tabla Roca","C/U","12.00","0.00","0.23","5");
-INSERT INTO detalle_vale VALUES("5","43703002","Niple Galvanizado De 1","C/U","2.00","0.00","1.50","5");
-INSERT INTO detalle_vale VALUES("6","43703003","Reductor Campana Galvanizado De 2 X 3/4","C/U","1.00","0.00","3.90","5");
-INSERT INTO detalle_vale VALUES("7","43703004","Tapón Hembra Galvanizado 1","C/U","2.00","0.00","1.10","5");
-INSERT INTO detalle_vale VALUES("8","43703005","Reductor Campana Galvanizado De 1/2 X 5/8","C/U","2.00","0.00","1.80","5");
-INSERT INTO detalle_vale VALUES("9","43703006","Reductor Campana Galvanizado De 1 X 5/8","C/U","1.00","0.00","2.00","5");
-INSERT INTO detalle_vale VALUES("10","43703007","Reductor Campana Galvanizado De 1 X 3/4","C/U","1.00","0.00","2.30","5");
-INSERT INTO detalle_vale VALUES("11","43703008","Tapón Hembra PVC 1 1/4","C/U","1.00","0.00","1.30","5");
-INSERT INTO detalle_vale VALUES("12","43703009","Tapón Hembra PVC De 1","C/U","1.00","0.00","1.00","5");
-INSERT INTO detalle_vale VALUES("13","43703010","Tapón Macho De 2","C/U","1.00","0.00","1.50","5");
-INSERT INTO detalle_vale VALUES("14","43703022","Codo PVC 90° Con Rosca","C/U","1.00","0.00","2.80","5");
-INSERT INTO detalle_vale VALUES("15","43703011","Codo PVC De 2","C/U","1.00","0.00","4.80","6");
-INSERT INTO detalle_vale VALUES("16","43703012","Tee PVC Con Rosca 3/4","C/U","1.00","0.00","1.00","6");
-INSERT INTO detalle_vale VALUES("17","43703013","Tapón Hembra PVC 2 1/2","C/U","1.00","0.00","3.30","6");
-INSERT INTO detalle_vale VALUES("18","43703014","Adaptador Hembra PVC 2 1/2","C/U","1.00","0.00","4.50","6");
-INSERT INTO detalle_vale VALUES("19","43703015","Tubo PVC 2 1/2 160 P.S.I.","Mts","1.00","0.00","3.40","6");
-INSERT INTO detalle_vale VALUES("20","43703016","Válvula De Paso De 1 1/2","C/U","1.00","0.00","62.00","6");
-INSERT INTO detalle_vale VALUES("21","43703017","Hierro Cuadrado Solido De 1/4","Mts","1.00","0.00","0.70","6");
-INSERT INTO detalle_vale VALUES("22","43703019","Carbón 0252 Para Pulidora","C/U","1.00","0.00","5.30","6");
-INSERT INTO detalle_vale VALUES("23","43703020","Carbón 1120 Para Pulidora","C/U","1.00","0.00","9.00","6");
-INSERT INTO detalle_vale VALUES("24","43703021","Varilla Lisa De 1/2","Mts","1.00","0.00","2.33","6");
-INSERT INTO detalle_vale VALUES("25","80804065","Capa Impermeables De 1 Pieza Varios Colores Y Tallas","C/U","12.00","0.00","11.95","7");
-INSERT INTO detalle_vale VALUES("26","80804065","Capa Impermeables De 1 Pieza Varios Colores Y Tallas","C/U","1.00","0.00","11.95","8");
-INSERT INTO detalle_vale VALUES("27","80200230","Batería Recargable Cuadrada De 9v Manos Libres, Tipo Casería, Luz Led","C/U","1.00","0.00","3.40","9");
-INSERT INTO detalle_vale VALUES("28","80200415","Lampara De Frente, Incorporado","C/U","1.00","0.00","9.95","9");
-INSERT INTO detalle_vale VALUES("29","80804065","Capa Impermeables De 1 Pieza Varios Colores Y Tallas","C/U","1.00","0.00","11.95","9");
-INSERT INTO detalle_vale VALUES("30","80804065","Capa Impermeables De 1 Pieza Varios Colores Y Tallas","C/U","1.00","0.00","11.95","10");
-INSERT INTO detalle_vale VALUES("31","72011259","Niple De Hierro Galvanizado, Diámetro De 4","C/U","1.00","0.00","15.30","11");
-INSERT INTO detalle_vale VALUES("32","79001200","Accesorios Para Silla De Ruedas, Caja","C/U","1.00","0.00","77.30","11");
-INSERT INTO detalle_vale VALUES("33","70408011","Gafas Para Soldadura Autógena","C/U","1.00","0.00","4.30","12");
-INSERT INTO detalle_vale VALUES("34","70408073","Delantal (Mandil) De Cuero, Y Para Soldador","C/U","1.00","0.00","11.30","12");
-INSERT INTO detalle_vale VALUES("35","70408550","Guantes De Protección Multiuso, Par Guantes Antideslizantes, Par","C/U","1.00","0.00","3.80","12");
-INSERT INTO detalle_vale VALUES("36","70409200","Caja Protectora De Aerosoles","C/U","1.00","0.00","66.00","12");
-INSERT INTO detalle_vale VALUES("37","72011259","Niple De Hierro Galvanizado, Diámetro De 4","C/U","1.00","0.00","15.30","12");
-INSERT INTO detalle_vale VALUES("38","79001200","Accesorios Para Silla De Ruedas, Caja","C/U","1.00","0.00","77.30","12");
-INSERT INTO detalle_vale VALUES("39","80200211","Batería Recargable Pequeña De 1.5 V Tipo A.","C/U","1.00","0.00","0.90","12");
-INSERT INTO detalle_vale VALUES("40","80200215","Batería Recargable Mediana De 1.2 V Tipo A","C/U","1.00","0.00","1.00","12");
-INSERT INTO detalle_vale VALUES("41","80200230","Batería Recargable Cuadrada De 9v Manos Libres, Tipo Casería, Luz Led","C/U","1.00","0.00","3.40","12");
-INSERT INTO detalle_vale VALUES("42","80200415","Lampara De Frente, Incorporado","C/U","1.00","0.00","9.95","12");
-INSERT INTO detalle_vale VALUES("43","80804065","Capa Impermeables De 1 Pieza Varios Colores Y Tallas","C/U","1.00","0.00","11.95","12");
-INSERT INTO detalle_vale VALUES("44","70330040","Pasta Para Soldar, Frasco De 50g","C/U","1.00","0.00","2.30","13");
-INSERT INTO detalle_vale VALUES("45","70408073","Delantal (Mandil) De Cuero, Y Para Soldador","C/U","1.00","0.00","11.30","13");
-INSERT INTO detalle_vale VALUES("46","70408550","Guantes De Protección Multiuso, Par Guantes Antideslizantes, Par","C/U","1.00","0.00","3.80","13");
-INSERT INTO detalle_vale VALUES("47","70409200","Caja Protectora De Aerosoles","C/U","1.00","0.00","66.00","13");
-INSERT INTO detalle_vale VALUES("48","72011259","Niple De Hierro Galvanizado, Diámetro De 4","C/U","1.00","0.00","15.30","13");
-INSERT INTO detalle_vale VALUES("49","79001200","Accesorios Para Silla De Ruedas, Caja","C/U","1.00","0.00","77.30","13");
-INSERT INTO detalle_vale VALUES("50","80200211","Batería Recargable Pequeña De 1.5 V Tipo A.","C/U","1.00","0.00","0.90","13");
-INSERT INTO detalle_vale VALUES("51","80200215","Batería Recargable Mediana De 1.2 V Tipo A","C/U","1.00","0.00","1.00","13");
-INSERT INTO detalle_vale VALUES("52","80200230","Batería Recargable Cuadrada De 9v Manos Libres, Tipo Casería, Luz Led","C/U","1.00","0.00","3.40","13");
-INSERT INTO detalle_vale VALUES("53","80200415","Lampara De Frente, Incorporado","C/U","1.00","0.00","9.95","13");
-INSERT INTO detalle_vale VALUES("54","70305931","Manguera Industrial Para Acetileno 1/4","C/U","1.00","0.00","38.00","14");
-INSERT INTO detalle_vale VALUES("55","70330015","Ponchadora Para Estructurado, Con Cableado Cortador","C/U","1.00","0.00","28.74","14");
-INSERT INTO detalle_vale VALUES("56","70408073","Delantal (Mandil) De Cuero, Y Para Soldador","C/U","1.00","0.00","11.30","14");
-INSERT INTO detalle_vale VALUES("57","70408550","Guantes De Protección Multiuso, Par Guantes Antideslizantes, Par","C/U","1.00","0.00","3.80","14");
-INSERT INTO detalle_vale VALUES("58","70409200","Caja Protectora De Aerosoles","C/U","1.00","0.00","66.00","14");
-INSERT INTO detalle_vale VALUES("59","72011259","Niple De Hierro Galvanizado, Diámetro De 4","C/U","1.00","0.00","15.30","14");
-INSERT INTO detalle_vale VALUES("60","79001200","Accesorios Para Silla De Ruedas, Caja","C/U","1.00","0.00","77.30","14");
-INSERT INTO detalle_vale VALUES("61","80200211","Batería Recargable Pequeña De 1.5 V Tipo A.","C/U","1.00","0.00","0.90","14");
-INSERT INTO detalle_vale VALUES("62","80200215","Batería Recargable Mediana De 1.2 V Tipo A","C/U","1.00","0.00","1.00","14");
-INSERT INTO detalle_vale VALUES("63","80200230","Batería Recargable Cuadrada De 9v Manos Libres, Tipo Casería, Luz Led","C/U","1.00","0.00","3.40","14");
-INSERT INTO detalle_vale VALUES("64","70408010","Anteojos De Seguridad Claros","C/U","12.00","0.00","1.40","15");
-INSERT INTO detalle_vale VALUES("65","80200415","Lampara De Frente, Incorporado","C/U","1.00","0.00","9.95","15");
-INSERT INTO detalle_vale VALUES("66","80804065","Capa Impermeables De 1 Pieza Varios Colores Y Tallas","C/U","1.00","0.00","11.95","15");
+INSERT INTO detalle_vale VALUES("1","80804065","Capa Impermeables De 1 Pieza Varios Colores Y Tallas","C/U","1.00","0.00","11.95","9");
+INSERT INTO detalle_vale VALUES("2","80200415","Lampara De Frente, Incorporado","C/U","1.00","0.00","9.95","14");
+INSERT INTO detalle_vale VALUES("3","80804065","Capa Impermeables De 1 Pieza Varios Colores Y Tallas","C/U","1.00","0.00","11.95","16");
+INSERT INTO detalle_vale VALUES("4","80804065","Capa Impermeables De 1 Pieza Varios Colores Y Tallas","C/U","1.00","0.00","11.95","17");
+INSERT INTO detalle_vale VALUES("5","80200230","Batería Recargable Cuadrada De 9v Manos Libres, Tipo Casería, Luz Led","C/U","1.00","0.00","3.40","18");
+INSERT INTO detalle_vale VALUES("6","80200415","Lampara De Frente, Incorporado","C/U","1.00","0.00","9.95","19");
+INSERT INTO detalle_vale VALUES("7","80804065","Capa Impermeables De 1 Pieza Varios Colores Y Tallas","C/U","1.00","0.00","11.95","19");
 
 
 CREATE TABLE `detalle_circulante` (
@@ -1130,8 +1093,11 @@ CREATE TABLE `detalle_circulante` (
   PRIMARY KEY (`codigodetallecirculante`),
   KEY `fk_tb_circulante_detalle_circulante` (`tb_circulante`),
   CONSTRAINT `fk_tb_circulante_detalle_circulante` FOREIGN KEY (`tb_circulante`) REFERENCES `tb_circulante` (`codCirculante`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+INSERT INTO detalle_circulante VALUES("1","70211484","70211484sifon Flexible Tipo Acordeón De 1 1/4","C/U","1.00","0.00","4.00","0");
+INSERT INTO detalle_circulante VALUES("2","80804065","Capa Impermeables De 1 Pieza Varios Colores Y Tallas","C/U","1.00","0.00","11.95","1");
+INSERT INTO detalle_circulante VALUES("3","80804065","Capa Impermeables De 1 Pieza Varios Colores Y Tallas","C/U","1.00","0.00","11.95","2");
 
 
 CREATE TABLE `selects_dependencia` (

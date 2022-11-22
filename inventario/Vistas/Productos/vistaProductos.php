@@ -330,7 +330,7 @@ echo '<option value="'.$i.'">'.$Meses[($i)-1].'</option>';
     </div>
 </div>
                     <?php if ($cliente=="egchoto") { ?>
-    <a title="Respaldo de la base de datos completa" id="b" class="btn btn-outline-primary"  style="position: initial; float: right;margin-top: 1%; margin-bottom: 1%; margin-right: 15px;" href="../../Database/Respaldos_sql/Respaldos.php">Exportar bd</a>
+    <button title="Respaldo de la base de datos completa" id="b" onclick="return Exportar_bd()" class="btn btn-outline-primary"  style="position: initial; float: right;margin-top: 1%; margin-bottom: 1%; margin-right: 15px;">Exportar bd</button>
                     <?php } ?>
      <a  href="../Unidad/unidad_medidad.php" class="btn btn-outline-secondary" id="b" style="position: initial; float: right;margin-top: 1%;margin-bottom: 1%; margin-right: 15px;">Unidad de medidas</a>
 </div>
@@ -354,6 +354,21 @@ echo '<option value="'.$i.'">'.$Meses[($i)-1].'</option>';
                  
 </section>
  <script>
+    function Exportar_bd() {
+    Swal.fire({
+      title:'NOTA IMPORTANTE:',
+      text:'Este Momento Va a Hacer un Respaldo de la Base de Datos',
+      icon:'warning',
+      confirmButtonText: "Exportar",
+      showCancelButton:true,
+      allowOutsideClick: false
+    }).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='../../Database/Respaldos_sql/Respaldos.php';                               
+               }
+                });
+        return false;
+    }
     $(obtener_registros());
 
 function obtener_registros(consulta)

@@ -218,7 +218,7 @@ if(isset($_POST['codigo'])){ ?>
                         <label>Unidad de medida (U/M)</label>
 
                         <select id="div" class="form-control" class="form-select" multiple aria-label="multiple select example" name="um[]" required>
-
+                            
                             <?php
                      $sql = "SELECT * FROM  selects_unidad_medida";
                         $result = mysqli_query($conn, $sql);

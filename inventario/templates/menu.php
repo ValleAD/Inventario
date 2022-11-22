@@ -171,12 +171,9 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 </div>
 </li>
 
-<?php if ($cliente=="egchoto") { ?>
-<li class="submenu" style="float:right;">
-                    <a  id="a"  href="Database/Respaldos_sql/Respaldos.php">Exportar bd</a>
-
-                </li>
-<?php } ?>
+                    <?php if ($cliente=="egchoto") { ?>
+    <button title="Respaldo de la base de datos completa" id="b" onclick="return Exportar_bd()" class="btn btn-outline-primary"  style="position: initial; float: right;margin-top: 1%; margin-bottom: 1%; margin-right: 15px;">Exportar bd</button>
+                    <?php } ?>
                 </ul>
         </nav>
     </header>
@@ -372,6 +369,22 @@ function confirmaion2(e) {
         e.preventDefault();
     }
 }
+
+    function Exportar_bd() {
+    Swal.fire({
+      title:'NOTA IMPORTANTE:',
+      text:'Este Momento Va a Hacer un Respaldo de la Base de Datos',
+      icon:'warning',
+      confirmButtonText: "Exportar",
+      showCancelButton:true,
+      allowOutsideClick: false
+    }).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='Database/Respaldos_sql/Respaldos.php';                               
+               }
+                });
+        return false;
+    }
 </script>
 
 </body>
