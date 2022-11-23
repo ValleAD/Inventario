@@ -248,6 +248,7 @@ $result = mysqli_query($conn, $sql);
             scroller: true,
             scrollY: 400,
             dom: 'flrtip',
+            lengthMenu: [[10, -1], [10,"Todos"]],
             scrollCollapse: true,
                     language: {
                 "lengthMenu": "Mostrar _MENU_ registros",

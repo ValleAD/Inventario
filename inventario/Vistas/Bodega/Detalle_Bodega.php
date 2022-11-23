@@ -74,7 +74,7 @@ if(isset($_POST['detalle'])){
               </div>
     
               <div class="col-md-2" style="position: initial">
-                <label style="font-weight: bold;">N° de Vale:</label>
+                <label style="font-weight: bold;">O. de T. No.</label>
                <p>' .$productos1['codBodega']. '</p>
               </div>
     
@@ -303,7 +303,7 @@ while ($productos = mysqli_fetch_array($result1)){
                     <div class="col-md-12"><label style="font-weight: bold;">Sub Total:</label>
                   <p style="float: right;"><?php echo $final1?></p>
               </div>
-              
+                          <button class="btn btn-success as">Solicitides Bodega</button>
                 </div>
         
               </div>
@@ -474,6 +474,9 @@ while ($productos = mysqli_fetch_array($result)){
 
 <script>
        $(document).ready(function () {
+                $('.as').click(function() {
+            window.location.href="solicitudes_bodega.php";
+        });
     $('#exam').DataTable({
 dom: 'lrtip',
 responsive: true,

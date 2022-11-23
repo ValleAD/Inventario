@@ -164,7 +164,7 @@ $result = mysqli_query($conn, $sql);
     </style>
 </table>
   <section  style="background: rgba(255, 255, 255, 0.9);margin: 7%1%1%1%;padding: 1%; border-radius: 15px;">
-<h2 id="h2" class="text-center">Inventario de Productos</h2>
+<h2  class="text-center">Inventario de Productos</h2>
 <br>
 
                  <div class="row">
@@ -296,7 +296,7 @@ echo '<option value="'.$i.'">'.$Meses[($i)-1].'</option>';
                 </svg>
              </button>
          </form>
-         <form class="botones" method="POST" action="../../Plugin/PDF/Productos/tpdf_productos.php" target="_blank">
+         <form class="botones" method="POST" action="../../Plugin/PDF/Productos/tpdf_productos.php" target="_blank" class="mx-1">
             
              <button  style="position: initial;"type="submit" class="btn btn-outline-primary mx-1" name="tproductospdf" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">

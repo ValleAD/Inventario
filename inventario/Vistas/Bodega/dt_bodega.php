@@ -63,13 +63,8 @@ $final2 = 0;
 
  echo'   
 <section id="section" style="margin:2%">
-<form method="POST" action="../../Plugin/PDF/Bodega/pdf_bodega.php" target="_blank">
-          <input type="hidden" readonly class="form-control"  type="text" value="'. $productos1['departamento'].'" name="depto">
-                <input type="hidden" readonly class="form-control"  type="text" value="'. $productos1['codBodega'].'" name="bodega">
-                <input type="hidden" readonly class="form-control"  type="text" value="'. $productos1['usuario'].'" name="usuario">
-                <input type="hidden" readonly class="form-control"  type="text" value="'.$productos1['estado'].'" name="estado">
-                <input type="hidden" readonly class="form-control"  type="text" value="'. date("d-m-Y",strtotime($productos1['fecha_registro'])).'" name="fech">
-      
+        <div class="card">
+            <div class="card-body">
         <div class="row">
       
               <div class="col-md-3" style="position: initial">
@@ -81,7 +76,6 @@ $final2 = 0;
     
               <div class="col-md-2" style="position: initial">
                 <label style="font-weight: bold;">N° de O.D.T.</label>  
-                <input readonly class="form-control"  type="hidden" value="' .$productos1['codBodega']. '" name="bodega">   
                 <p>' .$productos1['codBodega']. '</p>
               </div>
     
@@ -104,182 +98,203 @@ $final2 = 0;
             ?> class="form-control" type="text" name="" readonly value="<?php echo $productos1['estado'] ?>">
           </div>
         </div>
-      
-        <br>
-           <div  style="position: initial;"class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-              <form method="POST" action="../../Plugin/PDF/Bodega/pdf_bodega.php">
+            </div>
+        </div>  </div>
+        </div>
+     <br>
+<div class="row">
 
-                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha">                        
-                    <svg class="bi" width="20" height="20" fill="currentColor">
-                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
-                        </svg></button>
-            </form>
-            <form method="POST" action="../../Plugin/Imprimir/Bodega/bodega.php" target="_blank">
-                           <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['estado']?>" name="estado">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
-                <?php
+    <div class="col-md-9 mb-3">
+        <div class="card">
+            <div class="card-body">
 
-                $odt = $productos1['codBodega'];
-                $sql = "SELECT * FROM detalle_bodega WHERE odt_bodega = $odt";
-    $result = mysqli_query($conn, $sql);
-while ($productos = mysqli_fetch_array($result)){
-      
-      $total = $productos['stock'] * $productos['precio'];
-      $final += $total;
-      $codigo=$productos['codigo'];
-      $descripcion=$productos['descripcion'];
-      $um=$productos['unidad_medida'];
-      $precio=$productos['precio'];
+                
+        <table class="table table-striped" id="exam">
+            <thead>
+              <tr id="tr">
+                <th>Código</th>
+                <th>Descripción Completa</th>
+                <th>Unidad de Medida</th>
+                <th>Cantidad solicitada</th>
+                <th>Cantidad Depachada</th>
 
+                <th>Costo unitario</th>
+                <th>Total</th>
+              </tr>
+           </thead>
+            <tbody>
+                <?php 
 
-       $precio1=number_format($precio, 2,".",",");
-      $total1= number_format($total, 2, ".",",");
+$odt = $productos1['codBodega'];
+
+$sql = "SELECT * FROM detalle_bodega WHERE odt_bodega = $odt";
+    $result1 = mysqli_query($conn, $sql);
+    if (!$result1) {?>
+        <style>div{
+            display: none;
+        }</style>
+    <?php 
+        }else{
+while ($productos = mysqli_fetch_array($result1)){
+    if ($estado="Pendiente") {
+        
+    $total = $productos['stock'] * $productos['precio'];
+    }if ($estado=="Aprobado") {
+        
+    $total = $productos['cantidad_despachada'] * $productos['precio'];
+    }
+       $final += $total;
+       $total1= number_format($total, 2, ".",",");
       $final1=number_format($final, 2, ".",",");
+   $codigo=$productos['codigo'];
+     $descripcion=$productos['descripcion'];
+     $um=$productos['unidad_medida'];
+      
 
-      $cant_aprobada=$productos['stock'];
+        $precio   =    $productos['precio'];
+        $precio2  =    number_format($precio, 2,".",".");  
+        $cant_aprobada=$productos['stock'];
         $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,".",",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
-       ?>
+        $stock=number_format($cant_aprobada, 2,",");
+        $cantidad_desp=number_format($cantidad_despachada, 2,",");?>
+    <style type="text/css">
+     #td{
+        display: none;
+    }
+    
+   
+</style> 
+      <tr>
+       <td  data-label="Código"><?php echo $productos['codigo'] ?></td>
+        <td  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
+        <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
+        <td  data-label="Cantidad"><?php echo $stock ?></td>
+        <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
+        <td  data-label="Costo unitario"><?php echo $precio2 ?></td>
+        <td  data-label="total"><?php echo $total1 ?></td>
+      </tr>
 
-       <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
-            <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
-            <input type="hidden" name="um[]" value="<?php echo $um ?>">
-            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
-            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
-            <input type="hidden" name="cost[]" value="$<?php echo $precio1 ?>">
-            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
-            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
-        <?php } ?>
-                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="pdf">
-                                               <svg class="bi" width="20" height="20" fill="currentColor">
-                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
-                        </svg>
-            </button>
-            </form>
-                                    <form style="" method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php" target="_blank">
+      <?php }
+  }
+   ?> 
+  </tbody>
+           
+</table>
+ </div>
+</div>
+</div>
+    <div class="col-md-3  mb-3 " >
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                            <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+
+            <form style="" method="POST" action="../../Plugin/Imprimir/Bodega/bodega.php" target="_blank">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['estado']?>" name="estado">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['fecha_registro']?>" name="fech">
-           
-                <?php
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
 
-                
-                $sql = "SELECT * FROM detalle_bodega WHERE odt_bodega = $odt";
-    $result = mysqli_query($conn, $sql);
-while ($productos = mysqli_fetch_array($result)){
-      
-      $total = $productos['cantidad_despachada'] * $productos['precio'];
-      $final += $total;
-      $codigo=$productos['codigo'];
-      $descripcion=$productos['descripcion'];
-      $um=$productos['unidad_medida'];
-      $precio=$productos['precio'];
+        <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
+            <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
+            <input type="hidden" name="um[]" value="<?php echo $um ?>">
+            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
+            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
+            <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
+            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
+            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
 
-       $precio1=number_format($precio, 2,".",",");
-      $total1= number_format($total, 2, ".",",");
-      $final1=number_format($final, 2, ".",",");
 
-      $cant_aprobada=$productos['stock'];
-        $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,".",",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
-       ?>
+
+<button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+
+                </button>
+            </form>
+<form method="POST"  action="../../Plugin/PDF/Bodega/pdf_bodega.php" target="_blank" class="mx-1">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['estado']?>" name="estado">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
+        <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
+            <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
+            <input type="hidden" name="um[]" value="<?php echo $um ?>">
+            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
+            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
+            <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
+            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
+            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
+
+
+
+<button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                </svg>
+
+                </button>
+            </form>
+        <form style="" method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php" >
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['estado']?>" name="estado">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
+
        <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
             <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
             <input type="hidden" name="um[]" value="<?php echo $um ?>">
             <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
             <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
-            <input type="hidden" name="cost[]" value="$<?php echo $precio1 ?>">
+            <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
             <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
             <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
-        <?php } ?>
-<button  style="position: initial;"type="submit" class="btn btn-outline-primary" name="dt_bodega">
+ 
+                <button type="submit" class="btn btn-outline-primary" name="DT" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                 </svg>
                 </button>
-
             </form>
 
-</div> 
-          <table class="table" id="examp">
-        <thead>
-                <tr id="tr">
-                  <th >Código</th>
-                  <th >Descripción</th>
-                  <th >Unidad de Medida</th>
-                  <th >Cantidad Solicitada</th>
-                  <th >Cantidad depachada</th>
-                  <th >Costo unitario</th>
-                  <th >Total</th>
-                </tr>
-              </thead>
-          
-            <tbody>
-<?php 
-$odt = $productos1['codBodega'];
-}
- $sql = "SELECT * FROM detalle_bodega WHERE odt_bodega = $odt";
-    $result = mysqli_query($conn, $sql);
-while ($productos = mysqli_fetch_array($result)){
-      
-      $total        =  $productos['stock'] * $productos['precio'];
-      $codigo       =  $productos['codigo'];
-      $descripcion  =  $productos['descripcion'];
-      $um           =  $productos['unidad_medida'];
-      $precio       =  $productos['precio'];
-      $precio2      =  number_format($precio, 2,".",",");
-      $total1       =  number_format($total, 2, ".",",");
-      $cant_aprobada=$productos['stock'];
-        $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,".",",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
-      
-      ?>
-       <style type="text/css"> #td{display: none;} </style> 
+                    </div>
 
-      <tr>
-      <td   data-label="Código"><?php echo $codigo ?>
-            <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
-            <input type="hidden" name="desc[]" value="<?php echo $productos['descripcion'] ?>">
-            <input type="hidden" name="um[]" value="<?php echo $productos['unidad_medida'] ?>">
-            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
-            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
-            <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
-            <input type="hidden" name="tot[]" value="$<?php echo $total ?>">
-            <input type="hidden" name="tot_f" value="$<?php echo $final ?>" >
-        </td>
-        <td   data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
-        <td   data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
-        <td   data-label="Cantidad"><?php echo $stock ?></td>
-        <td   data-label="Cantidad"><?php echo $cantidad_desp ?></td>
-        <td   data-label="Costo unitario"><?php echo $precio2 ?></td>
-        <td   data-label="total"><?php echo $total1 ?></td>
-      </tr>
+                    <div class="col-md-12"><label style="font-weight: bold;">Sub Total:</label>
+                  <p style="float: right;"><?php echo $final1?></p>
+              </div>
+                          <button class="btn btn-success as">Solicitides Bodega</button>
+                </div>
+        
+              </div>
 
-      <?php } ?> </tbody>
-    </table>
+          </div>
 
-  
-</form>
+    </div>
+
+        </div>
+        </div>
+        <?php } ?>
+
 </section>
       
       <script>
 $(document).ready(function () {
-    var table = $('#examp').DataTable({
-    lengthMenu: [[10, -1], [10,"Todos los registros"]],
+            $('.as').click(function() {
+            window.location.href="solicitudes_bodega.php";
+        });
+    var table = $('#exam').DataTable({
     responsive: true,
             autoWidth:false,
             deferRender: true,
             scroller: true,
             scrollY: 400,
             dom: 'lrtip',
+            lengthMenu: [[10, -1], [10,"Todos"]],
             "searching": false,
             scrollCollapse: true,
                     language: {

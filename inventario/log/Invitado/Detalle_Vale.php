@@ -70,51 +70,57 @@
         </style>
         <br><br><br>
 <?php
-
+$total = 0;
+$final = 0;
+$final1 = 0;
+$final2 = 0;
 if(isset($_POST['detalle'])){
-
-    $total = 0;
-    $final = 0;
-    $total1 = 0;
-    $final1 = 0;
-    $cod_vale = $_POST['id'];
     
-        $sql = "SELECT * FROM tb_vale WHERE codVale = $cod_vale";
-        $result = mysqli_query($conn, $sql);
-     while ($productos1 = mysqli_fetch_array($result)){
-        $num_vale = $productos1['codVale'];
-    
-     echo'   
-    <section style="background: rgba(555, 555, 555, 1);border-radius:15px;">
-    <form method="POST" action="" style="background:transparent" >
+$cod_compra = $_POST['id'];
+    $sql = "SELECT * FROM tb_vale WHERE codVale = '$cod_compra'";
+    $result = mysqli_query($conn, $sql);
+ while ($productos1 = mysqli_fetch_array($result)){
+    $estado=$productos1['estado'];
+ if ($productos1['observaciones']=="") {
+    $jus = 'Sin observacion por el momento';
+        
+    }else{
+    $jus = $productos1['observaciones'];
+      }
+ echo'   
+<section id="section">
 
-<div class="row">
-          
+         
+      <div class="card">
+            <div class="card-body">
+        <div class="row">
+      
               <div class="col-md-3" style="position: initial">
           
+                
                   <label style="font-weight: bold;">Depto. o Servicio:</label>
-                  <input readonly class="form-control"  type="text" value="' .$productos1['departamento']. '" name="depto">
+                  <p>' .$productos1['departamento']. '</p>
     
               </div>
     
               <div class="col-md-2" style="position: initial">
                 <label style="font-weight: bold;">N° de Vale:</label>
-                <input readonly class="form-control"  type="text" value="' .$productos1['codVale']. '" name="vale">
+               <p>' .$productos1['codVale']. '</p>
               </div>
     
             <div class="col-md-3" style="position: initial">
                 <label style="font-weight: bold;">Encargado:</label>
-                <input readonly class="form-control"  type="text" value="' .$productos1['usuario']. '" name="usuario">
+               <p>' .$productos1['usuario']. '</p>
             </div>
     
               
               <div class="col-md-2" style="position: initial">
                 <label style="font-weight: bold;">Fecha:</label>
-                  <input readonly class="form-control"  type="text" value="'.date("d-m-Y",strtotime($productos1['fecha_registro'])). '" name="fech">
-              </div>
-              <div class="col-md-2" style="position: initial">
+                 <p>' .date("d-m-Y",strtotime($productos1['fecha_registro'])).  '</p>
+              </div>';?>
+          <div class="col-md-2" style="position: initial">
             <label style="font-weight: bold;">Estado:</label>
-             <div style="position: initial;" class="input-group mb-3">';?>
+             <div style="position:initial;" class="input-group mb-3">
                  <label class="input-group-text" for="inputGroupSelect01">
                     <?php  if($productos1['estado']=='Pendiente') { ?>
                             <svg class="bi" width="20" height="20" fill="currentColor">
@@ -130,7 +136,7 @@ if(isset($_POST['detalle'])){
                 </svg>
             <?php } ?>
                  </label>
-              <input <?php
+             <input <?php
                 if($productos1['estado']=='Pendiente') {
                     echo ' style="background-color:green ;position: initial;width:70%; border-radius:5px;text-align:center; color: white;"';
                 }else if($productos1['estado']=='Aprobado') {
@@ -139,40 +145,144 @@ if(isset($_POST['detalle'])){
                      echo ' style="background-color:red ;style="position: initial;width:70%; border-radius:5px;text-align:center; color: white;"';
                 }
             ?> class="form-control" type="text" name="estado" readonly value="<?php echo $productos1['estado'] ?>"><br>
-
+            
           </div>
-            </div>
         </div>
-          
-            <br>
-          </form>
-            <form style="margin-top: -7%;" method="POST" action="../../Plugin/PDF/Vale/pdf_vale.php" target="_blank" style="background: transparent;">
+            </div>
+        </div>  </div>
+        </div>
+        
+        <br>
+        
+<div class="row">
 
+    <div class="col-md-9 mb-3">
+        <div class="card">
+            <div class="card-body">
+
+                
+        <table class="table table-striped" id="exam">
+            <thead>
+              <tr id="tr">
+                <th>Código</th>
+                <th>Descripción Completa</th>
+                <th>Unidad de Medida</th>
+                <th>Cantidad solicitada</th>
+                <th >Cantidad Depachada</th>
+
+                <th>Costo unitario</th>
+                <th>Total</th>
+              </tr>
+           </thead>
+            <tbody>
+                <?php 
+
+$num_vale = $productos1['codVale'];
+
+ $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale";
+    $result1 = mysqli_query($conn, $sql);
+    if (!$result1) {?>
+        <style>div{
+            display: none;
+        }</style>
+    <?php 
+        }else{
+while ($productos = mysqli_fetch_array($result1)){
+       if ($estado="Pendiente") {
+        
+    $total = $productos['stock'] * $productos['precio'];
+    }if ($estado=="Aprobado") {
+        
+    $total = $productos['cantidad_despachada'] * $productos['precio'];
+    }
+       $final += $total;
+       $total1= number_format($total, 2, ".",",");
+      $final1=number_format($final, 2, ".",",");
+   $codigo=$productos['codigo'];
+     $descripcion=$productos['descripcion'];
+     $um=$productos['unidad_medida'];
+      
+
+        $precio   =    $productos['precio'];
+        $precio2  =    number_format($precio, 2,".",",");  
+        $cant_aprobada=$productos['stock'];
+        $cantidad_despachada=$productos['cantidad_despachada'];
+        $stock=number_format($cant_aprobada, 2,",");
+        $cantidad_desp=number_format($cantidad_despachada, 2,",");?>
+    <style type="text/css">
+     #td{
+        display: none;
+    }
+    
+   
+</style> 
+      <tr>
+       <td  data-label="Código"><?php echo $productos['codigo'] ?></td>
+        <td  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
+        <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
+        <td  data-label="Cantidad"><?php echo $stock ?></td>
+        <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
+        <td  data-label="Costo unitario"><?php echo $precio2 ?></td>
+        <td  data-label="total"><?php echo $total1 ?></td>
+      </tr>
+
+      <?php }
+  }
+   ?> 
+  </tbody>
+           
+</table>
+ </div>
+</div>
+</div>
+    <div class="col-md-3  mb-3 " >
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                            <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+
+<form method="POST" action="../../Plugin/Imprimir/Vale/vale.php" target="_blank">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['estado']?>" name="estado">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
-              </div>
-              <?php
-               if ($productos1['estado']=="Aprobado") {?><br><br>
-                <table class="table " style="width: 100%;" id="div">
-                    <div style="position: initial;" class="btn-group  my-4 mx-2" role="group" aria-label="Basic outlined example">
-            <form method="POST" action="../../Plugin/PDF/Vale/pdf_vale.php">
-                       <?php  
-                       $num_vale = $productos1['codVale'];
-        $sql = "SELECT * FROM tb_vale WHERE codVale='$num_vale'  ORDER BY observaciones ASC LIMIT 1";
-    $result = mysqli_query($conn, $sql);
- while ($datos = mysqli_fetch_array($result)){
- if ($datos['observaciones']=="") {
-    $jus = "Sin observacion por el momento";
-        
-    }else{
-    $jus = $datos['observaciones'];
-      }
-  ?>
+
+        <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
+            <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
+            <input type="hidden" name="um[]" value="<?php echo $um ?>">
+            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
+            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
+            <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
+            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
+            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
+
   <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
-<?php } ?>
+
+<button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                </svg>
+
+                </button>
+            </form>
+<form method="POST" action="../../Plugin/PDF/Vale/pdf_vale.php" target="_blank" class="mx-1">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['estado']?>" name="estado">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
+        <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
+            <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
+            <input type="hidden" name="um[]" value="<?php echo $um ?>">
+            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
+            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
+            <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
+            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
+            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
+
+  <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
 
 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -181,450 +291,95 @@ if(isset($_POST['detalle'])){
 
                 </button>
             </form>
-            <form method="POST" action="../../Plugin/Imprimir/Vale/vale.php" target="_blank">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['estado']?>" name="estado">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
-           
-                <?php
-
-                
-                $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale";
-    $result = mysqli_query($conn, $sql);
-while ($productos = mysqli_fetch_array($result)){
-      
-      $total = $productos['stock'] * $productos['precio'];
-      $final += $total;
-      $codigo=$productos['codigo'];
-      $descripcion=$productos['descripcion'];
-      $um=$productos['unidad_medida'];
-      $precio=$productos['precio'];
-      
-
-
-       $precio1=number_format($precio, 2,".",",");
-      $total1= number_format($total, 2, ".",",");
-      $final1=number_format($final, 2, ".",",");
-
-      $cant_aprobada=$productos['stock'];
-        $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,".",",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
-       ?>
-       <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
-            <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
-            <input type="hidden" name="um[]" value="<?php echo $um ?>">
-            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
-            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
-            <input type="hidden" name="cost[]" value="$<?php echo $precio1 ?>">
-            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
-            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
-        <?php } ?>
-       <?php  
-        $sql = "SELECT * FROM tb_vale WHERE codVale='$num_vale'  ORDER BY observaciones ASC LIMIT 1";
-    $result = mysqli_query($conn, $sql);
- while ($datos = mysqli_fetch_array($result)){
- if ($datos['observaciones']=="") {
-    $jus = "Sin observacion por el momento";
-        
-    }else{
-    $jus = $datos['observaciones'];
-      }
-  ?>
-  <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
-<?php } ?>
-<button style="position: initial;" type="submit" class="btn btn-outline-primary mx-1" name="pdf">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
-                </svg>
-                </button>
-
-            </form>
-     <form  style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php" target="_blank">
-                <input type="hidden" readonly class="form-control"  value="<?php echo $productos1['departamento']?>" name="depto">
-                <input type="hidden" readonly class="form-control"  value="<?php echo $productos1['codVale']?>" name="vale">
-                <input type="hidden" readonly class="form-control"  value="<?php echo $productos1['usuario']?>" name="usuario">
-                <input type="hidden" readonly class="form-control"  value="<?php echo $productos1['estado']?>" name="estado">
-                <input type="hidden" readonly class="form-control"  value="<?php echo $productos1['fecha_registro']?>" name="fech">
-        <?php $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale";
-    $result = mysqli_query($conn, $sql);
-while ($productos = mysqli_fetch_array($result)){
-
-      $codigo=$productos['codigo'];
-      $descripcion=$productos['descripcion'];
-      $um=$productos['unidad_medida'];
-      $precio=$productos['precio'];
-
-
-       $precio1=number_format($precio, 2,".",",");
-      $total1= number_format($total, 2, ".",",");
-      $final1=number_format($final, 2, ".",",");
-
-      $cant_aprobada=$productos['stock'];
-        $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,".",",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
-       ?>
-       <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
-            <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
-            <input type="hidden" name="um[]" value="<?php echo $um ?>">
-            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
-            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
-            <input type="hidden" name="cost[]" value="<?php echo $precio1 ?>">
-            <input type="hidden" name="tot[]" value="<?php echo $total1 ?>">
-            <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
-        <?php } ?>
-               <?php  
-        $sql = "SELECT * FROM tb_vale WHERE codVale='$num_vale'  ORDER BY observaciones ASC LIMIT 1";
-    $result = mysqli_query($conn, $sql);
- while ($datos = mysqli_fetch_array($result)){
- if ($datos['observaciones']=="") {
-    $jus = "Sin observacion por el momento";
-        
-    }else{
-    $jus = $datos['observaciones'];
-      }
-  ?>
-  <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
-<?php } ?>
-                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="detalle" target="_blank">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
-                </svg>
-                </button>
-            </form>
-
-</div>
-                    <thead>
-                        <tr id="tr">
-                  <th >Códigosss</th>
-                  <th >Descripción</th>
-                  <th >Unidad de Medida</th>
-                  <th >Cantidad Solicitada</th>
-                  <th >Cantidad Depachada</th>
-                  <th >Costo unitario</th>
-                  <th >Total</th>
-                </tr>
-                <td id="td" colspan="6"><h4>No se encontraron resultados 😥</h4></td>
-              </thead>
-          </table>
-          <div id="div" style = " max-height: 442px; overflow-y:scroll;"> 
-            <table class="table" id="div">
-                <tbody>
-                    <?php 
-                     $total = 0;
-  $final = 0;
- $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale";
-    $result = mysqli_query($conn, $sql);
-while ($productos = mysqli_fetch_array($result)){
-      
-        $total    =    $productos['cantidad_despachada'] * $productos['precio'];
-        $final    +=   $total;
-        $precio   =    $productos['precio'];
-        $precio2  =    number_format($precio, 2,".",",");
-        $total2   =    number_format($total, 2, ".",",");
-        $final2   =    number_format($final, 2, ".",",");  
-        $cant_aprobada=$productos['stock'];
-        $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,",");?>
-    <style type="text/css">
-     #td{
-        display: none;
-    }
-    
-   
-</style> 
-      <tr>
-       <td  data-label="Código"><?php echo $productos['codigo'] ?>
-            <input type="hidden" name="cod[]" value="<?php echo $productos['codigo'] ?>">
-            <input type="hidden" name="desc[]" value="<?php echo $productos['descripcion'] ?>">
-            <input type="hidden" name="um[]" value="<?php echo $productos['unidad_medida']?>">
-            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
-            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
-            <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
-            <input type="hidden" name="tot[]" value="$<?php echo $total2 ?>">
-            <input type="hidden" name="tot_f" value="$<?php echo $final2 ?>" >
-        </td>
-        <td  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
-        <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
-        <td  data-label="Cantidad"><?php echo $stock ?></td>
-        <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
-        <td  data-label="Costo unitario"><?php echo $precio2 ?></td>
-        <td  data-label="total"><?php echo $total2 ?></td>
-      </tr>
-
-      <?php } ?> 
-  </tbody>
-</table>
-</div>
-<table class="table" id="div">
-     <tfoot>
-            <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
-        <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
-        <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final2 ?></td>
-    </tfoot>
-    </table>
-             <?php 
-
-                       
-        $sql = "SELECT * FROM tb_vale WHERE codVale='$num_vale'  ORDER BY observaciones ASC LIMIT 1";
-    $result = mysqli_query($conn, $sql);
- while ($datos = mysqli_fetch_array($result)){
- if ($datos['observaciones']=="") {
-    $jus = 'Sin observacion por el momento';
-        
-    }else{
-    $jus = $datos['observaciones'];
-      }
-  ?>
-    <div class="form-group my-3" style="position: all;border: 1px solid #ccc;border-collapse: collapse;">
-                <p style="padding-left: 1%;">Observaciones (En qué se ocupará el bien entregado)</p>
-                <hr style=" border: 1px solid #ccc;border-collapse: collapse;">
-                <p style="padding-left: 1%;"><?php echo $jus ?></p>
-                <input type="hidden" name="jus" value="<?php echo $jus ?>">
-            </div>
-<?php }  ?>
-<!-- Aqui Termina La vista de Detalles sin Modificar -->
-
-
-
-<!-- Aqui Comienza Para cambiar el estado de pendiente al cual se le fue otrogado-->
-</form>
-        <?php } if ($productos1['estado']=="Pendiente") {?><br>
-            <table class="table " id="div">
-            <div style="position: initial;" class="btn-group mb-3 my-5 " role="group" aria-label="Basic outlined example" style="margin-top:5%">
-            <form method="POST" action="../../Plugin/PDF/Vale/pdf_vale.php">
-            <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
-                </svg>
-
-                </button>
-            </form>
-            <form method="POST" action="../../Plugin/Imprimir/Vale/vale.php" target="_blank">
+            <form method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php" >
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['estado']?>" name="estado">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
 
-          
-                <?php
-
-                
-                $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale";
-    $result = mysqli_query($conn, $sql);
-while ($productos = mysqli_fetch_array($result)){
-      
-      $total = $productos['stock'] * $productos['precio'];
-      $final += $total;
-      $codigo=$productos['codigo'];
-      $descripcion=$productos['descripcion'];
-      $um=$productos['unidad_medida'];
-      $precio=$productos['precio'];
-      
-
-
-       $precio1=number_format($precio, 2,".",",");
-      $total1= number_format($total, 2, ".",",");
-      $final1=number_format($final, 2, ".",",");
-
-      $cant_aprobada=$productos['stock'];
-        $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,".",",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
-       ?>
        <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
             <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
             <input type="hidden" name="um[]" value="<?php echo $um ?>">
             <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
             <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
-            <input type="hidden" name="cost[]" value="$<?php echo $precio1 ?>">
+            <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
             <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
             <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
-        <?php } ?>
-       <?php  
-        $sql = "SELECT * FROM tb_vale WHERE codVale='$num_vale'  ORDER BY observaciones ASC LIMIT 1";
-    $result = mysqli_query($conn, $sql);
- while ($datos = mysqli_fetch_array($result)){
- if ($datos['observaciones']=="") {
-    $jus = "Sin observacion por el momento";
-        
-    }else{
-    $jus = $datos['observaciones'];
-      }
-  ?>
-  <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
-<?php } ?>
-<button style="position: initial;" type="submit" class="btn btn-outline-primary mx-1" name="pdf">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
-                </svg>
-                </button>
-
-            </form>
-     <form   method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php" target="_blank">
-                <input type="hidden" readonly class="form-control"  value="<?php echo $productos1['departamento']?>" name="depto">
-                <input type="hidden" readonly class="form-control"  value="<?php echo $productos1['codVale']?>" name="vale">
-                <input type="hidden" readonly class="form-control"  value="<?php echo $productos1['usuario']?>" name="usuario">
-                <input type="hidden" readonly class="form-control"  value="<?php echo $productos1['estado']?>" name="estado">
-                <input type="hidden" readonly class="form-control"  value="<?php echo $productos1['fecha_registro']?>" name="fech">
-        <?php $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale";
-    $result = mysqli_query($conn, $sql);
-while ($productos = mysqli_fetch_array($result)){
-
-      $codigo=$productos['codigo'];
-      $descripcion=$productos['descripcion'];
-      $um=$productos['unidad_medida'];
-      $precio=$productos['precio'];
-
-
-       $precio1=number_format($precio, 2,".",",");
-      $total1= number_format($total, 2, ".",",");
-      $final1=number_format($final, 2, ".",",");
-
-      $cant_aprobada=$productos['stock'];
-        $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,".",",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
-       ?>
-       <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
-            <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
-            <input type="hidden" name="um[]" value="<?php echo $um ?>">
-            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
-            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
-            <input type="hidden" name="cost[]" value="<?php echo $precio1 ?>">
-            <input type="hidden" name="tot[]" value="<?php echo $total1 ?>">
-            <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
-        <?php } ?>
-               <?php  
-        $sql = "SELECT * FROM tb_vale WHERE codVale='$num_vale'  ORDER BY observaciones ASC LIMIT 1";
-    $result = mysqli_query($conn, $sql);
- while ($datos = mysqli_fetch_array($result)){
- if ($datos['observaciones']=="") {
-    $jus = "Sin observacion por el momento";
-        
-    }else{
-    $jus = $datos['observaciones'];
-      }
-  ?>
-  <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
-<?php } ?>
-                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="detalle" target="_blank">
+   <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
+                <button type="submit" class="btn btn-outline-primary" name="DT" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                 </svg>
                 </button>
             </form>
 
-</div>
+                    </div>
 
-            <thead>
-              <tr id="tr">
-                <th >Código</th>
-                <th >Descripción</th>
-                <th >Unidad de Medida</th>
-                <th >Cantidad Solicitada</th>
-                <th >Cantidad Depachada</th>
-                <th >Costo unitario</th>
-                <th >Total</th>
-                </tr>
-                <td id="td" colspan="6"><h4>No se encontraron resultados 😥</h4></td>
-              </thead>
-          </table>
-          <div id="div" style = " max-height: 442px; overflow-y:scroll;"> 
-          <table class="table" id="div">
-                <tbody>
-                <?php 
-
-
-  $total = 0;
-  $final = 0;
- $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale";
-    $result = mysqli_query($conn, $sql);
-while ($productos = mysqli_fetch_array($result)){
-      
-        $total    =    $productos['stock'] * $productos['precio'];
-        $final    +=   $total;
-        $precio   =    $productos['precio'];
-        $precio2  =    number_format($precio, 2,".",",");
-        $total2   =    number_format($total, 2, ".",",");
-        $final2   =    number_format($final, 2, ".",",");  
-        $cant_aprobada=$productos['stock'];
-        $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,",");?>
-    <style type="text/css">
-     #td{
-        display: none;
-    }
-    
-   
-</style> 
-      <tr>
-       <td  data-label="Código"><?php echo $productos['codigo'] ?>
-            <input type="hidden" name="cod[]" value="<?php echo $productos['codigo'] ?>">
-            <input type="hidden" name="desc[]" value="<?php echo $productos['descripcion'] ?>">
-            <input type="hidden" name="um[]" value="<?php echo $productos['unidad_medida']?>">
-            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
-            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
-            <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
-            <input type="hidden" name="tot[]" value="$<?php echo $total2 ?>">
-            <input type="hidden" name="tot_f" value="$<?php echo $final2 ?>" >
-        </td>
-        <td  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
-        <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
-        <td  data-label="Cantidad"><?php echo $stock ?></td>
-        <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
-        <td  data-label="Costo unitario"><?php echo $precio2 ?></td>
-        <td  data-label="total"><?php echo $total2 ?></td>
-      </tr>
-
-      <?php } ?> 
-  </tbody>
-</table>
-</div>
-<table class="table">
-     <tfoot>
-            <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
-        <td colspan="6"style="text-align: left;font-size: 14px; font-weight: bold;">Subtotal</td>
-        <td style="color: red;font-size: 14px; font-weight: bold;"><?php echo $final2 ?></td>
-    </tfoot>
-    </table>
-    <br>
-         <?php 
-
-                       
-        $sql = "SELECT * FROM tb_vale WHERE codVale='$num_vale'  ORDER BY observaciones ASC LIMIT 1";
-    $result = mysqli_query($conn, $sql);
- while ($datos = mysqli_fetch_array($result)){
- if ($datos['observaciones']=="") {
-    $jus = 'Sin observacion por el momento';
+                    <div class="col-md-12"><label style="font-weight: bold;">Sub Total:</label>
+                  <p style="float: right;"><?php echo $final1?></p>
+              </div>
+              
+                </div>
         
-    }else{
-    $jus = $datos['observaciones'];
-      }
-  ?>
-    <div class="form-group" style="position: all;border: 1px solid #ccc;border-collapse: collapse;">
+              </div>
+
+          </div>
+
+    </div>
+    <div class="card mt-3">
+                  <div class="card-body">
+                      <div class="form-group" style="position: all;border: 1px solid #ccc;border-collapse: collapse;">
                 <p style="padding-left: 1%;">Observaciones (En qué se ocupará el bien entregado)</p>
                 <hr style=" border: 1px solid #ccc;border-collapse: collapse;">
                 <p style="padding-left: 1%;"><?php echo $jus ?></p>
-                <input type="hidden" name="jus" value="<?php echo $jus ?>">
             </div>
-<?php }  ?>
+            <button class="btn btn-success as"> Solicitudes Vale</button>
 
-</form>
-             <?php  }?>
+                  </div>
+              </div>
+        </div>
+        </div>
 
-             <?php  } }?>
 
-
-</form>
+    </section>
+<?php } }?>
 </section>
       
-       
+  <script>
+       $(document).ready(function () {
+                $('.as').click(function() {
+            window.location.href="solicitudes_vale.php";
+        });
+                
+    $('#exam').DataTable({
+dom: 'lrtip',
+responsive: true,
+autoWidth:false,
+
+            deferRender: true,
+            scroller: true,
+            scrollY: 400,
+            scrollCollapse: true,
+                lengthMenu: [[10, -1], [10,"Todos"]],
+                    language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                 },
+                 "sProcessing":"Procesando...",
+            },
+
+    });
+}); 
+</script>     
   </body>
   </html>

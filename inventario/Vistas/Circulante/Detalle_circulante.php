@@ -107,8 +107,8 @@ $id=$_POST['id'];
 
  echo'   
 <section >
-<form method="POST" action="" >
-         
+         <div class="card">
+            <div class="card-body">        
       
         <div class="row">  
 
@@ -142,142 +142,59 @@ $id=$_POST['id'];
             ?> style="float: right;" class="btn btn-danger" name="estado" href="dt_compra_copy.php"> Cambiar estado</button><?php } ?>
           </div> -->
         </div>
-      
+      </div>
+  </div>
+
         <br>
-    </form>
-           <form method="POST" style="margin-top: -3.5%" action="../../Plugin/PDF/Circulante/pdf_circulante.php" target="_blank">
-<table class="table">
-                        <div style="position: initial;" style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form style="position: initial;" method="POST" action="../../Plugin/pdf_circulante.php">
-            <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['codCirculante']?>" name="num_sol">
-            <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['fecha_solicitud']?>" name="fech">
-                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
-                </svg>
-                </button>
-            </form>
-            <form method="POST" action="../../Plugin/Imprimir/Circulante/Circulante.php">
-                               <?php 
-$num_circulante = $datos_sol['codCirculante'];
+<div class="row">
 
- $sql = "SELECT * FROM detalle_circulante WHERE tb_circulante = $num_circulante";
-    $result = mysqli_query($conn, $sql);
-    $n=0;
-while ($productos = mysqli_fetch_array($result)){
-      $n++;
-        $r=$n+0;
-        $total    =    $productos['stock'] * $productos['precio'];
-        $final    +=   $total;
-        $precio   =    $productos['precio'];
-        $codigo   =    $productos['codigo'];
-        $precio2  =    number_format($precio, 2,".",",");
-        $total2   =    number_format($total, 2, ".",",");
-        $final2   =    number_format($final, 2, ".",",");
-        $cant_aprobada=$productos['stock'];
-        $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,".",",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");?>
-        <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
-            <input type="hidden" name="desc[]" value="<?php echo $productos['descripcion'] ?>">
-            <input type="hidden" name="um[]" value="<?php echo $productos['unidad_medida']?>">
-            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
-            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
-            <input type="hidden" name="cost[]" value="<?php echo $precio2 ?>">
-            <input type="hidden" name="tot[]" value="<?php echo $total2 ?>">
-            <input type="hidden" name="tot_f" value="<?php echo $final2 ?>" >
-            <?php } ?>
-            <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['codCirculante']?>" name="num_sol">
-            <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['fecha_solicitud']?>" name="fech">
-
-                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="pdf">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
-                </svg>
-                </button>
-            </form>
-            <form method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php">
-                 <input readonly type="hidden" class="form-control"  type="text" value="<?php echo $datos_sol['codCirculante'] ?>" name="num_sol">
-                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $datos_sol['fecha_solicitud'] ?>" name="fech">
-                               <?php 
-$num_circulante = $datos_sol['codCirculante'];
-
- $sql = "SELECT * FROM detalle_circulante WHERE tb_circulante = $num_circulante";
-    $result = mysqli_query($conn, $sql);
-    $n=0;
-while ($productos = mysqli_fetch_array($result)){
-      $n++;
-        $r=$n+0;
-        $total    =    $productos['stock'] * $productos['precio'];
-        $final    +=   $total;
-        $precio   =    $productos['precio'];
-        $codigo   =    $productos['codigo'];
-        $precio2  =    number_format($precio, 2,".",",");
-        $total2   =    number_format($total, 2, ".",",");
-        $final2   =    number_format($final, 2, ".",",");
-        $cant_aprobada=$productos['stock'];
-        $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,".",",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");?>
-        <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
-            <input type="hidden" name="desc[]" value="<?php echo $productos['descripcion'] ?>">
-            <input type="hidden" name="um[]" value="<?php echo $productos['unidad_medida']?>">
-            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
-            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
-            <input type="hidden" name="cost[]" value="<?php echo $precio2 ?>">
-            <input type="hidden" name="tot[]" value="<?php echo $total2 ?>">
-            <input type="hidden" name="tot_f" value="<?php echo $final2 ?>" >
-            <?php } ?>
-            <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['codCirculante']?>" name="num_sol">
-            <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['fecha_solicitud']?>" name="fech">
-                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="detalle_circulante">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
-                </svg>
-                </button>
-            </form>
-
-</div>
-            <thead>
+    <div class="col-md-9 mb-3">
+        <div class="card">
+            <div class="card-body">
+       <table class="table " id="exam" style=" width: 100%;">
+            
+        <thead>
               <tr id="tr">
-                <th>#</th>
-                <th>Codigo</th>
-                <th style="width: 35%;">Descripción del Artículo</th>
-                <th>Unidad de Medida</th>
-                <th>Cantidad Solicitada</th>
-                <th>Cantidad Despachada</th>
-                <th>Costo unitario</th>
-                <th>Total</th>
+                <th style="width: 10%;">#</th>
+                <th style="width: 40%;">Código</th>
+                <th style="width: 50%;">Descripción</th>
+                <th style="width: 40%;">U/M</th>
+                <th style="width: 40%;">Cantidad Soli.</th>
+                <th style="width: 40%;">Cantidad Despa.</th>
+                <th style="width: 40%;">Precio</th>
+                <th style="width: 40%;">Total</th>
               </tr>
                 
            </thead>
-       </table>
-       <div id="div" style = " max-height: 442px; overflow-y:scroll;"> 
-        <table class="table">
-            <tbody><tr id="td" ><td colspan="6"><h4 style="text-align: center;">No se encontraron resultados 😥</h4></td></tr>
-                <?php 
+            <tbody>
+<?php 
 $num_circulante = $datos_sol['codCirculante'];
-}
+
  $sql = "SELECT * FROM detalle_circulante WHERE tb_circulante = $num_circulante";
     $result = mysqli_query($conn, $sql);
     $n=0;
 while ($productos = mysqli_fetch_array($result)){
+            $total    =    $productos['stock'] * $productos['precio'];
+        $final    +=   $total;
       $n++;
         $r=$n+0;
-
         $precio   =    $productos['precio'];
         $codigo   =    $productos['codigo'];
+        $um   =    $productos['unidad_medida'];
+        $descripcion   =    $productos['descripcion'];
         $precio2  =    number_format($precio, 2,".",",");
         $total2   =    number_format($total, 2, ".",",");
         $final2   =    number_format($final, 2, ".",",");
         $cant_aprobada=$productos['stock'];
         $cantidad_despachada=$productos['cantidad_despachada'];
         $stock=number_format($cant_aprobada, 2,".",",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");?>
+        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+        
+
+ ?>
     <style type="text/css">
      #td{
         display: none;
-        text-align:center;
     }
     
    
@@ -286,15 +203,8 @@ while ($productos = mysqli_fetch_array($result)){
       <td data-label="#"><?php echo $r ?> </td>
        <td  data-label="Código"><?php echo $codigo ?>
            <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
-            <input type="hidden" name="desc[]" value="<?php echo $productos['descripcion'] ?>">
-            <input type="hidden" name="um[]" value="<?php echo $productos['unidad_medida']?>">
-            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
-            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
-            <input type="hidden" name="cost[]" value="<?php echo $precio2 ?>">
-            <input type="hidden" name="tot[]" value="<?php echo $total2 ?>">
-            <input type="hidden" name="tot_f" value="<?php echo $final2 ?>" >
        </td>
-        <td style="width: 35%;min-width: 100%;"  data-label="Descripción del Artículo"><?php echo $productos['descripcion'] ?></td>
+        <td style="width: 35%;min-width: 100%;"  data-label="Descripción del Artículo"><?php echo $descripcion ?></td>
 
         <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
         <td  data-label="Cantidad Solicitada"><?php echo $stock ?></td>
@@ -302,22 +212,134 @@ while ($productos = mysqli_fetch_array($result)){
          <td data-label="Costo unitario"><?php echo $precio2 ?></td>
         <td  data-label="Total"><?php echo $total2 ?></td>
       </tr>
-<?php } ?>
-</tbody>
-</table>
-</div>
-  <table class="table">
-            <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
-        <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
-        <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $final2 ?></td>
-    </tfoot>
+        
+  <?php }?>
+
         </tbody>
     </table>
-  </form>
-</section>
+</div>
+    </div>
+</div>  
+     <div class="col-md-3  mb-3 " >
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+
+            <form  method="POST" action="../../Plugin/Imprimir/Circulante/Circulante.php" target="_blank">
+                
+            <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['codCirculante']?>" name="num_sol">
+            <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['fecha_solicitud']?>" name="fech">
+
+            <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
+            <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
+            <input type="hidden" name="um[]" value="<?php echo $um ?>">
+            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
+            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
+            <input type="hidden" name="cost[]" value="<?php echo $precio2 ?>">
+            <input type="hidden" name="tot[]" value="<?php echo $total2 ?>">
+            <input type="hidden" name="tot_f" value="<?php echo $final2 ?>" >
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" >
+
+                        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                        </svg>
+                </button>
+            </form>
+            <form method="POST" action="../../Plugin/PDF/Circulante/pdf_circulante.php" target="_blank" class="mx-1">
+            <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['codCirculante']?>" name="num_sol">
+            <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['fecha_solicitud']?>" name="fech">
+
+            <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
+            <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
+            <input type="hidden" name="um[]" value="<?php echo $um ?>">
+            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
+            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
+            <input type="hidden" name="cost[]" value="<?php echo $precio2 ?>">
+            <input type="hidden" name="tot[]" value="<?php echo $total2 ?>">
+            <input type="hidden" name="tot_f" value="<?php echo $final2 ?>" >
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary">
+
+                        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                        </svg>
+                </button>
+            </form>
+            <form method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php">
+
+            <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['codCirculante']?>" name="num_sol">
+            <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['fecha_solicitud']?>" name="fech">
+
+            <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
+            <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
+            <input type="hidden" name="um[]" value="<?php echo $um ?>">
+            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
+            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
+            <input type="hidden" name="cost[]" value="<?php echo $precio2 ?>">
+            <input type="hidden" name="tot[]" value="<?php echo $total2 ?>">
+            <input type="hidden" name="tot_f" value="<?php echo $final2 ?>" >
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="dt_circulante">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
+                </svg>
+                </button>
+            </form>
+
+                  </div>
+                    <div class="col-md-12"><label style="font-weight: bold;">Sub Total:</label>
+                  <p style="float: right;"><?php echo $final2?></p>
+              </div>
+                          <button class="btn btn-success as">Solicitudes Circulante</button>
+
+                </div>
+        
+              </div>
+
+          </div>
+
+    </div>
+   
+        
+    
+</div>
 <?php
-}
-?>            
+}}
+?>   
+<script>
+           $(document).ready(function () {
+        $('.as').click(function() {
+            window.location.href="solicitudes_circulante.php";
+        });
+    $('#exam').DataTable({
+dom: 'lrtip',
+responsive: true,
+autoWidth:false,
+
+            deferRender: true,
+            scroller: true,
+            scrollY: 400,
+            scrollCollapse: true,
+                lengthMenu: [[10, -1], [10,"Todos"]],
+                    language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                 },
+                 "sProcessing":"Procesando...",
+            },
+
+    });
+});
+</script>         
   </body>
   </html>
 

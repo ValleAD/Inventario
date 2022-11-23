@@ -9,10 +9,14 @@ $invitado = $_SESSION['Invitado1'];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../../styles/estilo_men.css">
-    <link rel="stylesheet" type="text/css" href="../../styles/estilos_tablas.css">
-   <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/bootstrap.css">
-   <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/datatables.min.css"/> 
-   <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="../../styles/estilos_tablas.css"> 
+    <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/datatables.min.css"/> 
+    <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/select.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/rowGroup.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/responsive.bootstrap4.min.css">
       <link rel="icon" type="image/png" sizes="32x32"  href="../../img/log.png">
 </head>
 
@@ -167,9 +171,14 @@ background:burlywood;
         </nav>
     </header>
     <script src="../../Plugin/bootstrap/js/jquery-latest.js"></script>
-    <script src="../../Plugin/bootstrap/js/datatables.min.js"></script>
     <script src="../../Plugin/bootstrap/js/bootstrap.min.js"></script>
     <script src="../../Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
+
+    <script src="../../Plugin/bootstrap/js/datatables.min.js"></script>
+    <script src="../../Plugin/bootstrap/js/dataTables.select.min.js"></script>
+    <script src="../../Plugin/bootstrap/js/dataTables.rowGroup.min.js"></script>
+    <script src="../../Plugin/bootstrap/js/dataTables.responsive.min.js"></script>
+    <script src="../../Plugin/bootstrap/js/responsive.bootstrap4.min.js"></script>
 <script type="text/javascript">
     $(document).ready(main);
 
@@ -351,7 +360,6 @@ display: none;
   <p id="loader">n</p>
   <p id="loader">g</p>
 </div>
-<script src="Plugin/bootstrap/js/jquery-latest.js"></script>
  <script type="text/javascript">
 
 

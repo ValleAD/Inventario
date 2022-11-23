@@ -1,5 +1,6 @@
 
            <?php 
+           $tipo_usuario=0;
             if (isset($_POST['dia'])){$dia=$_POST['dia']?><br>
 <style>
     .productos{
@@ -12,7 +13,7 @@
         <div  class="mx-1 p-2 r-5" style="background-color: transparent; border-radius: 5px;">
         <a href="" class="btn btn-success" name="categorias" type="submit">Ver Productos</a>
               <div  style="position: initial;margin-top: 0%;margin-left: 1%;" class="btn-group" role="group" aria-label="Basic outlined example">
-         <form class="well" method="POST" action="../../Plugin/Imprimir/Fecha/Fechas.php" target="_blank">
+         <form method="POST" action="../../Plugin/Imprimir/Fecha/Fechas.php" target="_blank">
              <input type="hidden" name="dia" value="<?php echo $dia ?>">
              <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Dia">
                  <svg class="bi" width="20" height="20" fill="currentColor">
@@ -20,7 +21,7 @@
                 </svg>
              </button>
          </form>
-         <form class="well" method="POST" action="../../Plugin/PDF/Fecha/pdf_fecha.php" target="_blank">
+         <form method="POST" action="../../Plugin/PDF/Fecha/pdf_fecha.php" target="_blank" class="mx-1">
             <input type="hidden" name="dia" value="<?php echo $dia ?>">
              <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Dia" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -29,7 +30,7 @@
              </button>
          </form>         
 
-         <form class="well" method="POST" action="../../Plugin/Excel/Productos/Fechas.php" target="_blank">
+         <form method="POST" action="../../Plugin/Excel/Productos/Fechas.php" target="_blank">
             <input type="hidden" name="dia" value="<?php echo $dia ?>">
              <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Dia" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -69,7 +70,7 @@
            <td  data-label="Descripción Completa" ><?php  echo $productos['descripcion']; ?></td>
            <td  data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
            <td  data-label="Cantidad" ><?php  echo $stock ?></td>
-           <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
+           <td  data-label="Costo Unitario"><?php  echo $precio1 ?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
        <?php } ?>
         </tr>
@@ -121,7 +122,7 @@
         <div  class="mx-1 p-2 r-5" style="background-color: transparent; border-radius: 5px;">
         <a href="" class="btn btn-success" name="categorias" type="submit">Ver Productos</a>
               <div  style="position: initial;margin-top: 0%;margin-left: 1%;" class="btn-group" role="group" aria-label="Basic outlined example">
-         <form class="well" method="POST" action="../../Plugin/Imprimir/Fecha/Fechas.php" target="_blank">
+         <form method="POST" action="../../Plugin/Imprimir/Fecha/Fechas.php" target="_blank">
              <input type="hidden" name="mes" value="<?php echo $mes ?>">
              <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Mes">
                  <svg class="bi" width="20" height="20" fill="currentColor">
@@ -129,7 +130,7 @@
                 </svg>
              </button>
          </form>
-         <form class="well" method="POST" action="../../Plugin/PDF/Fecha/pdf_fecha.php" target="_blank">
+         <form method="POST" action="../../Plugin/PDF/Fecha/pdf_fecha.php" target="_blank" class="mx-1">
             <input type="hidden" name="mes" value="<?php echo $mes ?>">
              <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="mes" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -137,7 +138,7 @@
                 </svg>
              </button>
          </form>
-                  <form class="well" method="POST" action="../../Plugin/Excel/Productos/Fechas.php" target="_blank">
+                  <form method="POST" action="../../Plugin/Excel/Productos/Fechas.php" target="_blank">
             <input type="hidden" name="mes" value="<?php echo $mes ?>">
             <input type="hidden" name="mes1" value="<?php echo $mes1 ?>">
              <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Mes" target="_blank">
@@ -191,7 +192,7 @@
            <td  data-label="Descripción Completa" ><?php  echo $productos['descripcion']; ?></td>
            <td  data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
            <td  data-label="Cantidad" ><?php  echo $stock ?></td>
-           <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
+           <td  data-label="Costo Unitario"><?php  echo $precio1 ?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
        <?php } ?>
         </tr>
@@ -210,10 +211,10 @@
  <div class="card" style="margin-top:-3%">
     <div class="card-body">
                 <p align="center"><b>El Año selecionado</b>: <?php echo $_POST['año'] ?></p>
-        <div  class="mx-1 p-2 r-5" style="background-color: transparent; border-radius: 5px;">
+        <div  class="mx-1 p-2 " style="background-color: transparent; border-radius: 5px;">
         <a href="" class="btn btn-success" name="categorias" type="submit">Ver Productos</a>
               <div  style="position: initial;margin-top: 0%;margin-left: 1%;" class="btn-group" role="group" aria-label="Basic outlined example">
-         <form class="well" method="POST" action="../../Plugin/Imprimir/Fecha/Fechas.php" target="_blank">
+         <form method="POST" action="../../Plugin/Imprimir/Fecha/Fechas.php" target="_blank">
              <input type="hidden" name="año" value="<?php echo $año ?>">
              <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Año">
                  <svg class="bi" width="20" height="20" fill="currentColor">
@@ -221,15 +222,15 @@
                 </svg>
              </button>
          </form>
-         <form class="well" method="POST" action="../../Plugin/PDF/Fecha/pdf_fecha.php" target="_blank">
+         <form method="POST" action="../../Plugin/PDF/Fecha/pdf_fecha.php" target="_blank" class="mx-1">
             <input type="hidden" name="año" value="<?php echo $año ?>">
-             <button   style="position: initial;" type="submit" class="btn btn-outline-primary mx-1" name="Año" target="_blank">
+             <button   style="position: initial;" type="submit" class="btn btn-outline-primary " name="Año" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>
-                  <form class="well" method="POST" action="../../Plugin/Excel/Productos/Fechas.php" target="_blank">
+                  <form method="POST" action="../../Plugin/Excel/Productos/Fechas.php" target="_blank">
             <input type="hidden" name="año" value="<?php echo $año ?>">
              <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Año" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -269,7 +270,7 @@
            <td  data-label="Descripción Completa" ><?php  echo $productos['descripcion']; ?></td>
            <td  data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
            <td  data-label="Cantidad" ><?php  echo $stock ?></td>
-           <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
+           <td  data-label="Costo Unitario"><?php  echo $precio1 ?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
        <?php } ?>
         </tr>
@@ -314,7 +315,7 @@
                 <div  class="mx-1 p-2 r-5" style="background-color: transparent; border-radius: 5px;">
         <a href="" class="btn btn-success" name="categorias" type="submit">Ver Productos</a>
               <div  style="position: initial;margin-top: 0%;margin-left: 1%;" class="btn-group" role="group" aria-label="Basic outlined example">
-         <form class="well" method="POST" action="../../Plugin/Imprimir/Fecha/Fechas.php" target="_blank">
+         <form method="POST" action="../../Plugin/Imprimir/Fecha/Fechas.php" target="_blank">
              <input type="hidden" name="f1" value="<?php echo $f1 ?>">
              <input type="hidden" name="f2" value="<?php echo $f2 ?>">
              <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha">
@@ -323,7 +324,7 @@
                 </svg>
              </button>
          </form>
-         <form class="well" method="POST" action="../../Plugin/PDF/Fecha/pdf_fecha.php" target="_blank">
+         <form method="POST" action="../../Plugin/PDF/Fecha/pdf_fecha.php" target="_blank" class="mx-1">
             <input type="hidden" name="f1" value="<?php echo $f1 ?>">
              <input type="hidden" name="f2" value="<?php echo $f2 ?>">
              <button   style="position: initial;" type="submit" class="btn btn-outline-primary mx-1" name="Fecha" target="_blank">
@@ -332,7 +333,7 @@
                 </svg>
              </button>
          </form>
-                  <form class="well" method="POST" action="../../Plugin/Excel/Productos/Fechas.php" target="_blank">
+                  <form method="POST" action="../../Plugin/Excel/Productos/Fechas.php" target="_blank">
             <input type="hidden" name="f1" value="<?php echo $f1 ?>">
              <input type="hidden" name="f2" value="<?php echo $f2 ?>">
              <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha" target="_blank">
@@ -373,7 +374,7 @@
            <td  data-label="Descripción Completa" ><?php  echo $productos['descripcion']; ?></td>
            <td  data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
            <td  data-label="Cantidad" ><?php  echo $stock ?></td>
-           <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
+           <td  data-label="Costo Unitario"><?php  echo $precio1 ?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
                 </tr>
             <?php } ?>
@@ -384,7 +385,8 @@
 <?php if (isset($_POST['Consultar2'])) {
 
 ?>
-<style>.botones{display: none;}</style>
+<style>.botones, .q{display: none;}</style>
+
 <br>
                   <div class="card ">
     <div class="card-body">
@@ -477,7 +479,7 @@ $q=$conn->real_escape_string($_POST['Busqueda']);
            <td  data-label="Descripción Completa" ><?php  echo $productos['descripcion']; ?></td>
            <td  data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
            <td  data-label="Cantidad" ><?php  echo $stock ?></td>
-           <td  data-label="Costo Unitario">$<?php  echo $precio1 ?></td>
+           <td  data-label="Costo Unitario"><?php  echo $precio1 ?></td>
            <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
            <?php if ($tipo_usuario==1) {
             echo'

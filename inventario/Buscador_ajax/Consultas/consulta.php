@@ -41,7 +41,7 @@ if ($buscarAlumnos->num_rows > 0)
 	$tabla.= '         <style>
 
          </style>'; echo '
-    <div class="card productos">
+    <div class="card productos q">
     <div class="card-body">
 
 	<table class=" table display   table-striped" id="example" style=" width: 100%;">
@@ -181,7 +181,7 @@ if (resultado.value) {
             rowGroup: {
             dataSrc: 6
         },
-        lengthMenu: [[10, -1], [10,"Todos los registros"]],
+        lengthMenu: [[10, -1], [10,"Todos"]],
             responsive: true,
             autoWidth:false,
             deferRender: true,
@@ -210,7 +210,7 @@ if (resultado.value) {
 });   $(document).ready(function () {
     $('#example1').DataTable({
 
-lengthMenu: [[10, -1], [10,"Todos los registros"]],
+lengthMenu: [[10, -1], [10,"Todos"]],
 responsive: true,
 autoWidth:false,
             deferRender: true,
@@ -240,7 +240,7 @@ autoWidth:false,
    $(document).ready(function () {
     $('#example2').DataTable({
 
-lengthMenu: [[10, -1], [10,"Todos los registros"]],
+lengthMenu: [[10, -1], [10,"Todos"]],
 responsive: true,
 autoWidth:false,
             deferRender: true,
@@ -269,7 +269,7 @@ autoWidth:false,
 });   $(document).ready(function () {
     $('#example3').DataTable({
 
-lengthMenu: [[10, -1], [10,"Todos los registros"]],
+lengthMenu: [[10, -1], [10,"Todos"]],
 responsive: true,
 autoWidth:false,
             deferRender: true,
@@ -298,7 +298,7 @@ autoWidth:false,
 });   $(document).ready(function () {
     $('#example4').DataTable({
 
-lengthMenu: [[10, -1], [10,"Todos los registros"]],
+lengthMenu: [[10, -1], [10,"Todos"]],
 responsive: true,
 autoWidth:false,
             deferRender: true,
@@ -327,7 +327,7 @@ autoWidth:false,
 });   $(document).ready(function () {
     $('#example5').DataTable({
 
-lengthMenu: [[10, -1], [10,"Todos los registros"]],
+lengthMenu: [[10, -1], [10,"Todos"]],
 responsive: true,
 autoWidth:false,
             deferRender: true,
@@ -356,7 +356,7 @@ autoWidth:false,
 });   $(document).ready(function () {
     $('#example6').DataTable({
 
-lengthMenu: [[10, -1], [10,"Todos los registros"]],
+lengthMenu: [[10, -1], [10,"Todos"]],
 responsive: true,
 autoWidth:false,
             deferRender: true,

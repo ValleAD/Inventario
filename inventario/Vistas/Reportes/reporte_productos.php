@@ -71,7 +71,7 @@ die();
     }
   </style>
   <section style="background: rgba(255, 255, 255, 0.9);margin: 7%2%2%2%; padding: 1%; border-radius: 15px;">
-<h2 id="h2" class="text-center">Reporte de Productos</h2>
+<h2  class="text-center">Reporte de Productos</h2>
 <br><div id="OcultarDiv">
 <?php include('../../Buscador_ajax/Fechas/fecha.php') ?>
 

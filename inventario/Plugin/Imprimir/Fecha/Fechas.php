@@ -5,7 +5,7 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <title>Filtro por Fechas</title>
-        <link rel="stylesheet" type="text/css" href="../../../bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="../../bootstrap/css/bootstrap.css">
    <link rel="stylesheet" type="text/css" href="../../../styles/estilos_tablas.css">
  </head>
  <body>
@@ -225,8 +225,9 @@
     </tbody>
 </table> 
     <?php  } if (isset($_POST['Fecha'])) {$f1 =$_POST['f1'];$f2 =$_POST['f2'];?>
+    <br>
     <center>
- <div class="container" style="float:left;">
+
           <div class="row">
                     <div class="col-md-6" style="position: initial">
                         <label>Desde</label>
@@ -237,7 +238,7 @@
                     </div>
                     
                 </div> 
-</div> </center>
+ </center>
     <table class="table  table-striped"  style=" width: 100%">
 
     <thead>

@@ -27,6 +27,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
       $dia              = $_POST['dia'];
       $mes              = $_POST['mes'];
       $año              = $_POST['año'];
+      $usuario              = $_POST['usuario'];
 $verificar_usuario =mysqli_query($conn, "SELECT * FROM tb_productos WHERE codProductos ='$codigo_producto'");
 
 if (mysqli_num_rows($verificar_usuario)>0) {
@@ -47,7 +48,7 @@ if (resultado.value) {
 
 exit();
 }
-      $insert = "INSERT INTO tb_productos (codProductos, categoria, catalogo, descripcion, unidad_medida,  precio,dia,mes,año) VALUES ('$codigo_producto', '$categoria', '$catalogo', '$Descripción', '$u_m', '$cost','$dia','$mes','$año')";
+      $insert = "INSERT INTO tb_productos (codProductos, categoria, catalogo, descripcion, unidad_medida,  precio,dia,mes,año,usuario) VALUES ('$codigo_producto', '$categoria', '$catalogo', '$Descripción', '$u_m', '$cost','$dia','$mes','$año','$usuario')";
       $query = mysqli_query($conn, $insert);
 
       if ($query) {

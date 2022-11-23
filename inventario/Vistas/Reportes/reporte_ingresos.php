@@ -737,6 +737,7 @@ while ($productos = mysqli_fetch_array($result)){
             scroller: true,
             scrollY: 400,
             dom: 'lrtip',
+            lengthMenu: [[10, -1], [10,"Todos"]],
             "searching": false,
             scrollCollapse: true,
                     language: {

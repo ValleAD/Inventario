@@ -199,6 +199,7 @@ if ($des=="") {
             deferRender: true,
             scroller: true,
             scrollY: 400,
+            lengthMenu: [[10, -1], [10,"Todos"]],
             scrollCollapse: true,
                     language: {
                 "lengthMenu": "Mostrar _MENU_ registros",

@@ -226,7 +226,7 @@ while ($productos = mysqli_fetch_array($result)){
                     <div class="col-md-12"><label style="font-weight: bold;">Sub Total:</label>
                   <p style="float: right;"><?php echo $final1?></p>
               </div>
-              
+              <button class="btn btn-success as">Solicitudes Circulante</button>
                 </div>
         
               </div>
@@ -241,6 +241,9 @@ while ($productos = mysqli_fetch_array($result)){
 <?php } ?>
 <script>
        $(document).ready(function () {
+                $('.as').click(function() {
+            window.location.href="solicitudes_circulante.php";
+        });
     $('#exam').DataTable({
 dom: 'lrtip',
 responsive: true,

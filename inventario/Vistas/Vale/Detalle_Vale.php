@@ -243,7 +243,7 @@ while ($productos = mysqli_fetch_array($result1)){
 
                 </button>
             </form>
-<form method="POST" action="../../Plugin/PDF/Vale/pdf_vale.php" target="_blank">
+<form method="POST" action="../../Plugin/PDF/Vale/pdf_vale.php" target="_blank" class="mx-1">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
@@ -324,6 +324,8 @@ while ($productos = mysqli_fetch_array($result1)){
                 <hr style=" border: 1px solid #ccc;border-collapse: collapse;">
                 <p style="padding-left: 1%;"><?php echo $jus ?></p>
             </div>
+            <button class="btn btn-success as">Solicitudes Vale</button>
+
                   </div>
               </div>
         </div>
@@ -507,6 +509,10 @@ while ($productos = mysqli_fetch_array($result)){
 
 <script>
        $(document).ready(function () {
+                $('.as').click(function() {
+            window.location.href="solicitudes_vale.php";
+        });
+                
     $('#exam').DataTable({
 dom: 'lrtip',
 responsive: true,

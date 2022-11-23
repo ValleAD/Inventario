@@ -267,6 +267,7 @@ while ($productos = mysqli_fetch_array($result)){
                 <hr style=" border: 1px solid #ccc;border-collapse: collapse;">
                 <p style="padding-left: 1%;"><?php echo $jus ?></p>
             </div>
+            <button class="btn btn-success as">Solicitudes Vale</button>
                   </div>
               </div>
         </div>
@@ -279,6 +280,9 @@ while ($productos = mysqli_fetch_array($result)){
 
 <script>
        $(document).ready(function () {
+        $('.as').click(function() {
+            window.location.href="solicitudes_vale.php";
+        });
     $('#exam').DataTable({
 dom: 'lrtip',
 responsive: true,

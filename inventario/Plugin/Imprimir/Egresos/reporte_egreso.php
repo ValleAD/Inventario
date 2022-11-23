@@ -238,7 +238,7 @@ width: 100%;
 
      </tbody>
  </table>
-    <?php } if (isset($_POST['bodega'])) { $idusuario=$_POST['idusuario'];?>
+    <?php } if (isset($_POST['bodega'])) { ?>
 
         <h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD</h3>
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>

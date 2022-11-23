@@ -6,7 +6,17 @@ include ('../../../Model/conexion.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <?php   if (isset($_POST['Dia'])) {?>
+    <title>Filtro por Días en PDF</title>
+<?php }  if (isset($_POST['Mes'])) { ?>
+    <title>Filtro por Mes en PDF</title>
+
+<?php }  if (isset($_POST['Año'])) { ?>
+    <title>Filtro por Años en PDF</title>
+<?php }  if (isset($_POST['Fecha'])) { ?>
     <title>Filtro por Fechas en PDF</title>
+<?php } ?>
 </head>
 <body style="font-family: sans-serif;">
 
@@ -15,7 +25,18 @@ include ('../../../Model/conexion.php');
 <h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD</h3>
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
 <h4 align="center" style="margin-top: 2%;">DEPARTAMENTO DE MANTENIMIENTO</h4>
-<h5 align="center" style="margin-top: 2%;">FILTRO DE FECHAS</h5>
+<?php   if (isset($_POST['Dia'])) {?>
+<h5 align="center" style="margin-top: 2%;">FILTRO POR DIAS</h5>
+
+<?php }  if (isset($_POST['Mes'])) { ?>
+<h5 align="center" style="margin-top: 2%;">FILTRO POR MES</h5>
+
+<?php }  if (isset($_POST['Año'])) { ?>
+    <h5 align="center" style="margin-top: 2%;">FILTRO POR AÑO</h5>
+
+<?php }  if (isset($_POST['Fecha'])) { ?>
+    <h5 align="center" style="margin-top: 2%;">FILTRO POR FECHAS</h5>
+<?php } ?>
 
     <?php
     if (isset($_POST['Dia'])) {$dia=$_POST['dia']?><br>
@@ -306,5 +327,14 @@ $dompdf->setPaper('letter');
 $dompdf->render();
 
 // Output the generated PDF to Browser
-$dompdf->stream("pdf_fecha.pdf",array("Attachment"=>0));
+if (isset($_POST['Dia'])) {
+$dompdf->stream("PDF POR DIA.pdf",array("Attachment"=>0));
+}  if (isset($_POST['Mes'])) { 
+$dompdf->stream("PDF POR MES.pdf",array("Attachment"=>0));
+}  if (isset($_POST['Año'])) { 
+$dompdf->stream("PDF POR AÑO.pdf",array("Attachment"=>0));
+}  if (isset($_POST['Fecha'])) { 
+$dompdf->stream("PDF POR FECHA.pdf",array("Attachment"=>0));
+} ?>
+
         ?>

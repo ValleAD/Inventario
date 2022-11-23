@@ -1,10 +1,10 @@
 
 
 <?php 
-if (isset($_POST['categorias'])){$categoria=$_POST['cat'];  ?>  <br> 
+if (isset($_POST['categorias'])){$categoria=$_POST['cat'];  ?> 
 <style>.productos{
 display: none;</style>
- <div class="card" style="margin-top:-3%">
+ <div class="card">
     <div class="card-body">
         <h4 class="text-center">Exportar Categorias</h4>
 <div class="mx-2  r-5" id="hidden" style="background-color: transparent; border-radius: 5px;">
@@ -20,7 +20,7 @@ display: none;</style>
                 </svg>
              </button>
          </form>
-         <form method="POST" action="../../Plugin/PDF/Categoria/pdf_categoria.php" target="_blank">
+         <form method="POST" action="../../Plugin/PDF/Categoria/pdf_categoria.php" target="_blank" class="mx-1">
             <input type="hidden" name="categoria" value="<?php echo $categoria ?>">
              <button style="position: initial;"  type="submit" class="btn btn-outline-primary mx-1" name="pdf" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">

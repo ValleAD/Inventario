@@ -41,7 +41,7 @@ if ($buscarAlumnos->num_rows > 0)
                 </svg>
                 </button>
             </form><br>
-            <form id="form2" style="" method="POST" action="../../Plugin/pdf_productos.php" target="_blank">
+            <form id="form2" style="" method="POST" action="../../Plugin/PDF/Productos/pdf_productos.php" target="_blank">
               ';
     $sql = "SELECT * FROM tb_productos GROUP BY precio,codProductos";
     $result = mysqli_query($conn, $sql);

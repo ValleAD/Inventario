@@ -54,7 +54,7 @@ die();
   </style>
   <br>
   <section style="background: rgba(255, 255, 255, 0.9);margin: 7%1%1%1%;padding: 1%; border-radius: 15px;">
-<h2 id="h2" class="text-center">Reporte General de Solicitudes</h2>
+<h2  class="text-center">Reporte General de Solicitudes</h2>
 <br>
 <div id="OcultarDiv">
 <?php include('../../Buscador_ajax/Fechas/fecha.php') ?>

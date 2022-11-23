@@ -394,7 +394,7 @@ while ($productos = mysqli_fetch_array($result)){
                     <div class="col-md-12">
              <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
 
-            <form  method="POST" action="../../Plugin/PDF/Circulante/pdf_circulante.php" target="_blank">
+            <form  method="POST" action="../../Plugin/Imprimir/Almacen/almacen.php" target="_blank">
                 
                 <input type="hidden" readonly class="form-control" value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control" value="<?php echo $productos1['codAlmacen']?>" name="num_sol">
@@ -410,14 +410,14 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="cost[]" value="<?php echo $precio2 ?>">
             <input type="hidden" name="tot[]" value="<?php echo $total1 ?>">
             <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
-                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" >
 
                         <svg class="bi" width="20" height="20" fill="currentColor">
-                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                         </svg>
                 </button>
             </form>
-            <form method="POST" action="../../Plugin/Imprimir/Circulante/Circulante.php" target="_blank">
+            <form method="POST" action="../../Plugin/PDF/Almacen/pdf_almacen.php" target="_blank" class="mx-1">
                 <input type="hidden" readonly class="form-control" value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control" value="<?php echo $productos1['codAlmacen']?>" name="num_sol">
                 <input type="hidden" readonly class="form-control" value="<?php echo $productos1['encargado']?>" name="encargado">
@@ -431,10 +431,10 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="cost[]" value="<?php echo $precio2 ?>">
             <input type="hidden" name="tot[]" value="<?php echo $total1 ?>">
             <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
-                <button style="position: initial;" type="submit" class="btn btn-outline-primary mx-1" name="pdf">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary ">
 
                         <svg class="bi" width="20" height="20" fill="currentColor">
-                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                         </svg>
                 </button>
             </form>
@@ -453,7 +453,7 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="cost[]" value="<?php echo $precio2 ?>">
             <input type="hidden" name="tot[]" value="<?php echo $total1 ?>">
             <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
-                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="dt_circulante">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="dt_almacen">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                 </svg>
@@ -478,7 +478,8 @@ while ($productos = mysqli_fetch_array($result)){
                     <div class="col-md-12"><label style="font-weight: bold;">Sub Total:</label>
                   <p style="float: right;"><?php echo $final1?></p>
               </div>
-              
+                          <button class="btn btn-success as">Solicitudes Almacen</button>
+
                 </div>
         
               </div>
@@ -493,6 +494,9 @@ while ($productos = mysqli_fetch_array($result)){
 <?php } } ?>
 <script>
        $(document).ready(function () {
+        $('.as').click(function() {
+            window.location.href="solicitudes_almacen.php";
+        });
     $('#exam').DataTable({
 dom: 'lrtip',
 responsive: true,

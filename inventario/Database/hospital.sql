@@ -36,7 +36,8 @@ CREATE TABLE tb_productos (
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 ALTER TABLE `tb_productos` ADD `Dia` INT(2) NOT NULL AFTER `fecha_registro`, ADD `Mes` INT(2) NOT NULL AFTER `Dia`, ADD `Año` INT(4) NOT NULL AFTER `Mes`;
-
+ALTER TABLE `tb_productos` ADD `usuario` VARCHAR(50) NOT NULL AFTER `Año`;
+UPDATE `tb_productos` SET `usuario`='egchoto';
 
 CREATE TABLE tb_usuarios (
   id int(3)  NOT NULl AUTO_INCREMENT,
