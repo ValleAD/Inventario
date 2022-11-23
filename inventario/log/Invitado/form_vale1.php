@@ -69,24 +69,14 @@ include ('menu.php');
   }
         </style>
         <br><br><br>       
-          <font color="white"> <h1 style=" text-align: center;">Solicitud de Vale</h1> </font>
 <section>
-<?php include ('../../Buscador_ajax/Cabezeras/cabezera_invitado.php') ?>
-     <form style="background: transparent;" method='POST' action="form_vale2.php">
-         <?php include ('../../Buscador_ajax/Consultas/Consulta1.php') ?>
+        <?php include ('../../Buscador_ajax/Cabezeras/cabezera.php') ?>
+<center><h1 style="margin-top:5px">Solicitudes Vale</h1></center><br>
+<form name="f1" id="frm-example" style="background: transparent;" method='POST' action="form_vale2.php">
+
+<?php include ('../../Buscador_ajax/Consultas/Consulta1.php') ?>
 
 </form>
 </section>
-<script type="text/javascript">
-function confirmaion(e) {
-    if (confirm("¿Estas seguro que deseas Eliminar este registro?")) {
-        return true;
-    } else {
-        return false;
-        e.preventDefault();
-    }
-}
-</script>
-
 </body>
 </html>

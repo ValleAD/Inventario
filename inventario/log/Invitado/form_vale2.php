@@ -1,15 +1,14 @@
-<?php require '../../Model/conexion.php';
-include ('menu.php');
-?>
 
+<?php include ('menu.php');
+require '../../Model/conexion.php';?>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<title>Productos</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Vista Previa</title>
 </head>
-
 <body>
         <style>  
          section{
@@ -37,16 +36,14 @@ include ('menu.php');
             }
             @media (max-width: 952px){
    section{
-        margin: -15%6%6%3%;
+        margin: -5%6%6%3%;
         width: 95%;
     }
     }#buscar1{
         width: 100%;
         margin: 0;
     }
-    label{
-        margin-top: 3%;
-    }
+    
   }
         </style>
         <br><br><br>
@@ -64,9 +61,10 @@ if ($codigo=="") {
 }
 
   if (isset($_POST['solicitar'])){ ?>
+ <form style="background: transparent;" method="POST" action="../../Controller/Vale/añadir_vale.php">
         <section >
- <form style="background: transparent;" method="POST" action="Controller/añadir_vale.php">
-    <div class="container-fluid" style="position: initial">
+            <div class="card">
+            <div class="card-body">
             <div class="row">
               <div class="col-md-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>   
@@ -94,35 +92,45 @@ if ($codigo=="") {
             </div>
             <div class="col-md-4" style="position: initial">
                 <label id="inp1">Nombre de la persona</label>
-               
-    <font color="black"><label>Encargado</label> </font>
+
           <input style=" color: black;"  class="form-control" type="text" name="usuario" id="como3" required  value="<?php echo $invitado ?>" readonly>
       <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="0">
-      <br>
-            </select>
                 </label>   
             </div>
         </div>
+        </div>
     </div>
     <br>
-     
-     <?php include('../../Buscador_ajax/Tablas/Productos/tablaProductos.php') ?>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="card">
+            <div class="card-body">
+      <?php include('../../Buscador_ajax/Tablas/Productos/tablaProductos.php') ?>
+  </div>
+</div>
+</div>
+<div class="col-md-3">
+             <div class="card">
+            <div class="card-body">   
+
+
          <div class="form-floating mb-3 my-2" >
             <label>Observaciones (En qué se ocupará el bien entregado)</label>
               <textarea rows="7" class="form-control" name="jus"  placeholder="" required id="floatingTextarea"></textarea>
             </div>
-          <center>  <div class="col-md-3" style="padding: 0;">
         <button id="buscar1" type="submit" name="form_vale" class="btn  btn-success btn-lg my-2 text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Guardar
                         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#save"/>
                         </svg>
         </button> 
-</div></center> 
+    </div>
+</div>
+</div>
+        </div>
 </form>
  </section>
 
     <?php } ?>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
 
 
     <script>
@@ -132,5 +140,6 @@ if ($codigo=="") {
 });
 
 </script>
+
 </body>
 </html>

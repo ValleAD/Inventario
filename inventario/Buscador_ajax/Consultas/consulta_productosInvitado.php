@@ -1,6 +1,4 @@
 
-
-
 <?php include ('../../Model/conexion.php');
 
 $tabla="";
@@ -93,36 +91,13 @@ if ($buscarAlumnos->num_rows > 0)
             <td style="width: 20%;min-width: 100%;" id="th" data-label="Fecha">'.$productos['fecha_registro'].'</td>
             <td style="width: 30%;min-width: 100%;" id="th" data-label="Categoría">'.$categoria.'</td>
         
-        ';
-        if ($tipo_usuario==1) {
-            $tabla.='
-            <td>
-                <form style="margin: 0%;position: 0;float:right; background: transparent;" method="POST" action="vistaProductos.php">             
-                <input type="hidden" name="id" value="'.$productos['codProductos'] .'">               
-                <button  id="th" name="editar" class="btn btn-success btn-sm"  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
-            </form> </td>
-            <td>
-            ';
-                        if ($productos['SUM(stock)']==0) {
-               
-                   
-              $tabla.='  <a  data-bs-toggle="tooltip" style="float:right;" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm btn-del" id="'.$productos['codProductos'] .'" href="../../Controller/Productos/Delete_producto.php?cod='.$productos['cod'].'&id='. $productos['SUM(stock)'] .'">Eliminar</a>';
-            
-                
-            };
-                        if ($productos['SUM(stock)']!=0) {
-               $tabla.='
-            <button   id="th" style="cursor: not-allowed;float:right;background: rgba(255, 0, 0, 0.5); border: none;" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm text-white">Eliminar</button>
-            ';
-            }
-        }?>
-        </td>     
+        
+         
         
          </tr>
-               
+        ';       
         
     
-<?php 
     }
     $tabla.='</tbody></table></div></div>';
 } else

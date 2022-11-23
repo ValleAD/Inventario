@@ -75,7 +75,8 @@ if ($codigo=="") {
   if (isset($_POST['solicitar'])){ ?>
         <section >
  <form style="background: transparent;" method="POST" action="../../Controller/Vale/añadir_vale.php">
-    <div class="container-fluid" style="position: initial">
+    <div class="card">
+            <div class="card-body">
             <div class="row">
               <div class="col-md-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>   
@@ -117,6 +118,7 @@ if ($codigo=="") {
                 </label>   
             </div>
         </div>
+    </div>
     </div>
     <br>
     <div class="row">

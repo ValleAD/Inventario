@@ -358,7 +358,7 @@ if (resultado.value) {
 function obtener_registros(consulta)
 {
     $.ajax({
-        url : '../../Buscador_ajax/Consultas/consulta.php',
+        url : '../../Buscador_ajax/Consultas/consulta_productosInvitado.php',
         type : 'POST',
         dataType : 'html',
         data : { consulta: consulta },
