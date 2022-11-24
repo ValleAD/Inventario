@@ -25,9 +25,54 @@ die();
 <h2  class="text-center">Historial de Productos</h2>
 <br>
 
- <div  style="position: initial;" class="btn-group mb-3 my-3  mx-2" role="group" aria-label="Basic outlined example">
+<style>p{font-size: 12px;</style>
+<div class="card">
+<div class="card-body">
+                <div class="row" >
+               <div class="col-md-3" style="position: initial; ">
+        <p class="mx-3" style="color: #000; font-weight: bold;">Buscar Codigo del Producto</p>
+    </div>          
+             <div class="col-md-3"style="position: initial;">
+            <section class="well" >
+                <form method="POST" action="" class="well hidden"> 
+                <div style="position: initial;" class="input-group">
+            <input required type="text" style="position: initial;" name="Busqueda"  class="form-control"  placeholder="Buscar">
+                      <button name="Consultar2" type="submit" onclick="return validar1()" class="input-group-text input" for="inputGroupSelect01">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#search"/>
+                </svg>
+                 </button>
+                 </div> 
+             </form>
+        </section>
+    </div>
+</div>         
+                </div>  
+            </div>
+        </div>
+
+<?php
+ if (isset($_POST['Consultar2'])) {$Busqueda=$_POST['Busqueda']?>
+<br>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <div class="alert alert-warning" rol="alert">No se Encontró resultados</div>
+<?php $sql = "SELECT * FROM historial WHERE  No_Comprovante = '$Busqueda' GROUP BY No_Comprovante";
+$result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        $fecha=date("d-m-Y",strtotime($productos['fecha_registro']));
+        $cod= $productos['No_Comprovante'];
+        $descripcion=$productos['descripcion'];
+        $um=$productos['unidad_medida'];
+?>
+<style type="text/css">.alert{display: none;}</style>
+                 <div  style="position: initial;" class="btn-group mb-3 my-3  mx-2" role="group" aria-label="Basic outlined example">
          <form method="POST" action="../../Plugin/Imprimir/Producto/productos.php" target="_blank">
-         	<input type="hidden" name="usuario" value="<?php echo $cliente ?>">
+            <input type="hidden" name="usuario" value="<?php echo $cod ?>">
              <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Historial">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
@@ -35,7 +80,7 @@ die();
              </button>
          </form>
          <form method="POST" action="../../Plugin/PDF/Productos/pdf_productos.php" target="_blank" class="mx-1">
-         	<input type="hidden" name="usuario" value="<?php echo $cliente ?>">
+            <input type="hidden" name="usuario" value="<?php echo $cod ?>">
              <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Historial" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
@@ -43,7 +88,7 @@ die();
              </button>
          </form>
                  <form  method="POST" action="../../Plugin/Excel/Productos/Historial.php" >
-                 	<input type="hidden" name="usuario" value="<?php echo $cliente ?>">
+                    <input type="hidden" name="usuario" value="<?php echo $cod ?>">
                 <button type="submit" class="btn btn-outline-primary" name="Historial" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
@@ -51,81 +96,108 @@ die();
                 </button>
             </form>
 </div>
-         <table class="table  table-striped" id="examp" style=" width: 100%;">
+
+<p><b>PERIODO DE MOVIMIENTO</b></p>
+<div class="row">
+    <div class="col-md-6">
+<p><b>DE:</b> <?php echo $fecha ?></p>     
+    </div>
+    <div class="col-md-6">
+<p><b>AL:</b> <?php echo date('d-m-Y'); ?></p>
+    </div>    
+<div class="col-md-6">
+<p><b>Codigo del Producto:</b></p>     
+    </div>
+ <div class="col-md-6">
+<p><?php echo $cod ?></p>
+    </div>
+    <div class="col-md-6">
+<p><b>Descripción</b></p>     
+    </div>
+ <div class="col-md-6">
+<p> <?php echo $descripcion ?></p>
+    </div>    
+<div class="col-md-6">
+<p><b>Unidad de Medida</b></p>     
+    </div>
+ <div class="col-md-6">
+<p> <?php echo $um ?></p>
+    </div>
+</div>
+<?php } ?>
+    </div>
+        </div>
+    </div>
+        <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                         <table class="table  table-striped" id="examp" style="">
                    <thead>
              <tr id="tr">
-                     <th style="width:7%"  id="th">Código</th>
-                     <th style="width:7%"  id="th">Cod. Catálogo</th>
-                     <th style="width: 27%;" id="th"> Descripción Completa</th>
-                     <th style="width:8%"  id="th">U/M</th>
-                     <th style="width:8%"  id="th">Cantidad</th>
-                     <th style="width:10%"  id="th">Costo Unitario</th>
-                     <th style="width:10%"  id="th">Fecha Registro</th>
-                    <th id="th" style="width:9%">Categoría</th>
+                     <th style="width:7%"  id="th">Fecha</th>
+                     <th style="width:7%"  id="th">Concepto</th>
+                     <th style="width: 27%;" id="th">No. Comprobante</th>
+                     <th style="width:8%"  id="th">Entradas</th>
+                     <th style="width:8%"  id="th">Salidas</th>
+                     <th style="width:10%"  id="th">Saldo</th>
                 
             </tr>
            
      </thead>
-    <?php
 
-    $sql = "SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE usuario='$cliente' GROUP BY codProductos,precio HAVING COUNT(*) ORDER BY fecha_registro DESC ";
-    $result = mysqli_query($conn, $sql);
+
+         
+         <style> #td{display: none;}</style>
+         <?php $sql = "SELECT No_Comprovante,fecha_registro,Entradas, SUM(Entradas), SUM(Salidas),Saldo FROM historial  WHERE  No_Comprovante = '$Busqueda' GROUP BY No_Comprovante";
+$result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
-                $categoria=$productos['categoria'];
-                $des=$productos['descripcion'];
-                if ($productos['unidad_medida']=="") {
-                    $unidad=" Sin Unidad";
-                }else{
-                   $unidad=$productos['unidad_medida']; 
-                }
-                if ($des=="") {
-                    $des="DESCRIPTION NO DISPONIBLE";
-                }else{
-                   $des=$productos['descripcion']; 
-                }
-                if ($categoria=="") {
-                    $categoria="Sin categorias";
-                
-                }else{
-                $categoria=$productos['categoria'];
-                }
-           
-        $cod=$productos['cod'];
-         $precio=$productos['precio'];
-        $precio1=number_format($precio, 2,".",",");
-        $cantidad=$productos['SUM(stock)'];
-        $stock=number_format($cantidad, 2,".",",");
-		echo'
-		 
-         <style> #td{display: none;}</style>
-         
-		<tr>
-            <td style="width: 10%;min-width: 100%;" id="th" data-label="Código">'.$productos['codProductos'].'</td>
-            <td style="width: 10%;min-width: 100%;" id="th" data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
-            <td style="width: 47%;min-width: 100%;" id="th" data-label="Descripción">'.$des.'</td>
-            <td style="width: 10%;min-width: 100%;" id="th" data-label="Unidad de Medida">'.$unidad.'</td>
-            <td style="width: 10%;min-width: 100%;" id="th" data-label="Cantidad">'.$stock.'</td>
-            <td style="width: 10%;min-width: 100%;" id="th" data-label="Precio">'.$precio1.'</td>
-            <td style="width: 20%;min-width: 100%;" id="th" data-label="Fecha">'.$productos['fecha_registro'].'</td>
-            <td style="width: 30%;min-width: 100%;" id="th" data-label="Categoría">'.$categoria.'</td>
+        $fecha=date("d-m-Y",strtotime($productos['fecha_registro']));
+        $Comprovante= $productos['No_Comprovante'];
+        $Entradas=$productos['SUM(Entradas)'];
+        $Salida=$productos['SUM(Salidas)'];
+        $Saldo=$productos['Saldo'];
+?>
+        <tr>
+            <td style="width: 10%;min-width: 100%;" id="th" data-label="Fecha"><?php echo $fecha ?></td>
+            <td style="width: 10%;min-width: 100%;" id="th" data-label="Concepto">Inventario en Fisico</td>
+            <td style="width: 47%;min-width: 100%;" id="th" data-label="No. Comprovante"><?php echo $Comprovante ?></td>
+            <td style="width: 10%;min-width: 100%;" id="th" data-label="Entradas"><?php echo $Entradas ?></td>
+            <td style="width: 10%;min-width: 100%;" id="th" data-label="Salidas"><?php echo $Salida ?></td>
+            <td style="width: 10%;min-width: 100%;" id="th" data-label="Saldo"><?php echo $Saldo ?></td>
 
-        </tr>
-		';} ?> 
+        </tr>        
+
+<?php }  ?>
            </tbody>
         </table>
+            </div>
+        </div>
+        </div>
     </div>
-    </div>
+</div>
 
+<?php } ?>
   </section>
 
         <script type="text/javascript">
+    window.onload = function(){
+  var fecha = new Date(); //Fecha actual
+  var mes = fecha.getMonth()+1; //obteniendo mes
+  var dia = fecha.getDate(); //obteniendo dia
+  var ano = fecha.getFullYear(); //obteniendo año
+  if(dia<10)
+    dia='0'+dia; //agrega cero si el menor de 10
+  if(mes<10)
+    mes='0'+mes //agrega cero si el menor de 10
+var limpiar = document.getElementById('dia'); limpiar.value = dia
+
+
+}
             $(document).ready(function () {
 
        $('#examp').DataTable({
-            rowGroup: {
-            dataSrc: 1
-        },
+
             responsive: true,
             autoWidth:false,
             deferRender: true,

@@ -81,9 +81,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                     <?php } ?>
                         <li><a id="b" href="../Reportes/reporte_ingresos.php">Reporte Ingresos</a></li>
                         <li><a id="b" href="../Reportes/reporte_egresos.php">Reporte Egresos</a></li>
-                        <?php if($tipo_usuario==1){ ?>
-                        <li><a id="b" href="Vistas/Productos/Historial.php">Historial de Producto</a></li>
-                    <?php } ?>
+                        <li><a id="b" href="../Productos/Historial.php">Historial</a></li>
 
                     </ul>
                 </li>

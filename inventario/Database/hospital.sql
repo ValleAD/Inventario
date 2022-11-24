@@ -90,7 +90,15 @@ CREATE TABLE tb_compra (
     PRIMARY KEY (nSolicitud)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
-
+CREATE TABLE `historial` (
+  `descripcion` varchar(50) NOT NULL,
+  `unidad_medida` varchar(11) NOT NULL DEFAULT 'C/U',
+  `fecha_registro` date NOT NULL DEFAULT current_timestamp(),
+  `No_Comprovante` int(11) NOT NULL DEFAULT 1,
+  `Entradas` decimal(6,2) NOT NULL DEFAULT 0.00,
+  `Salidas` decimal(6,2) NOT NULL DEFAULT 0.00,
+  `Saldo` decimal(6,2) NOT NULL DEFAULT 0.00
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE tb_circulante (
   codCirculante int(15) NOT NULL,
