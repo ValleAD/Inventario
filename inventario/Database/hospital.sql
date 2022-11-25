@@ -36,8 +36,7 @@ CREATE TABLE tb_productos (
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 ALTER TABLE `tb_productos` ADD `Dia` INT(2) NOT NULL AFTER `fecha_registro`, ADD `Mes` INT(2) NOT NULL AFTER `Dia`, ADD `Año` INT(4) NOT NULL AFTER `Mes`;
-ALTER TABLE `tb_productos` ADD `usuario` VARCHAR(50) NOT NULL AFTER `Año`;
-UPDATE `tb_productos` SET `usuario`='egchoto';
+ALTER TABLE `historial` ADD `Concepto` VARCHAR(50) NOT NULL AFTER `descripcion`;
 
 CREATE TABLE tb_usuarios (
   id int(3)  NOT NULl AUTO_INCREMENT,
@@ -92,9 +91,10 @@ CREATE TABLE tb_compra (
 
 CREATE TABLE `historial` (
   `descripcion` varchar(50) NOT NULL,
+  `Concepto` varchar(50) NOT NULL,
   `unidad_medida` varchar(11) NOT NULL DEFAULT 'C/U',
   `fecha_registro` date NOT NULL DEFAULT current_timestamp(),
-  `No_Comprovante` int(11) NOT NULL DEFAULT 1,
+  `No_Comprovante` int(11) NOT NULL DEFAULT 1 PRIMARY KEY,
   `Entradas` decimal(6,2) NOT NULL DEFAULT 0.00,
   `Salidas` decimal(6,2) NOT NULL DEFAULT 0.00,
   `Saldo` decimal(6,2) NOT NULL DEFAULT 0.00

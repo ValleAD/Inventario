@@ -44,15 +44,15 @@ include ('../../../Model/conexion.php');
 
     <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
 
-    <thead>
+        <thead style="background-color: #46466b;color: white;">
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <th>Código</th>
-            <th>Cod. de Catálogo</th>
-            <th>Descripción Completa</th>
-            <th>U/M</th>
-            <th>Cantidad</th>
-            <th>Costo Unitario</th>
-            <th>Fecha Registro</th>
+            <th style="font-size: 11px;">Código</th>
+            <th style="font-size: 11px;">Cod. de Catálogo</th>
+            <th style="font-size: 11px;">Descripción Completa</th>
+            <th style="font-size: 11px;">U/M</th>
+            <th style="font-size: 11px;">Cantidad</th>
+            <th style="font-size: 11px;">Costo Unitario</th>
+            <th style="font-size: 11px;">Fecha Registro</th>
 
         </tr>
     </thead>
@@ -84,13 +84,13 @@ include ('../../../Model/conexion.php');
             font-size: 12px;
         }
     </style>
-        <td data-label="Codigo" style="font-size:12px"><?php echo $cod ?></td>
-        <td data-label="Catalogo" style="font-size:12px;text-align: center;"><?php echo $catal ?></td>
-        <td data-label="Descripción" style="font-size:12px"><?php echo $des ?></td>
-        <td data-label="Unidad De Medida" style="font-size:12px"><?php echo $u_m ?></td>
-        <td data-label="Cantidad" style="font-size:12px"><?php echo $stock ?></td>
-        <td data-label="Precio" style="font-size:12px"><?php echo $precio1 ?></td>
-        <td data-label="Fecha" style="font-size:12px"><?php echo $fech ?></td>
+        <td data-label="Codigo" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $cod ?></td>
+        <td data-label="Catalogo" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $catal ?></td>
+        <td data-label="Descripción" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $des ?></td>
+        <td data-label="Unidad De Medida" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $u_m ?></td>
+        <td data-label="Cantidad" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $stock ?></td>
+        <td data-label="Precio" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $precio1 ?></td>
+        <td data-label="Fecha" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $fech ?></td>
         <?php } ?>
     </tr>
     </tbody>
@@ -125,15 +125,15 @@ include ('../../../Model/conexion.php');
 
     <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
 
-    <thead>
+        <thead style="background-color: #46466b;color: white;">
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <th>Código</th>
-            <th>Cod. de Catálogo</th>
-            <th>Descripción Completa</th>
-            <th>U/M</th>
-            <th>Cantidad</th>
-            <th>Costo Unitario</th>
-            <th>Fecha Registro</th>
+            <th style="font-size: 11px;">Código</th>
+            <th style="font-size: 11px;">Cod. de Catálogo</th>
+            <th style="font-size: 11px;">Descripción Completa</th>
+            <th style="font-size: 11px;">U/M</th>
+            <th style="font-size: 11px;">Cantidad</th>
+            <th style="font-size: 11px;">Costo Unitario</th>
+            <th style="font-size: 11px;">Fecha Registro</th>
 
         </tr>
     </thead>
@@ -177,13 +177,13 @@ include ('../../../Model/conexion.php');
             font-size: 12px;
         }
     </style>
-        <td data-label="Codigo" style="font-size:12px"><?php echo $cod ?></td>
-        <td data-label="Catalogo" style="font-size:12px;text-align: center;"><?php echo $catal ?></td>
-        <td data-label="Descripción" style="font-size:12px"><?php echo $des ?></td>
-        <td data-label="Unidad De Medida" style="font-size:12px"><?php echo $u_m ?></td>
-        <td data-label="Cantidad" style="font-size:12px"><?php echo $stock ?></td>
-        <td data-label="Precio" style="font-size:12px"><?php echo $precio1 ?></td>
-        <td data-label="Fecha" style="font-size:12px"><?php echo $fech ?></td>
+        <td data-label="Codigo" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $cod ?></td>
+        <td data-label="Catalogo" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $catal ?></td>
+        <td data-label="Descripción" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $des ?></td>
+        <td data-label="Unidad De Medida" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $u_m ?></td>
+        <td data-label="Cantidad" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $stock ?></td>
+        <td data-label="Precio" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $precio1 ?></td>
+        <td data-label="Fecha" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $fech ?></td>
         <?php } ?>
     </tr>
     </tbody>
@@ -194,15 +194,15 @@ include ('../../../Model/conexion.php');
 
     <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
 
-    <thead>
+        <thead style="background-color: #46466b;color: white;">
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <th>Código</th>
-            <th>Cod. de Catálogo</th>
-            <th>Descripción Completa</th>
-            <th>U/M</th>
-            <th>Cantidad</th>
-            <th>Costo Unitario</th>
-            <th>Fecha Registro</th>
+            <th style="font-size: 11px;">Código</th>
+            <th style="font-size: 11px;">Cod. de Catálogo</th>
+            <th style="font-size: 11px;">Descripción Completa</th>
+            <th style="font-size: 11px;">U/M</th>
+            <th style="font-size: 11px;">Cantidad</th>
+            <th style="font-size: 11px;">Costo Unitario</th>
+            <th style="font-size: 11px;">Fecha Registro</th>
 
         </tr>
     </thead>
@@ -234,13 +234,13 @@ include ('../../../Model/conexion.php');
             font-size: 12px;
         }
     </style>
-        <td data-label="Codigo" style="font-size:12px"><?php echo $cod ?></td>
-        <td data-label="Catalogo" style="font-size:12px;text-align: center;"><?php echo $catal ?></td>
-        <td data-label="Descripción" style="font-size:12px"><?php echo $des ?></td>
-        <td data-label="Unidad De Medida" style="font-size:12px"><?php echo $u_m ?></td>
-        <td data-label="Cantidad" style="font-size:12px"><?php echo $stock ?></td>
-        <td data-label="Precio" style="font-size:12px"><?php echo $precio1 ?></td>
-        <td data-label="Fecha" style="font-size:12px"><?php echo $fech ?></td>
+        <td data-label="Codigo" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $cod ?></td>
+        <td data-label="Catalogo" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $catal ?></td>
+        <td data-label="Descripción" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $des ?></td>
+        <td data-label="Unidad De Medida" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $u_m ?></td>
+        <td data-label="Cantidad" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $stock ?></td>
+        <td data-label="Precio" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $precio1 ?></td>
+        <td data-label="Fecha" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $fech ?></td>
         <?php } ?>
     </tr>
     </tbody>
@@ -253,15 +253,15 @@ include ('../../../Model/conexion.php');
 </table>
     <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
 
-    <thead>
+        <thead style="background-color: #46466b;color: white;">
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <th>Código</th>
-            <th>Cod. de Catálogo</th>
-            <th>Descripción Completa</th>
-            <th>U/M</th>
-            <th>Cantidad</th>
-            <th>Costo Unitario</th>
-            <th>Fecha Registro</th>
+            <th style="font-size: 12px;">Código</th>
+            <th style="font-size: 12px;">Cod. de Catálogo</th>
+            <th style="font-size: 12px;">Descripción Completa</th>
+            <th style="font-size: 12px;">U/M</th>
+            <th style="font-size: 12px;">Cantidad</th>
+            <th style="font-size: 12px;">Costo Unitario</th>
+            <th style="font-size: 12px;">Fecha Registro</th>
 
         </tr>
     </thead>
@@ -293,13 +293,13 @@ include ('../../../Model/conexion.php');
             font-size: 12px;
         }
     </style>
-        <td data-label="Codigo" style="font-size:12px"><?php echo $cod ?></td>
-        <td data-label="Catalogo" style="font-size:12px;text-align: center;"><?php echo $catal ?></td>
-        <td data-label="Descripción" style="font-size:12px"><?php echo $des ?></td>
-        <td data-label="Unidad De Medida" style="font-size:12px"><?php echo $u_m ?></td>
-        <td data-label="Cantidad" style="font-size:12px"><?php echo $stock ?></td>
-        <td data-label="Precio" style="font-size:12px"><?php echo $precio1 ?></td>
-        <td data-label="Fecha" style="font-size:12px"><?php echo $fech ?></td>
+        <td data-label="Codigo" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $cod ?></td>
+        <td data-label="Catalogo" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $catal ?></td>
+        <td data-label="Descripción" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $des ?></td>
+        <td data-label="Unidad De Medida" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $u_m ?></td>
+        <td data-label="Cantidad" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $stock ?></td>
+        <td data-label="Precio" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $precio1 ?></td>
+        <td data-label="Fecha" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $fech ?></td>
         <?php } ?>
     </tr>
     </tbody>

@@ -153,7 +153,7 @@ $result = mysqli_query($conn, $sql);
                 </svg>
              </button>
          </form>
-         <form method="POST" action="../../Plugin/PDFU_D_D_C/U_D_D_C_pdf.php" target="_blank" class="mx-1">
+         <form method="POST" action="../../Plugin/PDF/U_D_D_C/U_D_D_C_pdf.php" target="_blank" class="mx-1">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="dependencia" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>

@@ -19,75 +19,30 @@ include ('../../..//Model/conexion.php'); ?>
 <?php }  if (isset($_POST['Historial'])) { ?>
 <h5 align="center" style="margin-top: 2%;">HISTORIAL DE PRODUCTOS</h5>
 <?php } ?>
-    <table class="table table-responsive table-striped"  style=" width: 100%">
+  <?php
+  if (isset($_POST['consulta'])) {?>
 
-    <thead>
-        <tr id="tr">
-            <th style="width:5%;font-size: 14px;">Código</th>
-            <th style="width:10%;font-size: 14px;">Cod. de Catálogo</th>
-            <th style="width:50%;font-size: 14px;">Descripción Completa</th>
-            <th style="width:10%;font-size: 14px;">U/M</th>
-            <th style="width:10%;font-size: 14px;">Cantidad</th>
-            <th style="width:10%;font-size: 14px;">Costo Unitario</th>
-            <th style="width:10%;font-size: 14px;">Fecha Registro</th>
-            <th style="width:10%;font-size: 14px;">Categoria</th>
-                   <tr> <td align="center" id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td></tr>
+    <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
 
+        <thead style="background-color: #46466b;color: white;">
+        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+            <th style="font-size: 12px;">Código</th>
+            <th style="font-size: 12px;">Cod. de Catálogo</th>
+            <th style="font-size: 12px;">Descripción Completa</th>
+            <th style="font-size: 12px;">U/M</th>
+            <th style="font-size: 12px;">Cantidad</th>
+            <th style="font-size: 12px;">Costo Unitario</th>
+            <th style="font-size: 12px;">Fecha Registro</th>
+            <th style="font-size: 12px;">Categoria</th>
+            
         </tr>
     </thead>
     <tbody>
-  <?php
-  if (isset($_POST['consulta'])) {
+    <?php 
 
               $cod=$_POST['consulta'];
 
    $sql = "SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM `tb_productos` WHERE codProductos LIKE '%".$cod."%' or descripcion LIKE '%".$cod."%' ";
-
-        $result = mysqli_query($conn, $sql);
-        
- while ($productos = mysqli_fetch_array($result)){
-         $cat=$productos['categoria'];
-                if ($cat=="") {
-                    $cat="Sin categorias";
-                
-                }else{
-                $cat=$productos['categoria'];
-                }
-    $cod= $productos['codProductos'];
-    $catal= $productos['catalogo'];
-    $des= $productos['descripcion'];
-    $u_m= $productos['unidad_medida'];
-    $precio=$productos['precio'];
-    $precio1=number_format($precio, 2,".",",");
-    $cantidad=$productos['stock'];
-    $stock=number_format($cantidad,  2,".",",");
-    $fech= $productos['fecha_registro'];
-    ?>
-     <style type="text/css">
-     #td{
-    text-align:center;
-        display: none;
-    }
-</style>
- <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-        <td data-label="Código" style="font-size: 12px;"><?php echo $cod ?></td>
-        <td data-label="Catalogo" style="font-size: 12px;"><?php echo $catal ?></td>
-        <td data-label="Descripción" style="font-size: 12px;"><?php echo $des ?></td>
-        <td data-label="Unidad De Medida" style="font-size: 12px;"><?php echo $u_m ?></td>
-        <td data-label="Cantidad" style="font-size: 12px;"><?php echo $stock ?></td>
-        <td data-label="Precio" style="font-size: 12px;"><?php echo $precio1 ?></td>
-        <td data-label="Fecha" style="font-size: 12px;"><?php echo $fech ?></td>
-        <td data-label="Categoría" style="font-size: 12px;"><?php echo $cat ?></td>
-        <?php } ?>
-    </tr>
-    </tbody>
-</table> 
-<?php } 
-  if (isset($_POST['Historial'])) {
-
-              $usuario=$_POST['usuario'];
-
-   $sql = "SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM `tb_productos` WHERE usuario='$usuario'";
 
         $result = mysqli_query($conn, $sql);
         
@@ -116,15 +71,81 @@ include ('../../..//Model/conexion.php'); ?>
     }
 </style>
  <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-        <td data-label="Código" style="font-size: 12px;"><?php echo $cod ?></td>
-        <td data-label="Catalogo" style="font-size: 12px;"><?php echo $catal ?></td>
-        <td data-label="Descripción" style="font-size: 12px;"><?php echo $des ?></td>
-        <td data-label="Unidad De Medida" style="font-size: 12px;"><?php echo $u_m ?></td>
-        <td data-label="Cantidad" style="font-size: 12px;"><?php echo $stock ?></td>
-        <td data-label="Precio" style="font-size: 12px;"><?php echo $precio1 ?></td>
-        <td data-label="Fecha" style="font-size: 12px;"><?php echo $fech ?></td>
-        <td data-label="Categoría" style="font-size: 12px;"><?php echo $cat ?></td>
+        <td data-label="Código" style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $cod ?></td>
+        <td data-label="Catalogo" style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $catal ?></td>
+        <td data-label="Descripción" style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $des ?></td>
+        <td data-label="Unidad De Medida" style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $u_m ?></td>
+        <td data-label="Cantidad" style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $stock ?></td>
+        <td data-label="Precio" style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $precio1 ?></td>
+        <td data-label="Fecha" style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $fech ?></td>
+        <td data-label="Categoría" style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $cat ?></td>
         <?php } ?>
+    </tr>
+    </tbody>
+</table> 
+<?php } 
+  if (isset($_POST['Historial'])) { 
+$fecha=$_POST['fecha'];
+$fecha1=$_POST['fecha1'];
+$descripcion=$_POST['descripcion'];
+$cod=$_POST['cod'];
+$um=$_POST['um'];
+    ?> 
+<p><b>PERIODO DE MOVIMIENTO</b></p>
+<table class="table" style="width: 100%;">
+    <tr>
+        <td><p><b>DE:</b> <?php echo $fecha ?></p></td>
+        <p style="float: right;"><b>AL:</b> <?php echo $fecha1 ?></p>
+    </tr>
+    <tr>
+        <td><p><b>Codigo del Producto:</b></p> </td>
+        <p style="float: right;"><?php echo $cod ?></p>
+    </tr>
+    <tr>
+        <td><p><b>Descripción</b></p></td>  
+        <p style="float: right;"><?php echo $descripcion ?></p>
+    </tr>
+    <tr>
+        <td><p><b>Unidad de Medida</b></p>  </td>
+        <p style="float: right;"><?php echo $um ?></p>
+    </tr>
+</table>
+<br><br><br>
+        <table class="table table-responsive table-striped"  style="text-align: center;width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+
+    <thead style="background-color: #46466b;color: white;">
+        <tr  style=" border: 1px solid #ccc;border-collapse: collapse;">
+                     <th>Fecha</th>
+                     <th>Concepto</th>
+                     <th>No. Comprobante</th>
+                     <th >Entradas</th>
+                     <th >Salidas</th>
+                     <th >Saldo</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+<?php
+
+    $sql = "SELECT No_Comprovante,fecha_registro,Entradas, SUM(Entradas), SUM(Salidas),Saldo FROM historial  WHERE  No_Comprovante = '$cod' GROUP BY Concepto";
+$result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        $fecha=date("d-m-Y",strtotime($productos['fecha_registro']));
+        $Comprovante= $productos['No_Comprovante'];
+        $Entradas=$productos['SUM(Entradas)'];
+        $Salida=$productos['SUM(Salidas)'];
+        $Saldo=$productos['Saldo'];
+?>
+</style>
+            <td  id="th" data-label="Fecha"><?php echo $fecha ?></td>
+            <td  id="th" data-label="Concepto">Inventario en Fisico</td>
+            <td id="th" data-label="No. Comprovante"><?php echo $Comprovante ?></td>
+            <td  id="th" data-label="Entradas"><?php echo $Entradas ?></td>
+            <td  id="th" data-label="Salidas"><?php echo $Salida ?></td>
+            <td  id="th" data-label="Saldo"><?php echo $Saldo ?></td>
+
+       <?php } ?>
     </tr>
     </tbody>
 </table> 

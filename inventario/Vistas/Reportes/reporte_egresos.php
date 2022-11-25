@@ -206,14 +206,14 @@ $n=0;
 <div class="card-body">
 <h3 style="text-align: center; color: black;">Egresos Por Vale </h3>
             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form  method="POST" action="../../Plugin/PDF/Almacen/reporte_egreso.php">
+            <form  method="POST" action="../../Plugin/Imprimir/Egresos/reporte_egreso.php">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
                 </button>
             </form>
-            <form  method="POST" action="../../Plugin/PDF/Almacen/pdf_egresos.php" class="mx-1">
+            <form  method="POST" action="../../Plugin/PDF/Egresos/pdf_egresos.php" class="mx-1">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>

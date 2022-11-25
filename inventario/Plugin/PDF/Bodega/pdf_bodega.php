@@ -36,9 +36,10 @@ include ('../../../Model/conexion.php') ?>
    </table> 
 
         <br>   
-<table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
-    <thead>     
-        <tr style="border: 1px solid #ddd;color: black;" >
+    <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+
+        <thead style="background-color: #46466b;color: white;">
+        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
             <th style="width: 15%;font-size: 14px;text-align: center;">Código</th>
             <th style="width: 70%;color:black;font-size: 14px;text-align: center;">Descripción Completa</th>
             <th style="width: 15%;color:black;font-size: 14px;text-align: center;">U/M</th>
@@ -68,13 +69,13 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 ?>
   
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td style="font-size: 12px;text-align:center; "><?php  echo $codigo?></td>
-            <td style="font-size: 12px;text-align: center;"><?php  echo $des?></td>
-            <td style="font-size: 12px;text-align:center; "><?php  echo $um?></td>
-            <td style="font-size: 12px;text-align:center; "><?php echo $cantidad ?></td>
-            <td style="font-size: 12px;text-align:center; "><?php echo $stock ?></td>
-            <td style="font-size: 12px;text-align: center; ;"><?php echo $cost ?></td>
-            <td style="font-size: 12px;text-align: center; "><?php  echo $tot ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php  echo $codigo?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php  echo $des?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php  echo $um?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $cantidad ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $stock ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $cost ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php  echo $tot ?></td>
         </tr>
      
      <?php } } ?> 

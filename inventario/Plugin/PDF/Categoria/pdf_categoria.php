@@ -17,16 +17,16 @@ include ('../../../Model/conexion.php');
 <h4 align="center" style="margin-top: 2%;">DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h5 align="center" style="margin-top: 2%;">FILTRO DE CATEGORIAS</h5>
 <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
-    <thead>     
-        <tr style="border: 1px solid #ddd;color: black;">
-            <th style="width: 25%;font-size: 14px;text-align: left;">Categoria</th>
-            <th style="width: 25%;font-size: 14px;text-align: left;">Código</th>
-            <th style="width: 25%;font-size: 14px;text-align: left;">Catálogo</th>
-            <th style="width: 25%;font-size: 14px;text-align: left;">Descripción Completa</th>
-            <th style="width: 25%;font-size: 14px;text-align: left;">U/M</th>
-            <th style="width: 25%;font-size: 14px;text-align: left;">Cantidad</th>
-            <th style="width: 25%;font-size: 14px;text-align: left;">Precio</th>
-            <th style="width: 25%;font-size: 14px;text-align: left;">Fecha</th> 
+        <thead style="background-color: #46466b;color: white;">    
+        <tr style="border: 1px solid #ddd;color: white;">
+            <th style="font-size: 12px;text-align: center;">Categoria</th>
+            <th style="font-size: 12px;text-align: center;">Código</th>
+            <th style="font-size: 12px;text-align: center;">Catálogo</th>
+            <th style="font-size: 12px;text-align: center;">Descripción Completa</th>
+            <th style="font-size: 12px;text-align: center;">U/M</th>
+            <th style="font-size: 12px;text-align: center;">Cantidad</th>
+            <th style="font-size: 12px;text-align: center;">Precio</th>
+            <th style="font-size: 12px;text-align: center;">Fecha</th> 
              <tr> <td align="center" id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td></tr>           
         </tr>
     </thead> 
@@ -62,14 +62,14 @@ $categoria2 =$_POST['categoria'];
 </style>        
  <tr style="border: 1px solid #ccc;border-collapse: collapse;">
 
-        <td style="text-align:left; font-size: 12px;"><?php echo $cat ?></td>
-        <td style="text-align:left; font-size: 12px;"><?php echo $cod ?></td>
-        <td style="text-align:left; font-size: 12px;"><?php echo $catal ?></td>
-        <td style="text-align:left; font-size: 12px;"><?php echo $des ?></td>
-        <td style="text-align:left; font-size: 12px;"><?php echo $u_m ?></td>
-        <td style="text-align:left; font-size: 12px;"><?php echo $stock ?></td>
-        <td style="text-align:left; font-size: 12px;"><?php echo $precio1 ?></td>
-        <td style="text-align:left; font-size: 12px;"><?php echo $fech ?></th>
+        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $cat ?></td>
+        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $cod ?></td>
+        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $catal ?></td>
+        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $des ?></td>
+        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $u_m ?></td>
+        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $stock ?></td>
+        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $precio1 ?></td>
+        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $fech ?></th>
         <?php } ?>
     </tr>
     </tbody>

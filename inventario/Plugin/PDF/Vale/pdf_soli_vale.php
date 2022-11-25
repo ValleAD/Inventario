@@ -25,14 +25,15 @@ include '../../../Model/conexion.php'; ?>
         $tipo1='Ascendente';
      } ?>
     <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p><br><br>
-    <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
-    <thead>     
-        <tr style="border: 1px solid #ddd;color: black;" >
+    <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
 
-            <th  style="color:black;font-size: 14px;">Codigo</th>
-            <th  style="color:black;font-size: 14px;text-align: left;">Departamento Solicitante </th>
-            <th  style="color:black;font-size: 14px;text-align: left;">Encargado </th>
-            <th  style="color:black;font-size: 14px;">Fecha</th>
+        <thead style="background-color: #46466b;color: white;">
+        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+
+            <th  style="height: 3%;font-size: 14px;">Codigo</th>
+            <th  style="height: 3%;font-size: 14px;text-align: left;">Departamento Solicitante </th>
+            <th  style="height: 3%;font-size: 14px;text-align: left;">Encargado </th>
+            <th  style="height: 3%;font-size: 14px;">Fecha</th>
         </tr>
         
         <td id="td" colspan="3" ><h4 align="center">No se encontraron resultados </h4></td>
@@ -82,14 +83,15 @@ include '../../../Model/conexion.php'; ?>
         $tipo1='Ascendente';
      } ?>
     <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p><br><br>
-    <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
-    <thead>     
-        <tr style="border: 1px solid #ddd;color: black;" >
+    <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
 
-           <th  style="color:black;font-size: 14px;">Codigo</th>
-            <th  style="color:black;font-size: 14px;text-align: left;">Departamento Solicitante </th>
-            <th  style="color:black;font-size: 14px;text-align: left;">Encargado </th>
-            <th  style="color:black;font-size: 14px;">Fecha</th>
+        <thead style="background-color: #46466b;color: white;">
+        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+
+           <th  style="height: 3%;font-size: 14px;">Codigo</th>
+            <th  style="height: 3%;font-size: 14px;text-align: left;">Departamento Solicitante </th>
+            <th  style="height: 3%;font-size: 14px;text-align: left;">Encargado </th>
+            <th  style="height: 3%;font-size: 14px;">Fecha</th>
         </tr>
         
         <td id="td" colspan="3" ><h4 align="center">No se encontraron resultados </h4></td>
@@ -131,13 +133,14 @@ $idusuario=$_POST['idusuario'];
 <?php } ?>
 
 <?php if (isset($_POST['id'])) {?>
-<table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
-    <thead>     
-        <tr style="border: 1px solid #ddd;color: black;" >
-            <th  style="color:black;font-size: 14px;">Codigo</th>
-            <th  style="color:black;font-size: 14px;text-align: left;">Departamento Solicitante </th>
-            <th  style="color:black;font-size: 14px;text-align: left;">Encargado </th>
-            <th  style="color:black;font-size: 14px;">Fecha</th>
+    <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+
+        <thead style="background-color: #46466b;color: white;">
+        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+            <th  style="height: 3%;font-size: 14px;">Codigo</th>
+            <th  style="height: 3%;font-size: 14px;">Departamento Solicitante </th>
+            <th  style="height: 3%;font-size: 14px;text-align: left;">Encargado </th>
+            <th  style="height: 3%;font-size: 14px;">Fecha</th>
         </tr>
         
         <td id="td" colspan="3" ><h4 align="center">No se encontraron resultados </h4></td>
@@ -177,13 +180,14 @@ $idusuario=$_POST['idusuario'];
    
 </table>
 <?php } if (isset($_POST['id1'])) { ?>
-    <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
-    <thead>     
-        <tr style="border: 1px solid #ddd;color: black;" >
-           <th  style="color:black;font-size: 14px;">Codigo</th>
-            <th  style="color:black;font-size: 14px;text-align: left;">Departamento Solicitante </th>
-            <th  style="color:black;font-size: 14px;text-align: left;">Encargado </th>
-            <th  style="color:black;font-size: 14px;">Fecha</th>
+    <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+
+        <thead style="background-color: #46466b;color: white;">
+        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+           <th  style="height: 3%;font-size: 14px;">Codigo</th>
+            <th  style="height: 3%;font-size: 14px;text-align: left;">Departamento Solicitante </th>
+            <th  style="height: 3%;font-size: 14px;text-align: left;">Encargado </th>
+            <th  style="height: 3%;font-size: 14px;">Fecha</th>
         </tr>
         
         <td id="td" colspan="3" ><h4 align="center">No se encontraron resultados </h4></td>

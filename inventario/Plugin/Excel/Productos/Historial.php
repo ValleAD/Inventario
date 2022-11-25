@@ -29,6 +29,12 @@ $tableHead = [
             'rgb' => '343a40'
         ]
     ],
+];$tableHead1 = [
+    'font'=>[
+        
+        'bold'=>true,
+        'size'=>11
+]
 ];
 //even row
 $evenRow = [
@@ -83,22 +89,21 @@ $spreadsheet->getActiveSheet()->getStyle('A4')->getAlignment()->setHorizontal(Al
 
 
 //Unión de celdas
-$spreadsheet->getActiveSheet()->mergeCells("A1:H1");
-$spreadsheet->getActiveSheet()->mergeCells("A2:H2");
-$spreadsheet->getActiveSheet()->mergeCells("A3:H3");
-$spreadsheet->getActiveSheet()->mergeCells("A4:H4");
+$spreadsheet->getActiveSheet()->mergeCells("A1:F1");
+$spreadsheet->getActiveSheet()->mergeCells("A2:F2");
+$spreadsheet->getActiveSheet()->mergeCells("A3:F3");
+$spreadsheet->getActiveSheet()->mergeCells("A4:F4");
+$spreadsheet->getActiveSheet()->mergeCells("B8:F8");
 
 
 
 //setting column width
-$spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(11.14);
-$spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(12);
-$spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(30);
-$spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(12);
-$spreadsheet->getActiveSheet()->getColumnDimension('E')->setWidth(15);
-$spreadsheet->getActiveSheet()->getColumnDimension('F')->setWidth(13);
-$spreadsheet->getActiveSheet()->getColumnDimension('G')->setWidth(13);
-$spreadsheet->getActiveSheet()->getColumnDimension('H')->setWidth(15);
+$spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(13.86);
+$spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(35);
+$spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(19.86);
+$spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(14.29);
+$spreadsheet->getActiveSheet()->getColumnDimension('E')->setWidth(16.71);
+$spreadsheet->getActiveSheet()->getColumnDimension('F')->setWidth(16.14);
 
 $spreadsheet->getActiveSheet()->getPageSetup()
 ->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
@@ -119,25 +124,25 @@ $drawing1 = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
     $drawing1->setName('Paid');
     $drawing1->setDescription('Paid');
     $drawing1->setPath($IMG1); /* put your path and image here */
-    $drawing1->setCoordinates('G1');
-    $drawing1->setOffsetX(20);
+    $drawing1->setCoordinates('E1');
+    $drawing1->setOffsetX(100);
     $drawing1->setOffsetY(10);
     $drawing1->setWidth(150);
     $drawing1->getShadow()->setVisible(true);
     $drawing1->getShadow()->setDirection(45);
     $drawing1->setWorksheet($spreadsheet->getActiveSheet());
 //header text
-$sheet->setCellValue('A7', 'Codigo');
-$sheet->setCellValue('B7', 'Catalogo');
-$sheet->setCellValue('C7', 'Description');
-$sheet->setCellValue('D7', 'U/M');
-$sheet->setCellValue('E7', 'Stock');
-$sheet->setCellValue('F7', 'Precio');
-$sheet->setCellValue('G7', 'Fecha');
-$sheet->setCellValue('H7', 'Categorias');
+$sheet->setCellValue('A11', 'Fecha');
+$sheet->setCellValue('B11', 'Concepto');
+$sheet->setCellValue('C11', 'No. Comprobante');
+$sheet->setCellValue('D11', 'Entradas');
+$sheet->setCellValue('E11', 'Salidas');
+$sheet->setCellValue('F11', 'Saldo');
 
 //set font style and background color
-$spreadsheet->getActiveSheet()->getStyle('A7:E7')->applyFromArray($tableHead);
+$spreadsheet->getActiveSheet()->getStyle('A11:F11')->applyFromArray($tableHead);
+$spreadsheet->getActiveSheet()->getStyle('A6:A9')->applyFromArray($tableHead1);
+$spreadsheet->getActiveSheet()->getStyle('E6')->applyFromArray($tableHead1);
 
 
 $spreadsheet->getActiveSheet()->getStyle('A7')->getAlignment()->setWrapText(true);
@@ -146,65 +151,79 @@ $spreadsheet->getActiveSheet()->getStyle('C7')->getAlignment()->setWrapText(true
 $spreadsheet->getActiveSheet()->getStyle('D7')->getAlignment()->setWrapText(true);
 $spreadsheet->getActiveSheet()->getStyle('E7')->getAlignment()->setWrapText(true);
 
-$spreadsheet->getActiveSheet()->getStyle('E7')->getAlignment()->setWrapText(true);
 $spreadsheet->getActiveSheet()->getStyle('F7')->getAlignment()->setWrapText(true);
-$spreadsheet->getActiveSheet()->getStyle('G7')->getAlignment()->setWrapText(true);
-$spreadsheet->getActiveSheet()->getStyle('H7')->getAlignment()->setWrapText(true);
 
-$spreadsheet->getActiveSheet()->getStyle('A7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('B7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('C7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('D7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('E7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('B6')
+->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
+$spreadsheet->getActiveSheet()->getStyle('F6')
+->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
 $spreadsheet->getActiveSheet()->getStyle('F7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('G7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('H7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
+$spreadsheet->getActiveSheet()->getStyle('F8')
+->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
+$spreadsheet->getActiveSheet()->getStyle('F9')
+->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
 
-$spreadsheet->getActiveSheet()->getStyle('A7')
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('B7')
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('C7')
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('D7')
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('E7')
+$spreadsheet->getActiveSheet()->getStyle('F6')
 ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 $spreadsheet->getActiveSheet()->getStyle('F7')
 ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('G7')
+$spreadsheet->getActiveSheet()->getStyle('F8')
 ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('H7')
+$spreadsheet->getActiveSheet()->getStyle('F9')
 ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 
-$spreadsheet->getActiveSheet()->getStyle('A7:H7')->applyFromArray($tableHead);
+$spreadsheet->getActiveSheet()->getStyle('A6')
+->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('B6')
+->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('A7')
+->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('A8')
+->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('A9')
+->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+
+
 $spreadsheet->getActiveSheet()->getPageSetup()
 ->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
-$usuario=$_POST['usuario'];
 
-   $sql = "SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos  WHERE usuario='$usuario'";
+$fecha=$_POST['fecha'];
+$fecha1=$_POST['fecha1'];
+$descripcion=$_POST['descripcion'];
+$cod=$_POST['cod'];
+$um=$_POST['um'];
+
+        $sheet->setCellValue('A6' ,"DE:");
+        $sheet->setCellValue('A7' ,"Codigo del Producto:");
+        $sheet->setCellValue('A8' ,"Descripción:");
+        $sheet->setCellValue('A9' ,"Unidad de Medida:");        
+
+        $sheet->setCellValue('B6' ,$fecha1);
+        $sheet->setCellValue('E6' ,"AL:");
+        $sheet->setCellValue('F6' ,$fecha1);
+        $sheet->setCellValue('F7' ,$cod);
+        $sheet->setCellValue('B8' ,$descripcion);
+        $sheet->setCellValue('F9' ,$um);
+
+   $sql = "SELECT fecha_registro,Concepto,No_Comprovante, SUM(Entradas), SUM(Salidas),Saldo FROM historial  WHERE No_Comprovante='$cod' GROUP BY Concepto";
 
 $result = mysqli_query($conn, $sql);
 
-$fila = 8;
+$fila = 12;
 
     while ($productos = mysqli_fetch_array($result)){
+        $Comprovante= $productos['No_Comprovante'];
+        $Concepto= $productos['Concepto'];
+        $Entradas=$productos['SUM(Entradas)'];
+        $Salida=$productos['SUM(Salidas)'];
+        $Saldo=$productos['Saldo'];
 $spreadsheet->getActiveSheet()->getStyle('A' .$fila)->getAlignment()->setWrapText(true);
 $spreadsheet->getActiveSheet()->getStyle('B' .$fila)->getAlignment()->setWrapText(true);
 $spreadsheet->getActiveSheet()->getStyle('C' .$fila)->getAlignment()->setWrapText(true);
 $spreadsheet->getActiveSheet()->getStyle('D' .$fila)->getAlignment()->setWrapText(true);
 $spreadsheet->getActiveSheet()->getStyle('E' .$fila)->getAlignment()->setWrapText(true);
 $spreadsheet->getActiveSheet()->getStyle('F' .$fila)->getAlignment()->setWrapText(true);
-$spreadsheet->getActiveSheet()->getStyle('G' .$fila)->getAlignment()->setWrapText(true);
-$spreadsheet->getActiveSheet()->getStyle('H' .$fila)->getAlignment()->setWrapText(true);
         $spreadsheet->getActiveSheet()->getStyle('A' .$fila)
 ->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 $spreadsheet->getActiveSheet()->getStyle('B' .$fila)
@@ -216,10 +235,6 @@ $spreadsheet->getActiveSheet()->getStyle('D' .$fila)
 $spreadsheet->getActiveSheet()->getStyle('E' .$fila)
 ->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 $spreadsheet->getActiveSheet()->getStyle('F' .$fila)
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('G' .$fila)
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('H' .$fila)
 ->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
 $spreadsheet->getActiveSheet()->getStyle('A' .$fila)
@@ -234,24 +249,19 @@ $spreadsheet->getActiveSheet()->getStyle('E' .$fila)
 ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 $spreadsheet->getActiveSheet()->getStyle('F' .$fila)
 ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('G' .$fila)
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('H' .$fila)
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-    	$sheet->setCellValue('A' .$fila, $productos['codProductos']);
-    	$sheet->setCellValue('B' .$fila, $productos['catalogo']);
-    	$sheet->setCellValue('C' .$fila, $productos['descripcion']);
-    	$sheet->setCellValue('D' .$fila, $productos['unidad_medida']);
-    	$sheet->setCellValue('E' .$fila, $productos['SUM(stock)']);
-    	$sheet->setCellValue('F' .$fila, $productos['precio']);
-    	$sheet->setCellValue('G' .$fila, $productos['fecha_registro']);
-    	$sheet->setCellValue('H' .$fila, $productos['categoria']);
+
+        $sheet->setCellValue('A' .$fila, $fecha);
+        $sheet->setCellValue('B' .$fila, $Concepto);
+        $sheet->setCellValue('C' .$fila, $Comprovante);
+        $sheet->setCellValue('D' .$fila, $Entradas);
+        $sheet->setCellValue('E' .$fila, $Salida);
+        $sheet->setCellValue('F' .$fila, $Saldo);
        if( $fila % 2 == 0 ){
         //even row
-        $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':H'.$fila)->applyFromArray($evenRow);
+        $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':F'.$fila)->applyFromArray($evenRow);
     }else{
         //odd row
-        $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':H'.$fila)->applyFromArray($oddRow);
+        $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':F'.$fila)->applyFromArray($oddRow);
     }
     //increment row
     $fila++;
@@ -259,10 +269,10 @@ $spreadsheet->getActiveSheet()->getStyle('H' .$fila)
     
 //autofilter
 //define first row and last row
-$firstRow=7;
+$firstRow=11;
 $lastRow=$fila-1;
 //set the autofilter
-$spreadsheet->getActiveSheet()->setAutoFilter("A".$firstRow.":H".$lastRow);
+$spreadsheet->getActiveSheet()->setAutoFilter("A".$firstRow.":F".$lastRow);
 
 
 //set the header first, so the result will be treated as an xlsx file.

@@ -15,13 +15,13 @@
 <h5 align="center" style="margin-top: 2%;">EMPLEADOS</h5>
 <?php if (isset($_POST['user'])) {?>
     <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
-        <thead>     
-            <tr style="border: 1px solid #ddd;color: black;">
-            <th style="width:5%;font-size: 14px;">Usuario</th>
-            <th style="width:10%;font-size: 14px;">Nombre Completo</th>
-            <th style="width:20%;font-size: 14px;">Establecimiento</th>
-            <th style="width:10%;font-size: 14px;">Departamento a que Pertenece</th>
-            <th style="width:10%;font-size: 14px;">Cuenta</th>
+            <thead style="background-color: #46466b;color: white;">     
+            <tr style="border: 1px solid #ddd;">
+            <th style="width:5%;font-size: 12px;">Usuario</th>
+            <th style="width:10%;font-size: 12px;">Nombre Completo</th>
+            <th style="width:15%;font-size: 12px;">Establecimiento</th>
+            <th style="width:10%;font-size: 12px;">Departamento a que Pertenece</th>
+            <th style="width:10%;font-size: 12px;">Cuenta</th>
                    <tr> <td align="center" id="td" colspan="4"><h4>No se encontraron resultados 😥</h4></td></tr>
 
         </tr>
@@ -59,11 +59,11 @@
     }
 </style>
  <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-        <td style="font-size: 12px;"><?php echo $username ?></td>
-        <td style="font-size: 12px;"><?php echo $productos['firstname']," ",$productos['lastname']; ?></td>
-        <td style="font-size: 12px;"><?php echo $Establecimiento ?></td>
-        <td style="font-size: 12px;"><?php echo $unidad ?></td>
-        <td style="font-size: 12px;"><?php echo $u ?></td>
+        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $username ?></td>
+        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $productos['firstname']," ",$productos['lastname']; ?></td>
+        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $Establecimiento ?></td>
+        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $unidad ?></td>
+        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $u ?></td>
         <?php } ?>
     </tr>
     </tbody>
@@ -73,13 +73,13 @@
               $cod=$_POST['user1']; ?>
 
     <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
-        <thead>     
+            <thead style="background-color: #46466b;color: white;">     
             <tr style="border: 1px solid #ddd;color: black;">
-            <th style="width:5%;font-size: 14px;">Usuario</th>
-            <th style="width:10%;font-size: 14px;">Nombre Completo</th>
-            <th style="width:20%;font-size: 14px;">Establecimiento</th>
-            <th style="width:10%;font-size: 14px;">Departamento a que Pertenece</th>
-            <th style="width:10%;font-size: 14px;">Cuenta</th>
+            <th style="width:5%;font-size: 12px;">Usuario</th>
+            <th style="width:10%;font-size: 12px;">Nombre Completo</th>
+            <th style="width:15%;font-size: 12px;">Establecimiento</th>
+            <th style="width:10%;font-size: 12px;">Departamento a que Pertenece</th>
+            <th style="width:10%;font-size: 12px;">Cuenta</th>
                    <tr> <td align="center" id="td" colspan="4"><h4>No se encontraron resultados 😥</h4></td></tr>
 
         </tr>
@@ -116,11 +116,11 @@
     }
 </style>
  <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-        <td style="font-size: 12px;"><?php echo $username ?></td>
-        <td style="font-size: 12px;"><?php echo $productos['firstname']," ",$productos['lastname']; ?></td>
-        <td style="font-size: 12px;"><?php echo $Establecimiento ?></td>
-        <td style="font-size: 12px;"><?php echo $unidad ?></td>
-        <td style="font-size: 12px;"><?php echo $u?></td>
+        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $username ?></td>
+        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $productos['firstname']," ",$productos['lastname']; ?></td>
+        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $Establecimiento ?></td>
+        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $unidad ?></td>
+        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $u?></td>
         <?php } ?>
     </tr>
     </tbody>

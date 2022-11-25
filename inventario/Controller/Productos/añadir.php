@@ -51,6 +51,9 @@ exit();
       $insert = "INSERT INTO tb_productos (codProductos, categoria, catalogo, descripcion, unidad_medida,  precio,dia,mes,año,usuario) VALUES ('$codigo_producto', '$categoria', '$catalogo', '$Descripción', '$u_m', '$cost','$dia','$mes','$año','$usuario')";
       $query = mysqli_query($conn, $insert);
 
+      $insert = "INSERT INTO tb_productos (codProductos, categoria, catalogo, descripcion, unidad_medida,  precio,dia,mes,año,usuario) VALUES ('$codigo_producto', '$categoria', '$catalogo', '$Descripción', '$u_m', '$cost','$dia','$mes','$año','$usuario')";
+      $query = mysqli_query($conn, $insert);
+
       if ($query) {
         echo "<script>
     Swal.fire({

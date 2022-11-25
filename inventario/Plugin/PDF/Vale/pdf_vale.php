@@ -42,16 +42,17 @@
 
         <br>    
 
-    <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
-        <thead>     
-            <tr style="border: 1px solid #ddd;color: black;">
+    <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+
+        <thead style="background-color: #46466b;color: white;">
+        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
                 <th style="width: 25%;font-size: 14px;text-align: center;">Código</th>
-                <th style="width: 70%;color:black;font-size: 14px;text-align: left;">Descripción Completa</th>
-                <th style="width: 15%;color:black;font-size: 14px;text-align: center;">U/M</th>
-                <th style="width: 15%;color:black;font-size: 14px;text-align: center;">Cantidad Solicitada</th>
-                <th style="width: 30%;color:black;font-size: 14px;text-align: center;">Cantidad Despachada</th>
-                <th style="width: 30%;color:black;font-size: 14px;text-align: center;">Precio Unitario</th>
-                <th style="width: 15%;color:black;font-size: 14px;text-align: center;border-right:1px solid #ccc ;">Total</th>
+                <th style="width: 70%;font-size: 14px;text-align: left;">Descripción Completa</th>
+                <th style="width: 15%;font-size: 14px;text-align: center;">U/M</th>
+                <th style="width: 15%;font-size: 14px;text-align: center;">Cantidad Solicitada</th>
+                <th style="width: 30%;font-size: 14px;text-align: center;">Cantidad Despachada</th>
+                <th style="width: 30%;font-size: 14px;text-align: center;">Precio Unitario</th>
+                <th style="width: 15%;font-size: 14px;text-align: center;border-right:1px solid #ccc ;">Total</th>
             </tr>
         </thead> 
 
@@ -73,18 +74,18 @@
     ?>
       
              <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-                <td style="text-align:center; font-size: 12px; "><?php  echo $codigo?></td>
-                <td style=" font-size: 12px;"><?php  echo $des?></td>
-                <td style="text-align:center; font-size: 12px; "><?php  echo $um?></td>
-                <td style="text-align:center; font-size: 12px; "><?php echo $cantidad ?></td>
-                <td style="text-align:center; font-size: 12px; "><?php echo $stock ?></td>
-                <td style="text-align: center; font-size: 12px; ;"><?php echo $cost ?></td>
-                <td style="text-align: center; font-size: 12px; "><?php  echo $tot ?></td>
+                <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php  echo $codigo?></td>
+                <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php  echo $des?></td>
+                <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php  echo $um?></td>
+                <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $cantidad ?></td>
+                <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $stock ?></td>
+                <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $cost ?></td>
+                <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php  echo $tot ?></td>
             </tr>
          
         </tbody>  
          <?php } } ?> 
-        <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
+        <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;ctable-layout: fixed; ">
             <td style="text-align: center; font-size: 12px; font-weight: bold;">Subtotal</td>
             <td colspan="5"></td>
             <td style="text-align: center; font-size: 12px; font-weight: bold;"><?php echo $tot_f ?></td>

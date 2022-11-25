@@ -275,7 +275,7 @@ width: 100%;
  </table>
 </div>
 </div>
-</
+<?php 
     }
     else if($mostrar == "compra"){
 

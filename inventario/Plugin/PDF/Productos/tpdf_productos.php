@@ -18,12 +18,12 @@ include ('../../../Model/conexion.php'); ?>
 <h5 align="center" style="margin-top: 2%;">TODOS LOS PRODUCTOS</h5>
 
 <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
-    <thead>     
+        <thead style="background-color: #46466b;color: white;">    
           <tr>
 
             <th style="width: 25%;font-size: 14px;">Código</th>
             <th style="width: 25%;font-size: 14px;">Catálogo</th>
-            <th style="width: 25%;font-size: 14px;">Descripción Completa</th>
+            <th style="width: 40%;font-size: 14px;">Descripción Completa</th>
             <th style="width: 25%;font-size: 14px;">U/M</th>
             <th style="width: 25%;font-size: 14px;">Cantidad</th>
             <th style="width: 25%;font-size: 14px;">Precio</th>
@@ -68,14 +68,14 @@ include ('../../../Model/conexion.php'); ?>
 </style>        
    <tr style="border: 1px solid #ccc;border-collapse: collapse;">
 
-        <td style="font-size: 12px;"><?php echo $cod ?></td>
-        <td style="font-size: 12px;"><?php echo $catal ?></td>
-        <td style="font-size: 12px;"><?php echo $des ?></td>
-        <td style="font-size: 12px;"><?php echo $u_m ?></td>
-        <td style="font-size: 12px;"><?php echo $stock ?></td>
-        <td style="font-size: 12px;"><?php echo $precio1 ?></td>
-        <td style="font-size: 12px;"><?php echo $fech ?></th>
-        <td style="font-size: 12px;"><?php echo $cat ?></td>
+        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $cod ?></td>
+        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $catal ?></td>
+        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $des ?></td>
+        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $u_m ?></td>
+        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $stock ?></td>
+        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $precio1 ?></td>
+        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $fech ?></th>
+        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $cat ?></td>
         <?php } ?>
     </tr>
     </tbody>

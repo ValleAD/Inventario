@@ -28,17 +28,18 @@ include '../../../Model/conexion.php'; ?>
         $tipo1='Ascendente';
      } ?>
     <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p><br><br>
-    <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
-    <thead>     
-        <tr style="border: 1px solid #ddd;color: black;" >
+    <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
 
-                <th style="font-size: 14px;width: 10%;">No. Solicitud</th>
-                <th style="font-size: 14px;width: 15%;">Dependencia</th>
-                <th style="font-size: 14px;width: 10%;">Plazo y No. de Entregas</th>
-                <th style="font-size: 14px;width: 10%;">Unidad Técnica</th>
-                <th style="font-size: 14px;width: 10%;">Descripción Solicitud</th>
-                <th style="font-size: 14px;width: 10%;">Encargado</th>
-                <th style="font-size: 14px;width: 10%;">Fecha de Registro</th>
+        <thead style="background-color: #46466b;color: white;">
+        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+
+                <th style="font-size: 12px;width: 10%;">No. Solicitud</th>
+                <th style="font-size: 12px;width: 15%;">Dependencia</th>
+                <th style="font-size: 12px;width: 10%;">Plazo y No. de Entregas</th>
+                <th style="font-size: 12px;width: 10%;">Unidad Técnica</th>
+                <th style="font-size: 12px;width: 10%;">Descripción Solicitud</th>
+                <th style="font-size: 12px;width: 10%;">Encargado</th>
+                <th style="font-size: 12px;width: 10%;">Fecha de Registro</th>
         </tr>
         
         <td id="td" colspan="3" ><h4 align="center">No se encontraron resultados </h4></td>
@@ -60,13 +61,13 @@ include '../../../Model/conexion.php'; ?>
   </style> 
   
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td style="font-size: 12px;text-align: center;" data-label="No. Solicitud" class="delete"><?php  echo $solicitudes['nSolicitud']; ?></td>
-            <td style="font-size: 12px;text-align: center;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['dependencia']; ?></td>
-            <td style="font-size: 12px;text-align: center;" data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['plazo']; ?></td>
-            <td style="font-size: 12px;text-align: center;" data-label="Unidad Técnica" class="delete"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
-            <td style="font-size: 12px;text-align: center;" data-label="Descripción Solicitud" class="delete"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
-             <td data-label="Encargado" style="font-size: 12px;text-align: center;"><?php  echo $solicitudes['usuario']?>
-            <td style="font-size: 12px;text-align: center;" data-label="Fecha" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="No. Solicitud" class="delete"><?php  echo $solicitudes['nSolicitud']; ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['dependencia']; ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['plazo']; ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Unidad Técnica" class="delete"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Descripción Solicitud" class="delete"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
+             <td data-label="Encargado" style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php  echo $solicitudes['usuario']?>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Fecha" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
            
             </tr>
        <?php }  ?> 
@@ -86,17 +87,18 @@ include '../../../Model/conexion.php'; ?>
         $tipo1='Ascendente';
      } ?>
     <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p><br><br>
-    <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
-    <thead>     
-        <tr style="border: 1px solid #ddd;color: black;" >
+    <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
 
-            <th style="font-size: 14px;width: 10%;">No. Solicitud</th>
-                <th style="font-size: 14px;width: 15%;">Dependencia</th>
-                <th style="font-size: 14px;width: 10%;">Plazo y No. de Entregas</th>
-                <th style="font-size: 14px;width: 10%;">Unidad Técnica</th>
-                <th style="font-size: 14px;width: 10%;">Descripción Solicitud</th>
-                <th style="font-size: 14px;width: 10%;">Encargado</th>
-                <th style="font-size: 14px;width: 10%;">Fecha de Registro</th>
+        <thead style="background-color: #46466b;color: white;">
+        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+
+            <th style="font-size: 12px;width: 10%;">No. Solicitud</th>
+                <th style="font-size: 12px;width: 15%;">Dependencia</th>
+                <th style="font-size: 12px;width: 10%;">Plazo y No. de Entregas</th>
+                <th style="font-size: 12px;width: 10%;">Unidad Técnica</th>
+                <th style="font-size: 12px;width: 10%;">Descripción Solicitud</th>
+                <th style="font-size: 12px;width: 10%;">Encargado</th>
+                <th style="font-size: 12px;width: 10%;">Fecha de Registro</th>
         </tr>
         
         <td id="td" colspan="3" ><h4 align="center">No se encontraron resultados </h4></td>
@@ -119,13 +121,13 @@ $idusuario=$_POST['idusuario'];
   </style> 
   
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td style="font-size: 12px;text-align: center;" data-label="No. Solicitud" class="delete"><?php  echo $solicitudes['nSolicitud']; ?></td>
-            <td style="font-size: 12px;text-align: center;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['dependencia']; ?></td>
-            <td style="font-size: 12px;text-align: center;" data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['plazo']; ?></td>
-            <td style="font-size: 12px;text-align: center;" data-label="Unidad Técnica" class="delete"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
-            <td style="font-size: 12px;text-align: center;" data-label="Descripción Solicitud" class="delete"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
-             <td data-label="Encargado" style="font-size: 12px;text-align: center;"><?php  echo $solicitudes['usuario']?>
-            <td style="font-size: 12px;text-align: center;" data-label="Fecha" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="No. Solicitud" class="delete"><?php  echo $solicitudes['nSolicitud']; ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['dependencia']; ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['plazo']; ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Unidad Técnica" class="delete"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Descripción Solicitud" class="delete"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
+             <td data-label="Encargado" style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php  echo $solicitudes['usuario']?>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Fecha" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
             </tr>
        <?php }  ?> 
     </tbody>  
@@ -134,16 +136,17 @@ $idusuario=$_POST['idusuario'];
 </table>
 <?php } ?>
 <?php if (isset($_POST['id'])) {?>
-<table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
-    <thead>     
-        <tr style="border: 1px solid #ddd;color: black;" >
-          <th style="font-size: 14px;width: 10%;">No. Solicitud</th>
-                <th style="font-size: 14px;width: 15%;">Dependencia</th>
-                <th style="font-size: 14px;width: 10%;">Plazo y No. de Entregas</th>
-                <th style="font-size: 14px;width: 10%;">Unidad Técnica</th>
-                <th style="font-size: 14px;width: 10%;">Descripción Solicitud</th>
-                <th style="font-size: 14px;width: 10%;">Encargado</th>
-                <th style="font-size: 14px;width: 10%;">Fecha de Registro</th>
+    <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+
+        <thead style="background-color: #46466b;color: white;">
+        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+          <th style="font-size: 12px;width: 10%;">No. Solicitud</th>
+                <th style="font-size: 12px;width: 15%;">Dependencia</th>
+                <th style="font-size: 12px;width: 10%;">Plazo y No. de Entregas</th>
+                <th style="font-size: 12px;width: 10%;">Unidad Técnica</th>
+                <th style="font-size: 12px;width: 10%;">Descripción Solicitud</th>
+                <th style="font-size: 12px;width: 10%;">Encargado</th>
+                <th style="font-size: 12px;width: 10%;">Fecha de Registro</th>
         </tr>
         
         <td id="td" colspan="6" ><h4 align="center">No se encontraron resultados </h4></td>
@@ -164,13 +167,13 @@ $idusuario=$_POST['idusuario'];
      
   </style> 
    <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td style="font-size: 12px;text-align: center;" data-label="No. Solicitud" class="delete"><?php  echo $solicitudes['nSolicitud']; ?></td>
-            <td style="font-size: 12px;text-align: center;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['dependencia']; ?></td>
-            <td style="font-size: 12px;text-align: center;" data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['plazo']; ?></td>
-            <td style="font-size: 12px;text-align: center;" data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
-            <td style="font-size: 12px;text-align: center;" data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
-             <td data-label="Encargado" style="font-size: 12px;text-align: center;"><?php  echo $solicitudes['usuario']?>
-            <td style="font-size: 12px;text-align: center;" data-label="Plazo y No. de Entregas" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="No. Solicitud" class="delete"><?php  echo $solicitudes['nSolicitud']; ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['dependencia']; ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['plazo']; ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
+             <td data-label="Encargado" style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php  echo $solicitudes['usuario']?>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Plazo y No. de Entregas" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
             </tr>
        <?php }  ?> 
     </tbody>  
@@ -178,16 +181,17 @@ $idusuario=$_POST['idusuario'];
    
 </table>
 <?php } if (isset($_POST['id1'])) {?>
-<table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
-    <thead>     
-        <tr style="border: 1px solid #ddd;color: black;" >
-          <th style="font-size: 14px;width: 10%;">No. Solicitud</th>
-                <th style="font-size: 14px;width: 15%;">Dependencia</th>
-                <th style="font-size: 14px;width: 10%;">Plazo y No. de Entregas</th>
-                <th style="font-size: 14px;width: 10%;">Unidad Técnica</th>
-                <th style="font-size: 14px;width: 10%;">Descripción Solicitud</th>
-                <th style="font-size: 14px;width: 10%;">Encargado</th>
-                <th style="font-size: 14px;width: 10%;">Fecha de Registro</th>
+    <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+
+        <thead style="background-color: #46466b;color: white;">
+        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+          <th style="font-size: 12px;width: 10%;">No. Solicitud</th>
+                <th style="font-size: 12px;width: 15%;">Dependencia</th>
+                <th style="font-size: 12px;width: 10%;">Plazo y No. de Entregas</th>
+                <th style="font-size: 12px;width: 10%;">Unidad Técnica</th>
+                <th style="font-size: 12px;width: 10%;">Descripción Solicitud</th>
+                <th style="font-size: 12px;width: 10%;">Encargado</th>
+                <th style="font-size: 12px;width: 10%;">Fecha de Registro</th>
         </tr>
         
         <td id="td" colspan="6" ><h4 align="center">No se encontraron resultados </h4></td>
@@ -209,13 +213,13 @@ $idusuario=$_POST['idusuario'];
      
   </style> 
    <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td style="font-size: 12px;text-align: center;" data-label="No. Solicitud" class="delete"><?php  echo $solicitudes['nSolicitud']; ?></td>
-            <td style="font-size: 12px;text-align: center;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['dependencia']; ?></td>
-            <td style="font-size: 12px;text-align: center;" data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['plazo']; ?></td>
-            <td style="font-size: 12px;text-align: center;" data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
-            <td style="font-size: 12px;text-align: center;" data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
-             <td data-label="Encargado" style="font-size: 12px;text-align: center;"><?php  echo $solicitudes['usuario']?>
-            <td style="font-size: 12px;text-align: center;" data-label="Plazo y No. de Entregas" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="No. Solicitud" class="delete"><?php  echo $solicitudes['nSolicitud']; ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['dependencia']; ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['plazo']; ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['unidad_tecnica']; ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Plazo y No. de Entregas" class="delete"><?php  echo $solicitudes['descripcion_solicitud']; ?></td>
+             <td data-label="Encargado" style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php  echo $solicitudes['usuario']?>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Plazo y No. de Entregas" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
             </tr>
        <?php }  ?> 
     </tbody>  
