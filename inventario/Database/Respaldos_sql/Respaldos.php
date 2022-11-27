@@ -29,6 +29,7 @@ USE `hospital` ;
   $result13 = mysqli_query($connection,"SELECT * FROM detalle_compra");
   $result14 = mysqli_query($connection,"SELECT * FROM detalle_almacen");
   $result15 = mysqli_query($connection,"SELECT * FROM detalle_circulante");
+  $result17 = mysqli_query($connection,"SELECT * FROM historial");
 
   $num_fields = mysqli_num_fields($result16);
   $num_fields1 = mysqli_num_fields($result1);
@@ -46,6 +47,7 @@ USE `hospital` ;
   $num_fields13 = mysqli_num_fields($result13);
   $num_fields14 = mysqli_num_fields($result14);
   $num_fields15 = mysqli_num_fields($result15);
+  $num_fields16 = mysqli_num_fields($result17);
 
   $row1 = mysqli_fetch_row(mysqli_query($connection,"SHOW CREATE TABLE tb_almacen"));
   $return .= "\n\n".$row1[1].";\n\n";
@@ -307,6 +309,21 @@ USE `hospital` ;
         if(isset($row_p[$p])){ $return .= '"'.$row_p[$p].'"';}
         else{ $return .= '""';}
         if($p<$num_fields7-1){ $return .= ',';}
+      }
+      $return .= ");\n";
+    }
+  }
+  $row17 = mysqli_fetch_row(mysqli_query($connection,"SHOW CREATE TABLE historial"));
+  $return .= "\n\n".$row16[1].";\n\n";
+  
+  for($iq=0;$iq<$num_fields16;$iq++){
+    while($row_q = mysqli_fetch_row($result17)){
+      $return .= "INSERT INTO historial VALUES(";
+      for($q=0;$q<$num_fields7;$q++){
+        $row_q[$q] = addslashes($row_q[$q]);
+        if(isset($row_q[$q])){ $return .= '"'.$row_q[$q].'"';}
+        else{ $return .= '""';}
+        if($q<$num_fields7-1){ $return .= ',';}
       }
       $return .= ");\n";
     }

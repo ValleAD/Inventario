@@ -30,15 +30,24 @@ die();
   color: white;
   text-shadow: 1px 1px 5px black;
 }
-form{
-    margin: 0;
-    padding: 1%;
+
+
+#section{
+            margin: 2%;
+            padding:0%;
+            border-radius: 15px;
+            background: white;
+        }
+              @media (max-width: 800px){
+   #section{
+        margin: -15%6%6%7%;
+       
+    }
     }
     </style>
     <br><br><br>
+<section id="section" class="mx-3 p-2" style="background-color:white; border-radius:5px;margin-bottom: 3%;"> 
             <h1 class="text-center mg-t" style="margin-top: 2%;">Solicitudes de Fondo Circulante</h1><br>
-
-<section class="mx-3 p-2" style="background-color:white;border-radius: 5px; position: initial;margin-bottom: 3%;">
 <?php if ($tipo_usuario==1) {?>
      <div id="x"  style="position: initial;" class="btn-group my-2  mx-2" role="group" style="position: initial;" aria-label="Basic outlined example">
          <form method="POST" action=" ../../Plugin/Imprimir/Circulante/soli_circulante.php" id="ssas" target="_blank">

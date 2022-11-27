@@ -17,9 +17,9 @@ include ('../../../Model/conexion.php'); ?>
 <h4 align="center" style="margin-top: 2%;">DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h5 align="center" style="margin-top: 2%;">TODOS LOS PRODUCTOS</h5>
 
-<table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
-        <thead style="background-color: #46466b;color: white;">    
-          <tr>
+    <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+
+        <thead style="background-color: #46466b;color: white;">
 
             <th style="width: 25%;font-size: 14px;">Código</th>
             <th style="width: 25%;font-size: 14px;">Catálogo</th>

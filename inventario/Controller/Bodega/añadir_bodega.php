@@ -14,13 +14,13 @@
 
 include ('../../Model/conexion.php');
      
-if (isset($_POST['form_bodega'])) {
 
-
-    $departamento = $_POST['depto'];
+if (isset($_POST['solicitar'])) {
+      $departamento = $_POST['depto'];
     $orden_trabajo = $_POST['odt'];
     $usuario = $_POST['usuario'];
     $idusuario = $_POST['idusuario'];
+
       $verificar_bodega =mysqli_query($conn, "SELECT * FROM detalle_bodega WHERE odt_bodega ='$orden_trabajo' ");
 
 if (mysqli_num_rows($verificar_bodega)>0) {
@@ -59,81 +59,10 @@ exit();
       $insert = "INSERT INTO detalle_bodega (codigo,descripcion,unidad_medida,stock,precio,odt_bodega) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$orden_trabajo')";
       $query = mysqli_query($conn, $insert);
 
-      if ($result || $query) {
-       echo "<script>
-    Swal.fire({
-      title:'Realizado',
-      text:'Su producto fue registrado correctamente',
-      icon:'success',
-      allowOutsideClick: false
-    }).then((resultado) =>{
-if (resultado.value) {
-        window.location.href='../../Vistas/Bodega/dt_bodega.php';                               
-               }
-                });
+ $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo) VALUES('$descripcion','Solicitud de Trabajo','$unidadmedida','$codigo','$stock','$precio')";
 
-        </script>";
-      }else {
-        echo "<script>
-    Swal.fire({
-     title: 'ERROR',
-     text: '¡Error! algo salió mal',
-     icon: 'error',
-     allowOutsideClick: false
-    }).then((resultado) =>{
-if (resultado.value) {
-        window.location.href='../../Vistas/Bodega/form_bodega.php';                               
-               }
-                });
-
-        </script>";
-      }
-    }
-}
-if (isset($_POST['solicitar'])) {
-      $departamento = $_POST['depto'];
-    $orden_trabajo = $_POST['odt'];
-    $usuario = $_POST['usuario'];
-    $idusuario = $_POST['idusuario'];
-      $verificar_bodega =mysqli_query($conn, "SELECT * FROM detalle_bodega WHERE odt_bodega ='$orden_trabajo' ");
-
-if (mysqli_num_rows($verificar_bodega)>0) {
-         echo "<script>
-    Swal.fire({
-      title:'NOTA IMPORTANTE:',
-      text:'Este Producto ya esta Registrado, intente con otro diferente',
-      icon:'warning',
-      allowOutsideClick: false
-    }).then((resultado) =>{
-if (resultado.value) {
-        window.location.href='../../Vistas/Bodega/form_bodega_varios.php';                               
-               }
-                });
-
-        </script>";
-exit();
-}
-    //crud para guardar los productos en la tabla tb_vale
-    $sql = "INSERT INTO tb_bodega (codBodega, departamento,usuario,idusuario,estado) VALUES ('$orden_trabajo', '$departamento','$usuario','$idusuario','Pendiente')";
-    $result = mysqli_query($conn, $sql); 
-      
-        
-         for($i = 0; $i < count($_POST['cod']); $i++)
-
-    {
- 
-    $codigo= $_POST['cod'][$i];
-    $descripcion= $_POST['desc'][$i];
-    $unidadmedida= $_POST['um'][$i];
-    $stock = $_POST['cant'][$i];
-    $precio= $_POST['cu'][$i];
-    $orden_trabajo = $_POST['odt'];
-
-  
-      $insert = "INSERT INTO detalle_bodega (codigo,descripcion,unidad_medida,stock,precio,odt_bodega) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$orden_trabajo')";
-      $query = mysqli_query($conn, $insert);
-
-      if ($result || $query) {
+       $query1 = mysqli_query($conn, $sql1);
+      if ($result || $query || $query1) {
        echo "<script>
     Swal.fire({
       title:'Realizado',

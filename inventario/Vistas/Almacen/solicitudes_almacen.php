@@ -31,10 +31,7 @@ die();
   color: white;
   text-shadow: 1px 1px 5px black;
 }
-form{
-    margin: 0;
-    padding: 1%;
-}
+
 
 #section{
             margin: 2%;
@@ -45,30 +42,30 @@ form{
               @media (max-width: 800px){
    #section{
         margin: -15%6%6%7%;
-        width: 85%;
+        
     }
     }
     </style>
     <br><br><br>
-            <h1 class="text-center mg-t" style="margin-top: 2%;">Solicitudes de Almacen</h1><br>
-<section  class="mx-3 p-2" style="background-color:white; border-radius:5px;margin-bottom: 3%;">      
+<section id="section" class="mx-3 p-2" style="background-color:white; border-radius:5px;margin-bottom: 3%;">      
+            <h1 class="text-center mg-t" >Solicitudes de Almacen</h1><br>
 <?php if ($tipo_usuario==1) {?>
      <div id="x"  style="position: initial;" class="btn-group my-2  mx-2" role="group" style="position: initial;" aria-label="Basic outlined example">
-         <form method="POST" action=" ../../Plugin/Imprimir/Almacen/soli_almacen.php" id="ssas" target="_blank">
+         <form method="POST" action=" ../../Plugin/Imprimir/Almacen/soli_almacen.php"  target="_blank">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href=" ../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
-         <form method="POST" action=" ../../Plugin/PDF/Almacen/pdf_soli_almacen.php" id="ssas" target="_blank" class="mx-1">
+         <form method="POST" action=" ../../Plugin/PDF/Almacen/pdf_soli_almacen.php"  target="_blank" class="mx-1">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary"  target="_blank" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href=" ../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>
-                 <form id="ssas"  method="POST" action="../../Plugin/Excel/Almacen/Excel.php">
+                 <form   method="POST" action="../../Plugin/Excel/Almacen/Excel.php">
             <input type="hidden" name="columna" value="<?php echo $columna ?>">
             <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
                 <button type="submit" class="btn btn-outline-primary" name="almacen" target="_blank">
@@ -81,7 +78,7 @@ form{
 <?php } if ($tipo_usuario==2) {
  ?>
               <div id="x" style="position: initial;" class="btn-group mb-3 my-2  mx-2" role="group" aria-label="Basic outlined example">
-         <form method="POST" action=" ../../Plugin/PDF/Almacen/soli_almacen.php" id="ssas" target="_blank">
+         <form method="POST" action=" ../../Plugin/PDF/Almacen/soli_almacen.php"  target="_blank">
  
  <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
        
@@ -92,7 +89,7 @@ form{
                 </svg>
              </button>
          </form>
-         <form class="mx-1" method="POST" action=" ../../Plugin/PDF/Almacen/pdf_soli_almacen.php" id="ssas" target="_blank">
+         <form class="mx-1" method="POST" action=" ../../Plugin/PDF/Almacen/pdf_soli_almacen.php"  target="_blank">
  <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
               <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -100,7 +97,7 @@ form{
                 </svg>
              </button>
          </form>
-         <form id="ssas" style="" method="POST" action="../../Plugin/Excel/Almacen/Excel.php" target="_blank">
+         <form  style="" method="POST" action="../../Plugin/Excel/Almacen/Excel.php" target="_blank">
  <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
             <input type="hidden" name="columna" value="<?php echo $columna ?>">
             <input type="hidden" name="tipo" value="<?php echo $tipo ?>">

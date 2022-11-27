@@ -123,10 +123,10 @@ $result = mysqli_query($conn, $sql);
 <div class="card-body">
  <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
 
-    <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios">Nueva Categoria</button>
+    <button class="btn btn-success mr-2" data-toggle="modal" data-target="#Usuarios">Nueva Categoria</button>
 
          <form method="POST" action="../../Plugin/Imprimir/U_D_D_C/U_D_D_C.php" target="_blank">
-             <button style="position: initial;"n type="submit" class="btn btn-outline-primary mx-1" name="categorias">
+             <button style="position: initial;"n type="submit" class="btn btn-outline-primary " name="categorias">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
@@ -154,15 +154,17 @@ $result = mysqli_query($conn, $sql);
         <thead>
               <tr id="tr">
                 <?php if($tipo_usuario == 1) { ?>
-
+                <th style="width: 10%; text-align: center;">ID</th>
                 <th  style=" width: 10%">Categorias</th>
                 <th  style=" width: 10%">Habilitado</th>
                 <th  style=" width: 10%"> Cambiar Habilitado</th>
                 <th  style=" width: 10%">Eliminar</th><?php } ?>
                 <?php if($tipo_usuario == 2) { ?>
+
+                <th style="width: 10%; text-align: center;">ID</th>
                 <th  style=" width: 60%">Categorias</th>
                 <th  style="width: 60%">Habilitado</th>
-                <th></th>
+                
                 <?php } ?>
                 
             </tr>
@@ -171,9 +173,10 @@ $result = mysqli_query($conn, $sql);
     <?php
     $sql = "SELECT * FROM selects_categoria ";
     $result = mysqli_query($conn, $sql);
-
+    $n=0;
     while ($solicitudes = mysqli_fetch_array($result)){
-
+        $n++;
+        $r=$n+0;
         ?>
         <style type="text/css">
      #td{
@@ -182,7 +185,7 @@ $result = mysqli_query($conn, $sql);
    
 </style>
         <tr>
-            
+            <td><?php echo $r ?></td>
             <td style="width: 20%;min-width: 100%;" data-label="Categoria"><?php  echo $solicitudes['categoria']; ?></td>
 
  <td style="width: 50%;min-width: 100%;" data-label="Habilitado">
@@ -230,7 +233,7 @@ $result = mysqli_query($conn, $sql);
         $(document).ready(function () {
                    $('#examp').DataTable({
             rowGroup: {
-            dataSrc: 1
+            dataSrc: 2
         },
             responsive: true,
             autoWidth:false,

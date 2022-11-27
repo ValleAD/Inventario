@@ -35,7 +35,32 @@ if(isset($_POST['consulta']))
                           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
-                        </div>';
+                        </div>
+                         <style>
+                            #Guardar{
+                                display: none;
+                            }
+                            #NoGuardar{
+
+                            margin-left: -10%;
+                                display: block;
+                            }
+                            #ver{
+                                 margin-top: -7%;
+                                margin-left: 10%;
+                            }
+                    @media (max-width: 800px){
+                        #NoGuardar{
+                            margin-left: -35%;
+                                display: block;
+                            }
+                            #ver{
+                                 margin-top: -14.5%;
+                                margin-left: 10%;
+                            }
+
+                    }
+                        </style>';
             }
     }
 }

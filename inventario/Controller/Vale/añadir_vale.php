@@ -58,7 +58,10 @@ exit();
       $insert = "INSERT INTO detalle_vale (codigo,descripcion,unidad_medida,stock,precio,numero_vale) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$numero_vale')";
       $query = mysqli_query($conn, $insert);
 
-      if ($result || $query) {
+ $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo) VALUES('$descripcion','Vale Consulta Externa','$unidadmedida','$codigo','$stock','$precio')";
+
+       $query1 = mysqli_query($conn, $sql1);
+      if ($result || $query || $query1) {
                        echo "<script>
     Swal.fire({
       title:'Realizado',

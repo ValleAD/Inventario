@@ -55,7 +55,11 @@ for($i = 0; $i < count($_POST['cod']); $i++)
       $insert = "INSERT INTO detalle_almacen(codigo, nombre, unidad_medida, cantidad_solicitada, tb_almacen, precio) VALUES ('$codigo_producto', '$nombre_articulo','$u_m', '$soli', '$num_sol', '$cost')";
       $query = mysqli_query($conn, $insert);
 
-      if ($result || $query) {
+
+ $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo) VALUES('$nombre_articulo','Entrada Por Almacen','$u_m','$codigo_producto','$soli','$cost')";
+
+       $query1 = mysqli_query($conn, $sql1);
+      if ($result || $query || $query1) {
         echo "<script>
     Swal.fire({
       title:'Realizado',

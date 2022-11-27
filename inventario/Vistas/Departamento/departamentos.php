@@ -95,14 +95,14 @@ $result = mysqli_query($conn, $sql);
 } 
 ?>
     <section style="margin:1%;padding: 1%; border-radius: 5px; background: white; ">
+        <h2 class="text-center " >Departamentos del Sistema</h2><br>
         <div class="card">
 <div class="card-body">
-        <h2 class="text-center " >Departamentos del Sistema</h2><br>
 
-    <a href="../Categoria/categorias.php" class="btn btn-info" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; ">Categorias</a> 
-    <a href="../Dependencia/dependencias.php" class="btn btn-success" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Dependencias</a>
+    <a href="../Categoria/categorias.php" class="btn btn-info" style="float: right; color: white;margin-bottom: 1%; ">Categorias</a> 
+    <a href="../Dependencia/dependencias.php" class="btn btn-success" style="float: right; color: white;margin-bottom: 1%; margin-right: 15px;">Dependencias</a>
 <?php if($tipo_usuario == 1) { ?>
-    <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="float: left;margin-top: 1%; color: white;margin-bottom: 1%;">Nuevo Departamento</button>
+    <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="float: left; color: white;margin-bottom: 1%;">Nuevo Departamento</button>
 <!-- Delete -->
 <div class="modal fade" id="Usuarios" style="background: rgba(0, 0, 0, 0.3);" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">
@@ -136,7 +136,7 @@ $result = mysqli_query($conn, $sql);
         </div>
     </div>
 </div><?php } ?>
- <div id="aq" style="position: initial;" class="btn-group mb-3 my-3  mx-2" role="group" aria-label="Basic outlined example">
+ <div  style="position: initial;" class="btn-group mb-3 mx-2" role="group" aria-label="Basic outlined example">
          <form method="POST" action="../../Plugin/Imprimir/U_D_D_C/U_D_D_C.php" target="_blank">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="departamento">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -164,16 +164,15 @@ $result = mysqli_query($conn, $sql);
         <thead>
              <tr id="tr">
                 <?php if($tipo_usuario == 1) { ?>
-                <th style="width: 10%;">#</th>
+                <th style="width: 10%; text-align: center;">ID</th>
                 <th  style=" width: 10%">Departamentos</th>
                 <th  style=" width: 10%">Habilitado</th>
                 <th  style=" width: 10%"> Cambiar Habilitado</th>
                 <th  style=" width: 10%">Eliminar</th><?php } ?>
                 <?php if($tipo_usuario == 2) { ?>
-                <th style="width: 60%;">#</th>
+                <th style="width: 10%; text-align: center;">ID</th>
                 <th  style=" width: 60%">Departamentos</th>
                 <th  style="width: 60%">Habilitado</th>
-                <th></th>
                 <?php } ?>
                 
             </tr>

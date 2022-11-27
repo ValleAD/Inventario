@@ -46,12 +46,11 @@ include '../../../Model/conexion.php'; ?>
 $n++;
         $r=$n+0;
                         if($solicitudes['Habilitado']=='Si') {
-                    echo ' style="background-color:blueviolet ;max-width:100%; border-radius:5px;text-align:center; color: white;"';
-                    $c='Categoria Disponible';
+                        $c='Unidad Disponible';
                 } elseif ($solicitudes['Habilitado']  == 'No') {
                
                     echo ' style="background-color:red;max-width:100% border-radius:5px;text-align:center;color: white;"';
-                    $c='Categoria no Disponible';
+                    $c='Unidad no Disponible';
                 }
 ?>  <style type="text/css">
        #td{
@@ -95,8 +94,7 @@ $n++;
 $n++;
         $r=$n+0;
                         if($solicitudes['Habilitado']=='Si') {
-                    echo ' style="background-color:blueviolet ;max-width:100%; border-radius:5px;text-align:center; color: white;"';
-                    $c='Departamento Disponible';
+                        $c='Departamento Disponible';
                 } elseif ($solicitudes['Habilitado']  == 'No') {
                
                     echo ' style="background-color:red;max-width:100% border-radius:5px;text-align:center;color: white;"';
@@ -144,8 +142,7 @@ $n++;
 $n++;
         $r=$n+0;
                         if($solicitudes['Habilitado']=='Si') {
-                    echo ' style="background-color:blueviolet ;max-width:100%; border-radius:5px;text-align:center; color: white;"';
-                    $c='Categoria Disponible';
+                        $c='Categoria Disponible';
                 } elseif ($solicitudes['Habilitado']  == 'No') {
                
                     echo ' style="background-color:red;max-width:100% border-radius:5px;text-align:center;color: white;"';
@@ -192,8 +189,7 @@ $n++;
 $n++;
         $r=$n+0;
                         if($solicitudes['Habilitado']=='Si') {
-                    echo ' style="background-color:blueviolet ;max-width:100%; border-radius:5px;text-align:center; color: white;"';
-                    $c='Dependencia Disponible';
+                        $c='Dependencia Disponible';
                 } elseif ($solicitudes['Habilitado']  == 'No') {
                
                     echo ' style="background-color:red;max-width:100% border-radius:5px;text-align:center;color: white;"';

@@ -74,7 +74,7 @@
 
     <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
             <thead style="background-color: #46466b;color: white;">     
-            <tr style="border: 1px solid #ddd;color: black;">
+            <tr style="border: 1px solid #ddd;">
             <th style="width:5%;font-size: 12px;">Usuario</th>
             <th style="width:10%;font-size: 12px;">Nombre Completo</th>
             <th style="width:15%;font-size: 12px;">Establecimiento</th>

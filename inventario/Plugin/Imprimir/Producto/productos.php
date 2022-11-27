@@ -8,15 +8,18 @@ include ('../../../Model/conexion.php');
  <head>
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
+             <link rel="stylesheet" type="text/css" href="../../bootstrap/css/bootstrap.css">
+   <link rel="stylesheet" type="text/css" href="../../../styles/estilos_tablas.css">
 <?php   if (isset($_POST['consulta'])) {?>
      <title>Productos</title>
 <?php }  if (isset($_POST['Historial'])) { ?>
      <title>Historial de Productos</title>
 <?php } ?>
-        <link rel="stylesheet" type="text/css" href="../../bootstrap/css/bootstrap.css">
-   <link rel="stylesheet" type="text/css" href="../../../styles/estilos_tablas.css">
+
  </head>
  <body>
+<style>p{font-size: 14px;}
+#th {color:black;}</style>
 
 <img src="../../../img/hospital.png" style="width:20%">
     <img src="../../../img/log_1.png" style="width:20%; float:right">
@@ -51,7 +54,7 @@ include ('../../../Model/conexion.php');
 
               $cod=$_POST['consulta'];
 
-   $sql = "SELECT * FROM `tb_productos` WHERE codProductos LIKE '%".$cod."%' or descripcion LIKE '%".$cod."%' ";
+   $sql = "SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro  FROM `tb_productos` WHERE codProductos LIKE '%".$cod."%' or descripcion LIKE '%".$cod."%' ";
 
         $result = mysqli_query($conn, $sql);
         
@@ -93,84 +96,140 @@ include ('../../../Model/conexion.php');
     </tbody>
 </table> 
 <?php } 
-  if (isset($_POST['Historial'])) { 
-$fecha=$_POST['fecha'];
-$fecha1=$_POST['fecha1'];
-$descripcion=$_POST['descripcion'];
-$cod=$_POST['cod'];
-$um=$_POST['um'];
-    ?>
-    <br>
-    <div class="container">
-    <p><b>PERIODO DE MOVIMIENTO</b></p> 
-    <div class="row">
+  if (isset($_POST['Historial'])) { $Busqueda=$_POST['Busqueda'];?>
+
+<div class="card card1" id="card1" >
+            <div class="card-body">
+                <div class="alert alert-warning" rol="alert">No se Encontró resultados</div>
+            </div>
+        </div>
+        <br id="card2">
+        <style type="text/css">#card{display: none;}</style>
+<div class="row" >
+    <div class="col-md-3" id="card">
+        <div class="card">
+            <div class="card-body">
+<?php $sql = "SELECT Concepto,No_Comprovante,h.descripcion, h.fecha_registro, p.fecha_registro,h.unidad_medida, SUM(Entradas), SUM(Salidas),Saldo, p.precio FROM historial h JOIN tb_productos p ON h.No_Comprovante= p.codProductos WHERE  No_Comprovante = '$Busqueda' GROUP BY Concepto limit 1";
+$result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        $fecha=date("d-m-Y",strtotime($productos['fecha_registro']));
+        $fecha1=date("d-m-Y",strtotime($productos['fecha_registro']));
+        $Comprovante= $productos['No_Comprovante'];
+        $Concepto= $productos['Concepto'];
+        $Entradas=$productos['SUM(Entradas)'];
+        $Salida=$productos['SUM(Salidas)'];
+        $Saldo=$productos['Saldo'];
+        $cod= $productos['No_Comprovante'];
+        $descripcion=$productos['descripcion'];
+        $um=$productos['unidad_medida'];
+?>
+<style type="text/css">#card{display: block;}.card1, #card2{display: none;}</style>
+ 
+
+<p><b>PERIODO DE MOVIMIENTO</b></p>
+<div class="row">
     <div class="col-md-6">
 <p><b>DE:</b> <?php echo $fecha ?></p>     
     </div>
     <div class="col-md-6">
-<p style="float: right;"><b>AL:</b> <?php echo $fecha1; ?></p>
+<p id="p"> </p>
     </div>    
 <div class="col-md-6">
 <p><b>Codigo del Producto:</b></p>     
     </div>
  <div class="col-md-6">
-<p style="float: right;"><?php echo $cod ?></p>
+<p><?php echo $cod ?></p>
     </div>
     <div class="col-md-6">
 <p><b>Descripción</b></p>     
     </div>
  <div class="col-md-6">
-<p style="float: right;"><?php echo $descripcion ?></p>
+<p> <?php echo $descripcion ?></p>
     </div>    
 <div class="col-md-6">
 <p><b>Unidad de Medida</b></p>     
     </div>
  <div class="col-md-6">
-<p style="float: right;"><?php echo $um ?></p>
+<p> <?php echo $um ?></p>
     </div>
 </div>
-</div>
-        <table class="table table-responsive table-striped"  style=" width: 100%">
 
-    <thead>
-        <tr id="tr">
-                     <th style="width:7%"  id="th">Fecha</th>
-                     <th style="width:7%"  id="th">Concepto</th>
-                     <th style="width: 27%;" id="th">No. Comprobante</th>
-                     <th style="width:8%"  id="th">Entradas</th>
-                     <th style="width:8%"  id="th">Salidas</th>
-                     <th style="width:10%"  id="th">Saldo</th>
-            
-        </tr>
-    </thead>
-    <tbody>
-<?php
+    </div>
+        </div>
+    </div>
+<?php } ?>
+        <div class="col-md-9">
+        <div class="card">
+            <div class="card-body">
+                         <table class="table  table-striped" id="examp" style="width: 100%;">
+                   <thead>
+             <tr id="tr">
+                     <th id="th">Fecha</th>
+                     <th id="th">Concepto</th>
+                     <th id="th">No. Comprobante</th>
+                     <th id="th">Entradas</th>
+                     <th id="th">Salidas</th>
+                     <th id="th">Saldo</th>
+                
+            </tr>
+           
+     </thead>
+<tbody>
+    <?php $sql = "SELECT fecha_registro,codProductos, precio FROM tb_productos WHERE  codProductos = '$Busqueda' GROUP BY codProductos";
+$result = mysqli_query($conn, $sql);
 
-    $sql = "SELECT No_Comprovante,fecha_registro,Entradas, SUM(Entradas), SUM(Salidas),Saldo FROM historial  WHERE  No_Comprovante = '$cod' GROUP BY Concepto";
+    while ($productos = mysqli_fetch_array($result)){
+        $fecha=date("d-m-Y",strtotime($productos['fecha_registro']));
+        $Comprovante= $productos['codProductos'];
+        $Saldo= $productos['precio'];?>
+        <tr>
+            <td id="th" data-label="Fecha"><?php echo $fecha ?></td>
+            <td id="th" data-label="Concepto">Inventario Físico</td>
+            <td id="th" data-label="No. Comprovante"><?php echo $Comprovante ?></td>
+            <td id="th" data-label="Entradas">0.00</td>
+            <td id="th" data-label="Salidas">0.00</td>
+            <td id="th" data-label="Saldo"><?php echo $Saldo ?></td>
+        </tr> 
+    <?php } $sql = "SELECT Concepto,No_Comprovante,h.descripcion, h.fecha_registro,h.unidad_medida, SUM(Entradas), SUM(Salidas),Saldo, p.precio FROM historial h JOIN tb_productos p ON h.No_Comprovante= p.codProductos WHERE  No_Comprovante = '$Busqueda' GROUP BY Concepto";
 $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
         $fecha=date("d-m-Y",strtotime($productos['fecha_registro']));
         $Comprovante= $productos['No_Comprovante'];
+        $Concepto= $productos['Concepto'];
         $Entradas=$productos['SUM(Entradas)'];
         $Salida=$productos['SUM(Salidas)'];
         $Saldo=$productos['Saldo'];
 ?>
-</style>
-            <td style="width: 10%;min-width: 100%;" id="th" data-label="Fecha"><?php echo $fecha ?></td>
-            <td style="width: 10%;min-width: 100%;" id="th" data-label="Concepto">Inventario en Fisico</td>
-            <td style="width: 47%;min-width: 100%;" id="th" data-label="No. Comprovante"><?php echo $Comprovante ?></td>
-            <td style="width: 10%;min-width: 100%;" id="th" data-label="Entradas"><?php echo $Entradas ?></td>
-            <td style="width: 10%;min-width: 100%;" id="th" data-label="Salidas"><?php echo $Salida ?></td>
-            <td style="width: 10%;min-width: 100%;" id="th" data-label="Saldo"><?php echo $Saldo ?></td>
-
-       <?php } ?>
-    </tr>
-    </tbody>
-</table> 
+        <tr>
+            <td id="th" data-label="Fecha"><?php echo $fecha ?></td>
+            <td id="th" data-label="Concepto"><?php echo $Concepto ?></td>
+            <td id="th" data-label="No. Comprovante"><?php echo $Comprovante ?></td>
+            <td id="th" data-label="Entradas"><?php echo $Entradas ?></td>
+            <td id="th" data-label="Salidas"><?php echo $Salida ?></td>
+            <td id="th" data-label="Saldo"><?php echo $Saldo ?></td>
+        </tr>        
+<?php } ?>
+           </tbody>
+        </table>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
 <?php } ?>
  </body>
  </html>
 <script type="text/javascript">
 print('');
+let linkDelete =document.querySelectorAll("delete");
+date = new Date();
+year = date.getFullYear();
+month = date.getMonth() + 1;
+day = date.getDate();
+document.getElementById("p").innerHTML ="<b>AL:</b> "+ day + "-" + month + "-" + year;
+document.getElementById("p1").value = day + "-" + month + "-" + year;
+document.getElementById("p2").value = day + "-" + month + "-" + year;
+document.getElementById("p3").value = day + "-" + month + "-" + year;
 </script>

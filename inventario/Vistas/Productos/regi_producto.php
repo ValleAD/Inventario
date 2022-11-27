@@ -25,7 +25,9 @@ die();
   </head>
     <body >
         <style>  
-            
+            #NoGuardar{
+                display: none;
+            }
             #buscar1{
                 display: block;
             }
@@ -55,7 +57,7 @@ die();
                 width: 25%;
             }
 
-            @media (max-width: 952px){
+            @media (max-width: 800px){
    #section{
         margin: -15%6%6%1%;
         width: 97%;
@@ -68,13 +70,14 @@ die();
         margin-top: 5%;
         margin-left: 7%;
     }
+
   }
         </style>
         <br><br><br>
 
-<form id="section" action="../../Controller/Productos/añadir.php" method="POST" style="height: 30%; margin-top: -15">
+<form id="section" action="../../Controller/Productos/añadir.php" method="POST" style="height: 30%; ">
 <font color=marballe><h3 style="text-align: center; font-weight: bold">Registro de Productos</h3></font>
-</center>
+
 <div class="mx-2 alert alert-warning alert-dismissible fade show" role="alert" style="position: initial;"><b>NOTA IMPORTANTE: </b> El codigo Que sera ingresado en este formulario no debe de ir Repetido cuando Presionen  el boton "Agregar Producto"</div>
    <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
 
@@ -187,8 +190,7 @@ die();
                     <input type="hidden" name="dia" id="dia">
                     <input type="hidden" name="mes" id="mes">
                     <input type="hidden" name="año" id="ano">
-                    <input type="hidden" name="usuario" value="<?php echo $cliente ?>">
-            </div>
+                    </div>
             </div>
 
         </div>
@@ -201,20 +203,23 @@ die();
     </div>
 </div>
     </div>
-    
-    <hr />
-    
-    <div class="text-center">
-        <button class="btn btn-success btn-lg" name="submit" style="margin-bottom: 2%;">Guardar</button>  
-        <a id="ver" class="btn btn-lg" href="vistaProductos.php">Ver Productos</a>
 
-    </div>
+    <hr />
+
+    <center>
+   
+        <button class="btn btn-success btn-lg" id="Guardar" style="margin-bottom: 2%;" name="submit">Guardar</button>  
+        <button class="btn btn-success btn-lg" id="NoGuardar" style="margin-bottom: 2%; cursor: not-allowed;" disabled name="submit">Guardar</button>  
+        <button type="button" class="btn btn-lg" id="ver" onclick=" return ir()">Ver Productos</button>
+</center>
 </form>
 
 
-<script>
+<script> function ir() {
+            window.location.href="vistaProductos.php";
+        }
     $(document).ready(function(){
-        
+       
         // El formulario que queremos replicar
         var formulario_registro = $("#lo-que-vamos-a-copiar").html();
         

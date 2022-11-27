@@ -26,39 +26,44 @@ die();
   color: white;
   text-shadow: 1px 1px 5px black;
 }
-form{
-    margin: 0%;
-}
 
+
+#section{
+            margin: 2%;
+            padding:0%;
+            border-radius: 15px;
+            background: white;
+        }
+              @media (max-width: 800px){
+   #section{
+        margin: -15%6%6%7%;
+       
+    }
+    }
     </style>
-    <title>Solicitudes De Bodega</title>
-</head>
-
-
-<body>
-<br><br><br><br>
-            <center><h1 style="margin-top:5px">Solicitud Bodega</h1></center><br>
-      <section class="mx-3 p-2" style="background-color:white; border-radius: 5px;">
+    <br><br><br>
+<section id="section" class="mx-3 p-2" style="background-color:white; border-radius:5px;margin-bottom: 3%;"> 
+            <center><h1 >Solicitud Bodega</h1></center><br>
 
             <?php if ($tipo_usuario==1) {?>
                
 
               <div id="x" style="position: initial;" class="btn-group mb-3 my-1 mx-2" style="position: initial;" role="group" aria-label="Basic outlined example">
-         <form id="ssas" method="POST" action="../../Plugin/Imprimir/Bodega/soli_bodega.php" target="_blank">
+         <form  method="POST" action="../../Plugin/Imprimir/Bodega/soli_bodega.php" target="_blank">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
-         <form id="ssas" method="POST" action="../../Plugin/PDF/Bodega/pdf_soli_bodega.php" class="mx-1" target="_blank">
+         <form  method="POST" action="../../Plugin/PDF/Bodega/pdf_soli_bodega.php" class="mx-1" target="_blank">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>
-        <form id="ssas" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Bodega/Excel.php" target="_blank">
+        <form  method="POST" action="../../Plugin/Excel/Bodega/Excel.php" target="_blank">
                 <button type="submit" class="btn btn-outline-primary" name="bodega" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
@@ -68,7 +73,7 @@ form{
  </div>
  <?php }else{ ?>
                  <div  id="x" class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
-         <form id="ssas"  method="POST" class="mx-1" action="../../Plugin/Imprimir/Bodega/soli_bodega.php" target="_blank">
+         <form   method="POST" class="mx-1" action="../../Plugin/Imprimir/Bodega/soli_bodega.php" target="_blank">
              <?php $sql = "SELECT * FROM tb_bodega WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     $n=0;
@@ -82,7 +87,7 @@ form{
                 </svg>
              </button>
          </form>
-         <form id="ssas"  class="mx-1"  method="POST" action="../../Plugin/PDF/Bodega/pdf_soli_bodega.php" target="_blank">
+         <form   class="mx-1"  method="POST" action="../../Plugin/PDF/Bodega/pdf_soli_bodega.php" target="_blank">
              <?php $sql = "SELECT * FROM tb_bodega WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     $n=0;

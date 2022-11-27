@@ -24,7 +24,7 @@ die();
     <title>Solicitudes De Vale</title>
 </head>
 <body>
-        <style>
+<style>
 
     h1 {
   color: white;
@@ -32,10 +32,22 @@ die();
 }
 
 
+#section{
+            margin: 2%;
+            padding:0%;
+            border-radius: 15px;
+            background: white;
+        }
+              @media (max-width: 800px){
+   #section{
+        margin: -15%6%6%7%;
+       
+    }
+    }
     </style>
     <br><br><br>
+<section id="section" class="mx-3 p-2" style="background-color:white; border-radius:5px;margin-bottom: 3%;"> 
     <center><h1 style="margin-top:2%">Solicitudes Vale</h1></center><br>
-     <div  class="mx-3 p-2 mb-5" style="background-color: white; border-radius:5px; ">
 
           <?php if ($tipo_usuario==1) {?>  
      
@@ -211,7 +223,7 @@ die();
             dataSrc: 3
         },
 responsive: true,
-autoWidth:false,
+autoWidth:true,
             deferRender: true,
             scroller: true,
             scrollY: 400,

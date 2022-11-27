@@ -104,7 +104,7 @@ $result = mysqli_query($conn, $sql);
 <div class="card">
 <div class="card-body">
 <?php if($tipo_usuario == 1) { ?>
-    <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="float: left;margin-top: 1%; color: white;margin-bottom: 1%;">Nueva Unidad</button>
+    <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="float: left; color: white;margin-bottom: 1%;">Nueva Unidad</button>
    
 <!-- Delete -->
 <div class="modal fade" id="Usuarios" style="background: rgba(0, 0, 0, 0.3);" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
@@ -141,7 +141,7 @@ $result = mysqli_query($conn, $sql);
     </div>
 </div><?php } ?>
 
- <div  style="position: initial;" class="btn-group mb-3 my-3  mx-2" role="group" aria-label="Basic outlined example">
+ <div  style="position: initial;" class="btn-group mb-3 mx-2" role="group" aria-label="Basic outlined example">
          <form method="POST" action="../../Plugin/Imprimir/U_D_D_C/U_D_D_C.php" target="_blank">
              <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="unidad">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -168,11 +168,13 @@ $result = mysqli_query($conn, $sql);
                    <thead>
              <tr id="tr">
                 <?php if($tipo_usuario == 1) { ?>
+                <th style="width: 10%; text-align: center;">ID</th>
                 <th  style=" width: 10%">Unidad de Medida</th>
                 <th  style=" width: 10%">Habilitado</th>
                 <th  style=" width: 10%"> Cambiar Habilitado</th>
                 <th  style=" width: 10%">Eliminar</th><?php } ?>
                 <?php if($tipo_usuario == 2) { ?>
+                <th style="width: 10%; text-align: center;">ID</th>
                 <th  style=" width: 25%">Unidad de Medida</th>
                 <th  style="width: 20%">Habilitado</th>
                 
@@ -185,10 +187,10 @@ $result = mysqli_query($conn, $sql);
 
     $sql = "SELECT * FROM selects_unidad_medida ORDER BY `id` DESC ";
     $result = mysqli_query($conn, $sql);
-
+    $n=0;
     while ($solicitudes = mysqli_fetch_array($result)){
-
-
+        $n++;
+        $r=$n+0;
         ?>
         <style type="text/css">
      #td{
@@ -197,6 +199,7 @@ $result = mysqli_query($conn, $sql);
    
 </style>
         <tr>
+            <td><?php echo $r ?></td>   
             <td style="width: 30%;min-width: 100%;text-align: left;" data-label="Nombres">
                 <?php  echo $solicitudes['unidad_medida']; ?>
                 <input readonly style="width:100%;border:none;background: transparent;" type="hidden" name="cod" value="<?php  echo $solicitudes['unidad_medida']; ?>"></td>
@@ -208,7 +211,7 @@ $result = mysqli_query($conn, $sql);
                     $c='Unidad Disponible';
                 } elseif ($solicitudes['Habilitado']  == 'No') {
                
-                    echo ' style="background-color:red;max-width:100% border-radius:5px;text-align:center;color: white;"';
+                    echo ' style="background-color:red;max-width:100%; border-radius:5px;text-align:center;color: white;"';
                     $c='Unidad no Disponible';
                 }
             ?>
@@ -228,7 +231,7 @@ $result = mysqli_query($conn, $sql);
                     <input type="hidden" name="id" value="<?php  echo $solicitudes['id']; ?>">
                     <input type="hidden" name="Habilitado" value="<?php  echo $solicitudes['Habilitado']; ?>">
                    <?php if ($solicitudes['Habilitado']=="No") {
-                        echo '<button  onclick="return confirmaion()" class="btn btn-danger  w-40" type="submit">ELiminar</button>';
+                        echo '<button  class="btn btn-danger" >ELiminar</button>';
                     }else if ($solicitudes['Habilitado']=="Si") {
                         echo '<button type="button"  id="th" style="cursor: not-allowed;background: rgba(255, 0, 0, 0.5); border: none;" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger  text-white w-40">Eliminar</button>';
                     }?>
@@ -250,7 +253,7 @@ $result = mysqli_query($conn, $sql);
 
        $('#examp').DataTable({
             rowGroup: {
-            dataSrc: 1
+            dataSrc: 2
         },
             responsive: true,
             autoWidth:false,

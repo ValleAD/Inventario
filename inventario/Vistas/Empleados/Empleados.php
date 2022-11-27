@@ -161,7 +161,28 @@ $result = mysqli_query($conn, $sql);
   }
 } 
 ?>
-    <section  style=" border-radius: 5px; background: white; ">
+<style>
+
+    h2 {
+  color: white;
+  text-shadow: 1px 1px 5px black;
+}
+
+
+#section{
+            margin: 2%;
+            padding:0%;
+            border-radius: 15px;
+            background: white;
+        }
+              @media (max-width: 800px){
+   #section{
+        margin: -15%6%6%7%;
+       
+    }
+    }
+    </style>
+<section id="section" class="mx-3 p-2" style="background-color:white; border-radius:5px;margin-bottom: 3%;"> 
        <h2 class="text-center " >Empleados Del Sistema</h2>
 
  <table width="100%" >

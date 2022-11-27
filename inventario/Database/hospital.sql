@@ -37,6 +37,7 @@ CREATE TABLE tb_productos (
 
 ALTER TABLE `tb_productos` ADD `Dia` INT(2) NOT NULL AFTER `fecha_registro`, ADD `Mes` INT(2) NOT NULL AFTER `Dia`, ADD `Año` INT(4) NOT NULL AFTER `Mes`;
 ALTER TABLE `historial` ADD `Concepto` VARCHAR(50) NOT NULL AFTER `descripcion`;
+ALTER TABLE `historial` ADD `ID` INT(11) NOT NULL AUTO_INCREMENT FIRST, ADD PRIMARY KEY (`ID`);
 
 CREATE TABLE tb_usuarios (
   id int(3)  NOT NULl AUTO_INCREMENT,
@@ -94,7 +95,7 @@ CREATE TABLE `historial` (
   `Concepto` varchar(50) NOT NULL,
   `unidad_medida` varchar(11) NOT NULL DEFAULT 'C/U',
   `fecha_registro` date NOT NULL DEFAULT current_timestamp(),
-  `No_Comprovante` int(11) NOT NULL DEFAULT 1 PRIMARY KEY,
+  `No_Comprovante` int(11) NOT NULL DEFAULT 1 ,
   `Entradas` decimal(6,2) NOT NULL DEFAULT 0.00,
   `Salidas` decimal(6,2) NOT NULL DEFAULT 0.00,
   `Saldo` decimal(6,2) NOT NULL DEFAULT 0.00

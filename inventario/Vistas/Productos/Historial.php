@@ -52,7 +52,7 @@ die();
         </div>
 
 <?php
- if (isset($_POST['Consultar2'])) {$Busqueda=$_POST['Busqueda']?>
+ if (isset($_POST['Consultar2'])) {$Busqueda=$_POST['Busqueda'];?>
 <br>
 <div class="card card1" id="card1" >
             <div class="card-body">
@@ -65,11 +65,12 @@ die();
     <div class="col-md-3" id="card">
         <div class="card">
             <div class="card-body">
-<?php $sql = "SELECT fecha_registro,Concepto,No_Comprovante,descripcion,unidad_medida, SUM(Entradas), SUM(Salidas),Saldo FROM historial WHERE  No_Comprovante = '$Busqueda' GROUP BY Concepto";
+<?php $sql = "SELECT Concepto,No_Comprovante,h.descripcion,  h.fecha_registro,h.unidad_medida, SUM(Entradas), SUM(Salidas),Saldo, p.precio FROM historial h JOIN tb_productos p ON h.No_Comprovante= p.codProductos WHERE  No_Comprovante = '$Busqueda' GROUP BY Concepto limit 1";
 $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
         $fecha=date("d-m-Y",strtotime($productos['fecha_registro']));
+        $fecha1=date("d-m-Y",strtotime($productos['fecha_registro']));
         $Comprovante= $productos['No_Comprovante'];
         $Concepto= $productos['Concepto'];
         $Entradas=$productos['SUM(Entradas)'];
@@ -83,6 +84,7 @@ $result = mysqli_query($conn, $sql);
                  <div  style="position: initial;" class="btn-group mb-3 my-3  mx-2" role="group" aria-label="Basic outlined example">
          <form method="POST" action="../../Plugin/Imprimir/Producto/productos.php" target="_blank">
             <input type="hidden" name="cod" value="<?php echo $cod ?>">
+            <input type="hidden" name="Busqueda" value="<?php echo $Busqueda ?>">
             <input type="hidden" name="descripcion" value="<?php echo $descripcion ?>">
             <input type="hidden" name="fecha" value="<?php echo $fecha ?>">
             <input type="hidden" name="fecha" value="<?php echo $fecha ?>">
@@ -97,6 +99,7 @@ $result = mysqli_query($conn, $sql);
          </form>
          <form method="POST" action="../../Plugin/PDF/Productos/pdf_productos.php" target="_blank" class="mx-1">
             <input type="hidden" name="cod" value="<?php echo $cod ?>">
+            <input type="hidden" name="Busqueda" value="<?php echo $Busqueda ?>">
             <input type="hidden" name="descripcion" value="<?php echo $descripcion ?>">
             <input type="hidden" name="fecha" value="<?php echo $fecha ?>">
             <input type="hidden" name="um" value="<?php echo $um ?>">
@@ -109,6 +112,7 @@ $result = mysqli_query($conn, $sql);
          </form>
                  <form  method="POST" action="../../Plugin/Excel/Productos/Historial.php" >
                     <input type="hidden" name="cod" value="<?php echo $cod ?>">
+            <input type="hidden" name="Busqueda" value="<?php echo $Busqueda ?>">
             <input type="hidden" name="descripcion" value="<?php echo $descripcion ?>">
             <input type="hidden" name="fecha" value="<?php echo $fecha ?>">
             <input type="hidden" name="fecha1" id="p3">
@@ -152,6 +156,7 @@ $result = mysqli_query($conn, $sql);
     </div>
         </div>
     </div>
+<?php } ?>
         <div class="col-md-9">
         <div class="card">
             <div class="card-body">
@@ -168,11 +173,33 @@ $result = mysqli_query($conn, $sql);
             </tr>
            
      </thead>
+<tbody>
+    <?php $sql = "SELECT fecha_registro,codProductos, precio FROM tb_productos WHERE  codProductos = '$Busqueda' GROUP BY codProductos";
+$result = mysqli_query($conn, $sql);
 
+    while ($productos = mysqli_fetch_array($result)){
+        $fecha=date("d-m-Y",strtotime($productos['fecha_registro']));
+        $Comprovante= $productos['codProductos'];
+        $Saldo= $productos['precio'];?>
+        <tr>
+            <td id="th" data-label="Fecha"><?php echo $fecha ?></td>
+            <td id="th" data-label="Concepto">Inventario Físico</td>
+            <td id="th" data-label="No. Comprovante"><?php echo $Comprovante ?></td>
+            <td id="th" data-label="Entradas">0.00</td>
+            <td id="th" data-label="Salidas">0.00</td>
+            <td id="th" data-label="Saldo"><?php echo $Saldo ?></td>
+        </tr> 
+    <?php } $sql = "SELECT Concepto,No_Comprovante,h.descripcion, h.fecha_registro,h.unidad_medida, SUM(Entradas), SUM(Salidas),Saldo, p.precio FROM historial h JOIN tb_productos p ON h.No_Comprovante= p.codProductos WHERE  No_Comprovante = '$Busqueda' GROUP BY Concepto";
+$result = mysqli_query($conn, $sql);
 
-         
-         <style> #td{display: none;}</style>
-
+    while ($productos = mysqli_fetch_array($result)){
+        $fecha=date("d-m-Y",strtotime($productos['fecha_registro']));
+        $Comprovante= $productos['No_Comprovante'];
+        $Concepto= $productos['Concepto'];
+        $Entradas=$productos['SUM(Entradas)'];
+        $Salida=$productos['SUM(Salidas)'];
+        $Saldo=$productos['Saldo'];
+?>
         <tr>
             <td id="th" data-label="Fecha"><?php echo $fecha ?></td>
             <td id="th" data-label="Concepto"><?php echo $Concepto ?></td>
@@ -189,7 +216,6 @@ $result = mysqli_query($conn, $sql);
         </div>
     </div>
 </div>
-
 <?php } ?>
   </section>
 
@@ -205,6 +231,7 @@ $result = mysqli_query($conn, $sql);
             scroller: true,
             lengthMenu: [[10, -1], [10,"Todos"]],
             scrollY: 400,
+            "searching": false,
             scrollCollapse: true,
                     language: {
                 "lengthMenu": "Mostrar _MENU_ registros",

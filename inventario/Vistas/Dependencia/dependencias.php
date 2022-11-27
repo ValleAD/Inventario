@@ -107,10 +107,10 @@ $result = mysqli_query($conn, $sql);
             <h2 class="text-center " >Dependencias Del Departamento</h2><br>
 <div class="card">
 <div class="card-body">
-    <a href="../Categoria/categorias.php" class="btn btn-info" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; ">Categorias</a>
-    <a href="../Departamento/departamentos.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Departamentos</a>
+    <a href="../Categoria/categorias.php" class="btn btn-info" style="float: right; color: white;margin-bottom: 1%; ">Categorias</a>
+    <a href="../Departamento/departamentos.php" class="btn btn-primary" style="float: right; color: white;margin-bottom: 1%; margin-right: 15px;">Departamentos</a>
 <?php if($tipo_usuario == 1) { ?>
-    <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="float: left;margin-top: 1%; color: white;margin-bottom: 1%;">Nueva Dependencia</button>
+    <button class="btn btn-success" data-toggle="modal" data-target="#Usuarios" style="float: left; color: white;margin-bottom: 1%;">Nueva Dependencia</button>
 <!-- Delete -->
 <div class="modal fade" id="Usuarios" style="background: rgba(0, 0, 0, 0.3);" id="form" data-backdrop="static"  tabindex="-1" role="dialog">
     <div class="modal-dialog">
@@ -145,7 +145,7 @@ $result = mysqli_query($conn, $sql);
         </div>
     </div>
 </div><?php } ?>
- <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+ <div style="position: initial;" class="btn-group mb-3  mx-2" role="group" aria-label="Basic outlined example">
          <form method="POST" action="../../Plugin/Imprimir/U_D_D_C/U_D_D_C.php" target="_blank">
              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="dependencia">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -172,16 +172,16 @@ $result = mysqli_query($conn, $sql);
                    <thead>
              <tr id="tr">
                 <?php if($tipo_usuario == 1) { ?>
-                <th style="width: 10%;">#</th>
+                <th style="width: 10%; text-align: center;">ID</th>
                 <th  style=" width: 10%">Dependencia</th>
                 <th  style=" width: 10%">Habilitado</th>
                 <th  style=" width: 10%"> Cambiar Habilitado</th>
                 <th  style=" width: 10%">Eliminar</th><?php } ?>
                 <?php if($tipo_usuario == 2) { ?>
-                <th style="width: 60%;">#</th>
+                <th style="width: 10%; text-align: center;">ID</th>
                 <th  style=" width: 60%">Dependencia</th>
                 <th  style="width: 60%">Habilitado</th>
-                <th></th>
+                
                 <?php } ?>
                 
             </tr>
@@ -238,7 +238,7 @@ $result = mysqli_query($conn, $sql);
                         echo '<button type="button"  id="th" style="cursor: not-allowed;background: rgba(255, 0, 0, 0.5); border: none;" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger  text-white w-40">Eliminar</button>';
                     }?>
                 </form>
-            </td></td><?php } ?>
+            <?php } ?>
         </tr>
       
 

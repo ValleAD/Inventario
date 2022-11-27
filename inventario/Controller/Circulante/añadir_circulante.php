@@ -27,7 +27,7 @@ if (mysqli_num_rows($verificar_circulante)>0) {
       allowOutsideClick: false
     }).then((resultado) =>{
 if (resultado.value) {
-        window.location.href='../../Vistas/Circulante/form_circulante.php';                               
+        window.location.href='../../Vistas/Circulante/form_circulante1.php';                               
                }
                 });
 
@@ -51,7 +51,10 @@ for($i = 0; $i < count($_POST['desc']); $i++)
       $insert = "INSERT INTO detalle_Circulante(codigo, descripcion, unidad_medida, stock, tb_circulante, precio) VALUES ('$codigo_producto','$descripcion','$u_m', '$soli', '$num_sol', '$cost')";
       $query = mysqli_query($conn, $insert);
 
-      if ($result || $query) {
+ $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo) VALUES('$descripcion','Entrada Por Circulante','$u_m','$codigo_producto','$soli','$cost')";
+
+       $query1 = mysqli_query($conn, $sql1);
+      if ($result || $query || $query1) {
                 echo "<script>
     Swal.fire({
       title:'Realizado',

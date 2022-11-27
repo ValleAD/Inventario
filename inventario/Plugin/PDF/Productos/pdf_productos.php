@@ -84,14 +84,27 @@ include ('../../..//Model/conexion.php'); ?>
     </tbody>
 </table> 
 <?php } 
-  if (isset($_POST['Historial'])) { 
-$fecha=$_POST['fecha'];
-$fecha1=$_POST['fecha1'];
-$descripcion=$_POST['descripcion'];
-$cod=$_POST['cod'];
-$um=$_POST['um'];
-    ?> 
+  if (isset($_POST['Historial'])) {$Busqueda=$_POST['Busqueda'];$fecha1=$_POST['fecha1'] ?>
+
+
+<?php $sql = "SELECT Concepto,No_Comprovante,h.descripcion, h.fecha_registro, h.unidad_medida, SUM(Entradas), SUM(Salidas),Saldo, p.precio FROM historial h JOIN tb_productos p ON h.No_Comprovante= p.codProductos WHERE  No_Comprovante = '$Busqueda' GROUP BY Concepto limit 1";
+$result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        $fecha=date("d-m-Y",strtotime($productos['fecha_registro']));
+        $Comprovante= $productos['No_Comprovante'];
+        $Concepto= $productos['Concepto'];
+        $Entradas=$productos['SUM(Entradas)'];
+        $Salida=$productos['SUM(Salidas)'];
+        $Saldo=$productos['Saldo'];
+        $cod= $productos['No_Comprovante'];
+        $descripcion=$productos['descripcion'];
+        $um=$productos['unidad_medida'];
+?>
+
+
 <p><b>PERIODO DE MOVIMIENTO</b></p>
+<hr>
 <table class="table" style="width: 100%;">
     <tr>
         <td><p><b>DE:</b> <?php echo $fecha ?></p></td>
@@ -110,48 +123,73 @@ $um=$_POST['um'];
         <p style="float: right;"><?php echo $um ?></p>
     </tr>
 </table>
-<br><br><br>
-        <table class="table table-responsive table-striped"  style="text-align: center;width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
 
-    <thead style="background-color: #46466b;color: white;">
-        <tr  style=" border: 1px solid #ccc;border-collapse: collapse;">
-                     <th>Fecha</th>
-                     <th>Concepto</th>
-                     <th>No. Comprobante</th>
-                     <th >Entradas</th>
-                     <th >Salidas</th>
-                     <th >Saldo</th>
-            
-        </tr>
-    </thead>
-    <tbody>
-<?php
+<hr>
+<br>
+<?php } ?>
+    <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
 
-    $sql = "SELECT No_Comprovante,fecha_registro,Entradas, SUM(Entradas), SUM(Salidas),Saldo FROM historial  WHERE  No_Comprovante = '$cod' GROUP BY Concepto";
+        <thead style="background-color: #46466b;color: white;">
+        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+                     <th style="font-size: 12px;height: 3%;">Fecha</th>
+                     <th style="font-size: 12px;height: 3%;">Concepto</th>
+                     <th style="font-size: 12px;height: 3%;">No. Comprobante</th>
+                     <th style="font-size: 12px;height: 3%;">Entradas</th>
+                     <th style="font-size: 12px;height: 3%;">Salidas</th>
+                     <th style="font-size: 12px;height: 3%;">Saldo</th>
+                
+            </tr>
+           
+     </thead>
+<tbody>
+    <?php $sql = "SELECT fecha_registro,codProductos, precio FROM tb_productos WHERE  codProductos = '$Busqueda' GROUP BY codProductos";
+$result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        $fecha=date("d-m-Y",strtotime($productos['fecha_registro']));
+        $Comprovante= $productos['codProductos'];
+        $Saldo= $productos['precio'];?>
+
+        <tr>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Fecha"><?php echo $fecha ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Concepto">Inventario Físico</td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="No. Comprovante"><?php echo $Comprovante ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Entradas">0.00</td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Salidas">0.00</td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Saldo"><?php echo $Saldo ?></td>
+        </tr> 
+    <?php } ?>
+    <?php $sql = "SELECT Concepto,No_Comprovante,h.descripcion, h.fecha_registro,h.unidad_medida, SUM(Entradas), SUM(Salidas),Saldo, p.precio FROM historial h JOIN tb_productos p ON h.No_Comprovante= p.codProductos WHERE  No_Comprovante = '$Busqueda' GROUP BY Concepto";
 $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
         $fecha=date("d-m-Y",strtotime($productos['fecha_registro']));
         $Comprovante= $productos['No_Comprovante'];
+        $Concepto= $productos['Concepto'];
         $Entradas=$productos['SUM(Entradas)'];
         $Salida=$productos['SUM(Salidas)'];
         $Saldo=$productos['Saldo'];
 ?>
-</style>
-            <td  id="th" data-label="Fecha"><?php echo $fecha ?></td>
-            <td  id="th" data-label="Concepto">Inventario en Fisico</td>
-            <td id="th" data-label="No. Comprovante"><?php echo $Comprovante ?></td>
-            <td  id="th" data-label="Entradas"><?php echo $Entradas ?></td>
-            <td  id="th" data-label="Salidas"><?php echo $Salida ?></td>
-            <td  id="th" data-label="Saldo"><?php echo $Saldo ?></td>
-
-       <?php } ?>
-    </tr>
-    </tbody>
-</table> 
+        <tr>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Fecha"><?php echo $fecha ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Concepto"><?php echo $Concepto ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="No. Comprovante"><?php echo $Comprovante ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Entradas"><?php echo $Entradas ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Salidas"><?php echo $Salida ?></td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Saldo"><?php echo $Saldo ?></td>
+        </tr>        
+<?php } ?>
+           </tbody>
+        </table>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
 <?php } ?>
 </body>
 </html>
+
             <?php $html=ob_get_clean();
                  // echo $html 
 require_once '../../dompdf/autoload.inc.php';

@@ -33,21 +33,30 @@ h1 {
     <title>Solicitudes De Compra</title>
 </head>
 <body>
-    <style type="text/css">
+<style>
 
-     #act {
-    margin-right: 1%;
-    margin-left: 1%;
-    padding: 1%;
-    border-radius: 15px;
-    background: white;
-  }
+    h1 {
+  color: white;
+  text-shadow: 1px 1px 5px black;
+}
 
+
+#section{
+            margin: 2%;
+            padding:0%;
+            border-radius: 15px;
+            background: white;
+        }
+              @media (max-width: 800px){
+   #section{
+        margin: -15%6%6%7%;
+        
+    }
+    }
     </style>
-
     <br><br><br>
-    <center><h1 style="margin-top:2% ">Solicitudes de Compra</h1></center>
-    <section id="act">
+<section id="section" class="mx-3 p-2" style="background-color:white; border-radius:5px;margin-bottom: 3%;"> 
+    <center><h1>Solicitudes de Compra</h1></center>
               
             <?php if ($tipo_usuario==1) {?>
 
@@ -67,7 +76,7 @@ h1 {
                 </svg>
              </button>
          </form>
-                 <form id="ssas" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Compra/Excel.php" target="_blank">
+                 <form id="ssas"  method="POST" action="../../Plugin/Excel/Compra/Excel.php" target="_blank">
                 <button type="submit" class="btn btn-outline-primary" name="compra" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
@@ -105,7 +114,7 @@ h1 {
                 </svg>
              </button>
          </form>
-<form id="ssas" style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Compra/Excel.php" target="_blank">
+<form id="ssas"  method="POST" action="../../Plugin/Excel/Compra/Excel.php" target="_blank">
             <input type="hidden" name="columna" value="<?php echo $columna ?>">
             <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
                 <button type="submit" class="btn btn-outline-primary" name="compra1" target="_blank">

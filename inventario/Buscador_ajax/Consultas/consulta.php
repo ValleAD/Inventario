@@ -102,14 +102,14 @@ if ($buscarAlumnos->num_rows > 0)
          <style> #td{display: none;}</style>
          
 		<tr>
-            <td style="width: 10%;min-width: 100%;" id="th" data-label="Código">'.$productos['codProductos'].'</td>
-            <td style="width: 10%;min-width: 100%;" id="th" data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
-            <td style="width: 47%;min-width: 100%;" id="th" data-label="Descripción">'.$des.'</td>
-            <td style="width: 10%;min-width: 100%;" id="th" data-label="Unidad de Medida">'.$unidad.'</td>
-            <td style="width: 10%;min-width: 100%;" id="th" data-label="Cantidad">'.$stock.'</td>
-            <td style="width: 10%;min-width: 100%;" id="th" data-label="Precio">'.$precio1.'</td>
-            <td style="width: 20%;min-width: 100%;" id="th" data-label="Fecha">'.$productos['fecha_registro'].'</td>
-            <td style="width: 30%;min-width: 100%;" id="th" data-label="Categoría">'.$categoria.'</td>
+            <td data-label="Código">'.$productos['codProductos'].'</td>
+            <td data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
+            <td  data-label="Descripción">'.$des.'</td>
+            <td data-label="Unidad de Medida">'.$unidad.'</td>
+            <td data-label="Cantidad">'.$stock.'</td>
+            <td data-label="Precio">'.$precio1.'</td>
+            <td data-label="Fecha">'.$productos['fecha_registro'].'</td>
+            <td data-label="Categoría">'.$categoria.'</td>
 		
 		';
         if ($tipo_usuario==1) {
@@ -117,7 +117,7 @@ if ($buscarAlumnos->num_rows > 0)
 			<td>
                 <form style="margin: 0%;position: 0;float:right; background: transparent;" method="POST" action="vistaProductos.php">             
                 <input type="hidden" name="id" value="'.$productos['codProductos'] .'">               
-                <button  id="th" name="editar" class="btn btn-success btn-sm"  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
+                <button   name="editar" class="btn btn-success btn-sm"  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
             </form> </td>
             <td>
             ';

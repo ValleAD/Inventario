@@ -184,8 +184,8 @@ $spreadsheet->getActiveSheet()->getStyle('D'.$fila)
 
         $sheet->setCellValue('A' .$fila, $productos['codVale']);
         $sheet->setCellValue('B' .$fila, $productos['departamento']);
-        $sheet->setCellValue('D' .$fila, $productos['usuario']." "."(".$u.")");
-        $sheet->setCellValue('E' .$fila, $productos['fecha_registro']);
+        $sheet->setCellValue('C' .$fila, $productos['usuario']." "."(".$u.")");
+        $sheet->setCellValue('D' .$fila, $productos['fecha_registro']);
         if( $fila % 2 == 0 ){
         //even row
         $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':D'.$fila)->applyFromArray($evenRow);
