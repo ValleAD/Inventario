@@ -111,11 +111,21 @@ $result = mysqli_query($conn, $sql);
              </button>
          </form>
                  <form  method="POST" action="../../Plugin/Excel/Productos/Historial.php" >
-                    <input type="hidden" name="cod" value="<?php echo $cod ?>">
+            <input type="hidden" name="cod" value="<?php echo $cod ?>">
             <input type="hidden" name="Busqueda" value="<?php echo $Busqueda ?>">
             <input type="hidden" name="descripcion" value="<?php echo $descripcion ?>">
             <input type="hidden" name="fecha" value="<?php echo $fecha ?>">
             <input type="hidden" name="fecha1" id="p3">
+                <?php $sql = "SELECT fecha_registro,codProductos, precio FROM tb_productos WHERE  codProductos = '$Busqueda' GROUP BY codProductos";
+$result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        $fecha=date("d-m-Y",strtotime($productos['fecha_registro']));
+        $Comprovante= $productos['codProductos'];
+        $Saldo= $productos['precio'];?>
+        <input type="hidden" name="fecha2" value="<?php echo $fecha ?>">
+        <input type="hidden" name="precio" value="<?php echo $Saldo ?>">
+    <?php } ?>
             <input type="hidden" name="um" value="<?php echo $um ?>">
                 <button type="submit" class="btn btn-outline-primary" name="Historial" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">

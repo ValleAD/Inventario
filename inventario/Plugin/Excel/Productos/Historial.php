@@ -85,6 +85,8 @@ $spreadsheet->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(Al
 $spreadsheet->getActiveSheet()->getStyle('A2')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 $spreadsheet->getActiveSheet()->getStyle('A3')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 $spreadsheet->getActiveSheet()->getStyle('A4')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('A12:F12')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('A12:F12')->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 
 
 
@@ -144,7 +146,6 @@ $spreadsheet->getActiveSheet()->getStyle('A11:F11')->applyFromArray($tableHead);
 $spreadsheet->getActiveSheet()->getStyle('A6:A9')->applyFromArray($tableHead1);
 $spreadsheet->getActiveSheet()->getStyle('E6')->applyFromArray($tableHead1);
 
-
 $spreadsheet->getActiveSheet()->getStyle('A7')->getAlignment()->setWrapText(true);
 $spreadsheet->getActiveSheet()->getStyle('B7')->getAlignment()->setWrapText(true);
 $spreadsheet->getActiveSheet()->getStyle('C7')->getAlignment()->setWrapText(true);
@@ -164,6 +165,7 @@ $spreadsheet->getActiveSheet()->getStyle('F8')
 $spreadsheet->getActiveSheet()->getStyle('F9')
 ->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
 
+
 $spreadsheet->getActiveSheet()->getStyle('F6')
 ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 $spreadsheet->getActiveSheet()->getStyle('F7')
@@ -172,6 +174,7 @@ $spreadsheet->getActiveSheet()->getStyle('F8')
 ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 $spreadsheet->getActiveSheet()->getStyle('F9')
 ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+
 
 $spreadsheet->getActiveSheet()->getStyle('A6')
 ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
@@ -190,9 +193,11 @@ $spreadsheet->getActiveSheet()->getPageSetup()
 
 $fecha=$_POST['fecha'];
 $fecha1=$_POST['fecha1'];
+$fecha2=$_POST['fecha2'];
 $descripcion=$_POST['descripcion'];
 $cod=$_POST['cod'];
 $um=$_POST['um'];
+$precio=$_POST['precio'];
 
         $sheet->setCellValue('A6' ,"DE:");
         $sheet->setCellValue('A7' ,"Codigo del Producto:");
@@ -205,12 +210,12 @@ $um=$_POST['um'];
         $sheet->setCellValue('F7' ,$cod);
         $sheet->setCellValue('B8' ,$descripcion);
         $sheet->setCellValue('F9' ,$um);
+$fila = 13;
 
    $sql = "SELECT fecha_registro,Concepto,No_Comprovante, SUM(Entradas), SUM(Salidas),Saldo FROM historial  WHERE No_Comprovante='$cod' GROUP BY Concepto";
 
 $result = mysqli_query($conn, $sql);
 
-$fila = 12;
 
     while ($productos = mysqli_fetch_array($result)){
         $Comprovante= $productos['No_Comprovante'];
@@ -224,7 +229,10 @@ $spreadsheet->getActiveSheet()->getStyle('C' .$fila)->getAlignment()->setWrapTex
 $spreadsheet->getActiveSheet()->getStyle('D' .$fila)->getAlignment()->setWrapText(true);
 $spreadsheet->getActiveSheet()->getStyle('E' .$fila)->getAlignment()->setWrapText(true);
 $spreadsheet->getActiveSheet()->getStyle('F' .$fila)->getAlignment()->setWrapText(true);
-        $spreadsheet->getActiveSheet()->getStyle('A' .$fila)
+
+
+
+ $spreadsheet->getActiveSheet()->getStyle('A' .$fila)
 ->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 $spreadsheet->getActiveSheet()->getStyle('B' .$fila)
 ->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
@@ -250,6 +258,14 @@ $spreadsheet->getActiveSheet()->getStyle('E' .$fila)
 $spreadsheet->getActiveSheet()->getStyle('F' .$fila)
 ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 
+
+        $sheet->setCellValue('A12' ,$fecha2);
+        $sheet->setCellValue('B12' ,'Inventario Físico');
+        $sheet->setCellValue('C12' ,$cod);
+        $sheet->setCellValue('D12' ,'0.00');
+        $sheet->setCellValue('E12' ,'0.00');
+        $sheet->setCellValue('F12' ,$precio);
+
         $sheet->setCellValue('A' .$fila, $fecha);
         $sheet->setCellValue('B' .$fila, $Concepto);
         $sheet->setCellValue('C' .$fila, $Comprovante);
@@ -258,9 +274,11 @@ $spreadsheet->getActiveSheet()->getStyle('F' .$fila)
         $sheet->setCellValue('F' .$fila, $Saldo);
        if( $fila % 2 == 0 ){
         //even row
+        $spreadsheet->getActiveSheet()->getStyle('A12:F12')->applyFromArray($evenRow);
         $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':F'.$fila)->applyFromArray($evenRow);
     }else{
         //odd row
+        $spreadsheet->getActiveSheet()->getStyle('A12:F12')->applyFromArray($oddRow);
         $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':F'.$fila)->applyFromArray($oddRow);
     }
     //increment row
