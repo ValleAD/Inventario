@@ -16,7 +16,9 @@
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
 <h4 align="center" style="margin-top: 2%;">DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h5 align="center" style="margin-top: 2%;">FILTRO DE FECHAS</h5>
-
+<style>
+    .table td  {text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
+</style>
     <?php
     if (isset($_POST['Dia'])) {$dia=$_POST['dia']?><br>
                 <p align="center"><b>El Dia Selecionado</b>: <?php echo $_POST['dia'] ?></p>
@@ -296,5 +298,5 @@
  </body>
  </html>
 <script type="text/javascript">
-print('');
+window.print();
 </script>

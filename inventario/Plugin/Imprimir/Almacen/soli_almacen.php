@@ -17,6 +17,7 @@
  
 
 <style>
+    .table td  {text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
      @media (max-width: 952px){
    h3, h4, h5{
     font-size: 1em;
@@ -228,7 +229,7 @@ $id=$_POST['idusuario'];
     <br>
     <p style="text-align: center;">Autoriza: ________________</p>
 <script type="text/javascript">
-print('');
+window.print();
 </script>
 </body>
 </html>

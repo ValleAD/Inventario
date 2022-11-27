@@ -21,6 +21,7 @@
       
 ?>
     <style>
+        .table td  {text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
      @media (max-width: 952px){
    h3, h4,h5{
     font-size: 1em;
@@ -53,14 +54,14 @@
 </table>
  <table class="table" style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;text-align: center;">
     <thead>     
-        <tr style="border: 1px solid #ddd;color: black;" >
-            <th style="width: 25%;color: black;font-size: 14px;">Código</th>
-            <th style="width: 70%;color:black;font-size: 14px;">Descripción</th>
-            <th style="width: 15%;color:black;font-size: 14px;">U/M</th>
-            <th style="width: 15%;color:black;font-size: 14px;">Cant.<br>Sol.</th>
-            <th style="width: 15%;color:black;font-size: 14px;">Cant.<br>Desp.</th>
-            <th style="width: 15%;color:black;font-size: 14px;">C/U</th>
-            <th style="width: 15%;color:black;font-size: 14px;border-right:1px solid #ccc ;">Total</th>
+        <tr style="border: 1px solid #ddd;" >
+            <th style="width: 25%;font-size: 14px;">Código</th>
+            <th style="width: 70%;font-size: 14px;">Descripción</th>
+            <th style="width: 15%;font-size: 14px;">U/M</th>
+            <th style="width: 15%;font-size: 14px;">Cant.<br>Sol.</th>
+            <th style="width: 15%;font-size: 14px;">Cant.<br>Desp.</th>
+            <th style="width: 15%;font-size: 14px;">C/U</th>
+            <th style="width: 15%;font-size: 14px;border-right:1px solid #ccc ;">Total</th>
         </tr>
     </thead> 
 
@@ -90,7 +91,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
         </tr>
      
      <?php } } ?> 
-    <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
+    <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;table-layout: fixed; ">
         <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
         <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $tot_f ?></td>
     </tfoot>
@@ -98,13 +99,13 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 <br>
     <table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
         <tbody>
-            <tr style="border: 1px solid #ddd;color: black;" >
+            <tr style="border: 1px solid #ddd;" >
                 <td style="height: 35px;"><b>DEPARTAMENTO QUE SOLICITA:</b> MANTENIMIENTO</td>
             </tr>
-            <tr style="border: 1px solid #ddd;color: black;" >
+            <tr style="border: 1px solid #ddd;" >
                 <td style="height: 35px;"><b>FECHA: </b><?php echo $fech?> <div align="center" style="margin-top: -2.5%;">FIRMA</div> <div style="float: right; margin-top: -3%;">SELLO</div></td>
             </tr>
-            <tr style="border: 1px solid #ddd;color: black;" >
+            <tr style="border: 1px solid #ddd;" >
                 <td style="height: 35px;"><b>AUTORIZA:</b> DIRECTOR HOSPITAL NACIONAL "SANTA TERESA"</td>
             </tr>
         </tbody>
@@ -112,5 +113,5 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 </body>
 </html>
 <script type="text/javascript">
-print('');
+window.print();
 </script>

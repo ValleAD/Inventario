@@ -10,6 +10,9 @@
   
 </head>
 <body style="font-family: sans-serif;">
+    <style>
+    .table td  {text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
+</style>
     <img src="../../../img/hospital.png" style="width:20%">
     <img src="../../../img/log_1.png" style="width:20%; float:right">
     <?php if(isset($_POST['cod'])){
@@ -52,14 +55,14 @@
         <br> 
 <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
-        <tr style="border: 1px solid #ddd;color: black;">
-            <th style="width: 25%;color:black;font-size: 14px">Código</th>
-            <th style="width: 70%;color:black;font-size: 14px;">Descripción Completa</th>
-            <th style="width: 15%;color:black;font-size: 14px">U/M</th>
-            <th style="width: 15%;color:black;font-size: 14px">Cantidad Solicitada</th>
-            <th style="width: 30%;color:black;font-size: 14px">Cantidad Despachada</th>
-            <th style="width: 30%;color:black;font-size: 14px">Precio Unitario</th>
-            <th style="width: 15%;color:black;font-size: 14px;border-right:1px solid #ccc ;">Total</th>
+        <tr style="border: 1px solid #ddd;">
+            <th style="width: 25%;font-size: 14px">Código</th>
+            <th style="width: 70%;font-size: 14px;">Descripción Completa</th>
+            <th style="width: 15%;font-size: 14px">U/M</th>
+            <th style="width: 15%;font-size: 14px">Cantidad Solicitada</th>
+            <th style="width: 30%;font-size: 14px">Cantidad Despachada</th>
+            <th style="width: 30%;font-size: 14px">Precio Unitario</th>
+            <th style="width: 30%;font-size: 14px">Total</th>
         </tr>
     </thead> 
 
@@ -92,7 +95,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
      
     </tbody>  
      <?php } } ?> 
-    <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
+    <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;table-layout: fixed; ">
         <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
         <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $tot_f ?></td>
     </tfoot>
@@ -117,5 +120,5 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 </body>
 </html>
 <script type="text/javascript">
-print('');
+window.print();
 </script>

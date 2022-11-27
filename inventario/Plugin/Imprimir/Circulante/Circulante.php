@@ -12,6 +12,7 @@
 <img src="../../../img/hospital.png" style="width:20%">
     <img src="../../../img/log_1.png" style="width:20%; float:right">
         <style>
+        .table td  {text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
      @media (max-width: 952px){
    h3, h4{
     font-size: 1em;
@@ -43,16 +44,16 @@
         <td align="right"><b>Fecha:</b> <?php echo $fech ?></td>
     </tr>
 </table>         
-<table class="table" style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
+<table class="table" style="width: 100%;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
-            <th style="width: 25%;color:black;font-size: 14px;">Codigo</th>
-            <th style="width: 70%;color:black;font-size: 14px;">Descripción de los materiales y/o servicios solicitados</th>
-            <th style="width: 15%;color:black;font-size: 14px;">U/M</th>
-            <th style="width: 15%;color:black;font-size: 14px;">Cant.<br>Sol.</th>
-            <th style="width: 15%;color:black;font-size: 14px;">Cant.<br>Desp.</th>
-            <th style="width: 15%;color:black;font-size: 14px;">C/U</th>
-            <th style="width: 15%;color:black;font-size: 14px;border-right:1px solid #ccc ;">Total</th>
+            <th style="width: 25%;font-size: 14px;">Codigo</th>
+            <th style="width: 70%;font-size: 14px;">Descripción de los materiales y/o servicios solicitados</th>
+            <th style="width: 15%;font-size: 14px;">U/M</th>
+            <th style="width: 15%;font-size: 14px;">Cant.<br>Sol.</th>
+            <th style="width: 15%;font-size: 14px;">Cant.<br>Desp.</th>
+            <th style="width: 15%;font-size: 14px;">C/U</th>
+            <th style="width: 15%;font-size: 14px;border-right:1px solid #ccc ;">Total</th>
         </tr>
     </thead> 
 
@@ -111,5 +112,5 @@ for($i = 0; $i < count($_POST['desc']); $i++)
 </body>
 </html>
 <script type="text/javascript">
-print('');
+window.print();
 </script>

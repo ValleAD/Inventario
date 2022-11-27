@@ -1,5 +1,5 @@
 
-<?php include ('menu.php')?>
+<?php include ('menu.php');?>
 <!DOCTYPE html>
 <html lang="es">
 <head>

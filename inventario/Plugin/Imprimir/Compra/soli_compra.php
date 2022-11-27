@@ -6,6 +6,7 @@
        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="../../../bootstrap/css/bootstrap.css">
    <link rel="stylesheet" type="text/css" href="../../../styles/estilos_tablas.css">
+
  </head>
  <body>
 
@@ -17,6 +18,7 @@
 <h5 align="center">REPORTE DE SOLICITUD DE COMPRA</h5>
  
 <style>
+    .table td  {text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
      @media (max-width: 952px){
    h3, h4, h5{
     font-size: 1em;
@@ -42,15 +44,15 @@
     <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p><br><br>
     <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
-        <tr style="border: 1px solid #ddd;color: black;" >
+        <tr style="border: 1px solid #ddd;" >
 
-                <th style="color: black;font-size: 14px;width: 10%;">No. Solicitud</th>
-                <th style="color: black;font-size: 14px;width: 15%;">Dependencia</th>
-                <th style="color: black;font-size: 14px;width: 10%;">Plazo y No. de Entregas</th>
-                <th style="color: black;font-size: 14px;width: 10%;">Unidad Técnica</th>
-                <th style="color: black;font-size: 14px;width: 10%;">Descripción Solicitud</th>
-                <th style="color: black;font-size: 14px;width: 10%;">Encargado</th>
-                <th style="color: black;font-size: 14px;width: 10%;">Fecha de Registro</th>
+                <th style="font-size: 14px;width: 10%;">No. Solicitud</th>
+                <th style="font-size: 14px;width: 15%;">Dependencia</th>
+                <th style="font-size: 14px;width: 10%;">Plazo y No. de Entregas</th>
+                <th style="font-size: 14px;width: 10%;">Unidad Técnica</th>
+                <th style="font-size: 14px;width: 10%;">Descripción Solicitud</th>
+                <th style="font-size: 14px;width: 10%;">Encargado</th>
+                <th style="font-size: 14px;width: 10%;">Fecha de Registro</th>
         </tr>
         
         <td id="td" colspan="3" ><h4 align="center">No se encontraron resultados </h4></td>
@@ -100,15 +102,15 @@
     <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p><br><br>
     <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
-        <tr style="border: 1px solid #ddd;color: black;" >
+        <tr style="border: 1px solid #ddd;" >
 
-            <th style="color: black;font-size: 14px;width: 10%;">No. Solicitud</th>
-                <th style="color: black;font-size: 14px;width: 15%;">Dependencia</th>
-                <th style="color: black;font-size: 14px;width: 10%;">Plazo y No. de Entregas</th>
-                <th style="color: black;font-size: 14px;width: 10%;">Unidad Técnica</th>
-                <th style="color: black;font-size: 14px;width: 10%;">Descripción Solicitud</th>
-                <th style="color: black;font-size: 14px;width: 10%;">Encargado</th>
-                <th style="color: black;font-size: 14px;width: 10%;">Fecha de Registro</th>
+            <th style="font-size: 14px;width: 10%;">No. Solicitud</th>
+                <th style="font-size: 14px;width: 15%;">Dependencia</th>
+                <th style="font-size: 14px;width: 10%;">Plazo y No. de Entregas</th>
+                <th style="font-size: 14px;width: 10%;">Unidad Técnica</th>
+                <th style="font-size: 14px;width: 10%;">Descripción Solicitud</th>
+                <th style="font-size: 14px;width: 10%;">Encargado</th>
+                <th style="font-size: 14px;width: 10%;">Fecha de Registro</th>
         </tr>
         
         <td id="td" colspan="3" ><h4 align="center">No se encontraron resultados </h4></td>
@@ -148,14 +150,14 @@ $idusuario=$_POST['idusuario'];
 <?php if (isset($_POST['id'])) {?>
 <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
-        <tr style="border: 1px solid #ddd;color: black;" >
-          <th style="color: black;font-size: 14px;width: 10%;">No. Solicitud</th>
-                <th style="color: black;font-size: 14px;width: 15%;">Dependencia</th>
-                <th style="color: black;font-size: 14px;width: 10%;">Plazo y No. de Entregas</th>
-                <th style="color: black;font-size: 14px;width: 10%;">Unidad Técnica</th>
-                <th style="color: black;font-size: 14px;width: 10%;">Descripción Solicitud</th>
-                <th style="color: black;font-size: 14px;width: 10%;">Encargado</th>
-                <th style="color: black;font-size: 14px;width: 10%;">Fecha de Registro</th>
+        <tr style="border: 1px solid #ddd;" >
+          <th style="font-size: 14px;width: 10%;">No. Solicitud</th>
+                <th style="font-size: 14px;width: 15%;">Dependencia</th>
+                <th style="font-size: 14px;width: 10%;">Plazo y No. de Entregas</th>
+                <th style="font-size: 14px;width: 10%;">Unidad Técnica</th>
+                <th style="font-size: 14px;width: 10%;">Descripción Solicitud</th>
+                <th style="font-size: 14px;width: 10%;">Encargado</th>
+                <th style="font-size: 14px;width: 10%;">Fecha de Registro</th>
         </tr>
         
         <td id="td" colspan="6" ><h4 align="center">No se encontraron resultados </h4></td>
@@ -192,14 +194,14 @@ $idusuario=$_POST['idusuario'];
 <?php } if (isset($_POST['id1'])) {?>
 <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
-        <tr style="border: 1px solid #ddd;color: black;" >
-          <th style="color: black;font-size: 14px;width: 10%;">No. Solicitud</th>
-                <th style="color: black;font-size: 14px;width: 15%;">Dependencia</th>
-                <th style="color: black;font-size: 14px;width: 10%;">Plazo y No. de Entregas</th>
-                <th style="color: black;font-size: 14px;width: 10%;">Unidad Técnica</th>
-                <th style="color: black;font-size: 14px;width: 10%;">Descripción Solicitud</th>
-                <th style="color: black;font-size: 14px;width: 10%;">Encargado</th>
-                <th style="color: black;font-size: 14px;width: 10%;">Fecha de Registro</th>
+        <tr style="border: 1px solid #ddd;" >
+          <th style="font-size: 14px;width: 10%;">No. Solicitud</th>
+                <th style="font-size: 14px;width: 15%;">Dependencia</th>
+                <th style="font-size: 14px;width: 10%;">Plazo y No. de Entregas</th>
+                <th style="font-size: 14px;width: 10%;">Unidad Técnica</th>
+                <th style="font-size: 14px;width: 10%;">Descripción Solicitud</th>
+                <th style="font-size: 14px;width: 10%;">Encargado</th>
+                <th style="font-size: 14px;width: 10%;">Fecha de Registro</th>
         </tr>
         
         <td id="td" colspan="6" ><h4 align="center">No se encontraron resultados </h4></td>
@@ -247,5 +249,5 @@ $idusuario=$_POST['idusuario'];
 </body>
 </html>
 <script type="text/javascript">
-print('');
+window.print();
 </script>

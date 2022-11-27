@@ -17,6 +17,7 @@ include ('../../../Model/conexion.php');
 <img src="../../../img/hospital.png" style="width:20%">
     <img src="../../../img/log_1.png" style="width:20%; float:right">
 <style>
+    .table td  {text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
      @media (max-width: 952px){
    h3, h4, h5{
     font-size: 1em;
@@ -311,5 +312,5 @@ width: 100%;
  </body>
  </html>
 <script type="text/javascript">
-print('');
+window.print();
 </script>

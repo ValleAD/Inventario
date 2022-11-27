@@ -15,6 +15,7 @@
 <h4>DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h5 align="center">REPORTE DE SOLICITUD DE BODEGA</h5>
  <style>
+    .table td  {text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
      @media (max-width: 952px){
    h3, h4, h5{
     font-size: 1em;
@@ -39,12 +40,12 @@
     <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p><br><br>
     <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
-        <tr style="border: 1px solid #ddd;color: black;" >
+        <tr style="border: 1px solid #ddd;" >
 
-            <th  style="width: 5%;color:black;font-size: 14px;">Codigo</th>
-            <th  style="width: 50%;color:black;font-size: 14px;">Departamento Solicitante </th>
-            <th  style="width: 50%;color:black;font-size: 14px;">Encargado </th>
-            <th  style="width: 15%;color:black;font-size: 14px;">Fecha</th>
+            <th  style="width: 20%;font-size: 14px;">Codigo</th>
+            <th  style="width: 20%;font-size: 14px;">Departamento Solicitante </th>
+            <th  style="width: 20%;font-size: 14px;">Encargado </th>
+            <th  style="width: 20%;font-size: 14px;">Fecha</th>
         </tr>
         
         <td id="td" colspan="3" ><h4 align="center">No se encontraron resultados </h4></td>
@@ -96,12 +97,12 @@
     <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p><br><br>
     <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
-        <tr style="border: 1px solid #ddd;color: black;" >
+        <tr style="border: 1px solid #ddd;" >
 
-            <th  style="width: 10%;color:black;font-size: 14px;">Codigo</th>
-            <th  style="width: 30%;color:black;font-size: 14px;">Departamento Solicitante </th>
-            <th  style="width: 30%;color:black;font-size: 14px;">Encargado </th>
-            <th  style="width: 15%;color:black;font-size: 14px;">Fecha</th>
+            <th  style="width: 20%;font-size: 14px;">Codigo</th>
+            <th  style="width: 20%;font-size: 14px;">Departamento Solicitante </th>
+            <th  style="width: 20%;font-size: 14px;">Encargado </th>
+            <th  style="width: 20%;font-size: 14px;">Fecha</th>
         </tr>
         
         <td id="td" colspan="3" ><h4 align="center">No se encontraron resultados </h4></td>
@@ -144,11 +145,11 @@ $idusuario=$_POST['idusuario'];
 <?php if (isset($_POST['id'])) {?>
 <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
-        <tr style="border: 1px solid #ddd;color: black;" >
-            <th style="width: 5%;color: black; font-size: 14px;">Código</th>
-            <th style="width: 50%;color:black;font-size: 14px;">Departamento Solicitante</th>
-            <th style="color: black;font-size: 14px;text-align: center;">Encargado</th>
-            <th style="width: 15%;color:black;font-size: 14px;">Fecha</th>
+        <tr style="border: 1px solid #ddd;" >
+            <th  style="width: 20%;font-size: 14px;">Codigo</th>
+            <th  style="width: 20%;font-size: 14px;">Departamento Solicitante </th>
+            <th  style="width: 20%;font-size: 14px;">Encargado </th>
+            <th  style="width: 20%;font-size: 14px;">Fecha</th>
         </tr>
         <td id="td" colspan="8"><h4>No se encontraron resultados</h4></td>
     </thead> 
@@ -188,11 +189,11 @@ $des=$solicitudes['departamento'];
           <?php } if (isset($_POST['id1'])) { ?>
           <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
-        <tr style="border: 1px solid #ddd;color: black;" >
-            <th style="width: 5%;color: black;font-size: 14px;">Código</th>
-            <th style="width: 50%;color:black;font-size: 14px;">Departamento Solicitante</th>
-            <th style="color: black;font-size: 14px;text-align: center;">Encargado</th>
-            <th style="width: 15%;color:black;font-size: 14px;">Fecha</th>
+        <tr style="border: 1px solid #ddd;" >
+            <th  style="width: 20%;font-size: 14px;">Codigo</th>
+            <th  style="width: 20%;font-size: 14px;">Departamento Solicitante </th>
+            <th  style="width: 20%;font-size: 14px;">Encargado </th>
+            <th  style="width: 20%;font-size: 14px;">Fecha</th>
         </tr>
         <td id="td" colspan="8"><h4>No se encontraron resultados</h4></td>
     </thead> 
@@ -238,7 +239,7 @@ $des=$solicitudes['departamento'];
     <p style="text-align: center;">Autoriza: ________________</p>
 </section>
 <script type="text/javascript">
-print('');
+window.print();
 </script>
 </body>
 </html>

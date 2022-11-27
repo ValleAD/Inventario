@@ -1,7 +1,7 @@
 <?php
 session_start();
 $invitado = $_SESSION['Invitado1'];
-
+$tipo_usuario = $_SESSION['tipo_usuario1'];
 ?><!DOCTYPE html>
 <html lang="en">
 <head>

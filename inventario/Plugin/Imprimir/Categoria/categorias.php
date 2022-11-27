@@ -86,5 +86,5 @@ $categoria2 =$_POST['categoria'];
  </body>
  </html>
 <script type="text/javascript">
-print('');
+window.print();
 </script>

@@ -84,6 +84,7 @@ button:hover{
                  <div style="position: initial;" class="input-group mb-3">
                  
                       <input style="position: initial;" id="limpiar" type="text" onkeypress="return validar(event)" name="Invitadocliente" class="form-control"  required>
+                      <input type="hidden" name="tipo_usuario" value="0">
                       <label onclick="return validar1()" class="input-group-text input" for="inputGroupSelect01">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#x"/>
@@ -101,8 +102,10 @@ button:hover{
                                         		<?php 
                                         	}if (isset($_POST['Invitado1'])) {
                                         		$d=$_POST['Invitadocliente'];
+                                        		$a=$_POST['tipo_usuario'];
                                         		
                                         			$_SESSION['Invitado1'] = $d;
+                                        			$_SESSION['tipo_usuario1'] = $a;
                                         		 header("Location: Invitado/invitado.php");
                                         		} ?>
                                     </div>

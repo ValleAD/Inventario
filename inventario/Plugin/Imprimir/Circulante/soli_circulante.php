@@ -17,6 +17,7 @@
 <h4 align="center" style="margin-top: 2%;">DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h3 align="center" style="margin-top: 2%;">FONDO CIRCULANTE DE MONTO FIJO</h3>
 <style>
+    .table td  {text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
      @media (max-width: 952px){
    h3, h4, h5{
     font-size: 1em;
@@ -49,8 +50,8 @@
     <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
-            <th style="width: 10%;color:black;font-size: 14px;text-align: center;">No. de Solicitud </th>
-            <th style="width: 15%;color:black;font-size: 14px;text-align: center;">Fecha de Solicitud</th>
+            <th style="width: 10%;font-size: 14px;text-align: center;">No. de Solicitud </th>
+            <th style="width: 15%;font-size: 14px;text-align: center;">Fecha de Solicitud</th>
                 
         </tr>
         
@@ -93,8 +94,8 @@
     <table class="table" class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
-            <th style="width: 10%;color:black;font-size: 14px;text-align: center;">No. de Solicitud </th>
-            <th style="width: 15%;color:black;font-size: 14px;text-align: center;">Fecha de Solicitud</th>
+            <th style="width: 10%;font-size: 14px;text-align: center;">No. de Solicitud </th>
+            <th style="width: 15%;font-size: 14px;text-align: center;">Fecha de Solicitud</th>
             
         </tr>
         
@@ -129,8 +130,8 @@ $idusuario=$_POST['idusuario'];
 <table class="table" style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
-            <th style="width: 10%;color:black;font-size: 14px;text-align: center;">No. de Solicitud </th>
-            <th style="width: 15%;color:black;font-size: 14px;text-align: center;">Fecha de Solicitud</th>
+            <th style="width: 10%;font-size: 14px;text-align: center;">No. de Solicitud </th>
+            <th style="width: 15%;font-size: 14px;text-align: center;">Fecha de Solicitud</th>
         </tr>
     </thead> 
 
@@ -164,8 +165,8 @@ $idusuario=$_POST['idusuario'];
 <table class="table" style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
-            <th style="width: 10%;color:black;font-size: 14px;text-align: center;">No. de Solicitud </th>
-            <th style="width: 15%;color:black;font-size: 14px;text-align: center;">Fecha de Solicitud</th>
+            <th style="width: 10%;font-size: 14px;text-align: center;">No. de Solicitud </th>
+            <th style="width: 15%;font-size: 14px;text-align: center;">Fecha de Solicitud</th>
         </tr>
     </thead> 
 
@@ -212,7 +213,7 @@ $idusuario=$_POST['idusuario'];
 
 
 <script type="text/javascript">
-print('');
+window.print();
 </script>
 </body>
 </html>

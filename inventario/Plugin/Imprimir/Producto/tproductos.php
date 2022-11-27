@@ -22,6 +22,8 @@ include ('../../../Model/conexion.php');
 <h5 align="center" style="margin-top: 2%;">TODOS LOS PRODUCTOS</h5>
 
 <style>
+    .table td  {text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
+
     <section>
      @media (max-width: 952px){
    h3, h4, h5{
@@ -38,15 +40,14 @@ include ('../../../Model/conexion.php');
 
     <thead>
         <tr id="tr">
-            <th style="font-size: 14px;width:5%">Código</th>
-            <th style="font-size: 14px;width:10%">Cod. de Catálogo</th>
-            <th style="font-size: 14px;width: 50%;">Descripción Completa</th>
-            <th style="font-size: 14px;width:10%">U/M</th>
-            <th style="font-size: 14px;width:10%">Cantidad</th>
-            <th style="font-size: 14px;width:10%">Costo Unitario</th>
-            <th style="font-size: 14px;width:10%">Fecha Registro</th>
-            <th style="font-size: 14px;width:10%">Categoria</th>
-                   <tr> <td align="center" id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td></tr>
+            <th style="width:20%;font-size: 14px;">Código</th>
+            <th style="width:20%;font-size: 14px;">Cod. de Catálogo</th>
+            <th style="width:30%;font-size: 14px;">Descripción Completa</th>
+            <th style="width:20%;font-size: 14px;">U/M</th>
+            <th style="width:20%;font-size: 14px;">Cantidad</th>
+            <th style="width:20%;font-size: 14px;">Costo Unitario</th>
+            <th style="width:20%;font-size: 14px;">Fecha Registro</th>
+            <th style="width:20%;font-size: 14px;">Categoria</th>
 
         </tr>
     </thead>
@@ -98,7 +99,9 @@ include ('../../../Model/conexion.php');
 </table> 
 </section>
 <script type="text/javascript">
-print('');
+
+window.print();
+
 </script>
  </body>
  </html>

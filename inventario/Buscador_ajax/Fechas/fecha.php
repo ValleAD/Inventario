@@ -1,7 +1,7 @@
 
-           <?php 
-           $tipo_usuario=0;
-            if (isset($_POST['dia'])){$dia=$_POST['dia']?><br>
+           <?php           
+              if (isset($_POST['dia'])){$dia=$_POST['dia']?><br>
+
 <style>
     .productos{
         display: none;

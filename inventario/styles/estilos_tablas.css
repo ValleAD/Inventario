@@ -4,7 +4,6 @@
 .table h1 {font-size: 28px;text-transform: uppercase;font-weight: bold;margin: 8px 0px;color: black;}
 .table tr {background-color: #f8f8f8;border: 1px solid #ddd;color: black;}
 .table th, .table td {font-size: 16px;padding: 8px;text-align: center;}
-.table th, .table td textarea {text-align: center;}
 .table thead th{ background-color: #46466b;color: white;text-align: center;}
 .table1 {width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed;}
 .table1 h1 {font-size: 28px;text-transform: uppercase;font-weight: bold;margin: 8px 0px;color: black;}

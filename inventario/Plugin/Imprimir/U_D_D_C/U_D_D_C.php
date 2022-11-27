@@ -12,7 +12,9 @@ include ('../../../Model/conexion.php');
    <link rel="stylesheet" type="text/css" href="../../../styles/estilos_tablas.css">
  </head>
  <body>
-
+<style>
+    .table td  {text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
+</style>
 <img src="../../../img/hospital.png" style="width:20%">
     <img src="../../../img/log_1.png" style="width:20%; float:right">
 <h3 align="center">HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
@@ -213,5 +215,5 @@ $n++;
 </body>
  </html>
 <script type="text/javascript">
-print('');
+window.print();
 </script>

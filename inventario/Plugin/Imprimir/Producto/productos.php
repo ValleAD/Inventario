@@ -18,9 +18,9 @@ include ('../../../Model/conexion.php');
 
  </head>
  <body>
-<style>p{font-size: 14px;}
-#th {color:black;}</style>
-
+<style>
+    .table td  {text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
+</style>
 <img src="../../../img/hospital.png" style="width:20%">
     <img src="../../../img/log_1.png" style="width:20%; float:right">
 <h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD</h3>
@@ -38,14 +38,14 @@ include ('../../../Model/conexion.php');
 
     <thead>
         <tr id="tr">
-            <th style="width:5%;font-size: 14px;">Código</th>
-            <th style="width:10%;font-size: 14px;">Cod. de Catálogo</th>
-            <th style="width:50%;font-size: 14px;">Descripción Completa</th>
-            <th style="width:10%;font-size: 14px;">U/M</th>
-            <th style="width:10%;font-size: 14px;">Cantidad</th>
-            <th style="width:10%;font-size: 14px;">Costo Unitario</th>
-            <th style="width:10%;font-size: 14px;">Fecha Registro</th>
-            <th style="width:10%;font-size: 14px;">Categoria</th>
+            <th style="width:20%;font-size: 14px;">Código</th>
+            <th style="width:20%;font-size: 14px;">Cod. de Catálogo</th>
+            <th style="width:30%;font-size: 14px;">Descripción Completa</th>
+            <th style="width:20%;font-size: 14px;">U/M</th>
+            <th style="width:20%;font-size: 14px;">Cantidad</th>
+            <th style="width:20%;font-size: 14px;">Costo Unitario</th>
+            <th style="width:20%;font-size: 14px;">Fecha Registro</th>
+            <th style="width:20%;font-size: 14px;">Categoria</th>
             
         </tr>
     </thead>
@@ -222,7 +222,9 @@ $result = mysqli_query($conn, $sql);
  </body>
  </html>
 <script type="text/javascript">
-print('');
+
+window.print();
+
 let linkDelete =document.querySelectorAll("delete");
 date = new Date();
 year = date.getFullYear();

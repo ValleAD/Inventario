@@ -21,6 +21,8 @@
 
       
 ?>
+<style>.table td  {text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
+</style>
 <h3>HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
 
 <h4>DEPARTAMENTO DE MANTENIMIENTO</h4>
@@ -40,13 +42,13 @@
 <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;">
-            <th style="width: 25%;color:black;font-size: 14px;text-align: center;">Código</th>
-            <th style="width: 70%;color:black;font-size: 14px;text-align: center;">Descripción Completa</th>
-            <th style="width: 15%;color:black;font-size: 14px;text-align: center;">U/M</th>
-            <th style="width: 15%;color:black;font-size: 14px;text-align: center;">Cantidad Solicitada</th>
-            <th style="width: 30%;color:black;font-size: 14px;text-align: center;">Cantidad Despachada</th>
-            <th style="width: 30%;color:black;font-size: 14px;text-align: center;">C/U</th>
-            <th style="width: 15%;color:black;font-size: 14px;text-align: center;border-right:1px solid #ccc ;">Total</th>
+            <th style="width: 25%;font-size: 14px;text-align: center;">Código</th>
+            <th style="width: 70%;font-size: 14px;text-align: center;">Descripción Completa</th>
+            <th style="width: 15%;font-size: 14px;text-align: center;">U/M</th>
+            <th style="width: 15%;font-size: 14px;text-align: center;">Cantidad Solicitada</th>
+            <th style="width: 30%;font-size: 14px;text-align: center;">Cantidad Despachada</th>
+            <th style="width: 30%;font-size: 14px;text-align: center;">C/U</th>
+            <th style="width: 15%;font-size: 14px;text-align: center;">Total</th>
         </tr>
     </thead> 
 
@@ -95,5 +97,5 @@ for($i = 0; $i < count($_POST['cod']); $i++)
 </body>
 </html>
 <script type="text/javascript">
-print('');
+window.print();
 </script>

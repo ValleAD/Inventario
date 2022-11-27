@@ -6,12 +6,14 @@
     <title>Imprimir Compra</title>
         <link rel="stylesheet" type="text/css" href="../../../bootstrap/css/bootstrap.css">
    <link rel="stylesheet" type="text/css" href="../../../styles/estilos_tablas.css">
+
  </head>
  <body>
 
 <img src="../../../img/hospital.png" style="width:20%">
     <img src="../../../img/log_1.png" style="width:20%; float:right">
     <style>
+        .table td  {text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
      @media (max-width: 952px){
    h3, h4{
     font-size: 1em;
@@ -66,64 +68,54 @@
     </tr>
 </table>
 <br>
-<table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+ <table class="table" style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;text-align: center;">
     <thead>     
-        <tr style="border: 1px solid #ddd;color: black;">
-            <th>Código</th>
-            <th>Descripción Completa</th>
-            <th>U/M</th>
-            <th>Cantidad Solicitada</th>
-            <th>C/U</th>
-            <th style="width: 15%;color:black;font-size: 14px;border-right:1px solid #ccc ;">Total</th>
+        <tr style="border: 1px solid #ddd;" >
+            <th style="width: 25%;font-size: 14px;">Código</th>
+            <th style="width: 70%;font-size: 14px;">Descripción</th>
+            <th style="width: 15%;font-size: 14px;">U/M</th>
+            <th style="width: 15%;font-size: 14px;">Cant.<br>Sol.</th>
+            <th style="width: 15%;font-size: 14px;">Cant.<br>Desp.</th>
+            <th style="width: 15%;font-size: 14px;">C/U</th>
+            <th style="width: 15%;font-size: 14px;border-right:1px solid #ccc ;">Total</th>
         </tr>
     </thead> 
 
     <tbody>
 <?php
-    $total = 0;
-    $final = 0;
 for($i = 0; $i < count($_POST['cod']); $i++)
 {
    
-        $codigo = $_POST['cod'][$i];
+    $codigo = $_POST['cod'][$i];
     $des = $_POST['desc'][$i];
     $um = $_POST['um'][$i];
-     $cantidad = $_POST['cant'][$i];
-    $cost = $_POST['cost'][$i];
-    $tot = $_POST['tot'][$i];
-     $tot_f = $_POST['tot_f'];
+    $cant = $_POST['cant'][$i];
+    $cantidad = $_POST['cantidad_despachada'][$i];
+    $precio = $_POST['cost'][$i];
+    $total = $_POST['tot'][$i];
+    $tot_f = $_POST['tot_f'];
 ?>
   
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td data-label="Código" style="font-size: 12px;"><?php  echo $codigo?></td>
-            <td data-label="Descripción" style="font-size: 12px;"><?php  echo $des?></td>
-            <td data-label="Unidad De Medida" style="font-size: 12px;"><?php  echo $um?></td>
-            <td data-label="Cantidad" style="font-size: 12px;"><?php echo $cantidad ?></td>
-            <td data-label="Precio" style="font-size: 12px;"><?php echo $cost ?></td>
-            <td data-label="total" style="font-size: 12px;"><?php  echo $tot ?></td>
+            <td data-label="Código" style=" font-size: 12px; "><?php  echo $codigo?></td>
+            <td data-label="Descripción" style=" font-size: 12px; "><?php  echo $des?></td>
+            <td data-label="Unidad De Medida" style=" font-size: 12px; "><?php  echo $um?></td>
+            <td data-label="Cantidad" style=" font-size: 12px; "><?php echo $cant ?></td>
+            <td data-label="Cantidad Despachada" style=" font-size: 12px; "><?php echo $cantidad ?></td>
+            <td data-label="Precio" style=" font-size: 12px; "><?php echo $precio ?></td>
+            <td data-label="total" style=" font-size: 12px; "><?php  echo $total ?></td>
         </tr>
      
-    </tbody>  
      <?php } } ?> 
-    <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
-        <td colspan="5"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
+    <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;table-layout: fixed; ">
+        <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
         <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $tot_f ?></td>
     </tfoot>
 </table>
-<br>
-    <table style="width: 100%;height: 10%; border: 1px solid #ccc;border-collapse: collapse;">
-        <tbody>
-            <div style="width: 100%;height: 10%; border: 1px solid #ccc;border-collapse: collapse;">
-           <p style="padding-left: 1%;"> Observaciones (En qué se ocupará el bien entregado)</p>
-           <hr style=" border: 1px solid #ccc;border-collapse: collapse;">
-            <p style="padding-left: 1%;"><?php echo $jus ?></p>
-        </div>
-        </tbody>
-    </table>
 
 
 </body>
 </html>
 <script type="text/javascript">
-print('');
+window.print();
 </script>
