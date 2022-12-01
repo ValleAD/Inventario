@@ -142,7 +142,7 @@ $result = mysqli_query($conn, $sql);
            
      </thead>
 <tbody>
-    <?php $sql = "SELECT fecha_registro,codProductos, precio FROM tb_productos WHERE  codProductos = '$Busqueda' GROUP BY codProductos";
+    <?php $sql = "SELECT fecha_registro,codProductos, precio,SUM(stock) FROM tb_productos WHERE  codProductos = '$Busqueda' GROUP BY codProductos";
 $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
@@ -154,7 +154,7 @@ $result = mysqli_query($conn, $sql);
             <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Fecha"><?php echo $fecha ?></td>
             <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Concepto">Inventario Físico</td>
             <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="No. Comprovante"><?php echo $Comprovante ?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Entradas">0.00</td>
+            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Entradas"><?php echo $productos['SUM(stock)'] ?></td>
             <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Salidas">0.00</td>
             <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Saldo"><?php echo $Saldo ?></td>
         </tr> 

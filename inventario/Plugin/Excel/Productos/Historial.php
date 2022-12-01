@@ -211,7 +211,17 @@ $precio=$_POST['precio'];
         $sheet->setCellValue('B8' ,$descripcion);
         $sheet->setCellValue('F9' ,$um);
 $fila = 13;
-
+$sql1 = "SELECT fecha_registro,codProductos, precio,SUM(stock) FROM tb_productos WHERE  codProductos = '$cod' GROUP BY codProductos";
+$result = mysqli_query($conn, $sql1);
+    while ($productos1 = mysqli_fetch_array($result)){
+ $stock= $productos1['SUM(stock)'] ;
+        $sheet->setCellValue('A12' ,$fecha2);
+        $sheet->setCellValue('B12' ,'Inventario Físico');
+        $sheet->setCellValue('C12' ,$cod);
+        $sheet->setCellValue('D12' ,$stock);
+        $sheet->setCellValue('E12' ,'0.00');
+        $sheet->setCellValue('F12' ,$precio);
+       } 
    $sql = "SELECT fecha_registro,Concepto,No_Comprovante, SUM(Entradas), SUM(Salidas),Saldo FROM historial  WHERE No_Comprovante='$cod' GROUP BY Concepto";
 
 $result = mysqli_query($conn, $sql);
@@ -223,6 +233,7 @@ $result = mysqli_query($conn, $sql);
         $Entradas=$productos['SUM(Entradas)'];
         $Salida=$productos['SUM(Salidas)'];
         $Saldo=$productos['Saldo'];
+       
 $spreadsheet->getActiveSheet()->getStyle('A' .$fila)->getAlignment()->setWrapText(true);
 $spreadsheet->getActiveSheet()->getStyle('B' .$fila)->getAlignment()->setWrapText(true);
 $spreadsheet->getActiveSheet()->getStyle('C' .$fila)->getAlignment()->setWrapText(true);
@@ -259,12 +270,6 @@ $spreadsheet->getActiveSheet()->getStyle('F' .$fila)
 ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 
 
-        $sheet->setCellValue('A12' ,$fecha2);
-        $sheet->setCellValue('B12' ,'Inventario Físico');
-        $sheet->setCellValue('C12' ,$cod);
-        $sheet->setCellValue('D12' ,'0.00');
-        $sheet->setCellValue('E12' ,'0.00');
-        $sheet->setCellValue('F12' ,$precio);
 
         $sheet->setCellValue('A' .$fila, $fecha);
         $sheet->setCellValue('B' .$fila, $Concepto);

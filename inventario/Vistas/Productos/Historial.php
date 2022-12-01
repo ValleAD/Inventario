@@ -184,7 +184,7 @@ $result = mysqli_query($conn, $sql);
            
      </thead>
 <tbody>
-    <?php $sql = "SELECT fecha_registro,codProductos, precio FROM tb_productos WHERE  codProductos = '$Busqueda' GROUP BY codProductos";
+    <?php $sql = "SELECT fecha_registro,codProductos,SUM(stock), precio FROM tb_productos WHERE  codProductos = '$Busqueda' GROUP BY codProductos";
 $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
@@ -195,7 +195,7 @@ $result = mysqli_query($conn, $sql);
             <td id="th" data-label="Fecha"><?php echo $fecha ?></td>
             <td id="th" data-label="Concepto">Inventario Físico</td>
             <td id="th" data-label="No. Comprovante"><?php echo $Comprovante ?></td>
-            <td id="th" data-label="Entradas">0.00</td>
+            <td id="th" data-label="Entradas"><?php echo $productos['SUM(stock)'] ?></td>
             <td id="th" data-label="Salidas">0.00</td>
             <td id="th" data-label="Saldo"><?php echo $Saldo ?></td>
         </tr> 
