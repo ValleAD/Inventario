@@ -22,7 +22,7 @@ include ('../../../Model/conexion.php');
 <h5 align="center" style="margin-top: 2%;">TODOS LOS PRODUCTOS</h5>
 
 <style>
-    .table td  {text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
+    .table td  { font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
 
     <section>
      @media (max-width: 952px){

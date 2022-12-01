@@ -18,11 +18,11 @@ die();
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Historial</title>
+	<title>Buscador al Producto</title>
 </head>
 <body>
   <section  style="background: rgba(255, 255, 255, 0.9);margin: 7%1%1%1%;padding: 1%; border-radius: 15px;">
-<h2  class="text-center">Historial de Productos</h2>
+<h2  class="text-center">Buscador al Producto</h2>
 <br>
 
 <style>p{font-size: 12px;</style>
@@ -65,7 +65,7 @@ die();
     <div class="col-md-3" id="card">
         <div class="card">
             <div class="card-body">
-<?php $sql = "SELECT Concepto,No_Comprovante,h.descripcion,  h.fecha_registro,h.unidad_medida, SUM(Entradas), SUM(Salidas),Saldo, p.precio FROM historial h JOIN tb_productos p ON h.No_Comprovante= p.codProductos WHERE  No_Comprovante = '$Busqueda' GROUP BY Concepto limit 1";
+<?php $sql = "SELECT Concepto,No_Comprovante,h.descripcion,  h.fecha_registro,h.unidad_medida, SUM(Entradas), SUM(Salidas),Saldo, p.precio FROM historial h JOIN tb_productos p ON h.No_Comprovante= p.codProductos WHERE  No_Comprovante = '$Busqueda' GROUP BY Concepto order by h.fecha_registro DESC LIMIT 1";
 $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
@@ -175,7 +175,7 @@ $result = mysqli_query($conn, $sql);
              <tr id="tr">
                      <th style="width:7%"  id="th">Fecha</th>
                      <th style="width:7%"  id="th">Concepto</th>
-                     <th style="width: 27%;" id="th">No. Comprobante</th>
+                     <th style="width:27%;" id="th">No. Comprobante</th>
                      <th style="width:8%"  id="th">Entradas</th>
                      <th style="width:8%"  id="th">Salidas</th>
                      <th style="width:10%"  id="th">Saldo</th>
@@ -199,7 +199,7 @@ $result = mysqli_query($conn, $sql);
             <td id="th" data-label="Salidas">0.00</td>
             <td id="th" data-label="Saldo"><?php echo $Saldo ?></td>
         </tr> 
-    <?php } $sql = "SELECT Concepto,No_Comprovante,h.descripcion, h.fecha_registro,h.unidad_medida, SUM(Entradas), SUM(Salidas),Saldo, p.precio FROM historial h JOIN tb_productos p ON h.No_Comprovante= p.codProductos WHERE  No_Comprovante = '$Busqueda' GROUP BY Concepto";
+    <?php } $sql = "SELECT Concepto,No_Comprovante,h.descripcion, h.fecha_registro,h.unidad_medida, SUM(Entradas), SUM(Salidas),Saldo, p.precio FROM historial h JOIN tb_productos p ON h.No_Comprovante= p.codProductos WHERE  No_Comprovante = '$Busqueda' GROUP BY Concepto order by h.Concepto DESC";
 $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){

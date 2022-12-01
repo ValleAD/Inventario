@@ -20,7 +20,7 @@ include ('../../../Model/conexion.php');
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
 <h5 align="center" style="margin-top: 2%;">EMPLEADOS</h5>
 <style>
-    .table td  {text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
+    .table td  { font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
 </style>
 <?php if (isset($_POST['Empleados'])) { ?>
     <table class="table table-responsive table-striped"  style=" width: 100%">

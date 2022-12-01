@@ -390,59 +390,9 @@
 <br>
                   <div class="card ">
     <div class="card-body">
-        <a href="" class="btn btn-success" name="categorias" type="submit">Ver Productos</a>
- <div style="position: initial;" class="btn-group mb-3"  role="group" aria-label="Basic outlined example">
-            <form id="form1" style=" margin-top:5%" method="POST" action="../../Plugin/Imprimir/Producto/productos.php" target="_blank">
-                <?php 
-    $sql = "SELECT * FROM tb_productos GROUP BY precio,codProductos";
-    $result = mysqli_query($conn, $sql);
 
-    while ($productos = mysqli_fetch_array($result)){
 
-                echo '
-                <input type="hidden" name="consulta" value="'. $ee=$_POST['Busqueda'].'">
-            ';} echo '
-                <button type="submit" class="btn btn-outline-primary" name="Fecha">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
-                </svg>
-                </button>
-            </form><br>
-            <form id="form2" style="margin-top:5%;margin-left: 2.6%;" method="POST" action="../../Plugin/PDF/Productos/pdf_productos.php" target="_blank">
-              ';
-    $sql = "SELECT * FROM tb_productos GROUP BY precio,codProductos";
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-echo'             
-                <input type="hidden" name="consulta" value="'. $ee=$_POST['Busqueda'].'">
-            ';} echo'
-                <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
-                </svg>
-                </button>
-            </form>
-        <form id="form2" style="margin-top:5%;margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Productos/Buscador_Excel.php" target="_blank">
-              ';
-    $sql = "SELECT * FROM tb_productos GROUP BY precio,codProductos";
-    $result = mysqli_query($conn, $sql);
-        echo '
-
-';
-    while ($productos = mysqli_fetch_array($result)){
-echo'             
-                <input type="hidden" name="consulta" value="'. $ee=$_POST['Busqueda'].'">
-            ';}
-              echo'  <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
-                </svg>
-                </button>
-            </form>
-    </div>';
- ?>
-
+<a href="" class="btn btn-success" name="categorias" type="submit">Ver Productos</a><br><br>
 
         <table class=" table display   table-striped" id="example5" style=" width: 100%;">
             <thead>

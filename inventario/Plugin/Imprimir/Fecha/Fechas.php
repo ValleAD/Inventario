@@ -5,7 +5,7 @@
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <title>Filtro por Fechas</title>
-        <link rel="stylesheet" type="text/css" href="../../bootstrap/css/bootstrap.css">
+        <!-- <link rel="stylesheet" type="text/css" href="../../bootstrap/css/bootstrap.css"> -->
    <link rel="stylesheet" type="text/css" href="../../../styles/estilos_tablas.css">
  </head>
  <body>
@@ -17,8 +17,9 @@
 <h4 align="center" style="margin-top: 2%;">DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h5 align="center" style="margin-top: 2%;">FILTRO DE FECHAS</h5>
 <style>
-    .table td  {text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
+    td  {font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
 </style>
+<section style="margin: 2%;">
     <?php
     if (isset($_POST['Dia'])) {$dia=$_POST['dia']?><br>
                 <p align="center"><b>El Dia Selecionado</b>: <?php echo $_POST['dia'] ?></p>
@@ -228,19 +229,11 @@
 </table> 
     <?php  } if (isset($_POST['Fecha'])) {$f1 =$_POST['f1'];$f2 =$_POST['f2'];?>
     <br>
-    <center>
-
-          <div class="row">
-                    <div class="col-md-6" style="position: initial">
-                        <label>Desde</label>
-                   <p><?php echo $f1 ?></p>
-                    </div><div class="col-md-6" style="position: initial">
-                        <label>Hasta</label>
-                    <p><?php echo $f2 ?></p>                
-                    </div>
-                    
-                </div> 
- </center>
+    <table style="width: 100%;"><tr>
+        <td><b>Desde:</b> <?php echo $f1 ?></td>
+        <td style="text-align: right;"><b>Hasta:</b> <?php echo $f2 ?></td>
+</tr>
+</table>
     <table class="table  table-striped"  style=" width: 100%">
 
     <thead>
@@ -278,11 +271,7 @@
     }
 </style>
  <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-    <style>
-        td{
-            font-size: 12px;
-        }
-    </style>
+
         <td data-label="Codigo" style="font-size:12px"><?php echo $cod ?></td>
         <td data-label="Catalogo" style="font-size:12px"><?php echo $catal ?></td>
         <td data-label="Descripción" style="font-size:12px"><?php echo $des ?></td>
@@ -295,6 +284,7 @@
     </tbody>
 </table> 
 <?php } ?>
+</section>
  </body>
  </html>
 <script type="text/javascript">

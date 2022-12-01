@@ -17,7 +17,7 @@
  
 
 <style>
-    .table td  {text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
+    .table td  { font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
      @media (max-width: 952px){
    h3, h4, h5{
     font-size: 1em;
@@ -41,7 +41,7 @@ if (isset($_POST['Consultar'])) {
         $tipo1='Ascendente';
      } ?>
     <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p><br><br>
-    <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+    <table class="table" style="width: 100%; ">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
                 <th style=" width: 10%; text-align: center;font-size: 12px;">No. de Solicitud</th>
@@ -97,7 +97,7 @@ if (isset($_POST['Consultar'])) {
         $tipo1='Ascendente';
      } ?>
     <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p><br><br>
-    <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+    <table class="table" style="width: 100%; ">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
                 <th style=" width: 10%; text-align: center;font-size: 12px;">No. de Solicitud</th>
@@ -144,7 +144,7 @@ $idusuario=$_POST['idusuario'];
 </table>
 <?php } ?>
 <?php if (isset($_POST['id'])) {?>
-<table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+<table class="table" style="width: 100%; ">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
                 <th style=" width: 10%; text-align: center;font-size: 12px;">No. de Solicitud</th>
@@ -183,7 +183,7 @@ $idusuario=$_POST['idusuario'];
    
 </table>
 <?php } if (isset($_POST['id1'])) {?>
-<table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+<table class="table" style="width: 100%; ">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
                 <th style=" width: 10%; text-align: center;font-size: 12px;">No. de Solicitud</th>

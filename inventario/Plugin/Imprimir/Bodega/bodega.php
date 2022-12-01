@@ -21,7 +21,7 @@
 
       
 ?>
-<style>.table td  {text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
+<style>.table td  {font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
 </style>
 <h3>HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
 
@@ -39,7 +39,7 @@
    </table> 
 
         <br> 
-<table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+<table class="table" style="width: 100%;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;">
             <th style="width: 25%;font-size: 14px;text-align: center;">Código</th>

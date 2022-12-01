@@ -46,13 +46,13 @@ include ('../../../Model/conexion.php');
 
         <thead style="background-color: #46466b;color: white;">
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <th style="font-size: 11px;">Código</th>
-            <th style="font-size: 11px;">Cod. de Catálogo</th>
-            <th style="font-size: 11px;">Descripción Completa</th>
-            <th style="font-size: 11px;">U/M</th>
-            <th style="font-size: 11px;">Cantidad</th>
-            <th style="font-size: 11px;">Costo Unitario</th>
-            <th style="font-size: 11px;">Fecha Registro</th>
+            <th style="font-size: 11px;height: 3%;">Código</th>
+            <th style="font-size: 11px;height: 3%;">Cod. de Catálogo</th>
+            <th style="font-size: 11px;height: 3%;">Descripción Completa</th>
+            <th style="font-size: 11px;height: 3%;">U/M</th>
+            <th style="font-size: 11px;height: 3%;">Cantidad</th>
+            <th style="font-size: 11px;height: 3%;">Costo Unitario</th>
+            <th style="font-size: 11px;height: 3%;">Fecha Registro</th>
 
         </tr>
     </thead>
@@ -127,13 +127,13 @@ include ('../../../Model/conexion.php');
 
         <thead style="background-color: #46466b;color: white;">
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <th style="font-size: 11px;">Código</th>
-            <th style="font-size: 11px;">Cod. de Catálogo</th>
-            <th style="font-size: 11px;">Descripción Completa</th>
-            <th style="font-size: 11px;">U/M</th>
-            <th style="font-size: 11px;">Cantidad</th>
-            <th style="font-size: 11px;">Costo Unitario</th>
-            <th style="font-size: 11px;">Fecha Registro</th>
+            <th style="font-size: 11px;height: 3%;">Código</th>
+            <th style="font-size: 11px;height: 3%;">Cod. de Catálogo</th>
+            <th style="font-size: 11px;height: 3%;">Descripción Completa</th>
+            <th style="font-size: 11px;height: 3%;">U/M</th>
+            <th style="font-size: 11px;height: 3%;">Cantidad</th>
+            <th style="font-size: 11px;height: 3%;">Costo Unitario</th>
+            <th style="font-size: 11px;height: 3%;">Fecha Registro</th>
 
         </tr>
     </thead>
@@ -196,13 +196,13 @@ include ('../../../Model/conexion.php');
 
         <thead style="background-color: #46466b;color: white;">
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <th style="font-size: 11px;">Código</th>
-            <th style="font-size: 11px;">Cod. de Catálogo</th>
-            <th style="font-size: 11px;">Descripción Completa</th>
-            <th style="font-size: 11px;">U/M</th>
-            <th style="font-size: 11px;">Cantidad</th>
-            <th style="font-size: 11px;">Costo Unitario</th>
-            <th style="font-size: 11px;">Fecha Registro</th>
+            <th style="font-size: 11px;height: 3%;">Código</th>
+            <th style="font-size: 11px;height: 3%;">Cod. de Catálogo</th>
+            <th style="font-size: 11px;height: 3%;">Descripción Completa</th>
+            <th style="font-size: 11px;height: 3%;">U/M</th>
+            <th style="font-size: 11px;height: 3%;">Cantidad</th>
+            <th style="font-size: 11px;height: 3%;">Costo Unitario</th>
+            <th style="font-size: 11px;height: 3%;">Fecha Registro</th>
 
         </tr>
     </thead>
@@ -230,9 +230,6 @@ include ('../../../Model/conexion.php');
 </style>
  <tr style="border: 1px solid #ccc;border-collapse: collapse;">
     <style>
-        td{
-            font-size: 12px;
-        }
     </style>
         <td data-label="Codigo" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $cod ?></td>
         <td data-label="Catalogo" style="border: 1px solid #ccc;border-collapse: collapse;text-align: center;"><?php echo $catal ?></td>
@@ -255,13 +252,13 @@ include ('../../../Model/conexion.php');
 
         <thead style="background-color: #46466b;color: white;">
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <th style="font-size: 12px;">Código</th>
-            <th style="font-size: 12px;">Cod. de Catálogo</th>
-            <th style="font-size: 12px;">Descripción Completa</th>
-            <th style="font-size: 12px;">U/M</th>
-            <th style="font-size: 12px;">Cantidad</th>
-            <th style="font-size: 12px;">Costo Unitario</th>
-            <th style="font-size: 12px;">Fecha Registro</th>
+            <th style="font-size: 12px;height: 3%;">Código</th>
+            <th style="font-size: 12px;height: 3%;">Cod. de Catálogo</th>
+            <th style="font-size: 12px;height: 3%;">Descripción Completa</th>
+            <th style="font-size: 12px;height: 3%;">U/M</th>
+            <th style="font-size: 12px;height: 3%;">Cantidad</th>
+            <th style="font-size: 12px;height: 3%;">Costo Unitario</th>
+            <th style="font-size: 12px;height: 3%;">Fecha Registro</th>
 
         </tr>
     </thead>

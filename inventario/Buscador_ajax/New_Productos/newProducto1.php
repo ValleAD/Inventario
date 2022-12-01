@@ -36,12 +36,11 @@ if(isset($_POST['consulta']))
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
-                         <style>
+                        <style>
                             #Guardar{
                                 display: none;
                             }
                             #NoGuardar{
-
                             margin-left: -10%;
                                 display: block;
                             }
@@ -59,6 +58,15 @@ if(isset($_POST['consulta']))
                                 margin-left: 10%;
                             }
 
+                    } @media (min-width: 1000px){
+                         #NoGuardar{
+                            margin-left: -15%;
+                                display: block;
+                            }
+                            #ver{
+                                 margin-top: -8.5%;
+                                margin-left: 10%;
+                            }
                     }
                         </style>';
             }

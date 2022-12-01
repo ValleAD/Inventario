@@ -15,7 +15,7 @@
 <h4>DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h5 align="center">REPORTE DE SOLICITUD DE BODEGA</h5>
  <style>
-    .table td  {text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
+    .table td  { font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
      @media (max-width: 952px){
    h3, h4, h5{
     font-size: 1em;
@@ -38,7 +38,7 @@
         $tipo1='Ascendente';
      } ?>
     <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p><br><br>
-    <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+    <table class="table" style="width: 100%; ">
     <thead>     
         <tr style="border: 1px solid #ddd;" >
 
@@ -95,7 +95,7 @@
         $tipo1='Ascendente';
      } ?>
     <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p><br><br>
-    <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+    <table class="table" style="width: 100%; ">
     <thead>     
         <tr style="border: 1px solid #ddd;" >
 
@@ -187,7 +187,7 @@ $des=$solicitudes['departamento'];
    
 </table>
           <?php } if (isset($_POST['id1'])) { ?>
-          <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+          <table class="table" style="width: 100%; ">
     <thead>     
         <tr style="border: 1px solid #ddd;" >
             <th  style="width: 20%;font-size: 14px;">Codigo</th>

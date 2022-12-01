@@ -8,7 +8,6 @@ include ('../../../Model/conexion.php');
  <head>
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
-             <link rel="stylesheet" type="text/css" href="../../bootstrap/css/bootstrap.css">
    <link rel="stylesheet" type="text/css" href="../../../styles/estilos_tablas.css">
 <?php   if (isset($_POST['consulta'])) {?>
      <title>Productos</title>
@@ -19,7 +18,7 @@ include ('../../../Model/conexion.php');
  </head>
  <body>
 <style>
-    .table td  {text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
+     #th  { font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
 </style>
 <img src="../../../img/hospital.png" style="width:20%">
     <img src="../../../img/log_1.png" style="width:20%; float:right">
@@ -31,6 +30,7 @@ include ('../../../Model/conexion.php');
 <?php }  if (isset($_POST['Historial'])) { ?>
 <h5 align="center" style="margin-top: 2%;">HISTORIAL DE PRODUCTOS</h5>
 <?php } ?>
+<section style="margin: 1%;">
   <?php
   if (isset($_POST['consulta'])) {?>
 
@@ -83,14 +83,14 @@ include ('../../../Model/conexion.php');
     }
 </style>
  <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-        <td data-label="Código" style="font-size: 12px;"><?php echo $cod ?></td>
-        <td data-label="Catalogo" style="font-size: 12px;"><?php echo $catal ?></td>
-        <td data-label="Descripción" style="font-size: 12px;"><?php echo $des ?></td>
-        <td data-label="Unidad De Medida" style="font-size: 12px;"><?php echo $u_m ?></td>
-        <td data-label="Cantidad" style="font-size: 12px;"><?php echo $stock ?></td>
-        <td data-label="Precio" style="font-size: 12px;"><?php echo $precio1 ?></td>
-        <td data-label="Fecha" style="font-size: 12px;"><?php echo $fech ?></td>
-        <td data-label="Categoría" style="font-size: 12px;"><?php echo $cat ?></td>
+        <td id="th" data-label="Código" style="font-size: 12px;"><?php echo $cod ?></td>
+        <td id="th" data-label="Catalogo" style="font-size: 12px;"><?php echo $catal ?></td>
+        <td id="th" data-label="Descripción" style="font-size: 12px;"><?php echo $des ?></td>
+        <td id="th" data-label="Unidad De Medida" style="font-size: 12px;"><?php echo $u_m ?></td>
+        <td id="th" data-label="Cantidad" style="font-size: 12px;"><?php echo $stock ?></td>
+        <td id="th" data-label="Precio" style="font-size: 12px;"><?php echo $precio1 ?></td>
+        <td id="th" data-label="Fecha" style="font-size: 12px;"><?php echo $fech ?></td>
+        <td id="th" data-label="Categoría" style="font-size: 12px;"><?php echo $cat ?></td>
         <?php } ?>
     </tr>
     </tbody>
@@ -98,17 +98,6 @@ include ('../../../Model/conexion.php');
 <?php } 
   if (isset($_POST['Historial'])) { $Busqueda=$_POST['Busqueda'];?>
 
-<div class="card card1" id="card1" >
-            <div class="card-body">
-                <div class="alert alert-warning" rol="alert">No se Encontró resultados</div>
-            </div>
-        </div>
-        <br id="card2">
-        <style type="text/css">#card{display: none;}</style>
-<div class="row" >
-    <div class="col-md-3" id="card">
-        <div class="card">
-            <div class="card-body">
 <?php $sql = "SELECT Concepto,No_Comprovante,h.descripcion, h.fecha_registro, p.fecha_registro,h.unidad_medida, SUM(Entradas), SUM(Salidas),Saldo, p.precio FROM historial h JOIN tb_productos p ON h.No_Comprovante= p.codProductos WHERE  No_Comprovante = '$Busqueda' GROUP BY Concepto limit 1";
 $result = mysqli_query($conn, $sql);
 
@@ -128,49 +117,39 @@ $result = mysqli_query($conn, $sql);
  
 
 <p><b>PERIODO DE MOVIMIENTO</b></p>
-<div class="row">
-    <div class="col-md-6">
-<p><b>DE:</b> <?php echo $fecha ?></p>     
-    </div>
-    <div class="col-md-6">
-<p id="p"> </p>
-    </div>    
-<div class="col-md-6">
-<p><b>Codigo del Producto:</b></p>     
-    </div>
- <div class="col-md-6">
-<p><?php echo $cod ?></p>
-    </div>
-    <div class="col-md-6">
-<p><b>Descripción</b></p>     
-    </div>
- <div class="col-md-6">
-<p> <?php echo $descripcion ?></p>
-    </div>    
-<div class="col-md-6">
-<p><b>Unidad de Medida</b></p>     
-    </div>
- <div class="col-md-6">
-<p> <?php echo $um ?></p>
-    </div>
-</div>
+<hr>
+<table class="" style="width: 100%;">
+    <tr>
+        <td><p><b>DE:</b> <?php echo $fecha ?></p></td>
+        <td style="text-align: right;"><p ><b>AL:</b> <?php echo $fecha1 ?></p></td>
+    </tr>
+    <tr>
+        <td><p><b>Codigo del Producto:</b></p> </td>
+       <td style="text-align: right;">  <p ><?php echo $cod ?></p></td>
+    </tr>
+    <tr>
+        <td><p><b>Descripción</b></p></td>  
+        <td style="text-align: right;"><p ><?php echo $descripcion ?></p></td>
+    </tr>
+    <tr>
+        <td><p><b>Unidad de Medida</b></p>  </td>
+        <td style="text-align: right;"><p ><?php echo $um ?></p></td>
+    </tr>
+</table>
 
-    </div>
-        </div>
-    </div>
+<hr>
+<br>
 <?php } ?>
-        <div class="col-md-9">
-        <div class="card">
-            <div class="card-body">
-                         <table class="table  table-striped" id="examp" style="width: 100%;">
+
+        <table class="table  table-striped" id="examp" style="width: 100%;">
                    <thead>
              <tr id="tr">
-                     <th id="th">Fecha</th>
-                     <th id="th">Concepto</th>
-                     <th id="th">No. Comprobante</th>
-                     <th id="th">Entradas</th>
-                     <th id="th">Salidas</th>
-                     <th id="th">Saldo</th>
+                     <th >Fecha</th>
+                     <th >Concepto</th>
+                     <th >No. Comprobante</th>
+                     <th >Entradas</th>
+                     <th >Salidas</th>
+                     <th >Saldo</th>
                 
             </tr>
            
@@ -213,12 +192,8 @@ $result = mysqli_query($conn, $sql);
 <?php } ?>
            </tbody>
         </table>
-            </div>
-        </div>
-        </div>
-    </div>
-</div>
 <?php } ?>
+</section>
  </body>
  </html>
 <script type="text/javascript">

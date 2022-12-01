@@ -17,7 +17,7 @@
 <h4 align="center" style="margin-top: 2%;">DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h3 align="center" style="margin-top: 2%;">FONDO CIRCULANTE DE MONTO FIJO</h3>
 <style>
-    .table td  {text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
+    .table td  { font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
      @media (max-width: 952px){
    h3, h4, h5{
     font-size: 1em;
@@ -47,7 +47,7 @@
         $tipo1='Ascendente';
      } ?>
     <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p><br><br>
-    <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+    <table class="table" style="width: 100%;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
             <th style="width: 10%;font-size: 14px;text-align: center;">No. de Solicitud </th>
@@ -91,7 +91,7 @@
         $tipo1='Ascendente';
      } ?>
     <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p><br><br>
-    <table class="table" class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+    <table class="table" class="table" style="width: 100%;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
             <th style="width: 10%;font-size: 14px;text-align: center;">No. de Solicitud </th>
@@ -127,7 +127,7 @@ $idusuario=$_POST['idusuario'];
 </table>
 <?php } ?>
 <?php if (isset($_POST['id'])) { ?>
-<table class="table" style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
+<table class="table" style="width: 100%;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
             <th style="width: 10%;font-size: 14px;text-align: center;">No. de Solicitud </th>
@@ -162,7 +162,7 @@ $idusuario=$_POST['idusuario'];
      <?php }?>
 
      <?php if (isset($_POST['id1'])) { ?>
-<table class="table" style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
+<table class="table" style="width: 100%;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
             <th style="width: 10%;font-size: 14px;text-align: center;">No. de Solicitud </th>
