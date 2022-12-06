@@ -10,7 +10,11 @@ include '../../../Model/conexion.php'; ?>
 <body style="font-family: sans-serif;">
     <img src="../../../img/hospital.png" style="width:20%">
     <img src="../../../img/log_1.png" style="width:20%; float:right">
+    <style>
+        .table tbody tr:nth-child(even) {background-color: #00BDFF; height: 5%}
+.table tbody tr:nth-child(odd) {background-color: #00EAFF; height: 5%}
 
+    </style>
 <h3>HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
 <h4>DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h5 align="center">REPORTE DE SOLICITUD DE VALE</h5>
@@ -31,8 +35,8 @@ include '../../../Model/conexion.php'; ?>
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
 
             <th  style="height: 3%;font-size: 14px;">Codigo</th>
-            <th  style="height: 3%;font-size: 14px;text-align: left;">Departamento Solicitante </th>
-            <th  style="height: 3%;font-size: 14px;text-align: left;">Encargado </th>
+            <th  style="height: 3%;font-size: 14px;">Departamento Solicitante </th>
+            <th  style="height: 3%;font-size: 14px;">Encargado </th>
             <th  style="height: 3%;font-size: 14px;">Fecha</th>
         </tr>
         
@@ -89,8 +93,8 @@ include '../../../Model/conexion.php'; ?>
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
 
            <th  style="height: 3%;font-size: 14px;">Codigo</th>
-            <th  style="height: 3%;font-size: 14px;text-align: left;">Departamento Solicitante </th>
-            <th  style="height: 3%;font-size: 14px;text-align: left;">Encargado </th>
+            <th  style="height: 3%;font-size: 14px;">Departamento Solicitante </th>
+            <th  style="height: 3%;font-size: 14px;">Encargado </th>
             <th  style="height: 3%;font-size: 14px;">Fecha</th>
         </tr>
         
@@ -139,7 +143,7 @@ $idusuario=$_POST['idusuario'];
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
             <th  style="height: 3%;font-size: 14px;">Codigo</th>
             <th  style="height: 3%;font-size: 14px;">Departamento Solicitante </th>
-            <th  style="height: 3%;font-size: 14px;text-align: left;">Encargado </th>
+            <th  style="height: 3%;font-size: 14px;">Encargado </th>
             <th  style="height: 3%;font-size: 14px;">Fecha</th>
         </tr>
         
@@ -185,8 +189,8 @@ $idusuario=$_POST['idusuario'];
         <thead style="background-color: #46466b;color: white;">
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
            <th  style="height: 3%;font-size: 14px;">Codigo</th>
-            <th  style="height: 3%;font-size: 14px;text-align: left;">Departamento Solicitante </th>
-            <th  style="height: 3%;font-size: 14px;text-align: left;">Encargado </th>
+            <th  style="height: 3%;font-size: 14px;">Departamento Solicitante </th>
+            <th  style="height: 3%;font-size: 14px;">Encargado </th>
             <th  style="height: 3%;font-size: 14px;">Fecha</th>
         </tr>
         

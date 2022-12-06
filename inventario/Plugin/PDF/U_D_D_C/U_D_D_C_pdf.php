@@ -33,12 +33,12 @@ include '../../../Model/conexion.php'; ?>
         <th style="font-size: 12px;">HABILITADO</th>       
         </tr>
         
-        <td id="td" colspan="6" ><h4 align="center">No se encontraron resultados </h4></td>
+        <td id="td" colspan="3" ><h4 align="center">No se encontraron resultados </h4></td>
     </thead> 
 
     <tbody>
 <?php 
-   $sql = "SELECT * FROM selects_unidad_medida";
+   $sql = "SELECT * FROM `selects_unidad_medida`";
     $result = mysqli_query($conn, $sql);
     $n=0;
     $w="Unidad_Medida";
@@ -81,7 +81,7 @@ $n++;
         <th style="font-size: 12px;">HABILITADO</th>       
         </tr>
         
-        <td id="td" colspan="6" ><h4 align="center">No se encontraron resultados </h4></td>
+        <td id="td" colspan="3" ><h4 align="center">No se encontraron resultados </h4></td>
     </thead> 
 
     <tbody>
@@ -129,7 +129,7 @@ $n++;
         <th style="font-size: 12px;">HABILITADO</th>       
         </tr>
         
-        <td id="td" colspan="6" ><h4 align="center">No se encontraron resultados </h4></td>
+        <td id="td" colspan="3" ><h4 align="center">No se encontraron resultados </h4></td>
     </thead> 
 
     <tbody>
@@ -176,7 +176,7 @@ $n++;
         <th style="font-size: 12px;">HABILITADO</th>       
         </tr>
         
-        <td id="td" colspan="6" ><h4 align="center">No se encontraron resultados </h4></td>
+        <td id="td" colspan="3" ><h4 align="center">No se encontraron resultados </h4></td>
     </thead> 
 
     <tbody>

@@ -14,7 +14,10 @@ include '../../../Model/conexion.php';?>
 <h3 style="text-align: center;">HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
 <h4 style="text-align: center;">DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h5 align="center">REPORTE DE SOLICITUD DE BODEGA</h5>
- 
+  <style>
+.table tr:nth-child(even) {background-color: #00BDFF;}
+.table tr:nth-child(odd) {background-color: #00EAFF;}
+</style>
 <?php if (isset($_POST['Consultar'])) {
     $columna=$_POST['columna'];
     $tipo=$_POST['tipo'];

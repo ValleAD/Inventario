@@ -68,7 +68,7 @@
     </tr>
 </table>
 <br>
- <table class="table" style="width: 100%;">
+ <table class="table" style="width: 100%;margin: 0;">
     <thead>     
         <tr style="border: 1px solid #ddd;" >
             <th style="width: 25%;font-size: 14px;">Código</th>

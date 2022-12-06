@@ -15,7 +15,8 @@
 </style>
     <img src="../../../img/hospital.png" style="width:20%">
     <img src="../../../img/log_1.png" style="width:20%; float:right">
-    <?php if(isset($_POST['cod'])){
+    <?php 
+    include ('../../../Model/conexion.php');
     $depto = $_POST['depto'];
     $fech = $_POST['fech'];
     $encargado = $_POST['usuario'];
@@ -53,7 +54,7 @@
        </tr>
    </table> 
         <br> 
-<table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+<table class="table" style="width: 100%;margin: 0;">
     <thead>     
         <tr style="border: 1px solid #ddd;">
             <th style="width: 25%;font-size: 14px">Código</th>
@@ -70,19 +71,21 @@
 <?php
     $total = 0;
     $final = 0;
-for($i = 0; $i < count($_POST['cod']); $i++)
-{
-   
-        $codigo = $_POST['cod'][$i];
-    $des = $_POST['desc'][$i];
-    $um = $_POST['um'][$i];
-     $cantidad = $_POST['cant'][$i];
-    $cost = $_POST['cost'][$i];
-    $stock = $_POST['cantidad_despachada'][$i];
-    $tot = $_POST['tot'][$i];
-     $tot_f = $_POST['tot_f'];
-?>
-  
+    $cod=$_POST['cod'];
+    $sql = "SELECT * FROM detalle_vale ";
+    $result = mysqli_query($conn, $sql);
+
+    while ($solicitudes = mysqli_fetch_array($result)){
+        $codigo=$solicitudes['codigo'];
+        $des=$solicitudes['descripcion'];
+        $um=$solicitudes['unidad_medida'];
+        $cantidad=$solicitudes['stock'];
+        $stock=$solicitudes['stock'];
+        $cost=$solicitudes['precio'];
+        $tot=$_POST['tot'];
+        $tot_f=$_POST['tot_f'];
+    ?>
+
          <tr style="border: 1px solid #ccc;border-collapse: collapse;">
             <td data-label="Código" style="font-size: 12px;"><?php  echo $codigo?></td>
             <td data-label="Descripción" style="font-size: 12px;"><?php  echo $des?></td>
@@ -94,8 +97,9 @@ for($i = 0; $i < count($_POST['cod']); $i++)
         </tr>
      
     </tbody>  
-     <?php } } ?> 
-    <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;table-layout: fixed; ">
+     <?php } 
+ ?> 
+    <tfoot style="width: 100%;">
         <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
         <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $tot_f ?></td>
     </tfoot>

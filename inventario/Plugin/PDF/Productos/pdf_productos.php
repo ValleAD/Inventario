@@ -102,10 +102,10 @@ $result = mysqli_query($conn, $sql);
         $um=$productos['unidad_medida'];
 ?>
 
+<div style="border-radius: 0.25rem; background: rgb(25 255 255); float: left;width: 20%; border: 1px solid #ccc;border-collapse: collapse; padding: 1%;">
+<p style="font-size: 11px;"><b>PERIODO DE MOVIMIENTO</b></p>
 
-<p><b>PERIODO DE MOVIMIENTO</b></p>
-<hr>
-<table class="table" style="width: 100%;">
+<table class="table" style="width: 100%;font-size: 12px;">
     <tr>
         <td><p><b>DE:</b> <?php echo $fecha ?></p></td>
         <p style="float: right;"><b>AL:</b> <?php echo $fecha1 ?></p>
@@ -116,27 +116,27 @@ $result = mysqli_query($conn, $sql);
     </tr>
     <tr>
         <td><p><b>Descripción</b></p></td>  
-        <p style="float: right;"><?php echo $descripcion ?></p>
-    </tr>
+        <p style="float: right;width: 100%;"><?php echo $descripcion ?></p>
+    </tr><br><br><br><br>
     <tr>
         <td><p><b>Unidad de Medida</b></p>  </td>
         <p style="float: right;"><?php echo $um ?></p>
     </tr>
 </table>
 
-<hr>
-<br>
+</div> 
 <?php } ?>
+<div style="float: left;margin-left: 2%;width: 75%;">
     <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
 
         <thead style="background-color: #46466b;color: white;">
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-                     <th style="font-size: 12px;height: 3%;">Fecha</th>
-                     <th style="font-size: 12px;height: 3%;">Concepto</th>
-                     <th style="font-size: 12px;height: 3%;">No. Comprobante</th>
-                     <th style="font-size: 12px;height: 3%;">Entradas</th>
-                     <th style="font-size: 12px;height: 3%;">Salidas</th>
-                     <th style="font-size: 12px;height: 3%;">Saldo</th>
+                     <th style="font-size: 12px;height: 4%;">Fecha</th>
+                     <th style="font-size: 12px;height: 4%;">Concepto</th>
+                     <th style="font-size: 12px;height: 4%;">No. Comprobante</th>
+                     <th style="font-size: 12px;height: 4%;">Entradas</th>
+                     <th style="font-size: 12px;height: 4%;">Salidas</th>
+                     <th style="font-size: 12px;height: 4%;">Saldo</th>
                 
             </tr>
            
@@ -146,7 +146,7 @@ $result = mysqli_query($conn, $sql);
 $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
-        $fecha=date("d-m-Y",strtotime($productos['fecha_registro']));
+        $fecha=date("d - m - Y",strtotime($productos['fecha_registro']));
         $Comprovante= $productos['codProductos'];
         $Saldo= $productos['precio'];?>
 
@@ -163,7 +163,7 @@ $result = mysqli_query($conn, $sql);
 $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
-        $fecha=date("d-m-Y",strtotime($productos['fecha_registro']));
+        $fecha=date("d - m - Y",strtotime($productos['fecha_registro']));
         $Comprovante= $productos['No_Comprovante'];
         $Concepto= $productos['Concepto'];
         $Entradas=$productos['SUM(Entradas)'];
@@ -182,10 +182,7 @@ $result = mysqli_query($conn, $sql);
            </tbody>
         </table>
             </div>
-        </div>
-        </div>
-    </div>
-</div>
+
 <?php } ?>
 </body>
 </html>

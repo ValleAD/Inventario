@@ -120,9 +120,9 @@ die();
          </form>
  </div>
 <?php } ?>
- <table class="table table-striped" id="exam" >
+ <table class="table" id="exam" >
             <thead>
-              <tr id="tr">
+              <tr>
                 <th ><strong>Código de Vale</strong></th>
                 <th><strong>Departamento Solicitante</strong></th>
                 <th ><strong>Encargado</strong></th>
@@ -219,9 +219,7 @@ die();
 <script>
        $(document).ready(function () {
     $('#exam').DataTable({
-            rowGroup: {
-            dataSrc: 3
-        },
+
 responsive: true,
 autoWidth:true,
             deferRender: true,

@@ -44,7 +44,7 @@
         <td align="right"><b>Fecha:</b> <?php echo $fech ?></td>
     </tr>
 </table>         
-<table class="table" style="width: 100%;">
+<table class="table" style="width: 100%;margin: 0;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
             <th style="width: 25%;font-size: 14px;">Codigo</th>
@@ -86,7 +86,7 @@ for($i = 0; $i < count($_POST['desc']); $i++)
         </tr>
      
      <?php } } ?> 
-    <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
+    <tfoot style="width: 100%;">
         <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
         <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $tot_f ?></td>
     </tfoot>

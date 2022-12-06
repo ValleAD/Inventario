@@ -145,7 +145,7 @@ $idusuario=$_POST['idusuario'];
 </table>
 <?php } ?>
     <?php if (isset($_POST['id'])) {?>
-<table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+<table class="table" style="width: 100%;margin: 0;">
     <thead>     
         <tr style="border: 1px solid #ddd;" >
 
@@ -191,7 +191,7 @@ $des=$solicitudes['departamento'];
    
 </table>
 <?php } if (isset($_POST['id1'])) { ?>
-    <table class="table" style="width: 100%;">
+    <table class="table" style="width: 100%;margin: 0;">
     <thead>     
         <tr style="border: 1px solid #ddd;" >
             <th  style="width: 10%;font-size: 14px;">Código</th>

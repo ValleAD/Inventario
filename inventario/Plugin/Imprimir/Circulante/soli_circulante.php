@@ -47,7 +47,7 @@
         $tipo1='Ascendente';
      } ?>
     <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p><br><br>
-    <table class="table" style="width: 100%;">
+    <table class="table" style="width: 100%;margin: 0;">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
             <th style="width: 10%;font-size: 14px;text-align: center;">No. de Solicitud </th>

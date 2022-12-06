@@ -19,7 +19,7 @@ die();
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-
+<title>Solicitud de Bodega</title>
 <style>
 
     h1 {
@@ -105,7 +105,7 @@ die();
 <?php } ?>
 
 <div id="x"><br>
-  <table class="table table-striped" id="exampl"  style=" width: 100%;">
+  <table class="table" id="exampl"  style=" width: 100%;">
           
             <thead>
               <tr id="tr">

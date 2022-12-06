@@ -22,7 +22,7 @@ $idusuario = $_SESSION['iduser'];
       <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
 </head>
 
-<body style="background-image: url(img/camion.jpg); 
+<body style="background-color: hsla(7, 50%, 50%, 1.0); 
 background-size: 100% 100%,100%;background-repeat: no-repeat;background-position: center;background-attachment: fixed;">
 
     <style type="text/css">

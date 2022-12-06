@@ -9,7 +9,7 @@ include ('../../../Model/conexion.php');
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <title>Productos</title>
-        <link rel="stylesheet" type="text/css" href="../../../bootstrap/css/bootstrap.css">
+
    <link rel="stylesheet" type="text/css" href="../../../styles/estilos_tablas.css">
  </head>
  <body>
@@ -22,7 +22,6 @@ include ('../../../Model/conexion.php');
 <h5 align="center" style="margin-top: 2%;">TODOS LOS PRODUCTOS</h5>
 
 <style>
-    .table td  { font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
 
     <section>
      @media (max-width: 952px){
@@ -36,7 +35,7 @@ include ('../../../Model/conexion.php');
     }
   </style>
   <section>
-    <table class="table table-responsive table-striped"  style=" width: 100%">
+    <table class="table table-responsive"  style=" width: 100%;margin: 0;">
 
     <thead>
         <tr id="tr">

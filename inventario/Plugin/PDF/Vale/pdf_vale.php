@@ -26,6 +26,11 @@
         $jus = $_POST['jus'];
           }
     ?>
+        <style>
+        .table tbody tr:nth-child(even) {background-color: #00BDFF; height: 5%}
+.table tbody tr:nth-child(odd) {background-color: #00EAFF; height: 5%}
+
+    </style>
 <h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD</h3>
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
 <h4 align="center" style="margin-top: 2%;">DEPARTAMENTO DE MANTENIMIENTO</h4>
@@ -84,7 +89,7 @@
             </tr>
          
         </tbody>  
-         <?php } } ?> 
+         <?php } ?> 
         <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;ctable-layout: fixed; ">
             <td style="text-align: center; font-size: 12px; font-weight: bold;">Subtotal</td>
             <td colspan="5"></td>
@@ -104,7 +109,7 @@
         <p style="text-align:left;">Solicita: ________________ </p>
         <br>
         <p style="text-align: center;">Autoriza: ________________</p>
-
+<?php } ?>
 
     </body>
     </html>

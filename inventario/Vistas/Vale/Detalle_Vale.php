@@ -230,9 +230,9 @@ while ($productos = mysqli_fetch_array($result1)){
             <input type="hidden" name="um[]" value="<?php echo $um ?>">
             <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
             <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
-            <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
-            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
-            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
+            <input type="hidden" name="cost[]" value="<?php echo $precio2 ?>">
+            <input type="hidden" name="tot[]" value="<?php echo $total1 ?>">
+            <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
 
   <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
 
@@ -254,9 +254,9 @@ while ($productos = mysqli_fetch_array($result1)){
             <input type="hidden" name="um[]" value="<?php echo $um ?>">
             <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
             <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
-            <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
-            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
-            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
+            <input type="hidden" name="cost[]" value="<?php echo $precio2 ?>">
+            <input type="hidden" name="tot[]" value="<?php echo $total1 ?>">
+            <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
 
   <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
 
@@ -279,9 +279,9 @@ while ($productos = mysqli_fetch_array($result1)){
             <input type="hidden" name="um[]" value="<?php echo $um ?>">
             <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
             <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
-            <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
-            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
-            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
+            <input type="hidden" name="cost[]" value="<?php echo $precio2 ?>">
+            <input type="hidden" name="tot[]" value="<?php echo $total1 ?>">
+            <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
    <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
                 <button type="submit" class="btn btn-outline-primary" name="DT" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">

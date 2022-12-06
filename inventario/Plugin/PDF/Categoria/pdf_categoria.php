@@ -9,7 +9,11 @@ include ('../../../Model/conexion.php');
     <title>Filtro por Categoria en PDF</title>
 </head>
 <body style="font-family: sans-serif;">
+    <style>
+        .table tbody tr:nth-child(even) {background-color: #00BDFF; height: 5%}
+.table tbody tr:nth-child(odd) {background-color: #00EAFF; height: 5%}
 
+    </style>
 <img src="../../../img/hospital.png" style="width:20%">
     <img src="../../../img/log_1.png" style="width:20%; float:right">
 <h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD</h3>

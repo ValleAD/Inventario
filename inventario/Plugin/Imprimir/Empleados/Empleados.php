@@ -23,7 +23,7 @@ include ('../../../Model/conexion.php');
     .table td  { font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
 </style>
 <?php if (isset($_POST['Empleados'])) { ?>
-    <table class="table table-responsive table-striped"  style=" width: 100%">
+    <table class="table table-responsive table-striped"  style=" width: 100%;margin: 0;">
 
     <thead>
         <tr id="tr">
@@ -81,7 +81,7 @@ include ('../../../Model/conexion.php');
    if (isset($_POST['user2'])) {
               $cod=$_POST['user1']; ?>
 
-<table class="table table-responsive table-striped"  style=" width: 100%">
+<table class="table table-responsive table-striped"  style=" width: 100%;margin: 0;">
 
     <thead>
         <tr id="tr">

@@ -28,7 +28,7 @@ include ('../../../Model/conexion.php');
 <h4 align="center" style="margin-top: 2%;">INGRESOS DE COMPRAS</h4>
 
   <section>
-        <table class="table table-responsive table-striped"  style=" width: 100%">
+        <table class="table table-responsive table-striped"  style=" width: 100%;margin: 0;">
 
     <thead>
         <tr id="tr">
@@ -79,7 +79,7 @@ while ($productos = mysqli_fetch_array($result)){
         <h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD</h3>
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
         <h4 align="center" style="margin-top: 2%;">INGRESOS DE ALMACEN</h4>
-   <table class="table table-responsive table-striped"  style=" width: 100%">
+   <table class="table table-responsive table-striped"  style=" width: 100%;margin: 0;">
 
     <thead>
         <tr id="tr">
@@ -146,7 +146,7 @@ width: 100%;
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
 <h4 align="center" style="margin-top: 2%;">INGRESOS DE CIRCULANTE</h4>
 
-    <table class="table table-responsive table-striped"  style=" width: 100%">
+    <table class="table table-responsive table-striped"  style=" width: 100%;margin: 0;">
 
     <thead>
         <tr id="tr">
@@ -212,7 +212,7 @@ if (isset($_POST['compra1'])) {$idusuario=$_POST['idusuario'];?>
     }
   </style>
   <section>
-        <table class="table table-responsive table-striped"  style=" width: 100%">
+        <table class="table table-responsive table-striped"  style=" width: 100%;margin: 0;">
 
     <thead>
         <tr id="tr">
@@ -264,7 +264,7 @@ while ($productos = mysqli_fetch_array($result)){
         <h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD</h3>
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
         <h4 align="center" style="margin-top: 2%;">INGRESOS DE ALMACEN</h4>
-   <table class="table table-responsive table-striped"  style=" width: 100%">
+   <table class="table table-responsive table-striped"  style=" width: 100%;margin: 0;">
 
     <thead>
         <tr id="tr">
@@ -330,7 +330,7 @@ width: 100%;
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
 <h4 align="center" style="margin-top: 2%;">INGRESOS DE CIRCULANTE</h4>
 
-    <table class="table table-responsive table-striped"  style=" width: 100%">
+    <table class="table table-responsive table-striped"  style=" width: 100%;margin: 0;">
 
     <thead>
         <tr id="tr">

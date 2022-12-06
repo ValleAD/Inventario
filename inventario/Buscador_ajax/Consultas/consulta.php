@@ -178,9 +178,7 @@ if (resultado.value) {
    
    $(document).ready(function () {
     $('#example').DataTable({
-            rowGroup: {
-            dataSrc: 6
-        },
+
         lengthMenu: [[10, -1], [10,"Todos"]],
             responsive: true,
             autoWidth:false,

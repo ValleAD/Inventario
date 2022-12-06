@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-       <link rel="stylesheet" type="text/css" href="../../../bootstrap/css/bootstrap.css">
    <link rel="stylesheet" type="text/css" href="../../../styles/estilos_tablas.css">
     <title>Imprimir Bodega</title>
 </head>
@@ -19,29 +18,47 @@
      $vale = $_POST['bodega'];
      $estado=$_POST['estado'];
 
+
+    $codigo = $_POST['cod'];
+    
+    $des = $_POST['desc'];
+    $um = $_POST['um'];
+     $cantidad = $_POST['cant'];
+    $cost = $_POST['cost'];
+    $stock = $_POST['cantidad_despachada'];
+    $tot = $_POST['tot'];
+
       
 ?>
-<style>.table td  {font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
+<style>.table td  {font-size: 11px;font-size: 12px; margin: 0}
+.table tr:nth-child(even) {background-color: #00BDFF;}
+.table tr:nth-child(odd) {background-color: #00EAFF;}
 </style>
 <h3>HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
 
 <h4>DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h5 align="center">SOLICITUD DE MATERIALES</h5>
  
-<p style="float: right;">O. de T.: <?php echo $vale ?></p>
-<p><b>Depto. o Servicio:</b> <?php echo $depto ?></p>  
-   <table style="width: 100%;">
+ 
+   <table style="width: 100%;margin: 0;">
+    <tr style="height: -15%;">
+        <td><p><b>Depto. o Servicio:</b> <?php echo $depto ?></p> </td>
+           <td><b>Fecha:</b> <?php echo $fech ?><br></td>
+        <td><p style="float: right;"><b>O. de T.:</b> <?php echo $vale ?></p>
+</td>
+    </tr>
        <tr>
            <td style="text-align: left;;width:50%;"><b>Encargado:</b> <?php echo $encargado ?></td>
-           <td><b>Fecha:</b> <?php echo $fech ?><br></td>
-           <td style="text-align: right;"><b>Estado:</b> <?php echo $estado ?></td>
+           <td><b>Estado:</b> <?php echo $estado ?></td>
+        <td style="text-align: right;"><p><b>SubTotal:</b> <?php echo $tot_f = $_POST['tot_f']; ?></p> </td>
+
        </tr>
    </table> 
 
         <br> 
-<table class="table" style="width: 100%;">
+<table class="table" style="width: 100%">
     <thead>     
-        <tr style="border: 1px solid #ddd;color: black;">
+        <tr id="tr">
             <th style="width: 25%;font-size: 14px;text-align: center;">Código</th>
             <th style="width: 70%;font-size: 14px;text-align: center;">Descripción Completa</th>
             <th style="width: 15%;font-size: 14px;text-align: center;">U/M</th>
@@ -54,22 +71,10 @@
 
     <tbody>
 <?php
-    $total = 0;
-    $final = 0;
-for($i = 0; $i < count($_POST['cod']); $i++)
-{
-   
-        $codigo = $_POST['cod'][$i];
-    $des = $_POST['desc'][$i];
-    $um = $_POST['um'][$i];
-     $cantidad = $_POST['cant'][$i];
-    $cost = $_POST['cost'][$i];
-    $stock = $_POST['cantidad_despachada'][$i];
-    $tot = $_POST['tot'][$i];
-     $tot_f = $_POST['tot_f'];
+
 ?>
   
-        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+        <tr>
             <td data-label="Código"style="font-size: 12px;"><?php  echo $codigo?></td>
             <td data-label="Descripción"style="font-size: 12px;"><?php  echo $des?></td>
             <td data-label="Unidad De Medida"style="font-size: 12px;"><?php  echo $um?></td>
@@ -80,12 +85,9 @@ for($i = 0; $i < count($_POST['cod']); $i++)
         </tr>
      
     </tbody>  
-     <?php } } ?> 
-    <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
-        <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
-        <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $tot_f ?></td>
-    </tfoot>
+
 </table>
+     <?php } ?> 
 <br>
 
     <p style="float: right;"> Entrega: ________________</p>

@@ -113,11 +113,31 @@ $result = mysqli_query($conn, $sql);
         $descripcion=$productos['descripcion'];
         $um=$productos['unidad_medida'];
 ?>
-<style type="text/css">#card{display: block;}.card1, #card2{display: none;}</style>
- 
+<style type="text/css">
+#t{
+    border-radius: 0.25rem;
+    background: rgb(25 255 255);
+    float: left;
+    width: 20%;
+    border: 1px solid #ccc;border-collapse: collapse;
+    padding: 1%;
 
-<p><b>PERIODO DE MOVIMIENTO</b></p>
-<hr>
+}
+#h{
+float: left;
+margin-left: 2%;
+        width: 75%;
+}
+p{
+    font-size: 12px;
+}
+.table{
+    margin: 0;
+}
+</style>
+ <div id="row">
+     <div id="t">
+         <p><b>PERIODO DE MOVIMIENTO</b></p>
 <table class="" style="width: 100%;">
     <tr>
         <td><p><b>DE:</b> <?php echo $fecha ?></p></td>
@@ -137,11 +157,9 @@ $result = mysqli_query($conn, $sql);
     </tr>
 </table>
 
-<hr>
-<br>
-<?php } ?>
-
-        <table class="table  table-striped" id="examp" style="width: 100%;">
+     </div>
+     <div id="h">
+                 <table class="table">
                    <thead>
              <tr id="tr">
                      <th >Fecha</th>
@@ -161,7 +179,7 @@ $result = mysqli_query($conn, $sql);
 
 
     while ($productos = mysqli_fetch_array($result)){
-        $fecha=date("d-m-Y",strtotime($productos['fecha_registro']));
+        $fecha=date("d - m - Y",strtotime($productos['fecha_registro']));
         $Comprovante= $productos['codProductos'];
         $Saldo= $productos['precio'];?>
         <tr>
@@ -176,7 +194,7 @@ $result = mysqli_query($conn, $sql);
 $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
-        $fecha=date("d-m-Y",strtotime($productos['fecha_registro']));
+        $fecha=date("d - m - Y",strtotime($productos['fecha_registro']));
         $Comprovante= $productos['No_Comprovante'];
         $Concepto= $productos['Concepto'];
         $Entradas=$productos['SUM(Entradas)'];
@@ -194,6 +212,12 @@ $result = mysqli_query($conn, $sql);
 <?php } ?>
            </tbody>
         </table>
+     </div>
+ </div>
+
+<?php } ?>
+
+
 <?php } ?>
 </section>
  </body>

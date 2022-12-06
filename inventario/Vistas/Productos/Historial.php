@@ -32,11 +32,13 @@ die();
                <div class="col-md-3" style="position: initial; ">
         <p class="mx-3" style="color: #000; font-weight: bold;">Buscar Codigo del Producto</p>
     </div>          
-             <div class="col-md-3"style="position: initial;">
+             <div class="col-md-8"style="position: initial;">
             <section class="well" >
                 <form method="POST" action="" class="well hidden"> 
                 <div style="position: initial;" class="input-group">
-            <input required type="text" style="position: initial;" name="Busqueda"  class="form-control"  placeholder="Buscar">
+                    Del: <input type="DATE" name="f1" class="form-control mx-3" required>
+                    Al: <input type="DATE" name="f2" class="form-control mx-3" required >
+            <input required type="number" style="position: initial;" name="Busqueda"  class="form-control"  placeholder="Buscar">
                       <button name="Consultar2" type="submit" onclick="return validar1()" class="input-group-text input" for="inputGroupSelect01">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#search"/>
@@ -52,7 +54,7 @@ die();
         </div>
 
 <?php
- if (isset($_POST['Consultar2'])) {$Busqueda=$_POST['Busqueda'];?>
+ if (isset($_POST['Consultar2'])) {$Busqueda=$_POST['Busqueda'];$f1=$_POST['f1'];$f2=$_POST['f2']?>
 <br>
 <div class="card card1" id="card1" >
             <div class="card-body">
@@ -65,7 +67,7 @@ die();
     <div class="col-md-3" id="card">
         <div class="card">
             <div class="card-body">
-<?php $sql = "SELECT Concepto,No_Comprovante,h.descripcion,  h.fecha_registro,h.unidad_medida, SUM(Entradas), SUM(Salidas),Saldo, p.precio FROM historial h JOIN tb_productos p ON h.No_Comprovante= p.codProductos WHERE  No_Comprovante = '$Busqueda' GROUP BY Concepto order by h.fecha_registro DESC LIMIT 1";
+<?php $sql = "SELECT Concepto,No_Comprovante,h.descripcion,  h.fecha_registro,h.unidad_medida, SUM(Entradas), SUM(Salidas),Saldo, p.precio FROM historial h JOIN tb_productos p ON h.No_Comprovante= p.codProductos WHERE  No_Comprovante = '$Busqueda' or h.fecha_registro BETWEEN ' $f1' AND ' $f2' GROUP BY Concepto order by h.fecha_registro DESC LIMIT 1";
 $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
@@ -199,7 +201,7 @@ $result = mysqli_query($conn, $sql);
             <td id="th" data-label="Salidas">0.00</td>
             <td id="th" data-label="Saldo"><?php echo $Saldo ?></td>
         </tr> 
-    <?php } $sql = "SELECT Concepto,No_Comprovante,h.descripcion, h.fecha_registro,h.unidad_medida, SUM(Entradas), SUM(Salidas),Saldo, p.precio FROM historial h JOIN tb_productos p ON h.No_Comprovante= p.codProductos WHERE  No_Comprovante = '$Busqueda' GROUP BY Concepto order by h.Concepto DESC";
+    <?php } $sql = "SELECT Concepto,No_Comprovante,h.descripcion, h.fecha_registro,h.unidad_medida, SUM(Entradas), SUM(Salidas),Saldo, p.precio FROM historial h JOIN tb_productos p ON h.No_Comprovante= p.codProductos WHERE  No_Comprovante = '$Busqueda' GROUP BY Concepto ";
 $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){

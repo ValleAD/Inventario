@@ -42,7 +42,7 @@
         $tipo1='Ascendente';
      } ?>
     <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p><br><br>
-    <table class="table" style="width: 100%;">
+    <table class="table" style="width: 100%;margin: 0;">
     <thead>     
         <tr style="border: 1px solid #ddd;" >
 
@@ -100,7 +100,7 @@
         $tipo1='Ascendente';
      } ?>
     <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p><br><br>
-    <table class="table" style="width: 100%;">
+    <table class="table" style="width: 100%;margin: 0;">
     <thead>     
         <tr style="border: 1px solid #ddd;" >
 
@@ -148,7 +148,7 @@ $idusuario=$_POST['idusuario'];
 </table>
 <?php } ?>
 <?php if (isset($_POST['id'])) {?>
-<table class="table" style="width: 100%;">
+<table class="table" style="width: 100%;margin: 0;">
     <thead>     
         <tr style="border: 1px solid #ddd;" >
           <th style="font-size: 14px;width: 10%;">No. Solicitud</th>
@@ -192,7 +192,7 @@ $idusuario=$_POST['idusuario'];
    
 </table>
 <?php } if (isset($_POST['id1'])) {?>
-<table class="table" style="width: 100%;">
+<table class="table" style="width: 100%;margin: 0;">
     <thead>     
         <tr style="border: 1px solid #ddd;" >
           <th style="font-size: 14px;width: 10%;">No. Solicitud</th>

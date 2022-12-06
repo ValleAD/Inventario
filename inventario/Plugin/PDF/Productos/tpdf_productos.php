@@ -5,6 +5,11 @@ include ('../../../Model/conexion.php'); ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../../../styles/estilos_tablas.css">
+    <style>
+        .table tr:nth-child(odd) {background-color: #00EAFF;}
+        .table tr:nth-child(even) {background-color: #00BDFF;}
+    </style>
 
     <title>Productos</title>
 </head>
@@ -36,7 +41,7 @@ include ('../../../Model/conexion.php'); ?>
         <?php 
 
  
-   $sql = "SELECT * FROM `tb_productos` ";
+   $sql = "SELECT * FROM tb_productos";
 
         $result = mysqli_query($conn, $sql);
  while ($productos = mysqli_fetch_array($result)){

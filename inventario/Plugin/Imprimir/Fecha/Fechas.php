@@ -17,14 +17,14 @@
 <h4 align="center" style="margin-top: 2%;">DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h5 align="center" style="margin-top: 2%;">FILTRO DE FECHAS</h5>
 <style>
-    td  {font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
+  .table  td  {font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
 </style>
 <section style="margin: 2%;">
     <?php
     if (isset($_POST['Dia'])) {$dia=$_POST['dia']?><br>
                 <p align="center"><b>El Dia Selecionado</b>: <?php echo $_POST['dia'] ?></p>
 
-    <table class="table  table-striped"  style=" width: 100%">
+    <table class="table  table-striped"  style=" width: 100%;margin: 0;">
 
     <thead>
         <tr id="tr">
@@ -105,7 +105,7 @@
             if ($mes1=="Diciembre") { $mes1==12;}?><br>
                 <p align="center"><b>El Mes selecionado: </b><?php echo $mes." ("."<b>Mes en numero:</b> ".$mes2.$mes1.")" ?></p>
 
-    <table class="table  table-striped"  style=" width: 100%">
+    <table class="table  table-striped"  style=" width: 100%;margin: 0;">
 
     <thead>
         <tr id="tr">
@@ -174,7 +174,7 @@
  if (isset($_POST['Año'])) {$año=$_POST['año']?><br>
                 <p align="center"><b>El Año selecionado</b>: <?php echo $_POST['año'] ?></p>
 
-    <table class="table  table-striped"  style=" width: 100%">
+    <table class="table  table-striped"  style=" width: 100%;margin: 0;">
 
     <thead>
         <tr id="tr">
@@ -229,12 +229,13 @@
 </table> 
     <?php  } if (isset($_POST['Fecha'])) {$f1 =$_POST['f1'];$f2 =$_POST['f2'];?>
     <br>
-    <table style="width: 100%;"><tr>
+    <table style="width: 100%;">
+        <tr>
         <td><b>Desde:</b> <?php echo $f1 ?></td>
         <td style="text-align: right;"><b>Hasta:</b> <?php echo $f2 ?></td>
 </tr>
 </table>
-    <table class="table  table-striped"  style=" width: 100%">
+    <table class="table  table-striped"  style=" width: 100%;margin: 0;">
 
     <thead>
         <tr id="tr">

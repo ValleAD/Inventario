@@ -145,9 +145,6 @@ autoWidth:false,
             scroller: true,
             scrollY: 400,
             scrollCollapse: true,
-        rowGroup: {
-            dataSrc: 7
-        },
                     language: {
                 "lengthMenu": "Mostrar _MENU_ registros",
                 "zeroRecords": "No se encontraron resultados",

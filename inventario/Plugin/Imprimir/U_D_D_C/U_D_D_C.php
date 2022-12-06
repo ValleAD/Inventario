@@ -23,7 +23,7 @@ include ('../../../Model/conexion.php');
 <?php if (isset($_POST['unidad'])) {?>
     
     <h5 align="center">UNIDAD DE MEDIDA</h5><br>
-   <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+   <table class="table" style="width: 100%; margin: 0;">
         <thead style="background-color: #46466b;color: white;">   
         <tr style="border: 1px solid #ddd;" >
           <th style="width:10%;font-size: 12px;height: 3%; text-align: center;">#</th>
@@ -71,7 +71,7 @@ $n++;
 <?php if (isset($_POST['departamento'])) {?>
     
     <h5 align="center">DEPARTAMENTOS</h5><br>
-   <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+   <table class="table" style="width: 100%; margin: 0;">
         <thead style="background-color: #46466b;color: white;">   
         <tr style="border: 1px solid #ddd;" >
           <th style="width:10%;font-size: 12px;height: 3%; text-align: center;">#</th>
@@ -119,7 +119,7 @@ $n++;
 <?php } if (isset($_POST['categorias'])) {?>
     
     <h5 align="center">CATEGORIAS</h5><br>
-   <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+   <table class="table" style="width: 100%; margin: 0;">
         <thead style="background-color: #46466b;color: white;">   
         <tr style="border: 1px solid #ddd;" >
           <th style="width:10%;font-size: 12px;height: 3%; text-align: center;">#</th>
@@ -166,7 +166,7 @@ $n++;
 </table>
 <?php } if (isset($_POST['dependencia'])) {?>   
     <h5 align="center">DEPENDENCIAS</h5><br>
-   <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+   <table class="table" style="width: 100%; margin: 0;">
         <thead style="background-color: #46466b;color: white;">   
         <tr style="border: 1px solid #ddd;" >
           <th style="width:10%;font-size: 12px;height: 3%; text-align: center;">#</th>

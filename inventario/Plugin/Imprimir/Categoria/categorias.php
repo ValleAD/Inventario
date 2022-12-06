@@ -22,7 +22,7 @@ include ('../../../Model/conexion.php');
 <h4>DEPARTAMENTO DE MANTENIMIENTO</h4><br><br>
 
 <h4>Filtro por Categoria</h4>
-    <table class="table table-responsive table-striped"  style=" width: 100%">
+    <table class="table table-responsive table-striped"  style=" width: 100%; margin: 0;">
 
     <thead>
         <tr id="tr">

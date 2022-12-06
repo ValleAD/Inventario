@@ -36,7 +36,7 @@
 <h4 align="center" style="margin-top: 2%;">ALMACÉN DE MEDICAMENTOS, INSUMOS MÉDICOS,</h4>
 <h4 align="center" style="margin-top: 2%;">PAPELERÍA Y OTROS ARTICULOS</h4>
 <br>
-<table  style="width: 100%;text-align: center;">
+<table  style="width: 100%;text-align: center;margin: 0;">
     <tr>
         <td><b>N° Bodega</b></td>
         <td><b>Departamento</b></td>

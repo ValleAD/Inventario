@@ -30,8 +30,8 @@ die();
 <body>
         <style>  
         #div{margin: 0%}
-        section{background: whitesmoke;border-radius: 15px;margin: 1%;padding: 0%;}
-        form{background: transparent;padding: 1%;}
+        section{background: whitesmoke;border-radius: 15px;margin: 1%;padding: 0%;padding: 1%;}
+        form{background: transparent;}
         @media (max-width: 800px){
 
         .col-md-3{
@@ -219,14 +219,10 @@ while ($productos = mysqli_fetch_array($result1)){
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['estado']?>" name="estado">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
 
-        <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
-            <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
-            <input type="hidden" name="um[]" value="<?php echo $um ?>">
-            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
-            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
-            <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
-            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
-            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
+        <input type="hidden" name="cod" value="<?php echo $codigo ?>">
+            <input type="hidden" name="cost" value="<?php echo $precio2 ?>">
+            <input type="hidden" name="tot" value="<?php echo $total1 ?>">
+            <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
 
 
 
@@ -248,9 +244,9 @@ while ($productos = mysqli_fetch_array($result1)){
             <input type="hidden" name="um[]" value="<?php echo $um ?>">
             <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
             <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
-            <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
-            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
-            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
+            <input type="hidden" name="cost[]" value="<?php echo $precio2 ?>">
+            <input type="hidden" name="tot[]" value="<?php echo $total1 ?>">
+            <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
 
 
 
@@ -268,14 +264,14 @@ while ($productos = mysqli_fetch_array($result1)){
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['estado']?>" name="estado">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
 
-       <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
+            <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
             <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
             <input type="hidden" name="um[]" value="<?php echo $um ?>">
             <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
             <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
-            <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
-            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
-            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
+            <input type="hidden" name="cost[]" value="<?php echo $precio2 ?>">
+            <input type="hidden" name="tot[]" value="<?php echo $total1 ?>">
+            <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
  
                 <button type="submit" class="btn btn-outline-primary" name="DT" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -298,6 +294,11 @@ while ($productos = mysqli_fetch_array($result1)){
             </button>
             <input type="hidden" readonly class="form-control"  value="<?php echo $productos1['codBodega']?>" name="bodega">
         </form><?php } ?>
+        <?php if($productos1['estado']=='Aprobado'){?>
+            <form style="" method="POST" action="" >
+        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#new">➕</button>
+    </form>
+         <?php } ?>
                     </div>
 
                     <div class="col-md-12"><label style="font-weight: bold;">Sub Total:</label>
@@ -469,6 +470,89 @@ while ($productos = mysqli_fetch_array($result)){
 </form>
         <?php } }?>
 
+<div class="modal fade" id="new" style="background: rgba(0, 0, 0, 0.3)"  data-backdrop="static"  tabindex="-1" role="dialog">
+    <div class="modal-dialog" style=" width:70%">
+        <div class="modal-content" style="background-image: linear-gradient(90deg, rgb(5, 114, 72), rgb(42, 136, 136));color: white; position: initial; z-index: 1000px;">
+            <div class="modal-header">
+                <h5 class="modal-title" style="color:white;">Información del Usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">
+                      <svg class="bi" width="30" height="30" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#backspace-fill"/>
+                        </svg>
+                  </span>
+                </button>
+            </div>
+            <form>
+              <div class="modal-body ">
+                       <table class="table table-striped" id="example1">
+            <thead>
+              <tr id="tr">
+                <th>Código</th>
+                <th>Descripción Completa</th>
+                <th>Unidad de Medida</th>
+                <th>Cantidad solicitada</th>
+                <th>Cantidad Depachada</th>
+
+                <th>Costo unitario</th>
+                <th>Total</th>
+              </tr>
+           </thead>
+            <tbody>
+                <?php 
+
+
+
+$sql = "SELECT * FROM tb_productos ";
+    $result3 = mysqli_query($conn, $sql);
+
+while ($productos2 = mysqli_fetch_array($result3)){
+$total = $productos2['stock'] * $productos2['precio'];
+
+       $final += $total;
+       $total1= number_format($total, 2, ".",",");
+      $final1=number_format($final, 2, ".",",");
+     $descripcion=$productos2['descripcion'];
+     $um=$productos2['unidad_medida'];
+      
+
+        $precio   =    $productos2['precio'];
+        $precio2  =    number_format($precio, 2,".",".");  
+        $cant_aprobada=$productos2['stock'];
+        $cantidad_despachada=$productos2['stock'];
+        $stock=number_format($cant_aprobada, 2,",");
+        $cantidad_desp=number_format($cantidad_despachada, 2,",");?>
+    <style type="text/css">
+     #td{
+        display: none;
+    }
+    
+   
+</style> 
+      <tr>
+       <td  data-label="Código"><?php echo $productos2['codProductos'] ?></td>
+        <td  data-label="Descripción"><?php echo $productos2['descripcion'] ?></td>
+        <td  data-label="Unidada de Medida"><?php echo $productos2['unidad_medida'] ?></td>
+        <td  data-label="Cantidad"><?php echo $stock ?></td>
+        <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
+        <td  data-label="Costo unitario"><?php echo $precio2 ?></td>
+        <td  data-label="total"><?php echo $total1 ?></td>
+      </tr>
+
+      <?php }
+
+   ?> 
+  </tbody>
+           
+</table>
+              </div>
+              <div class="modal-footer">
+                  <button type="submit" name="new" class="btn btn-success">Continuar</button>
+              </div>
+          </form>
+          </div>
+      </div>
+  </div>
 
 </section>    
 
@@ -533,6 +617,34 @@ autoWidth:false,
 
     });
 });
+    $('#example1').DataTable({
+dom: 'lrtip',
+responsive: true,
+autoWidth:false,
+
+            deferRender: true,
+            scroller: true,
+            scrollY: 400,
+            scrollCollapse: true,
+                lengthMenu: [[10, -1], [10,"Todos"]],
+                    language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                 },
+                 "sProcessing":"Procesando...",
+            },
+
+    });
+
 </script>  
 </body>
   </html>

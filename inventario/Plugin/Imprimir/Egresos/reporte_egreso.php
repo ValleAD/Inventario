@@ -34,7 +34,7 @@ include ('../../../Model/conexion.php');
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
 <h4 align="center" style="margin-top: 2%;">UNIDAD DE ADQUISICIONES Y CONTRATACIONES INSTITUCIONAL</h4>
 <h4 align="center" style="margin-top: 2%;">EGRESOS DE VALE</h4>
-        <table class="table table-responsive table-striped"  style=" width: 100%">
+        <table class="table table-responsive table-striped"  style=" width: 100% margin: 0;">
 
     <thead>
         <tr id="tr">
@@ -175,7 +175,7 @@ width: 100%;
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
 <h4 align="center" style="margin-top: 2%;">UNIDAD DE ADQUISICIONES Y CONTRATACIONES INSTITUCIONAL</h4>
 <h4 align="center" style="margin-top: 2%;">EGRESOS DE VALE</h4>
-        <table class="table table-responsive table-striped"  style=" width: 100%">
+        <table class="table table-responsive table-striped"  style=" width: 100%;margin: 0;">
 
     <thead>
         <tr id="tr">
@@ -244,7 +244,7 @@ width: 100%;
         <h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD</h3>
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
         <h4 align="center" style="margin-top: 2%;">EGRESOS DE BODEGA</h4>
-   <table class="table table-responsive table-striped"  style=" width: 100%">
+   <table class="table table-responsive table-striped"  style=" width: 100%;margin: 0;">
 
     <thead>
         <tr id="tr">
