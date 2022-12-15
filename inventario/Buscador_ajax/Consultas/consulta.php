@@ -17,7 +17,7 @@ $tipo_usuario = $_SESSION['tipo_usuario'];?>
 <?php include ('../../Model/conexion.php');
 
 $tabla="";
-$query="SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos GROUP BY codProductos,precio HAVING COUNT(*) ORDER BY fecha_registro DESC ";
+$query="SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock),Mes,Año, precio, fecha_registro FROM tb_productos GROUP BY codProductos,precio HAVING COUNT(*) ORDER BY fecha_registro DESC ";
 
 ///////// LO QUE OCURRE AL TECLEAR SOBRE EL INPUT DE BUSQUEDA ////////////
 if(isset($_POST['consulta']))
@@ -38,30 +38,27 @@ if(isset($_POST['consulta']))
 $buscarAlumnos=$conn->query($query);
 if ($buscarAlumnos->num_rows > 0)
 {
-	$tabla.= '         <style>
-
-         </style>'; echo '
+	 echo '
     <div class="card productos q">
     <div class="card-body">
 
-	<table class=" table display   table-striped" id="example" style=" width: 100%;">
+	<table class=" table display " id="example" style=" width: 100%;">
 	 
                 <thead>
                      <tr id="tr">
-                     <th style="width:7%"  id="th">Código</th>
-                     <th style="width:7%"  id="th">Cod. Catálogo</th>
-                     <th style="width: 27%;" id="th"> Descripción Completa</th>
-                     <th style="width:8%"  id="th">U/M</th>
-                     <th style="width:8%"  id="th">Cantidad</th>
-                     <th style="width:10%"  id="th">Costo Unitario</th>
-                     <th style="width:10%"  id="th">Fecha Registro</th>
-                    <th id="th" style="width:9%">Categoría</th>
+                     <th title="Codigo del productos">Cód.</th>
+                     <th title="Codigo del Catálogo">Catál.</th>
+                     <th title="Descripción Completa">Desc.</th>
+                     <th title="Unidad de Medida">U/M</th>
+                     <th title="Cantidad (Stock)">Cant.</th>
+                     <th title="Costo Unitario">Precio</th>
+                     <th title="Fecha de registro">Fecha</th>
 
                         ';if($tipo_usuario==1){ 
                         echo '
                     
-                     <th style="width:10%" id="th">Editar</th>
-                     <th style="width:10%" id="th">Eliminar</th>
+                     <th title="Editar Producto">Editar</th>
+                     <th title="Eliminar Producto">Delete</th>
                  '; } echo'
                    </tr>
                    </thead>
@@ -88,6 +85,19 @@ if ($buscarAlumnos->num_rows > 0)
                 
                 }else{
                 $categoria=$productos['categoria'];
+                        $mes=$productos['Mes'];
+                            if ($mes==1)  { $mes="Enero";}
+                            if ($mes==2)  { $mes="Febrero";}
+                            if ($mes==3)  { $mes="Marzo";}
+                            if ($mes==4)  { $mes="Abril";}
+                            if ($mes==5)  { $mes="Mayo";}
+                            if ($mes==6)  { $mes="Junio";}
+                            if ($mes==7)  { $mes="Julio";}
+                            if ($mes==8)  { $mes="Agosto";}
+                            if ($mes==9)  { $mes="Septiembre";}
+                            if ($mes==10) { $mes="Octubre";}
+                            if ($mes==11) { $mes="Noviembre";}
+                            if ($mes==12) { $mes="Diciembre";}
                 }
             
 		 $n++;
@@ -104,33 +114,39 @@ if ($buscarAlumnos->num_rows > 0)
 		<tr>
             <td data-label="Código">'.$productos['codProductos'].'</td>
             <td data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
-            <td  data-label="Descripción">'.$des.'</td>
+            <td data-label="Descripción">'.$des.'</td>
             <td data-label="Unidad de Medida">'.$unidad.'</td>
             <td data-label="Cantidad">'.$stock.'</td>
             <td data-label="Precio">'.$precio1.'</td>
-            <td data-label="Fecha">'.$productos['fecha_registro'].'</td>
-            <td data-label="Categoría">'.$categoria.'</td>
+            <td data-label="Fecha">'.date("d",strtotime($productos['fecha_registro'])).' '.$mes.' '.$productos['Año'].'</td>
 		
 		';
         if ($tipo_usuario==1) {
             $tabla.='
-			<td>
-                <form style="margin: 0%;position: 0;float:right; background: transparent;" method="POST" action="vistaProductos.php">             
-                <input type="hidden" name="id" value="'.$productos['codProductos'] .'">               
-                <button   name="editar" class="btn btn-success btn-sm"  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
-            </form> </td>
-            <td>
+			<td data-label="Editar">
+            <a title="Editar Producto" class="btn btn-success btn-sm"  href="vistaProductos.php?id='.$productos['codProductos'] .'">
+                <svg class="bi" width="18" height="18" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#pencil-square"/>
+                        </svg></a>   
+            </td>
+            <td data-label="Eliminar">
             ';
                         if ($productos['SUM(stock)']==0) {
                
                    
-              $tabla.='  <a  data-bs-toggle="tooltip" style="float:right;" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm btn-del" id="'.$productos['codProductos'] .'" href="../../Controller/Productos/Delete_producto.php?cod='.$productos['cod'].'&id='. $productos['SUM(stock)'] .'">Eliminar</a>';
+              $tabla.='  <a  data-bs-toggle="tooltip" style="" data-bs-placement="top" title="Eliminar Producto" class="btn btn-danger btn-sm btn-del" onclick="return Eliminar()" id="'.$productos['codProductos'] .'" href="../../Controller/Productos/Delete_producto.php?cod='.$productos['cod'].'&id='. $productos['SUM(stock)'] .'&codProductos='. $productos['codProductos'] .'">
+              <svg class="bi" width="18" height="18" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#trash-fill"/>
+                        </svg></a>';
             
                 
             };
                         if ($productos['SUM(stock)']!=0) {
                $tabla.='
-            <button   id="th" style="cursor: not-allowed;float:right;background: rgba(255, 0, 0, 0.5); border: none;" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm text-white">Eliminar</button>
+            <button   id="th" style="cursor: not-allowed;background: rgba(255, 0, 0, 0.5); border: none;" data-bs-toggle="tooltip" data-bs-placement="top" title="En este momento no se Puede Eliminar este Producto" class="btn btn-danger btn-sm text-white">
+            <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#trash-fill"/>
+                        </svg></button>
             ';
             }
         }?>
@@ -142,7 +158,7 @@ if ($buscarAlumnos->num_rows > 0)
 	
 <?php 
 	}
-	$tabla.='</tbody></table></div></div>';
+	$tabla.='</tbody></table></div><p id="respa1"></p></div>';
 } else
 	{
 		$tabla="
@@ -155,14 +171,16 @@ if ($buscarAlumnos->num_rows > 0)
 echo $tabla;
 ?>     
 
+
 <script type="text/javascript">
+    $(document).ready(function () {
     $('.btn-del').on('click', function(e) {
         e.preventDefault();
         const href=$(this).attr('href');
         const cod=$(this).attr('id');
             Swal.fire({
       title:'IMPORTANTE',
-      html: 'Realmente deseas Eliminar este registro<br><br><b>El código a Eliminar es: </b>'+cod,
+      html: 'Realmente deseas Eliminar este registro<br><br><b>El Código a Eliminar es: </b>'+cod,
       icon:'warning',
       showCancelButton:true,
       confirmButtonColor: '#3085d6',
@@ -171,13 +189,23 @@ echo $tabla;
       allowOutsideClick: false
     }).then((resultado) =>{
 if (resultado.value) {
-        document.location.href= href;                               
+
+    $.ajax({
+        url : href,
+        type : 'POST',
+        data : href,
+        success:function(resp) {
+
+             $('#respa1').html(resp);
+            
+}
+      });
+        // document.location.href= href;                               
                }
                 });
     })
    
-   $(document).ready(function () {
-    $('#example').DataTable({
+    var table =$('#example').DataTable({
 
         lengthMenu: [[10, -1], [10,"Todos"]],
             responsive: true,

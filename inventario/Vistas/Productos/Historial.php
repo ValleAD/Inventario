@@ -21,6 +21,12 @@ die();
 	<title>Buscador al Producto</title>
 </head>
 <body>
+    <style>
+        #p{margin-top: -15%;}
+        @media screen and (max-width: 800px) {
+            #p{margin-top: -8%}
+        }
+    </style>
   <section  style="background: rgba(255, 255, 255, 0.9);margin: 7%1%1%1%;padding: 1%; border-radius: 15px;">
 <h2  class="text-center">Buscador al Producto</h2>
 <br>
@@ -38,7 +44,7 @@ die();
                 <div style="position: initial;" class="input-group">
                     Del: <input type="DATE" name="f1" class="form-control mx-3" required>
                     Al: <input type="DATE" name="f2" class="form-control mx-3" required >
-            <input required type="number" style="position: initial;" name="Busqueda"  class="form-control"  placeholder="Buscar">
+           <input required type="number" style="position: initial;" name="Busqueda"  class="form-control"  placeholder="Buscar">
                       <button name="Consultar2" type="submit" onclick="return validar1()" class="input-group-text input" for="inputGroupSelect01">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#search"/>
@@ -54,44 +60,98 @@ die();
         </div>
 
 <?php
- if (isset($_POST['Consultar2'])) {$Busqueda=$_POST['Busqueda'];$f1=$_POST['f1'];$f2=$_POST['f2']?>
+ if (isset($_POST['Consultar2'])) {$f1=$_POST['f1'];$f2=$_POST['f2'];$Busqueda=$_POST['Busqueda'];
+ $final = "0.00";
+ $final1 = "0.00";
+ $final2 = "0.00";
+ $final3 = "0.00";
+ $final4 = "0.00";
+ $final5 = "0.00";
+ $final6 = "0.00";
+ $final7 = "0.00";
+
+ ?>
 <br>
-<div class="card card1" id="card1" >
-            <div class="card-body">
-                <div class="alert alert-warning" rol="alert">No se Encontró resultados</div>
-            </div>
-        </div>
-        <br id="card2">
-        <style type="text/css">#card{display: none;}</style>
+
 <div class="row" >
-    <div class="col-md-3" id="card">
-        <div class="card">
+
+        <div class="col-md-9">
+      
+
+         <div class="card">
             <div class="card-body">
-<?php $sql = "SELECT Concepto,No_Comprovante,h.descripcion,  h.fecha_registro,h.unidad_medida, SUM(Entradas), SUM(Salidas),Saldo, p.precio FROM historial h JOIN tb_productos p ON h.No_Comprovante= p.codProductos WHERE  No_Comprovante = '$Busqueda' or h.fecha_registro BETWEEN ' $f1' AND ' $f2' GROUP BY Concepto order by h.fecha_registro DESC LIMIT 1";
+                         <table class="table" id="examp" style="">
+                   <thead>
+             <tr id="tr">
+                     <th style="width:20%"  id="th">Fecha</th>
+                     <th style="width:30%"  id="th">Concepto</th>
+                     <th style="width:30%;" id="th">No. Comprobante</th>
+                     <th style="width:20%"  id="th">Entradas</th>
+                     <th style="width:20%"  id="th">Salidas</th>
+                     <th style="width:20%"  id="th">Saldo</th>
+                
+            </tr>
+           
+     </thead>
+     <div>
+<tbody>
+    <?php $sql = "SELECT descripcion,Concepto,unidad_medida,fecha_registro,No_Comprovante,SUM(Entradas),SUM(Salidas),Saldo,Mes,Año FROM historial WHERE fecha_registro BETWEEN ' $f1' AND ' $f2' and No_Comprovante='$Busqueda' GROUP BY fecha_registro,No_Comprovante,Concepto";
 $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
-        $fecha=date("d-m-Y",strtotime($productos['fecha_registro']));
-        $fecha1=date("d-m-Y",strtotime($productos['fecha_registro']));
+        $fecha=date("d-m-Y",strtotime($f1));
+        $fecha3=date("d-m-Y",strtotime($f2));
+        $Concepto=$productos['Concepto'];
         $Comprovante= $productos['No_Comprovante'];
-        $Concepto= $productos['Concepto'];
-        $Entradas=$productos['SUM(Entradas)'];
-        $Salida=$productos['SUM(Salidas)'];
-        $Saldo=$productos['Saldo'];
-        $cod= $productos['No_Comprovante'];
+        $precio= $productos['Saldo'];
+      $precio1=number_format($precio, 2, ".",",");
         $descripcion=$productos['descripcion'];
-        $um=$productos['unidad_medida'];
-?>
+        $stock=$productos['SUM(Entradas)'];
+        $Salida=$productos['SUM(Salidas)'];
+      $stock1=number_format($stock, 2, ".",",");  
+      $um=$productos['unidad_medida']; 
+
+        $final += $stock;
+        $final1   =    number_format($final, 2, ".",",");
+
+        $final6 += $precio;
+        $final7   =    number_format($final6, 2, ".",",");
+        
+        ?>
+        <tr>
+            <td id="th" data-label="Fecha"><?php echo $fecha ?></td>
+            <td id="th" data-label="Concepto"><?php echo $Concepto ?></td>
+            <td id="th" data-label="No. Comprovante"><?php echo $Comprovante ?></td>
+            <td id="th" data-label="Entradas"><?php echo $stock1?></td>
+            <td id="th" data-label="Salidas"><?php echo $Salida ?></td>
+            <td id="th" data-label="Saldo"><?php echo $precio1 ?></td>
+        </tr> 
+       <?php } ?>
+
+           </tbody>
+        </table>
+        
+            </div>
+        </div>
+        </div>
+            <div class="col-md-3" id="card">
+                  <div class="card mb-2">
+            <div class="card-body">
+                  <p align="right"><b style="float: left;">Entradas: </b><?php echo $final1 ?></p>
+                  <p align="right"><b style="float: left;">Salidas: </b><?php echo $final3 ?></p>
+
+                  <p align="right"><b style="float: left;">Resta de Entradas - Salidas: </b><?php echo $final5 ?></p>
+                  <p align="right"><b style="float: left;">Total del Saldo: </b><?php echo $final7 ?></p>
+        </div>
+    </div>
+        <div class="card">
+            <div class="card-body">
+
 <style type="text/css">#card{display: block;}.card1, #card2{display: none;}</style>
                  <div  style="position: initial;" class="btn-group mb-3 my-3  mx-2" role="group" aria-label="Basic outlined example">
          <form method="POST" action="../../Plugin/Imprimir/Producto/productos.php" target="_blank">
-            <input type="hidden" name="cod" value="<?php echo $cod ?>">
-            <input type="hidden" name="Busqueda" value="<?php echo $Busqueda ?>">
-            <input type="hidden" name="descripcion" value="<?php echo $descripcion ?>">
-            <input type="hidden" name="fecha" value="<?php echo $fecha ?>">
-            <input type="hidden" name="fecha" value="<?php echo $fecha ?>">
-            <input type="hidden" name="fecha1" id="p1">
-            <input type="hidden" name="um" value="<?php echo $um ?>">            
+
+         <input type="hidden" name="Busqueda" value="<?php echo $Busqueda ?>">
 
              <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Historial">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -100,12 +160,7 @@ $result = mysqli_query($conn, $sql);
              </button>
          </form>
          <form method="POST" action="../../Plugin/PDF/Productos/pdf_productos.php" target="_blank" class="mx-1">
-            <input type="hidden" name="cod" value="<?php echo $cod ?>">
-            <input type="hidden" name="Busqueda" value="<?php echo $Busqueda ?>">
-            <input type="hidden" name="descripcion" value="<?php echo $descripcion ?>">
-            <input type="hidden" name="fecha" value="<?php echo $fecha ?>">
-            <input type="hidden" name="um" value="<?php echo $um ?>">
-            <input type="hidden" name="fecha1" id="p2">
+
              <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Historial" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
@@ -113,22 +168,7 @@ $result = mysqli_query($conn, $sql);
              </button>
          </form>
                  <form  method="POST" action="../../Plugin/Excel/Productos/Historial.php" >
-            <input type="hidden" name="cod" value="<?php echo $cod ?>">
-            <input type="hidden" name="Busqueda" value="<?php echo $Busqueda ?>">
-            <input type="hidden" name="descripcion" value="<?php echo $descripcion ?>">
-            <input type="hidden" name="fecha" value="<?php echo $fecha ?>">
-            <input type="hidden" name="fecha1" id="p3">
-                <?php $sql = "SELECT fecha_registro,codProductos, precio FROM tb_productos WHERE  codProductos = '$Busqueda' GROUP BY codProductos";
-$result = mysqli_query($conn, $sql);
 
-    while ($productos = mysqli_fetch_array($result)){
-        $fecha=date("d-m-Y",strtotime($productos['fecha_registro']));
-        $Comprovante= $productos['codProductos'];
-        $Saldo= $productos['precio'];?>
-        <input type="hidden" name="fecha2" value="<?php echo $fecha ?>">
-        <input type="hidden" name="precio" value="<?php echo $Saldo ?>">
-    <?php } ?>
-            <input type="hidden" name="um" value="<?php echo $um ?>">
                 <button type="submit" class="btn btn-outline-primary" name="Historial" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
@@ -137,98 +177,25 @@ $result = mysqli_query($conn, $sql);
             </form>
 </div>
 
-<p><b>PERIODO DE MOVIMIENTO</b></p>
-<div class="row">
-    <div class="col-md-6">
-<p><b>DE:</b> <?php echo $fecha ?></p>     
-    </div>
-    <div class="col-md-6">
-<p id="p"> </p>
-    </div>    
-<div class="col-md-6">
-<p><b>Codigo del Producto:</b></p>     
-    </div>
- <div class="col-md-6">
-<p><?php echo $cod ?></p>
-    </div>
-    <div class="col-md-6">
-<p><b>Descripción</b></p>     
-    </div>
- <div class="col-md-6">
-<p> <?php echo $descripcion ?></p>
-    </div>    
-<div class="col-md-6">
-<p><b>Unidad de Medida</b></p>     
-    </div>
- <div class="col-md-6">
-<p> <?php echo $um ?></p>
-    </div>
+<p><b >PERIODO DE MOVIMIENTO</b></p>
+
+<p align="right"><b style="float: left;">DE:</b> <?php echo $fecha ?></p>     
+<p align="right"><b style="float: left;">AL:</b> <?php echo $fecha3 ?></p>     
+
+   
+<p align="right"><b style="float: left;">Codigo del Producto: </b><?php echo $Comprovante?></p>     
+
+<p align="right"><b style="float: left;">Descripción: </b><?php echo $descripcion ?></p>     
+
+<p align="right"><b style="float: left;">Unidad de Medida</b><?php echo $um ?></p> 
+
+
+<?php } ?>
+
 </div>
-
-    </div>
         </div>
-    </div>
-<?php } ?>
-        <div class="col-md-9">
-        <div class="card">
-            <div class="card-body">
-                         <table class="table  table-striped" id="examp" style="">
-                   <thead>
-             <tr id="tr">
-                     <th style="width:7%"  id="th">Fecha</th>
-                     <th style="width:7%"  id="th">Concepto</th>
-                     <th style="width:27%;" id="th">No. Comprobante</th>
-                     <th style="width:8%"  id="th">Entradas</th>
-                     <th style="width:8%"  id="th">Salidas</th>
-                     <th style="width:10%"  id="th">Saldo</th>
-                
-            </tr>
-           
-     </thead>
-<tbody>
-    <?php $sql = "SELECT fecha_registro,codProductos,SUM(stock), precio FROM tb_productos WHERE  codProductos = '$Busqueda' GROUP BY codProductos";
-$result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $fecha=date("d-m-Y",strtotime($productos['fecha_registro']));
-        $Comprovante= $productos['codProductos'];
-        $Saldo= $productos['precio'];?>
-        <tr>
-            <td id="th" data-label="Fecha"><?php echo $fecha ?></td>
-            <td id="th" data-label="Concepto">Inventario Físico</td>
-            <td id="th" data-label="No. Comprovante"><?php echo $Comprovante ?></td>
-            <td id="th" data-label="Entradas"><?php echo $productos['SUM(stock)'] ?></td>
-            <td id="th" data-label="Salidas">0.00</td>
-            <td id="th" data-label="Saldo"><?php echo $Saldo ?></td>
-        </tr> 
-    <?php } $sql = "SELECT Concepto,No_Comprovante,h.descripcion, h.fecha_registro,h.unidad_medida, SUM(Entradas), SUM(Salidas),Saldo, p.precio FROM historial h JOIN tb_productos p ON h.No_Comprovante= p.codProductos WHERE  No_Comprovante = '$Busqueda' GROUP BY Concepto ";
-$result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $fecha=date("d-m-Y",strtotime($productos['fecha_registro']));
-        $Comprovante= $productos['No_Comprovante'];
-        $Concepto= $productos['Concepto'];
-        $Entradas=$productos['SUM(Entradas)'];
-        $Salida=$productos['SUM(Salidas)'];
-        $Saldo=$productos['Saldo'];
-?>
-        <tr>
-            <td id="th" data-label="Fecha"><?php echo $fecha ?></td>
-            <td id="th" data-label="Concepto"><?php echo $Concepto ?></td>
-            <td id="th" data-label="No. Comprovante"><?php echo $Comprovante ?></td>
-            <td id="th" data-label="Entradas"><?php echo $Entradas ?></td>
-            <td id="th" data-label="Salidas"><?php echo $Salida ?></td>
-            <td id="th" data-label="Saldo"><?php echo $Saldo ?></td>
-        </tr>        
-<?php } ?>
-           </tbody>
-        </table>
             </div>
         </div>
-        </div>
-    </div>
-</div>
-<?php } ?>
   </section>
 
         <script type="text/javascript">
@@ -242,7 +209,7 @@ $result = mysqli_query($conn, $sql);
             deferRender: true,
             scroller: true,
             lengthMenu: [[10, -1], [10,"Todos"]],
-            scrollY: 400,
+           
             "searching": false,
             scrollCollapse: true,
                     language: {
@@ -276,7 +243,7 @@ date = new Date();
 year = date.getFullYear();
 month = date.getMonth() + 1;
 day = date.getDate();
-document.getElementById("p").innerHTML ="<b>AL:</b> "+ day + "-" + month + "-" + year;
+document.getElementById("p").innerHTML = day + "-" + month + "-" + year;
 document.getElementById("p1").value = day + "-" + month + "-" + year;
 document.getElementById("p2").value = day + "-" + month + "-" + year;
 document.getElementById("p3").value = day + "-" + month + "-" + year;

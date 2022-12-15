@@ -156,31 +156,27 @@ if ($des=="") {
 </style>
 
         <tr>
-            <td data-label="Código" class="delete"><?php  echo $solicitudes['codBodega']; ?></td>
-            <td data-label="Departamento Solicitante" class="delete"><?php  echo $des; ?></td>
-            <td data-label="Encargado" class="delete"><?php  echo $solicitudes['usuario'],"<br> ","(",$u,")"; ?></td>
-            <td data-label="Fecha de solicitud" class="delete"><?php  echo $solicitudes['fecha_registro']; ?></td>
-               <td><input readonly <?php
+            <td align="center" data-label="Código" class="delete"><?php  echo $solicitudes['codBodega']; ?></td>
+            <td align="center" data-label="Departamento Solicitante" class="delete"><?php  echo $des; ?></td>
+            <td align="center" data-label="Encargado" class="delete"><?php  echo $solicitudes['usuario'],"<br> ","(",$u,")"; ?></td>
+            <td align="center" data-label="Fecha de solicitud" class="delete"><?php  echo $solicitudes['fecha_registro']; ?></td>
+               <td align="center"><input readonly <?php
                 if($solicitudes['estado']=='Pendiente') {
-                    echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
+                    echo ' style="background-color:green ;pointer-events: none;border: none;width:100%; border-radius:5px;text-align:center; color: white;"';
                 }else if($solicitudes['estado']=='Aprobado') {
-                     echo ' style="background-color:blueviolet ;width:100%; border-radius:5px;text-align:center; color: white;"';
+                     echo ' style="background-color:blueviolet ;width:100%; border-radius:5px;pointer-events: none;border: none;text-align:center; color: white;"';
                 }else if($solicitudes['estado']=='Rechazado') {
-                     echo ' style="background-color:red ;width:100%; border-radius:5px;text-align:center; color: white;"';
+                     echo ' style="background-color:red ;pointer-events: none;border: none;width:100%; border-radius:5px;text-align:center; color: white;"';
                 }
             ?> class="form-control" type="text" name="" readonly value="<?php echo $solicitudes['estado'] ?>"></td>
-             <td  data-label="Detalles">
+             <td align="center"  data-label="Detalles">
                 <div style="position: initial;">  
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Bodega.php">             
                 <input type='hidden' name='id' value="<?php  echo $solicitudes['codBodega']; ?>">  
-                                <?php  if ($solicitudes['estado']=="Aprobado" || $solicitudes['estado']=="Pendiente") {?>        
-                     <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
-
-          <?php } else{?>
-                   
-          <button type="button" class="btn btn-danger" style="opacity: .7;">Ver Detalles</button>
+                 
+          <button type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button>
         
-           <?php  } ?>  
+           
             </form> 
         </div>
             </td>
@@ -196,9 +192,6 @@ if ($des=="") {
 <script>
        $(document).ready(function () {
     $('#exampl').DataTable({
-            rowGroup: {
-            dataSrc: 3
-        },
             responsive: true,
             autoWidth:false,
             deferRender: true,

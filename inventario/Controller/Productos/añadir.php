@@ -50,8 +50,11 @@ exit();
       $insert = "INSERT INTO tb_productos (codProductos, categoria, catalogo, descripcion, unidad_medida,  precio,dia,mes,año,usuario) VALUES ('$codigo_producto', '$categoria', '$catalogo', '$Descripción', '$u_m', '$cost','$dia','$mes','$año')";
       $query = mysqli_query($conn, $insert);
 
+ $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Mes,Año) VALUES('$Descripción','Inventario Físico','$u_m','$codigo_producto','$stock','$cost','$mes','$año')";
 
-      if ($query) {
+       $query1 = mysqli_query($conn, $sql1);
+
+      if ($query || $query1) {
         echo "<script>
     Swal.fire({
       title:'Realizado',

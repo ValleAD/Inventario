@@ -27,6 +27,7 @@ die();
 <body>
 <body>
         <style>  
+            p, label{font-size: 14px}
          section{
             margin: 1%;
             padding: 1%;
@@ -86,8 +87,15 @@ die();
 <?php
 $total = 0;
 $final = 0;
-$total1 = 0;
 $final1 = 0;
+ $final2 = 0;
+ $final3 = 0;
+ $final4 = 0;
+ $final5 = 0;
+ $final6 = 0;
+ $final7 = 0;
+ $final8 = 0;
+ $final9 = 0;
 if(isset($_POST['submit'])){
 
     $a=$_POST['num_sol'];
@@ -102,7 +110,7 @@ if(isset($_POST['submit'])){
     <section >
 <form  method="POST" action="../../Controller/Almacen/añadir_almacen_copy.php" >
          
-      <div class="card">
+      <div class="card" style="position: initial;">
             <div class="card-body">
         <div class="row">  
 
@@ -114,13 +122,13 @@ if(isset($_POST['submit'])){
 
           <div class="col-md-3" style="position: initial">
               <label style="font-weight: bold;">Depto. o Servicio:</label>
-            <p>'.$datos_sol['codAlmacen'].'</p>
+            <p>'.$datos_sol['departamento'].'</p>
           </div>
 
         
         <div class="col-md-3" style="position: initial">
             <label style="font-weight: bold;">Encargado:</label>
-            <p>'.$datos_sol['codAlmacen'].'</p>
+            <p>'.$datos_sol['encargado'].'</p>
         </div>
 
           
@@ -131,13 +139,13 @@ if(isset($_POST['submit'])){
           
       </div></div></div>
         <br>
+<input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
+<div class="row" style="position: initial;">
 
-<div class="row">
-
-    <div class="col-md-9 mb-3">
-        <div class="card">
-            <div class="card-body">
-       <table class="table " id="exam" style=" width: 100%;">
+    <div class="col-md-9 " style="position: initial;">
+        <div class="card" style="position: initial;">
+            <div class="card-body" style="position: initial;">
+       <table class="table " id="exam" style=" width: 100%;position: initial;">
             
         <thead>
               <tr id="tr">
@@ -167,11 +175,17 @@ while ($productos = mysqli_fetch_array($result)){
         $precio   =    $productos['precio'];
         $precio2  =    number_format($precio, 2,".",",");
         $total2   =    number_format($total, 2, ".",",");
-        $final2   =    number_format($final, 2, ".",",");
+        $final1   =    number_format($final, 2, ".",",");
         $cant_aprobada=$productos['cantidad_solicitada'];
         $cantidad_despachada=$productos['cantidad_despachada'];
         $stock=number_format($cant_aprobada, 2,".",",");
         $cantidad_desp= number_format($cant_aprobada, 2,".",",");
+
+                $final2 += $cant_aprobada;
+        $final3   =    number_format($final2, 2, ".",",");
+
+        $final8 += $precio;
+        $final9   =    number_format($final8, 2, ".",",");
         
 
  ?>
@@ -190,12 +204,14 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="um[]" value="<?php echo $productos['unidad_medida'] ?>">
             <input type="hidden" name="desc[]" value="<?php echo $productos['nombre'] ?>"></td>
             <input type="hidden" name="cant[]" value="<?php echo $stock ?>"></td>
-
+            <input type="hidden"  name="cost[]" step="0.01"  readonly value="<?php echo $precio2 ?>">
+            <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
+            
         <td  data-label="Nombre del Artículo"><?php echo $productos['nombre'] ?></td>
         <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
         <td  data-label="Cantidad Solicitada"><?php echo $stock ?></td>
 
-        <td  data-label="Cantidad Despachada"><input type="number" step="0.01" min="0.00" max="<?php echo $cantidad_desp ?>"  class="form-control" style="background:transparent; border: 1 solid #000;  width: 100%; text-align: center" name="cantidad_despachada[]" required ></td>
+        <td  data-label="Cantidad Despachada"><input type="number" step="0.01" min="0.00" max="<?php echo $cantidad_desp ?>"  class="form-control" style="background:transparent; border: 1px solid #000;  width: 100%; text-align: center" name="cantidad_despachada[]" required ></td>
 
         <td  data-label="Costo Unitario"><?php echo $precio2 ?></td>
 
@@ -209,32 +225,28 @@ while ($productos = mysqli_fetch_array($result)){
 </div>
     </div>
 </div>  
-    <div class="col-md-3  mb-3 " >
+       <div class="col-md-3 " >
         <div class="card">
             <div class="card-body">
-                <div class="row">
-                    <div class="col-md-12">
+               
+                    
   <label style="font-weight: bold;">Estado:</label><br>* Requerido para este Formulario.
             <input  id="input" type="radio" name="estado" value="Aprobado" required> <label class="btn btn-outline-primary" id="label1" for="input" > Aprobar Producto</label><br>No Requerido para este Formulario.
-               <a class="btn btn-outline-primary" type="hidden" onclick="return confirmaion2()"href="../../Controller/Almacen/añadir_almacen_copy.php?almacen=<?php echo $datos_sol['codAlmacen']?>&estado1=Rechazado">Rechazar Producto</a> 
-                    </div>
-                    <div class="col-md-12">
-                        <label style="font-weight: bold;">Sub Total:</label>
-                  <p style="float: right;"><?php echo $final2?></p>
-              </div><br>
-
-
-
-    <button id="buscar1" type="submit" class="btn btn-lg my-1 btn-success" name="detalle_almacen">Guardar Estado
+               <a class="btn btn-outline-primary mb-3" type="hidden" onclick="return confirmaion2()" href="../../Controller/Vale/añadir_vale_copy.php?vale=<?php echo $productos1['codVale']?>&estado=Rechazado">Rechazar Producto</a> 
+               
+                <p align="right"><b style="float: left;">Cantidad Solicitada: </b><?php echo $final3 ?></p>
+                <p align="right"><b style="float: left;">Total del Precio: </b><?php echo $final9 ?></p>
+                <p align="right" class="my-4"><b style="float: left;">SubTotal: </b><?php echo $final1?></p>
+                    
+              <button id="buscar1" type="submit" class="btn btn-lg btn-success" name="detalle_almacen">Guardar Estado
         <svg class="bi" width="20" height="20" fill="currentColor">
         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#save"/>
         </svg>
-    </button>
-                    </div>
-                </div>
-            </div>
+    </button><br><br>
+</div>
         </div> 
     </div>
+</div>
 </div>
 </form>
 <?php
@@ -254,11 +266,11 @@ $num_sol = $_POST['id'];
 <section id="section" >
 
          
-      <div class="card">
+      <div class="card" style="position: initial;">
             <div class="card-body">
         <div class="row">  
 
-          <div class="col-md-3" style="position: initial">
+          <div class="col-md-2" style="position: initial">
             <label style="font-weight: bold;">N° de Solicitud:</label>
             <input readonly class="form-control"  type="hidden" value="' .$productos1['codAlmacen']. '" name="num_sol">
             <input readonly class="form-control"  type="hidden" value="' .$productos1['encargado']. '" name="encargado">
@@ -274,15 +286,19 @@ $num_sol = $_POST['id'];
           </div>
 
         
-        <div class="col-md-3" style="position: initial">
+        <div class="col-md-2" style="position: initial">
             <label style="font-weight: bold;">Encargado:</label>
             <p>'.$productos1['encargado'].'</p>
+        </div>
+        <div class="col-md-2" style="position: initial">
+            <label style="font-weight: bold;">Encargado:</label>
+            <p>'.date("d-m-Y",strtotime($productos1['fecha_solicitud'])).'</p>
         </div>
 
           
 <div class="col-md-3" style="position: initial">
             <label style="font-weight: bold;">Estado:</label>
-             <div style="position:initial;" class="input-group mb-3">';?>
+             <div style="position:initial;" class="input-group ">';?>
                  <label class="input-group-text" for="inputGroupSelect01">
                     <?php  if($productos1['estado']=='Pendiente') { ?>
                             <svg class="bi" width="20" height="20" fill="currentColor">
@@ -311,16 +327,17 @@ $num_sol = $_POST['id'];
             </div>
          </div>
         </div>
+        </div>
       
         <br>
  <div class="row">
 
-    <div class="col-md-9 mb-3">
-        <div class="card">
+    <div class="col-md-9 ">
+        <div class="card" style="position: initial;">
             <div class="card-body">
 
                 
-        <table class="table table-striped" id="exam">
+        <table class="table " id="exam">
             <thead>
               <tr id="tr">
                 <th>Código</th>
@@ -338,10 +355,12 @@ $num_sol = $_POST['id'];
 
 $num_almacen = $productos1['codAlmacen'];
 
- $sql = "SELECT * FROM detalle_almacen WHERE tb_almacen = $num_almacen";
+ $sql = "SELECT * From detalle_almacen WHERE tb_almacen = $num_almacen ";
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
-        if ($estado="Pendiente") {
+        if ($estado="Pendiente") {  
+    $total = $productos['cantidad_solicitada'] * $productos['precio'];
+    }if ($estado="Rechazado") {
         
     $total = $productos['cantidad_solicitada'] * $productos['precio'];
     }if ($estado=="Aprobado") {
@@ -360,8 +379,20 @@ while ($productos = mysqli_fetch_array($result)){
         $precio2  =    number_format($precio, 2,".",",");  
         $cant_aprobada=$productos['cantidad_solicitada'];
         $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,",");?>
+        $stock=number_format($cant_aprobada, 2,".",",");
+        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+
+        $final2 += $cant_aprobada;
+        $final3   =    number_format($final2, 2, ".",",");
+
+        $final4 += $cantidad_despachada;
+        $final5   =    number_format($final4, 2, ".",",");
+        
+        $final6 += ($cant_aprobada-$cantidad_despachada);
+        $final7   =    number_format($final6, 2, ".",",");
+        
+        $final8 += $precio;
+        $final9   =    number_format($final8, 2, ".",",");?>
     <style type="text/css">
      #td{
         display: none;
@@ -387,12 +418,12 @@ while ($productos = mysqli_fetch_array($result)){
  </div>
 </div>
 </div>
-    <div class="col-md-3  mb-3 " >
-        <div class="card">
+    <div class="col-md-3   " >
+        <div class="card" style="position: initial;">
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-12">
-             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
+             <div style="position: initial;" class="btn-group  my-3 mx-2" role="group" aria-label="Basic outlined example">
 
             <form  method="POST" action="../../Plugin/Imprimir/Almacen/almacen.php" target="_blank">
                 
@@ -460,8 +491,8 @@ while ($productos = mysqli_fetch_array($result)){
                 </button>
             </form>
                   <?php if($tipo_usuario==1){ ?>
-        <form method="POST" action="" style="">
-               <button id="buscar1" type="submit" name="submit" <?php
+       <form method="POST" action="" style="">
+               <button type="submit" name="submit" <?php
                 if($productos1['estado']=='Aprobado') {
                      echo ' style="display:none"';
                 }else if($productos1['estado']=='Rechazado') {
@@ -475,9 +506,14 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" readonly class="form-control"  value="<?php echo $productos1['codAlmacen']?>" name="num_sol">
         </form><?php } ?>
                   </div>
-                    <div class="col-md-12"><label style="font-weight: bold;">Sub Total:</label>
-                  <p style="float: right;"><?php echo $final1?></p>
-              </div>
+               
+               <hr>
+               <p align="right"><b style="float: left;">Cantidad Solicitada: </b><?php echo $final3 ?></p>
+                  <p align="right"><b style="float: left;">Cantidad Despachada: </b><?php echo $final5 ?></p>
+
+                  <p align="right"><b style="float: left;">Cant. Soli. - Cant. Despa.: </b><?php echo $final7 ?></p>
+                  <p align="right"><b style="float: left;">Costo Unitario: </b><?php echo $final9 ?></p>
+                  <p align="right"><b style="float: left;">SubTotal</b><?php echo $final1?></p>
                           <button class="btn btn-success as">Solicitudes Almacen</button>
 
                 </div>
@@ -502,10 +538,6 @@ dom: 'lrtip',
 responsive: true,
 autoWidth:false,
 
-            deferRender: true,
-            scroller: true,
-            scrollY: 400,
-            scrollCollapse: true,
                 lengthMenu: [[10, -1], [10,"Todos"]],
                     language: {
                 "lengthMenu": "Mostrar _MENU_ registros",

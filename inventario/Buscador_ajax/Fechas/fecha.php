@@ -10,37 +10,8 @@
                  <div class="card" style="margin-top:-3%">
     <div class="card-body">
                 <p align="center"><b>El Dia Selecionado</b>: <?php echo $_POST['dia'] ?></p>
-        <div  class="mx-1 p-2 r-5" style="background-color: transparent; border-radius: 5px;">
-        <a href="" class="btn btn-success" name="categorias" type="submit">Ver Productos</a>
-              <div  style="position: initial;margin-top: 0%;margin-left: 1%;" class="btn-group" role="group" aria-label="Basic outlined example">
-         <form method="POST" action="../../Plugin/Imprimir/Fecha/Fechas.php" target="_blank">
-             <input type="hidden" name="dia" value="<?php echo $dia ?>">
-             <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Dia">
-                 <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
-                </svg>
-             </button>
-         </form>
-         <form method="POST" action="../../Plugin/PDF/Fecha/pdf_fecha.php" target="_blank" class="mx-1">
-            <input type="hidden" name="dia" value="<?php echo $dia ?>">
-             <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Dia" target="_blank">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
-                </svg>
-             </button>
-         </form>         
 
-         <form method="POST" action="../../Plugin/Excel/Productos/Fechas.php" target="_blank">
-            <input type="hidden" name="dia" value="<?php echo $dia ?>">
-             <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Dia" target="_blank">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
-                </svg>
-             </button>
-         </form>
- </div>
-</div>
-    <table class=" table display   table-striped" id="example2" style=" width: 100%;">
+    <table class=" table display  " id="example2" style=" width: 100%;">
     <thead>
         <tr>
         <th style="width:7%"  id="th">Código</th>
@@ -88,7 +59,7 @@
             if ($mes==4)  { $mes="Abril";}
             if ($mes==5)  { $mes="Mayo";}
             if ($mes==6)  { $mes="Junio";}
-            if ($mes==7)  { $mes="Junio";}
+            if ($mes==7)  { $mes="Julio";}
             if ($mes==8)  { $mes="Agosto";}
             if ($mes==9)  { $mes="Septiembre";}
             if ($mes==10) { $mes="Octubre";}
@@ -100,7 +71,7 @@
             if ($mes1=="Abril")     { $mes1=4;}
             if ($mes1=="Mayo")      { $mes1=5;}
             if ($mes1=="Junio")     { $mes1=6;}
-            if ($mes1=="Junio")     { $mes1=7;}
+            if ($mes1=="Julio")     { $mes1=7;}
             if ($mes1=="Agosto")    { $mes1=8;}
             if ($mes1=="Septiembre"){ $mes1=9;}
             if ($mes1=="Octubre")   { $mes1==10;}
@@ -149,7 +120,7 @@
          </form>
  </div>
 </div>
-                <table class="table table-responsive  table-striped" id="example3" style=" width: 100%">
+                <table class="table " id="example3" style=" width: 100%">
     <thead>
          <tr id="tr">
                      <th style="width: 20%">Código</th>
@@ -171,7 +142,7 @@
             if ($mes=="Abril")     { $mes=4;}
             if ($mes=="Mayo")      { $mes=5;}
             if ($mes=="Junio")     { $mes=6;}
-            if ($mes=="Junio")     { $mes=7;}
+            if ($mes=="Julio")     { $mes=7;}
             if ($mes=="Agosto")    { $mes=8;}
             if ($mes=="Septiembre"){ $mes=9;}
             if ($mes=="Octubre")   { $mes=10;}
@@ -240,7 +211,7 @@
          </form>
  </div>
 </div>
-                <table class="table table-responsive  table-striped" id="example4" style=" width: 100%">
+                <table class="table " id="example4" style=" width: 100%">
     <thead>
          <tr id="tr">
                      <th style="width: 20%">Código</th>
@@ -289,64 +260,14 @@
         display: none;
     }
 </style>
-         <div class="card mt-3">
-      
-    <div class="card-body">
-  <div class="mx-2">
-         <input type="hidden" name="f1" value="<?php echo $f1 ?>">
-             <input type="hidden" name="f2" value="<?php echo $f2 ?>">
-                   <center> <h4>Filtro por Fechas</h4></center>
-
-      </div>
-          <div class="row">
-                    <div class="col-md-6" style="position: initial">
-                        <label>Desde</label>
-                   <p>'. $f1.'</p>
-                    </div><div class="col-md-6" style="position: initial">
-                        <label>Hasta</label>
-                    <p>'.$f2.'</p>                
-                    </div>
-                    
-                 </center>';?>
-
-                  <div class="card mt-3">
+';?>
+<br>
+                  <div class="card ">
     <div class="card-body">
 
-                <div  class="mx-1 p-2 r-5" style="background-color: transparent; border-radius: 5px;">
-        <a href="" class="btn btn-success" name="categorias" type="submit">Ver Productos</a>
-              <div  style="position: initial;margin-top: 0%;margin-left: 1%;" class="btn-group" role="group" aria-label="Basic outlined example">
-         <form method="POST" action="../../Plugin/Imprimir/Fecha/Fechas.php" target="_blank">
-             <input type="hidden" name="f1" value="<?php echo $f1 ?>">
-             <input type="hidden" name="f2" value="<?php echo $f2 ?>">
-             <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha">
-                 <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
-                </svg>
-             </button>
-         </form>
-         <form method="POST" action="../../Plugin/PDF/Fecha/pdf_fecha.php" target="_blank" class="mx-1">
-            <input type="hidden" name="f1" value="<?php echo $f1 ?>">
-             <input type="hidden" name="f2" value="<?php echo $f2 ?>">
-             <button   style="position: initial;" type="submit" class="btn btn-outline-primary mx-1" name="Fecha" target="_blank">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
-                </svg>
-             </button>
-         </form>
-                  <form method="POST" action="../../Plugin/Excel/Productos/Fechas.php" target="_blank">
-            <input type="hidden" name="f1" value="<?php echo $f1 ?>">
-             <input type="hidden" name="f2" value="<?php echo $f2 ?>">
-             <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha" target="_blank">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
-                </svg>
-             </button>
-         </form>
- </div>
-</div>
 
 
-        <table class=" table display   table-striped" id="example5" style=" width: 100%;">
+        <table class=" table display  " id="example5" style=" width: 100%;">
             <thead>
                 <tr>
                     <th style="width:7%"  id="th">Código</th>
@@ -387,14 +308,13 @@
 ?>
 <style>.botones, .q{display: none;}</style>
 
-<br>
                   <div class="card ">
     <div class="card-body">
 
 
-<a href="" class="btn btn-success" name="categorias" type="submit">Ver Productos</a><br><br>
+<a href="" class="btn btn-success mb-3" name="categorias" type="submit">Ver Productos</a>
 
-        <table class=" table display   table-striped" id="example5" style=" width: 100%;">
+        <table class=" table display  " id="example5" style=" width: 100%;">
             <thead>
                 <tr>
                     <th style="width:7%"  id="th">Código</th>
@@ -459,4 +379,5 @@ $q=$conn->real_escape_string($_POST['Busqueda']);
             </tbody>
         </table>
 </div></div>
-<?php  } ?>
+<?php  } 
+

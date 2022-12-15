@@ -78,7 +78,9 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                     <?php } ?>
                         <li><a id="b" href="Vistas/Reportes/reporte_ingresos.php">Reporte Ingresos</a></li>
                         <li><a id="b" href="Vistas/Reportes/reporte_egresos.php">Reporte Egresos</a></li>
+                        <?php if ($tipo_usuario==1) {?>
                         <li><a id="b" href="Vistas/Productos/Historial.php">Buscador al Producto</a></li>
+                    <?php } ?>
                     </ul>
                 </li>
                 <li class="submenu">

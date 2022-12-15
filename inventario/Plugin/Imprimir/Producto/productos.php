@@ -17,9 +17,7 @@ include ('../../../Model/conexion.php');
 
  </head>
  <body>
-<style>
-     #th  { font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
-</style>
+
 <img src="../../../img/hospital.png" style="width:20%">
     <img src="../../../img/log_1.png" style="width:20%; float:right">
 <h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD</h3>
@@ -34,7 +32,7 @@ include ('../../../Model/conexion.php');
   <?php
   if (isset($_POST['consulta'])) {?>
 
-    <table class="table table-responsive table-striped"  style=" width: 100%">
+    <table class="table table-responsive "  style=" width: 100%">
 
     <thead>
         <tr id="tr">

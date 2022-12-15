@@ -12,28 +12,41 @@
 
 <img src="../../../img/hospital.png" style="width:20%">
     <img src="../../../img/log_1.png" style="width:20%; float:right">
-    <style>
-        .table td  { font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
-     @media (max-width: 952px){
-   h3, h4{
-    font-size: 1em;
-    text-align: center; 
-   }
-   section{
-    margin: 2%;
-   }
-    }
-  </style>
-    <?php if(isset($_POST['cod'])){
 
-    $solicitud = $_POST['sol_compra'];
-    $dependencia = $_POST['dependencia'];
-    $plazo = $_POST['plazo'];
-    $unidad = $_POST['unidad'];
-    $suministro = $_POST['suministro'];
-    $usuario = $_POST['usuario'];
-    $fecha = $_POST['fech'];
-    $estado=$_POST['estado'];
+ <?php  include ('../../../Model/conexion.php');
+$total = 0;
+$final = 0;
+$final1 = 0;
+$final2 = 0;
+     $bodega = $_POST['sol_compra'];
+         $sql = "SELECT * FROM detalle_compra WHERE solicitud_compra='$bodega'";
+    $result = mysqli_query($conn, $sql);
+
+    while ($solicitudes = mysqli_fetch_array($result)){
+       
+        $stock=$solicitudes['stock'];
+        $cost=$solicitudes['precio'];
+     
+    $total = $solicitudes['stock'] * $solicitudes['precio'];
+
+    
+     $final += $total;
+       $total1= number_format($total, 2, ".",",");
+      $final1=number_format($final, 2, ".",","); 
+  }
+    $sql = "SELECT * FROM tb_compra WHERE nSolicitud='$bodega'";
+    $result = mysqli_query($conn, $sql);
+
+    while ($solicitudes = mysqli_fetch_array($result)){
+        $solicitud=$solicitudes['nSolicitud'];
+        $dependencia=$solicitudes['dependencia'];
+        $plazo=$solicitudes['plazo'];
+        $unidad=$solicitudes['unidad_tecnica'];
+        $suministro=$solicitudes['descripcion_solicitud'];
+        $usuario=$solicitudes['usuario'];
+        $estado=$solicitudes['estado'];
+        $fecha=$solicitudes['fecha_registro'];
+    }
 
    if ($_POST['jus']=="") {
     $jus = "Sin Justificación por el momento";
@@ -43,14 +56,21 @@
       }
       
 ?>
-<h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD</h3>
-<h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
-<h4 align="center" style="margin-top: 2%;">UNIDAD DE ADQUISICIONES Y CONTRATACIONES INSTITUCIONAL</h4>
-<h4 align="center" style="margin-top: 2%;">SOLICITUD DE COMPRA</h4>
+<h3 align="center" style="margin-top:2%; height: 5%;">MINISTERIO DE SALUD</h3>
+<h3 align="center" style="margin-top:2%; height: 5%;">HOSPITAL NACIONAL SANTA TERESA</h3>
+<h4 align="center" style="margin-top:2%; height: 5%;">UNIDAD DE ADQUISICIONES Y CONTRATACIONES INSTITUCIONAL</h4>
+<h4 align="center" style="margin-top:2%; height: 5%;">SOLICITUD DE COMPRA</h4>
  
 
 <br>
-<table style="width: 100%;" >
+
+
+ <?php 
+
+
+?> 
+
+<table style="width: 100%;font-size: 11px; margin: 0;" >
     <tr>
         <td style="width: 30%;"><b>Solicitud No.:</b> <?php echo $solicitud ?></td>
         <td ><b>Depenencia Solicitante:</b> <?php echo $dependencia ?></td>
@@ -66,52 +86,68 @@
     <td ><b>Fecha De Creación: </b> <?php echo $fecha ?></td>
     <td align="right"><b>Fecha De Impreción:</b> <?php echo date("d-m-Y")?></td>
     </tr>
+    <tr>
+        <td align="right" colspan="3"><p><b>SubTotal: </b><?php echo$final1 ?></p></td>
+    </tr>
 </table>
-<br>
- <table class="table" style="width: 100%;margin: 0;">
+
+<table class="table" style="width: 100%">
     <thead>     
-        <tr style="border: 1px solid #ddd;" >
-            <th style="width: 25%;font-size: 14px;">Código</th>
-            <th style="width: 70%;font-size: 14px;">Descripción</th>
-            <th style="width: 15%;font-size: 14px;">U/M</th>
-            <th style="width: 15%;font-size: 14px;">Cant.<br>Sol.</th>
-            <th style="width: 15%;font-size: 14px;">Cant.<br>Desp.</th>
-            <th style="width: 15%;font-size: 14px;">C/U</th>
-            <th style="width: 15%;font-size: 14px;border-right:1px solid #ccc ;">Total</th>
-        </tr>
+        <tr id="tr">
+            <th style="width: 20%;">Código</th>
+            <th style="width: 50%;">Descripción Completa</th>
+            <th style="width: 20%;">U/M</th>
+            <th style="width: 20%;">Cantidad Solicitada</th>
+            <th style="width: 20%;">Cantidad Despachada</th>
+            <th style="width: 20%;">C/U</th>
+            <th style="width: 20%;">Total</th>
+
+            </tr>
     </thead> 
 
     <tbody>
 <?php
-for($i = 0; $i < count($_POST['cod']); $i++)
-{
-   
-    $codigo = $_POST['cod'][$i];
-    $des = $_POST['desc'][$i];
-    $um = $_POST['um'][$i];
-    $cant = $_POST['cant'][$i];
-    $cantidad = $_POST['cantidad_despachada'][$i];
-    $precio = $_POST['cost'][$i];
-    $total = $_POST['tot'][$i];
-    $tot_f = $_POST['tot_f'];
-?>
-  
-        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td data-label="Código" style=" font-size: 12px; "><?php  echo $codigo?></td>
-            <td data-label="Descripción" style=" font-size: 12px; "><?php  echo $des?></td>
-            <td data-label="Unidad De Medida" style=" font-size: 12px; "><?php  echo $um?></td>
-            <td data-label="Cantidad" style=" font-size: 12px; "><?php echo $cant ?></td>
-            <td data-label="Cantidad Despachada" style=" font-size: 12px; "><?php echo $cantidad ?></td>
-            <td data-label="Precio" style=" font-size: 12px; "><?php echo $precio ?></td>
-            <td data-label="total" style=" font-size: 12px; "><?php  echo $total ?></td>
-        </tr>
+
+    $sql = "SELECT * FROM detalle_compra WHERE solicitud_compra='$bodega'";
+    $result = mysqli_query($conn, $sql);
+
+    while ($solicitudes = mysqli_fetch_array($result)){
+        $codigo=$solicitudes['codigo'];
+        $des=$solicitudes['descripcion'];
+        $um=$solicitudes['unidad_medida'];
+        $cantidad=$solicitudes['cantidad_despachada'];
+        $stock=$solicitudes['stock'];
+        $cost=$solicitudes['precio'];
      
-     <?php } } ?> 
-    <tfoot style="width: 100%;">
-        <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
-        <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $tot_f ?></td>
-    </tfoot>
+    $total = $solicitudes['stock'] * $solicitudes['precio'];
+
+    
+     $final += $total;
+       $total1= number_format($total, 2, ".",",");
+      $final1=number_format($final, 2, ".",","); 
+ ?>
+        <tr>
+            <td data-label="Código"><?php  echo $codigo?></td>
+            <td data-label="Descripción"><?php  echo $des?></td>
+            <td data-label="Unidad De Medida"><?php  echo $um?></td>
+            <td data-label="Cantidad"><?php echo $stock ?></td>
+            <td data-label="Cantidad Despachada"><?php echo $cantidad ?></td>
+            <td data-label="Precio"><?php echo $cost ?></td>
+            <td data-label="total"><?php  echo $total1 ?></td>
+        </tr>
+     <?php } ?>
+    </tbody>  
+
 </table>
+<br>
+
+    <table style="width: 100%;height: 10%; border: 1px solid #ccc;border-collapse: collapse;">
+        <tbody>
+           <p style="padding-left: 1%;"> Justificación por el OBS solicitado:</p>
+           <hr style=" border: 1px solid #ccc;border-collapse: collapse;">
+            <p style="padding-left: 1%;"><?php echo $jus ?></p>
+        </tbody>
+    </table>                
 
 
 </body>

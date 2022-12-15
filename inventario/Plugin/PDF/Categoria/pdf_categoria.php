@@ -9,28 +9,35 @@ include ('../../../Model/conexion.php');
     <title>Filtro por Categoria en PDF</title>
 </head>
 <body style="font-family: sans-serif;">
-    <style>
-        .table tbody tr:nth-child(even) {background-color: #00BDFF; height: 5%}
-.table tbody tr:nth-child(odd) {background-color: #00EAFF; height: 5%}
+     <style>
 
-    </style>
+.table {width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed;}
+.table tr {background-color: #f8f8f8;border: 1px solid #ddd;color: black;}
+.table th, .table td {font-size: 16px;padding: 8px;text-align: center;}
+.table thead th{ background-color: #46466b;color: white;text-align: center;font-size: 14px}
+
+
+.table tbody tr:nth-child(even) {background-color: #00BDFF; height: 5%}
+.table tbody tr:nth-child(odd) {background-color: #00EAFF; height: 5%}
+    
+  </style>
 <img src="../../../img/hospital.png" style="width:20%">
     <img src="../../../img/log_1.png" style="width:20%; float:right">
 <h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD</h3>
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
 <h4 align="center" style="margin-top: 2%;">DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h5 align="center" style="margin-top: 2%;">FILTRO DE CATEGORIAS</h5>
-<table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+<table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
         <thead style="background-color: #46466b;color: white;">    
         <tr style="border: 1px solid #ddd;color: white;">
-            <th style="font-size: 12px;text-align: center;">Categoria</th>
-            <th style="font-size: 12px;text-align: center;">Código</th>
-            <th style="font-size: 12px;text-align: center;">Catálogo</th>
-            <th style="font-size: 12px;text-align: center;">Descripción Completa</th>
-            <th style="font-size: 12px;text-align: center;">U/M</th>
-            <th style="font-size: 12px;text-align: center;">Cantidad</th>
-            <th style="font-size: 12px;text-align: center;">Precio</th>
-            <th style="font-size: 12px;text-align: center;">Fecha</th> 
+            <th>Categoria</th>
+            <th>Código</th>
+            <th>Catálogo</th>
+            <th style="width: 30%;">Descripción Completa</th>
+            <th>U/M</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Fecha</th> 
              <tr> <td align="center" id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td></tr>           
         </tr>
     </thead> 

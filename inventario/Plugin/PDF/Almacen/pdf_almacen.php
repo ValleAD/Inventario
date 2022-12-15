@@ -9,26 +9,26 @@
 <body style="font-family: sans-serif;">
     <img src="../../../img/hospital.png" style="width:20%">
     <img src="../../../img/log_1.png" style="width:20%; float:right">
-    <?php if(isset($_POST['cod'])){
-
-     $encargado = $_POST['encargado'];
-    $depto = $_POST['depto'];
-    $fech = $_POST['fech'];
-     $vale = $_POST['num_sol'];
-     $estado=$_POST['estado'];
-      
+    <?php 
+include ('../../../Model/conexion.php');
+$total = 0;
+$final = 0;
+$final1 = 0;
+$final2 = 0;
+     $Almacen = $_POST['num_sol'];      
 ?>
-    <style>
-     @media (max-width: 952px){
-   h3, h4,h5{
-    font-size: 1em;
-     text-align: center;
-   }
-   section{
-    margin: 2%;
-   }
+     <style>
+
+.table {width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed;}
+.table tr {background-color: #f8f8f8;border: 1px solid #ddd;color: black;}
+.table th, .table td {font-size: 16px;padding: 8px;text-align: center;}
+.table thead th{ background-color: #46466b;color: white;text-align: center;font-size: 14px}
+
+
+.table tbody tr:nth-child(even) {background-color: #00BDFF; height: 5%}
+.table tbody tr:nth-child(odd) {background-color: #00EAFF; height: 5%}
     }
-</style>
+  </style>
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA  DE ZACATECOLUCA</h3>
 <h4 align="center" style="margin-top: 2%;">ALMACÉN DE MEDICAMENTOS, INSUMOS MÉDICOS,</h4>
 <h4 align="center" style="margin-top: 2%;">PAPELERÍA Y OTROS ARTICULOS</h4>
@@ -41,6 +41,28 @@
         <td><b>Fecha</b></td>
         <td><b>Estado</b></td>
     </tr>
+        <?php     $sql = "SELECT * FROM detalle_almacen WHERE tb_almacen='$Almacen'";
+    $result = mysqli_query($conn, $sql);
+
+    while ($solicitudes = mysqli_fetch_array($result)){
+       
+        $stock=$solicitudes['cantidad_solicitada'];
+        $cost=$solicitudes['precio'];
+     
+    $total = $solicitudes['cantidad_solicitada'] * $solicitudes['precio'];
+     $final += $total;
+       $total1= number_format($total, 2, ".",",");
+      $final1=number_format($final, 2, ".",","); 
+  }   $sql = "SELECT * FROM tb_almacen WHERE codAlmacen='$Almacen'";
+    $result = mysqli_query($conn, $sql);
+
+    while ($solicitudes = mysqli_fetch_array($result)){
+        $vale=$solicitudes['codAlmacen'];
+        $depto=$solicitudes['departamento'];
+        $encargado=$solicitudes['encargado'];
+        $fech=$solicitudes['fecha_solicitud'];
+        $estado=$solicitudes['estado'];
+      ?>
     <tr>
         <td><?php echo $vale ?></td>
         <td><?php echo $depto ?></td>
@@ -48,65 +70,59 @@
         <td><?php echo $fech ?></td>
         <td><?php echo $estado ?></td>
     </tr>
-</table><br>
- <table class="table" style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;text-align: center;">
-        <thead style="background-color: #46466b;color: white;">    
-        <tr style="border: 1px solid #ddd;" >
-            <th style="width: 25%;font-size: 12px;">Código</th>
-            <th style="width: 70%;font-size: 12px;">Descripción</th>
-            <th style="width: 15%;font-size: 12px;">U/M</th>
-            <th style="width: 15%;font-size: 12px;">Cant.<br>Sol.</th>
-            <th style="width: 15%;font-size: 12px;">Cant.<br>Desp.</th>
-            <th style="width: 15%;font-size: 12px;">C/U</th>
-            <th style="width: 15%;font-size: 12px;border-right:1px solid #ccc ;">Total</th>
-        </tr>
+        <tr>
+        <td align="right" colspan="5"><p><b>SubTotal: </b><?php echo$final1 ?></p></td>
+    </tr>
+<?php } ?>
+</table>
+<table class="table" style="width: 100%">
+    <thead>     
+        <tr id="tr">
+            <th style="width: 20%;">Código</th>
+            <th style="width: 50%;">Descripción Completa</th>
+            <th style="width: 20%;">U/M</th>
+            <th style="width: 20%;">Cantidad Solicitada</th>
+            <th style="width: 20%;">Cantidad Despachada</th>
+            <th style="width: 20%;">C/U</th>
+            <th style="width: 20%;">Total</th>
+
+            </tr>
     </thead> 
 
     <tbody>
 <?php
-for($i = 0; $i < count($_POST['cod']); $i++)
-{
-   
-    $codigo = $_POST['cod'][$i];
-    $des = $_POST['desc'][$i];
-    $um = $_POST['um'][$i];
-    $cant = $_POST['cant'][$i];
-    $cantidad = $_POST['cantidad_despachada'][$i];
-    $precio = $_POST['cost'][$i];
-    $total = $_POST['tot'][$i];
-    $tot_f = $_POST['tot_f'];
-?>
-  
-        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Código" style=" font-size: 12px; "><?php  echo $codigo?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Descripción" style=" font-size: 12px; "><?php  echo $des?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Unidad De Medida" style=" font-size: 12px; "><?php  echo $um?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Cantidad" style=" font-size: 12px; "><?php echo $cant ?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Cantidad Despachada" style=" font-size: 12px; "><?php echo $cantidad ?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Precio" style=" font-size: 12px; "><?php echo $precio ?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="total" style=" font-size: 12px; "><?php  echo $total ?></td>
-        </tr>
+
+    $sql = "SELECT * FROM detalle_almacen WHERE tb_almacen='$Almacen'";
+    $result = mysqli_query($conn, $sql);
+
+    while ($solicitudes = mysqli_fetch_array($result)){
+        $codigo=$solicitudes['codigo'];
+        $des=$solicitudes['nombre'];
+        $um=$solicitudes['unidad_medida'];
+        $cantidad=$solicitudes['cantidad_despachada'];
+        $stock=$solicitudes['cantidad_solicitada'];
+        $cost=$solicitudes['precio'];
      
-     <?php } } ?> 
-    <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
-        <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
-        <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $tot_f ?></td>
-    </tfoot>
+    $total = $solicitudes['cantidad_solicitada'] * $solicitudes['precio'];
+
+    
+     $final += $total;
+       $total1= number_format($total, 2, ".",",");
+      $final1=number_format($final, 2, ".",","); 
+ ?>
+        <tr>
+            <td data-label="Código"><?php  echo $codigo?></td>
+            <td data-label="Descripción"><?php  echo $des?></td>
+            <td data-label="Unidad De Medida"><?php  echo $um?></td>
+            <td data-label="Cantidad"><?php echo $stock ?></td>
+            <td data-label="Cantidad Despachada"><?php echo $cantidad ?></td>
+            <td data-label="Precio"><?php echo $cost ?></td>
+            <td data-label="total"><?php  echo $total1 ?></td>
+        </tr>
+     <?php } ?>
+    </tbody>  
+
 </table>
-<br>
-    <table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;">
-        <tbody>
-            <tr style="border: 1px solid #ddd;color: black;" >
-                <td style="height: 35px;"><b>DEPARTAMENTO QUE SOLICITA:</b> MANTENIMIENTO</td>
-            </tr>
-            <tr style="border: 1px solid #ddd;color: black;" >
-                <td style="height: 35px;"><b>FECHA: </b><?php echo $fech?> <div align="center" style="margin-top: -2.5%;">FIRMA</div> <div style="float: right; margin-top: -3%;">SELLO</div></td>
-            </tr>
-            <tr style="border: 1px solid #ddd;color: black;" >
-                <td style="height: 35px;"><b>AUTORIZA:</b> DIRECTOR HOSPITAL NACIONAL "SANTA TERESA"</td>
-            </tr>
-        </tbody>
-    </table>   
 
 </body>
 </html>

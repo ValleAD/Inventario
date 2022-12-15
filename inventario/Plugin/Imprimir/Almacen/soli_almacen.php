@@ -30,120 +30,8 @@
   </style>
   <section>
 <?php include '../../../Model/conexion.php';
-if (isset($_POST['Consultar'])) {
-    $columna=$_POST['columna'];
-    $tipo=$_POST['tipo'];
-        $tipo=$_POST['tipo'];
-     if ($tipo=="desc"){
-       $tipo1='Descendente'; 
-    }
-    if ($tipo=="asc") {
-        $tipo1='Ascendente';
-     } ?>
-    <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p><br><br>
-    <table class="table" style="width: 100%; margin: 0;">
-    <thead>     
-        <tr style="border: 1px solid #ddd;color: black;" >
-                <th style=" width: 10%; text-align: center;font-size: 12px;">No. de Solicitud</th>
-                <th style=" width: 30%; text-align: center;font-size: 12px;">Departamento Solicitante</th>
-                <th style=" width: 20%; text-align: center;font-size: 12px;">Encargado</th>
-                <th style=" width: 20%; text-align: center;font-size: 12px;">Fecha de solicitud</th>
-        </tr>
-        
-        <td id="td" colspan="3" ><h4 align="center">No se encontraron resultados </h4></td>
-    </thead> 
 
-    <tbody>
-<?php  
-    $sql = "SELECT * FROM tb_almacen  Order by $columna $tipo";
-    $result = mysqli_query($conn, $sql);
-
-    while ($solicitudes = mysqli_fetch_array($result)){
-         $des=$solicitudes['departamento'];
-                if ($des=="") {
-                    $des="Departamentos No disponible";
-                }else{
-
-                   $des=$solicitudes['departamento']; 
-                }
-?>  <style type="text/css">
-       #td{
-          display: none;
-      }
-      
-     
-  </style> 
-  
-         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td style="font-size: 12px;text-align: center;" data-label="No. solicitud" class="delete"><?php  echo $solicitudes['codAlmacen']; ?></td>
-            <td style="font-size: 12px;text-align: center;" data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
-            <td style="font-size: 12px;text-align: center;" data-label="Usuario" class="delete"><?php  echo $solicitudes['encargado']; ?></td>
-            <td style="font-size: 12px;text-align: center;" data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_solicitud'])) ?></td>
-            </tr>
-       <?php }  ?> 
-    </tbody>  
-   
-   
-</table>
-<?php } ?>
- <?php if (isset($_POST['Consultar1'])) {
-    $columna=$_POST['columna'];
-    $tipo=$_POST['tipo'];
-        $tipo=$_POST['tipo'];
-     if ($tipo=="desc"){
-       $tipo1='Descendente'; 
-    }
-    if ($tipo=="asc") {
-        $tipo1='Ascendente';
-     } ?>
-    <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p><br><br>
-    <table class="table" style="width: 100%; margin: 0;">
-    <thead>     
-        <tr style="border: 1px solid #ddd;color: black;" >
-                <th style=" width: 10%; text-align: center;font-size: 12px;">No. de Solicitud</th>
-                <th style=" width: 30%; text-align: center;font-size: 12px;">Departamento Solicitante</th>
-                <th style=" width: 20%; text-align: center;font-size: 12px;">Encargado</th>
-                <th style=" width: 20%; text-align: center;font-size: 12px;">Fecha de solicitud</th>
-        </tr>
-        
-        <td id="td" colspan="3" ><h4 align="center">No se encontraron resultados </h4></td>
-    </thead> 
-
-    <tbody>
-<?php  
-$idusuario=$_POST['idusuario'];
-    $sql = "SELECT * FROM tb_almacen WHERE idusuario='$idusuario'  Order by $columna $tipo";
-    $result = mysqli_query($conn, $sql);
-
-    while ($solicitudes = mysqli_fetch_array($result)){
-         $des=$solicitudes['departamento'];
-                if ($des=="") {
-                    $des="Departamentos No disponible";
-                }else{
-
-                   $des=$solicitudes['departamento']; 
-                }
-?>  <style type="text/css">
-       #td{
-          display: none;
-      }
-      
-     
-  </style> 
-  
-         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td style="font-size: 12px;text-align: center;" data-label="No. solicitud" class="delete"><?php  echo $solicitudes['codAlmacen']; ?></td>
-            <td style="font-size: 12px;text-align: center;" data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
-            <td style="font-size: 12px;text-align: center;" data-label="Usuario" class="delete"><?php  echo $solicitudes['encargado']; ?></td>
-            <td style="font-size: 12px;text-align: center;" data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_solicitud'])) ?></td>
-            </tr>
-       <?php }  ?> 
-    </tbody>  
-   
-   
-</table>
-<?php } ?>
-<?php if (isset($_POST['id'])) {?>
+ if (isset($_POST['id'])) {?>
 <table class="table" style="width: 100%; ">
     <thead>     
         <tr style="border: 1px solid #ddd;color: black;" >
@@ -153,7 +41,7 @@ $idusuario=$_POST['idusuario'];
                 <th style=" width: 20%; text-align: center;font-size: 12px;">Fecha de solicitud</th>
         </tr>
         
-        <td id="td" colspan="4" ><h4 align="center">No se encontraron resultados </h4></td>
+        
     </thead> 
 
     <tbody>
@@ -163,13 +51,7 @@ $idusuario=$_POST['idusuario'];
 
     while ($solicitudes = mysqli_fetch_array($result)){
 
-?>  <style type="text/css">
-       #td{
-          display: none;
-      }
-      
-     
-  </style> 
+?> 
   
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
            <td style="font-size: 12px;text-align: center;" data-label="No. solicitud" class="delete"><?php  echo $solicitudes['codAlmacen']; ?></td>
@@ -192,7 +74,7 @@ $idusuario=$_POST['idusuario'];
                 <th style=" width: 20%; text-align: center;font-size: 12px;">Fecha de solicitud</th>
         </tr>
         
-        <td id="td" colspan="4" ><h4 align="center">No se encontraron resultados </h4></td>
+        
     </thead> 
 
     <tbody>
@@ -203,13 +85,7 @@ $id=$_POST['idusuario'];
 
     while ($solicitudes = mysqli_fetch_array($result)){
 
-?>  <style type="text/css">
-       #td{
-          display: none;
-      }
-      
-     
-  </style> 
+?> 
   
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
            <td style="font-size: 12px;text-align: center;" data-label="No. solicitud" class="delete"><?php  echo $solicitudes['codAlmacen']; ?></td>

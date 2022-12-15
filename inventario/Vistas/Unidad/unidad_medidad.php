@@ -252,9 +252,7 @@ $result = mysqli_query($conn, $sql);
             $(document).ready(function () {
 
        $('#examp').DataTable({
-            rowGroup: {
-            dataSrc: 2
-        },
+
             responsive: true,
             autoWidth:false,
             deferRender: true,

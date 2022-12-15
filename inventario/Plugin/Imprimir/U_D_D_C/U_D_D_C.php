@@ -30,8 +30,6 @@ include ('../../../Model/conexion.php');
                 <th  style="width:70%;font-size: 12px;height: 3%;">UNIDAD DE MEDIDA</th>
         <th style="font-size: 12px;">HABILITADO</th>       
         </tr>
-        
-        <td id="td" colspan="6" ><h4 align="center">No se encontraron resultados </h4></td>
     </thead> 
 
     <tbody>
@@ -50,13 +48,7 @@ $n++;
                
                     $c='Categoria no Disponible';
                 }
-?>  <style type="text/css">
-       #td{
-          display: none;
-      }
-      
-     
-  </style> 
+?>
    <tr style="border: 1px solid #ccc;border-collapse: collapse;">
             <td style=" font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="No. Solicitud" class="delete"><?php  echo $r; ?></td>
             <td style=" font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['unidad_medida']; ?></td>
@@ -78,8 +70,6 @@ $n++;
                 <th  style="width:70%;font-size: 12px;height: 3%;">DEPARTAMENTOS</th>
         <th style="font-size: 12px;">HABILITADO</th>       
         </tr>
-        
-        <td id="td" colspan="6" ><h4 align="center">No se encontraron resultados </h4></td>
     </thead> 
 
     <tbody>
@@ -99,13 +89,6 @@ $n++;
                     $c='Departamento no Disponible';
                 }
 ?>
-  <style type="text/css">
-       #td{
-          display: none;
-      }
-      
-     
-  </style> 
    <tr style="border: 1px solid #ccc;border-collapse: collapse;">
             <td style=" font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="No. Solicitud" class="delete"><?php  echo $r; ?></td>
             <td style=" font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
@@ -126,8 +109,6 @@ $n++;
                 <th  style="width:70%;font-size: 12px;height: 3%;">CATEGORIAS</th>
         <th style="font-size: 12px;">HABILITADO</th>       
         </tr>
-        
-        <td id="td" colspan="6" ><h4 align="center">No se encontraron resultados </h4></td>
     </thead> 
 
     <tbody>
@@ -147,13 +128,6 @@ $n++;
                     $c='Categoria no Disponible';
                 }
 ?>
-  <style type="text/css">
-       #td{
-          display: none;
-      }
-      
-     
-  </style> 
    <tr style="border: 1px solid #ccc;border-collapse: collapse;">
             <td style=" font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="No. Solicitud" class="delete"><?php  echo $r; ?></td>
             <td style=" font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['categoria']; ?></td>
@@ -173,8 +147,6 @@ $n++;
             <th  style="width:70%;font-size: 12px;height: 3%;">DEPENDENCIAS</th>
         <th style="font-size: 12px;">HABILITADO</th>       
         </tr>
-        
-        <td id="td" colspan="6" ><h4 align="center">No se encontraron resultados </h4></td>
     </thead> 
 
     <tbody>
@@ -194,13 +166,6 @@ $n++;
                     $c='Dependencia no Disponible';
                 }
 ?>
-  <style type="text/css">
-       #td{
-          display: none;
-      }
-      
-     
-  </style> 
    <tr style="border: 1px solid #ccc;border-collapse: collapse;">
             <td style=" font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="No. Solicitud" class="delete"><?php  echo $r; ?></td>
             <td style=" font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['dependencia']; ?></td>

@@ -17,7 +17,18 @@ include '../../../Model/conexion.php'; ?>
 <h3 align="center" style="margin-top: 2%;">FONDO CIRCULANTE DE MONTO FIJO</h3>
 
 
+     <style>
 
+.table {width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed;}
+.table tr {background-color: #f8f8f8;border: 1px solid #ddd;color: black;}
+.table th, .table td {font-size: 16px;padding: 8px;text-align: center;}
+.table thead th{ background-color: #46466b;color: white;text-align: center;font-size: 14px}
+
+
+.table tbody tr:nth-child(even) {background-color: #00BDFF; height: 5%}
+.table tbody tr:nth-child(odd) {background-color: #00EAFF; height: 5%}
+    }
+  </style>
 <section style="font-size: 14px;">
 <p>Encargado del Fondo Circulante de Monto Fijo Recursos Propios</p>
 <p>Hospital Nacional "Santa Teresa" de Zacatecoluca</p>
@@ -115,7 +126,7 @@ $idusuario=$_POST['idusuario'];
 </table>
 <?php } ?>
 <?php if (isset($_POST['id'])) { ?>
-<table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
+<table class="table" style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
        <thead style="background-color: #46466b;color: white;">    
         <tr style="border: 1px solid #ddd;" >
             <th style="width: 20%;height: 3%;font-size: 14px;text-align: center;">No. de Solicitud </th>
@@ -151,7 +162,7 @@ $idusuario=$_POST['idusuario'];
      <?php }?>
 
      <?php if (isset($_POST['id1'])) { ?>
-<table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
+<table class="table" style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
        <thead style="background-color: #46466b;color: white;">    
         <tr style="border: 1px solid #ddd;" >
             <th style="width: 20%;height: 3%;font-size: 14px;text-align: center;">No. de Solicitud </th>

@@ -55,7 +55,7 @@
                 
         </tr>
         
-        <td id="td" colspan="3" ><h4 align="center">No se encontraron resultados </h4></td>
+       
     </thead> 
 
     <tbody>
@@ -65,13 +65,7 @@
 
     while ($solicitudes = mysqli_fetch_array($result)){
 
-?>  <style type="text/css">
-       #td{
-          display: none;
-      }
-      
-     
-  </style> 
+?> 
   
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
             <td data-label="No. solicitud" class="delete"><?php  echo $solicitudes['codCirculante']; ?></td>

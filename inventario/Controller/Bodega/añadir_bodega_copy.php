@@ -19,6 +19,7 @@ include '../../Model/conexion.php';
 if(isset($_POST['detalle_bodega'])){
 
 
+
  $nSolicitud=$_POST['bodega'];
 $estado = $_POST['estado'];
 $sql="UPDATE  tb_bodega SET estado = '$estado' WHERE codBodega='$nSolicitud'" ;
@@ -49,13 +50,33 @@ for($i = 0; $i < count($_POST['cod_bodega']); $i++)
 {
   $cod_bodega  = $_POST['cod_bodega'][$i];
   $cantidad_despachada = $_POST['cantidad_despachada'][$i];
-        
+   $codigo= $_POST['cod'][$i];
+   $cod1=$_POST['cod1'][$i];
+    $descripcion= $_POST['desc'][$i];
+    $unidadmedida= $_POST['um'][$i];
+     $idusuario = $_POST['idusuario'];
+    $stock = $_POST['cant'][$i];
+    $precio= $_POST['cost'][$i];
   $update="UPDATE detalle_bodega SET cantidad_despachada ='$cantidad_despachada' WHERE codigodetallebodega ='$cod_bodega'";
   $query_update = mysqli_query($conn, $update);
 
+  $verificar =mysqli_query($conn, "SELECT * FROM historial WHERE Concepto='Solicitud de Trabajo' and idusuario='$idusuario' and ID='$cod1' and No_Comprovante='$codigo'");
+
+if (mysqli_num_rows($verificar)>0) {
+
+      $sql2="UPDATE historial SET Salidas='$cantidad_despachada' WHERE Concepto='Solicitud de Trabajo' and idusuario='$idusuario' and ID='$cod1' and No_Comprovante='$codigo'";
+      $query3 = mysqli_query($conn, $sql2);
+
+}else{
+
+     $sql4="INSERT INTO historial(ID,descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Salidas,Saldo,idusuario) VALUES('$cod1','$descripcion','Solicitud de Trabajo','$unidadmedida','$codigo','$stock','$cantidad_despachada','$precio','$idusuario')";
+          $query4 = mysqli_query($conn, $sql4);
+      
+}
+
   }
 
- if ($query2 || $query_update  || $result)  {
+ if ($query2 || $query_update  || $result || $query3 || $query4)  {
                 echo "<script>
     Swal.fire({
       title:'Realizado',

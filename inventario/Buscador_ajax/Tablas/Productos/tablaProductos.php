@@ -1,4 +1,7 @@
-<table class="table  table-striped" id="exam" style=" width: 100%">
+  <input type="hidden" name="dia" id="dia">
+    <input type="hidden" name="mes" id="mes">
+        <input type="hidden" name="año" id="ano">
+<table class="table" id="exam" style=" width: 100%">
             <thead>
               <tr id="tr">
                 <th>Código</th>
@@ -21,7 +24,7 @@
     
     
     //    $sql = "SELECT * FROM tb_productos";
-    $sql = "SELECT codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE codProductos='$codigo' GROUP BY precio, codProductos";
+    $sql = "SELECT cod, codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE codProductos='$codigo' GROUP BY precio, codProductos";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
@@ -47,11 +50,13 @@
    }
 </style>
     <tr>
-               <td data-label="Codigo"><?php echo $productos['codProductos'] ?>
-                <input  type="hidden" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>"></td>
+               <td data-label="Codigo"><?php echo $productos['codProductos'] ?></td>
+                <input  type="hidden" class="form-control" readonly name="cod[]" value ="<?php  echo $productos['codProductos']; ?>">
+                <input  type="hidden" class="form-control" readonly name="cod1[]" value ="<?php  echo $productos['cod']; ?>">
                <input type="hidden" name="desc[]" value="<?php  echo $productos['descripcion']; ?>">
                <input  type="hidden" name="um[]" value ="<?php  echo $productos['unidad_medida']; ?>">
                <input  type="hidden" name="cat[]" value ="<?php  echo $productos['catalogo']; ?>">
+               <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
                 </td>
                <td style="min-width: 100%;" data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
                <td data-label="Unidad De Medida"><?php echo $productos['unidad_medida'] ?>
@@ -63,7 +68,7 @@
                 <input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="number" step="0.01" min="0.00" max="<?php echo $stock ?>"  class="form-control"  name="cant[]" required>
             </td>
                <td data-label="Precio"><?php  echo $precio1 ?></td> 
-              
+                  
             </tr>
 <?php }} ?> 
 
@@ -103,4 +108,19 @@ $(document).ready(function () {
         
     });
 });
+window.onload = function(){
+  var fecha = new Date(); //Fecha actual
+  var mes = fecha.getMonth()+1; //obteniendo mes
+  var dia = fecha.getDate(); //obteniendo dia
+  var ano = fecha.getFullYear(); //obteniendo año
+  if(dia<10)
+    dia='0'+dia; //agrega cero si el menor de 10
+  if(mes<10)
+    mes='0'+mes //agrega cero si el menor de 10
+var limpiar = document.getElementById('dia'); limpiar.value = dia
+var limpiar1 = document.getElementById('mes'); limpiar1.value = mes;
+var limpiar4 = document.getElementById('ano'); limpiar4.value = ano;
+
+
+}
 </script>

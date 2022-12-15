@@ -10,11 +10,17 @@ include '../../../Model/conexion.php'; ?>
 <body style="font-family: sans-serif;">
     <img src="../../../img/hospital.png" style="width:20%">
     <img src="../../../img/log_1.png" style="width:20%; float:right">
-    <style>
-        .table tbody tr:nth-child(even) {background-color: #00BDFF; height: 5%}
-.table tbody tr:nth-child(odd) {background-color: #00EAFF; height: 5%}
+     <style>
 
-    </style>
+.table {width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed;}
+.table tr {background-color: #f8f8f8;border: 1px solid #ddd;color: black;}
+.table th, .table td {font-size: 16px;padding: 8px;text-align: center;height: 4%}
+.table thead th{ background-color: #46466b;color: white;text-align: center;}
+.table tbody td {font-size: 14px}
+.table tbody tr:nth-child(even) {background-color: #00BDFF; height: 5%}
+.table tbody tr:nth-child(odd) {background-color: #00EAFF; height: 5%}
+    
+  </style>
 <h3>HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
 <h4>DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h5 align="center">REPORTE DE SOLICITUD DE VALE</h5>
@@ -32,7 +38,7 @@ include '../../../Model/conexion.php'; ?>
     <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
 
         <thead style="background-color: #46466b;color: white;">
-        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+        <tr>
 
             <th  style="height: 3%;font-size: 14px;">Codigo</th>
             <th  style="height: 3%;font-size: 14px;">Departamento Solicitante </th>
@@ -64,11 +70,11 @@ include '../../../Model/conexion.php'; ?>
      
   </style> 
   
-        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td data-label="Código" style="font-size: 12px;text-align: center;"><?php  echo $solicitudes['codVale']?></td>
-            <td data-label="Departamento" style="font-size: 12px"><?php  echo $des?></td>
-            <td style="font-size: 12px;"><?php  echo $solicitudes['usuario']?>
-            <td data-label="Fecha" style="font-size: 12px;text-align: center;"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
+        <tr>
+            <td data-label="Código"><?php  echo $solicitudes['codVale']?></td>
+            <td data-label="Departamento"><?php  echo $des?></td>
+            <td><?php  echo $solicitudes['usuario']?>
+            <td data-label="Fecha"><?php  echo date("d - m - Y",strtotime($solicitudes['fecha_registro'])) ?></td>
             </tr>
        <?php }  ?> 
     </tbody>  
@@ -90,7 +96,7 @@ include '../../../Model/conexion.php'; ?>
     <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
 
         <thead style="background-color: #46466b;color: white;">
-        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+        <tr>
 
            <th  style="height: 3%;font-size: 14px;">Codigo</th>
             <th  style="height: 3%;font-size: 14px;">Departamento Solicitante </th>
@@ -123,11 +129,11 @@ $idusuario=$_POST['idusuario'];
      
   </style> 
   
-        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td data-label="Código" style="font-size: 12px"><?php  echo $solicitudes['codVale']?></td>
-            <td data-label="Departamento" style="font-size: 12px"><?php  echo $des?></td>
-            <td style="font-size: 12px;"><?php  echo $solicitudes['usuario']?>
-            <td data-label="Fecha" style="font-size: 12px"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
+        <tr>
+            <td data-label="Código"><?php  echo $solicitudes['codVale']?></td>
+            <td data-label="Departamento"><?php  echo $des?></td>
+            <td><?php  echo $solicitudes['usuario']?>
+            <td data-label="Fecha"><?php  echo date("d - m - Y",strtotime($solicitudes['fecha_registro'])) ?></td>
             </tr>
        <?php }  ?> 
     </tbody>  
@@ -140,7 +146,7 @@ $idusuario=$_POST['idusuario'];
     <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
 
         <thead style="background-color: #46466b;color: white;">
-        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+        <tr>
             <th  style="height: 3%;font-size: 14px;">Codigo</th>
             <th  style="height: 3%;font-size: 14px;">Departamento Solicitante </th>
             <th  style="height: 3%;font-size: 14px;">Encargado </th>
@@ -152,7 +158,7 @@ $idusuario=$_POST['idusuario'];
 
     <tbody>
 <?php 
-   $sql = "SELECT * FROM tb_vale ORDER BY codVale DESC";
+   $sql = "SELECT * FROM tb_vale";
     $result = mysqli_query($conn, $sql);
 
   $n=0;
@@ -172,11 +178,11 @@ $idusuario=$_POST['idusuario'];
      
   </style> 
   
-        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td style="text-align:center;font-size: 12px"><?php  echo $solicitudes['codVale']?></td>
-            <td style="font-size: 12px"><?php  echo $des?></td>
-            <td style="font-size: 12px;"><?php  echo $solicitudes['usuario']?>
-            <td style="text-align:center;font-size: 12px"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
+        <tr>
+            <td><?php  echo $solicitudes['codVale']?></td>
+            <td><?php  echo $des?></td>
+            <td><?php  echo $solicitudes['usuario']?>
+            <td><?php  echo date("d - m - Y",strtotime($solicitudes['fecha_registro'])) ?></td>
             </tr>
        <?php }  ?> 
     </tbody>  
@@ -187,7 +193,7 @@ $idusuario=$_POST['idusuario'];
     <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
 
         <thead style="background-color: #46466b;color: white;">
-        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+        <tr>
            <th  style="height: 3%;font-size: 14px;">Codigo</th>
             <th  style="height: 3%;font-size: 14px;">Departamento Solicitante </th>
             <th  style="height: 3%;font-size: 14px;">Encargado </th>
@@ -200,7 +206,7 @@ $idusuario=$_POST['idusuario'];
     <tbody>
 <?php 
 $idusuario=$_POST['idusuario'];
-   $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario' Order by codVale DESC";
+   $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
 $n=0;
     while ($solicitudes = mysqli_fetch_array($result)){
@@ -219,11 +225,11 @@ $n=0;
      
   </style> 
   
-        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td style="text-align:center;font-size: 12px;text-align: center;"><?php  echo $solicitudes['codVale']?></td>
-            <td style="font-size: 12px"><?php  echo $des?></td>
-            <td style="font-size: 12px;"><?php  echo $solicitudes['usuario']?>
-            <td style="text-align:center;font-size: 12px"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
+        <tr>
+            <td><?php  echo $solicitudes['codVale']?></td>
+            <td><?php  echo $des?></td>
+            <td><?php  echo $solicitudes['usuario']?>
+            <td><?php  echo date("d - m - Y",strtotime($solicitudes['fecha_registro'])) ?></td>
             </tr>
        <?php }  ?> 
     </tbody>  

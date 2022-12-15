@@ -108,7 +108,7 @@ die();
             </form>
  </div>
 <?php } ?>
-<table class="table  table-striped" id="exam" style=" width: 100%;">
+<table class="table  " id="exam" style=" width: 100%;">
           <thead>
               <tr id="tr">
                 <th style="width: 10%;"><strong>No. de Solicitud</strong></th>
@@ -160,9 +160,7 @@ if ($tipo_usuario==1) {
 </section>
    <script>   $(document).ready(function () {
     $('#exam').DataTable({
-            rowGroup: {
-            dataSrc: 1
-        },
+
             responsive: true,
             autoWidth:false,
             deferRender: true,

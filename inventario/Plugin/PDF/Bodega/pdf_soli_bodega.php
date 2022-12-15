@@ -14,10 +14,18 @@ include '../../../Model/conexion.php';?>
 <h3 style="text-align: center;">HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
 <h4 style="text-align: center;">DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h5 align="center">REPORTE DE SOLICITUD DE BODEGA</h5>
-  <style>
-.table tr:nth-child(even) {background-color: #00BDFF;}
-.table tr:nth-child(odd) {background-color: #00EAFF;}
-</style>
+     <style>
+
+.table {width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed;}
+.table tr {background-color: #f8f8f8;border: 1px solid #ddd;color: black;}
+.table th, .table td {font-size: 16px;padding: 8px;text-align: center;}
+.table thead th{ background-color: #46466b;color: white;text-align: center;font-size: 14px}
+
+
+.table tbody tr:nth-child(even) {background-color: #00BDFF; height: 5%}
+.table tbody tr:nth-child(odd) {background-color: #00EAFF; height: 5%}
+    
+  </style>
 <?php if (isset($_POST['Consultar'])) {
     $columna=$_POST['columna'];
     $tipo=$_POST['tipo'];
@@ -29,17 +37,17 @@ include '../../../Model/conexion.php';?>
         $tipo1='Ascendente';
      } ?>
     <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p><br><br>
-    <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+    <table class="table  "  >
 
-        <thead style="background-color: #46466b;color: white;">
-        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+        <thead >
+        <tr>
             <th style="width: 25%;height: 3%;font-size: 14px;text-align: center;">Código</th>
             <th style="width: 50%;height: 3%;font-size: 14px">Departamento Solicitante</th>
             <th style="width: 50%;height: 3%;font-size: 14px;">Encargado</th>
-            <th style="width: 15%;height: 3%;font-size: 14px;text-align: center;">Fecha</th>
+            <th>Fecha</th>
         </tr>
         
-        <td id="td" colspan="3" ><h4 align="center">No se encontraron resultados </h4></td>
+        
     </thead> 
 
     <tbody>
@@ -55,19 +63,13 @@ include '../../../Model/conexion.php';?>
 
                    $des=$solicitudes['departamento']; 
                 }
-?>  <style type="text/css">
-       #td{
-          display: none;
-      }
-      
-     
-  </style> 
+?>  
   
-         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php  echo $solicitudes['codBodega']?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Descripción"><?php  echo $des?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php  echo $solicitudes['usuario']?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
+         <tr>
+            <td><?php  echo $solicitudes['codBodega']?></td>
+            <td><?php  echo $des?></td>
+            <td><?php  echo $solicitudes['usuario']?></td>
+            <td><?php  echo date("d - m - Y",strtotime($solicitudes['fecha_registro'])) ?></td>
             </tr>
        <?php }  ?> 
     </tbody>  
@@ -86,17 +88,17 @@ include '../../../Model/conexion.php';?>
         $tipo1='Ascendente';
      } ?>
     <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p><br><br>
-    <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+    <table class="table  "  >
 
-        <thead style="background-color: #46466b;color: white;height: ;">
-        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+        <thead >
+        <tr>
             <th style="width: 25%;height: 3%;font-size: 14px;text-align: center;">Código</th>
             <th style="width: 50%;height: 3%;font-size: 14px">Departamento Solicitante</th>
             <th style="width: 50%;height: 3%;font-size: 14px;">Encargado</th>
-            <th style="width: 15%;height: 3%;font-size: 14px;text-align: center;">Fecha</th>
+            <th>Fecha</th>
         </tr>
         
-        <td id="td" colspan="3" ><h4 align="center">No se encontraron resultados </h4></td>
+        
     </thead> 
 
     <tbody>
@@ -113,19 +115,13 @@ $idusuario=$_POST['idusuario'];
 
                    $des=$solicitudes['departamento']; 
                 }
-?>  <style type="text/css">
-       #td{
-          display: none;
-      }
-      
-     
-  </style> 
+?>  
   
-         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-           <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php  echo $solicitudes['codBodega']?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Descripción"><?php  echo $des?></td>
-             <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Encargado" data-label="Descripción"><?php  echo $solicitudes['usuario']?>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
+         <tr>
+           <td><?php  echo $solicitudes['codBodega']?></td>
+            <td><?php  echo $des?></td>
+             <td data-label="Encargado"><?php  echo $solicitudes['usuario']?>
+            <td><?php  echo date("d - m - Y",strtotime($solicitudes['fecha_registro'])) ?></td>
             </tr>
        <?php }  ?> 
     </tbody>  
@@ -135,16 +131,16 @@ $idusuario=$_POST['idusuario'];
 <?php } ?>
 
 <?php if (isset($_POST['id'])) {?>
-    <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+    <table class="table  "  >
 
-        <thead style="background-color: #46466b;color: white;">
-        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <th style="width: 10%;height: 3%;font-size: 14px;text-align: center;">Código</th>
-            <th style="width: 30%;height: 3%;font-size: 14px">Departamento Solicitante</th>
-            <th style="width: 30%;height: 3%;font-size: 14px">Encargado</th>
-            <th style="width: 15%;height: 3%;font-size: 14px;text-align: center;">Fecha</th>
+        <thead >
+        <tr>
+            <th>Código</th>
+            <th >Departamento Solicitante</th>
+            <th >Encargado</th>
+            <th>Fecha</th>
         </tr>
-        <td id="td" colspan="3"><h4>No se encontraron resultados</h4></td>
+        
     </thead> 
 
     <tbody>
@@ -160,19 +156,13 @@ $des=$solicitudes['departamento'];
 
                    $des=$solicitudes['departamento']; 
                 }
-?>  <style type="text/css">
-       #td{
-          display: none;
-      }
-      
-     
-  </style> 
+?>  
   
-         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php  echo $solicitudes['codBodega']?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php  echo $des?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php  echo $solicitudes['usuario']?>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
+         <tr>
+            <td><?php  echo $solicitudes['codBodega']?></td>
+            <td><?php  echo $des?></td>
+            <td><?php  echo $solicitudes['usuario']?>
+            <td><?php  echo date("d - m - Y",strtotime($solicitudes['fecha_registro'])) ?></td>
             </tr>
      
     </tbody>  
@@ -180,16 +170,16 @@ $des=$solicitudes['departamento'];
    
 </table>
           <?php } if (isset($_POST['id1'])) { ?>
-          <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+          <table class="table"  >
 
-        <thead style="background-color: #46466b;color: white;">
-        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <th style="width: 15%;height: 3%;font-size: 14px;text-align: center;">Código</th>
-            <th style="width: 50%;height: 3%;font-size: 14px">Departamento Solicitante</th>
-            <th style="width: 30%;height: 3%;font-size: 14px">Encargado</th>
-            <th style="width: 15%;height: 3%;font-size: 14px;text-align: center;">Fecha</th>
+        <thead >
+        <tr>
+            <th>Código</th>
+            <th>Departamento Solicitante</th>
+            <th >Encargado</th>
+            <th>Fecha</th>
         </tr>
-        <td id="td" colspan="3"><h4>No se encontraron resultados</h4></td>
+        
     </thead> 
 
     <tbody>
@@ -206,19 +196,13 @@ $des=$solicitudes['departamento'];
 
                    $des=$solicitudes['departamento']; 
                 }
-?>  <style type="text/css">
-       #td{
-          display: none;
-      }
-      
-     
-  </style> 
+?>  
   
-         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php  echo $solicitudes['codBodega']?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Descripción"><?php  echo $des?></td>
+         <tr>
+            <td><?php  echo $solicitudes['codBodega']?></td>
+            <td><?php  echo $des?></td>
             <td style=" font-size: 12px;text-align: center;"><?php  echo $solicitudes['usuario']?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
+            <td><?php  echo date("d - m - Y",strtotime($solicitudes['fecha_registro'])) ?></td>
             </tr>
      
     </tbody>  

@@ -16,6 +16,9 @@ include '../../Model/conexion.php';
 
     $solicitud_no = $_POST['solicitud_no'];
     $idusuario = $_POST['idusuario'];
+      $dia              = $_POST['dia'];
+      $mes              = $_POST['mes'];
+      $año              = $_POST['año'];
   $verificar_circulante =mysqli_query($conn, "SELECT * FROM detalle_circulante WHERE tb_circulante ='$solicitud_no' ");
 
 if (mysqli_num_rows($verificar_circulante)>0) {
@@ -35,13 +38,13 @@ if (resultado.value) {
 exit();
 }
     //crud para guardar los productos en la tabla tb_vale
-    $sql = "INSERT INTO tb_circulante (codCirculante,estado,idusuario) VALUES ('$solicitud_no','Pendiente','$idusuario')";
+    $sql = "INSERT INTO tb_circulante (codCirculante,estado,idusuario,Mes,Año) VALUES ('$solicitud_no','Pendiente','$idusuario','$mes','$año')";
     $result = mysqli_query($conn, $sql); 
 
 for($i = 0; $i < count($_POST['desc']); $i++) 
     {
       $codigo_producto  = $_POST['cod'][$i];
-
+      $cod= $_POST['cod1'][$i];
       $descripcion  = $_POST['desc'][$i];
       $u_m              = $_POST['um'][$i];
       $soli             = $_POST['cant'][$i];
@@ -50,10 +53,15 @@ for($i = 0; $i < count($_POST['desc']); $i++)
 
       $insert = "INSERT INTO detalle_Circulante(codigo, descripcion, unidad_medida, stock, tb_circulante, precio) VALUES ('$codigo_producto','$descripcion','$u_m', '$soli', '$num_sol', '$cost')";
       $query = mysqli_query($conn, $insert);
-
- $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo) VALUES('$descripcion','Entrada Por Circulante','$u_m','$codigo_producto','$soli','$cost')";
+$sql = "SELECT cod FROM tb_productos WHERE cod='$cod'";
+    $result1 = mysqli_query($conn, $sql);
+        $id=0;
+    while ($productos = mysqli_fetch_array($result1)){
+        $id=$productos['cod']+1;
+ $sql1="INSERT INTO historial(ID,descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Detalles,idusuario) VALUES('$cod','$descripcion','Entrada Por Circulante','$u_m','$codigo_producto','$soli','$cost','$num_sol','$idusuario')";
 
        $query1 = mysqli_query($conn, $sql1);
+   }
       if ($result || $query || $query1) {
                 echo "<script>
     Swal.fire({

@@ -8,20 +8,6 @@
 $tabla="";
 $query="SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE stock!=0 GROUP BY codProductos HAVING COUNT(*) ORDER BY codProductos desc ";
 
-///////// LO QUE OCURRE AL TECLEAR SOBRE EL INPUT DE BUSQUEDA ////////////
-if(isset($_POST['consulta']))
-{
-    $q=$conn->real_escape_string($_POST['consulta']);
-    $query="SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos  WHERE
-        codProductos LIKE '%".$q."%' or descripcion LIKE '%".$q."%' GROUP BY codProductos HAVING COUNT(*) ORDER BY codProductos desc ";
-        $result = mysqli_query($conn, $query);
-         while ($productos = mysqli_fetch_array($result)){
-         $cantidad=$productos['SUM(stock)'];
-        $stock=number_format($cantidad, 2,".",",");
-    }
-}
-
-
 $buscarAlumnos=$conn->query($query);
 if ($buscarAlumnos->num_rows > 0)
 {
@@ -58,7 +44,7 @@ if ($buscarAlumnos->num_rows > 0)
 </div>
 <div class="card mt-3">
      <div class="card-body">
-    <table class="table table-responsive  table-striped" id="tblElecProducts" style=" width: 100%;">
+    <table class="table " id="tblElecProducts" style=" width: 100%;">
      
                 <thead>
                      <tr id="tr">
@@ -141,10 +127,8 @@ echo $tabla;
     lengthMenu: [[10, -1], [10,"Todos los registros"]],
     responsive: true,
 autoWidth:false,
-            deferRender: true,
-            scroller: true,
-            scrollY: 400,
-            scrollCollapse: true,
+
+
                     language: {
                 "lengthMenu": "Mostrar _MENU_ registros",
                 "zeroRecords": "No se encontraron resultados",
@@ -177,7 +161,7 @@ autoWidth:false,
       console.log(this.data());
 
       $('<input>', {
-          type: 'block',
+          type: 'hidden',
           value: this.data()[1],
           name: 'id[]'
       }).appendTo('#frm-example');

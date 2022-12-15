@@ -53,13 +53,7 @@ $des=$solicitudes['departamento'];
 
                    $des=$solicitudes['departamento']; 
                 }
-?>  <style type="text/css">
-       #td{
-          display: none;
-      }
-      
-     
-  </style> 
+?>  
   
          <tr>
             <td data-label="Código" style="font-size: 12px;"><?php  echo $solicitudes['codBodega']?></td>

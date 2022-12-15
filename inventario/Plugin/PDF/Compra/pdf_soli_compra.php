@@ -16,7 +16,18 @@ include '../../../Model/conexion.php'; ?>
 <h3>HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
 <h4>DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h5 align="center">REPORTE DE SOLICITUD DE COMPRA</h5>
- 
+          <style>
+
+.table {width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed;}
+.table tr {background-color: #f8f8f8;border: 1px solid #ddd;color: black;}
+.table th, .table td {font-size: 16px;padding: 8px;text-align: center;}
+.table thead th{ background-color: #46466b;color: white;text-align: center;font-size: 14px}
+
+
+.table tbody tr:nth-child(even) {background-color: #00BDFF; height: 5%}
+.table tbody tr:nth-child(odd) {background-color: #00EAFF; height: 5%}
+    }
+  </style>
  <?php if (isset($_POST['Consultar'])) {
     $columna=$_POST['columna'];
     $tipo=$_POST['tipo'];
@@ -27,8 +38,9 @@ include '../../../Model/conexion.php'; ?>
     if ($tipo=="asc") {
         $tipo1='Ascendente';
      } ?>
+ 
     <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p><br><br>
-    <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+    <table class="table "  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
 
         <thead style="background-color: #46466b;color: white;">
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
@@ -87,7 +99,7 @@ include '../../../Model/conexion.php'; ?>
         $tipo1='Ascendente';
      } ?>
     <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p><br><br>
-    <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+    <table class="table "  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
 
         <thead style="background-color: #46466b;color: white;">
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
@@ -136,7 +148,7 @@ $idusuario=$_POST['idusuario'];
 </table>
 <?php } ?>
 <?php if (isset($_POST['id'])) {?>
-    <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+    <table class="table "  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
 
         <thead style="background-color: #46466b;color: white;">
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
@@ -181,7 +193,7 @@ $idusuario=$_POST['idusuario'];
    
 </table>
 <?php } if (isset($_POST['id1'])) {?>
-    <table class="table  table-striped"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+    <table class="table "  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
 
         <thead style="background-color: #46466b;color: white;">
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">

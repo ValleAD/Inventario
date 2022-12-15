@@ -61,7 +61,7 @@ if ($codigo=="") {
             <div class="row">
               <div class=" col-sm-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>   
-               <div id="div" style = " max-height: 75px;width: 100%; overflow-y:scroll;"> 
+               <div id="div" > 
                 
                    <?php  
    $sql = "SELECT * FROM selects_departamento";

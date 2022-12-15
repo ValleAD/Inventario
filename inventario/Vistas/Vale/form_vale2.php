@@ -80,7 +80,7 @@ if ($codigo=="") {
             <div class="row">
               <div class="col-md-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>   
-               <div id="div" style = " max-height: 85px;width: 100%; overflow-y:scroll;"> 
+               <div class="div" > 
                 
                    <?php  
    $sql = "SELECT * FROM selects_departamento";
@@ -89,6 +89,8 @@ if ($codigo=="") {
                              <input required  id="<?php echo $productos['id'] ?>" type="radio" name="depto" value="<?php echo $productos['departamento'] ?>"> <label style="width: 100%;" id="label1" for="<?php echo $productos['id'] ?>" > <?php echo $productos['departamento'] ?></label><br>
  <?php }?>
                          </div>
+    <p class="p">Mostrar</p>
+    <p class="p1">Ocultar</p>
                   </div>
             <div class="col-md-4" style="position: initial">
                 <label id="inp1">Vale N°</b></label>   
@@ -154,10 +156,19 @@ if ($codigo=="") {
 
 
     <script>
-    $(document).on('click', '.borrar', function (event) {
-    event.preventDefault();
-    $(this).closest('tr').remove();
-});
+    $('.p1').hide();
+   $('.p').click(function(){
+
+$('.p').hide();
+$('.p1').show();
+
+    });
+   $('.p1').click(function(){
+
+    $('.p1').hide();
+$('.p').show();
+    });
+
 
 </script>
 

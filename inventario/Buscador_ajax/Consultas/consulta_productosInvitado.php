@@ -29,7 +29,7 @@ if ($buscarAlumnos->num_rows > 0)
     <div class="card productos q">
     <div class="card-body">
 
-    <table class=" table display   table-striped" id="example" style=" width: 100%;">
+    <table class=" table display " id="example" style=" width: 100%;">
      
                 <thead>
                      <tr id="tr">

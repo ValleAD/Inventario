@@ -92,13 +92,21 @@ die();
         <br><br><br>
     <?php
 
-
+$total = 0;
+$total1 = 0;
+$final = 0;
+$final1 = 0;
+ $final2 = 0;
+ $final3 = 0;
+ $final4 = 0;
+ $final5 = 0;
+ $final6 = 0;
+ $final7 = 0;
+ $final8 = 0;
+ $final9 = 0;
 if(isset($_POST['detalle'])){
 
-$total = 0;
-$final = 0;
-$total2 = 0;
-$final2 = 0;
+
 
 $id=$_POST['id'];
     $sql = "SELECT * FROM tb_circulante  WHERE codCirculante='$id' ORDER BY fecha_solicitud DESC LIMIT 1";
@@ -170,28 +178,37 @@ $id=$_POST['id'];
 <?php 
 $num_circulante = $datos_sol['codCirculante'];
 
- $sql = "SELECT * FROM detalle_circulante WHERE tb_circulante = $num_circulante";
+ $sql = "SELECT * FROM detalle_circulante WHERE tb_circulante = $num_circulante ";
     $result = mysqli_query($conn, $sql);
-    $n=0;
 while ($productos = mysqli_fetch_array($result)){
-            $total    =    $productos['stock'] * $productos['precio'];
-        $final    +=   $total;
-      $n++;
-        $r=$n+0;
+    $total = $productos['stock'] * $productos['precio'];
+       $final += $total;
+       $total1= number_format($total, 2, ".",",");
+      $final1=number_format($final, 2, ".",",");
+   $codigo=$productos['codigo'];
+     $descripcion=$productos['descripcion'];
+     $um=$productos['unidad_medida'];
+     $codigoc=$productos['codigodetallecirculante'];
+      
+
         $precio   =    $productos['precio'];
-        $codigo   =    $productos['codigo'];
-        $um   =    $productos['unidad_medida'];
-        $descripcion   =    $productos['descripcion'];
-        $precio2  =    number_format($precio, 2,".",",");
-        $total2   =    number_format($total, 2, ".",",");
-        $final2   =    number_format($final, 2, ".",",");
+        $precio2  =    number_format($precio, 2,".",",");  
         $cant_aprobada=$productos['stock'];
         $cantidad_despachada=$productos['cantidad_despachada'];
         $stock=number_format($cant_aprobada, 2,".",",");
         $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
-        
 
- ?>
+        $final2 += $cant_aprobada;
+        $final3   =    number_format($final2, 2, ".",",");
+
+        $final4 += $cantidad_despachada;
+        $final5   =    number_format($final4, 2, ".",",");
+        
+        $final6 += ($cant_aprobada-$cantidad_despachada);
+        $final7   =    number_format($final6, 2, ".",",");
+        
+        $final8 += $precio;
+        $final9   =    number_format($final8, 2, ".",",");?>
     <style type="text/css">
      #td{
         display: none;
@@ -200,7 +217,7 @@ while ($productos = mysqli_fetch_array($result)){
    
 </style> 
       <tr>
-      <td data-label="#"><?php echo $r ?> </td>
+      <td data-label="#"> <?php echo$codigoc ?></td>
        <td  data-label="Código"><?php echo $codigo ?>
            <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
        </td>
@@ -210,7 +227,7 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Cantidad Solicitada"><?php echo $stock ?></td>
         <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
          <td data-label="Costo unitario"><?php echo $precio2 ?></td>
-        <td  data-label="Total"><?php echo $total2 ?></td>
+        <td  data-label="Total"><?php echo $total1 ?></td>
       </tr>
         
   <?php }?>
@@ -238,8 +255,8 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
             <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
             <input type="hidden" name="cost[]" value="<?php echo $precio2 ?>">
-            <input type="hidden" name="tot[]" value="<?php echo $total2 ?>">
-            <input type="hidden" name="tot_f" value="<?php echo $final2 ?>" >
+            <input type="hidden" name="tot[]" value="<?php echo $total1 ?>">
+            <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" >
 
                         <svg class="bi" width="20" height="20" fill="currentColor">
@@ -257,8 +274,8 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
             <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
             <input type="hidden" name="cost[]" value="<?php echo $precio2 ?>">
-            <input type="hidden" name="tot[]" value="<?php echo $total2 ?>">
-            <input type="hidden" name="tot_f" value="<?php echo $final2 ?>" >
+            <input type="hidden" name="tot[]" value="<?php echo $total1 ?>">
+            <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary">
 
                         <svg class="bi" width="20" height="20" fill="currentColor">
@@ -277,8 +294,8 @@ while ($productos = mysqli_fetch_array($result)){
             <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
             <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
             <input type="hidden" name="cost[]" value="<?php echo $precio2 ?>">
-            <input type="hidden" name="tot[]" value="<?php echo $total2 ?>">
-            <input type="hidden" name="tot_f" value="<?php echo $final2 ?>" >
+            <input type="hidden" name="tot[]" value="<?php echo $total1 ?>">
+            <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="dt_circulante">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
@@ -287,10 +304,14 @@ while ($productos = mysqli_fetch_array($result)){
             </form>
 
                   </div>
-                    <div class="col-md-12"><label style="font-weight: bold;">Sub Total:</label>
-                  <p style="float: right;"><?php echo $final2?></p>
-              </div>
-                          <button class="btn btn-success as">Solicitudes Circulante</button>
+                  <hr>
+               <p align="right"><b style="float: left;">Cantidad Solicitada: </b><?php echo $final3 ?></p>
+                  <p align="right"><b style="float: left;">Cantidad Despachada: </b><?php echo $final5 ?></p>
+
+                  <p align="right"><b style="float: left;">Cant. Soli. - Cant. Despa.: </b><?php echo $final7 ?></p>
+                  <p align="right"><b style="float: left;">Costo Unitario </b><?php echo $final9 ?></p>
+                  <p align="right"><b style="float: left;">SubTotal</b><?php echo $final1?></p>
+              <button class="btn btn-success as">Solicitudes Circulante</button>
 
                 </div>
         

@@ -159,7 +159,7 @@ $result = mysqli_query($conn, $sql);
                 </button>
             </form>
 </div>
-  <table class="table table-striped" id="examp" style=" width: 100%">
+  <table class="table " id="examp" style=" width: 100%">
                   
         <thead>
              <tr id="tr">
@@ -238,9 +238,7 @@ $result = mysqli_query($conn, $sql);
                         $(document).ready(function () {
 
        $('#examp').DataTable({
-            rowGroup: {
-            dataSrc: 2
-        },
+     
             responsive: true,
             autoWidth:false,
             deferRender: true,

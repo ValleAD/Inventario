@@ -10,9 +10,7 @@
     <img src="../../../img/hospital.png" style="width:20%">
     <img src="../../../img/log_1.png" style="width:20%; float:right">
     
-<?php if(isset($_POST['desc'])){
-    $depto = $_POST['num_sol'];
-    $fech = $_POST['fech'];
+<?php 
 
 ?>
 <h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD</h3>
@@ -20,7 +18,7 @@
 <h4 align="center" style="margin-top: 2%;">DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h3 align="center" style="margin-top: 2%;">FONDO CIRCULANTE DE MONTO FIJO</h3>
 
-<section style="margin: 2%;">
+<section >
 
 <section style="font-size: 14px;">
 <p>Encargado del Fondo Circulante de Monto Fijo Recursos Propios</p>
@@ -28,60 +26,121 @@
 <br>
 <p>Atentamente solicito a usted la compra <b>Urgente</b> de los materiales y/o servicios que se detallan a continuación, a través del Fondo Circulante de Monto Fijo.</p>
 </section>
-<table style="width: 100%;margin-bottom: 2%;">
-    <tr>
-        <td><b>N° de Solicitud:</b> <?php echo $depto ?></td>
-        <td align="right"><b>Fecha:</b> <?php echo $fech ?></td>
-    </tr>
-</table>
+     <style>
+
+.table {width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed;}
+.table tr {background-color: #f8f8f8;border: 1px solid #ddd;color: black;}
+.table th, .table td {font-size: 16px;padding: 8px;text-align: center;}
+.table thead th{ background-color: #46466b;color: white;text-align: center;font-size: 14px}
+
+
+.table tbody tr:nth-child(even) {background-color: #00BDFF; height: 5%}
+.table tbody tr:nth-child(odd) {background-color: #00EAFF; height: 5%}
+    }
+  </style>
+ <?php  include ('../../../Model/conexion.php');
+$total = 0;
+$final = 0;
+$final1 = 0;
+$final2 = 0;
+     $bodega = $_POST['num_sol'];
+         $sql = "SELECT * FROM detalle_circulante WHERE tb_circulante='$bodega'";
+    $result = mysqli_query($conn, $sql);
+
+    while ($solicitudes = mysqli_fetch_array($result)){
+        $codigo=$solicitudes['codigo'];
+        $des=$solicitudes['descripcion'];
+        $um=$solicitudes['unidad_medida'];
+        $cantidad=$solicitudes['stock'];
+        $stock=$solicitudes['stock'];
+        $cost=$solicitudes['precio'];
+     
+    $total = $solicitudes['stock'] * $solicitudes['precio'];
+
+    
+     $final += $total;
+       $total1= number_format($total, 2, ".",",");
+      $final1=number_format($final, 2, ".",","); 
+  }
+?>
+
+ <table style="width: 100%; font-size: 12px;">
+    <?php     $sql = "SELECT * FROM tb_circulante WHERE codCirculante='$bodega'";
+    $result = mysqli_query($conn, $sql);
+
+    while ($solicitudes = mysqli_fetch_array($result)){
+        $solicitud=$solicitudes['codCirculante'];
+        $fecha=$solicitudes['fecha_solicitud'];
+    
+
       
-<table style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;">
-        <thead style="background-color: #46466b;color: white;">     
-        <tr style="border: 1px solid #ddd;" >
-            <th style="width: 25%;height: 3%;font-size: 14px;text-align: left;">Codigo</th>
-            <th style="width: 70%;height: 3%;font-size: 14px;text-align: left;">Descripción de los materiales y/o servicios solicitados</th>
-            <th style="width: 15%;height: 3%;font-size: 14px;text-align: center;">U/M</th>
-            <th style="width: 15%;height: 3%;font-size: 14px;text-align: center;">Cant.<br>Sol.</th>
-            <th style="width: 15%;height: 3%;font-size: 14px;text-align: center;">C/U</th>
-            <th style="width: 15%;height: 3%;font-size: 14px;text-align: center;border-right:1px solid #ccc ;">Total</th>
-        </tr>
+?>
+     <tr>
+         <td><b>N° Circulante:</b><p><?php echo $solicitud?></p></td>
+         <td align="center"><b>Fecha:</b><p><?php echo $fecha ?></p></td>
+         <td align="right"><b>SubTotal:</b><p><?php echo $final1 ?></p></td>
+     </tr>
+ <?php } ?>
+ </table>
+
+ <?php 
+
+
+?> 
+
+
+</table>
+
+<table class="table" style="width: 100%">
+    <thead>     
+        <tr id="tr">
+            <th style="width: 20%;">Código</th>
+            <th style="width: 50%;">Descripción Completa</th>
+            <th style="width: 20%;">U/M</th>
+            <th style="width: 20%;">Cantidad Solicitada</th>
+            <th style="width: 20%;">Cantidad Despachada</th>
+            <th style="width: 20%;">C/U</th>
+            <th style="width: 20%;">Total</th>
+
+            </tr>
     </thead> 
 
     <tbody>
 <?php
-    $total = 0;
-    $final = 0;
-for($i = 0; $i < count($_POST['desc']); $i++)
-{
-   
-    $cod = $_POST['cod'][$i];
-    $des = $_POST['desc'][$i];
-    $um = $_POST['um'][$i];
-    $cantidad = $_POST['cant'][$i];
-    $cantidad_despachada = $_POST['cantidad_despachada'][$i];
-    $cost = $_POST['cost'][$i];
-    $tot = $_POST['tot'][$i];
 
-    $tot_f = $_POST['tot_f'];
-?>
-  
-        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td  style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php  echo $cod?></td>
-            <td  style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php  echo $des?></td>
-            <td  style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php  echo $um?></td>
-            <td  style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $cantidad ?></td>
-            <td  style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $cost ?></td>
-            <td  style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php  echo $tot ?></td>
-        </tr>
+    $sql = "SELECT * FROM detalle_circulante WHERE tb_circulante='$bodega'";
+    $result = mysqli_query($conn, $sql);
+
+    while ($solicitudes = mysqli_fetch_array($result)){
+        $codigo=$solicitudes['codigo'];
+        $des=$solicitudes['descripcion'];
+        $um=$solicitudes['unidad_medida'];
+        $cantidad=$solicitudes['cantidad_despachada'];
+        $stock=$solicitudes['stock'];
+        $cost=$solicitudes['precio'];
      
-     <?php } } ?> 
-    <tfoot style="width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed; ">
-      
-    <td colspan="5" style="text-align: right;font-size: 12px; font-weight: bold;">Costo Estimado</td>
-        <td style="text-align: center;font-size: 12px; font-weight: bold;"><?php echo $tot_f ?></td>
-    </tfoot>
-    </tbody>   
-</table>            
+    $total = $solicitudes['stock'] * $solicitudes['precio'];
+
+    
+     $final += $total;
+       $total1= number_format($total, 2, ".",",");
+      $final1=number_format($final, 2, ".",","); 
+ ?>
+        <tr>
+            <td data-label="Código"><?php  echo $codigo?></td>
+            <td data-label="Descripción"><?php  echo $des?></td>
+            <td data-label="Unidad De Medida"><?php  echo $um?></td>
+            <td data-label="Cantidad"><?php echo $stock ?></td>
+            <td data-label="Cantidad Despachada"><?php echo $cantidad ?></td>
+            <td data-label="Precio"><?php echo $cost ?></td>
+            <td data-label="total"><?php  echo $total1 ?></td>
+        </tr>
+     <?php } ?>
+    </tbody>  
+
+</table>
+<br>              
+       
     
 <section sytle="font-size: 14px;">
 <p>Todo lo anteriormente detallado, es indispensable para desarrollar nuestras funciones.</p>  

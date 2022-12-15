@@ -56,8 +56,16 @@ die();
 
 $total = 0;
 $final = 0;
-$final2 = 0;
-    $sql = "SELECT * FROM tb_Bodega ORDER BY codBodega DESC LIMIT 1";
+ $final2 = 0;
+ $final3 = 0;
+ $final4 = 0;
+ $final5 = 0;
+ $final6 = 0;
+ $final7 = 0;
+ $final8 = 0;
+ $final9 = 0;
+$cod=$_GET['cod'];
+    $sql = "SELECT * FROM tb_Bodega WHERE codBodega='$cod'";
     $result = mysqli_query($conn, $sql);
  while ($productos1 = mysqli_fetch_array($result)){
 
@@ -109,7 +117,7 @@ $final2 = 0;
             <div class="card-body">
 
                 
-        <table class="table table-striped" id="exam">
+        <table class="table " id="exam">
             <thead>
               <tr id="tr">
                 <th>Código</th>
@@ -152,18 +160,24 @@ while ($productos = mysqli_fetch_array($result1)){
       
 
         $precio   =    $productos['precio'];
-        $precio2  =    number_format($precio, 2,".",".");  
+        $precio2  =    number_format($precio, 2,".",",");  
         $cant_aprobada=$productos['stock'];
         $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,",");?>
-    <style type="text/css">
-     #td{
-        display: none;
-    }
-    
-   
-</style> 
+        $stock=number_format($cant_aprobada, 2,".",",");
+        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+
+        $final2 += $cant_aprobada;
+        $final3   =    number_format($final2, 2, ".",",");
+
+        $final4 += $cantidad_despachada;
+        $final5   =    number_format($final4, 2, ".",",");
+        
+        $final6 += ($cant_aprobada-$cantidad_despachada);
+        $final7   =    number_format($final6, 2, ".",",");
+        
+        $final8 += $precio;
+        $final9   =    number_format($final8, 2, ".",",");?>
+
       <tr>
        <td  data-label="Código"><?php echo $productos['codigo'] ?></td>
         <td  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
@@ -264,9 +278,13 @@ while ($productos = mysqli_fetch_array($result1)){
 
                     </div>
 
-                    <div class="col-md-12"><label style="font-weight: bold;">Sub Total:</label>
-                  <p style="float: right;"><?php echo $final1?></p>
-              </div>
+               <hr>
+               <p align="right"><b style="float: left;">Cantidad Solicitada: </b><?php echo $final3 ?></p>
+                  <p align="right"><b style="float: left;">Cantidad Despachada: </b><?php echo $final5 ?></p>
+
+                  <p align="right"><b style="float: left;">Cant. Soli. - Cant. Despa.: </b><?php echo $final7 ?></p>
+                  <p align="right"><b style="float: left;">Costo Unitario: </b><?php echo $final9 ?></p>
+                  <p align="right"><b style="float: left;">SubTotal</b><?php echo $final1?></p>
                           <button class="btn btn-success as">Solicitides Bodega</button>
                 </div>
         

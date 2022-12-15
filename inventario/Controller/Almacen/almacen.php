@@ -21,6 +21,9 @@ include '../../Model/conexion.php';
     $departamento     = $_POST['depto'];
     $usuario          = $_POST['usuario'];
     $idusuario = $_POST['idusuario'];
+      $dia              = $_POST['dia'];
+      $mes              = $_POST['mes'];
+      $año              = $_POST['año'];
       $verificar_almacen =mysqli_query($conn, "SELECT * FROM detalle_almacen WHERE tb_almacen ='$solicitud_no' ");
 
 if (mysqli_num_rows($verificar_almacen)>0) {
@@ -40,26 +43,29 @@ if (resultado.value) {
 exit();
 }
     //crud para guardar los productos en la tabla tb_vale
-     $sql = "INSERT INTO tb_almacen (codAlmacen, departamento,encargado,estado,idusuario) VALUES ('$solicitud_no', '$departamento','$usuario','Pendiente','$idusuario')";
+     $sql = "INSERT INTO tb_almacen (codAlmacen, departamento,encargado,estado,idusuario,Mes,Año) VALUES ('$solicitud_no', '$departamento','$usuario','Pendiente','$idusuario','$mes','$año')";
     $result = mysqli_query($conn, $sql); 
 
 for($i = 0; $i < count($_POST['cod']); $i++) 
     {
-      $codigo_producto  = $_POST['cod'][$i];
-      $nombre_articulo  = $_POST['desc'][$i];
-      $u_m              = $_POST['um'][$i];
-      $soli             = $_POST['cant'][$i];
-      $cost             = $_POST['cu'][$i];
-      $num_sol          = $_POST['nsolicitud'];
-
+        $codigo_producto  = $_POST['cod'][$i];
+        $cod= $_POST['cod1'][$i];
+        $nombre_articulo  = $_POST['desc'][$i];
+        $u_m              = $_POST['um'][$i];
+        $soli             = $_POST['cant'][$i];
+        $cost             = $_POST['cu'][$i];
+        $num_sol          = $_POST['nsolicitud'];
+      $dia              = $_POST['dia'];
+      $mes              = $_POST['mes'];
+      $año              = $_POST['año'];
       $insert = "INSERT INTO detalle_almacen(codigo, nombre, unidad_medida, cantidad_solicitada, tb_almacen, precio) VALUES ('$codigo_producto', '$nombre_articulo','$u_m', '$soli', '$num_sol', '$cost')";
       $query = mysqli_query($conn, $insert);
 
 
- $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo) VALUES('$nombre_articulo','Entrada Por Almacen','$u_m','$codigo_producto','$soli','$cost')";
-
+ $sql1="INSERT INTO historial(ID,descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo) VALUES('$cod','$nombre_articulo','Entrada Por Almacen','$u_m','$codigo_producto','$soli','$cost')";
        $query1 = mysqli_query($conn, $sql1);
-      if ($result || $query || $query1) {
+}
+      if ($result || $result1 || $query || $query1) {
         echo "<script>
     Swal.fire({
       title:'Realizado',

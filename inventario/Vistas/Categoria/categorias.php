@@ -149,7 +149,7 @@ $result = mysqli_query($conn, $sql);
 </div>
     <a href="../Dependencia/dependencias.php" class="btn btn-success" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Dependencias</a>
     <a href="../Departamento/departamentos.php" class="btn btn-primary" style="float: right;margin-top: 1%; color: white;margin-bottom: 1%; margin-right: 15px;">Departamentos</a>
-         <table class="table  table-striped" id="examp" style=" width: 100%">
+         <table class="table " id="examp" style=" width: 100%">
                   
         <thead>
               <tr id="tr">
@@ -232,9 +232,7 @@ $result = mysqli_query($conn, $sql);
         <script type="text/javascript">
         $(document).ready(function () {
                    $('#examp').DataTable({
-            rowGroup: {
-            dataSrc: 2
-        },
+
             responsive: true,
             autoWidth:false,
             deferRender: true,

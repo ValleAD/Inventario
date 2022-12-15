@@ -17,6 +17,8 @@
 
 $cod = $_GET['cod'];
 $id1 = $_GET['id'];
+$cod_producto = $_GET['codProductos'];
+
 if ($id1<1) {
 
         $eliminar ="DELETE FROM tb_productos WHERE cod='$cod' AND stock='$id1'";
@@ -26,8 +28,8 @@ if ($id1<1) {
             
         echo "<script>
     Swal.fire({
-      title:'Eliminado',
-      text:'El Producto fue Eliminado Sastisfactoriamente',
+      title:'Eliminado!',
+      html:'El Código Producto <b>' +$cod_producto+ '</b> fue Eliminado Sastisfactoriamente',
       icon:'success',
       allowOutsideClick: false
     }).then((resultado) =>{

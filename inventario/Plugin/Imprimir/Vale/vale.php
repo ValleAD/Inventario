@@ -10,18 +10,13 @@
   
 </head>
 <body style="font-family: sans-serif;">
-    <style>
-    .table td  { font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
-</style>
+
     <img src="../../../img/hospital.png" style="width:20%">
     <img src="../../../img/log_1.png" style="width:20%; float:right">
     <?php 
     include ('../../../Model/conexion.php');
-    $depto = $_POST['depto'];
-    $fech = $_POST['fech'];
-    $encargado = $_POST['usuario'];
+
     $vale = $_POST['vale'];
-    $estado=$_POST['estado'];
     if ($_POST['jus']=="") {
     $jus = "Sin observacion por el momento";
         
@@ -44,26 +39,64 @@
     }
   </style>
 <br>
-   <p style="float: right;">Vale No.: <?php echo $vale ?></p>
-<p><b>Depto. o Servicio:</b> <?php echo $depto ?></p>  
-   <table style="width: 100%;">
+ <?php include ('../../../Model/conexion.php');
+$total = 0;
+$final = 0;
+$final1 = 0;
+$final2 = 0;
+     $bodega = $_POST['vale'];
+
+    $sql = "SELECT * FROM detalle_vale WHERE numero_vale='$bodega'";
+    $result = mysqli_query($conn, $sql);
+
+    while ($solicitudes = mysqli_fetch_array($result)){
+            if ($estado="Pendiente") {
+        
+    $total = $solicitudes['stock'] * $solicitudes['precio'];
+    }if ($estado=="Aprobado") {
+        
+    $total = $solicitudes['cantidad_despachada'] * $solicitudes['precio'];
+    }
+     $final += $total;
+       $total1= number_format($total, 2, ".",",");
+      $final1=number_format($final, 2, ".",","); 
+  }
+    $sql = "SELECT * FROM tb_vale WHERE codVale='$bodega' limit 1";
+    $result = mysqli_query($conn, $sql);
+
+    while ($solicitudes = mysqli_fetch_array($result)){
+
+$depto=$solicitudes['departamento'];
+$estado=$solicitudes['estado'];
+$fech=date("d - m - Y",strtotime($solicitudes['fecha_registro']));
+$encargado=$solicitudes['usuario'];
+
+      ?>
+   <table style="width: 100%;margin: 0;">
+    <tr style="height: -15%;">
+        <td><p><b>Depto. o Servicio:</b> <?php echo $depto ?></p> </td>
+           <td><b>Fecha:</b> <?php echo $fech ?><br></td>
+        <td><p style="float: right;"><b>N° Vale:</b> <?php echo $bodega ?></p>
+</td>
+    </tr>
        <tr>
-           <td style="text-align: left;width: 40%;"><b>Encargado:</b> <?php echo $encargado ?></td>
-           <td style="text-align: center;"><b>Fecha:</b> <?php echo $fech ?><br></td>
-           <td style="text-align: right;"><b>Estado:</b> <?php echo $estado ?></td>
+           <td style="text-align: left;"><b>Encargado:</b> <?php echo $encargado ?></td>
+           <td><b>Estado:</b> <?php echo $estado ?></td>
+        <td style="text-align: right;"><p><b>SubTotal:</b> <?php echo $final1; ?></p> </td>
+
        </tr>
    </table> 
-        <br> 
-<table class="table" style="width: 100%;margin: 0;">
+<?php } ?>
+        <br> <table class="table" style="width: 100%">
     <thead>     
-        <tr style="border: 1px solid #ddd;">
-            <th style="width: 25%;font-size: 14px">Código</th>
-            <th style="width: 70%;font-size: 14px;">Descripción Completa</th>
-            <th style="width: 15%;font-size: 14px">U/M</th>
-            <th style="width: 15%;font-size: 14px">Cantidad Solicitada</th>
-            <th style="width: 30%;font-size: 14px">Cantidad Despachada</th>
-            <th style="width: 30%;font-size: 14px">Precio Unitario</th>
-            <th style="width: 30%;font-size: 14px">Total</th>
+        <tr id="tr">
+            <th style="width: 25%;font-size: 14px;text-align: center;">Código</th>
+            <th style="width: 70%;font-size: 14px;text-align: center;">Descripción Completa</th>
+            <th style="width: 15%;font-size: 14px;text-align: center;">U/M</th>
+            <th style="width: 15%;font-size: 14px;text-align: center;">Cantidad Solicitada</th>
+            <th style="width: 30%;font-size: 14px;text-align: center;">Cantidad Despachada</th>
+            <th style="width: 30%;font-size: 14px;text-align: center;">C/U</th>
+            <th style="width: 15%;font-size: 14px;text-align: center;">Total</th>
         </tr>
     </thead> 
 
@@ -71,38 +104,30 @@
 <?php
     $total = 0;
     $final = 0;
-    $cod=$_POST['cod'];
-    $sql = "SELECT * FROM detalle_vale ";
+
+    $sql = "SELECT * FROM detalle_vale WHERE numero_vale='$bodega'";
     $result = mysqli_query($conn, $sql);
 
     while ($solicitudes = mysqli_fetch_array($result)){
         $codigo=$solicitudes['codigo'];
         $des=$solicitudes['descripcion'];
         $um=$solicitudes['unidad_medida'];
-        $cantidad=$solicitudes['stock'];
+        $cantidad=$solicitudes['cantidad_despachada'];
         $stock=$solicitudes['stock'];
         $cost=$solicitudes['precio'];
-        $tot=$_POST['tot'];
-        $tot_f=$_POST['tot_f'];
-    ?>
-
-         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td data-label="Código" style="font-size: 12px;"><?php  echo $codigo?></td>
-            <td data-label="Descripción" style="font-size: 12px;"><?php  echo $des?></td>
-            <td data-label="Unidad De Medida" style="font-size: 12px;"><?php  echo $um?></td>
-            <td data-label="Cantidad Despachada" style="font-size: 12px;"><?php echo $cantidad ?></td>
-            <td data-label="Cantidad Dispinible" style="font-size: 12px;"><?php echo $stock ?></td>
-            <td data-label="Precio" style="font-size: 12px;"><?php echo $cost ?></td>
-            <td data-label="total" style="font-size: 12px;"><?php  echo $tot ?></td>
+        $tot=$_POST['tot'];    ?>
+        <tr>
+            <td data-label="Código"style=""><?php  echo $codigo?></td>
+            <td data-label="Descripción"style=""><?php  echo $des?></td>
+            <td data-label="Unidad De Medida"style=""><?php  echo $um?></td>
+            <td data-label="Cantidad"style=""><?php echo $stock ?></td>
+            <td data-label="Cantidad Despachada"style=""><?php echo $cantidad ?></td>
+            <td data-label="Precio"style=""><?php echo $cost ?></td>
+            <td data-label="total"style=""><?php  echo $tot ?></td>
         </tr>
-     
+     <?php } ?>
     </tbody>  
-     <?php } 
- ?> 
-    <tfoot style="width: 100%;">
-        <td colspan="6"style="text-align: left;font-size: 12px; font-weight: bold;">Subtotal</td>
-        <td style="color: red;font-size: 12px; font-weight: bold;"><?php echo $tot_f ?></td>
-    </tfoot>
+
 </table>
 <br>
 <table class="table" style="width: 100%;height: 10%; border: 1px solid #ccc;border-collapse: collapse;">
@@ -112,8 +137,9 @@
                <hr style=" border: 1px solid #ccc;border-collapse: collapse;">
                 <p style="padding-left: 1%;"><?php echo $jus ?></p>
 </div>
-            </tbody>
-        </table>
+</tbody>
+</table>
+ 
     <br>
     <p style="float: right;"> Entrega: ________________</p>
     <p style="text-align:left;">Solicita: ________________ </p>

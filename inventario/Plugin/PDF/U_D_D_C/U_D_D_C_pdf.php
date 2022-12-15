@@ -18,22 +18,31 @@ include '../../../Model/conexion.php'; ?>
 <body style="font-family: sans-serif;">
     <img src="../../../img/hospital.png" style="width:20%">
     <img src="../../../img/log_1.png" style="width:20%; float:right">
+     <style>
 
+.table {width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed;}
+.table tr {background-color: #f8f8f8;border: 1px solid #ddd;color: black;}
+.table th, .table td {font-size: 16px;padding: 1px;text-align: center;height: 4%}
+.table thead th{ background-color: #46466b;color: white;text-align: center;}
+.table tbody td {font-size: 14px}
+.table tbody tr:nth-child(even) {background-color: #00BDFF; height: 5%}
+.table tbody tr:nth-child(odd) {background-color: #00EAFF; height: 5%}
+    
+  </style>
 <h3>HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
 <h4>DEPARTAMENTO DE MANTENIMIENTO</h4>
  
 <?php if (isset($_POST['unidad'])) {?>
     
     <h5 align="center">UNIDAD DE MEDIDA</h5><br>
-   <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+   <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
         <thead style="background-color: #46466b;color: white;">   
         <tr style="border: 1px solid #ddd;" >
           <th style="width:10%;font-size: 12px;height: 3%; text-align: center;">#</th>
-                <th  style="width:70%;font-size: 12px;height: 3%;text-align: left;">UNIDAD DE MEDIDA</th>
+                <th  style="width:60%;font-size: 12px;height: 3%;text-align: left;">UNIDAD DE MEDIDA</th>
         <th style="font-size: 12px;">HABILITADO</th>       
         </tr>
-        
-        <td id="td" colspan="3" ><h4 align="center">No se encontraron resultados </h4></td>
+
     </thead> 
 
     <tbody>
@@ -52,13 +61,7 @@ $n++;
                     echo ' style="background-color:red;max-width:100% border-radius:5px;text-align:center;color: white;"';
                     $c='Unidad no Disponible';
                 }
-?>  <style type="text/css">
-       #td{
-          display: none;
-      }
-      
-     
-  </style> 
+?>
    <tr style="border: 1px solid #ccc;border-collapse: collapse;">
             <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="No. Solicitud" class="delete"><?php  echo $r; ?></td>
             <td style="text-align:left; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['unidad_medida']; ?></td>
@@ -73,15 +76,14 @@ $n++;
 <?php if (isset($_POST['departamento'])) {?>
     
     <h5 align="center">DEPARTAMENTOS</h5><br>
-   <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+   <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
         <thead style="background-color: #46466b;color: white;">   
         <tr style="border: 1px solid #ddd;" >
           <th style="width:10%;font-size: 12px;height: 3%; text-align: center;">#</th>
-                <th  style="width:70%;font-size: 12px;height: 3%;text-align: left;">DEPARTAMENTOS</th>
+                <th  style="width:60%;font-size: 12px;height: 3%;text-align: left;">DEPARTAMENTOS</th>
         <th style="font-size: 12px;">HABILITADO</th>       
         </tr>
-        
-        <td id="td" colspan="3" ><h4 align="center">No se encontraron resultados </h4></td>
+
     </thead> 
 
     <tbody>
@@ -101,13 +103,7 @@ $n++;
                     $c='Departamento no Disponible';
                 }
 ?>
-  <style type="text/css">
-       #td{
-          display: none;
-      }
-      
-     
-  </style> 
+
    <tr style="border: 1px solid #ccc;border-collapse: collapse;">
             <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="No. Solicitud" class="delete"><?php  echo $r; ?></td>
             <td style="text-align:left; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
@@ -121,15 +117,14 @@ $n++;
 <?php } if (isset($_POST['categorias'])) {?>
     
     <h5 align="center">CATEGORIAS</h5><br>
-   <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+   <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
         <thead style="background-color: #46466b;color: white;">   
         <tr style="border: 1px solid #ddd;" >
           <th style="width:10%;font-size: 12px;height: 3%; text-align: center;">#</th>
-                <th  style="width:70%;font-size: 12px;height: 3%;text-align: left;">CATEGORIAS</th>
+                <th  style="width:60%;font-size: 12px;height: 3%;text-align: left;">CATEGORIAS</th>
         <th style="font-size: 12px;">HABILITADO</th>       
         </tr>
-        
-        <td id="td" colspan="3" ><h4 align="center">No se encontraron resultados </h4></td>
+
     </thead> 
 
     <tbody>
@@ -149,13 +144,7 @@ $n++;
                     $c='Categoria no Disponible';
                 }
 ?>
-  <style type="text/css">
-       #td{
-          display: none;
-      }
-      
-     
-  </style> 
+
    <tr style="border: 1px solid #ccc;border-collapse: collapse;">
             <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="No. Solicitud" class="delete"><?php  echo $r; ?></td>
             <td style="text-align:left; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['categoria']; ?></td>
@@ -168,15 +157,14 @@ $n++;
 </table>
 <?php } if (isset($_POST['dependencia'])) {?>   
     <h5 align="center">DEPENDENCIAS</h5><br>
-   <table style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
+   <table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
         <thead style="background-color: #46466b;color: white;">   
         <tr style="border: 1px solid #ddd;" >
           <th style="width:10%;font-size: 12px;height: 3%; text-align: center;">#</th>
-            <th  style="width:70%;font-size: 12px;height: 3%;text-align: left;">DEPENDENCIAS</th>
+            <th  style="width:60%;font-size: 12px;height: 3%;text-align: left;">DEPENDENCIAS</th>
         <th style="font-size: 12px;">HABILITADO</th>       
         </tr>
-        
-        <td id="td" colspan="3" ><h4 align="center">No se encontraron resultados </h4></td>
+
     </thead> 
 
     <tbody>
@@ -196,13 +184,7 @@ $n++;
                     $c='Dependencia no Disponible';
                 }
 ?>
-  <style type="text/css">
-       #td{
-          display: none;
-      }
-      
-     
-  </style> 
+
    <tr style="border: 1px solid #ccc;border-collapse: collapse;">
             <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="No. Solicitud" class="delete"><?php  echo $r; ?></td>
             <td style="text-align:left; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Dependencia" class="delete"><?php  echo $solicitudes['dependencia']; ?></td>

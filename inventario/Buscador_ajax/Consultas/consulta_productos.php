@@ -74,7 +74,7 @@ echo'
             </form>
     </div>
     ';}echo '
-	<table class="table table-striped" id="div" style=" width: 100%; border: 1px solid #ccc;
+	<table class="table" id="div" style=" width: 100%; border: 1px solid #ccc;
     border-collapse: collapse;">
 	 
                 <thead>

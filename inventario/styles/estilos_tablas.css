@@ -1,10 +1,9 @@
 .container {width: 100%;max-width: 1000px;margin: auto;}
 
-.table {width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed;}
-.table h1 {font-size: 28px;text-transform: uppercase;font-weight: bold;margin: 8px 0px;color: black;}
+.table {width: 100%;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed;}
 .table tr {background-color: #f8f8f8;border: 1px solid #ddd;color: black;}
-.table th, .table td {font-size: 16px;padding: 8px;text-align: center;}
-.table thead th{ background-color: #46466b;color: white;text-align: center;}
+.table td {font-size: 14px;}
+.table thead th{ background-color: #46466b;color: white;text-align: center;font-size: 14px}
 .table1 {width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed;}
 .table1 h1 {font-size: 28px;text-transform: uppercase;font-weight: bold;margin: 8px 0px;color: black;}
 .table1 tr {background-color: #f8f8f8;border: 1px solid #ddd;color: black;}
@@ -25,4 +24,5 @@
 @media (max-width: 952px){
 .table thead th{font-size: 12px;}
 .table{margin-top: 5%;}
-.table caption{margin-top: 5px;}}
+.table tr{width: 100%}
+#ddd{text-align: right;

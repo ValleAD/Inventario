@@ -34,8 +34,7 @@ include ('../../../Model/conexion.php');
             <th style="font-size: 14px;width:10%">Cantidad</th>
             <th style="font-size: 14px;width:10%">Costo Unitario</th>
             <th style="font-size: 14px;width:10%">Fecha Registro</th>
-                   <tr> <td align="center" id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td></tr>
-
+                 
         </tr>
     </thead>
     <tbody>
@@ -63,12 +62,7 @@ $categoria2 =$_POST['categoria'];
     $stock=number_format($cantidad,  2,".",",");
     $fech= $productos['fecha_registro'];
     ?>
-     <style type="text/css">
-     #td{
-    text-align:center;
-        display: none;
-    }
-</style>
+
  <tr style="border: 1px solid #ccc;border-collapse: collapse;">
         <td data-label="Categoría" style="font-size: 12px;"><?php echo $categoria1 ?></td>
         <td data-label="Código" style="font-size: 12px;"><?php echo $cod ?></td>

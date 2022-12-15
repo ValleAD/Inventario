@@ -109,7 +109,7 @@ die();
             </form>
  </div>
 <?php } ?>
-<table class="table  table-striped" id="exam" style=" width: 100%">
+<table class="table " id="exam" style=" width: 100%">
           <thead>
               <tr id="tr">
                 <th style=" width: 10%">No. de Solici1eeetud</th>
@@ -126,9 +126,7 @@ die();
     <?php
     if ($tipo_usuario==1) {
     $sql = "SELECT * FROM tb_almacen ORDER BY codAlmacen DESC  ";
-
     }else{
-
     $sql = "SELECT * FROM tb_almacen WHERE  idusuario='$idusuario' ORDER BY fecha_solicitud  ";
     }
     $result = mysqli_query($conn, $sql);
@@ -155,31 +153,24 @@ die();
         </style>
         <tr>
             
-            <td style=" width: 7%;min-width: 100%;" data-label="No. solicitud" class="delete"><?php  echo $datos_sol['codAlmacen']; ?></td>
-            <td style=" width: 30%;min-width: 100%;" data-label="Departamento Solicitante" class="delete"><?php  echo $datos_sol['departamento']; ?></td>
-            <td style=" width: 20%;min-width: 100%;" data-label="Usuario" class="delete"><?php  echo $datos_sol['encargado']; ?></td>
-            <td data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($datos_sol['fecha_solicitud'])) ?></td>
-            <td data-label="Estado" class="delete"><input readonly <?php
+            <td  align="center" style=" width: 7%;min-width: 100%;" data-label="No. solicitud" class="delete"><?php  echo $datos_sol['codAlmacen']; ?></td>
+            <td  align="center" style=" width: 30%;min-width: 100%;" data-label="Departamento Solicitante" class="delete"><?php  echo $datos_sol['departamento']; ?></td>
+            <td align="center"  style=" width: 20%;min-width: 100%;" data-label="Usuario" class="delete"><?php  echo $datos_sol['encargado']; ?></td>
+            <td align="center"  data-label="Fecha de solicitud" class="delete"><?php  echo date("d - m - Y",strtotime($datos_sol['fecha_solicitud'])) ?></td>
+              <td data-label="Estado" align="center"><input  <?php
                 if($datos_sol['estado']=='Pendiente') {
-                    echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
+                    echo ' style="background-color:green ;pointer-events: none;border: none;width:100%; border-radius:5px;text-align:center; color: white;"';
                 }else if($datos_sol['estado']=='Aprobado') {
-                     echo ' style="background-color:blueviolet ;width:100%; border-radius:5px;text-align:center; color: white;"';
+                     echo ' style="background-color:blueviolet ;width:100%; border-radius:5px;pointer-events: none;border: none;text-align:center; color: white;"';
                 }else if($datos_sol['estado']=='Rechazado') {
-                     echo ' style="background-color:red ;width:100%; border-radius:5px;text-align:center; color: white;"';
+                     echo ' style="background-color:red ;pointer-events: none;border: none;width:100%; border-radius:5px;text-align:center; color: white;"';
                 }
-            ?> class="form-control" readonly type="text" name="" value="<?php echo $datos_sol['estado'] ?>"><br>
-              </td>
-            <td  data-label="Detalles">
+            ?> class="form-control" type="text" name="" readonly value="<?php echo $datos_sol['estado'] ?>"></td>
+            <td align="center"  data-label="Detalles">
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_Almacen.php">             
-                <input type='hidden' name='id' value="<?php  echo $datos_sol['codAlmacen']; ?>">             
-                                <?php  if ($datos_sol['estado']=="Aprobado" || $datos_sol['estado']=="Pendiente") {?>        
-                     <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
-
-          <?php } if ($datos_sol['estado']=="Rechazado") {?>
-                   
-           <button disabled id="ver" style="cursor: not-allowed;"  type="submit" name="detalle" >Ver Detalles</button> 
+                <input type='hidden' name='id' value="<?php  echo $datos_sol['codAlmacen']; ?>">     
+         <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
         
-           <?php  } ?>               
             </form> 
             </td>
         </tr>
@@ -187,9 +178,6 @@ die();
 
            </tbody>
         </table>
-
-       
-
 
 </section>
   <style>
@@ -210,9 +198,7 @@ die();
             <script>
        $(document).ready(function () {
     $('#exam').DataTable({
-            rowGroup: {
-            dataSrc: 3
-        },
+
             responsive: true,
             autoWidth:false,
             deferRender: true,

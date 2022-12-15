@@ -24,6 +24,9 @@ $descripcion_solicitud = $_POST['descripcion_solicitud'];
 $usuario = $_POST['usuario'];
 $idusuario = $_POST['idusuario'];
 $jus = $_POST['jus'];
+      $dia              = $_POST['dia'];
+      $mes              = $_POST['mes'];
+      $año              = $_POST['año'];
 if (isset($_POST['form_compra2'])) {
     $verificar_compra =mysqli_query($conn, "SELECT * FROM detalle_compra WHERE solicitud_compra ='$nSolicitud' ");
 
@@ -64,7 +67,7 @@ exit();
 }
 }
 
-$insert = "INSERT INTO tb_compra (nSolicitud, dependencia, plazo, unidad_tecnica, descripcion_solicitud, usuario,estado,idusuario,justificacion) VALUES ('$nSolicitud','$dependencia', '$plazo', '$u_t', '$descripcion_solicitud', '$usuario','Comprado','$idusuario','$jus')";
+$insert = "INSERT INTO tb_compra (nSolicitud, dependencia, plazo, unidad_tecnica, descripcion_solicitud, usuario,estado,idusuario,justificacion,Mes,Año) VALUES ('$nSolicitud','$dependencia', '$plazo', '$u_t', '$descripcion_solicitud', '$usuario','Comprado','$idusuario','$jus','$mes','$año')";
 $result = mysqli_query($conn, $insert);
 
 
@@ -83,10 +86,15 @@ $result = mysqli_query($conn, $insert);
       $insert = "INSERT INTO detalle_compra (codigo, catalogo, descripcion, unidad_medida, stock,cantidad_despachada, precio, solicitud_compra) VALUES ('$codigo_producto','$catalogo', '$Descripción', '$u_m', '$cantidad',0, '$cost', '$solicitud')";
       $query = mysqli_query($conn, $insert);
 
- $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo) VALUES('$Descripción','Solicitud compra','$u_m','$codigo_producto','$cantidad','$cost')";
+$sql = "SELECT cod FROM tb_productos WHERE cod='$cod'";
+    $result1 = mysqli_query($conn, $sql);
+    while ($productos = mysqli_fetch_array($result1)){
+        $id=$productos['cod']+1;
 
+ $sql1="INSERT INTO historial(ID,descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo) VALUES('$id','$Descripción','Solicitud compra','$u_m','$codigo_producto','$cantidad','$cost')";
+}
        $query1 = mysqli_query($conn, $sql1);
-      if ($result || $query || $query1) {
+      if ($result || $result1 || $query || $query1) {
                  echo "<script>
     Swal.fire({
       title:'Realizado',

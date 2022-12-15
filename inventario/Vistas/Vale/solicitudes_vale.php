@@ -123,12 +123,12 @@ die();
  <table class="table" id="exam" >
             <thead>
               <tr>
-                <th ><strong>Código de Vale</strong></th>
-                <th><strong>Departamento Solicitante</strong></th>
-                <th ><strong>Encargado</strong></th>
-                <th><strong>Fecha</strong></th>
-                <th ><strong>Estado</strong></th>
-                <th ><strong>Detalles</strong></th> 
+                <th style="width: 20%;"><strong>Código de Vale</strong></th>
+                <th style="width: 30%;"><strong>Departamento Solicitante</strong></th>
+                <th style="width: 30%;"><strong>Encargado</strong></th>
+                <th style="width: 20%;"><strong>Fecha</strong></th>
+                <th style="width: 20%;"><strong>Estado</strong></th>
+                <th style="width: 20%;"><strong>Detalles</strong></th> 
             </tr>
             
      </thead>
@@ -163,18 +163,7 @@ die();
             $u='Invitado';
         }
         ?>
-        <style type="text/css">
-            #sass{
-                display: block;
-            }
 
-            #td{
-                display: none;
-            }
-            #div{
-                display: block;
-            }
-        </style>
         <tr>
             <td  data-label="Código" class="delete"><?php  echo $solicitudes['codVale']; ?></td>
             <td  data-label="Departamento Solicitante" class="delete"><?php  echo $des; ?></td>
@@ -191,14 +180,14 @@ die();
                 }
             ?> class="form-control" type="text" name="" value="<?php echo $solicitudes['estado'] ?>"></td></td>
             <td   data-label="Detalles">
-                <div style="position: initial;">  
+               
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_vale.php">             
                 <input type='hidden' name='id' value="<?php  echo $solicitudes['codVale']; ?>">  
                 <?php  if ($solicitudes['estado']=="Aprobado" || $solicitudes['estado']=="Pendiente") {?>
                 
-                <form method="POST" action="Controller/Delete_producto.php">
+                
                    <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
-                </form>
+             
 
            <?php  }else{?>    
             <button type="button" class="btn btn-primary" style="opacity: .7;">Ver Detalles</button>
@@ -206,7 +195,7 @@ die();
                  
                      
             </form> 
-        </div>
+        
             </td>
         </tr>
             
@@ -215,7 +204,7 @@ die();
            </tbody>
         </table>
 
-</div>
+</section>
 <script>
        $(document).ready(function () {
     $('#exam').DataTable({

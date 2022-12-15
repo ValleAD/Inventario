@@ -49,17 +49,37 @@ if ($estado=='Aprobado') {
         {
           $cod_vale  = $_POST['cod_vale'][$i];
           $cantidad_despachada = $_POST['cantidad_despachada'][$i];
-                
+          $codigo= $_POST['cod'][$i];
+            $nSolicitud=$_POST['vale'];  
+            $descripcion= $_POST['desc'][$i];
+            $unidadmedida= $_POST['um'][$i];
+            $idusuario = $_POST['idusuario'];
+            $stock = $_POST['cant'][$i];
+            $precio= $_POST['cost'][$i];    
           $update="UPDATE detalle_vale SET cantidad_despachada ='$cantidad_despachada' WHERE codigodetallevale ='$cod_vale'";
+
           $query_update = mysqli_query($conn, $update);
+  $verificar =mysqli_query($conn, "SELECT * FROM historial WHERE Concepto='Solicitud de Trabajo' and idusuario='$idusuario' and ID='$cod_vale' and No_Comprovante='$codigo'");
+
+if (mysqli_num_rows($verificar)>0) {
+
+      $sql2="UPDATE historial SET Salidas='$cantidad_despachada' WHERE Concepto='Solicitud de Trabajo' and idusuario='$idusuario' and ID='$cod_vale' and No_Comprovante='$codigo'";
+      $query3 = mysqli_query($conn, $sql2);
+
+}else{
+
+     $sql4="INSERT INTO historial(ID,descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Salidas,Saldo,idusuario) VALUES('$cod_vale','$descripcion','Vale Consulta Externa','$unidadmedida','$codigo','$stock','$cantidad_despachada','$precio','$idusuario')";
+          $query4 = mysqli_query($conn, $sql4);
       
-          }
+}
+  
+}
             
-          if ($query1 || $query2 || $query_update  || $result)  {
+          if ($query1 || $query2 || $query3 || $query_update  || $result)  {
                   echo "<script>
     Swal.fire({
       title:'Realizado',
-      text:'Su producto fue registrado correctamente',
+      text:'El Estado fue Cambiado correctamente',
       icon:'success',
       allowOutsideClick: false
     }).then((resultado) =>{
@@ -88,6 +108,7 @@ if (resultado.value) {
        }
     
     }
+  
         if(isset($_GET['estado1'])){
 $nSolicitud=$_GET['vale'];
 $estado = $_GET['estado1'];
