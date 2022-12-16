@@ -303,7 +303,23 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
     <script src="../../Plugin/bootstrap/js/dataTables.rowGroup.min.js"></script>
     <script src="../../Plugin/bootstrap/js/dataTables.responsive.min.js"></script>
     <script src="../../Plugin/bootstrap/js/responsive.bootstrap4.min.js"></script>
-   
+       <script>
+    $('.p1').hide();
+   $('.p').click(function(){
+$(".div").removeClass("div");
+$('.p').hide();
+$('.p1').show();
+
+    });
+   $('.p1').click(function(){
+
+$(".div1").addClass("div");
+    $('.p1').hide();
+$('.p').show();
+    });
+
+
+</script>
 <script type="text/javascript">
     $(document).ready(main);
 

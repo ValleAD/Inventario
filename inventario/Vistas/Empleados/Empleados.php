@@ -326,17 +326,24 @@ $result = mysqli_query($conn, $sql);
                     <div class="col-md-12" style="position: initial">
                         <label id="label"  class="small mb-1">Departamento</label><br>
                          
-               <div id="div" style = " max-height: 150px; overflow-y:scroll;margin-bottom: 5%;"> 
+               <div class="div div1"> 
                 
                    <?php  
    $sql = "SELECT * FROM selects_departamento";
     $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){ ?>  
-                             <input required  id="<?php echo $productos['id'] ?>" type="radio" name="Unidad" value="<?php echo $productos['departamento'] ?>"> <label style="width: 100%;" id="label1" for="<?php echo $productos['id'] ?>" > <?php echo $productos['departamento'] ?></label><br>
+                             <input class="p2" required  id="<?php echo $productos['id'] ?>" type="radio" name="Unidad" value="<?php echo $productos['departamento'] ?>"> <label style="width: 100%;" id="label1" for="<?php echo $productos['id'] ?>" > <?php echo $productos['departamento'] ?></label><br>
  <?php }?>
                          </div>
  
-          
+              <p align="right" class="p">Mostrar todos
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+                        </svg></p></p>
+    <p align="right" class="p1">Ocultar
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
+                        </svg></p></p>
                 </div>
                 <br>
                 <div class="col-md-12" style="position: initial">
@@ -437,7 +444,28 @@ $u='Cliente';
  <?php  } } ?> 
 
   </section>
-   
+       <script>
+    $('.p1').hide();
+   $('.p').click(function(){
+$(".div").removeClass("div");
+$('.p').hide();
+$('.p1').show();
+
+    });
+   $('.p1').click(function(){
+
+$(".div1").addClass("div");
+    $('.p1').hide();
+$('.p').show();
+    });
+$('.p2').click(function(){
+
+$(".div1").addClass("div");
+    $('.p1').hide();
+$('.p').show();
+    });
+
+</script>
         <script type="text/javascript">
 function confirmaion(e) {
     if (confirm("¿Estas seguro que deseas Eliminar este registro?")) {

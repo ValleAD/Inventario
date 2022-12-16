@@ -15,6 +15,7 @@
 //CRUD para guardar datos enviados
 // de re_producto.php y se guarde en la tabla tb_productos mysql
 include '../../Model/conexion.php';
+if (isset($_POST['submit'])) {
 
 for($i = 0; $i < count($_POST['cod']); $i++) 
     {
@@ -27,30 +28,11 @@ for($i = 0; $i < count($_POST['cod']); $i++)
       $dia              = $_POST['dia'];
       $mes              = $_POST['mes'];
       $año              = $_POST['año'];
-$verificar_usuario =mysqli_query($conn, "SELECT * FROM tb_productos WHERE codProductos ='$codigo_producto'");
 
-if (mysqli_num_rows($verificar_usuario)>0) {
-         echo "<script>
-    Swal.fire({
-      title:'NOTA IMPORTANTE:',
-      text:'Este Producto ya esta Registrado, intente con otro diferente',
-      icon:'warning',
-      closeOnClickOutside: false,
-      allowOutsideClick: false
-    }).then((resultado) =>{
-if (resultado.value) {
-        window.location.href='../../Vistas/Productos/regi_producto.php';                               
-               }
-                });
-
-        </script>";
-
-exit();
-}
-      $insert = "INSERT INTO tb_productos (codProductos, categoria, catalogo, descripcion, unidad_medida,  precio,dia,mes,año,usuario) VALUES ('$codigo_producto', '$categoria', '$catalogo', '$Descripción', '$u_m', '$cost','$dia','$mes','$año')";
+      $insert = "INSERT INTO tb_productos (codProductos, categoria, catalogo, descripcion, unidad_medida,  precio,dia,mes,año) VALUES ('$codigo_producto', '$categoria', '$catalogo', '$Descripción', '$u_m', '$cost','$dia','$mes','$año')";
       $query = mysqli_query($conn, $insert);
 
- $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Mes,Año) VALUES('$Descripción','Inventario Físico','$u_m','$codigo_producto','$stock','$cost','$mes','$año')";
+ $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Saldo,Mes,Año) VALUES('$Descripción','Inventario Físico','$u_m','$codigo_producto','$cost')";
 
        $query1 = mysqli_query($conn, $sql1);
 
@@ -73,7 +55,7 @@ if (resultado.value) {
     Swal.fire({
       title:'ERROR',
       text:'¡Error! algo salió mal',
-      icon'error',
+      icon:'error',
       allowOutsideClick: false
     }).then((resultado) =>{
 if (resultado.value) {
@@ -84,6 +66,7 @@ if (resultado.value) {
         </script>";
         }
     }
+}
 ?>
 </body>
 </html>

@@ -14,13 +14,13 @@ background: linear-gradient(90deg, rgba(105,105,108,1) 0%, rgba(115,115,126,1) 3
 .div::-webkit-scrollbar-thumb {background-color: darkgray;border-radius: 100vw;}
 .div::-webkit-scrollbar-thumb:hover {background: rgb(105,105,108);
 background: linear-gradient(90deg, rgba(105,105,108,1) 0%, rgba(115,115,126,1) 35%, rgba(0,212,255,1) 100%);}
-.div{overflow-y: scroll;max-height: 130px;padding-right: 3%;padding-top: 3%}
-#div1::-webkit-scrollbar {width: 8px;max-height: 75px}
-#div1::-webkit-scrollbar-track {background-color: transparent;}
-#div1::-webkit-scrollbar-thumb {background-color: darkgray;border-radius: 100vw;}
-#div1::-webkit-scrollbar-thumb:hover {background: rgb(105,105,108);
+.div{overflow-y: hidden;max-height: 140px;padding-right: 3%;padding-top: 3%}
+.div1::-webkit-scrollbar {width: 8px;max-height: 75px}
+.div1::-webkit-scrollbar-track {background-color: transparent;}
+.div1::-webkit-scrollbar-thumb {background-color: darkgray;border-radius: 100vw;}
+.div1::-webkit-scrollbar-thumb:hover {background: rgb(105,105,108);
 background: linear-gradient(90deg, rgba(105,105,108,1) 0%, rgba(115,115,126,1) 35%, rgba(0,212,255,1) 100%);}
-#div1{overflow-y: scroll;max-height: 130px;padding-right: 3%;padding-top: 3%}
+.div1{overflow-y: hidden;max-height: 120px;padding-right: 3%;padding-top: 3%}
 textarea::-webkit-scrollbar {width: 8px;}
 textarea::-webkit-scrollbar-track {background-color: rgba(105,106,105,0.2);}
 textarea::-webkit-scrollbar-thumb {background-color: darkgray;border-radius: 100vw;}
@@ -105,3 +105,19 @@ input[type="checkbox"]:checked + #lh1:before{color: #fff;}
 input[type="checkbox"]:checked + #lh1:after{content: "Deselect";font-size: 12px;background: #9999;}
 div , .card{position: initial;}
 p, label{font-size: 14px}
+            .p:hover{
+            	color: blueviolet;
+            text-decoration: underline;
+            }
+            .p1:hover{
+            	color: blueviolet;
+            text-decoration: underline;
+            }            
+            .p3:hover{
+            	color: blueviolet;
+            text-decoration: underline;
+            }
+            .p4:hover{
+            	color: blueviolet;
+            text-decoration: underline;
+            }

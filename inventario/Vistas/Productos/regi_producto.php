@@ -209,7 +209,7 @@ die();
     <center>
    
         <button class="btn btn-success btn-lg" id="Guardar" style="margin-bottom: 2%;" name="submit">Guardar</button>  
-        <button class="btn btn-success btn-lg" id="NoGuardar" style="margin-bottom: 2%; cursor: not-allowed;" disabled name="submit">Guardar</button>  
+        <button class="btn btn-success btn-lg" id="NoGuardar" style="margin-bottom: 2%; cursor: not-allowed;" disabled>Guardar</button>  
         <button type="button" class="btn btn-lg" id="ver" onclick=" return ir()">Ver Productos</button>
 </center>
 </form>

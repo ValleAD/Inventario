@@ -161,7 +161,7 @@ $cod_compra = $_POST['id'];
 
 $num_vale = $productos1['codVale'];
 
- $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM detalle_vale WHERE numero_vale = $num_vale GROUP by codigo,descripcion,cantidad_despachada,precio,descripcion,unidad_medida";
+ $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale ";
     $result1 = mysqli_query($conn, $sql);
     if (!$result1) {?>
         <style>div{
@@ -171,10 +171,10 @@ $num_vale = $productos1['codVale'];
         }else{
 while ($productos = mysqli_fetch_array($result1)){
         if ($estado="Pendiente") {  
-    $total = $productos['cantidad_solicitada'] * $productos['precio'];
+    $total = $productos['stock'] * $productos['precio'];
     }if ($estado="Rechazado") {
         
-    $total = $productos['cantidad_solicitada'] * $productos['precio'];
+    $total = $productos['stock'] * $productos['precio'];
     }if ($estado=="Aprobado") {
         
     $total = $productos['cantidad_despachada'] * $productos['precio'];
@@ -189,8 +189,8 @@ while ($productos = mysqli_fetch_array($result1)){
 
                 $precio   =    $productos['precio'];
         $precio2  =    number_format($precio, 2,".",",");  
-        $cant_aprobada=$productos['SUM(stock)'];
-        $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
+        $cant_aprobada=$productos['stock'];
+        $cantidad_despachada=$productos['cantidad_despachada'];
         $stock=number_format($cant_aprobada, 2,".",",");
         $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
@@ -418,7 +418,7 @@ if(isset($_POST['submit'])){
     
     $num_vale = $productos1['codVale'];
 
-     $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM detalle_vale WHERE numero_vale = $num_vale GROUP by codigo,descripcion,cantidad_despachada,precio,descripcion,unidad_medida";
+     $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale ";
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
       

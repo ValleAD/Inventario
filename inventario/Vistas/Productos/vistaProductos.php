@@ -28,8 +28,6 @@ die();
 #h2{
     margin: 0;
 }
-
-
     .input:hover{
         background: pink;
         color: white;
@@ -486,13 +484,14 @@ $total = $productos['SUM(stock)'] * $productos['precio'];
                   <p align="right"><b style="float: left;">SubTotal</b><?php echo $final1?></p>
 
 </div>
+
 </div>
  <br>
      <div class="card">
     <div class="card-body">
         <h6 >Stock Por Mes</h6>
-       <div id="div1" > 
-        <?php $sql="SELECT Mes,SUM(stock),Año FROM tb_productos GROUP BY Mes,Año;";
+       <div class="div div3" > 
+        <?php $sql="SELECT Mes,SUM(stock) FROM tb_productos GROUP BY Mes;";
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
         $mes=$productos['Mes'];
@@ -511,16 +510,24 @@ $total = $productos['SUM(stock)'] * $productos['precio'];
                             if ($mes==11) { $mes="Noviembre";}
                             if ($mes==12) { $mes="Diciembre";}
                             ?>
-               <p align="right"><b style="float: left;"><?php echo $mes ?> (<?php echo $productos['Año'] ?>): </b><?php echo $stock ?></p>
+               <p align="right"><b style="float: left;"><?php echo $mes ?> : </b><?php echo $stock ?></p>
    <?php  } ?>
 </div>
+    <p align="right" class="p">Mostrar todos
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+                        </svg></p></p>
+    <p align="right" class="p1">Ocultar
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
+                        </svg></p></p>
 </div>
 </div>
  <br>
      <div class="card">
     <div class="card-body">
    <h6> Stock Por Año</h6>
-          <div id="div1" > 
+          <div class="div1 div4" > 
     <?php $sql="SELECT año,SUM(stock) FROM tb_productos GROUP BY año;";
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
@@ -530,6 +537,14 @@ $total = $productos['SUM(stock)'] * $productos['precio'];
         <p align="right"><b style="float: left;"><?php echo $año ?>: </b><?php echo $stock ?></p>
     <?php } ?>
 </div>
+    <p align="right" class="p3">Mostrar todos
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+                        </svg></p></p>
+    <p align="right" class="p4">Ocultar
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
+                        </svg></p></p>
 </div>
 </div>
    </div>
@@ -613,8 +628,8 @@ $totalc = $productos['SUM(stock)'] * $productos['precio'];
      <div class="card">
     <div class="card-body">
         <h6 >Stock Por Mes</h6>
-       <div id="div1" > 
-        <?php $sql="SELECT Mes,SUM(stock),Año FROM tb_productos WHERE categoria='$categoria' GROUP BY Mes,Año;";
+       <div class="div div3" > 
+        <?php $sql="SELECT Mes,SUM(stock) FROM tb_productos WHERE categoria='$categoria' GROUP BY Mes;";
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
         $mes=$productos['Mes'];
@@ -633,16 +648,24 @@ $totalc = $productos['SUM(stock)'] * $productos['precio'];
                             if ($mes==11) { $mes="Noviembre";}
                             if ($mes==12) { $mes="Diciembre";}
                             ?>
-               <p align="right"><b style="float: left;"><?php echo $mes ?> (<?php echo $productos['Año'] ?>): </b><?php echo $stock ?></p>
+               <p align="right"><b style="float: left;"><?php echo $mes ?> : </b><?php echo $stock ?></p>
    <?php  } ?>
 </div>
+    <p align="right" class="p">Mostrar todos
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+                        </svg></p></p>
+    <p align="right" class="p1">Ocultar
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
+                        </svg></p></p>
 </div>
 </div>
  <br>
      <div class="card">
     <div class="card-body">
    <h6> Stock Por Año</h6>
-          <div id="div1" > 
+          <div class="div1 div4" > 
     <?php $sql="SELECT año,SUM(stock) FROM tb_productos WHERE categoria='$categoria' GROUP BY año;";
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
@@ -652,6 +675,14 @@ $totalc = $productos['SUM(stock)'] * $productos['precio'];
         <p align="right"><b style="float: left;"><?php echo $año ?>: </b><?php echo $stock ?></p>
     <?php } ?>
 </div>
+    <p align="right" class="p3">Mostrar todos
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+                        </svg></p></p>
+    <p align="right" class="p4">Ocultar
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
+                        </svg></p></p>
 </div>
 </div>
    </div>
@@ -737,8 +768,8 @@ $totalc = $productos['SUM(stock)'] * $productos['precio'];
      <div class="card">
     <div class="card-body">
         <h6 >Stock Por Mes</h6>
-       <div id="div1" > 
-        <?php $sql="SELECT Mes,SUM(stock),Año FROM tb_productos WHERE Dia='$dia'  GROUP BY Mes,Año;";
+       <div class="div div3" > 
+        <?php $sql="SELECT Mes,SUM(stock) FROM tb_productos WHERE Dia='$dia'  GROUP BY Mes;";
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
         $mes=$productos['Mes'];
@@ -757,16 +788,24 @@ $totalc = $productos['SUM(stock)'] * $productos['precio'];
                             if ($mes==11) { $mes="Noviembre";}
                             if ($mes==12) { $mes="Diciembre";}
                             ?>
-               <p align="right"><b style="float: left;"><?php echo $mes ?> (<?php echo $productos['Año'] ?>): </b><?php echo $stock ?></p>
+               <p align="right"><b style="float: left;"><?php echo $mes ?> : </b><?php echo $stock ?></p>
    <?php  } ?>
 </div>
+    <p align="right" class="p">Mostrar todos
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+                        </svg></p></p>
+    <p align="right" class="p1">Ocultar
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
+                        </svg></p></p>
 </div>
 </div>
  <br>
      <div class="card">
     <div class="card-body">
    <h6> Stock Por Año</h6>
-          <div id="div1" > 
+          <div class="div1 div4" > 
     <?php $sql="SELECT año,SUM(stock) FROM tb_productos WHERE Dia='$dia'  GROUP BY año;";
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
@@ -776,6 +815,14 @@ $totalc = $productos['SUM(stock)'] * $productos['precio'];
         <p align="right"><b style="float: left;"><?php echo $año ?>: </b><?php echo $stock ?></p>
     <?php } ?>
 </div>
+    <p align="right" class="p3">Mostrar todos
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+                        </svg></p></p>
+    <p align="right" class="p4">Ocultar
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
+                        </svg></p></p>
 </div>
 </div>
    </div>
@@ -861,8 +908,8 @@ $totalc = $productos['SUM(stock)'] * $productos['precio'];
      <div class="card">
     <div class="card-body">
         <h6 >Stock Por Mes</h6>
-       <div id="div1" > 
-        <?php $sql="SELECT Mes,SUM(stock),Año FROM tb_productos WHERE Mes='$dia'  GROUP BY Mes,Año;";
+       <div class="div div3" > 
+        <?php $sql="SELECT Mes,SUM(stock) FROM tb_productos WHERE Mes='$dia'  GROUP BY Mes;";
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
         $mes=$productos['Mes'];
@@ -881,16 +928,24 @@ $totalc = $productos['SUM(stock)'] * $productos['precio'];
                             if ($mes==11) { $mes="Noviembre";}
                             if ($mes==12) { $mes="Diciembre";}
                             ?>
-               <p align="right"><b style="float: left;"><?php echo $mes ?> (<?php echo $productos['Año'] ?>): </b><?php echo $stock ?></p>
+               <p align="right"><b style="float: left;"><?php echo $mes ?> : </b><?php echo $stock ?></p>
    <?php  } ?>
 </div>
+    <p align="right" class="p">Mostrar todos
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+                        </svg></p></p>
+    <p align="right" class="p1">Ocultar
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
+                        </svg></p></p>
 </div>
 </div>
  <br>
      <div class="card">
     <div class="card-body">
    <h6> Stock Por Año</h6>
-          <div id="div1" > 
+          <div class="div1 div4" > 
     <?php $sql="SELECT año,SUM(stock) FROM tb_productos WHERE Mes='$dia'  GROUP BY año;";
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
@@ -900,6 +955,14 @@ $totalc = $productos['SUM(stock)'] * $productos['precio'];
         <p align="right"><b style="float: left;"><?php echo $año ?>: </b><?php echo $stock ?></p>
     <?php } ?>
 </div>
+    <p align="right" class="p3">Mostrar todos
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+                        </svg></p></p>
+    <p align="right" class="p4">Ocultar
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
+                        </svg></p></p>
 </div>
 </div>
    </div>
@@ -985,8 +1048,8 @@ $totalc = $productos['SUM(stock)'] * $productos['precio'];
      <div class="card">
     <div class="card-body">
         <h6 >Stock Por Mes</h6>
-       <div id="div1" > 
-        <?php $sql="SELECT Mes,SUM(stock),Año FROM tb_productos WHERE Año='$dia'  GROUP BY Mes,Año;";
+       <div class="div div3" > 
+        <?php $sql="SELECT Mes,SUM(stock) FROM tb_productos WHERE Año='$dia'  GROUP BY Mes;";
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
         $mes=$productos['Mes'];
@@ -1005,7 +1068,7 @@ $totalc = $productos['SUM(stock)'] * $productos['precio'];
                             if ($mes==11) { $mes="Noviembre";}
                             if ($mes==12) { $mes="Diciembre";}
                             ?>
-               <p align="right"><b style="float: left;"><?php echo $mes ?> (<?php echo $productos['Año'] ?>): </b><?php echo $stock ?></p>
+               <p align="right"><b style="float: left;"><?php echo $mes ?> : </b><?php echo $stock ?></p>
    <?php  } ?>
    </div>
 </div>
@@ -1100,8 +1163,8 @@ $totalc = $productos['SUM(stock)'] * $productos['precio'];
      <div class="card">
     <div class="card-body">
         <h6 >Stock Por Mes</h6>
-       <div id="div1" > 
-        <?php $sql="SELECT Mes,SUM(stock),Año FROM tb_productos WHERE fecha_registro BETWEEN ' $f1' AND ' $f2'  GROUP BY Mes,Año;";
+       <div class="div div3" > 
+        <?php $sql="SELECT Mes,SUM(stock) FROM tb_productos WHERE fecha_registro BETWEEN ' $f1' AND ' $f2'  GROUP BY Mes;";
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
         $mes=$productos['Mes'];
@@ -1120,16 +1183,24 @@ $totalc = $productos['SUM(stock)'] * $productos['precio'];
                             if ($mes==11) { $mes="Noviembre";}
                             if ($mes==12) { $mes="Diciembre";}
                             ?>
-               <p align="right"><b style="float: left;"><?php echo $mes ?> (<?php echo $productos['Año'] ?>): </b><?php echo $stock ?></p>
+               <p align="right"><b style="float: left;"><?php echo $mes ?> : </b><?php echo $stock ?></p>
    <?php  } ?>
 </div>
+    <p align="right" class="p">Mostrar todos
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+                        </svg></p></p>
+    <p align="right" class="p1">Ocultar
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
+                        </svg></p></p>
 </div>
 </div>
  <br>
      <div class="card">
     <div class="card-body">
    <h6> Stock Por Año</h6>
-          <div id="div1" > 
+          <div class="div1 div4" > 
     <?php $sql="SELECT año,SUM(stock) FROM tb_productos WHERE fecha_registro BETWEEN ' $f1' AND ' $f2'  GROUP BY año;";
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
@@ -1139,6 +1210,14 @@ $totalc = $productos['SUM(stock)'] * $productos['precio'];
         <p align="right"><b style="float: left;"><?php echo $año ?>: </b><?php echo $stock ?></p>
     <?php } ?>
 </div>
+    <p align="right" class="p3">Mostrar todos
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+                        </svg></p></p>
+    <p align="right" class="p4">Ocultar
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
+                        </svg></p></p>
 </div>
 </div>
    </div>
@@ -1146,6 +1225,40 @@ $totalc = $productos['SUM(stock)'] * $productos['precio'];
 
                  
 </section>
+    <script>
+    $('.p1').hide();
+    $('.p4').hide();
+   $('.p').click(function(){
+$(".div").removeClass("div");
+$('.p').hide();
+$('.p1').show();
+
+    });
+   $('.p1').click(function(){
+
+$(".div3").addClass("div");
+    $('.p1').hide();
+$('.p').show();
+    });
+
+
+
+
+   $('.p3').click(function(){
+$(".div1").removeClass("div1");
+$('.p3').hide();
+$('.p4').show();
+
+    });
+   $('.p4').click(function(){
+
+$(".div4").addClass("div1");
+    $('.p4').hide();
+$('.p3').show();
+    });
+
+
+</script>
  <script>
     function Exportar_bd() {
     Swal.fire({
