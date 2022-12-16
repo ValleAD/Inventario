@@ -294,7 +294,7 @@ $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,uni
     <div class="card-body">
 
         <h6 class="mb-3">Stock Por Mes</h6>
-<div id="div" >
+       <div class="div div3" > 
         <?php 
         if ($tipo_usuario==1) {
         $sql="SELECT Mes,SUM(stock),fecha_registro FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega  GROUP by Mes,fecha_registro";
@@ -323,6 +323,14 @@ $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,uni
                <p align="right"><b style="float: left;"><?php echo $fecha ?> de <?php echo $mes ?>: </b><?php echo $stock ?></p>
    <?php  } ?>
                 </div>
+                    <p align="right" class="p">Mostrar todos
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+                        </svg></p>
+    <p align="right" class="p1">Ocultar
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
+                        </svg></p>
                
 </div>
 </div>
@@ -330,7 +338,7 @@ $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,uni
      <div class="card">
     <div class="card-body">
    <h6 class="mb-3"> Stock Por Año</h6>
-<div id="div">
+       <div class="div div4" > 
     <?php
     if ($tipo_usuario==1) {
      
@@ -346,6 +354,14 @@ $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,uni
         <p align="right"><b style="float: left;"><?php echo $año ?>: </b><?php echo $stock ?></p>
     <?php } ?>
 </div>
+    <p align="right" class="p3">Mostrar todos
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+                        </svg></p>
+    <p align="right" class="p4">Ocultar
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
+                        </svg></p>
 </div>
 </div>
         
@@ -525,7 +541,7 @@ $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,uni
      <div class="card">
     <div class="card-body">
         <h6 class="mb-3">Stock Por Mes</h6>
-<div id="div">
+       <div class="div div3" > 
         <?php 
         if ($tipo_usuario==1) {
         $sql="SELECT Mes,SUM(stock) FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale GROUP by Mes;";
@@ -552,14 +568,23 @@ $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,uni
                             ?>
                <p align="right"><b style="float: left;"><?php echo $mes ?>: </b><?php echo $stock ?></p>
    <?php  } ?>
+
 </div>
+    <p align="right" class="p">Mostrar todos
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+                        </svg></p>
+    <p align="right" class="p1">Ocultar
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
+                        </svg></p>
 </div>
 </div>
  <br>
      <div class="card">
     <div class="card-body">
    <h6 class="mb-3"> Stock Por Año</h6>
-<div id="div">
+       <div class="div1 div4" > 
     <?php
     if ($tipo_usuario==1) {
      
@@ -575,6 +600,14 @@ $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,uni
         <p align="right"><b style="float: left;"><?php echo $año ?>: </b><?php echo $stock ?></p>
     <?php } ?>
 </div>
+    <p align="right" class="p3">Mostrar todos
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+                        </svg></p>
+    <p align="right" class="p4">Ocultar
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
+                        </svg></p>
 </div>
         
 
@@ -619,5 +652,39 @@ $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,uni
     });
 }); 
 </script> 
+    <script>
+    $('.p1').hide();
+    $('.p4').hide();
+   $('.p').click(function(){
+$(".div").removeClass("div");
+$('.p').hide();
+$('.p1').show();
+
+    });
+   $('.p1').click(function(){
+
+$(".div3").addClass("div");
+    $('.p1').hide();
+$('.p').show();
+    });
+
+
+
+
+   $('.p3').click(function(){
+$(".div1").removeClass("div1");
+$('.p3').hide();
+$('.p4').show();
+
+    });
+   $('.p4').click(function(){
+
+$(".div4").addClass("div1");
+    $('.p4').hide();
+$('.p3').show();
+    });
+
+
+</script>
 </body>
 </html>

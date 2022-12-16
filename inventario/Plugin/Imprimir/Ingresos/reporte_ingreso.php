@@ -92,7 +92,8 @@ margin-right: 1%;
 
 
         <div id="h">
-          <table class="table"  style=" width: 100%;margin: 0;">
+          <div id="h">
+            <table class="table"  style=" width: 100%;margin: 0;">
 
     <thead>
         <tr id="tr">
@@ -239,7 +240,8 @@ while ($productos = mysqli_fetch_array($result)){
         <h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD</h3>
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
         <h4 align="center" style="margin-top: 2%;">INGRESOS DE ALMACEN</h4>
-   <table class="table"  style=" width: 100%;margin: 0;">
+   <div id="h">
+    <table class="table"  style=" width: 100%;margin: 0;">
 
     <thead>
         <tr id="tr">
@@ -297,6 +299,66 @@ width: 100%;
 
      </tbody>
  </table>
+         </div>
+        <div id="a">
+             <div id="t">
+            <p align="right"><b style="float: left;">Cantidad Solicitada: </b><?php echo $final3 ?></p>
+            <p align="right"><b style="float: left;">Costo Unitario: </b><?php echo $final9 ?></p>
+            <p align="right"><b style="float: left;">SubTotal</b><?php echo $final1?></p>
+    </div>
+          <br>          
+    <div id="t">
+        <h6>Stock Por Mes</h6>
+<div id="div">
+        <?php 
+        if ($tipo_usuario==1) {
+        $sql="SELECT Mes,SUM(stock) FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra GROUP by Mes;";
+        }if ($tipo_usuario==2) {
+        $sql="SELECT Mes,SUM(stock),idusuario FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra WHERE idusuario='$idusuario' GROUP by Mes;";
+        }
+            $result = mysqli_query($conn, $sql);
+    while ($productos = mysqli_fetch_array($result)){
+        $cantidad=$productos['SUM(stock)'];
+        $stock=number_format($cantidad, 2,".",",");
+        $mes=$productos['Mes'];
+                            if ($mes==1)  { $mes="Enero";}
+                            if ($mes==2)  { $mes="Febrero";}
+                            if ($mes==3)  { $mes="Marzo";}
+                            if ($mes==4)  { $mes="Abril";}
+                            if ($mes==5)  { $mes="Mayo";}
+                            if ($mes==6)  { $mes="Junio";}
+                            if ($mes==7)  { $mes="Junio";}
+                            if ($mes==8)  { $mes="Agosto";}
+                            if ($mes==9)  { $mes="Septiembre";}
+                            if ($mes==10) { $mes="Octubre";}
+                            if ($mes==11) { $mes="Noviembre";}
+                            if ($mes==12) { $mes="Diciembre";}
+                            ?>
+               <p align="right"><b style="float: left;"><?php echo $mes ?>: </b><?php echo $stock ?></p>
+   <?php  } ?>
+</div>
+</div>
+ <br>
+    <div id="t">
+   <h6> Stock Por Año</h6>
+<div id="div">
+    <?php
+    if ($tipo_usuario==1) {
+     
+     $sql="SELECT Año,SUM(stock) FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale GROUP by Año;";
+     } if ($tipo_usuario==2) {
+     $sql="SELECT Año,SUM(stock),idusuario FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE idusuario='$idusuario' GROUP by Año;";
+     }
+            $result = mysqli_query($conn, $sql);
+    while ($productos = mysqli_fetch_array($result)){
+        $año=$productos['Año'];
+        $cantidad=$productos['SUM(stock)'];
+        $stock=number_format($cantidad, 2,".",",");?>
+        <p align="right"><b style="float: left;"><?php echo $año ?>: </b><?php echo $stock ?></p>
+    <?php } ?>
+</div>
+</div>
+</div>
 
 <?php } if (isset($_POST['circulante'])) {?>
 
@@ -304,7 +366,8 @@ width: 100%;
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
 <h4 align="center" style="margin-top: 2%;">INGRESOS DE CIRCULANTE</h4>
 
-    <table class="table"  style=" width: 100%;margin: 0;">
+    <div id="h">
+        <table class="table"  style=" width: 100%;margin: 0;">
 
     <thead>
         <tr id="tr">
@@ -369,7 +432,8 @@ if (isset($_POST['compra1'])) {$idusuario=$_POST['idusuario'];?>
     }
   </style>
   <section>
-        <table class="table"  style=" width: 100%;margin: 0;">
+        <div id="h">
+            <table class="table"  style=" width: 100%;margin: 0;">
 
     <thead>
         <tr id="tr">
@@ -413,12 +477,73 @@ while ($productos = mysqli_fetch_array($result)){
 
      </tbody>
  </table>
+         </div>
+        <div id="a">
+             <div id="t">
+            <p align="right"><b style="float: left;">Cantidad Solicitada: </b><?php echo $final3 ?></p>
+            <p align="right"><b style="float: left;">Costo Unitario: </b><?php echo $final9 ?></p>
+            <p align="right"><b style="float: left;">SubTotal</b><?php echo $final1?></p>
+    </div>
+          <br>          
+    <div id="t">
+        <h6>Stock Por Mes</h6>
+<div id="div">
+        <?php 
+        if ($tipo_usuario==1) {
+        $sql="SELECT Mes,SUM(stock) FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra GROUP by Mes;";
+        }if ($tipo_usuario==2) {
+        $sql="SELECT Mes,SUM(stock),idusuario FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra WHERE idusuario='$idusuario' GROUP by Mes;";
+        }
+            $result = mysqli_query($conn, $sql);
+    while ($productos = mysqli_fetch_array($result)){
+        $cantidad=$productos['SUM(stock)'];
+        $stock=number_format($cantidad, 2,".",",");
+        $mes=$productos['Mes'];
+                            if ($mes==1)  { $mes="Enero";}
+                            if ($mes==2)  { $mes="Febrero";}
+                            if ($mes==3)  { $mes="Marzo";}
+                            if ($mes==4)  { $mes="Abril";}
+                            if ($mes==5)  { $mes="Mayo";}
+                            if ($mes==6)  { $mes="Junio";}
+                            if ($mes==7)  { $mes="Junio";}
+                            if ($mes==8)  { $mes="Agosto";}
+                            if ($mes==9)  { $mes="Septiembre";}
+                            if ($mes==10) { $mes="Octubre";}
+                            if ($mes==11) { $mes="Noviembre";}
+                            if ($mes==12) { $mes="Diciembre";}
+                            ?>
+               <p align="right"><b style="float: left;"><?php echo $mes ?>: </b><?php echo $stock ?></p>
+   <?php  } ?>
+</div>
+</div>
+ <br>
+    <div id="t">
+   <h6> Stock Por Año</h6>
+<div id="div">
+    <?php
+    if ($tipo_usuario==1) {
+     
+     $sql="SELECT Año,SUM(stock) FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale GROUP by Año;";
+     } if ($tipo_usuario==2) {
+     $sql="SELECT Año,SUM(stock),idusuario FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE idusuario='$idusuario' GROUP by Año;";
+     }
+            $result = mysqli_query($conn, $sql);
+    while ($productos = mysqli_fetch_array($result)){
+        $año=$productos['Año'];
+        $cantidad=$productos['SUM(stock)'];
+        $stock=number_format($cantidad, 2,".",",");?>
+        <p align="right"><b style="float: left;"><?php echo $año ?>: </b><?php echo $stock ?></p>
+    <?php } ?>
+</div>
+</div>
+</div>
     <?php } if (isset($_POST['almacen1'])) {$idusuario=$_POST['idusuario'];?>
 
         <h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD</h3>
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
         <h4 align="center" style="margin-top: 2%;">INGRESOS DE ALMACEN</h4>
-   <table class="table"  style=" width: 100%;margin: 0;">
+   <div id="h">
+    <table class="table"  style=" width: 100%;margin: 0;">
 
     <thead>
         <tr id="tr">
@@ -475,6 +600,66 @@ width: 100%;
 
      </tbody>
  </table>
+         </div>
+        <div id="a">
+             <div id="t">
+            <p align="right"><b style="float: left;">Cantidad Solicitada: </b><?php echo $final3 ?></p>
+            <p align="right"><b style="float: left;">Costo Unitario: </b><?php echo $final9 ?></p>
+            <p align="right"><b style="float: left;">SubTotal</b><?php echo $final1?></p>
+    </div>
+          <br>          
+    <div id="t">
+        <h6>Stock Por Mes</h6>
+<div id="div">
+        <?php 
+        if ($tipo_usuario==1) {
+        $sql="SELECT Mes,SUM(stock) FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra GROUP by Mes;";
+        }if ($tipo_usuario==2) {
+        $sql="SELECT Mes,SUM(stock),idusuario FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra WHERE idusuario='$idusuario' GROUP by Mes;";
+        }
+            $result = mysqli_query($conn, $sql);
+    while ($productos = mysqli_fetch_array($result)){
+        $cantidad=$productos['SUM(stock)'];
+        $stock=number_format($cantidad, 2,".",",");
+        $mes=$productos['Mes'];
+                            if ($mes==1)  { $mes="Enero";}
+                            if ($mes==2)  { $mes="Febrero";}
+                            if ($mes==3)  { $mes="Marzo";}
+                            if ($mes==4)  { $mes="Abril";}
+                            if ($mes==5)  { $mes="Mayo";}
+                            if ($mes==6)  { $mes="Junio";}
+                            if ($mes==7)  { $mes="Junio";}
+                            if ($mes==8)  { $mes="Agosto";}
+                            if ($mes==9)  { $mes="Septiembre";}
+                            if ($mes==10) { $mes="Octubre";}
+                            if ($mes==11) { $mes="Noviembre";}
+                            if ($mes==12) { $mes="Diciembre";}
+                            ?>
+               <p align="right"><b style="float: left;"><?php echo $mes ?>: </b><?php echo $stock ?></p>
+   <?php  } ?>
+</div>
+</div>
+ <br>
+    <div id="t">
+   <h6> Stock Por Año</h6>
+<div id="div">
+    <?php
+    if ($tipo_usuario==1) {
+     
+     $sql="SELECT Año,SUM(stock) FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale GROUP by Año;";
+     } if ($tipo_usuario==2) {
+     $sql="SELECT Año,SUM(stock),idusuario FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE idusuario='$idusuario' GROUP by Año;";
+     }
+            $result = mysqli_query($conn, $sql);
+    while ($productos = mysqli_fetch_array($result)){
+        $año=$productos['Año'];
+        $cantidad=$productos['SUM(stock)'];
+        $stock=number_format($cantidad, 2,".",",");?>
+        <p align="right"><b style="float: left;"><?php echo $año ?>: </b><?php echo $stock ?></p>
+    <?php } ?>
+</div>
+</div>
+</div>
 
 <?php } if (isset($_POST['circulante1'])) { $idusuario=$_POST['idusuario'];?>
 
@@ -482,7 +667,8 @@ width: 100%;
 <h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
 <h4 align="center" style="margin-top: 2%;">INGRESOS DE CIRCULANTE</h4>
 
-    <table class="table"  style=" width: 100%;margin: 0;">
+    <div id="h">
+        <table class="table"  style=" width: 100%;margin: 0;">
 
     <thead>
         <tr id="tr">
@@ -530,5 +716,5 @@ width: 100%;
  </body>
  </html>
 <script type="text/javascript">
-// window.print();
+window.print();
 </script>

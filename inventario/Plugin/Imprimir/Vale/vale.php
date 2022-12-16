@@ -73,7 +73,7 @@ $encargado=$solicitudes['usuario'];
 
       ?>
    <table style="width: 100%;margin: 0;">
-    <tr style="height: -15%;">
+    <tr>
         <td><p><b>Depto. o Servicio:</b> <?php echo $depto ?></p> </td>
            <td><b>Fecha:</b> <?php echo $fech ?><br></td>
         <td><p style="float: right;"><b>N° Vale:</b> <?php echo $bodega ?></p>

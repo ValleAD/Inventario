@@ -516,11 +516,11 @@ $total = $productos['SUM(stock)'] * $productos['precio'];
     <p align="right" class="p">Mostrar todos
         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
-                        </svg></p></p>
+                        </svg></p>
     <p align="right" class="p1">Ocultar
         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
-                        </svg></p></p>
+                        </svg></p>
 </div>
 </div>
  <br>
@@ -540,11 +540,11 @@ $total = $productos['SUM(stock)'] * $productos['precio'];
     <p align="right" class="p3">Mostrar todos
         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
-                        </svg></p></p>
+                        </svg></p>
     <p align="right" class="p4">Ocultar
         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
-                        </svg></p></p>
+                        </svg></p>
 </div>
 </div>
    </div>
@@ -654,11 +654,11 @@ $totalc = $productos['SUM(stock)'] * $productos['precio'];
     <p align="right" class="p">Mostrar todos
         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
-                        </svg></p></p>
+                        </svg></p>
     <p align="right" class="p1">Ocultar
         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
-                        </svg></p></p>
+                        </svg></p>
 </div>
 </div>
  <br>
@@ -678,11 +678,11 @@ $totalc = $productos['SUM(stock)'] * $productos['precio'];
     <p align="right" class="p3">Mostrar todos
         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
-                        </svg></p></p>
+                        </svg></p>
     <p align="right" class="p4">Ocultar
         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
-                        </svg></p></p>
+                        </svg></p>
 </div>
 </div>
    </div>
@@ -794,11 +794,11 @@ $totalc = $productos['SUM(stock)'] * $productos['precio'];
     <p align="right" class="p">Mostrar todos
         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
-                        </svg></p></p>
+                        </svg></p>
     <p align="right" class="p1">Ocultar
         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
-                        </svg></p></p>
+                        </svg></p>
 </div>
 </div>
  <br>
@@ -818,11 +818,11 @@ $totalc = $productos['SUM(stock)'] * $productos['precio'];
     <p align="right" class="p3">Mostrar todos
         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
-                        </svg></p></p>
+                        </svg></p>
     <p align="right" class="p4">Ocultar
         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
-                        </svg></p></p>
+                        </svg></p>
 </div>
 </div>
    </div>
@@ -934,11 +934,11 @@ $totalc = $productos['SUM(stock)'] * $productos['precio'];
     <p align="right" class="p">Mostrar todos
         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
-                        </svg></p></p>
+                        </svg></p>
     <p align="right" class="p1">Ocultar
         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
-                        </svg></p></p>
+                        </svg></p>
 </div>
 </div>
  <br>
@@ -958,11 +958,11 @@ $totalc = $productos['SUM(stock)'] * $productos['precio'];
     <p align="right" class="p3">Mostrar todos
         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
-                        </svg></p></p>
+                        </svg></p>
     <p align="right" class="p4">Ocultar
         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
-                        </svg></p></p>
+                        </svg></p>
 </div>
 </div>
    </div>
@@ -1189,11 +1189,11 @@ $totalc = $productos['SUM(stock)'] * $productos['precio'];
     <p align="right" class="p">Mostrar todos
         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
-                        </svg></p></p>
+                        </svg></p>
     <p align="right" class="p1">Ocultar
         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
-                        </svg></p></p>
+                        </svg></p>
 </div>
 </div>
  <br>
@@ -1213,11 +1213,11 @@ $totalc = $productos['SUM(stock)'] * $productos['precio'];
     <p align="right" class="p3">Mostrar todos
         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
-                        </svg></p></p>
+                        </svg></p>
     <p align="right" class="p4">Ocultar
         <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
-                        </svg></p></p>
+                        </svg></p>
 </div>
 </div>
    </div>
