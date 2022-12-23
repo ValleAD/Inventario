@@ -9,7 +9,7 @@ include ('../../../Model/conexion.php');
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <title>Exportar Empleados</title>
-        <link rel="stylesheet" type="text/css" href="../../../bootstrap/css/bootstrap.css">
+       <link rel="icon" type="image/png" sizes="32x32"  href="../../../img/log.png">
    <link rel="stylesheet" type="text/css" href="../../../styles/estilos_tablas.css">
  </head>
  <body>

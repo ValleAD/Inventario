@@ -13,8 +13,6 @@ $idusuario = $_SESSION['iduser'];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" type="text/css" href="styles/estilo_men.css">
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
-    <link rel="stylesheet" type="text/css" href="styles/estilo.css">
     <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
    <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/sweetalert2.min.css">

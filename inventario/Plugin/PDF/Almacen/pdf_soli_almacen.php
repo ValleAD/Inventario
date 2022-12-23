@@ -6,14 +6,17 @@ include '../../../Model/conexion.php'; ?>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDF Almacen</title>
+       <link rel="icon" type="image/png" sizes="32x32"  href="../../../img/log.png">
+    
 </head>
 <body style="font-family: sans-serif;">
-    <img src="../../../img/hospital.png" style="width:20%">
+    <img src="../../../img/hospital.png" style="width:20%;float: left;">
     <img src="../../../img/log_1.png" style="width:20%; float:right">
 
-<h3 align="center">HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
-<h4 align="center">DEPARTAMENTO DE MANTENIMIENTO</h4>
-<h5 align="center">REPORTE DE SOLICITUD DE ALMACEN</h5>
+<h3 ><b>HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</b></h3>
+<h4 ><b>DEPARTAMENTO DE MANTENIMIENTO</b></h4>
+<h5 ><b>SOLICITUD DE MATERIALES DE ALMACEN</b></h5>
+
       <style>
 
 .table {width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed;}
@@ -24,6 +27,10 @@ include '../../../Model/conexion.php'; ?>
 
 .table tbody tr:nth-child(even) {background-color: #00BDFF; height: 5%}
 .table tbody tr:nth-child(odd) {background-color: #00EAFF; height: 5%}
+    }
+       h3, h4, h5{
+    font-size: 12px;
+    text-align: center;
     }
   </style>
 <?php if (isset($_POST['Consultar'])) {

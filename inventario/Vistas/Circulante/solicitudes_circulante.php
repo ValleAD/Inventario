@@ -111,9 +111,9 @@ die();
 <table class="table  " id="exam" style=" width: 100%;">
           <thead>
               <tr id="tr">
-                <th style="width: 10%;"><strong>No. de Solicitud</strong></th>
-                <th  style="width: 10%;"><strong>Fecha de solicitud</strong></th>
-                <th style="width: 10%;"><strong>Detalles</strong></th>
+                <th style="width: 10%;">No. de Solicitud</th>
+                <th  style="width: 10%;">Fecha de solicitud</th>
+                <th style="width: 10%;">Detalles</th>
                 
             </tr>
             </thead>

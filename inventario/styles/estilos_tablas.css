@@ -2,27 +2,20 @@
 
 .table {width: 100%;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed;}
 .table tr {background-color: #f8f8f8;border: 1px solid #ddd;color: black;}
-.table td {font-size: 14px;}
-.table thead th{ background-color: #46466b;color: white;text-align: center;font-size: 14px}
+.table tbody td {font-size: 14px; text-align: center;}
+.table thead th{ background-color: #46466b;color: white;text-align: center;font-size: 14px;padding: 8px}
 .table1 {width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed;}
 .table1 h1 {font-size: 28px;text-transform: uppercase;font-weight: bold;margin: 8px 0px;color: black;}
 .table1 tr {background-color: #f8f8f8;border: 1px solid #ddd;color: black;}
 .table1 th, .table1 td {font-size: 16px;padding: 8px;text-align: center;}
-.table1 th, .table1 td textarea {text-align: center;}
 .table1 thead th{ background-color: #46466b;color: white;text-align: center;}
 
 .table tbody tr:nth-child(even) {background-color: #00BDFF; height: 5%}
 .table tbody tr:nth-child(odd) {background-color: #00EAFF; height: 5%}
 
 @media (max-width: 600px) {
-.table {border: 0px;}
-.table h1 {font-size: 22px;}.table thead, #tfoot{display: none;}.table tr {margin-bottom: 8px;border-bottom: 4px solid #ddd;display: block;}.table th, .table td {font-size: 12px;}
-.table td {display: block;border-bottom: 1px solid #ddd;text-align: right;color: black;}.table  td:last-child {border-bottom: 0px;}
-.table td::before {content: attr(data-label);font-weight: bold;text-transform: uppercase;float: left;}
+h3, h4, h5{
+	font-size: 12px;
+}
 
 
-@media (max-width: 952px){
-.table thead th{font-size: 12px;}
-.table{margin-top: 5%;}
-.table tr{width: 100%}
-#ddd{text-align: right;

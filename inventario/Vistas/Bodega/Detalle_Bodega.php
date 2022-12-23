@@ -158,7 +158,14 @@ if(isset($_POST['detalle'])){
 
 $odt = $productos1['codBodega'];
 
-$sql = "SELECT * FROM detalle_bodega WHERE odt_bodega = $odt ";
+ if ($tipo_usuario==1) {
+     
+$sql = "SELECT * FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega WHERE odt_bodega='$odt'";
+ }
+ if ($tipo_usuario==2) {
+$sql = "SELECT * FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega WHERE db.idusuario='$idusuario' and odt_bodega='$odt' ";
+     
+ }
     $result1 = mysqli_query($conn, $sql);
     if (!$result1) {?>
         <style>div{
@@ -232,10 +239,7 @@ while ($productos = mysqli_fetch_array($result1)){
                             <div style="position: initial;" class="btn-group my-3 mx-2" role="group" aria-label="Basic outlined example">
 
             <form style="" method="POST" action="../../Plugin/Imprimir/Bodega/bodega.php" target="_blank">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">
-
-        <input type="hidden" name="cod" value="<?php echo $codigo ?>">
 
 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -244,9 +248,8 @@ while ($productos = mysqli_fetch_array($result1)){
 
                 </button>
             </form>
-<form method="POST"  action="../../Plugin/PDF/Bodega/pdf_bodega.php" target="_blank">
+<form method="POST"  action="../../Plugin/PDF/Bodega/pdf_bodega.php" target="_blank" class="mx-1">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">
-        <input type="hidden" name="cod" value="<?php echo $codigo ?>">
 
 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -257,8 +260,6 @@ while ($productos = mysqli_fetch_array($result1)){
             </form>
         <form style="" method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php" >
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">
-
-            <input type="hidden" name="cod" value="<?php echo $codigo ?>">
                 <button type="submit" class="btn btn-outline-primary" name="DT" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
@@ -266,7 +267,7 @@ while ($productos = mysqli_fetch_array($result1)){
                 </button>
             </form>
 <?php if($tipo_usuario==1){ ?>
-        <form method="POST" action="" style="margin: 0px;">
+        <form method="POST" action="" style="margin: 0px;" class="mx-1">
                <button  type="submit" name="submit" <?php
                 if($productos1['estado']=='Aprobado') {
                      echo ' style="display:none"';

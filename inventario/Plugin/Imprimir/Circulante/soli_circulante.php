@@ -4,36 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Solicitudes Circulante</title>
-        <link rel="stylesheet" type="text/css" href="../../../bootstrap/css/bootstrap.css">
-   <link rel="stylesheet" type="text/css" href="../../../styles/estilos_tablas.css">
+       <link rel="icon" type="image/png" sizes="32x32"  href="../../../img/log.png">
  </head>
  <body>
 
-<img src="../../../img/hospital.png" style="width:20%">
+<img src="../../../img/hospital.png" style="width:20%; float: left;">
     <img src="../../../img/log_1.png" style="width:20%; float:right">
 
-<h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD</h3>
-<h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
-<h4 align="center" style="margin-top: 2%;">DEPARTAMENTO DE MANTENIMIENTO</h4>
-<h3 align="center" style="margin-top: 2%;">FONDO CIRCULANTE DE MONTO FIJO</h3>
+<h3>HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
+<h4>DEPARTAMENTO DE MANTENIMIENTO</h4>
+<h5>SOLICITUD DE MATERIALES DE FONDO FIRCULANTE</h5>
 <style>
-    .table td  { font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;}
-     @media (max-width: 952px){
+.table {width: 100%;border-collapse: collapse;margin: 0;table-layout: fixed;}
+.table tbody tr {background-color: #f8f8f8;border: 1px solid #ddd;}
+.table th, .table td {font-size: 14px;text-align: center;padding: 8px}
+.table thead th{ background-color: #46466b;color: white;text-align: center;font-size: 14px;}
+
+
+.table tbody tr:nth-child(even) {background-color: #00BDFF; }
+.table tbody tr:nth-child(odd) {background-color: #00EAFF; }
    h3, h4, h5{
-    font-size: 1em;
+    font-size: 12px;
     text-align: center;
-   }
-   section{
-    margin: 2%;
-   }
     }
+#b{
+    margin-top: 2%;
+    width: 100%;
+    float: right;
+}
   </style>
 
 <section style="font-size: 14px;">
+<div id="b">
 <p>Encargado del Fondo Circulante de Monto Fijo Recursos Propios</p>
 <p>Hospital Nacional "Santa Teresa" de Zacatecoluca</p>
-<br>
+
 <p>Atentamente solicito a usted la compra <b>Urgente</b> de los materiales y/o servicios que se detallan a continuación, a través del Fondo Circulante de Monto Fijo.</p>
+</div>
 </section>
  <?php include '../../../Model/conexion.php';
   if (isset($_POST['Consultar'])) {
@@ -104,13 +111,7 @@ $idusuario=$_POST['idusuario'];
 
     while ($solicitudes = mysqli_fetch_array($result)){
 
-?>  <style type="text/css">
-       #td{
-          display: none;
-      }
-      
-     
-  </style> 
+?> 
   
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
              <td data-label="No. solicitud" class="delete"><?php  echo $solicitudes['codCirculante']; ?></td>
@@ -136,13 +137,7 @@ $idusuario=$_POST['idusuario'];
     while ($solicitudes = mysqli_fetch_array($result)){
         $n++;
         $r=$n+0;
-?>  <style type="text/css">
-       #td{
-          display: none;
-      }
-      
-     
-  </style> 
+?>   
   
          <tr style="border: 1px solid #ccc;border-collapse: collapse;">
             <td style="font-size: 12px;text-align: center;"><?php  echo $solicitudes['codCirculante']?></td>
@@ -173,13 +168,7 @@ $idusuario=$_POST['idusuario'];
     while ($solicitudes = mysqli_fetch_array($result)){
         $n++;
         $r=$n+0;
-?>  <style type="text/css">
-       #td{
-          display: none;
-      }
-      
-     
-  </style> 
+?>
   
          <tr style="border: 1px solid #ccc;border-collapse: collapse;">
              <td data-label="No. solicitud" class="delete"><?php  echo $solicitudes['codCirculante']; ?></td>

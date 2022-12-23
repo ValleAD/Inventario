@@ -89,37 +89,6 @@
                 <p align="center"><b>El Mes selecionado: </b><?php echo $mes." ("."<b>Mes en Numero: </b>".$mes2.$mes1.")" ?></p>
 
 
-                <br>
-        <div  class="mx-1 p-2 r-5" style="background-color: transparent; border-radius: 5px;">
-        <a href="" class="btn btn-success" name="categorias" type="submit">Ver Productos</a>
-              <div  style="position: initial;margin-top: 0%;margin-left: 1%;" class="btn-group" role="group" aria-label="Basic outlined example">
-         <form method="POST" action="../../Plugin/Imprimir/Fecha/Fechas.php" target="_blank">
-             <input type="hidden" name="mes" value="<?php echo $mes ?>">
-             <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Mes">
-                 <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
-                </svg>
-             </button>
-         </form>
-         <form method="POST" action="../../Plugin/PDF/Fecha/pdf_fecha.php" target="_blank" class="mx-1">
-            <input type="hidden" name="mes" value="<?php echo $mes ?>">
-             <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="mes" target="_blank">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
-                </svg>
-             </button>
-         </form>
-                  <form method="POST" action="../../Plugin/Excel/Productos/Fechas.php" target="_blank">
-            <input type="hidden" name="mes" value="<?php echo $mes ?>">
-            <input type="hidden" name="mes1" value="<?php echo $mes1 ?>">
-             <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Mes" target="_blank">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
-                </svg>
-             </button>
-         </form>
- </div>
-</div>
                 <table class="table " id="example3" style=" width: 100%">
     <thead>
          <tr id="tr">
@@ -182,35 +151,7 @@
  <div class="card" style="margin-top:-3%">
     <div class="card-body">
                 <p align="center"><b>El Año selecionado</b>: <?php echo $_POST['año'] ?></p>
-        <div  class="mx-1 p-2 " style="background-color: transparent; border-radius: 5px;">
-        <a href="" class="btn btn-success" name="categorias" type="submit">Ver Productos</a>
-              <div  style="position: initial;margin-top: 0%;margin-left: 1%;" class="btn-group" role="group" aria-label="Basic outlined example">
-         <form method="POST" action="../../Plugin/Imprimir/Fecha/Fechas.php" target="_blank">
-             <input type="hidden" name="año" value="<?php echo $año ?>">
-             <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Año">
-                 <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
-                </svg>
-             </button>
-         </form>
-         <form method="POST" action="../../Plugin/PDF/Fecha/pdf_fecha.php" target="_blank" class="mx-1">
-            <input type="hidden" name="año" value="<?php echo $año ?>">
-             <button   style="position: initial;" type="submit" class="btn btn-outline-primary " name="Año" target="_blank">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
-                </svg>
-             </button>
-         </form>
-                  <form method="POST" action="../../Plugin/Excel/Productos/Fechas.php" target="_blank">
-            <input type="hidden" name="año" value="<?php echo $año ?>">
-             <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Año" target="_blank">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
-                </svg>
-             </button>
-         </form>
- </div>
-</div>
+
                 <table class="table " id="example4" style=" width: 100%">
     <thead>
          <tr id="tr">
@@ -311,30 +252,29 @@
                   <div class="card ">
     <div class="card-body">
 
-
-<a href="" class="btn btn-success mb-3" name="categorias" type="submit">Ver Productos</a>
-
         <table class=" table display  " id="example5" style=" width: 100%;">
             <thead>
                 <tr>
-                    <th style="width:7%"  id="th">Código</th>
-                     <th style="width:7%"  id="th">Cod. Catálogo</th>
-                     <th style="width: 27%;" id="th"> Descripción Completa</th>
-                     <th style="width:8%"  id="th">U/M</th>
-                     <th style="width:8%"  id="th">Cantidad</th>
-                     <th style="width:10%"  id="th">Costo Unitario</th>
-                     <th style="width:10%"  id="th">Fecha Registro</th>
-                     <?php if($tipo_usuario==1){ 
-                        echo '<th style="width:10%" id="th">Editar</th>
-                     <th style="width:10%" id="th">Eliminar</th>'; 
+                     <th title="Codigo del productos">Cód.</th>
+                     <th title="Codigo del Catálogo">Catál.</th>
+                     <th title="Descripción Completa">Desc.</th>
+                     <th title="Unidad de Medida">U/M</th>
+                     <th title="Cantidad (Stock)">Cant.</th>
+                     <th title="Costo Unitario">Precio</th>
+                     <th title="Fecha de registro">Fecha</th>
+
+                        <?php if($tipo_usuario==1){ 
+                        echo '
+                    
+                     <th title="Editar Producto">Editar</th>
+                     <th title="Eliminar Producto">Delete</th>';
                  }  ?>
                 </tr>
             </thead>
             <tbody>
                 <?php
 $q=$conn->real_escape_string($_POST['Busqueda']);
-    $query="SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos  WHERE
-        codProductos LIKE '%".$q."%' or descripcion LIKE '%".$q."%' GROUP BY codProductos HAVING COUNT(*) ORDER BY codProductos desc ";
+    $query="SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos  WHERE codProductos LIKE '%".$q."%' or descripcion LIKE '%".$q."%' GROUP BY codProductos HAVING COUNT(*) ";
         $result = mysqli_query($conn, $query);
 
             while ($productos = mysqli_fetch_array($result)){

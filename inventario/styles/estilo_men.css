@@ -1,8 +1,5 @@
 * {padding:0;margin:0;}
 
-body {background-size: 100% auto,100%;background-repeat: no-repeat;background-position: center;background-attachment: fixed;}
-html {scrollbar-width: thin;scrollbar-color: pink red;}
-
 /* Whole customized */
 html::-webkit-scrollbar {width: 10px;}
 html::-webkit-scrollbar-track {background-color: rgba(105,106,105,0.2);}
@@ -14,13 +11,27 @@ background: linear-gradient(90deg, rgba(105,105,108,1) 0%, rgba(115,115,126,1) 3
 .div::-webkit-scrollbar-thumb {background-color: darkgray;border-radius: 100vw;}
 .div::-webkit-scrollbar-thumb:hover {background: rgb(105,105,108);
 background: linear-gradient(90deg, rgba(105,105,108,1) 0%, rgba(115,115,126,1) 35%, rgba(0,212,255,1) 100%);}
-.div{overflow-y: hidden;max-height: 140px;padding-right: 3%;}
+.div{overflow-y: hidden;max-height: 140px; margin-bottom: -7%}
 .div1::-webkit-scrollbar {width: 8px;max-height: 75px}
 .div1::-webkit-scrollbar-track {background-color: transparent;}
 .div1::-webkit-scrollbar-thumb {background-color: darkgray;border-radius: 100vw;}
 .div1::-webkit-scrollbar-thumb:hover {background: rgb(105,105,108);
 background: linear-gradient(90deg, rgba(105,105,108,1) 0%, rgba(115,115,126,1) 35%, rgba(0,212,255,1) 100%);}
-.div1{overflow-y: hidden;max-height: 120px;padding-right: 3%;}
+.div1{overflow-y: hidden;max-height: 140px; margin-bottom: -7%}
+
+.div2::-webkit-scrollbar {width: 8px;max-height: 75px}
+.div2::-webkit-scrollbar-track {background-color: transparent;}
+.div2::-webkit-scrollbar-thumb {background-color: darkgray;border-radius: 100vw;}
+.div2::-webkit-scrollbar-thumb:hover {background: rgb(105,105,108);
+background: linear-gradient(90deg, rgba(105,105,108,1) 0%, rgba(115,115,126,1) 35%, rgba(0,212,255,1) 100%);}
+.div2{overflow-y: hidden;max-height: 140px; margin-bottom: -7%}
+
+.div3::-webkit-scrollbar {width: 8px;max-height: 75px}
+.div3::-webkit-scrollbar-track {background-color: transparent;}
+.div3::-webkit-scrollbar-thumb {background-color: darkgray;border-radius: 100vw;}
+.div3::-webkit-scrollbar-thumb:hover {background: rgb(105,105,108);
+background: linear-gradient(90deg, rgba(105,105,108,1) 0%, rgba(115,115,126,1) 35%, rgba(0,212,255,1) 100%);}
+.div3{overflow-y: hidden;max-height: 140px; margin-bottom: -7%}
 textarea::-webkit-scrollbar {width: 8px;}
 textarea::-webkit-scrollbar-track {background-color: rgba(105,106,105,0.2);}
 textarea::-webkit-scrollbar-thumb {background-color: darkgray;border-radius: 100vw;}
@@ -43,24 +54,23 @@ header nav ul li:hover {background:#E6344A;transition: 5s;}
 header nav ul li #b {transition: 1s;}
 header nav ul li #b:hover {background: rgba(255, 0, 0, .5);transition: 0.7s;font-size: 16.5px;}
 header nav ul li a {color:#fff;display:block;text-decoration:none;padding: 10px;}
-header nav ul li a span .w {margin-right:10px;width: 100%;}
+header nav ul li a .w {margin-right:10px;width: 100%;}
 header nav ul li:hover .children {display:block;}
 header nav ul li .children {display: none;background:#011826;position: absolute;width: 150%;z-index:1000;}
 header nav ul li .children li {display:block;border-bottom: 1px solid rgba(255,255,255,.5);}
 header nav ul li .children li a {display: block;}
 header nav ul li .children li a span {float: right;position: relative;top:3px;margin-right:0;margin-left:10px;}
-header nav ul li .caret {position: relative;top:3px;margin-left:10px;margin-right:0px;}
 
 
 @media screen and (min-width: 801px) {#submit{margin-top: 9%;}#wwe{margin-left: 4%}}
 @media screen and (max-width: 800px) {#submit{margin-top: 3%;width: 100%;}
 body {padding-top:80px;}
 #button{display: block;}
-.menu_bar {display:block;width:100%;position: fixed;top:0;background:#E6344A;}
+.menu_bar {display:block;width:100%;position: fixed;top:0;background:rgb(15 112 170)}
 .menu_bar .bt-menu {display: block;margin-left: 5%;color: #fff;overflow: hidden;font-size: 25px;font-weight: bold;text-decoration: none;}
-.menu_bar span {margin-top: -4%;float: right;font-size: 40px;}
+.menu_bar p {font-size: 30px}
 
-header nav {width: 80%;height: calc(100% - 80px);position: fixed;right:100%;top: 9.1%;overflow-y: scroll;}
+header nav {width: 80%;height: calc(100% - 80px);position: fixed;right:100%;top: 10%;overflow-y: scroll;}
 header nav ul li {padding: 1%;display: block;border-bottom:1px solid rgba(255,255,255,.5);}
 header nav ul li a {display: block;}
 header nav ul li:hover .children {display: none;}
@@ -105,19 +115,11 @@ input[type="checkbox"]:checked + #lh1:before{color: #fff;}
 input[type="checkbox"]:checked + #lh1:after{content: "Deselect";font-size: 12px;background: #9999;}
 div , .card{position: initial;}
 p, label{font-size: 14px}
-            .p:hover{
-            	color: blueviolet;
-            text-decoration: underline;
-            }
-            .p1:hover{
-            	color: blueviolet;
-            text-decoration: underline;
-            }            
-            .p3:hover{
-            	color: blueviolet;
-            text-decoration: underline;
-            }
-            .p4:hover{
-            	color: blueviolet;
-            text-decoration: underline;
-            }
+.p:hover{color: blueviolet;text-decoration: underline;}
+.p1:hover{color: blueviolet;text-decoration: underline;}            
+.p2:hover{color: blueviolet;text-decoration: underline;}
+.p3:hover{color: blueviolet;text-decoration: underline;}
+.p4:hover{color: blueviolet;text-decoration: underline;}            
+.p5:hover{color: blueviolet;text-decoration: underline;}
+.p6:hover{color: blueviolet;text-decoration: underline;}
+.p7:hover{color: blueviolet;text-decoration: underline;}

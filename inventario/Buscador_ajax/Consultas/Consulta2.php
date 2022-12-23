@@ -2,11 +2,14 @@
      #submit{
           margin: 0;
      }
+#id{
+    display: none;
+}
 </style>
 <?php include ('../../Model/conexion.php');
 
 $tabla="";
-$query="SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE stock!=0 GROUP BY codProductos HAVING COUNT(*) ORDER BY codProductos desc ";
+$query="SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE stock!=0 GROUP BY codProductos HAVING COUNT(*) ";
 
 $buscarAlumnos=$conn->query($query);
 if ($buscarAlumnos->num_rows > 0)
@@ -44,12 +47,13 @@ if ($buscarAlumnos->num_rows > 0)
 </div>
 <div class="card mt-3">
      <div class="card-body">
-    <table class="table " id="tblElecProducts" style=" width: 100%;">
+    <table class="table" id="tblElecProducts" style=" width: 100%;">
      
                 <thead>
                      <tr id="tr">
                 <th style="width: 5%;"></th>
-                <th style="width: 5%;">Código</th>
+                <th id="id" style="width: 5%;">ID</th>
+                <th style="width: 10%;">Código</th>
                 <th style="width: 10%;">Catálogo</th>
                 <th style="width: 25%;">Descripción Completa</th>
                 <th style="width: 15%;">U/M</th>
@@ -86,6 +90,7 @@ if ($buscarAlumnos->num_rows > 0)
         $tabla.='
         <tr id="tr">
         <td style="width:7%;min-width: 100%;"></td>
+            <td id="id" style="width:7%;min-width: 100%;" id="th" data-label="ID">'.$productos['cod'].'</td>
             <td style="width:7%;min-width: 100%;" id="th" data-label="Código">'.$productos['codProductos'].'</td>
             <td style="width:7%;min-width: 100%;" id="th" data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
             <td style="width:20%;min-width: 100%;" id="th" data-label="Descripción">'.$productos['descripcion'].'</td>
@@ -164,6 +169,12 @@ autoWidth:false,
           type: 'hidden',
           value: this.data()[1],
           name: 'id[]'
+      }).appendTo('#frm-example');
+
+        $('<input>', {
+          type: 'hidden',
+          value: this.data()[2],
+          name: 'cod[]'
       }).appendTo('#frm-example');
       
       $("#frm-example").submit(); //submiteas el form

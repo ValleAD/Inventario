@@ -20,11 +20,10 @@
     <?php 
          for($i = 0; $i < count($_POST['id']); $i++){
  
-    $codigo= $_POST['id'][$i];
+    $id= $_POST['id'][$i];
+    $codigo= $_POST['cod'][$i];
     
-    
-    //    $sql = "SELECT * FROM tb_productos";
-    $sql = "SELECT cod, codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE codProductos='$codigo' GROUP BY precio, codProductos";
+    $sql = "SELECT cod, codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE cod='$id' AND codProductos='$codigo' GROUP BY precio, codProductos";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){

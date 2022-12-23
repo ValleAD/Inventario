@@ -49,7 +49,7 @@ die();
         #ver:active{
         transform: translateY(5px);
         } 
-         #act {
+         section {
             background: whitesmoke;
             padding: 1%;
             border-radius: 15px;
@@ -57,6 +57,7 @@ die();
     margin-right: 2%;
     margin-left: 2%;
   }
+} 
    @media (max-width: 800px){
    section{
         margin: 5%6%6%3%;
@@ -82,10 +83,10 @@ die();
     </style>
 <br><br><br>
 
-<section id="act">
-           <h1 style=" text-align: center;">Solicitud de Bodega</h1>
+<section >
     <?php include ('../../Buscador_ajax/Cabezeras/cabezera.php') ?>
      <form id="frm-example" style="margin: 0%;position: 0; background: transparent;" method='POST' action="form_bodega_info.php">
+           <h1 style=" text-align: center;">Solicitud de Bodega</h1>
 
     
  <?php include ('../../Buscador_ajax/Consultas/Consulta1.php') ?>

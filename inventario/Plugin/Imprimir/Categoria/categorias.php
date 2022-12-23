@@ -8,12 +8,13 @@ include ('../../../Model/conexion.php');
  <head>
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1">
+       <link rel="icon" type="image/png" sizes="32x32"  href="../../../img/log.png">
+   <link rel="stylesheet" type="text/css" href="../../../styles/estilos_tablas.css">
+
      <title>Filtro por Categoria</title>
  </head>
  <body>
 
-   <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
-   <link rel="stylesheet" type="text/css" href="../../../styles/estilos_tablas.css">
 
 <img src="../../../img/hospital.png" style="width:20%">
     <img src="../../../img/log_1.png" style="width:20%; float:right">

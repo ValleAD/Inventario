@@ -35,6 +35,9 @@ die();
             border-radius: 5px;
             text-shadow: 1px 1px 5px black;
             }
+            h1:hover{
+                font-size: 2.7rem;
+            }
 
           @media screen and (max-width: 952px){
 

@@ -4,45 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDF Bodega</title>
-   <link rel="stylesheet" type="text/css" href="../../../styles/estilos_tablas.css">
+       <link rel="icon" type="image/png" sizes="32x32"  href="../../../img/log.png">
+   
 </head>
 <body style="font-family: sans-serif;">
-    <img src="../../../img/hospital.png" style="width:20%">
+    <img src="../../../img/hospital.png" style="width:20%;float: left;">
     <img src="../../../img/log_1.png" style="width:20%; float:right">
 
 <h3>HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</h3>
 <h4>DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h5 align="center">REPORTE DE SOLICITUD DE BODEGA</h5>
- <style>
+<style>
+.table {width: 100%;border-collapse: collapse;margin: 0;table-layout: fixed;}
+.table tbody tr {background-color: #f8f8f8;border: 1px solid #ddd;}
+.table th, .table td {font-size: 14px;text-align: center;padding: 8px}
+.table thead th{ background-color: #46466b;color: white;text-align: center;font-size: 14px;}
 
 
-     @media (max-width: 952px){
+.table tbody tr:nth-child(even) {background-color: #00BDFF; }
+.table tbody tr:nth-child(odd) {background-color: #00EAFF; }
    h3, h4, h5{
-    font-size: 1em;
+    font-size: 12px;
     text-align: center;
-   }
-   section{
-    margin: 2%;
-   }
     }
   </style>
 <section>
 
-<?php if (isset($_POST['id'])) {?>
-<table class="table" style="width: 100%;">
+    <?php include '../../../Model/conexion.php';
+     if (isset($_POST['id'])) {?>
+<table class="table" style="width: 100%;margin: 0;">
     <thead>     
-        <tr>
-            <th  style="width: 20%;font-size: 14px;">Codigo</th>
-            <th  style="width: 20%;font-size: 14px;">Departamento Solicitante </th>
-            <th  style="width: 20%;font-size: 14px;">Encargado </th>
-            <th  style="width: 20%;font-size: 14px;">Fecha</th>
+        <tr >
+
+            <th  style="width: 10%;font-size: 14px;">Codigo</th>
+            <th  style="width: 50%;font-size: 14px;">Departamento Solicitante </th>
+            <th  style="width: 50%;font-size: 14px;">Encargado </th>
+            <th  style="width: 15%;font-size: 14px;">Fecha</th>
         </tr>
+        
     </thead> 
 
     <tbody>
-
-<?php  include '../../../Model/conexion.php';
-   $sql = "SELECT * FROM tb_bodega order by codBodega DESC";
+<?php
+   $sql = "SELECT * FROM tb_bodega";
     $result = mysqli_query($conn, $sql);
 
     while ($solicitudes = mysqli_fetch_array($result)){
@@ -53,20 +57,56 @@ $des=$solicitudes['departamento'];
 
                    $des=$solicitudes['departamento']; 
                 }
-?>  
+?>   
   
-         <tr>
+        <tr>
             <td data-label="Código" style="font-size: 12px;"><?php  echo $solicitudes['codBodega']?></td>
             <td data-label="Departamento" style="font-size: 12px;"><?php  echo $des?></td>
-             <td data-label="Encargado" style="font-size: 12px;text-align: center;"><?php  echo $solicitudes['usuario']?>
+             <td data-label="Encargado" style="font-size: 12px;"><?php  echo $solicitudes['usuario']?>
             <td data-label="Fecha" style="font-size: 12px;"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
             </tr>
-     
+       <?php }  ?> 
     </tbody>  
-     <?php }  ?>
+</table>
+<?php } if (isset($_POST['id1'])) { ?>
+    <table class="table" style="width: 100%;margin: 0;">
+    <thead>     
+        <tr >
+            <th  style="width: 10%;font-size: 14px;">Código</th>
+            <th  style="width: 50%;font-size: 14px;">Departamento Solicitante</th>
+            <th  style="width: 50%;font-size: 14px;">Encargado</th>
+            <th  style="width: 15%;font-size: 14px;">Fecha</th>
+        </tr>
+    </thead> 
+
+    <tbody>
+<?php 
+$idusuario=$_POST['idusuario'];
+   $sql = "SELECT * FROM tb_bodega WHERE idusuario='$idusuario'  ";
+    $result = mysqli_query($conn, $sql);
+
+    while ($solicitudes = mysqli_fetch_array($result)){
+$des=$solicitudes['departamento'];
+                if ($des=="") {
+                    $des="Departamentos No disponible";
+                }else{
+
+                   $des=$solicitudes['departamento']; 
+                }
+?>   
+  
+        <tr>
+            <td data-label="Código" style="font-size: 12px;"><?php  echo $solicitudes['codBodega']?></td>
+            <td data-label="Departamento" style="font-size: 12px;"><?php  echo $des?></td>
+             <td data-label="Encargado" style="font-size: 12px;"><?php  echo $solicitudes['usuario']?>
+            <td data-label="Fecha" style="font-size: 12px;"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_registro'])) ?></td>
+            </tr>
+       <?php }  ?> 
+    </tbody>  
+   
    
 </table>
-          <?php } ?>
+<?php } ?>
  
     <br>
     <p style="float: right;"> Entrega: ________________</p>

@@ -161,7 +161,12 @@ $cod_compra = $_POST['id'];
 
 $num_vale = $productos1['codVale'];
 
- $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale ";
+ if ($tipo_usuario==1) {
+    $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE numero_vale = $num_vale";
+ }
+ if ($tipo_usuario==2) {
+$sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE V.idusuario='$idusuario' and numero_vale='$num_vale' ";
+ }
     $result1 = mysqli_query($conn, $sql);
     if (!$result1) {?>
         <style>div{
@@ -262,7 +267,7 @@ while ($productos = mysqli_fetch_array($result1)){
 
   <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
 
-<button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
+<button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado" >
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -319,9 +324,9 @@ while ($productos = mysqli_fetch_array($result1)){
     <div class="card mt-3">
                   <div class="card-body">
                       <div class="form-group" style="position: all;border: 1px solid #ccc;border-collapse: collapse;">
-                <p style="padding-left: 1%;">Observaciones (En qué se ocupará el bien entregado)</p>
-                <hr style=" border: 1px solid #ccc;border-collapse: collapse;">
-                <p style="padding-left: 1%;"><?php echo $jus ?></p>
+                <p style="padding: 3%;">Observaciones (En qué se ocupará el bien entregado)</p>
+                <p style=" border-bottom: 1px solid #ccc;border-collapse: collapse;"></p>
+                <p style="padding: 3%;"><?php echo $jus ?></p>
             </div>
             <button class="btn btn-success as">Solicitudes Vale</button>
 

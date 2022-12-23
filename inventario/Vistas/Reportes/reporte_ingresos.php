@@ -76,19 +76,19 @@ die();
             <br>
 
 <?php
-$total = 0;
-$final = 0;
-$final1 = 0;
-$final2 = 0;
-$final3 = 0;
-$final4 = 0;
-$final5 = 0;
-$final6 = 0;
-$final7 = 0;
-$final8 = 0;
-$final9 = 0;
+$total = "0.00";
+$final = "0.00";
+$final1 = "0.00";
+$final2 = "0.00";
+$final3 = "0.00";
+$final4 = "0.00";
+$final5 = "0.00";
+$final6 = "0.00";
+$final7 = "0.00";
+$final8 = "0.00";
+$final9 = "0.00";
 $idusuario = $_SESSION['iduser'];
-if ($tipo_usuario==1) {
+
 
 if(isset($_POST['ingresos'])){
 
@@ -126,22 +126,22 @@ if(isset($_POST['ingresos'])){
             
   if ($tipo_usuario==1) {
       
-   $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario, codCirculante, fecha_solicitud FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante  GROUP by codigo,descripcion,cantidad_despachada,stock,precio,descripcion,unidad_medida,fecha_solicitud";
+   $sql = "SELECT * FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante  ";
   }
 
 if ($tipo_usuario==2) {
     
-      $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario, codCirculante, campo, fecha_solicitud FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante WHERE idusuario='$idusuario'  GROUP by codigo,descripcion,cantidad_despachada,stock,precio,descripcion,unidad_medida,fecha_solicitud";
+      $sql = "SELECT * FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante WHERE idusuario='$idusuario'  ";
 }
     $result = mysqli_query($conn, $sql);
         
     while ($productos = mysqli_fetch_array($result)){
             if ($estado="Pendiente") {
         
-    $total = $productos['SUM(stock)'] * $productos['precio'];
+    $total = $productos['stock'] * $productos['precio'];
     }if ($estado=="Aprobado") {
         
-    $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
+    $total = $productos['cantidad_despachada'] * $productos['precio'];
     }
        $final += $total;
        $total1= number_format($total, 2, ".",",");
@@ -152,8 +152,8 @@ if ($tipo_usuario==2) {
 
         $precio   =    $productos['precio'];
         $precio1  =    number_format($precio, 2,".",",");  
-        $cant_aprobada=$productos['SUM(stock)'];
-        $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
+        $cant_aprobada=$productos['stock'];
+        $cantidad_despachada=$productos['cantidad_despachada'];
         $stock=number_format($cant_aprobada, 2,".",",");
         $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
@@ -227,7 +227,7 @@ if ($tipo_usuario==2) {
             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form  method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php">
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante1">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
@@ -235,7 +235,7 @@ if ($tipo_usuario==2) {
             </form>
             <form  method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php" class="mx-1">
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante1">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -243,7 +243,7 @@ if ($tipo_usuario==2) {
             </form>
                     <form id="form2" method="POST" action="../../Plugin/Excel/Ingresos/Circulante/Excel.php" target="_blank">
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                <button type="submit" class="btn btn-outline-primary" name="circulante1" target="_blank">
+                <button type="submit" class="btn btn-outline-primary" name="circulante" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                 </svg>
@@ -262,7 +262,7 @@ if ($tipo_usuario==2) {
      <div class="card">
     <div class="card-body">
         <h6 class="mb-3">Stock Por Mes</h6>
-<div id="div">
+<div class="div div3">
         <?php 
         if ($tipo_usuario==1) {
         $sql="SELECT Mes,SUM(stock) FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante GROUP by Mes;";
@@ -274,6 +274,8 @@ if ($tipo_usuario==2) {
         $mes=$productos['Mes'];
         $cantidad=$productos['SUM(stock)'];
         $stock=number_format($cantidad, 2,".",",");
+        $final6 += $cantidad;
+        $final7   =    number_format($final6, 2, ".",",");
                             if ($mes==1)  { $mes="Enero";}
                             if ($mes==2)  { $mes="Febrero";}
                             if ($mes==3)  { $mes="Marzo";}
@@ -290,28 +292,55 @@ if ($tipo_usuario==2) {
                <p align="right"><b style="float: left;"><?php echo $mes ?>: </b><?php echo $stock ?></p>
    <?php  } ?>
 </div>
+      <hr>
+    <p align="right"><b style="float: left;">Total </b><?php echo $final7 ?></p>
+<p align="right" class="p">Mostrar todos
+    <svg class="bi" width="20" height="20" fill="currentColor">
+        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+    </svg>
+</p>
+<p align="right" class="p1">Ocultar
+    <svg class="bi" width="20" height="20" fill="currentColor">
+        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
+    </svg>
+</p>
 </div>
 </div>
  <br>
      <div class="card">
     <div class="card-body">
    <h6 class="mb-3"> Stock Por Año</h6>
-<div id="div">
+<div class="div1 div4">
     <?php
     if ($tipo_usuario==1) {
      
-     $sql="SELECT Año,SUM(stock) FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale GROUP by Año;";
+     $sql="SELECT Año,SUM(stock) FROM `detalle_circulante` D JOIN `tb_circulante` V ON D.tb_circulante=V.codCirculante GROUP by Año;";
      } if ($tipo_usuario==2) {
-     $sql="SELECT Año,SUM(stock),idusuario FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE idusuario='$idusuario' GROUP by Año;";
+     $sql="SELECT Año,SUM(stock),idusuario FROM `detalle_circulante` D JOIN `tb_circulante` V ON D.tb_circulante=V.codCirculante WHERE idusuario='$idusuario' GROUP by Año;";
      }
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
         $año=$productos['Año'];
         $cantidad=$productos['SUM(stock)'];
-        $stock=number_format($cantidad, 2,".",",");?>
+        $stock=number_format($cantidad, 2,".",",");
+        $final4 += $cantidad;
+        $final5   =    number_format($final4, 2, ".",",");?>
         <p align="right"><b style="float: left;"><?php echo $año ?>: </b><?php echo $stock ?></p>
     <?php } ?>
+
 </div>
+           <hr>
+               <p align="right"><b style="float: left;">Total </b><?php echo $final5 ?></p>
+<p align="right" class="p3">Mostrar todos
+    <svg class="bi" width="20" height="20" fill="currentColor">
+        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+    </svg>
+</p>
+<p align="right" class="p4">Ocultar
+    <svg class="bi" width="20" height="20" fill="currentColor">
+        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
+    </svg>
+</p>
 </div>
         
 
@@ -350,12 +379,12 @@ if ($tipo_usuario==2) {
           
 <?php
 if ($tipo_usuario==1) {
-$sql = "SELECT codigo,departamento,SUM(cantidad_solicitada),SUM(cantidad_despachada),precio,nombre,unidad_medida,idusuario,encargado, codAlmacen, fecha_solicitud FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen GROUP by codigo,nombre,cantidad_despachada,cantidad_solicitada,precio, fecha_solicitud";
+$sql = "SELECT * FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen ";
 
 }
 if ($tipo_usuario==2) {
 
-$sql = "SELECT codigo,departamento,SUM(cantidad_solicitada),SUM(cantidad_despachada),precio,nombre,unidad_medida,idusuario,encargado, codAlmacen, fecha_solicitud FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen WHERE idusuario='$idusuario' GROUP by codigo,nombre,cantidad_despachada,cantidad_solicitada,precio, fecha_solicitud";
+$sql = "SELECT * FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen WHERE idusuario='$idusuario' ";
 }
          
 
@@ -364,10 +393,10 @@ $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
             if ($estado="Pendiente") {
         
-    $total = $productos['SUM(cantidad_solicitada)'] * $productos['precio'];
+    $total = $productos['cantidad_solicitada'] * $productos['precio'];
     }if ($estado=="Aprobado") {
         
-    $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
+    $total = $productos['cantidad_despachada'] * $productos['precio'];
     }
        $final += $total;
        $total1= number_format($total, 2, ".",",");
@@ -377,10 +406,10 @@ while ($productos = mysqli_fetch_array($result)){
 
         $precio   =    $productos['precio'];
         $precio2  =    number_format($precio, 2,".",",");  
-        $cant_aprobada=$productos['SUM(cantidad_solicitada)'];
-        $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
-        $stock=number_format($cant_aprobada, 2,".",",");
+        $cantidad_despachada=$productos['cantidad_despachada'];
         $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+        $cant_aprobada=$productos['cantidad_solicitada'];
+        $stock=number_format($cant_aprobada, 2,".",",");
 
         $final2 += $cant_aprobada;
         $final3   =    number_format($final2, 2, ".",",");
@@ -462,7 +491,7 @@ width: 100%;
         <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form  method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php">
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen1">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
@@ -470,7 +499,7 @@ width: 100%;
             </form>
             <form  method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php" class="mx-1">
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen1">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -478,7 +507,7 @@ width: 100%;
             </form>
                     <form id="form2" method="POST" action="../../Plugin/Excel/Ingresos/Almacen/Excel.php" target="_blank">
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                <button type="submit" class="btn btn-outline-primary" name="almacen1" target="_blank">
+                <button type="submit" class="btn btn-outline-primary" name="almacen" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                 </svg>
@@ -498,18 +527,21 @@ width: 100%;
      <div class="card">
     <div class="card-body">
         <h6 class="mb-3">Stock Por Mes</h6>
-<div id="div">
+<div class="div div3">
         <?php 
         if ($tipo_usuario==1) {
-        $sql="SELECT Mes,SUM(stock) FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen  GROUP by Mes;";
+        $sql="SELECT Mes,SUM(cantidad_solicitada) FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen  GROUP by Mes;";
         }if ($tipo_usuario==2) {
-        $sql="SELECT Mes,SUM(stock),idusuario FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen  WHERE idusuario='$idusuario' GROUP by Mes;";
+        $sql="SELECT Mes,SUM(cantidad_solicitada),idusuario FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen  WHERE idusuario='$idusuario' GROUP by Mes;";
         }
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
         $mes=$productos['Mes'];
-        $cantidad=$productos['SUM(stock)'];
+        $cantidad=$productos['SUM(cantidad_solicitada)'];
         $stock=number_format($cantidad, 2,".",",");
+        $final6 += $cantidad;
+        $final7   =    number_format($final6, 2, ".",",");
+
                             if ($mes==1)  { $mes="Enero";}
                             if ($mes==2)  { $mes="Febrero";}
                             if ($mes==3)  { $mes="Marzo";}
@@ -526,28 +558,54 @@ width: 100%;
                <p align="right"><b style="float: left;"><?php echo $mes ?>: </b><?php echo $stock ?></p>
    <?php  } ?>
 </div>
+   <hr>
+    <p align="right"><b style="float: left;">Total </b><?php echo $final7 ?></p>
+<p align="right" class="p">Mostrar todos
+    <svg class="bi" width="20" height="20" fill="currentColor">
+        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+    </svg>
+</p>
+<p align="right" class="p1">Ocultar
+    <svg class="bi" width="20" height="20" fill="currentColor">
+        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
+    </svg>
+</p>
 </div>
 </div>
  <br>
      <div class="card">
     <div class="card-body">
    <h6 class="mb-3"> Stock Por Año</h6>
-<div id="div">
+<div class="div1 div4">
     <?php
     if ($tipo_usuario==1) {
      
-     $sql="SELECT Año,SUM(stock) FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale GROUP by Año;";
+     $sql="SELECT Año,SUM(cantidad_solicitada) FROM `detalle_almacen` D JOIN `tb_almacen` V ON D.tb_almacen=V.codAlmacen GROUP by Año;";
      } if ($tipo_usuario==2) {
-     $sql="SELECT Año,SUM(stock),idusuario FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE idusuario='$idusuario' GROUP by Año;";
+     $sql="SELECT Año,SUM(cantidad_solicitada),idusuario FROM `detalle_almacen` D JOIN `tb_almacen` V ON D.tb_almacen=V.codAlmacen WHERE idusuario='$idusuario' GROUP by Año;";
      }
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
         $año=$productos['Año'];
-        $cantidad=$productos['SUM(stock)'];
-        $stock=number_format($cantidad, 2,".",",");?>
+        $cantidad=$productos['SUM(cantidad_solicitada)'];
+        $stock=number_format($cantidad, 2,".",",");
+        $final4 += $cantidad;
+        $final5   =    number_format($final4, 2, ".",",");?>
         <p align="right"><b style="float: left;"><?php echo $año ?>: </b><?php echo $stock ?></p>
     <?php } ?>
 </div>
+       <hr>
+               <p align="right"><b style="float: left;">Total </b><?php echo $final5 ?></p>
+<p align="right" class="p3">Mostrar todos
+    <svg class="bi" width="20" height="20" fill="currentColor">
+        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+    </svg>
+</p>
+<p align="right" class="p4">Ocultar
+    <svg class="bi" width="20" height="20" fill="currentColor">
+        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
+    </svg>
+</p>
 </div>
         
 
@@ -599,11 +657,11 @@ width: 100%;
           
 <?php if ($tipo_usuario==1) { 
 
-$sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion_solicitud,descripcion,plazo,unidad_tecnica,idusuario,Mes,Año, nSolicitud,dependencia,usuario, fecha_registro FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra GROUP by codigo,descripcion_solicitud,cantidad_despachada,stock,precio,fecha_registro";
+$sql = "SELECT * FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra ";
 }
 if ($tipo_usuario==2) { 
 
-$sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion_solicitud,descripcion,plazo,unidad_tecnica,idusuario, nSolicitud,dependencia,usuario, fecha_registro FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra WHERE idusuario='$idusuario' GROUP by codigo,descripcion_solicitud,cantidad_despachada,stock,precio,fecha_registro";
+$sql = "SELECT * FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra WHERE idusuario='$idusuario' ";
 }
 
 $result = mysqli_query($conn, $sql);
@@ -611,10 +669,10 @@ $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
             if ($estado="Pendiente") {
         
-    $total = $productos['SUM(stock)'] * $productos['precio'];
+    $total = $productos['stock'] * $productos['precio'];
     }if ($estado=="Aprobado") {
         
-    $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
+    $total = $productos['cantidad_despachada'] * $productos['precio'];
     }
        $final += $total;
        $total1= number_format($total, 2, ".",",");
@@ -623,8 +681,8 @@ while ($productos = mysqli_fetch_array($result)){
 
         $precio   =    $productos['precio'];
         $precio3  =    number_format($precio, 2,".",",");  
-        $cant_aprobada=$productos['SUM(stock)'];
-        $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
+        $cant_aprobada=$productos['stock'];
+        $cantidad_despachada=$productos['cantidad_despachada'];
         $stock=number_format($cant_aprobada, 2,".",",");
         $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
                 $mes=$productos['Mes'];
@@ -719,7 +777,7 @@ while ($productos = mysqli_fetch_array($result)){
                     <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
             <form  method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php">
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="compra1">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="compra">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
@@ -727,7 +785,7 @@ while ($productos = mysqli_fetch_array($result)){
             </form>
             <form  method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php" class="mx-1">
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="compra1">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="compra">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -735,7 +793,7 @@ while ($productos = mysqli_fetch_array($result)){
             </form>
                     <form id="form2" method="POST" action="../../Plugin/Excel/Ingresos/Compra/Excel.php" target="_blank">
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                <button type="submit" class="btn btn-outline-primary" name="compra1" target="_blank">
+                <button type="submit" class="btn btn-outline-primary" name="compra" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                 </svg>
@@ -753,7 +811,7 @@ while ($productos = mysqli_fetch_array($result)){
      <div class="card">
     <div class="card-body">
         <h6 class="mb-3">Stock Por Mes</h6>
-<div id="div">
+<div class="div div3">
         <?php 
         if ($tipo_usuario==1) {
         $sql="SELECT Mes,SUM(stock) FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra GROUP by Mes;";
@@ -765,6 +823,8 @@ while ($productos = mysqli_fetch_array($result)){
         $mes=$productos['Mes'];
         $cantidad=$productos['SUM(stock)'];
         $stock=number_format($cantidad, 2,".",",");
+        $final6 += $cantidad;
+        $final7   =    number_format($final6, 2, ".",",");
                             if ($mes==1)  { $mes="Enero";}
                             if ($mes==2)  { $mes="Febrero";}
                             if ($mes==3)  { $mes="Marzo";}
@@ -781,28 +841,55 @@ while ($productos = mysqli_fetch_array($result)){
                <p align="right"><b style="float: left;"><?php echo $mes ?>: </b><?php echo $stock ?></p>
    <?php  } ?>
 </div>
+      <hr>
+    <p align="right"><b style="float: left;">Total </b><?php echo $final7 ?></p>
+<p align="right" class="p">Mostrar todos
+    <svg class="bi" width="20" height="20" fill="currentColor">
+        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+    </svg>
+</p>
+<p align="right" class="p1">Ocultar
+    <svg class="bi" width="20" height="20" fill="currentColor">
+        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
+    </svg>
+</p>
 </div>
 </div>
  <br>
      <div class="card">
     <div class="card-body">
    <h6 class="mb-3"> Stock Por Año</h6>
-<div id="div">
+<div class="div1 div4">
     <?php
     if ($tipo_usuario==1) {
      
-     $sql="SELECT Año,SUM(stock) FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale GROUP by Año;";
+     $sql="SELECT Año,SUM(stock) FROM `detalle_compra` D JOIN `tb_compra` V ON D.solicitud_compra=V.nSolicitud GROUP by Año;";
      } if ($tipo_usuario==2) {
-     $sql="SELECT Año,SUM(stock),idusuario FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE idusuario='$idusuario' GROUP by Año;";
+     $sql="SELECT Año,SUM(stock),idusuario FROM `detalle_compra` D JOIN `tb_compra` V ON D.solicitud_compra=V.nSolicitud WHERE idusuario='$idusuario' GROUP by Año;";
      }
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
         $año=$productos['Año'];
         $cantidad=$productos['SUM(stock)'];
-        $stock=number_format($cantidad, 2,".",",");?>
+        $stock=number_format($cantidad, 2,".",",");
+                $final4 += $cantidad;
+        $final5   =    number_format($final4, 2, ".",",");?>
+        ?>
         <p align="right"><b style="float: left;"><?php echo $año ?>: </b><?php echo $stock ?></p>
     <?php } ?>
 </div>
+           <hr>
+               <p align="right"><b style="float: left;">Total </b><?php echo $final5 ?></p>
+<p align="right" class="p3">Mostrar todos
+    <svg class="bi" width="20" height="20" fill="currentColor">
+        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+    </svg>
+</p>
+<p align="right" class="p4">Ocultar
+    <svg class="bi" width="20" height="20" fill="currentColor">
+        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
+    </svg>
+</p>
 </div>
         
 
@@ -813,7 +900,7 @@ while ($productos = mysqli_fetch_array($result)){
 <?php
     }
 }
-}
+
 ?>
 
 
@@ -878,6 +965,39 @@ while ($productos = mysqli_fetch_array($result)){
     });
 }); 
 </script>
- 
+     <script>
+    $('.p1').hide();
+    $('.p4').hide();
+   $('.p').click(function(){
+$(".div").removeClass("div");
+$('.p').hide();
+$('.p1').show();
+
+    });
+   $('.p1').click(function(){
+
+$(".div3").addClass("div");
+    $('.p1').hide();
+$('.p').show();
+    });
+
+
+
+
+   $('.p3').click(function(){
+$(".div1").removeClass("div1");
+$('.p3').hide();
+$('.p4').show();
+
+    });
+   $('.p4').click(function(){
+
+$(".div4").addClass("div1");
+    $('.p4').hide();
+$('.p3').show();
+    });
+
+
+</script>
 </body>
 </html>

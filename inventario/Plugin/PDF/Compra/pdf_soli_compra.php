@@ -8,6 +8,8 @@ include '../../../Model/conexion.php'; ?>
        <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
    <link rel="stylesheet" type="text/css" href="../styles/estilos_tablas.css">
     <title>PDF Compra</title>
+       <link rel="icon" type="image/png" sizes="32x32"  href="../../../img/log.png">
+    
 </head>
 <body style="font-family: sans-serif;">
     <img src="../../../img/hospital.png" style="width:20%">
