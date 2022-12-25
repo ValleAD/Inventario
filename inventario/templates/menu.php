@@ -170,10 +170,12 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                         </svg>
 </div>
 </li>
+<li class="submenu" >
 
                     <?php if ($cliente=="egchoto") { ?>
-    <button title="Respaldo de la base de datos completa" id="b" onclick="return Exportar_bd()" class="btn btn-outline-primary"  style="position: initial; float: right;margin-top: 1%; margin-bottom: 1%; margin-right: 15px;">Exportar bd</button>
+    <button title="Respaldo de la base de datos completa" id="b" onclick="return Exportar_bd()" class="btn btn-outline-primary"  style="position: initial; margin-top: 1%; margin-bottom: 1%; font-size: 12px;">Exportar bd</button>
                     <?php } ?>
+</li>
                 </ul>
         </nav>
     </header>

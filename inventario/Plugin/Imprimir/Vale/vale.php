@@ -13,7 +13,7 @@
     <img src="../../../img/log_1.png" style="width:20%; float:right">
     <style>
 table tr td {padding: 1%}
-.table {width: 100%;border-collapse: collapse;margin: 0;table-layout: fixed;}
+.table {width: 100%;border-collapse: collapse;margin-bottom: 1%;table-layout: fixed;}
 .table tbody tr {background-color: #f8f8f8;border: 1px solid #ddd;}
 .table th, .table td {font-size: 12px;text-align: center;}
 .table thead th{ background-color: #46466b;color: white;text-align: center;font-size: 14px;}

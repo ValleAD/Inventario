@@ -372,11 +372,11 @@ echo '<option value="'.$i.'">'.$Meses[($i)-1].'</option>';
 <?php include('../../Buscador_ajax/Categorias/categoria.php') ?>
 
 
-            <section id="tabla_resultado">
+            <div id="tabla_resultado">
         <!-- AQUI SE DESPLEGARA NUESTRA TABLA DE CONSULTA -->
 
 
-        </section>
+        </div>
 
 
                 </div>

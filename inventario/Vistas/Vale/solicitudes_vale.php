@@ -183,15 +183,11 @@ die();
                
             <form style="margin: 0%;position: 0; background: transparent;" method='POST' action="Detalle_vale.php">             
                 <input type='hidden' name='id' value="<?php  echo $solicitudes['codVale']; ?>">  
-                <?php  if ($solicitudes['estado']=="Aprobado" || $solicitudes['estado']=="Pendiente") {?>
-                
-                
+
                    <button  type="submit" name='detalle' class="btn btn-primary">Ver Detalles</button> 
              
 
-           <?php  }else{?>    
-            <button type="button" class="btn btn-primary" style="opacity: .7;">Ver Detalles</button>
-           <?php } ?>     
+              
                  
                      
             </form> 

@@ -50,19 +50,20 @@ h6{margin: 0;font-size: 14px}
     width: 20%;
 }
    h3, h4, h5{
-    font-size: 12px;
+    font-size: 10px;
     text-align: center;
     }
     #container{
         width: 100%;
         float: right;
+             
     }
     </style>
 
  </head>
  <body>
-<div id="container">
     
+<div id="container">
     <img src="../../../img/hospital.png" style="width:20%;float: left;">
     <img src="../../../img/log_1.png" style="width:20%; float:right">
 <h3 ><b>HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</b></h3>
@@ -234,39 +235,11 @@ while ($productos = mysqli_fetch_array($result)){
 
 <?php } if (isset($_POST['Historial'])) { $Busqueda=$_POST['Busqueda'];$f1=$_POST['f1'];$f2=$_POST['f2'];?>
 
-    <?php $sql = "SELECT descripcion,Concepto,unidad_medida,fecha_registro,No_Comprovante,SUM(Entradas),SUM(Salidas),Saldo FROM historial WHERE fecha_registro BETWEEN ' $f1' AND ' $f2' and No_Comprovante='$Busqueda' GROUP BY No_Comprovante,Concepto";
-$result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $total = $productos['SUM(Entradas)'] * $productos['Saldo'];
-         $final += $total;
-       $total1= number_format($total, 2, ".",",");
-      $final2=number_format($final, 2, ".",","); 
-        $fecha=date("d-m-Y",strtotime($f1));
-        $fecha3=date("d-m-Y",strtotime($f2));
-        $Concepto=$productos['Concepto'];
-        $Comprovante= $productos['No_Comprovante'];
-        $precio= $productos['Saldo'];
-      $precio1=number_format($precio, 2, ".",",");
-        $descripcion=$productos['descripcion'];
-        $stock=$productos['SUM(Entradas)'];
-        $Salida=$productos['SUM(Salidas)'];
-      $stock1=number_format($stock, 2, ".",",");  
-      $um=$productos['unidad_medida']; 
-
-        $final += $stock;
-        $final1   =    number_format($final, 2, ".",",");
-
-        $final6 += $precio;
-        $final7   =    number_format($final6, 2, ".",",");
-        
-        ?>
-
      <div id="h" >
                  <table class="table">
                    <thead>
              <tr>
-                     <th style="width:20%"  id="th">Fecha</th>
+                     <th style="width:30%"  id="th">Fecha</th>
                      <th style="width:30%"  id="th">Concepto</th>
                      <th style="width:30%;" id="th">Comprobante</th>
                      <th style="width:20%"  id="th">Entradas</th>
@@ -278,15 +251,44 @@ $result = mysqli_query($conn, $sql);
            
      </thead>
 <tbody>
+    <?php $sql = "SELECT descripcion,Concepto,unidad_medida,fecha_registro,No_Comprovante,Entradas,Salidas,Saldo FROM historial WHERE fecha_registro BETWEEN ' $f1' AND ' $f2' or No_Comprovante='$Busqueda'";
+$result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        $total = $productos['Entradas'] * $productos['Saldo'];
+         $final += $total;
+       $total1= number_format($total, 2, ".",",");
+      $final2=number_format($final, 2, ".",","); 
+        $fecha=date("d-m-Y",strtotime($f1));
+        $fecha3=date("d-m-Y",strtotime($f2));
+        $Concepto=$productos['Concepto'];
+        $Comprovante= $productos['No_Comprovante'];
+        $precio= $productos['Saldo'];
+      $precio1=number_format($precio, 2, ".",",");
+        $descripcion=$productos['descripcion'];
+        $stock=$productos['Entradas'];
+        $Salida=$productos['Salidas'];
+      $stock1=number_format($stock, 2, ".",",");  
+      $um=$productos['unidad_medida']; 
+
+        $final += $stock;
+        $final1   =    number_format($final, 2, ".",",");
+
+        $final6 += $precio;
+        $final7   =    number_format($final6, 2, ".",",");
+        
+        ?>
+
           
           <tr>
-          </tr>  <td id="th" data-label="Fecha"><?php echo $fecha ?></td>
+            <td id="th" data-label="Fecha"><?php echo $fecha ?></td>
             <td id="th" data-label="Concepto"><?php echo $Concepto ?></td>
             <td id="th" data-label="No. Comprovante"><?php echo $Comprovante ?></td>
             <td id="th" data-label="Entradas"><?php echo $stock1?></td>
             <td id="th" data-label="Salidas"><?php echo $Salida ?></td>
             <td id="th" data-label="Saldo"><?php echo $precio1 ?></td>
             <td id="th" data-label="Saldo"><?php echo $total1 ?></td>        
+          </tr>
 <?php } ?>
            </tbody>
         </table>
@@ -400,7 +402,9 @@ $result = mysqli_query($conn, $sql);
 
 <?php } ?>
 
-
+<script>
+    window.print();
+</script>
 
  </body>
  </html>

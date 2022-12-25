@@ -20,6 +20,7 @@ include '../../Model/conexion.php';
 
 if(isset($_POST['detalle_vale'])){
    $nSolicitud=$_POST['vale'];
+   $numero_vale=$_POST['numero_vale'];
 $estado = $_POST['estado'];
 $jus = $_POST['jus'];
 $sql="UPDATE  tb_vale SET estado = '$estado', observaciones='$jus' WHERE codVale='$nSolicitud'" ;
@@ -59,16 +60,16 @@ if ($estado=='Aprobado') {
           $update="UPDATE detalle_vale SET cantidad_despachada ='$cantidad_despachada' WHERE codigodetallevale ='$cod_vale'";
 
           $query_update = mysqli_query($conn, $update);
-  $verificar =mysqli_query($conn, "SELECT * FROM historial WHERE Concepto='Solicitud de Trabajo' and idusuario='$idusuario' and ID='$cod_vale' and No_Comprovante='$codigo'");
+  $verificar =mysqli_query($conn, "SELECT * FROM historial WHERE Concepto='Vale Consulta Externa' and idusuario='$idusuario' and Detalles='$numero_vale' and No_Comprovante='$codigo'");
 
 if (mysqli_num_rows($verificar)>0) {
 
-      $sql2="UPDATE historial SET Salidas='$cantidad_despachada' WHERE Concepto='Solicitud de Trabajo' and idusuario='$idusuario' and ID='$cod_vale' and No_Comprovante='$codigo'";
+      $sql2="UPDATE historial SET Salidas='$cantidad_despachada' WHERE Concepto='Vale Consulta Externa' and idusuario='$idusuario' and Detalles='$numero_vale' and No_Comprovante='$codigo'";
       $query3 = mysqli_query($conn, $sql2);
 
 }else{
 
-     $sql4="INSERT INTO historial(ID,descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Salidas,Saldo,idusuario) VALUES('$cod_vale','$descripcion','Vale Consulta Externa','$unidadmedida','$codigo','$stock','$cantidad_despachada','$precio','$idusuario')";
+     $sql4="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Salidas,Saldo,Detalles,idusuario) VALUES('$descripcion','Vale Consulta Externa','$unidadmedida','$codigo','$stock','$cantidad_despachada','$precio','$numero_vale','$idusuario')";
           $query4 = mysqli_query($conn, $sql4);
       
 }

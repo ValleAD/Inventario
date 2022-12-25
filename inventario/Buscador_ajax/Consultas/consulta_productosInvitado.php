@@ -33,14 +33,14 @@ if ($buscarAlumnos->num_rows > 0)
      
                 <thead>
                      <tr id="tr">
-                     <th style="width:7%"  id="th">Código</th>
-                     <th style="width:7%"  id="th">Cod. Catálogo</th>
-                     <th style="width: 27%;" id="th"> Descripción Completa</th>
-                     <th style="width:8%"  id="th">U/M</th>
-                     <th style="width:8%"  id="th">Cantidad</th>
-                     <th style="width:10%"  id="th">Costo Unitario</th>
-                     <th style="width:10%"  id="th">Fecha Registro</th>
-                    <th id="th" style="width:9%">Categoría</th>
+                     <th title="Codigo del productos">Cód.</th>
+                     <th title="Codigo del Catálogo">Catál.</th>
+                     <th title="Descripción Completa">Desc.</th>
+                     <th title="Unidad de Medida">U/M</th>
+                     <th title="Cantidad (Stock)">Cant.</th>
+                     <th title="Costo Unitario">Precio</th>
+                     <th title="Fecha de registro">Fecha</th>
+                     <th title="Categorías">Catego</th>
 
                         
                    </tr>
@@ -135,9 +135,7 @@ if (resultado.value) {
    
    $(document).ready(function () {
     $('#example').DataTable({
-            rowGroup: {
-            dataSrc: 6
-        },
+
         lengthMenu: [[10, -1], [10,"Todos"]],
             responsive: true,
             autoWidth:false,

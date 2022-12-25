@@ -190,6 +190,8 @@ die();
                     <input type="hidden" name="dia" id="dia">
                     <input type="hidden" name="mes" id="mes">
                     <input type="hidden" name="año" id="ano">
+               <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
+                    
                     </div>
             </div>
 

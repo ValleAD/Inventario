@@ -74,6 +74,14 @@ $final10 = "0.00";
 $final11 = "0.00";
 $final12 = "0.00";
 $final13 = "0.00";
+$final14 = "0.00";
+$final15 = "0.00";
+$final16 = "0.00";
+$final17 = "0.00";
+$final18 = "0.00";
+$final19 = "0.00";
+$final20 = "0.00";
+
  if (isset($_POST['Consultar2'])) {
 
     $f1=$_POST['f1'];$f2=$_POST['f2'];$Busqueda=$_POST['Busqueda'];
@@ -105,14 +113,15 @@ $final13 = "0.00";
      </thead>
      <div>
 <tbody>
-    <?php $sql = "SELECT descripcion,Concepto,unidad_medida,fecha_registro,No_Comprovante,SUM(Entradas),SUM(Salidas),Saldo FROM historial WHERE fecha_registro BETWEEN ' $f1' AND ' $f2' and No_Comprovante='$Busqueda' GROUP BY No_Comprovante,Concepto";
+    <?php $sql = "SELECT descripcion,Concepto,unidad_medida,fecha_registro,No_Comprovante,Entradas,Salidas,Saldo FROM historial WHERE fecha_registro BETWEEN ' $f1' AND ' $f2' or No_Comprovante='$Busqueda'";
 $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
-        $total = $productos['SUM(Entradas)'] * $productos['Saldo'];
+        $total = $productos['Entradas'] * $productos['Saldo'];
          $final += $total;
        $total1= number_format($total, 2, ".",",");
-      $final2=number_format($final, 2, ".",","); 
+      $final2=number_format($final, 2, ".",",");
+
         $fecha=date("d-m-Y",strtotime($f1));
         $fecha3=date("d-m-Y",strtotime($f2));
         $Concepto=$productos['Concepto'];
@@ -120,16 +129,22 @@ $result = mysqli_query($conn, $sql);
         $precio= $productos['Saldo'];
       $precio1=number_format($precio, 2, ".",",");
         $descripcion=$productos['descripcion'];
-        $stock=$productos['SUM(Entradas)'];
-        $Salida=$productos['SUM(Salidas)'];
+        $stock=$productos['Entradas'];
+        $Salida=$productos['Salidas'];
       $stock1=number_format($stock, 2, ".",",");  
       $um=$productos['unidad_medida']; 
 
-        $final += $stock;
-        $final1   =    number_format($final, 2, ".",",");
+        $final14 += $stock;
+        $final15   =    number_format($final14, 2, ".",",");
 
-        $final6 += $precio;
-        $final7   =    number_format($final6, 2, ".",",");
+        $final16 += $Salida;
+        $final17   =    number_format($final16, 2, ".",",");
+
+        $final18 += $stock-$Salida;
+        $final19   =    number_format($final18, 2, ".",",");
+
+        $final20 += $precio;
+        $final21   =    number_format($final20, 2, ".",",");
         
         ?>
         <tr>
@@ -205,10 +220,10 @@ $result = mysqli_query($conn, $sql);
         </div>
     <div class="card mt-2 mb-2">
             <div class="card-body">
-                  <p align="right"><b style="float: left;">Entradas: </b><?php echo $final1 ?></p>
-                  <p align="right"><b style="float: left;">Salidas: </b><?php echo $final3 ?></p>
-                  <p align="right"><b style="float: left;">Resta de Entradas - Salidas: </b><?php echo $final5 ?></p>
-                  <p align="right"><b style="float: left;">Saldo(Precio): </b><?php echo $final7 ?></p>
+                  <p align="right"><b style="float: left;">Entradas: </b><?php echo $final15 ?></p>
+                  <p align="right"><b style="float: left;">Salidas: </b><?php echo $final17 ?></p>
+                  <p align="right"><b style="float: left;">Resta de Entradas - Salidas: </b><?php echo $final19 ?></p>
+                  <p align="right"><b style="float: left;">Saldo(Precio): </b><?php echo $final20 ?></p>
                   <p style="border-bottom: 1px solid #ccc;"></p>
                   <p align="right"><b style="float: left;">SubTotal: </b><?php echo $final2 ?></p>
         </div>
@@ -255,7 +270,7 @@ $result = mysqli_query($conn, $sql);
 <div class="card mt-2 mb-2">
         <div class="card-body">
            <h6 >Salidas Por Mes</h6>
-           <div class="div1 d2" > 
+           <div class="div1 d1" > 
     <?php $sql="SELECT SUM(Salidas),fecha_registro FROM historial WHERE No_Comprovante LIKE '%".$Busqueda."%'  GROUP BY fecha_registro;";
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
@@ -293,7 +308,7 @@ $result = mysqli_query($conn, $sql);
      <div class="card mt-2 mb-2">
         <div class="card-body">
        <h6> Entradas Por Año</h6>
-       <div class="div2 div3" > 
+       <div class="div2 d2" > 
     <?php $sql="SELECT SUM(Entradas),fecha_registro FROM historial WHERE No_Comprovante LIKE '%".$Busqueda."%'  GROUP BY fecha_registro;";
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
@@ -318,7 +333,7 @@ $result = mysqli_query($conn, $sql);
          <div class="card mt-2 mb-2">
         <div class="card-body">
        <h6> Salidas Por Año</h6>
-       <div class="div2 d3" > 
+       <div class="div3 d3" > 
     <?php $sql="SELECT SUM(Salidas),fecha_registro FROM historial WHERE No_Comprovante LIKE '%".$Busqueda."%'  GROUP BY fecha_registro;";
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
@@ -380,14 +395,14 @@ $result = mysqli_query($conn, $sql);
 
 
     $('.p1').hide();$('.p3').hide();$('.p5').hide();$('.p7').hide();
-
-    $('.p').click(function(){$(".d").removeClass("div");$('.p').hide();$('.p1').show();});
-   
-    $('.p1').click(function(){$(".d1").addClass("div1");$('.p2').hide();$('.p3').show();});
-
-    $('.p3').click(function(){$(".d2").removeClass("div2");$('.p4').hide();$('.p5').show();});
-    
-    $('.p4').click(function(){$(".d3").addClass("div3");$('.p6').hide();$('.p7').show();});
+    $('.p').click(function(){$(".d").removeClass("div");$('.p').hide();$('.p1').show();});   
+    $('.p1').click(function(){$(".d").addClass("div");$('.p1').hide();$('.p').show();});
+    $('.p2').click(function(){$(".d1").removeClass("div1");$('.p2').hide();$('.p3').show();});    
+    $('.p3').click(function(){$(".d1").addClass("div1");$('.p3').hide();$('.p2').show();});    
+    $('.p4').click(function(){$(".d2").removeClass("div2");$('.p4').hide();$('.p5').show();});   
+    $('.p5').click(function(){$(".d2").addClass("div2");$('.p5').hide();$('.p4').show();});
+    $('.p6').click(function(){$(".d3").removeClass("div3");$('.p6').hide();$('.p7').show();});  
+    $('.p7').click(function(){$(".d3").addClass("div3");$('.p7').hide();$('.p6').show();});
 
 </script>
 </section>

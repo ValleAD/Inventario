@@ -94,7 +94,7 @@ button:hover{
                   </div>
                                         			<br>
                        	<div style="position: initial;" class="input-group mb-3">
-                  				<input style="position: initial;" onclick="return regresar()" type="button" class="form-control btn btn-danger"  required value="Regresar">
+                  				<input style="position: initial;" onclick="return regresar()" type="button" class="form-control btn btn-danger mr-2"  required value="Regresar">
                   				<input class="form-control btn btn-success" type="submit" name="Invitado1" value="Entrar">
                   		</div>
                                         			

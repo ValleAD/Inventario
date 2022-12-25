@@ -31,7 +31,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
     <style type="text/css">
        
   #vale{display: none;}
-         @media (max-width: 800px){.bi{float: right;}#buscar1{float: right;display: block;margin-top: 3%;margin-bottom: 3%}  #vale{display: block;}}
+         @media (max-width: 800px){.bi{float: right;}#buscar1{float: right;display: block;margin-top: 3%;margin-bottom: 3%}  #vale{display: block;} .nav1{display: none;}}
         
         body{background: black;}
         #a{padding: 20px 10px;}
@@ -47,9 +47,14 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
         #sn{font-size: 1.5em;}
         .menu_bar2{display: none;}
         
-
+.nav1{background: #023859;border-bottom-right-radius: 100%;width: 6%;padding: 1%;height: 11%;position: fixed;z-index: 10000;margin-left: -1%}
  </style>
-    <header >
+      <div class="nav1" title="Mostrar el menu">
+        <svg class="bi nav2 mx-2 text-white" width="30" height="30" fill="currentColor" >
+        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#list"/>
+        </svg>
+    </div>
+    <header id="navbar" >
         <div class="menu_bar">
             <a style="font-size: 2rem;" href="#" class="bt-menu">
 
@@ -62,7 +67,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
             <p>Menú</p></a>
         </div>
 
-        <nav>
+        <nav >
             <ul>
                 <li><a id="a" href="../../home.php"><span>
                     <svg class="bi" width="20" height="20" fill="currentColor">
@@ -155,6 +160,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                     </ul>
 
                 </li>
+
                <?php
     
     $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
@@ -173,7 +179,12 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 </div>
 </li>
 
+<li class="submenu" >
 
+                    <?php if ($cliente=="egchoto") { ?>
+    <button title="Respaldo de la base de datos completa" id="b" onclick="return Exportar_bd()" class="btn btn-outline-primary"  style="position: initial; margin-top: 1%; margin-bottom: 1%; font-size: 12px;">Exportar bd</button>
+                    <?php } ?>
+</li>
                 </ul>
         </nav>
     </header>
@@ -321,8 +332,31 @@ $('.p').show();
 
 </script>
 <script type="text/javascript">
-    $(document).ready(main);
+    $('.nav1').css({"margin-left": "-6%", "transition": "3s"});     
 
+let ubicacionPrincipal=window.pageYOffset;
+window.onscroll= function() {
+    let Desplazamiento_Actual=window.pageYOffset;
+    if (ubicacionPrincipal >= Desplazamiento_Actual) {
+        document.getElementById('navbar').style.top='0';
+
+    $('.nav1').css({"margin-left": "-6%", "transition": "3s"});     
+
+    }else{
+//entra el nav1
+    $('.nav1').css({"margin-left": "-1%", "transition": "3s"});  
+
+        $('.nav2').click(function(){
+    $('.nav1').css({"margin-left": "-6%", "transition": "3s"});   
+        document.getElementById('navbar').style.top='0';
+    });   
+         $('#navbar').css({"top": "-100px", "transition": "1.5s"});  
+
+    }
+    ubicacionPrincipal=Desplazamiento_Actual;
+}
+
+    $(document).ready(main);
 var contador = 1;
 
 function main () {
@@ -393,6 +427,21 @@ function confirmaion2(e) {
         e.preventDefault();
     }
 }
+    function Exportar_bd() {
+    Swal.fire({
+      title:'NOTA IMPORTANTE:',
+      text:'Este Momento Va a Hacer un Respaldo de la Base de Datos',
+      icon:'warning',
+      confirmButtonText: "Exportar",
+      showCancelButton:true,
+      allowOutsideClick: false
+    }).then((resultado) =>{
+if (resultado.value) {
+        window.location.href='Database/Respaldos_sql/Respaldos.php';                               
+               }
+                });
+        return false;
+    }
 </script>
 <style type="text/css">
 

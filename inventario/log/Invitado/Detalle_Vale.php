@@ -12,12 +12,10 @@
 </head>
 <body>
         <style>  
+section{background: rgba(255, 255, 255, 0.9);padding: 1%; border-radius: 15px;margin-left: 1%;margin-right: 1%;margin-top: -5%}
+
             #div{
                 margin: 0%;
-            }
-         section{
-            margin: 1%;
-            padding: 1%;
             }
             #buscar{
             margin-bottom: 5%;
@@ -69,6 +67,7 @@
   }
         </style>
         <br><br><br>
+  <section >
 <?php
 $total = 0;
 $final = 0;
@@ -88,7 +87,6 @@ $cod_compra = $_POST['id'];
     $jus = $productos1['observaciones'];
       }
  echo'   
-<section id="section">
 
          
       <div class="card">
@@ -342,7 +340,6 @@ while ($productos = mysqli_fetch_array($result1)){
         </div>
 
 
-    </section>
 <?php } }?>
 </section>
       

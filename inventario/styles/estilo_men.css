@@ -1,7 +1,11 @@
 * {padding:0;margin:0;}
 
 /* Whole customized */
-html::-webkit-scrollbar {width: 10px;}
+html::-webkit-scrollbar {width: 10px; overflow: auto; /*Firefox*/
+ overflow: overlay;}
+html:hover::-webkit-scrollbar {
+  display: initial;  
+}
 html::-webkit-scrollbar-track {background-color: rgba(105,106,105,0.2);}
 html::-webkit-scrollbar-thumb {background-color: darkgray;border-radius: 100vw;}
 html::-webkit-scrollbar-thumb:hover {background: rgb(105,105,108);

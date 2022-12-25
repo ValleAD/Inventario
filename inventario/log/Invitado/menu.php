@@ -1,7 +1,12 @@
 <?php
 session_start();
+
+if(!isset($_SESSION['Invitado1'])){
+    header("location: ../../log/signin.php");
+}
 $invitado = $_SESSION['Invitado1'];
 $tipo_usuario = $_SESSION['tipo_usuario1'];
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +22,7 @@ $tipo_usuario = $_SESSION['tipo_usuario1'];
     <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/select.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/rowGroup.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/responsive.bootstrap4.min.css">
-      <link rel="icon" type="image/png" sizes="32x32"  href="../../img/log.png">
+    <link rel="icon" type="image/png" sizes="32x32"  href="../../img/log.png">
 </head>
 
 <body style="background-image: url(../../img/4k.jpg);  
@@ -26,6 +31,9 @@ background-size: 100% 100%,100%;
             background-attachment: fixed;">
 
     <style type="text/css">
+.ocultar_nav{float: right; margin-top: 2%;color: white;margin-right: 1%;margin-left: 1%}
+.nav1{background: #023859;border-bottom-right-radius: 100%;width: 6%;padding: 1%;height: 11%;position: fixed;z-index: 10000;margin-left: -1%}
+
         .dropbtn {
   background-color: transparent;
   color: white;
@@ -62,6 +70,11 @@ background-size: 100% 100%,100%;
 
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
          @media (max-width: 800px){
+.ocultar_nav, .nav1{display: none;}
+.menu_bar1 , .menu_bar2{float: right;}
+span {
+    float: right;
+}
         body{
             background: black;
         }
@@ -89,9 +102,7 @@ background-size: 100% 100%,100%;
    color:lawngreen;
    transition: 2s;
 }
-.children{
-background:burlywood;
-}
+
 .btn{
    transition: 1s;
 }
@@ -99,13 +110,9 @@ background:burlywood;
     color: white;
 }
 #button:hover{
-    transform: translateY(2px);
-   transition: 1s;
    color: lawngreen;
 }
 .btn:hover {
-    transform: translateY(2px);
-   transition: 1s;
    color: lawngreen;
 }
         h1{
@@ -116,37 +123,45 @@ background:burlywood;
             border-radius: 5px;
             text-shadow: 1px 1px 5px black;
             }
+
  </style>
- <header>
+     <div class="nav1" title="Mostrar el menu">
+        <svg class="bi nav2 mx-2 text-white" width="30" height="30" fill="currentColor" >
+        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#list"/>
+        </svg>
+    </div>
+    <header id="navbar">
         <div class="menu_bar">
-            <a style="font-size: 2rem;" href="#" class="bt-menu"><span>
-                <svg class="bi" width="70" height="70" fill="currentColor">
+            <a style="font-size: 2rem;" href="#" class="bt-menu">
+
+                <svg  class="bi menu_bar1" width="50" height="50" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#list"/>
                 </svg>
-            </span><p>Menú</p></a>
+                <svg  class="bi menu_bar2" width="50" height="50" fill="currentColor">
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#x"/>
+                </svg>
+            <p>Menú</p></a>
         </div>
-
         <nav>
             <ul>
-                <li>
-                    <li><a id="a" href="invitado.php"><span>
-                    <svg style="margin-top: -10%;" class="bi" width="20" height="20" fill="currentColor">
+                <li class="submenu"><a id="a" href="invitado.php"><span>
+                    <svg  class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#house"/>
-                        </svg></span> Inicio</a></li>
+                        </svg></span> Inicio</a>
                    
                 </li>
                 <li class="submenu">
-                    <a id="a" href="#">Articulos <svg class="bi" width="20" height="20" fill="currentColor">
+                    <a id="a" href="#">Articulos <span> <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
-                        </svg></a>
+                        </svg></span></a>
                     <ul class="children">
                         <li><a id="b" href="productos.php">Mostrar</a></li>
                     </ul>
                 </li>
                 <li class="submenu">
-                    <a id="a" href="#">Solicitud Vale <svg class="bi" width="20" height="20" fill="currentColor">
+                    <a id="a" href="#">Solicitud Vale <span> <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
-                        </svg></a>
+                        </svg></span></a>
                     <ul class="children">
                     <li><a id="b" href="solicitudes_vale.php">Mostrar</a></li>
                         
@@ -155,7 +170,7 @@ background:burlywood;
                         <li><a id="b" href="form_vale1.php">Seleccionar Varios</a></li>
                     </ul>
                 </li>
-                 
+             
                     <div class="dropdown">
                       <div class="dropbtn"><svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#person"/>
@@ -166,10 +181,10 @@ background:burlywood;
                         <a onclick="return confirmaion()" >Cerrar Session</a>
                       </div>
                     </div>
-                 
             </ul>
         </nav>
     </header>
+
     <script src="../../Plugin/bootstrap/js/jquery-latest.js"></script>
     <script src="../../Plugin/bootstrap/js/bootstrap.min.js"></script>
     <script src="../../Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
@@ -180,18 +195,61 @@ background:burlywood;
     <script src="../../Plugin/bootstrap/js/dataTables.responsive.min.js"></script>
     <script src="../../Plugin/bootstrap/js/responsive.bootstrap4.min.js"></script>
 <script type="text/javascript">
-    $(document).ready(main);
 
+    $(document).ready(main);
+    $('.nav1').css({"margin-left": "-6%", "transition": "3s"});     
+
+let ubicacionPrincipal=window.pageYOffset;
+window.onscroll= function() {
+    let Desplazamiento_Actual=window.pageYOffset;
+    if (ubicacionPrincipal >= Desplazamiento_Actual) {
+        document.getElementById('navbar').style.top='0';
+
+    $('.nav1').css({"margin-left": "-6%", "transition": "3s"});     
+
+    }else{
+//entra el nav1
+    $('.nav1').css({"margin-left": "-1%", "transition": "3s"});  
+
+        $('.nav2').click(function(){
+    $('.nav1').css({"margin-left": "-6%", "transition": "3s"});   
+        document.getElementById('navbar').style.top='0';
+    });   
+         $('#navbar').css({"top": "-100px", "transition": "1.5s"});  
+
+    }
+    ubicacionPrincipal=Desplazamiento_Actual;
+}
 var contador = 1;
 
 function main () {
-    $('.menu_bar').click(function(){
+    $('.menu_bar1').click(function(){
+        $('.menu_bar1').hide();
+        $('.menu_bar2').show();
+        
         if (contador == 1) {
             $('nav').animate({
                 left: '0'
             });
             contador = 0;
         } else {
+            $('.menu_bar1').show();
+            contador = 1;
+            $('nav').animate({
+                left: '-100%'
+            });
+        }
+    });
+    $('.menu_bar2').click(function(){
+        $('.menu_bar2').hide();
+        
+        if (contador == 1) {
+            $('nav').animate({
+                left: '0'
+            });
+            contador = 0;
+        } else {
+            $('.menu_bar1').show();
             contador = 1;
             $('nav').animate({
                 left: '-100%'

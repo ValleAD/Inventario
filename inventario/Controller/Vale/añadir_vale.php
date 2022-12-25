@@ -64,14 +64,10 @@ exit();
       $insert = "INSERT INTO detalle_vale (codigo,descripcion,unidad_medida,stock,precio,numero_vale) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$numero_vale')";
       $query = mysqli_query($conn, $insert);
 
-$sql = "SELECT cod FROM tb_productos WHERE cod='$cod'";
-    $result1 = mysqli_query($conn, $sql);
-        $id=0;
-    while ($productos = mysqli_fetch_array($result1)){
-        $id=$productos['cod']+1;
- $sql1="INSERT INTO historial(ID,descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Detalles,idusuario) VALUES('$cod','$descripcion','Vale Consulta Externa','$unidadmedida','$codigo','$stock','$precio','$numero_vale','$idusuario')";
+
+ $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Detalles,idusuario) VALUES('$descripcion','Vale Consulta Externa','$unidadmedida','$codigo','$stock','$precio','$numero_vale','$idusuario')";
        $query1 = mysqli_query($conn, $sql1);
-}
+
       if ($result || $query || $query1) {
                        echo "<script>
     Swal.fire({

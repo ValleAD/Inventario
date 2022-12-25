@@ -451,6 +451,7 @@ while ($productos = mysqli_fetch_array($result)){
         <td  data-label="Código"><?php echo $codigo ?>
         <input type="hidden" name="cod_vale[]" readonly value="<?php echo $productos['codigodetallevale'] ?>">
             <input type="hidden"  name="cod[]" readonly value="<?php echo $codigo ?>">
+            <input type="hidden"  name="numero_vale" readonly value="<?php echo $num_vale ?>">
             <input type="hidden" style="width: 100%; background:transparent; border: none; text-align: left; height: 100%;"  name="desc[]" readonly value="<?php echo $descripcion ?>">
             <input type="hidden" name="um[]" readonly value="<?php echo $um ?>">
             <input type="hidden" type="decimal" step="0.01"  name="cant[]" readonly value="<?php echo $stock ?>">

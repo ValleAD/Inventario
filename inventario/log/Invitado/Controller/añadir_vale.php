@@ -4,25 +4,25 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title></title>
-        <link rel="stylesheet" type="text/css" href="../../../Plugin/bootstrap/css/sweetalert2.min.css">
-    <link rel="stylesheet" type="text/css" href="../../../Plugin/bootstrap/css/bootstrap.css">
-    <script src="../../../Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
-    <script src="../../../Plugin/bootstrap/js/jquery-latest.js"></script>
-    <script src="../../../Plugin/bootstrap/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/sweetalert2.min.css">
+    <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/bootstrap.css">
+    <script src="../../Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
+    <script src="../../Plugin/bootstrap/js/jquery-latest.js"></script>
+    <script src="../../Plugin/bootstrap/js/bootstrap.min.js"></script>
     </head>
-    <body>  <?php
+    <body><?php
 
-//CRUD para guardar datos enviados
-// de re_producto.php y se guarde en la tabla tb_productos mysql
-include '../../../Model/conexion.php';
-
-     
+include ('../../Model/conexion.php');
+     if (isset($_POST['form_vale'])) {
 
     $departamento = $_POST['depto'];
     $odt = $_POST['numero_vale'];
     $usuario = $_POST['usuario'];
     $idusuario = $_POST['idusuario'];
     $jus = $_POST['jus'];
+      $dia              = $_POST['dia'];
+      $mes              = $_POST['mes'];
+      $año              = $_POST['año'];
   $verificar_vale =mysqli_query($conn, "SELECT * FROM detalle_vale WHERE numero_vale ='$odt' ");
 
 if (mysqli_num_rows($verificar_vale)>0) {
@@ -42,7 +42,7 @@ if (resultado.value) {
 exit();
 }
     //crud para guardar los productos en la tabla tb_vale
-    $sql = "INSERT INTO tb_vale (codVale, departamento,usuario,idusuario,campo,estado,observaciones) VALUES ('$odt', '$departamento','$usuario','$idusuario','Solicitud Vale','Pendiente','$jus')";
+    $sql = "INSERT INTO tb_vale (codVale, departamento,usuario,idusuario,estado,observaciones,Mes,Año) VALUES ('$odt', '$departamento','$usuario','$idusuario','Pendiente','$jus','$mes','$año')";
     $result = mysqli_query($conn, $sql); 
       
         
@@ -51,17 +51,24 @@ exit();
     {
  
     $codigo= $_POST['cod'][$i];
+    $cod= $_POST['cod1'][$i];
     $descripcion= $_POST['desc'][$i];
     $unidadmedida= $_POST['um'][$i];
     $stock = $_POST['cant'][$i];
     $precio= $_POST['cu'][$i];
     $numero_vale = $_POST['numero_vale'];
+    $idusuario = $_POST['idusuario'];
+
 
   
       $insert = "INSERT INTO detalle_vale (codigo,descripcion,unidad_medida,stock,precio,numero_vale) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$numero_vale')";
       $query = mysqli_query($conn, $insert);
 
-      if ($result || $query) {
+
+ $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Detalles,idusuario) VALUES('$descripcion','Vale Consulta Externa','$unidadmedida','$codigo','$stock','$precio','$numero_vale','$idusuario')";
+       $query1 = mysqli_query($conn, $sql1);
+
+      if ($result || $query || $query1) {
                               echo "<script>
     Swal.fire({
       title:'Realizado',
@@ -91,7 +98,7 @@ if (resultado.value) {
         </script>";
       }
     }
-
+}
 ?>
 </body>
 </html>
