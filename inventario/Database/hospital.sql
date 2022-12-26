@@ -103,7 +103,8 @@ CREATE TABLE `historial` (
   Entradas decimal(6,2) NOT NULL DEFAULT 0.00,
   Salidas decimal(6,2) NOT NULL DEFAULT 0.00,
   Saldo decimal(6,2) NOT NULL DEFAULT 0.00,
-  idusuario INT(15) NOT NULL
+  idusuario INT(15) NOT NULL,
+  Detalles int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE tb_circulante (
@@ -309,7 +310,7 @@ Values ('Área Saneamiento Ambiental', 'Si'),
 
 INSERT INTO `tb_usuarios` (`username`, `firstname`, `lastname`, `Establecimiento`,  `unidad`,`password`,`Habilitado`, `tipo_usuario`)
 Values ('Admin', 'Admin', 'Master', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Sin Unidad', 'Admin','Si', '1'),
-       ('egchoto', 'ernesto', 'Gonzales Choto', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Departamento Mantenimiento Local', 'neto982006','Si', '1'),
+       ('egchoto', 'Ernesto', 'Gonzales Choto', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Departamento Mantenimiento Local', 'neto982006','Si', '1'),
        ('Usuario1', 'Baltazar Alexander', 'Marinero Pérez', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Sección Equipo Básico', '123','Si', '2'),
        ('Usuario2', 'Fráncico Tolentino', 'López', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Sección Planta Física Y Mobiliario' , '123','Si', '2'),
        ('Usuario3', 'René Adán', 'Villalta Pérez', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Sección Planta Física Y Mobiliario' , '123','Si', '2'),

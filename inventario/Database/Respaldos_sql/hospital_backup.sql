@@ -15,8 +15,6 @@ CREATE TABLE `tb_almacen` (
   PRIMARY KEY (`codAlmacen`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
-INSERT INTO tb_almacen VALUES('1','Mantenimiento','ernesto Gonzales Choto','Pendiente','2','2022-12-25','12','2022');
-INSERT INTO tb_almacen VALUES('2','Mantenimiento','ernesto Gonzales Choto','Pendiente','2','2022-12-25','12','2022');
 
 
 CREATE TABLE `tb_bodega` (
@@ -31,6 +29,159 @@ CREATE TABLE `tb_bodega` (
   PRIMARY KEY (`codBodega`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+INSERT INTO tb_bodega VALUES('342','70121708','Medidor De Flujo De Combustible, Digital','C/U','1.00','1.00','99.99','5');
+INSERT INTO tb_bodega VALUES('343','70140024','Abrazadera De Acero Inoxidable Sin Fin Para Mangue','C/U','2.00','2.00','0.80','32');
+INSERT INTO tb_bodega VALUES('344','70212414','Ancla Plástica De 5/16\"','C/U','4.00','4.00','0.00','33');
+INSERT INTO tb_bodega VALUES('345','70212483','Tornillo Goloso De 1\" X 10 Mm','C/U','4.00','4.00','0.03','40');
+INSERT INTO tb_bodega VALUES('346','70213315','Brocha De 2\"','C/U','1.00','1.00','0.50','42');
+INSERT INTO tb_bodega VALUES('347','70205886','Tubo Led De 18 Watts, T8, 120 Voltios','C/U','18.00','18.00','3.80','45');
+INSERT INTO tb_bodega VALUES('348','70205288','Soporte Para Lampara Fluorescente Tipo Riel','C/U','18.00','18.00','0.50','46');
+INSERT INTO tb_bodega VALUES('349','70205090','Cable Eléctrico Tsj 14/2 (Vulcan)','Mts','18.00','18.00','0.70','102');
+INSERT INTO tb_bodega VALUES('350','70205572','Cinta Aislante # 23, Rollo','C/U','1.00','1.00','14.50','113');
+INSERT INTO tb_bodega VALUES('351','70212423','Tornillo Para Tablaroca De 1/2\"','Cto','30.00','30.00','2.00','123');
+INSERT INTO tb_bodega VALUES('352','70208527','Chapa Cilíndrica De Palanca Con Llave','C/U','2.00','2.00','22.30','148');
+INSERT INTO tb_bodega VALUES('353','70211071','Tubo De Abasto De Acero Inoxidable Para Sanitario','C/U','1.00','1.00','2.60','151');
+INSERT INTO tb_bodega VALUES('354','70211049','Válvula Para Ducha De 1 /2\"','C/U','1.00','1.00','11.40','170');
+INSERT INTO tb_bodega VALUES('355','70208492','Brazo Hidráulico Tipo Liviano Para Cierre De Puerta','C/U','1.00','1.00','24.50','179');
+INSERT INTO tb_bodega VALUES('356','70208300','Tabla Roca De Yeso Para Interiores De 1.22 Metros','C/U','10.00','10.00','8.56','188');
+INSERT INTO tb_bodega VALUES('357','70208307','Poste Metálico Galvanizado De 3.05 Metros Para Tabla','C/U','20.00','20.00','1.90','209');
+INSERT INTO tb_bodega VALUES('358','70212426','Tornillo Para Tablaroca De 1 1/2\"','C/U','200.00','200.00','0.02','215');
+INSERT INTO tb_bodega VALUES('359','70212020','Clavo Corriente De 1\" Con Cabeza','Lb','30.00','30.00','2.00','218');
+INSERT INTO tb_bodega VALUES('360','70212413','Ancla Plástica De 3/8\"','C/U','50.00','50.00','0.00','224');
+INSERT INTO tb_bodega VALUES('361','70212829','Pegamento Acero Plástico, Tubo','C/U','1.00','1.00','9.70','228');
+INSERT INTO tb_bodega VALUES('362','70212483','Tornillo Goloso De 1\" X 10 Mm','C/U','50.00','50.00','0.03','229');
+INSERT INTO tb_bodega VALUES('363','70210289','Plywood Banack Clase B De 4 Pies X 8 Pies X 1/4\",','C/U','1.00','1.00','25.05','230');
+INSERT INTO tb_bodega VALUES('364','70212454','Rodo De 8\" Con Base Fija','C/U','2.00','2.00','15.00','231');
+INSERT INTO tb_bodega VALUES('365','70211145','Camisa De 2\" P.V.C','C/U','2.00','2.00','1.20','236');
+INSERT INTO tb_bodega VALUES('366','70212716','Hoja De Sierra Para Hierro Diente Fino','C/U','1.00','1.00','2.20','245');
+INSERT INTO tb_bodega VALUES('367','70211309','Pegamento Para P.V.C, 1 /8 De Galón','C/U','1.00','1.00','9.00','255');
+INSERT INTO tb_bodega VALUES('368','70212763','Lija Para Agua No. 100, Pliego','C/U','1.00','1.00','0.50','257');
+INSERT INTO tb_bodega VALUES('369','70211104','Codo Liso De 2\" X 90 De P.V.C.','C/U','2.00','2.00','0.90','260');
+INSERT INTO tb_bodega VALUES('370','70211155','Tubería De 2\" De 160 P.S.I. De P.V.C','Mts','1.00','1.00','1.50','263');
+INSERT INTO tb_bodega VALUES('371','70225269','Grasa','Lb','1.00','1.00','10.00','264');
+INSERT INTO tb_bodega VALUES('372','70120211','Capacitor De Marcha De 5o Mfd, 440 Vac','C/U','1.00','1.00','4.50','268');
+INSERT INTO tb_bodega VALUES('373','70120212','Capacitor De Marcha De 5mfd 370v','C/U','1.00','1.00','1.50','269');
+INSERT INTO tb_bodega VALUES('374','70208110','Celosía De Vidrio Nevado De 1 Metro','C/U','30.00','30.00','1.30','273');
+INSERT INTO tb_bodega VALUES('375','70212748','Lija Para Hierro No. 80,Pliego','C/U','1.00','1.00','0.80','278');
+INSERT INTO tb_bodega VALUES('376','70208115','Operador De Ventana','C/U','11.00','11.00','2.50','280');
+INSERT INTO tb_bodega VALUES('377','70211071','Tubo De Abasto De Acero Inoxidable Para Sanitario','C/U','1.00','1.00','2.60','281');
+INSERT INTO tb_bodega VALUES('378','70211051','Válvula De Control Cromada De 1 / 2\"A La Pared','C/U','1.00','1.00','2.50','282');
+INSERT INTO tb_bodega VALUES('379','70211900','Kit De Accesorios Para Servicio Sanitario Standard','C/U','1.00','1.00','5.70','284');
+INSERT INTO tb_bodega VALUES('380','70211005','Sanitario Color Blanco Completo Standard','C/U','2.00','2.00','52.40','287');
+INSERT INTO tb_bodega VALUES('381','70211049','Válvula Para Ducha De 1 /2\"','C/U','3.00','3.00','11.40','294');
+INSERT INTO tb_bodega VALUES('382','43703018','Tubo De Abasto Para Lavamanos Flexible De 3/8\" X1/','C/U','3.00','3.00','12.50','297');
+INSERT INTO tb_bodega VALUES('383','70211076','Llave De 1/2\" Cromado Para Lavamanos 1a Calidad','C/U','3.00','3.00','6.00','301');
+INSERT INTO tb_bodega VALUES('384','70211071','Tubo De Abasto De Acero Inoxidable Para Sanitario','C/U','1.00','1.00','2.60','302');
+INSERT INTO tb_bodega VALUES('385','43703010','Tapón Macho De 2\" PVC Con Rosca','C/U','2.00','0.00','1.50','303');
+INSERT INTO tb_bodega VALUES('386','70211300','Cinta Teflón','C/U','1.00','0.00','0.30','304');
+INSERT INTO tb_bodega VALUES('387','70208527','Chapa Cilíndrica De Palanca Con Llave','C/U','6.00','6.00','22.30','308');
+INSERT INTO tb_bodega VALUES('388','70212075','Hierro Angulo De 1 1/2\" X 1 1/2\" X 3 /16\", Bajo N','Mts','2.00','2.00','4.60','309');
+INSERT INTO tb_bodega VALUES('389','70211300','Cinta Teflón','C/U','2.00','2.00','0.30','310');
+INSERT INTO tb_bodega VALUES('390','70211051','Válvula De Control Cromada De 1 / 2\"A La Pared','C/U','3.00','3.00','2.50','312');
+INSERT INTO tb_bodega VALUES('391','70211071','Tubo De Abasto De Acero Inoxidable Para Sanitario','C/U','2.00','2.00','2.60','313');
+INSERT INTO tb_bodega VALUES('392','70208527','Chapa Cilíndrica De Palanca Con Llave','C/U','6.00','6.00','22.30','314');
+INSERT INTO tb_bodega VALUES('393','70205570','Cinta Aislante PVC 19 Mm X 20 Ydas X 0.177 Mm, Apr','C/U','1.00','1.00','5.00','315');
+INSERT INTO tb_bodega VALUES('394','70205099','Cable Dúplex No. 12','Mts','5.00','5.00','0.80','316');
+INSERT INTO tb_bodega VALUES('395','70205190','Caja Rectangular De PVC 4\" X 2\"','C/U','1.00','1.00','0.40','317');
+INSERT INTO tb_bodega VALUES('396','70205453','Conector Recto De 1/2\" Metálico','C/U','3.00','3.00','0.20','319');
+INSERT INTO tb_bodega VALUES('397','70205296','Tomacorriente Hembra, Doble, Polarizado','C/U','1.00','1.00','1.00','322');
+INSERT INTO tb_bodega VALUES('398','31161502','Ancla Plástica Para Tabla Roca','C/U','4.00','4.00','0.23','323');
+INSERT INTO tb_bodega VALUES('399','70212415','Ancla Plástica De 1/4\"','C/U','4.00','4.00','0.00','326');
+INSERT INTO tb_bodega VALUES('400','70212483','Tornillo Goloso De 1\" X 10 Mm','C/U','8.00','8.00','0.03','333');
+INSERT INTO tb_bodega VALUES('401','70212838','Lubricante Wd-40, Spray De 11 Onzas','C/U','1.00','1.00','2.60','339');
+INSERT INTO tb_bodega VALUES('402','70225269','Grasa','Lb','1.00','1.00','10.00','342');
+INSERT INTO tb_bodega VALUES('403','70207162','Cinta Arnold Primera Calidad, Rollo','C/U','1.00','1.00','2.30','354');
+INSERT INTO tb_bodega VALUES('404','70205310','Toma Corriente Hembra, Doble, Polarizado, Grado Ho','C/U','10.00','10.00','7.50','356');
+INSERT INTO tb_bodega VALUES('405','70205499','Tecno ducto De 3/4\" Mt','Mts','50.00','50.00','0.50','357');
+INSERT INTO tb_bodega VALUES('406','70205603','Cuerpo Terminal De 1\"','C/U','5.00','5.00','2.20','358');
+INSERT INTO tb_bodega VALUES('407','70205570','Cinta Aislante PVC 19 Mm X 20 Ydas X 0.177 Mm, Apr','C/U','10.00','10.00','5.00','359');
+INSERT INTO tb_bodega VALUES('408','70205170','Caja Térmica De 4 Circuitos, 2 Polos, 240 Voltios,','C/U','4.00','4.00','27.20','365');
+INSERT INTO tb_bodega VALUES('409','70205190','Caja Rectangular De PVC 4\" X 2\"','C/U','10.00','10.00','0.40','387');
+INSERT INTO tb_bodega VALUES('410','70205192','Caja Octagonal PVC','C/U','10.00','10.00','0.70','388');
+INSERT INTO tb_bodega VALUES('411','70205066','Cable Thhn No. 14 Awg, Color Rojo','Mts','40.00','40.00','0.50','390');
+INSERT INTO tb_bodega VALUES('412','70205063','Cable Thhn No 12 Awg, Color Verde','Mts','50.00','50.00','0.59','396');
+INSERT INTO tb_bodega VALUES('413','70205060','Cable Thhn No. 12 Awg, Color Rojo','Mts','50.00','50.00','0.70','397');
+INSERT INTO tb_bodega VALUES('414','70205062','Cable Thhn No 12 Awg, Color Blanco','Mts','50.00','50.00','0.70','401');
+INSERT INTO tb_bodega VALUES('415','70205056','Cable Thhn No. 10 Awg, Color Blanco','Mts','25.00','25.00','1.00','402');
+INSERT INTO tb_bodega VALUES('416','70205058','Cable Thhn No 10 Awg, Color Verde','Mts','25.00','25.00','1.00','405');
+INSERT INTO tb_bodega VALUES('417','70205054','Cable Thhn No.10 Awg, Color Rojo','Mts','25.00','25.00','1.00','409');
+INSERT INTO tb_bodega VALUES('418','70205130','Dado Térmico De 20 Amperios,1 De Polo De Primera C','C/U','4.00','4.00','5.42','411');
+INSERT INTO tb_bodega VALUES('419','70205870','Luminaria Empotrar, Panel Led 2 X 4, 60watts,100-2','C/U','10.00','10.00','50.95','412');
+INSERT INTO tb_bodega VALUES('420','70120211','Capacitor De Marcha De 5o Mfd, 440 Vac','C/U','1.00','1.00','4.50','418');
+INSERT INTO tb_bodega VALUES('421','70205284','Receptáculo De Baquelita Fijo','C/U','2.00','2.00','0.90','419');
+INSERT INTO tb_bodega VALUES('422','70205227','Foco Ahorrador De Energía De 25 Watts, 110 Voltios','C/U','2.00','2.00','3.30','420');
+INSERT INTO tb_bodega VALUES('423','70213041','Pintura De Agua Color Gris Meteoro','Galón','1.00','0.00','28.40','422');
+INSERT INTO tb_bodega VALUES('424','70212838','Lubricante Wd-40, Spray De 11 Onzas','C/U','1.00','0.00','2.60','425');
+INSERT INTO tb_bodega VALUES('425','70205190','Caja Rectangular De PVC 4\" X 2\"','C/U','1.00','1.00','0.40','426');
+INSERT INTO tb_bodega VALUES('426','70205331','Placa Doble De Baquelita (Para Toma Polarizado)','C/U','1.00','1.00','0.30','427');
+INSERT INTO tb_bodega VALUES('427','70205453','Conector Recto De 1/2\" Metálico','C/U','1.00','1.00','0.20','430');
+INSERT INTO tb_bodega VALUES('428','70205572','Cinta Aislante # 23, Rollo','C/U','1.00','1.00','14.50','432');
+INSERT INTO tb_bodega VALUES('429','70212829','Pegamento Acero Plástico, Tubo','C/U','1.00','1.00','9.70','433');
+INSERT INTO tb_bodega VALUES('430','70205296','Tomacorriente Hembra, Doble, Polarizado','C/U','1.00','1.00','1.00','445');
+INSERT INTO tb_bodega VALUES('431','70205331','Placa Doble De Baquelita (Para Toma Polarizado)','C/U','1.00','1.00','0.30','449');
+INSERT INTO tb_bodega VALUES('432','70205453','Conector Recto De 1/2\" Metálico','C/U','2.00','2.00','0.20','450');
+INSERT INTO tb_bodega VALUES('433','70205097','Cable Eléctrico Tsj 12/3 (Vulcan)','Mts','6.00','6.00','1.40','451');
+INSERT INTO tb_bodega VALUES('434','70212414','Ancla Plástica De 5/16\"','C/U','3.00','3.00','0.00','452');
+INSERT INTO tb_bodega VALUES('435','70212463','Tornillo Goloso De 2\"','C/U','3.00','3.00','0.20','453');
+INSERT INTO tb_bodega VALUES('436','70205192','Caja Octagonal PVC','C/U','1.00','1.00','0.70','478');
+INSERT INTO tb_bodega VALUES('437','70205296','Tomacorriente Hembra, Doble, Polarizado','C/U','1.00','1.00','1.00','482');
+INSERT INTO tb_bodega VALUES('438','70205331','Placa Doble De Baquelita (Para Toma Polarizado)','C/U','1.00','1.00','0.30','483');
+INSERT INTO tb_bodega VALUES('439','70205097','Cable Eléctrico Tsj 12/3 (Vulcan)','Mts','6.00','6.00','1.40','486');
+INSERT INTO tb_bodega VALUES('440','70212414','Ancla Plástica De 5/16\"','C/U','3.00','3.00','0.00','496');
+INSERT INTO tb_bodega VALUES('441','70212463','Tornillo Goloso De 2\"','C/U','3.00','3.00','0.20','497');
+INSERT INTO tb_bodega VALUES('442','70205456','Conector Recto De 3/4\", Metálico','C/U','2.00','2.00','0.90','500');
+INSERT INTO tb_bodega VALUES('443','70205190','Caja Rectangular De PVC 4\" X 2\"','C/U','1.00','1.00','0.40','501');
+INSERT INTO tb_bodega VALUES('444','70205572','Cinta Aislante # 23, Rollo','C/U','1.00','1.00','14.50','502');
+INSERT INTO tb_bodega VALUES('445','70208080','Masilla Para Tabla Roca','Galón','10.00','10.00','3.90','504');
+INSERT INTO tb_bodega VALUES('446','70205357','Switch Superficial Para Timbre','C/U','1.00','1.00','1.40','512');
+INSERT INTO tb_bodega VALUES('447','70211287','Niple De Hierro Galvanizado Todo Rosca De 1/2\" X 1','C/U','2.00','2.00','0.40','514');
+INSERT INTO tb_bodega VALUES('448','70211076','Llave De 1/2\" Cromado Para Lavamanos 1a Calidad','C/U','2.00','2.00','6.00','515');
+INSERT INTO tb_bodega VALUES('449','43703018','Tubo De Abasto Para Lavamanos Flexible De 3/8\" X1/','C/U','2.00','2.00','12.50','516');
+INSERT INTO tb_bodega VALUES('450','70211051','Válvula De Control Cromada De 1 / 2\"A La Pared','C/U','2.00','2.00','2.50','517');
+INSERT INTO tb_bodega VALUES('451','70211900','Kit De Accesorios Para Servicio Sanitario Standard','C/U','1.00','1.00','5.70','518');
+INSERT INTO tb_bodega VALUES('452','70212033','Clavo De Acero De 1 1/2\"','C/U','4.00','4.00','0.00','519');
+INSERT INTO tb_bodega VALUES('453','70212709','Remache Pop, De 1/8\" X 1/2\"','C/U','50.00','50.00','1.70','529');
+INSERT INTO tb_bodega VALUES('454','70205233','Tubo Fluorescentes De 20 Watts, 120 Voltios','C/U','4.00','4.00','1.00','554');
+INSERT INTO tb_bodega VALUES('455','70205886','Tubo Led De 18 Watts, T8, 120 Voltios','C/U','6.00','6.00','3.80','1520');
+INSERT INTO tb_bodega VALUES('456','70208750','Loseta Para Cielo Falso, De Yeso, De (4 X 2) Pies','C/U','2.00','2.00','3.40','1701');
+INSERT INTO tb_bodega VALUES('457','70205227','Foco Ahorrador De Energía De 25 Watts, 110 Voltios','C/U','2.00','2.00','3.30','2301');
+INSERT INTO tb_bodega VALUES('458','70208300','Tabla Roca De Yeso Para Interiores De 1.22 Metros','C/U','2.00','2.00','8.56','2451');
+INSERT INTO tb_bodega VALUES('459','70212426','Tornillo Para Tablaroca De 1 1/2\"','C/U','200.00','200.00','0.02','2641');
+INSERT INTO tb_bodega VALUES('460','70208527','Chapa Cilíndrica De Palanca Con Llave','C/U','2.00','2.00','22.30','2971');
+INSERT INTO tb_bodega VALUES('461','70212727','Pasador Metálico De 2 1/2\"','C/U','2.00','2.00','3.50','2972');
+INSERT INTO tb_bodega VALUES('462','70210211','Costanera De Cedro De 3 Varas','C/U','1.00','1.00','16.35','3041');
+INSERT INTO tb_bodega VALUES('463','70120080','Interruptor Termomagnético Trifásico, 400 Amperios','C/U','1.00','1.00','1.00','3042');
+INSERT INTO tb_bodega VALUES('464','70170069','Rodo Fijo De 125 Milímetros (5 Pulgadas)','C/U','1.00','1.00','2.75','3043');
+INSERT INTO tb_bodega VALUES('465','70101779','Bisagra De 2\"','C/U','2.00','2.00','0.40','3081');
+INSERT INTO tb_bodega VALUES('466','70212800','Electrodo 3/32\" Para Hierro Dulce','Lb','0.50','0.50','1.00','3082');
+INSERT INTO tb_bodega VALUES('467','70211005','Sanitario Color Blanco Completo Standard','C/U','1.00','1.00','52.40','3091');
+INSERT INTO tb_bodega VALUES('468','70211071','Tubo De Abasto De Acero Inoxidable Para Sanitario','C/U','2.00','2.00','2.60','3101');
+INSERT INTO tb_bodega VALUES('469','70211051','Válvula De Control Cromada De 1 / 2\"A La Pared','C/U','2.00','2.00','2.50','3131');
+INSERT INTO tb_bodega VALUES('470','70211900','Kit De Accesorios Para Servicio Sanitario Standard','C/U','2.00','2.00','5.70','3141');
+INSERT INTO tb_bodega VALUES('471','70211300','Cinta Teflón','C/U','2.00','2.00','0.30','3151');
+INSERT INTO tb_bodega VALUES('472','70212825','Tubo Silicon De Alta Temperatura Color Rojo','C/U','1.00','1.00','1.90','3152');
+INSERT INTO tb_bodega VALUES('473','70208527','Chapa Cilíndrica De Palanca Con Llave','C/U','1.00','1.00','22.30','3871');
+INSERT INTO tb_bodega VALUES('474','70205242','Foco Corriente De 60 Watts','Acto','1.00','1.00','0.40','4051');
+INSERT INTO tb_bodega VALUES('475','70208630','Piso De (33 X 33) Cms, Para Tráfico Pesado, Vario','C/U','720.00','720.00','1.25','4191');
+INSERT INTO tb_bodega VALUES('476','70210500','Pegamento Para Madera','Galón','0.50','0.50','14.00','4261');
+INSERT INTO tb_bodega VALUES('477','70212425','Tornillo Para Tablaroca De 2\"','C/U','24.00','24.00','0.03','4301');
+INSERT INTO tb_bodega VALUES('478','70205089','Cable Eléctrico Tsj 12/2 (Vulcan)','Mts','5.00','5.00','1.00','4321');
+INSERT INTO tb_bodega VALUES('479','70205190','Caja Rectangular De PVC 4\" X 2\"','C/U','1.00','1.00','0.40','4331');
+INSERT INTO tb_bodega VALUES('480','70205319','Toma Corriente Macho, Tipo Chino De 15 Amperios','C/U','1.00','1.00','1.30','4491');
+INSERT INTO tb_bodega VALUES('481','70205331','Placa Doble De Baquelita (Para Toma Polarizado)','C/U','1.00','1.00','0.30','4511');
+INSERT INTO tb_bodega VALUES('482','70205456','Conector Recto De 3/4\", Metálico','C/U','1.00','1.00','0.90','4512');
+INSERT INTO tb_bodega VALUES('483','70212992','Alambre Espigado Galvanizado No. 16 Rollo','C/U','1.00','1.00','36.00','4521');
+INSERT INTO tb_bodega VALUES('484','70205094','Cable Eléctrico Tsj 10/3 (Vulcan)','Mts','18.00','18.00','4.00','4821');
+INSERT INTO tb_bodega VALUES('485','70205296','Tomacorriente Hembra, Doble, Polarizado','C/U','1.00','1.00','1.00','4822');
+INSERT INTO tb_bodega VALUES('486','70211460','Tapón Hembra Liso PVC 3\"','C/U','1.00','1.00','6.40','5151');
+INSERT INTO tb_bodega VALUES('487','70211130','Té De 1/2\" De PVC','C/U','4.00','4.00','0.20','5161');
+INSERT INTO tb_bodega VALUES('488','70211808','Adaptador Macho PVC De 1/2\"','C/U','2.00','2.00','0.20','5181');
+INSERT INTO tb_bodega VALUES('489','70211105','Codo Liso De 1 /2\" X 90 De P.V.C','C/U','2.00','2.00','0.10','31601');
+INSERT INTO tb_bodega VALUES('490','70211051','Válvula De Control Cromada De 1 / 2\"A La Pared','C/U','2.00','2.00','2.50','45111');
+INSERT INTO tb_bodega VALUES('491','70211071','Tubo De Abasto De Acero Inoxidable Para Sanitario','C/U','3.00','3.00','2.60','70222');
+INSERT INTO tb_bodega VALUES('492','70211073','Tubo De Abasto De Acero Inoxidable Para Lavamanos','C/U','2.00','2.00','2.60','90222');
+INSERT INTO tb_bodega VALUES('493','70211076','Llave De 1/2\" Cromado Para Lavamanos 1a Calidad','C/U','2.00','2.00','6.00','150322');
+INSERT INTO tb_bodega VALUES('494','70120208','Capacitor De Marcha De 40mfd, 440vac 60hz','C/U','1.00','1.00','3.80','203220');
 
 
 CREATE TABLE `tb_circulante` (
@@ -857,10 +1008,8 @@ CREATE TABLE `detalle_almacen` (
   PRIMARY KEY (`codigoalmacen`),
   KEY `fk_tb_almacen_detalle_almacen` (`tb_almacen`),
   CONSTRAINT `fk_tb_almacen_detalle_almacen` FOREIGN KEY (`tb_almacen`) REFERENCES `tb_almacen` (`codAlmacen`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
-INSERT INTO detalle_almacen VALUES('1','31161502','Ancla Plástica Para Tabla Roca','C/U','8.00','0.00','1','0.23');
-INSERT INTO detalle_almacen VALUES('2','43703002','Niple Galvanizado De 1','C/U','1.00','0.00','2','1.50');
 
 
 CREATE TABLE `detalle_bodega` (
@@ -1010,16 +1159,16 @@ INSERT INTO selects_departamento VALUES('42','Si','Unidad Cuidados Especiales');
 
 CREATE TABLE `historial` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(50) NOT NULL,
-  `Concepto` varchar(50) NOT NULL,
-  `unidad_medida` varchar(11) NOT NULL DEFAULT 'C/U',
+  `descripcion` text DEFAULT NULL,
+  `Concepto` text DEFAULT NULL,
+  `unidad_medida` text NOT NULL DEFAULT 'C/U',
   `fecha_registro` date NOT NULL DEFAULT current_timestamp(),
   `No_Comprovante` int(11) NOT NULL DEFAULT 1,
   `Entradas` decimal(6,2) NOT NULL DEFAULT 0.00,
   `Salidas` decimal(6,2) NOT NULL DEFAULT 0.00,
   `Saldo` decimal(6,2) NOT NULL DEFAULT 0.00,
   `idusuario` int(15) NOT NULL,
+  `tablas` int(11) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO historial VALUES('2','Niple Galvanizado De 1','Entrada Por Almacen','C/U','2022-12-25','43703002','1.00','0.00','1.50','0');

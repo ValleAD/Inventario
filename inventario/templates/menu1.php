@@ -437,7 +437,7 @@ function confirmaion2(e) {
       allowOutsideClick: false
     }).then((resultado) =>{
 if (resultado.value) {
-        window.location.href='Database/Respaldos_sql/Respaldos.php';                               
+        window.location.href='../../Database/Respaldos_sql/Respaldos.php';                               
                }
                 });
         return false;

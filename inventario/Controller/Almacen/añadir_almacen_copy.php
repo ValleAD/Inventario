@@ -39,22 +39,22 @@ $result = mysqli_query($conn, $sql);
        $sql="UPDATE  detalle_almacen SET  cantidad_despachada='$cantidad_despachada' WHERE codigoalmacen='$codigo_producto'" ;
       $query = mysqli_query($conn, $sql);
 
-  $verificar =mysqli_query($conn, "SELECT * FROM historial WHERE Concepto='Solicitud de Trabajo' and idusuario='$idusuario' and ID='$codigo_producto' and No_Comprovante='$codigo'");
+  $verificar =mysqli_query($conn, "SELECT * FROM historial WHERE Concepto='Entrada Por Almacen' and idusuario='$idusuario' and ID='$codigo_producto' and No_Comprovante='$codigo'");
 
 if (mysqli_num_rows($verificar)>0) {
 
-      $sql2="UPDATE historial SET Salidas='$cantidad_despachada' WHERE Concepto='Solicitud de Trabajo' and idusuario='$idusuario' and ID='$codigo_producto' and No_Comprovante='$codigo'";
+      $sql2="UPDATE historial SET Salidas='$cantidad_despachada' WHERE Concepto='Entrada Por Almacen' and idusuario='$idusuario' and No_Comprovante='$codigo' and Detalles='$nSolicitud'";
       $query3 = mysqli_query($conn, $sql2);
 
 }else{
 
-     $sql4="INSERT INTO historial(ID,descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Salidas,Saldo,idusuario) VALUES('$codigo_producto','$descripcion','Entrada Por Almacen','$unidadmedida','$codigo','$stock','$cantidad_despachada','$precio','$idusuario')";
+     $sql4="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Salidas,Saldo,idusuario,Detalles) VALUES('$descripcion','Entrada Por Almacen','$unidadmedida','$codigo','$stock','$cantidad_despachada','$precio','$idusuario','$nSolicitud')";
           $query4 = mysqli_query($conn, $sql4);
       
 }
-      $query1 = mysqli_query($conn, $sql1);
+
   }
-      if ($result || $query|| $query1)  {
+      if ($result || $query|| $query1 || $query4)  {
                  echo "<script>
     Swal.fire({
       title:'Realizado',
