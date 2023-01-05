@@ -2026,6 +2026,149 @@ $spreadsheet->getActiveSheet()->mergeCells('P4:Q4');
 
     }
 }
+if (isset($_POST['circulante1'])) {
+$vale = $_POST['circulante1'];
+$sql = "SELECT * FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante WHERE tb_circulante='$vale'";
+$result = mysqli_query($conn, $sql);
+
+    while ($productos = mysqli_fetch_array($result)){
+        
+     $precio   =    $productos['precio'];
+        $precio2  =    number_format($precio, 2,".",",");  
+        $cant_aprobada=$productos['stock'];
+        $cantidad_despachada=$productos['cantidad_despachada'];
+        $stock=number_format($cant_aprobada, 2,".",",");
+        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+
+        $final2 += $cant_aprobada;
+        $final3   =    number_format($final2, 2, ".",",");
+
+        $final4 += $cantidad_despachada;
+        $final5   =    number_format($final4, 2, ".",",");
+        
+        $final6 += ($cant_aprobada-$cantidad_despachada);
+        $final7   =    number_format($final6, 2, ".",",");
+        
+        $final8 += $precio;
+        $final9   =    number_format($final8, 2, ".",",");
+     if ($productos['estado']="Pendiente") {  
+    $total = $productos['stock'] * $productos['precio'];
+    }if ($productos['estado']="Rechazado") {
+        
+    $total = $productos['stock'] * $productos['precio'];
+    }if ($productos['estado']=="Aprobado") {
+        
+    $total = $productos['cantidad_despachada'] * $productos['precio'];
+    }
+     $final += $total;
+       $total1= number_format($total, 2, ".",",");
+      $final1=number_format($final, 2, ".",","); 
+    
+   if ($productos['idusuario']==1) {
+        $u='Administrador';
+        }
+        else {
+            $u='Cliente';
+        }
+      $spreadsheet->getActiveSheet()->getStyle('I2:K2')->applyFromArray($tableHead);
+        $sheet->setCellValue('I2' ,"VISTA PREVIA: ");
+        $sheet->setCellValue('I3' ,"Cant Solicitada: ");
+        $sheet->setCellValue('J3' ,$final3);
+        $sheet->setCellValue('I4' ,"Costo Unitario: ");
+        $sheet->setCellValue('J4' ,$final9);
+        $sheet->setCellValue('I5' ,"SubTotal: ");
+        $sheet->setCellValue('J5' ,$final1);
+        $spreadsheet->getActiveSheet()->mergeCells('I2:K2');
+        $spreadsheet->getActiveSheet()->mergeCells('J3:K3');
+        $spreadsheet->getActiveSheet()->mergeCells('J4:K4');
+        $spreadsheet->getActiveSheet()->mergeCells('J5:K5');
+$fila3++;
+
+        $spreadsheet->getActiveSheet()->getStyle('I3:k5')->applyFromArray($evenRow);
+  
+        $spreadsheet->getActiveSheet()->getStyle('I4:k5')->applyFromArray($oddRow);
+  
+        $spreadsheet->getActiveSheet()->getStyle('I5:K5')->applyFromArray($subtotal);
+
+        $spreadsheet->getActiveSheet()->getStyle('A6:J6')->getAlignment()->setWrapText(true);
+        $spreadsheet->getActiveSheet()->getStyle('A8:J8')->getAlignment()->setWrapText(true);
+        $spreadsheet->getActiveSheet()->getStyle('P')->getAlignment()->setWrapText(true);
+        $spreadsheet->getActiveSheet()->getStyle('B' .$fila)->getAlignment()->setWrapText(true);
+        $spreadsheet->getActiveSheet()->getStyle('C' .$fila)->getAlignment()->setWrapText(true);
+        $spreadsheet->getActiveSheet()->getStyle('D' .$fila)->getAlignment()->setWrapText(true);
+        $spreadsheet->getActiveSheet()->getStyle('E' .$fila)->getAlignment()->setWrapText(true);
+        $spreadsheet->getActiveSheet()->getStyle('F' .$fila)->getAlignment()->setWrapText(true);
+        $spreadsheet->getActiveSheet()->getStyle('G' .$fila)->getAlignment()->setWrapText(true);
+        $spreadsheet->getActiveSheet()->getStyle('H' .$fila)->getAlignment()->setWrapText(true);
+        $spreadsheet->getActiveSheet()->getStyle('I' .$fila)->getAlignment()->setWrapText(true);
+        $spreadsheet->getActiveSheet()->getStyle('J' .$fila)->getAlignment()->setWrapText(true);
+        $spreadsheet->getActiveSheet()->getStyle('I' .$fila)->getAlignment()->setWrapText(true);
+
+        $spreadsheet->getActiveSheet()->getStyle('A' .$fila)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $spreadsheet->getActiveSheet()->getStyle('B' .$fila)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $spreadsheet->getActiveSheet()->getStyle('C' .$fila)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $spreadsheet->getActiveSheet()->getStyle('D' .$fila)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $spreadsheet->getActiveSheet()->getStyle('E' .$fila)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $spreadsheet->getActiveSheet()->getStyle('F' .$fila)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $spreadsheet->getActiveSheet()->getStyle('G' .$fila)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $spreadsheet->getActiveSheet()->getStyle('H' .$fila)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $spreadsheet->getActiveSheet()->getStyle('I' .$fila)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+        $spreadsheet->getActiveSheet()->getStyle('J' .$fila)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+
+        $spreadsheet->getActiveSheet()->getStyle('A' .$fila)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+        $spreadsheet->getActiveSheet()->getStyle('B' .$fila)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+        $spreadsheet->getActiveSheet()->getStyle('C' .$fila)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+        $spreadsheet->getActiveSheet()->getStyle('D' .$fila)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+        $spreadsheet->getActiveSheet()->getStyle('E' .$fila)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+        $spreadsheet->getActiveSheet()->getStyle('F' .$fila)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+        $spreadsheet->getActiveSheet()->getStyle('G' .$fila)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+        $spreadsheet->getActiveSheet()->getStyle('H' .$fila)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+        $spreadsheet->getActiveSheet()->getStyle('I' .$fila)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+        $spreadsheet->getActiveSheet()->getStyle('J' .$fila)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+
+
+        $sheet->setCellValue('A' .$fila, $productos['codCirculante']);
+        $sheet->setCellValue('B' .$fila, $productos['codigo']);
+        $sheet->setCellValue('C' .$fila, $productos['descripcion']);
+        $sheet->setCellValue('D' .$fila, $productos['unidad_medida']);
+        $sheet->setCellValue('E' .$fila, $stock);
+        $sheet->setCellValue('F' .$fila, $precio2);
+        $sheet->setCellValue('G' .$fila, $total1);
+        $sheet->setCellValue('H' .$fila, $productos['fecha_solicitud']);
+            if( $fila % 2 == 0 ){
+        //even row
+        $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':H'.$fila)->applyFromArray($evenRow);
+    }else{
+        //odd row
+        $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':H'.$fila)->applyFromArray($oddRow);
+    }
+    //increment row
+    $fila++;
+        }
+        $spreadsheet->getActiveSheet()->getStyle('O2:Q2')->applyFromArray($tableHead);
+
+$sheet->setCellValue('O2' , "VISTA PREVIA:");
+
+        $sql1="SELECT * FROM tb_circulante WHERE codCirculante=$vale";
+        $result1 = mysqli_query($conn, $sql1);
+    while ($productos1 = mysqli_fetch_array($result1)){
+        $title1="N° de Solicitud:";
+        $title2="Fecha";
+        $body1=$productos1['codCirculante'];
+        $body2=$productos1['fecha_solicitud'];
+$sheet->setCellValue('O3', $title1);
+$sheet->setCellValue('O4', $title2);
+$sheet->setCellValue('P3', $body1);
+$sheet->setCellValue('P4', $body2);
+$spreadsheet->getActiveSheet()->mergeCells('O2:Q2');
+$spreadsheet->getActiveSheet()->mergeCells('P3:Q3');
+$spreadsheet->getActiveSheet()->mergeCells('P4:Q4');
+
+        $spreadsheet->getActiveSheet()->getStyle('O3:Q3')->applyFromArray($evenRow);
+        $spreadsheet->getActiveSheet()->getStyle('O4:Q4')->applyFromArray($oddRow);
+
+    }
+}
 
 //autofilter
 //define first row and last row

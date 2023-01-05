@@ -225,16 +225,7 @@ while ($productos = mysqli_fetch_array($result)){
             </form>
             <form method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php">
 
-                <input type="hidden" name="num_sol" value="<?php echo $productos1['codCirculante'] ?>">
-                <input type="hidden" name="fech" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_solicitud'])) ?>">
-                       <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
-            <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
-            <input type="hidden" name="um[]" value="<?php echo $um ?>">
-            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
-            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
-            <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
-            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
-            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
+                <input type="hidden" name="circulante1" value="<?php echo $productos1['codCirculante'] ?>">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="dt_circulante">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
