@@ -60,11 +60,11 @@ if ($estado=='Aprobado') {
           $update="UPDATE detalle_vale SET cantidad_despachada ='$cantidad_despachada' WHERE codigodetallevale ='$cod_vale'";
 
           $query_update = mysqli_query($conn, $update);
-  $verificar =mysqli_query($conn, "SELECT * FROM historial WHERE Concepto='Vale Consulta Externa' and idusuario='$idusuario' and Detalles='$numero_vale' and No_Comprovante='$codigo'");
+  $verificar =mysqli_query($conn, "SELECT * FROM historial WHERE Concepto='Vale Consulta Externa' and idusuario='$idusuario' and Entradas='$stock' AND Saldo='$precio' and descripcion='$descripcion' and No_Comprovante='$codigo' and Detalles='$nSolicitud'  and No_Comprovante='$codigo'");
 
 if (mysqli_num_rows($verificar)>0) {
 
-      $sql2="UPDATE historial SET Salidas='$cantidad_despachada' WHERE Concepto='Vale Consulta Externa' and idusuario='$idusuario' and Detalles='$numero_vale' and No_Comprovante='$codigo'";
+      $sql2="UPDATE historial SET Salidas='$cantidad_despachada' WHERE Concepto='Vale Consulta Externa' and idusuario='$idusuario' and Entradas='$stock' AND Saldo='$precio' and descripcion='$descripcion' and No_Comprovante='$codigo' and Detalles='$nSolicitud'  and No_Comprovante='$codigo'";
       $query3 = mysqli_query($conn, $sql2);
 
 }else{

@@ -500,15 +500,23 @@ while ($productos = mysqli_fetch_array($result)){
             <div class="row">
               <div class=" col-sm-4" style="position: initial">
                 <label id="inp1">Departamento que solicita</b></label>   
-               <div id="div1" > 
+               <div class="div d" > 
                 
                    <?php  
    $sql = "SELECT * FROM selects_departamento";
     $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){ ?>  
-                             <input required id="<?php echo $productos['id'] ?>" type="radio" name="depto" value="<?php echo $productos['departamento'] ?>"> <label style="width: 100%;" id="label1" for="<?php echo $productos['id'] ?>" > <?php echo $productos['departamento'] ?></label><br>
+                             <input class="p2" required id="<?php echo $productos['id'] ?>" type="radio" name="depto" value="<?php echo $productos['departamento'] ?>"> <label style="width: 100%;" id="label1" for="<?php echo $productos['id'] ?>" > <?php echo $productos['departamento'] ?></label><br>
  <?php }?>
                          </div>
+    <p style="float: right;" class="p">Mostrar todos
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+                        </svg></p></p>
+    <p style="float: right;" class="p1">Ocultar
+        <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
+                        </svg></p></p>
                   </div>
             <div class="col-md-4" style="position: initial">
                 <label id="inp1">O. de T. N°</b></label>   
@@ -557,6 +565,10 @@ while ($productos = mysqli_fetch_array($result)){
 </section>    
 
 <script>
+        $('.p1').hide();
+    $('.p').click(function(){$(".d").removeClass("div");$('.p').hide();$('.p1').show();});   
+    $('.p1').click(function(){$(".d").addClass("div");$('.p1').hide();$('.p').show();});
+
        var table = $('#tblElecProducts').DataTable( {
               responsive: true,
             autoWidth:false,      

@@ -14,8 +14,8 @@
     <style>
 table tr td {padding: 1%}
 .table {width: 100%;border-collapse: collapse;margin: 0;table-layout: fixed;}
-.table tbody tr {background-color: #f8f8f8;border: 1px solid #ddd;}
-.table th, .table td {font-size: 10px;text-align: center;}
+.table tbody tr {background-color: #f8f8f8;}
+.table th, .table td {font-size: 10px;text-align: center;padding: 8px}
 .table thead th{ background-color: #46466b;color: white;text-align: center;font-size: 14px;}
 
 
@@ -91,7 +91,7 @@ $final9 = "0.00";
             <th title="Cantidad (Stock)" style="width: 20%;">Cant.</th>
             <th title="Costo Unitario" style="width: 20%;">Precio</th>
             <th title="Fecha de registro" style="width: 30%;">Fecha</th>
-            <th title="Total"style="width: 20%;"><p >Total</p></th>
+            <th title="Total"style="width: 20%;">Total</th>
         </tr>
     </thead> 
 

@@ -278,8 +278,6 @@ while ($productos = mysqli_fetch_array($result1)){
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
 
        <input type="hidden" name="cod" value="<?php echo $codigo ?>">
-            <input type="hidden" name="tot" value="<?php echo $total1 ?>">
-            <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
    <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
                 <button type="submit" class="btn btn-outline-primary" name="DT" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">

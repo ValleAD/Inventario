@@ -205,22 +205,7 @@ while ($productos = mysqli_fetch_array($result1)){
                             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
 
             <form style="" method="POST" action="../../Plugin/Imprimir/Bodega/bodega.php" target="_blank">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['estado']?>" name="estado">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
-
-        <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
-            <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
-            <input type="hidden" name="um[]" value="<?php echo $um ?>">
-            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
-            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
-            <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
-            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
-            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
-
-
 
 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -230,21 +215,7 @@ while ($productos = mysqli_fetch_array($result1)){
                 </button>
             </form>
 <form method="POST"  action="../../Plugin/PDF/Bodega/pdf_bodega.php" target="_blank" class="mx-1">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['estado']?>" name="estado">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
-        <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
-            <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
-            <input type="hidden" name="um[]" value="<?php echo $um ?>">
-            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
-            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
-            <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
-            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
-            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
-
-
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega1">
 
 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -254,20 +225,8 @@ while ($productos = mysqli_fetch_array($result1)){
                 </button>
             </form>
         <form style="" method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php" >
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['usuario']?>" name="usuario">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['estado']?>" name="estado">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro']))?>" name="fech">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega1">
 
-       <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
-            <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
-            <input type="hidden" name="um[]" value="<?php echo $um ?>">
-            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
-            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
-            <input type="hidden" name="cost[]" value="$<?php echo $precio2 ?>">
-            <input type="hidden" name="tot[]" value="$<?php echo $total1 ?>">
-            <input type="hidden" name="tot_f" value="$<?php echo $final1 ?>" >
  
                 <button type="submit" class="btn btn-outline-primary" name="DT" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">

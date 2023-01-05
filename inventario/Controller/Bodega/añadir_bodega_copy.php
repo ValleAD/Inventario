@@ -60,16 +60,16 @@ for($i = 0; $i < count($_POST['cod_bodega']); $i++)
   $update="UPDATE detalle_bodega SET cantidad_despachada ='$cantidad_despachada' WHERE codigodetallebodega ='$cod_bodega'";
   $query_update = mysqli_query($conn, $update);
 
-  $verificar =mysqli_query($conn, "SELECT * FROM historial WHERE Concepto='Solicitud de Trabajo' and idusuario='$idusuario' and ID='$cod1' and No_Comprovante='$codigo'");
+  $verificar =mysqli_query($conn, "SELECT * FROM historial WHERE Concepto='Solicitud de Trabajo' and idusuario='$idusuario' and Entradas='$stock' AND Saldo='$precio' and descripcion='$descripcion' and No_Comprovante='$codigo' and Detalles='$nSolicitud'");
 
 if (mysqli_num_rows($verificar)>0) {
 
-      $sql2="UPDATE historial SET Salidas='$cantidad_despachada' WHERE Concepto='Solicitud de Trabajo' and idusuario='$idusuario' and ID='$cod1' and No_Comprovante='$codigo'";
+      $sql2="UPDATE historial SET Salidas='$cantidad_despachada' WHERE Concepto='Solicitud de Trabajo' and idusuario='$idusuario' and Entradas='$stock' AND Saldo='$precio' and descripcion='$descripcion' and No_Comprovante='$codigo' and Detalles='$nSolicitud'";
       $query3 = mysqli_query($conn, $sql2);
 
 }else{
 
-     $sql4="INSERT INTO historial(ID,descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Salidas,Saldo,idusuario) VALUES('$cod1','$descripcion','Solicitud de Trabajo','$unidadmedida','$codigo','$stock','$cantidad_despachada','$precio','$idusuario')";
+     $sql4="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Salidas,Saldo,idusuario) VALUES('$descripcion','Solicitud de Trabajo','$unidadmedida','$codigo','$stock','$cantidad_despachada','$precio','$idusuario')";
           $query4 = mysqli_query($conn, $sql4);
       
 }

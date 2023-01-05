@@ -39,11 +39,11 @@ $result = mysqli_query($conn, $sql);
        $sql="UPDATE  detalle_almacen SET  cantidad_despachada='$cantidad_despachada' WHERE codigoalmacen='$codigo_producto'" ;
       $query = mysqli_query($conn, $sql);
 
-  $verificar =mysqli_query($conn, "SELECT * FROM historial WHERE Concepto='Entrada Por Almacen' and idusuario='$idusuario' and ID='$codigo_producto' and No_Comprovante='$codigo'");
+  $verificar =mysqli_query($conn, "SELECT * FROM historial WHERE Concepto='Entrada Por Almacen' and idusuario='$idusuario' and Entradas='$stock' AND Saldo='$precio' and descripcion='$descripcion' and No_Comprovante='$codigo' and Detalles='$nSolicitud' and ID='$codigo_producto' and No_Comprovante='$codigo'");
 
 if (mysqli_num_rows($verificar)>0) {
 
-      $sql2="UPDATE historial SET Salidas='$cantidad_despachada' WHERE Concepto='Entrada Por Almacen' and idusuario='$idusuario' and No_Comprovante='$codigo' and Detalles='$nSolicitud'";
+      $sql2="UPDATE historial SET Salidas='$cantidad_despachada' WHERE Concepto='Entrada Por Almacen' and idusuario='$idusuario' and Entradas='$stock' AND Saldo='$precio' and descripcion='$descripcion' and No_Comprovante='$codigo' and Detalles='$nSolicitud' and No_Comprovante='$codigo' and Detalles='$nSolicitud'";
       $query3 = mysqli_query($conn, $sql2);
 
 }else{

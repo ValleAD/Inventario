@@ -73,14 +73,14 @@ include ('../../..//Model/conexion.php'); ?>
     }
 </style>
  <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-        <td data-label="Código" style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $cod ?></td>
-        <td data-label="Catalogo" style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $catal ?></td>
-        <td data-label="Descripción" style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $des ?></td>
-        <td data-label="Unidad De Medida" style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $u_m ?></td>
-        <td data-label="Cantidad" style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $stock ?></td>
-        <td data-label="Precio" style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $precio1 ?></td>
-        <td data-label="Fecha" style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $fech ?></td>
-        <td data-label="Categoría" style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $cat ?></td>
+        <td data-label="Código" ><?php echo $cod ?></td>
+        <td data-label="Catalogo" ><?php echo $catal ?></td>
+        <td data-label="Descripción" ><?php echo $des ?></td>
+        <td data-label="Unidad De Medida" ><?php echo $u_m ?></td>
+        <td data-label="Cantidad" ><?php echo $stock ?></td>
+        <td data-label="Precio" ><?php echo $precio1 ?></td>
+        <td data-label="Fecha" ><?php echo $fech ?></td>
+        <td data-label="Categoría" ><?php echo $cat ?></td>
         <?php } ?>
     </tr>
     </tbody>
@@ -153,12 +153,12 @@ $result = mysqli_query($conn, $sql);
         $Saldo= $productos['precio'];?>
 
         <tr>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Fecha"><?php echo $fecha ?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Concepto">Inventario Físico</td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="No. Comprovante"><?php echo $Comprovante ?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Entradas"><?php echo $productos['SUM(stock)'] ?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Salidas">0.00</td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Saldo"><?php echo $Saldo ?></td>
+            <td  data-label="Fecha"><?php echo $fecha ?></td>
+            <td  data-label="Concepto">Inventario Físico</td>
+            <td  data-label="No. Comprovante"><?php echo $Comprovante ?></td>
+            <td  data-label="Entradas"><?php echo $productos['SUM(stock)'] ?></td>
+            <td  data-label="Salidas">0.00</td>
+            <td  data-label="Saldo"><?php echo $Saldo ?></td>
         </tr> 
     <?php } ?>
     <?php $sql = "SELECT Concepto,No_Comprovante,h.descripcion, h.fecha_registro,h.unidad_medida, SUM(Entradas), SUM(Salidas),Saldo, p.precio FROM historial h JOIN tb_productos p ON h.No_Comprovante= p.codProductos WHERE  No_Comprovante = '$Busqueda' GROUP BY Concepto";
@@ -173,12 +173,12 @@ $result = mysqli_query($conn, $sql);
         $Saldo=$productos['Saldo'];
 ?>
         <tr>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Fecha"><?php echo $fecha ?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Concepto"><?php echo $Concepto ?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="No. Comprovante"><?php echo $Comprovante ?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Entradas"><?php echo $Entradas ?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Salidas"><?php echo $Salida ?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Saldo"><?php echo $Saldo ?></td>
+            <td  data-label="Fecha"><?php echo $fecha ?></td>
+            <td  data-label="Concepto"><?php echo $Concepto ?></td>
+            <td  data-label="No. Comprovante"><?php echo $Comprovante ?></td>
+            <td  data-label="Entradas"><?php echo $Entradas ?></td>
+            <td  data-label="Salidas"><?php echo $Salida ?></td>
+            <td  data-label="Saldo"><?php echo $Saldo ?></td>
         </tr>        
 <?php } ?>
            </tbody>

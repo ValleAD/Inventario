@@ -233,10 +233,7 @@ while ($productos = mysqli_fetch_array($result)){
             <form method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php">
 
                 
-                <input type="hidden" readonly class="form-control" value="<?php echo $productos1['codAlmacen']?>" name="num_sol">
-                
-                       <input type="hidden" name="cod" value="<?php echo $codigo ?>">
-           
+                <input type="hidden" readonly class="form-control" value="<?php echo $productos1['codAlmacen']?>" name="almacen1">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="dt_circulante">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>

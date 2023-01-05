@@ -27,13 +27,25 @@ include ('../../../Model/conexion.php');
      
  </head>
  <body>
-<img src="../../../img/hospital.png" style="width:20%">
+    <section style="width: 100%;float: right;margin-bottom: 1%;">
+<img src="../../../img/hospital.png" style="width:20%;float: left;">
     <img src="../../../img/log_1.png" style="width:20%; float:right">
+            <h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD HOSPITAL NACIONAL SANTA TERESA</h3>
+<h4 align="center" style="margin-top: 2%;">UNIDAD DE ADQUISICIONES Y CONTRATACIONES INSTITUCIONAL</h4>
+<?php if (isset($_POST['compra'])) {?>
+    <h4 align="center" style="margin-top: 2%;">INGRESOS DE COMPRAS</h4>
+<?php } if (isset($_POST['almacen'])) {?>
+    <h4 align="center" style="margin-top: 2%;">INGRESOS DE ALMACEN</h4>
+<?php } if (isset($_POST['circulante'])) {?>
+    <h4 align="center" style="margin-top: 2%;">INGRESOS DE CIRCULANTE</h4>
+<?php } ?>
+
+</section>
      <style>
 
 .table {width: 100%;border-collapse: collapse;margin: 0;table-layout: fixed;}
 .table tbody tr {background-color: #f8f8f8;border: 1px solid #ddd;}
-.table th, .table td {font-size: 12px;padding: 8px;text-align: center;}
+.table th, .table td {font-size: 12px;padding: 0.75rem;vertical-align: middle;text-align: center;}
 .table thead th{ background-color: #46466b;color: white;text-align: center;font-size: 14px;}
 
 
@@ -50,6 +62,8 @@ p{font-size: 12px}
 
 }
 h6{margin: 0;font-size: 14px}
+h3, h4, h5{font-size: 11px;text-align: center;}
+
 #h{
     float: left;
 margin-right: 1%;
@@ -63,6 +77,7 @@ margin-right: 1%;
     width: 20%;
 }
     </style>
+
     <?php
 $total = "0.00";
 $final = "0.00";
@@ -77,26 +92,20 @@ $final8 = "0.00";
 $final9 = "0.00";
 
      if (isset($_POST['compra'])) {?>
-        <h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD</h3>
-<h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
-<h4 align="center" style="margin-top: 2%;">UNIDAD DE ADQUISICIONES Y CONTRATACIONES INSTITUCIONAL</h4>
-<h4 align="center" style="margin-top: 2%;">INGRESOS DE COMPRAS</h4>
-
-  <section>
 
           <div id="h">
             <table class="table"  style=" width: 100%;margin: 0;">
 
     <thead>
         <tr id="tr">
-         <th style="width: 10%;">Departa<br>mento</th>
-         <th style="width: 10%;">Encargado</th>
-         <th style="width: 10%;">Codigo</th>
-         <th style="width: 30%">Descripción Completa</th>
-         <th style="width: 10%;">U/M</th>
-         <th style="width: 10%;">Cantidad</th>
-         <th style="width: 10%;">Costo Unitario</th> 
-         <th style="width: 10%;">Fecha Registro</th>
+         <th style="width: 20%;">Departa <br> mento</th>
+         <th style="width: 20%;">Encar <br>gado</th>
+         <th style="width: 20%;">Codigo</th>
+         <th style="width: 40%;">Descripción Completa</th>
+         <th style="width: 20%;">U/M</th>
+         <th style="width: 20%;">Canti <br> dad</th>
+         <th style="width: 20%;">Costo <br> unitario</th>
+         <th style="width: 30%;">Fecha </th>
          
        </tr>
 
@@ -171,6 +180,7 @@ while ($productos = mysqli_fetch_array($result)){
              <div id="t">
             <p align="right"><b style="float: left;">Cantidad Solicitada: </b><?php echo $final3 ?></p>
             <p align="right"><b style="float: left;">Costo Unitario: </b><?php echo $final9 ?></p>
+            <p style="border-bottom: 1px solid #ccc;"></p>
             <p align="right"><b style="float: left;">SubTotal</b><?php echo $final1?></p>
     </div>
           <br>          
@@ -204,7 +214,7 @@ while ($productos = mysqli_fetch_array($result)){
                             ?>
                <p align="right"><b style="float: left;"><?php echo $mes ?>: </b><?php echo $stock ?></p>
    <?php  } ?>
-         <hr>
+            <p style="border-bottom: 1px solid #ccc;"></p>
     <p align="right"><b style="float: left;">Total </b><?php echo $final7 ?></p>
 </div>
  <br>
@@ -226,7 +236,7 @@ while ($productos = mysqli_fetch_array($result)){
         $final5   =    number_format($final4, 2, ".",",");?>
         <p align="right"><b style="float: left;"><?php echo $año ?>: </b><?php echo $stock ?></p>
     <?php } ?>
-               <hr>
+            <p style="border-bottom: 1px solid #ccc;"></p>
                <p align="right"><b style="float: left;">Total </b><?php echo $final5 ?></p>
 </div>
 </div>
@@ -234,23 +244,20 @@ while ($productos = mysqli_fetch_array($result)){
         
     <?php } if (isset($_POST['almacen'])) {?>
 
-        <h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD</h3>
-<h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
-        <h4 align="center" style="margin-top: 2%;">INGRESOS DE ALMACEN</h4>
    <div id="h">
     <table class="table"  style=" width: 100%;margin: 0;">
 
     <thead>
         <tr id="tr">
 
-         <th >Codigo</th>
-         <th >Departa <br> mento</th>
-         <th >Encar <br>gado</th>
-         <th style="width: 25%;">Descripción Completa</th>
-         <th >U/M</th>
-         <th >Canti <br> dad</th>
-         <th >Costo <br> unitario</th>
-         <th >Fecha </th>
+         <th style="width: 20%;">Codigo</th>
+         <th style="width: 20%;">Departa <br> mento</th>
+         <th style="width: 20%;">Encar <br>gado</th>
+         <th style="width: 40%;">Descripción Completa</th>
+         <th style="width: 20%;">U/M</th>
+         <th style="width: 20%;">Canti <br> dad</th>
+         <th style="width: 20%;">Costo <br> unitario</th>
+         <th style="width: 30%;">Fecha </th>
          
        </tr>
 
@@ -320,6 +327,7 @@ while ($productos = mysqli_fetch_array($result)){
              <div id="t">
             <p align="right"><b style="float: left;">Cantidad Solicitada: </b><?php echo $final3 ?></p>
             <p align="right"><b style="float: left;">Costo Unitario: </b><?php echo $final9 ?></p>
+            <p style="border-bottom: 1px solid #ccc;"></p>
             <p align="right"><b style="float: left;">SubTotal</b><?php echo $final1?></p>
     </div>
           <br>          
@@ -353,7 +361,7 @@ while ($productos = mysqli_fetch_array($result)){
                             ?>
                <p align="right"><b style="float: left;"><?php echo $mes ?>: </b><?php echo $stock ?></p>
    <?php  } ?>
-         <hr>
+            <p style="border-bottom: 1px solid #ccc;"></p>
     <p align="right"><b style="float: left;">Total </b><?php echo $final7 ?></p>
 
 </div>
@@ -376,7 +384,7 @@ while ($productos = mysqli_fetch_array($result)){
         $final5   =    number_format($final4, 2, ".",",");?>
         <p align="right"><b style="float: left;"><?php echo $año ?>: </b><?php echo $stock ?></p>
     <?php } ?>
-               <hr>
+            <p style="border-bottom: 1px solid #ccc;"></p>
                <p align="right"><b style="float: left;">Total </b><?php echo $final5 ?></p>
 </div>
 </div>
@@ -384,22 +392,17 @@ while ($productos = mysqli_fetch_array($result)){
 
 <?php } if (isset($_POST['circulante'])) {?>
 
-<h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD</h3>
-<h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
-<h4 align="center" style="margin-top: 2%;">INGRESOS DE CIRCULANTE</h4>
-
     <div id="h">
-        <table class="table"  style=" width: 100%;margin: 0;">
-
+        <table class="table"  style=" width: 100%;">
     <thead>
         <tr id="tr">
    
-                <th>Código</th>
-                <th style="width: 30%">Descripción Completa</th>
-                <th>U/M</th>
-                <th>Cantidad Solicitada</th>
-                <th>Costo Unitario</th>
-                <th>Fecha</th>
+                <th style="width: 20%;">Código</th>
+                <th style="width: 60%">Descripción Completa</th>
+                <th style="width: 20%;">U/M</th>
+                <th style="width: 20%;">Cantidad Solicitada</th>
+                <th style="width: 20%;">Costo Unitario</th>
+                <th style="width: 25%;">Fecha</th>
         </tr>
     </thead>
     <tbody>
@@ -463,6 +466,7 @@ while ($productos = mysqli_fetch_array($result)){
              <div id="t">
             <p align="right"><b style="float: left;">Cantidad Solicitada: </b><?php echo $final3 ?></p>
             <p align="right"><b style="float: left;">Costo Unitario: </b><?php echo $final9 ?></p>
+            <p style="border-bottom: 1px solid #ccc;"></p>
             <p align="right"><b style="float: left;">SubTotal</b><?php echo $final1?></p>
     </div>
           <br>          
@@ -496,7 +500,7 @@ while ($productos = mysqli_fetch_array($result)){
                             ?>
                <p align="right"><b style="float: left;"><?php echo $mes ?>: </b><?php echo $stock ?></p>
    <?php  } ?>
-         <hr>
+            <p style="border-bottom: 1px solid #ccc;"></p>
     <p align="right"><b style="float: left;">Total </b><?php echo $final7 ?></p>
 </div>
  <br>
@@ -518,15 +522,12 @@ while ($productos = mysqli_fetch_array($result)){
         $final5   =    number_format($final4, 2, ".",",");?>
         <p align="right"><b style="float: left;"><?php echo $año ?>: </b><?php echo $stock ?></p>
     <?php } ?>
-               <hr>
+            <p style="border-bottom: 1px solid #ccc;"></p>
                <p align="right"><b style="float: left;">Total </b><?php echo $final5 ?></p>
 </div>
 </div>
 </div>
-</section>
 <?php }  ?>
-
-
 
  </body>
  </html>

@@ -7,7 +7,8 @@ include '../../../Model/conexion.php'; ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PDF Vale</title>
        <link rel="icon" type="image/png" sizes="32x32"  href="../../../img/log.png">
-    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
 <body style="font-family: sans-serif;">
     <img src="../../../img/hospital.png" style="width:20%;float: left;">
@@ -29,6 +30,7 @@ include '../../../Model/conexion.php'; ?>
 <h3 ><b>HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</b></h3>
 <h4 ><b>DEPARTAMENTO DE MANTENIMIENTO</b></h4>
 <h5 ><b>SOLICITUD DE MATERIALES DE VALE</b></h5>
+<br><br>
  <?php if (isset($_POST['Consultar'])) {
     $columna=$_POST['columna'];
     $tipo=$_POST['tipo'];
@@ -46,7 +48,7 @@ include '../../../Model/conexion.php'; ?>
         <tr>
 
             <th  style="height: 3%;font-size: 14px;">Codigo</th>
-            <th  style="height: 3%;font-size: 14px;">Departamento Solicitante </th>
+            <th  style="height: 3%;font-size: 14px;">Departamento  </th>
             <th  style="height: 3%;font-size: 14px;">Encargado </th>
             <th  style="height: 3%;font-size: 14px;">Fecha</th>
         </tr>
@@ -104,7 +106,7 @@ include '../../../Model/conexion.php'; ?>
         <tr>
 
            <th  style="height: 3%;font-size: 14px;">Codigo</th>
-            <th  style="height: 3%;font-size: 14px;">Departamento Solicitante </th>
+            <th  style="height: 3%;font-size: 14px;">Departamento  </th>
             <th  style="height: 3%;font-size: 14px;">Encargado </th>
             <th  style="height: 3%;font-size: 14px;">Fecha</th>
         </tr>
@@ -153,7 +155,7 @@ $idusuario=$_POST['idusuario'];
         <thead style="background-color: #46466b;color: white;">
         <tr>
             <th  style="height: 3%;font-size: 14px;">Codigo</th>
-            <th  style="height: 3%;font-size: 14px;">Departamento Solicitante </th>
+            <th  style="height: 3%;font-size: 14px;">Departamento  </th>
             <th  style="height: 3%;font-size: 14px;">Encargado </th>
             <th  style="height: 3%;font-size: 14px;">Fecha</th>
         </tr>
@@ -200,7 +202,7 @@ $idusuario=$_POST['idusuario'];
         <thead style="background-color: #46466b;color: white;">
         <tr>
            <th  style="height: 3%;font-size: 14px;">Codigo</th>
-            <th  style="height: 3%;font-size: 14px;">Departamento Solicitante </th>
+            <th  style="height: 3%;font-size: 14px;">Departamento  </th>
             <th  style="height: 3%;font-size: 14px;">Encargado </th>
             <th  style="height: 3%;font-size: 14px;">Fecha</th>
         </tr>
@@ -259,7 +261,7 @@ use Dompdf\Dompdf;
 use Dompdf\Options;
 
 // instantiate and use the dompdf class
-$dompdf = new Dompdf();
+$dompdf = new  Dompdf(['isRemoteEnabled' =>  true]);
 $options = $dompdf->getOptions();
 $options->setIsHtml5ParserEnabled(true);
 $dompdf->setOptions($options);

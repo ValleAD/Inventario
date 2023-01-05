@@ -41,16 +41,11 @@ $result = mysqli_query($conn, $sql);
   
       $insert = "INSERT INTO detalle_bodega (codigo,descripcion,unidad_medida,stock,precio,odt_bodega) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$orden_trabajo')";
       $query = mysqli_query($conn, $insert);
-$sql = "SELECT cod FROM tb_productos WHERE cod='$cod'";
-    $result1 = mysqli_query($conn, $sql);
-        $id=0;
-    while ($productos = mysqli_fetch_array($result1)){
-        $id=$productos['cod']+1;
 
- $sql1="INSERT INTO historial(ID,descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Detalles,idusuario) VALUES('$id','$descripcion','Solicitud de Trabajo','$unidadmedida','$codigo','$stock','$precio','$orden_trabajo','$idusuario','$orden_trabajo')";
+ $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Detalles,idusuario) VALUES('$descripcion','Solicitud de Trabajo','$unidadmedida','$codigo','$stock','$precio','$orden_trabajo','$idusuario')";
 
        $query1 = mysqli_query($conn, $sql1);
-   }
+
       if ($result || $result1 || $query || $query1) {
        echo "<script>
     Swal.fire({
@@ -129,17 +124,10 @@ exit();
       $insert = "INSERT INTO detalle_bodega (codigo,descripcion,unidad_medida,stock,precio,odt_bodega) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$orden_trabajo')";
       $query = mysqli_query($conn, $insert);
 
-$sql = "SELECT cod FROM tb_productos WHERE cod='$cod'";
-    $result1 = mysqli_query($conn, $sql);
-        $id=0;
-    while ($productos = mysqli_fetch_array($result1)){
-        $id=$productos['cod']+1;
- $sql1="INSERT INTO historial(ID,descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Detalles,idusuario) VALUES('$id','$descripcion','Solicitud de Trabajo','$unidadmedida','$codigo','$stock','$precio','$orden_trabajo' ,'$idusuario')";
+ $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Detalles,idusuario) VALUES('$descripcion','Solicitud de Trabajo','$unidadmedida','$codigo','$stock','$precio','$orden_trabajo' ,'$idusuario')";
 
        $query1 = mysqli_query($conn, $sql1);
-   }
-
-       $query1 = mysqli_query($conn, $sql1);
+   
       if ($result || $query || $query1) {
        echo "<script>
     Swal.fire({

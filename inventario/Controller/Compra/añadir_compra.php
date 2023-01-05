@@ -86,13 +86,9 @@ $result = mysqli_query($conn, $insert);
       $insert = "INSERT INTO detalle_compra (codigo, catalogo, descripcion, unidad_medida, stock,cantidad_despachada, precio, solicitud_compra) VALUES ('$codigo_producto','$catalogo', '$Descripción', '$u_m', '$cantidad',0, '$cost', '$solicitud')";
       $query = mysqli_query($conn, $insert);
 
-$sql = "SELECT cod FROM tb_productos WHERE cod='$cod'";
-    $result1 = mysqli_query($conn, $sql);
-    while ($productos = mysqli_fetch_array($result1)){
-        $id=$productos['cod']+1;
 
- $sql1="INSERT INTO historial(ID,descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo) VALUES('$id','$Descripción','Solicitud compra','$u_m','$codigo_producto','$cantidad','$cost')";
-}
+ $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Detalles,idusuario) VALUES('$Descripción','Solicitud compra','$u_m','$codigo_producto','$cantidad','$cost','$nSolicitud','$idusuario')";
+
        $query1 = mysqli_query($conn, $sql1);
       if ($result || $result1 || $query || $query1) {
                  echo "<script>

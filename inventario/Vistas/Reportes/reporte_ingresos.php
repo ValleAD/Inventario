@@ -200,22 +200,22 @@ if ($tipo_usuario==2) {
         <div class="card-body">
             <?php if ($tipo_usuario==1) {?>
                     <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form  method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php">
+            <form  method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php" target="_blank">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
             </svg>
                  </button>
             </form>
-            <form  method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php" class="mx-1">
+            <form  method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php" class="mx-1" target="_blank">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
             </svg>
             </button>
             </form>
-            <form  method="POST" action="../../Plugin/Excel/Ingresos/Circulante/Excel.php" target="_blank">
-                <button type="submit" class="btn btn-outline-primary" name="circulante" target="_blank">
+            <form  method="POST" action="../../Plugin/Excel/Ingresos/Circulante/Excel.php" >
+                <button type="submit" class="btn btn-outline-primary" name="circulante" >
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                 </svg>
@@ -225,7 +225,7 @@ if ($tipo_usuario==2) {
 </div>
             <?php } if ($tipo_usuario==2) {?>
             <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form  method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php">
+            <form  method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php" target="_blank">
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -233,7 +233,7 @@ if ($tipo_usuario==2) {
                 </svg>
                 </button>
             </form>
-            <form  method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php" class="mx-1">
+            <form  method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php" class="mx-1" target="_blank">
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -241,9 +241,9 @@ if ($tipo_usuario==2) {
                 </svg>
                 </button>
             </form>
-                    <form id="form2" method="POST" action="../../Plugin/Excel/Ingresos/Circulante/Excel.php" target="_blank">
+                    <form id="form2" method="POST" action="../../Plugin/Excel/Ingresos/Circulante/Excel.php" >
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                <button type="submit" class="btn btn-outline-primary" name="circulante" target="_blank">
+                <button type="submit" class="btn btn-outline-primary" name="circulante" >
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                 </svg>
@@ -464,22 +464,28 @@ width: 100%;
 <div class="card-body">
     <?php if ($tipo_usuario==1) { ?>
         <div  style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form  method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php">
+            <form  method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php" target="_blank">
+            <input readonly class="form-control"  type="hidden" value="<?php echo $productos['codAlmacen'] ?>" name="num_sol">
+
                 <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
             </svg>
                 </button>
             </form>
-            <form  method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php" class="mx-1">
+            <form  method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php" class="mx-1" target="_blank">
+            <input readonly class="form-control"  type="hidden" value="<?php echo $productos['codAlmacen'] ?>" name="num_sol">
+
                 <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
             </svg>
                 </button>
             </form>
-            <form  method="POST" action="../../Plugin/Excel/Ingresos/Almacen/Excel.php" target="_blank">
-                <button type="submit" class="btn btn-outline-primary" name="almacen" target="_blank">
+            <form  method="POST" action="../../Plugin/Excel/Ingresos/Almacen/Excel.php" >
+            <input readonly class="form-control"  type="hidden" value="<?php echo $productos['codAlmacen'] ?>" name="num_sol">
+
+                <button type="submit" class="btn btn-outline-primary" name="almacen" >
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                 </svg>
@@ -489,25 +495,25 @@ width: 100%;
 </div>
 <?php } if ($tipo_usuario==2) { ?>
         <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form  method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php">
+            <form  method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php" target="_blank">
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen1">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
                 </button>
             </form>
-            <form  method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php" class="mx-1">
+            <form  method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php" class="mx-1" target="_blank">
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen1">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
                 </button>
             </form>
-                    <form id="form2" method="POST" action="../../Plugin/Excel/Ingresos/Almacen/Excel.php" target="_blank">
+                    <form id="form2" method="POST" action="../../Plugin/Excel/Ingresos/Almacen/Excel.php" >
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                <button type="submit" class="btn btn-outline-primary" name="almacen" target="_blank">
+                <button type="submit" class="btn btn-outline-primary" name="almacen1" >
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                 </svg>
@@ -746,7 +752,7 @@ while ($productos = mysqli_fetch_array($result)){
 <div class="card-body">
     <?php if ($tipo_usuario==1) { ?>
         <div  style="position: initial;"class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form  method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php">
+            <form  method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php" target="_blank">
 
                 <button  style="position: initial;"type="submit" class="btn btn-outline-primary" name="compra">
                     <svg class="bi" width="20" height="20" fill="currentColor">
@@ -754,7 +760,7 @@ while ($productos = mysqli_fetch_array($result)){
             </svg>
                 </button>
             </form>
-            <form  method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php" class="mx-1">
+            <form  method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php" class="mx-1" target="_blank">
 
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="compra">
                     <svg class="bi" width="20" height="20" fill="currentColor">
@@ -762,9 +768,9 @@ while ($productos = mysqli_fetch_array($result)){
             </svg>
                 </button>
             </form>
-            <form  method="POST" action="../../Plugin/Excel/Ingresos/Compra/Excel.php" target="_blank">
+            <form  method="POST" action="../../Plugin/Excel/Ingresos/Compra/Excel.php" >
 
-                <button type="submit" class="btn btn-outline-primary" name="compra" target="_blank">
+                <button type="submit" class="btn btn-outline-primary" name="compra" >
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                 </svg>
@@ -775,25 +781,25 @@ while ($productos = mysqli_fetch_array($result)){
 </div>
     <?php } if ($tipo_usuario==2) { ?>
                     <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-            <form  method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php">
+            <form  method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php" target="_blank">
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="compra">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="compra1">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
                 </button>
             </form>
-            <form  method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php" class="mx-1">
+            <form  method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php" class="mx-1" target="_blank">
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="compra">
+                <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="compra1">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
                 </button>
             </form>
-                    <form id="form2" method="POST" action="../../Plugin/Excel/Ingresos/Compra/Excel.php" target="_blank">
+                    <form id="form2" method="POST" action="../../Plugin/Excel/Ingresos/Compra/Excel.php" >
                     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                <button type="submit" class="btn btn-outline-primary" name="compra" target="_blank">
+                <button type="submit" class="btn btn-outline-primary" name="compra1" >
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                 </svg>
@@ -874,7 +880,7 @@ while ($productos = mysqli_fetch_array($result)){
         $stock=number_format($cantidad, 2,".",",");
                 $final4 += $cantidad;
         $final5   =    number_format($final4, 2, ".",",");?>
-        ?>
+        
         <p align="right"><b style="float: left;"><?php echo $año ?>: </b><?php echo $stock ?></p>
     <?php } ?>
 </div>

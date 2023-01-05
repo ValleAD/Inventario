@@ -87,7 +87,6 @@ $final6 = "0.00";
 $final7 = "0.00";
 $final8 = "0.00";
 $final9 = "0.00";
-$idusuario = $_SESSION['iduser'];
 
 if(isset($_POST['ingresos'])){
 
@@ -118,13 +117,13 @@ if(isset($_POST['ingresos'])){
             <thead>
               <tr id="tr">
                 <th style="width: 30%;">O. de T. No.</th>
-                <th style="width: 30%;">Codigo</th>
-                <th style="width: 30%;">Depar <br>tamento</th>
-                <th style="width: 30%;">Encar <br>gado</th>
-                <th style="width: 50%;">Descripción</th>
+                <th style="width: 30%;">Cod</th>
+                <th style="width: 30%;">Depar</th>
+                <th style="width: 30%;">Encar</th>
+                <th style="width: 50%;">Descri</th>
                 <th style="width: 30%;">U/M</th>
-                <th style="width: 30%;">Cantidad <br>Soli</th>
-                <th style="width: 30%;">Cantidad <br>Despa</th>
+                <th style="width: 30%;">C. Soli</th>
+                <th style="width: 30%;">Despa</th>
                 <th style="width: 30%;">Precio</th>
                 <th style="width: 30%;">Fecha</th>
 

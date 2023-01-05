@@ -31,7 +31,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
     $idusuario = $_POST['idusuario'];
         
 
-      $insert = "INSERT INTO tb_productos (codProductos, categoria, catalogo, descripcion, unidad_medida,  precio,dia,mes,año) VALUES ('$codigo_producto', '$categoria', '$catalogo', '$Descripción', '$u_m', '$cost','$dia','$mes','$año')";
+      $insert = "INSERT INTO tb_productos (codProductos, categoria, catalogo, descripcion, unidad_medida,precio,dia,mes,año) VALUES ('$codigo_producto', '$categoria', '$catalogo', '$Descripción', '$u_m', '$cost','$dia','$mes','$año')";
       $query = mysqli_query($conn, $insert);
 
  $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Saldo,Detalles,idusuario) VALUES('$Descripción','Inventario Físico','$u_m','$codigo_producto','$cost','0','$idusuario')";

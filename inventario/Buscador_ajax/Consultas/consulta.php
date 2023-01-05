@@ -66,8 +66,7 @@ if ($buscarAlumnos->num_rows > 0)
 
 ';
                 $n=0;
-	while($productos= $buscarAlumnos->fetch_assoc())
-	{
+	while($productos= $buscarAlumnos->fetch_assoc()){
                 $categoria=$productos['categoria'];
                 $des=$productos['descripcion'];
                 if ($productos['unidad_medida']=="") {

@@ -137,6 +137,7 @@ $result = mysqli_query($conn, $sql);
                 <textarea rows="1" class="form-control" type="text"  name="descripcion"><?php  echo $productos1['descripcion']; ?></textarea>
                 <label class="my-2">Cantidad Actual (Stock)</label>
                 <input class="form-control" type="number" step="0.01" name="stock" id="act" value="<?php echo $stock?>">
+                <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
                 
     </div>
 </div>

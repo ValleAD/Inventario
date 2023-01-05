@@ -7,12 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>PDF VALE</title>
       <link rel="icon" type="image/png" sizes="32x32"  href="../../../img/log.png">  
-  
+
 </head>
 <body style="font-family: sans-serif;">
 
-    <img src="../../../img/hospital.png" style="width:20%;float: left;">
-    <img src="../../../img/log_1.png" style="width:20%; float:right">
     <style>
 table tr td {padding: 1%;font-size: 11px}
 .table {width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed;}
@@ -60,10 +58,13 @@ h6{margin: 0;font-size: 14px}
     }else{
     $jus = $_POST['jus'];
       }
-?><section style="margin: 2%;">
+?>
+    <img src="../../../img/hospital.png" style="width:20%;float: left;">
+    <img src="../../../img/log_1.png" style="width:20%; float:right">
 <h3 ><b>HOSPITAL NACIONAL SANTA TERESA DE ZACATECOLUCA</b></h3>
 <h4 ><b>DEPARTAMENTO DE MANTENIMIENTO</b></h4>
 <h5 ><b>SOLICITUD DE MATERIALES DE VALE</b></h5>
+<section style="margin: 2%;">
 
      <style>
 

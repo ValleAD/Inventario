@@ -248,7 +248,7 @@ while ($productos = mysqli_fetch_array($result)){
                 </button>
             </form>
             <form method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php" >
- <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['nSolicitud']?>" name="sol_compra">
+ <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['nSolicitud']?>" name="compra">
 
    <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
                 <button type="submit" class="btn btn-outline-primary" name="dt_compra" target="_blank">

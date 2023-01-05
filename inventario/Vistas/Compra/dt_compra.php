@@ -277,24 +277,7 @@ while ($productos = mysqli_fetch_array($result)){
                 </button>
             </form>
             <form method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php" >
- <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['nSolicitud']?>" name="sol_compra">
-          <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['dependencia']?>" name="dependencia">
-            <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['plazo']?>" name="plazo">
-            <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['unidad_tecnica']?>" name="unidad">
-            <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['descripcion_solicitud']?>" name="suministro">
-            <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['usuario']?>" name="usuario">
-                <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['estado']?>" name="estado">
-                <input readonly class="form-control"  type="hidden" value="<?php echo date("d-m-Y",strtotime($productos1['fecha_registro'])) ?>" name="fech">
-
-       <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
-            <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
-            <input type="hidden" name="um[]" value="<?php echo $um ?>">
-            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
-            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
-            <input type="hidden" name="cost[]" value="<?php echo $precio2 ?>">
-            <input type="hidden" name="tot[]" value="<?php echo $total1 ?>">
-            <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
-   <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
+ <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['nSolicitud']?>" name="compra1">
                 <button type="submit" class="btn btn-outline-primary" name="dt_compra" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
