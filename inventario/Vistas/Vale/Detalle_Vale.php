@@ -247,8 +247,6 @@ while ($productos = mysqli_fetch_array($result1)){
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
 
         <input type="hidden" name="cod" value="<?php echo $codigo ?>">
-            <input type="hidden" name="tot" value="<?php echo $total1 ?>">
-            <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
 
   <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
 
@@ -262,8 +260,6 @@ while ($productos = mysqli_fetch_array($result1)){
 <form method="POST" action="../../Plugin/PDF/Vale/pdf_vale.php" target="_blank" class="mx-1">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
         <input type="hidden" name="cod" value="<?php echo $codigo ?>">
-            <input type="hidden" name="tot" value="<?php echo $total1 ?>">
-            <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
 
   <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
 

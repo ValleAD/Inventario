@@ -130,6 +130,12 @@ $spreadsheet->getActiveSheet()
     ->setCellValue('C7',"Encargado")
     ->setCellValue('D7',"Fecha");
 
+$spreadsheet->getActiveSheet()->getStyle('A:S')->getAlignment()->setWrapText(true);
+$spreadsheet->getActiveSheet()->getStyle('A:S')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+
+$spreadsheet->getActiveSheet()->getStyle('A:S')->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getHeaderFooter()
+    ->setOddFooter( '&RPágina &P al &N');
 //set font style and background color
 $spreadsheet->getActiveSheet()->getStyle('A7:D7')->applyFromArray($tableHead);
 $spreadsheet->getActiveSheet()->getPageSetup()
@@ -183,80 +189,6 @@ $result = mysqli_query($conn, $sql);
         $sheet->setCellValue('C' .$fila, $productos['usuario']." "."(".$u.")");
         $sheet->setCellValue('D' .$fila, $productos['fecha_registro']);
              if( $fila % 2 == 0 ){
-        //even row
-        $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':D'.$fila)->applyFromArray($evenRow);
-    }else{
-        //odd row
-        $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':D'.$fila)->applyFromArray($oddRow);
-    }
-    //increment row
-    $fila++;
-        }
-    }
-    if (isset($_POST['Consultar'])) {$tipo=$_POST['tipo'];$columna=$_POST['columna'];
-
-if ($tipo=="asc") {
-    $tipo1= "Ordenado: Ascendente";
-}
-if ($tipo=="desc") {
-    $tipo1= "Ordenado: Descendente";
-}
-$sheet->setCellValue('E1',$tipo1);
-    $sql = "SELECT * FROM tb_bodega Order by $columna $tipo";
-$result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        
-           if ($productos['idusuario']==1) {
-        $u='Administrador';
-        }
-        else {
-            $u='Cliente';
-        }
-        if ($productos['idusuario']==0) {
-            $u='Invitado';
-        }
-        $sheet->setCellValue('A' .$fila, $productos['codBodega']);
-        $sheet->setCellValue('B' .$fila, $productos['departamento']);
-        $sheet->setCellValue('C' .$fila, $productos['usuario']." "."(".$u.")");
-        $sheet->setCellValue('D' .$fila, $productos['fecha_registro']);
-              if( $fila % 2 == 0 ){
-        //even row
-        $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':D'.$fila)->applyFromArray($evenRow);
-    }else{
-        //odd row
-        $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':D'.$fila)->applyFromArray($oddRow);
-    }
-    //increment row
-    $fila++;
-        }
-    }
-    if (isset($_POST['Consultar1'])) {$idusuario=$_POST['idusuario'];$tipo=$_POST['tipo'];
-    if ($tipo=="asc") {
-    $tipo1= "Ordenado: Ascendente";
-}
-if ($tipo=="desc") {
-    $tipo1= "Ordenado: Descendente";
-}
-$sheet->setCellValue('E1',$tipo1);
-        $sql = "SELECT * FROM tb_bodega WHERE idusuario='$idusuario' Order by $columna $tipo";
-$result = mysqli_query($conn, $sql);
-    while ($productos = mysqli_fetch_array($result)){
-                   if ($productos['idusuario']==1) {
-        $u='Administrador';
-        }
-        else {
-            $u='Cliente';
-        }
-        if ($productos['idusuario']==0) {
-            $u='Invitado';
-        }
-        $stock=number_format($precio, 2,".",",");
-        $sheet->setCellValue('A' .$fila, $productos['codBodega']);
-        $sheet->setCellValue('B' .$fila, $productos['departamento']);
-        $sheet->setCellValue('C' .$fila, $productos['usuario']." "."(".$u.")");
-        $sheet->setCellValue('D' .$fila, $productos['fecha_registro']);
-        if( $fila % 2 == 0 ){
         //even row
         $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':D'.$fila)->applyFromArray($evenRow);
     }else{

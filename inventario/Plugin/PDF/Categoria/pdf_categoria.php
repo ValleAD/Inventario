@@ -15,31 +15,33 @@ include ('../../../Model/conexion.php');
 
 .table {width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed;}
 .table tr {background-color: #f8f8f8;border: 1px solid #ddd;color: black;}
-.table th, .table td {font-size: 16px;padding: 8px;text-align: center;}
+.table th, .table td {font-size: 11px;padding: 8px;text-align: center;}
 .table thead th{ background-color: #46466b;color: white;text-align: center;font-size: 14px}
 
 
 .table tbody tr:nth-child(even) {background-color: #00BDFF; height: 5%}
 .table tbody tr:nth-child(odd) {background-color: #00EAFF; height: 5%}
-    
+       h3, h4, h5{
+    font-size: 10px;
+    text-align: center;
+    }
   </style>
-<img src="../../../img/hospital.png" style="width:20%">
+<img src="../../../img/hospital.png" style="width:20%;float: left;">
     <img src="../../../img/log_1.png" style="width:20%; float:right">
-<h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD</h3>
-<h3 align="center" style="margin-top: 2%;">HOSPITAL NACIONAL SANTA TERESA</h3>
+<h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD HOSPITAL NACIONAL SANTA TERESA</h3>
 <h4 align="center" style="margin-top: 2%;">DEPARTAMENTO DE MANTENIMIENTO</h4>
 <h5 align="center" style="margin-top: 2%;">FILTRO DE CATEGORIAS</h5>
-<table class="table" style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
-        <thead style="background-color: #46466b;color: white;">    
-        <tr style="border: 1px solid #ddd;color: white;">
-            <th>Categoria</th>
+<table class="table" >
+        <thead >    
+        <tr >
+            <th style="width: 15%;">Categoria</th>
             <th>Código</th>
             <th>Catálogo</th>
             <th style="width: 30%;">Descripción Completa</th>
             <th>U/M</th>
             <th>Cantidad</th>
             <th>Precio</th>
-            <th>Fecha</th> 
+            <th style="width: 15%;">Fecha</th> 
              <tr> <td align="center" id="td" colspan="7"><h4>No se encontraron resultados 😥</h4></td></tr>           
         </tr>
     </thead> 
@@ -73,16 +75,16 @@ $categoria2 =$_POST['categoria'];
         display: none;
     }
 </style>        
- <tr style="border: 1px solid #ccc;border-collapse: collapse;">
+ <tr>
 
-        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $cat ?></td>
-        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $cod ?></td>
-        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $catal ?></td>
-        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $des ?></td>
-        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $u_m ?></td>
-        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $stock ?></td>
-        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $precio1 ?></td>
-        <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;"><?php echo $fech ?></th>
+        <td><?php echo $cat ?></td>
+        <td><?php echo $cod ?></td>
+        <td><?php echo $catal ?></td>
+        <td><?php echo $des ?></td>
+        <td><?php echo $u_m ?></td>
+        <td><?php echo $stock ?></td>
+        <td><?php echo $precio1 ?></td>
+        <td><?php echo $fech ?></th>
         <?php } ?>
     </tr>
     </tbody>

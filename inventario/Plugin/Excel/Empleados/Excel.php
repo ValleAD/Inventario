@@ -64,21 +64,17 @@ $spreadsheet->getDefaultStyle()
 
 //heading
 $spreadsheet->getActiveSheet()
-    ->setCellValue('A1',"MINISTERIO DE SALUD")
-    ->setCellValue('A2',"HOSPITAL NACIONAL SANTA TERESA")
+    ->setCellValue('A2',"MINISTERIO DE SALUD HOSPITAL NACIONAL SANTA TERESA")
     ->setCellValue('A3',"DEPARTAMENTO DE MANTENIMIENTO")
-    ->setCellValue('A4',"SOLICITUD DE MATERIALES");
+    ->setCellValue('A4',"LISTA DE EMPLEADOS");
 //Tamaño de la letra
-$spreadsheet->getActiveSheet()->getStyle('A1')->getFont()->setSize(16);
-$spreadsheet->getActiveSheet()->getStyle('A2')->getFont()->setSize(16);
-$spreadsheet->getActiveSheet()->getStyle('A3')->getFont()->setSize(16);
-$spreadsheet->getActiveSheet()->getStyle('A4')->getFont()->setSize(16);
+$spreadsheet->getActiveSheet()->getStyle('A1')->getFont()->setSize(12);
+$spreadsheet->getActiveSheet()->getStyle('A2')->getFont()->setSize(12);
+$spreadsheet->getActiveSheet()->getStyle('A3')->getFont()->setSize(12);
+$spreadsheet->getActiveSheet()->getStyle('A4')->getFont()->setSize(12);
 
 //Horientación
-$spreadsheet->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('A2')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('A3')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('A4')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+
 
 
 
@@ -132,35 +128,17 @@ $spreadsheet->getActiveSheet()
 
 //set font style and background color
 $spreadsheet->getActiveSheet()->getStyle('A7:D7')->applyFromArray($tableHead);
-$spreadsheet->getActiveSheet()->getPageSetup()
-->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
+$spreadsheet->getActiveSheet()->getPageSetup()->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
 $sql="SELECT * FROM tb_usuarios";
 $result = mysqli_query($conn, $sql);
 
 $fila = 8;
-$spreadsheet->getActiveSheet()->getStyle('A7')->getAlignment()->setWrapText(true);
-$spreadsheet->getActiveSheet()->getStyle('B7')->getAlignment()->setWrapText(true);
-$spreadsheet->getActiveSheet()->getStyle('C7')->getAlignment()->setWrapText(true);
-$spreadsheet->getActiveSheet()->getStyle('D7')->getAlignment()->setWrapText(true);
+$spreadsheet->getActiveSheet()->getStyle('A:S')->getAlignment()->setWrapText(true);
+$spreadsheet->getActiveSheet()->getStyle('A:S')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
-$spreadsheet->getActiveSheet()->getStyle('A7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('B7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('C7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('D7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-
-$spreadsheet->getActiveSheet()->getStyle('A7')
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('B7')
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('C7')
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('D7')
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-
+$spreadsheet->getActiveSheet()->getStyle('A:S')->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getHeaderFooter()
+    ->setOddFooter( '&RPágina &P al &N');
     while ($productos = mysqli_fetch_array($result)){
     if ($productos['tipo_usuario']==1) {
             $u='Administrador';

@@ -123,6 +123,9 @@ $spreadsheet->getActiveSheet()
     ->setCellValue('B7',"No. Circulante")
     ->setCellValue('C7',"Fecha");
 
+$spreadsheet->getActiveSheet()->getHeaderFooter()
+    ->setOddFooter( '&RPágina &P al &N');
+
 //set font style and background color
 $spreadsheet->getActiveSheet()->getStyle('B7:C7')->applyFromArray($tableHead);
 $fila=8; 
@@ -189,81 +192,7 @@ $spreadsheet->getActiveSheet()->getStyle('C'. $fila)->getAlignment()->setHorizon
         }
     }
     
-    if (isset($_POST['Consultar'])) {$tipo=$_POST['tipo'];$columna=$_POST['columna'];
-if ($tipo=="asc") {
-    $tipo1= "Ordenado: Ascendente";
-}
-if ($tipo=="desc") {
-    $tipo1= "Ordenado: Descendente";
-}
-    $sql = "SELECT * FROM tb_circulante Order by $columna $tipo";
-$result = mysqli_query($conn, $sql);
 
-
-    while ($productos = mysqli_fetch_array($result)){
-        
-           if ($productos['idusuario']==1) {
-        $u='Administrador';
-        }
-        else {
-            $u='Cliente';
-        }
-        if ($productos['idusuario']==0) {
-            $u='Invitado';
-        }
-$spreadsheet->getActiveSheet()->getStyle('B'. $fila)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('C'. $fila)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $sheet->setCellValue('B' .$fila, $productos['codCirculante']);
-        $sheet->setCellValue('C' .$fila, $productos['fecha_solicitud']);
-        if( $fila % 2 == 0 ){
-        //even row
-        $spreadsheet->getActiveSheet()->getStyle('B'.$fila.':C'.$fila)->applyFromArray($evenRow);
-    }else{
-        //odd row
-        $spreadsheet->getActiveSheet()->getStyle('B'.$fila.':C'.$fila)->applyFromArray($oddRow);
-    }
-    //increment row
-    $fila++;
-        }
-    }
-    if (isset($_POST['Consultar1'])) {$idusuario=$_POST['idusuario'];$tipo=$_POST['tipo'];$columna=$_POST['columna'];
-$sheet->setCellValue('A2', 'No. de solicitud');
-$sheet->setCellValue('B2', 'Fecha');
-    if ($tipo=="asc") {
-    $tipo1= "Ordenado: Ascendente";
-}
-if ($tipo=="desc") {
-    $tipo1= "Ordenado: Descendente";
-}
-        $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario' Order by $columna $tipo";
-$result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-                   if ($productos['idusuario']==1) {
-        $u='Administrador';
-        }
-        else {
-            $u='Cliente';
-        }
-        if ($productos['idusuario']==0) {
-            $u='Invitado';
-        }
-$spreadsheet->getActiveSheet()->getStyle('B'. $fila)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('C'. $fila)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $stock=number_format($precio, 2,".",",");
-        $sheet->setCellValue('B' .$fila, $productos['codCirculante']);
-        $sheet->setCellValue('C' .$fila, $productos['fecha_solicitud']);
-        if( $fila % 2 == 0 ){
-        //even row
-        $spreadsheet->getActiveSheet()->getStyle('B'.$fila.':C'.$fila)->applyFromArray($evenRow);
-    }else{
-        //odd row
-        $spreadsheet->getActiveSheet()->getStyle('B'.$fila.':C'.$fila)->applyFromArray($oddRow);
-    }
-    //increment row
-    $fila++;
-        }
-    }
 //autofilter
 //define first row and last row
 $firstRow=7;

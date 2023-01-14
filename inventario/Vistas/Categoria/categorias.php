@@ -51,7 +51,7 @@ $result = mysqli_query($conn, $sql);
 ?>
 <style type="text/css">section{display: none;}</style>
 
-<form id="form" action="Controller/Categoria/Desabilitar-categorias.php" method="POST" style="background: transparent; ">
+<form id="form" action="../../Controller/Categoria/Desabilitar-categorias.php" method="POST" style="background: transparent; ">
     <div id="" class="container-fluid" style="background: rgba(0, 0, 0, 0.5);  border-radius: 15px; color:#fff; font-weight: bold;">
   <h3 align="center">Actualizar Categorias</h3>
         <div class="row">

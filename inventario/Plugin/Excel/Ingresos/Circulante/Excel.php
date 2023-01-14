@@ -81,32 +81,24 @@ $spreadsheet->getDefaultStyle()
 
 //heading
 $spreadsheet->getActiveSheet()
-    ->setCellValue('A1',"MINISTERIO DE SALUD HOSPITAL NACIONAL SANTA TERESA")
-    ->setCellValue('A2',"DEPARTAMENTO DE MANTENIMIENTO")
-    ->setCellValue('A3',"REPORTES INGRESOS DE CIRCULANTE");
+    ->setCellValue('A2',"MINISTERIO DE SALUD HOSPITAL NACIONAL SANTA TERESA")
+    ->setCellValue('A3',"DEPARTAMENTO DE MANTENIMIENTO")
+    ->setCellValue('A4',"REPORTES INGRESOS DE CIRCULANTE");
 //Tamaño de la letra
-$spreadsheet->getActiveSheet()->getStyle('A1')->getFont()->setSize(11);
-$spreadsheet->getActiveSheet()->getStyle('A2')->getFont()->setSize(11);
-$spreadsheet->getActiveSheet()->getStyle('A3')->getFont()->setSize(11);
-$spreadsheet->getActiveSheet()->getStyle('A4')->getFont()->setSize(11);
+$spreadsheet->getActiveSheet()->getStyle('A1')->getFont()->setSize(10);
+$spreadsheet->getActiveSheet()->getStyle('A2')->getFont()->setSize(10);
+$spreadsheet->getActiveSheet()->getStyle('A3')->getFont()->setSize(10);
+$spreadsheet->getActiveSheet()->getStyle('A4')->getFont()->setSize(10);
 
 //Horientación
-$spreadsheet->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('A2')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('A3')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('A4')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
 
 
 //Unión de celdas
-$spreadsheet->getActiveSheet()->mergeCells("A1:H1");
+   $spreadsheet->getActiveSheet()->mergeCells("A1:H1");
 $spreadsheet->getActiveSheet()->mergeCells("A2:H2");
 $spreadsheet->getActiveSheet()->mergeCells("A3:H3");
 $spreadsheet->getActiveSheet()->mergeCells("A4:H4");
-
-
-
-
 
 //setting column width
 $spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(12.71);
@@ -119,7 +111,7 @@ $spreadsheet->getActiveSheet()->getColumnDimension('G')->setWidth(10);
 $spreadsheet->getActiveSheet()->getColumnDimension('H')->setWidth(16);
 
 $spreadsheet->getActiveSheet()->getColumnDimension('I')->setWidth(15.71);
-$spreadsheet->getActiveSheet()->getColumnDimension('O')->setWidth(20.57);
+$spreadsheet->getActiveSheet()->getColumnDimension('O')->setWidth(13);
 $spreadsheet->getActiveSheet()->getColumnDimension('M')->setWidth(15.71);
 $spreadsheet->getActiveSheet()->getColumnDimension('Q')->setWidth(15.71);
 
@@ -155,61 +147,15 @@ $sheet->setCellValue('E7', 'Cantidad');
 $sheet->setCellValue('F7', 'Costo Unitario');
 $sheet->setCellValue('G7', 'Total');
 $sheet->setCellValue('H7', 'Fecha Registro');
-$spreadsheet->getActiveSheet()->getStyle('A7')->getAlignment()->setWrapText(true);
-$spreadsheet->getActiveSheet()->getStyle('B7')->getAlignment()->setWrapText(true);
-$spreadsheet->getActiveSheet()->getStyle('C7')->getAlignment()->setWrapText(true);
-$spreadsheet->getActiveSheet()->getStyle('D7')->getAlignment()->setWrapText(true);
-$spreadsheet->getActiveSheet()->getStyle('E7')->getAlignment()->setWrapText(true);
-$spreadsheet->getActiveSheet()->getStyle('F7')->getAlignment()->setWrapText(true);
-$spreadsheet->getActiveSheet()->getStyle('G7')->getAlignment()->setWrapText(true);
-$spreadsheet->getActiveSheet()->getStyle('H7')->getAlignment()->setWrapText(true);
-$spreadsheet->getActiveSheet()->getStyle('I7')->getAlignment()->setWrapText(true);
-$spreadsheet->getActiveSheet()->getStyle('J7')->getAlignment()->setWrapText(true);
 
-$spreadsheet->getActiveSheet()->getStyle('A7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('B7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('C7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('D7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('E7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('F7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('G7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('H7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('I7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('K3:K5')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('L3:L5')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
+$spreadsheet->getActiveSheet()->getStyle('A:S')->getAlignment()->setWrapText(true);
+$spreadsheet->getActiveSheet()->getStyle('A:S')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
-$spreadsheet->getActiveSheet()->getStyle('A7')
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('B7')
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('C7')
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('D7')
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('E7')
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('F7')
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('G7')
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('H7')
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('I7')
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('K3:M5')
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('A:S')->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 
+$spreadsheet->getActiveSheet()->getHeaderFooter()
+    ->setOddFooter( '&RPage &P al &N');
+    
 //set font style and background color
 $spreadsheet->getActiveSheet()->getStyle('A7:H7')->applyFromArray($tableHead);
 $spreadsheet->getActiveSheet()->getPageSetup()
@@ -238,7 +184,7 @@ if (isset($_POST['circulante'])) {
 
     $sql = "SELECT * FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante";
 }
-if (isset($_POST['circulante'])) {$idusuario=$_POST['idusuario'];
+if (isset($_POST['circulante1'])) {$idusuario=$_POST['idusuario'];
 $sql = "SELECT * FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante WHERE db.idusuario='$idusuario'";
 }    $result = mysqli_query($conn, $sql);
 $n=0;
@@ -281,7 +227,7 @@ while ($productos = mysqli_fetch_array($result)){
         else {
             $u='Cliente';
         }
-        $spreadsheet->getActiveSheet()->getStyle('I2:K2')->applyFromArray($tableHead);
+      $spreadsheet->getActiveSheet()->getStyle('I2:K2')->applyFromArray($tableHead);
         $sheet->setCellValue('I2' ,"VISTA PREVIA: ");
         $sheet->setCellValue('I3' ,"Cant Solicitada: ");
         $sheet->setCellValue('J3' ,$final3);
@@ -301,91 +247,6 @@ $fila3++;
   
         $spreadsheet->getActiveSheet()->getStyle('I5:K5')->applyFromArray($subtotal);
 
-        $spreadsheet->getActiveSheet()->getStyle('A6:J6')->getAlignment()->setWrapText(true);
-        $spreadsheet->getActiveSheet()->getStyle('A8:J8')->getAlignment()->setWrapText(true);
-        $spreadsheet->getActiveSheet()->getStyle('B' .$fila)->getAlignment()->setWrapText(true);
-        $spreadsheet->getActiveSheet()->getStyle('C' .$fila)->getAlignment()->setWrapText(true);
-        $spreadsheet->getActiveSheet()->getStyle('D' .$fila)->getAlignment()->setWrapText(true);
-        $spreadsheet->getActiveSheet()->getStyle('E' .$fila)->getAlignment()->setWrapText(true);
-        $spreadsheet->getActiveSheet()->getStyle('F' .$fila)->getAlignment()->setWrapText(true);
-        $spreadsheet->getActiveSheet()->getStyle('G' .$fila)->getAlignment()->setWrapText(true);
-        $spreadsheet->getActiveSheet()->getStyle('H' .$fila)->getAlignment()->setWrapText(true);
-        $spreadsheet->getActiveSheet()->getStyle('I' .$fila)->getAlignment()->setWrapText(true);
-        $spreadsheet->getActiveSheet()->getStyle('J' .$fila)->getAlignment()->setWrapText(true);
-        $spreadsheet->getActiveSheet()->getStyle('I' .$fila)->getAlignment()->setWrapText(true);
-
-        $spreadsheet->getActiveSheet()->getStyle('A' .$fila)
-        ->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('B' .$fila)
-        ->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('C' .$fila)
-        ->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('D' .$fila)
-        ->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('E' .$fila)
-        ->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('F' .$fila)
-        ->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('G' .$fila)
-        ->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('H' .$fila)
-        ->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('I' .$fila)
-        ->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('J' .$fila)
-        ->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-
-        $spreadsheet->getActiveSheet()->getStyle('A' .$fila)
-        ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('B' .$fila)
-        ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('C' .$fila)
-        ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('D' .$fila)
-        ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('E' .$fila)
-        ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('F' .$fila)
-        ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('G' .$fila)
-        ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('H' .$fila)
-        ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('I' .$fila)
-        ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('J' .$fila)
-        ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-
-
-        $spreadsheet->getActiveSheet()->getStyle('I')
-        ->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('k')
-        ->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
-        $spreadsheet->getActiveSheet()->getStyle('M')
-        ->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('N')
-        ->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);        
-
-        $spreadsheet->getActiveSheet()->getStyle('Q')
-        ->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('R')
-        ->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
-
-        $spreadsheet->getActiveSheet()->getStyle('M')
-        ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('I')
-        ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('K')
-        ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('O')
-        ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('Q')
-        ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);        
-
-        $spreadsheet->getActiveSheet()->getStyle('S')
-        ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-        $spreadsheet->getActiveSheet()->getStyle('T')
-        ->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 
         $sheet->setCellValue('A' .$fila, $productos['codCirculante']);
         $sheet->setCellValue('B' .$fila, $productos['codigo']);
@@ -412,7 +273,7 @@ $sheet->setCellValue('M2' , "STOCK POR MES:");
         if (isset($_POST['circulante'])) {
 
         $sql1="SELECT Mes,SUM(stock) FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante GROUP by Mes;";
-        }if (isset($_POST['circulante'])) {
+        }if (isset($_POST['circulante1'])) {
 
         $sql1="SELECT Mes,SUM(stock),idusuario FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante WHERE idusuario='$idusuario' GROUP by Mes;";
         }
@@ -451,12 +312,10 @@ $spreadsheet->getActiveSheet()->mergeCells('N'.$fila1.':O'.$fila1);
         $spreadsheet->getActiveSheet()->getStyle('M'.$fila1.':O'.$fila1)->applyFromArray($oddRow);
     }
 $fila1++;
-
-}
-
 $sheet->setCellValue('M' .$fila1, "SubTotal");
 $sheet->setCellValue('N' .$fila1, $final11);
 $spreadsheet->getActiveSheet()->mergeCells('N'.$fila1.':O'.$fila1);
+}
 $spreadsheet->getActiveSheet()->getStyle('M'.$fila1.':O'.$fila1)->applyFromArray($subtotal);
 
 $spreadsheet->getActiveSheet()->getStyle('Q2:S2')->applyFromArray($tableHead);
@@ -465,12 +324,12 @@ $sheet->setCellValue('Q2' , "STOCK POR AÑO:");
 
         if (isset($_POST['circulante'])) {
 
-        $sql1="SELECT Año,SUM(stock) FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante GROUP by Año;";
-        }if (isset($_POST['circulante'])) {
+        $sql2="SELECT Año,SUM(stock) FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante GROUP by Año;";
+        }if (isset($_POST['circulante1'])) {
 
-        $sql1="SELECT Año,SUM(stock),idusuario FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante WHERE idusuario='$idusuario' GROUP by Año;";
+        $sql2="SELECT Año,SUM(stock),idusuario FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante WHERE idusuario='$idusuario' GROUP by Año;";
         }
-    $result1 = mysqli_query($conn, $sql1);
+    $result1 = mysqli_query($conn, $sql2);
     while ($productos1 = mysqli_fetch_array($result1)){
         $Año=$productos1['Año'];
         $cantidad=$productos1['SUM(stock)'];
@@ -495,13 +354,13 @@ $spreadsheet->getActiveSheet()->mergeCells('R'.$fila2.':S'.$fila2);
         $spreadsheet->getActiveSheet()->getStyle('Q'.$fila2.':S'.$fila2)->applyFromArray($oddRow);
     }
 $fila2++;
+$spreadsheet->getActiveSheet()->mergeCells('R'.$fila2.':S'.$fila2);
 
+$sheet->setCellValue('Q' .$fila2, "SubTotal");
+$sheet->setCellValue('R' .$fila2, $final13);
 
 }
-$sheet->setCellValue('Q' .$fila1, "SubTotal");
-$sheet->setCellValue('R' .$fila1, $final11);
-$spreadsheet->getActiveSheet()->mergeCells('R'.$fila1.':S'.$fila1);
-$spreadsheet->getActiveSheet()->getStyle('Q'.$fila1.':S'.$fila1)->applyFromArray($subtotal);
+$spreadsheet->getActiveSheet()->getStyle('Q'.$fila2.':S'.$fila2)->applyFromArray($subtotal);
 
 //autofilter
 //define first row and last row

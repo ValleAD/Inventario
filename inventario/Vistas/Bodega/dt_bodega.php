@@ -215,7 +215,7 @@ while ($productos = mysqli_fetch_array($result1)){
                 </button>
             </form>
 <form method="POST"  action="../../Plugin/PDF/Bodega/pdf_bodega.php" target="_blank" class="mx-1">
-                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega1">
+                <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">
 
 <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
                 <svg class="bi" width="20" height="20" fill="currentColor">

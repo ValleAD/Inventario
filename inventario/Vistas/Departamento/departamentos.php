@@ -181,7 +181,7 @@ $result = mysqli_query($conn, $sql);
      <tbody>    
     <?php
 
-    $sql = "SELECT * FROM selects_departamento ORDER BY `id` DESC";
+    $sql = "SELECT * FROM selects_departamento ";
     $result = mysqli_query($conn, $sql);
     $n=0;
     while ($solicitudes = mysqli_fetch_array($result)){

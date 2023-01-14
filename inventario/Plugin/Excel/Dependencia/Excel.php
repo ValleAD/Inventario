@@ -21,17 +21,19 @@ $tableHead = [
             'rgb'=>'FFFFFF'
         ],
         'bold'=>true,
-        'size'=>11
+        'size'=>9
     ],
     'fill'=>[
         'fillType' => Fill::FILL_SOLID,
         'startColor' => [
-            'rgb' => '343a40'
+            'rgb' => '46466b'
         ]
     ],
 ];
+
 //even row
 $evenRow = [
+
     'fill'=>[
         'fillType' => Fill::FILL_SOLID,
         'startColor' => [
@@ -39,12 +41,56 @@ $evenRow = [
         ]
     ]
 ];
+$subtotal = [
+    'font'=>[
+        'color'=>[
+            'rgb'=>'FFFFFF'
+
+        ]
+    ],
+    'fill'=>[
+        'fillType' => Fill::FILL_SOLID,
+        'startColor' => [
+            'rgb' => '92D050'
+        ]
+    ]
+];
 //odd row
 $oddRow = [
+
     'fill'=>[
         'fillType' => Fill::FILL_SOLID,
         'startColor' => [
             'rgb' => '00EAFF'
+        ]
+    ]
+];
+
+$Aprobado = [
+    'font'=>[
+        'color'=>[
+            'rgb'=>'FFFFFF'
+
+        ]
+    ],
+    'fill'=>[
+        'fillType' => Fill::FILL_SOLID,
+        'startColor' => [
+            'rgb' => '0070C0'
+        ]
+    ]
+];
+$Rechazado = [
+    'font'=>[
+        'color'=>[
+            'rgb'=>'FFFFFF'
+
+        ]
+    ],
+    'fill'=>[
+        'fillType' => Fill::FILL_SOLID,
+        'startColor' => [
+            'rgb' => 'FF0000'
         ]
     ]
 ];
@@ -58,27 +104,22 @@ $sheet = $spreadsheet->getActiveSheet();
 
 //set default font
 $spreadsheet->getDefaultStyle()
-    ->getFont()
-    ->setName('Arial')
-    ->setSize(10);
+->getFont()
+->setName('Arial')
+->setSize(10);
 
 //heading
 $spreadsheet->getActiveSheet()
-    ->setCellValue('A1',"MINISTERIO DE SALUD")
-    ->setCellValue('A2',"HOSPITAL NACIONAL SANTA TERESA")
-    ->setCellValue('A3',"DEPARTAMENTO DE MANTENIMIENTO")
-    ->setCellValue('A4',"DEPENDENCIAS");
+->setCellValue('A2',"MINISTERIO DE SALUD HOSPITAL NACIONAL SANTA TERESA")
+->setCellValue('A3',"DEPARTAMENTO DE MANTENIMIENTO")
+->setCellValue('A4',"UNIDAD DE MEDIDA");
 //Tamaño de la letra
-$spreadsheet->getActiveSheet()->getStyle('A1')->getFont()->setSize(11);
-$spreadsheet->getActiveSheet()->getStyle('A2')->getFont()->setSize(11);
-$spreadsheet->getActiveSheet()->getStyle('A3')->getFont()->setSize(11);
-$spreadsheet->getActiveSheet()->getStyle('A4')->getFont()->setSize(11);
+$spreadsheet->getActiveSheet()->getStyle('A1')->getFont()->setSize(8);
+$spreadsheet->getActiveSheet()->getStyle('A2')->getFont()->setSize(8);
+$spreadsheet->getActiveSheet()->getStyle('A3')->getFont()->setSize(8);
+$spreadsheet->getActiveSheet()->getStyle('A4')->getFont()->setSize(8);
 
 //Horientación
-$spreadsheet->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('A2')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('A3')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('A4')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
 
 
@@ -96,98 +137,72 @@ $spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(30);
 $spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(30);
 
 //imagen
-    $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
-    $drawing->setName('Paid');
-    $drawing->setDescription('Paid');
-    $drawing->setPath($IMG); /* put your path and image here */
-    $drawing->setCoordinates('A1');
-    $drawing->setOffsetX(10);
-    $drawing->setOffsetY(2);
-    $drawing->setWidth(150);
-    $drawing->getShadow()->setVisible(true);
-    $drawing->setWorksheet($spreadsheet->getActiveSheet());
+$drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
+$drawing->setName('Paid');
+$drawing->setDescription('Paid');
+$drawing->setPath($IMG); /* put your path and image here */
+$drawing->setCoordinates('A1');
+$drawing->setOffsetX(10);
+$drawing->setOffsetY(2);
+$drawing->setWidth(150);
+$drawing->getShadow()->setVisible(true);
+$drawing->setWorksheet($spreadsheet->getActiveSheet());
 //imagen
 $drawing1 = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
-    $drawing1->setName('Paid');
-    $drawing1->setDescription('Paid');
-    $drawing1->setPath($IMG1); /* put your path and image here */
-    $drawing1->setCoordinates('C1');
-    $drawing1->setOffsetX(50);
-    $drawing1->setOffsetY(10);
-    $drawing1->setWidth(150);
-    $drawing1->getShadow()->setVisible(true);
-    $drawing1->getShadow()->setDirection(45);
-    $drawing1->setWorksheet($spreadsheet->getActiveSheet());
+$drawing1->setName('Paid');
+$drawing1->setDescription('Paid');
+$drawing1->setPath($IMG1); /* put your path and image here */
+$drawing1->setCoordinates('C1');
+$drawing1->setOffsetX(50);
+$drawing1->setOffsetY(10);
+$drawing1->setWidth(150);
+$drawing1->getShadow()->setVisible(true);
+$drawing1->getShadow()->setDirection(45);
+$drawing1->setWorksheet($spreadsheet->getActiveSheet());
 //header text
 $spreadsheet->getActiveSheet()
-    ->setCellValue('A7',"ID")
-    ->setCellValue('B7',"Dependencia")
-    ->setCellValue('C7',"Habilitado");
+->setCellValue('A7',"ID")
+->setCellValue('B7',"Dependencia")
+->setCellValue('C7',"Habilitado");
 
 //set font style and background color
 $spreadsheet->getActiveSheet()->getStyle('A7:C7')->applyFromArray($tableHead);
 $spreadsheet->getActiveSheet()->getPageSetup()
 ->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_DEFAULT);
+$spreadsheet->getActiveSheet()->getStyle('A:C')->getAlignment()->setWrapText(true);
+$spreadsheet->getActiveSheet()->getStyle('A:C')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+
+$spreadsheet->getActiveSheet()->getStyle('A:C')->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getRowDimension(7)->setRowHeight(21.75, 'pt');
+$spreadsheet->getActiveSheet()->getHeaderFooter()
+->setOddFooter( '&RPágina &P al &N');
+$fila=8;
 $sql="SELECT * FROM  selects_dependencia ";
 $result = mysqli_query($conn, $sql);    
-$fila=8;
-$spreadsheet->getActiveSheet()->getStyle('A7')->getAlignment()->setWrapText(true);
-$spreadsheet->getActiveSheet()->getStyle('B7')->getAlignment()->setWrapText(true);
-$spreadsheet->getActiveSheet()->getStyle('C7')->getAlignment()->setWrapText(true);
+while ($productos = mysqli_fetch_array($result)){
+    if($productos['Habilitado']=='Si') {
+        $c='Dependencia Disponible';
+        $spreadsheet->getActiveSheet()->getStyle('C'.$fila)->applyFromArray($Aprobado);
+    } elseif ($productos['Habilitado']  == 'No') {
+        $c='Dependencia no Disponible';
+        $spreadsheet->getActiveSheet()->getStyle('C'.$fila)->applyFromArray($Rechazado);
+    }
 
 
-$spreadsheet->getActiveSheet()->getStyle('A7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('B7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('C7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-
-$spreadsheet->getActiveSheet()->getStyle('A7')
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('B7')
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('C7')
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-    while ($productos = mysqli_fetch_array($result)){
-        if($productos['Habilitado']=='Si') {
-                    $c='Dependencia Disponible';
-                } elseif ($productos['Habilitado']  == 'No') {
-                    $c='Dependencia no Disponible';
-                }
-$spreadsheet->getActiveSheet()->getStyle('A' .$fila)->getAlignment()->setWrapText(true);
-$spreadsheet->getActiveSheet()->getStyle('B' .$fila)->getAlignment()->setWrapText(true);
-$spreadsheet->getActiveSheet()->getStyle('C' .$fila)->getAlignment()->setWrapText(true);
-
-$spreadsheet->getActiveSheet()->getStyle('A' .$fila)
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('B' .$fila)
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('C' .$fila)
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-
-
-$spreadsheet->getActiveSheet()->getStyle('A' .$fila)
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('B' .$fila)
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('C' .$fila)
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-
-        $sheet->setCellValue('A' .$fila, $productos['id']);
-        $sheet->setCellValue('B' .$fila, $productos['dependencia']);
-        $sheet->setCellValue('C' .$fila, $c);
-        if( $fila % 2 == 0 ){
+    $sheet->setCellValue('A' .$fila, $productos['id']);
+    $sheet->setCellValue('B' .$fila, $productos['dependencia']);
+    $sheet->setCellValue('C' .$fila, $c);
+    if( $fila % 2 == 0 ){
         //even row
-        $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':C'.$fila)->applyFromArray($evenRow);
+        $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':B'.$fila)->applyFromArray($evenRow);
     }else{
         //odd row
-        $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':C'.$fila)->applyFromArray($oddRow);
+        $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':B'.$fila)->applyFromArray($oddRow);
     }
     //increment row
     $fila++;
-        }
-    
+}
+
 //autofilter
 //define first row and last row
 $firstRow=7;

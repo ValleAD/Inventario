@@ -247,16 +247,6 @@ while ($productos = mysqli_fetch_array($result)){
             <form  method="POST" action="../../Plugin/Imprimir/Circulante/Circulante.php" target="_blank">
                 
             <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['codCirculante']?>" name="num_sol">
-            <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['fecha_solicitud']?>" name="fech">
-
-            <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
-            <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
-            <input type="hidden" name="um[]" value="<?php echo $um ?>">
-            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
-            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
-            <input type="hidden" name="cost[]" value="<?php echo $precio2 ?>">
-            <input type="hidden" name="tot[]" value="<?php echo $total1 ?>">
-            <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary" >
 
                         <svg class="bi" width="20" height="20" fill="currentColor">
@@ -266,16 +256,6 @@ while ($productos = mysqli_fetch_array($result)){
             </form>
             <form method="POST" action="../../Plugin/PDF/Circulante/pdf_circulante.php" target="_blank" class="mx-1">
             <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['codCirculante']?>" name="num_sol">
-            <input type="hidden" readonly class="form-control" value="<?php echo $datos_sol['fecha_solicitud']?>" name="fech">
-
-            <input type="hidden" name="cod[]" value="<?php echo $codigo ?>">
-            <input type="hidden" name="desc[]" value="<?php echo $descripcion ?>">
-            <input type="hidden" name="um[]" value="<?php echo $um ?>">
-            <input type="hidden" name="cant[]" value="<?php echo $stock ?>">
-            <input type="hidden" name="cantidad_despachada[]"  value="<?php echo $cantidad_desp ?>">
-            <input type="hidden" name="cost[]" value="<?php echo $precio2 ?>">
-            <input type="hidden" name="tot[]" value="<?php echo $total1 ?>">
-            <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
                 <button style="position: initial;" type="submit" class="btn btn-outline-primary">
 
                         <svg class="bi" width="20" height="20" fill="currentColor">

@@ -64,21 +64,17 @@ $spreadsheet->getDefaultStyle()
 
 //heading
 $spreadsheet->getActiveSheet()
-    ->setCellValue('A1',"MINISTERIO DE SALUD")
-    ->setCellValue('A2',"HOSPITAL NACIONAL SANTA TERESA")
+    ->setCellValue('A2',"MINISTERIO DE SALUD HOSPITAL NACIONAL SANTA TERESA")
     ->setCellValue('A3',"DEPARTAMENTO DE MANTENIMIENTO")
     ->setCellValue('A4',"SOLICITUD DE VALE");
 //Tamaño de la letra
-$spreadsheet->getActiveSheet()->getStyle('A1')->getFont()->setSize(16);
-$spreadsheet->getActiveSheet()->getStyle('A2')->getFont()->setSize(16);
-$spreadsheet->getActiveSheet()->getStyle('A3')->getFont()->setSize(16);
-$spreadsheet->getActiveSheet()->getStyle('A4')->getFont()->setSize(16);
+$spreadsheet->getActiveSheet()->getStyle('A1')->getFont()->setSize(12);
+$spreadsheet->getActiveSheet()->getStyle('A2')->getFont()->setSize(12);
+$spreadsheet->getActiveSheet()->getStyle('A3')->getFont()->setSize(12);
+$spreadsheet->getActiveSheet()->getStyle('A4')->getFont()->setSize(12);
 
 //Horientación
-$spreadsheet->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('A2')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('A3')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('A4')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+
 
 
 
@@ -127,27 +123,16 @@ $spreadsheet->getActiveSheet()
     ->setCellValue('D7',"Fecha");
 
 //set font style and background color
-$spreadsheet->getActiveSheet()->getStyle('A7:D7')->applyFromArray($tableHead);
-$spreadsheet->getActiveSheet()->getPageSetup()
-->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
-$fila=8; 
-$spreadsheet->getActiveSheet()->getStyle('A7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('B7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('C7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('D7')
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('A:D')->getAlignment()->setWrapText(true);
+$spreadsheet->getActiveSheet()->getStyle('A:D')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
-$spreadsheet->getActiveSheet()->getStyle('A7')
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('B7')
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('C7')
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('D7')
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('A:D')->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+
+$spreadsheet->getActiveSheet()->getStyle('A7:D7')->applyFromArray($tableHead);
+$spreadsheet->getActiveSheet()->getPageSetup()->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
+$spreadsheet->getActiveSheet()->getHeaderFooter()
+    ->setOddFooter( '&RPágina &P al &N');
+$fila=8;
 if (isset($_POST['vale'])) {
 
     $sql = "SELECT * FROM tb_vale";
@@ -164,23 +149,7 @@ $result = mysqli_query($conn, $sql);
         if ($productos['idusuario']==0) {
             $u='Invitado';
         }
-$spreadsheet->getActiveSheet()->getStyle('A'.$fila)
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('B'.$fila)
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('C'.$fila)
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('D'.$fila)
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
-$spreadsheet->getActiveSheet()->getStyle('A'.$fila)
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('B'.$fila)
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('C'.$fila)
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('D'.$fila)
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 
         $sheet->setCellValue('A' .$fila, $productos['codVale']);
         $sheet->setCellValue('B' .$fila, $productos['departamento']);
@@ -214,23 +183,7 @@ $result = mysqli_query($conn, $sql);
             $u='Invitado';
         }
 
-$spreadsheet->getActiveSheet()->getStyle('A'.$fila)
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('B'.$fila)
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('C'.$fila)
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('D'.$fila)
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
-$spreadsheet->getActiveSheet()->getStyle('A'.$fila)
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('B'.$fila)
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('C'.$fila)
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('D'.$fila)
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 
         $sheet->setCellValue('A' .$fila, $productos['codVale']);
         $sheet->setCellValue('B' .$fila, $productos['departamento']);
@@ -272,23 +225,7 @@ $result = mysqli_query($conn, $sql);
         if ($productos['idusuario']==0) {
             $u='Invitado';
         }
-$spreadsheet->getActiveSheet()->getStyle('A'.$fila)
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('B'.$fila)
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('C'.$fila)
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('D'.$fila)
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
-$spreadsheet->getActiveSheet()->getStyle('A'.$fila)
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('B'.$fila)
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('C'.$fila)
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('D'.$fila)
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 
         $sheet->setCellValue('A' .$fila, $productos['codVale']);
         $sheet->setCellValue('B' .$fila, $productos['departamento']);
@@ -327,23 +264,7 @@ $result = mysqli_query($conn, $sql);
         if ($productos['idusuario']==0) {
             $u='Invitado';
         }
-$spreadsheet->getActiveSheet()->getStyle('A'.$fila)
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('B'.$fila)
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('C'.$fila)
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('D'.$fila)
-->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
-$spreadsheet->getActiveSheet()->getStyle('A'.$fila)
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('B'.$fila)
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('C'.$fila)
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-$spreadsheet->getActiveSheet()->getStyle('D'.$fila)
-->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 
         $stock=number_format($precio, 2,".",",");
         $sheet->setCellValue('A' .$fila, $productos['codVale']);

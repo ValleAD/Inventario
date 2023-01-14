@@ -33,7 +33,7 @@ if ($result) {
       allowOutsideClick: false
     }).then((resultado) =>{
 if (resultado.value) {
-        window.location.href='../../Unidad/unidad_medidad.php';                               
+        window.location.href='../../Vistas/Unidad/unidad_medidad.php';                               
                }
                 });
 
@@ -47,7 +47,7 @@ if (resultado.value) {
      allowOutsideClick: false
     }).then((resultado) =>{
 if (resultado.value) {
-        window.location.href='../../Unidad/unidad_medidad.php';                               
+        window.location.href='../../Vistas/Unidad/unidad_medidad.php';                               
                }
                 });
 
