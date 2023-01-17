@@ -21,13 +21,8 @@ if (!isset($_SESSION['signin'])>0) {
 	<title>Buscador al Producto</title>
 </head>
 <body>
-    <style>
-        #p{margin-top: -15%;}
-        @media screen and (max-width: 800px) {
-            #p{margin-top: -8%}
-        }
-    </style>
-    <section  style="background: rgba(255, 255, 255, 0.9);margin: 7%1%1%1%;padding: 1%; border-radius: 15px;">
+      <br><br><br>  
+    <section class="mx-3"  style="background: rgba(255, 255, 255, 0.9);padding: 1%; border-radius: 15px;">
         <h2  class="text-center">Buscador al Producto</h2>
         <br>
 
@@ -35,7 +30,7 @@ if (!isset($_SESSION['signin'])>0) {
         <div class="card">
             <div class="card-body">
                 <div class="row" >
-                 <div class="col-md-3" style="position: initial; ">
+                   <div class="col-md-3" style="position: initial; ">
                     <p class="mx-3" style="color: #000; font-weight: bold;">Buscar Codigo del Producto</p>
                 </div>          
                 <div class="col-md-8"style="position: initial;">
@@ -94,23 +89,23 @@ if (isset($_POST['Consultar2'])) {
         <div class="col-md-9">
 
 
-           <div class="card">
+         <div class="card">
             <div class="card-body">
-               <table class="table" id="examp" style="">
-                 <thead>
-                   <tr id="tr">
-                       <th style="width:20%"  id="th">Fecha</th>
-                       <th style="width:30%"  id="th">Concepto</th>
-                       <th style="width:30%;" id="th">Comprobante</th>
-                       <th style="width:20%"  id="th">Entradas</th>
-                       <th style="width:20%"  id="th">Salidas</th>
-                       <th style="width:20%"  id="th">Saldo</th>
-                       <th style="width:20%"  id="th">Total</th>
+             <table class="table" id="examp" style="">
+               <thead>
+                 <tr id="tr">
+                     <th style="width:20%"  id="th">Fecha</th>
+                     <th style="width:30%"  id="th">Concepto</th>
+                     <th style="width:30%;" id="th">Comprobante</th>
+                     <th style="width:20%"  id="th">Entradas</th>
+                     <th style="width:20%"  id="th">Salidas</th>
+                     <th style="width:20%"  id="th">Saldo</th>
+                     <th style="width:20%"  id="th">Total</th>
 
-                   </tr>
+                 </tr>
 
-               </thead>
-               <div>
+             </thead>
+             <div>
                 <tbody>
                     <?php $sql = "SELECT descripcion,Concepto,unidad_medida,fecha_registro,No_Comprovante,Entradas,Salidas,Saldo FROM historial WHERE fecha_registro BETWEEN ' $f1' AND ' $f2' and No_Comprovante='$Busqueda'";
                     $result = mysqli_query($conn, $sql);
@@ -122,6 +117,7 @@ if (isset($_POST['Consultar2'])) {
                         $final2=number_format($final, 2, ".",",");
 
                         $fecha=date("d-m-Y",strtotime($f1));
+                        $fecha1=date("Y-m-d",strtotime($productos['fecha_registro']));
                         $fecha3=date("d-m-Y",strtotime($f2));
                         $Concepto=$productos['Concepto'];
                         $Comprovante= $productos['No_Comprovante'];
@@ -147,7 +143,7 @@ if (isset($_POST['Consultar2'])) {
 
                         ?>
                         <tr>
-                            <td id="th" data-label="Fecha"><?php echo $fecha ?></td>
+                            <td id="th" data-label="Fecha"><?php echo $fecha1 ?></td>
                             <td id="th" data-label="Concepto"><?php echo $Concepto ?></td>
                             <td id="th" data-label="No. Comprovante"><?php echo $Comprovante ?></td>
                             <td id="th" data-label="Entradas"><?php echo $stock1?></td>
@@ -170,33 +166,33 @@ if (isset($_POST['Consultar2'])) {
 
             <style type="text/css">#card{display: block;}.card1, #card2{display: none;}</style>
             <div  style="position: initial;" class="btn-group mb-3 my-3  mx-2" role="group" aria-label="Basic outlined example">
-               <form method="POST" action="../../Plugin/Imprimir/Producto/productos.php" target="_blank">
+             <form method="POST" action="../../Plugin/Imprimir/Producto/productos.php" target="_blank">
 
-                   <input type="hidden" name="Busqueda" value="<?php echo $Busqueda ?>">
-                   <input type="hidden" name="f1" value="<?php echo $f1?>">
-                   <input type="hidden" name="f2" value="<?php echo $f2?>">
+                 <input type="hidden" name="Busqueda" value="<?php echo $Busqueda ?>">
+                 <input type="hidden" name="f1" value="<?php echo $f1?>">
+                 <input type="hidden" name="f2" value="<?php echo $f2?>">
 
-                   <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Historial">
+                 <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Historial">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                     </svg>
                 </button>
             </form>
-            <form method="POST" action="../../Plugin/PDF/Productos/pdf_productos.php" target="_blank" class="mx-1">
-               <input type="hidden" name="Busqueda" value="<?php echo $Busqueda ?>">
-               <input type="hidden" name="f1" value="<?php echo $f1?>">
-               <input type="hidden" name="f2" value="<?php echo $f2?>">
-               <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Historial" target="_blank">
+            <form method="POST" action="../../Plugin/PDF/Productos/Historial.php" target="_blank" class="mx-1">
+             <input type="hidden" name="Busqueda" value="<?php echo $Busqueda ?>">
+             <input type="hidden" name="f1" value="<?php echo $f1?>">
+             <input type="hidden" name="f2" value="<?php echo $f2?>">
+             <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Historial" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                     <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
             </button>
         </form>
         <form  method="POST" action="../../Plugin/Excel/Productos/Historial.php" >
-           <input type="hidden" name="Busqueda" value="<?php echo $Busqueda ?>">
-           <input type="hidden" name="f1" value="<?php echo $f1?>">
-           <input type="hidden" name="f2" value="<?php echo $f2?>">
-           <button type="submit" class="btn btn-outline-primary" name="Historial" target="_blank">
+         <input type="hidden" name="Busqueda" value="<?php echo $Busqueda ?>">
+         <input type="hidden" name="f1" value="<?php echo $f1?>">
+         <input type="hidden" name="f2" value="<?php echo $f2?>">
+         <button type="submit" class="btn btn-outline-primary" name="Historial" target="_blank">
             <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
             </svg>
@@ -222,16 +218,16 @@ if (isset($_POST['Consultar2'])) {
       <p align="right"><b style="float: left;">Entradas: </b><?php echo $final15 ?></p>
       <p align="right"><b style="float: left;">Salidas: </b><?php echo $final17 ?></p>
       <p align="right"><b style="float: left;">Resta de Entradas - Salidas: </b><?php echo $final19 ?></p>
-      <p align="right"><b style="float: left;">Saldo(Precio): </b><?php echo $final20 ?></p>
+      <p align="right"><b style="float: left;">Saldo(Precio): </b><?php echo $final21 ?></p>
       <p style="border-bottom: 1px solid #ccc;"></p>
       <p align="right"><b style="float: left;">SubTotal: </b><?php echo $final2 ?></p>
   </div>
 </div>
 <div class="card mt-2 mb-2">
     <div class="card-body">
-     <h6 >Entradas Por Mes</h6>
-     <div class="div d" > 
-        <?php $sql="SELECT SUM(Entradas),fecha_registro FROM historial WHERE No_Comprovante LIKE '%".$Busqueda."%'  GROUP BY fecha_registro;";
+       <h6 >Entradas Por Mes</h6>
+       <div class="div d" > 
+        <?php $sql="SELECT SUM(Entradas),fecha_registro FROM historial WHERE fecha_registro BETWEEN ' $f1' AND ' $f2' and No_Comprovante='$Busqueda'  GROUP BY Mes;";
         $result = mysqli_query($conn, $sql);
         while ($productos = mysqli_fetch_array($result)){
             $mes=date("m",strtotime($productos['fecha_registro']));
@@ -268,9 +264,9 @@ if (isset($_POST['Consultar2'])) {
             </div>
             <div class="card mt-2 mb-2">
                 <div class="card-body">
-                 <h6 >Salidas Por Mes</h6>
-                 <div class="div1 d1" > 
-                    <?php $sql="SELECT SUM(Salidas),fecha_registro FROM historial WHERE No_Comprovante LIKE '%".$Busqueda."%'  GROUP BY fecha_registro;";
+                   <h6 >Salidas Por Mes</h6>
+                   <div class="div1 d1" > 
+                    <?php $sql="SELECT SUM(Salidas),fecha_registro FROM historial WHERE fecha_registro BETWEEN ' $f1' AND ' $f2' and No_Comprovante='$Busqueda'  GROUP BY Mes;";
                     $result = mysqli_query($conn, $sql);
                     while ($productos = mysqli_fetch_array($result)){
                         $mes=date("m",strtotime($productos['fecha_registro']));
@@ -306,9 +302,9 @@ if (isset($_POST['Consultar2'])) {
                         </div>   
                         <div class="card mt-2 mb-2">
                             <div class="card-body">
-                             <h6> Entradas Por Año</h6>
-                             <div class="div2 d2" > 
-                                <?php $sql="SELECT SUM(Entradas),fecha_registro FROM historial WHERE No_Comprovante LIKE '%".$Busqueda."%'  GROUP BY fecha_registro;";
+                               <h6> Entradas Por Año</h6>
+                               <div class="div2 d2" > 
+                                <?php $sql="SELECT SUM(Entradas),fecha_registro FROM historial WHERE fecha_registro BETWEEN ' $f1' AND ' $f2' and No_Comprovante='$Busqueda'  GROUP BY Año;";
                                 $result = mysqli_query($conn, $sql);
                                 while ($productos = mysqli_fetch_array($result)){
                                     $año=date("Y",strtotime($productos['fecha_registro']));
@@ -331,9 +327,9 @@ if (isset($_POST['Consultar2'])) {
                                     </div>
                                     <div class="card mt-2 mb-2">
                                         <div class="card-body">
-                                         <h6> Salidas Por Año</h6>
-                                         <div class="div3 d3" > 
-                                            <?php $sql="SELECT SUM(Salidas),fecha_registro FROM historial WHERE No_Comprovante LIKE '%".$Busqueda."%'  GROUP BY fecha_registro;";
+                                           <h6> Salidas Por Año</h6>
+                                           <div class="div3 d3" > 
+                                            <?php $sql="SELECT SUM(Salidas),fecha_registro FROM historial WHERE fecha_registro BETWEEN ' $f1' AND ' $f2' and No_Comprovante='$Busqueda'  GROUP BY Año;";
                                             $result = mysqli_query($conn, $sql);
                                             while ($productos = mysqli_fetch_array($result)){
                                                 $año=date("Y",strtotime($productos['fecha_registro']));
@@ -363,7 +359,7 @@ if (isset($_POST['Consultar2'])) {
 
                                     $(document).ready(function () {
 
-                                     $('#examp').DataTable({
+                                       $('#examp').DataTable({
 
                                         responsive: true,
                                         autoWidth:false,
@@ -390,7 +386,7 @@ if (isset($_POST['Consultar2'])) {
                                         },
 
                                     });
-                                 }); 
+                                   }); 
 
 
                                     $('.p1').hide();$('.p3').hide();$('.p5').hide();$('.p7').hide();

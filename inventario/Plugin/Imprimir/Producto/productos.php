@@ -311,7 +311,7 @@ $result = mysqli_query($conn, $sql);
      </div><br>     
      <div id="t">
            <h6 >Entradas Por Mes</h6>
-    <?php $sql="SELECT SUM(Entradas),fecha_registro FROM historial WHERE No_Comprovante LIKE '%".$Busqueda."%'  GROUP BY fecha_registro;";
+    <?php $sql="SELECT SUM(Entradas),fecha_registro FROM historial WHERE fecha_registro BETWEEN ' $f1' AND ' $f2' or No_Comprovante='$Busqueda' GROUP BY Mes;";
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
         $mes=date("m",strtotime($productos['fecha_registro']));
@@ -339,7 +339,7 @@ $result = mysqli_query($conn, $sql);
      </div><br>     
      <div id="t">
                     <h6 >Salidas Por Mes</h6>
-    <?php $sql="SELECT SUM(Salidas),fecha_registro FROM historial WHERE No_Comprovante LIKE '%".$Busqueda."%'  GROUP BY fecha_registro;";
+    <?php $sql="SELECT SUM(Salidas),fecha_registro FROM historial WHERE fecha_registro BETWEEN ' $f1' AND ' $f2' or No_Comprovante='$Busqueda' GROUP BY Mes;";
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
         $mes=date("m",strtotime($productos['fecha_registro']));
@@ -367,7 +367,7 @@ $result = mysqli_query($conn, $sql);
      </div><br>
     <div id="t">
        <h6> Entradas Por Año</h6>
-    <?php $sql="SELECT SUM(Entradas),fecha_registro FROM historial WHERE No_Comprovante LIKE '%".$Busqueda."%'  GROUP BY fecha_registro;";
+    <?php $sql="SELECT SUM(Entradas),fecha_registro FROM historial WHERE fecha_registro BETWEEN ' $f1' AND ' $f2' or No_Comprovante='$Busqueda' GROUP BY Año;";
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
         $año=date("Y",strtotime($productos['fecha_registro']));
@@ -383,7 +383,7 @@ $result = mysqli_query($conn, $sql);
      </div><br>    
      <div id="t">
        <h6> Salidas Por Año</h6>
-    <?php $sql="SELECT SUM(Salidas),fecha_registro FROM historial WHERE No_Comprovante LIKE '%".$Busqueda."%'  GROUP BY fecha_registro;";
+    <?php $sql="SELECT SUM(Salidas),fecha_registro FROM historial WHERE fecha_registro BETWEEN ' $f1' AND ' $f2' or No_Comprovante='$Busqueda' GROUP BY Año;";
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
         $año=date("Y",strtotime($productos['fecha_registro']));
