@@ -33,109 +33,7 @@ include '../../../Model/conexion.php'; ?>
     text-align: center;
     }
   </style>
-<?php if (isset($_POST['Consultar'])) {
-    $columna=$_POST['columna'];
-    $tipo=$_POST['tipo'];
-        $tipo=$_POST['tipo'];
-     if ($tipo=="desc"){
-       $tipo1='Descendente'; 
-    }
-    if ($tipo=="asc") {
-        $tipo1='Ascendente';
-     } ?>
-    <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p><br><br>
-    <table class="table"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
 
-        <thead style="background-color: #46466b;color: white;">
-        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-                <th style=" width: 10%; text-align: center;font-size: 12px;">No. de Solicitud</th>
-                <th style=" width: 30%; text-align: center;font-size: 12px;">Departamento Solicitante</th>
-                <th style=" width: 20%; text-align: center;font-size: 12px;">Encargado</th>
-                <th style=" width: 20%; text-align: center;font-size: 12px;">Fecha de solicitud</th>
-        </tr>
-        
-       
-    </thead> 
-
-    <tbody>
-<?php 
-    $sql = "SELECT * FROM tb_almacen  Order by $columna $tipo";
-    $result = mysqli_query($conn, $sql);
-
-    while ($solicitudes = mysqli_fetch_array($result)){
-         $des=$solicitudes['departamento'];
-                if ($des=="") {
-                    $des="Departamentos No disponible";
-                }else{
-
-                   $des=$solicitudes['departamento']; 
-                }
-?>  
-  
-         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="No. solicitud" class="delete"><?php  echo $solicitudes['codAlmacen']; ?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Usuario" class="delete"><?php  echo $solicitudes['encargado']; ?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_solicitud'])) ?></td>
-            </tr>
-       <?php }  ?> 
-    </tbody>  
-   
-   
-</table>
-<?php } ?>
- <?php if (isset($_POST['Consultar1'])) {
-    $columna=$_POST['columna'];
-    $tipo=$_POST['tipo'];
-        $tipo=$_POST['tipo'];
-     if ($tipo=="desc"){
-       $tipo1='Descendente'; 
-    }
-    if ($tipo=="asc") {
-        $tipo1='Ascendente';
-     } ?>
-    <p style="float: right;">Ordenado: <?php echo $tipo1 ?></p><br><br>
-    <table class="table"  style="width: 100%; border: 1px solid #ccc;border-collapse: collapse;">
-
-        <thead style="background-color: #46466b;color: white;">
-        <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-                <th style=" width: 10%; text-align: center;font-size: 12px;">No. de Solicitud</th>
-                <th style=" width: 30%; text-align: center;font-size: 12px;">Departamento Solicitante</th>
-                <th style=" width: 20%; text-align: center;font-size: 12px;">Encargado</th>
-                <th style=" width: 20%; text-align: center;font-size: 12px;">Fecha de solicitud</th>
-        </tr>
-        
-       
-    </thead> 
-
-    <tbody>
-<?php 
-$idusuario=$_POST['idusuario'];
-    $sql = "SELECT * FROM tb_almacen WHERE idusuario='$idusuario'  Order by $columna $tipo";
-    $result = mysqli_query($conn, $sql);
-
-    while ($solicitudes = mysqli_fetch_array($result)){
-         $des=$solicitudes['departamento'];
-                if ($des=="") {
-                    $des="Departamentos No disponible";
-                }else{
-
-                   $des=$solicitudes['departamento']; 
-                }
-?>  
-  
-         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="No. solicitud" class="delete"><?php  echo $solicitudes['codAlmacen']; ?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Usuario" class="delete"><?php  echo $solicitudes['encargado']; ?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_solicitud'])) ?></td>
-            </tr>
-       <?php }  ?> 
-    </tbody>  
-   
-   
-</table>
-<?php } ?>
 <?php if (isset($_POST['id'])) {?>
     <table class="table"  style="width: 100%;">
 
@@ -159,10 +57,10 @@ $idusuario=$_POST['idusuario'];
 ?>   
   
         <tr >
-           <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="No. solicitud" class="delete"><?php  echo $solicitudes['codAlmacen']; ?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Usuario" class="delete"><?php  echo $solicitudes['encargado']; ?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_solicitud'])) ?></td>
+           <td  data-label="No. solicitud" class="delete"><?php  echo $solicitudes['codAlmacen']; ?></td>
+            <td  data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
+            <td  data-label="Usuario" class="delete"><?php  echo $solicitudes['encargado']; ?></td>
+            <td  data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_solicitud'])) ?></td>
             </tr>
 
        <?php }  ?> 
@@ -195,10 +93,10 @@ $id=$_POST['idusuario'];
 ?>  
   
         <tr style="border: 1px solid #ccc;border-collapse: collapse;">
-           <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="No. solicitud" class="delete"><?php  echo $solicitudes['codAlmacen']; ?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Usuario" class="delete"><?php  echo $solicitudes['encargado']; ?></td>
-            <td style="text-align:center; font-size: 11px;border: 1px solid #ccc;border-collapse: collapse;font-size: 12px;" data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_solicitud'])) ?></td>
+           <td  data-label="No. solicitud" class="delete"><?php  echo $solicitudes['codAlmacen']; ?></td>
+            <td  data-label="Departamento Solicitante" class="delete"><?php  echo $solicitudes['departamento']; ?></td>
+            <td  data-label="Usuario" class="delete"><?php  echo $solicitudes['encargado']; ?></td>
+            <td  data-label="Fecha de solicitud" class="delete"><?php  echo date("d-m-Y",strtotime($solicitudes['fecha_solicitud'])) ?></td>
             </tr>
 
        <?php }  ?> 

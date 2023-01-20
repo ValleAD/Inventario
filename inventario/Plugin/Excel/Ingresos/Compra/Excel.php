@@ -172,7 +172,16 @@ $spreadsheet->getActiveSheet()->getStyle('G:Q')->getNumberFormat()
 
 $spreadsheet->getActiveSheet()->getStyle('T')->getNumberFormat()
     ->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+$spreadsheet->getActiveSheet()->getStyle('H:I')->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+$spreadsheet->getActiveSheet()->getStyle('L4:L5')->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
 
+$spreadsheet->getActiveSheet()->getStyle('G')->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+$spreadsheet->getActiveSheet()->getStyle('L3')->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+$spreadsheet->getActiveSheet()->getStyle('P')->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+$spreadsheet->getActiveSheet()->getStyle('T')->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+
+$spreadsheet->getActiveSheet()->getRowDimension(8)->setRowHeight(21.75, 'pt');
 //set font style and background color
 $spreadsheet->getActiveSheet()->getStyle('A8:J8')->applyFromArray($tableHead);
 $spreadsheet->getActiveSheet()->getPageSetup()
@@ -250,11 +259,11 @@ while ($productos = mysqli_fetch_array($result)){
         $spreadsheet->getActiveSheet()->getStyle('K2:M2')->applyFromArray($tableHead);
         $sheet->setCellValue('K2' ,"VISTA PREVIA: ");
         $sheet->setCellValue('K3' ,"Cant Solicitada: ");
-        $sheet->setCellValue('L3' ,$final3);
+        $sheet->setCellValue('L3' ,$final2);
         $sheet->setCellValue('K4' ,"Costo Unitario: ");
-        $sheet->setCellValue('L4' ,$final9);
+        $sheet->setCellValue('L4' ,$final8);
         $sheet->setCellValue('K5' ,"SubTotal: ");
-        $sheet->setCellValue('L5' ,$final1);
+        $sheet->setCellValue('L5' ,$final);
         $spreadsheet->getActiveSheet()->mergeCells('K2:M2');
         $spreadsheet->getActiveSheet()->mergeCells('L3:M3');
         $spreadsheet->getActiveSheet()->mergeCells('L4:M4');
@@ -275,9 +284,9 @@ $fila3++;
         $sheet->setCellValue('D' .$fila, $productos['codigo']);
         $sheet->setCellValue('E' .$fila, $productos['descripcion']);
         $sheet->setCellValue('F' .$fila, $productos['unidad_medida']);
-        $sheet->setCellValue('G' .$fila, $stock);
-        $sheet->setCellValue('H' .$fila, $precio2);
-        $sheet->setCellValue('I' .$fila, $total1);
+        $sheet->setCellValue('G' .$fila, $cant_aprobada);
+        $sheet->setCellValue('H' .$fila, $precio);
+        $sheet->setCellValue('I' .$fila, $total);
         $sheet->setCellValue('J' .$fila, $productos['fecha_registro']);
             if( $fila % 2 == 0 ){
         //even row
@@ -324,7 +333,7 @@ $sheet->setCellValue('O2' , "STOCK POR MES:");
 
 
 $sheet->setCellValue('O' .$fila1, $mes);
-$sheet->setCellValue('P' .$fila1, $stock);
+$sheet->setCellValue('P' .$fila1, $cantidad);
 $spreadsheet->getActiveSheet()->mergeCells('O2:Q2');
 $spreadsheet->getActiveSheet()->mergeCells('P'.$fila1.':Q'.$fila1);
 
@@ -364,7 +373,7 @@ $sheet->setCellValue('S2' , "STOCK POR AÑO:");
 
 
 $sheet->setCellValue('S' .$fila2, $Año);
-$sheet->setCellValue('T' .$fila2, $stock);
+$sheet->setCellValue('T' .$fila2, $cantidad);
 $spreadsheet->getActiveSheet()->mergeCells('S2:U2');
 $spreadsheet->getActiveSheet()->getStyle('S2:U2')->applyFromArray($tableHead);
 $spreadsheet->getActiveSheet()->mergeCells('T'.$fila2.':U'.$fila2);

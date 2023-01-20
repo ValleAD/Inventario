@@ -26,7 +26,7 @@ $tableHead = [
     'fill'=>[
         'fillType' => Fill::FILL_SOLID,
         'startColor' => [
-            'rgb' => '343a40'
+            'rgb' => '46466b'
         ]
     ],
 ];
@@ -132,6 +132,8 @@ $spreadsheet->getActiveSheet()->getStyle('A7:D7')->applyFromArray($tableHead);
 $spreadsheet->getActiveSheet()->getPageSetup()->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
 $spreadsheet->getActiveSheet()->getHeaderFooter()
     ->setOddFooter( '&RPágina &P al &N');
+    
+$spreadsheet->getActiveSheet()->getRowDimension(7)->setRowHeight(21.75, 'pt');
 $fila=8;
 if (isset($_POST['vale'])) {
 
@@ -282,12 +284,7 @@ $result = mysqli_query($conn, $sql);
     $fila++;
         }
     }
-//autofilter
-//define first row and last row
-$firstRow=7;
-$lastRow=$fila-1;
-//set the autofilter
-$spreadsheet->getActiveSheet()->setAutoFilter("B".$firstRow.":D".$lastRow);
+
 
 
 //set the header first, so the result will be treated as an xlsx file.

@@ -100,7 +100,7 @@ die();
  <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
             <input type="hidden" name="columna" value="<?php echo $columna ?>">
             <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
-                <button type="submit" class="btn btn-outline-primary" name="Consultar1" target="_blank">
+                <button type="submit" class="btn btn-outline-primary" name="circulante1">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                 </svg>

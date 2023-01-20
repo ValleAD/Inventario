@@ -26,7 +26,7 @@ $tableHead = [
     'fill'=>[
         'fillType' => Fill::FILL_SOLID,
         'startColor' => [
-            'rgb' => '343a40'
+            'rgb' => '46466b'
         ]
     ],
 ];
@@ -186,13 +186,7 @@ $spreadsheet->getActiveSheet()->getStyle('D' .$fila)
     //increment row
     $fila++;
         }
-    
-//autofilter
-//define first row and last row
-$firstRow=7;
-$lastRow=$fila-1;
-//set the autofilter
-$spreadsheet->getActiveSheet()->setAutoFilter("A".$firstRow.":D".$lastRow);
+
 
 
 //set the header first, so the result will be treated as an xlsx file.

@@ -240,7 +240,7 @@ $sql = "SELECT * FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt
                 </svg>
                 </button>
             </form>
-            <form   method="POST" action="../../Plugin/Excel/Egresos/Bodega/Excel.php" target="_blank">
+            <form   method="POST" action="../../Plugin/Excel/Egresos/Bodega/Excel.php">
                 <button type="submit" class="btn btn-outline-primary" name="bodega" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
@@ -492,7 +492,7 @@ $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVa
                 </svg>
                 </button>
             </form>
-                    <form   method="POST" action="../../Plugin/Excel/Egresos/Vale/Excel.php" target="_blank">
+                    <form   method="POST" action="../../Plugin/Excel/Egresos/Vale/Excel.php">
                 <button type="submit" class="btn btn-outline-primary" name="vale" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
@@ -519,7 +519,7 @@ $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVa
                 </svg>
                 </button>
             </form>
-                    <form id="form2"  method="POST" action="../../Plugin/Excel/Egresos/Vale/Excel.php" target="_blank">                 
+                    <form id="form2"  method="POST" action="../../Plugin/Excel/Egresos/Vale/Excel.php">                 
                         <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
                 <button type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">

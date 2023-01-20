@@ -108,7 +108,7 @@ $spreadsheet->getActiveSheet()->getHeaderFooter()
 //setting column width
 $spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(10);
 $spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(13);
-$spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(13);
+$spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(14);
 $spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(9);
 $spreadsheet->getActiveSheet()->getColumnDimension('E')->setWidth(23.83);
 $spreadsheet->getActiveSheet()->getColumnDimension('F')->setWidth(10);
@@ -160,9 +160,18 @@ $spreadsheet->getActiveSheet()->getStyle('A:U')->getAlignment()->setWrapText(tru
 $spreadsheet->getActiveSheet()->getStyle('A:U')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
 $spreadsheet->getActiveSheet()->getStyle('A:U')->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('H:I')->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+$spreadsheet->getActiveSheet()->getStyle('L4:L5')->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+
+$spreadsheet->getActiveSheet()->getStyle('G')->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+$spreadsheet->getActiveSheet()->getStyle('L3')->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+$spreadsheet->getActiveSheet()->getStyle('P')->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+$spreadsheet->getActiveSheet()->getStyle('T')->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
 $spreadsheet->getActiveSheet()->getHeaderFooter()
     ->setOddFooter( '&RPage &P al &N');
     
+
+$spreadsheet->getActiveSheet()->getRowDimension(8)->setRowHeight(21.75, 'pt');
 //set font style and background color
 $spreadsheet->getActiveSheet()->getStyle('A8:J8')->applyFromArray($tableHead);
 $spreadsheet->getActiveSheet()->getPageSetup()
@@ -201,20 +210,13 @@ while ($productos = mysqli_fetch_array($result)){
         $precio2  =    number_format($precio, 2,".",",");  
         $cant_aprobada=$productos['cantidad_solicitada'];
         $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,".",",");
         $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
         $final2 += $cant_aprobada;
-        $final3   =    number_format($final2, 2, ".",",");
-
         $final4 += $cantidad_despachada;
-        $final5   =    number_format($final4, 2, ".",",");
-        
         $final6 += ($cant_aprobada-$cantidad_despachada);
-        $final7   =    number_format($final6, 2, ".",",");
         
         $final8 += $precio;
-        $final9   =    number_format($final8, 2, ".",",");
      if ($productos['estado']="Pendiente") {  
     $total = $productos['cantidad_solicitada'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
@@ -225,8 +227,6 @@ while ($productos = mysqli_fetch_array($result)){
     $total = $productos['cantidad_despachada'] * $productos['precio'];
     }
      $final += $total;
-       $total1= number_format($total, 2, ".",",");
-      $final1=number_format($final, 2, ".",","); 
     
    if ($productos['idusuario']==1) {
         $u='Administrador';
@@ -237,11 +237,11 @@ while ($productos = mysqli_fetch_array($result)){
         $spreadsheet->getActiveSheet()->getStyle('K2:M2')->applyFromArray($tableHead);
         $sheet->setCellValue('K2' ,"VISTA PREVIA: ");
         $sheet->setCellValue('K3' ,"Cant Solicitada: ");
-        $sheet->setCellValue('L3' ,$final3);
+        $sheet->setCellValue('L3' ,$final2);
         $sheet->setCellValue('K4' ,"Costo Unitario: ");
-        $sheet->setCellValue('L4' ,$final9);
+        $sheet->setCellValue('L4' ,$final8);
         $sheet->setCellValue('K5' ,"SubTotal: ");
-        $sheet->setCellValue('L5' ,$final1);
+        $sheet->setCellValue('L5' ,$final);
         $spreadsheet->getActiveSheet()->mergeCells('K2:M2');
         $spreadsheet->getActiveSheet()->mergeCells('L3:M3');
         $spreadsheet->getActiveSheet()->mergeCells('L4:M4');
@@ -263,9 +263,9 @@ $fila3++;
     	$sheet->setCellValue('D' .$fila, $productos['codigo']);
     	$sheet->setCellValue('E' .$fila, $productos['nombre']);
     	$sheet->setCellValue('F' .$fila, $productos['unidad_medida']);
-    	$sheet->setCellValue('G' .$fila, $stock);
+    	$sheet->setCellValue('G' .$fila, $cant_aprobada);
     	$sheet->setCellValue('H' .$fila, $precio2);
-        $sheet->setCellValue('I' .$fila, $total1);
+        $sheet->setCellValue('I' .$fila, $total);
         $sheet->setCellValue('J' .$fila, $productos['fecha_solicitud']);
             if( $fila % 2 == 0 ){
         //even row
@@ -292,9 +292,7 @@ $sheet->setCellValue('O2' , "STOCK POR MES:");
     while ($productos1 = mysqli_fetch_array($result1)){
         $mes=$productos1['Mes'];
         $cantidad=$productos1['SUM(cantidad_solicitada)'];
-        $stock=number_format($cantidad, 2,".",",");
         $final10 += $cantidad;
-        $final11   =    number_format($final10, 2, ".",",");
                             if ($mes==1)  { $mes="Enero";}
                             if ($mes==2)  { $mes="Febrero";}
                             if ($mes==3)  { $mes="Marzo";}
@@ -311,7 +309,7 @@ $sheet->setCellValue('O2' , "STOCK POR MES:");
 
 
 $sheet->setCellValue('O' .$fila1, $mes);
-$sheet->setCellValue('P' .$fila1, $stock);
+$sheet->setCellValue('P' .$fila1, $cantidad);
 $spreadsheet->getActiveSheet()->mergeCells('O2:Q2');
 $spreadsheet->getActiveSheet()->mergeCells('P'.$fila1.':Q'.$fila1);
 
@@ -324,7 +322,7 @@ $spreadsheet->getActiveSheet()->mergeCells('P'.$fila1.':Q'.$fila1);
     }
 $fila1++;
 $sheet->setCellValue('O' .$fila1, "SubTotal");
-$sheet->setCellValue('P' .$fila1, $final11);
+$sheet->setCellValue('P' .$fila1, $final10);
 $spreadsheet->getActiveSheet()->mergeCells('P'.$fila1.':Q'.$fila1);
 }
 $spreadsheet->getActiveSheet()->getStyle('O'.$fila1.':Q'.$fila1)->applyFromArray($subtotal);
@@ -343,15 +341,13 @@ $sheet->setCellValue('S2' , "STOCK POR AÑO:");
     while ($productos1 = mysqli_fetch_array($result1)){
         $Año=$productos1['Año'];
         $cantidad=$productos1['SUM(cantidad_solicitada)'];
-        $stock=number_format($cantidad, 2,".",",");
         $final12 += $cantidad;
-        $final13   =    number_format($final12, 2, ".",",");
 
 
 
 
 $sheet->setCellValue('S' .$fila2, $Año);
-$sheet->setCellValue('T' .$fila2, $stock);
+$sheet->setCellValue('T' .$fila2, $cantidad);
 $spreadsheet->getActiveSheet()->mergeCells('S2:U2');
 $spreadsheet->getActiveSheet()->mergeCells('T'.$fila2.':U'.$fila2);
 
@@ -367,7 +363,7 @@ $fila2++;
 $spreadsheet->getActiveSheet()->mergeCells('T'.$fila2.':U'.$fila2);
 
 $sheet->setCellValue('S' .$fila2, "SubTotal");
-$sheet->setCellValue('T' .$fila2, $final13);
+$sheet->setCellValue('T' .$fila2, $final12);
 
 }
 $spreadsheet->getActiveSheet()->getStyle('S'.$fila2.':U'.$fila2)->applyFromArray($subtotal);

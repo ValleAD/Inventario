@@ -26,7 +26,7 @@ $tableHead = [
     'fill'=>[
         'fillType' => Fill::FILL_SOLID,
         'startColor' => [
-            'rgb' => '343a40'
+            'rgb' => '46466b'
         ]
     ],
 ];
@@ -136,6 +136,10 @@ $spreadsheet->getActiveSheet()->getStyle('A:S')->getAlignment()->setHorizontal(A
 $spreadsheet->getActiveSheet()->getStyle('A:S')->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 $spreadsheet->getActiveSheet()->getHeaderFooter()
     ->setOddFooter( '&RPágina &P al &N');
+
+
+$spreadsheet->getActiveSheet()->getRowDimension(7)->setRowHeight(21.75, 'pt');
+
 //set font style and background color
 $spreadsheet->getActiveSheet()->getStyle('A7:D7')->applyFromArray($tableHead);
 $spreadsheet->getActiveSheet()->getPageSetup()

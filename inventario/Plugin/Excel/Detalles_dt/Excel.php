@@ -42,10 +42,10 @@ $evenRow = [
     ]
 ];
 $subtotal = [
-        'font'=>[
+    'font'=>[
         'color'=>[
             'rgb'=>'FFFFFF'
-        
+
         ]
     ],
     'fill'=>[
@@ -56,10 +56,10 @@ $subtotal = [
     ]
 ];
 $Pendiente = [
-        'font'=>[
+    'font'=>[
         'color'=>[
             'rgb'=>'FFFFFF'
-        
+
         ]
     ],
     'fill'=>[
@@ -70,10 +70,10 @@ $Pendiente = [
     ]
 ];
 $Aprobado = [
-        'font'=>[
+    'font'=>[
         'color'=>[
             'rgb'=>'FFFFFF'
-        
+
         ]
     ],
     'fill'=>[
@@ -84,10 +84,10 @@ $Aprobado = [
     ]
 ];
 $Rechazado = [
-        'font'=>[
+    'font'=>[
         'color'=>[
             'rgb'=>'FFFFFF'
-        
+
         ]
     ],
     'fill'=>[
@@ -118,74 +118,74 @@ $sheet = $spreadsheet->getActiveSheet();
 
 //set default font
 $spreadsheet->getDefaultStyle()
-    ->getFont()
-    ->setName('Arial')
-    ->setSize(10);
+->getFont()
+->setName('Arial')
+->setSize(10);
 
 //heading
 
 if (isset($_POST['vale'])) {
-$spreadsheet->getActiveSheet()
+    $spreadsheet->getActiveSheet()
     ->setCellValue('A1',"MINISTERIO DE SALUD")
     ->setCellValue('A2',"HOSPITAL NACIONAL SANTA TERESA")
     ->setCellValue('A3',"DEPARTAMENTO DE MANTENIMIENTO")
     ->setCellValue('A4',"REPORTES DE DETALLES DE VALE");
 }
 if (isset($_POST['bodega'])) {
-$spreadsheet->getActiveSheet()
+    $spreadsheet->getActiveSheet()
     ->setCellValue('A1',"MINISTERIO DE SALUD")
     ->setCellValue('A2',"HOSPITAL NACIONAL SANTA TERESA")
     ->setCellValue('A3',"DEPARTAMENTO DE MANTENIMIENTO")
     ->setCellValue('A4',"REPORTES DE DETALLES DE BODEGA");
 }
 if (isset($_POST['circulante'])) {
-$spreadsheet->getActiveSheet()
+    $spreadsheet->getActiveSheet()
     ->setCellValue('A1',"MINISTERIO DE SALUD")
     ->setCellValue('A2',"HOSPITAL NACIONAL SANTA TERESA")
     ->setCellValue('A3',"DEPARTAMENTO DE MANTENIMIENTO")
     ->setCellValue('A4',"REPORTES DE DETALLES DE CIRCULANTE");
 }
 if (isset($_POST['compra'])) {
-$spreadsheet->getActiveSheet()
+    $spreadsheet->getActiveSheet()
     ->setCellValue('A1',"MINISTERIO DE SALUD")
     ->setCellValue('A2',"HOSPITAL NACIONAL SANTA TERESA")
     ->setCellValue('A3',"DEPARTAMENTO DE MANTENIMIENTO")
     ->setCellValue('A4',"REPORTES DE DETALLES DE COMPRA");
 }if (isset($_POST['almacen'])) {
-$spreadsheet->getActiveSheet()
+    $spreadsheet->getActiveSheet()
     ->setCellValue('A1',"MINISTERIO DE SALUD")
     ->setCellValue('A2',"HOSPITAL NACIONAL SANTA TERESA")
     ->setCellValue('A3',"DEPARTAMENTO DE MANTENIMIENTO")
     ->setCellValue('A4',"REPORTES DE DETALLES DE ALMACEN");
 }if (isset($_POST['vale1'])) {
-$spreadsheet->getActiveSheet()
+    $spreadsheet->getActiveSheet()
     ->setCellValue('A1',"MINISTERIO DE SALUD")
     ->setCellValue('A2',"HOSPITAL NACIONAL SANTA TERESA")
     ->setCellValue('A3',"DEPARTAMENTO DE MANTENIMIENTO")
     ->setCellValue('A4',"REPORTES DE DT VALE");
 }
 if (isset($_POST['bodega1'])) {
-$spreadsheet->getActiveSheet()
+    $spreadsheet->getActiveSheet()
     ->setCellValue('A1',"MINISTERIO DE SALUD")
     ->setCellValue('A2',"HOSPITAL NACIONAL SANTA TERESA")
     ->setCellValue('A3',"DEPARTAMENTO DE MANTENIMIENTO")
     ->setCellValue('A4',"REPORTES DE DT BODEGA");
 }
 if (isset($_POST['circulante1'])) {
-$spreadsheet->getActiveSheet()
+    $spreadsheet->getActiveSheet()
     ->setCellValue('A1',"MINISTERIO DE SALUD")
     ->setCellValue('A2',"HOSPITAL NACIONAL SANTA TERESA")
     ->setCellValue('A3',"DEPARTAMENTO DE MANTENIMIENTO")
     ->setCellValue('A4',"REPORTES DE DT CIRCULANTE");
 }
 if (isset($_POST['compra1'])) {
-$spreadsheet->getActiveSheet()
+    $spreadsheet->getActiveSheet()
     ->setCellValue('A1',"MINISTERIO DE SALUD")
     ->setCellValue('A2',"HOSPITAL NACIONAL SANTA TERESA")
     ->setCellValue('A3',"DEPARTAMENTO DE MANTENIMIENTO")
     ->setCellValue('A4',"REPORTES DE DT COMPRA");
 }if (isset($_POST['almacen1'])) {
-$spreadsheet->getActiveSheet()
+    $spreadsheet->getActiveSheet()
     ->setCellValue('A1',"MINISTERIO DE SALUD")
     ->setCellValue('A2',"HOSPITAL NACIONAL SANTA TERESA")
     ->setCellValue('A3',"DEPARTAMENTO DE MANTENIMIENTO")
@@ -203,7 +203,7 @@ $spreadsheet->getActiveSheet()->getStyle('A2')->getAlignment()->setHorizontal(Al
 $spreadsheet->getActiveSheet()->getStyle('A3')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 $spreadsheet->getActiveSheet()->getStyle('A4')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 $spreadsheet->getActiveSheet()->getHeaderFooter()
-    ->setOddFooter( '&RPágina &P al &N');
+->setOddFooter( '&RPágina &P al &N');
 
 if (isset($_POST['vale']) || 
     isset($_POST['bodega']) || 
@@ -214,7 +214,7 @@ if (isset($_POST['vale']) ||
     isset($_POST['compra1']) || 
     isset($_POST['almacen1'])) {
 //Unión de celdas
-$spreadsheet->getActiveSheet()->mergeCells("A1:J1");
+    $spreadsheet->getActiveSheet()->mergeCells("A1:J1");
 $spreadsheet->getActiveSheet()->mergeCells("A2:J2");
 $spreadsheet->getActiveSheet()->mergeCells("A3:J3");
 $spreadsheet->getActiveSheet()->mergeCells("A4:J4");
@@ -237,141 +237,146 @@ $spreadsheet->getActiveSheet()->getColumnDimension('S')->setWidth(15.71);
 $spreadsheet->getActiveSheet()->getColumnDimension('P')->setWidth(17.43);
 
 //imagen
-    $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
-    $drawing->setName('Paid');
-    $drawing->setDescription('Paid');
-    $drawing->setPath($IMG); /* put your path and image here */
-    $drawing->setCoordinates('A1');
-    $drawing->setOffsetX(10);
-    $drawing->setOffsetY(2);
-    $drawing->setWidth(150);
-    $drawing->getShadow()->setVisible(true);
-    $drawing->setWorksheet($spreadsheet->getActiveSheet());
+$drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
+$drawing->setName('Paid');
+$drawing->setDescription('Paid');
+$drawing->setPath($IMG); /* put your path and image here */
+$drawing->setCoordinates('A1');
+$drawing->setOffsetX(10);
+$drawing->setOffsetY(2);
+$drawing->setWidth(150);
+$drawing->getShadow()->setVisible(true);
+$drawing->setWorksheet($spreadsheet->getActiveSheet());
 //imagen
 $drawing1 = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
-    $drawing1->setName('Paid');
-    $drawing1->setDescription('Paid');
-    $drawing1->setPath($IMG1); /* put your path and image here */
-    $drawing1->setCoordinates('I1');
-    $drawing1->setOffsetX(-10);
-    $drawing1->setOffsetY(10);
-    $drawing1->setWidth(150);
-    $drawing1->getShadow()->setVisible(true);
-    $drawing1->getShadow()->setDirection(45);
-    $drawing1->setWorksheet($spreadsheet->getActiveSheet());
+$drawing1->setName('Paid');
+$drawing1->setDescription('Paid');
+$drawing1->setPath($IMG1); /* put your path and image here */
+$drawing1->setCoordinates('I1');
+$drawing1->setOffsetX(-10);
+$drawing1->setOffsetY(10);
+$drawing1->setWidth(150);
+$drawing1->getShadow()->setVisible(true);
+$drawing1->getShadow()->setDirection(45);
+$drawing1->setWorksheet($spreadsheet->getActiveSheet());
 }
- if (isset($_POST['circulante']) || isset($_POST['circulante1'])) {
+if (isset($_POST['circulante']) || isset($_POST['circulante1'])) {
 
-   $spreadsheet->getActiveSheet()->mergeCells("A1:H1");
-$spreadsheet->getActiveSheet()->mergeCells("A2:H2");
-$spreadsheet->getActiveSheet()->mergeCells("A3:H3");
-$spreadsheet->getActiveSheet()->mergeCells("A4:H4");
+ $spreadsheet->getActiveSheet()->mergeCells("A1:H1");
+ $spreadsheet->getActiveSheet()->mergeCells("A2:H2");
+ $spreadsheet->getActiveSheet()->mergeCells("A3:H3");
+ $spreadsheet->getActiveSheet()->mergeCells("A4:H4");
 
 //setting column width
-$spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(12.71);
-$spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(13);
-$spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(36.57);
-$spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(10);
-$spreadsheet->getActiveSheet()->getColumnDimension('E')->setWidth(10);
-$spreadsheet->getActiveSheet()->getColumnDimension('F')->setWidth(13.14);
-$spreadsheet->getActiveSheet()->getColumnDimension('G')->setWidth(10);
-$spreadsheet->getActiveSheet()->getColumnDimension('H')->setWidth(16);
+ $spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(12.71);
+ $spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(13);
+ $spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(36.57);
+ $spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(10);
+ $spreadsheet->getActiveSheet()->getColumnDimension('E')->setWidth(10);
+ $spreadsheet->getActiveSheet()->getColumnDimension('F')->setWidth(13.14);
+ $spreadsheet->getActiveSheet()->getColumnDimension('G')->setWidth(10);
+ $spreadsheet->getActiveSheet()->getColumnDimension('H')->setWidth(16);
 
-$spreadsheet->getActiveSheet()->getColumnDimension('I')->setWidth(15.71);
-$spreadsheet->getActiveSheet()->getColumnDimension('O')->setWidth(20.57);
-$spreadsheet->getActiveSheet()->getColumnDimension('M')->setWidth(15.71);
-$spreadsheet->getActiveSheet()->getColumnDimension('Q')->setWidth(15.71);
+ $spreadsheet->getActiveSheet()->getColumnDimension('I')->setWidth(15.71);
+ $spreadsheet->getActiveSheet()->getColumnDimension('O')->setWidth(20.57);
+ $spreadsheet->getActiveSheet()->getColumnDimension('M')->setWidth(15.71);
+ $spreadsheet->getActiveSheet()->getColumnDimension('Q')->setWidth(15.71);
 
 
 
 //imagen
-    $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
-    $drawing->setName('Paid');
-    $drawing->setDescription('Paid');
-    $drawing->setPath($IMG); /* put your path and image here */
-    $drawing->setCoordinates('A1');
-    $drawing->setOffsetX(10);
-    $drawing->setOffsetY(2);
-    $drawing->setWidth(150);
-    $drawing->getShadow()->setVisible(true);
-    $drawing->setWorksheet($spreadsheet->getActiveSheet());
+ $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
+ $drawing->setName('Paid');
+ $drawing->setDescription('Paid');
+ $drawing->setPath($IMG); /* put your path and image here */
+ $drawing->setCoordinates('A1');
+ $drawing->setOffsetX(10);
+ $drawing->setOffsetY(2);
+ $drawing->setWidth(150);
+ $drawing->getShadow()->setVisible(true);
+ $drawing->setWorksheet($spreadsheet->getActiveSheet());
 //imagen
-$drawing1 = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
-    $drawing1->setName('Paid');
-    $drawing1->setDescription('Paid');
-    $drawing1->setPath($IMG1); /* put your path and image here */
-    $drawing1->setCoordinates('F1');
-    $drawing1->setOffsetX(50);
-    $drawing1->setOffsetY(10);
-    $drawing1->setWidth(150);
-    $drawing1->getShadow()->setVisible(true);
-    $drawing1->getShadow()->setDirection(45);
-    $drawing1->setWorksheet($spreadsheet->getActiveSheet());
+ $drawing1 = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
+ $drawing1->setName('Paid');
+ $drawing1->setDescription('Paid');
+ $drawing1->setPath($IMG1); /* put your path and image here */
+ $drawing1->setCoordinates('F1');
+ $drawing1->setOffsetX(50);
+ $drawing1->setOffsetY(10);
+ $drawing1->setWidth(150);
+ $drawing1->getShadow()->setVisible(true);
+ $drawing1->getShadow()->setDirection(45);
+ $drawing1->setWorksheet($spreadsheet->getActiveSheet());
 }
 //header text
-    if (isset($_POST['vale']) || isset($_POST['vale1'])) {
-$sheet->setCellValue('A7', 'N° Vale');
-$sheet->setCellValue('B7', 'Departamento');
-$sheet->setCellValue('C7', 'Encargado');
-$sheet->setCellValue('D7', 'Código');
-$sheet->setCellValue('E7', 'Descripción');
-$sheet->setCellValue('F7', 'U/M');
-$sheet->setCellValue('G7', 'Cantidad');
-$sheet->setCellValue('H7', 'Costo Unitario');
-$sheet->setCellValue('I7', 'Total');
-$sheet->setCellValue('J7', 'Fecha Registro');
+if (isset($_POST['vale']) || isset($_POST['vale1'])) {
+    $sheet->setCellValue('A7', 'N° Vale');
+    $sheet->setCellValue('B7', 'Departamento');
+    $sheet->setCellValue('C7', 'Encargado');
+    $sheet->setCellValue('D7', 'Código');
+    $sheet->setCellValue('E7', 'Descripción');
+    $sheet->setCellValue('F7', 'U/M');
+    $sheet->setCellValue('G7', 'Cantidad');
+    $sheet->setCellValue('H7', 'Costo Unitario');
+    $sheet->setCellValue('I7', 'Total');
+    $sheet->setCellValue('J7', 'Fecha Registro');
 }
- if (isset($_POST['bodega']) || isset($_POST['bodega1'])) {
-$sheet->setCellValue('A7', 'N° Bodega');
-$sheet->setCellValue('B7', 'Departamento');
-$sheet->setCellValue('C7', 'Encargado');
-$sheet->setCellValue('D7', 'Código');
-$sheet->setCellValue('E7', 'Descripción');
-$sheet->setCellValue('F7', 'U/M');
-$sheet->setCellValue('G7', 'Cantidad');
-$sheet->setCellValue('H7', 'Costo Unitario');
-$sheet->setCellValue('I7', 'Total');
-$sheet->setCellValue('J7', 'Fecha Registro');
- }
- if (isset($_POST['compra']) || isset($_POST['compra1'])) {
-$sheet->setCellValue('A7', 'N° de Solicitud');
-$sheet->setCellValue('B7', 'Dependencia');
-$sheet->setCellValue('C7', 'Encargado');
-$sheet->setCellValue('D7', 'Código');
-$sheet->setCellValue('E7', 'Descripción');
-$sheet->setCellValue('F7', 'U/M');
-$sheet->setCellValue('G7', 'Cantidad');
-$sheet->setCellValue('H7', 'Costo Unitario');
-$sheet->setCellValue('I7', 'Total');
-$sheet->setCellValue('J7', 'Fecha Registro');
+if (isset($_POST['bodega']) || isset($_POST['bodega1'])) {
+    $sheet->setCellValue('A7', 'N° Bodega');
+    $sheet->setCellValue('B7', 'Departamento');
+    $sheet->setCellValue('C7', 'Encargado');
+    $sheet->setCellValue('D7', 'Código');
+    $sheet->setCellValue('E7', 'Descripción');
+    $sheet->setCellValue('F7', 'U/M');
+    $sheet->setCellValue('G7', 'Cantidad');
+    $sheet->setCellValue('H7', 'Costo Unitario');
+    $sheet->setCellValue('I7', 'Total');
+    $sheet->setCellValue('J7', 'Fecha Registro');
 }
- if (isset($_POST['almacen']) || isset($_POST['almacen1'])) {
-$sheet->setCellValue('A7', 'N° Almacen');
-$sheet->setCellValue('B7', 'Departamento');
-$sheet->setCellValue('C7', 'Encargado');
-$sheet->setCellValue('D7', 'Código');
-$sheet->setCellValue('E7', 'Descripción');
-$sheet->setCellValue('F7', 'U/M');
-$sheet->setCellValue('G7', 'Cantidad');
-$sheet->setCellValue('H7', 'Costo Unitario');
-$sheet->setCellValue('I7', 'Total');
-$sheet->setCellValue('J7', 'Fecha Registro');
+if (isset($_POST['compra']) || isset($_POST['compra1'])) {
+    $sheet->setCellValue('A7', 'N° de Solicitud');
+    $sheet->setCellValue('B7', 'Dependencia');
+    $sheet->setCellValue('C7', 'Encargado');
+    $sheet->setCellValue('D7', 'Código');
+    $sheet->setCellValue('E7', 'Descripción');
+    $sheet->setCellValue('F7', 'U/M');
+    $sheet->setCellValue('G7', 'Cantidad');
+    $sheet->setCellValue('H7', 'Costo Unitario');
+    $sheet->setCellValue('I7', 'Total');
+    $sheet->setCellValue('J7', 'Fecha Registro');
 }
- if (isset($_POST['circulante']) || isset($_POST['circulante1'])) {
-$sheet->setCellValue('A7', 'N° Circulante');
-$sheet->setCellValue('B7', 'Código');
-$sheet->setCellValue('C7', 'Descripción');
-$sheet->setCellValue('D7', 'U/M');
-$sheet->setCellValue('E7', 'Cantidad');
-$sheet->setCellValue('F7', 'Costo Unitario');
-$sheet->setCellValue('G7', 'Total');
-$sheet->setCellValue('H7', 'Fecha Registro');
-    }
+if (isset($_POST['almacen']) || isset($_POST['almacen1'])) {
+    $sheet->setCellValue('A7', 'N° Almacen');
+    $sheet->setCellValue('B7', 'Departamento');
+    $sheet->setCellValue('C7', 'Encargado');
+    $sheet->setCellValue('D7', 'Código');
+    $sheet->setCellValue('E7', 'Descripción');
+    $sheet->setCellValue('F7', 'U/M');
+    $sheet->setCellValue('G7', 'Cantidad');
+    $sheet->setCellValue('H7', 'Costo Unitario');
+    $sheet->setCellValue('I7', 'Total');
+    $sheet->setCellValue('J7', 'Fecha Registro');
+}
+if (isset($_POST['circulante']) || isset($_POST['circulante1'])) {
+    $sheet->setCellValue('A7', 'N° Circulante');
+    $sheet->setCellValue('B7', 'Código');
+    $sheet->setCellValue('C7', 'Descripción');
+    $sheet->setCellValue('D7', 'U/M');
+    $sheet->setCellValue('E7', 'Cantidad');
+    $sheet->setCellValue('F7', 'Costo Unitario');
+    $sheet->setCellValue('G7', 'Total');
+    $sheet->setCellValue('H7', 'Fecha Registro');
+}
 
 $spreadsheet->getActiveSheet()->getStyle('A:S')->getAlignment()->setWrapText(true);
 $spreadsheet->getActiveSheet()->getStyle('A:S')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
 $spreadsheet->getActiveSheet()->getStyle('A:S')->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('H:I')->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+
+$spreadsheet->getActiveSheet()->getStyle('G')->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+$spreadsheet->getActiveSheet()->getRowDimension(7)->setRowHeight(21.75, 'pt');
 //set font style and background color
 if (isset($_POST['vale']) || 
     isset($_POST['bodega']) || 
@@ -381,10 +386,10 @@ if (isset($_POST['vale']) ||
     isset($_POST['bodega1']) || 
     isset($_POST['compra1']) || 
     isset($_POST['almacen1'])) {
-$spreadsheet->getActiveSheet()->getStyle('A7:J7')->applyFromArray($tableHead);
+    $spreadsheet->getActiveSheet()->getStyle('A7:J7')->applyFromArray($tableHead);
 }
- if (isset($_POST['circulante']) || isset($_POST['circulante1'])) {
-$spreadsheet->getActiveSheet()->getStyle('A7:H7')->applyFromArray($tableHead);
+if (isset($_POST['circulante']) || isset($_POST['circulante1'])) {
+    $spreadsheet->getActiveSheet()->getStyle('A7:H7')->applyFromArray($tableHead);
 }
 $spreadsheet->getActiveSheet()->getPageSetup()->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
 $fila=8; 
@@ -407,84 +412,84 @@ $final11 = "0.00";
 $final12 = "0.00";
 $final13 = "0.00";
 if (isset($_POST['vale'])) {
-$vale = $_POST['vale'];
-   $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE numero_vale = $vale";
-$result = mysqli_query($conn, $sql);
+    $vale = $_POST['vale'];
+    $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE numero_vale = $vale";
+    $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
-        
-     $precio   =    $productos['precio'];
-        $precio2  =    number_format($precio, 2,".",",");  
-        $cant_aprobada=$productos['stock'];
-        $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,".",",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-        $final2 += $cant_aprobada;
-        $final3   =    number_format($final2, 2, ".",",");
+       $precio   =    $productos['precio'];
+       $precio2  =    number_format($precio, 2,".",",");  
+       $cant_aprobada=$productos['stock'];
+       $cantidad_despachada=$productos['cantidad_despachada'];
+       $stock=number_format($cant_aprobada, 2,".",",");
+       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-        $final4 += $cantidad_despachada;
-        $final5   =    number_format($final4, 2, ".",",");
-        
-        $final6 += ($cant_aprobada-$cantidad_despachada);
-        $final7   =    number_format($final6, 2, ".",",");
-        
-        $final8 += $precio;
-        $final9   =    number_format($final8, 2, ".",",");
-     if ($productos['estado']="Pendiente") {  
-    $total = $productos['stock'] * $productos['precio'];
+       $final2 += $cant_aprobada;
+       $final3   =    number_format($final2, 2, ".",",");
+
+       $final4 += $cantidad_despachada;
+       $final5   =    number_format($final4, 2, ".",",");
+
+       $final6 += ($cant_aprobada-$cantidad_despachada);
+       $final7   =    number_format($final6, 2, ".",",");
+
+       $final8 += $precio;
+       $final9   =    number_format($final8, 2, ".",",");
+       if ($productos['estado']="Pendiente") {  
+        $total = $productos['stock'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
-        
-    $total = $productos['stock'] * $productos['precio'];
+
+        $total = $productos['stock'] * $productos['precio'];
     }if ($productos['estado']=="Aprobado") {
-        
-    $total = $productos['cantidad_despachada'] * $productos['precio'];
+
+        $total = $productos['cantidad_despachada'] * $productos['precio'];
     }
-     $final += $total;
-       $total1= number_format($total, 2, ".",",");
-      $final1=number_format($final, 2, ".",","); 
+    $final += $total;
+    $total1= number_format($total, 2, ".",",");
+    $final1=number_format($final, 2, ".",","); 
     
-   if ($productos['idusuario']==1) {
+    if ($productos['idusuario']==1) {
         $u='Administrador';
-        }
-        else {
-            $u='Cliente';
-        }
-        
-        $spreadsheet->getActiveSheet()->getStyle('K2:M2')->applyFromArray($tableHead);
-        $sheet->setCellValue('K2' ,"VISTA PREVIA: ");
-        $sheet->setCellValue('K3' ,"Cant Solicitada: ");
-        $sheet->setCellValue('L3' ,$final3);
-        $sheet->setCellValue('K4' ,"Costo Unitario: ");
-        $sheet->setCellValue('L4' ,$final9);
-        $sheet->setCellValue('K5' ,"SubTotal: ");
-        $sheet->setCellValue('L5' ,$final1);
-        $spreadsheet->getActiveSheet()->mergeCells('K2:M2');
-        $spreadsheet->getActiveSheet()->mergeCells('L3:M3');
-        $spreadsheet->getActiveSheet()->mergeCells('L4:M4');
-        $spreadsheet->getActiveSheet()->mergeCells('L5:M5');
-$fila3++;
-                    if( $fila3 % 2 == 0 ){
-        //even row
-        $spreadsheet->getActiveSheet()->getStyle('k3:M5')->applyFromArray($oddRow);
-    }else{
-        //odd row
-        $spreadsheet->getActiveSheet()->getStyle('k4:M5')->applyFromArray($oddRow);
     }
-        $spreadsheet->getActiveSheet()->getStyle('k5:M5')->applyFromArray($subtotal);
+    else {
+        $u='Cliente';
+    }
+
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila+2)->applyFromArray($tableHead);
+    $spreadsheet->getActiveSheet()->getStyle('C'.$fila+2)->applyFromArray($tableHead);
+    $sheet->setCellValue('A'.$fila +2 , "VISTA PREVIA:");
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':C'.$fila + 2);
+
+    $sheet->setCellValue('A'.$fila +3 ,"Cant Solicitada: ");
+    $sheet->setCellValue('C'.$fila +3 ,$final3);
+    $sheet->setCellValue('A'.$fila +4 ,"Costo Unitario: ");
+    $sheet->setCellValue('C'.$fila +4 ,$final9);
+    $sheet->setCellValue('A'.$fila +5 ,"SubTotal: ");
+    $sheet->setCellValue('C'.$fila +5 ,$final1);
+    
+    $spreadsheet->getActiveSheet()->getStyle('C'.$fila + 3)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+    $spreadsheet->getActiveSheet()->getStyle('B'.$fila + 4 .':C'.$fila + 5)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($evenRow);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($oddRow);
+    
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 5 .':C'.$fila + 5)->applyFromArray($subtotal);
 
 
-        $sheet->setCellValue('A' .$fila, $productos['codVale']);
-        $sheet->setCellValue('B' .$fila, $productos['departamento']);
-        $sheet->setCellValue('C' .$fila, $productos['usuario']." "."(".$u.")");
-        $sheet->setCellValue('D' .$fila, $productos['codigo']);
-        $sheet->setCellValue('E' .$fila, $productos['descripcion']);
-        $sheet->setCellValue('F' .$fila, $productos['unidad_medida']);
-        $sheet->setCellValue('G' .$fila, $stock);
-        $sheet->setCellValue('H' .$fila, $precio2);
-        $sheet->setCellValue('I' .$fila, $total1);
-        $sheet->setCellValue('J' .$fila, $productos['fecha_registro']);
-        if( $fila % 2 == 0 ){
+    $sheet->setCellValue('A' .$fila, $productos['codVale']);
+    $sheet->setCellValue('B' .$fila, $productos['departamento']);
+    $sheet->setCellValue('C' .$fila, $productos['usuario']." "."(".$u.")");
+    $sheet->setCellValue('D' .$fila, $productos['codigo']);
+    $sheet->setCellValue('E' .$fila, $productos['descripcion']);
+    $sheet->setCellValue('F' .$fila, $productos['unidad_medida']);
+    $sheet->setCellValue('G' .$fila, $stock);
+    $sheet->setCellValue('H' .$fila, $precio2);
+    $sheet->setCellValue('I' .$fila, $total1);
+    $sheet->setCellValue('J' .$fila, $productos['fecha_registro']);
+    if( $fila % 2 == 0 ){
         //even row
         $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':J'.$fila)->applyFromArray($evenRow);
     }else{
@@ -493,133 +498,138 @@ $fila3++;
     }
     //increment row
     $fila++;
-        }
-        $spreadsheet->getActiveSheet()->getStyle('O2:Q2')->applyFromArray($tableHead);
-        $sheet->setCellValue('O2' , "VISTA PREVIA:");
-
-        $sql1="SELECT * FROM tb_vale WHERE codVale=$vale";
-        $result1 = mysqli_query($conn, $sql1);
-    while ($productos1 = mysqli_fetch_array($result1)){
-        $title="Departamento";
-        $title1="N° Vale";
-        $title2="Encargado";
-        $title3="Fecha";
-        $title4="Estado";
-        $body=$productos1['departamento'];
-        $body1=$productos1['codVale'];
-        $body2=$productos1['usuario'];
-        $body3=$productos1['fecha_registro'];
-        $body4=$productos1['estado'];
-$sheet->setCellValue('O3', $title);
-$sheet->setCellValue('O4', $title1);
-$sheet->setCellValue('O5', $title2);
-$sheet->setCellValue('O6', $title3);
-$sheet->setCellValue('O7', $title4);
-$sheet->setCellValue('P3', $body);
-$sheet->setCellValue('P4', $body1);
-$sheet->setCellValue('P5', $body2);
-$sheet->setCellValue('P6', $body3);
-$sheet->setCellValue('P7', $body4);
-$spreadsheet->getActiveSheet()->mergeCells('O2:Q2');
-$spreadsheet->getActiveSheet()->mergeCells('P3:Q3');
-$spreadsheet->getActiveSheet()->mergeCells('P4:Q4');
-$spreadsheet->getActiveSheet()->mergeCells('P5:Q5');
-$spreadsheet->getActiveSheet()->mergeCells('P6:Q6');
-$spreadsheet->getActiveSheet()->mergeCells('P7:Q7');
-
-        $spreadsheet->getActiveSheet()->getStyle('O3:Q3')->applyFromArray($evenRow);
-        $spreadsheet->getActiveSheet()->getStyle('O4:Q4')->applyFromArray($oddRow);
-
-        $spreadsheet->getActiveSheet()->getStyle('O5:Q5')->applyFromArray($evenRow);
-        $spreadsheet->getActiveSheet()->getStyle('O6:Q6')->applyFromArray($oddRow); 
-if ($body4=="Pendiente") {
-        $spreadsheet->getActiveSheet()->getStyle('O7:Q7')->applyFromArray($Pendiente);
-}if ($body4=="Aprobado") {
-        $spreadsheet->getActiveSheet()->getStyle('O7:Q7')->applyFromArray($Aprobado);
-}if ($body4=="Rechazado") {
-        $spreadsheet->getActiveSheet()->getStyle('O7:Q7')->applyFromArray($Rechazado);
 }
+$spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 1 .':J'.$fila + 1)->applyFromArray($tableHead);
+$sheet->setCellValue('E'.$fila +1 , "VISTA PREVIA:");
+$spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 1 .':J'.$fila + 1);
+
+$sql1="SELECT * FROM tb_vale WHERE codVale=$vale";
+$result1 = mysqli_query($conn, $sql1);
+while ($productos1 = mysqli_fetch_array($result1)){
+    $title="Departamento";
+    $title1="N° Vale";
+    $title2="Encargado";
+    $title3="Fecha";
+    $title4="Estado";
+    $body=$productos1['departamento'];
+    $body1=$productos1['codVale'];
+    $body2=$productos1['usuario'];
+    $body3=$productos1['fecha_registro'];
+    $body4=$productos1['estado'];
+    $sheet->setCellValue('E'.$fila+2, $title);
+    $sheet->setCellValue('E'.$fila+3, $title1);
+    $sheet->setCellValue('E'.$fila+4, $title2);
+    $sheet->setCellValue('E'.$fila+5, $title3);
+    $sheet->setCellValue('E'.$fila+6, $title4);
+    $sheet->setCellValue('F'.$fila+2, $body);
+    $sheet->setCellValue('F'.$fila+3, $body1);
+    $sheet->setCellValue('F'.$fila+4, $body2);
+    $sheet->setCellValue('F'.$fila+5, $body3);
+    $sheet->setCellValue('F'.$fila+6, $body4);
+
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':B'.$fila + 2);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 3 .':B'.$fila + 3);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 4 .':B'.$fila + 4);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 5 .':B'.$fila + 5);
+
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 2 .':J'.$fila + 2);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 3 .':J'.$fila + 3);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 4 .':J'.$fila + 4);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 5 .':J'.$fila + 5);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 6 .':J'.$fila + 6);
+
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 2 .':F'.$fila + 2)->applyFromArray($evenRow);
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 3 .':F'.$fila + 3)->applyFromArray($oddRow);
+
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 4 .':F'.$fila + 4)->applyFromArray($evenRow);
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 5 .':F'.$fila + 5)->applyFromArray($oddRow); 
+    if ($body4=="Pendiente") {
+        $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 6 .':F'.$fila + 6)->applyFromArray($Pendiente);
+    }if ($body4=="Aprobado") {
+        $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 6 .':F'.$fila + 6)->applyFromArray($Aprobado);
+    }if ($body4=="Rechazado") {
+        $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 6 .':F'.$fila + 6)->applyFromArray($Rechazado);
     }
+}
 }
 if (isset($_POST['bodega'])) {
-$vale = $_POST['bodega'];
-   $sql = "SELECT * FROM `detalle_bodega` D JOIN `tb_bodega` V ON D.odt_bodega=V.codBodega WHERE odt_bodega = $vale";
-$result = mysqli_query($conn, $sql);
+    $vale = $_POST['bodega'];
+    $sql = "SELECT * FROM `detalle_bodega` D JOIN `tb_bodega` V ON D.odt_bodega=V.codBodega WHERE odt_bodega = $vale";
+    $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
-        
-     $precio   =    $productos['precio'];
-        $precio2  =    number_format($precio, 2,".",",");  
-        $cant_aprobada=$productos['stock'];
-        $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,".",",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-        $final2 += $cant_aprobada;
-        $final3   =    number_format($final2, 2, ".",",");
+       $precio   =    $productos['precio'];
+       $precio2  =    number_format($precio, 2,".",",");  
+       $cant_aprobada=$productos['stock'];
+       $cantidad_despachada=$productos['cantidad_despachada'];
+       $stock=number_format($cant_aprobada, 2,".",",");
+       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-        $final4 += $cantidad_despachada;
-        $final5   =    number_format($final4, 2, ".",",");
-        
-        $final6 += ($cant_aprobada-$cantidad_despachada);
-        $final7   =    number_format($final6, 2, ".",",");
-        
-        $final8 += $precio;
-        $final9   =    number_format($final8, 2, ".",",");
-     if ($productos['estado']="Pendiente") {  
-    $total = $productos['stock'] * $productos['precio'];
+       $final2 += $cant_aprobada;
+       $final3   =    number_format($final2, 2, ".",",");
+
+       $final4 += $cantidad_despachada;
+       $final5   =    number_format($final4, 2, ".",",");
+
+       $final6 += ($cant_aprobada-$cantidad_despachada);
+       $final7   =    number_format($final6, 2, ".",",");
+
+       $final8 += $precio;
+       $final9   =    number_format($final8, 2, ".",",");
+       if ($productos['estado']="Pendiente") {  
+        $total = $productos['stock'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
-        
-    $total = $productos['stock'] * $productos['precio'];
+
+        $total = $productos['stock'] * $productos['precio'];
     }if ($productos['estado']=="Aprobado") {
-        
-    $total = $productos['cantidad_despachada'] * $productos['precio'];
+
+        $total = $productos['cantidad_despachada'] * $productos['precio'];
     }
-     $final += $total;
-       $total1= number_format($total, 2, ".",",");
-      $final1=number_format($final, 2, ".",","); 
-    
-   if ($productos['idusuario']==1) {
+    $final += $total;
+    $total1= number_format($total, 2, ".",",");
+    $final1=number_format($final, 2, ".",","); 
+
+    if ($productos['idusuario']==1) {
         $u='Administrador';
-        }
-        else {
-            $u='Cliente';
-        }
-                $spreadsheet->getActiveSheet()->getStyle('K2:M2')->applyFromArray($tableHead);
-        $sheet->setCellValue('K2' ,"VISTA PREVIA: ");
-        $sheet->setCellValue('K3' ,"Cant Solicitada: ");
-        $sheet->setCellValue('L3' ,$final3);
-        $sheet->setCellValue('K4' ,"Costo Unitario: ");
-        $sheet->setCellValue('L4' ,$final9);
-        $sheet->setCellValue('K5' ,"SubTotal: ");
-        $sheet->setCellValue('L5' ,$final1);
-        $spreadsheet->getActiveSheet()->mergeCells('K2:M2');
-        $spreadsheet->getActiveSheet()->mergeCells('L3:M3');
-        $spreadsheet->getActiveSheet()->mergeCells('L4:M4');
-        $spreadsheet->getActiveSheet()->mergeCells('L5:M5');
-$fila3++;
-                    if( $fila3 % 2 == 0 ){
-        //even row
-        $spreadsheet->getActiveSheet()->getStyle('k3:M5')->applyFromArray($oddRow);
-    }else{
-        //odd row
-        $spreadsheet->getActiveSheet()->getStyle('k4:M5')->applyFromArray($oddRow);
     }
-        $spreadsheet->getActiveSheet()->getStyle('k5:M5')->applyFromArray($subtotal);
+    else {
+        $u='Cliente';
+    }
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila+2)->applyFromArray($tableHead);
+    $spreadsheet->getActiveSheet()->getStyle('C'.$fila+2)->applyFromArray($tableHead);
+    $sheet->setCellValue('A'.$fila +2 , "VISTA PREVIA:");
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':C'.$fila + 2);
+
+    $sheet->setCellValue('A'.$fila +3 ,"Cant Solicitada: ");
+    $sheet->setCellValue('C'.$fila +3 ,$final3);
+    $sheet->setCellValue('A'.$fila +4 ,"Costo Unitario: ");
+    $sheet->setCellValue('C'.$fila +4 ,$final9);
+    $sheet->setCellValue('A'.$fila +5 ,"SubTotal: ");
+    $sheet->setCellValue('C'.$fila +5 ,$final1);
+    
+    $spreadsheet->getActiveSheet()->getStyle('C'.$fila + 3)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+    $spreadsheet->getActiveSheet()->getStyle('B'.$fila + 4 .':C'.$fila + 5)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($evenRow);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($oddRow);
+    
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 5 .':C'.$fila + 5)->applyFromArray($subtotal);
 
 
-
-        $sheet->setCellValue('A' .$fila, $productos['codBodega']);
-        $sheet->setCellValue('B' .$fila, $productos['departamento']);
-        $sheet->setCellValue('C' .$fila, $productos['usuario']." "."(".$u.")");
-        $sheet->setCellValue('D' .$fila, $productos['codigo']);
-        $sheet->setCellValue('E' .$fila, $productos['descripcion']);
-        $sheet->setCellValue('F' .$fila, $productos['unidad_medida']);
-        $sheet->setCellValue('G' .$fila, $stock);
-        $sheet->setCellValue('H' .$fila, $precio2);
-        $sheet->setCellValue('I' .$fila, $total1);
-        $sheet->setCellValue('J' .$fila, $productos['fecha_registro']);
-        if( $fila % 2 == 0 ){
+    $sheet->setCellValue('A' .$fila, $productos['codBodega']);
+    $sheet->setCellValue('B' .$fila, $productos['departamento']);
+    $sheet->setCellValue('C' .$fila, $productos['usuario']." "."(".$u.")");
+    $sheet->setCellValue('D' .$fila, $productos['codigo']);
+    $sheet->setCellValue('E' .$fila, $productos['descripcion']);
+    $sheet->setCellValue('F' .$fila, $productos['unidad_medida']);
+    $sheet->setCellValue('G' .$fila, $stock);
+    $sheet->setCellValue('H' .$fila, $precio2);
+    $sheet->setCellValue('I' .$fila, $total1);
+    $sheet->setCellValue('J' .$fila, $productos['fecha_registro']);
+    if( $fila % 2 == 0 ){
         //even row
         $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':J'.$fila)->applyFromArray($evenRow);
     }else{
@@ -628,134 +638,139 @@ $fila3++;
     }
     //increment row
     $fila++;
-        }
-        $spreadsheet->getActiveSheet()->getStyle('O2:Q2')->applyFromArray($tableHead);
-
-$sheet->setCellValue('O2' , "VISTA PREVIA:");
-
-        $sql1="SELECT * FROM tb_bodega WHERE codBodega=$vale";
-        $result1 = mysqli_query($conn, $sql1);
-    while ($productos1 = mysqli_fetch_array($result1)){
-        $title="Departamento";
-        $title1="O. de T. No.";
-        $title2="Encargado";
-        $title3="Fecha";
-        $title4="Estado";
-        $body=$productos1['departamento'];
-        $body1=$productos1['codBodega'];
-        $body2=$productos1['usuario'];
-        $body3=$productos1['fecha_registro'];
-        $body4=$productos1['estado'];
-$sheet->setCellValue('O3', $title);
-$sheet->setCellValue('O4', $title1);
-$sheet->setCellValue('O5', $title2);
-$sheet->setCellValue('O6', $title3);
-$sheet->setCellValue('O7', $title4);
-$sheet->setCellValue('P3', $body);
-$sheet->setCellValue('P4', $body1);
-$sheet->setCellValue('P5', $body2);
-$sheet->setCellValue('P6', $body3);
-$sheet->setCellValue('P7', $body4);
-$spreadsheet->getActiveSheet()->mergeCells('O2:Q2');
-$spreadsheet->getActiveSheet()->mergeCells('P3:Q3');
-$spreadsheet->getActiveSheet()->mergeCells('P4:Q4');
-$spreadsheet->getActiveSheet()->mergeCells('P5:Q5');
-$spreadsheet->getActiveSheet()->mergeCells('P6:Q6');
-$spreadsheet->getActiveSheet()->mergeCells('P7:Q7');
-
-        $spreadsheet->getActiveSheet()->getStyle('O3:Q3')->applyFromArray($evenRow);
-        $spreadsheet->getActiveSheet()->getStyle('O4:Q4')->applyFromArray($oddRow);
-
-        $spreadsheet->getActiveSheet()->getStyle('O5:Q5')->applyFromArray($evenRow);
-        $spreadsheet->getActiveSheet()->getStyle('O6:Q6')->applyFromArray($oddRow); 
-if ($body4=="Pendiente") {
-        $spreadsheet->getActiveSheet()->getStyle('O7:Q7')->applyFromArray($Pendiente);
-}if ($body4=="Aprobado") {
-        $spreadsheet->getActiveSheet()->getStyle('O7:Q7')->applyFromArray($Aprobado);
-}if ($body4=="Rechazado") {
-        $spreadsheet->getActiveSheet()->getStyle('O7:Q7')->applyFromArray($Rechazado);
 }
+$spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 1 .':J'.$fila + 1)->applyFromArray($tableHead);
+$sheet->setCellValue('E'.$fila +1 , "VISTA PREVIA:");
+$spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 1 .':J'.$fila + 1);
+
+$sql1="SELECT * FROM tb_bodega WHERE codBodega=$vale";
+$result1 = mysqli_query($conn, $sql1);
+while ($productos1 = mysqli_fetch_array($result1)){
+    $title="Departamento";
+    $title1="O. de T. No.";
+    $title2="Encargado";
+    $title3="Fecha";
+    $title4="Estado";
+    $body=$productos1['departamento'];
+    $body1=$productos1['codBodega'];
+    $body2=$productos1['usuario'];
+    $body3=$productos1['fecha_registro'];
+    $body4=$productos1['estado'];
+    $sheet->setCellValue('E'.$fila+2, $title);
+    $sheet->setCellValue('E'.$fila+3, $title1);
+    $sheet->setCellValue('E'.$fila+4, $title2);
+    $sheet->setCellValue('E'.$fila+5, $title3);
+    $sheet->setCellValue('E'.$fila+6, $title4);
+    $sheet->setCellValue('F'.$fila+2, $body);
+    $sheet->setCellValue('F'.$fila+3, $body1);
+    $sheet->setCellValue('F'.$fila+4, $body2);
+    $sheet->setCellValue('F'.$fila+5, $body3);
+    $sheet->setCellValue('F'.$fila+6, $body4);
+
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':B'.$fila + 2);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 3 .':B'.$fila + 3);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 4 .':B'.$fila + 4);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 5 .':B'.$fila + 5);
+
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 2 .':J'.$fila + 2);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 3 .':J'.$fila + 3);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 4 .':J'.$fila + 4);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 5 .':J'.$fila + 5);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 6 .':J'.$fila + 6);
+
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 2 .':F'.$fila + 2)->applyFromArray($evenRow);
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 3 .':F'.$fila + 3)->applyFromArray($oddRow);
+
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 4 .':F'.$fila + 4)->applyFromArray($evenRow);
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 5 .':F'.$fila + 5)->applyFromArray($oddRow); 
+    if ($body4=="Pendiente") {
+        $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 6 .':F'.$fila + 6)->applyFromArray($Pendiente);
+    }if ($body4=="Aprobado") {
+        $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 6 .':F'.$fila + 6)->applyFromArray($Aprobado);
+    }if ($body4=="Rechazado") {
+        $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 6 .':F'.$fila + 6)->applyFromArray($Rechazado);
     }
-    }
+}
+}
 if (isset($_POST['vale1'])) {
-$vale = $_POST['vale1'];
-   $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE numero_vale = $vale";
-$result = mysqli_query($conn, $sql);
+    $vale = $_POST['vale1'];
+    $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE numero_vale = $vale";
+    $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
-        
-     $precio   =    $productos['precio'];
-        $precio2  =    number_format($precio, 2,".",",");  
-        $cant_aprobada=$productos['stock'];
-        $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,".",",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-        $final2 += $cant_aprobada;
-        $final3   =    number_format($final2, 2, ".",",");
+       $precio   =    $productos['precio'];
+       $precio2  =    number_format($precio, 2,".",",");  
+       $cant_aprobada=$productos['stock'];
+       $cantidad_despachada=$productos['cantidad_despachada'];
+       $stock=number_format($cant_aprobada, 2,".",",");
+       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-        $final4 += $cantidad_despachada;
-        $final5   =    number_format($final4, 2, ".",",");
-        
-        $final6 += ($cant_aprobada-$cantidad_despachada);
-        $final7   =    number_format($final6, 2, ".",",");
-        
-        $final8 += $precio;
-        $final9   =    number_format($final8, 2, ".",",");
-     if ($productos['estado']="Pendiente") {  
-    $total = $productos['stock'] * $productos['precio'];
+       $final2 += $cant_aprobada;
+       $final3   =    number_format($final2, 2, ".",",");
+
+       $final4 += $cantidad_despachada;
+       $final5   =    number_format($final4, 2, ".",",");
+
+       $final6 += ($cant_aprobada-$cantidad_despachada);
+       $final7   =    number_format($final6, 2, ".",",");
+
+       $final8 += $precio;
+       $final9   =    number_format($final8, 2, ".",",");
+       if ($productos['estado']="Pendiente") {  
+        $total = $productos['stock'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
-        
-    $total = $productos['stock'] * $productos['precio'];
+
+        $total = $productos['stock'] * $productos['precio'];
     }if ($productos['estado']=="Aprobado") {
-        
-    $total = $productos['cantidad_despachada'] * $productos['precio'];
+
+        $total = $productos['cantidad_despachada'] * $productos['precio'];
     }
-     $final += $total;
-       $total1= number_format($total, 2, ".",",");
-      $final1=number_format($final, 2, ".",","); 
-    
-   if ($productos['idusuario']==1) {
+    $final += $total;
+    $total1= number_format($total, 2, ".",",");
+    $final1=number_format($final, 2, ".",","); 
+
+    if ($productos['idusuario']==1) {
         $u='Administrador';
-        }
-        else {
-            $u='Cliente';
-        }
-        
-        $spreadsheet->getActiveSheet()->getStyle('K2:M2')->applyFromArray($tableHead);
-        $sheet->setCellValue('K2' ,"VISTA PREVIA: ");
-        $sheet->setCellValue('K3' ,"Cant Solicitada: ");
-        $sheet->setCellValue('L3' ,$final3);
-        $sheet->setCellValue('K4' ,"Costo Unitario: ");
-        $sheet->setCellValue('L4' ,$final9);
-        $sheet->setCellValue('K5' ,"SubTotal: ");
-        $sheet->setCellValue('L5' ,$final1);
-        $spreadsheet->getActiveSheet()->mergeCells('K2:M2');
-        $spreadsheet->getActiveSheet()->mergeCells('L3:M3');
-        $spreadsheet->getActiveSheet()->mergeCells('L4:M4');
-        $spreadsheet->getActiveSheet()->mergeCells('L5:M5');
-$fila3++;
-                    if( $fila3 % 2 == 0 ){
-        //even row
-        $spreadsheet->getActiveSheet()->getStyle('k3:M5')->applyFromArray($oddRow);
-    }else{
-        //odd row
-        $spreadsheet->getActiveSheet()->getStyle('k4:M5')->applyFromArray($oddRow);
     }
-        $spreadsheet->getActiveSheet()->getStyle('k5:M5')->applyFromArray($subtotal);
+    else {
+        $u='Cliente';
+    }
+
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila+2)->applyFromArray($tableHead);
+    $spreadsheet->getActiveSheet()->getStyle('C'.$fila+2)->applyFromArray($tableHead);
+    $sheet->setCellValue('A'.$fila +2 , "VISTA PREVIA:");
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':C'.$fila + 2);
+
+    $sheet->setCellValue('A'.$fila +3 ,"Cant Solicitada: ");
+    $sheet->setCellValue('C'.$fila +3 ,$final3);
+    $sheet->setCellValue('A'.$fila +4 ,"Costo Unitario: ");
+    $sheet->setCellValue('C'.$fila +4 ,$final9);
+    $sheet->setCellValue('A'.$fila +5 ,"SubTotal: ");
+    $sheet->setCellValue('C'.$fila +5 ,$final1);
+    
+    $spreadsheet->getActiveSheet()->getStyle('C'.$fila + 3)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+    $spreadsheet->getActiveSheet()->getStyle('B'.$fila + 4 .':C'.$fila + 5)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($evenRow);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($oddRow);
+    
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 5 .':C'.$fila + 5)->applyFromArray($subtotal);
 
 
-        $sheet->setCellValue('A' .$fila, $productos['codVale']);
-        $sheet->setCellValue('B' .$fila, $productos['departamento']);
-        $sheet->setCellValue('C' .$fila, $productos['usuario']." "."(".$u.")");
-        $sheet->setCellValue('D' .$fila, $productos['codigo']);
-        $sheet->setCellValue('E' .$fila, $productos['descripcion']);
-        $sheet->setCellValue('F' .$fila, $productos['unidad_medida']);
-        $sheet->setCellValue('G' .$fila, $stock);
-        $sheet->setCellValue('H' .$fila, $precio2);
-        $sheet->setCellValue('I' .$fila, $total1);
-        $sheet->setCellValue('J' .$fila, $productos['fecha_registro']);
-        if( $fila % 2 == 0 ){
+    $sheet->setCellValue('A' .$fila, $productos['codVale']);
+    $sheet->setCellValue('B' .$fila, $productos['departamento']);
+    $sheet->setCellValue('C' .$fila, $productos['usuario']." "."(".$u.")");
+    $sheet->setCellValue('D' .$fila, $productos['codigo']);
+    $sheet->setCellValue('E' .$fila, $productos['descripcion']);
+    $sheet->setCellValue('F' .$fila, $productos['unidad_medida']);
+    $sheet->setCellValue('G' .$fila, $stock);
+    $sheet->setCellValue('H' .$fila, $precio2);
+    $sheet->setCellValue('I' .$fila, $total1);
+    $sheet->setCellValue('J' .$fila, $productos['fecha_registro']);
+    if( $fila % 2 == 0 ){
         //even row
         $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':J'.$fila)->applyFromArray($evenRow);
     }else{
@@ -764,135 +779,140 @@ $fila3++;
     }
     //increment row
     $fila++;
-        }
-$spreadsheet->getActiveSheet()->getStyle('O2:Q2')->applyFromArray($tableHead);
-        $sheet->setCellValue('O2' , "VISTA PREVIA:");
-
-        $sql1="SELECT * FROM tb_vale WHERE codVale=$vale";
-        $result1 = mysqli_query($conn, $sql1);
-    while ($productos1 = mysqli_fetch_array($result1)){
-        $title="Departamento";
-        $title1="N° Vale";
-        $title2="Encargado";
-        $title3="Fecha";
-        $title4="Estado";
-        $body=$productos1['departamento'];
-        $body1=$productos1['codVale'];
-        $body2=$productos1['usuario'];
-        $body3=$productos1['fecha_registro'];
-        $body4=$productos1['estado'];
-$sheet->setCellValue('O3', $title);
-$sheet->setCellValue('O4', $title1);
-$sheet->setCellValue('O5', $title2);
-$sheet->setCellValue('O6', $title3);
-$sheet->setCellValue('O7', $title4);
-$sheet->setCellValue('P3', $body);
-$sheet->setCellValue('P4', $body1);
-$sheet->setCellValue('P5', $body2);
-$sheet->setCellValue('P6', $body3);
-$sheet->setCellValue('P7', $body4);
-$spreadsheet->getActiveSheet()->mergeCells('O2:Q2');
-$spreadsheet->getActiveSheet()->mergeCells('P3:Q3');
-$spreadsheet->getActiveSheet()->mergeCells('P4:Q4');
-$spreadsheet->getActiveSheet()->mergeCells('P5:Q5');
-$spreadsheet->getActiveSheet()->mergeCells('P6:Q6');
-$spreadsheet->getActiveSheet()->mergeCells('P7:Q7');
-
-        $spreadsheet->getActiveSheet()->getStyle('O3:Q3')->applyFromArray($evenRow);
-        $spreadsheet->getActiveSheet()->getStyle('O4:Q4')->applyFromArray($oddRow);
-
-        $spreadsheet->getActiveSheet()->getStyle('O5:Q5')->applyFromArray($evenRow);
-        $spreadsheet->getActiveSheet()->getStyle('O6:Q6')->applyFromArray($oddRow); 
-if ($body4=="Pendiente") {
-        $spreadsheet->getActiveSheet()->getStyle('O7:Q7')->applyFromArray($Pendiente);
-}if ($body4=="Aprobado") {
-        $spreadsheet->getActiveSheet()->getStyle('O7:Q7')->applyFromArray($Aprobado);
-}if ($body4=="Rechazado") {
-        $spreadsheet->getActiveSheet()->getStyle('O7:Q7')->applyFromArray($Rechazado);
 }
+$spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 1 .':J'.$fila + 1)->applyFromArray($tableHead);
+$sheet->setCellValue('E'.$fila +1 , "VISTA PREVIA:");
+$spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 1 .':J'.$fila + 1);
+
+$sql1="SELECT * FROM tb_vale WHERE codVale=$vale";
+$result1 = mysqli_query($conn, $sql1);
+while ($productos1 = mysqli_fetch_array($result1)){
+    $title="Departamento";
+    $title1="N° Vale";
+    $title2="Encargado";
+    $title3="Fecha";
+    $title4="Estado";
+    $body=$productos1['departamento'];
+    $body1=$productos1['codVale'];
+    $body2=$productos1['usuario'];
+    $body3=$productos1['fecha_registro'];
+    $body4=$productos1['estado'];
+    $sheet->setCellValue('E'.$fila+2, $title);
+    $sheet->setCellValue('E'.$fila+3, $title1);
+    $sheet->setCellValue('E'.$fila+4, $title2);
+    $sheet->setCellValue('E'.$fila+5, $title3);
+    $sheet->setCellValue('E'.$fila+6, $title4);
+    $sheet->setCellValue('F'.$fila+2, $body);
+    $sheet->setCellValue('F'.$fila+3, $body1);
+    $sheet->setCellValue('F'.$fila+4, $body2);
+    $sheet->setCellValue('F'.$fila+5, $body3);
+    $sheet->setCellValue('F'.$fila+6, $body4);
+
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':B'.$fila + 2);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 3 .':B'.$fila + 3);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 4 .':B'.$fila + 4);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 5 .':B'.$fila + 5);
+
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 2 .':J'.$fila + 2);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 3 .':J'.$fila + 3);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 4 .':J'.$fila + 4);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 5 .':J'.$fila + 5);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 6 .':J'.$fila + 6);
+
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 2 .':F'.$fila + 2)->applyFromArray($evenRow);
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 3 .':F'.$fila + 3)->applyFromArray($oddRow);
+
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 4 .':F'.$fila + 4)->applyFromArray($evenRow);
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 5 .':F'.$fila + 5)->applyFromArray($oddRow); 
+    if ($body4=="Pendiente") {
+        $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 6 .':F'.$fila + 6)->applyFromArray($Pendiente);
+    }if ($body4=="Aprobado") {
+        $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 6 .':F'.$fila + 6)->applyFromArray($Aprobado);
+    }if ($body4=="Rechazado") {
+        $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 6 .':F'.$fila + 6)->applyFromArray($Rechazado);
     }
+}
 }
 
 
 if (isset($_POST['bodega1'])) {
-$vale = $_POST['bodega1'];
-   $sql = "SELECT * FROM `detalle_bodega` D JOIN `tb_bodega` V ON D.odt_bodega=V.codBodega WHERE odt_bodega = $vale";
-$result = mysqli_query($conn, $sql);
+    $vale = $_POST['bodega1'];
+    $sql = "SELECT * FROM `detalle_bodega` D JOIN `tb_bodega` V ON D.odt_bodega=V.codBodega WHERE odt_bodega = $vale";
+    $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
-        
-     $precio   =    $productos['precio'];
-        $precio2  =    number_format($precio, 2,".",",");  
-        $cant_aprobada=$productos['stock'];
-        $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,".",",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-        $final2 += $cant_aprobada;
-        $final3   =    number_format($final2, 2, ".",",");
+       $precio   =    $productos['precio'];
+       $precio2  =    number_format($precio, 2,".",",");  
+       $cant_aprobada=$productos['stock'];
+       $cantidad_despachada=$productos['cantidad_despachada'];
+       $stock=number_format($cant_aprobada, 2,".",",");
+       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-        $final4 += $cantidad_despachada;
-        $final5   =    number_format($final4, 2, ".",",");
-        
-        $final6 += ($cant_aprobada-$cantidad_despachada);
-        $final7   =    number_format($final6, 2, ".",",");
-        
-        $final8 += $precio;
-        $final9   =    number_format($final8, 2, ".",",");
-     if ($productos['estado']="Pendiente") {  
-    $total = $productos['stock'] * $productos['precio'];
+       $final2 += $cant_aprobada;
+       $final3   =    number_format($final2, 2, ".",",");
+
+       $final4 += $cantidad_despachada;
+       $final5   =    number_format($final4, 2, ".",",");
+
+       $final6 += ($cant_aprobada-$cantidad_despachada);
+       $final7   =    number_format($final6, 2, ".",",");
+
+       $final8 += $precio;
+       $final9   =    number_format($final8, 2, ".",",");
+       if ($productos['estado']="Pendiente") {  
+        $total = $productos['stock'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
-        
-    $total = $productos['stock'] * $productos['precio'];
+
+        $total = $productos['stock'] * $productos['precio'];
     }if ($productos['estado']=="Aprobado") {
-        
-    $total = $productos['cantidad_despachada'] * $productos['precio'];
+
+        $total = $productos['cantidad_despachada'] * $productos['precio'];
     }
-     $final += $total;
-       $total1= number_format($total, 2, ".",",");
-      $final1=number_format($final, 2, ".",","); 
-    
-   if ($productos['idusuario']==1) {
+    $final += $total;
+    $total1= number_format($total, 2, ".",",");
+    $final1=number_format($final, 2, ".",","); 
+
+    if ($productos['idusuario']==1) {
         $u='Administrador';
-        }
-        else {
-            $u='Cliente';
-        }
-                $spreadsheet->getActiveSheet()->getStyle('K2:M2')->applyFromArray($tableHead);
-        $sheet->setCellValue('K2' ,"VISTA PREVIA: ");
-        $sheet->setCellValue('K3' ,"Cant Solicitada: ");
-        $sheet->setCellValue('L3' ,$final3);
-        $sheet->setCellValue('K4' ,"Costo Unitario: ");
-        $sheet->setCellValue('L4' ,$final9);
-        $sheet->setCellValue('K5' ,"SubTotal: ");
-        $sheet->setCellValue('L5' ,$final1);
-        $spreadsheet->getActiveSheet()->mergeCells('K2:M2');
-        $spreadsheet->getActiveSheet()->mergeCells('L3:M3');
-        $spreadsheet->getActiveSheet()->mergeCells('L4:M4');
-        $spreadsheet->getActiveSheet()->mergeCells('L5:M5');
-$fila3++;
-                    if( $fila3 % 2 == 0 ){
-        //even row
-        $spreadsheet->getActiveSheet()->getStyle('k3:M5')->applyFromArray($oddRow);
-    }else{
-        //odd row
-        $spreadsheet->getActiveSheet()->getStyle('k4:M5')->applyFromArray($oddRow);
     }
-        $spreadsheet->getActiveSheet()->getStyle('k5:M5')->applyFromArray($subtotal);
+    else {
+        $u='Cliente';
+    }
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila+2)->applyFromArray($tableHead);
+    $spreadsheet->getActiveSheet()->getStyle('C'.$fila+2)->applyFromArray($tableHead);
+    $sheet->setCellValue('A'.$fila +2 , "VISTA PREVIA:");
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':C'.$fila + 2);
+
+    $sheet->setCellValue('A'.$fila +3 ,"Cant Solicitada: ");
+    $sheet->setCellValue('C'.$fila +3 ,$final3);
+    $sheet->setCellValue('A'.$fila +4 ,"Costo Unitario: ");
+    $sheet->setCellValue('C'.$fila +4 ,$final9);
+    $sheet->setCellValue('A'.$fila +5 ,"SubTotal: ");
+    $sheet->setCellValue('C'.$fila +5 ,$final1);
+    
+    $spreadsheet->getActiveSheet()->getStyle('C'.$fila + 3)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+    $spreadsheet->getActiveSheet()->getStyle('B'.$fila + 4 .':C'.$fila + 5)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($evenRow);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($oddRow);
+    
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 5 .':C'.$fila + 5)->applyFromArray($subtotal);
 
 
-
-        $sheet->setCellValue('A' .$fila, $productos['codBodega']);
-        $sheet->setCellValue('B' .$fila, $productos['departamento']);
-        $sheet->setCellValue('C' .$fila, $productos['usuario']." "."(".$u.")");
-        $sheet->setCellValue('D' .$fila, $productos['codigo']);
-        $sheet->setCellValue('E' .$fila, $productos['descripcion']);
-        $sheet->setCellValue('F' .$fila, $productos['unidad_medida']);
-        $sheet->setCellValue('G' .$fila, $stock);
-        $sheet->setCellValue('H' .$fila, $precio2);
-        $sheet->setCellValue('I' .$fila, $total1);
-        $sheet->setCellValue('J' .$fila, $productos['fecha_registro']);
-        if( $fila % 2 == 0 ){
+    $sheet->setCellValue('A' .$fila, $productos['codBodega']);
+    $sheet->setCellValue('B' .$fila, $productos['departamento']);
+    $sheet->setCellValue('C' .$fila, $productos['usuario']." "."(".$u.")");
+    $sheet->setCellValue('D' .$fila, $productos['codigo']);
+    $sheet->setCellValue('E' .$fila, $productos['descripcion']);
+    $sheet->setCellValue('F' .$fila, $productos['unidad_medida']);
+    $sheet->setCellValue('G' .$fila, $stock);
+    $sheet->setCellValue('H' .$fila, $precio2);
+    $sheet->setCellValue('I' .$fila, $total1);
+    $sheet->setCellValue('J' .$fila, $productos['fecha_registro']);
+    if( $fila % 2 == 0 ){
         //even row
         $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':J'.$fila)->applyFromArray($evenRow);
     }else{
@@ -901,135 +921,139 @@ $fila3++;
     }
     //increment row
     $fila++;
-        }
-        $spreadsheet->getActiveSheet()->getStyle('O2:Q2')->applyFromArray($tableHead);
-
-$sheet->setCellValue('O2' , "VISTA PREVIA:");
-
-        $sql1="SELECT * FROM tb_bodega WHERE codBodega=$vale";
-        $result1 = mysqli_query($conn, $sql1);
-    while ($productos1 = mysqli_fetch_array($result1)){
-        $title="Departamento";
-        $title1="O. de T. No.";
-        $title2="Encargado";
-        $title3="Fecha";
-        $title4="Estado";
-        $body=$productos1['departamento'];
-        $body1=$productos1['codBodega'];
-        $body2=$productos1['usuario'];
-        $body3=$productos1['fecha_registro'];
-        $body4=$productos1['estado'];
-$sheet->setCellValue('O3', $title);
-$sheet->setCellValue('O4', $title1);
-$sheet->setCellValue('O5', $title2);
-$sheet->setCellValue('O6', $title3);
-$sheet->setCellValue('O7', $title4);
-$sheet->setCellValue('P3', $body);
-$sheet->setCellValue('P4', $body1);
-$sheet->setCellValue('P5', $body2);
-$sheet->setCellValue('P6', $body3);
-$sheet->setCellValue('P7', $body4);
-$spreadsheet->getActiveSheet()->mergeCells('O2:Q2');
-$spreadsheet->getActiveSheet()->mergeCells('P3:Q3');
-$spreadsheet->getActiveSheet()->mergeCells('P4:Q4');
-$spreadsheet->getActiveSheet()->mergeCells('P5:Q5');
-$spreadsheet->getActiveSheet()->mergeCells('P6:Q6');
-$spreadsheet->getActiveSheet()->mergeCells('P7:Q7');
-
-        $spreadsheet->getActiveSheet()->getStyle('O3:Q3')->applyFromArray($evenRow);
-        $spreadsheet->getActiveSheet()->getStyle('O4:Q4')->applyFromArray($oddRow);
-
-        $spreadsheet->getActiveSheet()->getStyle('O5:Q5')->applyFromArray($evenRow);
-        $spreadsheet->getActiveSheet()->getStyle('O6:Q6')->applyFromArray($oddRow); 
-if ($body4=="Pendiente") {
-        $spreadsheet->getActiveSheet()->getStyle('O7:Q7')->applyFromArray($Pendiente);
-}if ($body4=="Aprobado") {
-        $spreadsheet->getActiveSheet()->getStyle('O7:Q7')->applyFromArray($Aprobado);
-}if ($body4=="Rechazado") {
-        $spreadsheet->getActiveSheet()->getStyle('O7:Q7')->applyFromArray($Rechazado);
 }
+$spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 1 .':J'.$fila + 1)->applyFromArray($tableHead);
+$sheet->setCellValue('E'.$fila +1 , "VISTA PREVIA:");
+$spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 1 .':J'.$fila + 1);
+
+$sql1="SELECT * FROM tb_bodega WHERE codBodega=$vale";
+$result1 = mysqli_query($conn, $sql1);
+while ($productos1 = mysqli_fetch_array($result1)){
+    $title="Departamento";
+    $title1="O. de T. No.";
+    $title2="Encargado";
+    $title3="Fecha";
+    $title4="Estado";
+    $body=$productos1['departamento'];
+    $body1=$productos1['codBodega'];
+    $body2=$productos1['usuario'];
+    $body3=$productos1['fecha_registro'];
+    $body4=$productos1['estado'];
+    $sheet->setCellValue('E'.$fila+2, $title);
+    $sheet->setCellValue('E'.$fila+3, $title1);
+    $sheet->setCellValue('E'.$fila+4, $title2);
+    $sheet->setCellValue('E'.$fila+5, $title3);
+    $sheet->setCellValue('E'.$fila+6, $title4);
+    $sheet->setCellValue('F'.$fila+2, $body);
+    $sheet->setCellValue('F'.$fila+3, $body1);
+    $sheet->setCellValue('F'.$fila+4, $body2);
+    $sheet->setCellValue('F'.$fila+5, $body3);
+    $sheet->setCellValue('F'.$fila+6, $body4);
+
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':B'.$fila + 2);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 3 .':B'.$fila + 3);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 4 .':B'.$fila + 4);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 5 .':B'.$fila + 5);
+
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 2 .':J'.$fila + 2);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 3 .':J'.$fila + 3);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 4 .':J'.$fila + 4);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 5 .':J'.$fila + 5);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 6 .':J'.$fila + 6);
+
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 2 .':F'.$fila + 2)->applyFromArray($evenRow);
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 3 .':F'.$fila + 3)->applyFromArray($oddRow);
+
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 4 .':F'.$fila + 4)->applyFromArray($evenRow);
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 5 .':F'.$fila + 5)->applyFromArray($oddRow); 
+    if ($body4=="Pendiente") {
+        $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 6 .':F'.$fila + 6)->applyFromArray($Pendiente);
+    }if ($body4=="Aprobado") {
+        $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 6 .':F'.$fila + 6)->applyFromArray($Aprobado);
+    }if ($body4=="Rechazado") {
+        $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 6 .':F'.$fila + 6)->applyFromArray($Rechazado);
     }
-    }
+}
+}
 
 if (isset($_POST['compra'])) {
-$vale = $_POST['compra'];
-$sql = "SELECT * FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra WHERE solicitud_compra='$vale'";
-$result = mysqli_query($conn, $sql);
+    $vale = $_POST['compra'];
+    $sql = "SELECT * FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra WHERE solicitud_compra='$vale'";
+    $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
-        
-     $precio   =    $productos['precio'];
-        $precio2  =    number_format($precio, 2,".",",");  
-        $cant_aprobada=$productos['stock'];
-        $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,".",",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-        $final2 += $cant_aprobada;
-        $final3   =    number_format($final2, 2, ".",",");
+       $precio   =    $productos['precio'];
+       $precio2  =    number_format($precio, 2,".",",");  
+       $cant_aprobada=$productos['stock'];
+       $cantidad_despachada=$productos['cantidad_despachada'];
+       $stock=number_format($cant_aprobada, 2,".",",");
+       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-        $final4 += $cantidad_despachada;
-        $final5   =    number_format($final4, 2, ".",",");
-        
-        $final6 += ($cant_aprobada-$cantidad_despachada);
-        $final7   =    number_format($final6, 2, ".",",");
-        
-        $final8 += $precio;
-        $final9   =    number_format($final8, 2, ".",",");
-     if ($productos['estado']="Pendiente") {  
-    $total = $productos['stock'] * $productos['precio'];
+       $final2 += $cant_aprobada;
+       $final3   =    number_format($final2, 2, ".",",");
+
+       $final4 += $cantidad_despachada;
+       $final5   =    number_format($final4, 2, ".",",");
+
+       $final6 += ($cant_aprobada-$cantidad_despachada);
+       $final7   =    number_format($final6, 2, ".",",");
+
+       $final8 += $precio;
+       $final9   =    number_format($final8, 2, ".",",");
+       if ($productos['estado']="Pendiente") {  
+        $total = $productos['stock'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
-        
-    $total = $productos['stock'] * $productos['precio'];
+
+        $total = $productos['stock'] * $productos['precio'];
     }if ($productos['estado']=="Aprobado") {
-        
-    $total = $productos['cantidad_despachada'] * $productos['precio'];
+
+        $total = $productos['cantidad_despachada'] * $productos['precio'];
     }
-     $final += $total;
-       $total1= number_format($total, 2, ".",",");
-      $final1=number_format($final, 2, ".",","); 
-    
-   if ($productos['idusuario']==1) {
+    $final += $total;
+    $total1= number_format($total, 2, ".",",");
+    $final1=number_format($final, 2, ".",","); 
+
+    if ($productos['idusuario']==1) {
         $u='Administrador';
-        }
-        else {
-            $u='Cliente';
-        }
-                $spreadsheet->getActiveSheet()->getStyle('K2:M2')->applyFromArray($tableHead);
-        $sheet->setCellValue('K2' ,"VISTA PREVIA: ");
-        $sheet->setCellValue('K3' ,"Cant Solicitada: ");
-        $sheet->setCellValue('L3' ,$final3);
-        $sheet->setCellValue('K4' ,"Costo Unitario: ");
-        $sheet->setCellValue('L4' ,$final9);
-        $sheet->setCellValue('K5' ,"SubTotal: ");
-        $sheet->setCellValue('L5' ,$final1);
-        $spreadsheet->getActiveSheet()->mergeCells('K2:M2');
-        $spreadsheet->getActiveSheet()->mergeCells('L3:M3');
-        $spreadsheet->getActiveSheet()->mergeCells('L4:M4');
-        $spreadsheet->getActiveSheet()->mergeCells('L5:M5');
-$fila3++;
-                    if( $fila3 % 2 == 0 ){
-        //even row
-        $spreadsheet->getActiveSheet()->getStyle('k3:M5')->applyFromArray($oddRow);
-    }else{
-        //odd row
-        $spreadsheet->getActiveSheet()->getStyle('k4:M5')->applyFromArray($oddRow);
     }
-        $spreadsheet->getActiveSheet()->getStyle('k5:M5')->applyFromArray($subtotal);
+    else {
+        $u='Cliente';
+    }
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila+2)->applyFromArray($tableHead);
+    $spreadsheet->getActiveSheet()->getStyle('C'.$fila+2)->applyFromArray($tableHead);
+    $sheet->setCellValue('A'.$fila +2 , "VISTA PREVIA:");
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':C'.$fila + 2);
+
+    $sheet->setCellValue('A'.$fila +3 ,"Cant Solicitada: ");
+    $sheet->setCellValue('C'.$fila +3 ,$final2);
+    $sheet->setCellValue('A'.$fila +4 ,"Costo Unitario: ");
+    $sheet->setCellValue('C'.$fila +4 ,$final8);
+    $sheet->setCellValue('A'.$fila +5 ,"SubTotal: ");
+    $sheet->setCellValue('C'.$fila +5 ,$final);
+    
+    $spreadsheet->getActiveSheet()->getStyle('C'.$fila + 3)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+    $spreadsheet->getActiveSheet()->getStyle('B'.$fila + 4 .':C'.$fila + 5)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($evenRow);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($oddRow);
+    
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 5 .':C'.$fila + 5)->applyFromArray($subtotal);
 
 
-
-        $sheet->setCellValue('A' .$fila, $productos['nSolicitud']);
-        $sheet->setCellValue('B' .$fila, $productos['dependencia']);
-        $sheet->setCellValue('C' .$fila, $productos['usuario']." "."(".$u.")");
-        $sheet->setCellValue('D' .$fila, $productos['codigo']);
-        $sheet->setCellValue('E' .$fila, $productos['descripcion']);
-        $sheet->setCellValue('F' .$fila, $productos['unidad_medida']);
-        $sheet->setCellValue('G' .$fila, $stock);
-        $sheet->setCellValue('H' .$fila, $precio2);
-        $sheet->setCellValue('I' .$fila, $total1);
-        $sheet->setCellValue('J' .$fila, $productos['fecha_registro']);
-        if( $fila % 2 == 0 ){
+    $sheet->setCellValue('A' .$fila, $productos['nSolicitud']);
+    $sheet->setCellValue('B' .$fila, $productos['dependencia']);
+    $sheet->setCellValue('C' .$fila, $productos['usuario']." "."(".$u.")");
+    $sheet->setCellValue('D' .$fila, $productos['codigo']);
+    $sheet->setCellValue('E' .$fila, $productos['descripcion']);
+    $sheet->setCellValue('F' .$fila, $productos['unidad_medida']);
+    $sheet->setCellValue('G' .$fila, $stock);
+    $sheet->setCellValue('H' .$fila, $precio);
+    $sheet->setCellValue('I' .$fila, $total);
+    $sheet->setCellValue('J' .$fila, $productos['fecha_registro']);
+    if( $fila % 2 == 0 ){
         //even row
         $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':J'.$fila)->applyFromArray($evenRow);
     }else{
@@ -1038,153 +1062,134 @@ $fila3++;
     }
     //increment row
     $fila++;
-        }
-        $spreadsheet->getActiveSheet()->getStyle('O2:Q2')->applyFromArray($tableHead);
-
-$sheet->setCellValue('O2' , "VISTA PREVIA:");
-
-        $sql1="SELECT * FROM tb_compra WHERE nSolicitud=$vale";
-        $result1 = mysqli_query($conn, $sql1);
-    while ($productos1 = mysqli_fetch_array($result1)){
-        $title="Departamento";
-        $title1="Solicitud No.";
-        $title2="Plazo y No. de Entregas";
-        $title3="Unidad Técnica";
-        $title4="Suministro Solicitado";
-        $title5="Encargado";
-        $title6="Fecha";
-        $title7="Estado";
-        $body=$productos1['dependencia'];
-        $body1=$productos1['nSolicitud'];
-        $body2=$productos1['plazo'];
-        $body3=$productos1['unidad_tecnica'];
-        $body4=$productos1['descripcion_solicitud'];
-        $body5=$productos1['usuario'];
-        $body6=$productos1['fecha_registro'];
-        $body7=$productos1['estado'];
-
-$sheet->setCellValue('O3', $title);
-$sheet->setCellValue('O4', $title1);
-$sheet->setCellValue('O5', $title2);
-$sheet->setCellValue('O6', $title3);
-$sheet->setCellValue('O7', $title4);
-$sheet->setCellValue('O8', $title5);
-$sheet->setCellValue('O9', $title6);
-$sheet->setCellValue('O10', $title7);
-
-$sheet->setCellValue('P3', $body);
-$sheet->setCellValue('P4', $body1);
-$sheet->setCellValue('P5', $body2);
-$sheet->setCellValue('P6', $body3);
-$sheet->setCellValue('P7', $body4);
-$sheet->setCellValue('P8', $body5);
-$sheet->setCellValue('P9', $body6);
-$sheet->setCellValue('P10', $body7);
-
-$spreadsheet->getActiveSheet()->mergeCells('O2:Q2');
-$spreadsheet->getActiveSheet()->mergeCells('P3:Q3');
-$spreadsheet->getActiveSheet()->mergeCells('P4:Q4');
-$spreadsheet->getActiveSheet()->mergeCells('P5:Q5');
-$spreadsheet->getActiveSheet()->mergeCells('P6:Q6');
-$spreadsheet->getActiveSheet()->mergeCells('P7:Q7');
-$spreadsheet->getActiveSheet()->mergeCells('P8:Q8');
-$spreadsheet->getActiveSheet()->mergeCells('P9:Q9');
-$spreadsheet->getActiveSheet()->mergeCells('P10:Q10');
-
-        $spreadsheet->getActiveSheet()->getStyle('O3:Q3')->applyFromArray($evenRow);
-        $spreadsheet->getActiveSheet()->getStyle('O4:Q4')->applyFromArray($oddRow);
-
-        $spreadsheet->getActiveSheet()->getStyle('O5:Q5')->applyFromArray($evenRow);
-        $spreadsheet->getActiveSheet()->getStyle('O6:Q6')->applyFromArray($oddRow);
-
-        $spreadsheet->getActiveSheet()->getStyle('O7:Q7')->applyFromArray($evenRow);
-        $spreadsheet->getActiveSheet()->getStyle('O8:Q8')->applyFromArray($oddRow);
-
-        $spreadsheet->getActiveSheet()->getStyle('O9:Q9')->applyFromArray($evenRow);
-if ($body7=="Comprado") {
-        $spreadsheet->getActiveSheet()->getStyle('O10:Q10')->applyFromArray($Aprobado);
 }
+$spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 1 .':J'.$fila + 1)->applyFromArray($tableHead);
+$sheet->setCellValue('E'.$fila +1 , "VISTA PREVIA:");
+$spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 1 .':J'.$fila + 1);
+
+$sql1="SELECT * FROM tb_compra WHERE nSolicitud=$vale";
+$result1 = mysqli_query($conn, $sql1);
+while ($productos1 = mysqli_fetch_array($result1)){
+    $title="Departamento";
+    $title1="nSolicitud";
+    $title2="Encargado";
+    $title3="Fecha";
+    $title4="Estado";
+    $body=$productos1['dependencia'];
+    $body1=$productos1['nSolicitud'];
+    $body2=$productos1['usuario'];
+    $body3=$productos1['fecha_registro'];
+    $body4=$productos1['estado'];
+    $sheet->setCellValue('E'.$fila+2, $title);
+    $sheet->setCellValue('E'.$fila+3, $title1);
+    $sheet->setCellValue('E'.$fila+4, $title2);
+    $sheet->setCellValue('E'.$fila+5, $title3);
+    $sheet->setCellValue('E'.$fila+6, $title4);
+    $sheet->setCellValue('F'.$fila+2, $body);
+    $sheet->setCellValue('F'.$fila+3, $body1);
+    $sheet->setCellValue('F'.$fila+4, $body2);
+    $sheet->setCellValue('F'.$fila+5, $body3);
+    $sheet->setCellValue('F'.$fila+6, $body4);
+
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':B'.$fila + 2);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 3 .':B'.$fila + 3);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 4 .':B'.$fila + 4);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 5 .':B'.$fila + 5);
+
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 2 .':J'.$fila + 2);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 3 .':J'.$fila + 3);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 4 .':J'.$fila + 4);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 5 .':J'.$fila + 5);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 6 .':J'.$fila + 6);
+
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 2 .':F'.$fila + 2)->applyFromArray($evenRow);
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 3 .':F'.$fila + 3)->applyFromArray($oddRow);
+
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 4 .':F'.$fila + 4)->applyFromArray($evenRow);
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 5 .':F'.$fila + 5)->applyFromArray($oddRow); 
+    if ($body4=="Comprado") {
+        $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 6 .':F'.$fila + 6)->applyFromArray($Aprobado);
     }
-    }
+}
+}
 if (isset($_POST['compra1'])) {
-$vale = $_POST['compra1'];
-$sql = "SELECT * FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra WHERE solicitud_compra='$vale'";
-$result = mysqli_query($conn, $sql);
+    $vale = $_POST['compra1'];
+    $sql = "SELECT * FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra WHERE solicitud_compra='$vale'";
+    $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
-        
-     $precio   =    $productos['precio'];
-        $precio2  =    number_format($precio, 2,".",",");  
-        $cant_aprobada=$productos['stock'];
-        $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,".",",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-        $final2 += $cant_aprobada;
-        $final3   =    number_format($final2, 2, ".",",");
+       $precio   =    $productos['precio'];
+       $precio2  =    number_format($precio, 2,".",",");  
+       $cant_aprobada=$productos['stock'];
+       $cantidad_despachada=$productos['cantidad_despachada'];
+       $stock=number_format($cant_aprobada, 2,".",",");
+       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-        $final4 += $cantidad_despachada;
-        $final5   =    number_format($final4, 2, ".",",");
-        
-        $final6 += ($cant_aprobada-$cantidad_despachada);
-        $final7   =    number_format($final6, 2, ".",",");
-        
-        $final8 += $precio;
-        $final9   =    number_format($final8, 2, ".",",");
-     if ($productos['estado']="Pendiente") {  
-    $total = $productos['stock'] * $productos['precio'];
+       $final2 += $cant_aprobada;
+       $final3   =    number_format($final2, 2, ".",",");
+
+       $final4 += $cantidad_despachada;
+       $final5   =    number_format($final4, 2, ".",",");
+
+       $final6 += ($cant_aprobada-$cantidad_despachada);
+       $final7   =    number_format($final6, 2, ".",",");
+
+       $final8 += $precio;
+       $final9   =    number_format($final8, 2, ".",",");
+       if ($productos['estado']="Pendiente") {  
+        $total = $productos['stock'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
-        
-    $total = $productos['stock'] * $productos['precio'];
+
+        $total = $productos['stock'] * $productos['precio'];
     }if ($productos['estado']=="Aprobado") {
-        
-    $total = $productos['cantidad_despachada'] * $productos['precio'];
+
+        $total = $productos['cantidad_despachada'] * $productos['precio'];
     }
-     $final += $total;
-       $total1= number_format($total, 2, ".",",");
-      $final1=number_format($final, 2, ".",","); 
-    
-   if ($productos['idusuario']==1) {
+    $final += $total;
+    $total1= number_format($total, 2, ".",",");
+    $final1=number_format($final, 2, ".",","); 
+
+    if ($productos['idusuario']==1) {
         $u='Administrador';
-        }
-        else {
-            $u='Cliente';
-        }
-                $spreadsheet->getActiveSheet()->getStyle('K2:M2')->applyFromArray($tableHead);
-        $sheet->setCellValue('K2' ,"VISTA PREVIA: ");
-        $sheet->setCellValue('K3' ,"Cant Solicitada: ");
-        $sheet->setCellValue('L3' ,$final3);
-        $sheet->setCellValue('K4' ,"Costo Unitario: ");
-        $sheet->setCellValue('L4' ,$final9);
-        $sheet->setCellValue('K5' ,"SubTotal: ");
-        $sheet->setCellValue('L5' ,$final1);
-        $spreadsheet->getActiveSheet()->mergeCells('K2:M2');
-        $spreadsheet->getActiveSheet()->mergeCells('L3:M3');
-        $spreadsheet->getActiveSheet()->mergeCells('L4:M4');
-        $spreadsheet->getActiveSheet()->mergeCells('L5:M5');
-$fila3++;
-                    if( $fila3 % 2 == 0 ){
-        //even row
-        $spreadsheet->getActiveSheet()->getStyle('k3:M5')->applyFromArray($oddRow);
-    }else{
-        //odd row
-        $spreadsheet->getActiveSheet()->getStyle('k4:M5')->applyFromArray($oddRow);
     }
-        $spreadsheet->getActiveSheet()->getStyle('k5:M5')->applyFromArray($subtotal);
+    else {
+        $u='Cliente';
+    }
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila+2)->applyFromArray($tableHead);
+    $spreadsheet->getActiveSheet()->getStyle('C'.$fila+2)->applyFromArray($tableHead);
+    $sheet->setCellValue('A'.$fila +2 , "VISTA PREVIA:");
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':C'.$fila + 2);
+
+    $sheet->setCellValue('A'.$fila +3 ,"Cant Solicitada: ");
+    $sheet->setCellValue('C'.$fila +3 ,$final3);
+    $sheet->setCellValue('A'.$fila +4 ,"Costo Unitario: ");
+    $sheet->setCellValue('C'.$fila +4 ,$final9);
+    $sheet->setCellValue('A'.$fila +5 ,"SubTotal: ");
+    $sheet->setCellValue('C'.$fila +5 ,$final1);
+    
+    $spreadsheet->getActiveSheet()->getStyle('C'.$fila + 3)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+    $spreadsheet->getActiveSheet()->getStyle('B'.$fila + 4 .':C'.$fila + 5)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($evenRow);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($oddRow);
+    
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 5 .':C'.$fila + 5)->applyFromArray($subtotal);
 
 
-
-        $sheet->setCellValue('A' .$fila, $productos['nSolicitud']);
-        $sheet->setCellValue('B' .$fila, $productos['dependencia']);
-        $sheet->setCellValue('C' .$fila, $productos['usuario']." "."(".$u.")");
-        $sheet->setCellValue('D' .$fila, $productos['codigo']);
-        $sheet->setCellValue('E' .$fila, $productos['descripcion']);
-        $sheet->setCellValue('F' .$fila, $productos['unidad_medida']);
-        $sheet->setCellValue('G' .$fila, $stock);
-        $sheet->setCellValue('H' .$fila, $precio2);
-        $sheet->setCellValue('I' .$fila, $total1);
-        $sheet->setCellValue('J' .$fila, $productos['fecha_registro']);
-        if( $fila % 2 == 0 ){
+    $sheet->setCellValue('A' .$fila, $productos['nSolicitud']);
+    $sheet->setCellValue('B' .$fila, $productos['dependencia']);
+    $sheet->setCellValue('C' .$fila, $productos['usuario']." "."(".$u.")");
+    $sheet->setCellValue('D' .$fila, $productos['codigo']);
+    $sheet->setCellValue('E' .$fila, $productos['descripcion']);
+    $sheet->setCellValue('F' .$fila, $productos['unidad_medida']);
+    $sheet->setCellValue('G' .$fila, $cant_aprobada);
+    $sheet->setCellValue('H' .$fila, $precio);
+    $sheet->setCellValue('I' .$fila, $total);
+    $sheet->setCellValue('J' .$fila, $productos['fecha_registro']);
+    if( $fila % 2 == 0 ){
         //even row
         $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':J'.$fila)->applyFromArray($evenRow);
     }else{
@@ -1193,153 +1198,134 @@ $fila3++;
     }
     //increment row
     $fila++;
-        }
-        $spreadsheet->getActiveSheet()->getStyle('O2:Q2')->applyFromArray($tableHead);
-
-$sheet->setCellValue('O2' , "VISTA PREVIA:");
-
-        $sql1="SELECT * FROM tb_compra WHERE nSolicitud=$vale";
-        $result1 = mysqli_query($conn, $sql1);
-    while ($productos1 = mysqli_fetch_array($result1)){
-        $title="Departamento";
-        $title1="Solicitud No.";
-        $title2="Plazo y No. de Entregas";
-        $title3="Unidad Técnica";
-        $title4="Suministro Solicitado";
-        $title5="Encargado";
-        $title6="Fecha";
-        $title7="Estado";
-        $body=$productos1['dependencia'];
-        $body1=$productos1['nSolicitud'];
-        $body2=$productos1['plazo'];
-        $body3=$productos1['unidad_tecnica'];
-        $body4=$productos1['descripcion_solicitud'];
-        $body5=$productos1['usuario'];
-        $body6=$productos1['fecha_registro'];
-        $body7=$productos1['estado'];
-
-$sheet->setCellValue('O3', $title);
-$sheet->setCellValue('O4', $title1);
-$sheet->setCellValue('O5', $title2);
-$sheet->setCellValue('O6', $title3);
-$sheet->setCellValue('O7', $title4);
-$sheet->setCellValue('O8', $title5);
-$sheet->setCellValue('O9', $title6);
-$sheet->setCellValue('O10', $title7);
-
-$sheet->setCellValue('P3', $body);
-$sheet->setCellValue('P4', $body1);
-$sheet->setCellValue('P5', $body2);
-$sheet->setCellValue('P6', $body3);
-$sheet->setCellValue('P7', $body4);
-$sheet->setCellValue('P8', $body5);
-$sheet->setCellValue('P9', $body6);
-$sheet->setCellValue('P10', $body7);
-
-$spreadsheet->getActiveSheet()->mergeCells('O2:Q2');
-$spreadsheet->getActiveSheet()->mergeCells('P3:Q3');
-$spreadsheet->getActiveSheet()->mergeCells('P4:Q4');
-$spreadsheet->getActiveSheet()->mergeCells('P5:Q5');
-$spreadsheet->getActiveSheet()->mergeCells('P6:Q6');
-$spreadsheet->getActiveSheet()->mergeCells('P7:Q7');
-$spreadsheet->getActiveSheet()->mergeCells('P8:Q8');
-$spreadsheet->getActiveSheet()->mergeCells('P9:Q9');
-$spreadsheet->getActiveSheet()->mergeCells('P10:Q10');
-
-        $spreadsheet->getActiveSheet()->getStyle('O3:Q3')->applyFromArray($evenRow);
-        $spreadsheet->getActiveSheet()->getStyle('O4:Q4')->applyFromArray($oddRow);
-
-        $spreadsheet->getActiveSheet()->getStyle('O5:Q5')->applyFromArray($evenRow);
-        $spreadsheet->getActiveSheet()->getStyle('O6:Q6')->applyFromArray($oddRow);
-
-        $spreadsheet->getActiveSheet()->getStyle('O7:Q7')->applyFromArray($evenRow);
-        $spreadsheet->getActiveSheet()->getStyle('O8:Q8')->applyFromArray($oddRow);
-
-        $spreadsheet->getActiveSheet()->getStyle('O9:Q9')->applyFromArray($evenRow);
-if ($body7=="Comprado") {
-        $spreadsheet->getActiveSheet()->getStyle('O10:Q10')->applyFromArray($Aprobado);
 }
+$spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 1 .':J'.$fila + 1)->applyFromArray($tableHead);
+$sheet->setCellValue('E'.$fila +1 , "VISTA PREVIA:");
+$spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 1 .':J'.$fila + 1);
+
+$sql1="SELECT * FROM tb_compra WHERE nSolicitud=$vale";
+$result1 = mysqli_query($conn, $sql1);
+while ($productos1 = mysqli_fetch_array($result1)){
+    $title="Departamento";
+    $title1="nSolicitud";
+    $title2="Encargado";
+    $title3="Fecha";
+    $title4="Estado";
+    $body=$productos1['dependencia'];
+    $body1=$productos1['nSolicitud'];
+    $body2=$productos1['usuario'];
+    $body3=$productos1['fecha_registro'];
+    $body4=$productos1['estado'];
+    $sheet->setCellValue('E'.$fila+2, $title);
+    $sheet->setCellValue('E'.$fila+3, $title1);
+    $sheet->setCellValue('E'.$fila+4, $title2);
+    $sheet->setCellValue('E'.$fila+5, $title3);
+    $sheet->setCellValue('E'.$fila+6, $title4);
+    $sheet->setCellValue('F'.$fila+2, $body);
+    $sheet->setCellValue('F'.$fila+3, $body1);
+    $sheet->setCellValue('F'.$fila+4, $body2);
+    $sheet->setCellValue('F'.$fila+5, $body3);
+    $sheet->setCellValue('F'.$fila+6, $body4);
+
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':B'.$fila + 2);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 3 .':B'.$fila + 3);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 4 .':B'.$fila + 4);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 5 .':B'.$fila + 5);
+
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 2 .':J'.$fila + 2);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 3 .':J'.$fila + 3);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 4 .':J'.$fila + 4);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 5 .':J'.$fila + 5);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 6 .':J'.$fila + 6);
+
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 2 .':F'.$fila + 2)->applyFromArray($evenRow);
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 3 .':F'.$fila + 3)->applyFromArray($oddRow);
+
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 4 .':F'.$fila + 4)->applyFromArray($evenRow);
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 5 .':F'.$fila + 5)->applyFromArray($oddRow); 
+    if ($body4=="Comprado") {
+        $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 6 .':F'.$fila + 6)->applyFromArray($Aprobado);
     }
-    }
+}
+}
 if (isset($_POST['almacen'])) {
-$vale = $_POST['almacen'];
-$sql = "SELECT * FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen WHERE tb_almacen='$vale'";
-$result = mysqli_query($conn, $sql);
+    $vale = $_POST['almacen'];
+    $sql = "SELECT * FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen WHERE tb_almacen='$vale'";
+    $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
-        
-     $precio   =    $productos['precio'];
-        $precio2  =    number_format($precio, 2,".",",");  
-        $cant_aprobada=$productos['cantidad_solicitada'];
-        $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,".",",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-        $final2 += $cant_aprobada;
-        $final3   =    number_format($final2, 2, ".",",");
+       $precio   =    $productos['precio'];
+       $precio2  =    number_format($precio, 2,".",",");  
+       $cant_aprobada=$productos['cantidad_solicitada'];
+       $cantidad_despachada=$productos['cantidad_despachada'];
+       $stock=number_format($cant_aprobada, 2,".",",");
+       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-        $final4 += $cantidad_despachada;
-        $final5   =    number_format($final4, 2, ".",",");
-        
-        $final6 += ($cant_aprobada-$cantidad_despachada);
-        $final7   =    number_format($final6, 2, ".",",");
-        
-        $final8 += $precio;
-        $final9   =    number_format($final8, 2, ".",",");
-     if ($productos['estado']="Pendiente") {  
-    $total = $productos['cantidad_solicitada'] * $productos['precio'];
+       $final2 += $cant_aprobada;
+       $final3   =    number_format($final2, 2, ".",",");
+
+       $final4 += $cantidad_despachada;
+       $final5   =    number_format($final4, 2, ".",",");
+
+       $final6 += ($cant_aprobada-$cantidad_despachada);
+       $final7   =    number_format($final6, 2, ".",",");
+
+       $final8 += $precio;
+       $final9   =    number_format($final8, 2, ".",",");
+       if ($productos['estado']="Pendiente") {  
+        $total = $productos['cantidad_solicitada'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
-        
-    $total = $productos['cantidad_solicitada'] * $productos['precio'];
+
+        $total = $productos['cantidad_solicitada'] * $productos['precio'];
     }if ($productos['estado']=="Aprobado") {
-        
-    $total = $productos['cantidad_despachada'] * $productos['precio'];
+
+        $total = $productos['cantidad_despachada'] * $productos['precio'];
     }
-     $final += $total;
-       $total1= number_format($total, 2, ".",",");
-      $final1=number_format($final, 2, ".",","); 
-    
-   if ($productos['idusuario']==1) {
+    $final += $total;
+    $total1= number_format($total, 2, ".",",");
+    $final1=number_format($final, 2, ".",","); 
+
+    if ($productos['idusuario']==1) {
         $u='Administrador';
-        }
-        else {
-            $u='Cliente';
-        }
-                $spreadsheet->getActiveSheet()->getStyle('K2:M2')->applyFromArray($tableHead);
-        $sheet->setCellValue('K2' ,"VISTA PREVIA: ");
-        $sheet->setCellValue('K3' ,"Cant Solicitada: ");
-        $sheet->setCellValue('L3' ,$final3);
-        $sheet->setCellValue('K4' ,"Costo Unitario: ");
-        $sheet->setCellValue('L4' ,$final9);
-        $sheet->setCellValue('K5' ,"SubTotal: ");
-        $sheet->setCellValue('L5' ,$final1);
-        $spreadsheet->getActiveSheet()->mergeCells('K2:M2');
-        $spreadsheet->getActiveSheet()->mergeCells('L3:M3');
-        $spreadsheet->getActiveSheet()->mergeCells('L4:M4');
-        $spreadsheet->getActiveSheet()->mergeCells('L5:M5');
-$fila3++;
-                    if( $fila3 % 2 == 0 ){
-        //even row
-        $spreadsheet->getActiveSheet()->getStyle('k3:M5')->applyFromArray($oddRow);
-    }else{
-        //odd row
-        $spreadsheet->getActiveSheet()->getStyle('k4:M5')->applyFromArray($oddRow);
     }
-        $spreadsheet->getActiveSheet()->getStyle('k5:M5')->applyFromArray($subtotal);
+    else {
+        $u='Cliente';
+    }
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila+2)->applyFromArray($tableHead);
+    $spreadsheet->getActiveSheet()->getStyle('C'.$fila+2)->applyFromArray($tableHead);
+    $sheet->setCellValue('A'.$fila +2 , "VISTA PREVIA:");
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':C'.$fila + 2);
+
+    $sheet->setCellValue('A'.$fila +3 ,"Cant Solicitada: ");
+    $sheet->setCellValue('C'.$fila +3 ,$final2);
+    $sheet->setCellValue('A'.$fila +4 ,"Costo Unitario: ");
+    $sheet->setCellValue('C'.$fila +4 ,$final);
+    $sheet->setCellValue('A'.$fila +5 ,"SubTotal: ");
+    $sheet->setCellValue('C'.$fila +5 ,$final);
+    
+    $spreadsheet->getActiveSheet()->getStyle('C'.$fila + 3)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+    $spreadsheet->getActiveSheet()->getStyle('B'.$fila + 4 .':C'.$fila + 5)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($evenRow);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($oddRow);
+    
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 5 .':C'.$fila + 5)->applyFromArray($subtotal);
 
 
-
-        $sheet->setCellValue('A' .$fila, $productos['codAlmacen']);
-        $sheet->setCellValue('B' .$fila, $productos['departamento']);
-        $sheet->setCellValue('C' .$fila, $productos['encargado']." "."(".$u.")");
-        $sheet->setCellValue('D' .$fila, $productos['codigo']);
-        $sheet->setCellValue('E' .$fila, $productos['nombre']);
-        $sheet->setCellValue('F' .$fila, $productos['unidad_medida']);
-        $sheet->setCellValue('G' .$fila, $stock);
-        $sheet->setCellValue('H' .$fila, $precio2);
-        $sheet->setCellValue('I' .$fila, $total1);
-        $sheet->setCellValue('J' .$fila, $productos['fecha_solicitud']);
-        if( $fila % 2 == 0 ){
+    $sheet->setCellValue('A' .$fila, $productos['codAlmacen']);
+    $sheet->setCellValue('B' .$fila, $productos['departamento']);
+    $sheet->setCellValue('C' .$fila, $productos['encargado']." "."(".$u.")");
+    $sheet->setCellValue('D' .$fila, $productos['codigo']);
+    $sheet->setCellValue('E' .$fila, $productos['nombre']);
+    $sheet->setCellValue('F' .$fila, $productos['unidad_medida']);
+    $sheet->setCellValue('G' .$fila, $stock);
+    $sheet->setCellValue('H' .$fila, $precio2);
+    $sheet->setCellValue('I' .$fila, $total1);
+    $sheet->setCellValue('J' .$fila, $productos['fecha_solicitud']);
+    if( $fila % 2 == 0 ){
         //even row
         $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':J'.$fila)->applyFromArray($evenRow);
     }else{
@@ -1348,127 +1334,137 @@ $fila3++;
     }
     //increment row
     $fila++;
-        }
-        $spreadsheet->getActiveSheet()->getStyle('O2:Q2')->applyFromArray($tableHead);
-
-$sheet->setCellValue('O2' , "VISTA PREVIA:");
-
-        $sql1="SELECT * FROM tb_almacen WHERE codAlmacen=$vale";
-        $result1 = mysqli_query($conn, $sql1);
-    while ($productos1 = mysqli_fetch_array($result1)){
-        $title="Departamento";
-        $title1="N° Almacen";
-        $title2="Encargado";
-        $title3="Fecha";
-        $title4="Estado";
-        $body=$productos1['departamento'];
-        $body1=$productos1['codAlmacen'];
-        $body2=$productos1['encargado'];
-        $body3=$productos1['fecha_solicitud'];
-        $body4=$productos1['estado'];
-$sheet->setCellValue('O3', $title);
-$sheet->setCellValue('O4', $title1);
-$sheet->setCellValue('O5', $title2);
-$sheet->setCellValue('O6', $title3);
-$sheet->setCellValue('O7', $title4);
-$sheet->setCellValue('P3', $body);
-$sheet->setCellValue('P4', $body1);
-$sheet->setCellValue('P5', $body2);
-$sheet->setCellValue('P6', $body3);
-$sheet->setCellValue('P7', $body4);
-$spreadsheet->getActiveSheet()->mergeCells('O2:Q2');
-$spreadsheet->getActiveSheet()->mergeCells('P3:Q3');
-$spreadsheet->getActiveSheet()->mergeCells('P4:Q4');
-$spreadsheet->getActiveSheet()->mergeCells('P5:Q5');
-$spreadsheet->getActiveSheet()->mergeCells('P6:Q6');
-$spreadsheet->getActiveSheet()->mergeCells('P7:Q7');
-
-        $spreadsheet->getActiveSheet()->getStyle('O3:Q3')->applyFromArray($evenRow);
-        $spreadsheet->getActiveSheet()->getStyle('O4:Q4')->applyFromArray($oddRow);
-
-        $spreadsheet->getActiveSheet()->getStyle('O5:Q5')->applyFromArray($evenRow);
-        $spreadsheet->getActiveSheet()->getStyle('O6:Q6')->applyFromArray($oddRow); 
-if ($body4=="Pendiente") {
-        $spreadsheet->getActiveSheet()->getStyle('O7:Q7')->applyFromArray($Pendiente);
-}if ($body4=="Aprobado") {
-        $spreadsheet->getActiveSheet()->getStyle('O7:Q7')->applyFromArray($Aprobado);
-}if ($body4=="Rechazado") {
-        $spreadsheet->getActiveSheet()->getStyle('O7:Q7')->applyFromArray($Rechazado);
 }
+$spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 1 .':J'.$fila + 1)->applyFromArray($tableHead);
+$sheet->setCellValue('E'.$fila +1 , "VISTA PREVIA:");
+$spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 1 .':J'.$fila + 1);
+
+$sql1="SELECT * FROM tb_almacen WHERE codAlmacen=$vale";
+$result1 = mysqli_query($conn, $sql1);
+while ($productos1 = mysqli_fetch_array($result1)){
+    $title="Departamento";
+    $title1="N° Vale";
+    $title2="Encargado";
+    $title3="Fecha";
+    $title4="Estado";
+    $body=$productos1['departamento'];
+    $body1=$productos1['codAlmacen'];
+    $body2=$productos1['encargado'];
+    $body3=$productos1['fecha_solicitud'];
+    $body4=$productos1['estado'];
+    $sheet->setCellValue('E'.$fila+2, $title);
+    $sheet->setCellValue('E'.$fila+3, $title1);
+    $sheet->setCellValue('E'.$fila+4, $title2);
+    $sheet->setCellValue('E'.$fila+5, $title3);
+    $sheet->setCellValue('E'.$fila+6, $title4);
+    $sheet->setCellValue('F'.$fila+2, $body);
+    $sheet->setCellValue('F'.$fila+3, $body1);
+    $sheet->setCellValue('F'.$fila+4, $body2);
+    $sheet->setCellValue('F'.$fila+5, $body3);
+    $sheet->setCellValue('F'.$fila+6, $body4);
+
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':B'.$fila + 2);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 3 .':B'.$fila + 3);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 4 .':B'.$fila + 4);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 5 .':B'.$fila + 5);
+
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 2 .':J'.$fila + 2);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 3 .':J'.$fila + 3);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 4 .':J'.$fila + 4);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 5 .':J'.$fila + 5);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 6 .':J'.$fila + 6);
+
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 2 .':F'.$fila + 2)->applyFromArray($evenRow);
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 3 .':F'.$fila + 3)->applyFromArray($oddRow);
+
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 4 .':F'.$fila + 4)->applyFromArray($evenRow);
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 5 .':F'.$fila + 5)->applyFromArray($oddRow); 
+    if ($body4=="Pendiente") {
+        $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 6 .':F'.$fila + 6)->applyFromArray($Pendiente);
+    }if ($body4=="Aprobado") {
+        $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 6 .':F'.$fila + 6)->applyFromArray($Aprobado);
+    }if ($body4=="Rechazado") {
+        $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 6 .':F'.$fila + 6)->applyFromArray($Rechazado);
     }
+}
 }if (isset($_POST['almacen1'])) {
-$vale = $_POST['almacen1'];
-$sql = "SELECT * FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen WHERE tb_almacen='$vale'";
-$result = mysqli_query($conn, $sql);
+    $vale = $_POST['almacen1'];
+    $sql = "SELECT * FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen WHERE tb_almacen='$vale'";
+    $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
-        
-     $precio   =    $productos['precio'];
-        $precio2  =    number_format($precio, 2,".",",");  
-        $cant_aprobada=$productos['cantidad_solicitada'];
-        $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,".",",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-        $final2 += $cant_aprobada;
-        $final3   =    number_format($final2, 2, ".",",");
+       $precio   =    $productos['precio'];
+       $precio2  =    number_format($precio, 2,".",",");  
+       $cant_aprobada=$productos['cantidad_solicitada'];
+       $cantidad_despachada=$productos['cantidad_despachada'];
+       $stock=number_format($cant_aprobada, 2,".",",");
+       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-        $final4 += $cantidad_despachada;
-        $final5   =    number_format($final4, 2, ".",",");
-        
-        $final6 += ($cant_aprobada-$cantidad_despachada);
-        $final7   =    number_format($final6, 2, ".",",");
-        
-        $final8 += $precio;
-        $final9   =    number_format($final8, 2, ".",",");
-     if ($productos['estado']="Pendiente") {  
-    $total = $productos['cantidad_solicitada'] * $productos['precio'];
+       $final2 += $cant_aprobada;
+       $final3   =    number_format($final2, 2, ".",",");
+
+       $final4 += $cantidad_despachada;
+       $final5   =    number_format($final4, 2, ".",",");
+
+       $final6 += ($cant_aprobada-$cantidad_despachada);
+       $final7   =    number_format($final6, 2, ".",",");
+
+       $final8 += $precio;
+       $final9   =    number_format($final8, 2, ".",",");
+       if ($productos['estado']="Pendiente") {  
+        $total = $productos['cantidad_solicitada'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
-        
-    $total = $productos['cantidad_solicitada'] * $productos['precio'];
+
+        $total = $productos['cantidad_solicitada'] * $productos['precio'];
     }if ($productos['estado']=="Aprobado") {
-        
-    $total = $productos['cantidad_despachada'] * $productos['precio'];
+
+        $total = $productos['cantidad_despachada'] * $productos['precio'];
     }
-     $final += $total;
-       $total1= number_format($total, 2, ".",",");
-      $final1=number_format($final, 2, ".",","); 
-    
-   if ($productos['idusuario']==1) {
+    $final += $total;
+    $total1= number_format($total, 2, ".",",");
+    $final1=number_format($final, 2, ".",","); 
+
+    if ($productos['idusuario']==1) {
         $u='Administrador';
-        }
-        else {
-            $u='Cliente';
-        }
-                $spreadsheet->getActiveSheet()->getStyle('K2:M2')->applyFromArray($tableHead);
-        $sheet->setCellValue('K2' ,"VISTA PREVIA: ");
-        $sheet->setCellValue('K3' ,"Cant Solicitada: ");
-        $sheet->setCellValue('L3' ,$final3);
-        $sheet->setCellValue('K4' ,"Costo Unitario: ");
-        $sheet->setCellValue('L4' ,$final9);
-        $sheet->setCellValue('K5' ,"SubTotal: ");
-        $sheet->setCellValue('L5' ,$final1);
-        $spreadsheet->getActiveSheet()->mergeCells('K2:M2');
-        $spreadsheet->getActiveSheet()->mergeCells('L3:M3');
-        $spreadsheet->getActiveSheet()->mergeCells('L4:M4');
-        $spreadsheet->getActiveSheet()->mergeCells('L5:M5');
-$fila3++;
-                    if( $fila3 % 2 == 0 ){$spreadsheet->getActiveSheet()->getStyle('k3:M5')->applyFromArray($oddRow);}
-        else{$spreadsheet->getActiveSheet()->getStyle('k4:M5')->applyFromArray($oddRow);}
-        $spreadsheet->getActiveSheet()->getStyle('k5:M5')->applyFromArray($subtotal);
+    }
+    else {
+        $u='Cliente';
+    }
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila+2)->applyFromArray($tableHead);
+    $spreadsheet->getActiveSheet()->getStyle('C'.$fila+2)->applyFromArray($tableHead);
+    $sheet->setCellValue('A'.$fila +2 , "VISTA PREVIA:");
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':C'.$fila + 2);
+
+    $sheet->setCellValue('A'.$fila +3 ,"Cant Solicitada: ");
+    $sheet->setCellValue('C'.$fila +3 ,$final2);
+    $sheet->setCellValue('A'.$fila +4 ,"Costo Unitario: ");
+    $sheet->setCellValue('C'.$fila +4 ,$final8);
+    $sheet->setCellValue('A'.$fila +5 ,"SubTotal: ");
+    $sheet->setCellValue('C'.$fila +5 ,$final);
+    
+    $spreadsheet->getActiveSheet()->getStyle('C'.$fila + 3)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+    $spreadsheet->getActiveSheet()->getStyle('B'.$fila + 4 .':C'.$fila + 5)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($evenRow);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($oddRow);
+    
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 5 .':C'.$fila + 5)->applyFromArray($subtotal);
 
 
-        $sheet->setCellValue('A' .$fila, $productos['codAlmacen']);
-        $sheet->setCellValue('B' .$fila, $productos['departamento']);
-        $sheet->setCellValue('C' .$fila, $productos['encargado']." "."(".$u.")");
-        $sheet->setCellValue('D' .$fila, $productos['codigo']);
-        $sheet->setCellValue('E' .$fila, $productos['nombre']);
-        $sheet->setCellValue('F' .$fila, $productos['unidad_medida']);
-        $sheet->setCellValue('G' .$fila, $stock);
-        $sheet->setCellValue('H' .$fila, $precio2);
-        $sheet->setCellValue('I' .$fila, $total1);
-        $sheet->setCellValue('J' .$fila, $productos['fecha_solicitud']);
-        if( $fila % 2 == 0 ){
+    $sheet->setCellValue('A' .$fila, $productos['codAlmacen']);
+    $sheet->setCellValue('B' .$fila, $productos['departamento']);
+    $sheet->setCellValue('C' .$fila, $productos['encargado']." "."(".$u.")");
+    $sheet->setCellValue('D' .$fila, $productos['codigo']);
+    $sheet->setCellValue('E' .$fila, $productos['nombre']);
+    $sheet->setCellValue('F' .$fila, $productos['unidad_medida']);
+    $sheet->setCellValue('G' .$fila, $stock);
+    $sheet->setCellValue('H' .$fila, $precio2);
+    $sheet->setCellValue('I' .$fila, $total1);
+    $sheet->setCellValue('J' .$fila, $productos['fecha_solicitud']);
+    if( $fila % 2 == 0 ){
         //even row
         $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':J'.$fila)->applyFromArray($evenRow);
     }else{
@@ -1477,124 +1473,135 @@ $fila3++;
     }
     //increment row
     $fila++;
-        }
-        $spreadsheet->getActiveSheet()->getStyle('O2:Q2')->applyFromArray($tableHead);
+}
+$spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 1 .':J'.$fila + 1)->applyFromArray($tableHead);
+$sheet->setCellValue('E'.$fila +1 , "VISTA PREVIA:");
+$spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 1 .':J'.$fila + 1);
 
-$sheet->setCellValue('O2' , "VISTA PREVIA:");
+$sql1="SELECT * FROM tb_almacen WHERE codAlmacen=$vale";
+$result1 = mysqli_query($conn, $sql1);
+while ($productos1 = mysqli_fetch_array($result1)){
+    $title="Departamento";
+    $title1="N° Vale";
+    $title2="Encargado";
+    $title3="Fecha";
+    $title4="Estado";
+    $body=$productos1['departamento'];
+    $body1=$productos1['codAlmacen'];
+    $body2=$productos1['encargado'];
+    $body3=$productos1['fecha_solicitud'];
+    $body4=$productos1['estado'];
+    $sheet->setCellValue('E'.$fila+2, $title);
+    $sheet->setCellValue('E'.$fila+3, $title1);
+    $sheet->setCellValue('E'.$fila+4, $title2);
+    $sheet->setCellValue('E'.$fila+5, $title3);
+    $sheet->setCellValue('E'.$fila+6, $title4);
+    $sheet->setCellValue('F'.$fila+2, $body);
+    $sheet->setCellValue('F'.$fila+3, $body1);
+    $sheet->setCellValue('F'.$fila+4, $body2);
+    $sheet->setCellValue('F'.$fila+5, $body3);
+    $sheet->setCellValue('F'.$fila+6, $body4);
 
-        $sql1="SELECT * FROM tb_almacen WHERE codAlmacen=$vale";
-        $result1 = mysqli_query($conn, $sql1);
-    while ($productos1 = mysqli_fetch_array($result1)){
-        $title="Departamento";
-        $title1="N° Almacen";
-        $title2="Encargado";
-        $title3="Fecha";
-        $title4="Estado";
-        $body=$productos1['departamento'];
-        $body1=$productos1['codAlmacen'];
-        $body2=$productos1['encargado'];
-        $body3=$productos1['fecha_solicitud'];
-        $body4=$productos1['estado'];
-$sheet->setCellValue('O3', $title);
-$sheet->setCellValue('O4', $title1);
-$sheet->setCellValue('O5', $title2);
-$sheet->setCellValue('O6', $title3);
-$sheet->setCellValue('O7', $title4);
-$sheet->setCellValue('P3', $body);
-$sheet->setCellValue('P4', $body1);
-$sheet->setCellValue('P5', $body2);
-$sheet->setCellValue('P6', $body3);
-$sheet->setCellValue('P7', $body4);
-$spreadsheet->getActiveSheet()->mergeCells('O2:Q2');
-$spreadsheet->getActiveSheet()->mergeCells('P3:Q3');
-$spreadsheet->getActiveSheet()->mergeCells('P4:Q4');
-$spreadsheet->getActiveSheet()->mergeCells('P5:Q5');
-$spreadsheet->getActiveSheet()->mergeCells('P6:Q6');
-$spreadsheet->getActiveSheet()->mergeCells('P7:Q7');
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':B'.$fila + 2);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 3 .':B'.$fila + 3);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 4 .':B'.$fila + 4);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 5 .':B'.$fila + 5);
 
-        $spreadsheet->getActiveSheet()->getStyle('O3:Q3')->applyFromArray($evenRow);
-        $spreadsheet->getActiveSheet()->getStyle('O4:Q4')->applyFromArray($oddRow);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 2 .':J'.$fila + 2);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 3 .':J'.$fila + 3);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 4 .':J'.$fila + 4);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 5 .':J'.$fila + 5);
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 6 .':J'.$fila + 6);
 
-        $spreadsheet->getActiveSheet()->getStyle('O5:Q5')->applyFromArray($evenRow);
-        $spreadsheet->getActiveSheet()->getStyle('O6:Q6')->applyFromArray($oddRow); 
-if ($body4=="Pendiente") {  $spreadsheet->getActiveSheet()->getStyle('O7:Q7')->applyFromArray($Pendiente);}
-if ($body4=="Aprobado")  {  $spreadsheet->getActiveSheet()->getStyle('O7:Q7')->applyFromArray($Aprobado);}
-if ($body4=="Rechazado") {  $spreadsheet->getActiveSheet()->getStyle('O7:Q7')->applyFromArray($Rechazado);}
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 2 .':F'.$fila + 2)->applyFromArray($evenRow);
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 3 .':F'.$fila + 3)->applyFromArray($oddRow);
+
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 4 .':F'.$fila + 4)->applyFromArray($evenRow);
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 5 .':F'.$fila + 5)->applyFromArray($oddRow); 
+    if ($body4=="Pendiente") {
+        $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 6 .':F'.$fila + 6)->applyFromArray($Pendiente);
+    }if ($body4=="Aprobado") {
+        $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 6 .':F'.$fila + 6)->applyFromArray($Aprobado);
+    }if ($body4=="Rechazado") {
+        $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 6 .':F'.$fila + 6)->applyFromArray($Rechazado);
     }
+}
 }if (isset($_POST['circulante'])) {
-$vale = $_POST['circulante'];
-$sql = "SELECT * FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante WHERE tb_circulante='$vale'";
-$result = mysqli_query($conn, $sql);
+    $vale = $_POST['circulante'];
+    $sql = "SELECT * FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante WHERE tb_circulante='$vale'";
+    $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
-        
-     $precio   =    $productos['precio'];
-        $precio2  =    number_format($precio, 2,".",",");  
-        $cant_aprobada=$productos['stock'];
-        $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,".",",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-        $final2 += $cant_aprobada;
-        $final3   =    number_format($final2, 2, ".",",");
+       $precio   =    $productos['precio'];
+       $precio2  =    number_format($precio, 2,".",",");  
+       $cant_aprobada=$productos['stock'];
+       $cantidad_despachada=$productos['cantidad_despachada'];
+       $stock=number_format($cant_aprobada, 2,".",",");
+       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-        $final4 += $cantidad_despachada;
-        $final5   =    number_format($final4, 2, ".",",");
-        
-        $final6 += ($cant_aprobada-$cantidad_despachada);
-        $final7   =    number_format($final6, 2, ".",",");
-        
-        $final8 += $precio;
-        $final9   =    number_format($final8, 2, ".",",");
-     if ($productos['estado']="Pendiente") {  
-    $total = $productos['stock'] * $productos['precio'];
+       $final2 += $cant_aprobada;
+       $final3   =    number_format($final2, 2, ".",",");
+
+       $final4 += $cantidad_despachada;
+       $final5   =    number_format($final4, 2, ".",",");
+
+       $final6 += ($cant_aprobada-$cantidad_despachada);
+       $final7   =    number_format($final6, 2, ".",",");
+
+       $final8 += $precio;
+       $final9   =    number_format($final8, 2, ".",",");
+       if ($productos['estado']="Pendiente") {  
+        $total = $productos['stock'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
-        
-    $total = $productos['stock'] * $productos['precio'];
+
+        $total = $productos['stock'] * $productos['precio'];
     }if ($productos['estado']=="Aprobado") {
-        
-    $total = $productos['cantidad_despachada'] * $productos['precio'];
+
+        $total = $productos['cantidad_despachada'] * $productos['precio'];
     }
-     $final += $total;
-       $total1= number_format($total, 2, ".",",");
-      $final1=number_format($final, 2, ".",","); 
-    
-   if ($productos['idusuario']==1) {
+    $final += $total;
+    $total1= number_format($total, 2, ".",",");
+    $final1=number_format($final, 2, ".",","); 
+
+    if ($productos['idusuario']==1) {
         $u='Administrador';
-        }
-        else {
-            $u='Cliente';
-        }
-      $spreadsheet->getActiveSheet()->getStyle('I2:K2')->applyFromArray($tableHead);
-        $sheet->setCellValue('I2' ,"VISTA PREVIA: ");
-        $sheet->setCellValue('I3' ,"Cant Solicitada: ");
-        $sheet->setCellValue('J3' ,$final3);
-        $sheet->setCellValue('I4' ,"Costo Unitario: ");
-        $sheet->setCellValue('J4' ,$final9);
-        $sheet->setCellValue('I5' ,"SubTotal: ");
-        $sheet->setCellValue('J5' ,$final1);
-        $spreadsheet->getActiveSheet()->mergeCells('I2:K2');
-        $spreadsheet->getActiveSheet()->mergeCells('J3:K3');
-        $spreadsheet->getActiveSheet()->mergeCells('J4:K4');
-        $spreadsheet->getActiveSheet()->mergeCells('J5:K5');
-$fila3++;
+    }
+    else {
+        $u='Cliente';
+    }
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila+2)->applyFromArray($tableHead);
+    $spreadsheet->getActiveSheet()->getStyle('C'.$fila+2)->applyFromArray($tableHead);
+    $sheet->setCellValue('A'.$fila +2 , "VISTA PREVIA:");
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':C'.$fila + 2);
 
-        $spreadsheet->getActiveSheet()->getStyle('I3:k5')->applyFromArray($evenRow);
-  
-        $spreadsheet->getActiveSheet()->getStyle('I4:k5')->applyFromArray($oddRow);
-  
-        $spreadsheet->getActiveSheet()->getStyle('I5:K5')->applyFromArray($subtotal);
+    $sheet->setCellValue('A'.$fila +3 ,"Cant Solicitada: ");
+    $sheet->setCellValue('C'.$fila +3 ,$final2);
+    $sheet->setCellValue('A'.$fila +4 ,"Costo Unitario: ");
+    $sheet->setCellValue('C'.$fila +4 ,$final8);
+    $sheet->setCellValue('A'.$fila +5 ,"SubTotal: ");
+    $sheet->setCellValue('C'.$fila +5 ,$final);
+    
+    $spreadsheet->getActiveSheet()->getStyle('C'.$fila + 3)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+    $spreadsheet->getActiveSheet()->getStyle('B'.$fila + 4 .':C'.$fila + 5)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($evenRow);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($oddRow);
+    
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 5 .':C'.$fila + 5)->applyFromArray($subtotal);
 
 
-        $sheet->setCellValue('A' .$fila, $productos['codCirculante']);
-        $sheet->setCellValue('B' .$fila, $productos['codigo']);
-        $sheet->setCellValue('C' .$fila, $productos['descripcion']);
-        $sheet->setCellValue('D' .$fila, $productos['unidad_medida']);
-        $sheet->setCellValue('E' .$fila, $stock);
-        $sheet->setCellValue('F' .$fila, $precio2);
-        $sheet->setCellValue('G' .$fila, $total1);
-        $sheet->setCellValue('H' .$fila, $productos['fecha_solicitud']);
-            if( $fila % 2 == 0 ){
+    $sheet->setCellValue('A' .$fila, $productos['codCirculante']);
+    $sheet->setCellValue('B' .$fila, $productos['codigo']);
+    $sheet->setCellValue('C' .$fila, $productos['descripcion']);
+    $sheet->setCellValue('D' .$fila, $productos['unidad_medida']);
+    $sheet->setCellValue('E' .$fila, $stock);
+    $sheet->setCellValue('F' .$fila, $precio2);
+    $sheet->setCellValue('G' .$fila, $total1);
+    $sheet->setCellValue('H' .$fila, $productos['fecha_solicitud']);
+    if( $fila % 2 == 0 ){
         //even row
         $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':H'.$fila)->applyFromArray($evenRow);
     }else{
@@ -1603,105 +1610,175 @@ $fila3++;
     }
     //increment row
     $fila++;
-        }
-        $spreadsheet->getActiveSheet()->getStyle('O2:Q2')->applyFromArray($tableHead);
+}
+$spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 1 .':H'.$fila + 1)->applyFromArray($tableHead);
+$sheet->setCellValue('E'.$fila +1 , "VISTA PREVIA:");
+$spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 1 .':H'.$fila + 1);
 
-$sheet->setCellValue('O2' , "VISTA PREVIA:");
+$sql1="SELECT * FROM tb_circulante WHERE codCirculante=$vale";
+$result1 = mysqli_query($conn, $sql1);
+while ($productos1 = mysqli_fetch_array($result1)){
 
-        $sql1="SELECT * FROM tb_circulante WHERE codCirculante=$vale";
-        $result1 = mysqli_query($conn, $sql1);
-    while ($productos1 = mysqli_fetch_array($result1)){
-        $title1="N° de Solicitud:";
-        $title2="Fecha";
-        $body1=$productos1['codCirculante'];
-        $body2=$productos1['fecha_solicitud'];
-$sheet->setCellValue('O3', $title1);
-$sheet->setCellValue('O4', $title2);
-$sheet->setCellValue('P3', $body1);
-$sheet->setCellValue('P4', $body2);
-$spreadsheet->getActiveSheet()->mergeCells('O2:Q2');
-$spreadsheet->getActiveSheet()->mergeCells('P3:Q3');
-$spreadsheet->getActiveSheet()->mergeCells('P4:Q4');
+    $title="N° Circulante";
+    $title1="Fecha";
+    $body=$productos1['codCirculante'];
+    $body1=$productos1['fecha_solicitud'];
 
-        $spreadsheet->getActiveSheet()->getStyle('O3:Q3')->applyFromArray($evenRow);
-        $spreadsheet->getActiveSheet()->getStyle('O4:Q4')->applyFromArray($oddRow);
+    $sheet->setCellValue('E'.$fila+2, $title);
+    $sheet->setCellValue('E'.$fila+3, $title1);
 
-    }
+    $sheet->setCellValue('G'.$fila+2, $body);
+    $sheet->setCellValue('G'.$fila+3, $body1);
+
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':B'.$fila + 2);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 3 .':B'.$fila + 3);
+
+    $spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 2 .':F'.$fila + 2);
+    $spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 2 .':F'.$fila + 2);    
+
+    $spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 3 .':F'.$fila + 3);
+    $spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 3 .':F'.$fila + 3);
+
+    $spreadsheet->getActiveSheet()->mergeCells('G'.$fila+ 2 .':H'.$fila + 2);
+    $spreadsheet->getActiveSheet()->mergeCells('G'.$fila+ 2 .':H'.$fila + 2);
+
+    $spreadsheet->getActiveSheet()->mergeCells('G'.$fila+ 3 .':H'.$fila + 3);
+    $spreadsheet->getActiveSheet()->mergeCells('G'.$fila+ 3 .':H'.$fila + 3);
+
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 2 .':H'.$fila + 2)->applyFromArray($evenRow);
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 3 .':H'.$fila + 3)->applyFromArray($oddRow);
+
+    $sheet->setCellValue('A' .$fila + 6, "Todo lo anteriormente detallado, es indispensable para desarrollar nuestras funciones.");
+    $sheet->setCellValue('A' .$fila + 8, "Sin más particular");
+    $sheet->setCellValue('A' .$fila + 9, "Solicita:");
+    $sheet->setCellValue('C' .$fila + 13, "Autoriza:");
+    $sheet->setCellValue('G' .$fila + 9, "Dá fe de no haber existencia:");
+    $sheet->setCellValue('A' .$fila + 11, "F. ________________");
+    $sheet->setCellValue('A' .$fila + 12, "Ing. Ernesto González Choto");
+    $sheet->setCellValue('A' .$fila + 13, "Jefe de Mantenimiento");
+
+    $sheet->setCellValue('C' .$fila + 14, "F. ________________");
+    $sheet->setCellValue('C' .$fila + 15, "Dr. William Antonio Fernández Rodríguez");
+    $sheet->setCellValue('C' .$fila + 16, 'Director del Hospital Nacional " Santa Teresa"');
+
+    $sheet->setCellValue('G' .$fila + 11, "F. ________________");
+    $sheet->setCellValue('G' .$fila + 12, "Sra. Isabel Romero");
+    $sheet->setCellValue('G' .$fila + 13, "Guarda Almacén");
+
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 6 .':I'.$fila + 6);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 8 .':B'.$fila + 8);
+
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 11 .':B'.$fila + 11);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 12 .':B'.$fila + 12);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 13 .':B'.$fila + 13);
+
+    $spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 13 .':F'.$fila + 13);
+    $spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 14 .':F'.$fila + 14);
+    $spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 15 .':F'.$fila + 15);
+    $spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 16 .':F'.$fila + 16);
+    $spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 17 .':F'.$fila + 17);
+
+    $spreadsheet->getActiveSheet()->mergeCells('G'.$fila+ 9 .':H'.$fila + 9);
+    $spreadsheet->getActiveSheet()->mergeCells('G'.$fila+ 11 .':H'.$fila + 11);
+    $spreadsheet->getActiveSheet()->mergeCells('G'.$fila+ 12 .':H'.$fila + 12);
+    $spreadsheet->getActiveSheet()->mergeCells('G'.$fila+ 13 .':H'.$fila + 13);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +6)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +8)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +9)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +13)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +14)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +11)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +13)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +14)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+
+    $spreadsheet->getActiveSheet()->getStyle('G'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('G'. $fila +12)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('G'. $fila +13)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+
+    $spreadsheet->getActiveSheet()->getStyle('G'. $fila +11)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('G'. $fila +12)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('G'. $fila +13)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+}
 }
 if (isset($_POST['circulante1'])) {
-$vale = $_POST['circulante1'];
-$sql = "SELECT * FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante WHERE tb_circulante='$vale'";
-$result = mysqli_query($conn, $sql);
+    $vale = $_POST['circulante1'];
+    $sql = "SELECT * FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante WHERE tb_circulante='$vale'";
+    $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
-        
-     $precio   =    $productos['precio'];
-        $precio2  =    number_format($precio, 2,".",",");  
-        $cant_aprobada=$productos['stock'];
-        $cantidad_despachada=$productos['cantidad_despachada'];
-        $stock=number_format($cant_aprobada, 2,".",",");
-        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-        $final2 += $cant_aprobada;
-        $final3   =    number_format($final2, 2, ".",",");
+       $precio   =    $productos['precio'];
+       $precio2  =    number_format($precio, 2,".",",");  
+       $cant_aprobada=$productos['stock'];
+       $cantidad_despachada=$productos['cantidad_despachada'];
+       $stock=number_format($cant_aprobada, 2,".",",");
+       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-        $final4 += $cantidad_despachada;
-        $final5   =    number_format($final4, 2, ".",",");
-        
-        $final6 += ($cant_aprobada-$cantidad_despachada);
-        $final7   =    number_format($final6, 2, ".",",");
-        
-        $final8 += $precio;
-        $final9   =    number_format($final8, 2, ".",",");
-     if ($productos['estado']="Pendiente") {  
-    $total = $productos['stock'] * $productos['precio'];
+       $final2 += $cant_aprobada;
+       $final3   =    number_format($final2, 2, ".",",");
+
+       $final4 += $cantidad_despachada;
+       $final5   =    number_format($final4, 2, ".",",");
+
+       $final6 += ($cant_aprobada-$cantidad_despachada);
+       $final7   =    number_format($final6, 2, ".",",");
+
+       $final8 += $precio;
+       $final9   =    number_format($final8, 2, ".",",");
+       if ($productos['estado']="Pendiente") {  
+        $total = $productos['stock'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
-        
-    $total = $productos['stock'] * $productos['precio'];
+
+        $total = $productos['stock'] * $productos['precio'];
     }if ($productos['estado']=="Aprobado") {
-        
-    $total = $productos['cantidad_despachada'] * $productos['precio'];
+
+        $total = $productos['cantidad_despachada'] * $productos['precio'];
     }
-     $final += $total;
-       $total1= number_format($total, 2, ".",",");
-      $final1=number_format($final, 2, ".",","); 
-    
-   if ($productos['idusuario']==1) {
+    $final += $total;
+    $total1= number_format($total, 2, ".",",");
+    $final1=number_format($final, 2, ".",","); 
+
+    if ($productos['idusuario']==1) {
         $u='Administrador';
-        }
-        else {
-            $u='Cliente';
-        }
-      $spreadsheet->getActiveSheet()->getStyle('I2:K2')->applyFromArray($tableHead);
-        $sheet->setCellValue('I2' ,"VISTA PREVIA: ");
-        $sheet->setCellValue('I3' ,"Cant Solicitada: ");
-        $sheet->setCellValue('J3' ,$final3);
-        $sheet->setCellValue('I4' ,"Costo Unitario: ");
-        $sheet->setCellValue('J4' ,$final9);
-        $sheet->setCellValue('I5' ,"SubTotal: ");
-        $sheet->setCellValue('J5' ,$final1);
-        $spreadsheet->getActiveSheet()->mergeCells('I2:K2');
-        $spreadsheet->getActiveSheet()->mergeCells('J3:K3');
-        $spreadsheet->getActiveSheet()->mergeCells('J4:K4');
-        $spreadsheet->getActiveSheet()->mergeCells('J5:K5');
-$fila3++;
+    }
+    else {
+        $u='Cliente';
+    }
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila+2)->applyFromArray($tableHead);
+    $spreadsheet->getActiveSheet()->getStyle('C'.$fila+2)->applyFromArray($tableHead);
+    $sheet->setCellValue('A'.$fila +2 , "VISTA PREVIA:");
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':C'.$fila + 2);
 
-        $spreadsheet->getActiveSheet()->getStyle('I3:k5')->applyFromArray($evenRow);
-  
-        $spreadsheet->getActiveSheet()->getStyle('I4:k5')->applyFromArray($oddRow);
-  
-        $spreadsheet->getActiveSheet()->getStyle('I5:K5')->applyFromArray($subtotal);
+    $sheet->setCellValue('A'.$fila +3 ,"Cant Solicitada: ");
+    $sheet->setCellValue('C'.$fila +3 ,$final2);
+    $sheet->setCellValue('A'.$fila +4 ,"Costo Unitario: ");
+    $sheet->setCellValue('C'.$fila +4 ,$final8);
+    $sheet->setCellValue('A'.$fila +5 ,"SubTotal: ");
+    $sheet->setCellValue('C'.$fila +5 ,$final);
+    
+    $spreadsheet->getActiveSheet()->getStyle('C'.$fila + 3)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+    $spreadsheet->getActiveSheet()->getStyle('B'.$fila + 4 .':C'.$fila + 5)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($evenRow);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($oddRow);
+    
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 5 .':C'.$fila + 5)->applyFromArray($subtotal);
 
 
-        $sheet->setCellValue('A' .$fila, $productos['codCirculante']);
-        $sheet->setCellValue('B' .$fila, $productos['codigo']);
-        $sheet->setCellValue('C' .$fila, $productos['descripcion']);
-        $sheet->setCellValue('D' .$fila, $productos['unidad_medida']);
-        $sheet->setCellValue('E' .$fila, $stock);
-        $sheet->setCellValue('F' .$fila, $precio2);
-        $sheet->setCellValue('G' .$fila, $total1);
-        $sheet->setCellValue('H' .$fila, $productos['fecha_solicitud']);
-            if( $fila % 2 == 0 ){
+    $sheet->setCellValue('A' .$fila, $productos['codCirculante']);
+    $sheet->setCellValue('B' .$fila, $productos['codigo']);
+    $sheet->setCellValue('C' .$fila, $productos['descripcion']);
+    $sheet->setCellValue('D' .$fila, $productos['unidad_medida']);
+    $sheet->setCellValue('E' .$fila, $stock);
+    $sheet->setCellValue('F' .$fila, $precio2);
+    $sheet->setCellValue('G' .$fila, $total1);
+    $sheet->setCellValue('H' .$fila, $productos['fecha_solicitud']);
+    if( $fila % 2 == 0 ){
         //even row
         $spreadsheet->getActiveSheet()->getStyle('A'.$fila.':H'.$fila)->applyFromArray($evenRow);
     }else{
@@ -1710,52 +1787,105 @@ $fila3++;
     }
     //increment row
     $fila++;
-        }
-        $spreadsheet->getActiveSheet()->getStyle('O2:Q2')->applyFromArray($tableHead);
+}
+$spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 1 .':H'.$fila + 1)->applyFromArray($tableHead);
+$sheet->setCellValue('E'.$fila +1 , "VISTA PREVIA:");
+$spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 1 .':H'.$fila + 1);
 
-$sheet->setCellValue('O2' , "VISTA PREVIA:");
+$sql1="SELECT * FROM tb_circulante WHERE codCirculante=$vale";
+$result1 = mysqli_query($conn, $sql1);
+while ($productos1 = mysqli_fetch_array($result1)){
 
-        $sql1="SELECT * FROM tb_circulante WHERE codCirculante=$vale";
-        $result1 = mysqli_query($conn, $sql1);
-    while ($productos1 = mysqli_fetch_array($result1)){
-        $title1="N° de Solicitud:";
-        $title2="Fecha";
-        $body1=$productos1['codCirculante'];
-        $body2=$productos1['fecha_solicitud'];
-$sheet->setCellValue('O3', $title1);
-$sheet->setCellValue('O4', $title2);
-$sheet->setCellValue('P3', $body1);
-$sheet->setCellValue('P4', $body2);
-$spreadsheet->getActiveSheet()->mergeCells('O2:Q2');
-$spreadsheet->getActiveSheet()->mergeCells('P3:Q3');
-$spreadsheet->getActiveSheet()->mergeCells('P4:Q4');
+    $title="N° Circulante";
+    $title1="Fecha";
+    $body=$productos1['codCirculante'];
+    $body1=$productos1['fecha_solicitud'];
 
-        $spreadsheet->getActiveSheet()->getStyle('O3:Q3')->applyFromArray($evenRow);
-        $spreadsheet->getActiveSheet()->getStyle('O4:Q4')->applyFromArray($oddRow);
+    $sheet->setCellValue('E'.$fila+2, $title);
+    $sheet->setCellValue('E'.$fila+3, $title1);
 
-    }
+    $sheet->setCellValue('G'.$fila+2, $body);
+    $sheet->setCellValue('G'.$fila+3, $body1);
+
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':B'.$fila + 2);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 3 .':B'.$fila + 3);
+
+    $spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 2 .':F'.$fila + 2);
+    $spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 2 .':F'.$fila + 2);    
+
+    $spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 3 .':F'.$fila + 3);
+    $spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 3 .':F'.$fila + 3);
+
+    $spreadsheet->getActiveSheet()->mergeCells('G'.$fila+ 2 .':H'.$fila + 2);
+    $spreadsheet->getActiveSheet()->mergeCells('G'.$fila+ 2 .':H'.$fila + 2);
+
+    $spreadsheet->getActiveSheet()->mergeCells('G'.$fila+ 3 .':H'.$fila + 3);
+    $spreadsheet->getActiveSheet()->mergeCells('G'.$fila+ 3 .':H'.$fila + 3);
+
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 2 .':H'.$fila + 2)->applyFromArray($evenRow);
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 3 .':H'.$fila + 3)->applyFromArray($oddRow);
+
+    $sheet->setCellValue('A' .$fila + 6, "Todo lo anteriormente detallado, es indispensable para desarrollar nuestras funciones.");
+    $sheet->setCellValue('A' .$fila + 8, "Sin más particular");
+    $sheet->setCellValue('A' .$fila + 9, "Solicita:");
+    $sheet->setCellValue('C' .$fila + 13, "Autoriza:");
+    $sheet->setCellValue('G' .$fila + 9, "Dá fe de no haber existencia:");
+    $sheet->setCellValue('A' .$fila + 11, "F. ________________");
+    $sheet->setCellValue('A' .$fila + 12, "Ing. Ernesto González Choto");
+    $sheet->setCellValue('A' .$fila + 13, "Jefe de Mantenimiento");
+
+    $sheet->setCellValue('C' .$fila + 14, "F. ________________");
+    $sheet->setCellValue('C' .$fila + 15, "Dr. William Antonio Fernández Rodríguez");
+    $sheet->setCellValue('C' .$fila + 16, 'Director del Hospital Nacional " Santa Teresa"');
+
+    $sheet->setCellValue('G' .$fila + 11, "F. ________________");
+    $sheet->setCellValue('G' .$fila + 12, "Sra. Isabel Romero");
+    $sheet->setCellValue('G' .$fila + 13, "Guarda Almacén");
+
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 6 .':I'.$fila + 6);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 8 .':B'.$fila + 8);
+
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 11 .':B'.$fila + 11);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 12 .':B'.$fila + 12);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 13 .':B'.$fila + 13);
+
+    $spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 13 .':F'.$fila + 13);
+    $spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 14 .':F'.$fila + 14);
+    $spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 15 .':F'.$fila + 15);
+    $spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 16 .':F'.$fila + 16);
+    $spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 17 .':F'.$fila + 17);
+
+    $spreadsheet->getActiveSheet()->mergeCells('G'.$fila+ 9 .':H'.$fila + 9);
+    $spreadsheet->getActiveSheet()->mergeCells('G'.$fila+ 11 .':H'.$fila + 11);
+    $spreadsheet->getActiveSheet()->mergeCells('G'.$fila+ 12 .':H'.$fila + 12);
+    $spreadsheet->getActiveSheet()->mergeCells('G'.$fila+ 13 .':H'.$fila + 13);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +6)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +8)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +9)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +13)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +14)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +11)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +13)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +14)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+
+    $spreadsheet->getActiveSheet()->getStyle('G'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('G'. $fila +12)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('G'. $fila +13)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+
+    $spreadsheet->getActiveSheet()->getStyle('G'. $fila +11)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('G'. $fila +12)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('G'. $fila +13)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+
+}
 }
 
 //autofilter
 //define first row and last row
-$firstRow=7;
-$lastRow=$fila-1;
-if (isset($_POST['vale']) || 
-    isset($_POST['bodega']) || 
-    isset($_POST['compra']) || 
-    isset($_POST['almacen']) ||
-    isset($_POST['vale1']) || 
-    isset($_POST['bodega1']) || 
-    isset($_POST['compra1']) || 
-    isset($_POST['almacen1'])) {
-//set the autofilter
-$spreadsheet->getActiveSheet()->setAutoFilter("A".$firstRow.":J".$lastRow);
-$spreadsheet->getActiveSheet()->setAutoFilter("A".$firstRow.":J".$lastRow);
-}
- if (isset($_POST['circulante']) || isset($_POST['circulante1'])) {
-$spreadsheet->getActiveSheet()->setAutoFilter("A".$firstRow.":H".$lastRow);
 
- }
+
 //set the header first, so the result will be treated as an xlsx file.
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 

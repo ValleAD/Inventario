@@ -203,12 +203,6 @@ while ($productos = mysqli_fetch_array($result)){
     $fila++;
 }
 
-//autofilter
-//define first row and last row
-$firstRow=7;
-$lastRow=$fila-1;
-//set the autofilter
-$spreadsheet->getActiveSheet()->setAutoFilter("A".$firstRow.":C".$lastRow);
 
 
 //set the header first, so the result will be treated as an xlsx file.
