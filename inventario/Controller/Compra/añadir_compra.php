@@ -87,7 +87,7 @@ $result = mysqli_query($conn, $insert);
       $query = mysqli_query($conn, $insert);
 
 
- $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Detalles,idusuario) VALUES('$Descripción','Solicitud compra','$u_m','$codigo_producto','$cantidad','$cost','$nSolicitud','$idusuario')";
+ $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Detalles,idusuario,Mes,Año) VALUES('$Descripción','Solicitud compra','$u_m','$codigo_producto','$cantidad','$cost','$nSolicitud','$idusuario','$mes','$año')";
 
        $query1 = mysqli_query($conn, $sql1);
       if ($result || $result1 || $query || $query1) {

@@ -62,7 +62,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
       $query = mysqli_query($conn, $insert);
 
 
- $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Detalles,idusuario) VALUES('$nombre_articulo','Entrada Por Almacen','$u_m','$codigo_producto','$soli','$cost','$solicitud_no','$idusuario')";
+ $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Detalles,idusuario,Mes,Año) VALUES('$nombre_articulo','Entrada Por Almacen','$u_m','$codigo_producto','$soli','$cost','$solicitud_no','$idusuario','$mes','$año')";
        $query1 = mysqli_query($conn, $sql1);
 }
       if ($result || $result1 || $query || $query1) {

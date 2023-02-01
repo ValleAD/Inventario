@@ -148,7 +148,7 @@ if (isset($_POST['almacen'])) {
 
     while ($productos = mysqli_fetch_array($result)){
         
-       if ($productos['idusuario']==1) {
+     if ($productos['idusuario']==1) {
         $u='Administrador';
     }
     else {
@@ -179,7 +179,7 @@ $sql = "SELECT * FROM tb_almacen WHERE idusuario='$idusuario' ";
 $result = mysqli_query($conn, $sql);
 
 while ($productos = mysqli_fetch_array($result)){
-   if ($productos['idusuario']==1) {
+ if ($productos['idusuario']==1) {
     $u='Administrador';
 }
 else {
@@ -203,6 +203,38 @@ $fila++;
 }
 }
 }
+
+$sheet->setCellValue('A' .$fila + 3, "Solicita:");
+$sheet->setCellValue('B' .$fila + 7, "Autoriza:");
+$sheet->setCellValue('D' .$fila + 3, "Entrega:");
+$sheet->setCellValue('A' .$fila + 4, "F. ________________");
+
+$sheet->setCellValue('B' .$fila + 8, "F. ________________");
+
+$sheet->setCellValue('D' .$fila + 4, "F. ________________");
+
+
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 3 .':B'.$fila + 3);
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 4 .':B'.$fila + 4);
+
+$spreadsheet->getActiveSheet()->mergeCells('B'.$fila+ 7 .':D'.$fila + 7);
+$spreadsheet->getActiveSheet()->mergeCells('B'.$fila+ 8 .':D'.$fila + 8);
+
+$spreadsheet->getActiveSheet()->mergeCells('D'.$fila+ 3 .':E'.$fila + 3);
+$spreadsheet->getActiveSheet()->mergeCells('D'.$fila+ 4 .':E'.$fila + 4);
+
+$spreadsheet->getActiveSheet()->getStyle('A'. $fila +3)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+$spreadsheet->getActiveSheet()->getStyle('A'. $fila +4)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+
+
+
+
+$spreadsheet->getActiveSheet()->getStyle('D'. $fila +3)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
+$spreadsheet->getActiveSheet()->getStyle('D'. $fila +4)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
+
+$spreadsheet->getActiveSheet()->getStyle('D'. $fila +3)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('D'. $fila +4)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+
 
 
 

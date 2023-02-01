@@ -69,10 +69,10 @@ $spreadsheet->getActiveSheet()
     ->setCellValue('A3',"DEPARTAMENTO DE MANTENIMIENTO")
     ->setCellValue('A4',"SOLICITUD DE MATERIALES");
 //Tamaño de la letra
-$spreadsheet->getActiveSheet()->getStyle('A1')->getFont()->setSize(16);
-$spreadsheet->getActiveSheet()->getStyle('A2')->getFont()->setSize(16);
-$spreadsheet->getActiveSheet()->getStyle('A3')->getFont()->setSize(16);
-$spreadsheet->getActiveSheet()->getStyle('A4')->getFont()->setSize(16);
+$spreadsheet->getActiveSheet()->getStyle('A1')->getFont()->setSize(12);
+$spreadsheet->getActiveSheet()->getStyle('A2')->getFont()->setSize(12);
+$spreadsheet->getActiveSheet()->getStyle('A3')->getFont()->setSize(12);
+$spreadsheet->getActiveSheet()->getStyle('A4')->getFont()->setSize(12);
 
 //Horientación
 $spreadsheet->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
@@ -91,15 +91,11 @@ $spreadsheet->getActiveSheet()->mergeCells("A4:D4");
 
 
 //setting column width
-$spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(10);
-$spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(10);
-$spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(10);
-$spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(10);
+$spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(30);
+$spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(30);
+$spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(30);
+$spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(30);
 
-$spreadsheet->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
-$spreadsheet->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
-$spreadsheet->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
-$spreadsheet->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
 //imagen
     $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
     $drawing->setName('Paid');
@@ -203,13 +199,34 @@ $result = mysqli_query($conn, $sql);
     $fila++;
         }
     }
+    $sheet->setCellValue('A' .$fila + 3, "Solicita:");
+    $sheet->setCellValue('B' .$fila + 7, "Autoriza:");
+    $sheet->setCellValue('D' .$fila + 3, "Entrega:");
+    $sheet->setCellValue('A' .$fila + 4, "F. ________________");
 
-//autofilter
-//define first row and last row
-$firstRow=7;
-$lastRow=$fila-1;
-//set the autofilter
-$spreadsheet->getActiveSheet()->setAutoFilter("A".$firstRow.":D".$lastRow);
+    $sheet->setCellValue('B' .$fila + 8, "F. ________________");
+
+    $sheet->setCellValue('D' .$fila + 4, "F. ________________");
+
+
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 3 .':B'.$fila + 3);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 4 .':B'.$fila + 4);
+
+    $spreadsheet->getActiveSheet()->mergeCells('B'.$fila+ 7 .':C'.$fila + 7);
+    $spreadsheet->getActiveSheet()->mergeCells('B'.$fila+ 8 .':C'.$fila + 8);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +3)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +4)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+
+
+
+
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +3)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +4)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
+
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +3)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +4)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+
 
 
 //set the header first, so the result will be treated as an xlsx file.

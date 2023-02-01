@@ -455,7 +455,7 @@ while ($productos = mysqli_fetch_array($result)){
                 </button>
             </form>
                   <?php if($tipo_usuario==1){ ?>
-       <form method="POST" action="" style="">
+       <form method="POST" action="" style="" class="mx-1">
                <button type="submit" name="submit" <?php
                 if($productos1['estado']=='Aprobado') {
                      echo ' style="display:none"';

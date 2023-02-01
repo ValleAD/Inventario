@@ -33,7 +33,12 @@ $tableHead = [
 
 //even row
 $evenRow = [
+    'font'=>[
+        'color'=>[
+            'rgb'=>'000000'
 
+        ]
+    ],
     'fill'=>[
         'fillType' => Fill::FILL_SOLID,
         'startColor' => [
@@ -57,7 +62,12 @@ $subtotal = [
 ];
 //odd row
 $oddRow = [
+    'font'=>[
+        'color'=>[
+            'rgb'=>'000000'
 
+        ]
+    ],
     'fill'=>[
         'fillType' => Fill::FILL_SOLID,
         'startColor' => [
@@ -109,8 +119,8 @@ $spreadsheet->getActiveSheet()->mergeCells("A4:F4");
 
 
 //setting column width
-$spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(13.86);
-$spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(35);
+$spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(20);
+$spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(25);
 $spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(19.86);
 $spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(14.29);
 $spreadsheet->getActiveSheet()->getColumnDimension('E')->setWidth(16.71);
@@ -178,7 +188,6 @@ $spreadsheet->getActiveSheet()->getStyle('I6:I7')->getNumberFormat()->setFormatC
 $spreadsheet->getActiveSheet()->getStyle('J')->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
 $spreadsheet->getActiveSheet()->getStyle('O')->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
 $spreadsheet->getActiveSheet()->getStyle('L5')->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED2);
-$spreadsheet->getActiveSheet()->getStyle('C')->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED2);
 $spreadsheet->getActiveSheet()->getStyle('I3:I5')->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
 $spreadsheet->getActiveSheet()->getStyle('R')->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
 $spreadsheet->getActiveSheet()->getStyle('U')->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
@@ -203,6 +212,7 @@ $final7 = "0.00";
 $final8 = "0.00";
 $final9 = "0.00";
 $final10 = "0.00";
+$final11 = "0.00";
 $final14 = "0.00";
 $final16 = "0.00";
 $final18 = "0.00";
@@ -248,57 +258,79 @@ while ($productos = mysqli_fetch_array($result)){
     //increment row
     $fila++;
 }
-$spreadsheet->getActiveSheet()->getStyle('H2:I2')->applyFromArray($tableHead);
-$sheet->setCellValue('H2' , "VISTA PREVIA:");
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 2 .':B'.$fila + 2)->applyFromArray($tableHead);
 
-$sheet->setCellValue('H3', "Entradas");
-$sheet->setCellValue('I3', $final14);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila + 2 .':B'.$fila + 2);
 
-$sheet->setCellValue('H4', "Salidas");
-$sheet->setCellValue('I4', $final16);
+$sheet->setCellValue('A'.$fila + 2,  "VISTA PREVIA:");
 
-$sheet->setCellValue('H5', "Resta de Entradas - Salidas:");
-$sheet->setCellValue('I5', $final18);
+$sheet->setCellValue('A'.$fila + 3,  "Entradas");
+$sheet->setCellValue('B'.$fila + 3,  $final14);
 
-$sheet->setCellValue('H6', "Saldo(Precio):");
-$sheet->setCellValue('I6', $final20);
+$sheet->setCellValue('A'.$fila + 4,  "Salidas");
+$sheet->setCellValue('B'.$fila + 4,  $final16);
 
-$sheet->setCellValue('H7', "SubTotal");
-$sheet->setCellValue('I7', $final);
+$sheet->setCellValue('A'.$fila + 5,  "Resta de Entradas - Salidas:");
+$sheet->setCellValue('B'.$fila + 5,  $final18);
 
-$spreadsheet->getActiveSheet()->getStyle('K2:L2')->applyFromArray($tableHead);
-$sheet->setCellValue('K2' , "PERIODO DE MOVIMIENTO:");
-$sheet->setCellValue('K3', "De");
-$sheet->setCellValue('L3', $f1);
-$sheet->setCellValue('K4', "AL");
-$sheet->setCellValue('L4', $f1);
-$sheet->setCellValue('K5', "Codigo del Productos");
-$sheet->setCellValue('L5', $Comprovante);
-$sheet->setCellValue('K6', "Descripción");
-$sheet->setCellValue('L6', $descripcion);
-$sheet->setCellValue('K7', "Unidad de Medida");
-$sheet->setCellValue('L7', $um);
-$spreadsheet->getActiveSheet()->mergeCells('K2:L2');
+$sheet->setCellValue('A'.$fila + 6,  "Saldo(Precio):");
+$sheet->setCellValue('B'.$fila + 6,  $final20);
 
-$spreadsheet->getActiveSheet()->getStyle('K3:L3')->applyFromArray($evenRow);
-$spreadsheet->getActiveSheet()->getStyle('K4:L4')->applyFromArray($oddRow);
-$spreadsheet->getActiveSheet()->getStyle('K5:L5')->applyFromArray($evenRow);
-$spreadsheet->getActiveSheet()->getStyle('K6:L6')->applyFromArray($oddRow);
-$spreadsheet->getActiveSheet()->getStyle('K7:L7')->applyFromArray($evenRow);
+$sheet->setCellValue('A'.$fila + 7,  "SubTotal");
+$sheet->setCellValue('B'.$fila + 7,  $final);
+
+$spreadsheet->getActiveSheet()->getStyle('D'.$fila + 2 .':G'.$fila + 2)->applyFromArray($tableHead);
+$sheet->setCellValue('D'.$fila + 2, "PERIODO DE MOVIMIENTO:");
+$sheet->setCellValue('D'.$fila + 3, "De");
+$sheet->setCellValue('F'.$fila + 3, $f1);
+$sheet->setCellValue('D'.$fila + 4, "AL");
+$sheet->setCellValue('F'.$fila + 4, $f1);
+$sheet->setCellValue('D'.$fila + 5, "Codigo del Productos");
+$sheet->setCellValue('F'.$fila + 5, $Comprovante);
+$sheet->setCellValue('D'.$fila + 6, "Descripción");
+$sheet->setCellValue('F'.$fila + 6, $descripcion);
+$sheet->setCellValue('D'.$fila + 7, "Unidad de Medida");
+$sheet->setCellValue('F'.$fila + 7, $um);
+
+$spreadsheet->getActiveSheet()->getStyle('F'.$fila + 5)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_GENERAL);
+
+$spreadsheet->getActiveSheet()->getStyle('B'.$fila + 3 .':B'.$fila + 5)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+$spreadsheet->getActiveSheet()->getStyle('B'.$fila + 6 .':B'.$fila + 7)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+$spreadsheet->getActiveSheet()->mergeCells('D'.$fila + 2 .':G'.$fila + 2);
+$spreadsheet->getActiveSheet()->mergeCells('D'.$fila + 3 .':E'.$fila + 3);
+$spreadsheet->getActiveSheet()->mergeCells('D'.$fila + 4 .':E'.$fila + 4);
+$spreadsheet->getActiveSheet()->mergeCells('D'.$fila + 5 .':E'.$fila + 5);
+$spreadsheet->getActiveSheet()->mergeCells('D'.$fila + 6 .':E'.$fila + 6);
+$spreadsheet->getActiveSheet()->mergeCells('D'.$fila + 7 .':E'.$fila + 7);
 
 
-$spreadsheet->getActiveSheet()->getStyle('H3:I3')->applyFromArray($evenRow);
-$spreadsheet->getActiveSheet()->getStyle('H4:I4')->applyFromArray($oddRow);
-$spreadsheet->getActiveSheet()->getStyle('H5:I5')->applyFromArray($evenRow);
-$spreadsheet->getActiveSheet()->getStyle('H6:I6')->applyFromArray($oddRow);
-$spreadsheet->getActiveSheet()->getStyle('H7:I7')->applyFromArray($subtotal);
+$spreadsheet->getActiveSheet()->mergeCells('F'.$fila + 3 .':G'.$fila + 3);
+$spreadsheet->getActiveSheet()->mergeCells('F'.$fila + 4 .':G'.$fila + 4);
+$spreadsheet->getActiveSheet()->mergeCells('F'.$fila + 5 .':G'.$fila + 5);
+$spreadsheet->getActiveSheet()->mergeCells('F'.$fila + 6 .':G'.$fila + 6);
+$spreadsheet->getActiveSheet()->mergeCells('F'.$fila + 7 .':G'.$fila + 7);
 
-$spreadsheet->getActiveSheet()->getStyle('N2:O2')->applyFromArray($tableHead);
-$sheet->setCellValue('N2' , "ENTRADAS POR MES:");
-$sql1="SELECT SUM(Entradas),fecha_registro FROM historial WHERE fecha_registro BETWEEN ' $f1' AND ' $f2' and No_Comprovante='$Busqueda'  GROUP BY Mes;";
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':B'.$fila + 3)->applyFromArray($evenRow);
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':B'.$fila + 4)->applyFromArray($oddRow);
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 5 .':B'.$fila + 5)->applyFromArray($evenRow);
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 6 .':B'.$fila + 6)->applyFromArray($oddRow);
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 7 .':B'.$fila + 7)->applyFromArray($subtotal);
+
+
+$spreadsheet->getActiveSheet()->getStyle('D'.$fila + 3 .':G'.$fila + 3)->applyFromArray($evenRow);
+$spreadsheet->getActiveSheet()->getStyle('D'.$fila + 4 .':G'.$fila + 4)->applyFromArray($oddRow);
+$spreadsheet->getActiveSheet()->getStyle('D'.$fila + 5 .':G'.$fila + 5)->applyFromArray($evenRow);
+$spreadsheet->getActiveSheet()->getStyle('D'.$fila + 6 .':G'.$fila + 6)->applyFromArray($oddRow);
+$spreadsheet->getActiveSheet()->getStyle('D'.$fila + 7 .':G'.$fila + 7)->applyFromArray($evenRow);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila  + 9 .':G'.$fila + 9)->applyFromArray($tableHead);
+$sheet->setCellValue('A'.$fila +9 , "ENTRADAS POR MES:");
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila + 9 .':G'.$fila + 9);
+$sql1="SELECT SUM(Entradas),Mes FROM historial WHERE fecha_registro BETWEEN ' $f1' AND ' $f2' and No_Comprovante='$Busqueda'  GROUP BY Mes;";
 $result1 = mysqli_query($conn, $sql1);
 while ($productos = mysqli_fetch_array($result1)){
-    $mes=date("m",strtotime($productos['fecha_registro']));
+    $mes=$productos['Mes'];
     $cantidad=$productos['SUM(Entradas)'];
     $final8 += $cantidad;
 
@@ -316,34 +348,41 @@ while ($productos = mysqli_fetch_array($result1)){
     if ($mes==12) { $mes="Diciembre";}
 
 
-    $sheet->setCellValue('N' .$fila1, $mes);
-    $sheet->setCellValue('O' .$fila1, $cantidad);
-    $spreadsheet->getActiveSheet()->mergeCells('N2:O2');
 
-    if( $fila1 % 2 == 0 ){
+    $sheet->setCellValue('A' .$fila +10, $mes);
+    $sheet->setCellValue('D' .$fila +10, $cantidad);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila + 10 .':C'.$fila + 10);
+     $spreadsheet->getActiveSheet()->mergeCells('D'.$fila + 10 .':G'.$fila + 10);
+
+$spreadsheet->getActiveSheet()->getStyle('D'.$fila + 10)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+    if( $fila % 2 == 0 ){
         //even row
-        $spreadsheet->getActiveSheet()->getStyle('N'.$fila1.':O'.$fila1)->applyFromArray($evenRow);
+        $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 10 .':G'.$fila + 10)->applyFromArray($evenRow);
     }else{
         //odd row
-        $spreadsheet->getActiveSheet()->getStyle('N'.$fila1.':O'.$fila1)->applyFromArray($oddRow);
+        $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 10 .':G'.$fila + 10)->applyFromArray($oddRow);
     }
-    $fila1++;
-
+    $fila++;
 }
+    $sheet->setCellValue('A' .$fila +10, "SubTotal");
+    $sheet->setCellValue('D' .$fila +10, $final8);
 
-$sheet->setCellValue('N' .$fila1, "SubTotal");
-$sheet->setCellValue('O' .$fila1, $final8);
-$spreadsheet->getActiveSheet()->getStyle('N'.$fila1.':O'.$fila1)->applyFromArray($subtotal);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila + 10 .':C'.$fila + 10);
+    $spreadsheet->getActiveSheet()->mergeCells('D'.$fila + 10 .':G'.$fila + 10);
 
-$spreadsheet->getActiveSheet()->getStyle('Q2:R2')->applyFromArray($tableHead);
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 10 .':G'.$fila + 10)->applyFromArray($subtotal);
+$spreadsheet->getActiveSheet()->getStyle('D'.$fila + 10)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
 
-$sheet->setCellValue('Q2' , "SALIDAS POR MES:");
-$sql2="SELECT SUM(Salidas),fecha_registro FROM historial WHERE fecha_registro BETWEEN ' $f1' AND ' $f2' and No_Comprovante='$Busqueda'  GROUP BY Mes;";
-$result2 = mysqli_query($conn, $sql2);
-while ($productos = mysqli_fetch_array($result2)){
-    $mes=date("m",strtotime($productos['fecha_registro']));
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila  + 12 .':G'.$fila + 12)->applyFromArray($tableHead);
+$sheet->setCellValue('A'.$fila +12 , "SALIDAS POR MES:");
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila + 12 .':G'.$fila + 12);
+$sql1="SELECT SUM(Salidas),Mes FROM historial WHERE fecha_registro BETWEEN ' $f1' AND ' $f2' and No_Comprovante='$Busqueda'  GROUP BY Mes;";
+$result1 = mysqli_query($conn, $sql1);
+while ($productos = mysqli_fetch_array($result1)){
+    $mes=$productos['Mes'];
     $cantidad=$productos['SUM(Salidas)'];
-    $final9 += $cantidad;
+    $final8 += $cantidad;
 
     if ($mes==1)  { $mes="Enero";}
     if ($mes==2)  { $mes="Febrero";}
@@ -359,84 +398,106 @@ while ($productos = mysqli_fetch_array($result2)){
     if ($mes==12) { $mes="Diciembre";}
 
 
-    $sheet->setCellValue('Q' .$fila2, $mes);
-    $sheet->setCellValue('R' .$fila2, $cantidad);
-    $spreadsheet->getActiveSheet()->mergeCells('Q2:R2');
 
-    if( $fila2 % 2 == 0 ){
+    $sheet->setCellValue('A' .$fila +13, $mes);
+    $sheet->setCellValue('D' .$fila +13, $cantidad);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila + 13 .':C'.$fila + 13);
+     $spreadsheet->getActiveSheet()->mergeCells('D'.$fila + 13 .':G'.$fila + 13);
+
+$spreadsheet->getActiveSheet()->getStyle('D'.$fila + 13)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+    if( $fila % 2 == 0 ){
         //even row
-        $spreadsheet->getActiveSheet()->getStyle('Q'.$fila2.':R'.$fila2)->applyFromArray($evenRow);
+        $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 13 .':G'.$fila + 13)->applyFromArray($evenRow);
     }else{
         //odd row
-        $spreadsheet->getActiveSheet()->getStyle('Q'.$fila2.':R'.$fila2)->applyFromArray($oddRow);
+        $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 13 .':G'.$fila + 13)->applyFromArray($oddRow);
     }
-    $fila2++;
-
+    $fila++;
 }
+    $sheet->setCellValue('A' .$fila +13, "SubTotal");
+    $sheet->setCellValue('D' .$fila +13, $final8);
 
-$sheet->setCellValue('Q' .$fila2, "SubTotal");
-$sheet->setCellValue('R' .$fila2, $final9);
-$spreadsheet->getActiveSheet()->getStyle('Q'.$fila2.':R'.$fila2)->applyFromArray($subtotal);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila + 13 .':C'.$fila + 13);
+    $spreadsheet->getActiveSheet()->mergeCells('D'.$fila + 13 .':G'.$fila + 13);
 
-$spreadsheet->getActiveSheet()->getStyle('T2:U2')->applyFromArray($tableHead);
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 13 .':G'.$fila + 13)->applyFromArray($subtotal);
+$spreadsheet->getActiveSheet()->getStyle('D'.$fila + 13)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
 
-$sheet->setCellValue('q2', "ENTRADAS POR AÑO:");
-$sql2="SELECT SUM(Entradas),fecha_registro FROM historial WHERE fecha_registro BETWEEN ' $f1' AND ' $f2' and No_Comprovante='$Busqueda'  GROUP BY Año;";
+
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 15 .':G'.$fila+ 15)->applyFromArray($tableHead);
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 15 .':G'.$fila+ 15);
+
+$sheet->setCellValue('A'.$fila +15, "ENTRADAS POR AÑO:");
+$sql2="SELECT SUM(Entradas),Año FROM historial WHERE fecha_registro BETWEEN ' $f1' AND ' $f2' and No_Comprovante='$Busqueda'  GROUP BY Año;";
 $result2 = mysqli_query($conn, $sql2);
 while ($productos = mysqli_fetch_array($result2)){
-    $mes=date("Y",strtotime($productos['fecha_registro']));
+    $mes=$productos['Año'];
     $cantidad=$productos['SUM(Entradas)'];
-    $final9 += $cantidad;
+    $final10 += $cantidad;
 
 
-    $sheet->setCellValue('T' .$fila3, $mes);
-    $sheet->setCellValue('U' .$fila3, $cantidad);
-    $spreadsheet->getActiveSheet()->mergeCells('T2:U2');
+    $sheet->setCellValue('A'.$fila +16, $mes);
+    $sheet->setCellValue('D'.$fila+16, $cantidad);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila + 16 .':C'.$fila + 16);
+    $spreadsheet->getActiveSheet()->mergeCells('D'.$fila + 16 .':G'.$fila + 16);
 
-    if( $fila3 % 2 == 0 ){
+    $spreadsheet->getActiveSheet()->getStyle('D'.$fila + 16)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+    if( $fila % 2 == 0 ){
         //even row
-        $spreadsheet->getActiveSheet()->getStyle('T'.$fila3.':U'.$fila3)->applyFromArray($evenRow);
+        $spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 16 .':G'.$fila+ 16)->applyFromArray($evenRow);
     }else{
         //odd row
-        $spreadsheet->getActiveSheet()->getStyle('T'.$fila3.':U'.$fila3)->applyFromArray($oddRow);
+        $spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 16 .':G'.$fila+ 16)->applyFromArray($oddRow);
     }
-    $fila3++;
+    $fila++;
 
 }
 
-$sheet->setCellValue('T' .$fila3, "SubTotal");
-$sheet->setCellValue('U' .$fila3, $final9);
-$spreadsheet->getActiveSheet()->getStyle('T'.$fila3.':U'.$fila3)->applyFromArray($subtotal);
+$sheet->setCellValue('A'.$fila+16, "SubTotal");
+$sheet->setCellValue('D'.$fila+16, $final10);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila + 16 .':C'.$fila + 16);
+    $spreadsheet->getActiveSheet()->mergeCells('D'.$fila + 16 .':G'.$fila + 16);
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 16 .':G'.$fila+ 16)->applyFromArray($subtotal);
+$spreadsheet->getActiveSheet()->getStyle('D'.$fila + 16)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
 
-$spreadsheet->getActiveSheet()->getStyle('W2:X2')->applyFromArray($tableHead);
+ 
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 18 .':G'.$fila+ 18)->applyFromArray($tableHead);
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 18 .':G'.$fila+ 18);
 
-$sheet->setCellValue('W2', "SALIDAS POR AÑO:");
-$sql2="SELECT SUM(Salidas),fecha_registro FROM historial WHERE fecha_registro BETWEEN ' $f1' AND ' $f2' and No_Comprovante='$Busqueda'  GROUP BY Año;";
+$sheet->setCellValue('A'.$fila +18, "SALIDAS POR AÑO:");
+$sql2="SELECT SUM(Salidas),Año FROM historial WHERE fecha_registro BETWEEN ' $f1' AND ' $f2' and No_Comprovante='$Busqueda'  GROUP BY Año;";
 $result2 = mysqli_query($conn, $sql2);
 while ($productos = mysqli_fetch_array($result2)){
-    $mes=date("Y",strtotime($productos['fecha_registro']));
+    $mes=$productos['Año'];
     $cantidad=$productos['SUM(Salidas)'];
     $final10 += $cantidad;
 
 
-    $sheet->setCellValue('W' .$fila4, $mes);
-    $sheet->setCellValue('X' .$fila4, $cantidad);
-    $spreadsheet->getActiveSheet()->mergeCells('W2:X2');
+    $sheet->setCellValue('A'.$fila +19, $mes);
+    $sheet->setCellValue('D'.$fila+19, $cantidad);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila + 19 .':C'.$fila + 19);
+    $spreadsheet->getActiveSheet()->mergeCells('D'.$fila + 19 .':G'.$fila + 19);
 
-    if( $fila4 % 2 == 0 ){
+    $spreadsheet->getActiveSheet()->getStyle('D'.$fila + 19)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+    if( $fila % 2 == 0 ){
         //even row
-        $spreadsheet->getActiveSheet()->getStyle('W'.$fila4.':X'.$fila4)->applyFromArray($evenRow);
+        $spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 19 .':G'.$fila+ 19)->applyFromArray($evenRow);
     }else{
         //odd row
-        $spreadsheet->getActiveSheet()->getStyle('W'.$fila4.':X'.$fila4)->applyFromArray($oddRow);
+        $spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 19 .':G'.$fila+ 19)->applyFromArray($oddRow);
     }
-    $fila4++;
+    $fila++;
 
 }
 
-$sheet->setCellValue('W' .$fila4, "SubTotal");
-$sheet->setCellValue('X' .$fila4, $final10);
-$spreadsheet->getActiveSheet()->getStyle('W'.$fila4.':X'.$fila4)->applyFromArray($subtotal);
+$sheet->setCellValue('A'.$fila+19, "SubTotal");
+$sheet->setCellValue('D'.$fila+19, $final10);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila + 19 .':C'.$fila + 19);
+    $spreadsheet->getActiveSheet()->mergeCells('D'.$fila + 19 .':G'.$fila + 19);
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 19 .':G'.$fila+ 19)->applyFromArray($subtotal);
+$spreadsheet->getActiveSheet()->getStyle('D'.$fila + 19)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
 
 
 //set the header first, so the result will be treated as an xlsx file.

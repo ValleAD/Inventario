@@ -256,25 +256,6 @@ while ($productos = mysqli_fetch_array($result)){
         else {
             $u='Cliente';
         }
-        $spreadsheet->getActiveSheet()->getStyle('K2:M2')->applyFromArray($tableHead);
-        $sheet->setCellValue('K2' ,"VISTA PREVIA: ");
-        $sheet->setCellValue('K3' ,"Cant Solicitada: ");
-        $sheet->setCellValue('L3' ,$final2);
-        $sheet->setCellValue('K4' ,"Costo Unitario: ");
-        $sheet->setCellValue('L4' ,$final8);
-        $sheet->setCellValue('K5' ,"SubTotal: ");
-        $sheet->setCellValue('L5' ,$final);
-        $spreadsheet->getActiveSheet()->mergeCells('K2:M2');
-        $spreadsheet->getActiveSheet()->mergeCells('L3:M3');
-        $spreadsheet->getActiveSheet()->mergeCells('L4:M4');
-        $spreadsheet->getActiveSheet()->mergeCells('L5:M5');
-$fila3++;
-         
-        $spreadsheet->getActiveSheet()->getStyle('k3:M5')->applyFromArray($evenRow);
-  
-        $spreadsheet->getActiveSheet()->getStyle('k4:M5')->applyFromArray($oddRow);
-  
-        $spreadsheet->getActiveSheet()->getStyle('k5:M5')->applyFromArray($subtotal);
 
 
 
@@ -298,112 +279,135 @@ $fila3++;
     //increment row
     $fila++;
         }
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 2 .':J'.$fila + 2)->applyFromArray($tableHead);
+$sheet->setCellValue('A'.$fila +2 ,"VISTA PREVIA: ");
+$sheet->setCellValue('A'.$fila +3 ,"Cant Solicitada: ");
+$sheet->setCellValue('F'.$fila +3 ,$final2);
+$sheet->setCellValue('A'.$fila +4 ,"Costo Unitario: ");
+$sheet->setCellValue('F'.$fila +4 ,$final8);
+$sheet->setCellValue('A'.$fila +5 ,"SubTotal: ");
+$sheet->setCellValue('F'.$fila +5 ,$final);
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':J'.$fila + 2);
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 3 .':E'.$fila + 3);
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 4 .':E'.$fila + 4);
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 5 .':E'.$fila + 5);
 
-$spreadsheet->getActiveSheet()->getStyle('O2:Q2')->applyFromArray($tableHead);
+$spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 3 .':J'.$fila + 3);
+$spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 4 .':J'.$fila + 4);
+$spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 5 .':J'.$fila + 5);
 
-$sheet->setCellValue('O2' , "STOCK POR MES:");
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 3 .':J'.$fila + 3)->applyFromArray($oddRow);
 
-        if (isset($_POST['compra'])) {
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 4 .':J'.$fila + 4)->applyFromArray($evenRow);
 
-        $sql1="SELECT Mes,SUM(stock) FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra GROUP by Mes;";
-        }if (isset($_POST['compra1'])) {
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 5 .':J'.$fila + 5)->applyFromArray($subtotal);
 
-       $sql1="SELECT Mes,SUM(stock),idusuario FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra WHERE idusuario='$idusuario' GROUP by Mes;";
-        }
-    $result1 = mysqli_query($conn, $sql1);
-    while ($productos1 = mysqli_fetch_array($result1)){
-        $mes=$productos1['Mes'];
-        $cantidad=$productos1['SUM(stock)'];
-        $stock=number_format($cantidad, 2,".",",");
-        $final10 += $cantidad;
-        $final11   =    number_format($final10, 2, ".",",");
-                            if ($mes==1)  { $mes="Enero";}
-                            if ($mes==2)  { $mes="Febrero";}
-                            if ($mes==3)  { $mes="Marzo";}
-                            if ($mes==4)  { $mes="Abril";}
-                            if ($mes==5)  { $mes="Mayo";}
-                            if ($mes==6)  { $mes="Junio";}
-                            if ($mes==7)  { $mes="Junio";}
-                            if ($mes==8)  { $mes="Agosto";}
-                            if ($mes==9)  { $mes="Septiembre";}
-                            if ($mes==10) { $mes="Octubre";}
-                            if ($mes==11) { $mes="Noviembre";}
-                            if ($mes==12) { $mes="Diciembre";}
+$spreadsheet->getActiveSheet()->getStyle('F'.$fila + 3)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+$spreadsheet->getActiveSheet()->getStyle('F'.$fila + 4 .':F'.$fila + 5)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
 
 
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 7 .':J'.$fila + 7)->applyFromArray($tableHead);
 
-$sheet->setCellValue('O' .$fila1, $mes);
-$sheet->setCellValue('P' .$fila1, $cantidad);
-$spreadsheet->getActiveSheet()->mergeCells('O2:Q2');
-$spreadsheet->getActiveSheet()->mergeCells('P'.$fila1.':Q'.$fila1);
+$sheet->setCellValue('A'.$fila +7 , "STOCK POR MES:");
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 7 .':J'.$fila + 7);
 
-                if( $fila1 % 2 == 0 ){
+
+if (isset($_POST['compra'])) {
+
+    $sql1="SELECT Mes,SUM(stock) FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra  GROUP by Mes";
+}if (isset($_POST['compra1'])) {
+
+    $sql1="SELECT Mes,SUM(stock),idusuario FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra WHERE db.idusuario='$idusuario'  GROUP by Mes";
+}
+$result1 = mysqli_query($conn, $sql1);
+while ($productos1 = mysqli_fetch_array($result1)){
+    $mes=$productos1['Mes'];
+    $cantidad=$productos1['SUM(stock)'];
+    $final10 += $cantidad;
+    if ($mes==1)  { $mes="Enero";}
+    if ($mes==2)  { $mes="Febrero";}
+    if ($mes==3)  { $mes="Marzo";}
+    if ($mes==4)  { $mes="Abril";}
+    if ($mes==5)  { $mes="Mayo";}
+    if ($mes==6)  { $mes="Junio";}
+    if ($mes==7)  { $mes="Junio";}
+    if ($mes==8)  { $mes="Agosto";}
+    if ($mes==9)  { $mes="Septiembre";}
+    if ($mes==10) { $mes="Octubre";}
+    if ($mes==11) { $mes="Noviembre";}
+    if ($mes==12) { $mes="Diciembre";}
+
+
+
+    $sheet->setCellValue('A'.$fila +8, $mes);
+    $sheet->setCellValue('F'.$fila +8, $cantidad);
+
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 8 .':E'.$fila + 8);
+
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 8 .':J'.$fila + 8);
+    $spreadsheet->getActiveSheet()->getStyle('F'.$fila + 8)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+    if( $fila % 2 == 0 ){
         //even row
-        $spreadsheet->getActiveSheet()->getStyle('O'.$fila1.':Q'.$fila1)->applyFromArray($evenRow);
+        $spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 8 .':J'.$fila + 8)->applyFromArray($evenRow);
     }else{
         //odd row
-        $spreadsheet->getActiveSheet()->getStyle('O'.$fila1.':Q'.$fila1)->applyFromArray($oddRow);
-}
-$fila1++;
-
-}
-
-$sheet->setCellValue('O' .$fila1, "SubTotal");
-$sheet->setCellValue('P' .$fila1, $final11);
-$spreadsheet->getActiveSheet()->mergeCells('P'.$fila1.':Q'.$fila1);
-$spreadsheet->getActiveSheet()->getStyle('O'.$fila1.':Q'.$fila1)->applyFromArray($subtotal);
-$sheet->setCellValue('S2' , "STOCK POR AÑO:");
-
-        if (isset($_POST['compra'])) {
-
-        $sql2="SELECT Año,SUM(stock) FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra GROUP by Año;";
-        }if (isset($_POST['compra1'])) {
-
-        $sql2="SELECT Año,SUM(stock),idusuario FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra WHERE idusuario='$idusuario' GROUP by Año;";
-        }
-    $result1 = mysqli_query($conn, $sql2);
-    while ($productos1 = mysqli_fetch_array($result1)){
-        $Año=$productos1['Año'];
-        $cantidad=$productos1['SUM(stock)'];
-        $stock=number_format($cantidad, 2,".",",");
-        $final12 += $cantidad;
-        $final13   =    number_format($final12, 2, ".",",");
-
-
-
-
-$sheet->setCellValue('S' .$fila2, $Año);
-$sheet->setCellValue('T' .$fila2, $cantidad);
-$spreadsheet->getActiveSheet()->mergeCells('S2:U2');
-$spreadsheet->getActiveSheet()->getStyle('S2:U2')->applyFromArray($tableHead);
-$spreadsheet->getActiveSheet()->mergeCells('T'.$fila2.':U'.$fila2);
-
-
-            if( $fila2 % 2 == 0 ){
-        //even row
-        $spreadsheet->getActiveSheet()->getStyle('S'.$fila2.':U'.$fila2)->applyFromArray($evenRow);
-    }else{
-        //odd row
-        $spreadsheet->getActiveSheet()->getStyle('S'.$fila2.':U'.$fila2)->applyFromArray($oddRow);
+        $spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 8 .':J'.$fila + 8)->applyFromArray($oddRow);
     }
-$fila2++;
-
-
+    $fila++;
 }
-$spreadsheet->getActiveSheet()->mergeCells('T'.$fila2.':U'.$fila2);
+$sheet->setCellValue('A'.$fila +8, "SubTotal");
+$sheet->setCellValue('F'.$fila +8, $final10);
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 8 .':E'.$fila + 8);
 
-$sheet->setCellValue('S' .$fila2, "SubTotal");
-$sheet->setCellValue('T' .$fila2, $final13);
-$spreadsheet->getActiveSheet()->getStyle('S'.$fila2.':U'.$fila2)->applyFromArray($subtotal);
+$spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 8 .':J'.$fila + 8);
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 8 .':J'.$fila + 8)->applyFromArray($subtotal);
+$spreadsheet->getActiveSheet()->getStyle('F'.$fila + 8)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
 
 
-//autofilter
-//define first row and last row
-$firstRow=8;
-$lastRow=$fila-1;
-//set the autofilter
-$spreadsheet->getActiveSheet()->setAutoFilter("A".$firstRow.":J".$lastRow);
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 11 .':J'.$fila + 11)->applyFromArray($tableHead);
+$sheet->setCellValue('A'.$fila +11 , "STOCK POR AÑO:");
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 11 .':J'.$fila + 11);
 
+if (isset($_POST['compra'])) {
+
+    $sql2="SELECT Año,SUM(stock) FROM `detalle_compra` D JOIN `tb_compra` V ON D.solicitud_compra=V.nSolicitud GROUP by Año;";
+}if (isset($_POST['compra1'])) {
+
+    $sql2="SELECT Año,SUM(stock) FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra WHERE db.idusuario='$idusuario'  GROUP by Año";
+}
+$result1 = mysqli_query($conn, $sql2);
+while ($productos1 = mysqli_fetch_array($result1)){
+    $Año=$productos1['Año'];
+    $cantidad=$productos1['SUM(stock)'];
+    $final12 += $cantidad;
+
+    $sheet->setCellValue('A'.$fila +12, $Año);
+    $sheet->setCellValue('F'.$fila +12, $cantidad);
+
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 12 .':E'.$fila + 12);
+
+    $spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 12 .':J'.$fila + 12);
+    $spreadsheet->getActiveSheet()->getStyle('F'.$fila + 12)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+    if( $fila % 2 == 0 ){
+        //even row
+        $spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 12 .':J'.$fila + 12)->applyFromArray($evenRow);
+    }else{
+        //odd row
+        $spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 12 .':J'.$fila + 12)->applyFromArray($oddRow);
+    }
+$fila++;
+}
+    $sheet->setCellValue('A'.$fila +12, "SubTotal");
+    $sheet->setCellValue('F'.$fila +12, $final12);
+
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 12 .':E'.$fila + 12);
+
+$spreadsheet->getActiveSheet()->mergeCells('F'.$fila+ 12 .':J'.$fila + 12);
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 12 .':J'.$fila + 12)->applyFromArray($subtotal);
+$spreadsheet->getActiveSheet()->getStyle('F'.$fila + 12)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
 
 //set the header first, so the result will be treated as an xlsx file.
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');

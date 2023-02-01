@@ -262,51 +262,51 @@ $drawing1->setWorksheet($spreadsheet->getActiveSheet());
 }
 if (isset($_POST['circulante']) || isset($_POST['circulante1'])) {
 
- $spreadsheet->getActiveSheet()->mergeCells("A1:H1");
- $spreadsheet->getActiveSheet()->mergeCells("A2:H2");
- $spreadsheet->getActiveSheet()->mergeCells("A3:H3");
- $spreadsheet->getActiveSheet()->mergeCells("A4:H4");
+   $spreadsheet->getActiveSheet()->mergeCells("A1:H1");
+   $spreadsheet->getActiveSheet()->mergeCells("A2:H2");
+   $spreadsheet->getActiveSheet()->mergeCells("A3:H3");
+   $spreadsheet->getActiveSheet()->mergeCells("A4:H4");
 
 //setting column width
- $spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(12.71);
- $spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(13);
- $spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(36.57);
- $spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(10);
- $spreadsheet->getActiveSheet()->getColumnDimension('E')->setWidth(10);
- $spreadsheet->getActiveSheet()->getColumnDimension('F')->setWidth(13.14);
- $spreadsheet->getActiveSheet()->getColumnDimension('G')->setWidth(10);
- $spreadsheet->getActiveSheet()->getColumnDimension('H')->setWidth(16);
+   $spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(12.71);
+   $spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(13);
+   $spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(36.57);
+   $spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(10);
+   $spreadsheet->getActiveSheet()->getColumnDimension('E')->setWidth(10);
+   $spreadsheet->getActiveSheet()->getColumnDimension('F')->setWidth(13.14);
+   $spreadsheet->getActiveSheet()->getColumnDimension('G')->setWidth(10);
+   $spreadsheet->getActiveSheet()->getColumnDimension('H')->setWidth(16);
 
- $spreadsheet->getActiveSheet()->getColumnDimension('I')->setWidth(15.71);
- $spreadsheet->getActiveSheet()->getColumnDimension('O')->setWidth(20.57);
- $spreadsheet->getActiveSheet()->getColumnDimension('M')->setWidth(15.71);
- $spreadsheet->getActiveSheet()->getColumnDimension('Q')->setWidth(15.71);
+   $spreadsheet->getActiveSheet()->getColumnDimension('I')->setWidth(15.71);
+   $spreadsheet->getActiveSheet()->getColumnDimension('O')->setWidth(20.57);
+   $spreadsheet->getActiveSheet()->getColumnDimension('M')->setWidth(15.71);
+   $spreadsheet->getActiveSheet()->getColumnDimension('Q')->setWidth(15.71);
 
 
 
 //imagen
- $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
- $drawing->setName('Paid');
- $drawing->setDescription('Paid');
- $drawing->setPath($IMG); /* put your path and image here */
- $drawing->setCoordinates('A1');
- $drawing->setOffsetX(10);
- $drawing->setOffsetY(2);
- $drawing->setWidth(150);
- $drawing->getShadow()->setVisible(true);
- $drawing->setWorksheet($spreadsheet->getActiveSheet());
+   $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
+   $drawing->setName('Paid');
+   $drawing->setDescription('Paid');
+   $drawing->setPath($IMG); /* put your path and image here */
+   $drawing->setCoordinates('A1');
+   $drawing->setOffsetX(10);
+   $drawing->setOffsetY(2);
+   $drawing->setWidth(150);
+   $drawing->getShadow()->setVisible(true);
+   $drawing->setWorksheet($spreadsheet->getActiveSheet());
 //imagen
- $drawing1 = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
- $drawing1->setName('Paid');
- $drawing1->setDescription('Paid');
- $drawing1->setPath($IMG1); /* put your path and image here */
- $drawing1->setCoordinates('F1');
- $drawing1->setOffsetX(50);
- $drawing1->setOffsetY(10);
- $drawing1->setWidth(150);
- $drawing1->getShadow()->setVisible(true);
- $drawing1->getShadow()->setDirection(45);
- $drawing1->setWorksheet($spreadsheet->getActiveSheet());
+   $drawing1 = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
+   $drawing1->setName('Paid');
+   $drawing1->setDescription('Paid');
+   $drawing1->setPath($IMG1); /* put your path and image here */
+   $drawing1->setCoordinates('F1');
+   $drawing1->setOffsetX(50);
+   $drawing1->setOffsetY(10);
+   $drawing1->setWidth(150);
+   $drawing1->getShadow()->setVisible(true);
+   $drawing1->getShadow()->setDirection(45);
+   $drawing1->setWorksheet($spreadsheet->getActiveSheet());
 }
 //header text
 if (isset($_POST['vale']) || isset($_POST['vale1'])) {
@@ -376,7 +376,8 @@ $spreadsheet->getActiveSheet()->getStyle('H:I')->getNumberFormat()->setFormatCod
 
 $spreadsheet->getActiveSheet()->getStyle('G')->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
 
-$spreadsheet->getActiveSheet()->getRowDimension(7)->setRowHeight(21.75, 'pt');
+$spreadsheet->getActiveSheet()->getRowDimension(7)->setRowHeight(30, 'pt');
+
 //set font style and background color
 if (isset($_POST['vale']) || 
     isset($_POST['bodega']) || 
@@ -392,6 +393,7 @@ if (isset($_POST['circulante']) || isset($_POST['circulante1'])) {
     $spreadsheet->getActiveSheet()->getStyle('A7:H7')->applyFromArray($tableHead);
 }
 $spreadsheet->getActiveSheet()->getPageSetup()->setOrientation(\PhpOffice\PhpSpreadsheet\Worksheet\PageSetup::ORIENTATION_LANDSCAPE);
+
 $fila=8; 
 $fila1=3;
 $fila2=3;
@@ -413,30 +415,31 @@ $final12 = "0.00";
 $final13 = "0.00";
 if (isset($_POST['vale'])) {
     $vale = $_POST['vale'];
+    $jus=$_POST['jus'];
     $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE numero_vale = $vale";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
 
-       $precio   =    $productos['precio'];
-       $precio2  =    number_format($precio, 2,".",",");  
-       $cant_aprobada=$productos['stock'];
-       $cantidad_despachada=$productos['cantidad_despachada'];
-       $stock=number_format($cant_aprobada, 2,".",",");
-       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+     $precio   =    $productos['precio'];
+     $precio2  =    number_format($precio, 2,".",",");  
+     $cant_aprobada=$productos['stock'];
+     $cantidad_despachada=$productos['cantidad_despachada'];
+     $stock=number_format($cant_aprobada, 2,".",",");
+     $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-       $final2 += $cant_aprobada;
-       $final3   =    number_format($final2, 2, ".",",");
+     $final2 += $cant_aprobada;
+     $final3   =    number_format($final2, 2, ".",",");
 
-       $final4 += $cantidad_despachada;
-       $final5   =    number_format($final4, 2, ".",",");
+     $final4 += $cantidad_despachada;
+     $final5   =    number_format($final4, 2, ".",",");
 
-       $final6 += ($cant_aprobada-$cantidad_despachada);
-       $final7   =    number_format($final6, 2, ".",",");
+     $final6 += ($cant_aprobada-$cantidad_despachada);
+     $final7   =    number_format($final6, 2, ".",",");
 
-       $final8 += $precio;
-       $final9   =    number_format($final8, 2, ".",",");
-       if ($productos['estado']="Pendiente") {  
+     $final8 += $precio;
+     $final9   =    number_format($final8, 2, ".",",");
+     if ($productos['estado']="Pendiente") {  
         $total = $productos['stock'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
 
@@ -551,6 +554,59 @@ while ($productos1 = mysqli_fetch_array($result1)){
         $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 6 .':F'.$fila + 6)->applyFromArray($Rechazado);
     }
 }
+$sheet->setCellValue('A'.$fila+8, "Observaciones (En qué se ocupará el bien entregado)");
+$sheet->setCellValue('A'.$fila+9, $jus);
+$spreadsheet->getActiveSheet()->getRowDimension($fila +8)->setRowHeight(25, 'pt');
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 8 .':J'.$fila + 8);
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 9 .':J'.$fila + 9);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 9)->getAlignment()->setWrapText(true);
+
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 8 .':J'.$fila + 8)->applyFromArray($tableHead);
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 9 .':J'.$fila + 9)->applyFromArray($oddRow);
+  
+    $sheet->setCellValue('A' .$fila + 11, "Solicita:");
+    $sheet->setCellValue('C' .$fila + 15, "Autoriza:");
+    $sheet->setCellValue('H' .$fila + 11, "Entrega:");
+    $sheet->setCellValue('A' .$fila + 12, "F. ________________");
+
+    $sheet->setCellValue('C' .$fila + 16, "F. ________________");
+
+    $sheet->setCellValue('H' .$fila + 12, "F. ________________");
+
+
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 11 .':B'.$fila + 11);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 12 .':B'.$fila + 12);
+
+    $spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 15 .':F'.$fila + 15);
+    $spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 16 .':F'.$fila + 16);
+
+    $spreadsheet->getActiveSheet()->mergeCells('H'.$fila+ 11 .':J'.$fila + 11);
+    $spreadsheet->getActiveSheet()->mergeCells('H'.$fila+ 12 .':J'.$fila + 12);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +12)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +8)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +9)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +8)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +9)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +15)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +16)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +15)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +16)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+
+    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+
+    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +11)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+
+
 }
 if (isset($_POST['bodega'])) {
     $vale = $_POST['bodega'];
@@ -559,25 +615,25 @@ if (isset($_POST['bodega'])) {
 
     while ($productos = mysqli_fetch_array($result)){
 
-       $precio   =    $productos['precio'];
-       $precio2  =    number_format($precio, 2,".",",");  
-       $cant_aprobada=$productos['stock'];
-       $cantidad_despachada=$productos['cantidad_despachada'];
-       $stock=number_format($cant_aprobada, 2,".",",");
-       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+     $precio   =    $productos['precio'];
+     $precio2  =    number_format($precio, 2,".",",");  
+     $cant_aprobada=$productos['stock'];
+     $cantidad_despachada=$productos['cantidad_despachada'];
+     $stock=number_format($cant_aprobada, 2,".",",");
+     $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-       $final2 += $cant_aprobada;
-       $final3   =    number_format($final2, 2, ".",",");
+     $final2 += $cant_aprobada;
+     $final3   =    number_format($final2, 2, ".",",");
 
-       $final4 += $cantidad_despachada;
-       $final5   =    number_format($final4, 2, ".",",");
+     $final4 += $cantidad_despachada;
+     $final5   =    number_format($final4, 2, ".",",");
 
-       $final6 += ($cant_aprobada-$cantidad_despachada);
-       $final7   =    number_format($final6, 2, ".",",");
+     $final6 += ($cant_aprobada-$cantidad_despachada);
+     $final7   =    number_format($final6, 2, ".",",");
 
-       $final8 += $precio;
-       $final9   =    number_format($final8, 2, ".",",");
-       if ($productos['estado']="Pendiente") {  
+     $final8 += $precio;
+     $final9   =    number_format($final8, 2, ".",",");
+     if ($productos['estado']="Pendiente") {  
         $total = $productos['stock'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
 
@@ -694,30 +750,31 @@ while ($productos1 = mysqli_fetch_array($result1)){
 }
 if (isset($_POST['vale1'])) {
     $vale = $_POST['vale1'];
+    $jus=$_POST['jus'];
     $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE numero_vale = $vale";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
 
-       $precio   =    $productos['precio'];
-       $precio2  =    number_format($precio, 2,".",",");  
-       $cant_aprobada=$productos['stock'];
-       $cantidad_despachada=$productos['cantidad_despachada'];
-       $stock=number_format($cant_aprobada, 2,".",",");
-       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+     $precio   =    $productos['precio'];
+     $precio2  =    number_format($precio, 2,".",",");  
+     $cant_aprobada=$productos['stock'];
+     $cantidad_despachada=$productos['cantidad_despachada'];
+     $stock=number_format($cant_aprobada, 2,".",",");
+     $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-       $final2 += $cant_aprobada;
-       $final3   =    number_format($final2, 2, ".",",");
+     $final2 += $cant_aprobada;
+     $final3   =    number_format($final2, 2, ".",",");
 
-       $final4 += $cantidad_despachada;
-       $final5   =    number_format($final4, 2, ".",",");
+     $final4 += $cantidad_despachada;
+     $final5   =    number_format($final4, 2, ".",",");
 
-       $final6 += ($cant_aprobada-$cantidad_despachada);
-       $final7   =    number_format($final6, 2, ".",",");
+     $final6 += ($cant_aprobada-$cantidad_despachada);
+     $final7   =    number_format($final6, 2, ".",",");
 
-       $final8 += $precio;
-       $final9   =    number_format($final8, 2, ".",",");
-       if ($productos['estado']="Pendiente") {  
+     $final8 += $precio;
+     $final9   =    number_format($final8, 2, ".",",");
+     if ($productos['estado']="Pendiente") {  
         $total = $productos['stock'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
 
@@ -832,6 +889,56 @@ while ($productos1 = mysqli_fetch_array($result1)){
         $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 6 .':F'.$fila + 6)->applyFromArray($Rechazado);
     }
 }
+$sheet->setCellValue('A'.$fila+8, "Observaciones (En qué se ocupará el bien entregado)");
+$sheet->setCellValue('A'.$fila+9, $jus);
+
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 8 .':J'.$fila + 8);
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 9 .':J'.$fila + 9);
+
+$spreadsheet->getActiveSheet()->getRowDimension($fila +8)->setRowHeight(25, 'pt');
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 8 .':J'.$fila + 8)->applyFromArray($tableHead);
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 9 .':J'.$fila + 9)->applyFromArray($oddRow);
+  
+    $sheet->setCellValue('A' .$fila + 11, "Solicita:");
+    $sheet->setCellValue('C' .$fila + 15, "Autoriza:");
+    $sheet->setCellValue('H' .$fila + 11, "Entrega:");
+    $sheet->setCellValue('A' .$fila + 12, "F. ________________");
+
+    $sheet->setCellValue('C' .$fila + 16, "F. ________________");
+
+    $sheet->setCellValue('H' .$fila + 12, "F. ________________");
+
+
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 11 .':B'.$fila + 11);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 12 .':B'.$fila + 12);
+
+    $spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 15 .':F'.$fila + 15);
+    $spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 16 .':F'.$fila + 16);
+
+    $spreadsheet->getActiveSheet()->mergeCells('H'.$fila+ 11 .':J'.$fila + 11);
+    $spreadsheet->getActiveSheet()->mergeCells('H'.$fila+ 12 .':J'.$fila + 12);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +12)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +8)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +9)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +8)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +9)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +15)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +16)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +15)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +16)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+
+    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+
+    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +11)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+
 }
 
 
@@ -842,25 +949,25 @@ if (isset($_POST['bodega1'])) {
 
     while ($productos = mysqli_fetch_array($result)){
 
-       $precio   =    $productos['precio'];
-       $precio2  =    number_format($precio, 2,".",",");  
-       $cant_aprobada=$productos['stock'];
-       $cantidad_despachada=$productos['cantidad_despachada'];
-       $stock=number_format($cant_aprobada, 2,".",",");
-       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+     $precio   =    $productos['precio'];
+     $precio2  =    number_format($precio, 2,".",",");  
+     $cant_aprobada=$productos['stock'];
+     $cantidad_despachada=$productos['cantidad_despachada'];
+     $stock=number_format($cant_aprobada, 2,".",",");
+     $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-       $final2 += $cant_aprobada;
-       $final3   =    number_format($final2, 2, ".",",");
+     $final2 += $cant_aprobada;
+     $final3   =    number_format($final2, 2, ".",",");
 
-       $final4 += $cantidad_despachada;
-       $final5   =    number_format($final4, 2, ".",",");
+     $final4 += $cantidad_despachada;
+     $final5   =    number_format($final4, 2, ".",",");
 
-       $final6 += ($cant_aprobada-$cantidad_despachada);
-       $final7   =    number_format($final6, 2, ".",",");
+     $final6 += ($cant_aprobada-$cantidad_despachada);
+     $final7   =    number_format($final6, 2, ".",",");
 
-       $final8 += $precio;
-       $final9   =    number_format($final8, 2, ".",",");
-       if ($productos['estado']="Pendiente") {  
+     $final8 += $precio;
+     $final9   =    number_format($final8, 2, ".",",");
+     if ($productos['estado']="Pendiente") {  
         $total = $productos['stock'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
 
@@ -978,30 +1085,31 @@ while ($productos1 = mysqli_fetch_array($result1)){
 
 if (isset($_POST['compra'])) {
     $vale = $_POST['compra'];
+    $jus=$_POST['jus'];
     $sql = "SELECT * FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra WHERE solicitud_compra='$vale'";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
 
-       $precio   =    $productos['precio'];
-       $precio2  =    number_format($precio, 2,".",",");  
-       $cant_aprobada=$productos['stock'];
-       $cantidad_despachada=$productos['cantidad_despachada'];
-       $stock=number_format($cant_aprobada, 2,".",",");
-       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+     $precio   =    $productos['precio'];
+     $precio2  =    number_format($precio, 2,".",",");  
+     $cant_aprobada=$productos['stock'];
+     $cantidad_despachada=$productos['cantidad_despachada'];
+     $stock=number_format($cant_aprobada, 2,".",",");
+     $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-       $final2 += $cant_aprobada;
-       $final3   =    number_format($final2, 2, ".",",");
+     $final2 += $cant_aprobada;
+     $final3   =    number_format($final2, 2, ".",",");
 
-       $final4 += $cantidad_despachada;
-       $final5   =    number_format($final4, 2, ".",",");
+     $final4 += $cantidad_despachada;
+     $final5   =    number_format($final4, 2, ".",",");
 
-       $final6 += ($cant_aprobada-$cantidad_despachada);
-       $final7   =    number_format($final6, 2, ".",",");
+     $final6 += ($cant_aprobada-$cantidad_despachada);
+     $final7   =    number_format($final6, 2, ".",",");
 
-       $final8 += $precio;
-       $final9   =    number_format($final8, 2, ".",",");
-       if ($productos['estado']="Pendiente") {  
+     $final8 += $precio;
+     $final9   =    number_format($final8, 2, ".",",");
+     if ($productos['estado']="Pendiente") {  
         $total = $productos['stock'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
 
@@ -1111,33 +1219,86 @@ while ($productos1 = mysqli_fetch_array($result1)){
         $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 6 .':F'.$fila + 6)->applyFromArray($Aprobado);
     }
 }
+$sheet->setCellValue('A'.$fila+8, "Observaciones (En qué se ocupará el bien entregado)");
+$sheet->setCellValue('A'.$fila + 9, $jus);
+
+$spreadsheet->getActiveSheet()->getRowDimension($fila +8)->setRowHeight(25, 'pt');
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 9 .':J'.$fila + 9)->getAlignment()->setWrapText(true);
+
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 8 .':J'.$fila + 8);
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 9 .':J'.$fila + 9);
+
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 8 .':J'.$fila + 8)->applyFromArray($tableHead);
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 9 .':J'.$fila + 9)->applyFromArray($oddRow);
+  
+    $sheet->setCellValue('A' .$fila + 11, "Solicita:");
+    $sheet->setCellValue('C' .$fila + 15, "Autoriza:");
+    $sheet->setCellValue('H' .$fila + 11, "Entrega:");
+    $sheet->setCellValue('A' .$fila + 12, "F. ________________");
+
+    $sheet->setCellValue('C' .$fila + 16, "F. ________________");
+
+    $sheet->setCellValue('H' .$fila + 12, "F. ________________");
+
+
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 11 .':B'.$fila + 11);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 12 .':B'.$fila + 12);
+
+    $spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 15 .':F'.$fila + 15);
+    $spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 16 .':F'.$fila + 16);
+
+    $spreadsheet->getActiveSheet()->mergeCells('H'.$fila+ 11 .':J'.$fila + 11);
+    $spreadsheet->getActiveSheet()->mergeCells('H'.$fila+ 12 .':J'.$fila + 12);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +12)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +8)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +9)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +8)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +9)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +15)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +16)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +15)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +16)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+
+    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+
+    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +11)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+
 }
 if (isset($_POST['compra1'])) {
     $vale = $_POST['compra1'];
+    $jus=$_POST['jus'];
     $sql = "SELECT * FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra WHERE solicitud_compra='$vale'";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
 
-       $precio   =    $productos['precio'];
-       $precio2  =    number_format($precio, 2,".",",");  
-       $cant_aprobada=$productos['stock'];
-       $cantidad_despachada=$productos['cantidad_despachada'];
-       $stock=number_format($cant_aprobada, 2,".",",");
-       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+     $precio   =    $productos['precio'];
+     $precio2  =    number_format($precio, 2,".",",");  
+     $cant_aprobada=$productos['stock'];
+     $cantidad_despachada=$productos['cantidad_despachada'];
+     $stock=number_format($cant_aprobada, 2,".",",");
+     $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-       $final2 += $cant_aprobada;
-       $final3   =    number_format($final2, 2, ".",",");
+     $final2 += $cant_aprobada;
+     $final3   =    number_format($final2, 2, ".",",");
 
-       $final4 += $cantidad_despachada;
-       $final5   =    number_format($final4, 2, ".",",");
+     $final4 += $cantidad_despachada;
+     $final5   =    number_format($final4, 2, ".",",");
 
-       $final6 += ($cant_aprobada-$cantidad_despachada);
-       $final7   =    number_format($final6, 2, ".",",");
+     $final6 += ($cant_aprobada-$cantidad_despachada);
+     $final7   =    number_format($final6, 2, ".",",");
 
-       $final8 += $precio;
-       $final9   =    number_format($final8, 2, ".",",");
-       if ($productos['estado']="Pendiente") {  
+     $final8 += $precio;
+     $final9   =    number_format($final8, 2, ".",",");
+     if ($productos['estado']="Pendiente") {  
         $total = $productos['stock'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
 
@@ -1247,6 +1408,58 @@ while ($productos1 = mysqli_fetch_array($result1)){
         $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 6 .':F'.$fila + 6)->applyFromArray($Aprobado);
     }
 }
+$sheet->setCellValue('A'.$fila+8, "Observaciones (En qué se ocupará el bien entregado)");
+$sheet->setCellValue('A'.$fila+9, $jus);
+
+$spreadsheet->getActiveSheet()->getRowDimension($fila +8)->setRowHeight(25, 'pt');
+
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 8 .':J'.$fila + 8);
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 9 .':J'.$fila + 9);
+
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 8 .':J'.$fila + 8)->applyFromArray($tableHead);
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 9 .':J'.$fila + 9)->applyFromArray($oddRow);
+  
+    $sheet->setCellValue('A' .$fila + 11, "Solicita:");
+    $sheet->setCellValue('C' .$fila + 15, "Autoriza:");
+    $sheet->setCellValue('H' .$fila + 11, "Entrega:");
+    $sheet->setCellValue('A' .$fila + 12, "F. ________________");
+
+    $sheet->setCellValue('C' .$fila + 16, "F. ________________");
+
+    $sheet->setCellValue('H' .$fila + 12, "F. ________________");
+
+
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 11 .':B'.$fila + 11);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 12 .':B'.$fila + 12);
+
+    $spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 15 .':F'.$fila + 15);
+    $spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 16 .':F'.$fila + 16);
+
+    $spreadsheet->getActiveSheet()->mergeCells('H'.$fila+ 11 .':J'.$fila + 11);
+    $spreadsheet->getActiveSheet()->mergeCells('H'.$fila+ 12 .':J'.$fila + 12);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +12)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +8)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +9)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +8)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +9)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +15)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +16)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +15)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +16)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+
+    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+
+    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +11)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+
 }
 if (isset($_POST['almacen'])) {
     $vale = $_POST['almacen'];
@@ -1255,25 +1468,25 @@ if (isset($_POST['almacen'])) {
 
     while ($productos = mysqli_fetch_array($result)){
 
-       $precio   =    $productos['precio'];
-       $precio2  =    number_format($precio, 2,".",",");  
-       $cant_aprobada=$productos['cantidad_solicitada'];
-       $cantidad_despachada=$productos['cantidad_despachada'];
-       $stock=number_format($cant_aprobada, 2,".",",");
-       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+     $precio   =    $productos['precio'];
+     $precio2  =    number_format($precio, 2,".",",");  
+     $cant_aprobada=$productos['cantidad_solicitada'];
+     $cantidad_despachada=$productos['cantidad_despachada'];
+     $stock=number_format($cant_aprobada, 2,".",",");
+     $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-       $final2 += $cant_aprobada;
-       $final3   =    number_format($final2, 2, ".",",");
+     $final2 += $cant_aprobada;
+     $final3   =    number_format($final2, 2, ".",",");
 
-       $final4 += $cantidad_despachada;
-       $final5   =    number_format($final4, 2, ".",",");
+     $final4 += $cantidad_despachada;
+     $final5   =    number_format($final4, 2, ".",",");
 
-       $final6 += ($cant_aprobada-$cantidad_despachada);
-       $final7   =    number_format($final6, 2, ".",",");
+     $final6 += ($cant_aprobada-$cantidad_despachada);
+     $final7   =    number_format($final6, 2, ".",",");
 
-       $final8 += $precio;
-       $final9   =    number_format($final8, 2, ".",",");
-       if ($productos['estado']="Pendiente") {  
+     $final8 += $precio;
+     $final9   =    number_format($final8, 2, ".",",");
+     if ($productos['estado']="Pendiente") {  
         $total = $productos['cantidad_solicitada'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
 
@@ -1394,25 +1607,25 @@ while ($productos1 = mysqli_fetch_array($result1)){
 
     while ($productos = mysqli_fetch_array($result)){
 
-       $precio   =    $productos['precio'];
-       $precio2  =    number_format($precio, 2,".",",");  
-       $cant_aprobada=$productos['cantidad_solicitada'];
-       $cantidad_despachada=$productos['cantidad_despachada'];
-       $stock=number_format($cant_aprobada, 2,".",",");
-       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+     $precio   =    $productos['precio'];
+     $precio2  =    number_format($precio, 2,".",",");  
+     $cant_aprobada=$productos['cantidad_solicitada'];
+     $cantidad_despachada=$productos['cantidad_despachada'];
+     $stock=number_format($cant_aprobada, 2,".",",");
+     $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-       $final2 += $cant_aprobada;
-       $final3   =    number_format($final2, 2, ".",",");
+     $final2 += $cant_aprobada;
+     $final3   =    number_format($final2, 2, ".",",");
 
-       $final4 += $cantidad_despachada;
-       $final5   =    number_format($final4, 2, ".",",");
+     $final4 += $cantidad_despachada;
+     $final5   =    number_format($final4, 2, ".",",");
 
-       $final6 += ($cant_aprobada-$cantidad_despachada);
-       $final7   =    number_format($final6, 2, ".",",");
+     $final6 += ($cant_aprobada-$cantidad_despachada);
+     $final7   =    number_format($final6, 2, ".",",");
 
-       $final8 += $precio;
-       $final9   =    number_format($final8, 2, ".",",");
-       if ($productos['estado']="Pendiente") {  
+     $final8 += $precio;
+     $final9   =    number_format($final8, 2, ".",",");
+     if ($productos['estado']="Pendiente") {  
         $total = $productos['cantidad_solicitada'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
 
@@ -1533,25 +1746,25 @@ while ($productos1 = mysqli_fetch_array($result1)){
 
     while ($productos = mysqli_fetch_array($result)){
 
-       $precio   =    $productos['precio'];
-       $precio2  =    number_format($precio, 2,".",",");  
-       $cant_aprobada=$productos['stock'];
-       $cantidad_despachada=$productos['cantidad_despachada'];
-       $stock=number_format($cant_aprobada, 2,".",",");
-       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+     $precio   =    $productos['precio'];
+     $precio2  =    number_format($precio, 2,".",",");  
+     $cant_aprobada=$productos['stock'];
+     $cantidad_despachada=$productos['cantidad_despachada'];
+     $stock=number_format($cant_aprobada, 2,".",",");
+     $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-       $final2 += $cant_aprobada;
-       $final3   =    number_format($final2, 2, ".",",");
+     $final2 += $cant_aprobada;
+     $final3   =    number_format($final2, 2, ".",",");
 
-       $final4 += $cantidad_despachada;
-       $final5   =    number_format($final4, 2, ".",",");
+     $final4 += $cantidad_despachada;
+     $final5   =    number_format($final4, 2, ".",",");
 
-       $final6 += ($cant_aprobada-$cantidad_despachada);
-       $final7   =    number_format($final6, 2, ".",",");
+     $final6 += ($cant_aprobada-$cantidad_despachada);
+     $final7   =    number_format($final6, 2, ".",",");
 
-       $final8 += $precio;
-       $final9   =    number_format($final8, 2, ".",",");
-       if ($productos['estado']="Pendiente") {  
+     $final8 += $precio;
+     $final9   =    number_format($final8, 2, ".",",");
+     if ($productos['estado']="Pendiente") {  
         $total = $productos['stock'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
 
@@ -1710,25 +1923,25 @@ if (isset($_POST['circulante1'])) {
 
     while ($productos = mysqli_fetch_array($result)){
 
-       $precio   =    $productos['precio'];
-       $precio2  =    number_format($precio, 2,".",",");  
-       $cant_aprobada=$productos['stock'];
-       $cantidad_despachada=$productos['cantidad_despachada'];
-       $stock=number_format($cant_aprobada, 2,".",",");
-       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+     $precio   =    $productos['precio'];
+     $precio2  =    number_format($precio, 2,".",",");  
+     $cant_aprobada=$productos['stock'];
+     $cantidad_despachada=$productos['cantidad_despachada'];
+     $stock=number_format($cant_aprobada, 2,".",",");
+     $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-       $final2 += $cant_aprobada;
-       $final3   =    number_format($final2, 2, ".",",");
+     $final2 += $cant_aprobada;
+     $final3   =    number_format($final2, 2, ".",",");
 
-       $final4 += $cantidad_despachada;
-       $final5   =    number_format($final4, 2, ".",",");
+     $final4 += $cantidad_despachada;
+     $final5   =    number_format($final4, 2, ".",",");
 
-       $final6 += ($cant_aprobada-$cantidad_despachada);
-       $final7   =    number_format($final6, 2, ".",",");
+     $final6 += ($cant_aprobada-$cantidad_despachada);
+     $final7   =    number_format($final6, 2, ".",",");
 
-       $final8 += $precio;
-       $final9   =    number_format($final8, 2, ".",",");
-       if ($productos['estado']="Pendiente") {  
+     $final8 += $precio;
+     $final9   =    number_format($final8, 2, ".",",");
+     if ($productos['estado']="Pendiente") {  
         $total = $productos['stock'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
 

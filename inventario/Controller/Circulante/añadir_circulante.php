@@ -54,7 +54,7 @@ for($i = 0; $i < count($_POST['desc']); $i++)
       $insert = "INSERT INTO detalle_Circulante(codigo, descripcion, unidad_medida, stock, tb_circulante, precio) VALUES ('$codigo_producto','$descripcion','$u_m', '$soli', '$num_sol', '$cost')";
       $query = mysqli_query($conn, $insert);
 
- $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Detalles,idusuario) VALUES('$descripcion','Entrada Por Circulante','$u_m','$codigo_producto','$soli','$cost','$num_sol','$idusuario')";
+ $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Detalles,idusuario,Mes,Año) VALUES('$descripcion','Entrada Por Circulante','$u_m','$codigo_producto','$soli','$cost','$num_sol','$idusuario','$mes','$año')";
 
        $query1 = mysqli_query($conn, $sql1);
 

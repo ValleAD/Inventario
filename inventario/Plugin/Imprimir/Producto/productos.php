@@ -251,7 +251,7 @@ while ($productos = mysqli_fetch_array($result)){
            
      </thead>
 <tbody>
-    <?php $sql = "SELECT descripcion,Concepto,unidad_medida,fecha_registro,No_Comprovante,Entradas,Salidas,Saldo FROM historial WHERE fecha_registro BETWEEN ' $f1' AND ' $f2' or No_Comprovante='$Busqueda'";
+    <?php $sql = "SELECT descripcion,Concepto,unidad_medida,fecha_registro,No_Comprovante,Entradas,Salidas,Saldo FROM historial WHERE fecha_registro BETWEEN ' $f1' AND ' $f2' and No_Comprovante='$Busqueda'";
 $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){

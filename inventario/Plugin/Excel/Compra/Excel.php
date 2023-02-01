@@ -69,10 +69,10 @@ $spreadsheet->getActiveSheet()
     ->setCellValue('A3',"DEPARTAMENTO DE MANTENIMIENTO")
     ->setCellValue('A4',"SOLICITUD DE MATERIALES");
 //Tamaño de la letra
-$spreadsheet->getActiveSheet()->getStyle('A1')->getFont()->setSize(16);
-$spreadsheet->getActiveSheet()->getStyle('A2')->getFont()->setSize(16);
-$spreadsheet->getActiveSheet()->getStyle('A3')->getFont()->setSize(16);
-$spreadsheet->getActiveSheet()->getStyle('A4')->getFont()->setSize(14);
+$spreadsheet->getActiveSheet()->getStyle('A1')->getFont()->setSize(12);
+$spreadsheet->getActiveSheet()->getStyle('A2')->getFont()->setSize(12);
+$spreadsheet->getActiveSheet()->getStyle('A3')->getFont()->setSize(12);
+$spreadsheet->getActiveSheet()->getStyle('A4')->getFont()->setSize(12);
 
 //Horientación
 $spreadsheet->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
@@ -148,7 +148,7 @@ $spreadsheet->getActiveSheet()->getStyle('A:S')->getAlignment()->setVertical(Ali
 $spreadsheet->getActiveSheet()->getHeaderFooter()
     ->setOddFooter( '&RPágina &P al &N');
 
-$spreadsheet->getActiveSheet()->getRowDimension(7)->setRowHeight(21.75, 'pt');
+$spreadsheet->getActiveSheet()->getRowDimension(7)->setRowHeight(30, 'pt');
 $fila=8;
 if (isset($_POST['compra'])) {
     $sql = "SELECT * FROM tb_compra";
@@ -217,6 +217,26 @@ $result = mysqli_query($conn, $sql);
     $fila++;
         }
     }
+
+    $sheet->setCellValue('A' .$fila + 3, "Solicita:");
+    $sheet->setCellValue('D' .$fila + 7, "Autoriza:");
+    $sheet->setCellValue('G' .$fila + 3, "Entrega:");
+    $sheet->setCellValue('A' .$fila + 4, "F. ________________");
+
+    $sheet->setCellValue('D' .$fila + 8, "F. ________________");
+
+    $sheet->setCellValue('G' .$fila + 4, "F. ________________");
+
+
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 3 .':B'.$fila + 3);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 4 .':B'.$fila + 4);
+
+    $spreadsheet->getActiveSheet()->mergeCells('D'.$fila+ 7 .':E'.$fila + 7);
+    $spreadsheet->getActiveSheet()->mergeCells('D'.$fila+ 8 .':E'.$fila + 8);
+
+    $spreadsheet->getActiveSheet()->mergeCells('G'.$fila+ 3 .':H'.$fila + 3);
+    $spreadsheet->getActiveSheet()->mergeCells('G'.$fila+ 4 .':H'.$fila + 4);
+
 
 
 //set the header first, so the result will be treated as an xlsx file.

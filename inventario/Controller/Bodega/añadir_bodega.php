@@ -42,7 +42,7 @@ $result = mysqli_query($conn, $sql);
       $insert = "INSERT INTO detalle_bodega (codigo,descripcion,unidad_medida,stock,precio,odt_bodega) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$orden_trabajo')";
       $query = mysqli_query($conn, $insert);
 
- $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Detalles,idusuario) VALUES('$descripcion','Solicitud de Trabajo','$unidadmedida','$codigo','$stock','$precio','$orden_trabajo','$idusuario')";
+ $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Detalles,idusuario,Mes,Año) VALUES('$descripcion','Solicitud de Trabajo','$unidadmedida','$codigo','$stock','$precio','$orden_trabajo','$idusuario','$mes','$año')";
 
        $query1 = mysqli_query($conn, $sql1);
 
@@ -124,7 +124,7 @@ exit();
       $insert = "INSERT INTO detalle_bodega (codigo,descripcion,unidad_medida,stock,precio,odt_bodega) VALUES ('$codigo','$descripcion','$unidadmedida','$stock','$precio','$orden_trabajo')";
       $query = mysqli_query($conn, $insert);
 
- $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Detalles,idusuario) VALUES('$descripcion','Solicitud de Trabajo','$unidadmedida','$codigo','$stock','$precio','$orden_trabajo' ,'$idusuario')";
+ $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Detalles,idusuario,Mes,Año) VALUES('$descripcion','Solicitud de Trabajo','$unidadmedida','$codigo','$stock','$precio','$orden_trabajo' ,'$idusuario','$mes','$año')";
 
        $query1 = mysqli_query($conn, $sql1);
    

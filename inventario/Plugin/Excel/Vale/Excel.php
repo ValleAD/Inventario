@@ -286,6 +286,35 @@ $result = mysqli_query($conn, $sql);
     }
 
 
+    $sheet->setCellValue('A' .$fila + 3, "Solicita:");
+    $sheet->setCellValue('B' .$fila + 7, "Autoriza:");
+    $sheet->setCellValue('D' .$fila + 3, "Entrega:");
+    $sheet->setCellValue('A' .$fila + 4, "F. ________________");
+
+    $sheet->setCellValue('B' .$fila + 8, "F. ________________");
+
+    $sheet->setCellValue('D' .$fila + 4, "F. ________________");
+
+
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 3 .':B'.$fila + 3);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 4 .':B'.$fila + 4);
+
+    $spreadsheet->getActiveSheet()->mergeCells('B'.$fila+ 7 .':C'.$fila + 7);
+    $spreadsheet->getActiveSheet()->mergeCells('B'.$fila+ 8 .':C'.$fila + 8);
+
+
+
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +3)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +4)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+
+
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +3)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +4)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_RIGHT);
+
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +3)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +4)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+
+
 
 //set the header first, so the result will be treated as an xlsx file.
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');

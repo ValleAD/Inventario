@@ -213,21 +213,7 @@ while ($productos = mysqli_fetch_array($result)){
     $total = $productos['stock'] * $productos['precio'];
     
     $final += $total;
-    $spreadsheet->getActiveSheet()->getStyle('I2:J2')->applyFromArray($tableHead);
-    $sheet->setCellValue('I2' ,"VISTA PREVIA: ");
-    $sheet->setCellValue('I3' ,"Cant Solicitada: ");
-    $sheet->setCellValue('J3' ,$final2);
-    $sheet->setCellValue('I4' ,"Costo Unitario: ");
-    $sheet->setCellValue('J4' ,$final8);
-    $sheet->setCellValue('I5' ,"SubTotal: ");
-    $sheet->setCellValue('J5' ,$final);
-    $spreadsheet->getActiveSheet()->mergeCells('I2:J2');
 
-    $spreadsheet->getActiveSheet()->getStyle('I3:J5')->applyFromArray($evenRow);
-
-    $spreadsheet->getActiveSheet()->getStyle('I4:J5')->applyFromArray($oddRow);
-
-    $spreadsheet->getActiveSheet()->getStyle('I5:J5')->applyFromArray($subtotal);
 
     $spreadsheet->getActiveSheet()->getStyle('A' .$fila)->getAlignment()->setWrapText(true);
     $spreadsheet->getActiveSheet()->getStyle('B' .$fila)->getAlignment()->setWrapText(true);
@@ -257,12 +243,43 @@ while ($productos = mysqli_fetch_array($result)){
     //increment row
     $fila++;
 }
-$spreadsheet->getActiveSheet()->getStyle('L2:M2')->applyFromArray($tableHead);
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila+2)->applyFromArray($tableHead);
+    $spreadsheet->getActiveSheet()->getStyle('H'.$fila+2)->applyFromArray($tableHead);
+    $sheet->setCellValue('A'.$fila +2 , "VISTA PREVIA:");
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':H'.$fila + 2);
 
-$sheet->setCellValue('L2' , "STOCK POR MES:");
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 3 .':D'.$fila + 3);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 4 .':D'.$fila + 4);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 5 .':D'.$fila + 5);
+
+    $spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 3 .':H'.$fila + 3);
+    $spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 4 .':H'.$fila + 4);
+    $spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 5 .':H'.$fila + 5);
+
+    $sheet->setCellValue('A'.$fila +3 ,"Cant Solicitada: ");
+    $sheet->setCellValue('E'.$fila +3 ,$final2);
+    $sheet->setCellValue('A'.$fila +4 ,"Costo Unitario: ");
+    $sheet->setCellValue('E'.$fila +4 ,$final8);
+    $sheet->setCellValue('A'.$fila +5 ,"SubTotal: ");
+    $sheet->setCellValue('E'.$fila +5 ,$final);
+    
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila + 3)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+    $spreadsheet->getActiveSheet()->getStyle('E'.$fila + 4 .':E'.$fila + 5)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':H'.$fila + 3)->applyFromArray($evenRow);
+
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':H'.$fila + 4)->applyFromArray($oddRow);
+    
+    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 5 .':H'.$fila + 5)->applyFromArray($subtotal);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 7 .':H'.$fila + 7)->applyFromArray($tableHead);
+
+$sheet->setCellValue('A'.$fila +7, "STOCK POR MES:");
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 7 .':H'.$fila + 7);
 
 
-$sql1="SELECT  Mes,SUM(stock)  FROM tb_productos WHERE  codProductos LIKE '%".$Busqueda."%' or descripcion LIKE '%".$Busqueda."%'  GROUP by Mes;";
+$sql1="SELECT Mes,SUM(stock) FROM tb_productos  WHERE  codProductos LIKE '%".$Busqueda."%' or descripcion LIKE '%".$Busqueda."%' GROUP by Mes;";
 
 $result1 = mysqli_query($conn, $sql1);
 while ($productos1 = mysqli_fetch_array($result1)){
@@ -284,28 +301,39 @@ while ($productos1 = mysqli_fetch_array($result1)){
 
 
 
-    $sheet->setCellValue('L' .$fila1, $mes);
-    $sheet->setCellValue('M' .$fila1, $cantidad);
-    $spreadsheet->getActiveSheet()->mergeCells('L2:M2');
+    $sheet->setCellValue('A' .$fila +8, $mes);
+    $sheet->setCellValue('E' .$fila +8, $cantidad);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 8 .':D'.$fila + 8);
 
-    if( $fila1 % 2 == 0 ){
+    $spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 8 .':H'.$fila + 8);
+
+
+    if( $fila % 2 == 0 ){
         //even row
-        $spreadsheet->getActiveSheet()->getStyle('L'.$fila1.':M'.$fila1)->applyFromArray($evenRow);
+        $spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 8 .':H'.$fila + 8)->applyFromArray($evenRow);
     }else{
         //odd row
-        $spreadsheet->getActiveSheet()->getStyle('L'.$fila1.':M'.$fila1)->applyFromArray($oddRow);
+        $spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 8 .':H'.$fila + 8)->applyFromArray($oddRow);
     }
-    $fila1++;
+    $fila++;
 
 }
 
-$sheet->setCellValue('L' .$fila1, "SubTotal");
-$sheet->setCellValue('M' .$fila1, $final10);
-$spreadsheet->getActiveSheet()->getStyle('L'.$fila1.':M'.$fila1)->applyFromArray($subtotal);
-$sheet->setCellValue('O2' , "STOCK POR AÑO:");
+    $sheet->setCellValue('A' .$fila +8, "SubTotal");
+    $sheet->setCellValue('E' .$fila +8, $final10);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 8 .':D'.$fila + 8);
+
+    $spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 8 .':H'.$fila + 8);
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 8 .':H'.$fila + 8)->applyFromArray($subtotal);
 
 
-$sql2="SELECT Año,SUM(stock)  FROM tb_productos WHERE  codProductos LIKE '%".$Busqueda."%' or descripcion LIKE '%".$Busqueda."%'  GROUP by Año;";
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 10 .':H'.$fila + 10)->applyFromArray($tableHead);
+
+$sheet->setCellValue('A'.$fila +10, "STOCK POR AÑO:");
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 10 .':H'.$fila + 10);
+
+$sql2="SELECT Año,SUM(stock) FROM tb_productos WHERE  codProductos LIKE '%".$Busqueda."%' or descripcion LIKE '%".$Busqueda."%'  GROUP by Año;";
 
 $result1 = mysqli_query($conn, $sql2);
 while ($productos1 = mysqli_fetch_array($result1)){
@@ -314,35 +342,30 @@ while ($productos1 = mysqli_fetch_array($result1)){
     $final12 += $cantidad;
 
 
+    $sheet->setCellValue('A' .$fila +11, $Año);
+    $sheet->setCellValue('E' .$fila +11, $cantidad);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 11 .':D'.$fila + 11);
+
+    $spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 11 .':H'.$fila + 11);
 
 
-    $sheet->setCellValue('O' .$fila2, $Año);
-    $sheet->setCellValue('P' .$fila2, $cantidad);
-    $spreadsheet->getActiveSheet()->mergeCells('O2:P2');
-    $spreadsheet->getActiveSheet()->getStyle('O2:P2')->applyFromArray($tableHead);
-
-
-    if( $fila2 % 2 == 0 ){
+    if( $fila % 2 == 0 ){
         //even row
-        $spreadsheet->getActiveSheet()->getStyle('O'.$fila2.':P'.$fila2)->applyFromArray($evenRow);
+        $spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 11 .':H'.$fila + 11)->applyFromArray($evenRow);
     }else{
         //odd row
-        $spreadsheet->getActiveSheet()->getStyle('O'.$fila2.':P'.$fila2)->applyFromArray($oddRow);
+        $spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 11 .':H'.$fila + 11)->applyFromArray($oddRow);
     }
-    $fila2++;
+    $fila++;
 
 }
- 
-$sheet->setCellValue('O' .$fila2, "SubTotal");
-$sheet->setCellValue('P' .$fila2, $final12);
-$spreadsheet->getActiveSheet()->getStyle('O'.$fila2.':P'.$fila2)->applyFromArray($subtotal);
-   
-//autofilter
-//define first row and last row
-    $firstRow=7;
-    $lastRow=$fila-1;
-//set the autofilter
-    $spreadsheet->getActiveSheet()->setAutoFilter("A".$firstRow.":H".$lastRow);
+
+    $sheet->setCellValue('A' .$fila +11, "SubTotal");
+    $sheet->setCellValue('E' .$fila +11, $final10);
+    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 11 .':D'.$fila + 11);
+
+    $spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 11 .':H'.$fila + 11);
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 11 .':H'.$fila + 11)->applyFromArray($subtotal);
 
 
 //set the header first, so the result will be treated as an xlsx file.

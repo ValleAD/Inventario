@@ -69,7 +69,7 @@ if (mysqli_num_rows($verificar)>0) {
 
 }else{
 
-     $sql4="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Salidas,Saldo,Detalles,idusuario) VALUES('$descripcion','Vale Consulta Externa','$unidadmedida','$codigo','$stock','$cantidad_despachada','$precio','$numero_vale','$idusuario')";
+     $sql4="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Salidas,Saldo,Detalles,idusuario,Mes,Año) VALUES('$descripcion','Vale Consulta Externa','$unidadmedida','$codigo','$stock','$cantidad_despachada','$precio','$numero_vale','$idusuario','$mes','$año')";
           $query4 = mysqli_query($conn, $sql4);
       
 }
