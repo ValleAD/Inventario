@@ -89,7 +89,8 @@ if ($codigo=="") {
     while ($productos = mysqli_fetch_array($result)){ ?>  
                              <input class="p2" required  id="<?php echo $productos['id'] ?>" type="radio" name="depto" value="<?php echo $productos['departamento'] ?>"> <label  style="width: 100%;" id="label1" for="<?php echo $productos['id'] ?>" > <?php echo $productos['departamento'] ?></label><br>
  <?php }?>
-                         </div>     
+                         </div>   
+                         <br>  
     <p align="right" class="p">Mostrar todos
         <svg class="bi" width="20" height="20" fill="currentColor">
         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/></svg></p>
