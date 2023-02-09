@@ -35,7 +35,7 @@ if (!isset($_SESSION['signin'])>0) {
             </div>          
             <div class="col-md-8"style="position: initial;">
                 <section class="well" >
-                    <form method="POST" action="" class="well hidden"> 
+                    <form method="GET" action="" class="well hidden"> 
                         <div style="position: initial;" class="input-group">
                             Del: <input type="DATE" name="f1" class="form-control mx-3" required>
                             Al: <input type="DATE" name="f2" class="form-control mx-3" required >
@@ -89,9 +89,9 @@ $final19 = "0.00";
 $final20 = "0.00";
 $final21 = "0.00";
 
-if (isset($_POST['Consultar2'])) {
+if (isset($_GET['Consultar2'])) {
 
-    $f1=$_POST['f1'];$f2=$_POST['f2'];$Busqueda=$_POST['Busqueda'];
+    $f1=$_GET['f1'];$f2=$_GET['f2'];$Busqueda=$_GET['Busqueda'];
 
 
     ?>

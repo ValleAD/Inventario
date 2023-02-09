@@ -48,17 +48,17 @@ die();
 <br><br><br><br>
     <section style="background: rgba(255, 255, 255, 0.9); margin: 2%;border-radius: 15px; padding: 1%";>
                <h1 style="text-align: center;">Egresos de Productos</h1><br>
-            <form method="POST" style="background:transparent;">
+            <form method="GET" style="background:transparent;">
 <div class="card">
 <div class="card-body">
                 <div class="row" >
-               <div class="col-md-2" style="position: initial; width:50%px;">
+               <div class="col-md-3" style="position: initial; width:50%px;">
         <p id="x" class="mx-3" style="color: #000; font-weight: bold;">Mostrar Ingresos por:</p>
-    </div>          <?php if(isset($_POST['ingresos'])){$mostrar = $_POST['ingresos'];
+    </div>          <?php if(isset($_GET['ingresos'])){$mostrar = $_GET['ingresos'];
                         if ($mostrar=="bodega" || $mostrar=="vale" ) {?>
 
                     <div class=" col-md-1" style="position: initial;">
-                <a  href="" class="btn btn-primary">Inicio</a>
+                <a  href="reporte_ingresos.php" class="btn btn-primary">Inicio</a>
                     </div>
             <?php } } ?>
             
@@ -88,9 +88,9 @@ $final7 = "0.00";
 $final8 = "0.00";
 $final9 = "0.00";
 
-if(isset($_POST['ingresos'])){
+if(isset($_GET['ingresos'])){
 
-    $mostrar = $_POST['ingresos'];
+    $mostrar = $_GET['ingresos'];
     
     if($mostrar == "bodega"){
 ?>
