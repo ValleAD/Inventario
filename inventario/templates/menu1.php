@@ -333,6 +333,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 <script src="../../Plugin/bootstrap/js/dataTables.rowGroup.min.js"></script>
 <script src="../../Plugin/bootstrap/js/dataTables.responsive.min.js"></script>
 <script src="../../Plugin/bootstrap/js/responsive.bootstrap4.min.js"></script>
+<script src="../../Plugin/bootstrap/js/popper.min.js"></script>
 <script>
    $(".submenu1").click(function() {
     $(this).children("ul").slideToggle();

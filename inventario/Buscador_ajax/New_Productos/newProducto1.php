@@ -4,7 +4,7 @@ session_start();
     # code...
     echo ' 
     <script>
-        window.location ="log/signin.php";
+        window.location ="../../log/signin.php";
         session_destroy();  
                 </script>
 die();
@@ -37,36 +37,25 @@ if(isset($_POST['consulta']))
                           </button>
                         </div>
                         <style>
-                            #Guardar{
+                                                     #Guardar{
                                 display: none;
                             }
                             #NoGuardar{
-                            margin-left: -10%;
+                           
                                 display: block;
-                            }
-                            #ver{
-                                 margin-top: -7%;
-                                margin-left: 10%;
                             }
                     @media (max-width: 800px){
                         #NoGuardar{
-                            margin-left: -35%;
                                 display: block;
                             }
-                            #ver{
-                                 margin-top: -14.5%;
-                                margin-left: 10%;
-                            }
+
 
                     } @media (min-width: 1000px){
                          #NoGuardar{
-                            margin-left: -15%;
+                          
                                 display: block;
                             }
-                            #ver{
-                                 margin-top: -8.5%;
-                                margin-left: 10%;
-                            }
+
                     }
                         </style>';
             }

@@ -30,7 +30,7 @@ die();
 <body>
         <style>  
         #div{margin: 0%}
-        section{background: whitesmoke;border-radius: 15px;margin: 1%;padding: 1%;}
+        section{background: whitesmoke;border-radius: 15px;margin: 1%;padding: .5%;}
         form{background: transparent;padding: 1%;}
         @media (max-width: 800px){
 
@@ -257,7 +257,7 @@ while ($productos = mysqli_fetch_array($result1)){
 
                 </button>
             </form>
-<form method="POST" action="../../Plugin/PDF/Vale/pdf_vale.php" target="_blank" class="mx-1">
+<form method="POST" action="../../Plugin/PDF/Vale/pdf_vale.php" target="_blank" class="ml-1">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
         <input type="hidden" name="cod" value="<?php echo $codigo ?>">
 
@@ -270,7 +270,7 @@ while ($productos = mysqli_fetch_array($result1)){
 
                 </button>
             </form>
-            <form method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php" >
+            <form method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php" class="ml-1">
                 <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
 
        <input type="hidden" name="cod" value="<?php echo $codigo ?>">
@@ -296,6 +296,10 @@ while ($productos = mysqli_fetch_array($result1)){
             </button>
             <input type="hidden" readonly class="form-control"  value="<?php echo $productos1['codVale']?>" name="vale">
         </form><?php } ?>
+         <form class="ml-1" style="" method="POST" action="" style="margin: 0px;" >
+                    <input type="hidden" name="cod" value="<?php echo $productos1["codVale"] ?>">
+                    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#new">➕</button>
+                </form>
                     </div>
 
                      
@@ -503,75 +507,224 @@ while ($productos = mysqli_fetch_array($result)){
  
 </form>
         <?php }}?>
+        <div class="modal fade" id="new" style="background: rgba(0, 0, 0, 0.3)"  data-backdrop="static"  tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-xl" >
+        <div class="modal-content" style="background:  rgba(255, 255, 255, 1); position: initial;">
+            <div class="modal-header">
+                <h5 class="modal-title" style="color:black;">Información del Usuario</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">
+                      <svg class="bi text-danger" width="30" height="30" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#backspace-fill"/>
+                    </svg>
+                </span>
+            </button>
+        </div>
+
+        <div class="modal-body ">
+            <form id="frm-example" method="post" action="">
+                <?php include ('../../Buscador_ajax/Cabezeras/cabezera.php') ?>
+                <input type="" style="display: none;" readonly class="form-control"  value="<?php echo $num_vale?>" name="bodega">
+                <div id="tabla_resultado" style="margin: 0">
+                    <!-- AQUI SE DESPLEGARA NUESTRA TABLA DE CONSULTA -->
+
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+<?php  if(isset($_POST['solicitar'])){$cod=$_POST['bodega']?>
+       <form style="background: transparent;" method="POST" action="../../Controller/Vale/añadir_vale.php">
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                  <div class="col-md-4" style="position: initial">
+                    <label id="inp1"><b>Departamento que solicita</b></label>   
+                    <div class="div d" > 
+
+                     <?php  
+                     $sql = "SELECT * FROM selects_departamento";
+                     $result = mysqli_query($conn, $sql);
+                     while ($productos = mysqli_fetch_array($result)){ ?>  
+                       <input class="p2" required  id="<?php echo $productos['id'] ?>" type="radio" name="depto" value="<?php echo $productos['departamento'] ?>"> <label  style="width: 100%;" id="label1" for="<?php echo $productos['id'] ?>" > <?php echo $productos['departamento'] ?></label><br>
+                   <?php }?>
+               </div>   
+               <br>  
+               <p id="tr" align="right" class="p">Mostrar todos
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                    <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/></svg></p>
+                    <p id="tr" align="right" class="p1">Ocultar
+                        <svg class="bi" width="20" height="20" fill="currentColor">
+                            <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/></svg></p>
+                        </div>
+                        <div class="col-md-4" style="position: initial">
+                            <label id="inp1"><b>Vale N°</b></label>   
+                            <input id="busq"class="form-control" readonly  type="number" name="numero_vale" value="<?php echo $cod ?>" required >
+                            <section id="resultado" style="margin: 0px;background: transparent;width: 100%;"></section>
+                        </div>
+                        <div class="col-md-4" style="position: initial">
+                            <label id="inp1"><b>Nombre de la persona</b></label>
+                            <?php     $cliente =$_SESSION['signin'];
+                            $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
+                            while ($consulta =mysqli_fetch_array($data)) {
+                               ?>
+                               <label><b>Encargado</b></label>
+                               <input style="cursor: not-allowed; color: black;"  class="form-control" type="text" name="usuario" id="como3" required readonly value="<?php  echo $consulta['firstname']?> <?php  echo $consulta['lastname']?>">
+                               <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="<?php  echo $consulta['id']?>"/>
+                               <br>
+                           <?php }?> 
+
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <br>
+           <div class="row">
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-body">
+                      <?php include('../../Buscador_ajax/Tablas/Productos/tablaProductos.php') ?>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-3">
+           <div class="card">
+            <div class="card-body">   
+
+
+               <div class="form-floating mb-3 my-2" >
+                <label>Observaciones (En qué se ocupará el bien entregado)</label>
+                <textarea rows="7" class="form-control" name="jus"  placeholder="" required id="floatingTextarea"></textarea>
+            </div>
+            <button class="btn btn-success btn-lg" id="Guardar" style="width: 100%;" name="NuevaSoli">Guardar</button>  
+        </svg>
+    </button>
+
+
+</div>
+</div>
+</div>
+</div>
+</form>
 </section>
 
+<?php 
+}  ?>
 
-   
 
 <script>
-       $(document).ready(function () {
-                $('.as').click(function() {
-            window.location.href="solicitudes_vale.php";
-        });
-                
-    $('#exam').DataTable({
-dom: 'lrtip',
-responsive: true,
-autoWidth:false,
+    $('.p1').hide();
+    $('.p').click(function(){$(".d").removeClass("div");$('.p').hide();$('.p1').show();});   
+    $('.p1').click(function(){$(".d").addClass("div");$('.p1').hide();$('.p').show();});
 
-            deferRender: true,
-            scroller: true,
-            scrollY: 400,
-            scrollCollapse: true,
-                lengthMenu: [[10, -1], [10,"Todos"]],
-                    language: {
-                "lengthMenu": "Mostrar _MENU_ registros",
-                "zeroRecords": "No se encontraron resultados",
-                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sSearch": "Buscar:",
-                "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast":"Último",
-                    "sNext":"Siguiente",
-                    "sPrevious": "Anterior"
-                 },
-                 "sProcessing":"Procesando...",
-            },
+    var table = $('#tblElecProducts').DataTable( {
+      responsive: true,
+      autoWidth:false,      
+      columnDefs: [ {
+        orderable: false,
+        className: 'select-checkbox',
+        targets:   0
+    } ],
+      select: {
+        style:    'multi'
+    },
+    lengthMenu: [[10, -1], [10,"Todos los registros"]],
 
-    });
-});       $(document).ready(function () {
-    $('#example').DataTable({
-dom: 'lrtip',
-responsive: true,
-autoWidth:false,
-
-            deferRender: true,
-            scroller: true,
-            scrollY: 400,
-            scrollCollapse: true,
-                lengthMenu: [[10, -1], [10,"Todos"]],
-                    language: {
-                "lengthMenu": "Mostrar _MENU_ registros",
-                "zeroRecords": "No se encontraron resultados",
-                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-                "sSearch": "Buscar:",
-                "oPaginate": {
-                    "sFirst": "Primero",
-                    "sLast":"Último",
-                    "sNext":"Siguiente",
-                    "sPrevious": "Anterior"
-                 },
-                 "sProcessing":"Procesando...",
-            },
-
-    });
+    language: {
+        "lengthMenu": "Mostrar _MENU_ registros",
+        "zeroRecords": "No se encontraron resultados",
+        "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+        "sSearch": "Buscar:",
+        "oPaginate": {
+            "sFirst": "Primero",
+            "sLast":"Último",
+            "sNext":"Siguiente",
+            "sPrevious": "Anterior"
+        },
+        "sProcessing":"Procesando...",
+    },
 });
-</script>  
+    $('#submit').on('click', function (event) {
+
+
+      $('#frm-example').find('input[type="hidden"]').remove();
+      var seleccionados = table.rows({ selected: true });
+
+      if(!seleccionados.data().length){
+        alert("No ha seleccionado ningún producto");
+        event.preventDefault();
+    }
+
+    else{
+        seleccionados.every(function(key,data){
+          console.log(this.data());
+
+          $('<input>', {
+              type: 'hidden',
+              value: this.data()[1],
+              name: 'id[]'
+          }).appendTo('#frm-example');
+
+      $("#frm-example").submit(); //submiteas el form
+  });
+    }
+});
+    $(document).ready(function () {
+        $('.as').click(function() {
+            window.location.href="solicitudes_bodega.php";
+        });
+        $('#ver').click(function() {
+            window.location.href="";
+        });
+
+
+        $('#example').DataTable({
+            dom: 'lrtip',
+            responsive: true,
+            autoWidth:false,
+            deferRender: true,
+
+            lengthMenu: [[10, -1], [10,"Todos"]],
+            language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "sProcessing":"Procesando...",
+            },
+
+        });
+    });
+    window.onload = function(){
+  var fecha = new Date(); //Fecha actual
+  var mes = fecha.getMonth()+1; //obteniendo mes
+  var dia = fecha.getDate(); //obteniendo dia
+  var ano = fecha.getFullYear(); //obteniendo año
+  if(dia<10)
+    dia='0'+dia; //agrega cero si el menor de 10
+if(mes<10)
+    mes='0'+mes //agrega cero si el menor de 10
+var limpiar = document.getElementById('dia'); limpiar.value = dia
+var limpiar1 = document.getElementById('mes'); limpiar1.value = mes;
+var limpiar4 = document.getElementById('ano'); limpiar4.value = ano;
+
+
+}
+
+</script>    
 </body>
-  </html>
-
-
+</html>

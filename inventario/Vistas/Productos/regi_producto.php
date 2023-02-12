@@ -42,7 +42,6 @@ if (!isset($_SESSION['signin'])>0) {
             border-radius: 5px;
         }
         #ver{
-            margin-left: 2%; 
             background: rgb(5, 65, 114); 
             color: #fff; margin-bottom: 2%;  
             border: rgb(5, 65, 114);
@@ -58,77 +57,80 @@ if (!isset($_SESSION['signin'])>0) {
         }
 
         @media (max-width: 800px){
-           #section{
-            margin: -15%6%6%1%;
-            width: 97%;
+            #ver{
+                margin-top: 2%;
+            }
+            #section{
+                margin: -15%6%6%1%;
+                width: 97%;
+            }
+
+            th{
+                width: 25%;
+            }
+            #p{
+                margin-top: 5%;
+                margin-left: 7%;
+            }
+
         }
+    </style>
+    <br><br><br>
 
-        th{
-            width: 25%;
-        }
-        #p{
-            margin-top: 5%;
-            margin-left: 7%;
-        }
+    <form id="section" action="../../Controller/Productos/añadir.php" method="POST" style="height: 30%; ">
+        <font color=marballe><h3 style="text-align: center; font-weight: bold">Registro de Productos</h3></font>
 
-    }
-</style>
-<br><br><br>
+        <div class="mx-2 alert alert-warning alert-dismissible fade show" role="alert" style="position: initial;"><b>NOTA IMPORTANTE: </b> El codigo Que sera ingresado en este formulario no debe de ir Repetido cuando Presionen  el boton "Agregar Producto"</div>
+        <div id="Registro" class="row " style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%">
 
-<form id="section" action="../../Controller/Productos/añadir.php" method="POST" style="height: 30%; ">
-    <font color=marballe><h3 style="text-align: center; font-weight: bold">Registro de Productos</h3></font>
+            <div id="lo-que-vamos-a-copiar"  style="background:#FAE2E2;margin-left: 1%;margin-right: 1%;margin-top: 1%;  border-radius:5px;">
+                <div class="col-xs-4 "  style="background: #FAE2E2;margin-left: 1;margin-right: 1%;margin-top: 1%;  border-radius:5px;" >
+                    <div class="well well-sm" style="position: all; margin: 5%">
 
-    <div class="mx-2 alert alert-warning alert-dismissible fade show" role="alert" style="position: initial;"><b>NOTA IMPORTANTE: </b> El codigo Que sera ingresado en este formulario no debe de ir Repetido cuando Presionen  el boton "Agregar Producto"</div>
-    <div id="Registro" class="row container" style="position: all; margin-left: 1%;margin-right: 1%;margin-top: 1%"  >
+                        <div class="form-group" style="position: all; margin: 2%">
+                            <label for="">Categoría</label><br> 
+                            <div class="input-group mb-3" style="position: initial;">
+                               <label class="input-group-text" for="inputGroupSelect01">
+                                <svg class="bi" width="20" height="20" fill="currentColor">
+                                    <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#card-list"/>
+                                </svg>
+                            </label>
+                            <select style="position: initial;" class="form-control"  name="categoria[]"  id="div" required style="cursor: pointer" required>
+                                <option disabled selected value="">Seleccionar</option>
 
-        <div id="lo-que-vamos-a-copiar"  style="background:#FAE2E2;margin-left: 1%;margin-right: 1%;margin-top: 1%;  border-radius:5px;">
-            <div class="col-xs-4 "  style="background: #FAE2E2;margin-left: 1;margin-right: 1%;margin-top: 1%;  border-radius:5px;" >
-                <div class="well well-sm" style="position: all; margin: 5%">
+                                <?php 
+                                $sql = "SELECT * FROM  selects_categoria";
+                                $result = mysqli_query($conn, $sql);
 
-                    <div class="form-group" style="position: all; margin: 2%">
-                        <label for="">Categoría</label><br> 
-                        <div class="input-group mb-3" style="position: initial;">
-                         <label class="input-group-text" for="inputGroupSelect01">
-                            <svg class="bi" width="20" height="20" fill="currentColor">
-                                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#card-list"/>
-                            </svg>
-                        </label>
-                        <select style="position: initial;" class="form-control"  name="categoria[]"  id="div" required style="cursor: pointer" required>
-                            <option disabled selected value="">Seleccionar</option>
-                            
-                            <?php 
-                            $sql = "SELECT * FROM  selects_categoria";
-                            $result = mysqli_query($conn, $sql);
+                                while ($productos1 = mysqli_fetch_array($result)){ 
 
-                            while ($productos1 = mysqli_fetch_array($result)){ 
+                                  echo'  <option>'.$productos1['categoria'].'</option>
+                                  ';   
+                              } ?>
 
-                              echo'  <option>'.$productos1['categoria'].'</option>
-                              ';   
-                          } ?>
-                          
-                      </select>
+                          </select>
 
+                      </div>
                   </div>
-              </div>
 
-              <div class="form-group" style="position: all; margin: 2%">
-                <label style="color: #000">Código</label> 
-                <div  class="input-group mb-3" style="position: initial;">
-                 <label class="input-group-text" for="inputGroupSelect01">
-                    <svg class="bi" width="20" height="20" fill="currentColor">
-                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#123"/>
-                    </svg>
-                </label>
-                <input style="position: initial;"  type="number" name="cod[]" class="form-control" id="busqueda" placeholder="Ingrese código de producto " required>
+                  <div class="form-group" style="position: all; margin: 2%">
+                    <label style="color: #000">Código</label> 
+                    <div  class="input-group mb-3" style="position: initial;">
+                       <label class="input-group-text" for="inputGroupSelect01">
+                        <svg class="bi" width="20" height="20" fill="currentColor">
+                            <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#123"/>
+                        </svg>
+                    </label>
+                    <input style="position: initial;"  type="number" name="cod[]" class="form-control" id="busqueda" placeholder="Ingrese código de producto " required>
+                </div>
+                <section id="tabla_resultado" style="margin: 0px;"></section>
             </div>
-            <section id="tabla_resultado" style="margin: 0px;"></section>
-        </div>
 
-        <div class="form-group" style="margin: 2%">
-          <label style="color: #000">Codificación de Catálogo</label> 
-          <div style="position: initial;" class="input-group mb-3">
-             <label class="input-group-text" for="inputGroupSelect01">
-                 
+            <div class="form-group" style="margin: 2%">
+              <label style="color: #000">Codificación de Catálogo</label> 
+              <div style="position: initial;" class="input-group mb-3">
+               <label class="input-group-text" for="inputGroupSelect01">
+
                 <svg class="bi" width="20" height="20" fill="currentColor">
                     <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#123"/>
                 </svg>
@@ -142,7 +144,7 @@ if (!isset($_SESSION['signin'])>0) {
     <div class="form-group">
         <label style="color: #000">Descripción Completa</label>
         <div class="input-group mb-3" style="position: initial;">
-         <label class="input-group-text" for="inputGroupSelect01">
+           <label class="input-group-text" for="inputGroupSelect01">
             <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#type"/>
             </svg>
@@ -155,12 +157,12 @@ if (!isset($_SESSION['signin'])>0) {
 <div class="form-group" >
     <label>Unidad de medida (U/M)</label>
     <div class="input-group mb-3" style="position: initial;">
-     <label class="input-group-text" for="inputGroupSelect01">
+       <label class="input-group-text" for="inputGroupSelect01">
         <svg class="bi" width="20" height="20" fill="currentColor">
             <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#card-list"/>
         </svg>
     </label>
-    
+
     <select style="position: initial;" class="form-control"   id="div" name="um[]" id="um" required>
       <option disabled selected value="">Seleccionar</option>
 
@@ -174,14 +176,14 @@ if (!isset($_SESSION['signin'])>0) {
           ';   
       } ?>
   </select>  
-  
+
 </div>
 </div>
 
 <div class="form-group" >
     <label>Costo Unitario</label>
     <div class="input-group mb-3" style="position: initial;">
-     <label class="input-group-text" for="inputGroupSelect01">
+       <label class="input-group-text" for="inputGroupSelect01">
         <svg class="bi" width="20" height="20" fill="currentColor">
             <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#currency-dollar"/>
         </svg>
@@ -207,13 +209,23 @@ if (!isset($_SESSION['signin'])>0) {
 </div>
 
 <hr />
+<div class="row">
 
-<center>
-   
-    <button class="btn btn-success btn-lg" id="Guardar" style="margin-bottom: 2%;" name="submit">Guardar</button>  
-    <button class="btn btn-success btn-lg" id="NoGuardar" style="margin-bottom: 2%; cursor: not-allowed;" disabled>Guardar</button>  
-    <button type="button" class="btn btn-lg" id="ver" onclick=" return ir()">Ver Productos</button>
-</center>
+    <div class="col-md-3" >
+    </div>
+    <div class="col-md-2" >
+    </div>
+    <div class="col-md-2" >
+    </div>
+    <div class="col-md-3" >
+      <button class="btn btn-success btn-lg" id="Guardar" style="width: 100%;" name="submit">Guardar</button>  
+      <button class="btn btn-success btn-lg" id="NoGuardar" style="width: 100%; cursor: not-allowed;" title="NO DISPONIBLE" disabled>Guardar</button> 
+  </div>
+  <div class="col-md-3 ">
+      <button type="button" class="btn btn-lg" id="ver" style="width: 100%;" onclick=" return ir()">Ver Productos</button>
+  </div>
+
+</div> 
 </form>
 
 
@@ -221,7 +233,7 @@ if (!isset($_SESSION['signin'])>0) {
     window.location.href="vistaProductos.php";
 }
 $(document).ready(function(){
-   
+
         // El formulario que queremos replicar
     var formulario_registro = $("#lo-que-vamos-a-copiar").html();
     

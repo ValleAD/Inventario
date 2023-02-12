@@ -64,7 +64,8 @@
                </td>
                <td data-label="Productos Disponibles"><?php  echo $stock; ?></td>
                <td data-label="Cantidad">
-                <input  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" type="number" step="0.01" min="0.00" max="<?php echo $stock ?>"  class="form-control"  name="cant[]" required>
+                <input id="og" disabled title="No Disponible" style="background:transparent; border: solid 0.1px; width: 100%; color: gray;cursor: not-allowed;" type="number" step="0.01" min="0.00" max="<?php echo $stock ?>"  class="form-control"  name="cant[]" required>
+                <input id="og1"  style="background:transparent; border: solid 0.1px; width: 100%; color: gray;"  type="number"   class="form-control">
             </td>
                <td data-label="Precio"><?php  echo $precio1 ?></td> 
                   
@@ -82,7 +83,7 @@ $(document).ready(function () {
             deferRender: true,
             scroller: true,
             scrollY: 400,
-            dom: 'lrtip',
+            dom: 'lrti',
             "searching": false,
             scrollCollapse: true,
                     language: {
