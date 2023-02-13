@@ -1,3 +1,19 @@
+<?php
+session_start();
+if (!isset($_SESSION['signin'])>0) {
+    # code...
+    echo '
+    <script>
+    window.location ="../../../log/signin.php";
+    session_destroy();  
+    </script>
+    die();
+
+    ';
+    
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

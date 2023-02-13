@@ -1,4 +1,19 @@
-<?php 
+<?php
+session_start();
+if (!isset($_SESSION['signin'])>0) {
+    # code...
+    echo '
+    <script>
+    window.location ="../../../log/signin.php";
+    session_destroy();  
+    </script>
+    die();
+
+    ';
+    
+}
+
+?><?php 
 
 include ('../../../Model/conexion.php');
 
