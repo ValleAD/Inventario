@@ -114,7 +114,7 @@ if (isset($_POST['solicitar'])){ ?>
   </div>
 </div>
 <center> <div class="col-md-3 mt-4" style="padding: 0%;" > 
-    <button class="btn btn-success btn-lg" id="Guardar" style="width: 100%;" name="submit">Guardar</button>  
+    <button class="btn btn-success btn-lg" id="Guardar" style="width: 100%;" name="solicitar">Guardar</button>  
     <button class="btn btn-success btn-lg" id="NoGuardar" style="width: 100%; cursor: not-allowed;" title="NO DISPONIBLE" disabled>Guardar</button>  
 </div></center>    
 </form>
