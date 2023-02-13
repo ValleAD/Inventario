@@ -34,12 +34,12 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
   #a:hover{text-decoration: none;color: lawngreen;transition: 1s;transform: translateY(2px);}
   #b:hover{text-decoration: none;color:lawngreen;}
   .children{background:burlywood;}
-  .btn{transition: 1s;}
+  .btn{transition: 1.5s;}
   #button{color: white;}
   #button:hover{transform: translateY(2px);transition: 1s;color: lawngreen;}
   #wwe{margin: 1%;position: initial;}
 
-  #sn{font-size: 1.5em;}
+  #sn{font-size: 1.3em;}
   .menu_bar2{display: none;}
 
 
@@ -235,7 +235,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                  </div>
 
                  <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <p id="sn" style="color: #fff"><b>Apellidos:</b> <?php echo $consulta['lastname'];?></p>
                     </div>
                     <div class="col-md-12">
@@ -357,7 +357,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 });
 
   
-  $("ul").click(function(p) {
+  $(".submenu1").click(function(p) {
    p.stopPropagation();
 });
  function main () {

@@ -81,8 +81,8 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
                             </svg></a>
                             <ul class="children">
-                             <li><a id="b" href="../Productos/vistaProductos.php">Ver Artículos</a></li>
-                             <?php if($tipo_usuario==1){ ?>
+                               <li><a id="b" href="../Productos/vistaProductos.php">Ver Artículos</a></li>
+                               <?php if($tipo_usuario==1){ ?>
                                 <li><a id="b" href="../Productos/regi_producto.php">Nuevo Artículo</a></li>
                             <?php } ?>
                             <li  class="submenu1 " ><a id="b" href="#">Reportes Ingresos
@@ -105,12 +105,12 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                                 </ul>
                             </li>
                             <?php if ($tipo_usuario==1) {?>
-                             <li class="submenu1 submenu5"><a id="b" href="#" onclick="return codigo_fecha()">Buscador al Producto</a>
-                             </li>
-                         <?php } ?>
-                     </ul>
-                 </li>
-                 <li class="submenu">
+                               <li class="submenu1 submenu5"><a id="b" href="#" onclick="return codigo_fecha()">Buscador al Producto</a>
+                               </li>
+                           <?php } ?>
+                       </ul>
+                   </li>
+                   <li class="submenu">
                     <a id="a" href="#">Soli. Vale
                         <svg class="bi" width="20" height="20" fill="currentColor">
                             <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
@@ -238,12 +238,12 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                 <p id="sn" style="color: #fff"><b>Nombre:</b> <?php echo $consulta['firstname'];?></p>
-                             </div>
-                         </div>
+                                   <p id="sn" style="color: #fff"><b>Nombre:</b> <?php echo $consulta['firstname'];?></p>
+                               </div>
+                           </div>
 
-                         <div class="row">
-                            <div class="col-md-6">
+                           <div class="row">
+                            <div class="col-md-12">
                                 <p id="sn" style="color: #fff"><b>Apellidos:</b> <?php echo $consulta['lastname'];?></p>
                             </div>
                             <div class="col-md-12">
@@ -335,120 +335,121 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 <script src="../../Plugin/bootstrap/js/responsive.bootstrap4.min.js"></script>
 <script src="../../Plugin/bootstrap/js/popper.min.js"></script>
 <script>
-   $(".submenu1").click(function() {
+    // Mostramos y ocultamos submenus
+    $('.submenu').click(function(){
+        $(this).children('.children').slideToggle();
+    });
+  $( ".submenu1").click(function() {
     $(this).children("ul").slideToggle();
 });
 
-
-   $("ul").click(function(p) {
-    p.stopPropagation();
+  
+  $(".submenu1").click(function(p) {
+   p.stopPropagation();
 });
-   $('.p1').hide();
-   $('.p').click(function(){
+ $('.p1').hide();
+ $('.p').click(function(){
     $(".div").removeClass("div");
     $('.p').hide();
     $('.p1').show();
 
 });
-   $('.p1').click(function(){
+ $('.p1').click(function(){
 
     $(".div1").addClass("div");
     $('.p1').hide();
     $('.p').show();
 });
 
-    function codigo_fecha() {
-     
-       Swal.fire({
-           title: 'Historial por Código y Fechas ',
-           html: '<form method="POST"  id="t"><label style="float: left;">Codigo del Producto</label><input type="number" class="form-control " id="codigo1" ><label style="float: left;">Hasta</label><input type="Date" class="form-control " id="f1" ><label style="float: left;margin-top:3%;">Hasta</label><input type="Date" class="form-control " id="f2" ></form>',
-           icon: 'info',
-           allowOutsideClick: false,
-           showConfirmButton: true,
-           showCloseButton: true,
-           footer:"Sistema De Inventario",
-           confirmButtonText: "Buscar por Código y Fechas",
+ function codigo_fecha() {
 
-       }).then((result) => {
-          if (result.isConfirmed) {
-            var unidad=$.trim($('#codigo1').val())
-            var f1=$.trim($('#f1').val())
-            var f2=$.trim($('#f2').val())
-            Swal.fire({icon: 'success',  text:" En este Momento sera Redigido Hacia el Historial",allowOutsideClick: false,}).then((resultado) =>{
-                if (resultado.value) {
-                 window.location.href='../Productos/Historial.php?Busqueda='+unidad+'&f1='+f1+'&f2='+f2+'&Consultar2';                               
-             }
-         });
+     Swal.fire({
+         title: 'Historial por Código y Fechas ',
+         html: '<form method="POST"  id="t"><label style="float: left;">Codigo del Producto</label><input type="number" class="form-control " id="codigo1" ><label style="float: left;">Hasta</label><input type="Date" class="form-control " id="f1" ><label style="float: left;margin-top:3%;">Hasta</label><input type="Date" class="form-control " id="f2" ></form>',
+         icon: 'info',
+         allowOutsideClick: false,
+         showConfirmButton: true,
+         showCloseButton: true,
+         footer:"Sistema De Inventario",
+         confirmButtonText: "Buscar por Código y Fechas",
 
-        }});    
-   }
-    $('.nav1').css({"margin-left": "-6%", "transition": "3s"});     
+     }).then((result) => {
+      if (result.isConfirmed) {
+        var unidad=$.trim($('#codigo1').val())
+        var f1=$.trim($('#f1').val())
+        var f2=$.trim($('#f2').val())
+        Swal.fire({icon: 'success',  text:" En este Momento sera Redigido Hacia el Historial",allowOutsideClick: false,}).then((resultado) =>{
+            if (resultado.value) {
+               window.location.href='../Productos/Historial.php?Busqueda='+unidad+'&f1='+f1+'&f2='+f2+'&Consultar2';                               
+           }
+       });
 
-    let ubicacionPrincipal=window.pageYOffset;
-    window.onscroll= function() {
-        let Desplazamiento_Actual=window.pageYOffset;
-        if (ubicacionPrincipal >= Desplazamiento_Actual) {
-            document.getElementById('navbar').style.top='0';
+    }});    
+ }
+ $('.nav1').css({"margin-left": "-6%", "transition": "3s"});     
 
-            $('.nav1').css({"margin-left": "-6%", "transition": "3s", "opacity": "1"});     
+ let ubicacionPrincipal=window.pageYOffset;
+ window.onscroll= function() {
+    let Desplazamiento_Actual=window.pageYOffset;
+    if (ubicacionPrincipal >= Desplazamiento_Actual) {
+        document.getElementById('navbar').style.top='0';
 
-        }else{
+        $('.nav1').css({"margin-left": "-6%", "transition": "3s"});     
+
+    }else{
 //entra el nav1
-            $('.nav1').css({"margin-left": "-1%", "transition": "3s"});  
+        $('.nav1').css({"margin-left": "-1%", "transition": "3s"});  
 
-            $('.nav2').click(function(){
-                $('.nav1').css({"margin-left": "-6%", "transition": "3s", "opacity": "1"});   
-                document.getElementById('navbar').style.top='0';
-            });   
-            $('#navbar').css({"top": "-100px", "transition": "1.5s", "opacity": "1"});  
+        $('.nav2').click(function(){
+            $('.nav1').css({"margin-left": "-6%", "transition": "3s"});   
+            document.getElementById('navbar').style.top='0';
+        });   
+        $('#navbar').css({"top": "-200px", "transition": "1.5s"});  
 
+    }
+    ubicacionPrincipal=Desplazamiento_Actual;
+}
+
+$(document).ready(main);
+var contador = 1;
+
+function main () {
+    $('.menu_bar1').click(function(){
+        $('.menu_bar1').hide();
+        $('.menu_bar2').show();
+
+        if (contador == 1) {
+            $('nav').animate({
+                left: '0'
+            });
+            contador = 0;
+        } else {
+            $('.menu_bar1').show();
+            contador = 1;
+            $('nav').animate({
+                left: '-100%'
+            });
         }
-        ubicacionPrincipal=Desplazamiento_Actual;
-    }
+    });
+    $('.menu_bar2').click(function(){
+        $('.menu_bar2').hide();
 
-    $(document).ready(main);
-    var contador = 1;
+        if (contador == 1) {
+            $('nav').animate({
+                left: '0'
+            });
+            contador = 0;
+        } else {
+            $('.menu_bar1').show();
+            contador = 1;
+            $('nav').animate({
+                left: '-100%'
+            });
+        }
+    });
 
-    function main () {
-        $('.menu_bar1').click(function(){
-            $('.menu_bar1').hide();
-            $('.menu_bar2').show();
 
-            if (contador == 1) {
-                $('nav').animate({
-                    left: '0'
-                });
-                contador = 0;
-            } else {
-                $('.menu_bar1').show();
-                contador = 1;
-                $('nav').animate({
-                    left: '-100%'
-                });
-            }
-        });
-        $('.menu_bar2').click(function(){
-            $('.menu_bar2').hide();
-
-            if (contador == 1) {
-                $('nav').animate({
-                    left: '0'
-                });
-                contador = 0;
-            } else {
-                $('.menu_bar1').show();
-                contador = 1;
-                $('nav').animate({
-                    left: '-100%'
-                });
-            }
-        });
-
-    // Mostramos y ocultamos submenus
-        $('.submenu').click(function(){
-            $(this).children('.children').slideToggle();
-        });
-    }
+}
 </script>
 <script type="text/javascript">
     function confirmaion1(e) {
