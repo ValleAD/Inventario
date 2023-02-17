@@ -1,3 +1,4 @@
+ <style type="text/css">.og{display: none;}</style>
   <input type="hidden" name="dia" id="dia">
     <input type="hidden" name="mes" id="mes">
         <input type="hidden" name="año" id="ano">
@@ -65,7 +66,7 @@
                <td data-label="Productos Disponibles"><?php  echo $stock; ?></td>
                <td data-label="Cantidad">
                 <input id="og" disabled title="No Disponible" style="background:transparent; border: solid 0.1px; width: 100%; color: gray;cursor: not-allowed;" type="number" step="0.01" min="0.00" max="<?php echo $stock ?>"  class="form-control"  name="cant[]" required>
-                <input id="og1" required style="background:transparent; border: solid 0.1px; width: 100%; color: gray;"  type="number" name="cant[]"  class="form-control">
+                <input id="og1" required style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" step="0.01" min="0.00" max="<?php echo $stock ?>" type="number" name="cant[]"  class="form-control">
             </td>
                <td data-label="Precio"><?php  echo $precio1 ?></td> 
                   

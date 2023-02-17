@@ -28,6 +28,9 @@ if (!isset($_SESSION['signin'])>0) {
 </head>
 <body>
     <style>  
+        #NoGuardar, #og,#jus1, .m-0{
+            display: none;
+        }
         #buscar1{
             width: 25%;
         }
@@ -98,7 +101,7 @@ if (!isset($_SESSION['signin'])>0) {
                 <div class="col-md-2" style="position: initial">
                     <label style="font-weight: bold;">Estado:</label>
                     <div style="position:initial;" class="input-group mb-3">
-                       <label class="input-group-text" for="inputGroupSelect01">
+                     <label class="input-group-text" for="inputGroupSelect01">
                         <?php  if($productos1['estado']=='Pendiente') { ?>
                             <svg class="bi" width="20" height="20" fill="currentColor">
                                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#question-octagon-fill"/>
@@ -117,8 +120,8 @@ if (!isset($_SESSION['signin'])>0) {
                     if($productos1['estado']=='Pendiente') {
                         echo ' style="background-color:green ;position: initial;width:70%; border-radius:5px;text-align:center; color: white;"';
                     }else if($productos1['estado']=='Aprobado') {
-                       echo ' style="background-color:blueviolet ;position: initial;width:70%; border-radius:5px;text-align:center; color: white;"';
-                   }else if($productos1['estado']=='Rechazado') {
+                     echo ' style="background-color:blueviolet ;position: initial;width:70%; border-radius:5px;text-align:center; color: white;"';
+                 }else if($productos1['estado']=='Rechazado') {
                     echo ' style="background-color:red ;position: initial;width:70%; border-radius:5px;text-align:center; color: white;"';
                 }
             ?> class="form-control" type="text" name="estado" readonly value="<?php echo $productos1['estado'] ?>"><br>
@@ -141,93 +144,93 @@ if (!isset($_SESSION['signin'])>0) {
                 <table class="table " id="example">
                     <thead>
                       <tr id="tr">
-                       <th title="Codigo del productos">Cód.</th>
-                       <th title="Descripción Completa">Desc.</th>
-                       <th title="Unidad de Medida">U/M</th>
-                       <th title="Cantidad (Stock)">Cant.</th>
-                       <th title="Cantidad Despachada">Cant. Des</th>
-                       <th title="Costo Unitario">Precio</th>
-                       <th title="Total">Total</th>
+                         <th title="Codigo del productos">Cód.</th>
+                         <th title="Descripción Completa">Desc.</th>
+                         <th title="Unidad de Medida">U/M</th>
+                         <th title="Cantidad (Stock)">Cant.</th>
+                         <th title="Cantidad Despachada">Cant. Des</th>
+                         <th title="Costo Unitario">Precio</th>
+                         <th title="Total">Total</th>
 
 
-                   </tr>
-               </thead>
-               <tbody>
-                <?php 
-
-                $odt = $productos1['codBodega'];
-
-                if ($tipo_usuario==1) {
-
-                    $sql = "SELECT * FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega WHERE odt_bodega='$odt'";
-                }
-                if ($tipo_usuario==2) {
-                    $sql = "SELECT * FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega WHERE db.idusuario='$idusuario' and odt_bodega='$odt' ";
-
-                }
-                $result1 = mysqli_query($conn, $sql);
-                if (!$result1) {?>
-                    <style>div{
-                        display: none;
-                    }</style>
+                     </tr>
+                 </thead>
+                 <tbody>
                     <?php 
-                }else{
-                    while ($productos = mysqli_fetch_array($result1)){
-                        if ($estado="Pendiente") {  
-                            $total = $productos['stock'] * $productos['precio'];
-                        }if ($estado="Rechazado") {
 
-                            $total = $productos['stock'] * $productos['precio'];
-                        }if ($estado=="Aprobado") {
+                    $odt = $productos1['codBodega'];
 
-                            $total = $productos['cantidad_despachada'] * $productos['precio'];
-                        }
-                        $final += $total;
-                        $total1= number_format($total, 2, ".",",");
-                        $final1=number_format($final, 2, ".",",");
-                        $codigo=$productos['codigo'];
-                        $descripcion=$productos['descripcion'];
-                        $um=$productos['unidad_medida'];
+                    if ($tipo_usuario==1) {
 
+                        $sql = "SELECT * FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega WHERE odt_bodega='$odt'";
+                    }
+                    if ($tipo_usuario==2) {
+                        $sql = "SELECT * FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega WHERE db.idusuario='$idusuario' and odt_bodega='$odt' ";
 
-                        $precio   =    $productos['precio'];
-                        $precio2  =    number_format($precio, 2,".",",");  
-                        $cant_aprobada=$productos['stock'];
-                        $cantidad_despachada=$productos['cantidad_despachada'];
-                        $stock=number_format($cant_aprobada, 2,".",",");
-                        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+                    }
+                    $result1 = mysqli_query($conn, $sql);
+                    if (!$result1) {?>
+                        <style>div{
+                            display: none;
+                        }</style>
+                        <?php 
+                    }else{
+                        while ($productos = mysqli_fetch_array($result1)){
+                            if ($estado="Pendiente") {  
+                                $total = $productos['stock'] * $productos['precio'];
+                            }if ($estado="Rechazado") {
 
-                        $final2 += $cant_aprobada;
-                        $final3   =    number_format($final2, 2, ".",",");
+                                $total = $productos['stock'] * $productos['precio'];
+                            }if ($estado=="Aprobado") {
 
-                        $final4 += $cantidad_despachada;
-                        $final5   =    number_format($final4, 2, ".",",");
-
-                        $final6 += ($cant_aprobada-$cantidad_despachada);
-                        $final7   =    number_format($final6, 2, ".",",");
-
-                        $final8 += $precio;
-                        $final9   =    number_format($final8, 2, ".",",");?>
+                                $total = $productos['cantidad_despachada'] * $productos['precio'];
+                            }
+                            $final += $total;
+                            $total1= number_format($total, 2, ".",",");
+                            $final1=number_format($final, 2, ".",",");
+                            $codigo=$productos['codigo'];
+                            $descripcion=$productos['descripcion'];
+                            $um=$productos['unidad_medida'];
 
 
-                    </style> 
-                    <tr>
-                     <td  data-label="Código"><?php echo $productos['codigo'] ?></td>
-                     <td  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
-                     <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
-                     <td  data-label="Cantidad"><?php echo $stock ?></td>
-                     <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
-                     <td  data-label="Costo unitario"><?php echo $precio2 ?></td>
-                     <td  data-label="total"><?php echo $total1 ?></td>
-                 </tr>
+                            $precio   =    $productos['precio'];
+                            $precio2  =    number_format($precio, 2,".",",");  
+                            $cant_aprobada=$productos['stock'];
+                            $cantidad_despachada=$productos['cantidad_despachada'];
+                            $stock=number_format($cant_aprobada, 2,".",",");
+                            $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-             <?php }
-         }
-         ?> 
-     </tbody>
+                            $final2 += $cant_aprobada;
+                            $final3   =    number_format($final2, 2, ".",",");
 
- </table>
-</div>
+                            $final4 += $cantidad_despachada;
+                            $final5   =    number_format($final4, 2, ".",",");
+
+                            $final6 += ($cant_aprobada-$cantidad_despachada);
+                            $final7   =    number_format($final6, 2, ".",",");
+
+                            $final8 += $precio;
+                            $final9   =    number_format($final8, 2, ".",",");?>
+
+
+                        </style> 
+                        <tr>
+                           <td  data-label="Código"><?php echo $productos['codigo'] ?></td>
+                           <td  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
+                           <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
+                           <td  data-label="Cantidad"><?php echo $stock ?></td>
+                           <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
+                           <td  data-label="Costo unitario"><?php echo $precio2 ?></td>
+                           <td  data-label="total"><?php echo $total1 ?></td>
+                       </tr>
+
+                   <?php }
+               }
+               ?> 
+           </tbody>
+
+       </table>
+   </div>
 </div>
 </div>
 <div class="col-md-3  " style="position: initial;">
@@ -273,34 +276,34 @@ if (!isset($_SESSION['signin'])>0) {
                         <?php } ?>
                         <?php if($tipo_usuario==1){ ?>
                             <form method="POST" action="" style="margin: 0px;" >
-                             <button  type="submit" name="submit" <?php
-                             if($productos1['estado']=='Aprobado') {
-                               echo ' style="display:none"';
-                           }else if($productos1['estado']=='Rechazado') {
-                               echo ' style="display:none"';
-                           }
-                       ?> class="btn btn-danger" name="estado" title=" Cambiar Estado">
-                       <svg class="bi" width="20" height="20" fill="currentColor">
-                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#upload"/>
-                    </svg>
-                </button>
-                <input type="hidden" readonly class="form-control"  value="<?php echo $productos1['codBodega']?>" name="bodega">
-                </form><?php } ?>
+                               <button  type="submit" name="submit" <?php
+                               if($productos1['estado']=='Aprobado') {
+                                 echo ' style="display:none"';
+                             }else if($productos1['estado']=='Rechazado') {
+                                 echo ' style="display:none"';
+                             }
+                         ?> class="btn btn-danger" name="estado" title=" Cambiar Estado">
+                         <svg class="bi" width="20" height="20" fill="currentColor">
+                            <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#upload"/>
+                        </svg>
+                    </button>
+                    <input type="hidden" readonly class="form-control"  value="<?php echo $productos1['codBodega']?>" name="bodega">
+                    </form><?php } ?>
+                </div>
+
+                <hr>
+                <p align="right"><b style="float: left;">Cantidad Solicitada: </b><?php echo $final3 ?></p>
+                <p align="right"><b style="float: left;">Cantidad Despachada: </b><?php echo $final5 ?></p>
+
+                <p align="right"><b style="float: left;">Cant. Soli. - Cant. Despa.: </b><?php echo $final7 ?></p>
+                <p align="right"><b style="float: left;">Costo Unitario: </b><?php echo $final9 ?></p>
+                <p align="right"><b style="float: left;">SubTotal</b><?php echo $final1?></p>
+                <button class="btn btn-success as">Solicitides Bodega</button>
             </div>
 
-            <hr>
-            <p align="right"><b style="float: left;">Cantidad Solicitada: </b><?php echo $final3 ?></p>
-            <p align="right"><b style="float: left;">Cantidad Despachada: </b><?php echo $final5 ?></p>
-
-            <p align="right"><b style="float: left;">Cant. Soli. - Cant. Despa.: </b><?php echo $final7 ?></p>
-            <p align="right"><b style="float: left;">Costo Unitario: </b><?php echo $final9 ?></p>
-            <p align="right"><b style="float: left;">SubTotal</b><?php echo $final1?></p>
-            <button class="btn btn-success as">Solicitides Bodega</button>
         </div>
 
     </div>
-
-</div>
 
 </div>
 
@@ -316,44 +319,44 @@ if(isset($_POST['submit'])){
     $result = mysqli_query($conn, $sql);
     while ($productos1 = mysqli_fetch_array($result)){
 
-       echo'   
+     echo'   
 
 
-       <form method="POST" action="../../Controller/Bodega/añadir_bodega_copy.php">
-       <div class="card mt-3">
-       <div class="card-body">
-       <div class="row">
+     <form method="POST" action="../../Controller/Bodega/añadir_bodega_copy.php">
+     <div class="card mt-3">
+     <div class="card-body">
+     <div class="row">
 
-       <div class="col-md-3" style="position: initial">
+     <div class="col-md-3" style="position: initial">
 
-       <label style="font-weight: bold;">Depto. o Servicio:</label>
-       <input readonly class="form-control"  type="hidden" value="' .$productos1['departamento']. '" name="depto">
-       <p>' .$productos1['departamento']. '</p>
-       </div>
+     <label style="font-weight: bold;">Depto. o Servicio:</label>
+     <input readonly class="form-control"  type="hidden" value="' .$productos1['departamento']. '" name="depto">
+     <p>' .$productos1['departamento']. '</p>
+     </div>
 
-       <div class="col-md-3" style="position: initial">
-       <label style="font-weight: bold;">N° de O.D.T.</label>
-       <input readonly class="form-control"  type="hidden" value="' .$productos1['codBodega']. '" name="bodega">
-       <p>' .$productos1['codBodega']. '</p>
-       </div>
+     <div class="col-md-3" style="position: initial">
+     <label style="font-weight: bold;">N° de O.D.T.</label>
+     <input readonly class="form-control"  type="hidden" value="' .$productos1['codBodega']. '" name="bodega">
+     <p>' .$productos1['codBodega']. '</p>
+     </div>
 
-       <div class="col-md-3" style="position: initial">
-       <label style="font-weight: bold;">Encargado:</label>
-       <input readonly class="form-control"  type="hidden" value="' .$productos1['usuario']. '" name="usuario">
-       <p>' .$productos1['usuario']. '</p>
-       </div>     
-       <div class="col-md-3" style="position: initial">
-       <label style="font-weight: bold;">Fecha:</label>
-       <input readonly class="form-control"  type="hidden" value="'.$productos1['fecha_registro']. '" name="fech">
-       <p>' .date("d-m-Y",strtotime($productos1['fecha_registro'])).  '</p>
-       </div>';?>
+     <div class="col-md-3" style="position: initial">
+     <label style="font-weight: bold;">Encargado:</label>
+     <input readonly class="form-control"  type="hidden" value="' .$productos1['usuario']. '" name="usuario">
+     <p>' .$productos1['usuario']. '</p>
+     </div>     
+     <div class="col-md-3" style="position: initial">
+     <label style="font-weight: bold;">Fecha:</label>
+     <input readonly class="form-control"  type="hidden" value="'.$productos1['fecha_registro']. '" name="fech">
+     <p>' .date("d-m-Y",strtotime($productos1['fecha_registro'])).  '</p>
+     </div>';?>
 
-   </div>
-   <br>
+ </div>
+ <br>
 
 
-   <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
-   <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">
+ <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['departamento']?>" name="depto">
+ <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">
 </div>
 </div>
 <br>
@@ -379,14 +382,14 @@ if(isset($_POST['submit'])){
 
                   </thead>
                   <tbody>
-                   <?php            
+                     <?php            
 
-                   $odt = $productos1['codBodega'];
+                     $odt = $productos1['codBodega'];
 
 
-                   $sql = "SELECT * FROM detalle_bodega WHERE odt_bodega = $odt";
-                   $result = mysqli_query($conn, $sql);
-                   while ($productos = mysqli_fetch_array($result)){
+                     $sql = "SELECT * FROM detalle_bodega WHERE odt_bodega = $odt";
+                     $result = mysqli_query($conn, $sql);
+                     while ($productos = mysqli_fetch_array($result)){
 
                       $total = $productos['stock'] * $productos['precio'];
                       $final += $total;
@@ -416,7 +419,9 @@ if(isset($_POST['submit'])){
                         <input type="hidden"  name="cost[]" step="0.01"  readonly value="<?php echo $precio1 ?>">
                         <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
 
-
+                        <input type="hidden" name="año" id="dia">
+                        <input type="hidden" name="mes" id="mes">
+                        <input type="hidden" name="año" id="ano">
                     </td>
                     <td  data-label="Descripción"><?php echo $descripcion ?></td>
                     <td  data-label="Unidada de Medida"><?php echo $um ?></td>
@@ -502,44 +507,44 @@ if(isset($_POST['submit'])){
                 <label id="inp1">Departamento que solicita</b></label>   
                 <div class="div d" > 
 
-                 <?php  
-                 $sql = "SELECT * FROM selects_departamento";
-                 $result = mysqli_query($conn, $sql);
-                 while ($productos = mysqli_fetch_array($result)){ ?>  
-                   <input class="p2" required id="<?php echo $productos['id'] ?>" type="radio" name="depto" value="<?php echo $productos['departamento'] ?>"> <label style="width: 100%;" id="label1" for="<?php echo $productos['id'] ?>" > <?php echo $productos['departamento'] ?></label><br>
-               <?php }?>
-           </div>
-           <br>
-           <p style="float: right;" class="p">Mostrar todos
-            <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
-            </svg></p></p>
-            <p style="float: right;" class="p1">Ocultar
+                   <?php  
+                   $sql = "SELECT * FROM selects_departamento";
+                   $result = mysqli_query($conn, $sql);
+                   while ($productos = mysqli_fetch_array($result)){ ?>  
+                     <input class="p2" required id="<?php echo $productos['id'] ?>" type="radio" name="depto" value="<?php echo $productos['departamento'] ?>"> <label style="width: 100%;" id="label1" for="<?php echo $productos['id'] ?>" > <?php echo $productos['departamento'] ?></label><br>
+                 <?php }?>
+             </div>
+             <br>
+             <p style="float: right;" class="p">Mostrar todos
                 <svg class="bi" width="20" height="20" fill="currentColor">
-                    <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
+                    <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
                 </svg></p></p>
-            </div>
-            <div class="col-md-4" style="position: initial">
-                <label id="inp1">O. de T. N°</b></label>   
+                <p style="float: right;" class="p1">Ocultar
+                    <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
+                    </svg></p></p>
+                </div>
+                <div class="col-md-4" style="position: initial">
+                    <label id="inp1">O. de T. N°</b></label>   
 
-                <input id="inp1"class="form-control" readonly type="number" name="odt" required value="<?php echo $cod ?>">
-            </div>
-            <div class="col-md-4" style="position: initial">
-                <label id="inp1">Nombre de la persona</label>
-                <?php     $cliente =$_SESSION['signin'];
-                $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
-                while ($consulta =mysqli_fetch_array($data)) {
-                   ?>
-                   <font color="black"><label>Encargado</label> </font>
-                   <input style="cursor: not-allowed; color: black;"  class="form-control" type="text" name="usuario" id="como3" required readonly value="<?php  echo $consulta['firstname']?> <?php  echo $consulta['lastname']?>">
-                   <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="<?php  echo $consulta['id']?>">
-                   <br>
-               <?php }?> 
+                    <input id="inp1"class="form-control" readonly type="number" name="odt" required value="<?php echo $cod ?>">
+                </div>
+                <div class="col-md-4" style="position: initial">
+                    <label id="inp1">Nombre de la persona</label>
+                    <?php     $cliente =$_SESSION['signin'];
+                    $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
+                    while ($consulta =mysqli_fetch_array($data)) {
+                     ?>
+                     <font color="black"><label>Encargado</label> </font>
+                     <input style="cursor: not-allowed; color: black;"  class="form-control" type="text" name="usuario" id="como3" required readonly value="<?php  echo $consulta['firstname']?> <?php  echo $consulta['lastname']?>">
+                     <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="<?php  echo $consulta['id']?>">
+                     <br>
+                 <?php }?> 
 
-           </select>
-       </label>   
-   </div>
-</div>
+             </select>
+         </label>   
+     </div>
+ </div>
 </div>     
 </div>
 <div class="card mt-3" style="position: initial;">

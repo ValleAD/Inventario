@@ -28,7 +28,10 @@ if (!isset($_SESSION['signin'])>0) {
     <title>Vale</title>
 </head>
 <body>
-    <style>  
+    <style> 
+    #NoGuardar, #og,#jus1, .m-0{
+            display: none;
+        } 
         #div{margin: 0%}
         #section{background: whitesmoke;border-radius: 15px;margin: 1%;padding: 1%;}
         form{background: transparent;padding: 1%;}
@@ -84,6 +87,7 @@ if (!isset($_SESSION['signin'])>0) {
             <div class="col-md-2" style="position: initial">
             <label style="font-weight: bold;">N° de Vale:</label>
             <p>' .$productos1['codVale']. '</p>
+            <input type="hidden" id="codVale" value="' .$productos1['codVale']. '">
             </div>
 
             <div class="col-md-3" style="position: initial">
@@ -135,7 +139,7 @@ if (!isset($_SESSION['signin'])>0) {
 
                     $num_vale = $productos1['codVale'];
 
-                    $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM detalle_vale WHERE numero_vale = $num_vale GROUP by codigo,descripcion,cantidad_despachada,precio,descripcion,unidad_medida";
+                    $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM detalle_vale WHERE numero_vale = $num_vale GROUP by codigo";
                     $result = mysqli_query($conn, $sql);
                     while ($productos = mysqli_fetch_array($result)){
                         $total = $productos['SUM(stock)'] * $productos['precio'];
@@ -266,7 +270,7 @@ if (!isset($_SESSION['signin'])>0) {
      <label>Observaciones (En qué se ocupará el bien entregado)</label>
      <textarea rows="7"  class="form-control" name="jus"  required><?php echo $jus ?> </textarea><br>
 
-     <button class="btn btn-success as">Solicitudes Vale</button>
+     <button class="btn btn-success as">Detalles Vale</button>
  </div>
 </div>
 </div>
@@ -304,7 +308,7 @@ if (!isset($_SESSION['signin'])>0) {
 </div>
 
 <?php } if(isset($_POST['solicitar'])){$cod=$_POST['bodega']?>
-<style type="text/css">.section{display: none;}</style>
+<style type="text/css">section{display: none;}</style>
 <section id="section">
        <form style="background: transparent;" method="POST" action="../../Controller/Vale/añadir_vale.php">
         <div class="card">
@@ -446,7 +450,8 @@ if (!isset($_SESSION['signin'])>0) {
 });
     $(document).ready(function () {
         $('.as').click(function() {
-            window.location.href="solicitudes_bodega.php";
+            var nSolicitud=document.getElementById("codVale").value;
+            window.location.href='Detalle_Vale.php?detalle&id='+nSolicitud;
         });
         $('#ver').click(function() {
             window.location.href="";
