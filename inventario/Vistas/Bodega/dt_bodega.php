@@ -28,24 +28,27 @@ if (!isset($_SESSION['signin'])>0) {
 </head>
 <body>
     <style>  
-     #section{
-      background: whitesmoke;
-      border-radius: 15px;
-      margin: 1%;
+        #NoGuardar, #og,#jus1, .m-0{
+            display: none;
+        } 
+        #section{
+          background: whitesmoke;
+          border-radius: 15px;
+          margin: 1%;
+          padding: 1%;
+      }
+      form{
+        background: transparent;
+    }
+    @media (max-width: 800px){
+       #section{
+        margin: -5%0%5%4%;
+        width: 93%;
+    }
+    form{
       padding: 1%;
   }
-  form{
-    background: transparent;
-}
-@media (max-width: 800px){
-   #section{
-    margin: -5%0%5%4%;
-    width: 93%;
-}
-form{
-  padding: 1%;
-}
-label{
+  label{
     margin-top: 3%;
 }
 
@@ -85,6 +88,7 @@ while ($productos1 = mysqli_fetch_array($result)){
 
  <div class="col-md-2" style="position: initial">
  <label style="font-weight: bold;">N° de O.D.T.</label>  
+ <input type="hidden" id="codBodega" value="' .$productos1['codBodega']. '">
  <p>' .$productos1['codBodega']. '</p>
  </div>
 
@@ -250,7 +254,7 @@ while ($productos1 = mysqli_fetch_array($result)){
                     <p align="right"><b style="float: left;">Cant. Soli. - Cant. Despa.: </b><?php echo $final7 ?></p>
                     <p align="right"><b style="float: left;">Costo Unitario: </b><?php echo $final9 ?></p>
                     <p align="right"><b style="float: left;">SubTotal</b><?php echo $final1?></p>
-                    <button class="btn btn-success as">Solicitides Bodega</button>
+                    <button class="btn btn-success as">Detalle Bodega</button>
                 </div>
 
             </div>
@@ -352,11 +356,14 @@ while ($productos1 = mysqli_fetch_array($result)){
             </div>
             <div class="col-md-2" >
             </div>
-            <div class="col-md-1" >
-            </div>
             <div class="col-md-2" >
               <button class="btn btn-success btn-lg" id="Guardar" style="width: 100%;" name="NuevaSoli">Guardar</button>  
           </div>
+            <div class="col-md-2" >
+            <form method="POST" action="">
+            <button class="btn btn-danger btn-lg" id="Guardar" style="width: 100%;" name="detalle">Cancelar</button> 
+            </form>
+        </div>
       </div>   
   </form>
 </section>
@@ -425,8 +432,9 @@ while ($productos1 = mysqli_fetch_array($result)){
 });
     $(document).ready(function () {
         $('.as').click(function() {
-            window.location.href="solicitudes_bodega.php";
-        });
+         var nSolicitud=document.getElementById("codBodega").value;
+         window.location.href='Detalle_Bodega.php?detalle&id='+nSolicitud;
+     });
 
 
 

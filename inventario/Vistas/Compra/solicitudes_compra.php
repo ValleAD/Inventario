@@ -125,7 +125,7 @@ h1 {
             </form>
 </div>
 <?php } ?>
-        <table class="table table-responsive " id="exam" style="width:100%">
+        <table class="table " id="exam" style="width:100%">
             <thead>
               <tr id="tr">
                

@@ -88,7 +88,8 @@
           allowOutsideClick: false
           }).then((resultado) =>{
             if (resultado.value) {
-                window.location.href='../../Vistas/Vale/Detalle_Vale.php?detalle&id=$nSolicitud';                               
+                window.location.href='../../Vistas/Vale/Detalle_Vale.php?detalle&id=$nSolicitud';      
+                                         
             }
             });
 

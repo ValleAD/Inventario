@@ -139,7 +139,7 @@ if (!isset($_SESSION['signin'])>0) {
 
                     $num_vale = $productos1['codVale'];
 
-                    $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM detalle_vale WHERE numero_vale = $num_vale GROUP by codigo";
+                    $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM detalle_vale WHERE numero_vale = $num_vale";
                     $result = mysqli_query($conn, $sql);
                     while ($productos = mysqli_fetch_array($result)){
                         $total = $productos['SUM(stock)'] * $productos['precio'];
@@ -308,7 +308,7 @@ if (!isset($_SESSION['signin'])>0) {
 </div>
 
 <?php } if(isset($_POST['solicitar'])){$cod=$_POST['bodega']?>
-<style type="text/css">section{display: none;}</style>
+<style type="text/css">.section{display: none;}</style>
 <section id="section">
        <form style="background: transparent;" method="POST" action="../../Controller/Vale/añadir_vale.php">
         <div class="card">
@@ -373,16 +373,19 @@ if (!isset($_SESSION['signin'])>0) {
                 <label>Observaciones (En qué se ocupará el bien entregado)</label>
                 <textarea rows="7" class="form-control" name="jus"  placeholder="" required id="floatingTextarea"></textarea>
             </div>
-            <button class="btn btn-success btn-lg" id="Guardar" style="width: 100%;" name="NuevaSoli">Guardar</button>  
-        </svg>
-    </button>
+         <button id="buscar1" type="submit" class="btn btn-lg btn-success" style="width: 49%;float: left; margin-right: 1%;font-size: 1.4em; text-align: center;" name="NuevaSoli">Guardar
 
+            </button>
+        </form>
+        <form method="POST" action="" style="margin:0;">
 
+            <button class="btn btn-danger btn-lg" id="" style="width: 50%;" name="detalle">Cancelar</button>
+            <input type="hidden" name="id" value="<?php echo $cod ?>">
+        </form>
 </div>
 </div>
 </div>
 </div>
-</form>
 </section>
 
 <?php 

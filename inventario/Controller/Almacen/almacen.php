@@ -24,24 +24,7 @@ include '../../Model/conexion.php';
       $dia              = $_POST['dia'];
       $mes              = $_POST['mes'];
       $año              = $_POST['año'];
-      $verificar_almacen =mysqli_query($conn, "SELECT * FROM detalle_almacen WHERE tb_almacen ='$solicitud_no' ");
-
-if (mysqli_num_rows($verificar_almacen)>0) {
-  echo "<script>
-    Swal.fire({
-      title:'NOTA IMPORTANTE:',
-      text:'El codigo ingresado debe se difernte al registrado',
-      icon:'warning',
-      allowOutsideClick: false
-    }).then((resultado) =>{
-if (resultado.value) {
-        window.location.href='../../Vistas/Almacen/form_almacen.php';                               
-               }
-                });
-
-        </script>";
-exit();
-}
+     
     //crud para guardar los productos en la tabla tb_vale
      $sql = "INSERT INTO tb_almacen (codAlmacen, departamento,encargado,estado,idusuario,Mes,Año) VALUES ('$solicitud_no', '$departamento','$usuario','Pendiente','$idusuario','$mes','$año')";
     $result = mysqli_query($conn, $sql); 
@@ -65,7 +48,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
  $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Detalles,idusuario,Mes,Año) VALUES('$nombre_articulo','Entrada Por Almacen','$u_m','$codigo_producto','$soli','$cost','$solicitud_no','$idusuario','$mes','$año')";
        $query1 = mysqli_query($conn, $sql1);
 }
-      if ($result || $result1 || $query || $query1) {
+      if ($result  || $query || $query1) {
         echo "<script>
     Swal.fire({
       title:'Realizado',
@@ -74,7 +57,7 @@ for($i = 0; $i < count($_POST['cod']); $i++)
       allowOutsideClick: false
     }).then((resultado) =>{
 if (resultado.value) {
-        window.location.href='../../Vistas/Almacen/dt_almacen.php';                               
+        window.location.href='../../Vistas/Almacen/dt_almacen.php?cod=$solicitud_no';                                
                }
                 });
 

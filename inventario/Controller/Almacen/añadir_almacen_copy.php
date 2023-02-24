@@ -66,7 +66,7 @@
               allowOutsideClick: false
               }).then((resultado) =>{
                 if (resultado.value) {
-                    window.location.href='../../Vistas/Almacen/solicitudes_almacen.php';                               
+                    window.location.href='../../Vistas/Almacen/solicitudes_almacen.php?detalle&id=$nSolicitud';                               
                 }
                 });
 
@@ -80,7 +80,7 @@
                   allowOutsideClick: false
                   }).then((resultado) =>{
                     if (resultado.value) {
-                        window.location.href='../../Vistas/Almacen/Detalle_Almacen.php';                               
+                        window.location.href='../../Vistas/Almacen/solicitudes_almacen.php';                               
                     }
                     });
 
@@ -103,7 +103,7 @@
                       allowOutsideClick: false
                       }).then((resultado) =>{
                         if (resultado.value) {
-                            window.location.href='../../Vistas/Bodega/solicitudes_almacen.php';                               
+                            window.location.href='../../Vistas/Almacen/solicitudes_almacen.php';                               
                         }
                         });
 

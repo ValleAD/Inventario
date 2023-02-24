@@ -459,27 +459,7 @@ if (isset($_POST['vale'])) {
         $u='Cliente';
     }
 
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila+2)->applyFromArray($tableHead);
-    $spreadsheet->getActiveSheet()->getStyle('C'.$fila+2)->applyFromArray($tableHead);
-    $sheet->setCellValue('A'.$fila +2 , "VISTA PREVIA:");
-    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':C'.$fila + 2);
 
-    $sheet->setCellValue('A'.$fila +3 ,"Cant Solicitada: ");
-    $sheet->setCellValue('C'.$fila +3 ,$final3);
-    $sheet->setCellValue('A'.$fila +4 ,"Costo Unitario: ");
-    $sheet->setCellValue('C'.$fila +4 ,$final9);
-    $sheet->setCellValue('A'.$fila +5 ,"SubTotal: ");
-    $sheet->setCellValue('C'.$fila +5 ,$final1);
-    
-    $spreadsheet->getActiveSheet()->getStyle('C'.$fila + 3)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
-
-    $spreadsheet->getActiveSheet()->getStyle('B'.$fila + 4 .':C'.$fila + 5)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
-
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($evenRow);
-
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($oddRow);
-    
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 5 .':C'.$fila + 5)->applyFromArray($subtotal);
 
 
     $sheet->setCellValue('A' .$fila, $productos['codVale']);
@@ -502,6 +482,26 @@ if (isset($_POST['vale'])) {
     //increment row
     $fila++;
 }
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 1 .':C'.$fila + 1)->applyFromArray($tableHead);
+$sheet->setCellValue('A'.$fila +1 , "VISTA PREVIA:");
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 1 .':C'.$fila + 1);
+
+$sheet->setCellValue('A'.$fila +2 ,"Cant Solicitada: ");
+$sheet->setCellValue('C'.$fila +2 ,$final2);
+$sheet->setCellValue('A'.$fila +3 ,"Costo Unitario: ");
+$sheet->setCellValue('C'.$fila +3 ,$final8);
+$sheet->setCellValue('A'.$fila +4 ,"SubTotal: ");
+$sheet->setCellValue('C'.$fila +4 ,$final);
+
+$spreadsheet->getActiveSheet()->getStyle('C'.$fila + 2)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+$spreadsheet->getActiveSheet()->getStyle('B'.$fila + 3 .':C'.$fila + 4)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 2 .':C'.$fila + 2)->applyFromArray($evenRow);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($oddRow);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($subtotal);
 $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 1 .':J'.$fila + 1)->applyFromArray($tableHead);
 $sheet->setCellValue('E'.$fila +1 , "VISTA PREVIA:");
 $spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 1 .':J'.$fila + 1);
@@ -565,46 +565,46 @@ $spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 9)->getAlignment()->setWrapT
 
 $spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 8 .':J'.$fila + 8)->applyFromArray($tableHead);
 $spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 9 .':J'.$fila + 9)->applyFromArray($oddRow);
-  
-    $sheet->setCellValue('A' .$fila + 11, "Solicita:");
-    $sheet->setCellValue('C' .$fila + 15, "Autoriza:");
-    $sheet->setCellValue('H' .$fila + 11, "Entrega:");
-    $sheet->setCellValue('A' .$fila + 12, "F. ________________");
 
-    $sheet->setCellValue('C' .$fila + 16, "F. ________________");
+$sheet->setCellValue('A' .$fila + 11, "Solicita:");
+$sheet->setCellValue('C' .$fila + 15, "Autoriza:");
+$sheet->setCellValue('H' .$fila + 11, "Entrega:");
+$sheet->setCellValue('A' .$fila + 12, "F. ________________");
 
-    $sheet->setCellValue('H' .$fila + 12, "F. ________________");
+$sheet->setCellValue('C' .$fila + 16, "F. ________________");
+
+$sheet->setCellValue('H' .$fila + 12, "F. ________________");
 
 
-    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 11 .':B'.$fila + 11);
-    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 12 .':B'.$fila + 12);
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 11 .':B'.$fila + 11);
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 12 .':B'.$fila + 12);
 
-    $spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 15 .':F'.$fila + 15);
-    $spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 16 .':F'.$fila + 16);
+$spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 15 .':F'.$fila + 15);
+$spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 16 .':F'.$fila + 16);
 
-    $spreadsheet->getActiveSheet()->mergeCells('H'.$fila+ 11 .':J'.$fila + 11);
-    $spreadsheet->getActiveSheet()->mergeCells('H'.$fila+ 12 .':J'.$fila + 12);
+$spreadsheet->getActiveSheet()->mergeCells('H'.$fila+ 11 .':J'.$fila + 11);
+$spreadsheet->getActiveSheet()->mergeCells('H'.$fila+ 12 .':J'.$fila + 12);
 
-    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
-    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +12)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+$spreadsheet->getActiveSheet()->getStyle('A'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+$spreadsheet->getActiveSheet()->getStyle('A'. $fila +12)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
 
-    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +8)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
-    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +9)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+$spreadsheet->getActiveSheet()->getStyle('A'. $fila +8)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+$spreadsheet->getActiveSheet()->getStyle('A'. $fila +9)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
 
-    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +8)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +9)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('A'. $fila +8)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('A'. $fila +9)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 
-    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +15)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +16)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('C'. $fila +15)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('C'. $fila +16)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
-    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +15)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +16)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('C'. $fila +15)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('C'. $fila +16)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 
-    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('H'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
-    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +11)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('H'. $fila +11)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 
 
 }
@@ -652,28 +652,6 @@ if (isset($_POST['bodega'])) {
     else {
         $u='Cliente';
     }
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila+2)->applyFromArray($tableHead);
-    $spreadsheet->getActiveSheet()->getStyle('C'.$fila+2)->applyFromArray($tableHead);
-    $sheet->setCellValue('A'.$fila +2 , "VISTA PREVIA:");
-    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':C'.$fila + 2);
-
-    $sheet->setCellValue('A'.$fila +3 ,"Cant Solicitada: ");
-    $sheet->setCellValue('C'.$fila +3 ,$final3);
-    $sheet->setCellValue('A'.$fila +4 ,"Costo Unitario: ");
-    $sheet->setCellValue('C'.$fila +4 ,$final9);
-    $sheet->setCellValue('A'.$fila +5 ,"SubTotal: ");
-    $sheet->setCellValue('C'.$fila +5 ,$final1);
-    
-    $spreadsheet->getActiveSheet()->getStyle('C'.$fila + 3)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
-
-    $spreadsheet->getActiveSheet()->getStyle('B'.$fila + 4 .':C'.$fila + 5)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
-
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($evenRow);
-
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($oddRow);
-    
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 5 .':C'.$fila + 5)->applyFromArray($subtotal);
-
 
     $sheet->setCellValue('A' .$fila, $productos['codBodega']);
     $sheet->setCellValue('B' .$fila, $productos['departamento']);
@@ -695,6 +673,26 @@ if (isset($_POST['bodega'])) {
     //increment row
     $fila++;
 }
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 1 .':C'.$fila + 1)->applyFromArray($tableHead);
+$sheet->setCellValue('A'.$fila +1 , "VISTA PREVIA:");
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 1 .':C'.$fila + 1);
+
+$sheet->setCellValue('A'.$fila +2 ,"Cant Solicitada: ");
+$sheet->setCellValue('C'.$fila +2 ,$final2);
+$sheet->setCellValue('A'.$fila +3 ,"Costo Unitario: ");
+$sheet->setCellValue('C'.$fila +3 ,$final8);
+$sheet->setCellValue('A'.$fila +4 ,"SubTotal: ");
+$sheet->setCellValue('C'.$fila +4 ,$final);
+
+$spreadsheet->getActiveSheet()->getStyle('C'.$fila + 2)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+$spreadsheet->getActiveSheet()->getStyle('B'.$fila + 3 .':C'.$fila + 4)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 2 .':C'.$fila + 2)->applyFromArray($evenRow);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($oddRow);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($subtotal);
 $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 1 .':J'.$fila + 1)->applyFromArray($tableHead);
 $sheet->setCellValue('E'.$fila +1 , "VISTA PREVIA:");
 $spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 1 .':J'.$fila + 1);
@@ -794,28 +792,6 @@ if (isset($_POST['vale1'])) {
         $u='Cliente';
     }
 
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila+2)->applyFromArray($tableHead);
-    $spreadsheet->getActiveSheet()->getStyle('C'.$fila+2)->applyFromArray($tableHead);
-    $sheet->setCellValue('A'.$fila +2 , "VISTA PREVIA:");
-    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':C'.$fila + 2);
-
-    $sheet->setCellValue('A'.$fila +3 ,"Cant Solicitada: ");
-    $sheet->setCellValue('C'.$fila +3 ,$final3);
-    $sheet->setCellValue('A'.$fila +4 ,"Costo Unitario: ");
-    $sheet->setCellValue('C'.$fila +4 ,$final9);
-    $sheet->setCellValue('A'.$fila +5 ,"SubTotal: ");
-    $sheet->setCellValue('C'.$fila +5 ,$final1);
-    
-    $spreadsheet->getActiveSheet()->getStyle('C'.$fila + 3)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
-
-    $spreadsheet->getActiveSheet()->getStyle('B'.$fila + 4 .':C'.$fila + 5)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
-
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($evenRow);
-
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($oddRow);
-    
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 5 .':C'.$fila + 5)->applyFromArray($subtotal);
-
 
     $sheet->setCellValue('A' .$fila, $productos['codVale']);
     $sheet->setCellValue('B' .$fila, $productos['departamento']);
@@ -837,6 +813,27 @@ if (isset($_POST['vale1'])) {
     //increment row
     $fila++;
 }
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 1 .':C'.$fila + 1)->applyFromArray($tableHead);
+$sheet->setCellValue('A'.$fila +1 , "VISTA PREVIA:");
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 1 .':C'.$fila + 1);
+
+$sheet->setCellValue('A'.$fila +2 ,"Cant Solicitada: ");
+$sheet->setCellValue('C'.$fila +2 ,$final2);
+$sheet->setCellValue('A'.$fila +3 ,"Costo Unitario: ");
+$sheet->setCellValue('C'.$fila +3 ,$final8);
+$sheet->setCellValue('A'.$fila +4 ,"SubTotal: ");
+$sheet->setCellValue('C'.$fila +4 ,$final);
+
+$spreadsheet->getActiveSheet()->getStyle('C'.$fila + 2)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+$spreadsheet->getActiveSheet()->getStyle('B'.$fila + 3 .':C'.$fila + 4)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 2 .':C'.$fila + 2)->applyFromArray($evenRow);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($oddRow);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($subtotal);
+
 $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 1 .':J'.$fila + 1)->applyFromArray($tableHead);
 $sheet->setCellValue('E'.$fila +1 , "VISTA PREVIA:");
 $spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 1 .':J'.$fila + 1);
@@ -898,46 +895,46 @@ $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 9 .':J'.$fila + 9);
 $spreadsheet->getActiveSheet()->getRowDimension($fila +8)->setRowHeight(25, 'pt');
 $spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 8 .':J'.$fila + 8)->applyFromArray($tableHead);
 $spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 9 .':J'.$fila + 9)->applyFromArray($oddRow);
-  
-    $sheet->setCellValue('A' .$fila + 11, "Solicita:");
-    $sheet->setCellValue('C' .$fila + 15, "Autoriza:");
-    $sheet->setCellValue('H' .$fila + 11, "Entrega:");
-    $sheet->setCellValue('A' .$fila + 12, "F. ________________");
 
-    $sheet->setCellValue('C' .$fila + 16, "F. ________________");
+$sheet->setCellValue('A' .$fila + 11, "Solicita:");
+$sheet->setCellValue('C' .$fila + 15, "Autoriza:");
+$sheet->setCellValue('H' .$fila + 11, "Entrega:");
+$sheet->setCellValue('A' .$fila + 12, "F. ________________");
 
-    $sheet->setCellValue('H' .$fila + 12, "F. ________________");
+$sheet->setCellValue('C' .$fila + 16, "F. ________________");
+
+$sheet->setCellValue('H' .$fila + 12, "F. ________________");
 
 
-    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 11 .':B'.$fila + 11);
-    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 12 .':B'.$fila + 12);
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 11 .':B'.$fila + 11);
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 12 .':B'.$fila + 12);
 
-    $spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 15 .':F'.$fila + 15);
-    $spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 16 .':F'.$fila + 16);
+$spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 15 .':F'.$fila + 15);
+$spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 16 .':F'.$fila + 16);
 
-    $spreadsheet->getActiveSheet()->mergeCells('H'.$fila+ 11 .':J'.$fila + 11);
-    $spreadsheet->getActiveSheet()->mergeCells('H'.$fila+ 12 .':J'.$fila + 12);
+$spreadsheet->getActiveSheet()->mergeCells('H'.$fila+ 11 .':J'.$fila + 11);
+$spreadsheet->getActiveSheet()->mergeCells('H'.$fila+ 12 .':J'.$fila + 12);
 
-    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
-    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +12)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+$spreadsheet->getActiveSheet()->getStyle('A'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+$spreadsheet->getActiveSheet()->getStyle('A'. $fila +12)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
 
-    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +8)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
-    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +9)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+$spreadsheet->getActiveSheet()->getStyle('A'. $fila +8)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+$spreadsheet->getActiveSheet()->getStyle('A'. $fila +9)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
 
-    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +8)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +9)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('A'. $fila +8)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('A'. $fila +9)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 
-    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +15)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +16)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('C'. $fila +15)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('C'. $fila +16)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
-    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +15)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +16)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('C'. $fila +15)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('C'. $fila +16)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 
-    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('H'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
-    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +11)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('H'. $fila +11)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 
 }
 
@@ -986,27 +983,7 @@ if (isset($_POST['bodega1'])) {
     else {
         $u='Cliente';
     }
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila+2)->applyFromArray($tableHead);
-    $spreadsheet->getActiveSheet()->getStyle('C'.$fila+2)->applyFromArray($tableHead);
-    $sheet->setCellValue('A'.$fila +2 , "VISTA PREVIA:");
-    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':C'.$fila + 2);
 
-    $sheet->setCellValue('A'.$fila +3 ,"Cant Solicitada: ");
-    $sheet->setCellValue('C'.$fila +3 ,$final3);
-    $sheet->setCellValue('A'.$fila +4 ,"Costo Unitario: ");
-    $sheet->setCellValue('C'.$fila +4 ,$final9);
-    $sheet->setCellValue('A'.$fila +5 ,"SubTotal: ");
-    $sheet->setCellValue('C'.$fila +5 ,$final1);
-    
-    $spreadsheet->getActiveSheet()->getStyle('C'.$fila + 3)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
-
-    $spreadsheet->getActiveSheet()->getStyle('B'.$fila + 4 .':C'.$fila + 5)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
-
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($evenRow);
-
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($oddRow);
-    
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 5 .':C'.$fila + 5)->applyFromArray($subtotal);
 
 
     $sheet->setCellValue('A' .$fila, $productos['codBodega']);
@@ -1029,6 +1006,26 @@ if (isset($_POST['bodega1'])) {
     //increment row
     $fila++;
 }
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 1 .':C'.$fila + 1)->applyFromArray($tableHead);
+$sheet->setCellValue('A'.$fila +1 , "VISTA PREVIA:");
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 1 .':C'.$fila + 1);
+
+$sheet->setCellValue('A'.$fila +2 ,"Cant Solicitada: ");
+$sheet->setCellValue('C'.$fila +2 ,$final2);
+$sheet->setCellValue('A'.$fila +3 ,"Costo Unitario: ");
+$sheet->setCellValue('C'.$fila +3 ,$final8);
+$sheet->setCellValue('A'.$fila +4 ,"SubTotal: ");
+$sheet->setCellValue('C'.$fila +4 ,$final);
+
+$spreadsheet->getActiveSheet()->getStyle('C'.$fila + 2)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+$spreadsheet->getActiveSheet()->getStyle('B'.$fila + 3 .':C'.$fila + 4)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 2 .':C'.$fila + 2)->applyFromArray($evenRow);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($oddRow);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($subtotal);
 $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 1 .':J'.$fila + 1)->applyFromArray($tableHead);
 $sheet->setCellValue('E'.$fila +1 , "VISTA PREVIA:");
 $spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 1 .':J'.$fila + 1);
@@ -1128,27 +1125,7 @@ if (isset($_POST['compra'])) {
     else {
         $u='Cliente';
     }
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila+2)->applyFromArray($tableHead);
-    $spreadsheet->getActiveSheet()->getStyle('C'.$fila+2)->applyFromArray($tableHead);
-    $sheet->setCellValue('A'.$fila +2 , "VISTA PREVIA:");
-    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':C'.$fila + 2);
 
-    $sheet->setCellValue('A'.$fila +3 ,"Cant Solicitada: ");
-    $sheet->setCellValue('C'.$fila +3 ,$final2);
-    $sheet->setCellValue('A'.$fila +4 ,"Costo Unitario: ");
-    $sheet->setCellValue('C'.$fila +4 ,$final8);
-    $sheet->setCellValue('A'.$fila +5 ,"SubTotal: ");
-    $sheet->setCellValue('C'.$fila +5 ,$final);
-    
-    $spreadsheet->getActiveSheet()->getStyle('C'.$fila + 3)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
-
-    $spreadsheet->getActiveSheet()->getStyle('B'.$fila + 4 .':C'.$fila + 5)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
-
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($evenRow);
-
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($oddRow);
-    
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 5 .':C'.$fila + 5)->applyFromArray($subtotal);
 
 
     $sheet->setCellValue('A' .$fila, $productos['nSolicitud']);
@@ -1171,6 +1148,26 @@ if (isset($_POST['compra'])) {
     //increment row
     $fila++;
 }
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 1 .':C'.$fila + 1)->applyFromArray($tableHead);
+$sheet->setCellValue('A'.$fila +1 , "VISTA PREVIA:");
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 1 .':C'.$fila + 1);
+
+$sheet->setCellValue('A'.$fila +2 ,"Cant Solicitada: ");
+$sheet->setCellValue('C'.$fila +2 ,$final2);
+$sheet->setCellValue('A'.$fila +3 ,"Costo Unitario: ");
+$sheet->setCellValue('C'.$fila +3 ,$final8);
+$sheet->setCellValue('A'.$fila +4 ,"SubTotal: ");
+$sheet->setCellValue('C'.$fila +4 ,$final);
+
+$spreadsheet->getActiveSheet()->getStyle('C'.$fila + 2)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+$spreadsheet->getActiveSheet()->getStyle('B'.$fila + 3 .':C'.$fila + 4)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 2 .':C'.$fila + 2)->applyFromArray($evenRow);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($oddRow);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($subtotal);
 $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 1 .':J'.$fila + 1)->applyFromArray($tableHead);
 $sheet->setCellValue('E'.$fila +1 , "VISTA PREVIA:");
 $spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 1 .':J'.$fila + 1);
@@ -1231,45 +1228,45 @@ $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 9 .':J'.$fila + 9);
 
 $spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 8 .':J'.$fila + 8)->applyFromArray($tableHead);
 $spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 9 .':J'.$fila + 9)->applyFromArray($oddRow);
-  
-    $sheet->setCellValue('A' .$fila + 11, "Solicita:");
-    $sheet->setCellValue('C' .$fila + 15, "Autoriza:");
-    $sheet->setCellValue('H' .$fila + 11, "Entrega:");
-    $sheet->setCellValue('A' .$fila + 12, "F. ________________");
 
-    $sheet->setCellValue('C' .$fila + 16, "F. ________________");
+$sheet->setCellValue('A' .$fila + 11, "Solicita:");
+$sheet->setCellValue('C' .$fila + 15, "Autoriza:");
+$sheet->setCellValue('H' .$fila + 11, "Entrega:");
+$sheet->setCellValue('A' .$fila + 12, "F. ________________");
 
-    $sheet->setCellValue('H' .$fila + 12, "F. ________________");
+$sheet->setCellValue('C' .$fila + 16, "F. ________________");
+
+$sheet->setCellValue('H' .$fila + 12, "F. ________________");
 
 
-    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 11 .':B'.$fila + 11);
-    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 12 .':B'.$fila + 12);
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 11 .':B'.$fila + 11);
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 12 .':B'.$fila + 12);
 
-    $spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 15 .':F'.$fila + 15);
-    $spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 16 .':F'.$fila + 16);
+$spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 15 .':F'.$fila + 15);
+$spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 16 .':F'.$fila + 16);
 
-    $spreadsheet->getActiveSheet()->mergeCells('H'.$fila+ 11 .':J'.$fila + 11);
-    $spreadsheet->getActiveSheet()->mergeCells('H'.$fila+ 12 .':J'.$fila + 12);
+$spreadsheet->getActiveSheet()->mergeCells('H'.$fila+ 11 .':J'.$fila + 11);
+$spreadsheet->getActiveSheet()->mergeCells('H'.$fila+ 12 .':J'.$fila + 12);
 
-    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
-    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +12)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+$spreadsheet->getActiveSheet()->getStyle('A'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+$spreadsheet->getActiveSheet()->getStyle('A'. $fila +12)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
 
-    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +8)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
-    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +9)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+$spreadsheet->getActiveSheet()->getStyle('A'. $fila +8)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+$spreadsheet->getActiveSheet()->getStyle('A'. $fila +9)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
 
-    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +8)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +9)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +15)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +16)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('A'. $fila +8)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('A'. $fila +9)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('C'. $fila +15)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('C'. $fila +16)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
-    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +15)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +16)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('C'. $fila +15)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('C'. $fila +16)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 
-    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('H'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
-    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +11)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('H'. $fila +11)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 
 }
 if (isset($_POST['compra1'])) {
@@ -1317,27 +1314,6 @@ if (isset($_POST['compra1'])) {
     else {
         $u='Cliente';
     }
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila+2)->applyFromArray($tableHead);
-    $spreadsheet->getActiveSheet()->getStyle('C'.$fila+2)->applyFromArray($tableHead);
-    $sheet->setCellValue('A'.$fila +2 , "VISTA PREVIA:");
-    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':C'.$fila + 2);
-
-    $sheet->setCellValue('A'.$fila +3 ,"Cant Solicitada: ");
-    $sheet->setCellValue('C'.$fila +3 ,$final3);
-    $sheet->setCellValue('A'.$fila +4 ,"Costo Unitario: ");
-    $sheet->setCellValue('C'.$fila +4 ,$final9);
-    $sheet->setCellValue('A'.$fila +5 ,"SubTotal: ");
-    $sheet->setCellValue('C'.$fila +5 ,$final1);
-    
-    $spreadsheet->getActiveSheet()->getStyle('C'.$fila + 3)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
-
-    $spreadsheet->getActiveSheet()->getStyle('B'.$fila + 4 .':C'.$fila + 5)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
-
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($evenRow);
-
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($oddRow);
-    
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 5 .':C'.$fila + 5)->applyFromArray($subtotal);
 
 
     $sheet->setCellValue('A' .$fila, $productos['nSolicitud']);
@@ -1360,6 +1336,26 @@ if (isset($_POST['compra1'])) {
     //increment row
     $fila++;
 }
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 1 .':C'.$fila + 1)->applyFromArray($tableHead);
+$sheet->setCellValue('A'.$fila +1 , "VISTA PREVIA:");
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 1 .':C'.$fila + 1);
+
+$sheet->setCellValue('A'.$fila +2 ,"Cant Solicitada: ");
+$sheet->setCellValue('C'.$fila +2 ,$final2);
+$sheet->setCellValue('A'.$fila +3 ,"Costo Unitario: ");
+$sheet->setCellValue('C'.$fila +3 ,$final8);
+$sheet->setCellValue('A'.$fila +4 ,"SubTotal: ");
+$sheet->setCellValue('C'.$fila +4 ,$final);
+
+$spreadsheet->getActiveSheet()->getStyle('C'.$fila + 2)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+$spreadsheet->getActiveSheet()->getStyle('B'.$fila + 3 .':C'.$fila + 4)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 2 .':C'.$fila + 2)->applyFromArray($evenRow);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($oddRow);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($subtotal);
 $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 1 .':J'.$fila + 1)->applyFromArray($tableHead);
 $sheet->setCellValue('E'.$fila +1 , "VISTA PREVIA:");
 $spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 1 .':J'.$fila + 1);
@@ -1419,46 +1415,46 @@ $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 9 .':J'.$fila + 9);
 
 $spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 8 .':J'.$fila + 8)->applyFromArray($tableHead);
 $spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 9 .':J'.$fila + 9)->applyFromArray($oddRow);
-  
-    $sheet->setCellValue('A' .$fila + 11, "Solicita:");
-    $sheet->setCellValue('C' .$fila + 15, "Autoriza:");
-    $sheet->setCellValue('H' .$fila + 11, "Entrega:");
-    $sheet->setCellValue('A' .$fila + 12, "F. ________________");
 
-    $sheet->setCellValue('C' .$fila + 16, "F. ________________");
+$sheet->setCellValue('A' .$fila + 11, "Solicita:");
+$sheet->setCellValue('C' .$fila + 15, "Autoriza:");
+$sheet->setCellValue('H' .$fila + 11, "Entrega:");
+$sheet->setCellValue('A' .$fila + 12, "F. ________________");
 
-    $sheet->setCellValue('H' .$fila + 12, "F. ________________");
+$sheet->setCellValue('C' .$fila + 16, "F. ________________");
+
+$sheet->setCellValue('H' .$fila + 12, "F. ________________");
 
 
-    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 11 .':B'.$fila + 11);
-    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 12 .':B'.$fila + 12);
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 11 .':B'.$fila + 11);
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 12 .':B'.$fila + 12);
 
-    $spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 15 .':F'.$fila + 15);
-    $spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 16 .':F'.$fila + 16);
+$spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 15 .':F'.$fila + 15);
+$spreadsheet->getActiveSheet()->mergeCells('C'.$fila+ 16 .':F'.$fila + 16);
 
-    $spreadsheet->getActiveSheet()->mergeCells('H'.$fila+ 11 .':J'.$fila + 11);
-    $spreadsheet->getActiveSheet()->mergeCells('H'.$fila+ 12 .':J'.$fila + 12);
+$spreadsheet->getActiveSheet()->mergeCells('H'.$fila+ 11 .':J'.$fila + 11);
+$spreadsheet->getActiveSheet()->mergeCells('H'.$fila+ 12 .':J'.$fila + 12);
 
-    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
-    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +12)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+$spreadsheet->getActiveSheet()->getStyle('A'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+$spreadsheet->getActiveSheet()->getStyle('A'. $fila +12)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
 
-    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +8)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
-    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +9)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+$spreadsheet->getActiveSheet()->getStyle('A'. $fila +8)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+$spreadsheet->getActiveSheet()->getStyle('A'. $fila +9)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
 
-    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +8)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-    $spreadsheet->getActiveSheet()->getStyle('A'. $fila +9)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('A'. $fila +8)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('A'. $fila +9)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 
-    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +15)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +16)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('C'. $fila +15)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('C'. $fila +16)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
-    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +15)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-    $spreadsheet->getActiveSheet()->getStyle('C'. $fila +16)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('C'. $fila +15)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('C'. $fila +16)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 
-    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
-    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('H'. $fila +11)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
-    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +11)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
-    $spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('H'. $fila +11)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+$spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 
 }
 if (isset($_POST['almacen'])) {
@@ -1505,27 +1501,7 @@ if (isset($_POST['almacen'])) {
     else {
         $u='Cliente';
     }
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila+2)->applyFromArray($tableHead);
-    $spreadsheet->getActiveSheet()->getStyle('C'.$fila+2)->applyFromArray($tableHead);
-    $sheet->setCellValue('A'.$fila +2 , "VISTA PREVIA:");
-    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':C'.$fila + 2);
 
-    $sheet->setCellValue('A'.$fila +3 ,"Cant Solicitada: ");
-    $sheet->setCellValue('C'.$fila +3 ,$final2);
-    $sheet->setCellValue('A'.$fila +4 ,"Costo Unitario: ");
-    $sheet->setCellValue('C'.$fila +4 ,$final);
-    $sheet->setCellValue('A'.$fila +5 ,"SubTotal: ");
-    $sheet->setCellValue('C'.$fila +5 ,$final);
-    
-    $spreadsheet->getActiveSheet()->getStyle('C'.$fila + 3)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
-
-    $spreadsheet->getActiveSheet()->getStyle('B'.$fila + 4 .':C'.$fila + 5)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
-
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($evenRow);
-
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($oddRow);
-    
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 5 .':C'.$fila + 5)->applyFromArray($subtotal);
 
 
     $sheet->setCellValue('A' .$fila, $productos['codAlmacen']);
@@ -1548,6 +1524,46 @@ if (isset($_POST['almacen'])) {
     //increment row
     $fila++;
 }
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 1 .':C'.$fila + 1)->applyFromArray($tableHead);
+$sheet->setCellValue('A'.$fila +1 , "VISTA PREVIA:");
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 1 .':C'.$fila + 1);
+
+$sheet->setCellValue('A'.$fila +2 ,"Cant Solicitada: ");
+$sheet->setCellValue('C'.$fila +2 ,$final2);
+$sheet->setCellValue('A'.$fila +3 ,"Costo Unitario: ");
+$sheet->setCellValue('C'.$fila +3 ,$final8);
+$sheet->setCellValue('A'.$fila +4 ,"SubTotal: ");
+$sheet->setCellValue('C'.$fila +4 ,$final);
+
+$spreadsheet->getActiveSheet()->getStyle('C'.$fila + 2)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+$spreadsheet->getActiveSheet()->getStyle('B'.$fila + 3 .':C'.$fila + 4)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 2 .':C'.$fila + 2)->applyFromArray($evenRow);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($oddRow);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($subtotal);
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 1 .':C'.$fila + 1)->applyFromArray($tableHead);
+$sheet->setCellValue('A'.$fila +1 , "VISTA PREVIA:");
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 1 .':C'.$fila + 1);
+
+$sheet->setCellValue('A'.$fila +2 ,"Cant Solicitada: ");
+$sheet->setCellValue('C'.$fila +2 ,$final2);
+$sheet->setCellValue('A'.$fila +3 ,"Costo Unitario: ");
+$sheet->setCellValue('C'.$fila +3 ,$final8);
+$sheet->setCellValue('A'.$fila +4 ,"SubTotal: ");
+$sheet->setCellValue('C'.$fila +4 ,$final);
+
+$spreadsheet->getActiveSheet()->getStyle('C'.$fila + 2)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+$spreadsheet->getActiveSheet()->getStyle('B'.$fila + 3 .':C'.$fila + 4)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 2 .':C'.$fila + 2)->applyFromArray($evenRow);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($oddRow);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($subtotal);
 $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 1 .':J'.$fila + 1)->applyFromArray($tableHead);
 $sheet->setCellValue('E'.$fila +1 , "VISTA PREVIA:");
 $spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 1 .':J'.$fila + 1);
@@ -1644,27 +1660,6 @@ while ($productos1 = mysqli_fetch_array($result1)){
     else {
         $u='Cliente';
     }
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila+2)->applyFromArray($tableHead);
-    $spreadsheet->getActiveSheet()->getStyle('C'.$fila+2)->applyFromArray($tableHead);
-    $sheet->setCellValue('A'.$fila +2 , "VISTA PREVIA:");
-    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':C'.$fila + 2);
-
-    $sheet->setCellValue('A'.$fila +3 ,"Cant Solicitada: ");
-    $sheet->setCellValue('C'.$fila +3 ,$final2);
-    $sheet->setCellValue('A'.$fila +4 ,"Costo Unitario: ");
-    $sheet->setCellValue('C'.$fila +4 ,$final8);
-    $sheet->setCellValue('A'.$fila +5 ,"SubTotal: ");
-    $sheet->setCellValue('C'.$fila +5 ,$final);
-    
-    $spreadsheet->getActiveSheet()->getStyle('C'.$fila + 3)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
-
-    $spreadsheet->getActiveSheet()->getStyle('B'.$fila + 4 .':C'.$fila + 5)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
-
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($evenRow);
-
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($oddRow);
-    
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 5 .':C'.$fila + 5)->applyFromArray($subtotal);
 
 
     $sheet->setCellValue('A' .$fila, $productos['codAlmacen']);
@@ -1687,6 +1682,26 @@ while ($productos1 = mysqli_fetch_array($result1)){
     //increment row
     $fila++;
 }
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 1 .':C'.$fila + 1)->applyFromArray($tableHead);
+$sheet->setCellValue('A'.$fila +1 , "VISTA PREVIA:");
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 1 .':C'.$fila + 1);
+
+$sheet->setCellValue('A'.$fila +2 ,"Cant Solicitada: ");
+$sheet->setCellValue('C'.$fila +2 ,$final2);
+$sheet->setCellValue('A'.$fila +3 ,"Costo Unitario: ");
+$sheet->setCellValue('C'.$fila +3 ,$final8);
+$sheet->setCellValue('A'.$fila +4 ,"SubTotal: ");
+$sheet->setCellValue('C'.$fila +4 ,$final);
+
+$spreadsheet->getActiveSheet()->getStyle('C'.$fila + 2)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+$spreadsheet->getActiveSheet()->getStyle('B'.$fila + 3 .':C'.$fila + 4)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 2 .':C'.$fila + 2)->applyFromArray($evenRow);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($oddRow);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($subtotal);
 $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 1 .':J'.$fila + 1)->applyFromArray($tableHead);
 $sheet->setCellValue('E'.$fila +1 , "VISTA PREVIA:");
 $spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 1 .':J'.$fila + 1);
@@ -1739,6 +1754,7 @@ while ($productos1 = mysqli_fetch_array($result1)){
         $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 6 .':F'.$fila + 6)->applyFromArray($Rechazado);
     }
 }
+
 }if (isset($_POST['circulante'])) {
     $vale = $_POST['circulante'];
     $sql = "SELECT * FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante WHERE tb_circulante='$vale'";
@@ -1783,27 +1799,6 @@ while ($productos1 = mysqli_fetch_array($result1)){
     else {
         $u='Cliente';
     }
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila+2)->applyFromArray($tableHead);
-    $spreadsheet->getActiveSheet()->getStyle('C'.$fila+2)->applyFromArray($tableHead);
-    $sheet->setCellValue('A'.$fila +2 , "VISTA PREVIA:");
-    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':C'.$fila + 2);
-
-    $sheet->setCellValue('A'.$fila +3 ,"Cant Solicitada: ");
-    $sheet->setCellValue('C'.$fila +3 ,$final2);
-    $sheet->setCellValue('A'.$fila +4 ,"Costo Unitario: ");
-    $sheet->setCellValue('C'.$fila +4 ,$final8);
-    $sheet->setCellValue('A'.$fila +5 ,"SubTotal: ");
-    $sheet->setCellValue('C'.$fila +5 ,$final);
-    
-    $spreadsheet->getActiveSheet()->getStyle('C'.$fila + 3)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
-
-    $spreadsheet->getActiveSheet()->getStyle('B'.$fila + 4 .':C'.$fila + 5)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
-
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($evenRow);
-
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($oddRow);
-    
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 5 .':C'.$fila + 5)->applyFromArray($subtotal);
 
 
     $sheet->setCellValue('A' .$fila, $productos['codCirculante']);
@@ -1824,6 +1819,26 @@ while ($productos1 = mysqli_fetch_array($result1)){
     //increment row
     $fila++;
 }
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 1 .':C'.$fila + 1)->applyFromArray($tableHead);
+$sheet->setCellValue('A'.$fila +1 , "VISTA PREVIA:");
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 1 .':C'.$fila + 1);
+
+$sheet->setCellValue('A'.$fila +2 ,"Cant Solicitada: ");
+$sheet->setCellValue('C'.$fila +2 ,$final2);
+$sheet->setCellValue('A'.$fila +3 ,"Costo Unitario: ");
+$sheet->setCellValue('C'.$fila +3 ,$final8);
+$sheet->setCellValue('A'.$fila +4 ,"SubTotal: ");
+$sheet->setCellValue('C'.$fila +4 ,$final);
+
+$spreadsheet->getActiveSheet()->getStyle('C'.$fila + 2)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+$spreadsheet->getActiveSheet()->getStyle('B'.$fila + 3 .':C'.$fila + 4)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 2 .':C'.$fila + 2)->applyFromArray($evenRow);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($oddRow);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($subtotal);
 $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 1 .':H'.$fila + 1)->applyFromArray($tableHead);
 $sheet->setCellValue('E'.$fila +1 , "VISTA PREVIA:");
 $spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 1 .':H'.$fila + 1);
@@ -1960,27 +1975,7 @@ if (isset($_POST['circulante1'])) {
     else {
         $u='Cliente';
     }
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila+2)->applyFromArray($tableHead);
-    $spreadsheet->getActiveSheet()->getStyle('C'.$fila+2)->applyFromArray($tableHead);
-    $sheet->setCellValue('A'.$fila +2 , "VISTA PREVIA:");
-    $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 2 .':C'.$fila + 2);
 
-    $sheet->setCellValue('A'.$fila +3 ,"Cant Solicitada: ");
-    $sheet->setCellValue('C'.$fila +3 ,$final2);
-    $sheet->setCellValue('A'.$fila +4 ,"Costo Unitario: ");
-    $sheet->setCellValue('C'.$fila +4 ,$final8);
-    $sheet->setCellValue('A'.$fila +5 ,"SubTotal: ");
-    $sheet->setCellValue('C'.$fila +5 ,$final);
-    
-    $spreadsheet->getActiveSheet()->getStyle('C'.$fila + 3)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
-
-    $spreadsheet->getActiveSheet()->getStyle('B'.$fila + 4 .':C'.$fila + 5)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
-
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($evenRow);
-
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($oddRow);
-    
-    $spreadsheet->getActiveSheet()->getStyle('A'.$fila + 5 .':C'.$fila + 5)->applyFromArray($subtotal);
 
 
     $sheet->setCellValue('A' .$fila, $productos['codCirculante']);
@@ -2001,6 +1996,28 @@ if (isset($_POST['circulante1'])) {
     //increment row
     $fila++;
 }
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 1 .':C'.$fila + 1)->applyFromArray($tableHead);
+$sheet->setCellValue('A'.$fila +1 , "VISTA PREVIA:");
+$spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 1 .':C'.$fila + 1);
+
+$sheet->setCellValue('A'.$fila +2 ,"Cant Solicitada: ");
+$sheet->setCellValue('C'.$fila +2 ,$final2);
+$sheet->setCellValue('A'.$fila +3 ,"Costo Unitario: ");
+$sheet->setCellValue('C'.$fila +3 ,$final8);
+$sheet->setCellValue('A'.$fila +4 ,"SubTotal: ");
+$sheet->setCellValue('C'.$fila +4 ,$final);
+
+$spreadsheet->getActiveSheet()->getStyle('C'.$fila + 2)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_NUMBER_COMMA_SEPARATED1);
+
+$spreadsheet->getActiveSheet()->getStyle('B'.$fila + 3 .':C'.$fila + 4)->getNumberFormat()->setFormatCode(\PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 2 .':C'.$fila + 2)->applyFromArray($evenRow);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 3 .':C'.$fila + 3)->applyFromArray($oddRow);
+
+$spreadsheet->getActiveSheet()->getStyle('A'.$fila + 4 .':C'.$fila + 4)->applyFromArray($subtotal);
+
+
 $spreadsheet->getActiveSheet()->getStyle('E'.$fila+ 1 .':H'.$fila + 1)->applyFromArray($tableHead);
 $sheet->setCellValue('E'.$fila +1 , "VISTA PREVIA:");
 $spreadsheet->getActiveSheet()->mergeCells('E'.$fila+ 1 .':H'.$fila + 1);

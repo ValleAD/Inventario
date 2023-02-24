@@ -19,24 +19,7 @@ include '../../Model/conexion.php';
       $dia              = $_POST['dia'];
       $mes              = $_POST['mes'];
       $año              = $_POST['año'];
-  $verificar_circulante =mysqli_query($conn, "SELECT * FROM detalle_circulante WHERE tb_circulante ='$solicitud_no' ");
 
-if (mysqli_num_rows($verificar_circulante)>0) {
-         echo "<script>
-    Swal.fire({
-      title:'NOTA IMPORTANTE:',
-      text:'Este Producto ya esta Registrado, intente con otro diferente',
-      icon:'warning',
-      allowOutsideClick: false
-    }).then((resultado) =>{
-if (resultado.value) {
-        window.location.href='../../Vistas/Circulante/form_circulante1.php';                               
-               }
-                });
-
-        </script>";
-exit();
-}
     //crud para guardar los productos en la tabla tb_vale
     $sql = "INSERT INTO tb_circulante (codCirculante,estado,idusuario,Mes,Año) VALUES ('$solicitud_no','Pendiente','$idusuario','$mes','$año')";
     $result = mysqli_query($conn, $sql); 
@@ -67,7 +50,7 @@ for($i = 0; $i < count($_POST['desc']); $i++)
       allowOutsideClick: false
     }).then((resultado) =>{
 if (resultado.value) {
-        window.location.href='../../Vistas/Circulante/dt_circulante.php';                               
+        window.location.href='../../Vistas/Circulante/dt_circulante.php?cod=$solicitud_no';                                
                }
                 });
 
