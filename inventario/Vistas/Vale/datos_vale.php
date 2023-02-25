@@ -139,7 +139,7 @@ if (!isset($_SESSION['signin'])>0) {
 
                     $num_vale = $productos1['codVale'];
 
-                    $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM detalle_vale WHERE numero_vale = $num_vale";
+                    $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM detalle_vale WHERE numero_vale = $num_vale Group by codigo";
                     $result = mysqli_query($conn, $sql);
                     while ($productos = mysqli_fetch_array($result)){
                         $total = $productos['SUM(stock)'] * $productos['precio'];

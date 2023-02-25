@@ -114,7 +114,7 @@ if (!isset($_SESSION['signin'])>0) {
 
                     $num_vale = $productos1['codCirculante'];
 
-                    $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM detalle_circulante WHERE tb_circulante = $num_vale";
+                    $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM detalle_circulante WHERE tb_circulante = $num_vale Group by codigo";
                     $result = mysqli_query($conn, $sql);
                     while ($productos = mysqli_fetch_array($result)){
                         $total = $productos['SUM(stock)'] * $productos['precio'];
@@ -279,7 +279,7 @@ if (!isset($_SESSION['signin'])>0) {
 <?php } if(isset($_POST['solicitar'])){$cod=$_POST['bodega']?>
 <style type="text/css">.section{display: none;}</style>
 <section id="section">
-   <form style="background: transparent;" method="POST" action="../../Controller/Circulante/circulante.php">
+   <form style="background: transparent;" method="POST" action="../../Controller/Circulante/añadir_circulante.php">
     <div class="card">
         <div class="card-body">
             <div class="row">

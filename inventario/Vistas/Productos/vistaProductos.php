@@ -178,7 +178,7 @@ if (isset($_GET['id'])){
     } 
 </style>
 </table>
-<section  style="background: rgba(255, 255, 255, 0.9);margin: 7%1%1%1%;padding: 1%; border-radius: 15px;">
+<section  style="background: rgba(255, 255, 255, 0.9);margin: 5%1%1%1%;padding: 1%; border-radius: 15px;">
     <h2  class="text-center">Inventario de Productos</h2>
     <br>
     <div class="row">
@@ -330,7 +330,7 @@ if (isset($_GET['id'])){
             <?php if ($cliente=="egchoto") { ?>
                 <button title="Respaldo de la base de datos completa" id="b" onclick="return Exportar_bd()" class="btn btn-outline-primary"  style="position: initial; float: right; margin-top: -3%; margin-right: 15px;">Exportar bd</button>
             <?php } ?>
-            <a  href="../Unidad/unidad_medidad.php" class="btn btn-outline-secondary" id="b" style="position: initial; float: right;margin-bottom: 1%;margin-top: -3%; margin-right: 15px;">Unidad de medidas</a>
+            <a  href="../Unidad/unidad_medidad.php" class="btn btn-outline-secondary" id="b" style="position: initial; float: right;margin-bottom: 1%;margin-top: -3%; margin-right: 9%;">Unidad de medidas</a>
         </div>
     </div>
 </div>

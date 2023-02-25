@@ -125,10 +125,10 @@ if (!isset($_SESSION['signin'])>0) {
                         $num_vale = $productos1['codCirculante'];
 
                         if ($tipo_usuario==1) {
-                            $sql = "SELECT * FROM `Detalle_circulante` D JOIN `tb_circulante` V ON D.tb_circulante=V.codCirculante WHERE tb_circulante = $num_vale";
+                            $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM `Detalle_circulante` D JOIN `tb_circulante` V ON D.tb_circulante=V.codCirculante WHERE tb_circulante = $num_vale";
                         }
                         if ($tipo_usuario==2) {
-                            $sql = "SELECT * FROM `Detalle_circulante` D JOIN `tb_circulante` V ON D.tb_circulante=V.codCirculante WHERE V.idusuario='$idusuario' and tb_circulante='$num_vale' ";
+                            $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM `Detalle_circulante` D JOIN `tb_circulante` V ON D.tb_circulante=V.codCirculante WHERE V.idusuario='$idusuario' and tb_circulante='$num_vale' ";
                         }
                         $result1 = mysqli_query($conn, $sql);
                         if (!$result1) {?>
@@ -139,13 +139,13 @@ if (!isset($_SESSION['signin'])>0) {
                         }else{
                             while ($productos = mysqli_fetch_array($result1)){
                                 if ($estado="Pendiente") {  
-                                    $total = $productos['stock'] * $productos['precio'];
+                                    $total = $productos['SUM(stock)'] * $productos['precio'];
                                 }if ($estado="Rechazado") {
 
-                                    $total = $productos['stock'] * $productos['precio'];
+                                    $total = $productos['SUM(stock)'] * $productos['precio'];
                                 }if ($estado=="Aprobado") {
 
-                                    $total = $productos['cantidad_despachada'] * $productos['precio'];
+                                    $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
                                 }
                                 $final += $total;
                                 $total1= number_format($total, 2, ".",",");
@@ -157,8 +157,8 @@ if (!isset($_SESSION['signin'])>0) {
 
                                 $precio   =    $productos['precio'];
                                 $precio2  =    number_format($precio, 2,".",",");  
-                                $cant_aprobada=$productos['stock'];
-                                $cantidad_despachada=$productos['cantidad_despachada'];
+                                $cant_aprobada=$productos['SUM(stock)'];
+                                $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
                                 $stock=number_format($cant_aprobada, 2,".",",");
                                 $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
@@ -357,7 +357,7 @@ if (!isset($_SESSION['signin'])>0) {
 
                  $num_vale = $productos1['codCirculante'];
 
-                 $sql = "SELECT * FROM Detalle_circulante WHERE tb_circulante = $num_vale ";
+                 $sql = "SELECT * FROM Detalle_circulante WHERE tb_circulante = $num_vale Group by codigo";
                  $result = mysqli_query($conn, $sql);
                  while ($productos = mysqli_fetch_array($result)){
 
@@ -479,13 +479,13 @@ if (!isset($_SESSION['signin'])>0) {
 <?php  if(isset($_POST['solicitar'])){$cod=$_POST['bodega']?>
 <style type="text/css">#section{display: none;}</style>
 <section>
-    <form style="background: transparent;" method="POST" action="../../Controller/Vale/añadir_vale.php">
+    <form style="background: transparent;" method="POST" action="../../Controller/Circulante/añadir_circulante.php">
         <div class="card">
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4" style="position: initial">
                         <label id="inp1"><b>N° Circulante</b></label>   
-                        <input id="busq"class="form-control" readonly  type="number" name="tb_circulante" value="<?php echo $cod ?>" required >
+                        <input id="busq"class="form-control" readonly  type="number" name="solicitud_no" value="<?php echo $cod ?>" required >
                         <section id="resultado" style="margin: 0px;background: transparent;width: 100%;"></section>
                     </div>
 

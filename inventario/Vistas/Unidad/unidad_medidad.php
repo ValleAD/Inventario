@@ -99,7 +99,7 @@ if (!isset($_SESSION['signin'])>0) {
 } 
 ?>
 
-<section style="margin:1%;padding: 1%; border-radius: 5px; background: white; ">
+<section style="margin-top:-5%;margin-left: 1%;margin-right: 1%;margin-bottom: 1%; padding: 1%; border-radius: 5px; background: white; ">
     <h2  class="text-center ">Unidades Del Sistema</h2><br>
     <div class="card">
         <div class="card-body">
@@ -111,7 +111,7 @@ if (!isset($_SESSION['signin'])>0) {
                     <div class="modal-dialog">
                         <div class="modal-content" style="background-color: hsla(0.5turn , 100% , 0.1% , 0.5 );color: white; position: initial; z-index: 1000px;">
                             <div class="modal-header">
-                                <h5 class="modal-title" style="color:white;">Nueva Unidad de Médida</h5>
+          r                      <h5 class="modal-title" style="color:white;">Nueva Unidad de Médida</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">×</span>
                               </button>

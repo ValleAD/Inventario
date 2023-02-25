@@ -159,10 +159,10 @@ $final = 0;
 
 $solicitud = $productos1['nSolicitud'];
 
-  $sql = "SELECT * FROM detalle_compra WHERE solicitud_compra = $solicitud";
+  $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM detalle_compra WHERE solicitud_compra = $solicitud Group by codigo";
     $result = mysqli_query($conn, $sql);
 while ($productos = mysqli_fetch_array($result)){
-    $total = $productos['stock'] * $productos['precio'];
+    $total = $productos['SUM(stock)'] * $productos['precio'];
        $final += $total;
        $total1= number_format($total, 2, ".",",");
       $final1=number_format($final, 2, ".",",");
@@ -173,8 +173,8 @@ while ($productos = mysqli_fetch_array($result)){
 
         $precio   =    $productos['precio'];
         $precio2  =    number_format($precio, 2,".",",");  
-        $cant_aprobada=$productos['stock'];
-        $cantidad_despachada=$productos['cantidad_despachada'];
+        $cant_aprobada=$productos['SUM(stock)'];
+        $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
         $stock=number_format($cant_aprobada, 2,".",",");
         $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 

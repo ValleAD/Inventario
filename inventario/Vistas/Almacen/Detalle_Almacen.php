@@ -91,7 +91,7 @@ if (!isset($_SESSION['signin'])>0) {
                 </div>
 
                 <div class="col-md-2" style="position: initial">
-                <label style="font-weight: bold;">N° de Vale:</label>
+                <label style="font-weight: bold;">N° de Almacen:</label>
                 <p>' .$productos1['codAlmacen']. '</p>
                 </div>
 
@@ -167,10 +167,10 @@ if (!isset($_SESSION['signin'])>0) {
                     $num_vale = $productos1['codAlmacen'];
 
                     if ($tipo_usuario==1) {
-                        $sql = "SELECT * FROM `detalle_almacen` D JOIN `tb_almacen` V ON D.tb_almacen=V.codAlmacen WHERE tb_almacen = $num_vale";
+                        $sql = "SELECT codigo,SUM(cantidad_solicitada),SUM(cantidad_despachada),precio,nombre,unidad_medida FROM `detalle_almacen` D JOIN `tb_almacen` V ON D.tb_almacen=V.codAlmacen WHERE tb_almacen = $num_vale Group by codigo";
                     }
                     if ($tipo_usuario==2) {
-                        $sql = "SELECT * FROM `detalle_almacen` D JOIN `tb_almacen` V ON D.tb_almacen=V.codAlmacen WHERE V.idusuario='$idusuario' and tb_almacen='$num_vale' ";
+                        $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,nombre,unidad_medida FROM `detalle_almacen` D JOIN `tb_almacen` V ON D.tb_almacen=V.codAlmacen WHERE V.idusuario='$idusuario' and tb_almacen='$num_vale'  Group by codigo";
                     }
                     $result1 = mysqli_query($conn, $sql);
                     if (!$result1) {?>
@@ -181,13 +181,13 @@ if (!isset($_SESSION['signin'])>0) {
                     }else{
                         while ($productos = mysqli_fetch_array($result1)){
                             if ($estado="Pendiente") {  
-                                $total = $productos['cantidad_solicitada'] * $productos['precio'];
+                                $total = $productos['SUM(cantidad_solicitada)'] * $productos['precio'];
                             }if ($estado="Rechazado") {
 
-                                $total = $productos['cantidad_solicitada'] * $productos['precio'];
+                                $total = $productos['SUM(cantidad_solicitada)'] * $productos['precio'];
                             }if ($estado=="Aprobado") {
 
-                                $total = $productos['cantidad_despachada'] * $productos['precio'];
+                                $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
                             }
                             $final += $total;
                             $total1= number_format($total, 2, ".",",");
@@ -199,8 +199,8 @@ if (!isset($_SESSION['signin'])>0) {
 
                             $precio   =    $productos['precio'];
                             $precio2  =    number_format($precio, 2,".",",");  
-                            $cant_aprobada=$productos['cantidad_solicitada'];
-                            $cantidad_despachada=$productos['cantidad_despachada'];
+                            $cant_aprobada=$productos['SUM(cantidad_solicitada)'];
+                            $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
                             $stock=number_format($cant_aprobada, 2,".",",");
                             $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
@@ -248,8 +248,8 @@ if (!isset($_SESSION['signin'])>0) {
                 <div class="col-md-12">
                     <div style="position: initial;" class="btn-group my-3 mx-2" role="group" aria-label="Basic outlined example">
 
-                        <form method="POST" action="../../Plugin/Imprimir/Vale/vale.php" target="_blank">
-                            <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codAlmacen']?>" name="vale">
+                        <form method="POST" action="../../Plugin/Imprimir/Almacen/almacen.php" target="_blank">
+                            <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codAlmacen']?>" name="num_sol">
 
                             <input type="hidden" name="cod" value="<?php echo $codigo ?>">
 
@@ -262,8 +262,8 @@ if (!isset($_SESSION['signin'])>0) {
 
                             </button>
                         </form>
-                        <form method="POST" action="../../Plugin/PDF/Vale/pdf_vale.php" target="_blank" class="ml-1">
-                            <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codAlmacen']?>" name="vale">
+                        <form method="POST" action="../../Plugin/PDF/Almacen/pdf_almacen.php" target="_blank" class="ml-1">
+                            <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codAlmacen']?>" name="num_sol">
                             <input type="hidden" name="cod" value="<?php echo $codigo ?>">
 
                             <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
@@ -276,7 +276,7 @@ if (!isset($_SESSION['signin'])>0) {
                             </button>
                         </form>
                         <form method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php" class="ml-1">
-                            <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codAlmacen']?>" name="vale">
+                            <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codAlmacen']?>" name="almacen">
 
                             <input type="hidden" name="cod" value="<?php echo $codigo ?>">
                             <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>

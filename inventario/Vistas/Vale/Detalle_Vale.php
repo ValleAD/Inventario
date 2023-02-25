@@ -170,10 +170,10 @@ if (!isset($_SESSION['signin'])>0) {
                     $num_vale = $productos1['codVale'];
 
                     if ($tipo_usuario==1) {
-                        $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE numero_vale = $num_vale";
+                        $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE numero_vale = $num_vale Group by codigo";
                     }
                     if ($tipo_usuario==2) {
-                        $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE V.idusuario='$idusuario' and numero_vale='$num_vale' ";
+                        $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE V.idusuario='$idusuario' and numero_vale='$num_vale'  Group by codigo";
                     }
                     $result1 = mysqli_query($conn, $sql);
                     if (!$result1) {?>
