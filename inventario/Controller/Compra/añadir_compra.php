@@ -90,7 +90,7 @@ $result = mysqli_query($conn, $insert);
  $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Detalles,idusuario,Mes,Año) VALUES('$Descripción','Solicitud compra','$u_m','$codigo_producto','$cantidad','$cost','$nSolicitud','$idusuario','$mes','$año')";
 
        $query1 = mysqli_query($conn, $sql1);
-      if ($result || $result1 || $query || $query1) {
+      if ($result || $query || $query1) {
                  echo "<script>
     Swal.fire({
       title:'Realizado',
@@ -99,7 +99,7 @@ $result = mysqli_query($conn, $insert);
       allowOutsideClick: false
     }).then((resultado) =>{
 if (resultado.value) {
-        window.location.href='../../Vistas/Compra/dt_compra.php';                               
+        window.location.href='../../Vistas/Compra/dt_compra.php?cod=$nSolicitud';                              
                }
                 });
 

@@ -211,16 +211,10 @@ if (!isset($_SESSION['signin'])>0) {
 
                         </button>
                     </form>
-                    <form method="POST" action="../../Plugin/PDF/Almacen/pdf_almacen.php" target="_blank">
+                    <form method="GET" action="../../Plugin/PDF/Almacen/pdf_almacen.php" target="_blank">
                         <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codAlmacen']?>" name="num_sol">
 
-                        <input type="hidden" name="cod" value="<?php echo $codigo ?>">
-                        <input type="hidden" name="tot" value="<?php echo $total1 ?>">
-                        <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
-
-                        <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
-
-                        <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
+                        <button style="position: initial;" type="submit" class="btn btn-outline-primary">
                             <svg class="bi" width="20" height="20" fill="currentColor">
                                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                             </svg>

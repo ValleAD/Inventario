@@ -1,4 +1,4 @@
-<?php
+    <?php
 session_start();
 if (!isset($_SESSION['signin'])>0) {
     # code...
@@ -111,7 +111,7 @@ if (!isset($_SESSION['signin'])>0) {
                     <div class="col-md-2" style="position: initial">
                         <label style="font-weight: bold;">Estado:</label>
                         <div style="position:initial;" class="input-group">
-                         <label class="input-group-text" for="inputGroupSelect01">
+                           <label class="input-group-text" for="inputGroupSelect01">
                             <?php  if($productos1['estado']=='Pendiente') { ?>
                                 <svg class="bi" width="20" height="20" fill="currentColor">
                                     <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#question-octagon-fill"/>
@@ -130,16 +130,16 @@ if (!isset($_SESSION['signin'])>0) {
                         if($productos1['estado']=='Pendiente') {
                             echo ' style="background-color:green ;position: initial;width:70%; border-radius:5px;text-align:center; color: white;"';
                         }else if($productos1['estado']=='Aprobado') {
-                         echo ' style="background-color:blueviolet ;position: initial;width:70%; border-radius:5px;text-align:center; color: white;"';
-                     }else if($productos1['estado']=='Rechazado') {
-                         echo ' style="background-color:red ;style="position: initial;width:70%; border-radius:5px;text-align:center; color: white;"';
-                     }
-                 ?> class="form-control" type="text" name="estado" readonly value="<?php echo $productos1['estado'] ?>"><br>
+                           echo ' style="background-color:blueviolet ;position: initial;width:70%; border-radius:5px;text-align:center; color: white;"';
+                       }else if($productos1['estado']=='Rechazado') {
+                           echo ' style="background-color:red ;style="position: initial;width:70%; border-radius:5px;text-align:center; color: white;"';
+                       }
+                   ?> class="form-control" type="text" name="estado" readonly value="<?php echo $productos1['estado'] ?>"><br>
 
-             </div>
-         </div>
-     </div>
- </div>  </div>
+               </div>
+           </div>
+       </div>
+   </div>  </div>
 </div>
 
 <br>
@@ -168,12 +168,11 @@ if (!isset($_SESSION['signin'])>0) {
                     <?php 
 
                     $num_vale = $productos1['codVale'];
-
                     if ($tipo_usuario==1) {
-                        $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE numero_vale = $num_vale Group by codigo";
+                        $sql = "SELECT  * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE numero_vale = $num_vale ";
                     }
                     if ($tipo_usuario==2) {
-                        $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE V.idusuario='$idusuario' and numero_vale='$num_vale'  Group by codigo";
+                        $sql = "SELECT  * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE V.idusuario='$idusuario' and numero_vale='$num_vale'";
                     }
                     $result1 = mysqli_query($conn, $sql);
                     if (!$result1) {?>
@@ -218,30 +217,24 @@ if (!isset($_SESSION['signin'])>0) {
 
                             $final8 += $precio;
                             $final9   =    number_format($final8, 2, ".",",");?>
-                            <style type="text/css">
-                             #td{
-                                display: none;
-                            }
 
-
-                        </style> 
                         <tr>
-                           <td  data-label="Código"><?php echo $productos['codigo'] ?></td>
-                           <td  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
-                           <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
-                           <td  data-label="Cantidad"><?php echo $stock ?></td>
-                           <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
-                           <td  data-label="Costo unitario"><?php echo $precio2 ?></td>
-                           <td  data-label="total"><?php echo $total1 ?></td>
-                       </tr>
+                         <td  data-label="Código"><?php echo $productos['codigo'] ?></td>
+                         <td  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
+                         <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
+                         <td  data-label="Cantidad"><?php echo $stock ?></td>
+                         <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
+                         <td  data-label="Costo unitario"><?php echo $precio2 ?></td>
+                         <td  data-label="total"><?php echo $total1 ?></td>
+                     </tr>
 
-                   <?php }
-               }
-               ?> 
-           </tbody>
+                 <?php }
+             }
+             ?> 
+         </tbody>
 
-       </table>
-   </div>
+     </table>
+ </div>
 </div>
 </div>
 <div class="col-md-3">
@@ -265,13 +258,13 @@ if (!isset($_SESSION['signin'])>0) {
 
                             </button>
                         </form>
-                        <form method="POST" action="../../Plugin/PDF/Vale/pdf_vale.php" target="_blank" class="ml-1">
+                        <form method="GET" action="../../Plugin/PDF/Vale/pdf_vale.php" target="_blank" class="ml-1">
                             <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
                             <input type="hidden" name="cod" value="<?php echo $codigo ?>">
 
                             <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
 
-                            <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado" >
+                            <button style="position: initial;" type="submit" class="btn btn-outline-primary" >
                                 <svg class="bi" width="20" height="20" fill="currentColor">
                                     <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                                 </svg>
@@ -293,9 +286,9 @@ if (!isset($_SESSION['signin'])>0) {
                             <form method="POST" action="">
                                 <?php
                                 if($productos1['estado']=='Pendiente') {
-                                 ?>  
-                                 <button  type="submit" name="submit"class="btn btn-danger" name="estado" title=" Cambiar Estado">
-                                     <svg class="bi" width="20" height="20" fill="currentColor">
+                                   ?>  
+                                   <button  type="submit" name="submit"class="btn btn-danger" name="estado" title=" Cambiar Estado">
+                                       <svg class="bi" width="20" height="20" fill="currentColor">
                                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#upload"/>
                                     </svg>
                                 </button>
@@ -349,7 +342,7 @@ if (!isset($_SESSION['signin'])>0) {
     $sql = "SELECT * FROM tb_vale WHERE codVale = $cod_vale";
     $result = mysqli_query($conn, $sql);
     while ($productos1 = mysqli_fetch_array($result)){
-     if ($productos1['observaciones']=="") {
+       if ($productos1['observaciones']=="") {
         $jus = 'Sin observación por el momento';
         
     }else{
@@ -422,13 +415,13 @@ if (!isset($_SESSION['signin'])>0) {
                   </tr>
               </thead>
               <tbody>
-                 <?php            
+               <?php            
 
-                 $num_vale = $productos1['codVale'];
+               $num_vale = $productos1['codVale'];
 
-                 $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale ";
-                 $result = mysqli_query($conn, $sql);
-                 while ($productos = mysqli_fetch_array($result)){
+               $sql = "SELECT * FROM detalle_vale WHERE numero_vale = $num_vale ";
+               $result = mysqli_query($conn, $sql);
+               while ($productos = mysqli_fetch_array($result)){
 
                   $total = $productos['stock'] * $productos['precio'];
                   $final += $total;
@@ -556,73 +549,73 @@ if (!isset($_SESSION['signin'])>0) {
                     <label id="inp1"><b>Departamento que solicita</b></label>   
                     <div class="div d" > 
 
-                     <?php  
-                     $sql = "SELECT * FROM selects_departamento";
-                     $result = mysqli_query($conn, $sql);
-                     while ($productos = mysqli_fetch_array($result)){ ?>  
-                       <input class="p2" required  id="<?php echo $productos['id'] ?>" type="radio" name="depto" value="<?php echo $productos['departamento'] ?>"> <label  style="width: 100%;" id="label1" for="<?php echo $productos['id'] ?>" > <?php echo $productos['departamento'] ?></label><br>
-                   <?php }?>
-               </div>   
-               <br>  
-               <p id="tr" align="right" class="p">Mostrar todos
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                    <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/></svg></p>
-                    <p id="tr" align="right" class="p1">Ocultar
-                        <svg class="bi" width="20" height="20" fill="currentColor">
-                            <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/></svg></p>
-                        </div>
-                        <div class="col-md-4" style="position: initial">
-                            <label id="inp1"><b>Vale N°</b></label>   
-                            <input id="busq"class="form-control" readonly  type="number" name="numero_vale" value="<?php echo $cod ?>" required >
-                            <section id="resultado" style="margin: 0px;background: transparent;width: 100%;"></section>
-                        </div>
-                        <div class="col-md-4" style="position: initial">
-                            <label id="inp1"><b>Nombre de la persona</b></label>
-                            <?php     $cliente =$_SESSION['signin'];
-                            $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
-                            while ($consulta =mysqli_fetch_array($data)) {
-                               ?>
-                               <label><b>Encargado</b></label>
-                               <input style="cursor: not-allowed; color: black;"  class="form-control" type="text" name="usuario" id="como3" required readonly value="<?php  echo $consulta['firstname']?> <?php  echo $consulta['lastname']?>">
-                               <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="<?php  echo $consulta['id']?>"/>
-                               <br>
-                           <?php }?> 
+                       <?php  
+                       $sql = "SELECT * FROM selects_departamento";
+                       $result = mysqli_query($conn, $sql);
+                       while ($productos = mysqli_fetch_array($result)){ ?>  
+                         <input class="p2" required  id="<?php echo $productos['id'] ?>" type="radio" name="depto" value="<?php echo $productos['departamento'] ?>"> <label  style="width: 100%;" id="label1" for="<?php echo $productos['id'] ?>" > <?php echo $productos['departamento'] ?></label><br>
+                     <?php }?>
+                 </div>   
+                 <br>  
+                 <p id="tr" align="right" class="p">Mostrar todos
+                    <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/></svg></p>
+                        <p id="tr" align="right" class="p1">Ocultar
+                            <svg class="bi" width="20" height="20" fill="currentColor">
+                                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/></svg></p>
+                            </div>
+                            <div class="col-md-4" style="position: initial">
+                                <label id="inp1"><b>Vale N°</b></label>   
+                                <input id="busq"class="form-control" readonly  type="number" name="numero_vale" value="<?php echo $cod ?>" required >
+                                <section id="resultado" style="margin: 0px;background: transparent;width: 100%;"></section>
+                            </div>
+                            <div class="col-md-4" style="position: initial">
+                                <label id="inp1"><b>Nombre de la persona</b></label>
+                                <?php     $cliente =$_SESSION['signin'];
+                                $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
+                                while ($consulta =mysqli_fetch_array($data)) {
+                                 ?>
+                                 <label><b>Encargado</b></label>
+                                 <input style="cursor: not-allowed; color: black;"  class="form-control" type="text" name="usuario" id="como3" required readonly value="<?php  echo $consulta['firstname']?> <?php  echo $consulta['lastname']?>">
+                                 <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="<?php  echo $consulta['id']?>"/>
+                                 <br>
+                             <?php }?> 
 
-                       </div>
-                   </div>
-               </div>
-           </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
 
-           <br>
-           <div class="row">
-            <div class="col-md-9">
-                <div class="card">
-                    <div class="card-body">
-                      <?php include('../../Buscador_ajax/Tablas/Productos/tablaProductos.php') ?>
+             <br>
+             <div class="row">
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-body">
+                          <?php include('../../Buscador_ajax/Tablas/Productos/tablaProductos.php') ?>
+                      </div>
                   </div>
               </div>
-          </div>
-          <div class="col-md-3">
-           <div class="card">
-            <div class="card-body">   
+              <div class="col-md-3">
+                 <div class="card">
+                    <div class="card-body">   
 
 
-               <div class="form-floating mb-3 my-2" >
-                <label>Observaciones (En qué se ocupará el bien entregado)</label>
-                <textarea rows="7" class="form-control" name="jus"  placeholder="" required id="floatingTextarea"></textarea>
+                     <div class="form-floating mb-3 my-2" >
+                        <label>Observaciones (En qué se ocupará el bien entregado)</label>
+                        <textarea rows="7" class="form-control" name="jus"  placeholder="" required id="floatingTextarea"></textarea>
+                    </div>
+                    <button id="buscar1" type="submit" class="btn btn-lg btn-success" style="width: 49%;float: left; margin-right: 1%;font-size: 1.4em; text-align: center;" name="NuevaSoli">Guardar
+
+                    </button>
+                </form>
+                <form method="POST" action="" style="margin:0;">
+
+                    <button class="btn btn-danger btn-lg" id="" style="width: 50%;" name="detalle">Cancelar</button>
+                    <input type="hidden" name="id" value="<?php echo $cod ?>">
+                </form>
             </div>
-            <button id="buscar1" type="submit" class="btn btn-lg btn-success" style="width: 49%;float: left; margin-right: 1%;font-size: 1.4em; text-align: center;" name="NuevaSoli">Guardar
-
-            </button>
-        </form>
-        <form method="POST" action="" style="margin:0;">
-
-            <button class="btn btn-danger btn-lg" id="" style="width: 50%;" name="detalle">Cancelar</button>
-            <input type="hidden" name="id" value="<?php echo $cod ?>">
-        </form>
+        </div>
     </div>
-</div>
-</div>
 </div>
 </form>
 </section>

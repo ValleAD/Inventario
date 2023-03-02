@@ -169,10 +169,10 @@ if (!isset($_SESSION['signin'])>0) {
                     $num_vale = $productos1['codBodega'];
 
                     if ($tipo_usuario==1) {
-                        $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM `detalle_bodega` D JOIN `tb_bodega` V ON D.odt_bodega=V.codBodega WHERE odt_bodega = $num_vale";
+                        $sql = "SELECT codigo,stock,cantidad_despachada,precio,descripcion,unidad_medida FROM `detalle_bodega` D JOIN `tb_bodega` V ON D.odt_bodega=V.codBodega WHERE odt_bodega = $num_vale";
                     }
                     if ($tipo_usuario==2) {
-                        $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM `detalle_bodega` D JOIN `tb_bodega` V ON D.odt_bodega=V.codBodega WHERE V.idusuario='$idusuario' and odt_bodega='$num_vale' ";
+                        $sql = "SELECT codigo,stock,cantidad_despachada,precio,descripcion,unidad_medida FROM `detalle_bodega` D JOIN `tb_bodega` V ON D.odt_bodega=V.codBodega WHERE V.idusuario='$idusuario' and odt_bodega='$num_vale' ";
                     }
                     $result1 = mysqli_query($conn, $sql);
                     if (!$result1) {?>
@@ -183,13 +183,13 @@ if (!isset($_SESSION['signin'])>0) {
                     }else{
                         while ($productos = mysqli_fetch_array($result1)){
                             if ($estado="Pendiente") {  
-                                $total = $productos['SUM(stock)'] * $productos['precio'];
+                                $total = $productos['stock'] * $productos['precio'];
                             }if ($estado="Rechazado") {
 
-                                $total = $productos['SUM(stock)'] * $productos['precio'];
+                                $total = $productos['stock'] * $productos['precio'];
                             }if ($estado=="Aprobado") {
 
-                                $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
+                                $total = $productos['cantidad_despachada'] * $productos['precio'];
                             }
                             $final += $total;
                             $total1= number_format($total, 2, ".",",");
@@ -201,8 +201,8 @@ if (!isset($_SESSION['signin'])>0) {
 
                             $precio   =    $productos['precio'];
                             $precio2  =    number_format($precio, 2,".",",");  
-                            $cant_aprobada=$productos['SUM(stock)'];
-                            $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
+                            $cant_aprobada=$productos['stock'];
+                            $cantidad_despachada=$productos['cantidad_despachada'];
                             $stock=number_format($cant_aprobada, 2,".",",");
                             $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
@@ -264,13 +264,10 @@ if (!isset($_SESSION['signin'])>0) {
 
                             </button>
                         </form>
-                        <form method="POST" action="../../Plugin/PDF/Bodega/pdf_bodega.php" target="_blank" class="ml-1">
-                            <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">
-                            <input type="hidden" name="cod" value="<?php echo $codigo ?>">
+                        <form method="GET" action="../../Plugin/PDF/Bodega/pdf_bodega.php" target="_blank" class="ml-1">
+                            <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">                        
 
-                            <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
-
-                            <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado" >
+                            <button style="position: initial;" type="submit" class="btn btn-outline-primary" >
                                 <svg class="bi" width="20" height="20" fill="currentColor">
                                     <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                                 </svg>
@@ -350,13 +347,13 @@ if (!isset($_SESSION['signin'])>0) {
         <div class="col-md-3" style="position: initial">
 
         <label style="font-weight: bold;">Depto. o Servicio:</label>
-        <input readonly class="form-control"  type="hidden" value="' .$productos1['departamento']. '" name="codBodega">
+        <input readonly class="form-control"  type="hidden" value="' .$productos1['departamento']. '" name="departamento">
         <p>' .$productos1['departamento']. '</p>
         </div>
 
         <div class="col-md-3" style="position: initial">
         <label style="font-weight: bold;">N° de O.D.T.</label>
-        <input readonly class="form-control"  type="hidden" value="' .$productos1['codBodega']. '" name="bodega">
+        <input readonly class="form-control"  type="hidden" value="' .$productos1['codBodega']. '" name="codBodega">
         <p>' .$productos1['codBodega']. '</p>
         </div>
 
@@ -435,8 +432,9 @@ if (!isset($_SESSION['signin'])>0) {
 
                   <tr>
                     <td  data-label="Código"><?php echo $codigo ?>
-                    <input type="hidden" name="cod_vale[]" readonly value="<?php echo $productos['codigodetallebodega'] ?>">
+                    <input type="hidden" name="cod1[]" readonly value="<?php echo $productos['codigodetallebodega'] ?>">
                     <input type="hidden"  name="cod[]" readonly value="<?php echo $codigo ?>">
+                    <input type="hidden"  name="cod_bodega[]" readonly value="<?php echo $codigo ?>">
                     <input type="hidden"  name="odt_bodega" readonly value="<?php echo $num_vale ?>">
                     <input type="hidden" style="width: 100%; background:transparent; border: none; text-align: left; height: 100%;"  name="desc[]" readonly value="<?php echo $descripcion ?>">
                     <input type="hidden" name="um[]" readonly value="<?php echo $um ?>">

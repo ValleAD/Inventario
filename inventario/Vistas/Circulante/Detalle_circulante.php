@@ -125,10 +125,10 @@ if (!isset($_SESSION['signin'])>0) {
                         $num_vale = $productos1['codCirculante'];
 
                         if ($tipo_usuario==1) {
-                            $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM `Detalle_circulante` D JOIN `tb_circulante` V ON D.tb_circulante=V.codCirculante WHERE tb_circulante = $num_vale";
+                            $sql = "SELECT codigo,stock,cantidad_despachada,precio,descripcion,unidad_medida FROM `Detalle_circulante` D JOIN `tb_circulante` V ON D.tb_circulante=V.codCirculante WHERE tb_circulante = $num_vale";
                         }
                         if ($tipo_usuario==2) {
-                            $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM `Detalle_circulante` D JOIN `tb_circulante` V ON D.tb_circulante=V.codCirculante WHERE V.idusuario='$idusuario' and tb_circulante='$num_vale' ";
+                            $sql = "SELECT codigo,stock,cantidad_despachada,precio,descripcion,unidad_medida FROM `Detalle_circulante` D JOIN `tb_circulante` V ON D.tb_circulante=V.codCirculante WHERE V.idusuario='$idusuario' and tb_circulante='$num_vale' ";
                         }
                         $result1 = mysqli_query($conn, $sql);
                         if (!$result1) {?>
@@ -139,13 +139,13 @@ if (!isset($_SESSION['signin'])>0) {
                         }else{
                             while ($productos = mysqli_fetch_array($result1)){
                                 if ($estado="Pendiente") {  
-                                    $total = $productos['SUM(stock)'] * $productos['precio'];
+                                    $total = $productos['stock'] * $productos['precio'];
                                 }if ($estado="Rechazado") {
 
-                                    $total = $productos['SUM(stock)'] * $productos['precio'];
+                                    $total = $productos['stock'] * $productos['precio'];
                                 }if ($estado=="Aprobado") {
 
-                                    $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
+                                    $total = $productos['cantidad_despachada'] * $productos['precio'];
                                 }
                                 $final += $total;
                                 $total1= number_format($total, 2, ".",",");
@@ -157,8 +157,8 @@ if (!isset($_SESSION['signin'])>0) {
 
                                 $precio   =    $productos['precio'];
                                 $precio2  =    number_format($precio, 2,".",",");  
-                                $cant_aprobada=$productos['SUM(stock)'];
-                                $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
+                                $cant_aprobada=$productos['stock'];
+                                $cantidad_despachada=$productos['cantidad_despachada'];
                                 $stock=number_format($cant_aprobada, 2,".",",");
                                 $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
@@ -221,16 +221,11 @@ if (!isset($_SESSION['signin'])>0) {
 
                         </button>
                     </form>
-                        <form method="POST" action="../../Plugin/PDF/Circulante/pdf_circulante.php" target="_blank">
+                        <form method="GET" action="../../Plugin/PDF/Circulante/pdf_circulante.php" target="_blank">
                         <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codCirculante']?>" name="num_sol">
 
-                        <input type="hidden" name="cod" value="<?php echo $codigo ?>">
-                        <input type="hidden" name="tot" value="<?php echo $total1 ?>">
-                        <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
 
-                        <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
-
-                        <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
+                        <button style="position: initial;" type="submit" class="btn btn-outline-primary">
                             <svg class="bi" width="20" height="20" fill="currentColor">
                                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                             </svg>

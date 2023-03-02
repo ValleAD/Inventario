@@ -140,7 +140,7 @@ while ($productos1 = mysqli_fetch_array($result)){
 
                     $odt = $productos1['codBodega'];
 
-                    $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM detalle_bodega WHERE odt_bodega = $odt";
+                    $sql = "SELECT codigo,stock,cantidad_despachada,precio,descripcion,unidad_medida FROM detalle_bodega WHERE odt_bodega = $odt";
                     $result1 = mysqli_query($conn, $sql);
                     if (!$result1) {?>
                         <style>div{
@@ -151,10 +151,10 @@ while ($productos1 = mysqli_fetch_array($result)){
                         while ($productos = mysqli_fetch_array($result1)){
                             if ($estado="Pendiente") {
 
-                                $total = $productos['SUM(stock)'] * $productos['precio'];
+                                $total = $productos['stock'] * $productos['precio'];
                             }if ($estado=="Aprobado") {
 
-                                $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
+                                $total = $productos['cantidad_despachada'] * $productos['precio'];
                             }
                             $final += $total;
                             $total1= number_format($total, 2, ".",",");
@@ -166,8 +166,8 @@ while ($productos1 = mysqli_fetch_array($result)){
 
                             $precio   =    $productos['precio'];
                             $precio2  =    number_format($precio, 2,".",",");  
-                            $cant_aprobada=$productos['SUM(stock)'];
-                            $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
+                            $cant_aprobada=$productos['stock'];
+                            $cantidad_despachada=$productos['cantidad_despachada'];
                             $stock=number_format($cant_aprobada, 2,".",",");
                             $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
@@ -219,10 +219,10 @@ while ($productos1 = mysqli_fetch_array($result)){
 
                             </button>
                         </form>
-                        <form method="POST"  action="../../Plugin/PDF/Bodega/pdf_bodega.php" target="_blank" class="mx-1">
+                        <form method="GET"  action="../../Plugin/PDF/Bodega/pdf_bodega.php" target="_blank" class="mx-1">
                             <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">
 
-                            <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
+                            <button style="position: initial;" type="submit" class="btn btn-outline-primary">
                                 <svg class="bi" width="20" height="20" fill="currentColor">
                                     <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                                 </svg>

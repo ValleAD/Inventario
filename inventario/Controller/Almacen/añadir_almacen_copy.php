@@ -66,7 +66,7 @@
               allowOutsideClick: false
               }).then((resultado) =>{
                 if (resultado.value) {
-                    window.location.href='../../Vistas/Almacen/solicitudes_almacen.php?detalle&id=$nSolicitud';                               
+                    window.location.href='../../Vistas/Almacen/Detalle_Almacen.php?detalle&id=$nSolicitud';                               
                 }
                 });
 
