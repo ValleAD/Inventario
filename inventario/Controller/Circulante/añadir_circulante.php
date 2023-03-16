@@ -5,26 +5,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title></title>
         <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/sweetalert2.min.css">
-    <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/bootstrap.css">
-    <script src="../../Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
-    <script src="../../Plugin/bootstrap/js/jquery-latest.js"></script>
-    <script src="../../Plugin/bootstrap/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/bootstrap.css">
+        <script src="../../Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
+        <script src="../../Plugin/bootstrap/js/jquery-latest.js"></script>
+        <script src="../../Plugin/bootstrap/js/bootstrap.min.js"></script>
     </head>
     <body><?php
 
-include '../../Model/conexion.php';
+    include '../../Model/conexion.php';
 
     $solicitud_no = $_POST['solicitud_no'];
     $idusuario = $_POST['idusuario'];
-      $dia              = $_POST['dia'];
-      $mes              = $_POST['mes'];
-      $año              = $_POST['año'];
+    $dia              = $_POST['dia'];
+    $mes              = $_POST['mes'];
+    $año              = $_POST['año'];
 
     //crud para guardar los productos en la tabla tb_vale
     $sql = "INSERT INTO tb_circulante (codCirculante,estado,idusuario,Mes,Año) VALUES ('$solicitud_no','Pendiente','$idusuario','$mes','$año')";
     $result = mysqli_query($conn, $sql); 
 
-for($i = 0; $i < count($_POST['desc']); $i++) 
+    for($i = 0; $i < count($_POST['desc']); $i++) 
     {
       $codigo_producto  = $_POST['cod'][$i];
       $cod= $_POST['cod1'][$i];
@@ -37,41 +37,53 @@ for($i = 0; $i < count($_POST['desc']); $i++)
       $insert = "INSERT INTO detalle_Circulante(codigo, descripcion, unidad_medida, stock, tb_circulante, precio) VALUES ('$codigo_producto','$descripcion','$u_m', '$soli', '$num_sol', '$cost')";
       $query = mysqli_query($conn, $insert);
 
- $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Detalles,idusuario,Mes,Año) VALUES('$descripcion','Entrada Por Circulante','$u_m','$codigo_producto','$soli','$cost','$num_sol','$idusuario','$mes','$año')";
+      $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Detalles,idusuario,Mes,Año) VALUES('$descripcion','Entrada Por Circulante','$u_m','$codigo_producto','$soli','$cost','$num_sol','$idusuario','$mes','$año')";
 
-       $query1 = mysqli_query($conn, $sql1);
+      $query1 = mysqli_query($conn, $sql1);
 
       if ($result || $query || $query1) {
-                echo "<script>
-    Swal.fire({
-      title:'Realizado',
-      text:'El Registrado fue Guardado Correctamente',
-      icon:'success',
-      allowOutsideClick: false
-    }).then((resultado) =>{
-if (resultado.value) {
-        window.location.href='../../Vistas/Circulante/dt_circulante.php?cod=$solicitud_no';                                
-               }
-                });
-
-        </script>";
-      }else {
         echo "<script>
-    Swal.fire({
-      title:'ERROR',
-      text:'¡Error! algo salió mal',
-      icon:'error',
-      allowOutsideClick: false
-    }).then((resultado) =>{
-if (resultado.value) {
-        window.location.href='../../Vistas/Circulante/form_circulante1.php';                               
-               }
+        Swal.fire({
+          title:'Realizado',
+          text:'El Registrado fue Guardado Correctamente',
+          icon:'success',
+          allowOutsideClick: false
+          }).then((resultado) =>{
+            if (resultado.value) {
+                window.location.href='../../Vistas/Circulante/dt_circulante.php?cod=$solicitud_no';                                
+            }
+            });
+
+            </script>";
+        }else {
+            echo "<script>
+            Swal.fire({
+              title:'ERROR',
+              text:'¡Error! algo salió mal',
+              icon:'error',
+              allowOutsideClick: false
+              }).then((resultado) =>{
+                if (resultado.value) {
+                    window.location.href='../../Vistas/Circulante/form_circulante1.php';                               
+                }
                 });
 
-        </script>";
-      }
-    }
-    
-?>
+                </script>";
+            }
+        }
+        
+        ?>
+        <script >
+         $(document).ready(function() {
+            function disableBack() {
+                window.history.forward()
+            }
+            window.onload = disableBack();
+            window.onpageshow = function(e) {
+                if (e.persisted)
+                    disableBack();
+            }
+        });
+    </script>
 </body>
 </html>

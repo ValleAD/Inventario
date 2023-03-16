@@ -63,9 +63,5 @@ if (!isset($_SESSION['signin']) && !isset($_SESSION['habilitado'] ) ) {
     <h1 id="h1">Bienvenidos al Sistema de Inventario del
       <br>Hospital de Zacatecoluca</h1>
   </center>
-
-
-  
-  
 </body>
 </html>

@@ -91,7 +91,7 @@ if (isset($_POST['solicitar'])){ ?>
 
                       <label id="inp1">Solicitud N°</label>  
 
-                    <input id="busq" class="form-control" type="number" name="nsolicitud"  required> 
+                    <input id="" class="form-control" type="number" name="nsolicitud"  required> 
                     
                 </div>
 

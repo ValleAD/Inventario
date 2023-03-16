@@ -47,7 +47,10 @@ if (!isset($_SESSION['signin'])>0) {
             </style>
             <br><br><br>
             <?php
-
+      $verificar =mysqli_query($conn, "SELECT codVale FROM tb_vale ");
+if (!mysqli_num_rows($verificar)>0) {
+        echo "<script>window.location.href='../../Vistas/Vale/solicitudes_vale.php'; </script>";
+     }
             $total = 0;
             $final = 0;
             $final2 = 0;
@@ -139,10 +142,10 @@ if (!isset($_SESSION['signin'])>0) {
 
                     $num_vale = $productos1['codVale'];
 
-                    $sql = "SELECT codigo,stock,cantidad_despachada,precio,descripcion,unidad_medida FROM detalle_vale WHERE numero_vale = $num_vale Group by codigo";
+                    $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM detalle_vale WHERE numero_vale = $num_vale Group by codigo";
                     $result = mysqli_query($conn, $sql);
                     while ($productos = mysqli_fetch_array($result)){
-                        $total = $productos['stock'] * $productos['precio'];
+                        $total = $productos['SUM(stock)'] * $productos['precio'];
                         $final += $total;
                         $total1= number_format($total, 2, ".",",");
                         $final1=number_format($final, 2, ".",",");
@@ -153,8 +156,8 @@ if (!isset($_SESSION['signin'])>0) {
 
                         $precio   =    $productos['precio'];
                         $precio2  =    number_format($precio, 2,".",",");  
-                        $cant_aprobada=$productos['stock'];
-                        $cantidad_despachada=$productos['cantidad_despachada'];
+                        $cant_aprobada=$productos['SUM(stock)'];
+                        $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
                         $stock=number_format($cant_aprobada, 2,".",",");
                         $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
@@ -163,9 +166,6 @@ if (!isset($_SESSION['signin'])>0) {
 
                         $final4 += $cantidad_despachada;
                         $final5   =    number_format($final4, 2, ".",",");
-
-                        $final6 += ($cant_aprobada-$cantidad_despachada);
-                        $final7   =    number_format($final6, 2, ".",",");
 
                         $final8 += $precio;
                         $final9   =    number_format($final8, 2, ".",",");?>
@@ -245,8 +245,6 @@ if (!isset($_SESSION['signin'])>0) {
         <hr>
         <p align="right"><b style="float: left;">Cantidad Solicitada: </b><?php echo $final3 ?></p>
         <p align="right"><b style="float: left;">Cantidad Despachada: </b><?php echo $final5 ?></p>
-
-        <p align="right"><b style="float: left;">Cant. Soli. - Cant. Despa.: </b><?php echo $final7 ?></p>
         <p align="right"><b style="float: left;">Costo Unitario: </b><?php echo $final9 ?></p>
         <p align="right"><b style="float: left;">SubTotal</b><?php echo $final1?></p>
 

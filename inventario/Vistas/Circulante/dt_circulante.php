@@ -47,7 +47,10 @@ if (!isset($_SESSION['signin'])>0) {
             </style>
             <br><br><br>
             <?php
-
+            $verificar =mysqli_query($conn, "SELECT codCirculante FROM tb_circulante ");
+            if (!mysqli_num_rows($verificar)>0) {
+                echo "<script>window.location.href='../../Vistas/Circulante/solicitudes_circulante.php'; </script>";
+            }
             $total = 0;
             $final = 0;
             $final2 = 0;
@@ -114,10 +117,10 @@ if (!isset($_SESSION['signin'])>0) {
 
                     $num_vale = $productos1['codCirculante'];
 
-                    $sql = "SELECT codigo,stock,cantidad_despachada,precio,descripcion,unidad_medida FROM detalle_circulante WHERE tb_circulante = $num_vale";
+                    $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM detalle_circulante WHERE tb_circulante = $num_vale Group by codigo";
                     $result = mysqli_query($conn, $sql);
                     while ($productos = mysqli_fetch_array($result)){
-                        $total = $productos['stock'] * $productos['precio'];
+                        $total = $productos['SUM(stock)'] * $productos['precio'];
                         $final += $total;
                         $total1= number_format($total, 2, ".",",");
                         $final1=number_format($final, 2, ".",",");
@@ -128,8 +131,8 @@ if (!isset($_SESSION['signin'])>0) {
 
                         $precio   =    $productos['precio'];
                         $precio2  =    number_format($precio, 2,".",",");  
-                        $cant_aprobada=$productos['stock'];
-                        $cantidad_despachada=$productos['cantidad_despachada'];
+                        $cant_aprobada=$productos['SUM(stock)'];
+                        $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
                         $stock=number_format($cant_aprobada, 2,".",",");
                         $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
@@ -145,28 +148,28 @@ if (!isset($_SESSION['signin'])>0) {
                         $final8 += $precio;
                         $final9   =    number_format($final8, 2, ".",",");?>
                         <style type="text/css">
-                         #td{
+                           #td{
                             display: none;
                         }
 
 
                     </style> 
                     <tr>
-                       <td  data-label="Código"><?php echo $productos['codigo'] ?></td>
-                       <td  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
-                       <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
-                       <td  data-label="Cantidad"><?php echo $stock ?></td>
-                       <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
-                       <td  data-label="Costo unitario"><?php echo $precio2 ?></td>
-                       <td  data-label="total"><?php echo $total1 ?></td>
-                   </tr>
+                     <td  data-label="Código"><?php echo $productos['codigo'] ?></td>
+                     <td  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
+                     <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
+                     <td  data-label="Cantidad"><?php echo $stock ?></td>
+                     <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
+                     <td  data-label="Costo unitario"><?php echo $precio2 ?></td>
+                     <td  data-label="total"><?php echo $total1 ?></td>
+                 </tr>
 
-               <?php }
-               ?> 
-           </tbody>
+             <?php }
+             ?> 
+         </tbody>
 
-       </table>
-   </div>
+     </table>
+ </div>
 </div>
 </div>
 <div class="col-md-3  mb-3 " >
@@ -175,17 +178,17 @@ if (!isset($_SESSION['signin'])>0) {
             <div class="row">
                 <div class="col-md-12">
                     <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-                            <form method="POST" action="../../Plugin/Imprimir/Circulante/circulante.php" target="_blank">
-                         <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codCirculante']?>" name="num_sol">
+                        <form method="POST" action="../../Plugin/Imprimir/Circulante/circulante.php" target="_blank">
+                           <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codCirculante']?>" name="num_sol">
 
-                         <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
+                           <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
                             <svg class="bi" width="20" height="20" fill="currentColor">
                                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                             </svg>
 
                         </button>
                     </form>
-                        <form method="GET" action="../../Plugin/PDF/Circulante/pdf_circulante.php" target="_blank">
+                    <form method="GET" action="../../Plugin/PDF/Circulante/pdf_circulante.php" target="_blank">
                         <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codCirculante']?>" name="num_sol">
 
                         <button style="position: initial;" type="submit" class="btn btn-outline-primary" >
@@ -196,13 +199,13 @@ if (!isset($_SESSION['signin'])>0) {
                         </button>
                     </form>
                     <form method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php">
-                     <input id="codCirculante" type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codCirculante']?>" name="circulante1">
+                       <input id="codCirculante" type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codCirculante']?>" name="circulante1">
 
-                     <input type="hidden" name="cod" value="<?php echo $codigo ?>">
-                     <input type="hidden" name="tot" value="<?php echo $total1 ?>">
-                     <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
-                     <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
-                     <button type="submit" class="btn btn-outline-primary" name="DT" target="_blank">
+                       <input type="hidden" name="cod" value="<?php echo $codigo ?>">
+                       <input type="hidden" name="tot" value="<?php echo $total1 ?>">
+                       <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
+                       <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
+                       <button type="submit" class="btn btn-outline-primary" name="DT" target="_blank">
                         <svg class="bi" width="20" height="20" fill="currentColor">
                             <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                         </svg>
@@ -267,23 +270,23 @@ if (!isset($_SESSION['signin'])>0) {
 <?php } if(isset($_POST['solicitar'])){$cod=$_POST['bodega']?>
 <style type="text/css">.section{display: none;}</style>
 <section id="section">
-   <form style="background: transparent;" method="POST" action="../../Controller/Circulante/añadir_circulante.php">
+ <form style="background: transparent;" method="POST" action="../../Controller/Circulante/añadir_circulante.php">
     <div class="card">
         <div class="card-body">
             <div class="row">
-       
-                    <div class="col-md-4" style="position: initial">
-                        <label id="inp1"><b>N° Almacen</b></label>   
-                        <input id="busq"class="form-control" readonly  type="number" name="solicitud_no" value="<?php echo $cod ?>" required >
-                        <section id="resultado" style="margin: 0px;background: transparent;width: 100%;"></section>
-                    </div>
-                    
-               </div>
-           </div>
-       </div>
+             
+                <div class="col-md-4" style="position: initial">
+                    <label id="inp1"><b>N° Almacen</b></label>   
+                    <input id="busq"class="form-control" readonly  type="number" name="solicitud_no" value="<?php echo $cod ?>" required >
+                    <section id="resultado" style="margin: 0px;background: transparent;width: 100%;"></section>
+                </div>
+                
+            </div>
+        </div>
+    </div>
 
-       <br>
-       <div class="card">
+    <br>
+    <div class="card">
         <div class="card-body">
           <?php include('../../Buscador_ajax/Tablas/Productos/tablaProductos.php') ?>
       </div>

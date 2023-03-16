@@ -49,7 +49,7 @@ CREATE TABLE tb_usuarios (
   password text NOT NULL,
   Habilitado text NOT NULL,
   tipo_usuario int(15) NOT NULL,
-    PRIMARY KEY (id)
+  PRIMARY KEY (id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci; 
 
 CREATE TABLE tb_bodega (
@@ -59,9 +59,9 @@ CREATE TABLE tb_bodega (
   fecha_registro date NOT NULL DEFAULT current_timestamp(),
   estado text NOT NULL,
   idusuario int NOT NULL DEFAULT 2,
-    Mes INT(2) NOT NULL,
+  Mes INT(2) NOT NULL,
   Año INT(4) NOT NULL,
-    PRIMARY KEY (codBodega)
+  PRIMARY KEY (codBodega)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 CREATE TABLE tb_vale (
@@ -71,10 +71,10 @@ CREATE TABLE tb_vale (
   idusuario int NOT NULL DEFAULT 1,
   estado text NOT NULL,
   observaciones text NOT NULL,
- fecha_registro date NOT NULL DEFAULT current_timestamp(),
-   Mes INT(2) NOT NULL,
+  fecha_registro date NOT NULL DEFAULT current_timestamp(),
+  Mes INT(2) NOT NULL,
   Año INT(4) NOT NULL,
-    PRIMARY KEY (codVale)
+  PRIMARY KEY (codVale)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 CREATE TABLE tb_compra (
@@ -87,12 +87,11 @@ CREATE TABLE tb_compra (
   estado text NOT NULL,
   idusuario int NOT NULL DEFAULT 1,
   justificacion text NOT NULL,
-    Mes INT(2) NOT NULL,
+  Mes INT(2) NOT NULL,
   Año INT(4) NOT NULL,
- fecha_registro date NOT NULL DEFAULT current_timestamp(),
-    PRIMARY KEY (nSolicitud)
+  fecha_registro date NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (nSolicitud)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
 CREATE TABLE `historial` (
   ID INT(11)  NOT NULL AUTO_INCREMENT PRIMARY KEY,
   descripcion text,
@@ -104,15 +103,17 @@ CREATE TABLE `historial` (
   Salidas decimal(6,2) NOT NULL DEFAULT 0.00,
   Saldo decimal(6,2) NOT NULL DEFAULT 0.00,
   idusuario INT(15) NOT NULL,
-  Detalles int(11) NOT NULL
+  Detalles int(11) NOT NULL,
+  Mes INT(2) NOT NULL,
+  Año INT(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
+ALTER TABLE `historial` ADD FULLTEXT(`descripcion`);
 CREATE TABLE tb_circulante (
   codCirculante int(15) NOT NULL,
   estado text NOT NULL,
   idusuario int NOT NULL DEFAULT 1,
   fecha_solicitud date NOT NULL DEFAULT current_timestamp(),
-    Mes INT(2) NOT NULL,
+  Mes INT(2) NOT NULL,
   Año INT(4) NOT NULL,
   PRIMARY KEY (codCirculante)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -121,10 +122,10 @@ CREATE TABLE tb_almacen (
   codAlmacen int(12) NOT NULL,
   departamento text NOT NULL,
   encargado text NOT NULL,
-estado text NOT NULL,
+  estado text NOT NULL,
   idusuario int NOT NULL DEFAULT 1,
   fecha_solicitud date NOT NULL DEFAULT current_timestamp(),
-    Mes INT(2) NOT NULL,
+  Mes INT(2) NOT NULL,
   Año INT(4) NOT NULL,
   PRIMARY KEY (codAlmacen)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -139,10 +140,9 @@ CREATE TABLE detalle_bodega (
   cantidad_despachada decimal(6,2) NOT NULL  DEFAULT '0.00',
   precio decimal(6,2) NOT NULL  DEFAULT '0.00',
   odt_bodega int(15),
-
-    PRIMARY KEY (codigodetallebodega),
-    CONSTRAINT fk_tb_bodega_detalle_bodega FOREIGN KEY (odt_bodega)
-    REFERENCES tb_bodega(codBodega)
+  PRIMARY KEY (codigodetallebodega),
+  CONSTRAINT fk_tb_bodega_detalle_bodega FOREIGN KEY (odt_bodega)
+  REFERENCES tb_bodega(codBodega)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 CREATE TABLE detalle_vale (
@@ -154,13 +154,12 @@ CREATE TABLE detalle_vale (
   cantidad_despachada decimal(6,2) NOT NULL  DEFAULT '0.00',
   precio decimal(6,2) NOT NULL  DEFAULT '0.00',
   numero_vale int(15),
-    PRIMARY KEY (codigodetallevale),
-    CONSTRAINT fk_tb_vale_detalle_vale FOREIGN KEY (numero_vale)
-    REFERENCES tb_vale(codVale)
+  PRIMARY KEY (codigodetallevale),
+  CONSTRAINT fk_tb_vale_detalle_vale FOREIGN KEY (numero_vale)
+  REFERENCES tb_vale(codVale)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
 CREATE TABLE detalle_circulante (
-codigodetallecirculante int(3)  NOT NULL AUTO_INCREMENT,
+  codigodetallecirculante int(3)  NOT NULL AUTO_INCREMENT,
   codigo int(15) NOT NULL,
   descripcion text NOT NULL,
   unidad_medida text NOT NULL DEFAULT 'C/U',
@@ -168,25 +167,23 @@ codigodetallecirculante int(3)  NOT NULL AUTO_INCREMENT,
   cantidad_despachada decimal(6,2) NOT NULL,
   precio decimal(6,2) NOT NULL  DEFAULT '0.00',
   tb_circulante int(15),
-    PRIMARY KEY (codigodetallecirculante),
-    CONSTRAINT fk_tb_circulante_detalle_circulante FOREIGN KEY (tb_circulante)
-    REFERENCES tb_circulante(codCirculante)
+  PRIMARY KEY (codigodetallecirculante),
+  CONSTRAINT fk_tb_circulante_detalle_circulante FOREIGN KEY (tb_circulante)
+  REFERENCES tb_circulante(codCirculante)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci; 
-
 CREATE TABLE detalle_almacen (
-codigoalmacen int(3)  NOT NULL AUTO_INCREMENT,
-codigo int(15) NOT NULL,
-nombre text  NOT NULL,
-unidad_medida text NOT NULL,
-cantidad_solicitada decimal(6,2) NOT NULL  DEFAULT '0.00',
-cantidad_despachada decimal(6,2) NOT NULL  DEFAULT '0.00',
-tb_almacen int(20) NOT NULL,
-precio decimal(6,2) NOT NULL  DEFAULT '0.00',
-    PRIMARY KEY (codigoalmacen),
-     CONSTRAINT fk_tb_almacen_detalle_almacen FOREIGN KEY (tb_almacen)
-    REFERENCES tb_almacen(codAlmacen)
+  codigoalmacen int(3)  NOT NULL AUTO_INCREMENT,
+  codigo int(15) NOT NULL,
+  nombre text  NOT NULL,
+  unidad_medida text NOT NULL,
+  cantidad_solicitada decimal(6,2) NOT NULL  DEFAULT '0.00',
+  cantidad_despachada decimal(6,2) NOT NULL  DEFAULT '0.00',
+  tb_almacen int(20) NOT NULL,
+  precio decimal(6,2) NOT NULL  DEFAULT '0.00',
+  PRIMARY KEY (codigoalmacen),
+  CONSTRAINT fk_tb_almacen_detalle_almacen FOREIGN KEY (tb_almacen)
+  REFERENCES tb_almacen(codAlmacen)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
 
 
 CREATE TABLE detalle_compra (
@@ -200,130 +197,129 @@ CREATE TABLE detalle_compra (
   cantidad_despachada decimal(6,2) NOT NULL  DEFAULT '0.00',
   precio decimal(6,2) NOT NULL  DEFAULT '0.00',
   solicitud_compra int(8) DEFAULT NULL,
-     PRIMARY KEY (codigodetallecompra),
-    CONSTRAINT fk_tb_compra_detalle_compra FOREIGN KEY (solicitud_compra)
-    REFERENCES tb_compra(nSolicitud)
+  PRIMARY KEY (codigodetallecompra),
+  CONSTRAINT fk_tb_compra_detalle_compra FOREIGN KEY (solicitud_compra)
+  REFERENCES tb_compra(nSolicitud)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
 
 CREATE TABLE selects_unidad_medida (
   id int(3)  NOT NULl AUTO_INCREMENT PRIMARY KEY,
   Habilitado text NOT NULL,
-unidad_medida text NOT NULL
+  unidad_medida text NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 CREATE TABLE selects_categoria (
   id int(3)  NOT NULl AUTO_INCREMENT PRIMARY KEY,
   Habilitado text NOT NULL,
-categoria text NOT NULL
+  categoria text NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 CREATE TABLE selects_dependencia (
   id int(3)  NOT NULl AUTO_INCREMENT PRIMARY KEY,
   Habilitado text NOT NULL,
-dependencia text NOT NULL
+  dependencia text NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 CREATE TABLE selects_departamento (
   id int(3)  NOT NULl AUTO_INCREMENT PRIMARY KEY,
   Habilitado text NOT NULL,
-departamento text NOT NULL
+  departamento text NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 INSERT INTO `Selects_unidad_medida` (`unidad_medida`,`Habilitado`)
 Values ('C/M' ,'Si'),
-       ('Cto' ,'Si'),
-       ('Cuarto Gal' ,'Si'),
-       ('C/U' ,'Si'),
-       ('Galón' ,'Si'),
-       ('Lb' ,'Si'),
-       ('Mts' ,'Si'),
-       ('Pgo' ,'Si'),
-       ('Qq' ,'Si'),
-       ('Par' ,'Si');
+('Cto' ,'Si'),
+('Cuarto Gal' ,'Si'),
+('C/U' ,'Si'),
+('Galón' ,'Si'),
+('Lb' ,'Si'),
+('Mts' ,'Si'),
+('Pgo' ,'Si'),
+('Qq' ,'Si'),
+('Par' ,'Si');
 INSERT INTO `Selects_categoria` (`categoria`,`Habilitado`)
 Values ('Agropecuarios Y Forestales' ,'Si'),
-       ('Cuero Y Caucho' ,'Si'),
-       ('Combustibles Y Lubricantes' ,'Si'),
-       ('Minerales No Metálicos' ,'Si'),
-       ('Minerales Metálicos' ,'Si'),
-       ('Herramientas Y Repuestos' ,'Si'),
-       ('Materiales Eléctricos' ,'Si'),
-       ('Mobiliario' ,'Si'),
-       ('Químicos' ,'Si');
+('Cuero Y Caucho' ,'Si'),
+('Combustibles Y Lubricantes' ,'Si'),
+('Minerales No Metálicos' ,'Si'),
+('Minerales Metálicos' ,'Si'),
+('Herramientas Y Repuestos' ,'Si'),
+('Materiales Eléctricos' ,'Si'),
+('Mobiliario' ,'Si'),
+('Químicos' ,'Si');
 
 INSERT INTO `Selects_dependencia` (`dependencia`,`Habilitado`)
 Values ('Dirección Hospital', 'Si'),
-       ('Departamento Mantenimiento Local', 'Si'),
-       ('División Administrativa', 'Si'),
-       ('Departamento Servicios Generales', 'Si'),
-       ('Departamento Enfermería', 'Si'),
-       ('Servicio Medicina Interna', 'Si'),
-       ('Servicio Centro Quirúrgico', 'Si'),
-       ('Servicio Centro Obstétrico', 'Si'),
-       ('Subdirección Hospital', 'Si'),
-       ('Servicio Consulta Externa', 'Si'),
-       ('Unidad Enfermería', 'Si');
+('Departamento Mantenimiento Local', 'Si'),
+('División Administrativa', 'Si'),
+('Departamento Servicios Generales', 'Si'),
+('Departamento Enfermería', 'Si'),
+('Servicio Medicina Interna', 'Si'),
+('Servicio Centro Quirúrgico', 'Si'),
+('Servicio Centro Obstétrico', 'Si'),
+('Subdirección Hospital', 'Si'),
+('Servicio Consulta Externa', 'Si'),
+('Unidad Enfermería', 'Si');
 
 INSERT INTO `Selects_departamento` (`departamento`,`Habilitado`)
 Values ('Área Saneamiento Ambiental', 'Si'),
-       ('Área Servicios Auxiliares', 'Si'),
-       ('Área Clínica De Úlceras Y Heridas', 'Si'),
-       ('Área Residencial Médica', 'Si'),
-       ('Área Epidemiología', 'Si'),
-       ('Área COVID 19','Si'),
-       ('Bienestar Magisterial' ,'Si'),
-       ('Cirugía Hombre' ,'Si'),
-       ('Dirección Hospital' ,'Si'),
-       ('Departamento Lavandería Y Ropería' ,'Si'),
-       ('Departamento Mantenimiento Local' ,'Si'),
-       ('Departamento Estadística Y Documento Médicos', 'Si'),
-       ('Departamento Activo Fijo', 'Si'),
-       ('División Administrativa' ,'Si'),
-       ('Departamento Recursos Humanos', 'Si'),
-       ('Departamento Terapia Dialítica', 'Si'),
-       ('Fisioterapia' ,'Si'),
-       ('Farmacia' ,'Si'),
-       ('Ginecología' ,'Si'),
-       ('Laboratorio Clínico' ,'Si'),
-       ('Pediatría' ,'Si'),
-       ('Radiología E Imágenes' ,'Si'),
-       ('Subdirección Hospital' ,'Si'),
-       ('Sección Equipo Médico' ,'Si'),
-       ('Sección Equipo Básico' ,'Si'),
-       ('Sección Planta Física Y Monitoreo' ,'Si'),
-       ('Servicio Centro Quirúrgico' ,'Si'),
-       ('Servicio Medicina Hombres' ,'Si'),
-       ('Servicio Medicina Mujeres', 'Si'),
-       ('Servicio Almacén', 'Si'),
-       ('Servicio Consulta Externa', 'Si'),
-       ('Servicio Trabajo Social', 'Si'),
-       ('Servicio Obstetricia', 'Si'),
-       ('Unidad Sala De Operación', 'Si'),
-       ('Unidad Sala De Partos', 'Si'),
-       ('Unidad Neonatos', 'Si'),
-       ('Unidad Máxima Urgencia', 'Si'),
-       ('Unidad Financiara Institucional', 'Si'),
-       ('Unidad Auditoría Interna', 'Si'),
-       ('Unidad Asesora De Suministro Médicos', 'Si'),
-       ('Unidad Atención Integral E Integrada A la Salud Sexual Reproductiva', 'Si'),
-       ('Unidad Cuidados Especiales', 'Si');
+('Área Servicios Auxiliares', 'Si'),
+('Área Clínica De Úlceras Y Heridas', 'Si'),
+('Área Residencial Médica', 'Si'),
+('Área Epidemiología', 'Si'),
+('Área COVID 19','Si'),
+('Bienestar Magisterial' ,'Si'),
+('Cirugía Hombre' ,'Si'),
+('Dirección Hospital' ,'Si'),
+('Departamento Lavandería Y Ropería' ,'Si'),
+('Departamento Mantenimiento Local' ,'Si'),
+('Departamento Estadística Y Documento Médicos', 'Si'),
+('Departamento Activo Fijo', 'Si'),
+('División Administrativa' ,'Si'),
+('Departamento Recursos Humanos', 'Si'),
+('Departamento Terapia Dialítica', 'Si'),
+('Fisioterapia' ,'Si'),
+('Farmacia' ,'Si'),
+('Ginecología' ,'Si'),
+('Laboratorio Clínico' ,'Si'),
+('Pediatría' ,'Si'),
+('Radiología E Imágenes' ,'Si'),
+('Subdirección Hospital' ,'Si'),
+('Sección Equipo Médico' ,'Si'),
+('Sección Equipo Básico' ,'Si'),
+('Sección Planta Física Y Monitoreo' ,'Si'),
+('Servicio Centro Quirúrgico' ,'Si'),
+('Servicio Medicina Hombres' ,'Si'),
+('Servicio Medicina Mujeres', 'Si'),
+('Servicio Almacén', 'Si'),
+('Servicio Consulta Externa', 'Si'),
+('Servicio Trabajo Social', 'Si'),
+('Servicio Obstetricia', 'Si'),
+('Unidad Sala De Operación', 'Si'),
+('Unidad Sala De Partos', 'Si'),
+('Unidad Neonatos', 'Si'),
+('Unidad Máxima Urgencia', 'Si'),
+('Unidad Financiara Institucional', 'Si'),
+('Unidad Auditoría Interna', 'Si'),
+('Unidad Asesora De Suministro Médicos', 'Si'),
+('Unidad Atención Integral E Integrada A la Salud Sexual Reproductiva', 'Si'),
+('Unidad Cuidados Especiales', 'Si');
 
 INSERT INTO `tb_usuarios` (`username`, `firstname`, `lastname`, `Establecimiento`,  `unidad`,`password`,`Habilitado`, `tipo_usuario`)
 Values ('Admin', 'Admin', 'Master', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Sin Unidad', 'Admin','Si', '1'),
-       ('egchoto', 'Ernesto', 'Gonzales Choto', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Departamento Mantenimiento Local', 'neto982006','Si', '1'),
-       ('Usuario1', 'Baltazar Alexander', 'Marinero Pérez', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Sección Equipo Básico', '123','Si', '2'),
-       ('Usuario2', 'Fráncico Tolentino', 'López', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Sección Planta Física Y Mobiliario' , '123','Si', '2'),
-       ('Usuario3', 'René Adán', 'Villalta Pérez', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Sección Planta Física Y Mobiliario' , '123','Si', '2'),
-       ('Usuario4', 'José Walter', 'Pineda Leiva', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Sección Equipo Básico' , '123','Si', '2'),
-       ('Usuario5', 'Justo Antonio', 'Alfaro', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Sección Planta Física Y Mobiliario' , '123','Si', '2'),
-       ('Usuario6', 'José Domínguez', 'Echeverría', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Sección Equipo Médico' , '123','Si', '2'),
-       ('Usuario7', 'Leopoldo Alfaro', 'Rodas', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Sección Equipo Básico' , '123','Si', '2'),
-       ('Usuario8', 'Miguel Antonio', 'Corvera Torrez', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Sección Planta Física Y Mobiliario' , '123','Si', '2'),
-       ('Usuario9', 'Anderson Eduardo', 'López Rodríguez', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Departamento Mantenimiento Local' , '123','Si', '2'),
-       ('Usuario10', 'Kevin Alexander', 'Guevara Marinero', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Sección Equipo Básico' , '123','Si', '2'),
-       ('Usuario11', 'Jenifer Marisol', 'Campos Yánez', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Departamento Mantenimiento Local' , '123','Si', '2'),
-       ('Usuario12', 'Kalmar Waldir', 'Pérez Marín', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Departamento Mantenimiento Local' , '123','Si', '2'),
-       ('Usuario13', 'Ronald Alexander', 'López Cisneros', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Departamento Mantenimiento Local' , '123','Si', '2');
+('egchoto', 'Ernesto', 'Gonzales Choto', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Departamento Mantenimiento Local', 'neto982006','Si', '1'),
+('Usuario1', 'Baltazar Alexander', 'Marinero Pérez', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Sección Equipo Básico', '123','Si', '2'),
+('Usuario2', 'Fráncico Tolentino', 'López', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Sección Planta Física Y Mobiliario' , '123','Si', '2'),
+('Usuario3', 'René Adán', 'Villalta Pérez', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Sección Planta Física Y Mobiliario' , '123','Si', '2'),
+('Usuario4', 'José Walter', 'Pineda Leiva', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Sección Equipo Básico' , '123','Si', '2'),
+('Usuario5', 'Justo Antonio', 'Alfaro', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Sección Planta Física Y Mobiliario' , '123','Si', '2'),
+('Usuario6', 'José Domínguez', 'Echeverría', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Sección Equipo Médico' , '123','Si', '2'),
+('Usuario7', 'Leopoldo Alfaro', 'Rodas', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Sección Equipo Básico' , '123','Si', '2'),
+('Usuario8', 'Miguel Antonio', 'Corvera Torrez', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Sección Planta Física Y Mobiliario' , '123','Si', '2'),
+('Usuario9', 'Anderson Eduardo', 'López Rodríguez', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Departamento Mantenimiento Local' , '123','Si', '2'),
+('Usuario10', 'Kevin Alexander', 'Guevara Marinero', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Sección Equipo Básico' , '123','Si', '2'),
+('Usuario11', 'Jenifer Marisol', 'Campos Yánez', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Departamento Mantenimiento Local' , '123','Si', '2'),
+('Usuario12', 'Kalmar Waldir', 'Pérez Marín', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Departamento Mantenimiento Local' , '123','Si', '2'),
+('Usuario13', 'Ronald Alexander', 'López Cisneros', 'Hospital Nacional Zacatecoluca "Santa Teresa"', 'Departamento Mantenimiento Local' , '123','Si', '2');
 
 
 
@@ -1419,6 +1415,14 @@ INSERT INTO `detalle_bodega` (`codigodetallebodega`, `codigo`, `descripcion`, `u
 (492, 70211073, 'Tubo De Abasto De Acero Inoxidable Para Lavamanos', 'C/U', '2.00', '2.00', '2.60', 90222),
 (493, 70211076, 'Llave De 1/2" Cromado Para Lavamanos 1a Calidad', 'C/U', '2.00', '2.00', '6.00', 150322),
 (494, 70120208, 'Capacitor De Marcha De 40mfd, 440vac 60hz', 'C/U', '1.00', '1.00', '3.80', 203220);
+
+ALTER TABLE `tb_productos` ADD FULLTEXT(`descripcion`);
+ALTER TABLE `tb_compra` ADD FULLTEXT(`descripcion_solicitud`);
+ALTER TABLE `detalle_bodega` ADD FULLTEXT(`descripcion`);
+ALTER TABLE `detalle_vale` ADD FULLTEXT(`descripcion`);
+ALTER TABLE `detalle_circulante` ADD FULLTEXT(`descripcion`);
+ALTER TABLE `detalle_almacen` ADD FULLTEXT(`nombre`);
+ALTER TABLE `detalle_compra` ADD FULLTEXT(`descripcion`);
 
 /*!40101 Set Character_Set_Client=@Old_Character_Set_Client */;
 /*!40101 Set Character_Set_Results=@Old_Character_Set_Results */;

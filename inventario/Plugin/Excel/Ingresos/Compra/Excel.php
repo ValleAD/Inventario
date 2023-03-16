@@ -208,21 +208,24 @@ $final12 = "0.00";
 $final13 = "0.00";
 $spreadsheet->getActiveSheet()->getHeaderFooter()
     ->setOddFooter( '&RPágina &P al &N');
-
 if (isset($_POST['compra'])) {
 
-    $sql = "SELECT * FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra";
+$sql = "SELECT nSolicitud, codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,descripcion_solicitud,unidad_medida,idusuario,solicitud_compra,dependencia,usuario,fecha_registro,plazo,Mes,Año,unidad_tecnica FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra ";
 }
 if (isset($_POST['compra1'])) {$idusuario=$_POST['idusuario'];
-$sql = "SELECT * FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra WHERE db.idusuario='$idusuario'";
-}    $result = mysqli_query($conn, $sql);
+
+$sql = "SELECT nSolicitud, codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,descripcion_solicitud,unidad_medida,idusuario,solicitud_compra,dependencia,usuario,fecha_registro,plazo,Mes,Año,unidad_tecnica FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra ";
+}
+
+
+    $result = mysqli_query($conn, $sql);
 $n=0;
 while ($productos = mysqli_fetch_array($result)){
 
      $precio   =    $productos['precio'];
         $precio2  =    number_format($precio, 2,".",",");  
-        $cant_aprobada=$productos['stock'];
-        $cantidad_despachada=$productos['cantidad_despachada'];
+        $cant_aprobada=$productos['SUM(stock)'];
+        $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
         $stock=number_format($cant_aprobada, 2,".",",");
         $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
@@ -238,13 +241,13 @@ while ($productos = mysqli_fetch_array($result)){
         $final8 += $precio;
         $final9   =    number_format($final8, 2, ".",",");
      if ($productos['estado']="Pendiente") {  
-    $total = $productos['stock'] * $productos['precio'];
+    $total = $productos['SUM(stock)'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
         
-    $total = $productos['stock'] * $productos['precio'];
+    $total = $productos['SUM(stock)'] * $productos['precio'];
     }if ($productos['estado']=="Aprobado") {
         
-    $total = $productos['cantidad_despachada'] * $productos['precio'];
+    $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
     }
      $final += $total;
        $total1= number_format($total, 2, ".",",");

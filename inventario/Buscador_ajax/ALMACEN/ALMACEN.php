@@ -17,7 +17,7 @@
         <?php include ('../../Model/conexion.php');
 
             $tabla="";
-            $query="SELECT nSolicitud FROM tb_compra";
+            $query="SELECT codAlmacen FROM tb_almacen";
 
             ///////// LO QUE OCURRE AL TECLEAR SOBRE EL INPUT DE BUSQUEDA ////////////
             if(isset($_POST['consulta'])){
@@ -26,11 +26,11 @@
 
 
                 $q=$conn->real_escape_string($_POST['consulta']);
-                $query="SELECT nSolicitud FROM tb_compra  WHERE 
-                nSolicitud LIKE '%".$q."%' GROUP BY nSolicitud HAVING COUNT(*) ORDER BY nSolicitud desc ";
+                $query="SELECT codAlmacen, codBodega FROM tb_almacen tc join tb_bodega tb on tc.codAlmacen= tb.codBodega  WHERE 
+                codAlmacen LIKE '%".$q."%' or codBodega LIKE '%".$q."%'";
                 $result = mysqli_query($conn, $query);
                 while ($productos = mysqli_fetch_array($result)){
-                    $codigo=$productos['nSolicitud'];
+                    $codigo=$productos['codAlmacen'];
                     if ($_POST['consulta']==$codigo) {
                         echo '<div class=" alert alert-warning alert-dismissible fade show mt-2 " style="position: initial;" role="alert">
                             <strong style="font-size: 15px;">Este Código ya Existe</strong>

@@ -49,18 +49,21 @@ if (!isset($_SESSION['signin'])>0) {
             <section id="section" class="section">
                 <?php
 
-                $total = 0;
-                $final = 0;
-                $final1 = 0;
-                $final2 = 0;
-                $final3 = 0;
-                $final4 = 0;
-                $final5 = 0;
-                $final6 = 0;
-                $final7 = 0;
-                $final8 = 0;
-                $final9 = 0;
-
+                $total = '0.00';
+                $final = '0.00';
+                $final1 = '0.00';
+                $final2 = '0.00';
+                $final3 = '0.00';
+                $final4 = '0.00';
+                $final5 = '0.00';
+                $final6 = '0.00';
+                $final7 = '0.00';
+                $final8 = '0.00';
+                $final9 = '0.00';
+                $verificar =mysqli_query($conn, "SELECT codAlmacen FROM tb_almacen ");
+                if (!mysqli_num_rows($verificar)>0) {
+                    echo "<script>window.location.href='../../Vistas/Almacen/solicitudes_almacen.php'; </script>";
+                }
                 if(isset($_GET['detalle'])){
 
                     $cod_compra = $_GET['id'];
@@ -70,73 +73,73 @@ if (!isset($_SESSION['signin'])>0) {
                     $cod_compra = $_POST['id'];
                     
                 }
-               $sql = "SELECT * FROM tb_almacen WHERE codAlmacen = '$cod_compra'";
-               $result = mysqli_query($conn, $sql);
-               while ($productos1 = mysqli_fetch_array($result)){
-                $estado=$productos1['estado'];
+                $sql = "SELECT * FROM tb_almacen WHERE codAlmacen = '$cod_compra'";
+                $result = mysqli_query($conn, $sql);
+                while ($productos1 = mysqli_fetch_array($result)){
+                    $estado=$productos1['estado'];
 
-                echo'   
-
-
-                <div class="card">
-                <div class="card-body">
-                <div class="row">
-
-                <div class="col-md-3" style="position: initial">
+                    echo'   
 
 
-                <label style="font-weight: bold;">Depto. o Servicio:</label>
-                <p>' .$productos1['departamento']. '</p>
+                    <div class="card">
+                    <div class="card-body">
+                    <div class="row">
 
-                </div>
-
-                <div class="col-md-2" style="position: initial">
-                <label style="font-weight: bold;">N° de Almacen:</label>
-                <p>' .$productos1['codAlmacen']. '</p>
-                </div>
-
-                <div class="col-md-3" style="position: initial">
-                <label style="font-weight: bold;">Encargado:</label>
-                <p>' .$productos1['encargado']. '</p>
-                </div>
+                    <div class="col-md-3" style="position: initial">
 
 
-                <div class="col-md-2" style="position: initial">
-                <label style="font-weight: bold;">Fecha:</label>
-                <p>' .date("d-m-Y",strtotime($productos1['fecha_solicitud'])).  '</p>
-                </div>';?>
-                <div class="col-md-2" style="position: initial">
-                    <label style="font-weight: bold;">Estado:</label>
-                    <div style="position:initial;" class="input-group">
-                       <label class="input-group-text" for="inputGroupSelect01">
-                        <?php  if($productos1['estado']=='Pendiente') { ?>
-                            <svg class="bi" width="20" height="20" fill="currentColor">
-                                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#question-octagon-fill"/>
-                            </svg>
-                        <?php } elseif($productos1['estado']=='Aprobado') { ?>
-                            <svg class="bi" width="20" height="20" fill="currentColor">
-                                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#check-circle-fill"/>
-                            </svg>
-                        <?php } elseif($productos1['estado']=='Rechazado') { ?>
-                            <svg class="bi" width="20" height="20" fill="currentColor">
-                                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#x-square-fill"/>
-                            </svg>
-                        <?php } ?>
-                    </label>
-                    <input <?php
-                    if($productos1['estado']=='Pendiente') {
-                        echo ' style="background-color:green ;position: initial;width:70%; border-radius:5px;text-align:center; color: white;"';
-                    }else if($productos1['estado']=='Aprobado') {
-                       echo ' style="background-color:blueviolet ;position: initial;width:70%; border-radius:5px;text-align:center; color: white;"';
-                   }else if($productos1['estado']=='Rechazado') {
-                       echo ' style="background-color:red ;style="position: initial;width:70%; border-radius:5px;text-align:center; color: white;"';
-                   }
-               ?> class="form-control" type="text" name="estado" readonly value="<?php echo $productos1['estado'] ?>"><br>
+                    <label style="font-weight: bold;">Depto. o Servicio:</label>
+                    <p>' .$productos1['departamento']. '</p>
 
+                    </div>
+
+                    <div class="col-md-2" style="position: initial">
+                    <label style="font-weight: bold;">N° de Almacen:</label>
+                    <p>' .$productos1['codAlmacen']. '</p>
+                    </div>
+
+                    <div class="col-md-3" style="position: initial">
+                    <label style="font-weight: bold;">Encargado:</label>
+                    <p>' .$productos1['encargado']. '</p>
+                    </div>
+
+
+                    <div class="col-md-2" style="position: initial">
+                    <label style="font-weight: bold;">Fecha:</label>
+                    <p>' .date("d-m-Y",strtotime($productos1['fecha_solicitud'])).  '</p>
+                    </div>';?>
+                    <div class="col-md-2" style="position: initial">
+                        <label style="font-weight: bold;">Estado:</label>
+                        <div style="position:initial;" class="input-group">
+                           <label class="input-group-text" for="inputGroupSelect01">
+                            <?php  if($productos1['estado']=='Pendiente') { ?>
+                                <svg class="bi" width="20" height="20" fill="currentColor">
+                                    <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#question-octagon-fill"/>
+                                </svg>
+                            <?php } elseif($productos1['estado']=='Aprobado') { ?>
+                                <svg class="bi" width="20" height="20" fill="currentColor">
+                                    <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#check-circle-fill"/>
+                                </svg>
+                            <?php } elseif($productos1['estado']=='Rechazado') { ?>
+                                <svg class="bi" width="20" height="20" fill="currentColor">
+                                    <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#x-square-fill"/>
+                                </svg>
+                            <?php } ?>
+                        </label>
+                        <input <?php
+                        if($productos1['estado']=='Pendiente') {
+                            echo ' style="background-color:green ;position: initial;width:70%; border-radius:5px;text-align:center; color: white;"';
+                        }else if($productos1['estado']=='Aprobado') {
+                           echo ' style="background-color:blueviolet ;position: initial;width:70%; border-radius:5px;text-align:center; color: white;"';
+                       }else if($productos1['estado']=='Rechazado') {
+                           echo ' style="background-color:red ;style="position: initial;width:70%; border-radius:5px;text-align:center; color: white;"';
+                       }
+                   ?> class="form-control" type="text" name="estado" readonly value="<?php echo $productos1['estado'] ?>"><br>
+
+               </div>
            </div>
        </div>
-   </div>
-</div>  </div>
+   </div>  </div>
 </div>
 
 <br>
@@ -166,73 +169,65 @@ if (!isset($_SESSION['signin'])>0) {
 
                     $num_vale = $productos1['codAlmacen'];
 
-                    if ($tipo_usuario==1) {
-                        $sql = "SELECT codigo,cantidad_solicitada,cantidad_despachada,precio,nombre,unidad_medida FROM `detalle_almacen` D JOIN `tb_almacen` V ON D.tb_almacen=V.codAlmacen WHERE tb_almacen = $num_vale ";
-                    }
-                    if ($tipo_usuario==2) {
-                        $sql = "SELECT codigo,cantidad_solicitada,cantidad_despachada,precio,nombre,unidad_medida FROM `detalle_almacen` D JOIN `tb_almacen` V ON D.tb_almacen=V.codAlmacen WHERE V.idusuario='$idusuario' and tb_almacen='$num_vale'  ";
-                    }
+                    $sql = "SELECT codigo,SUM(cantidad_solicitada),SUM(cantidad_despachada),precio,nombre,unidad_medida FROM `detalle_almacen` D JOIN `tb_almacen` V ON D.tb_almacen=V.codAlmacen WHERE tb_almacen = $num_vale Group by codigo";
+
+                    
                     $result1 = mysqli_query($conn, $sql);
-                    if (!$result1) {?>
-                        <style>div{
+
+                    while ($productos = mysqli_fetch_array($result1)){
+                        if ($estado="Pendiente") {  
+                            $total = $productos['SUM(cantidad_solicitada)'] * $productos['precio'];
+                        }if ($estado="Rechazado") {
+
+                            $total = $productos['SUM(cantidad_solicitada)'] * $productos['precio'];
+                        }if ($estado=="Aprobado") {
+
+                            $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
+                        }
+                        $final += $total;
+                        $total1= number_format($total, 2, ".",",");
+                        $final1=number_format($final, 2, ".",",");
+                        $codigo=$productos['codigo'];
+                        $nombre=$productos['nombre'];
+                        $um=$productos['unidad_medida'];
+
+
+                        $precio   =    $productos['precio'];
+                        $precio2  =    number_format($precio, 2,".",",");  
+                        $cant_aprobada=$productos['SUM(cantidad_solicitada)'];
+                        $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
+                        $stock=number_format($cant_aprobada, 2,".",",");
+                        $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+
+                        $final2 += $cant_aprobada;
+                        $final3   =    number_format($final2, 2, ".",",");
+
+                        $final4 += $cantidad_despachada;
+                        $final5   =    number_format($final4, 2, ".",",");
+
+                        $final6 += ($cant_aprobada-$cantidad_despachada);
+                        $final7   =    number_format($final6, 2, ".",",");
+
+                        $final8 += $precio;
+                        $final9   =    number_format($final8, 2, ".",",");?>
+                        <style type="text/css">
+                           #td{
                             display: none;
-                        }</style>
-                        <?php 
-                    }else{
-                        while ($productos = mysqli_fetch_array($result1)){
-                            if ($estado="Pendiente") {  
-                                $total = $productos['cantidad_solicitada'] * $productos['precio'];
-                            }if ($estado="Rechazado") {
-
-                                $total = $productos['cantidad_solicitada'] * $productos['precio'];
-                            }if ($estado=="Aprobado") {
-
-                                $total = $productos['cantidad_despachada'] * $productos['precio'];
-                            }
-                            $final += $total;
-                            $total1= number_format($total, 2, ".",",");
-                            $final1=number_format($final, 2, ".",",");
-                            $codigo=$productos['codigo'];
-                            $nombre=$productos['nombre'];
-                            $um=$productos['unidad_medida'];
+                        }
 
 
-                            $precio   =    $productos['precio'];
-                            $precio2  =    number_format($precio, 2,".",",");  
-                            $cant_aprobada=$productos['cantidad_solicitada'];
-                            $cantidad_despachada=$productos['cantidad_despachada'];
-                            $stock=number_format($cant_aprobada, 2,".",",");
-                            $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+                    </style> 
+                    <tr>
+                     <td  data-label="Código"><?php echo $productos['codigo'] ?></td>
+                     <td  data-label="Descripción"><?php echo $productos['nombre'] ?></td>
+                     <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
+                     <td  data-label="Cantidad"><?php echo $stock ?></td>
+                     <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
+                     <td  data-label="Costo unitario"><?php echo $precio2 ?></td>
+                     <td  data-label="total"><?php echo $total1 ?></td>
+                 </tr>
 
-                            $final2 += $cant_aprobada;
-                            $final3   =    number_format($final2, 2, ".",",");
-
-                            $final4 += $cantidad_despachada;
-                            $final5   =    number_format($final4, 2, ".",",");
-
-                            $final6 += ($cant_aprobada-$cantidad_despachada);
-                            $final7   =    number_format($final6, 2, ".",",");
-
-                            $final8 += $precio;
-                            $final9   =    number_format($final8, 2, ".",",");?>
-                            <style type="text/css">
-                               #td{
-                                display: none;
-                            }
-
-
-                        </style> 
-                        <tr>
-                         <td  data-label="Código"><?php echo $productos['codigo'] ?></td>
-                         <td  data-label="Descripción"><?php echo $productos['nombre'] ?></td>
-                         <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
-                         <td  data-label="Cantidad"><?php echo $stock ?></td>
-                         <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
-                         <td  data-label="Costo unitario"><?php echo $precio2 ?></td>
-                         <td  data-label="total"><?php echo $total1 ?></td>
-                     </tr>
-
-                 <?php }
+                 <?php 
              }
              ?> 
          </tbody>
@@ -307,11 +302,10 @@ if (!isset($_SESSION['signin'])>0) {
                 <p align="right"><b style="float: left;">Cantidad Solicitada: </b><?php echo $final3 ?></p>
                 <p align="right"><b style="float: left;">Cantidad Despachada: </b><?php echo $final5 ?></p>
 
-                <p align="right"><b style="float: left;">Cant. Soli. - Cant. Despa.: </b><?php echo $final7 ?></p>
                 <p align="right"><b style="float: left;">Total del Precio: </b><?php echo $final9 ?></p>
                 <p align="right"><b style="float: left;">SubTotal</b><?php echo $final1?></p>
 
-                <button class="btn btn-success as">Solicitudes Bodega</button>
+                <button class="btn btn-success as">Solicitudes Almacen</button>
             </div>
 
         </div>
@@ -386,7 +380,7 @@ if (!isset($_SESSION['signin'])>0) {
     <div class="col-md-9">
         <div class="card">
             <div class="card-body">
-                <table class="table" id="example">
+                <table class="table" id="example1">
 
                   <thead>
                     <tr id="tr">
@@ -405,7 +399,7 @@ if (!isset($_SESSION['signin'])>0) {
 
                $num_vale = $productos1['codAlmacen'];
 
-               $sql = "SELECT * FROM detalle_almacen WHERE tb_almacen = $num_vale ";
+               $sql = "SELECT codigoalmacen, codigo,cantidad_solicitada,cantidad_despachada,precio,nombre,unidad_medida FROM `detalle_almacen` D JOIN `tb_almacen` V ON D.tb_almacen=V.codAlmacen WHERE tb_almacen = $num_vale ";
                $result = mysqli_query($conn, $sql);
                while ($productos = mysqli_fetch_array($result)){
 
@@ -472,7 +466,7 @@ if (!isset($_SESSION['signin'])>0) {
           <p align="right" class="my-4"><b style="float: left;">SubTotal: </b><?php echo $final1?></p>
           
           <button id="buscar1" type="submit" class="btn btn-lg btn-success es" style="width: 49%;float: left; margin-right: 1%;font-size: 1.4em; text-align: center;" name="detalle_almacen">Guardar
-             
+
           </button>
       </form>
       <form method="POST" action="" style="margin:0;">
@@ -526,70 +520,57 @@ if (!isset($_SESSION['signin'])>0) {
                   <div class="col-md-4" style="position: initial">
                     <label id="inp1"><b>Departamento que solicita</b></label>   
                     <div class="div d" > 
+                        Mantenimiento
+                    </div>   
+                </div>
+                <div class="col-md-4" style="position: initial">
+                    <label id="inp1"><b>Vale N°</b></label>   
+                    <input id="busq"class="form-control" readonly  type="number" name="nsolicitud" value="<?php echo $cod ?>" required >
+                    <section id="resultado" style="margin: 0px;background: transparent;width: 100%;"></section>
+                </div>
+                <div class="col-md-4" style="position: initial">
+                    <label id="inp1"><b>Nombre de la persona</b></label>
+                    <?php     $cliente =$_SESSION['signin'];
+                    $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
+                    while ($consulta =mysqli_fetch_array($data)) {
+                     ?>
+                     <label><b>Encargado</b></label>
+                     <input style="cursor: not-allowed; color: black;"  class="form-control" type="text" name="usuario" id="como3" required readonly value="<?php  echo $consulta['firstname']?> <?php  echo $consulta['lastname']?>">
+                     <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="<?php  echo $consulta['id']?>"/>
+                     <br>
+                 <?php }?> 
 
-                       <?php  
-                       $sql = "SELECT * FROM selects_departamento";
-                       $result = mysqli_query($conn, $sql);
-                       while ($productos = mysqli_fetch_array($result)){ ?>  
-                         <input class="p2" required  id="<?php echo $productos['id'] ?>" type="radio" name="depto" value="<?php echo $productos['departamento'] ?>"> <label  style="width: 100%;" id="label1" for="<?php echo $productos['id'] ?>" > <?php echo $productos['departamento'] ?></label><br>
-                     <?php }?>
-                 </div>   
-                 <br>  
-                 <p id="tr" align="right" class="p">Mostrar todos
-                    <svg class="bi" width="20" height="20" fill="currentColor">
-                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/></svg></p>
-                        <p id="tr" align="right" class="p1">Ocultar
-                            <svg class="bi" width="20" height="20" fill="currentColor">
-                                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/></svg></p>
-                            </div>
-                            <div class="col-md-4" style="position: initial">
-                                <label id="inp1"><b>Vale N°</b></label>   
-                                <input id="busq"class="form-control" readonly  type="number" name="nsolicitud" value="<?php echo $cod ?>" required >
-                                <section id="resultado" style="margin: 0px;background: transparent;width: 100%;"></section>
-                            </div>
-                            <div class="col-md-4" style="position: initial">
-                                <label id="inp1"><b>Nombre de la persona</b></label>
-                                <?php     $cliente =$_SESSION['signin'];
-                                $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
-                                while ($consulta =mysqli_fetch_array($data)) {
-                                 ?>
-                                 <label><b>Encargado</b></label>
-                                 <input style="cursor: not-allowed; color: black;"  class="form-control" type="text" name="usuario" id="como3" required readonly value="<?php  echo $consulta['firstname']?> <?php  echo $consulta['lastname']?>">
-                                 <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="<?php  echo $consulta['id']?>"/>
-                                 <br>
-                             <?php }?> 
-
-                         </div>
-                     </div>
-                 </div>
              </div>
+         </div>
+     </div>
+ </div>
 
-             <br>
+ <br>
 
-             <div class="card">
-                <div class="card-body">
-                  <?php include('../../Buscador_ajax/Tablas/Productos/tablaProductos.php') ?>
-              </div>
-          </div>
-          <br>
+ <div class="card">
+    <div class="card-body">
+      <?php include('../../Buscador_ajax/Tablas/Productos/tablaProductos.php') ?>
+  </div>
+</div>
+<br>
 
-          <div class="row">
+<div class="row">
 
-            <div class="col-md-4">
-            </div>
-            <div class="col-md-2">
-                <button class="btn btn-success btn-lg" id="Guardar"style="width: 100%;"  name="NuevaSoli">Guardar</button>
-            </form>
-        </div>
-        <div class="col-md-2">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-2">
+        <button class="btn btn-success btn-lg" id="Guardar"style="width: 100%;"  name="NuevaSoli">Guardar</button>
+    </form>
+</div>
+<div class="col-md-2">
 
-            <form method="POST" action="" style="margin:0">
+    <form method="POST" action="" style="margin:0">
 
-                <button class="btn btn-danger btn-lg" id="" style="width: 100%;" name="detalle">Cancelar</button>
-                <input type="hidden" name="id" value="<?php echo $cod ?>">
-            </form>
-        </div>
-    </div>  
+        <button class="btn btn-danger btn-lg" id="" style="width: 100%;" name="detalle">Cancelar</button>
+        <input type="hidden" name="id" value="<?php echo $cod ?>">
+    </form>
+</div>
+</div>  
 
 
 </section>
@@ -659,7 +640,7 @@ if (!isset($_SESSION['signin'])>0) {
 });
     $(document).ready(function () {
         $('.as').click(function() {
-            window.location.href="solicitudes_vale.php";
+            window.location.href="solicitudes_almacen.php";
         });
         $('#ver').click(function() {
             window.location.href="";
@@ -667,6 +648,30 @@ if (!isset($_SESSION['signin'])>0) {
 
 
         $('#example').DataTable({
+            dom: 'lrtip',
+            responsive: true,
+            autoWidth:false,
+            deferRender: true,
+
+            lengthMenu: [[10, -1], [10,"Todos"]],
+            language: {
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sSearch": "Buscar:",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "sLast":"Último",
+                    "sNext":"Siguiente",
+                    "sPrevious": "Anterior"
+                },
+                "sProcessing":"Procesando...",
+            },
+
+        });
+        $('#example1').DataTable({
             dom: 'lrtip',
             responsive: true,
             autoWidth:false,

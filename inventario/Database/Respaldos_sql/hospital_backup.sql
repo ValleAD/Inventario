@@ -1168,7 +1168,7 @@ CREATE TABLE `historial` (
   `Salidas` decimal(6,2) NOT NULL DEFAULT 0.00,
   `Saldo` decimal(6,2) NOT NULL DEFAULT 0.00,
   `idusuario` int(15) NOT NULL,
-  `tablas` int(11) NOT NULL,
+  `Detalles` int(11) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

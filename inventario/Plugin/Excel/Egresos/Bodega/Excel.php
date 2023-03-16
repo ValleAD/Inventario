@@ -199,18 +199,18 @@ $final12 = "0.00";
 $final13 = "0.00";
 if (isset($_POST['bodega'])) {
 
-    $sql = "SELECT * FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega ";
+    $sql = "SELECT codBodega, codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,odt_bodega,departamento,usuario,fecha_registro,Mes,Año  FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega ";
 }
 if (isset($_POST['bodega1'])) {$idusuario=$_POST['idusuario'];
-$sql = "SELECT * FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega WHERE db.idusuario='$idusuario'";
+$sql = "SELECT codBodega, codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,odt_bodega,departamento,usuario,fecha_registro,Mes,Año  FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega WHERE db.idusuario='$idusuario'";
 }    $result = mysqli_query($conn, $sql);
 $n=0;
 while ($productos = mysqli_fetch_array($result)){
 
  $precio   =    $productos['precio'];
  $precio2  =    number_format($precio, 2,".",",");  
- $cant_aprobada=$productos['stock'];
- $cantidad_despachada=$productos['cantidad_despachada'];
+ $cant_aprobada=$productos['SUM(stock)'];
+ $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
  $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
  $final2 += $cant_aprobada;
@@ -219,13 +219,13 @@ while ($productos = mysqli_fetch_array($result)){
  $final8 += $precio;
 
  if ($productos['estado']="Pendiente") {  
-    $total = $productos['stock'] * $productos['precio'];
+    $total = $productos['SUM(stock)'] * $productos['precio'];
 }if ($productos['estado']="Rechazado") {
 
-    $total = $productos['stock'] * $productos['precio'];
+    $total = $productos['SUM(stock)'] * $productos['precio'];
 }if ($productos['estado']=="Aprobado") {
 
-    $total = $productos['cantidad_despachada'] * $productos['precio'];
+    $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
 }
 $final += $total;
 

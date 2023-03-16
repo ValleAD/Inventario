@@ -189,28 +189,30 @@ $final11 = "0.00";
 $final12 = "0.00";
 $final13 = "0.00";
 if (isset($_POST['circulante'])) {
-
-    $sql = "SELECT * FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante";
-}
+      
+   $sql = "SELECT codCirculante, codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,tb_circulante,fecha_solicitud,estado FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante  ";
+  }
 if (isset($_POST['circulante1'])) {$idusuario=$_POST['idusuario'];
-$sql = "SELECT * FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante WHERE db.idusuario='$idusuario'";
-}    $result = mysqli_query($conn, $sql);
+    
+      $sql = "SELECT codCirculante, codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,tb_circulante,fecha_solicitud,estado FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante WHERE idusuario='$idusuario'  ";
+}
+   $result = mysqli_query($conn, $sql);
 $n=0;
 while ($productos = mysqli_fetch_array($result)){
 
    $precio   =    $productos['precio'];  
-   $cant_aprobada=$productos['stock'];
+   $cant_aprobada=$productos['SUM(stock)'];
    $final2 += $cant_aprobada;
    $final8 += $precio;
 
    if ($productos['estado']="Pendiente") {  
-    $total = $productos['stock'] * $productos['precio'];
+    $total = $productos['SUM(stock)'] * $productos['precio'];
 }if ($productos['estado']="Rechazado") {
 
-    $total = $productos['stock'] * $productos['precio'];
+    $total = $productos['SUM(stock)'] * $productos['precio'];
 }if ($productos['estado']=="Aprobado") {
 
-    $total = $productos['cantidad_despachada'] * $productos['precio'];
+    $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
 }
 $final += $total;
 $total1= number_format($total, 2, ".",",");

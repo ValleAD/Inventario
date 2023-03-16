@@ -62,60 +62,60 @@
     <h5 ><b>SOLICITUD DE MATERIALES DE ALMACEN</b></h5>
     <section style="margin: 2%;">
 
-       <style>
+     <style>
 
-         h3, h4, h5{
-            font-size: 10px;
-            text-align: center;
-        }
-    </style>
-    <br>
-    <?php include ('../../../Model/conexion.php');
-    session_start();
-    $tipo_usuario = $_SESSION['tipo_usuario'];
-    $idusuario = $_SESSION['iduser'];
-    $total = "0.00";
-    $final = "0.00";
-    $final1 = "0.00";
-    $final2 = "0.00";
-    $final3 = "0.00";
-    $final4 = "0.00";
-    $final5 = "0.00";
-    $final6 = "0.00";
-    $final7 = "0.00";
-    $final8 = "0.00";
-    $final9 = "0.00";
-    $sql = "SELECT  * FROM  `tb_almacen` WHERE codAlmacen='$vale' limit 1";
-
-    $result = mysqli_query($conn, $sql);
-
-    while ($productos = mysqli_fetch_array($result)){
-        $depto=$productos['departamento'];
-        $estado=$productos['estado'];
-        $fech=date("d - m - Y",strtotime($productos['fecha_solicitud']));
-        $encargado=$productos['encargado'];
-
-        $odt= $productos['codAlmacen'];
-
-        $departamento=$productos['departamento'];
-        $fecha=date("d-m-Y",strtotime($productos['fecha_solicitud']));
+       h3, h4, h5{
+        font-size: 10px;
+        text-align: center;
     }
-    ?>
-    <table style="width: 100%;margin: 0;">
-        <tr>
-            <td><b>Depto. o Servicio: </b> <?php echo $depto ?> </td>
-            <td><b>Fecha: </b> <?php echo $fech ?><br></td>
-            <td align="right"><b>N° de Almacen.: </b> <?php echo $vale ?></td>
-        </tr>
-        <tr>
-           <td style="text-align: left;;width:50%;"><b>Encargado: </b> <?php echo $encargado ?></td>
-           <td><b>Estado:</b> <?php echo $estado ?></td>
+</style>
+<br>
+<?php include ('../../../Model/conexion.php');
+session_start();
+$tipo_usuario = $_SESSION['tipo_usuario'];
+$idusuario = $_SESSION['iduser'];
+$total = "0.00";
+$final = "0.00";
+$final1 = "0.00";
+$final2 = "0.00";
+$final3 = "0.00";
+$final4 = "0.00";
+$final5 = "0.00";
+$final6 = "0.00";
+$final7 = "0.00";
+$final8 = "0.00";
+$final9 = "0.00";
+$sql = "SELECT  * FROM  `tb_almacen` WHERE codAlmacen='$vale' limit 1";
 
-       </tr>
+$result = mysqli_query($conn, $sql);
 
-   </table> 
-   <br>
-   <table class="table" style="width: 100%">
+while ($productos = mysqli_fetch_array($result)){
+    $depto=$productos['departamento'];
+    $estado=$productos['estado'];
+    $fech=date("d - m - Y",strtotime($productos['fecha_solicitud']));
+    $encargado=$productos['encargado'];
+
+    $odt= $productos['codAlmacen'];
+
+    $departamento=$productos['departamento'];
+    $fecha=date("d-m-Y",strtotime($productos['fecha_solicitud']));
+}
+?>
+<table style="width: 100%;margin: 0;">
+    <tr>
+        <td><b>Depto. o Servicio: </b> <?php echo $depto ?> </td>
+        <td><b>Fecha: </b> <?php echo $fech ?><br></td>
+        <td align="right"><b>N° de Almacen.: </b> <?php echo $vale ?></td>
+    </tr>
+    <tr>
+     <td style="text-align: left;;width:50%;"><b>Encargado: </b> <?php echo $encargado ?></td>
+     <td><b>Estado:</b> <?php echo $estado ?></td>
+
+ </tr>
+
+</table> 
+<br>
+<table class="table" style="width: 100%">
     <thead>     
         <tr id="tr">
             <th style="width: 20%;"><p >Código</p></th>
@@ -130,12 +130,8 @@
 
     <tbody>
         <?php 
-        if ($tipo_usuario==1) {
-            $sql = "SELECT  * FROM `detalle_almacen` D JOIN `tb_almacen` V ON D.tb_almacen=V.codAlmacen WHERE tb_almacen = $vale ";
-        }
-        if ($tipo_usuario==2) {
-            $sql = "SELECT  * FROM `detalle_almacen` D JOIN `tb_almacen` V ON D.tb_almacen=V.codAlmacen WHERE V.idusuario='$idusuario' and tb_almacen='$vale'  ";
-        }
+        $sql = "SELECT codigo,SUM(cantidad_solicitada),SUM(cantidad_despachada),precio,nombre,unidad_medida FROM `detalle_almacen` D JOIN `tb_almacen` V ON D.tb_almacen=V.codAlmacen WHERE tb_almacen = $odt Group by codigo";
+
         $result = mysqli_query($conn, $sql);
 
         while ($solicitudes = mysqli_fetch_array($result)){
@@ -143,17 +139,17 @@
             $codigo=$solicitudes['codigo'];
             $des=$solicitudes['nombre'];
             $um=$solicitudes['unidad_medida'];
-            $cantidad=$solicitudes['cantidad_despachada'];
-            $stock=$solicitudes['cantidad_solicitada'];
+            $cantidad=$solicitudes['SUM(cantidad_despachada)'];
+            $stock=$solicitudes['SUM(cantidad_solicitada)'];
             $cost=$solicitudes['precio'];
             if ($estado="Pendiente") {  
-                $total = $solicitudes['cantidad_solicitada'] * $solicitudes['precio'];
+                $total = $solicitudes['SUM(cantidad_solicitada)'] * $solicitudes['precio'];
             }if ($estado="Rechazado") {
 
-                $total = $solicitudes['cantidad_solicitada'] * $solicitudes['precio'];
+                $total = $solicitudes['SUM(cantidad_solicitada)'] * $solicitudes['precio'];
             }if ($estado=="Aprobado") {
 
-                $total = $solicitudes['cantidad_despachada'] * $solicitudes['precio'];
+                $total = $solicitudes['SUM(cantidad_despachada)'] * $solicitudes['precio'];
             }
             $final += $total;
             $total1= number_format($total, 2, ".",",");

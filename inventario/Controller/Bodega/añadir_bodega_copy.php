@@ -20,66 +20,66 @@
 
 
 
-     $nSolicitud=$_POST['bodega'];
-     $estado = $_POST['estado'];
-     $sql="UPDATE  tb_bodega SET estado = '$estado' WHERE codBodega='$nSolicitud'" ;
+       $nSolicitud=$_POST['bodega'];
+       $estado = $_POST['estado'];
+       $sql="UPDATE  tb_bodega SET estado = '$estado' WHERE codBodega='$nSolicitud'" ;
 
-     $result = mysqli_query($conn, $sql);
-     if ($estado=='Aprobado') {
-         for($i = 0; $i < count($_POST['cod']); $i++)
+       $result = mysqli_query($conn, $sql);
+       if ($estado=='Aprobado') {
+           for($i = 0; $i < count($_POST['cod']); $i++)
+           {
+              $cod_producto  = $_POST['cod'][$i];
+              $cantidad_despachada = $_POST['cantidad_despachada'][$i];
+
+              $count = "SELECT codProductos, SUM(stock) FROM tb_productos  WHERE codProductos ='$cod_producto' GROUP BY codProductos, precio ";
+              $query2 = mysqli_query($conn, $count);
+
+              while ($productos1 = mysqli_fetch_array($query2)){
+
+                 $stock = $productos1['SUM(stock)'];
+
+                 $total= $stock - $cantidad_despachada;
+
+                 $sql1="UPDATE tb_productos SET stock ='$total' WHERE codProductos ='$cod_producto'";
+                 $query1 = mysqli_query($conn, $sql1);
+             }
+
+         }
+
+         for($i = 0; $i < count($_POST['cod_bodega']); $i++)
          {
-          $cod_producto  = $_POST['cod'][$i];
+          $cod_bodega  = $_POST['cod_bodega'][$i];
           $cantidad_despachada = $_POST['cantidad_despachada'][$i];
+          $codigo= $_POST['cod'][$i];
+          $cod1=$_POST['cod1'][$i];
+          $descripcion= $_POST['desc'][$i];
+          $unidadmedida= $_POST['um'][$i];
+          $idusuario = $_POST['idusuario'];
+          $stock = $_POST['cant'][$i];
+          $precio= $_POST['cost'][$i];
+          $total=$stock-$cantidad_despachada;
+          $mes              = $_POST['mes'];
+          $año              = $_POST['año'];
+          $update="UPDATE detalle_bodega SET stock='$total', cantidad_despachada ='$cantidad_despachada' WHERE codigodetallebodega ='$cod_bodega'";
+          $query_update = mysqli_query($conn, $update);
 
-          $count = "SELECT codProductos, SUM(stock) FROM tb_productos  WHERE codProductos ='$cod_producto' GROUP BY codProductos, precio ";
-          $query2 = mysqli_query($conn, $count);
+          $verificar =mysqli_query($conn, "SELECT * FROM historial WHERE Concepto='Solicitud de Trabajo' and idusuario='$idusuario' and Entradas='$stock' AND Saldo='$precio' and descripcion='$descripcion' and No_Comprovante='$codigo' and Detalles='$nSolicitud'");
 
-          while ($productos1 = mysqli_fetch_array($query2)){
+          if (mysqli_num_rows($verificar)>0) {
 
-           $stock = $productos1['SUM(stock)'];
+              $sql2="UPDATE historial SET Salidas='$cantidad_despachada' WHERE Concepto='Solicitud de Trabajo' and idusuario='$idusuario' and Entradas='$total' AND Saldo='$precio' and descripcion='$descripcion' and No_Comprovante='$codigo' and Detalles='$nSolicitud'";
+              $query3 = mysqli_query($conn, $sql2);
 
-           $total= $stock - $cantidad_despachada;
+          }else{
 
-           $sql1="UPDATE tb_productos SET stock ='$total' WHERE codProductos ='$cod_producto'";
-           $query1 = mysqli_query($conn, $sql1);
+           $sql4="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Salidas,Saldo,idusuario,Mes,Año) VALUES('$descripcion','Solicitud de Trabajo','$unidadmedida','$codigo','$stock','$cantidad_despachada','$precio','$idusuario','$mes','$año')";
+           $query4 = mysqli_query($conn, $sql4);
+
        }
 
    }
 
-   for($i = 0; $i < count($_POST['cod_bodega']); $i++)
-   {
-      $cod_bodega  = $_POST['cod_bodega'][$i];
-      $cantidad_despachada = $_POST['cantidad_despachada'][$i];
-      $codigo= $_POST['cod'][$i];
-      $cod1=$_POST['cod1'][$i];
-      $descripcion= $_POST['desc'][$i];
-      $unidadmedida= $_POST['um'][$i];
-      $idusuario = $_POST['idusuario'];
-      $stock = $_POST['cant'][$i];
-      $precio= $_POST['cost'][$i];
-      $total=$stock-$cantidad_despachada;
-      $mes              = $_POST['mes'];
-      $año              = $_POST['año'];
-      $update="UPDATE detalle_bodega SET stock='$total', cantidad_despachada ='$cantidad_despachada' WHERE codigodetallebodega ='$cod_bodega'";
-      $query_update = mysqli_query($conn, $update);
-
-      $verificar =mysqli_query($conn, "SELECT * FROM historial WHERE Concepto='Solicitud de Trabajo' and idusuario='$idusuario' and Entradas='$stock' AND Saldo='$precio' and descripcion='$descripcion' and No_Comprovante='$codigo' and Detalles='$nSolicitud'");
-
-      if (mysqli_num_rows($verificar)>0) {
-
-          $sql2="UPDATE historial SET Salidas='$cantidad_despachada' WHERE Concepto='Solicitud de Trabajo' and idusuario='$idusuario' and Entradas='$total' AND Saldo='$precio' and descripcion='$descripcion' and No_Comprovante='$codigo' and Detalles='$nSolicitud'";
-          $query3 = mysqli_query($conn, $sql2);
-
-      }else{
-
-         $sql4="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Salidas,Saldo,idusuario,Mes,Año) VALUES('$descripcion','Solicitud de Trabajo','$unidadmedida','$codigo','$stock','$cantidad_despachada','$precio','$idusuario','$mes','$año')";
-         $query4 = mysqli_query($conn, $sql4);
-
-     }
-
- }
-
- if ($query2 || $query_update  || $result || $query3 || $query4)  {
+   if ($query2 || $query_update  || $result || $query3 || $query4)  {
     echo "<script>
     Swal.fire({
       title:'Realizado',
@@ -118,23 +118,35 @@ if(isset($_GET['estado1'])){
     $sql="UPDATE  tb_bodega SET estado = '$estado' WHERE codBodega='$nSolicitud'" ;
     $result = mysqli_query($conn, $sql);
     if ($estado=='Rechazado') {
-     echo "<script>
-     Swal.fire({
-      title:'Realizado',
-      text:'Producto Rechazado',
-      icon:'success',
-      allowOutsideClick: false
-      }).then((resultado) =>{
-        if (resultado.value) {
-            window.location.href='../../Vistas/Bodega/solicitudes_bodega.php';                               
-        }
-        });
+       echo "<script>
+       Swal.fire({
+          title:'Realizado',
+          text:'Producto Rechazado',
+          icon:'success',
+          allowOutsideClick: false
+          }).then((resultado) =>{
+            if (resultado.value) {
+                window.location.href='../../Vistas/Bodega/solicitudes_bodega.php';                               
+            }
+            });
 
-        </script>";
+            </script>";
+        }
+
     }
 
-}
-
-?>
+    ?>
+    <script >
+     $(document).ready(function() {
+        function disableBack() {
+            window.history.forward()
+        }
+        window.onload = disableBack();
+        window.onpageshow = function(e) {
+            if (e.persisted)
+                disableBack();
+        }
+    });
+</script>
 </body>
 </html>

@@ -17,7 +17,7 @@ $tipo_usuario = $_SESSION['tipo_usuario'];?>
 <?php include ('../../Model/conexion.php');
 
 $tabla="";
-$query="SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock),Mes,Año, precio, fecha_registro FROM tb_productos WHERE stock =0 GROUP BY codProductos,precio HAVING COUNT(*) ORDER BY fecha_registro DESC ";
+$query="SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock),Mes,Año, precio, fecha_registro FROM tb_productos  GROUP BY codProductos,precio HAVING COUNT(*) ORDER BY fecha_registro DESC ";
 
 ///////// LO QUE OCURRE AL TECLEAR SOBRE EL INPUT DE BUSQUEDA ////////////
 if(isset($_POST['consulta']))

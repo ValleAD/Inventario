@@ -117,21 +117,21 @@ $final9 = "0.00";
 
 <?php if ($tipo_usuario==1) { 
 
-$sql = "SELECT * FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra GROUP by codigo,descripcion_solicitud,cantidad_despachada,stock,precio,fecha_registro";
+$sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,descripcion_solicitud,unidad_medida,idusuario,solicitud_compra,dependencia,usuario,fecha_registro,plazo,Mes,Año,unidad_tecnica FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra ";
 }
 if ($tipo_usuario==2) { 
 
-$sql = "SELECT *  FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra WHERE idusuario='$idusuario'";
+$sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,descripcion_solicitud,unidad_medida,idusuario,solicitud_compra,dependencia,usuario,fecha_registro,plazo,Mes,Año,unidad_tecnica FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra ";
 }
 $result = mysqli_query($conn, $sql);
 
 while ($productos = mysqli_fetch_array($result)){
             if ($estado="Pendiente") {
         
-    $total = $productos['stock'] * $productos['precio'];
+    $total = $productos['SUM(stock)'] * $productos['precio'];
     }if ($estado=="Aprobado") {
         
-    $total = $productos['cantidad_despachada'] * $productos['precio'];
+    $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
     }
        $final += $total;
        $total1= number_format($total, 2, ".",",");
@@ -140,8 +140,8 @@ while ($productos = mysqli_fetch_array($result)){
       $cod=$productos['codigo'];
         $precio   =    $productos['precio'];
         $precio3  =    number_format($precio, 2,".",",");  
-        $cant_aprobada=$productos['stock'];
-        $cantidad_despachada=$productos['cantidad_despachada'];
+        $cant_aprobada=$productos['SUM(stock)'];
+        $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
         $stock=number_format($cant_aprobada, 2,".",",");
         $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
@@ -267,13 +267,15 @@ while ($productos = mysqli_fetch_array($result)){
      <tbody>
 <?php
 if ($tipo_usuario==1) {
-$sql = "SELECT * FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen ";
+$sql = "SELECT codigo,SUM(cantidad_solicitada),SUM(cantidad_despachada),precio,nombre,unidad_medida,idusuario,tb_almacen,departamento,encargado,fecha_solicitud,estado FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen ";
 
 }
 if ($tipo_usuario==2) {
 
-$sql = "SELECT * FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen WHERE idusuario='$idusuario' ";
+$sql = "SELECT codigo,SUM(cantidad_solicitada),SUM(cantidad_despachada),precio,nombre,unidad_medida,idusuario,tb_almacen,departamento,encargado,fecha_solicitud,estado FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen WHERE idusuario='$idusuario' ";
 }
+         
+
 $result = mysqli_query($conn, $sql);
 
 while ($productos = mysqli_fetch_array($result)){
@@ -281,18 +283,18 @@ while ($productos = mysqli_fetch_array($result)){
    $estado=$productos['estado'];
                if ($estado="Pendiente") {
         
-    $total = $productos['cantidad_solicitada'] * $productos['precio'];
+    $total = $productos['SUM(cantidad_solicitada)'] * $productos['precio'];
     }if ($estado=="Aprobado") {
         
-    $total = $productos['cantidad_despachada'] * $productos['precio'];
+    $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
     }
        $final += $total;
        $total1= number_format($total, 2, ".",",");
       $final1=number_format($final, 2, ".",",");     
       $precio   =    $productos['precio'];
         $precio3  =    number_format($precio, 2,".",",");  
-        $cant_aprobada=$productos['cantidad_solicitada'];
-        $cantidad_despachada=$productos['cantidad_despachada'];
+        $cant_aprobada=$productos['SUM(cantidad_solicitada)'];
+        $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
         $stock=number_format($cant_aprobada, 2,".",",");
         $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
@@ -310,7 +312,7 @@ while ($productos = mysqli_fetch_array($result)){
 <td><?php  echo $productos['encargado']; ?></td>
 <td><?php  echo $productos['nombre']; ?></td>
 <td><?php  echo $productos['unidad_medida']; ?></td>
-<td><?php  echo $productos['cantidad_solicitada']; ?></td>
+<td><?php  echo $productos['SUM(cantidad_solicitada)']; ?></td>
 <td><?php  echo $precio3 ?></td>
 <td><?php  echo date("d-m-Y",strtotime($productos['fecha_solicitud'])); ?></td>
 
@@ -407,30 +409,34 @@ while ($productos = mysqli_fetch_array($result)){
     </thead>
     <tbody>
 
-    <?php if ($tipo_usuario==1) {
-     $sql = "SELECT * FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante";
-    }
-    if ($tipo_usuario==2) {
-     $sql = "SELECT * FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante WHERE idusuario ='$idusuario'";
-    }
+    <?php 
+      if ($tipo_usuario==1) {
+      
+   $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,tb_circulante,fecha_solicitud,estado FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante  ";
+  }
+
+if ($tipo_usuario==2) {
+    
+      $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,tb_circulante,fecha_solicitud,estado FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante WHERE idusuario='$idusuario'  ";
+}
     $result = mysqli_query($conn, $sql);
         
     while ($productos = mysqli_fetch_array($result)){
         $estado=$productos['estado'];
             if ($estado="Pendiente") {
         
-    $total = $productos['stock'] * $productos['precio'];
+    $total = $productos['SUM(stock)'] * $productos['precio'];
     }if ($estado=="Aprobado") {
         
-    $total = $productos['cantidad_despachada'] * $productos['precio'];
+    $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
     }
        $final += $total;
        $total1= number_format($total, 2, ".",",");
       $final1=number_format($final, 2, ".",",");
         $precio   =    $productos['precio'];
         $precio3  =    number_format($precio, 2,".",",");  
-        $cant_aprobada=$productos['stock'];
-        $cantidad_despachada=$productos['cantidad_despachada'];
+        $cant_aprobada=$productos['SUM(stock)'];
+        $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
         $stock=number_format($cant_aprobada, 2,".",",");
         $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
@@ -453,7 +459,7 @@ while ($productos = mysqli_fetch_array($result)){
       <td><?php  echo $productos['codigo']; ?></td>
       <td><?php  echo $productos['descripcion']; ?></td>
       <td><?php  echo $productos['unidad_medida']; ?></td>
-      <td><?php  echo $productos['stock']; ?></td>
+      <td><?php  echo $productos['SUM(stock)']; ?></td>
       <td><?php  echo $precio3 ?></td>
       <td><?php  echo date("d-m-Y",strtotime($productos['fecha_solicitud'])); ?></td>
       

@@ -88,7 +88,7 @@ if (isset($_POST['solicitar'])){ ?>
                 <div class="row">
                   <div class="col-md-4" style="position: initial">
                      <label id="inp1">Solicitud N°</b></label>
-                     <input id="busq"class="form-control"  type="number" name="nsolicitud" required >
+                     <input id=""class="form-control"  type="number" name="nsolicitud" required >
                      <section id="resultado" style="margin: 0px;background: transparent;"></section>
                  </div>
 

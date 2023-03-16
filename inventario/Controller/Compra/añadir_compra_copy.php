@@ -5,67 +5,67 @@
 include '../../Model/conexion.php';
 //estado compra
 if(isset($_POST['detalle_compra'])){
-$nSolicitud=$_POST['sol_compra'];
-$estado =$_POST['estado'];
-$sql="UPDATE  tb_compra SET estado = '$estado' WHERE nSolicitud='$nSolicitud'" ;
+  $nSolicitud=$_POST['sol_compra'];
+  $estado =$_POST['estado'];
+  $sql="UPDATE  tb_compra SET estado = '$estado' WHERE nSolicitud='$nSolicitud'" ;
 
-$result = mysqli_query($conn, $sql);
-if ($estado=='Aprobado') {
+  $result = mysqli_query($conn, $sql);
+  if ($estado=='Aprobado') {
    for($i = 0; $i < count($_POST['cod']); $i++)
-    {
-      $codigo_producto  = $_POST['cod1'][$i];
-      $cant_aprobada    = $_POST['cant'][$i];
-      $cantidad_despachada    = $_POST['cantidad_despachada'][$i];
-      $cant=$cant_aprobada-$cantidad_despachada;
+   {
+    $codigo_producto  = $_POST['cod1'][$i];
+    $cant_aprobada    = $_POST['cant'][$i];
+    $cantidad_despachada    = $_POST['cantidad_despachada'][$i];
+    $cant=$cant_aprobada-$cantidad_despachada;
 
-        $sql="UPDATE  detalle_compra SET stock = '$cant',cantidad_despachada='$cantidad_despachada;' WHERE codigodetallecompra='$codigo_producto'" ;
+    $sql="UPDATE  detalle_compra SET stock = '$cant',cantidad_despachada='$cantidad_despachada;' WHERE codigodetallecompra='$codigo_producto'" ;
 
-      $query = mysqli_query($conn, $sql);
-}
+    $query = mysqli_query($conn, $sql);
+  }
 
- for($i = 0; $i < count($_POST['cod1']); $i++)
-    {
-      $codigo_producto  = $_POST['cod1'][$i];
-      $categoria  = $_POST['cat'][$i];
-      $Descripción      = $_POST['desc'][$i];
-      $u_m              = $_POST['um'][$i];
-      $cost             = $_POST['cost'][$i];
-      $cant             = $_POST['cant'][$i];
-      $cant_aprobada    = $_POST['cantidad_despachada'][$i];
-      $catT=$cant+$cant_aprobada;
-              if ($codigo_producto==$codigo_producto) {
-        $sql = "SELECT * FROM tb_productos WHERE codProductos='$codigo_producto' ";
-        $result = mysqli_query($conn, $sql);
-        $ncodigo=1;
-            while ($productos = mysqli_fetch_array($result)){
-              $ncodigo=$productos['codProductos']+1;
-         $insert = "INSERT INTO tb_productos (codProductos,  descripcion, unidad_medida, stock, precio,solicitudes) VALUES ('$ncodigo',  '$Descripción', '$u_m',  '$cost','>$cant_aprobada' ,'Solicitud Compra')";
-      $query1 = mysqli_query($conn, $insert);
-       }else{
+  for($i = 0; $i < count($_POST['cod1']); $i++)
+  {
+    $codigo_producto  = $_POST['cod1'][$i];
+    $categoria  = $_POST['cat'][$i];
+    $Descripción      = $_POST['desc'][$i];
+    $u_m              = $_POST['um'][$i];
+    $cost             = $_POST['cost'][$i];
+    $cant             = $_POST['cant'][$i];
+    $cant_aprobada    = $_POST['cantidad_despachada'][$i];
+    $catT=$cant+$cant_aprobada;
+    if ($codigo_producto==$codigo_producto) {
+      $sql = "SELECT * FROM tb_productos WHERE codProductos='$codigo_producto' ";
+      $result = mysqli_query($conn, $sql);
+      $ncodigo=1;
+      while ($productos = mysqli_fetch_array($result)){
+        $ncodigo=$productos['codProductos']+1;
+        $insert = "INSERT INTO tb_productos (codProductos,  descripcion, unidad_medida, stock, precio,solicitudes) VALUES ('$ncodigo',  '$Descripción', '$u_m',  '$cost','>$cant_aprobada' ,'Solicitud Compra')";
+        $query1 = mysqli_query($conn, $insert);
+      }else{
         $insert = "INSERT INTO tb_productos (codProductos,  descripcion, unidad_medida, stock, precio,solicitudes) VALUES ('$codigo_producto',  '$Descripción', '$u_m',  '$cost','>$cant_aprobada' ,'Solicitud Compra')";
-      $query1 = mysqli_query($conn, $insert);
-       }
+        $query1 = mysqli_query($conn, $insert);
+      }
       
     }
-      if ($result || $query || $query1)  {
-        echo "<script> alert('El Estado fue Cambiado correctamente')
+    if ($result || $query || $query1)  {
+      echo "<script> alert('El Estado fue Cambiado correctamente')
         // location.href = '../../solicitudes_compra.php';
-        </script>
-        ";
-        return true;
-        }else {
-        echo "<script> alert('UUPS!! Algo no fue mal escrito')
+      </script>
+      ";
+      return true;
+    }else {
+      echo "<script> alert('UUPS!! Algo no fue mal escrito')
         // location.href = '../../dt_compra_copy.php';
-        </script>
-        ";
-        return false;
-        }
+      </script>
+      ";
+      return false;
     }
-  }elseif ($estado=='Rechazado') {
-     echo "<script> alert('Producto Rechazado')
-        location.href = '../../solicitudes_compra.php';
-        </script>
-        ";
-  }}
+  }
+}elseif ($estado=='Rechazado') {
+ echo "<script> alert('Producto Rechazado')
+ location.href = '../../solicitudes_compra.php';
+ </script>
+ ";
+}}
 
-  ?>
+?>

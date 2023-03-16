@@ -68,7 +68,7 @@
 
         <style>
 
-         h3, h4, h5{
+           h3, h4, h5{
             font-size: 10px;
             text-align: center;
         }
@@ -145,12 +145,8 @@
 
         <tbody>
             <?php 
-            if ($tipo_usuario==1) {
-                $sql = "SELECT  * FROM `detalle_compra` D JOIN `tb_compra` V ON D.solicitud_compra=V.nSolicitud WHERE solicitud_compra = $vale ";
-            }
-            if ($tipo_usuario==2) {
-                $sql = "SELECT  * FROM `detalle_compra` D JOIN `tb_compra` V ON D.solicitud_compra=V.nSolicitud WHERE V.idusuario='$idusuario' and solicitud_compra='$vale'  ";
-            }
+            $sql = "SELECT  codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida  FROM `detalle_compra` D JOIN `tb_compra` V ON D.solicitud_compra=V.nSolicitud WHERE solicitud_compra = $vale  Group by codigo";
+            
             $result = mysqli_query($conn, $sql);
 
             while ($solicitudes = mysqli_fetch_array($result)){
@@ -158,17 +154,17 @@
                 $codigo=$solicitudes['codigo'];
                 $des=$solicitudes['descripcion'];
                 $um=$solicitudes['unidad_medida'];
-                $cantidad=$solicitudes['cantidad_despachada'];
-                $stock=$solicitudes['stock'];
+                $cantidad=$solicitudes['SUM(cantidad_despachada)'];
+                $stock=$solicitudes['SUM(stock)'];
                 $cost=$solicitudes['precio'];
                 if ($estado="Pendiente") {  
-                    $total = $solicitudes['stock'] * $solicitudes['precio'];
+                    $total = $solicitudes['SUM(stock)'] * $solicitudes['precio'];
                 }if ($estado="Rechazado") {
 
-                    $total = $solicitudes['stock'] * $solicitudes['precio'];
+                    $total = $solicitudes['SUM(stock)'] * $solicitudes['precio'];
                 }if ($estado=="Aprobado") {
 
-                    $total = $solicitudes['cantidad_despachada'] * $solicitudes['precio'];
+                    $total = $solicitudes['SUM(cantidad_despachada)'] * $solicitudes['precio'];
                 }
                 $final += $total;
                 $total1= number_format($total, 2, ".",",");

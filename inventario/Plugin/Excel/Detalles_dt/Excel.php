@@ -262,51 +262,51 @@ $drawing1->setWorksheet($spreadsheet->getActiveSheet());
 }
 if (isset($_POST['circulante']) || isset($_POST['circulante1'])) {
 
-   $spreadsheet->getActiveSheet()->mergeCells("A1:H1");
-   $spreadsheet->getActiveSheet()->mergeCells("A2:H2");
-   $spreadsheet->getActiveSheet()->mergeCells("A3:H3");
-   $spreadsheet->getActiveSheet()->mergeCells("A4:H4");
+ $spreadsheet->getActiveSheet()->mergeCells("A1:H1");
+ $spreadsheet->getActiveSheet()->mergeCells("A2:H2");
+ $spreadsheet->getActiveSheet()->mergeCells("A3:H3");
+ $spreadsheet->getActiveSheet()->mergeCells("A4:H4");
 
 //setting column width
-   $spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(12.71);
-   $spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(13);
-   $spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(36.57);
-   $spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(10);
-   $spreadsheet->getActiveSheet()->getColumnDimension('E')->setWidth(10);
-   $spreadsheet->getActiveSheet()->getColumnDimension('F')->setWidth(13.14);
-   $spreadsheet->getActiveSheet()->getColumnDimension('G')->setWidth(10);
-   $spreadsheet->getActiveSheet()->getColumnDimension('H')->setWidth(16);
+ $spreadsheet->getActiveSheet()->getColumnDimension('A')->setWidth(12.71);
+ $spreadsheet->getActiveSheet()->getColumnDimension('B')->setWidth(13);
+ $spreadsheet->getActiveSheet()->getColumnDimension('C')->setWidth(36.57);
+ $spreadsheet->getActiveSheet()->getColumnDimension('D')->setWidth(10);
+ $spreadsheet->getActiveSheet()->getColumnDimension('E')->setWidth(10);
+ $spreadsheet->getActiveSheet()->getColumnDimension('F')->setWidth(13.14);
+ $spreadsheet->getActiveSheet()->getColumnDimension('G')->setWidth(10);
+ $spreadsheet->getActiveSheet()->getColumnDimension('H')->setWidth(16);
 
-   $spreadsheet->getActiveSheet()->getColumnDimension('I')->setWidth(15.71);
-   $spreadsheet->getActiveSheet()->getColumnDimension('O')->setWidth(20.57);
-   $spreadsheet->getActiveSheet()->getColumnDimension('M')->setWidth(15.71);
-   $spreadsheet->getActiveSheet()->getColumnDimension('Q')->setWidth(15.71);
+ $spreadsheet->getActiveSheet()->getColumnDimension('I')->setWidth(15.71);
+ $spreadsheet->getActiveSheet()->getColumnDimension('O')->setWidth(20.57);
+ $spreadsheet->getActiveSheet()->getColumnDimension('M')->setWidth(15.71);
+ $spreadsheet->getActiveSheet()->getColumnDimension('Q')->setWidth(15.71);
 
 
 
 //imagen
-   $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
-   $drawing->setName('Paid');
-   $drawing->setDescription('Paid');
-   $drawing->setPath($IMG); /* put your path and image here */
-   $drawing->setCoordinates('A1');
-   $drawing->setOffsetX(10);
-   $drawing->setOffsetY(2);
-   $drawing->setWidth(150);
-   $drawing->getShadow()->setVisible(true);
-   $drawing->setWorksheet($spreadsheet->getActiveSheet());
+ $drawing = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
+ $drawing->setName('Paid');
+ $drawing->setDescription('Paid');
+ $drawing->setPath($IMG); /* put your path and image here */
+ $drawing->setCoordinates('A1');
+ $drawing->setOffsetX(10);
+ $drawing->setOffsetY(2);
+ $drawing->setWidth(150);
+ $drawing->getShadow()->setVisible(true);
+ $drawing->setWorksheet($spreadsheet->getActiveSheet());
 //imagen
-   $drawing1 = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
-   $drawing1->setName('Paid');
-   $drawing1->setDescription('Paid');
-   $drawing1->setPath($IMG1); /* put your path and image here */
-   $drawing1->setCoordinates('F1');
-   $drawing1->setOffsetX(50);
-   $drawing1->setOffsetY(10);
-   $drawing1->setWidth(150);
-   $drawing1->getShadow()->setVisible(true);
-   $drawing1->getShadow()->setDirection(45);
-   $drawing1->setWorksheet($spreadsheet->getActiveSheet());
+ $drawing1 = new \PhpOffice\PhpSpreadsheet\Worksheet\Drawing();
+ $drawing1->setName('Paid');
+ $drawing1->setDescription('Paid');
+ $drawing1->setPath($IMG1); /* put your path and image here */
+ $drawing1->setCoordinates('F1');
+ $drawing1->setOffsetX(50);
+ $drawing1->setOffsetY(10);
+ $drawing1->setWidth(150);
+ $drawing1->getShadow()->setVisible(true);
+ $drawing1->getShadow()->setDirection(45);
+ $drawing1->setWorksheet($spreadsheet->getActiveSheet());
 }
 //header text
 if (isset($_POST['vale']) || isset($_POST['vale1'])) {
@@ -416,37 +416,37 @@ $final13 = "0.00";
 if (isset($_POST['vale'])) {
     $vale = $_POST['vale'];
     $jus=$_POST['jus'];
-    $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE numero_vale = $vale";
+    $sql = "SELECT departamento,codVale,estado,usuario,fecha_registro,idusuario,observaciones,codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE numero_vale = $vale Group by codigo";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
 
-     $precio   =    $productos['precio'];
-     $precio2  =    number_format($precio, 2,".",",");  
-     $cant_aprobada=$productos['stock'];
-     $cantidad_despachada=$productos['cantidad_despachada'];
-     $stock=number_format($cant_aprobada, 2,".",",");
-     $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+       $precio   =    $productos['precio'];
+       $precio2  =    number_format($precio, 2,".",",");  
+       $cant_aprobada=$productos['SUM(stock)'];
+       $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
+       $stock=number_format($cant_aprobada, 2,".",",");
+       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-     $final2 += $cant_aprobada;
-     $final3   =    number_format($final2, 2, ".",",");
+       $final2 += $cant_aprobada;
+       $final3   =    number_format($final2, 2, ".",",");
 
-     $final4 += $cantidad_despachada;
-     $final5   =    number_format($final4, 2, ".",",");
+       $final4 += $cantidad_despachada;
+       $final5   =    number_format($final4, 2, ".",",");
 
-     $final6 += ($cant_aprobada-$cantidad_despachada);
-     $final7   =    number_format($final6, 2, ".",",");
+       $final6 += ($cant_aprobada-$cantidad_despachada);
+       $final7   =    number_format($final6, 2, ".",",");
 
-     $final8 += $precio;
-     $final9   =    number_format($final8, 2, ".",",");
-     if ($productos['estado']="Pendiente") {  
-        $total = $productos['stock'] * $productos['precio'];
+       $final8 += $precio;
+       $final9   =    number_format($final8, 2, ".",",");
+       if ($productos['estado']="Pendiente") {  
+        $total = $productos['SUM(stock)'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
 
-        $total = $productos['stock'] * $productos['precio'];
+        $total = $productos['SUM(stock)'] * $productos['precio'];
     }if ($productos['estado']=="Aprobado") {
 
-        $total = $productos['cantidad_despachada'] * $productos['precio'];
+        $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
     }
     $final += $total;
     $total1= number_format($total, 2, ".",",");
@@ -610,37 +610,37 @@ $spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setVer
 }
 if (isset($_POST['bodega'])) {
     $vale = $_POST['bodega'];
-    $sql = "SELECT * FROM `detalle_bodega` D JOIN `tb_bodega` V ON D.odt_bodega=V.codBodega WHERE odt_bodega = $vale";
+    $sql = "SELECT departamento,codBodega,estado,usuario,fecha_registro,idusuario,codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM `detalle_bodega` D JOIN `tb_bodega` V ON D.odt_bodega=V.codBodega WHERE odt_bodega = $vale Group by codigo";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
 
-     $precio   =    $productos['precio'];
-     $precio2  =    number_format($precio, 2,".",",");  
-     $cant_aprobada=$productos['stock'];
-     $cantidad_despachada=$productos['cantidad_despachada'];
-     $stock=number_format($cant_aprobada, 2,".",",");
-     $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+       $precio   =    $productos['precio'];
+       $precio2  =    number_format($precio, 2,".",",");  
+       $cant_aprobada=$productos['SUM(stock)'];
+       $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
+       $stock=number_format($cant_aprobada, 2,".",",");
+       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-     $final2 += $cant_aprobada;
-     $final3   =    number_format($final2, 2, ".",",");
+       $final2 += $cant_aprobada;
+       $final3   =    number_format($final2, 2, ".",",");
 
-     $final4 += $cantidad_despachada;
-     $final5   =    number_format($final4, 2, ".",",");
+       $final4 += $cantidad_despachada;
+       $final5   =    number_format($final4, 2, ".",",");
 
-     $final6 += ($cant_aprobada-$cantidad_despachada);
-     $final7   =    number_format($final6, 2, ".",",");
+       $final6 += ($cant_aprobada-$cantidad_despachada);
+       $final7   =    number_format($final6, 2, ".",",");
 
-     $final8 += $precio;
-     $final9   =    number_format($final8, 2, ".",",");
-     if ($productos['estado']="Pendiente") {  
-        $total = $productos['stock'] * $productos['precio'];
+       $final8 += $precio;
+       $final9   =    number_format($final8, 2, ".",",");
+       if ($productos['estado']="Pendiente") {  
+        $total = $productos['SUM(stock)'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
 
-        $total = $productos['stock'] * $productos['precio'];
+        $total = $productos['SUM(stock)'] * $productos['precio'];
     }if ($productos['estado']=="Aprobado") {
 
-        $total = $productos['cantidad_despachada'] * $productos['precio'];
+        $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
     }
     $final += $total;
     $total1= number_format($total, 2, ".",",");
@@ -749,37 +749,37 @@ while ($productos1 = mysqli_fetch_array($result1)){
 if (isset($_POST['vale1'])) {
     $vale = $_POST['vale1'];
     $jus=$_POST['jus'];
-    $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE numero_vale = $vale";
+    $sql = "SELECT departamento,codVale,estado,usuario,fecha_registro,idusuario,observaciones,codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE numero_vale = $vale Group by codigo";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
 
-     $precio   =    $productos['precio'];
-     $precio2  =    number_format($precio, 2,".",",");  
-     $cant_aprobada=$productos['stock'];
-     $cantidad_despachada=$productos['cantidad_despachada'];
-     $stock=number_format($cant_aprobada, 2,".",",");
-     $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+       $precio   =    $productos['precio'];
+       $precio2  =    number_format($precio, 2,".",",");  
+       $cant_aprobada=$productos['SUM(stock)'];
+       $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
+       $stock=number_format($cant_aprobada, 2,".",",");
+       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-     $final2 += $cant_aprobada;
-     $final3   =    number_format($final2, 2, ".",",");
+       $final2 += $cant_aprobada;
+       $final3   =    number_format($final2, 2, ".",",");
 
-     $final4 += $cantidad_despachada;
-     $final5   =    number_format($final4, 2, ".",",");
+       $final4 += $cantidad_despachada;
+       $final5   =    number_format($final4, 2, ".",",");
 
-     $final6 += ($cant_aprobada-$cantidad_despachada);
-     $final7   =    number_format($final6, 2, ".",",");
+       $final6 += ($cant_aprobada-$cantidad_despachada);
+       $final7   =    number_format($final6, 2, ".",",");
 
-     $final8 += $precio;
-     $final9   =    number_format($final8, 2, ".",",");
-     if ($productos['estado']="Pendiente") {  
-        $total = $productos['stock'] * $productos['precio'];
+       $final8 += $precio;
+       $final9   =    number_format($final8, 2, ".",",");
+       if ($productos['estado']="Pendiente") {  
+        $total = $productos['SUM(stock)'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
 
-        $total = $productos['stock'] * $productos['precio'];
+        $total = $productos['SUM(stock)'] * $productos['precio'];
     }if ($productos['estado']=="Aprobado") {
 
-        $total = $productos['cantidad_despachada'] * $productos['precio'];
+        $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
     }
     $final += $total;
     $total1= number_format($total, 2, ".",",");
@@ -941,37 +941,37 @@ $spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setVer
 
 if (isset($_POST['bodega1'])) {
     $vale = $_POST['bodega1'];
-    $sql = "SELECT * FROM `detalle_bodega` D JOIN `tb_bodega` V ON D.odt_bodega=V.codBodega WHERE odt_bodega = $vale";
+    $sql = "SELECT departamento,codBodega,estado,usuario,fecha_registro,idusuario,codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM `detalle_bodega` D JOIN `tb_bodega` V ON D.odt_bodega=V.codBodega WHERE odt_bodega = $vale Group by codigo";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
 
-     $precio   =    $productos['precio'];
-     $precio2  =    number_format($precio, 2,".",",");  
-     $cant_aprobada=$productos['stock'];
-     $cantidad_despachada=$productos['cantidad_despachada'];
-     $stock=number_format($cant_aprobada, 2,".",",");
-     $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+       $precio   =    $productos['precio'];
+       $precio2  =    number_format($precio, 2,".",",");  
+       $cant_aprobada=$productos['SUM(stock)'];
+       $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
+       $stock=number_format($cant_aprobada, 2,".",",");
+       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-     $final2 += $cant_aprobada;
-     $final3   =    number_format($final2, 2, ".",",");
+       $final2 += $cant_aprobada;
+       $final3   =    number_format($final2, 2, ".",",");
 
-     $final4 += $cantidad_despachada;
-     $final5   =    number_format($final4, 2, ".",",");
+       $final4 += $cantidad_despachada;
+       $final5   =    number_format($final4, 2, ".",",");
 
-     $final6 += ($cant_aprobada-$cantidad_despachada);
-     $final7   =    number_format($final6, 2, ".",",");
+       $final6 += ($cant_aprobada-$cantidad_despachada);
+       $final7   =    number_format($final6, 2, ".",",");
 
-     $final8 += $precio;
-     $final9   =    number_format($final8, 2, ".",",");
-     if ($productos['estado']="Pendiente") {  
-        $total = $productos['stock'] * $productos['precio'];
+       $final8 += $precio;
+       $final9   =    number_format($final8, 2, ".",",");
+       if ($productos['estado']="Pendiente") {  
+        $total = $productos['SUM(stock)'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
 
-        $total = $productos['stock'] * $productos['precio'];
+        $total = $productos['SUM(stock)'] * $productos['precio'];
     }if ($productos['estado']=="Aprobado") {
 
-        $total = $productos['cantidad_despachada'] * $productos['precio'];
+        $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
     }
     $final += $total;
     $total1= number_format($total, 2, ".",",");
@@ -1083,37 +1083,37 @@ while ($productos1 = mysqli_fetch_array($result1)){
 if (isset($_POST['compra'])) {
     $vale = $_POST['compra'];
     $jus=$_POST['jus'];
-    $sql = "SELECT * FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra WHERE solicitud_compra='$vale'";
+    $sql = "SELECT dependencia,plazo,unidad_tecnica,nSolicitud,estado,usuario,fecha_registro,idusuario,justificacion,codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion_solicitud,descripcion,unidad_medida FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra WHERE solicitud_compra='$vale' GROUP BY codigo";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
 
-     $precio   =    $productos['precio'];
-     $precio2  =    number_format($precio, 2,".",",");  
-     $cant_aprobada=$productos['stock'];
-     $cantidad_despachada=$productos['cantidad_despachada'];
-     $stock=number_format($cant_aprobada, 2,".",",");
-     $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+       $precio   =    $productos['precio'];
+       $precio2  =    number_format($precio, 2,".",",");  
+       $cant_aprobada=$productos['SUM(stock)'];
+       $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
+       $stock=number_format($cant_aprobada, 2,".",",");
+       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-     $final2 += $cant_aprobada;
-     $final3   =    number_format($final2, 2, ".",",");
+       $final2 += $cant_aprobada;
+       $final3   =    number_format($final2, 2, ".",",");
 
-     $final4 += $cantidad_despachada;
-     $final5   =    number_format($final4, 2, ".",",");
+       $final4 += $cantidad_despachada;
+       $final5   =    number_format($final4, 2, ".",",");
 
-     $final6 += ($cant_aprobada-$cantidad_despachada);
-     $final7   =    number_format($final6, 2, ".",",");
+       $final6 += ($cant_aprobada-$cantidad_despachada);
+       $final7   =    number_format($final6, 2, ".",",");
 
-     $final8 += $precio;
-     $final9   =    number_format($final8, 2, ".",",");
-     if ($productos['estado']="Pendiente") {  
-        $total = $productos['stock'] * $productos['precio'];
+       $final8 += $precio;
+       $final9   =    number_format($final8, 2, ".",",");
+       if ($productos['estado']="Pendiente") {  
+        $total = $productos['SUM(stock)'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
 
-        $total = $productos['stock'] * $productos['precio'];
+        $total = $productos['SUM(stock)'] * $productos['precio'];
     }if ($productos['estado']=="Aprobado") {
 
-        $total = $productos['cantidad_despachada'] * $productos['precio'];
+        $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
     }
     $final += $total;
     $total1= number_format($total, 2, ".",",");
@@ -1272,37 +1272,37 @@ $spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setVer
 if (isset($_POST['compra1'])) {
     $vale = $_POST['compra1'];
     $jus=$_POST['jus'];
-    $sql = "SELECT * FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra WHERE solicitud_compra='$vale'";
+    $sql = "SELECT dependencia,plazo,unidad_tecnica,nSolicitud,estado,usuario,fecha_registro,idusuario,justificacion,codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion_solicitud,descripcion,unidad_medida FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra WHERE solicitud_compra='$vale' GROUP BY codigo";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
 
-     $precio   =    $productos['precio'];
-     $precio2  =    number_format($precio, 2,".",",");  
-     $cant_aprobada=$productos['stock'];
-     $cantidad_despachada=$productos['cantidad_despachada'];
-     $stock=number_format($cant_aprobada, 2,".",",");
-     $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+       $precio   =    $productos['precio'];
+       $precio2  =    number_format($precio, 2,".",",");  
+       $cant_aprobada=$productos['SUM(stock)'];
+       $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
+       $stock=number_format($cant_aprobada, 2,".",",");
+       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-     $final2 += $cant_aprobada;
-     $final3   =    number_format($final2, 2, ".",",");
+       $final2 += $cant_aprobada;
+       $final3   =    number_format($final2, 2, ".",",");
 
-     $final4 += $cantidad_despachada;
-     $final5   =    number_format($final4, 2, ".",",");
+       $final4 += $cantidad_despachada;
+       $final5   =    number_format($final4, 2, ".",",");
 
-     $final6 += ($cant_aprobada-$cantidad_despachada);
-     $final7   =    number_format($final6, 2, ".",",");
+       $final6 += ($cant_aprobada-$cantidad_despachada);
+       $final7   =    number_format($final6, 2, ".",",");
 
-     $final8 += $precio;
-     $final9   =    number_format($final8, 2, ".",",");
-     if ($productos['estado']="Pendiente") {  
-        $total = $productos['stock'] * $productos['precio'];
+       $final8 += $precio;
+       $final9   =    number_format($final8, 2, ".",",");
+       if ($productos['estado']="Pendiente") {  
+        $total = $productos['SUM(stock)'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
 
-        $total = $productos['stock'] * $productos['precio'];
+        $total = $productos['SUM(stock)'] * $productos['precio'];
     }if ($productos['estado']=="Aprobado") {
 
-        $total = $productos['cantidad_despachada'] * $productos['precio'];
+        $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
     }
     $final += $total;
     $total1= number_format($total, 2, ".",",");
@@ -1459,37 +1459,37 @@ $spreadsheet->getActiveSheet()->getStyle('H'. $fila +12)->getAlignment()->setVer
 }
 if (isset($_POST['almacen'])) {
     $vale = $_POST['almacen'];
-    $sql = "SELECT * FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen WHERE tb_almacen='$vale'";
+    $sql = "SELECT departamento,codAlmacen,estado,encargado,fecha_solicitud,idusuario,codigo,SUM(cantidad_solicitada),SUM(cantidad_despachada),precio,nombre,unidad_medida FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen WHERE tb_almacen='$vale' GROUP BY codigo";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
 
-     $precio   =    $productos['precio'];
-     $precio2  =    number_format($precio, 2,".",",");  
-     $cant_aprobada=$productos['cantidad_solicitada'];
-     $cantidad_despachada=$productos['cantidad_despachada'];
-     $stock=number_format($cant_aprobada, 2,".",",");
-     $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+       $precio   =    $productos['precio'];
+       $precio2  =    number_format($precio, 2,".",",");  
+       $cant_aprobada=$productos['SUM(cantidad_solicitada)'];
+       $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
+       $stock=number_format($cant_aprobada, 2,".",",");
+       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-     $final2 += $cant_aprobada;
-     $final3   =    number_format($final2, 2, ".",",");
+       $final2 += $cant_aprobada;
+       $final3   =    number_format($final2, 2, ".",",");
 
-     $final4 += $cantidad_despachada;
-     $final5   =    number_format($final4, 2, ".",",");
+       $final4 += $cantidad_despachada;
+       $final5   =    number_format($final4, 2, ".",",");
 
-     $final6 += ($cant_aprobada-$cantidad_despachada);
-     $final7   =    number_format($final6, 2, ".",",");
+       $final6 += ($cant_aprobada-$cantidad_despachada);
+       $final7   =    number_format($final6, 2, ".",",");
 
-     $final8 += $precio;
-     $final9   =    number_format($final8, 2, ".",",");
-     if ($productos['estado']="Pendiente") {  
-        $total = $productos['cantidad_solicitada'] * $productos['precio'];
+       $final8 += $precio;
+       $final9   =    number_format($final8, 2, ".",",");
+       if ($productos['estado']="Pendiente") {  
+        $total = $productos['SUM(cantidad_solicitada)'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
 
-        $total = $productos['cantidad_solicitada'] * $productos['precio'];
+        $total = $productos['SUM(cantidad_solicitada)'] * $productos['precio'];
     }if ($productos['estado']=="Aprobado") {
 
-        $total = $productos['cantidad_despachada'] * $productos['precio'];
+        $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
     }
     $final += $total;
     $total1= number_format($total, 2, ".",",");
@@ -1618,37 +1618,37 @@ while ($productos1 = mysqli_fetch_array($result1)){
 }
 }if (isset($_POST['almacen1'])) {
     $vale = $_POST['almacen1'];
-    $sql = "SELECT * FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen WHERE tb_almacen='$vale'";
+    $sql = "SELECT departamento,codAlmacen,estado,encargado,fecha_solicitud,idusuario,codigo,SUM(cantidad_solicitada),SUM(cantidad_despachada),precio,nombre,unidad_medida FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen WHERE tb_almacen='$vale' GROUP BY codigo";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
 
-     $precio   =    $productos['precio'];
-     $precio2  =    number_format($precio, 2,".",",");  
-     $cant_aprobada=$productos['cantidad_solicitada'];
-     $cantidad_despachada=$productos['cantidad_despachada'];
-     $stock=number_format($cant_aprobada, 2,".",",");
-     $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+       $precio   =    $productos['precio'];
+       $precio2  =    number_format($precio, 2,".",",");  
+       $cant_aprobada=$productos['SUM(cantidad_solicitada)'];
+       $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
+       $stock=number_format($cant_aprobada, 2,".",",");
+       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-     $final2 += $cant_aprobada;
-     $final3   =    number_format($final2, 2, ".",",");
+       $final2 += $cant_aprobada;
+       $final3   =    number_format($final2, 2, ".",",");
 
-     $final4 += $cantidad_despachada;
-     $final5   =    number_format($final4, 2, ".",",");
+       $final4 += $cantidad_despachada;
+       $final5   =    number_format($final4, 2, ".",",");
 
-     $final6 += ($cant_aprobada-$cantidad_despachada);
-     $final7   =    number_format($final6, 2, ".",",");
+       $final6 += ($cant_aprobada-$cantidad_despachada);
+       $final7   =    number_format($final6, 2, ".",",");
 
-     $final8 += $precio;
-     $final9   =    number_format($final8, 2, ".",",");
-     if ($productos['estado']="Pendiente") {  
-        $total = $productos['cantidad_solicitada'] * $productos['precio'];
+       $final8 += $precio;
+       $final9   =    number_format($final8, 2, ".",",");
+       if ($productos['estado']="Pendiente") {  
+        $total = $productos['SUM(cantidad_solicitada)'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
 
-        $total = $productos['cantidad_solicitada'] * $productos['precio'];
+        $total = $productos['SUM(cantidad_solicitada)'] * $productos['precio'];
     }if ($productos['estado']=="Aprobado") {
 
-        $total = $productos['cantidad_despachada'] * $productos['precio'];
+        $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
     }
     $final += $total;
     $total1= number_format($total, 2, ".",",");
@@ -1757,37 +1757,37 @@ while ($productos1 = mysqli_fetch_array($result1)){
 
 }if (isset($_POST['circulante'])) {
     $vale = $_POST['circulante'];
-    $sql = "SELECT * FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante WHERE tb_circulante='$vale'";
+    $sql = "SELECT codCirculante,estado,fecha_solicitud,idusuario,codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante WHERE tb_circulante='$vale' GROUP BY codigo";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
 
-     $precio   =    $productos['precio'];
-     $precio2  =    number_format($precio, 2,".",",");  
-     $cant_aprobada=$productos['stock'];
-     $cantidad_despachada=$productos['cantidad_despachada'];
-     $stock=number_format($cant_aprobada, 2,".",",");
-     $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+       $precio   =    $productos['precio'];
+       $precio2  =    number_format($precio, 2,".",",");  
+       $cant_aprobada=$productos['SUM(stock)'];
+       $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
+       $stock=number_format($cant_aprobada, 2,".",",");
+       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-     $final2 += $cant_aprobada;
-     $final3   =    number_format($final2, 2, ".",",");
+       $final2 += $cant_aprobada;
+       $final3   =    number_format($final2, 2, ".",",");
 
-     $final4 += $cantidad_despachada;
-     $final5   =    number_format($final4, 2, ".",",");
+       $final4 += $cantidad_despachada;
+       $final5   =    number_format($final4, 2, ".",",");
 
-     $final6 += ($cant_aprobada-$cantidad_despachada);
-     $final7   =    number_format($final6, 2, ".",",");
+       $final6 += ($cant_aprobada-$cantidad_despachada);
+       $final7   =    number_format($final6, 2, ".",",");
 
-     $final8 += $precio;
-     $final9   =    number_format($final8, 2, ".",",");
-     if ($productos['estado']="Pendiente") {  
-        $total = $productos['stock'] * $productos['precio'];
+       $final8 += $precio;
+       $final9   =    number_format($final8, 2, ".",",");
+       if ($productos['estado']="Pendiente") {  
+        $total = $productos['SUM(stock)'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
 
-        $total = $productos['stock'] * $productos['precio'];
+        $total = $productos['SUM(stock)'] * $productos['precio'];
     }if ($productos['estado']=="Aprobado") {
 
-        $total = $productos['cantidad_despachada'] * $productos['precio'];
+        $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
     }
     $final += $total;
     $total1= number_format($total, 2, ".",",");
@@ -1933,37 +1933,37 @@ while ($productos1 = mysqli_fetch_array($result1)){
 }
 if (isset($_POST['circulante1'])) {
     $vale = $_POST['circulante1'];
-    $sql = "SELECT * FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante WHERE tb_circulante='$vale'";
+    $sql = "SELECT codCirculante,estado,fecha_solicitud,idusuario,codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante WHERE tb_circulante='$vale' GROUP BY codigo";
     $result = mysqli_query($conn, $sql);
 
     while ($productos = mysqli_fetch_array($result)){
 
-     $precio   =    $productos['precio'];
-     $precio2  =    number_format($precio, 2,".",",");  
-     $cant_aprobada=$productos['stock'];
-     $cantidad_despachada=$productos['cantidad_despachada'];
-     $stock=number_format($cant_aprobada, 2,".",",");
-     $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+       $precio   =    $productos['precio'];
+       $precio2  =    number_format($precio, 2,".",",");  
+       $cant_aprobada=$productos['SUM(stock)'];
+       $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
+       $stock=number_format($cant_aprobada, 2,".",",");
+       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
-     $final2 += $cant_aprobada;
-     $final3   =    number_format($final2, 2, ".",",");
+       $final2 += $cant_aprobada;
+       $final3   =    number_format($final2, 2, ".",",");
 
-     $final4 += $cantidad_despachada;
-     $final5   =    number_format($final4, 2, ".",",");
+       $final4 += $cantidad_despachada;
+       $final5   =    number_format($final4, 2, ".",",");
 
-     $final6 += ($cant_aprobada-$cantidad_despachada);
-     $final7   =    number_format($final6, 2, ".",",");
+       $final6 += ($cant_aprobada-$cantidad_despachada);
+       $final7   =    number_format($final6, 2, ".",",");
 
-     $final8 += $precio;
-     $final9   =    number_format($final8, 2, ".",",");
-     if ($productos['estado']="Pendiente") {  
-        $total = $productos['stock'] * $productos['precio'];
+       $final8 += $precio;
+       $final9   =    number_format($final8, 2, ".",",");
+       if ($productos['estado']="Pendiente") {  
+        $total = $productos['SUM(stock)'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
 
-        $total = $productos['stock'] * $productos['precio'];
+        $total = $productos['SUM(stock)'] * $productos['precio'];
     }if ($productos['estado']=="Aprobado") {
 
-        $total = $productos['cantidad_despachada'] * $productos['precio'];
+        $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
     }
     $final += $total;
     $total1= number_format($total, 2, ".",",");

@@ -51,11 +51,11 @@ button:hover{
 									   	<p id="respa1"></p>
 									   	 <div class="form-group">
 									   	<label class="small mb-1">Usuario:</label>
-									   	<input type="text" class="form-control py-4" name="username" placeholder="Ingrese el Usuario" id="username">
+									   	<input pattern="[A-Za-z0-9_-]{1,15}" type="text" class="form-control py-4" name="username" placeholder="Ingrese el Usuario" id="username">
 									   </div>
 									   <div class="form-group">
                                             	<label class="small mb-1" for="inputPassword">Password</label>
-                                           		<input   class="form-control py-4" id="password" type="password" placeholder="Ingrese la Contraseña"   method="POST" class="form-control" type="password" name="password">
+                                           		<input  pattern="[A-Za-z0-9_-]{1,15}"  class="form-control py-4" id="password" type="password" placeholder="Ingrese la Contraseña"   method="POST" class="form-control" type="password" name="password">
                                             <input id="e"  onclick="myFuntion();" type="checkbox" name="id[]"> <label style="margin-top: 1.5%;"  id="h" for="e" ></label>
 
                                         </div>
@@ -203,6 +203,17 @@ return patron.test(te); // 6
    });
 
 </script>
-
+  <script >
+       $(document).ready(function() {
+            function disableBack() {
+                window.history.forward()
+            }
+            window.onload = disableBack();
+            window.onpageshow = function(e) {
+                if (e.persisted)
+                    disableBack();
+            }
+        });
+  </script>
 </body>
 </html>

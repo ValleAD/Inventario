@@ -143,12 +143,8 @@ while ($solicitudes = mysqli_fetch_array($result)){
             <?php
 
 
-            if ($tipo_usuario==1) {
-                $sql = "SELECT  * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE numero_vale = $vale ";
-            }
-            if ($tipo_usuario==2) {
-                $sql = "SELECT  * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE V.idusuario='$idusuario' and numero_vale='$vale'  ";
-            }
+                $sql = "SELECT  codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE numero_vale = $vale  Group by codigo";
+            
             $result = mysqli_query($conn, $sql);
 
             while ($solicitudes = mysqli_fetch_array($result)){
@@ -156,17 +152,17 @@ while ($solicitudes = mysqli_fetch_array($result)){
                 $codigo=$solicitudes['codigo'];
                 $des=$solicitudes['descripcion'];
                 $um=$solicitudes['unidad_medida'];
-                $cantidad=$solicitudes['cantidad_despachada'];
-                $stock=$solicitudes['stock'];
+                $cantidad=$solicitudes['SUM(cantidad_despachada)'];
+                $stock=$solicitudes['SUM(stock)'];
                 $cost=$solicitudes['precio'];
                 if ($estado="Pendiente") {  
-                    $total = $solicitudes['stock'] * $solicitudes['precio'];
+                    $total = $solicitudes['SUM(stock)'] * $solicitudes['precio'];
                 }if ($estado="Rechazado") {
 
-                    $total = $solicitudes['stock'] * $solicitudes['precio'];
+                    $total = $solicitudes['SUM(stock)'] * $solicitudes['precio'];
                 }if ($estado=="Aprobado") {
 
-                    $total = $solicitudes['cantidad_despachada'] * $solicitudes['precio'];
+                    $total = $solicitudes['SUM(cantidad_despachada)'] * $solicitudes['precio'];
                 }
                 $final += $total;
                 $total1= number_format($total, 2, ".",",");
@@ -178,9 +174,7 @@ while ($solicitudes = mysqli_fetch_array($result)){
             $final4 += $cantidad;
             $final5   =    number_format($final4, 2, ".",",");
 
-            $final6 += ($stock-$cantidad);
-            $final7   =    number_format($final6, 2, ".",",");
-
+           
             $final8 += $cost;
             $final9   =    number_format($final8, 2, ".",",");
 
@@ -203,7 +197,6 @@ while ($solicitudes = mysqli_fetch_array($result)){
     <div id="t">
         <p align="right"><b style="float: left;">Cant Solicitada: </b><?php echo $final3 ?></p>
         <p align="right"><b style="float: left;">Cant Despachada: </b><?php echo $final5 ?></p>
-        <p align="right"><b style="float: left;">C. Soli. - C. Despa.: </b><?php echo $final7 ?></p>
         <p align="right"><b style="float: left;">Costo Unitario: </b><?php echo $final9 ?></p>
         <p style="border-bottom: 1px solid #ccc;border-collapse: collapse;"></p>
         <p align="right"><b style="float: left;">SubTotal</b><?php echo $final1?></p>

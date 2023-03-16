@@ -110,7 +110,7 @@ if (isset($_POST['solicitar'])){ ?>
                             </div>
                             <div class="col-md-4" style="position: initial">
                                 <label id="inp1"><b>Vale N°</b></label>   
-                                <input id="busq"class="form-control"  type="number" name="numero_vale" required >
+                                <input id=""class="form-control"  type="number" name="numero_vale" required >
                             </div>
                             <div class="col-md-4" style="position: initial">
                                 <label id="inp1"><b>Nombre de la persona</b></label>
@@ -170,9 +170,24 @@ if (isset($_POST['solicitar'])){ ?>
 
 <script>
     $('.p1').hide();
-    $('.p').click(function(){$(".d").removeClass("div");$('.p').hide();$('.p1').show();});   
-    $('.p1').click(function(){$(".d").addClass("div");$('.p1').hide();$('.p').show();});
+    $('.p').click(function(){
+        $(".div").removeClass("div");
+        $('.p').hide();
+        $('.p1').show();
 
+    });
+    $('.p1').click(function(){
+
+        $(".d").addClass("div");
+        $('.p1').hide();
+        $('.p').show();
+    });
+    $('.p2').click(function(){
+
+        $(".d").addClass("div");
+        $('.p1').hide();
+        $('.p').show();
+    });
     $(obtener_registros1());
 
     function obtener_registros1(consulta)

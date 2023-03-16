@@ -129,19 +129,19 @@ $idusuario = $_SESSION['iduser'];
      <tbody>
 <?php
 if ($tipo_usuario==1) {
-    $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale";
+    $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,numero_vale,departamento,usuario,fecha_registro,Mes,Año FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale";
  }
  if ($tipo_usuario==2) {
-$sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE V.idusuario='$idusuario'";
+$sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,numero_vale,departamento,usuario,fecha_registro,Mes,Año FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE V.idusuario='$idusuario'";
  }
     $result = mysqli_query($conn, $sql);;
     while ($productos = mysqli_fetch_array($result)){
             if ($estado="Pendiente") {
         
-    $total = $productos['stock'] * $productos['precio'];
+    $total = $productos['SUM(stock)'] * $productos['precio'];
     }if ($estado=="Aprobado") {
         
-    $total = $productos['cantidad_despachada'] * $productos['precio'];
+    $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
     }
        $final += $total;
        $total1= number_format($total, 2, ".",",");
@@ -152,8 +152,8 @@ $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVa
 
         $precio   =    $productos['precio'];
         $precio2  =    number_format($precio, 2,".",",");  
-        $cant_aprobada=$productos['stock'];
-        $cantidad_despachada=$productos['cantidad_despachada'];
+        $cant_aprobada=$productos['SUM(stock)'];
+        $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
         $stock=number_format($cant_aprobada, 2,".",",");
         $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
@@ -456,7 +456,7 @@ $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVa
 <?php
 
 
-$sql = "SELECT * FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega";
+$sql = "SELECT codVale, codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,numero_vale,departamento,usuario,fecha_registro,Mes,Año  FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega";
     $result = mysqli_query($conn, $sql);
 $n=0;
 while ($productos = mysqli_fetch_array($result)){

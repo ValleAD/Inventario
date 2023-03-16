@@ -89,10 +89,10 @@ if (!isset($_SESSION['signin'])>0) {
 
     while ($solicitudes = mysqli_fetch_array($result)){
         if ($estado="Pendiente") {
-            
+
             $total = $solicitudes['stock'] * $solicitudes['precio'];
         }if ($estado=="Aprobado") {
-            
+
             $total = $solicitudes['cantidad_despachada'] * $solicitudes['precio'];
         }
 
@@ -115,15 +115,15 @@ if (!isset($_SESSION['signin'])>0) {
                 <td align="right"><b>O. de T.:</b> <?php echo $bodega ?></td>
             </tr>
             <tr>
-             <td style="text-align: left;;width:50%;"><b>Encargado:</b> <?php echo $encargado ?></td>
-             <td><b>Estado:</b> <?php echo $estado ?></td>
+               <td style="text-align: left;;width:50%;"><b>Encargado:</b> <?php echo $encargado ?></td>
+               <td><b>Estado:</b> <?php echo $estado ?></td>
 
-         </tr>
-     </table> 
+           </tr>
+       </table> 
 
- <?php } ?>
- <br> 
- <div id="h">
+   <?php } ?>
+   <br> 
+   <div id="h">
     <table class="table" style="width: 100%">
         <thead>     
             <tr id="tr">
@@ -141,7 +141,7 @@ if (!isset($_SESSION['signin'])>0) {
             <?php
 
 
-            $sql = "SELECT * FROM detalle_bodega WHERE odt_bodega='$bodega'";
+            $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM detalle_bodega WHERE odt_bodega='$bodega' GROUP BY codigo";
             $result = mysqli_query($conn, $sql);
 
             while ($solicitudes = mysqli_fetch_array($result)){
@@ -149,18 +149,28 @@ if (!isset($_SESSION['signin'])>0) {
                 $codigo=$solicitudes['codigo'];
                 $des=$solicitudes['descripcion'];
                 $um=$solicitudes['unidad_medida'];
-                $cantidad=$solicitudes['cantidad_despachada'];
-                $stock=$solicitudes['stock'];
+                $cantidad=$solicitudes['SUM(cantidad_despachada)'];
+                $stock=$solicitudes['SUM(stock)'];
                 $cost=$solicitudes['precio'];
                 if ($estado="Pendiente") {  
-                    $total = $solicitudes['stock'] * $solicitudes['precio'];
+                    $total = $solicitudes['SUM(stock)'] * $solicitudes['precio'];
                 }if ($estado="Rechazado") {
-                    
-                    $total = $solicitudes['stock'] * $solicitudes['precio'];
+
+                    $total = $solicitudes['SUM(stock)'] * $solicitudes['precio'];
                 }if ($estado=="Aprobado") {
-                    
-                    $total = $solicitudes['cantidad_despachada'] * $solicitudes['precio'];
+
+                    $total = $solicitudes['SUM(cantidad_despachada)'] * $solicitudes['precio'];
                 }
+                $final2 += $stock;
+                $final3   =    number_format($final2, 2, ".",",");
+
+                $final4 += $cantidad;
+                $final5   =    number_format($final4, 2, ".",",");
+
+                $final8 += $cost;
+                $final9   =    number_format($final8, 2, ".",",");
+
+
                 $final += $total;
                 $total1= number_format($total, 2, ".",",");
                 $final1=number_format($final, 2, ".",","); 
@@ -182,51 +192,8 @@ if (!isset($_SESSION['signin'])>0) {
 </div>
 <div id="a">
     <div id="t">
-        <?php $sql = "SELECT * FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega WHERE odt_bodega=$bodega";
-        $result = mysqli_query($conn, $sql);
-        $n=0;
-        while ($productos = mysqli_fetch_array($result)){
-            if ($estado="Pendiente") {
-                
-                $total = $productos['stock'] * $productos['precio'];
-            }if ($estado=="Aprobado") {
-                
-                $total = $productos['cantidad_despachada'] * $productos['precio'];
-            }
-
-            $odt= $productos['codBodega'];
-            $cod=$productos['codigo'];
-            $descripcion=$productos['descripcion'];
-            $um=$productos['unidad_medida'];
-            $departamento=$productos['departamento'];
-            $fecha=date("d-m-Y",strtotime($productos['fecha_registro']));
-            $usuario= $productos['usuario'];
-
-            $precio   =    $productos['precio'];
-            $precio2  =    number_format($precio, 2,".",",");  
-            $cant_aprobada=$productos['stock'];
-            $cantidad_despachada=$productos['cantidad_despachada'];
-            $stock=number_format($cant_aprobada, 2,".",",");
-            $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
-
-            $final2 += $cant_aprobada;
-            $final3   =    number_format($final2, 2, ".",",");
-
-            $final4 += $cantidad_despachada;
-            $final5   =    number_format($final4, 2, ".",",");
-            
-            $final6 += ($cant_aprobada-$cantidad_despachada);
-            $final7   =    number_format($final6, 2, ".",",");
-            
-            $final8 += $precio;
-            $final9   =    number_format($final8, 2, ".",",");
-
-
-            ?>
-        <?php } ?>
         <p align="right"><b style="float: left;">Cant Solicitada: </b><?php echo $final3 ?></p>
         <p align="right"><b style="float: left;">Cant Despachada: </b><?php echo $final5 ?></p>
-        <p align="right"><b style="float: left;">C. Soli. - C. Despa.: </b><?php echo $final7 ?></p>
         <p align="right"><b style="float: left;">Costo Unitario: </b><?php echo $final9 ?></p><hr>
         <p align="right"><b style="float: left;">SubTotal</b><?php echo $final1?></p>
     </div>

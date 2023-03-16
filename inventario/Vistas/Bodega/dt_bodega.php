@@ -140,7 +140,7 @@ while ($productos1 = mysqli_fetch_array($result)){
 
                     $odt = $productos1['codBodega'];
 
-                    $sql = "SELECT codigo,stock,cantidad_despachada,precio,descripcion,unidad_medida FROM detalle_bodega WHERE odt_bodega = $odt";
+                    $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM detalle_bodega WHERE odt_bodega = $odt Group by codigo";
                     $result1 = mysqli_query($conn, $sql);
                     if (!$result1) {?>
                         <style>div{
@@ -151,10 +151,10 @@ while ($productos1 = mysqli_fetch_array($result)){
                         while ($productos = mysqli_fetch_array($result1)){
                             if ($estado="Pendiente") {
 
-                                $total = $productos['stock'] * $productos['precio'];
+                                $total = $productos['SUM(stock)'] * $productos['precio'];
                             }if ($estado=="Aprobado") {
 
-                                $total = $productos['cantidad_despachada'] * $productos['precio'];
+                                $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
                             }
                             $final += $total;
                             $total1= number_format($total, 2, ".",",");
@@ -166,8 +166,8 @@ while ($productos1 = mysqli_fetch_array($result)){
 
                             $precio   =    $productos['precio'];
                             $precio2  =    number_format($precio, 2,".",",");  
-                            $cant_aprobada=$productos['stock'];
-                            $cantidad_despachada=$productos['cantidad_despachada'];
+                            $cant_aprobada=$productos['SUM(stock)'];
+                            $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
                             $stock=number_format($cant_aprobada, 2,".",",");
                             $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 

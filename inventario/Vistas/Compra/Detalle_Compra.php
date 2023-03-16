@@ -48,7 +48,10 @@ if (!isset($_SESSION['signin'])>0) {
             <br><br><br>
             <section id="section" class="section">
                 <?php
-
+                $verificar =mysqli_query($conn, "SELECT nSolicitud FROM tb_compra ");
+                if (!mysqli_num_rows($verificar)>0) {
+                    echo "<script>window.location.href='../../Vistas/Compra/solicitudes_compra.php'; </script>";
+                }
                 $total = 0;
                 $final = 0;
                 $final1 = 0;
@@ -173,70 +176,59 @@ if (!isset($_SESSION['signin'])>0) {
                     $num_vale = $productos1['nSolicitud'];
 
                     
-                        $sql = "SELECT * FROM detalle_compra WHERE solicitud_compra = $num_vale ";
+                    $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM detalle_compra WHERE solicitud_compra = $num_vale Group by codigo ";
                     
                     $result1 = mysqli_query($conn, $sql);
-                    if (!$result1) {?>
-                        <style>div{
+                    
+
+                    while ($productos = mysqli_fetch_array($result1)){
+                       $total = $productos['SUM(stock)'] * $productos['precio'];
+
+                       $final += $total;
+                       $total1= number_format($total, 2, ".",",");
+                       $final1=number_format($final, 2, ".",",");
+                       $codigo=$productos['codigo'];
+                       $descripcion=$productos['descripcion'];
+                       $um=$productos['unidad_medida'];
+
+
+                       $precio   =    $productos['precio'];
+                       $precio2  =    number_format($precio, 2,".",",");  
+                       $cant_aprobada=$productos['SUM(stock)'];
+                       $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
+                       $stock=number_format($cant_aprobada, 2,".",",");
+                       $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+
+                       $final2 += $cant_aprobada;
+                       $final3   =    number_format($final2, 2, ".",",");
+
+                       $final4 += $cantidad_despachada;
+                       $final5   =    number_format($final4, 2, ".",",");
+
+                       $final6 += ($cant_aprobada-$cantidad_despachada);
+                       $final7   =    number_format($final6, 2, ".",",");
+
+                       $final8 += $precio;
+                       $final9   =    number_format($final8, 2, ".",",");?>
+                       <style type="text/css">
+                           #td{
                             display: none;
-                        }</style>
-                        <?php 
-                    }else{
-                        while ($productos = mysqli_fetch_array($result1)){
-                            if ($estado="Pendiente") {  
-                                $total = $productos['stock'] * $productos['precio'];
-                            }if ($estado="Rechazado") {
-
-                                $total = $productos['stock'] * $productos['precio'];
-                            }if ($estado=="Aprobado") {
-
-                                $total = $productos['cantidad_despachada'] * $productos['precio'];
-                            }
-                            $final += $total;
-                            $total1= number_format($total, 2, ".",",");
-                            $final1=number_format($final, 2, ".",",");
-                            $codigo=$productos['codigo'];
-                            $descripcion=$productos['descripcion'];
-                            $um=$productos['unidad_medida'];
+                        }
 
 
-                            $precio   =    $productos['precio'];
-                            $precio2  =    number_format($precio, 2,".",",");  
-                            $cant_aprobada=$productos['stock'];
-                            $cantidad_despachada=$productos['cantidad_despachada'];
-                            $stock=number_format($cant_aprobada, 2,".",",");
-                            $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
+                    </style> 
+                    <tr>
+                     <td  data-label="Código"><?php echo $productos['codigo'] ?></td>
+                     <td  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
+                     <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
+                     <td  data-label="Cantidad"><?php echo $stock ?></td>
+                     <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
+                     <td  data-label="Costo unitario"><?php echo $precio2 ?></td>
+                     <td  data-label="total"><?php echo $total1 ?></td>
+                 </tr>
 
-                            $final2 += $cant_aprobada;
-                            $final3   =    number_format($final2, 2, ".",",");
+             <?php }
 
-                            $final4 += $cantidad_despachada;
-                            $final5   =    number_format($final4, 2, ".",",");
-
-                            $final6 += ($cant_aprobada-$cantidad_despachada);
-                            $final7   =    number_format($final6, 2, ".",",");
-
-                            $final8 += $precio;
-                            $final9   =    number_format($final8, 2, ".",",");?>
-                            <style type="text/css">
-                               #td{
-                                display: none;
-                            }
-
-
-                        </style> 
-                        <tr>
-                         <td  data-label="Código"><?php echo $productos['codigo'] ?></td>
-                         <td  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
-                         <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
-                         <td  data-label="Cantidad"><?php echo $stock ?></td>
-                         <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
-                         <td  data-label="Costo unitario"><?php echo $precio2 ?></td>
-                         <td  data-label="total"><?php echo $total1 ?></td>
-                     </tr>
-
-                 <?php }
-             }
              ?> 
          </tbody>
 
@@ -281,7 +273,7 @@ if (!isset($_SESSION['signin'])>0) {
                     </form>
                     <form method="GET" action="../../Plugin/PDF/Compra/pdf_compra.php" target="_blank">
                        <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['nSolicitud']?>" name="sol_compra">
-                     
+
                        <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
 
                        <button style="position: initial;" type="submit" class="btn btn-outline-primary" >
@@ -292,7 +284,8 @@ if (!isset($_SESSION['signin'])>0) {
                     </button>
                 </form>
                 <form method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php" >
-                   <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['nSolicitud']?>" name="compra1">
+                    <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['nSolicitud']?>" name="compra">
+                   <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
                    <button type="submit" class="btn btn-outline-primary" name="dt_compra" target="_blank">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
@@ -550,7 +543,7 @@ if (!isset($_SESSION['signin'])>0) {
    while ($productos1 = mysqli_fetch_array($result)){
        if ($productos1['justificacion']=="") {
         $jus = 'Sin observación por el momento';
-        
+
     }else{
         $jus = $productos1['justificacion'];
     }

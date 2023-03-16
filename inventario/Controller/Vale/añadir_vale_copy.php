@@ -19,15 +19,15 @@
 
 
     if(isset($_POST['detalle_vale'])){
-       $nSolicitud=$_POST['vale'];
-       $numero_vale=$_POST['numero_vale'];
-       $estado = $_POST['estado'];
-       $jus = $_POST['jus'];
-       $sql="UPDATE  tb_vale SET estado = '$estado', observaciones='$jus' WHERE codVale='$nSolicitud'" ;
-       $result = mysqli_query($conn, $sql);
-       if ($estado=='Aprobado') {
-         for($i = 0; $i < count($_POST['cod']); $i++)
-         {
+     $nSolicitud=$_POST['vale'];
+     $numero_vale=$_POST['numero_vale'];
+     $estado = $_POST['estado'];
+     $jus = $_POST['jus'];
+     $sql="UPDATE  tb_vale SET estado = '$estado', observaciones='$jus' WHERE codVale='$nSolicitud'" ;
+     $result = mysqli_query($conn, $sql);
+     if ($estado=='Aprobado') {
+       for($i = 0; $i < count($_POST['cod']); $i++)
+       {
           $cod_producto  = $_POST['cod'][$i];
           $cantidad_despachada = $_POST['cantidad_despachada'][$i];
 
@@ -72,14 +72,14 @@
 
           }else{
 
-             $sql4="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Salidas,Saldo,Detalles,idusuario,Mes,Año) VALUES('$descripcion','Vale Consulta Externa','$unidadmedida','$codigo','$stock','$cantidad_despachada','$precio','$numero_vale','$idusuario','$mes','$año')";
-             $query4 = mysqli_query($conn, $sql4);
+           $sql4="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Salidas,Saldo,Detalles,idusuario,Mes,Año) VALUES('$descripcion','Vale Consulta Externa','$unidadmedida','$codigo','$stock','$cantidad_despachada','$precio','$numero_vale','$idusuario','$mes','$año')";
+           $query4 = mysqli_query($conn, $sql4);
 
-         }
+       }
 
-     }
+   }
 
-     if ($query1 || $query2 || $query3 || $query_update  || $result)  {
+   if ($query1 || $query2 || $query3 || $query_update  || $result)  {
       echo "<script>
       Swal.fire({
           title:'Realizado',
@@ -89,7 +89,7 @@
           }).then((resultado) =>{
             if (resultado.value) {
                 window.location.href='../../Vistas/Vale/Detalle_Vale.php?detalle&id=$nSolicitud';      
-                                         
+                
             }
             });
 
@@ -97,11 +97,11 @@
         }else {
             echo "<script>
             Swal.fire({
-             title: 'ERROR',
-             text: '¡Error! algo salió mal',
-             icon: 'error',
-             allowOutsideClick: false
-             }).then((resultado) =>{
+               title: 'ERROR',
+               text: '¡Error! algo salió mal',
+               icon: 'error',
+               allowOutsideClick: false
+               }).then((resultado) =>{
                 if (resultado.value) {
                     window.location.href='../../Vistas/Vale/solicitudes_vale.php';                               
                 }
@@ -138,5 +138,17 @@
         }
 
         ?>
-    </body>
-    </html>
+        <script >
+         $(document).ready(function() {
+            function disableBack() {
+                window.history.forward()
+            }
+            window.onload = disableBack();
+            window.onpageshow = function(e) {
+                if (e.persisted)
+                    disableBack();
+            }
+        });
+    </script>
+</body>
+</html>

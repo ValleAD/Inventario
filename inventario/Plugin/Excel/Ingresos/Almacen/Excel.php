@@ -197,19 +197,19 @@ $final11 = "0.00";
 $final12 = "0.00";
 $final13 = "0.00";
 if (isset($_POST['almacen'])) {
+$sql = "SELECT codAlmacen, codigo,SUM(cantidad_solicitada),SUM(cantidad_despachada),precio,nombre,unidad_medida,idusuario,tb_almacen,departamento,encargado,fecha_solicitud,estado FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen ";
 
-    $sql = "SELECT * FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen";
+}if (isset($_POST['almacen1'])) {$idusuario=$_POST['idusuario'];
+$sql = "SELECT codAlmacen, codigo,SUM(cantidad_solicitada),SUM(cantidad_despachada),precio,nombre,unidad_medida,idusuario,tb_almacen,departamento,encargado,fecha_solicitud,estado FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen WHERE idusuario='$idusuario' ";
 }
-if (isset($_POST['almacen1'])) {$idusuario=$_POST['idusuario'];
-$sql = "SELECT * FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen WHERE db.idusuario='$idusuario'";
-}    $result = mysqli_query($conn, $sql);
+    $result = mysqli_query($conn, $sql);
 $n=0;
 while ($productos = mysqli_fetch_array($result)){
 
      $precio   =    $productos['precio'];
         $precio2  =    number_format($precio, 2,".",",");  
-        $cant_aprobada=$productos['cantidad_solicitada'];
-        $cantidad_despachada=$productos['cantidad_despachada'];
+        $cant_aprobada=$productos['SUM(cantidad_solicitada)'];
+        $cantidad_despachada=$productos['SUM(cantidad_despachada)'];
         $cantidad_desp=number_format($cantidad_despachada, 2,".",",");
 
         $final2 += $cant_aprobada;
@@ -218,13 +218,13 @@ while ($productos = mysqli_fetch_array($result)){
         
         $final8 += $precio;
      if ($productos['estado']="Pendiente") {  
-    $total = $productos['cantidad_solicitada'] * $productos['precio'];
+    $total = $productos['SUM(cantidad_solicitada)'] * $productos['precio'];
     }if ($productos['estado']="Rechazado") {
         
-    $total = $productos['cantidad_solicitada'] * $productos['precio'];
+    $total = $productos['SUM(cantidad_solicitada)'] * $productos['precio'];
     }if ($productos['estado']=="Aprobado") {
         
-    $total = $productos['cantidad_despachada'] * $productos['precio'];
+    $total = $productos['SUM(cantidad_despachada)'] * $productos['precio'];
     }
      $final += $total;
     
@@ -288,6 +288,7 @@ $spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 7 .':J'.$fila + 7)->applyFro
 
 $sheet->setCellValue('A'.$fila +7 , "STOCK POR MES:");
 $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 7 .':J'.$fila + 7);
+
 
 
 if (isset($_POST['almacen'])) {

@@ -131,12 +131,8 @@
 
     <tbody>
         <?php 
-        if ($tipo_usuario==1) {
-            $sql = "SELECT  * FROM `detalle_bodega` D JOIN `tb_bodega` V ON D.odt_bodega=V.codBodega WHERE odt_bodega = $vale ";
-        }
-        if ($tipo_usuario==2) {
-            $sql = "SELECT  * FROM `detalle_bodega` D JOIN `tb_bodega` V ON D.odt_bodega=V.codBodega WHERE V.idusuario='$idusuario' and odt_bodega='$vale'  ";
-        }
+        $sql = "SELECT   codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida  FROM `detalle_bodega` D JOIN `tb_bodega` V ON D.odt_bodega=V.codBodega WHERE odt_bodega = $vale Group by codigo ";
+        
         $result = mysqli_query($conn, $sql);
 
         while ($solicitudes = mysqli_fetch_array($result)){
@@ -144,17 +140,17 @@
             $codigo=$solicitudes['codigo'];
             $des=$solicitudes['descripcion'];
             $um=$solicitudes['unidad_medida'];
-            $cantidad=$solicitudes['cantidad_despachada'];
-            $stock=$solicitudes['stock'];
+            $cantidad=$solicitudes['SUM(cantidad_despachada)'];
+            $stock=$solicitudes['SUM(stock)'];
             $cost=$solicitudes['precio'];
             if ($estado="Pendiente") {  
-                $total = $solicitudes['stock'] * $solicitudes['precio'];
+                $total = $solicitudes['SUM(stock)'] * $solicitudes['precio'];
             }if ($estado="Rechazado") {
 
-                $total = $solicitudes['stock'] * $solicitudes['precio'];
+                $total = $solicitudes['SUM(stock)'] * $solicitudes['precio'];
             }if ($estado=="Aprobado") {
 
-                $total = $solicitudes['cantidad_despachada'] * $solicitudes['precio'];
+                $total = $solicitudes['SUM(cantidad_despachada)'] * $solicitudes['precio'];
             }
             $final += $total;
             $total1= number_format($total, 2, ".",",");
