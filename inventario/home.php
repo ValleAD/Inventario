@@ -1,19 +1,20 @@
 <?php
-session_start();
-if (!isset($_SESSION['signin']) && !isset($_SESSION['habilitado'] ) ) {
-    # code...
-    echo '
-    <script>
-    window.location ="../../log/signin.php";
-    session_destroy();  
-    </script>
-    die();
+    session_start();
+    if (!isset($_SESSION['signin']) && !isset($_SESSION['habilitado'] ) ) {
+        # code...
+        echo '
+        <script>
+            window.location ="../../log/signin.php";
+            session_destroy();  
+        </script>
+        die();
 
-    ';
-}
+        ';
+    }
 
 ?>
-<?php include ('templates/menu.php')?>
+<?php include ('templates/menu.php');
+?>
 <!doctype html>
 <html lang="es">
 <head> 
@@ -41,7 +42,7 @@ if (!isset($_SESSION['signin']) && !isset($_SESSION['habilitado'] ) ) {
 
         @media screen and (max-width: 952px){
 
-         #h1{ 
+           #h1{ 
             margin-top: 5%;
             font-size: 2em;
             padding: 3%;

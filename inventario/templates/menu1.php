@@ -1,6 +1,7 @@
 
 <?php
 include("../../Model/conexion.php");
+
 if(!isset($_SESSION['signin'])){
     header("location: ../../log/signin.php");
 }

@@ -6,6 +6,7 @@ if(!isset($_SESSION['signin'])){
 }
 $tipo_usuario = $_SESSION['tipo_usuario'];
 $idusuario = $_SESSION['iduser'];
+
 ?><!DOCTYPE html>
 <html lang="es">
 <head>

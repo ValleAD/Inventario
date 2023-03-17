@@ -90,7 +90,13 @@ else{
   footer: 'Sistema de Inventario',
   allowOutsideClick: false
 
-});
+}).then((resultado) =>{
+if (resultado.value) {
+  window.location.href='';
+          
+           
+        }
+    });
   </script>
                 ";
 
