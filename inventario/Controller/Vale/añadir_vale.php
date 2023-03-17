@@ -22,11 +22,13 @@
     $dia              = $_POST['dia'];
     $mes              = $_POST['mes'];
     $año              = $_POST['año'];
+    $jus              = $_POST['jus'];
+
 
     //crud para guardar los productos en la tabla tb_vale
-    $sql = "INSERT INTO tb_vale (codVale, departamento,usuario,idusuario,estado,Mes,Año) VALUES ('$solicitud_no', '$departamento','$usuario','$idusuario','Pendiente','$mes','$año')";
+    $sql = "INSERT INTO tb_vale (codVale, departamento,usuario,idusuario,estado,Mes,Año,observaciones) VALUES ('$solicitud_no', '$departamento','$usuario','$idusuario','Pendiente','$mes','$año','$jus')";
     $result = mysqli_query($conn, $sql);   
-    $sql="UPDATE  tb_vale SET estado = 'Pendiente',departamento='$departamento' WHERE codVale='$solicitud_no'" ;
+    $sql="UPDATE  tb_vale SET estado = 'Pendiente',departamento='$departamento',observaciones='$jus' WHERE codVale='$solicitud_no'" ;
 
     $result = mysqli_query($conn, $sql);   
     for($i = 0; $i < count($_POST['cod']); $i++)
@@ -50,7 +52,7 @@
         if ($solicitud_no==$num_sol || $codigo_producto==$codigo_producto) {
            $sql = "SELECT codVale,codigo,stock FROM tb_vale db JOIN detalle_vale b ON db.codVale = b.numero_vale ";
            $result = mysqli_query($conn, $sql);
-           $stock=0;
+        
            while ($productos = mysqli_fetch_array($result)){
             $cods=$productos['codVale'];
             $almacen=$productos['codigo'];

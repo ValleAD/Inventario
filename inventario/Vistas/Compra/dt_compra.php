@@ -53,6 +53,7 @@ if (!isset($_SESSION['signin'])>0) {
             }
             $total = 0;
             $final = 0;
+            $final1 = 0;
             $final2 = 0;
             $final3 = 0;
             $final4 = 0;

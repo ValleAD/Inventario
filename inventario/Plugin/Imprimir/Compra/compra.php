@@ -165,7 +165,7 @@ while ($solicitudes = mysqli_fetch_array($result)){
             <?php
 
 
-            $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM detalle_compra WHERE solicitud_compra='$vale'";
+            $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida FROM detalle_compra WHERE solicitud_compra='$vale' GROUP BY codigo";
             $result = mysqli_query($conn, $sql);
 
             while ($solicitudes = mysqli_fetch_array($result)){

@@ -12,11 +12,10 @@
     </head>
     <body><?php
 
-//CRUD para guardar datos enviados
-// de re_producto.php y se guarde en la tabla tb_productos mysql
-    include '../../Model/conexion.php';
+    include ('../../Model/conexion.php');
     
-    $nSolicitud = $_POST['nsolicitud'];
+    
+    $nSolicitud     = $_POST['nsolicitud'];
     $dependencia = $_POST['dependencia'];
     $plazo = $_POST['plazo'];
     $u_t= $_POST['unidad_tecnica'];
@@ -27,114 +26,95 @@
     $dia              = $_POST['dia'];
     $mes              = $_POST['mes'];
     $año              = $_POST['año'];
-    if (isset($_POST['form_compra2'])) {
-        $verificar_compra =mysqli_query($conn, "SELECT * FROM detalle_compra WHERE solicitud_compra ='$nSolicitud' ");
 
-        if (mysqli_num_rows($verificar_compra)>0) {
-           echo "<script>
-           Swal.fire({
-              title:'NOTA IMPORTANTE:',
-              text:'Este Producto ya esta Registrado, intente con otro diferente',
-              icon:'warning',
-              allowOutsideClick: false
-              }).then((resultado) =>{
-                if (resultado.value) {
-                    window.location.href='../../Vistas/Compra/form_compra1.php';                               
-                }
-                });
-
-                </script>";
-                exit();
-            }
-        }if (isset($_POST['form_compra'])) {
-          $verificar_compra =mysqli_query($conn, "SELECT * FROM detalle_compra WHERE solicitud_compra ='$nSolicitud' ");
-
-          if (mysqli_num_rows($verificar_compra)>0) {
-           echo "<script>
-           Swal.fire({
-              title:'NOTA IMPORTANTE:',
-              text:'Este Producto ya esta Registrado, intente con otro diferente',
-              icon:'warning',
-              allowOutsideClick: false
-              }).then((resultado) =>{
-                if (resultado.value) {
-                    window.location.href='../../Vistas/Compra/form_compra.php';                               
-                }
-                });
-
-                </script>";
-                exit();
-            }
-        }
-
-        $insert = "INSERT INTO tb_compra (nSolicitud, dependencia, plazo, unidad_tecnica, descripcion_solicitud, usuario,estado,idusuario,justificacion,Mes,Año) VALUES ('$nSolicitud','$dependencia', '$plazo', '$u_t', '$descripcion_solicitud', '$usuario','Comprado','$idusuario','$jus','$mes','$año')";
-        $result = mysqli_query($conn, $insert);
-
+    //crud para guardar los productos en la tabla tb_compra
+    $sql = "INSERT INTO tb_compra (nSolicitud, dependencia, plazo, unidad_tecnica, descripcion_solicitud, usuario,estado,idusuario,justificacion,Mes,Año) VALUES ('$nSolicitud','$dependencia', '$plazo', '$u_t', '$descripcion_solicitud', '$usuario','Comprado','$idusuario','$jus','$mes','$año')";
+        $result = mysqli_query($conn, $sql);   
 
 
         for($i = 0; $i < count($_POST['cod']); $i++)
+
         {
+
           $codigo_producto  = $_POST['cod'][$i];
           $Descripción      = $_POST['desc'][$i];
           $catalogo      = $_POST['cat'][$i];
           $u_m              = $_POST['um'][$i];
           $cantidad         = $_POST['cant'][$i];
-          $stock      = $_POST['stock'][$i];
           $cost             = $_POST['cu'][$i];
           $solicitud        = $_POST['nsolicitud'];;
 
-          $insert = "INSERT INTO detalle_compra (codigo, catalogo, descripcion, unidad_medida, stock,cantidad_despachada, precio, solicitud_compra) VALUES ('$codigo_producto','$catalogo', '$Descripción', '$u_m', '$cantidad',0, '$cost', '$solicitud')";
-          $query = mysqli_query($conn, $insert);
+            $stock=0;
+            $total=0;
+            $almacen=0;
+            $cods=0;
+
+            if ($nSolicitud==$solicitud || $codigo_producto==$codigo_producto) {
+             $sql = "SELECT nSolicitud,codigo,stock FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra ";
+             $result = mysqli_query($conn, $sql);
+             $stock=0;
+             while ($productos = mysqli_fetch_array($result)){
+                $cods=$productos['nSolicitud'];
+                $almacen=$productos['codigo'];
+                $stock=$productos['stock'];
+                $total=$cantidad+$stock;
+                
+                  
+            }
+
+            $insert1 = "UPDATE  tb_compra SET stock='$total' WHERE solicitud_compra='$nSolicitud' and codigo='$almacen'";
+            $query1 = mysqli_query($conn, $insert1);
+
+            $insert3 = "UPDATE  historial SET Entradas='$total' WHERE Detalles='$nSolicitud' and No_Comprovante='$almacen'";
+            $query3 = mysqli_query($conn, $insert3);
 
 
-          $sql1="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Detalles,idusuario,Mes,Año) VALUES('$Descripción','Solicitud compra','$u_m','$codigo_producto','$cantidad','$cost','$nSolicitud','$idusuario','$mes','$año')";
+        }
+        if ($nSolicitud!=$cods || $codigo_producto!=$almacen) {
+           
+            $insert = "INSERT INTO detalle_compra (codigo, catalogo, descripcion, unidad_medida, stock,cantidad_despachada, precio, solicitud_compra) VALUES ('$codigo_producto','$catalogo', '$Descripción', '$u_m', '$cantidad',0, '$cost', '$solicitud')";
+            $query2 = mysqli_query($conn, $insert);
 
-          $query1 = mysqli_query($conn, $sql1);
-          if ($result || $query || $query1) {
-           echo "<script>
-           Swal.fire({
-              title:'Realizado',
-              text:'El Estado fue Cambiado correctamente',
-              icon:'success',
-              allowOutsideClick: false
-              }).then((resultado) =>{
+            $sql3="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Detalles,idusuario,Mes,Año) VALUES('$Descripción','Solicitud compra','$u_m','$codigo_producto','$cantidad','$cost','$nSolicitud','$idusuario','$mes','$año')";
+            $query1 = mysqli_query($conn, $sql3);
+
+
+        }
+    }
+    if ($result) {
+       echo "<script>
+       Swal.fire({
+          title:'Realizado',
+          text:'Su producto fue registrado correctamente',
+          icon:'success',
+          allowOutsideClick: false
+          }).then((resultado) =>{
+            if (resultado.value) {
+                window.location.href='../../Vistas/Compra/dt_compra.php?cod=$nSolicitud';                               
+            }
+            });
+
+            </script>";
+        }else {
+            echo "<script>
+            Swal.fire({
+             title: 'ERROR',
+             text: '¡Error! algo salió mal',
+             icon: 'error',
+             allowOutsideClick: false
+             }).then((resultado) =>{
                 if (resultado.value) {
-                    window.location.href='../../Vistas/Compra/dt_compra.php?cod=$nSolicitud';                              
+                    window.location.href='../../Vistas/Circulante/form_circulante1.php';                               
                 }
                 });
 
                 </script>";
-            }else {
-                echo "<script>
-                Swal.fire({
-                   title: 'ERROR',
-                   text:'¡Error! algo salió mal',
-                   icon:'error',
-                   allowOutsideClick: false
-                   }).then((resultado) =>{
-                    if (resultado.value) {
-                        window.location.href='../../Vistas/Compra/form_compra.php';                               
-                    }
-                    });
-
-                    </script>";
-                }  
             }
 
-            for($i = 0; $i < count($_POST['cod']); $i++)
-            {
-              $codigo_producto  = $_POST['cod'][$i];
-              $cantidad      = $_POST['cant'][$i];
-              $stock      = $_POST['stock'][$i];
-              $stockt = $cantidad + $stock;
-              $sql="UPDATE  tb_productos SET stock = '$stockt' WHERE codProductos='$codigo_producto'" ;
 
-              $result = mysqli_query($conn, $sql);
-          }
-
-          ?>
-          <script >
-             $(document).ready(function() {
+            ?>
+            <script >
+               $(document).ready(function() {
                 function disableBack() {
                     window.history.forward()
                 }
