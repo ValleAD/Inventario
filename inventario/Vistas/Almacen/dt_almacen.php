@@ -47,7 +47,7 @@ if (!isset($_SESSION['signin'])>0) {
             <br><br><br>
             <?php
             $verificar =mysqli_query($conn, "SELECT codAlmacen FROM tb_almacen ");
-            if (!mysqli_num_rows($verificar_bodega)>0) {
+            if (!mysqli_num_rows($verificar)>0) {
                 echo "<script>window.location.href='../../Vistas/Almacen/solicitudes_almacen.php'; </script>";
             }
             $total = '0.00';
