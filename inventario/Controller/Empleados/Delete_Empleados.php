@@ -14,28 +14,23 @@
         <?php 
         include '../../Model/conexion.php';
 
-        $id1 = $_POST['id'];
-        $id2 = $_POST['idusuario'];
+        $id1 = $_GET['id'];
+        $id2 = $_GET['cod'];
         if ($id2==1) {
           echo "<script>
           Swal.fire({
-              title:'Realizado',
+              title:'IMPORTANTE',
               text:'La Cuenta Administrador no de puede Eliminar',
-              icon:'success',
+              icon:'info',
               allowOutsideClick: false
               }).then((resultado) =>{
                 if (resultado.value) {
-                    window.location.href='../../Vistas/Empleados/Empleados.php';                               
+                                              
                 }
                 });
 
                 </script>";
-                
-                echo '<script>
-
-                alert("");
-                window.location ="../../Vistas/Empleados/Empleados.php"; 
-                </script>';     
+                    
             }else{
                 $eliminar ="DELETE FROM tb_usuarios WHERE id='$id1' and tipo_usuario='$id2'";
                 $result= mysqli_query($conn, $eliminar);
@@ -70,17 +65,6 @@
                         }
                     }
                     ?>
-                    <script >
-                     $(document).ready(function() {
-                        function disableBack() {
-                            window.history.forward()
-                        }
-                        window.onload = disableBack();
-                        window.onpageshow = function(e) {
-                            if (e.persisted)
-                                disableBack();
-                        }
-                    });
-                </script>
+
             </body>
             </html>

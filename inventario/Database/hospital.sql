@@ -20,7 +20,7 @@ SET time_zone ="+00:00";
 --
 -- Base de datos: 'hospital';
 --
-CREATE DATABASE IF NOT EXISTS `hospital` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+-- CREATE DATABASE IF NOT EXISTS `hospital` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `hospital` ;
 
 CREATE TABLE tb_productos (
@@ -225,7 +225,7 @@ CREATE TABLE selects_departamento (
   Habilitado text NOT NULL,
   departamento text NOT NULL
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-INSERT INTO `Selects_unidad_medida` (`unidad_medida`,`Habilitado`)
+INSERT INTO `selects_unidad_medida` (`unidad_medida`,`Habilitado`)
 Values ('C/M' ,'Si'),
 ('Cto' ,'Si'),
 ('Cuarto Gal' ,'Si'),
@@ -236,7 +236,7 @@ Values ('C/M' ,'Si'),
 ('Pgo' ,'Si'),
 ('Qq' ,'Si'),
 ('Par' ,'Si');
-INSERT INTO `Selects_categoria` (`categoria`,`Habilitado`)
+INSERT INTO `selects_categoria` (`categoria`,`Habilitado`)
 Values ('Agropecuarios Y Forestales' ,'Si'),
 ('Cuero Y Caucho' ,'Si'),
 ('Combustibles Y Lubricantes' ,'Si'),
@@ -247,7 +247,7 @@ Values ('Agropecuarios Y Forestales' ,'Si'),
 ('Mobiliario' ,'Si'),
 ('Químicos' ,'Si');
 
-INSERT INTO `Selects_dependencia` (`dependencia`,`Habilitado`)
+INSERT INTO `selects_dependencia` (`dependencia`,`Habilitado`)
 Values ('Dirección Hospital', 'Si'),
 ('Departamento Mantenimiento Local', 'Si'),
 ('División Administrativa', 'Si'),
@@ -260,7 +260,7 @@ Values ('Dirección Hospital', 'Si'),
 ('Servicio Consulta Externa', 'Si'),
 ('Unidad Enfermería', 'Si');
 
-INSERT INTO `Selects_departamento` (`departamento`,`Habilitado`)
+INSERT INTO `selects_departamento` (`departamento`,`Habilitado`)
 Values ('Área Saneamiento Ambiental', 'Si'),
 ('Área Servicios Auxiliares', 'Si'),
 ('Área Clínica De Úlceras Y Heridas', 'Si'),

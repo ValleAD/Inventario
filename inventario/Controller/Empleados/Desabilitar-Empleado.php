@@ -19,8 +19,9 @@
         $No =$_POST['Habilitado'];
         $u= $_POST['Nombres'];
         $ap= $_POST['Apellidos'];
+        $tipo_usuario= $_POST['tipo_usuario'];
         if ($u=$_POST['Nombres']=="" || $ap=$_POST['Apellidos']=="") {
-          $sql="UPDATE tb_usuarios SET Habilitado = '$No' WHERE id='$id'" ;
+          $sql="UPDATE tb_usuarios SET Habilitado = '$No', tipo_usuario='$tipo_usuario' WHERE id='$id'" ;
           $result = mysqli_query($conn, $sql);
 
           if ($result) {
@@ -41,7 +42,7 @@
         }else{
           $u= $_POST['Nombres'];
           $ap= $_POST['Apellidos'];
-          $sql="UPDATE tb_usuarios SET Habilitado = '$No',firstname='$u',lastname='$ap' WHERE id='$id'" ;
+          $sql="UPDATE tb_usuarios SET Habilitado = '$No',firstname='$u',lastname='$ap',tipo_usuario='$tipo_usuario' WHERE id='$id'" ;
           $result = mysqli_query($conn, $sql);
 
           if ($result) {

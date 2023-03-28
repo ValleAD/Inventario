@@ -11,6 +11,8 @@ die();
 
     ';
 }
+
+$cliente =$_SESSION['signin'];
 $tipo_usuario = $_SESSION['tipo_usuario'];?>
 
 
@@ -68,7 +70,8 @@ if ($buscarAlumnos->num_rows > 0)
                 </svg>
                 </button>
             </form>
-    </div> <div id="div" style = " max-height: 550px;width: 100%; overflow-y:scroll;overflow-x: hidden;padding-right: 1%  ;">  
+            </div>
+
     ';}
                 $n=0;
 	while($solicitudes= $buscarAlumnos->fetch_assoc())
@@ -102,10 +105,18 @@ $u='Cliente';
           <input type="hidden" name="id" value="'.$solicitudes["id"].'">      
           <button id="d" name="editar" class="btn btn-info swal2-styled.swal2-confirm"  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
         </form>
-        <form style="margin: 0%;background: transparent;margin-left: .5em; " method="POST" action="Controller/Delete_Empleados.php">
+        <form style="margin: 0%;background: transparent;margin-left: .5em; " method="POST" action="../../Controller/Empleados/Delete_Empleados.php">
             <input type="hidden" name="id" value="'.$solicitudes['id'].'">
             <input type="hidden" name="idusuario" value="'.$solicitudes['tipo_usuario'] .'">
-            <input id="dh" type="submit"onclick="return confirmaion()" class="btn btn-danger swal2-styled.swal2-confirm" value="Eliminar">
+            '; if ($cliente==$solicitudes['username']) {
+                $tabla.='
+              <input id="dh" type="submit" disabled class="btn btn-danger swal2-styled.swal2-confirm" value="Eliminar"title="Boton Desabilitado" > ';
+
+            }if ($cliente!=$solicitudes['username']){
+                $tabla.='
+            <a  data-bs-toggle="tooltip" style="" data-bs-placement="top" title="Eliminar Producto" class="btn btn-danger swal2-styled.swal2-confirm btn-del1" onclick="return Eliminar()" id="'.$solicitudes['username'] .'" href="../../Controller/Empleados/Delete_Empleados.php?id='.$solicitudes['id'].'&cod='. $solicitudes['tipo_usuario'] .'">Eliminar</a>
+                       ';}
+            $tabla.='
         </form>
         </div>
             </td>
@@ -123,10 +134,17 @@ $u='Cliente';
           <input type="hidden" name="id" value="'.$solicitudes['id'].'">      
           <button id="d" name="editar" class="btn btn-info swal2-styled.swal2-confirm"  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
         </form>
-        <form style="margin: 0%;background: transparent;margin-left: .5em; " method="POST" action="Controller/Delete_Empleados.php">
+        <form style="margin: 0%;background: transparent;margin-left: .5em; " method="POST" action="../../Controller/Empleados/Delete_Empleados.php">
             <input type="hidden" name="id" value="'.$solicitudes['id'].'">
             <input type="hidden" name="idusuario" value="'.$solicitudes['tipo_usuario'].'">
-            <input id="dh" type="submit"onclick="return confirmaion()" class="btn btn-danger swal2-styled.swal2-confirm" value="Eliminar">
+              '; if ($cliente==$solicitudes['username']) {
+                $tabla.='
+              <input id="dh" type="submit" disabled class="btn btn-danger swal2-styled.swal2-confirm" value="Eliminar"title="Boton Desabilitado" > ';
+            }if ($cliente!=$solicitudes['username']){
+                $tabla.='
+            <a  data-bs-toggle="tooltip" style="margin-left: 22%;" data-bs-placement="top" title="Eliminar Producto" class="btn btn-danger swal2-styled.swal2-confirm btn-del1" onclick="return Eliminar()" id="'.$solicitudes['username'] .'" href="../../Controller/Empleados/Delete_Empleados.php?id='.$solicitudes['id'].'&cod='. $solicitudes['tipo_usuario'] .'">Eliminar</a>
+            ';}
+            $tabla.='
         </form>
         </div>
     </div>
@@ -137,7 +155,8 @@ $u='Cliente';
 	
 	}
 
-	$tabla.='</tbody></table></div></div> ';
+	$tabla.='</tbody></table></div> <p id="respa1"></p>
+    ';
 } else
 	{
 		$tabla="
@@ -150,5 +169,38 @@ $u='Cliente';
 
 echo $tabla;
 ?>      
+<script type="text/javascript">
+        $(document).ready(function () {
+    $('.btn-del1').on('click', function(e) {
+        e.preventDefault();
+        const href=$(this).attr('href');
+        const cod=$(this).attr('id');
+            Swal.fire({
+      title:'IMPORTANTE',
+      html: 'Realmente deseas Eliminar este Usuario<br><br><b>El Usuario a Eliminar es: </b>'+cod,
+      icon:'warning',
+      showCancelButton:true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor:'#d33',
+      confirmButtonText: 'Eliminar',
+      allowOutsideClick: false
+    }).then((resultado) =>{
+if (resultado.value) {
 
+    $.ajax({
+        url : href,
+        type : 'POST',
+        data : href,
+        success:function(resp) {
+
+             $('#respa1').html(resp);
+            
+}
+      });
+        // document.location.href= href;                               
+               }
+                });
+    });
+    });
+</script>
      
