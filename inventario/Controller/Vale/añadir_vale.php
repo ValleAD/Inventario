@@ -59,7 +59,20 @@
             $stock=$productos['stock'];
             $total=$soli+$stock;
         }
+        $sqlw = "SELECT codProductos,stock FROM tb_productos WHERE codProductos='$codigo_producto'";
+        $resultw = mysqli_query($conn, $sqlw);
+        $stock=0;
+        while ($productosw = mysqli_fetch_array($resultw)){
+            // $codsw=$productosw['cod'];
+            $almacenw=$productosw['codProductos'];
+            $stockw=$productosw['stock'];
+            $totalw=$stockw+$soli;
+        }
+            
 
+        $insert0 = "UPDATE  tb_productos SET stock='$totalw' WHERE codProductos='$almacenw'";
+        $query0 = mysqli_query($conn, $insert0);
+        
         $insert1 = "UPDATE  detalle_vale SET stock='$total' WHERE numero_vale='$solicitud_no' and codigo='$almacen'";
         $query1 = mysqli_query($conn, $insert1);
 

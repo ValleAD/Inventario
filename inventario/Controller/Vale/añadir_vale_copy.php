@@ -38,7 +38,7 @@
 
               $stock = $productos1['SUM(stock)'];
 
-              $total = $stock - $cantidad_despachada;
+              $total = $stock + $cantidad_despachada;
 
               $sql1="UPDATE tb_productos SET stock ='$total' WHERE codProductos ='$cod_producto'";
               $query1 = mysqli_query($conn, $sql1);

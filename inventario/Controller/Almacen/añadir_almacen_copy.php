@@ -24,7 +24,25 @@
          $sql="UPDATE  tb_almacen SET estado = 'Pendiente' WHERE codAlmacen='$nSolicitud'" ;
 
          $result = mysqli_query($conn, $sql);
+           for($i = 0; $i < count($_POST['cod']); $i++)
+           {
+              $cod_producto  = $_POST['cod'][$i];
+              $cantidad_despachada = $_POST['cantidad_despachada'][$i];
 
+              $count = "SELECT codProductos, SUM(stock) FROM tb_productos  WHERE codProductos ='$cod_producto' GROUP BY codProductos, precio ";
+              $query2 = mysqli_query($conn, $count);
+
+              while ($productos1 = mysqli_fetch_array($query2)){
+
+                 $stock = $productos1['SUM(stock)'];
+
+                 $total= $stock + $cantidad_despachada;
+
+                 $sql1="UPDATE tb_productos SET stock ='$total' WHERE codProductos ='$cod_producto'";
+                 $query1 = mysqli_query($conn, $sql1);
+             }
+
+         }  
          for($i = 0; $i < count($_POST['cod']); $i++)
          {
           $codigo_producto  = $_POST['cod1'][$i];
