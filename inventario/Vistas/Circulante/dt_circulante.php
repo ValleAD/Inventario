@@ -142,8 +142,6 @@ if (!isset($_SESSION['signin'])>0) {
                         $final4 += $cantidad_despachada;
                         $final5   =    number_format($final4, 2, ".",",");
 
-                        $final6 += ($cant_aprobada-$cantidad_despachada);
-                        $final7   =    number_format($final6, 2, ".",",");
 
                         $final8 += $precio;
                         $final9   =    number_format($final8, 2, ".",",");?>
@@ -220,7 +218,6 @@ if (!isset($_SESSION['signin'])>0) {
             <p align="right"><b style="float: left;">Cantidad Solicitada: </b><?php echo $final3 ?></p>
             <p align="right"><b style="float: left;">Cantidad Despachada: </b><?php echo $final5 ?></p>
 
-            <p align="right"><b style="float: left;">Cant. Soli. - Cant. Despa.: </b><?php echo $final7 ?></p>
             <p align="right"><b style="float: left;">Costo Unitario: </b><?php echo $final9 ?></p>
             <p align="right"><b style="float: left;">SubTotal</b><?php echo $final1?></p>
 

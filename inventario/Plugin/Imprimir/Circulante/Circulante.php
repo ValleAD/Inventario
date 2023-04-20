@@ -24,9 +24,11 @@ if (!isset($_SESSION['signin'])>0) {
 <body>
     <style>
         table tr td {padding: 1%;font-size: 14px}
+        .table, tfoot {width: 100%;border: none;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed;}
         .table {width: 100%;border-collapse: collapse;margin: 0;table-layout: fixed;}
         .table tbody tr {background-color: #f8f8f8;border: 1px solid #ddd;}
         .table th, .table td {font-size: 12px;text-align: center;}
+        .table thead, tfoot td { background-color: rgba(255, 0, 0, .9);color: white;text-align: center;font-size: 14px}
         .table thead th{ background-color: #46466b;color: white;text-align: center;font-size: 14px;}
 
 
@@ -118,7 +120,7 @@ if (!isset($_SESSION['signin'])>0) {
 
         ?>
         <table style="width: 100%;margin: 0;">
-           <table style="width: 100%;font-size: 11px; margin: 0;" >
+         <table style="width: 100%;font-size: 11px; margin: 0;" >
             <tr>
                 <td><b>N° de Solicitud:</b> <?php echo $vale ?></td>
                 <td align="right"><b>Fecha:</b> <?php echo $fech ?></td>
@@ -127,7 +129,7 @@ if (!isset($_SESSION['signin'])>0) {
 
     <?php } ?>
     <br> 
-    <div id="h">
+
         <table class="table" style="width: 100%">
             <thead>     
                 <tr id="tr">
@@ -165,9 +167,7 @@ if (!isset($_SESSION['signin'])>0) {
 
                         $total = $solicitudes['SUM(cantidad_despachada)'] * $solicitudes['precio'];
                     }
-                    $final += $total;
-                    $total1= number_format($total, 2, ".",",");
-                    $final1=number_format($final, 2, ".",","); 
+                    
                     $final2 += $stock;
                     $final3   =    number_format($final2, 2, ".",",");
 
@@ -193,19 +193,17 @@ if (!isset($_SESSION['signin'])>0) {
                     </tr>
                 <?php } ?>
             </tbody>  
+            <tfoot >
+                <td colspan="3" >TOTALES SUMADOS</td>
+                <td><b> <?php echo $final3 ?></b></td>
+                <td><b> <?php echo $final5 ?></b></td>
+                <td><b> $<?php echo $final9 ?></b></td>
+                <td><b> $<?php echo $final1 ?></b></td>
 
+            </tfoot> 
         </table>
-    </div>
-    <div id="a">
-        <div id="t">
 
-            <p id="p" align="right"><b style="float: left;">Cant Solicitada: </b><?php echo $final3 ?></p>
-            <p id="p" align="right"><b style="float: left;">Cant Despachada: </b><?php echo $final5 ?></p>
-            <p id="p" align="right"><b style="float: left;">Costo Unitario: </b><?php echo $final9 ?></p>
-            <p id="p" style="border-bottom: 1px solid #ccc;border-collapse: collapse;"></p>
-            <p id="p" align="right"><b style="float: left;">SubTotal</b><?php echo $final1?></p>
-        </div>
-    </div>
+
 
 
     <div id="b">

@@ -48,12 +48,21 @@
       $total=0;
       $almacen=0;
       $cods=0;
-
-      if ($nSolicitud==$solicitud || $codigo_producto==$codigo_producto) {
-       $sql = "SELECT nSolicitud,codigo,stock FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra ";
-       $result = mysqli_query($conn, $sql);
-       $stock=0;
-       while ($productos = mysqli_fetch_array($result)){
+      
+      $sqlw = "SELECT codProductos,stock FROM tb_productos WHERE codProductos='$codigo_producto'";
+      $resultw = mysqli_query($conn, $sqlw);
+      $stock=0;
+      while ($productosw = mysqli_fetch_array($resultw)){
+            // $codsw=$productosw['cod'];
+        $almacenw=$productosw['codProductos'];
+        $stockw=$productosw['stock'];
+        $totalw=$stockw+$cantidad;
+    }
+    if ($nSolicitud==$solicitud || $codigo_producto==$codigo_producto) {
+     $sql = "SELECT nSolicitud,codigo,stock FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra ";
+     $result = mysqli_query($conn, $sql);
+     $stock=0;
+     while ($productos = mysqli_fetch_array($result)){
         $cods=$productos['nSolicitud'];
         $almacen=$productos['codigo'];
         $stock=$productos['stock'];
@@ -61,15 +70,7 @@
         
         
     }
-    $sqlw = "SELECT codProductos,stock FROM tb_productos WHERE codProductos='$codigo_producto'";
-    $resultw = mysqli_query($conn, $sqlw);
-    $stock=0;
-    while ($productosw = mysqli_fetch_array($resultw)){
-            // $codsw=$productosw['cod'];
-        $almacenw=$productosw['codProductos'];
-        $stockw=$productosw['stock'];
-        $totalw=$stockw+$soli;
-    }
+
     
 
     $insert0 = "UPDATE  tb_productos SET stock='$totalw' WHERE codProductos='$almacenw'";
@@ -84,7 +85,7 @@
 
 }
 if ($nSolicitud!=$cods || $codigo_producto!=$almacen) {
- 
+   
     $insert = "INSERT INTO detalle_compra (codigo, catalogo, descripcion, unidad_medida, stock,cantidad_despachada, precio, solicitud_compra) VALUES ('$codigo_producto','$catalogo', '$Descripción', '$u_m', '$cantidad',0, '$cost', '$solicitud')";
     $query2 = mysqli_query($conn, $insert);
 
@@ -95,48 +96,48 @@ if ($nSolicitud!=$cods || $codigo_producto!=$almacen) {
 }
 }
 if ($result) {
- echo "<script>
- Swal.fire({
-  title:'Realizado',
-  text:'Su producto fue registrado correctamente',
-  icon:'success',
-  allowOutsideClick: false
-  }).then((resultado) =>{
-    if (resultado.value) {
-        window.location.href='../../Vistas/Compra/dt_compra.php?cod=$nSolicitud';                               
-    }
-    });
-
-    </script>";
-}else {
-    echo "<script>
-    Swal.fire({
-       title: 'ERROR',
-       text: '¡Error! algo salió mal',
-       icon: 'error',
-       allowOutsideClick: false
-       }).then((resultado) =>{
+   echo "<script>
+   Swal.fire({
+      title:'Realizado',
+      text:'Su producto fue registrado correctamente',
+      icon:'success',
+      allowOutsideClick: false
+      }).then((resultado) =>{
         if (resultado.value) {
-            window.location.href='../../Vistas/Circulante/form_circulante1.php';                               
+            window.location.href='../../Vistas/Compra/dt_compra.php?cod=$nSolicitud';                               
         }
         });
 
         </script>";
-    }
+    }else {
+        echo "<script>
+        Swal.fire({
+         title: 'ERROR',
+         text: '¡Error! algo salió mal',
+         icon: 'error',
+         allowOutsideClick: false
+         }).then((resultado) =>{
+            if (resultado.value) {
+                window.location.href='../../Vistas/Circulante/form_circulante1.php';                               
+            }
+            });
+
+            </script>";
+        }
 
 
-    ?>
-    <script >
-     $(document).ready(function() {
-        function disableBack() {
-            window.history.forward()
-        }
-        window.onload = disableBack();
-        window.onpageshow = function(e) {
-            if (e.persisted)
-                disableBack();
-        }
-    });
-</script>
+        ?>
+        <script >
+           $(document).ready(function() {
+            function disableBack() {
+                window.history.forward()
+            }
+            window.onload = disableBack();
+            window.onpageshow = function(e) {
+                if (e.persisted)
+                    disableBack();
+            }
+        });
+    </script>
 </body>
 </html>

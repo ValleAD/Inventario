@@ -13,6 +13,14 @@
 .table tbody tr:nth-child(even) {background-color: #00BDFF; height: 5%}
 .table tbody tr:nth-child(odd) {background-color: #00EAFF; height: 5%}
 
+        table, tfoot {width: 100%;border: none;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed;}
+        table thead, tfoot td { background-color: rgba(255, 0, 0, .9);color: white;text-align: center;font-size: 14px}
+
+        table {width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin-top: 0%;padding: 0;color: black;table-layout: fixed;}
+        table tr {background-color: #f8f8f8;border: 1px solid #ddd;color: black;}
+        table th, table td {font-size: 12px;padding: 8px;text-align: center;}
+        table thead th{ text-align: justify;font-size: 14px}
+
 @media (max-width: 600px) {
 h3, h4, h5{
 	font-size: 12px;

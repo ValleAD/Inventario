@@ -48,18 +48,7 @@
         $totalw=0;
         $almacenw=0;
         $codsw=0;
-
-        if ($solicitud_no==$num_sol || $codigo_producto==$codigo_producto) {
-           $sql = "SELECT codBodega,codigo,stock FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega ";
-           $result = mysqli_query($conn, $sql);
-           $stock=0;
-           while ($productos = mysqli_fetch_array($result)){
-            $cods=$productos['codBodega'];
-            $almacen=$productos['codigo'];
-            $stock=$productos['stock'];
-            $total=$soli+$stock;
-        }
-
+        
         $sqlw = "SELECT codProductos,stock FROM tb_productos WHERE codProductos='$codigo_producto'";
         $resultw = mysqli_query($conn, $sqlw);
         $stock=0;
@@ -67,69 +56,83 @@
             // $codsw=$productosw['cod'];
             $almacenw=$productosw['codProductos'];
             $stockw=$productosw['stock'];
-            $totalw=$stockw-$soli;
+            $totalw=$stockw+$soli;
         }
-
-        $insert1 = "UPDATE  detalle_circulante SET stock='$total' WHERE tb_circulante='$solicitud_no' and codigo='$almacen'";
-        $query133 = mysqli_query($conn, $insert1);
-
-        $insert3 = "UPDATE  historial SET Entradas='$total' WHERE Detalles='$solicitud_no' and No_Comprovante='$almacen'";
-        $query3 = mysqli_query($conn, $insert3);
-
-    }
-    if ($solicitud_no!=$cods || $codigo_producto!=$almacen) {
-        $insert = "INSERT INTO detalle_circulante (codigo,descripcion,unidad_medida,stock,precio,tb_circulante) VALUES ('$codigo_producto','$nombre_articulo','$u_m','$soli','$cost','$num_sol')";
-        $query2 = mysqli_query($conn, $insert);
+        $insert0 = "UPDATE  tb_productos SET stock='$totalw' WHERE codProductos='$almacenw'";
+        $query0 = mysqli_query($conn, $insert0);
         
-        $sql3="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Detalles,idusuario,Mes,Año) VALUES('$nombre_articulo','Entrada Por Almacen','$u_m','$codigo_producto','$soli','$cost','$solicitud_no','$idusuario','$mes','$año')";
-        $query1 = mysqli_query($conn, $sql3);
+        if ($solicitud_no==$num_sol || $codigo_producto==$codigo_producto) {
+            $sql = "SELECT codCirculante,codigo,stock FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante ";
+            $result = mysqli_query($conn, $sql);
+            $stock=0;
+            while ($productos = mysqli_fetch_array($result)){
+                $cods=$productos['codCirculante'];
+                $almacen=$productos['codigo'];
+                $stock=$productos['stock'];
+                $total=$soli+$stock;
+            }
 
 
-    }
-}
-if ($result11) {
-   echo "<script>
-   Swal.fire({
-      title:'Realizado',
-      text:'Su producto fue registrado correctamente',
-      icon:'success',
-      allowOutsideClick: false
-      }).then((resultado) =>{
-        if (resultado.value) {
-            window.location.href='../../Vistas/Circulante/dt_circulante.php?cod=$solicitud_no';                               
+            $insert1 = "UPDATE  detalle_circulante SET stock='$total' WHERE tb_circulante='$solicitud_no' and codigo='$almacen'";
+            $query133 = mysqli_query($conn, $insert1);
+
+            $insert3 = "UPDATE  historial SET Entradas='$total' WHERE Detalles='$solicitud_no' and No_Comprovante='$almacen'";
+            $query3 = mysqli_query($conn, $insert3);
+
         }
-        });
+        if ($solicitud_no!=$cods || $codigo_producto!=$almacen) {
+            $insert = "INSERT INTO detalle_circulante (codigo,descripcion,unidad_medida,stock,precio,tb_circulante) VALUES ('$codigo_producto','$nombre_articulo','$u_m','$soli','$cost','$num_sol')";
+            $query2 = mysqli_query($conn, $insert);
 
-        </script>";
-    }else {
-        echo "<script>
-        Swal.fire({
-         title: 'ERROR',
-         text: '¡Error! algo salió mal',
-         icon: 'error',
-         allowOutsideClick: false
-         }).then((resultado) =>{
+            $sql3="INSERT INTO historial(descripcion,Concepto,unidad_medida,No_Comprovante,Entradas,Saldo,Detalles,idusuario,Mes,Año) VALUES('$nombre_articulo','Entrada Por Almacen','$u_m','$codigo_producto','$soli','$cost','$solicitud_no','$idusuario','$mes','$año')";
+            $query1 = mysqli_query($conn, $sql3);
+
+
+        }
+    }
+    if ($query133) {
+       echo "<script>
+       Swal.fire({
+          title:'Realizado',
+          text:'Su producto fue registrado correctamente',
+          icon:'success',
+          allowOutsideClick: false
+          }).then((resultado) =>{
             if (resultado.value) {
-                window.location.href='../../Vistas/Circulante/form_circulante1.php';                               
+                window.location.href='../../Vistas/Circulante/dt_circulante.php?cod=$solicitud_no';                               
             }
             });
 
             </script>";
-        }
+        }else {
+            echo "<script>
+            Swal.fire({
+             title: 'ERROR',
+             text: '¡Error! algo salió mal',
+             icon: 'error',
+             allowOutsideClick: false
+             }).then((resultado) =>{
+                if (resultado.value) {
+                    window.location.href='../../Vistas/Circulante/form_circulante1.php';                               
+                }
+                });
+
+                </script>";
+            }
 
 
-        ?>
-        <script >
-           $(document).ready(function() {
-            function disableBack() {
-                window.history.forward()
-            }
-            window.onload = disableBack();
-            window.onpageshow = function(e) {
-                if (e.persisted)
-                    disableBack();
-            }
-        });
-    </script>
-</body>
-</html>
+            ?>
+            <script >
+               $(document).ready(function() {
+                function disableBack() {
+                    window.history.forward()
+                }
+                window.onload = disableBack();
+                window.onpageshow = function(e) {
+                    if (e.persisted)
+                        disableBack();
+                }
+            });
+        </script>
+    </body>
+    </html>

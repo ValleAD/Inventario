@@ -53,15 +53,6 @@
         $almacen=0;
         $cods=0;
 
-        if ($solicitud_no==$num_sol || $codigo_producto==$codigo_producto) {
-         $sql = "SELECT tb_almacen,codigo,cantidad_solicitada FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen ";
-         $result = mysqli_query($conn, $sql);
-         while ($productos = mysqli_fetch_array($result)){
-            $cods=$productos['tb_almacen'];
-            $almacen=$productos['codigo'];
-            $stock=$productos['cantidad_solicitada'];
-            $total=$soli+$stock;
-        }
         $sqlw = "SELECT codProductos,stock FROM tb_productos WHERE codProductos='$codigo_producto'";
         $resultw = mysqli_query($conn, $sqlw);
         $stock=0;
@@ -71,6 +62,17 @@
             $stockw=$productosw['stock'];
             $totalw=$stockw+$soli;
         }
+        
+        if ($solicitud_no==$num_sol || $codigo_producto==$codigo_producto) {
+         $sql = "SELECT tb_almacen,codigo,cantidad_solicitada FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen ";
+         $result = mysqli_query($conn, $sql);
+         while ($productos = mysqli_fetch_array($result)){
+            $cods=$productos['tb_almacen'];
+            $almacen=$productos['codigo'];
+            $stock=$productos['cantidad_solicitada'];
+            $total=$soli+$stock;
+        }
+
         
 
         $insert0 = "UPDATE  tb_productos SET stock='$totalw' WHERE codProductos='$almacenw'";

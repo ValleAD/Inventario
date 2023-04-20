@@ -48,17 +48,7 @@
         $total=0;
         $almacen=0;
         $cods=0;
-
-        if ($solicitud_no==$num_sol || $codigo_producto==$codigo_producto) {
-           $sql = "SELECT codVale,codigo,stock FROM tb_vale db JOIN detalle_vale b ON db.codVale = b.numero_vale ";
-           $result = mysqli_query($conn, $sql);
         
-           while ($productos = mysqli_fetch_array($result)){
-            $cods=$productos['codVale'];
-            $almacen=$productos['codigo'];
-            $stock=$productos['stock'];
-            $total=$soli+$stock;
-        }
         $sqlw = "SELECT codProductos,stock FROM tb_productos WHERE codProductos='$codigo_producto'";
         $resultw = mysqli_query($conn, $sqlw);
         $stock=0;
@@ -68,11 +58,22 @@
             $stockw=$productosw['stock'];
             $totalw=$stockw+$soli;
         }
-            
+        
 
         $insert0 = "UPDATE  tb_productos SET stock='$totalw' WHERE codProductos='$almacenw'";
         $query0 = mysqli_query($conn, $insert0);
         
+        if ($solicitud_no==$num_sol || $codigo_producto==$codigo_producto) {
+         $sql = "SELECT codVale,codigo,stock FROM tb_vale db JOIN detalle_vale b ON db.codVale = b.numero_vale ";
+         $result = mysqli_query($conn, $sql);
+         
+         while ($productos = mysqli_fetch_array($result)){
+            $cods=$productos['codVale'];
+            $almacen=$productos['codigo'];
+            $stock=$productos['stock'];
+            $total=$soli+$stock;
+        }
+
         $insert1 = "UPDATE  detalle_vale SET stock='$total' WHERE numero_vale='$solicitud_no' and codigo='$almacen'";
         $query1 = mysqli_query($conn, $insert1);
 
@@ -91,48 +92,48 @@
     }
 }
 if ($result) {
- echo "<script>
- Swal.fire({
-  title:'Realizado',
-  text:'Su producto fue registrado correctamente',
-  icon:'success',
-  allowOutsideClick: false
-  }).then((resultado) =>{
-    if (resultado.value) {
-        window.location.href='../../Vistas/Vale/datos_vale.php?cod=$solicitud_no';                               
-    }
-    });
-
-    </script>";
-}else {
-    echo "<script>
-    Swal.fire({
-       title: 'ERROR',
-       text: '¡Error! algo salió mal',
-       icon: 'error',
-       allowOutsideClick: false
-       }).then((resultado) =>{
+   echo "<script>
+   Swal.fire({
+      title:'Realizado',
+      text:'Su producto fue registrado correctamente',
+      icon:'success',
+      allowOutsideClick: false
+      }).then((resultado) =>{
         if (resultado.value) {
-            window.location.href='../../Vistas/Vale/form_vale1.php';                               
+            window.location.href='../../Vistas/Vale/datos_vale.php?cod=$solicitud_no';                               
         }
         });
 
         </script>";
-    }
+    }else {
+        echo "<script>
+        Swal.fire({
+         title: 'ERROR',
+         text: '¡Error! algo salió mal',
+         icon: 'error',
+         allowOutsideClick: false
+         }).then((resultado) =>{
+            if (resultado.value) {
+                window.location.href='../../Vistas/Vale/form_vale1.php';                               
+            }
+            });
+
+            </script>";
+        }
 
 
-    ?>
-    <script >
-     $(document).ready(function() {
-        function disableBack() {
-            window.history.forward()
-        }
-        window.onload = disableBack();
-        window.onpageshow = function(e) {
-            if (e.persisted)
-                disableBack();
-        }
-    });
-</script>
+        ?>
+        <script >
+           $(document).ready(function() {
+            function disableBack() {
+                window.history.forward()
+            }
+            window.onload = disableBack();
+            window.onpageshow = function(e) {
+                if (e.persisted)
+                    disableBack();
+            }
+        });
+    </script>
 </body>
 </html>

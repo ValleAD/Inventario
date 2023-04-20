@@ -122,7 +122,7 @@
     <tbody>
         <?php 
         if ($tipo_usuario==1) {
-            $sql = "SELECT  codigo,SUM(cantidad_solicitada),SUM(cantidad_despachada),precio,descripcion,unidad_medida  FROM `detalle_circulante` D JOIN `tb_circulante` V ON D.tb_circulante=V.codCirculante WHERE tb_circulante = $vale ";
+            $sql = "SELECT  codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida  FROM `detalle_circulante` D JOIN `tb_circulante` V ON D.tb_circulante=V.codCirculante WHERE tb_circulante = $vale ";
         }
         $result = mysqli_query($conn, $sql);
 
@@ -131,7 +131,7 @@
             $codigo=$solicitudes['codigo'];
             $des=$solicitudes['descripcion'];
             $um=$solicitudes['unidad_medida'];
-            $cantidad=$solicitudes['SUM(antidad_despachada)'];
+            $cantidad=$solicitudes['SUM(cantidad_despachada)'];
             $stock=$solicitudes['SUM(stock)'];
             $cost=$solicitudes['precio'];
             if ($estado="Pendiente") {  

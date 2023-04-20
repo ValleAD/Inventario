@@ -51,18 +51,7 @@
         $totalw=0;
         $almacenw=0;
         $codsw=0;
-
-        if ($solicitud_no==$num_sol || $codigo_producto==$codigo_producto) {
-         $sql = "SELECT codBodega,codigo,stock FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega ";
-         $result = mysqli_query($conn, $sql);
-         $stock=0;
-         while ($productos = mysqli_fetch_array($result)){
-            $cods=$productos['codBodega'];
-            $almacen=$productos['codigo'];
-            $stock=$productos['stock'];
-            $total=$soli+$stock;
-        }
-
+        
         $sqlw = "SELECT codProductos,stock FROM tb_productos WHERE codProductos='$codigo_producto'";
         $resultw = mysqli_query($conn, $sqlw);
         $stock=0;
@@ -72,10 +61,22 @@
             $stockw=$productosw['stock'];
             $totalw=$stockw-$soli;
         }
-            
+        
 
         $insert0 = "UPDATE  tb_productos SET stock='$totalw' WHERE codProductos='$almacenw'";
         $query0 = mysqli_query($conn, $insert0);
+        if ($solicitud_no==$num_sol || $codigo_producto==$codigo_producto) {
+           $sql = "SELECT codBodega,codigo,stock FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega ";
+           $result = mysqli_query($conn, $sql);
+           $stock=0;
+           while ($productos = mysqli_fetch_array($result)){
+            $cods=$productos['codBodega'];
+            $almacen=$productos['codigo'];
+            $stock=$productos['stock'];
+            $total=$soli+$stock;
+        }
+
+
 
         $insert1 = "UPDATE  detalle_bodega SET stock='$total' WHERE odt_bodega='$solicitud_no' and codigo='$almacen'";
         $query1 = mysqli_query($conn, $insert1);
@@ -95,48 +96,48 @@
     }
 }
 if ($query0) {
-   echo "<script>
-   Swal.fire({
-      title:'Realizado',
-      text:'Su producto fue registrado correctamente',
-      icon:'success',
-      allowOutsideClick: false
-      }).then((resultado) =>{
+ echo "<script>
+ Swal.fire({
+  title:'Realizado',
+  text:'Su producto fue registrado correctamente',
+  icon:'success',
+  allowOutsideClick: false
+  }).then((resultado) =>{
+    if (resultado.value) {
+        window.location.href='../../Vistas/Bodega/dt_bodega.php?cod=$solicitud_no';                               
+    }
+    });
+
+    </script>";
+}else {
+    echo "<script>
+    Swal.fire({
+       title: 'ERROR',
+       text: '¡Error! algo salió mal',
+       icon: 'error',
+       allowOutsideClick: false
+       }).then((resultado) =>{
         if (resultado.value) {
-            window.location.href='../../Vistas/Bodega/dt_bodega.php?cod=$solicitud_no';                               
+            window.location.href='../../Vistas/Bodega/form_bodega_varios.php';                               
         }
         });
 
         </script>";
-    }else {
-        echo "<script>
-        Swal.fire({
-         title: 'ERROR',
-         text: '¡Error! algo salió mal',
-         icon: 'error',
-         allowOutsideClick: false
-         }).then((resultado) =>{
-            if (resultado.value) {
-                window.location.href='../../Vistas/Bodega/form_bodega_varios.php';                               
-            }
-            });
+    }
 
-            </script>";
+
+    ?>
+    <script >
+     $(document).ready(function() {
+        function disableBack() {
+            window.history.forward()
         }
-
-
-        ?>
-        <script >
-           $(document).ready(function() {
-            function disableBack() {
-                window.history.forward()
-            }
-            window.onload = disableBack();
-            window.onpageshow = function(e) {
-                if (e.persisted)
-                    disableBack();
-            }
-        });
-    </script>
+        window.onload = disableBack();
+        window.onpageshow = function(e) {
+            if (e.persisted)
+                disableBack();
+        }
+    });
+</script>
 </body>
 </html>

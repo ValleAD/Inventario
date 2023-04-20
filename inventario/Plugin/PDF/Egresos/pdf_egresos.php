@@ -29,6 +29,9 @@ $idusuario = $_SESSION['iduser'];
         <img src="../../../img/hospital.png" style="width:20%; float: left;">
         <img src="../../../img/log_1.png" style="width:20%; float:right">
 <style>
+        .table, tfoot {width: 100%;border: none;border-collapse: collapse;margin: 0;padding: 0;color: black;table-layout: fixed;}
+    .table thead, tfoot td { background-color: rgba(255, 0, 0, .9);color: white;text-align: center;font-size: 14px}
+
 .table {width: 100%;border: 1px solid #ccc;border-collapse: collapse;margin-top: 0%;padding: 0;color: black;table-layout: fixed;}
 .table tr {background-color: #f8f8f8;border: 1px solid #ddd;color: black;}
 .table th, .table td {font-size: 12px;padding: 8px;text-align: center;}
@@ -154,6 +157,8 @@ div.break-before{
 $total = "0.00";
 $final = "0.00";
 $final1 = "0.00";
+$finalb = "0.00";
+$final0 = "0.00";
 $final2 = "0.00";
 $final3 = "0.00";
 $final4 = "0.00";
@@ -162,6 +167,8 @@ $final6 = "0.00";
 $final7 = "0.00";
 $final8 = "0.00";
 $final9 = "0.00";
+$final10 = "0.00";
+$final11 = "0.00";
 $idusuario = $_SESSION['iduser'];
  if (isset($_POST['vale'])) {?>
         <h3 align="center" style="margin-top: 2%;">MINISTERIO DE SALUD HOSPITAL NACIONAL SANTA TERESA</h3>
@@ -339,24 +346,45 @@ $sql = "SELECT  codVale,codigo,SUM(stock),SUM(cantidad_despachada),precio,descri
  </tr>
 <?php } ?>      
             </tbody>
+            <tfoot >
+    <td colspan="6" >TOTALES SUMADOS</td>
+    <td><b> <?php echo $final3 ?></b></td>
+    <td><b> <?php echo $final5 ?></b></td>
+    <td><b> $<?php echo $final9 ?></b></td>
+    <td></td>
+
+</tfoot>
         </table>
                  <br> 
           <div class="card">
             <div class="card-body">         
-        <h6>Stock Por Mes</h6>
+                <table style="width: 100%;" cellspacing="0">
+            <thead>
+                <tr>
+                    <th  width="70%" align="left"><h6>Stock del Mes</h6></th>
+                    <th align="left">Stock</th>
+                    <th align="left">Precio</th>
+                </tr>
+            </thead>
         <?php 
         if ($tipo_usuario==1) {
-        $sql="SELECT Mes,SUM(stock) FROM tb_vale db JOIN detalle_vale b ON db.CodVale = b.numero_vale   GROUP by Mes;";
+        $sql="SELECT Mes,SUM(stock),SUM(precio) FROM tb_vale db JOIN detalle_vale b ON db.CodVale = b.numero_vale   GROUP by Mes;";
         }if ($tipo_usuario==2) {
-        $sql="SELECT Mes,SUM(stock),idusuario FROM tb_vale db JOIN detalle_vale b ON db.CodVale = b.numero_vale WHERE idusuario='$idusuario' GROUP by Mes;";
+        $sql="SELECT Mes,SUM(stock),SUM(precio),idusuario FROM tb_vale db JOIN detalle_vale b ON db.CodVale = b.numero_vale WHERE idusuario='$idusuario' GROUP by Mes;";
         }
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
-        $cantidad=$productos['SUM(stock)'];
-        $stock=number_format($cantidad, 2,".",",");
-        $final6 += $cantidad;
-        $final7   =    number_format($final6, 2, ".",",");
-        $mes=$productos['Mes'];
+           $mes=$productos['Mes'];
+            $cantidad=$productos['SUM(stock)'];
+            $stock1=number_format($cantidad, 2,".",",");
+
+            $costs=$productos['SUM(precio)'];
+            $precio1=number_format($costs, 2,".",",");
+            $final6 += $cantidad;
+            $final7   =    number_format($final6, 2, ".",",");
+
+            $final0 += $costs;
+            $final1   =    number_format($final0, 2, ".",",");
                             if ($mes==1)  { $mes="Enero";}
                             if ($mes==2)  { $mes="Febrero";}
                             if ($mes==3)  { $mes="Marzo";}
@@ -370,34 +398,74 @@ $sql = "SELECT  codVale,codigo,SUM(stock),SUM(cantidad_despachada),precio,descri
                             if ($mes==11) { $mes="Noviembre";}
                             if ($mes==12) { $mes="Diciembre";}
                             ?>
-               <p align="right"><b style="float: left;"><?php echo $mes ?>: </b><?php echo $stock ?></p>
-   <?php  } ?>
-         <p style="border-bottom: 1px solid #ccc;"></p>
-    <p align="right"><b style="float: left;">Total </b><?php echo $final7 ?></p>
+    <tbody>
+
+        <tr>
+            
+        <td align="left"><b><?php echo $mes ?> : </b></b></td>
+        <td align="left"><?php echo $stock1 ?></td>
+        <td align="left">$ <?php echo $precio1 ?></td>
+        </tr>
+    </tbody>
+
+
+        <?php  } ?>
+        <tfoot>
+            <td style="text-align: left;"><b>Total</b></td>
+            <td style="text-align: left;"><?php echo $final7 ?></td>
+            <td style="text-align: left;">$ <?php echo $final1 ?></td>
+        </tfoot>
+  </table>
 </div>
 </div>
  <br>
 <div class="card">
     <div class="card-body">
-   <h6> Stock Por Año</h6>
+           <table style="width: 100%;" cellspacing="0">
+            <thead>
+                <tr>
+                    <th  width="70%" align="left"><h6>Stock del Año</h6></th>
+                    <th align="left">Stock</th>
+                    <th align="left">Precio</th>
+                </tr>
+            </thead>
     <?php
     if ($tipo_usuario==1) {
      
-     $sql="SELECT Año,SUM(stock) FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale   GROUP by Año;";
+     $sql="SELECT Año,SUM(stock),SUM(precio) FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale   GROUP by Año;";
      } if ($tipo_usuario==2) {
-     $sql="SELECT Año,SUM(stock),idusuario FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE idusuario='$idusuario' GROUP by Año;";
+     $sql="SELECT Año,SUM(stock),SUM(precio),idusuario FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE idusuario='$idusuario' GROUP by Año;";
      }
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
-        $año=$productos['Año'];
-        $cantidad=$productos['SUM(stock)'];
-        $stock=number_format($cantidad, 2,".",",");
-        $final4 += $cantidad;
-        $final5   =    number_format($final4, 2, ".",",");?>
-        <p align="right"><b style="float: left;"><?php echo $año ?>: </b><?php echo $stock ?></p>
-    <?php } ?>
-               <p style="border-bottom: 1px solid #ccc;"></p>
-               <p align="right"><b style="float: left;">Total </b><?php echo $final5 ?></p>
+             $costs1=$productos['SUM(precio)'];
+            $precio1=number_format($costs1, 2,".",",");
+
+            $final10 += $costs1;
+            $final11   =    number_format($final10, 2, ".",",");
+            $año=$productos['Año'];
+            $cantidad1=$productos['SUM(stock)'];
+            $stock=number_format($cantidad1, 2,".",",");
+            $final4 += $cantidad1;
+            $final5   =    number_format($final4, 2, ".",",");?>
+
+     <tbody>
+        <tr>
+            
+        <td align="left"><b><?php echo $año  ?> : </b></b></td>
+        <td align="left"><?php echo $stock?></td>
+        <td align="left">$ <?php echo $precio1 ?></td>
+        </tr>
+    </tbody>
+
+
+        <?php  } ?>
+        <tfoot>
+            <td style="text-align: left;"><b>Total</b></td>
+            <td style="text-align: left;"><?php echo $final5 ?></td>
+            <td style="text-align: left;">$ <?php echo $final11 ?></td>
+        </tfoot>
+  </table> 
 </div>
 </div>
 
@@ -577,24 +645,45 @@ $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVa
  </tr>
 <?php } ?>      
             </tbody>
+            <tfoot >
+  <td colspan="6" >TOTALES SUMADOS</td>
+    <td><b> <?php echo $final3 ?></b></td>
+    <td><b> <?php echo $final5 ?></b></td>
+    <td><b> $<?php echo $final9 ?></b></td>
+    <td></td>
+
+</tfoot>
         </table>
                  <br> 
           <div class="card">
             <div class="card-body">         
-        <h6>Stock Por Mes</h6>
+                <table style="width: 100%;" cellspacing="0">
+            <thead>
+                <tr>
+                    <th  width="70%" align="left"><h6>Stock del Mes</h6></th>
+                    <th align="left">Stock</th>
+                    <th align="left">Precio</th>
+                </tr>
+            </thead>
         <?php 
         if ($tipo_usuario==1) {
-        $sql="SELECT Mes,SUM(stock) FROM tb_vale db JOIN detalle_vale b ON db.CodVale = b.numero_vale   GROUP by Mes;";
+        $sql="SELECT Mes,SUM(stock),SUM(precio) FROM tb_vale db JOIN detalle_vale b ON db.CodVale = b.numero_vale   GROUP by Mes;";
         }if ($tipo_usuario==2) {
-        $sql="SELECT Mes,SUM(stock),idusuario FROM tb_vale db JOIN detalle_vale b ON db.CodVale = b.numero_vale WHERE idusuario='$idusuario' GROUP by Mes;";
+        $sql="SELECT Mes,SUM(stock),SUM(precio),idusuario FROM tb_vale db JOIN detalle_vale b ON db.CodVale = b.numero_vale WHERE idusuario='$idusuario' GROUP by Mes;";
         }
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
-        $cantidad=$productos['SUM(stock)'];
-        $stock=number_format($cantidad, 2,".",",");
-        $final6 += $cantidad;
-        $final7   =    number_format($final6, 2, ".",",");
-        $mes=$productos['Mes'];
+           $mes=$productos['Mes'];
+            $cantidad=$productos['SUM(stock)'];
+            $stock1=number_format($cantidad, 2,".",",");
+
+            $costs=$productos['SUM(precio)'];
+            $precio1=number_format($costs, 2,".",",");
+            $final6 += $cantidad;
+            $final7   =    number_format($final6, 2, ".",",");
+
+            $final0 += $costs;
+            $final1   =    number_format($final0, 2, ".",",");
                             if ($mes==1)  { $mes="Enero";}
                             if ($mes==2)  { $mes="Febrero";}
                             if ($mes==3)  { $mes="Marzo";}
@@ -608,34 +697,74 @@ $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVa
                             if ($mes==11) { $mes="Noviembre";}
                             if ($mes==12) { $mes="Diciembre";}
                             ?>
-               <p align="right"><b style="float: left;"><?php echo $mes ?>: </b><?php echo $stock ?></p>
-   <?php  } ?>
-         <p style="border-bottom: 1px solid #ccc;"></p>
-    <p align="right"><b style="float: left;">Total </b><?php echo $final7 ?></p>
+    <tbody>
+
+        <tr>
+            
+        <td align="left"><b><?php echo $mes ?> : </b></b></td>
+        <td align="left"><?php echo $stock1 ?></td>
+        <td align="left">$ <?php echo $precio1 ?></td>
+        </tr>
+    </tbody>
+
+
+        <?php  } ?>
+        <tfoot>
+            <td style="text-align: left;"><b>Total</b></td>
+            <td style="text-align: left;"><?php echo $final7 ?></td>
+            <td style="text-align: left;">$ <?php echo $final1 ?></td>
+        </tfoot>
+  </table>
 </div>
 </div>
  <br>
 <div class="card">
     <div class="card-body">
-   <h6> Stock Por Año</h6>
+           <table style="width: 100%;" cellspacing="0">
+            <thead>
+                <tr>
+                    <th  width="70%" align="left"><h6>Stock del Año</h6></th>
+                    <th align="left">Stock</th>
+                    <th align="left">Precio</th>
+                </tr>
+            </thead>
     <?php
     if ($tipo_usuario==1) {
      
-     $sql="SELECT Año,SUM(stock) FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale   GROUP by Año;";
+     $sql="SELECT Año,SUM(stock),SUM(precio) FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale   GROUP by Año;";
      } if ($tipo_usuario==2) {
-     $sql="SELECT Año,SUM(stock),idusuario FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE idusuario='$idusuario' GROUP by Año;";
+     $sql="SELECT Año,SUM(stock),SUM(precio),idusuario FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE idusuario='$idusuario' GROUP by Año;";
      }
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
-        $año=$productos['Año'];
-        $cantidad=$productos['SUM(stock)'];
-        $stock=number_format($cantidad, 2,".",",");
-        $final4 += $cantidad;
-        $final5   =    number_format($final4, 2, ".",",");?>
-        <p align="right"><b style="float: left;"><?php echo $año ?>: </b><?php echo $stock ?></p>
-    <?php } ?>
-               <p style="border-bottom: 1px solid #ccc;"></p>
-               <p align="right"><b style="float: left;">Total </b><?php echo $final5 ?></p>
+             $costs1=$productos['SUM(precio)'];
+            $precio1=number_format($costs1, 2,".",",");
+
+            $final10 += $costs1;
+            $final11   =    number_format($final10, 2, ".",",");
+            $año=$productos['Año'];
+            $cantidad1=$productos['SUM(stock)'];
+            $stock=number_format($cantidad1, 2,".",",");
+            $final4 += $cantidad1;
+            $final5   =    number_format($final4, 2, ".",",");?>
+
+     <tbody>
+        <tr>
+            
+        <td align="left"><b><?php echo $año  ?> : </b></b></td>
+        <td align="left"><?php echo $stock?></td>
+        <td align="left">$ <?php echo $precio1 ?></td>
+        </tr>
+    </tbody>
+
+
+        <?php  } ?>
+        <tfoot>
+            <td style="text-align: left;"><b>Total</b></td>
+            <td style="text-align: left;"><?php echo $final5 ?></td>
+            <td style="text-align: left;">$ <?php echo $final11 ?></td>
+        </tfoot>
+  </table> 
 </div>
 </div>
 
@@ -811,24 +940,45 @@ while ($productos = mysqli_fetch_array($result)){
 <?php } ?> 
 
      </tbody>
+     <tfoot >
+    <td colspan="6" >TOTALES SUMADOS</td>
+    <td><b> <?php echo $final3 ?></b></td>
+    <td><b> <?php echo $final5 ?></b></td>
+    <td><b> $<?php echo $final9 ?></b></td>
+    <td></td>
+
+</tfoot>
  </table>
            <br> 
           <div class="card">
             <div class="card-body">         
-        <h6>Stock Por Mes</h6>
+                <table style="width: 100%;" cellspacing="0">
+            <thead>
+                <tr>
+                    <th  width="70%" align="left"><h6>Stock del Mes</h6></th>
+                    <th align="left">Stock</th>
+                    <th align="left">Precio</th>
+                </tr>
+            </thead>
         <?php 
         if ($tipo_usuario==1) {
-        $sql="SELECT Mes,SUM(stock) FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega   GROUP by Mes;";
+        $sql="SELECT Mes,SUM(stock),SUM(precio) FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega   GROUP by Mes;";
         }if ($tipo_usuario==2) {
-        $sql="SELECT Mes,SUM(stock),idusuario FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega WHERE idusuario='$idusuario' GROUP by Mes;";
+        $sql="SELECT Mes,SUM(stock),SUM(precio),idusuario FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega WHERE idusuario='$idusuario' GROUP by Mes;";
         }
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
-        $cantidad=$productos['SUM(stock)'];
-        $stock=number_format($cantidad, 2,".",",");
-        $final6 += $cantidad;
-        $final7   =    number_format($final6, 2, ".",",");
-        $mes=$productos['Mes'];
+           $mes=$productos['Mes'];
+            $cantidad=$productos['SUM(stock)'];
+            $stock1=number_format($cantidad, 2,".",",");
+
+            $costs=$productos['SUM(precio)'];
+            $precio1=number_format($costs, 2,".",",");
+            $final6 += $cantidad;
+            $final7   =    number_format($final6, 2, ".",",");
+
+            $final0 += $costs;
+            $final1   =    number_format($final0, 2, ".",",");
                             if ($mes==1)  { $mes="Enero";}
                             if ($mes==2)  { $mes="Febrero";}
                             if ($mes==3)  { $mes="Marzo";}
@@ -842,34 +992,74 @@ while ($productos = mysqli_fetch_array($result)){
                             if ($mes==11) { $mes="Noviembre";}
                             if ($mes==12) { $mes="Diciembre";}
                             ?>
-               <p align="right"><b style="float: left;"><?php echo $mes ?>: </b><?php echo $stock ?></p>
-   <?php  } ?>
-         <p style="border-bottom: 1px solid #ccc;"></p>
-    <p align="right"><b style="float: left;">Total </b><?php echo $final7 ?></p>
+    <tbody>
+
+        <tr>
+            
+        <td align="left"><b><?php echo $mes ?> : </b></b></td>
+        <td align="left"><?php echo $stock1 ?></td>
+        <td align="left">$ <?php echo $precio1 ?></td>
+        </tr>
+    </tbody>
+
+
+        <?php  } ?>
+        <tfoot>
+            <td style="text-align: left;"><b>Total</b></td>
+            <td style="text-align: left;"><?php echo $final7 ?></td>
+            <td style="text-align: left;">$ <?php echo $final1 ?></td>
+        </tfoot>
+  </table>
 </div>
 </div>
  <br>
 <div class="card">
     <div class="card-body">
-   <h6> Stock Por Año</h6>
+           <table style="width: 100%;" cellspacing="0">
+            <thead>
+                <tr>
+                    <th  width="70%" align="left"><h6>Stock del Año</h6></th>
+                    <th align="left">Stock</th>
+                    <th align="left">Precio</th>
+                </tr>
+            </thead>
     <?php
     if ($tipo_usuario==1) {
      
-     $sql="SELECT Año,SUM(stock) FROM `detalle_bodega` D JOIN `tb_bodega` V ON D.odt_bodega=V.codBodega   GROUP by Año;";
+     $sql="SELECT Año,SUM(stock),SUM(precio) FROM `detalle_bodega` D JOIN `tb_bodega` V ON D.odt_bodega=V.codBodega   GROUP by Año;";
      } if ($tipo_usuario==2) {
-     $sql="SELECT Año,SUM(stock),idusuario FROM `detalle_bodega` D JOIN `tb_bodega` V ON D.odt_bodega=V.codBodega WHERE idusuario='$idusuario' GROUP by Año;";
+     $sql="SELECT Año,SUM(stock),SUM(precio),idusuario FROM `detalle_bodega` D JOIN `tb_bodega` V ON D.odt_bodega=V.codBodega WHERE idusuario='$idusuario' GROUP by Año;";
      }
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
-        $año=$productos['Año'];
-        $cantidad=$productos['SUM(stock)'];
-        $stock=number_format($cantidad, 2,".",",");
-        $final4 += $cantidad;
-        $final5   =    number_format($final4, 2, ".",",");?>
-        <p align="right"><b style="float: left;"><?php echo $año ?>: </b><?php echo $stock ?></p>
-    <?php } ?>
-               <p style="border-bottom: 1px solid #ccc;"></p>
-               <p align="right"><b style="float: left;">Total </b><?php echo $final5 ?></p>
+             $costs1=$productos['SUM(precio)'];
+            $precio1=number_format($costs1, 2,".",",");
+
+            $final10 += $costs1;
+            $final11   =    number_format($final10, 2, ".",",");
+            $año=$productos['Año'];
+            $cantidad1=$productos['SUM(stock)'];
+            $stock=number_format($cantidad1, 2,".",",");
+            $final4 += $cantidad1;
+            $final5   =    number_format($final4, 2, ".",",");?>
+
+     <tbody>
+        <tr>
+            
+        <td align="left"><b><?php echo $año  ?> : </b></b></td>
+        <td align="left"><?php echo $stock?></td>
+        <td align="left">$ <?php echo $precio1 ?></td>
+        </tr>
+    </tbody>
+
+
+        <?php  } ?>
+        <tfoot>
+            <td style="text-align: left;"><b>Total</b></td>
+            <td style="text-align: left;"><?php echo $final5 ?></td>
+            <td style="text-align: left;">$ <?php echo $final11 ?></td>
+        </tfoot>
+  </table> 
 </div>
 </div>
 
@@ -1045,24 +1235,45 @@ while ($productos = mysqli_fetch_array($result)){
 <?php } ?> 
 
      </tbody>
+     <tfoot >
+  <td colspan="6" >TOTALES SUMADOS</td>
+    <td><b> <?php echo $final3 ?></b></td>
+    <td><b> <?php echo $final5 ?></b></td>
+    <td><b> $<?php echo $final9 ?></b></td>
+    <td></td>
+
+</tfoot>
  </table>
            <br> 
           <div class="card">
             <div class="card-body">         
-        <h6>Stock Por Mes</h6>
+                <table style="width: 100%;" cellspacing="0">
+            <thead>
+                <tr>
+                    <th  width="70%" align="left"><h6>Stock del Mes</h6></th>
+                    <th align="left">Stock</th>
+                    <th align="left">Precio</th>
+                </tr>
+            </thead>
         <?php 
         if ($tipo_usuario==1) {
-        $sql="SELECT Mes,SUM(stock) FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega   GROUP by Mes;";
+        $sql="SELECT Mes,SUM(stock),SUM(precio) FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega   GROUP by Mes;";
         }if ($tipo_usuario==2) {
-        $sql="SELECT Mes,SUM(stock),idusuario FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega WHERE idusuario='$idusuario' GROUP by Mes;";
+        $sql="SELECT Mes,SUM(stock),SUM(precio),idusuario FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega WHERE idusuario='$idusuario' GROUP by Mes;";
         }
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
-        $cantidad=$productos['SUM(stock)'];
-        $stock=number_format($cantidad, 2,".",",");
-        $final6 += $cantidad;
-        $final7   =    number_format($final6, 2, ".",",");
-        $mes=$productos['Mes'];
+           $mes=$productos['Mes'];
+            $cantidad=$productos['SUM(stock)'];
+            $stock1=number_format($cantidad, 2,".",",");
+
+            $costs=$productos['SUM(precio)'];
+            $precio1=number_format($costs, 2,".",",");
+            $final6 += $cantidad;
+            $final7   =    number_format($final6, 2, ".",",");
+
+            $final0 += $costs;
+            $final1   =    number_format($final0, 2, ".",",");
                             if ($mes==1)  { $mes="Enero";}
                             if ($mes==2)  { $mes="Febrero";}
                             if ($mes==3)  { $mes="Marzo";}
@@ -1076,34 +1287,74 @@ while ($productos = mysqli_fetch_array($result)){
                             if ($mes==11) { $mes="Noviembre";}
                             if ($mes==12) { $mes="Diciembre";}
                             ?>
-               <p align="right"><b style="float: left;"><?php echo $mes ?>: </b><?php echo $stock ?></p>
-   <?php  } ?>
-         <p style="border-bottom: 1px solid #ccc;"></p>
-    <p align="right"><b style="float: left;">Total </b><?php echo $final7 ?></p>
+    <tbody>
+
+        <tr>
+            
+        <td align="left"><b><?php echo $mes ?> : </b></b></td>
+        <td align="left"><?php echo $stock1 ?></td>
+        <td align="left">$ <?php echo $precio1 ?></td>
+        </tr>
+    </tbody>
+
+
+        <?php  } ?>
+        <tfoot>
+            <td style="text-align: left;"><b>Total</b></td>
+            <td style="text-align: left;"><?php echo $final7 ?></td>
+            <td style="text-align: left;">$ <?php echo $final1 ?></td>
+        </tfoot>
+  </table>
 </div>
 </div>
  <br>
 <div class="card">
     <div class="card-body">
-   <h6> Stock Por Año</h6>
+           <table style="width: 100%;" cellspacing="0">
+            <thead>
+                <tr>
+                    <th  width="70%" align="left"><h6>Stock del Año</h6></th>
+                    <th align="left">Stock</th>
+                    <th align="left">Precio</th>
+                </tr>
+            </thead>
     <?php
     if ($tipo_usuario==1) {
      
-     $sql="SELECT Año,SUM(stock) FROM `detalle_bodega` D JOIN `tb_bodega` V ON D.odt_bodega=V.codBodega   GROUP by Año;";
+     $sql="SELECT Año,SUM(stock),SUM(precio) FROM `detalle_bodega` D JOIN `tb_bodega` V ON D.odt_bodega=V.codBodega   GROUP by Año;";
      } if ($tipo_usuario==2) {
-     $sql="SELECT Año,SUM(stock),idusuario FROM `detalle_bodega` D JOIN `tb_bodega` V ON D.odt_bodega=V.codBodega WHERE idusuario='$idusuario' GROUP by Año;";
+     $sql="SELECT Año,SUM(stock),SUM(precio),idusuario FROM `detalle_bodega` D JOIN `tb_bodega` V ON D.odt_bodega=V.codBodega WHERE idusuario='$idusuario' GROUP by Año;";
      }
             $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){
-        $año=$productos['Año'];
-        $cantidad=$productos['SUM(stock)'];
-        $stock=number_format($cantidad, 2,".",",");
-        $final4 += $cantidad;
-        $final5   =    number_format($final4, 2, ".",",");?>
-        <p align="right"><b style="float: left;"><?php echo $año ?>: </b><?php echo $stock ?></p>
-    <?php } ?>
-               <p style="border-bottom: 1px solid #ccc;"></p>
-               <p align="right"><b style="float: left;">Total </b><?php echo $final5 ?></p>
+             $costs1=$productos['SUM(precio)'];
+            $precio1=number_format($costs1, 2,".",",");
+
+            $final10 += $costs1;
+            $final11   =    number_format($final10, 2, ".",",");
+            $año=$productos['Año'];
+            $cantidad1=$productos['SUM(stock)'];
+            $stock=number_format($cantidad1, 2,".",",");
+            $final4 += $cantidad1;
+            $final5   =    number_format($final4, 2, ".",",");?>
+
+     <tbody>
+        <tr>
+            
+        <td align="left"><b><?php echo $año  ?> : </b></b></td>
+        <td align="left"><?php echo $stock?></td>
+        <td align="left">$ <?php echo $precio1 ?></td>
+        </tr>
+    </tbody>
+
+
+        <?php  } ?>
+        <tfoot>
+            <td style="text-align: left;"><b>Total</b></td>
+            <td style="text-align: left;"><?php echo $final5 ?></td>
+            <td style="text-align: left;">$ <?php echo $final11 ?></td>
+        </tfoot>
+  </table> 
 </div>
 </div>
 
