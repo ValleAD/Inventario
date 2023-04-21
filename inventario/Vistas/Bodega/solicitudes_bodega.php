@@ -70,6 +70,9 @@ die();
                 </svg>
                 </button>
             </form>
+            <form method="POST" action="form_bodega_varios.php" target="_blank" class="ml-2">
+   <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
+</form>
  </div>
  <?php }else{ ?>
                  <div  id="x" class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
@@ -101,6 +104,9 @@ die();
                 </svg>
              </button>
          </form>
+         <form method="POST" action="form_bodega_varios.php" target="_blank" class="ml-2">
+   <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
+</form>
  </div>
 <?php } ?>
 

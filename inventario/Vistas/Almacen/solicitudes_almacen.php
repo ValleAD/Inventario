@@ -74,6 +74,9 @@ die();
                 </svg>
                 </button>
             </form>
+            <form method="POST" action="form_almacen1.php" target="_blank" class="ml-2">
+   <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
+</form>
 </div> 
 <?php } if ($tipo_usuario==2) {
  ?>
@@ -107,6 +110,9 @@ die();
                 </svg>
                 </button>
             </form>
+            <form method="POST" action="form_almacen1.php" target="_blank" class="ml-2">
+   <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
+</form>
  </div>
 <?php } ?>
 <table class="table " id="exam" style=" width: 100%">

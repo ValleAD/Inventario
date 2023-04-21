@@ -67,6 +67,8 @@
                <td data-label="Cantidad">
                 
                 <input id="og1" required style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" step="0.01" min="0.00" max="<?php echo $stock ?>" type="number" name="cant[]"  class="form-control">
+
+                <input id="og" required style="background:transparent; border: solid 0.1px; width: 100%; color: gray;" disabled placeholder ="No Disponible" type="text" class="form-control">
             </td>
                <td data-label="Precio"><?php  echo $precio1 ?></td> 
                   

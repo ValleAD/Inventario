@@ -87,7 +87,7 @@ if (isset($_POST['solicitar'])){ ?>
                 </div>
                 <div class="col-md-4" style="position: initial">
                     <label id="inp1">O. de T. N°</b></label>   
-                    <input id=""class="form-control"  type="number" name="odt" required>
+                    <input id="busq"class="form-control"  type="number" name="odt" required>
                     <section id="resultado" style="margin: 0px;"></section>
                 </div>
                 <div class="col-md-4" style="position: initial">

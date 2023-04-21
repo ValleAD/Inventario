@@ -83,8 +83,7 @@
     $query3 = mysqli_query($conn, $insert3);
 
 
-}
-if ($nSolicitud!=$cods || $codigo_producto!=$almacen) {
+}else{
    
     $insert = "INSERT INTO detalle_compra (codigo, catalogo, descripcion, unidad_medida, stock,cantidad_despachada, precio, solicitud_compra) VALUES ('$codigo_producto','$catalogo', '$Descripción', '$u_m', '$cantidad',0, '$cost', '$solicitud')";
     $query2 = mysqli_query($conn, $insert);

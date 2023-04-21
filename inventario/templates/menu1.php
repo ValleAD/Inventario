@@ -49,7 +49,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 
     .menu_bar2{display: none;}
 
-    .nav1{background: #023859;border-bottom-right-radius: 100%;width: 6%;padding: 1%;height: 11%;position: fixed;z-index: 10000;margin-left: -1%;}
+    .nav1{background: #023859;border-bottom-right-radius: 100%;width: 6%;padding: 1%;height: 11%;position: fixed;z-index: 10000;margin-left: -6%;}
 </style>
 <div class="nav1" title="Mostrar el menu">
     <svg class="bi nav2 mx-2 text-white" width="30" height="30" fill="currentColor" >
@@ -395,7 +395,8 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
     if (ubicacionPrincipal >= Desplazamiento_Actual) {
         document.getElementById('navbar').style.top='0';
 
-        $('.nav1').css({"margin-left": "-6%", "transition": "3s"});     
+        $('.nav1').css({"margin-left": "-6%", "transition": "3s"});   
+        
 
     }else{
 //entra el nav1

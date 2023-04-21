@@ -29,7 +29,7 @@ if (!isset($_SESSION['signin'])>0) {
 </head>
 <body>
     <style> 
-    #NoGuardar, #og,#jus1, .m-0{
+        #NoGuardar, #og,#jus1, .m-0{
             display: none;
         } 
         #div{margin: 0%}
@@ -47,12 +47,13 @@ if (!isset($_SESSION['signin'])>0) {
             </style>
             <br><br><br>
             <?php
-      $verificar =mysqli_query($conn, "SELECT codVale FROM tb_vale ");
-if (!mysqli_num_rows($verificar)>0) {
-        echo "<script>window.location.href='../../Vistas/Vale/solicitudes_vale.php'; </script>";
-     }
+            $verificar =mysqli_query($conn, "SELECT codVale FROM tb_vale ");
+            if (!mysqli_num_rows($verificar)>0) {
+                echo "<script>window.location.href='../../Vistas/Vale/solicitudes_vale.php'; </script>";
+            }
             $total = 0;
             $final = 0;
+            $final1 = 0;
             $final2 = 0;
             $final3 = 0;
             $final4 = 0;
@@ -65,7 +66,7 @@ if (!mysqli_num_rows($verificar)>0) {
             $sql = "SELECT * FROM tb_vale WHERE codVale=$codigo ORDER BY codVale DESC LIMIT 1";
             $result = mysqli_query($conn, $sql);
             while ($productos1 = mysqli_fetch_array($result)){
-             if ($productos1['observaciones']=="") {
+               if ($productos1['observaciones']=="") {
                 $jus = 'Sin observacion por el momento';
 
             }else{
@@ -170,28 +171,28 @@ if (!mysqli_num_rows($verificar)>0) {
                         $final8 += $precio;
                         $final9   =    number_format($final8, 2, ".",",");?>
                         <style type="text/css">
-                         #td{
+                           #td{
                             display: none;
                         }
 
 
                     </style> 
                     <tr>
-                       <td  data-label="Código"><?php echo $productos['codigo'] ?></td>
-                       <td  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
-                       <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
-                       <td  data-label="Cantidad"><?php echo $stock ?></td>
-                       <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
-                       <td  data-label="Costo unitario"><?php echo $precio2 ?></td>
-                       <td  data-label="total"><?php echo $total1 ?></td>
-                   </tr>
+                     <td  data-label="Código"><?php echo $productos['codigo'] ?></td>
+                     <td  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
+                     <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
+                     <td  data-label="Cantidad"><?php echo $stock ?></td>
+                     <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
+                     <td  data-label="Costo unitario"><?php echo $precio2 ?></td>
+                     <td  data-label="total"><?php echo $total1 ?></td>
+                 </tr>
 
-               <?php }
-               ?> 
-           </tbody>
+             <?php }
+             ?> 
+         </tbody>
 
-       </table>
-   </div>
+     </table>
+ </div>
 </div>
 </div>
 <div class="col-md-3  mb-3 " >
@@ -201,11 +202,11 @@ if (!mysqli_num_rows($verificar)>0) {
                 <div class="col-md-12">
                     <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
                         <form method="POST" action="../../Plugin/Imprimir/Vale/vale.php" target="_blank">
-                         <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
+                           <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
 
-                         <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
+                           <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
 
-                         <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
+                           <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
                             <svg class="bi" width="20" height="20" fill="currentColor">
                                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                             </svg>
@@ -225,13 +226,13 @@ if (!mysqli_num_rows($verificar)>0) {
                         </button>
                     </form>
                     <form method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php" >
-                     <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
+                       <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
 
-                     <input type="hidden" name="cod" value="<?php echo $codigo ?>">
-                     <input type="hidden" name="tot" value="<?php echo $total1 ?>">
-                     <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
-                     <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
-                     <button type="submit" class="btn btn-outline-primary" name="DT" target="_blank">
+                       <input type="hidden" name="cod" value="<?php echo $codigo ?>">
+                       <input type="hidden" name="tot" value="<?php echo $total1 ?>">
+                       <input type="hidden" name="tot_f" value="<?php echo $final1 ?>" >
+                       <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
+                       <button type="submit" class="btn btn-outline-primary" name="DT" target="_blank">
                         <svg class="bi" width="20" height="20" fill="currentColor">
                             <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                         </svg>
@@ -241,27 +242,27 @@ if (!mysqli_num_rows($verificar)>0) {
                     <input type="hidden" name="cod" value="<?php echo $productos1["codVale"] ?>">
                     <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#new">➕</button>
                 </form>
+            </div>
+            <hr>
+            <p align="right"><b style="float: left;">Cantidad Solicitada: </b><?php echo $final3 ?></p>
+            <p align="right"><b style="float: left;">Cantidad Despachada: </b><?php echo $final5 ?></p>
+            <p align="right"><b style="float: left;">Costo Unitario: </b><?php echo $final9 ?></p>
+            <p align="right"><b style="float: left;">SubTotal</b><?php echo $final1?></p>
+
         </div>
-        <hr>
-        <p align="right"><b style="float: left;">Cantidad Solicitada: </b><?php echo $final3 ?></p>
-        <p align="right"><b style="float: left;">Cantidad Despachada: </b><?php echo $final5 ?></p>
-        <p align="right"><b style="float: left;">Costo Unitario: </b><?php echo $final9 ?></p>
-        <p align="right"><b style="float: left;">SubTotal</b><?php echo $final1?></p>
 
     </div>
 
 </div>
 
 </div>
-
-</div>
 <div class="card mt-3">
   <div class="card-body">
-     <label>Observaciones (En qué se ocupará el bien entregado)</label>
-     <textarea rows="7"  class="form-control" name="jus"  required><?php echo $jus ?> </textarea><br>
+   <label>Observaciones (En qué se ocupará el bien entregado)</label>
+   <textarea rows="7"  class="form-control" name="jus"  required><?php echo $jus ?> </textarea><br>
 
-     <button class="btn btn-success as">Detalles Vale</button>
- </div>
+   <button class="btn btn-success as">Detalles Vale</button>
+</div>
 </div>
 </div>
 
@@ -300,78 +301,71 @@ if (!mysqli_num_rows($verificar)>0) {
 <?php } if(isset($_POST['solicitar'])){$cod=$_POST['bodega']?>
 <style type="text/css">.section{display: none;}</style>
 <section id="section">
-       <form style="background: transparent;" method="POST" action="../../Controller/Vale/añadir_vale.php">
+ <form style="background: transparent;" method="POST" action="../../Controller/Vale/añadir_vale.php">
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+              <div class="col-md-4" style="position: initial">
+                <label id="inp1"><b>Departamento que solicita</b></label>   
+
+                <?php  
+                $sql = "SELECT * FROM tb_vale WHERE codVale='$cod'";
+                $result = mysqli_query($conn, $sql);
+                while ($productos = mysqli_fetch_array($result)){ ?>  
+                    <input type="" name="depto" class="form-control " readonly value="<?php echo $productos['departamento'] ?>">
+                <?php }?>
+
+
+            </div>
+            <div class="col-md-4" style="position: initial">
+                <label id="inp1"><b>Vale N°</b></label>   
+                <input id="busq"class="form-control" readonly  type="number" name="numero_vale" value="<?php echo $cod ?>" required >
+                <section id="resultado" style="margin: 0px;background: transparent;width: 100%;"></section>
+            </div>
+            <div class="col-md-4" style="position: initial">
+                <label id="inp1"><b>Nombre de la persona</b></label>
+                <?php     $cliente =$_SESSION['signin'];
+                $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
+                while ($consulta =mysqli_fetch_array($data)) {
+                 ?>
+                 <label><b>Encargado</b></label>
+                 <input style="cursor: not-allowed; color: black;"  class="form-control" type="text" name="usuario" id="como3" required readonly value="<?php  echo $consulta['firstname']?> <?php  echo $consulta['lastname']?>">
+                 <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="<?php  echo $consulta['id']?>"/>
+                 <br>
+             <?php }?> 
+
+         </div>
+     </div>
+ </div>
+</div>
+
+<br>
+<div class="row">
+    <div class="col-md-9">
         <div class="card">
             <div class="card-body">
-                <div class="row">
-                  <div class="col-md-4" style="position: initial">
-                    <label id="inp1"><b>Departamento que solicita</b></label>   
-                    <div class="div d" > 
-
-                     <?php  
-                     $sql = "SELECT * FROM selects_departamento";
-                     $result = mysqli_query($conn, $sql);
-                     while ($productos = mysqli_fetch_array($result)){ ?>  
-                       <input class="p2" required  id="<?php echo $productos['id'] ?>" type="radio" name="depto" value="<?php echo $productos['departamento'] ?>"> <label  style="width: 100%;" id="label1" for="<?php echo $productos['id'] ?>" > <?php echo $productos['departamento'] ?></label><br>
-                   <?php }?>
-               </div>   
-               <br>  
-               <p id="tr" align="right" class="p">Mostrar todos
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                    <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/></svg></p>
-                    <p id="tr" align="right" class="p1">Ocultar
-                        <svg class="bi" width="20" height="20" fill="currentColor">
-                            <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/></svg></p>
-                        </div>
-                        <div class="col-md-4" style="position: initial">
-                            <label id="inp1"><b>Vale N°</b></label>   
-                            <input id="busq"class="form-control" readonly  type="number" name="numero_vale" value="<?php echo $cod ?>" required >
-                            <section id="resultado" style="margin: 0px;background: transparent;width: 100%;"></section>
-                        </div>
-                        <div class="col-md-4" style="position: initial">
-                            <label id="inp1"><b>Nombre de la persona</b></label>
-                            <?php     $cliente =$_SESSION['signin'];
-                            $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
-                            while ($consulta =mysqli_fetch_array($data)) {
-                               ?>
-                               <label><b>Encargado</b></label>
-                               <input style="cursor: not-allowed; color: black;"  class="form-control" type="text" name="usuario" id="como3" required readonly value="<?php  echo $consulta['firstname']?> <?php  echo $consulta['lastname']?>">
-                               <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="<?php  echo $consulta['id']?>"/>
-                               <br>
-                           <?php }?> 
-
-                       </div>
-                   </div>
-               </div>
-           </div>
-
-           <br>
-           <div class="row">
-            <div class="col-md-9">
-                <div class="card">
-                    <div class="card-body">
-                      <?php include('../../Buscador_ajax/Tablas/Productos/tablaProductos.php') ?>
-                  </div>
-              </div>
+              <?php include('../../Buscador_ajax/Tablas/Productos/tablaProductos.php') ?>
           </div>
-          <div class="col-md-3">
-           <div class="card">
-            <div class="card-body">   
+      </div>
+  </div>
+  <div class="col-md-3">
+     <div class="card">
+        <div class="card-body">   
 
 
-               <div class="form-floating mb-3 my-2" >
-                <label>Observaciones (En qué se ocupará el bien entregado)</label>
-                <textarea rows="7" class="form-control" name="jus"  placeholder="" required id="floatingTextarea"></textarea>
-            </div>
-         <button id="buscar1" type="submit" class="btn btn-lg btn-success" style="width: 49%;float: left; margin-right: 1%;font-size: 1.4em; text-align: center;" name="NuevaSoli">Guardar
+         <div class="form-floating mb-3 my-2" >
+            <label>Observaciones (En qué se ocupará el bien entregado)</label>
+            <textarea rows="7" class="form-control" name="jus"  placeholder="" required id="floatingTextarea"></textarea>
+        </div>
+        <button id="buscar1" type="submit" class="btn btn-lg btn-success" style="width: 49%;float: left; margin-right: 1%;font-size: 1.4em; text-align: center;" name="NuevaSoli">Guardar
 
-            </button>
-        </form>
-        <form method="POST" action="" style="margin:0;">
+        </button>
+    </form>
+    <form method="POST" action="" style="margin:0;">
 
-            <button class="btn btn-danger btn-lg" id="" style="width: 50%;" name="detalle">Cancelar</button>
-            <input type="hidden" name="id" value="<?php echo $cod ?>">
-        </form>
+        <button class="btn btn-danger btn-lg" id="" style="width: 50%;" name="detalle">Cancelar</button>
+        <input type="hidden" name="id" value="<?php echo $cod ?>">
+    </form>
 </div>
 </div>
 </div>

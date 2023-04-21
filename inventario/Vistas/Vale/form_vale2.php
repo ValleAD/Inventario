@@ -110,7 +110,7 @@ if (isset($_POST['solicitar'])){ ?>
                             </div>
                             <div class="col-md-4" style="position: initial">
                                 <label id="inp1"><b>Vale N°</b></label>   
-                                <input id=""class="form-control"  type="number" name="numero_vale" required >
+                                <input id="busq"class="form-control"  type="number" name="numero_vale" required >
                             </div>
                             <div class="col-md-4" style="position: initial">
                                 <label id="inp1"><b>Nombre de la persona</b></label>

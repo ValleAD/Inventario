@@ -87,8 +87,7 @@
         $insert3 = "UPDATE  historial SET Entradas='$total' WHERE Detalles='$solicitud_no' and No_Comprovante='$almacen'";
         $query3 = mysqli_query($conn, $insert3);
         
-    }
-    if ($solicitud_no!=$cods || $codigo_producto!=$almacen) {
+    }else{
         $insert = "INSERT INTO detalle_almacen(codigo, nombre, unidad_medida, cantidad_solicitada, tb_almacen, precio) VALUES ('$codigo_producto', '$nombre_articulo','$u_m', '$soli', '$num_sol', '$cost')";
         $query = mysqli_query($conn, $insert);
 
