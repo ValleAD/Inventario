@@ -293,23 +293,30 @@ $q=$conn->real_escape_string($_POST['Busqueda']);
            <td  data-label="Fecha Registro"><?php  echo $productos['fecha_registro']; ?></td>
            <?php if ($tipo_usuario==1) {
             echo'
-            <td>
-                <form style="margin: 0%;position: 0;float:right; background: transparent;" method="POST" action="vistaProductos.php">             
-                <input type="hidden" name="id" value="'.$productos['codProductos'] .'">               
-                <button  id="th" name="editar" class="btn btn-success btn-sm"  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
-            </form> </td>
-            <td>
+            <td data-label="Editar">
+            <a title="Editar Producto" class="btn btn-success btn-sm"  href="vistaProductos.php?id='.$productos['codProductos'] .'">
+                <svg class="bi" width="18" height="18" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#pencil-square"/>
+                        </svg></a>   
+            </td>
+            <td data-label="Eliminar">
             ';
                         if ($productos['SUM(stock)']==0) {
                
                    
-              echo'  <a  data-bs-toggle="tooltip" style="float:right;" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm btn-del" id="'.$productos['codProductos'] .'" href="../../Controller/Productos/Delete_producto.php?cod='.$productos['cod'].'&id='. $productos['SUM(stock)'] .'">Eliminar</a>';
+              $tabla.='  <a  data-bs-toggle="tooltip" style="" data-bs-placement="top" title="Eliminar Producto" class="btn btn-danger btn-sm btn-del" onclick="return Eliminar()" id="'.$productos['codProductos'] .'" href="../../Controller/Productos/Delete_producto.php?cod='.$productos['cod'].'&id='. $productos['SUM(stock)'] .'&codProductos='. $productos['codProductos'] .'">
+              <svg class="bi" width="18" height="18" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#trash-fill"/>
+                        </svg></a>';
             
                 
             };
                         if ($productos['SUM(stock)']!=0) {
-               echo'
-            <button   id="th" style="cursor: not-allowed;float:right;background: rgba(255, 0, 0, 0.5); border: none;" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar" class="btn btn-danger btn-sm text-white">Eliminar</button>
+               echo '
+            <button   id="th" style="cursor: not-allowed;background: rgba(255, 0, 0, 0.5); border: none;" data-bs-toggle="tooltip" data-bs-placement="top" title="En este momento no se Puede Eliminar este Producto" class="btn btn-danger btn-sm text-white">
+            <svg class="bi" width="20" height="20" fill="currentColor">
+                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#trash-fill"/>
+                        </svg></button>
             ';
             }
         }?>
