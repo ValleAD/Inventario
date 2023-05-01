@@ -1,5 +1,4 @@
     <?php
-session_start();
  if (!isset($_SESSION['signin'])>0) {
     # code...
     echo ' 
@@ -113,7 +112,7 @@ if ($buscarAlumnos->num_rows > 0)
 		<tr>
             <td data-label="Código">'.$productos['codProductos'].'</td>
             <td data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
-            <td data-label="Descripción">'.$des.'</td>
+            <td data-label="Descripción" data-toggle="tooltip" data-placement="right" title="'.$des.'" >'.substr($des, 0, 15)."...".'</td>
             <td data-label="Unidad de Medida">'.$unidad.'</td>
             <td data-label="Cantidad">'.$stock.'</td>
             <td data-label="Precio">'.$precio1.'</td>
@@ -123,7 +122,7 @@ if ($buscarAlumnos->num_rows > 0)
         if ($tipo_usuario==1) {
             $tabla.='
 			<td data-label="Editar">
-            <a title="Editar Producto" class="btn btn-success btn-sm"  href="vistaProductos.php?id='.$productos['codProductos'] .'">
+            <a data-toggle="tooltip" data-placement="top" title="Editar Producto" class="btn btn-success btn-sm"  href="vistaProductos.php?id='.$productos['codProductos'] .'">
                 <svg class="bi" width="18" height="18" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#pencil-square"/>
                         </svg></a>   
@@ -133,7 +132,7 @@ if ($buscarAlumnos->num_rows > 0)
                         if ($productos['SUM(stock)']==0) {
                
                    
-              $tabla.='  <a  data-bs-toggle="tooltip" style="" data-bs-placement="top" title="Eliminar Producto" class="btn btn-danger btn-sm btn-del" onclick="return Eliminar()" id="'.$productos['codProductos'] .'" href="../../Controller/Productos/Delete_producto.php?cod='.$productos['cod'].'&id='. $productos['SUM(stock)'] .'&codProductos='. $productos['codProductos'] .'">
+              $tabla.='  <a data-toggle="tooltip" data-placement="top" title="Eliminar Producto" class="btn btn-danger btn-sm btn-del" onclick="return Eliminar()" id="'.$productos['codProductos'] .'" href="../../Controller/Productos/Delete_producto.php?cod='.$productos['cod'].'&id='. $productos['SUM(stock)'] .'&codProductos='. $productos['codProductos'] .'">
               <svg class="bi" width="18" height="18" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#trash-fill"/>
                         </svg></a>';
@@ -142,7 +141,7 @@ if ($buscarAlumnos->num_rows > 0)
             };
                         if ($productos['SUM(stock)']!=0) {
                $tabla.='
-            <button   id="th" style="cursor: not-allowed;background: rgba(255, 0, 0, 0.5); border: none;" data-bs-toggle="tooltip" data-bs-placement="top" title="En este momento no se Puede Eliminar este Producto" class="btn btn-danger btn-sm text-white">
+            <button   id="th" style="cursor: not-allowed;background: rgba(255, 0, 0, 0.5); border: none;" data-toggle="tooltip" data-placement="top" title="En este momento no se Puede Eliminar este Producto" class="btn btn-danger btn-sm text-white">
             <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#trash-fill"/>
                         </svg></button>

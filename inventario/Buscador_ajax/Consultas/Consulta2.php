@@ -1,15 +1,8 @@
-<style type="text/css">
-     #submit{
-          margin: 0;
-     }
-#id{
-    display: none;
-}
-</style>
+
 <?php include ('../../Model/conexion.php');
 
 $tabla="";
-$query="SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock), precio, fecha_registro FROM tb_productos WHERE stock!=0 GROUP BY codProductos HAVING COUNT(*) ";
+$query="SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock),Mes,Año, precio, fecha_registro FROM tb_productos  GROUP BY codProductos,precio HAVING COUNT(*) ";
 
 $buscarAlumnos=$conn->query($query);
 if ($buscarAlumnos->num_rows > 0)
@@ -40,7 +33,7 @@ if ($buscarAlumnos->num_rows > 0)
                </div>
                <div class="col-8">
                     
-            <button id="submit" style="width: 20%; float: right;font-size: 16px"   type="submit" name="solicitar" class=" form-control btn btn-success btn-sm text-center"  data-bs-toggle="tooltip" data-bs-placement="top" title="Solicitar">Solicitar</button>
+            <button id="submit" style="width: 20%; float: right;font-size: 16px"   type="submit" name="solicitar" class=" form-control btn btn-success btn-sm text-center"  data-toggle="tooltip" data-placement="top" title="Solicitar">Solicitar</button>
                </div>
           </div>
      </div>
@@ -82,22 +75,37 @@ if ($buscarAlumnos->num_rows > 0)
                 }else{
                 $categoria=$productos['categoria'];
                 }
+                $mes=$productos['Mes'];
+
+                            if ($mes==1)  { $mes="Enero";}
+                            if ($mes==2)  { $mes="Febrero";}
+                            if ($mes==3)  { $mes="Marzo";}
+                            if ($mes==4)  { $mes="Abril";}
+                            if ($mes==5)  { $mes="Mayo";}
+                            if ($mes==6)  { $mes="Junio";}
+                            if ($mes==7)  { $mes="Julio";}
+                            if ($mes==8)  { $mes="Agosto";}
+                            if ($mes==9)  { $mes="Septiembre";}
+                            if ($mes==10) { $mes="Octubre";}
+                            if ($mes==11) { $mes="Noviembre";}
+                            if ($mes==12) { $mes="Diciembre";}
+                
             
         $precio=$productos['precio'];
        $precio1=number_format($precio, 2,".",",");
        $cantidad=$productos['SUM(stock)'];
         $stock=number_format($cantidad, 2,".",",");
         $tabla.='
-        <tr id="tr">
-        <td style="width:7%;min-width: 100%;"></td>
-            <td id="id" style="width:7%;min-width: 100%;" id="th" data-label="ID">'.$productos['cod'].'</td>
-            <td style="width:7%;min-width: 100%;" id="th" data-label="Código">'.$productos['codProductos'].'</td>
-            <td style="width:7%;min-width: 100%;" id="th" data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
-            <td style="width:20%;min-width: 100%;" id="th" data-label="Descripción">'.$productos['descripcion'].'</td>
-            <td style="width:10%;min-width: 100%;" id="th" data-label="Unidad de Medida">'.$productos['unidad_medida'].'</td>
-            <td style="width:10%;min-width: 100%;" id="th" data-label="Cantidad">'.$stock.'</td>
-            <td style="width:10%;min-width: 100%;" id="th" data-label="Precio">'.$precio1.'</td>
-            <td style="width:10%;min-width: 100%;" id="th" data-label="Fecha">'.$productos['fecha_registro'].'</td>
+        <tr id="tr" >
+        <td></td>
+            <td  id="id" id="th" data-label="ID">'.$productos['cod'].'</td>
+            <td data-label="Código">'.$productos['codProductos'].'</td>
+            <td data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
+            <td data-label="Descripción" data-toggle="tooltip" data-placement="right" title="'.$des.'" >'.substr($des, 0, 15)."...".'</td>
+            <td data-label="Unidad de Medida">'.$u_m.'</td>
+            <td data-label="Cantidad">'.$stock.'</td>
+            <td data-label="Precio">'.$precio1.'</td>
+            <td data-label="Fecha">'.date("d",strtotime($productos['fecha_registro'])).' '.$mes.' '.$productos['Año'].'</td>
            '?>
             
 
@@ -118,7 +126,8 @@ if ($buscarAlumnos->num_rows > 0)
 
 
 echo $tabla;
-?>      
+?> 
+
 <script>
    var table = $('#tblElecProducts').DataTable( {
     columnDefs: [ {

@@ -53,28 +53,28 @@ if (!isset($_SESSION['signin'])>0) {
 
      <div id="x" class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
          <form  method="POST" class="mx-1" action="../../Plugin/Imprimir/Vale/soli_vale.php" target="_blank">
-             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">    
+             <button  data-toggle="tooltip" data-placement="top" title="Imprimir" style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">    
                 <svg class="bi" width="20" height="20" fill="currentColor">
                     <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
             </button>
         </form>
         <form  method="POST" action="../../Plugin/PDF/Vale/pdf_soli_vale.php" target="_blank" class="mx-0">
-         <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id" target="_blank">
+         <button  data-toggle="tooltip" data-placement="top" title="Exportar en PDF" style="position: initial;" type="submit" class="btn btn-outline-primary" name="id" target="_blank">
             <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
             </svg>
         </button>
     </form>
     <form  style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Vale/Excel.php" target="_blank">
-        <button type="submit" class="btn btn-outline-primary" name="vale" target="_blank">
+        <button  data-toggle="tooltip" data-placement="top" title="Exportar en Excel" type="submit" class="btn btn-outline-primary" name="vale" target="_blank">
             <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
             </svg>
         </button>
     </form>
     <form method="POST" action="form_vale1.php" class="ml-2">
-     <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
+     <button  data-toggle="tooltip" data-placement="top" title="Nueva solicitud" style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
  </form>
 </div>    
 <?php }if ($tipo_usuario==2) {?>

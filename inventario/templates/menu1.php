@@ -326,7 +326,10 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 
 <?php } ?>
 <script src="../../Plugin/bootstrap/js/jquery-latest.js"></script>
+<script src="../../Plugin/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../../Plugin/bootstrap/js/popper.min.js"></script>
 <script src="../../Plugin/bootstrap/js/bootstrap.min.js"></script>
+
 <script src="../../Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
 
 <script src="../../Plugin/bootstrap/js/datatables.min.js"></script>
@@ -334,8 +337,11 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 <script src="../../Plugin/bootstrap/js/dataTables.rowGroup.min.js"></script>
 <script src="../../Plugin/bootstrap/js/dataTables.responsive.min.js"></script>
 <script src="../../Plugin/bootstrap/js/responsive.bootstrap4.min.js"></script>
-<script src="../../Plugin/bootstrap/js/popper.min.js"></script>
 <script>
+        $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+
+})
     // Mostramos y ocultamos submenus
     $('.submenu').click(function(){
         $(this).children('.children').slideToggle();
@@ -454,6 +460,9 @@ function main () {
 }
 </script>
 <script type="text/javascript">
+        $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
     function confirmaion1(e) {
         Swal.fire({
           icon: 'warning',

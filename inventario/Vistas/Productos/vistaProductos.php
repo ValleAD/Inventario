@@ -144,7 +144,7 @@ if (isset($_GET['id'])){
 <hr style="background: white;">
 <div class="row">
     <div class="col-md-12" style="position: initial; margin-bottom: 2%;">
-        <button type="submit" class ="btn btn-primary" style="background:rgb(12, 139, 8); margin-right: 1%; border: none">Guardar Cambios</button>
+        <button  data-toggle="tooltip" data-placement="top" type="submit" class ="btn btn-primary" style="background:rgb(12, 139, 8); margin-right: 1%; border: none">Guardar Cambios</button>
         <a href="vistaProductos.php" class ="btn btn-primary" style="background:rgb(184, 8, 8); border: none">Cancelar</a>
     </div>
 </div>
@@ -212,7 +212,7 @@ if (isset($_GET['id'])){
             </select>
             <?php if (isset($_POST['dia'])){?>
                 <style type="text/css">#dia, #tabla_resultado{display: none;}</style>
-                <button type="button" class="btn bq" readonly style="width: 100%;background-color:green ;position: initial; border-radius:5px;text-align:center; color: white;" class="form-control "><?php echo $_POST['dia'] ?>
+                <button  data-toggle="tooltip" data-placement="top" type="button" class="btn bq" readonly style="width: 100%;background-color:green ;position: initial; border-radius:5px;text-align:center; color: white;" class="form-control "><?php echo $_POST['dia'] ?>
                 <svg style="float: right;margin-top: 1%;" class="bi wq" width="20" height="20" fill="currentColor">
                     <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#arrow-counterclockwise"/>
                 </svg>
@@ -251,7 +251,7 @@ if (isset($_GET['id'])){
 
     <style type="text/css">#mes, #tabla_resultado{display: none;}</style>
     
-    <button type="button" class="btn bq" readonly style="width: 100%;background-color:green ;position: initial; border-radius:5px;text-align:center; color: white;" class="form-control "><?php echo $mes ?>
+    <button  data-toggle="tooltip" data-placement="top" type="button" class="btn bq" readonly style="width: 100%;background-color:green ;position: initial; border-radius:5px;text-align:center; color: white;" class="form-control "><?php echo $mes ?>
     <svg style="float: right;margin-top: 1%;" class="bi bq" width="20" height="20" fill="currentColor">
         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#arrow-counterclockwise"/>
     </svg>
@@ -266,7 +266,7 @@ if (isset($_GET['id'])){
 </select>
 <?php if (isset($_POST['año'])){?>
     <style type="text/css">#año, #tabla_resultado{display: none;}</style>
-    <button type="button" class="btn bq" readonly style="width: 100%;background-color:green ;position: initial; border-radius:5px;text-align:center; color: white;" class="form-control "><?php echo $_POST['año'] ?>
+    <button  data-toggle="tooltip" data-placement="top" type="button" class="btn bq" readonly style="width: 100%;background-color:green ;position: initial; border-radius:5px;text-align:center; color: white;" class="form-control "><?php echo $_POST['año'] ?>
     <svg style="float: right;margin-top: 1%;" class="bi wq" width="20" height="20" fill="currentColor">
         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#arrow-counterclockwise"/>
     </svg>   
@@ -299,7 +299,7 @@ if (isset($_GET['id'])){
             }
         ?></select>
         
-        <button id="hidden" class="btn btn-secondary my-2 w-100" name="categorias" type="submit">Exportar por Categorias</button>
+        <button  data-toggle="tooltip" data-placement="top" id="hidden" class="btn btn-secondary my-2 w-100" name="categorias" type="submit">Exportar por Categorias</button>
 
     </form>
 
@@ -316,7 +316,7 @@ if (isset($_GET['id'])){
                 <form method="POST" action="" class="well hidden"> 
                     <div style="position: initial;" class="input-group">
                         <input required type="text" style="position: initial;" name="Busqueda"  class="form-control"  placeholder="Buscar Código ó Descripción">
-                        <button name="Consultar2" type="submit" onclick="return validar1()" class="input-group-text input" for="inputGroupSelect01">
+                        <button  data-toggle="tooltip" data-placement="top" name="Consultar2" type="submit" onclick="return validar1()" class="input-group-text input" for="inputGroupSelect01">
                             <svg class="bi" width="20" height="20" fill="currentColor">
                                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#search"/>
                             </svg>
@@ -328,7 +328,7 @@ if (isset($_GET['id'])){
         <div class="col-md-12">
             
             <?php if ($cliente=="egchoto") { ?>
-                <button title="Respaldo de la base de datos completa" id="b" onclick="return Exportar_bd()" class="btn btn-outline-primary"  style="position: initial; float: right; margin-top: -3%; margin-right: 15px;">Exportar bd</button>
+                <button  data-toggle="tooltip" data-placement="top" title="Respaldo de la base de datos completa" id="b" onclick="return Exportar_bd()" class="btn btn-outline-primary"  style="position: initial; float: right; margin-top: -3%; margin-right: 15px;">Exportar bd</button>
             <?php } ?>
             <a  href="../Unidad/unidad_medidad.php" class="btn btn-outline-secondary" id="b" style="position: initial; float: right;margin-bottom: 1%;margin-top: -3%; margin-right: 9%;">Unidad de medidas</a>
         </div>
@@ -371,13 +371,14 @@ if (isset($_GET['id'])){
        
         <?php include('../../Buscador_ajax/Fechas/fecha.php') ?>
         <?php include('../../Buscador_ajax/Categorias/categoria.php') ?>
+       
 
 
         <div id="tabla_resultado">
             <!-- AQUI SE DESPLEGARA NUESTRA TABLA DE CONSULTA -->
+ <?php include('../../Buscador_ajax/Consultas/consulta.php') ?>
 
-
-        </div>
+        </div> 
 
 
     </div>
@@ -387,7 +388,7 @@ if (isset($_GET['id'])){
            <div style="position: initial;" class="btn-group  mb-3 my-3 mx-2 " role="group" aria-label="Basic outlined example">
                <form class="botones" method="POST" action="../../Plugin/Imprimir/Producto/tproductos.php" target="_blank">
                    
-                   <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="tproductos">
+                   <button  data-toggle="tooltip" data-placement="top" title="Imprimir" style="position: initial;" type="submit" class="btn btn-outline-primary" name="tproductos">
                     <svg class="bi" width="20" height="20" fill="currentColor">
                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                     </svg>
@@ -395,7 +396,7 @@ if (isset($_GET['id'])){
             </form>
             <form class="botones" method="POST" action="../../Plugin/PDF/Productos/tpdf_productos.php" target="_blank" class="mx-1">
                 
-               <button  style="position: initial;"type="submit" class="btn btn-outline-primary mx-1" name="tproductospdf" target="_blank">
+               <button  data-toggle="tooltip" data-placement="top" title="Exportar en PDF"  style="position: initial;"type="submit" class="btn btn-outline-primary mx-1" name="tproductospdf" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                     <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -403,7 +404,7 @@ if (isset($_GET['id'])){
         </form>
         <form class="botones" method="POST" action="../../Plugin/Excel/Productos/Excel.php" >
             
-           <button style="position: initial;"type="submit" class="btn btn-outline-primary" name="tproductospdf" >
+           <button  data-toggle="tooltip" data-placement="top" title="Exportar en Excel" style="position: initial;"type="submit" class="btn btn-outline-primary" name="tproductospdf" >
             <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
             </svg>
@@ -520,7 +521,7 @@ while ($productos = mysqli_fetch_array($result)){
                             <form  method="POST" action="../../Plugin/Imprimir/Producto/productos.php" target="_blank">
                                 <input type="hidden" name="consulta" value="<?php echo $Busqueda ?>">
 
-                                <button type="submit" class="btn btn-outline-primary" name="Fecha">
+                                <button  data-toggle="tooltip" data-placement="top" title="Imprimir" type="submit" class="btn btn-outline-primary" name="Fecha">
                                     <svg class="bi" width="20" height="20" fill="currentColor">
                                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                                     </svg>
@@ -531,7 +532,7 @@ while ($productos = mysqli_fetch_array($result)){
                                 
                                 <input type="hidden" name="consulta" value="<?php echo $Busqueda ?>">
 
-                                <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
+                                <button  data-toggle="tooltip" data-placement="top" title="Exportar en PDF" type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
                                     <svg class="bi" width="20" height="20" fill="currentColor">
                                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                                     </svg>
@@ -541,7 +542,7 @@ while ($productos = mysqli_fetch_array($result)){
 
                                 <input type="hidden" name="consulta" value="<?php echo $Busqueda ?>">
 
-                                <button type="submit" class="btn btn-outline-primary" name="pdf">
+                                <button  data-toggle="tooltip" data-placement="top" title="Exportar en Excel" type="submit" class="btn btn-outline-primary" name="pdf">
                                     <svg class="bi" width="20" height="20" fill="currentColor">
                                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                                     </svg>
@@ -675,7 +676,7 @@ while ($productos = mysqli_fetch_array($result)){
                                 <a href="" class="btn btn-success" name="categorias" type="submit">Ver Productos</a>
                                 <div  style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
                                    <input type="hidden" name="categoria" value="<?php echo $categoria ?>">
-                                   <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha">
+                                   <button  data-toggle="tooltip" data-placement="top" title="Imprimir" style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha">
                                     <svg class="bi" width="20" height="20" fill="currentColor">
                                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                                     </svg>
@@ -683,7 +684,7 @@ while ($productos = mysqli_fetch_array($result)){
                             </form>
                             <form method="POST" action="../../Plugin/PDF/Categoria/pdf_categoria.php" target="_blank" class="mx-1">
                                 <input type="hidden" name="categoria" value="<?php echo $categoria ?>">
-                                <button style="position: initial;"  type="submit" class="btn btn-outline-primary mx-1" name="pdf" target="_blank">
+                                <button  data-toggle="tooltip" data-placement="top" title="Exportar en PDF" style="position: initial;"  type="submit" class="btn btn-outline-primary mx-1" name="pdf" target="_blank">
                                     <svg class="bi" width="20" height="20" fill="currentColor">
                                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                                     </svg>
@@ -691,7 +692,7 @@ while ($productos = mysqli_fetch_array($result)){
                             </form>
                             <form method="POST" action="../../Plugin/Excel/Productos/Categorias.php" >
                                 <input type="hidden" name="categoria" value="<?php echo $categoria ?>">
-                                <button style="position: initial;"  type="submit" class="btn btn-outline-primary " name="pdf">
+                                <button  data-toggle="tooltip" data-placement="top" title="Exportar en Excel" style="position: initial;"  type="submit" class="btn btn-outline-primary " name="pdf">
                                     <svg class="bi" width="20" height="20" fill="currentColor">
                                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                                     </svg>
@@ -825,7 +826,7 @@ while ($productos = mysqli_fetch_array($result)){
                                 <input type="hidden" name="dia" value="<?php echo $dia ?>">
                                 <div  style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
                                     
-                                   <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Dia">
+                                   <button  data-toggle="tooltip" data-placement="top" title="Imprimir" style="position: initial;" type="submit" class="btn btn-outline-primary" name="Dia">
                                     <svg class="bi" width="20" height="20" fill="currentColor">
                                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                                     </svg>
@@ -833,7 +834,7 @@ while ($productos = mysqli_fetch_array($result)){
                             </form>
                             <form method="POST" action="../../Plugin/PDF/Fecha/pdf_fecha.php" target="_blank" class="mx-1">
                                 <input type="hidden" name="dia" value="<?php echo $dia ?>">
-                                <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Dia" target="_blank">
+                                <button  data-toggle="tooltip" data-placement="top" title="Exportar en PDF"  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Dia" target="_blank">
                                     <svg class="bi" width="20" height="20" fill="currentColor">
                                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                                     </svg>
@@ -842,7 +843,7 @@ while ($productos = mysqli_fetch_array($result)){
 
                             <form method="POST" action="../../Plugin/Excel/Productos/Fechas.php" >
                                 <input type="hidden" name="dia" value="<?php echo $dia ?>">
-                                <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Dia" >
+                                <button  data-toggle="tooltip" data-placement="top"  title="Exportar en Excel" style="position: initial;" type="submit" class="btn btn-outline-primary" name="Dia" >
                                     <svg class="bi" width="20" height="20" fill="currentColor">
                                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                                     </svg>
@@ -976,7 +977,7 @@ while ($productos = mysqli_fetch_array($result)){
                                 <input type="hidden" name="mes" value="<?php echo $dia ?>">
                                 <div  style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
                                     
-                                   <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Mes">
+                                   <button  data-toggle="tooltip" data-placement="top" title="Imprimir"  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Mes">
                                     <svg class="bi" width="20" height="20" fill="currentColor">
                                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                                     </svg>
@@ -984,7 +985,7 @@ while ($productos = mysqli_fetch_array($result)){
                             </form>
                             <form method="POST" action="../../Plugin/PDF/Fecha/pdf_fecha.php" target="_blank" class="mx-1">
                                 <input type="hidden" name="mes" value="<?php echo $dia ?>">
-                                <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Mes" target="_blank">
+                                <button  data-toggle="tooltip" data-placement="top" title="Exportar en PDF"  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Mes" target="_blank">
                                     <svg class="bi" width="20" height="20" fill="currentColor">
                                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                                     </svg>
@@ -993,7 +994,7 @@ while ($productos = mysqli_fetch_array($result)){
 
                             <form method="POST" action="../../Plugin/Excel/Productos/Fechas.php">
                                 <input type="hidden" name="mes" value="<?php echo $dia ?>">
-                                <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Mes">
+                                <button  data-toggle="tooltip" data-placement="top" title="Exportar en Excel"  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Mes">
                                     <svg class="bi" width="20" height="20" fill="currentColor">
                                         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                                     </svg>
@@ -1100,7 +1101,7 @@ while ($productos = mysqli_fetch_array($result)){
                             <input type="hidden" name="año" value="<?php echo $dia ?>">
                             <div  style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
                                 
-                               <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Año">
+                               <button  data-toggle="tooltip" data-placement="top" title="Imprimir" style="position: initial;" type="submit" class="btn btn-outline-primary" name="Año">
                                 <svg class="bi" width="20" height="20" fill="currentColor">
                                     <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                                 </svg>
@@ -1108,7 +1109,7 @@ while ($productos = mysqli_fetch_array($result)){
                         </form>
                         <form method="POST" action="../../Plugin/PDF/Fecha/pdf_fecha.php" target="_blank" class="mx-1">
                             <input type="hidden" name="año" value="<?php echo $dia ?>">
-                            <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Año" >
+                            <button  data-toggle="tooltip" data-placement="top"  title="Exportar en PDF" style="position: initial;" type="submit" class="btn btn-outline-primary" name="Año" >
                                 <svg class="bi" width="20" height="20" fill="currentColor">
                                     <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                                 </svg>
@@ -1117,7 +1118,7 @@ while ($productos = mysqli_fetch_array($result)){
 
                         <form method="POST" action="../../Plugin/Excel/Productos/Fechas.php" >
                             <input type="hidden" name="año" value="<?php echo $dia ?>">
-                            <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Año">
+                            <button  data-toggle="tooltip" data-placement="top" title="Exportar en Excel"  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Año">
                                 <svg class="bi" width="20" height="20" fill="currentColor">
                                     <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                                 </svg>
@@ -1214,7 +1215,7 @@ while ($productos = mysqli_fetch_array($result)){
                        <form method="POST" action="../../Plugin/Imprimir/Fecha/Fechas.php" target="_blank">
                            <input type="hidden" name="f1" value="<?php echo $f1 ?>">
                            <input type="hidden" name="f2" value="<?php echo $f2 ?>">
-                           <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha">
+                           <button  data-toggle="tooltip" data-placement="top" title="Imprimir" style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha">
                                <svg class="bi" width="20" height="20" fill="currentColor">
                                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                             </svg>
@@ -1223,7 +1224,7 @@ while ($productos = mysqli_fetch_array($result)){
                     <form method="POST" action="../../Plugin/PDF/Fecha/pdf_fecha.php" target="_blank" class="mx-1">
                         <input type="hidden" name="f1" value="<?php echo $f1 ?>">
                         <input type="hidden" name="f2" value="<?php echo $f2 ?>">
-                        <button   style="position: initial;" type="submit" class="btn btn-outline-primary mx-1" name="Fecha">
+                        <button  data-toggle="tooltip" data-placement="top" title="Exportar en PDF"  style="position: initial;" type="submit" class="btn btn-outline-primary mx-1" name="Fecha">
                             <svg class="bi" width="20" height="20" fill="currentColor">
                                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                             </svg>
@@ -1232,7 +1233,7 @@ while ($productos = mysqli_fetch_array($result)){
                     <form method="POST" action="../../Plugin/Excel/Productos/Fechas.php" >
                         <input type="hidden" name="f1" value="<?php echo $f1 ?>">
                         <input type="hidden" name="f2" value="<?php echo $f2 ?>">
-                        <button   style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha" >
+                        <button  data-toggle="tooltip" data-placement="top" title="Exportar en Excel"  style="position: initial;" type="submit" class="btn btn-outline-primary" name="Fecha" >
                             <svg class="bi" width="20" height="20" fill="currentColor">
                                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                             </svg>
@@ -1407,39 +1408,39 @@ while ($productos = mysqli_fetch_array($result)){
   }
   $(obtener_registros());
 
-  function obtener_registros(consulta)
-  {
-    $.ajax({
-        url : '../../Buscador_ajax/Consultas/consulta.php',
-        type : 'POST',
-        dataType : 'html',
-        data : { consulta: consulta },
-    })
+//   function obtener_registros(consulta)
+//   {
+//     $.ajax({
+//         url : '../../Buscador_ajax/Consultas/consulta.php',
+//         type : 'POST',
+//         dataType : 'html',
+//         data : { consulta: consulta },
+//     })
 
-    .done(function(resultado){
-        $("#tabla_resultado").html(resultado);
-    })
-    .done(function(resultado){
-        $("#tabla_resultado1").html(resultado);
-    })
-}
+//     .done(function(resultado){
+//         $("#tabla_resultado").html(resultado);
+//     })
+//     .done(function(resultado){
+//         $("#tabla_resultado1").html(resultado);
+//     })
+// }
 
-$(document).on('keyup', '#busqueda', function()
-{
-    var valorBusqueda=$(this).val();
-    var limpiar = document.getElementById('busqueda');
-    function validar1() {
-        limpiar.value = '';
-    }
-    if (valorBusqueda!="")
-    {
-        obtener_registros(valorBusqueda);
-    }
-    else
-    {
-        obtener_registros();
-    }
-});
+// $(document).on('keyup', '#busqueda', function()
+// {
+//     var valorBusqueda=$(this).val();
+//     var limpiar = document.getElementById('busqueda');
+//     function validar1() {
+//         limpiar.value = '';
+//     }
+//     if (valorBusqueda!="")
+//     {
+//         obtener_registros(valorBusqueda);
+//     }
+//     else
+//     {
+//         obtener_registros();
+//     }
+// });
 
 </script>
 <script type="text/javascript">

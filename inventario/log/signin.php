@@ -28,8 +28,6 @@ error_reporting(0);
     font-family: Gill Sans Ultra Bold;">
 <style type="text/css">
 
-	}
-
 
 button:hover{
 	color: white;
@@ -59,7 +57,7 @@ button:hover{
                                             <input id="e"  onclick="myFuntion();" type="checkbox" name="id[]"> <label style="margin-top: 1.5%;"  id="h" for="e" ></label>
 
                                         </div>
-									   	<button type="submit" class="btn btn-primary btn-block ">Enviar</button>
+									   	<button type="submit" class="btn btn-primary btn-block env ">Enviar</button>
 									   	<p id="respa1"></p>
 									   </form>
                                     </div>
@@ -176,7 +174,10 @@ return patron.test(te); // 6
    	e.preventDefault();
    	var username=$.trim($('#username').val())
    	var password=$.trim($('#password').val())
-   	
+   	$('.env').click(function() {
+       $('.env').text('Enviando...');
+       $('.env').css('...');
+    })
                     
    	if (username.length=="" || password.length=="") {
    		

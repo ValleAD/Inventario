@@ -71,12 +71,12 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
                             </svg></a>
                             <ul class="children">
-                             <li><a id="b" href="Vistas/Productos/vistaProductos.php">Ver Artículos</a></li>
-                             <?php if($tipo_usuario==1){ ?>
+                               <li><a id="b" href="Vistas/Productos/vistaProductos.php">Ver Artículos</a></li>
+                               <?php if($tipo_usuario==1){ ?>
                                 <li><a id="b" href="Vistas/Productos/regi_producto.php">Nuevo Artículo</a></li>
                             <?php } ?>
                             <li class="submenu1"><a  id="b" href="#">Reporte Ingresos
-                             <svg class="bi" width="20" height="20" fill="currentColor">
+                               <svg class="bi" width="20" height="20" fill="currentColor">
                                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
                             </svg>
                         </a>
@@ -231,11 +231,11 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                         <p id="sn" style="color: #fff"><b>Nombre:</b> <?php echo $consulta['firstname'];?></p>
-                     </div>
-                 </div>
+                           <p id="sn" style="color: #fff"><b>Nombre:</b> <?php echo $consulta['firstname'];?></p>
+                       </div>
+                   </div>
 
-                 <div class="row">
+                   <div class="row">
                     <div class="col-md-12">
                         <p id="sn" style="color: #fff"><b>Apellidos:</b> <?php echo $consulta['lastname'];?></p>
                     </div>
@@ -321,88 +321,94 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 <script src="Plugin/bootstrap/js/jquery-latest.js"></script>
 <script src="Plugin/bootstrap/js/bootstrap.min.js"></script>
 <script src="Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
+<script src="Plugin/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="Plugin/bootstrap/js/popper.min.js"></script>
+
+
 
 <script type="text/javascript">
-
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+  })
     function codigo_fecha() {
-       
-     Swal.fire({
-         title: 'Historial por Código y Fechas ',
-         html: '<form method="POST"  id="t"><label style="float: left;">Codigo del Producto</label><input type="number" class="form-control " id="codigo1" ><label style="float: left;">Hasta</label><input type="Date" class="form-control " id="f1" ><label style="float: left;margin-top:3%;">Hasta</label><input type="Date" class="form-control " id="f2" ></form>',
-         icon: 'info',
-         allowOutsideClick: false,
-         showConfirmButton: true,
-         showCloseButton: true,
-         footer:"Sistema De Inventario",
-         confirmButtonText: "Buscar por Código y Fechas",
+     
+       Swal.fire({
+           title: 'Historial por Código y Fechas ',
+           html: '<form method="POST"  id="t"><label style="float: left;">Codigo del Producto</label><input type="number" class="form-control " id="codigo1" ><label style="float: left;">Hasta</label><input type="Date" class="form-control " id="f1" ><label style="float: left;margin-top:3%;">Hasta</label><input type="Date" class="form-control " id="f2" ></form>',
+           icon: 'info',
+           allowOutsideClick: false,
+           showConfirmButton: true,
+           showCloseButton: true,
+           footer:"Sistema De Inventario",
+           confirmButtonText: "Buscar por Código y Fechas",
 
-     }).then((result) => {
-      if (result.isConfirmed) {
-        var unidad=$.trim($('#codigo1').val())
-        var f1=$.trim($('#f1').val())
-        var f2=$.trim($('#f2').val())
-        Swal.fire({icon: 'success',  text:" En este Momento sera Redigido Hacia el Historial",allowOutsideClick: false,}).then((resultado) =>{
-            if (resultado.value) {
-               window.location.href='Vistas/Productos/Historial.php?Busqueda='+unidad+'&f1='+f1+'&f2='+f2+'&Consultar2';                               
-           }
-       });
+       }).then((result) => {
+          if (result.isConfirmed) {
+            var unidad=$.trim($('#codigo1').val())
+            var f1=$.trim($('#f1').val())
+            var f2=$.trim($('#f2').val())
+            Swal.fire({icon: 'success',  text:" En este Momento sera Redigido Hacia el Historial",allowOutsideClick: false,}).then((resultado) =>{
+                if (resultado.value) {
+                 window.location.href='Vistas/Productos/Historial.php?Busqueda='+unidad+'&f1='+f1+'&f2='+f2+'&Consultar2';                               
+             }
+         });
 
-    }});    
- }
- $(document).ready(main);
+        }});    
+   }
+   $(document).ready(main);
 
- var contador = 1;
+   var contador = 1;
 
-  $( ".submenu1").click(function() {
+   $( ".submenu1").click(function() {
     $(this).children("ul").slideToggle();
 });
 
-  
-  $(".submenu1").click(function(p) {
-   p.stopPropagation();
-});
- function main () {
+   
+   $(".submenu1").click(function(p) {
+     p.stopPropagation();
+ });
+   function main () {
 
 
-  $('.menu_bar1').click(function(){
-    $('.menu_bar1').hide();
-    $('.menu_bar2').show();
+      $('.menu_bar1').click(function(){
+        $('.menu_bar1').hide();
+        $('.menu_bar2').show();
 
-    if (contador == 1) {
-        $('nav').animate({
-            left: '0'
-        });
-        contador = 0;
-    } else {
-        $('.menu_bar1').show();
-        contador = 1;
-        $('nav').animate({
-            left: '-100%'
-        });
-    }
-});
-  $('.menu_bar2').click(function(){
-    $('.menu_bar2').hide();
+        if (contador == 1) {
+            $('nav').animate({
+                left: '0'
+            });
+            contador = 0;
+        } else {
+            $('.menu_bar1').show();
+            contador = 1;
+            $('nav').animate({
+                left: '-100%'
+            });
+        }
+    });
+      $('.menu_bar2').click(function(){
+        $('.menu_bar2').hide();
 
-    if (contador == 1) {
-        $('nav').animate({
-            left: '0'
-        });
-        contador = 0;
-    } else {
-        $('.menu_bar1').show();
-        contador = 1;
-        $('nav').animate({
-            left: '-100%'
-        });
-    }
-});
+        if (contador == 1) {
+            $('nav').animate({
+                left: '0'
+            });
+            contador = 0;
+        } else {
+            $('.menu_bar1').show();
+            contador = 1;
+            $('nav').animate({
+                left: '-100%'
+            });
+        }
+    });
 
     // Mostramos y ocultamos submenus
-  $('.submenu').click(function(){
-    $(this).children('.children').slideToggle();
-});
-}
+      $('.submenu').click(function(){
+        $(this).children('.children').slideToggle();
+    });
+  }
 </script>
 <script type="text/javascript">
     function confirmaion1(e) {

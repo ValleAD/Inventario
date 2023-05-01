@@ -88,7 +88,7 @@ die();
            <h1 style=" text-align: center;">Solicitud de Bodega</h1>
 
     
- <?php include ('../../Buscador_ajax/Consultas/Consulta1.php') ?>
+ <?php include ('../../Buscador_ajax/Consultas/Consulta2.php') ?>
 </form>
 </section>
 </body>

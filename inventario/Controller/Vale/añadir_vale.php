@@ -56,7 +56,7 @@
             // $codsw=$productosw['cod'];
             $almacenw=$productosw['codProductos'];
             $stockw=$productosw['stock'];
-            $totalw=$stockw+$soli;
+            $totalw=$stockw-$soli;
         }
         
 
