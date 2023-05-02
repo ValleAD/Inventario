@@ -63,28 +63,28 @@ if (!isset($_SESSION['signin'])>0) {
 
         <div id="x" style="position: initial;" class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example">
            <form id="x" method="POST" style=" position: initial;" action="../../Plugin/Imprimir/Compra/soli_compra.php" target="_blank">
-               <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
+               <button  data-toggle="tooltip" data-placement="top" title="Imprimir" style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                     <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
             </button>
         </form>
         <form id="x" method="POST" action="../../Plugin/PDF/Compra/pdf_soli_compra.php" class="mx-1" target="_blank">
-           <button style="position: initial;"type="submit" class="btn btn-outline-primary" name="id" target="_blank">
+           <button  data-toggle="tooltip" data-placement="top" title="Exportar en PDF" style="position: initial;"type="submit" class="btn btn-outline-primary" name="id" target="_blank">
             <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
             </svg>
         </button>
     </form>
     <form id="ssas"  method="POST" action="../../Plugin/Excel/Compra/Excel.php" target="_blank">
-        <button type="submit" class="btn btn-outline-primary" name="compra" target="_blank">
+        <button  data-toggle="tooltip" data-placement="top" title="Exportar en Excel" type="submit" class="btn btn-outline-primary" name="compra" target="_blank">
             <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
             </svg>
         </button>
     </form>
     <form method="POST" action="form_compra1.php" target="_blank" class="ml-2">
-     <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
+     <button  data-toggle="tooltip" data-placement="top" title="Nueva solicitud" style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
  </form>
  
 </div>
@@ -98,7 +98,7 @@ if (!isset($_SESSION['signin'])>0) {
            <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
            
        <?php } ?>
-       <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1">
+       <button  data-toggle="tooltip" data-placement="top" title="Imprimir" style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1">
         <svg class="bi" width="20" height="20" fill="currentColor">
             <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
         </svg>
@@ -111,7 +111,7 @@ if (!isset($_SESSION['signin'])>0) {
        <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
        
    <?php } ?>
-   <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1">
+   <button  data-toggle="tooltip" data-placement="top" title="Exportar en PDF"  style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1">
     <svg class="bi" width="20" height="20" fill="currentColor">
         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
     </svg>
@@ -120,14 +120,14 @@ if (!isset($_SESSION['signin'])>0) {
 <form id="ssas"  method="POST" action="../../Plugin/Excel/Compra/Excel.php" target="_blank">
     <input type="hidden" name="columna" value="<?php echo $columna ?>">
     <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
-    <button type="submit" class="btn btn-outline-primary" name="compra1" target="_blank">
+    <button  data-toggle="tooltip" data-placement="top" title="Exportar en Excel" type="submit" class="btn btn-outline-primary" name="compra1" target="_blank">
         <svg class="bi" width="20" height="20" fill="currentColor">
             <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
         </svg>
     </button>
 </form>
 <form method="POST" action="form_compra1.php" target="_blank" class="ml-2">
- <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
+ <button  data-toggle="tooltip" data-placement="top" title="Nueva solicitud" style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
 </form>
 </div>
 <?php } ?>

@@ -75,21 +75,6 @@ if ($buscarAlumnos->num_rows > 0)
                 }else{
                 $categoria=$productos['categoria'];
                 }
-                $mes=$productos['Mes'];
-
-                            if ($mes==1)  { $mes="Enero";}
-                            if ($mes==2)  { $mes="Febrero";}
-                            if ($mes==3)  { $mes="Marzo";}
-                            if ($mes==4)  { $mes="Abril";}
-                            if ($mes==5)  { $mes="Mayo";}
-                            if ($mes==6)  { $mes="Junio";}
-                            if ($mes==7)  { $mes="Julio";}
-                            if ($mes==8)  { $mes="Agosto";}
-                            if ($mes==9)  { $mes="Septiembre";}
-                            if ($mes==10) { $mes="Octubre";}
-                            if ($mes==11) { $mes="Noviembre";}
-                            if ($mes==12) { $mes="Diciembre";}
-                
             
         $precio=$productos['precio'];
        $precio1=number_format($precio, 2,".",",");
@@ -99,13 +84,13 @@ if ($buscarAlumnos->num_rows > 0)
         <tr id="tr" >
         <td></td>
             <td  id="id" id="th" data-label="ID">'.$productos['cod'].'</td>
-            <td data-label="Código">'.$productos['codProductos'].'</td>
-            <td data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
-            <td data-label="Descripción" data-toggle="tooltip" data-placement="right" title="'.$des.'" >'.substr($des, 0, 15)."...".'</td>
-            <td data-label="Unidad de Medida">'.$u_m.'</td>
-            <td data-label="Cantidad">'.$stock.'</td>
-            <td data-label="Precio">'.$precio1.'</td>
-            <td data-label="Fecha">'.date("d",strtotime($productos['fecha_registro'])).' '.$mes.' '.$productos['Año'].'</td>
+            <td id="th" data-label="Código">'.$productos['codProductos'].'</td>
+            <td id="th" data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
+           <td data-label="Descripción" data-toggle="tooltip" data-placement="right" title="'.$des.'" >'.substr($des, 0, 25)."...".'</td>
+            <td id="th" data-label="Unidad de Medida">'.$productos['unidad_medida'].'</td>
+            <td '; if ($stock<=0) {$tabla.='style="background:red; color:white"';  } $tabla.=' id="th" data-label="Cantidad">'.$stock.'</td>
+            <td id="th" data-label="Precio">'.$precio1.'</td>
+            <td id="th" data-label="Fecha">'.$productos['fecha_registro'].'</td>
            '?>
             
 

@@ -316,7 +316,7 @@ if (isset($_GET['id'])){
                 <form method="POST" action="" class="well hidden"> 
                     <div style="position: initial;" class="input-group">
                         <input required type="text" style="position: initial;" name="Busqueda"  class="form-control"  placeholder="Buscar Código ó Descripción">
-                        <button  data-toggle="tooltip" data-placement="top" name="Consultar2" type="submit" onclick="return validar1()" class="input-group-text input" for="inputGroupSelect01">
+                        <button  data-toggle="tooltip" data-placement="right" title="Buscar" name="Consultar2" type="submit" onclick="return validar1()" class="input-group-text input" for="inputGroupSelect01">
                             <svg class="bi" width="20" height="20" fill="currentColor">
                                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#search"/>
                             </svg>
@@ -1406,7 +1406,7 @@ while ($productos = mysqli_fetch_array($result)){
     });
       return false;
   }
-  $(obtener_registros());
+  // $(obtener_registros());
 
 //   function obtener_registros(consulta)
 //   {

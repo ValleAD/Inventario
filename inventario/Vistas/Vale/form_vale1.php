@@ -79,11 +79,15 @@ h1{
 <br><br><br>       
 
 <section>
-    <?php include ('../../Buscador_ajax/Cabezeras/cabezera.php') ?>
+    <!-- <?php include ('../../Buscador_ajax/Cabezeras/cabezera.php') ?> -->
     <center><h1 style="margin-top:5px">Solicitudes Vale</h1></center><br>
     <form name="f1" id="frm-example" style="background: transparent;" method='POST' action="form_vale2.php">
 
-        <?php include ('../../Buscador_ajax/Consultas/Consulta2.php') ?>
+               <div id="tabla_resultado">
+            <!-- AQUI SE DESPLEGARA NUESTRA TABLA DE CONSULTA -->
+ <?php include('../../Buscador_ajax/Consultas/consulta2.php') ?>
+
+        </div> 
 
     </form>
 </section>

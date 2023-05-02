@@ -202,7 +202,7 @@ if (!isset($_SESSION['signin'])>0) {
        <div style="position: initial;" class="btn-group mt-1 mx-2 " role="group" aria-label="Basic outlined example">
          <form id="well" class="well" method="POST" action="../../Plugin/Imprimir/Empleados/Empleados.php" target="_blank">
 
-             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="Empleados">
+             <button data-toggle="tooltip" data-placement="top" title="Imprimir"style="position: initial;" type="submit" class="btn btn-outline-primary" name="Empleados">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                     <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
@@ -210,14 +210,14 @@ if (!isset($_SESSION['signin'])>0) {
         </form>
         <form id="well" class="well" method="POST" action="../../Plugin/PDF/Empleados/pdf_Empledos.php" target="_blank">
 
-         <button  style="position: initial;"type="submit" class="btn btn-outline-primary mx-1" name="user" target="_blank">
+         <button  data-toggle="tooltip" data-placement="top" title="Exportar en PDF"style="position: initial;"type="submit" class="btn btn-outline-primary mx-1" name="user" target="_blank">
             <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
             </svg>
         </button>
     </form>
     <form id="well"  method="POST" action="../../Plugin/Excel/Empleados/Excel.php" >
-        <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
+        <button data-toggle="tooltip" data-placement="top" title="Exportar en Excel"type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
             <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
             </svg>
@@ -232,7 +232,7 @@ if (!isset($_SESSION['signin'])>0) {
         <div style="position: initial;" class="btn-group mt-1 mx-2 " role="group" aria-label="Basic outlined example">
          <form id="well" class="well" method="POST" action="../../Plugin/Imprimir/Empleados/Empleados.php" target="_blank">
              <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos['username']?>" name="user1">
-             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="user2">
+             <button data-toggle="tooltip" data-placement="top" title="Imprimir"style="position: initial;" type="submit" class="btn btn-outline-primary" name="user2">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                     <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
@@ -243,14 +243,14 @@ if (!isset($_SESSION['signin'])>0) {
     while ($productos = mysqli_fetch_array($result)){ ?>
      <form id="well" class="well" method="POST" action="../../Plugin/PDF/Empleados/pdf_Empledos.php" target="_blank">
          <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos['username']?>" name="user1">               
-         <button  style="position: initial;"type="submit" class="btn btn-outline-primary mx-1" name="user2" target="_blank">
+         <button  data-toggle="tooltip" data-placement="top" title="Exportar en PDF"style="position: initial;"type="submit" class="btn btn-outline-primary mx-1" name="user2" target="_blank">
             <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
             </svg>
         </button>
     </form>
     <form id="form2" method="POST" action="../../Plugin/Excel/Empleados/Excel.php" target="_blank">
-        <button type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
+        <button data-toggle="tooltip" data-placement="top" title="Exportar en Excel"type="submit" class="btn btn-outline-primary" name="pdf" target="_blank">
             <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
             </svg>

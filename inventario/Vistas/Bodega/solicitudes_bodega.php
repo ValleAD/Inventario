@@ -50,28 +50,28 @@ die();
 
               <div id="x" style="position: initial;" class="btn-group mb-3 my-1 mx-2" style="position: initial;" role="group" aria-label="Basic outlined example">
          <form  method="POST" action="../../Plugin/Imprimir/Bodega/soli_bodega.php" target="_blank">
-             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
+             <button data-toggle="tooltip" data-placement="top" title="Imprimir" style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
          <form  method="POST" action="../../Plugin/PDF/Bodega/pdf_soli_bodega.php" class="mx-1" target="_blank">
-             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id" target="_blank">
+             <button data-toggle="tooltip" data-placement="top" title="Exportar en PDF" style="position: initial;" type="submit" class="btn btn-outline-primary" name="id" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>
         <form  method="POST" action="../../Plugin/Excel/Bodega/Excel.php" target="_blank">
-                <button type="submit" class="btn btn-outline-primary" name="bodega" target="_blank">
+                <button data-toggle="tooltip" data-placement="top" title="Exportar en Excel" type="submit" class="btn btn-outline-primary" name="bodega" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                 </svg>
                 </button>
             </form>
             <form method="POST" action="form_bodega_varios.php" target="_blank" class="ml-2">
-   <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
+   <button data-toggle="tooltip" data-placement="top" title="Nueva solicitud" style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
 </form>
  </div>
  <?php }else{ ?>
@@ -84,7 +84,7 @@ die();
  <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
        
     <?php } ?>
-             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1">
+             <button data-toggle="tooltip" data-placement="top" title="Imprimir" style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
@@ -98,14 +98,29 @@ die();
  <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
        
     <?php } ?>
-             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1" target="_blank">
+             <button data-toggle="tooltip" data-placement="top" title="Exportar en PDF" style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
              </button>
          </form>
+                  <form   class=""  method="POST" action="../../Plugin/Excel/Bodega/Excel.php">
+             <?php $sql = "SELECT * FROM tb_bodega WHERE idusuario='$idusuario'";
+    $result = mysqli_query($conn, $sql);
+    $n=0;
+    while ($datos_sol = mysqli_fetch_array($result)){?>
+ <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
+       
+    <?php } ?>
+             <button data-toggle="tooltip" data-placement="top" title="Exportar en Excel" style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1" target="_blank">
+                <svg class="bi" width="20" height="20" fill="currentColor">
+                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
+                </svg>
+             </button>
+         </form>
+
          <form method="POST" action="form_bodega_varios.php" target="_blank" class="ml-2">
-   <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
+   <button data-toggle="tooltip" data-placement="top" title="Nueva solicitud" style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
 </form>
  </div>
 <?php } ?>

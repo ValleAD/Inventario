@@ -52,14 +52,14 @@ die();
 <?php if ($tipo_usuario==1) {?>
      <div id="x"  style="position: initial;" class="btn-group my-2  mx-2" role="group" style="position: initial;" aria-label="Basic outlined example">
          <form method="POST" action=" ../../Plugin/Imprimir/Almacen/soli_almacen.php"  target="_blank">
-             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
+             <button  data-toggle="tooltip" data-placement="top" title="Imprimir"style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href=" ../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
              </button>
          </form>
          <form method="POST" action=" ../../Plugin/PDF/Almacen/pdf_soli_almacen.php"  target="_blank" class="mx-1">
-             <button style="position: initial;" type="submit" class="btn btn-outline-primary"  target="_blank" name="id">
+             <button  data-toggle="tooltip" data-placement="top" title="Exportar en PDF"style="position: initial;" type="submit" class="btn btn-outline-primary"  target="_blank" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href=" ../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -68,14 +68,14 @@ die();
                  <form   method="POST" action="../../Plugin/Excel/Almacen/Excel.php">
             <input type="hidden" name="columna" value="<?php echo $columna ?>">
             <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
-                <button type="submit" class="btn btn-outline-primary" name="almacen" target="_blank">
+                <button  data-toggle="tooltip" data-placement="top" title="Exportar en Excel"type="submit" class="btn btn-outline-primary" name="almacen" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                 </svg>
                 </button>
             </form>
             <form method="POST" action="form_almacen1.php" target="_blank" class="ml-2">
-   <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
+   <button  data-toggle="tooltip" data-placement="top" title="Nueva solicitud"style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
 </form>
 </div> 
 <?php } if ($tipo_usuario==2) {
@@ -86,7 +86,7 @@ die();
  <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
        
 
-             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1">
+             <button  data-toggle="tooltip" data-placement="top" title="Imprimir"style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href=" ../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
@@ -94,7 +94,7 @@ die();
          </form>
          <form class="mx-1" method="POST" action=" ../../Plugin/PDF/Almacen/pdf_soli_almacen.php"  target="_blank">
  <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-              <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1" target="_blank">
+              <button  data-toggle="tooltip" data-placement="top" title="Exportar en PDF"style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href=" ../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                 </svg>
@@ -104,14 +104,14 @@ die();
  <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
             <input type="hidden" name="columna" value="<?php echo $columna ?>">
             <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
-                <button type="submit" class="btn btn-outline-primary" name="Consultar1" target="_blank">
+                <button  data-toggle="tooltip" data-placement="top" title="Exportar en Excel"type="submit" class="btn btn-outline-primary" name="Consultar1" target="_blank">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
                 </svg>
                 </button>
             </form>
             <form method="POST" action="form_almacen1.php" target="_blank" class="ml-2">
-   <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
+   <button  data-toggle="tooltip" data-placement="top" title="Nueva solicitud"style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
 </form>
  </div>
 <?php } ?>
