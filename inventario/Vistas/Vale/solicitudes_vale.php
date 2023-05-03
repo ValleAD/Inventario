@@ -49,37 +49,50 @@ if (!isset($_SESSION['signin'])>0) {
 <section id="section" class="mx-3 p-2" style="background-color:white; border-radius:5px;margin-bottom: 3%;"> 
     <center><h1 style="margin-top:2%">Solicitudes Vale</h1></center><br>
 
-    <?php if ($tipo_usuario==1) {?>  
+    <?php $verificar =mysqli_query($conn, "SELECT codVale FROM tb_vale ");
+        if (!mysqli_num_rows($verificar)>0) {?>
+            <style>
+                .c{
+                    display: none;
+                }
+            </style>
+        <?php }else{?>
+            <style>
+                .c{
+                    display: block;
+                }
+            </style>
+        <?php } if ($tipo_usuario==1) {?>  
 
      <div id="x" class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
-         <form  method="POST" class="mx-1" action="../../Plugin/Imprimir/Vale/soli_vale.php" target="_blank">
+         <form  method="POST" class="mx-1" action="../../Plugin/Imprimir/Vale/soli_vale.php" target="_blank" class="c">
              <button  data-toggle="tooltip" data-placement="top" title="Imprimir" style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">    
                 <svg class="bi" width="20" height="20" fill="currentColor">
                     <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
             </button>
         </form>
-        <form  method="POST" action="../../Plugin/PDF/Vale/pdf_soli_vale.php" target="_blank" class="mx-0">
+        <form  method="POST" action="../../Plugin/PDF/Vale/pdf_soli_vale.php" target="_blank" class="mx-0 c">
          <button  data-toggle="tooltip" data-placement="top" title="Exportar en PDF" style="position: initial;" type="submit" class="btn btn-outline-primary" name="id" target="_blank">
             <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
             </svg>
         </button>
     </form>
-    <form  style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Vale/Excel.php" target="_blank">
+    <form  style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Vale/Excel.php" class="mr-1 c">
         <button  data-toggle="tooltip" data-placement="top" title="Exportar en Excel" type="submit" class="btn btn-outline-primary" name="vale" target="_blank">
             <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
             </svg>
         </button>
     </form>
-    <form method="POST" action="form_vale1.php" class="ml-2">
+    <form method="POST" action="form_vale1.php" >
      <button  data-toggle="tooltip" data-placement="top" title="Nueva solicitud" style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
  </form>
 </div>    
 <?php }if ($tipo_usuario==2) {?>
  <div  id="x" class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
-     <form  method="POST"  action="../../Plugin/Imprimir/Vale/soli_vale.php" target="_blank">
+     <form  method="POST"  action="../../Plugin/Imprimir/Vale/soli_vale.php" target="_blank" class="c">
          <?php $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario'";
          $result = mysqli_query($conn, $sql);
          $n=0;
@@ -93,7 +106,7 @@ if (!isset($_SESSION['signin'])>0) {
             </svg>
         </button>
     </form>
-    <form  class="mx-1"  method="POST" action="../../Plugin/PDF/Vale/pdf_soli_vale.php" target="_blank">
+    <form  class="mx-1 c"  method="POST" action="../../Plugin/PDF/Vale/pdf_soli_vale.php" target="_blank">
      <?php $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario'";
      $result = mysqli_query($conn, $sql);
      $n=0;
@@ -107,7 +120,7 @@ if (!isset($_SESSION['signin'])>0) {
         </svg>
     </button>
 </form>
-<form    method="POST" action="../../Plugin/Excel/Vale/Excel.php" target="_blank">
+<form    method="POST" action="../../Plugin/Excel/Vale/Excel.php" class="mr-1 c">
  <?php $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario'";
  $result = mysqli_query($conn, $sql);
  $n=0;
@@ -122,7 +135,7 @@ if (!isset($_SESSION['signin'])>0) {
 </button>
 </form>
 
-<form method="POST" action="form_vale1.php" class="ml-2">
+<form method="POST" action="form_vale1.php" >
  <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
 </form>
 </div>

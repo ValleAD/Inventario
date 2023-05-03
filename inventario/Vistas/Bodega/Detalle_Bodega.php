@@ -48,6 +48,7 @@ if (!isset($_SESSION['signin'])>0) {
             <br><br><br>
             <section id="section" class="section">
                 <?php
+       
                 $verificar =mysqli_query($conn, "SELECT codBodega FROM tb_bodega ");
                 if (!mysqli_num_rows($verificar)>0) {
                     echo "<script>window.location.href='../../Vistas/Bodega/solicitudes_bodega.php'; </script>";
@@ -75,6 +76,20 @@ if (!isset($_SESSION['signin'])>0) {
                     $cod_compra = $_POST['id'];
 
                 }
+                         $verificar =mysqli_query($conn, "SELECT codigo FROM detalle_bodega  WHERE odt_bodega='$cod_compra'");
+        if (!mysqli_num_rows($verificar)>0) {?>
+            <style>
+                .c{
+                    display: none;
+                }
+            </style>
+        <?php }else{?>
+            <style>
+                .c{
+                    display: block;
+                }
+            </style>
+        <?php }
                 $sql = "SELECT * FROM tb_bodega WHERE codBodega = '$cod_compra'";
                 $result = mysqli_query($conn, $sql);
                 while ($productos1 = mysqli_fetch_array($result)){
@@ -224,7 +239,7 @@ if (!isset($_SESSION['signin'])>0) {
                         </style> 
                         <tr>
                          <td  data-label="Código"><?php echo $productos['codigo'] ?></td>
-                         <td  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
+                         <td  data-label="Descripción" data-toggle="tooltip" data-placement="right" title="<?php echo $descripcion ?>" > <?php  echo substr($descripcion, 0, 25)."..."?></td>
                          <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
                          <td  data-label="Cantidad"><?php echo $stock ?></td>
                          <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
@@ -244,25 +259,22 @@ if (!isset($_SESSION['signin'])>0) {
 <div class="col-md-3">
     <div class="card">
         <div class="card-body">
-            <div class="row">
-                <div class="col-md-12">
-                    <div style="position: initial;" class="btn-group my-3 mx-2" role="group" aria-label="Basic outlined example">
+                    <div style="position: initial;" class="btn-group mb-4" role="group" aria-label="Basic outlined example">
 
-                        <form method="POST" action="../../Plugin/Imprimir/Bodega/bodega.php" target="_blank">
+                        <form method="POST" action="../../Plugin/Imprimir/Bodega/bodega.php" target="_blank" class="c">
                             <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">
 
                             <input type="hidden" name="cod" value="<?php echo $codigo ?>">
 
-                            <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
+                            <textarea style="display: none;" name="jus" ><?php echo $jus ?> </textarea>
 
                             <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="aprobado">
                                 <svg class="bi" width="20" height="20" fill="currentColor">
                                     <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                                 </svg>
-
                             </button>
                         </form>
-                        <form method="GET" action="../../Plugin/PDF/Bodega/pdf_bodega.php" target="_blank" class="ml-1">
+                        <form method="GET" action="../../Plugin/PDF/Bodega/pdf_bodega.php" target="_blank" class=" c">
                             <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">                        
 
                             <button style="position: initial;" type="submit" class="btn btn-outline-primary" >
@@ -272,7 +284,7 @@ if (!isset($_SESSION['signin'])>0) {
 
                             </button>
                         </form>
-                        <form method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php" class="ml-1">
+                        <form method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php" class="mr-1 c">
                             <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codBodega']?>" name="bodega">
 
                             <input type="hidden" name="cod" value="<?php echo $codigo ?>">
@@ -284,7 +296,7 @@ if (!isset($_SESSION['signin'])>0) {
                             </button>
                         </form>
                         <?php if($tipo_usuario==1){ ?>
-                            <form method="POST" action="">
+                            <form method="POST" action="" class="c">
                                 <?php
                                 if($productos1['estado']=='Pendiente') {
                                    ?>  
@@ -297,23 +309,18 @@ if (!isset($_SESSION['signin'])>0) {
                             <input type="hidden" readonly class="form-control"  value="<?php echo $productos1['codBodega']?>" name="bodega">
                         </form>
                     <?php } ?>
-                    <form class="ml-1" style="" method="POST" action="" style="margin: 0px;" >
+                    <form   method="POST" action="" >
                         <input type="hidden" name="cod" value="<?php echo $productos1["codBodega"] ?>">
                         <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#new">➕</button>
                     </form>
                 </div>
-                <hr>
+
                 <p align="right"><b style="float: left;">Cantidad Solicitada: </b><?php echo $final3 ?></p>
                 <p align="right"><b style="float: left;">Cantidad Despachada: </b><?php echo $final5 ?></p>
-
-                <p align="right"><b style="float: left;">Cant. Soli. - Cant. Despa.: </b><?php echo $final7 ?></p>
                 <p align="right"><b style="float: left;">Total del Precio: </b><?php echo $final9 ?></p>
                 <p align="right"><b style="float: left;">SubTotal</b><?php echo $final1?></p>
 
                 <button class="btn btn-success as">Solicitudes Bodega</button>
-            </div>
-
-        </div>
 
     </div>
 
@@ -390,7 +397,7 @@ if (!isset($_SESSION['signin'])>0) {
                   <thead>
                     <tr id="tr">
                       <th>Código</th>
-                      <th style="width:25%">Descripción</th>
+                      <th >Descripción</th>
                       <th>Unidad de Medida</th>
                       <th>Cantidad Solicitada</th>
                       <th>Cantidad Depachada</th>
@@ -443,7 +450,7 @@ if (!isset($_SESSION['signin'])>0) {
                     <input type="hidden" name="mes" id="mes">
                     <input type="hidden" name="año" id="ano">
                 </td>
-                <td  data-label="Descripción"><?php echo $descripcion ?></td>
+                <td  data-label="Descripción" data-toggle="tooltip" data-placement="right" title="<?php echo $descripcion ?>" > <?php  echo substr($descripcion, 0, 25)."..."?></td>
                 <td  data-label="Unidada de Medida"><?php echo $um ?></td>
                 <td  data-label="Cantidad"><?php echo $stock ?></td>
                 <td  data-label="Cantidad"><input style="background:transparent; border: 1px solid #000;  width: 100%; text-align: center" class="form-control"  required type="number" step="0.01" min="0.00" max="<?php echo $stock ?>"  name="cantidad_despachada[]"  value=""></td>
@@ -649,7 +656,7 @@ if (!isset($_SESSION['signin'])>0) {
 });
     $(document).ready(function () {
         $('.as').click(function() {
-            window.location.href="solicitudes_vale.php";
+            window.location.href="solicitudes_bodega.php";
         });
         $('#ver').click(function() {
             window.location.href="";

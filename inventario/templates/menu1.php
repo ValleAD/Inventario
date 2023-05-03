@@ -23,6 +23,7 @@ $cliente =$_SESSION['signin'];
     <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/select.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/rowGroup.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/colReorder.dataTables.min.css">
     <link rel="icon" type="image/png" sizes="32x32"  href="../../img/log.png">
 </head>
 
@@ -337,6 +338,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 <script src="../../Plugin/bootstrap/js/dataTables.rowGroup.min.js"></script>
 <script src="../../Plugin/bootstrap/js/dataTables.responsive.min.js"></script>
 <script src="../../Plugin/bootstrap/js/responsive.bootstrap4.min.js"></script>
+<script src="../../Plugin/bootstrap/js/dataTables.colReorder.min.js"></script>
 <script>
         $(function () {
   $('[data-toggle="tooltip"]').tooltip()
@@ -393,30 +395,30 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 
     }});    
  }
- $('.nav1').css({"margin-left": "-6%", "transition": "3s"});     
+//  $('.nav1').css({"margin-left": "-6%", "transition": "3s"});     
 
- let ubicacionPrincipal=window.pageYOffset;
- window.onscroll= function() {
-    let Desplazamiento_Actual=window.pageYOffset;
-    if (ubicacionPrincipal >= Desplazamiento_Actual) {
-        document.getElementById('navbar').style.top='0';
+//  let ubicacionPrincipal=window.pageYOffset;
+//  window.onscroll= function() {
+//     let Desplazamiento_Actual=window.pageYOffset;
+//     if (ubicacionPrincipal >= Desplazamiento_Actual) {
+//         document.getElementById('navbar').style.top='0';
 
-        $('.nav1').css({"margin-left": "-6%", "transition": "3s"});   
+//         $('.nav1').css({"margin-left": "-6%", "transition": "3s"});   
         
 
-    }else{
-//entra el nav1
-        $('.nav1').css({"margin-left": "-1%", "transition": "3s"});  
+//     }else{
+// //entra el nav1
+//         $('.nav1').css({"margin-left": "-1%", "transition": "3s"});  
 
-        $('.nav2').click(function(){
-            $('.nav1').css({"margin-left": "-6%", "transition": "3s"});   
-            document.getElementById('navbar').style.top='0';
-        });   
-        $('#navbar').css({"top": "-200px", "transition": "1.5s"});  
+//         $('.nav2').click(function(){
+//             $('.nav1').css({"margin-left": "-6%", "transition": "3s"});   
+//             document.getElementById('navbar').style.top='0';
+//         });   
+//         $('#navbar').css({"top": "-200px", "transition": "1.5s"});  
 
-    }
-    ubicacionPrincipal=Desplazamiento_Actual;
-}
+//     }
+//     ubicacionPrincipal=Desplazamiento_Actual;
+// }
 
 $(document).ready(main);
 var contador = 1;

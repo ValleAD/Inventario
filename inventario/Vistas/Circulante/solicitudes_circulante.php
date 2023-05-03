@@ -48,33 +48,47 @@ if (!isset($_SESSION['signin'])>0) {
 <br><br><br>
 <section id="section" class="mx-3 p-2" style="background-color:white; border-radius:5px;margin-bottom: 3%;"> 
     <h1 class="text-center mg-t" style="margin-top: 2%;">Solicitudes de Fondo Circulante</h1><br>
-    <?php if ($tipo_usuario==1) {?>
+    <?php  $verificar =mysqli_query($conn, "SELECT codCirculante FROM tb_circulante ");
+        if (!mysqli_num_rows($verificar)>0) {?>
+            <style>
+                .c{
+                    display: none;
+                }
+            </style>
+        <?php }else{?>
+            <style>
+                .c{
+                    display: block;
+                }
+            </style>
+        <?php } 
+         if ($tipo_usuario==1) {?>
        <div id="x"  style="position: initial;" class="btn-group my-2  mx-2" role="group" style="position: initial;" aria-label="Basic outlined example">
-           <form method="POST" action=" ../../Plugin/Imprimir/Circulante/soli_circulante.php" id="ssas" target="_blank">
-               <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
+           <form method="POST" action=" ../../Plugin/Imprimir/Circulante/soli_circulante.php" id="ssas" target="_blank" class="c">
+               <button data-toggle="tooltip" data-placement="top" title="Imprimir" style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                     <use xlink:href=" ../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
             </button>
         </form>
-        <form method="POST" action=" ../../Plugin/PDF/Circulante/pdf_soli_circulante.php" id="ssas" target="_blank" class="mx-1">
-           <button style="position: initial;" type="submit" class="btn btn-outline-primary"  target="_blank" name="id">
+        <form method="POST" action=" ../../Plugin/PDF/Circulante/pdf_soli_circulante.php" id="ssas" target="_blank" class="mx-1 c">
+           <button data-toggle="tooltip" data-placement="top" title="Exportar en PDF" style="position: initial;" type="submit" class="btn btn-outline-primary"  target="_blank" name="id">
             <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href=" ../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
             </svg>
         </button>
     </form>
-    <form id="ssas"  method="POST" action="../../Plugin/Excel/Circulante/Excel.php">
+    <form id="ssas"  method="POST" action="../../Plugin/Excel/Circulante/Excel.php" class="c">
         <input type="hidden" name="columna" value="<?php echo $columna ?>">
         <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
-        <button type="submit" class="btn btn-outline-primary" name="circulante" >
+        <button data-toggle="tooltip" data-placement="top" title="Exportar en Excel" type="submit" class="btn btn-outline-primary" name="circulante" >
             <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
             </svg>
         </button>
     </form>
-    <form method="POST" action="form_circulante1.php" target="_blank" class="ml-2">
-     <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
+    <form method="POST" action="form_circulante1.php"  class="ml-2">
+     <button data-toggle="tooltip" data-placement="top" title="Nueva solicitud" style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
  </form>
 </div> 
 <?php } if ($tipo_usuario==2) {
@@ -85,7 +99,7 @@ if (!isset($_SESSION['signin'])>0) {
            <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
            
 
-           <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1">
+           <button data-toggle="tooltip" data-placement="top" title="Imprimir" style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1">
             <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href=" ../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
             </svg>
@@ -93,24 +107,24 @@ if (!isset($_SESSION['signin'])>0) {
     </form>
     <form class="mx-1" method="POST" action=" ../../Plugin/PDF/Circulante/pdf_soli_circulante.php" id="ssas" target="_blank">
        <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-       <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1" target="_blank">
+       <button data-toggle="tooltip" data-placement="top" title="Exportar en PDF" style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1" target="_blank">
         <svg class="bi" width="20" height="20" fill="currentColor">
             <use xlink:href=" ../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
         </svg>
     </button>
 </form>
-<form id="ssas" style="" method="POST" action="../../Plugin/Excel/Circulante/Excel.php" target="_blank">
+<form id="ssas" style="" method="POST" action="../../Plugin/Excel/Circulante/Excel.php" >
    <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
    <input type="hidden" name="columna" value="<?php echo $columna ?>">
    <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
-   <button type="submit" class="btn btn-outline-primary" name="circulante1">
+   <button data-toggle="tooltip" data-placement="top" title="Exportar en Excel" type="submit" class="btn btn-outline-primary" name="circulante1">
     <svg class="bi" width="20" height="20" fill="currentColor">
         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
     </svg>
 </button>
 </form>
-<form method="POST" action="form_circulante1.php" target="_blank" class="ml-2">
- <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
+<form method="POST" action="form_circulante1.php" ¿ class="ml-2">
+ <button data-toggle="tooltip" data-placement="top" title="Nueva solicitud" style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
 </form>
 </div>
 <?php } ?>

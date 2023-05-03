@@ -60,6 +60,20 @@
                     $final7 = 0;
                     $final8 = 0;
                     $final9 = 0;
+                    $verificar1 =mysqli_query($conn, "SELECT codigo FROM detalle_vale ");
+        if (!mysqli_num_rows($verificar1)>0) {?>
+            <style>
+                .c{
+                    display: none;
+                }
+            </style>
+        <?php }else{?>
+            <style>
+                .c{
+                    display: block;
+                }
+            </style>
+        <?php }
                     $verificar =mysqli_query($conn, "SELECT codVale FROM tb_vale ");
                     if (!mysqli_num_rows($verificar)>0) {
                         echo "<script>window.location.href='../../Vistas/Vale/solicitudes_vale.php'; </script>";
@@ -216,7 +230,7 @@
 
                             <tr>
                                <td  data-label="Código"><?php echo $productos['codigo'] ?></td>
-                               <td  data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
+                               <td  data-label="Descripción" data-toggle="tooltip" data-placement="right" title="<?php echo $descripcion ?>" > <?php  echo substr($descripcion, 0, 25)."..."?></td>
                                <td  data-label="Unidada de Medida"><?php echo $productos['unidad_medida'] ?></td>
                                <td  data-label="Cantidad"><?php echo $stock ?></td>
                                <td  data-label="Cantidad"><?php echo $cantidad_desp ?></td>
@@ -233,14 +247,13 @@
        </div>
    </div>
 </div>
-<div class="col-md-3">
+<div class="col-md-3" >
+
     <div class="card">
         <div class="card-body">
-            <div class="row">
-                <div class="col-md-12">
-                    <div style="position: initial;" class="btn-group my-3 mx-2" role="group" aria-label="Basic outlined example">
+                    <div  class="btn-group mb-4" role="group" aria-label="Basic outlined example">
 
-                        <form method="POST" action="../../Plugin/Imprimir/Vale/vale.php" target="_blank">
+                        <form method="POST" action="../../Plugin/Imprimir/Vale/vale.php" target="_blank" class="c">
                             <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
 
                             <input type="hidden" name="cod" value="<?php echo $codigo ?>">
@@ -254,7 +267,7 @@
 
                             </button>
                         </form>
-                        <form method="GET" action="../../Plugin/PDF/Vale/pdf_vale.php" target="_blank" class="ml-1">
+                        <form method="GET" action="../../Plugin/PDF/Vale/pdf_vale.php" target="_blank" class="ml-1 c">
                             <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
                             <input type="hidden" name="cod" value="<?php echo $codigo ?>">
 
@@ -267,7 +280,7 @@
 
                             </button>
                         </form>
-                        <form method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php" class="ml-1">
+                        <form method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php" class="ml-1 c">
                             <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
 
                             <input type="hidden" name="cod" value="<?php echo $codigo ?>">
@@ -297,7 +310,6 @@
                         <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#new">➕</button>
                     </form>
                 </div>
-                <hr>
                 <p align="right"><b style="float: left;">Cantidad Solicitada: </b><?php echo $final3 ?></p>
                 <p align="right"><b style="float: left;">Cantidad Despachada: </b><?php echo $final5 ?></p>
 
@@ -305,9 +317,6 @@
                 <p align="right"><b style="float: left;">SubTotal</b><?php echo $final1?></p>
 
 
-            </div>
-
-        </div>
 
     </div>
 
@@ -452,7 +461,7 @@
                     <input type="hidden" name="mes" id="mes">
                     <input type="hidden" name="año" id="ano">
                 </td>
-                <td  data-label="Descripción"><?php echo $descripcion ?></td>
+                <td  data-label="Descripción" data-toggle="tooltip" data-placement="right" title="<?php echo $descripcion ?>" > <?php  echo substr($descripcion, 0, 25)."..."?></td>
                 <td  data-label="Unidada de Medida"><?php echo $um ?></td>
                 <td  data-label="Cantidad"><?php echo $stock ?></td>
                 <td  data-label="Cantidad"><input style="background:transparent; border: 1px solid #000;  width: 100%; text-align: center" class="form-control"  required type="number" step="0.01" min="0.00" max="<?php echo $stock ?>"  name="cantidad_despachada[]"  value=""></td>

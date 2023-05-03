@@ -47,6 +47,20 @@ if (!isset($_SESSION['signin'])>0) {
             </style>
             <br><br><br>
             <?php
+            $verificar1 =mysqli_query($conn, "SELECT codigo FROM detalle_vale ");
+        if (!mysqli_num_rows($verificar1)>0) {?>
+            <style>
+                .c{
+                    display: none;
+                }
+            </style>
+        <?php }else{?>
+            <style>
+                .c{
+                    display: block;
+                }
+            </style>
+        <?php }
             $verificar =mysqli_query($conn, "SELECT codVale FROM tb_vale ");
             if (!mysqli_num_rows($verificar)>0) {
                 echo "<script>window.location.href='../../Vistas/Vale/solicitudes_vale.php'; </script>";
@@ -201,7 +215,7 @@ if (!isset($_SESSION['signin'])>0) {
             <div class="row">
                 <div class="col-md-12">
                     <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-                        <form method="POST" action="../../Plugin/Imprimir/Vale/vale.php" target="_blank">
+                        <form method="POST" action="../../Plugin/Imprimir/Vale/vale.php" target="_blank" class="c">
                            <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
 
                            <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
@@ -213,7 +227,7 @@ if (!isset($_SESSION['signin'])>0) {
 
                         </button>
                     </form>
-                    <form method="GET" action="../../Plugin/PDF/Vale/pdf_vale.php" target="_blank">
+                    <form method="GET" action="../../Plugin/PDF/Vale/pdf_vale.php" target="_blank" class="c">
                         <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
 
                         <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
@@ -225,7 +239,7 @@ if (!isset($_SESSION['signin'])>0) {
 
                         </button>
                     </form>
-                    <form method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php" >
+                    <form method="POST" action="../../Plugin/Excel/Detalles_dt/Excel.php" class="c">
                        <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos1['codVale']?>" name="vale">
 
                        <input type="hidden" name="cod" value="<?php echo $codigo ?>">

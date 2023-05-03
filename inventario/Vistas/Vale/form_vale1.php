@@ -28,6 +28,7 @@ if (!isset($_SESSION['signin'])>0) {
 <body>
 
    <style>  
+
     .btn-group{
         font-size: 12px;
         float: right;

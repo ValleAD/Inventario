@@ -33,7 +33,7 @@ if ($buscarAlumnos->num_rows > 0)
                </div>
                <div class="col-8">
                     
-            <button id="submit" style="width: 20%; float: right;font-size: 16px"   type="submit" name="solicitar" class=" form-control btn btn-success btn-sm text-center"  data-toggle="tooltip" data-placement="top" title="Solicitar">Solicitar</button>
+            <button id="submit" style="width: 20%;margin-top: 1px; float: right;font-size: 16px"   type="submit" name="solicitar" class=" form-control btn btn-success btn-sm text-center"  data-toggle="tooltip" data-placement="top" title="Solicitar">Solicitar</button>
                </div>
           </div>
      </div>
@@ -115,6 +115,7 @@ echo $tabla;
 
 <script>
    var table = $('#tblElecProducts').DataTable( {
+   
     columnDefs: [ {
         orderable: false,
         className: 'select-checkbox',
@@ -123,7 +124,7 @@ echo $tabla;
         select: {
         style:    'multi'
     },
-    lengthMenu: [[10, -1], [10,"Todos los registros"]],
+    lengthMenu: [[5, -1], [5,"Todos los registros"]],
     responsive: true,
 autoWidth:false,
 

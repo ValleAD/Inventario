@@ -58,32 +58,45 @@ if (!isset($_SESSION['signin'])>0) {
 <section id="section" class="mx-3 p-2" style="background-color:white; border-radius:5px;margin-bottom: 3%;"> 
     <center><h1>Solicitudes de Compra</h1></center>
     
-    <?php if ($tipo_usuario==1) {?>
+    <?php $verificar =mysqli_query($conn, "SELECT nSolicitud FROM tb_compra ");
+        if (!mysqli_num_rows($verificar)>0) {?>
+            <style>
+                .c{
+                    display: none;
+                }
+            </style>
+        <?php }else{?>
+            <style>
+                .c{
+                    display: block;
+                }
+            </style>
+        <?php }if ($tipo_usuario==1) {?>
 
 
         <div id="x" style="position: initial;" class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example">
-           <form id="x" method="POST" style=" position: initial;" action="../../Plugin/Imprimir/Compra/soli_compra.php" target="_blank">
+           <form id="x" method="POST" style=" position: initial;" action="../../Plugin/Imprimir/Compra/soli_compra.php" target="_blank" class="c">
                <button  data-toggle="tooltip" data-placement="top" title="Imprimir" style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                     <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
             </button>
         </form>
-        <form id="x" method="POST" action="../../Plugin/PDF/Compra/pdf_soli_compra.php" class="mx-1" target="_blank">
+        <form id="x" method="POST" action="../../Plugin/PDF/Compra/pdf_soli_compra.php" class="mx-1 c" target="_blank">
            <button  data-toggle="tooltip" data-placement="top" title="Exportar en PDF" style="position: initial;"type="submit" class="btn btn-outline-primary" name="id" target="_blank">
             <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
             </svg>
         </button>
     </form>
-    <form id="ssas"  method="POST" action="../../Plugin/Excel/Compra/Excel.php" target="_blank">
+    <form id="ssas"  method="POST" action="../../Plugin/Excel/Compra/Excel.php"  class="mr-1 c">
         <button  data-toggle="tooltip" data-placement="top" title="Exportar en Excel" type="submit" class="btn btn-outline-primary" name="compra" target="_blank">
             <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
             </svg>
         </button>
     </form>
-    <form method="POST" action="form_compra1.php" target="_blank" class="ml-2">
+    <form method="POST" action="form_compra1.php"  >
      <button  data-toggle="tooltip" data-placement="top" title="Nueva solicitud" style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
  </form>
  
@@ -91,7 +104,7 @@ if (!isset($_SESSION['signin'])>0) {
 <?php }else{
     ?>
     <div  id="x" style="position: initial;" class="btn-group mb-3  mx-2" style=" position: initial;" role="group" aria-label="Basic outlined example">
-       <form id="ssas" method="POST" action="../../Plugin/Imprimir/Compra/soli_compra.php" target="_blank">
+       <form id="ssas" method="POST" action="../../Plugin/Imprimir/Compra/soli_compra.php" target="_blank" class="c">
         <?php $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario'";
         $result = mysqli_query($conn, $sql);
         while ($datos_sol = mysqli_fetch_array($result)){?>
@@ -104,7 +117,7 @@ if (!isset($_SESSION['signin'])>0) {
         </svg>
     </button>
 </form>
-<form id="ssas" method="POST" action="../../Plugin/PDF/Compra/pdf_soli_compra.php" class="mx-1" target="_blank">
+<form id="ssas" method="POST" action="../../Plugin/PDF/Compra/pdf_soli_compra.php" class="mx-1 c" target="_blank">
     <?php $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario'";
     $result = mysqli_query($conn, $sql);
     while ($datos_sol = mysqli_fetch_array($result)){?>
@@ -117,7 +130,7 @@ if (!isset($_SESSION['signin'])>0) {
     </svg>
 </button>
 </form>
-<form id="ssas"  method="POST" action="../../Plugin/Excel/Compra/Excel.php" target="_blank">
+<form id="ssas"  method="POST" action="../../Plugin/Excel/Compra/Excel.php" class="mr-1 c">
     <input type="hidden" name="columna" value="<?php echo $columna ?>">
     <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
     <button  data-toggle="tooltip" data-placement="top" title="Exportar en Excel" type="submit" class="btn btn-outline-primary" name="compra1" target="_blank">
@@ -126,7 +139,7 @@ if (!isset($_SESSION['signin'])>0) {
         </svg>
     </button>
 </form>
-<form method="POST" action="form_compra1.php" target="_blank" class="ml-2">
+<form method="POST" action="form_compra1.php" >
  <button  data-toggle="tooltip" data-placement="top" title="Nueva solicitud" style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
 </form>
 </div>
