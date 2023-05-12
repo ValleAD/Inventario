@@ -196,11 +196,17 @@ $final10 = "0.00";
 $final11 = "0.00";
 $final12 = "0.00";
 $final13 = "0.00";
-if (isset($_POST['almacen'])) {
-$sql = "SELECT codAlmacen, codigo,SUM(cantidad_solicitada),SUM(cantidad_despachada),precio,nombre,unidad_medida,idusuario,tb_almacen,departamento,encargado,fecha_solicitud,estado FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen ";
+session_start();    
+$tipo_usuario = $_SESSION['tipo_usuario'];
+$idusuario = $_SESSION['iduser'];
 
-}if (isset($_POST['almacen1'])) {$idusuario=$_POST['idusuario'];
-$sql = "SELECT codAlmacen, codigo,SUM(cantidad_solicitada),SUM(cantidad_despachada),precio,nombre,unidad_medida,idusuario,tb_almacen,departamento,encargado,fecha_solicitud,estado FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen WHERE idusuario='$idusuario' ";
+if ($tipo_usuario==1) {
+$sql = "SELECT codigo,SUM(cantidad_solicitada),SUM(cantidad_despachada),precio,nombre,unidad_medida,idusuario,tb_almacen,departamento,encargado,fecha_solicitud,estado FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen GROUP by codigo";
+
+}
+if ($tipo_usuario==2) {
+
+$sql = "SELECT codigo,SUM(cantidad_solicitada),SUM(cantidad_despachada),precio,nombre,unidad_medida,idusuario,tb_almacen,departamento,encargado,fecha_solicitud,estado FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen WHERE idusuario='$idusuario' GROUP by codigo";
 }
     $result = mysqli_query($conn, $sql);
 $n=0;
@@ -236,7 +242,7 @@ while ($productos = mysqli_fetch_array($result)){
         }
 
 
-    	$sheet->setCellValue('A' .$fila, $productos['codAlmacen']);
+    	$sheet->setCellValue('A' .$fila, $productos['codigo']);
         $sheet->setCellValue('B' .$fila, $productos['departamento']);
     	$sheet->setCellValue('C' .$fila, $productos['encargado']." "."(".$u.")");
     	$sheet->setCellValue('D' .$fila, $productos['codigo']);
@@ -291,14 +297,13 @@ $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 7 .':J'.$fila + 7);
 
 
 
-if (isset($_POST['almacen'])) {
+if ($tipo_usuario==1) {
+        $sql="SELECT Mes,SUM(stock) FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra WHERE codigo='$cod' GROUP by Mes;";
+        }if ($tipo_usuario==2) {
+        $sql="SELECT Mes,SUM(stock),idusuario FROM tb_compra db JOIN detalle_compra b ON db.nSolicitud = b.solicitud_compra WHERE idusuario='$idusuario' GROUP by Mes;";
+        }
 
-    $sql1="SELECT Mes,SUM(cantidad_solicitada) FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen  GROUP by Mes";
-}if (isset($_POST['almacen1'])) {
-
-    $sql1="SELECT Mes,SUM(cantidad_solicitada),idusuario FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen WHERE db.idusuario='$idusuario'  GROUP by Mes";
-}
-$result1 = mysqli_query($conn, $sql1);
+$result1 = mysqli_query($conn, $sql);
 while ($productos1 = mysqli_fetch_array($result1)){
     $mes=$productos1['Mes'];
     $cantidad=$productos1['SUM(cantidad_solicitada)'];
@@ -348,14 +353,13 @@ $spreadsheet->getActiveSheet()->getStyle('A'.$fila+ 11 .':J'.$fila + 11)->applyF
 $sheet->setCellValue('A'.$fila +11 , "STOCK POR AÑO:");
 $spreadsheet->getActiveSheet()->mergeCells('A'.$fila+ 11 .':J'.$fila + 11);
 
-if (isset($_POST['almacen'])) {
-
-    $sql2="SELECT Año,SUM(cantidad_solicitada) FROM `detalle_almacen` D JOIN `tb_almacen` V ON D.tb_almacen=V.codAlmacen GROUP by Año;";
-}if (isset($_POST['almacen1'])) {
-
-    $sql2="SELECT Año,SUM(cantidad_solicitada) FROM tb_almacen db JOIN detalle_almacen b ON db.codAlmacen = b.tb_almacen WHERE db.idusuario='$idusuario'  GROUP by Año";
-}
-$result1 = mysqli_query($conn, $sql2);
+    if ($tipo_usuario==1) {
+     
+     $sql="SELECT Año,SUM(stock) FROM `detalle_compra` D JOIN `tb_compra` V ON D.solicitud_compra=V.nSolicitud WHERE codigo='$cod' GROUP by Año;";
+     } if ($tipo_usuario==2) {
+     $sql="SELECT Año,SUM(stock),idusuario FROM `detalle_compra` D JOIN `tb_compra` V ON D.solicitud_compra=V.nSolicitud WHERE idusuario='$idusuario' GROUP by Año;";
+     }
+$result1 = mysqli_query($conn, $sql);
 while ($productos1 = mysqli_fetch_array($result1)){
     $Año=$productos1['Año'];
     $cantidad=$productos1['SUM(cantidad_solicitada)'];

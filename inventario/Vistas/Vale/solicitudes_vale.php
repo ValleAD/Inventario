@@ -39,7 +39,7 @@ if (!isset($_SESSION['signin'])>0) {
         background: white;
     }
     @media (max-width: 800px){
-       #section{
+     #section{
         margin: -15%6%6%7%;
 
     }
@@ -48,98 +48,9 @@ if (!isset($_SESSION['signin'])>0) {
 <br><br><br>
 <section id="section" class="mx-3 p-2" style="background-color:white; border-radius:5px;margin-bottom: 3%;"> 
     <center><h1 style="margin-top:2%">Solicitudes Vale</h1></center><br>
-
-    <?php $verificar =mysqli_query($conn, "SELECT codVale FROM tb_vale ");
-        if (!mysqli_num_rows($verificar)>0) {?>
-            <style>
-                .c{
-                    display: none;
-                }
-            </style>
-        <?php }else{?>
-            <style>
-                .c{
-                    display: block;
-                }
-            </style>
-        <?php } if ($tipo_usuario==1) {?>  
-
-     <div id="x" class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
-         <form  method="POST" class="mx-1" action="../../Plugin/Imprimir/Vale/soli_vale.php" target="_blank" class="c">
-             <button  data-toggle="tooltip" data-placement="top" title="Imprimir" style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">    
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                    <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
-                </svg>
-            </button>
-        </form>
-        <form  method="POST" action="../../Plugin/PDF/Vale/pdf_soli_vale.php" target="_blank" class="mx-0 c">
-         <button  data-toggle="tooltip" data-placement="top" title="Exportar en PDF" style="position: initial;" type="submit" class="btn btn-outline-primary" name="id" target="_blank">
-            <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
-            </svg>
-        </button>
-    </form>
-    <form  style="margin-left: 2.6%;" method="POST" action="../../Plugin/Excel/Vale/Excel.php" class="mr-1 c">
-        <button  data-toggle="tooltip" data-placement="top" title="Exportar en Excel" type="submit" class="btn btn-outline-primary" name="vale" target="_blank">
-            <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
-            </svg>
-        </button>
-    </form>
-    <form method="POST" action="form_vale1.php" >
-     <button  data-toggle="tooltip" data-placement="top" title="Nueva solicitud" style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
- </form>
-</div>    
-<?php }if ($tipo_usuario==2) {?>
- <div  id="x" class="btn-group mb-3 my-1 mx-2" role="group" aria-label="Basic outlined example" style="position: initial;">
-     <form  method="POST"  action="../../Plugin/Imprimir/Vale/soli_vale.php" target="_blank" class="c">
-         <?php $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario'";
-         $result = mysqli_query($conn, $sql);
-         $n=0;
-         while ($datos_sol = mysqli_fetch_array($result)){?>
-             <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
-
-         <?php } ?>
-         <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1">
-            <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
-            </svg>
-        </button>
-    </form>
-    <form  class="mx-1 c"  method="POST" action="../../Plugin/PDF/Vale/pdf_soli_vale.php" target="_blank">
-     <?php $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario'";
-     $result = mysqli_query($conn, $sql);
-     $n=0;
-     while ($datos_sol = mysqli_fetch_array($result)){?>
-         <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
-
-     <?php } ?>
-     <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1" target="_blank">
-        <svg class="bi" width="20" height="20" fill="currentColor">
-            <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
-        </svg>
-    </button>
-</form>
-<form    method="POST" action="../../Plugin/Excel/Vale/Excel.php" class="mr-1 c">
- <?php $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario'";
- $result = mysqli_query($conn, $sql);
- $n=0;
- while ($datos_sol = mysqli_fetch_array($result)){?>
-     <input type="hidden" name="idusuario" value="<?php echo $datos_sol['idusuario'] ?>">
-
- <?php } ?>
- <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">
-    <svg class="bi" width="20" height="20" fill="currentColor">
-        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
-    </svg>
-</button>
-</form>
-
-<form method="POST" action="form_vale1.php" >
- <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
-</form>
-</div>
-<?php } ?>
+    
+<?php include '../../Include/Vale/vale.php';?>
+<?php include '../../Include/Vale/Exportar_vale.php'; ?>
 <table class="table" id="exam" >
     <thead>
       <tr>
@@ -158,33 +69,33 @@ if (!isset($_SESSION['signin'])>0) {
     <?php
 
     if ($tipo_usuario==1) {
-    $sql = "SELECT * FROM tb_vale order by codVale desc";
-}else{
-     $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario' ORDER  BY codVale desc ";
+        $sql = "SELECT * FROM tb_vale order by codVale desc";
+    }else{
+       $sql = "SELECT * FROM tb_vale WHERE idusuario='$idusuario' ORDER  BY codVale desc ";
+   }
+   $result = mysqli_query($conn, $sql);
+   while ($solicitudes = mysqli_fetch_array($result)){
+
+    $Idusuario = $solicitudes['idusuario'];
+    $des=$solicitudes['departamento'];
+    if ($des=="") {
+        $des="Departamentos No disponible";
+    }else{
+
+     $des=$solicitudes['departamento']; 
+ }
+ if ($Idusuario==1) {
+    $u='Administrador';
 }
-    $result = mysqli_query($conn, $sql);
-    while ($solicitudes = mysqli_fetch_array($result)){
+else {
+    $u='Cliente';
+}
+if ($Idusuario==0) {
+    $u='Invitado';
+}
+?>
 
-        $Idusuario = $solicitudes['idusuario'];
-        $des=$solicitudes['departamento'];
-        if ($des=="") {
-            $des="Departamentos No disponible";
-        }else{
-
-           $des=$solicitudes['departamento']; 
-       }
-       if ($Idusuario==1) {
-        $u='Administrador';
-    }
-    else {
-        $u='Cliente';
-    }
-    if ($Idusuario==0) {
-        $u='Invitado';
-    }
-    ?>
-
-    <tr >
+<tr >
     <td  data-label="Código" class="delete"><?php  echo $solicitudes['codVale']; ?></td>
     <td  data-label="Departamento Solicitante" class="delete"><?php  echo $des; ?></td>
 
@@ -194,10 +105,10 @@ if (!isset($_SESSION['signin'])>0) {
     if($solicitudes['estado']=='Pendiente') {
         echo ' style="background-color:green ;width:100%; border-radius:5px;text-align:center; color: white;"';
     }else if($solicitudes['estado']=='Aprobado') {
-     echo ' style="background-color:blueviolet ;width:100%; border-radius:5px;text-align:center; color: white;"';
- }else if($solicitudes['estado']=='Rechazado') {
-     echo ' style="background-color:red ;width:100%; border-radius:5px;text-align:center; color: white;"';
- }
+       echo ' style="background-color:blueviolet ;width:100%; border-radius:5px;text-align:center; color: white;"';
+   }else if($solicitudes['estado']=='Rechazado') {
+       echo ' style="background-color:red ;width:100%; border-radius:5px;text-align:center; color: white;"';
+   }
 ?> class="form-control" type="text" name="" value="<?php echo $solicitudes['estado'] ?>"></td></td>
 <td   data-label="Detalles">
 
@@ -216,7 +127,7 @@ if (!isset($_SESSION['signin'])>0) {
 
 </section>
 <script>
-   $(document).ready(function () {
+ $(document).ready(function () {
     $('#exam').DataTable({
 
         responsive: true,

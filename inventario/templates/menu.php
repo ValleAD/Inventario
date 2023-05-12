@@ -16,6 +16,7 @@ $idusuario = $_SESSION['iduser'];
     <link rel="stylesheet" type="text/css" href="styles/estilo_men.css">
     <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
     <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.min.css.map">
     <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/sweetalert2.min.css">
 
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
@@ -314,12 +315,13 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 </div>
 </div>
 </div>
-
-
 <?php } ?>
+<?php include('Include/Modal/modal.php') ?>
 <?php include ('loader.php') ?>
 <script src="Plugin/bootstrap/js/jquery-latest.js"></script>
 <script src="Plugin/bootstrap/js/bootstrap.min.js"></script>
+<script src="Plugin/bootstrap/js/bootstrap.js.map"></script>
+<script src="Plugin/bootstrap/js/bootstrap.min.js.map"></script>
 <script src="Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
 <script src="Plugin/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="Plugin/bootstrap/js/popper.min.js"></script>
@@ -327,34 +329,11 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 
 
 <script type="text/javascript">
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-  })
-    function codigo_fecha() {
-     
-       Swal.fire({
-           title: 'Historial por Código y Fechas ',
-           html: '<form method="POST"  id="t"><label style="float: left;">Codigo del Producto</label><input type="number" class="form-control " id="codigo1" ><label style="float: left;">Hasta</label><input type="Date" class="form-control " id="f1" ><label style="float: left;margin-top:3%;">Hasta</label><input type="Date" class="form-control " id="f2" ></form>',
-           icon: 'info',
-           allowOutsideClick: false,
-           showConfirmButton: true,
-           showCloseButton: true,
-           footer:"Sistema De Inventario",
-           confirmButtonText: "Buscar por Código y Fechas",
+        $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
 
-       }).then((result) => {
-          if (result.isConfirmed) {
-            var unidad=$.trim($('#codigo1').val())
-            var f1=$.trim($('#f1').val())
-            var f2=$.trim($('#f2').val())
-            Swal.fire({icon: 'success',  text:" En este Momento sera Redigido Hacia el Historial",allowOutsideClick: false,}).then((resultado) =>{
-                if (resultado.value) {
-                 window.location.href='Vistas/Productos/Historial.php?Busqueda='+unidad+'&f1='+f1+'&f2='+f2+'&Consultar2';                               
-             }
-         });
+})  
 
-        }});    
-   }
    $(document).ready(main);
 
    var contador = 1;
@@ -363,7 +342,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
     $(this).children("ul").slideToggle();
 });
 
-   
+
    $(".submenu1").click(function(p) {
      p.stopPropagation();
  });

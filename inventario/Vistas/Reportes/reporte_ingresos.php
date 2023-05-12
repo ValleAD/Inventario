@@ -219,23 +219,24 @@ if (!isset($_SESSION['signin'])>0) {
 <div class="col-md-3">
     <div class="card">
         <div class="card-body">
-            <?php if ($tipo_usuario==1) {?>
+            <?php include '../../Include/Circulante/circulante.php';?>
+
                 <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-                    <form  method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php" target="_blank">
+                    <form  method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php" target="_blank" class="c">
                         <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante">
                             <svg class="bi" width="20" height="20" fill="currentColor">
                                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                             </svg>
                         </button>
                     </form>
-                    <form  method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php" class="mx-1" target="_blank">
+                    <form  method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php" class="mx-1 c" target="_blank">
                         <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante">
                             <svg class="bi" width="20" height="20" fill="currentColor">
                                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                             </svg>
                         </button>
                     </form>
-                    <form  method="POST" action="../../Plugin/Excel/Ingresos/Circulante/Excel.php" >
+                    <form  method="POST" action="../../Plugin/Excel/Ingresos/Circulante/Excel.php" class="c">
                         <button type="submit" class="btn btn-outline-primary" name="circulante" >
                             <svg class="bi" width="20" height="20" fill="currentColor">
                                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
@@ -244,36 +245,7 @@ if (!isset($_SESSION['signin'])>0) {
                     </form>
 
                 </div>
-            <?php } if ($tipo_usuario==2) {?>
-                <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-                    <form  method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php" target="_blank">
-                        <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                        <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante">
-                            <svg class="bi" width="20" height="20" fill="currentColor">
-                                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
-                            </svg>
-                        </button>
-                    </form>
-                    <form  method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php" class="mx-1" target="_blank">
-                        <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                        <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="circulante">
-                            <svg class="bi" width="20" height="20" fill="currentColor">
-                                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
-                            </svg>
-                        </button>
-                    </form>
-                    <form id="form2" method="POST" action="../../Plugin/Excel/Ingresos/Circulante/Excel.php" >
-                        <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                        <button type="submit" class="btn btn-outline-primary" name="circulante" >
-                            <svg class="bi" width="20" height="20" fill="currentColor">
-                                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
-                            </svg>
-                        </button>
-                    </form>
 
-                </div>   
-            <?php } ?>
-            <br><hr>
             <p align="right"><b style="float: left;">Cantidad Solicitada: </b><?php echo $final3 ?></p>
             <p align="right"><b style="float: left;">Costo Unitario: </b><?php echo $final9 ?></p>
             <p align="right"><b style="float: left;">SubTotal</b><?php echo $final1?></p>
@@ -283,7 +255,7 @@ if (!isset($_SESSION['signin'])>0) {
 </div>
 <br>
 <div class="row">
-  <div class="col-md-6 mb-3"> 
+  <div class="col-md-6 mb-3 c"> 
     <div class="card">
         <div class="card-body">
 
@@ -291,7 +263,7 @@ if (!isset($_SESSION['signin'])>0) {
                 <thead>
                     <tr>
                         <th  width="30%" style="text-align: left;">Stock del Mes</th>
-                        <th style="text-align: left;" >Existencias</th>
+                        <th style="text-align: left;" >Solicitudes</th>
                         <th style="text-align: left;" >Codigo</th>
                         <th style="text-align: left;">Stock</th>
                         <th style="text-align: left;">Precio</th>
@@ -360,14 +332,14 @@ if (!isset($_SESSION['signin'])>0) {
         </div>
     </div>
 </div>
-<div class="col-md-6"> 
+<div class="col-md-6 c"> 
     <div class="card">
         <div class="card-body">
           <table style="width: 100%;" cellspacing="0" >
             <thead>
                 <tr>
                     <th  width="30%" style="text-align: left;">Stock del Año</th>
-                    <th style="text-align: left;" >Existencias</th>
+                    <th style="text-align: left;" >Solicitudes</th>
                     <th style="text-align: left;" >Codigo</th>
                     <th style="text-align: left;">Stock</th>
                     <th style="text-align: left;">Precio</th>
@@ -538,10 +510,11 @@ else if($mostrar == "almacen"){
 <div class="col-md-3">
     <div class="card">
         <div class="card-body">
-            <?php if ($tipo_usuario==1) { ?>
+<?php include '../../Include/Almacen/almacen.php';?>
+
                 <div  style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
                     <form  method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php" target="_blank">
-                        <input readonly class="form-control"  type="hidden" value="<?php echo $productos['codAlmacen'] ?>" name="num_sol">
+                      
 
                         <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen">
                             <svg class="bi" width="20" height="20" fill="currentColor">
@@ -550,7 +523,7 @@ else if($mostrar == "almacen"){
                         </button>
                     </form>
                     <form  method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php" class="mx-1" target="_blank">
-                        <input readonly class="form-control"  type="hidden" value="<?php echo $productos['codAlmacen'] ?>" name="num_sol">
+                        
 
                         <button  style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen">
                             <svg class="bi" width="20" height="20" fill="currentColor">
@@ -569,36 +542,7 @@ else if($mostrar == "almacen"){
                     </form>
 
                 </div>
-            <?php } if ($tipo_usuario==2) { ?>
-                <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-                    <form  method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php" target="_blank">
-                        <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                        <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen1">
-                            <svg class="bi" width="20" height="20" fill="currentColor">
-                                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
-                            </svg>
-                        </button>
-                    </form>
-                    <form  method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php" class="mx-1" target="_blank">
-                        <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                        <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="almacen1">
-                            <svg class="bi" width="20" height="20" fill="currentColor">
-                                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
-                            </svg>
-                        </button>
-                    </form>
-                    <form id="form2" method="POST" action="../../Plugin/Excel/Ingresos/Almacen/Excel.php" >
-                        <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                        <button type="submit" class="btn btn-outline-primary" name="almacen1" >
-                            <svg class="bi" width="20" height="20" fill="currentColor">
-                                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
-                            </svg>
-                        </button>
-                    </form>
-
-                </div>
-
-            <?php } ?>
+            
             <p align="right"><b style="float: left;">Cantidad Solicitada: </b><?php echo $final3 ?></p>
             <p align="right"><b style="float: left;">Costo Unitario: </b><?php echo $final9 ?></p>
             <p align="right"><b style="float: left;">SubTotal</b><?php echo $final1?></p>
@@ -608,7 +552,7 @@ else if($mostrar == "almacen"){
 </div>
 <br>
 <div class="row">
-  <div class="col-md-6 mb-3">    
+  <div class="col-md-6 mb-3 c">    
 
    <div class="card">
     <div class="card-body">
@@ -616,7 +560,7 @@ else if($mostrar == "almacen"){
             <thead>
                 <tr>
                     <th  width="30%" style="text-align: left;">Stock del Mes</th>
-                    <th style="text-align: left;" >Existencias</th>
+                    <th style="text-align: left;" >Solicitudes</th>
                     <th style="text-align: left;" >Codigo</th>
                     <th style="text-align: left;">Stock</th>
                     <th style="text-align: left;">Precio</th>
@@ -683,7 +627,7 @@ else if($mostrar == "almacen"){
         </div>
     </div>
 </div>
-<div class="col-md-6">
+<div class="col-md-6 c">
 
    <div class="card">
     <div class="card-body">
@@ -691,7 +635,7 @@ else if($mostrar == "almacen"){
             <thead>
                 <tr>
                     <th  width="30%" style="text-align: left;">Stock del Año</th>
-                    <th style="text-align: left;" >Existencias</th>
+                    <th style="text-align: left;" >Solicitudes</th>
                     <th style="text-align: left;" >Codigo</th>
                     <th style="text-align: left;">Stock</th>
                     <th style="text-align: left;">Precio</th>
@@ -703,7 +647,7 @@ else if($mostrar == "almacen"){
 
            $sql="SELECT fecha_solicitud, Count(codigo),codigo,Año,SUM(cantidad_solicitada),SUM(precio) FROM `detalle_almacen` D JOIN `tb_almacen` V ON D.tb_almacen=V.codAlmacen GROUP by Año,codigo;";
        } if ($tipo_usuario==2) {
-           $sql="SELECT fecha_solicitud, Count(codigo),codigo,Año,SUM(cantidad_solicitada),SUM(precio)idusuario FROM `detalle_almacen` D JOIN `tb_almacen` V ON D.tb_almacen=V.codAlmacen WHERE idusuario='$idusuario' GROUP by Año,codigo;";
+           $sql="SELECT fecha_solicitud, Count(codigo),codigo,Año,SUM(cantidad_solicitada),SUM(precio),idusuario FROM `detalle_almacen` D JOIN `tb_almacen` V ON D.tb_almacen=V.codAlmacen WHERE idusuario='$idusuario' GROUP by Año,codigo;";
        }
        $result = mysqli_query($conn, $sql);
        while ($productos = mysqli_fetch_array($result)){
@@ -749,20 +693,7 @@ else if($mostrar == "almacen"){
 </div>
 <?php 
 }
-else if($mostrar == "compra"){
-
-    ?>
-    <style>
-      #act {
-        margin-right: 3%;
-        margin-left: 3%;
-        padding: 0.5%;
-        border-radius: 5px;
-    }
-    input{
-        width: 100%;
-    }
-</style>
+else if($mostrar == "compra"){?>
 <div class="row">
     <div class="col-md-9">
         <div class="card">
@@ -878,9 +809,10 @@ else if($mostrar == "compra"){
 <div class="col-md-3">
     <div class="card">
         <div class="card-body">
-            <?php if ($tipo_usuario==1) { ?>
+            <?php include '../../Include/Compra/compra.php';?>
+
                 <div  style="position: initial;"class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-                    <form  method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php" target="_blank">
+                    <form  method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php" target="_blank" class="c">
 
                         <button  style="position: initial;"type="submit" class="btn btn-outline-primary" name="compra">
                             <svg class="bi" width="20" height="20" fill="currentColor">
@@ -888,7 +820,7 @@ else if($mostrar == "compra"){
                             </svg>
                         </button>
                     </form>
-                    <form  method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php" class="mx-1" target="_blank">
+                    <form  method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php" class="mx-1 c" target="_blank">
 
                         <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="compra">
                             <svg class="bi" width="20" height="20" fill="currentColor">
@@ -896,7 +828,7 @@ else if($mostrar == "compra"){
                             </svg>
                         </button>
                     </form>
-                    <form  method="POST" action="../../Plugin/Excel/Ingresos/Compra/Excel.php" >
+                    <form  method="POST" action="../../Plugin/Excel/Ingresos/Compra/Excel.php" class="c">
 
                         <button type="submit" class="btn btn-outline-primary" name="compra" >
                             <svg class="bi" width="20" height="20" fill="currentColor">
@@ -907,35 +839,7 @@ else if($mostrar == "compra"){
 
 
                 </div>
-            <?php } if ($tipo_usuario==2) { ?>
-                <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-                    <form  method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php" target="_blank">
-                        <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                        <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="compra1">
-                            <svg class="bi" width="20" height="20" fill="currentColor">
-                                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
-                            </svg>
-                        </button>
-                    </form>
-                    <form  method="POST" action="../../Plugin/PDF/Ingresos/pdf_ingresos.php" class="mx-1" target="_blank">
-                        <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                        <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="compra1">
-                            <svg class="bi" width="20" height="20" fill="currentColor">
-                                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
-                            </svg>
-                        </button>
-                    </form>
-                    <form id="form2" method="POST" action="../../Plugin/Excel/Ingresos/Compra/Excel.php" >
-                        <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                        <button type="submit" class="btn btn-outline-primary" name="compra1" >
-                            <svg class="bi" width="20" height="20" fill="currentColor">
-                                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
-                            </svg>
-                        </button>
-                    </form>
-                </div>
-            <?php } ?>
-            <br><hr>
+          
             <p align="right"><b style="float: left;">Cantidad Solicitada: </b><?php echo $final3 ?></p>
             <p align="right"><b style="float: left;">Costo Unitario: </b><?php echo $final9 ?></p>
             <p align="right"><b style="float: left;">SubTotal</b><?php echo $final1?></p>
@@ -946,14 +850,14 @@ else if($mostrar == "compra"){
 
 <br>
 <div class="row">
-    <div class="col-md-6 mb-3">
+    <div class="col-md-6 mb c-3">
         <div class="card">
             <div class="card-body">
              <table style="width: 100%;" cellspacing="0" >
                 <thead>
                     <tr>
                         <th  width="30%" style="text-align: left;">Stock del Mes</th>
-                        <th style="text-align: left;" >Existencias</th>
+                        <th style="text-align: left;" >Solicitudes</th>
                         <th style="text-align: left;" >Codigo</th>
                         <th style="text-align: left;">Stock</th>
                         <th style="text-align: left;">Precio</th>
@@ -1020,14 +924,14 @@ else if($mostrar == "compra"){
             </div>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 c">
         <div class="card">
             <div class="card-body">
           <table style="width: 100%;" cellspacing="0" >
             <thead>
                 <tr>
                     <th  width="30%" style="text-align: left;">Stock del Año</th>
-                    <th style="text-align: left;" >Existencias</th>
+                    <th style="text-align: left;" >Solicitudes</th>
                     <th style="text-align: left;" >Codigo</th>
                     <th style="text-align: left;">Stock</th>
                     <th style="text-align: left;">Precio</th>

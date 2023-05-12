@@ -61,7 +61,7 @@
         $insert0 = "UPDATE  tb_productos SET stock='$totalw' WHERE codProductos='$almacenw'";
         $query0 = mysqli_query($conn, $insert0);
         
-        if ($solicitud_no==$num_sol || $codigo_producto==$codigo_producto) {
+        if ($solicitud_no==$num_sol && $codigo_producto==$codigo_producto) {
             $sql = "SELECT codCirculante,codigo,stock FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante ";
             $result = mysqli_query($conn, $sql);
             $stock=0;
@@ -80,7 +80,7 @@
             $query3 = mysqli_query($conn, $insert3);
 
         }
-        if ($solicitud_no!=$cods || $codigo_producto!=$almacen) {
+        if ($solicitud_no!=$cods && $codigo_producto!=$almacen) {
             $insert = "INSERT INTO detalle_circulante (codigo,descripcion,unidad_medida,stock,precio,tb_circulante) VALUES ('$codigo_producto','$nombre_articulo','$u_m','$soli','$cost','$num_sol')";
             $query2 = mysqli_query($conn, $insert);
 

@@ -47,12 +47,12 @@ if (!isset($_SESSION['signin'])>0) {
     </style>
     <br><br><br><br>
     <section style="background: rgba(255, 255, 255, 0.9); margin: 2%;border-radius: 15px; padding: 1%";>
-     <h1 style="text-align: center;">Egresos de Productos</h1><br>
-     <form method="GET" style="background:transparent;">
+       <h1 style="text-align: center;">Egresos de Productos</h1><br>
+       <form method="GET" style="background:transparent;">
         <div class="card">
             <div class="card-body">
                 <div class="row" >
-                 <div class="col-md-3" style="position: initial; width:50%px;">
+                   <div class="col-md-3" style="position: initial; width:50%px;">
                     <p id="x" class="mx-3" style="color: #000; font-weight: bold;">Mostrar Ingresos por:</p>
                     </div>          <?php if(isset($_GET['ingresos'])){$mostrar = $_GET['ingresos'];
                     if ($mostrar=="bodega" || $mostrar=="vale" ) {?>
@@ -105,6 +105,7 @@ if (!isset($_SESSION['signin'])>0) {
     $count2 = "0.00";
     $count3 = "0.00";   
 
+
     if(isset($_GET['ingresos'])){
 
         $mostrar = $_GET['ingresos'];
@@ -130,7 +131,7 @@ if (!isset($_SESSION['signin'])>0) {
                     <div class="card-body">
                         <h3 style="text-align: center;">Egresos de Bodega</h3>
 
-                        <table  class="table  " id="example" style=" width: 100%">
+                        <table  class="table  flex-lg-wrap" id="example" style=" width: 100%">
                             <thead>
                               <tr id="tr">
                                 <th style="width: 30%;">O. de T. No.</th>
@@ -149,8 +150,8 @@ if (!isset($_SESSION['signin'])>0) {
 
                         </thead>
                         <tbody>
-                           <?php 
-                           if ($tipo_usuario==1) {
+                         <?php 
+                         if ($tipo_usuario==1) {
 
                             $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,odt_bodega,codBodega,departamento,usuario,fecha_registro FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega GROUP by codigo ";
                         }
@@ -235,26 +236,27 @@ if (!isset($_SESSION['signin'])>0) {
             </div>
         </div>
     </div>
+<?php include '../../Include/Bodega/bodega.php';?>
+
     <div class="col-md-3">
         <div class="card">
             <div class="card-body">
-                <?php if ($tipo_usuario==1) {?>
                     <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-                       <form  method="POST" action="../../Plugin/Imprimir/Egresos/reporte_egreso.php"  target="_blank">
+                     <form  method="POST" action="../../Plugin/Imprimir/Egresos/reporte_egreso.php"  target="_blank" class="c">
                         <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="bodega">
                             <svg class="bi" width="20" height="20" fill="currentColor">
                                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                             </svg>
                         </button>
                     </form>
-                    <form  method="POST" action="../../Plugin/PDF/Egresos/pdf_egresos.php" class="mx-1"  target="_blank">
+                    <form  method="POST" action="../../Plugin/PDF/Egresos/pdf_egresos.php" class="mx-1 c"  target="_blank">
                         <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="bodega">
                             <svg class="bi" width="20" height="20" fill="currentColor">
                                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                             </svg>
                         </button>
                     </form>
-                    <form   method="POST" action="../../Plugin/Excel/Egresos/Bodega/Excel.php">
+                    <form   method="POST" action="../../Plugin/Excel/Egresos/Bodega/Excel.php" class="c">
                         <button type="submit" class="btn btn-outline-primary" name="bodega" target="_blank">
                             <svg class="bi" width="20" height="20" fill="currentColor">
                                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
@@ -263,36 +265,7 @@ if (!isset($_SESSION['signin'])>0) {
                     </form>
 
                 </div>
-            <?php } if ($tipo_usuario==2) {?>
-                <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-                    <form  method="POST" action="../../Plugin/Imprimir/Egresos/reporte_egreso.php"  target="_blank">
-                      <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                      <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="bodega1">
-                        <svg class="bi" width="20" height="20" fill="currentColor">
-                            <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
-                        </svg>
-                    </button>
-                </form>
-                <form  method="POST" action="../../Plugin/PDF/Egresos/pdf_egresos.php" class="mx-1"  target="_blank">
-                  <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-                  <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="bodega1">
-                    <svg class="bi" width="20" height="20" fill="currentColor">
-                        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
-                    </svg>
-                </button>
-            </form>
-            <form id="form2"  method="POST" action="../../Plugin/Excel/Egresos/Bodega/Excel.php">
-              <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-              <button type="submit" class="btn btn-outline-primary" name="bodega1" target="_blank">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                    <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
-                </svg>
-            </button>
-        </form>
 
-    </div>
-<?php } ?>
-<hr>
 <p align="right"><b style="float: left;">Cantidad Solicitada: </b><?php echo $final3 ?></p>
 <p align="right"><b style="float: left;">Cantidad Despachada: </b><?php echo $final5 ?></p>
 <p align="right"><b style="float: left;">Costo Unitario: </b><?php echo $final9 ?></p>
@@ -302,9 +275,9 @@ if (!isset($_SESSION['signin'])>0) {
 </div>
 </div>
 <br>
-<div class="row">
-    <div class="col-md-6 mb-3">
-       <div class="card">
+<div class="row ">
+    <div class="col-md-6 mb-3 c">
+     <div class="card">
         <div class="card-body">
 
             <table style="width: 100%;" cellspacing="0" >
@@ -380,10 +353,10 @@ if (!isset($_SESSION['signin'])>0) {
         </div>
     </div>
 </div>
-<div class="col-md-6">
+<div class="col-md-6 c">
     <div class="card">
         <div class="card-body">
-         <table style="width: 100%;" cellspacing="0" >
+           <table style="width: 100%;" cellspacing="0" >
             <thead>
                 <tr>
                     <th  width="30%" style="text-align: left;">Stock del Año</th>
@@ -397,26 +370,26 @@ if (!isset($_SESSION['signin'])>0) {
                 <?php
                 if ($tipo_usuario==1) {
 
-                   $sql="SELECT fecha_registro, Count(codigo),codigo,Año,SUM(stock),SUM(precio) FROM `detalle_bodega` D JOIN `tb_bodega` V ON D.odt_bodega=V.codBodega GROUP by Año;";
-               } if ($tipo_usuario==2) {
+                 $sql="SELECT fecha_registro, Count(codigo),codigo,Año,SUM(stock),SUM(precio) FROM `detalle_bodega` D JOIN `tb_bodega` V ON D.odt_bodega=V.codBodega GROUP by Año;";
+             } if ($tipo_usuario==2) {
                 $sql="SELECT fecha_registro, Count(codigo),codigo,Año,SUM(stock),SUM(precio) FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega WHERE db.idusuario='$idusuario'  GROUP by Año";
             }
             $result = mysqli_query($conn, $sql);
             while ($productos = mysqli_fetch_array($result)){
-             $costs1=$productos['SUM(precio)'];
-             $precio1=number_format($costs1, 2,".",",");
-             $codigo=$productos['codigo'];
-             $count=$productos['Count(codigo)'];
-             $count3 += $count;
-             $final10 += $costs1;
-             $final11   =    number_format($final10, 2, ".",",");
-             $año=$productos['Año'];
-             $cantidad1=$productos['SUM(stock)'];
-             $stock=number_format($cantidad1, 2,".",",");
-             $final12 += $cantidad1;
-             $final13   =    number_format($final12, 2, ".",",");?>
+               $costs1=$productos['SUM(precio)'];
+               $precio1=number_format($costs1, 2,".",",");
+               $codigo=$productos['codigo'];
+               $count=$productos['Count(codigo)'];
+               $count3 += $count;
+               $final10 += $costs1;
+               $final11   =    number_format($final10, 2, ".",",");
+               $año=$productos['Año'];
+               $cantidad1=$productos['SUM(stock)'];
+               $stock=number_format($cantidad1, 2,".",",");
+               $final12 += $cantidad1;
+               $final13   =    number_format($final12, 2, ".",",");?>
 
-             <tr>
+               <tr>
 
                 <td style="text-align: left;"><b><?php echo $año  ?> : </b></b></td>
                 <td style="text-align: left;"><?php echo $count ?></td>
@@ -454,7 +427,7 @@ else if($mostrar == "vale"){
                 <div class="card-body">
                     <h3 style="text-align: center; color: black;">Egresos Por Vale </h3>
 
-                    <table class="table table-responsive " id="example" style=" width: 100%">
+                    <table class="table table-responsive flex-wrap" id="example" style=" width: 100%">
                         <thead>
                           <tr id="tr">
                             <th style="width: 10%;">No. Vale</th>
@@ -473,8 +446,8 @@ else if($mostrar == "vale"){
                     </thead>
                 </thead>
                 <tbody>
-                   <?php
-                   if ($tipo_usuario==1) {
+                 <?php
+                 if ($tipo_usuario==1) {
                     $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,numero_vale,departamento,usuario,fecha_registro FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale GROUP by codigo";
                 }
                 if ($tipo_usuario==2) {
@@ -543,26 +516,27 @@ else if($mostrar == "vale"){
     </div>
 </div>
 </div>
+<?php include '../../Include/Vale/vale.php';?>
 <div class="col-md-3">
     <div class="card">
         <div class="card-body">
             <?php if ($tipo_usuario==1) {?>
                 <div style="position: initial;" class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
-                    <form  method="POST" action="../../Plugin/Imprimir/Egresos/reporte_egreso.php"  target="_blank">
+                    <form  method="POST" action="../../Plugin/Imprimir/Egresos/reporte_egreso.php"  target="_blank" class="c">
                         <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale">
                             <svg class="bi" width="20" height="20" fill="currentColor">
                                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                             </svg>
                         </button>
                     </form>
-                    <form  method="POST" action="../../Plugin/PDF/Egresos/pdf_egresos.php" class="mx-1"  target="_blank">
+                    <form  method="POST" action="../../Plugin/PDF/Egresos/pdf_egresos.php" class="mx-1 c"  target="_blank">
                         <button style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale">
                             <svg class="bi" width="20" height="20" fill="currentColor">
                                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
                             </svg>
                         </button>
                     </form>
-                    <form   method="POST" action="../../Plugin/Excel/Egresos/Vale/Excel.php">
+                    <form   method="POST" action="../../Plugin/Excel/Egresos/Vale/Excel.php" class="c"> 
                         <button type="submit" class="btn btn-outline-primary" name="vale" target="_blank">
                             <svg class="bi" width="20" height="20" fill="currentColor">
                                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
@@ -581,7 +555,7 @@ else if($mostrar == "vale"){
                         </svg>
                     </button>
                 </form>
-                <form   method="POST" action="../../Plugin/PDF/Egresos/pdf_egresos.php" class="mx-1"  target="_blank">
+                <form   method="POST" action="../../Plugin/PDF/Egresos/pdf_egresos.php" class="mx-1 c"  target="_blank">
                   <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
                   <button type="submit" class="btn btn-outline-primary" name="vale1">
                     <svg class="bi" width="20" height="20" fill="currentColor">
@@ -610,11 +584,11 @@ else if($mostrar == "vale"){
 </div>
 </div>
 <br>
-<div class="row">
-    <div class="col-md-6 mb-3">
+<div class="row ">
+    <div class="col-md-6 mb-3 c">
         <div class="card">
             <div class="card-body">
-             <table style="width: 100%;" cellspacing="0" >
+               <table style="width: 100%;" cellspacing="0" >
                 <thead>
                     <tr>
                         <th  width="30%" style="text-align: left;">Stock del Mes</th>
@@ -686,7 +660,7 @@ else if($mostrar == "vale"){
         </div>
     </div>
 </div>
-<div class="col-md-6">
+<div class="col-md-6 c">
     <div class="card">
         <div class="card-body">
             <table style="width: 100%;" cellspacing="0" >
@@ -709,20 +683,20 @@ else if($mostrar == "vale"){
                     }
                     $result = mysqli_query($conn, $sql);
                     while ($productos = mysqli_fetch_array($result)){
-                       $costs1=$productos['SUM(precio)'];
-                       $precio1=number_format($costs1, 2,".",",");
-                       $codigo=$productos['codigo'];
-                       $count=$productos['Count(codigo)'];
-                       $count3 += $count;
-                       $final10 += $costs1;
-                       $final11   =    number_format($final10, 2, ".",",");
-                       $año=$productos['Año'];
-                       $cantidad1=$productos['SUM(stock)'];
-                       $stock=number_format($cantidad1, 2,".",",");
-                       $final12 += $cantidad1;
-                       $final13   =    number_format($final12, 2, ".",",");?>
+                     $costs1=$productos['SUM(precio)'];
+                     $precio1=number_format($costs1, 2,".",",");
+                     $codigo=$productos['codigo'];
+                     $count=$productos['Count(codigo)'];
+                     $count3 += $count;
+                     $final10 += $costs1;
+                     $final11   =    number_format($final10, 2, ".",",");
+                     $año=$productos['Año'];
+                     $cantidad1=$productos['SUM(stock)'];
+                     $stock=number_format($cantidad1, 2,".",",");
+                     $final12 += $cantidad1;
+                     $final13   =    number_format($final12, 2, ".",",");?>
 
-                       <tr>
+                     <tr>
 
                         <td style="text-align: left;"><b><?php echo $año  ?> : </b></b></td>
                         <td style="text-align: left;"><?php echo $count ?></td>
@@ -756,7 +730,7 @@ else if($mostrar == "vale"){
 
 <script>$(document).ready(function () {
 
- $('#example').DataTable({
+   $('#example').DataTable({
 
     responsive: true,
     autoWidth:false,

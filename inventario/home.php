@@ -59,11 +59,14 @@
 </style>
 
 <br><br><br><br>
+
 <center>
     <img src="img/log.png" width="200x200">
     <h1 id="h1">Bienvenidos al Sistema de Inventario del
       <br>Hospital de Zacatecoluca</h1>
   </center>
-  
+  <div>
+      
+  </div>
 </body>
 </html>

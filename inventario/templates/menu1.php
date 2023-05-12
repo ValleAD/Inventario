@@ -24,6 +24,8 @@ $cliente =$_SESSION['signin'];
     <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/rowGroup.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/colReorder.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/bootstrap.min.css.map">
+
     <link rel="icon" type="image/png" sizes="32x32"  href="../../img/log.png">
 </head>
 
@@ -189,7 +191,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                     ?>  
 
                     <li class="submenu submenu4" >
-                        <div id="button" style="padding: 10px;" class="btn c text-white" data-toggle="modal" data-target="#info" style=" background:transparent;text-align: center;"  >
+                        <div id="button" style="padding: 10px;" class="btn  text-white" data-toggle="modal" data-target="#info" style=" background:transparent;text-align: center;"  >
                             <svg class="bi1" width="20" height="20" fill="currentColor">
                                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#person-circle"/>
                             </svg>
@@ -324,8 +326,10 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 </div>
 </div>
 
+<?php include('../../Include/Modal/modal1.php') ?>
 
 <?php } ?>
+
 <script src="../../Plugin/bootstrap/js/jquery-latest.js"></script>
 <script src="../../Plugin/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="../../Plugin/bootstrap/js/popper.min.js"></script>
@@ -370,31 +374,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
     $('.p').show();
 });
 
- function codigo_fecha() {
 
-     Swal.fire({
-         title: 'Historial por Código y Fechas ',
-         html: '<form method="POST"  id="t"><label style="float: left;">Codigo del Producto</label><input type="number" class="form-control " id="codigo1" ><label style="float: left;">Hasta</label><input type="Date" class="form-control " id="f1" ><label style="float: left;margin-top:3%;">Hasta</label><input type="Date" class="form-control " id="f2" ></form>',
-         icon: 'info',
-         allowOutsideClick: false,
-         showConfirmButton: true,
-         showCloseButton: true,
-         footer:"Sistema De Inventario",
-         confirmButtonText: "Buscar por Código y Fechas",
-
-     }).then((result) => {
-      if (result.isConfirmed) {
-        var unidad=$.trim($('#codigo1').val())
-        var f1=$.trim($('#f1').val())
-        var f2=$.trim($('#f2').val())
-        Swal.fire({icon: 'success',  text:" En este Momento sera Redigido Hacia el Historial",allowOutsideClick: false,}).then((resultado) =>{
-            if (resultado.value) {
-               window.location.href='../Productos/Historial.php?Busqueda='+unidad+'&f1='+f1+'&f2='+f2+'&Consultar2';                               
-           }
-       });
-
-    }});    
- }
 //  $('.nav1').css({"margin-left": "-6%", "transition": "3s"});     
 
 //  let ubicacionPrincipal=window.pageYOffset;

@@ -49,85 +49,8 @@ die();
     <br><br><br>
 <section id="section" class="mx-3 p-2" style="background-color:white; border-radius:5px;margin-bottom: 3%;">      
             <h1 class="text-center mg-t" >Solicitudes de Almacen</h1><br>
-<?php $verificar =mysqli_query($conn, "SELECT codAlmacen FROM tb_almacen ");
-        if (!mysqli_num_rows($verificar)>0) {?>
-            <style>
-                .c{
-                    display: none;
-                }
-            </style>
-        <?php }else{?>
-            <style>
-                .c{
-                    display: block;
-                }
-            </style>
-        <?php } if ($tipo_usuario==1) {?>
-     <div id="x"  style="position: initial;" class="btn-group my-2  mx-2" role="group" style="position: initial;" aria-label="Basic outlined example">
-         <form method="POST" action=" ../../Plugin/Imprimir/Almacen/soli_almacen.php"  target="_blank" class="c">
-             <button  data-toggle="tooltip" data-placement="top" title="Imprimir"style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href=" ../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
-                </svg>
-             </button>
-         </form>
-         <form method="POST" action=" ../../Plugin/PDF/Almacen/pdf_soli_almacen.php"  target="_blank" class="mx-1 c">
-             <button  data-toggle="tooltip" data-placement="top" title="Exportar en PDF"style="position: initial;" type="submit" class="btn btn-outline-primary"  target="_blank" name="id">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href=" ../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
-                </svg>
-             </button>
-         </form>
-                 <form   method="POST" action="../../Plugin/Excel/Almacen/Excel.php" class="mr-1 c">
-            <input type="hidden" name="columna" value="<?php echo $columna ?>">
-            <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
-                <button  data-toggle="tooltip" data-placement="top" title="Exportar en Excel"type="submit" class="btn btn-outline-primary" name="almacen" target="_blank">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
-                </svg>
-                </button>
-            </form>
-            <form method="POST" action="form_almacen1.php"  >
-   <button  data-toggle="tooltip" data-placement="top" title="Nueva solicitud"style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
-</form>
-</div> 
-<?php } if ($tipo_usuario==2) {
- ?>
-              <div id="x" style="position: initial;" class="btn-group mb-3 my-2  mx-2" role="group" aria-label="Basic outlined example">
-         <form method="POST" action=" ../../Plugin/PDF/Almacen/soli_almacen.php"  target="_blank">
- 
- <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-       
-
-             <button  data-toggle="tooltip" data-placement="top" title="Imprimir"style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href=" ../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
-                </svg>
-             </button>
-         </form>
-         <form class="mx-1 c" method="POST" action=" ../../Plugin/PDF/Almacen/pdf_soli_almacen.php"  target="_blank">
- <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-              <button  data-toggle="tooltip" data-placement="top" title="Exportar en PDF"style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1" target="_blank">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href=" ../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
-                </svg>
-             </button>
-         </form>
-         <form  style="" method="POST" action="../../Plugin/Excel/Almacen/Excel.php" class=" mr-1 c">
- <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-            <input type="hidden" name="columna" value="<?php echo $columna ?>">
-            <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
-                <button  data-toggle="tooltip" data-placement="top" title="Exportar en Excel"type="submit" class="btn btn-outline-primary" name="Consultar1" target="_blank">
-                <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
-                </svg>
-                </button>
-            </form>
-            <form method="POST" action="form_almacen1.php" >
-   <button  data-toggle="tooltip" data-placement="top" title="Nueva solicitud"style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
-</form>
- </div>
-<?php } ?>
+<?php include '../../Include/Almacen/almacen.php';?>
+<?php include '../../Include/Almacen/Exportar_almacen.php'; ?>
 <table class="table " id="exam" style=" width: 100%">
           <thead>
               <tr id="tr">

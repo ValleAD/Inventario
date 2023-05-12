@@ -577,7 +577,7 @@ include ('../../../Model/conexion.php') ?>
 
                 $sql="SELECT fecha_solicitud, Count(codigo),codigo,Año,SUM(cantidad_solicitada),SUM(precio) FROM `detalle_almacen` D JOIN `tb_almacen` V ON D.tb_almacen=V.codAlmacen GROUP by Año,codigo;";
             } if ($tipo_usuario==2) {
-                $sql="SELECT fecha_solicitud, Count(codigo),codigo,Año,SUM(cantidad_solicitada),SUM(precio)idusuario FROM `detalle_almacen` D JOIN `tb_almacen` V ON D.tb_almacen=V.codAlmacen WHERE idusuario='$idusuario' GROUP by Año,codigo;";
+                $sql="SELECT fecha_solicitud, Count(codigo),codigo,Año,SUM(cantidad_solicitada),SUM(precio),idusuario FROM `detalle_almacen` D JOIN `tb_almacen` V ON D.tb_almacen=V.codAlmacen WHERE idusuario='$idusuario' GROUP by Año,codigo;";
             }
             $result = mysqli_query($conn, $sql);
             while ($productos = mysqli_fetch_array($result)){

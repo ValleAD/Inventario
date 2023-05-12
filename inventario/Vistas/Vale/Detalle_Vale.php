@@ -569,7 +569,7 @@
                     <?php     $cliente =$_SESSION['signin'];
                     $data =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username = '$cliente'");
                     while ($consulta =mysqli_fetch_array($data)) {
-                       ?>
+                       ?> 
                        <label><b>Encargado</b></label>
                        <input style="cursor: not-allowed; color: black;"  class="form-control" type="text" name="usuario" id="como3" required readonly value="<?php  echo $consulta['firstname']?> <?php  echo $consulta['lastname']?>">
                        <input style="cursor: not-allowed; color: black;"  class="form-control" type="hidden" name="idusuario" id="como4" required readonly value="<?php  echo $consulta['id']?>"/>
