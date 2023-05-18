@@ -30,18 +30,28 @@ if ($password == $cpassword) {
 echo"
     <script>
     var username=$.trim($('#username').val())
-       Swal.fire({
-  icon: 'success',
-  title: 'Usuario Fue Creado Exitosamente',
-  footer: 'Sistema de Inventario',
-  allowOutsideClick: false
-}).then((resultado) =>{
-if (resultado.value) {
-	window.location.href='signin.php';
-					
-					 
-				}
-		});
+       const Toast = Swal.mixin({
+      toast: true,
+      position: 'top-end',
+      showConfirmButton: false,
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener('mouseenter', Swal.stopTimer)
+        toast.addEventListener('mouseleave', Swal.resumeTimer)
+      }
+      })
+
+      Toast.fire({
+        icon: 'success',
+        title: 'Usuario creado correctamente',
+        
+        }).then((result) => {
+          /* Read more about handling dismissals below */
+          if (result.dismiss === Swal.DismissReason.timer) {
+           window.location.href='login.php';
+         }
+         })
  
                 </script>
                 ";

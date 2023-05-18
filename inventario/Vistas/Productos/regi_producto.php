@@ -41,27 +41,23 @@ if (!isset($_SESSION['signin'])>0) {
             background: whitesmoke;
             border-radius: 5px;
         }
-        #ver{
-            background: rgb(5, 65, 114); 
-            color: #fff; margin-bottom: 2%;  
-            border: rgb(5, 65, 114);
-        }
-        #ver:hover{
-            background: rgb(9, 100, 175);
-        } 
-        #ver:active{
-            transform: translateY(5px);
-        } 
+       
         .a{
             width: 25%;
         }
 
+        @media (min-width: 1028px){
+           #section{
+                margin: 5%6%6%1%;
+                width: 97%;
+            } 
+        }
         @media (max-width: 800px){
             #ver{
                 margin-top: 2%;
             }
             #section{
-                margin: -15%6%6%1%;
+                margin: -10%6%6%1%;
                 width: 97%;
             }
 
@@ -77,7 +73,7 @@ if (!isset($_SESSION['signin'])>0) {
     </style>
     <br><br><br>
 
-    <form id="section" action="../../Controller/Productos/añadir.php" method="POST" style="height: 30%; ">
+    <form id="section" action="../../Controller/Productos/añadir.php" method="POST" >
         <font color=marballe><h3 style="text-align: center; font-weight: bold">Registro de Productos</h3></font>
 
         <div class="mx-2 alert alert-warning alert-dismissible fade show" role="alert" style="position: initial;"><b>NOTA IMPORTANTE: </b> El codigo Que sera ingresado en este formulario no debe de ir Repetido cuando Presionen  el boton "Agregar Producto"</div>
@@ -213,21 +209,19 @@ if (!isset($_SESSION['signin'])>0) {
 
     <div class="col-md-3" >
     </div>
-    <div class="col-md-2" >
-    </div>
-    <div class="col-md-2" >
-    </div>
+   
+   
     <div class="col-md-3" >
       <button class="btn btn-success btn-lg" id="Guardar" style="width: 100%;" name="submit">Guardar</button>  
       <button class="btn btn-success btn-lg" id="NoGuardar" style="width: 100%; cursor: not-allowed;" title="NO DISPONIBLE" disabled>Guardar</button> 
   </div>
   <div class="col-md-3 ">
-      <button type="button" class="btn btn-lg" id="ver" style="width: 100%;" onclick=" return ir()">Ver Productos</button>
+      <button type="button" class="btn-primary btn btn-lg" id="ver"  style="width: 100%;" onclick=" return ir()">Ver Productos</button>
   </div>
 
 </div> 
-</form>
 
+</form>
 
 <script> function ir() {
     window.location.href="vistaProductos.php";

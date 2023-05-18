@@ -73,7 +73,7 @@ header nav ul li .children .submenu5 {font-size: 15px}
 header nav ul li .children .submenu6 {font-size: 19px}
 
 header nav ul li {font-size: 20px}
-header nav ul li .children .submenu1 .submenu2 {background: rgba(0, 0, 0, .5);}
+header nav ul li .children .submenu1 .submenu2 {background: rgba(0, 0, 0, 6);}
 header nav ul li .children {display: none;background:#011826;position: absolute;width: 150%;z-index:1000;}
 header nav ul li .children li {display:block;border-bottom: 1px solid rgba(255,255,255,.5);}
 header nav ul li .children li a {display: block;}

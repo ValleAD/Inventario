@@ -38,7 +38,7 @@
         <tr>
            <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
            <td  data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
-           <td  data-label="Descripción Completa" ><?php  echo $productos['descripcion']; ?></td>
+           <td  data-label="Descripción Completa"  data-toggle="popover" title="Descripción del Producto" data-trigger="hover" data-content="<?php echo $productos['descripcion'] ?>"><?php  echo $productos['descripcion']; ?></td>
            <td  data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
            <td  data-label="Cantidad" ><?php  echo $stock ?></td>
            <td  data-label="Costo Unitario"><?php  echo $precio1 ?></td>
@@ -129,7 +129,7 @@
         <tr>
            <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
            <td  data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
-           <td  data-label="Descripción Completa" ><?php  echo $productos['descripcion']; ?></td>
+           <td  data-label="Descripción Completa"  data-toggle="popover" title="Descripción del Producto" data-trigger="hover" data-content="<?php echo $productos['descripcion'] ?>"><?php  echo $productos['descripcion']; ?></td>
            <td  data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
            <td  data-label="Cantidad" ><?php  echo $stock ?></td>
            <td  data-label="Costo Unitario"><?php  echo $precio1 ?></td>
@@ -179,7 +179,7 @@
         <tr>
            <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
            <td  data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
-           <td  data-label="Descripción Completa" ><?php  echo $productos['descripcion']; ?></td>
+           <td  data-label="Descripción Completa"  data-toggle="popover" title="Descripción del Producto" data-trigger="hover" data-content="<?php echo $productos['descripcion'] ?>"><?php  echo $productos['descripcion']; ?></td>
            <td  data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
            <td  data-label="Cantidad" ><?php  echo $stock ?></td>
            <td  data-label="Costo Unitario"><?php  echo $precio1 ?></td>
@@ -233,7 +233,7 @@
                 <tr>
             <td data-label="Codigo"><?php  echo $productos['codProductos']; ?></td>
            <td  data-label="Codificación de catálogo"><?php  echo $productos['catalogo']; ?></td>
-           <td  data-label="Descripción Completa" ><?php  echo $productos['descripcion']; ?></td>
+           <td  data-label="Descripción Completa"  data-toggle="popover" title="Descripción del Producto" data-trigger="hover" data-content="<?php echo $productos['descripcion'] ?>"><?php  echo $productos['descripcion']; ?></td>
            <td  data-label="Unidad De Medida"><?php  echo $productos['unidad_medida']; ?></td>
            <td  data-label="Cantidad" ><?php  echo $stock ?></td>
            <td  data-label="Costo Unitario"><?php  echo $precio1 ?></td>

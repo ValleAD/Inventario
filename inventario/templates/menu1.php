@@ -5,6 +5,7 @@ include("../../Model/conexion.php");
 if(!isset($_SESSION['signin'])){
     header("location: ../../log/signin.php");
 }
+include ('../../Include/Empleados/Empleados.php');
 $tipo_usuario = $_SESSION['tipo_usuario'];
 $idusuario = $_SESSION['iduser'];
 $cliente =$_SESSION['signin'];
@@ -24,7 +25,6 @@ $cliente =$_SESSION['signin'];
     <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/rowGroup.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/colReorder.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/bootstrap.min.css.map">
 
     <link rel="icon" type="image/png" sizes="32x32"  href="../../img/log.png">
 </head>
@@ -326,7 +326,8 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 </div>
 </div>
 
-<?php include('../../Include/Modal/modal1.php') ?>
+<?php     
+include('../../Include/Modal/modal1.php') ?>
 
 <?php } ?>
 
@@ -344,35 +345,39 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 <script src="../../Plugin/bootstrap/js/responsive.bootstrap4.min.js"></script>
 <script src="../../Plugin/bootstrap/js/dataTables.colReorder.min.js"></script>
 <script>
-        $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
 
-})
+  })
+     $(function () {
+      $('[data-toggle="popover"]').popover({animation:true})
+
+  })
     // Mostramos y ocultamos submenus
     $('.submenu').click(function(){
         $(this).children('.children').slideToggle();
     });
-  $( ".submenu1").click(function() {
-    $(this).children("ul").slideToggle();
-});
+    $( ".submenu1").click(function() {
+        $(this).children("ul").slideToggle();
+    });
 
-  
-  $(".submenu1").click(function(p) {
-   p.stopPropagation();
-});
- $('.p1').hide();
- $('.p').click(function(){
-    $(".div").removeClass("div");
-    $('.p').hide();
-    $('.p1').show();
 
-});
- $('.p1').click(function(){
-
-    $(".div1").addClass("div");
+    $(".submenu1").click(function(p) {
+       p.stopPropagation();
+   });
     $('.p1').hide();
-    $('.p').show();
-});
+    $('.p').click(function(){
+        $(".div").removeClass("div");
+        $('.p').hide();
+        $('.p1').show();
+
+    });
+    $('.p1').click(function(){
+
+        $(".div1").addClass("div");
+        $('.p1').hide();
+        $('.p').show();
+    });
 
 
 //  $('.nav1').css({"margin-left": "-6%", "transition": "3s"});     
@@ -384,7 +389,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 //         document.getElementById('navbar').style.top='0';
 
 //         $('.nav1').css({"margin-left": "-6%", "transition": "3s"});   
-        
+
 
 //     }else{
 // //entra el nav1
@@ -400,51 +405,51 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 //     ubicacionPrincipal=Desplazamiento_Actual;
 // }
 
-$(document).ready(main);
-var contador = 1;
+    $(document).ready(main);
+    var contador = 1;
 
-function main () {
-    $('.menu_bar1').click(function(){
-        $('.menu_bar1').hide();
-        $('.menu_bar2').show();
+    function main () {
+        $('.menu_bar1').click(function(){
+            $('.menu_bar1').hide();
+            $('.menu_bar2').show();
 
-        if (contador == 1) {
-            $('nav').animate({
-                left: '0'
-            });
-            contador = 0;
-        } else {
-            $('.menu_bar1').show();
-            contador = 1;
-            $('nav').animate({
-                left: '-100%'
-            });
-        }
-    });
-    $('.menu_bar2').click(function(){
-        $('.menu_bar2').hide();
+            if (contador == 1) {
+                $('nav').animate({
+                    left: '0'
+                });
+                contador = 0;
+            } else {
+                $('.menu_bar1').show();
+                contador = 1;
+                $('nav').animate({
+                    left: '-100%'
+                });
+            }
+        });
+        $('.menu_bar2').click(function(){
+            $('.menu_bar2').hide();
 
-        if (contador == 1) {
-            $('nav').animate({
-                left: '0'
-            });
-            contador = 0;
-        } else {
-            $('.menu_bar1').show();
-            contador = 1;
-            $('nav').animate({
-                left: '-100%'
-            });
-        }
-    });
+            if (contador == 1) {
+                $('nav').animate({
+                    left: '0'
+                });
+                contador = 0;
+            } else {
+                $('.menu_bar1').show();
+                contador = 1;
+                $('nav').animate({
+                    left: '-100%'
+                });
+            }
+        });
 
 
-}
+    }
 </script>
 <script type="text/javascript">
-        $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+  })
     function confirmaion1(e) {
         Swal.fire({
           icon: 'warning',
@@ -455,9 +460,29 @@ function main () {
           allowOutsideClick: false,
       }).then((resultado) =>{
         if (resultado.value) {
+           const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+           Toast.fire({
+            icon: 'success',
+            title: 'Cerrando Session',
+        }).then((result) => {
+  /* Read more about handling dismissals below */
+          if (result.dismiss === Swal.DismissReason.timer) {
             window.location.href='../../log/logout.php';
         }
-    });
+    })
+    }
+});
       return false;
   }
 </script>

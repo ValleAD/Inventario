@@ -102,7 +102,7 @@
 
     <td id="th" data-label="Código">'.$productos['codProductos'].'</td>
     <td id="th" data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
-    <td data-label="Descripción" data-toggle="tooltip" data-placement="right" title="'.$des.'" >'.substr($des, 0, 25)."...".'</td>
+    <td  data-label="Descripción" data-toggle="popover" title="Descripción del Producto" data-trigger="hover" data-content="'.$des.'">'.substr($des, 0, 25)."...".'</td>
     <td id="th" data-label="Unidad de Medida">'.$productos['unidad_medida'].'</td>
     <td '; if ($stock<=0) {$tabla.='style="background:red; color:white"';  } $tabla.=' id="th" data-label="Cantidad">'.$stock.'</td>
     <td id="th" data-label="Precio">'.$precio1.'</td>
@@ -162,6 +162,7 @@ echo $tabla;
 
 <script type="text/javascript">
     $(document).ready(function () {
+
         $('.btn-del').on('click', function(e) {
             e.preventDefault();
             const href=$(this).attr('href');

@@ -20,7 +20,7 @@
 							</label>
 						</div>
 					</div>
-					<label style="float: left;">Hasta</label><input required type="Date" readonly  class="form-control bg-transparent " id="f1" required >
+					<label style="float: left;">Hasta</label><input style="cursor: not-allowed;" required type="Date" readonly  class="form-control bg-transparent " id="f1" required >
 					<label style="float: left;margin-top:3%;">Hasta</label><input required type="Date" class="form-control " id="f2"  required>
 					<div style="  display: -ms-flexbox;
 					display: flex;

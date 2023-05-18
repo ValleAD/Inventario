@@ -131,10 +131,11 @@ if ($Idusuario==0) {
     $('#exam').DataTable({
 
         responsive: true,
-        autoWidth:true,
+        autoWidth:false,
         deferRender: true,
         scroller: true,
         scrollY: 400,
+        scrollX: 0,
         scrollCollapse: true,
         lengthMenu: [[10, -1], [10,"Todos"]],
         language: {

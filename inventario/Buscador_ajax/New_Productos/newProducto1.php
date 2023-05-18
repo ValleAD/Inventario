@@ -71,5 +71,3 @@ $buscarAlumnos=$conn->query($query);
 
 echo $tabla;
 ?>      
-     <script src="../Plugin/bootstrap/js/jquery-latest.js"></script>
-<script src="../Plugin/bootstrap/js/bootstrap.min.js"></script>

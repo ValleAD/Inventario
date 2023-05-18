@@ -7,6 +7,7 @@ if(!isset($_SESSION['signin'])){
 $tipo_usuario = $_SESSION['tipo_usuario'];
 $idusuario = $_SESSION['iduser'];
 
+include ('Include/Empleados/Empleados1.php');
 ?><!DOCTYPE html>
 <html lang="es">
 <head>
@@ -72,12 +73,12 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
                             </svg></a>
                             <ul class="children">
-                               <li><a id="b" href="Vistas/Productos/vistaProductos.php">Ver Artículos</a></li>
-                               <?php if($tipo_usuario==1){ ?>
+                             <li><a id="b" href="Vistas/Productos/vistaProductos.php">Ver Artículos</a></li>
+                             <?php if($tipo_usuario==1){ ?>
                                 <li><a id="b" href="Vistas/Productos/regi_producto.php">Nuevo Artículo</a></li>
                             <?php } ?>
                             <li class="submenu1"><a  id="b" href="#">Reporte Ingresos
-                               <svg class="bi" width="20" height="20" fill="currentColor">
+                             <svg class="bi" width="20" height="20" fill="currentColor">
                                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
                             </svg>
                         </a>
@@ -232,11 +233,11 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                           <p id="sn" style="color: #fff"><b>Nombre:</b> <?php echo $consulta['firstname'];?></p>
-                       </div>
-                   </div>
+                         <p id="sn" style="color: #fff"><b>Nombre:</b> <?php echo $consulta['firstname'];?></p>
+                     </div>
+                 </div>
 
-                   <div class="row">
+                 <div class="row">
                     <div class="col-md-12">
                         <p id="sn" style="color: #fff"><b>Apellidos:</b> <?php echo $consulta['lastname'];?></p>
                     </div>
@@ -329,24 +330,24 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 
 
 <script type="text/javascript">
-        $(function () {
-  $('[data-toggle="tooltip"]').tooltip()
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
 
-})  
+  })  
 
-   $(document).ready(main);
+    $(document).ready(main);
 
-   var contador = 1;
+    var contador = 1;
 
-   $( ".submenu1").click(function() {
-    $(this).children("ul").slideToggle();
-});
+    $( ".submenu1").click(function() {
+        $(this).children("ul").slideToggle();
+    });
 
 
-   $(".submenu1").click(function(p) {
-     p.stopPropagation();
- });
-   function main () {
+    $(".submenu1").click(function(p) {
+       p.stopPropagation();
+   });
+    function main () {
 
 
       $('.menu_bar1').click(function(){
@@ -400,9 +401,29 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
           allowOutsideClick: false,
       }).then((resultado) =>{
         if (resultado.value) {
+         const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
+         Toast.fire({
+            icon: 'success',
+            title: 'Cerrando Session',
+        }).then((result) => {
+  /* Read more about handling dismissals below */
+          if (result.dismiss === Swal.DismissReason.timer) {
             window.location.href='log/logout.php';
         }
-    });
+    })
+    }
+});
       return false;
   }
   function confirmaion2(e) {

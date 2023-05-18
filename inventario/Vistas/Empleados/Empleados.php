@@ -13,7 +13,8 @@ if (!isset($_SESSION['signin'])>0) {
     ';
 }
 ?>
-<?php include ('../../templates/menu1.php')?>
+<?php 
+    include ('../../templates/menu1.php');?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -200,7 +201,7 @@ if (!isset($_SESSION['signin'])>0) {
     <td width="30%"><button class="btn btn-secondary" data-toggle="modal" data-target="#Usuarios" style="float: left; color: white;margin-top: 1%;">Nuevo Integrante</button>
      <?php if ($tipo_usuario==1) {?>
        <div style="position: initial;" class="btn-group mt-1 mx-2 " role="group" aria-label="Basic outlined example">
-         <form id="well" class="well" method="POST" action="../../Plugin/Imprimir/Empleados/Empleados.php" target="_blank">
+         <form id="well" class="well c" method="POST" action="../../Plugin/Imprimir/Empleados/Empleados.php" target="_blank">
 
              <button data-toggle="tooltip" data-placement="top" title="Imprimir"style="position: initial;" type="submit" class="btn btn-outline-primary" name="Empleados">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -208,7 +209,7 @@ if (!isset($_SESSION['signin'])>0) {
                 </svg>
             </button>
         </form>
-        <form id="well" class="well" method="POST" action="../../Plugin/PDF/Empleados/pdf_Empledos.php" target="_blank">
+        <form id="well" class="well c" method="POST" action="../../Plugin/PDF/Empleados/pdf_Empledos.php" target="_blank">
 
          <button  data-toggle="tooltip" data-placement="top" title="Exportar en PDF"style="position: initial;"type="submit" class="btn btn-outline-primary mx-1" name="user" target="_blank">
             <svg class="bi" width="20" height="20" fill="currentColor">
@@ -230,7 +231,7 @@ if (!isset($_SESSION['signin'])>0) {
     $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){?>
         <div style="position: initial;" class="btn-group mt-1 mx-2 " role="group" aria-label="Basic outlined example">
-         <form id="well" class="well" method="POST" action="../../Plugin/Imprimir/Empleados/Empleados.php" target="_blank">
+         <form id="well" class="well c" method="POST" action="../../Plugin/Imprimir/Empleados/Empleados.php" target="_blank">
              <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos['username']?>" name="user1">
              <button data-toggle="tooltip" data-placement="top" title="Imprimir"style="position: initial;" type="submit" class="btn btn-outline-primary" name="user2">
                 <svg class="bi" width="20" height="20" fill="currentColor">
@@ -241,7 +242,7 @@ if (!isset($_SESSION['signin'])>0) {
     <?php } $sql = "SELECT * FROM tb_usuarios WHERE id='$idusuario' ORDER BY `id` ";
     $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){ ?>
-     <form id="well" class="well" method="POST" action="../../Plugin/PDF/Empleados/pdf_Empledos.php" target="_blank">
+     <form id="well" class="well c" method="POST" action="../../Plugin/PDF/Empleados/pdf_Empledos.php" target="_blank">
          <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos['username']?>" name="user1">               
          <button  data-toggle="tooltip" data-placement="top" title="Exportar en PDF"style="position: initial;"type="submit" class="btn btn-outline-primary mx-1" name="user2" target="_blank">
             <svg class="bi" width="20" height="20" fill="currentColor">
@@ -554,7 +555,7 @@ while ($solicitudes = mysqli_fetch_assoc($result)){
 </script>
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#busqueda').load('../../Buscador_ajax/Consultas/consulta.php');
+        $('#busqueda').load('../../Buscador_ajax/Empleados/Consulta_Empleados.php');
     });
     var limpiar = document.getElementById('busqueda');
     function validar1() {

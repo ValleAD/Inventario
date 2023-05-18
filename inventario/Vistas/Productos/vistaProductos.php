@@ -162,7 +162,52 @@ if (isset($_GET['id'])){
 ?>
 <br>
 <style>
-    #ver{
+        #NoGuardar{
+            display: none;
+        }
+        #buscar1{
+            display: block;
+        }
+        #section{
+
+            margin-top: 3%;
+            margin-bottom: 1%;
+            margin-left: 1%;
+            margin-right: 1%;
+            padding: 1%;
+            background: whitesmoke;
+            border-radius: 5px;
+        }
+       
+        .a{
+            width: 25%;
+        }
+
+        @media (min-width: 1028px){
+
+           #section{
+                margin: 5%6%6%1%;
+                width: 97%;
+            } 
+        }
+        @media (max-width: 800px){
+            #ver{
+                margin-top: 2%;
+            }
+            #section{
+                margin: -10%6%6%1%;
+                width: 97%;
+            }
+
+            th{
+                width: 25%;
+            }
+            #p{
+                margin-top: 5%;
+                margin-left: 7%;
+            }
+
+        }    #ver{
         margin-top: 2%;
         margin-right: 1%; 
         background: rgb(5, 65, 114); 
@@ -176,9 +221,16 @@ if (isset($_GET['id'])){
     #ver:active{
         transform: translateY(5px);
     } 
+     @media (min-width: 1028px){
+           #section{
+                margin: 5%6%6%1%;
+                width: 97%;
+            } 
+        }
 </style>
-</table>
-<section  style="background: rgba(255, 255, 255, 0.9);margin: 5%1%1%1%;padding: 1%; border-radius: 15px;">
+
+<br><br>
+<section id="section" style="background: rgba(255, 255, 255, 0.9);padding: 1%; border-radius: 15px;">
     <h2  class="text-center">Inventario de Productos</h2>
     <br>
     <div class="row">
@@ -260,7 +312,11 @@ if (isset($_GET['id'])){
 <label>Exportar Año</label>
 <select  class="form-control" name="año" id="año" onchange="this.form.submit()">
     <option disabled selected>Seleccione el Año</option>
-    <?php for ($i=2022; $i <=2100 ; $i++) { 
+    <?php
+    date_default_timezone_set('America/el_salvador');
+    $fechaActual = date("Y");
+    
+     for ($i=2022; $i <=$fechaActual ; $i++) { 
         echo "<option>$i</option>";
     } ?>
 </select>
