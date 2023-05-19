@@ -129,10 +129,10 @@ $idusuario = $_SESSION['iduser'];
      <tbody>
 <?php
 if ($tipo_usuario==1) {
-    $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,numero_vale,departamento,usuario,fecha_registro,Mes,Año FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale";
+    $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,numero_vale,departamento,usuario,fecha_registro,Mes,Año FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale GROUP by codigo";
  }
  if ($tipo_usuario==2) {
-$sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,numero_vale,departamento,usuario,fecha_registro,Mes,Año FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE V.idusuario='$idusuario'";
+$sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,numero_vale,departamento,usuario,fecha_registro,Mes,Año FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE V.idusuario='$idusuario' GROUP by codigo";
  }
     $result = mysqli_query($conn, $sql);;
     while ($productos = mysqli_fetch_array($result)){
@@ -292,10 +292,10 @@ $sql = "SELECT codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,uni
      <tbody>
 <?php
 if ($tipo_usuario==1) {
-    $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale";
+    $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale GROUP by codigo";
  }
  if ($tipo_usuario==2) {
-$sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE V.idusuario='$idusuario'";
+$sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE V.idusuario='$idusuario' GROUP by codigo";
  }
     $result = mysqli_query($conn, $sql);;
     while ($productos = mysqli_fetch_array($result)){
@@ -456,7 +456,7 @@ $sql = "SELECT * FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVa
 <?php
 
 
-$sql = "SELECT codVale, codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,numero_vale,departamento,usuario,fecha_registro,Mes,Año  FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega";
+$sql = "SELECT codVale, codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,numero_vale,departamento,usuario,fecha_registro,Mes,Año  FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega GROUP by codigo";
     $result = mysqli_query($conn, $sql);
 $n=0;
 while ($productos = mysqli_fetch_array($result)){
@@ -622,7 +622,7 @@ while ($productos = mysqli_fetch_array($result)){
 <?php
 
 
-$sql = "SELECT * FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega";
+$sql = "SELECT * FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega GROUP by codigo";
     $result = mysqli_query($conn, $sql);
 $n=0;
 while ($productos = mysqli_fetch_array($result)){

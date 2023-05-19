@@ -58,7 +58,7 @@
                <input  type="hidden" name="cat[]" value ="<?php  echo $productos['catalogo']; ?>">
                <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
                 </td>
-               <td style="min-width: 100%;" data-label="Descripción"><?php echo $productos['descripcion'] ?></td>
+               <td style="min-width: 100%;" data-label="Descripción" data-toggle="popover" title="Descripción del Producto" data-trigger="hover" data-content="<?php echo $productos['descripcion'] ?>"><?php echo substr($productos['descripcion'], 0, 20)  ?></td>
                <td data-label="Unidad De Medida"><?php echo $productos['unidad_medida'] ?>
                 <input type="hidden"  name="stock[]"  value ="<?php  echo $stock; ?>">
                 <input  type="hidden" name="cu[]" value ="<?php  echo $precio ?>">

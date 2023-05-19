@@ -34,11 +34,30 @@ if (!isset($_SESSION['signin'])>0) {
         border-radius: 15px;
         background: white;
     }
-    @media (max-width: 800px){
-       #section{
-        margin: -15%6%6%7%;
+        @media (min-width: 1028px){
+           #section{
+                margin: 5%6%6%1%;
+                width: 97%;
+            } 
+        }
+        @media (max-width: 800px){
+            #ver{
+                margin-top: 2%;
+            }
+            #section{
+                margin: -10%6%6%1%;
+                width: 97%;
+            }
 
-    }
+            th{
+                width: 25%;
+            }
+            #p{
+                margin-top: 5%;
+                margin-left: 7%;
+            }
+
+        }
 }
 </style>
 <br><br><br>
@@ -84,7 +103,7 @@ if (!isset($_SESSION['signin'])>0) {
         </button>
     </form>
     <form method="POST" action="form_bodega_varios.php"  class="ml-2 ">
-       <button data-toggle="tooltip" data-placement="top" title="Nueva solicitud" style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
+       <button data-toggle="tooltip" data-placement="top" title="Nueva solicitud" style="position: initial; font-size: 13.5px;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
    </form>
 </div>
 <?php }else{ ?>
@@ -133,7 +152,7 @@ if (!isset($_SESSION['signin'])>0) {
 </form>
 
 <form method="POST" action="form_bodega_varios.php"  class="ml-2">
-   <button data-toggle="tooltip" data-placement="top" title="Nueva solicitud" style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
+   <button data-toggle="tooltip" data-placement="top" title="Nueva solicitud" style="position: initial; font-size: 13.5px;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
 </form>
 </div>
 <?php } ?>

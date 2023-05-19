@@ -38,41 +38,60 @@ if (!isset($_SESSION['signin'])>0) {
         border-radius: 15px;
         background: white;
     }
-    @media (max-width: 800px){
+    @media (min-width: 1028px){
      #section{
-        margin: -15%6%6%7%;
-        
+        margin: 5%6%6%1%;
+        width: 97%;
+    } 
+}
+@media (max-width: 800px){
+    #ver{
+        margin-top: 2%;
     }
+    #section{
+        margin: -10%6%6%1%;
+        width: 97%;
+    }
+
+    th{
+        width: 25%;
+    }
+    #p{
+        margin-top: 5%;
+        margin-left: 7%;
+    }
+
+}
 }
 </style>
 <br><br><br>
 <section id="section" class="mx-3 p-2" style="background-color:white; border-radius:5px;margin-bottom: 3%;"> 
     <h1 class="text-center mg-t" style="margin-top: 2%;">Solicitudes de Fondo Circulante</h1><br>
     <?php  $verificar =mysqli_query($conn, "SELECT codCirculante FROM tb_circulante ");
-        if (!mysqli_num_rows($verificar)>0) {?>
-            <style>
-                .c{
-                    display: none;
-                }
-            </style>
-        <?php }else{?>
-            <style>
-                .c{
-                    display: block;
-                }
-            </style>
-        <?php } 
-         if ($tipo_usuario==1) {?>
-       <div id="x"  style="position: initial;" class="btn-group my-2  mx-2" role="group" style="position: initial;" aria-label="Basic outlined example">
-           <form method="POST" action=" ../../Plugin/Imprimir/Circulante/soli_circulante.php" id="ssas" target="_blank" class="c">
-               <button data-toggle="tooltip" data-placement="top" title="Imprimir" style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
+    if (!mysqli_num_rows($verificar)>0) {?>
+        <style>
+            .c{
+                display: none;
+            }
+        </style>
+    <?php }else{?>
+        <style>
+            .c{
+                display: block;
+            }
+        </style>
+    <?php } 
+    if ($tipo_usuario==1) {?>
+     <div id="x"  style="position: initial;" class="btn-group my-2  mx-2" role="group" style="position: initial;" aria-label="Basic outlined example">
+         <form method="POST" action=" ../../Plugin/Imprimir/Circulante/soli_circulante.php" id="ssas" target="_blank" class="c">
+             <button data-toggle="tooltip" data-placement="top" title="Imprimir" style="position: initial;" type="submit" class="btn btn-outline-primary" name="id">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                     <use xlink:href=" ../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
             </button>
         </form>
         <form method="POST" action=" ../../Plugin/PDF/Circulante/pdf_soli_circulante.php" id="ssas" target="_blank" class="mx-1 c">
-           <button data-toggle="tooltip" data-placement="top" title="Exportar en PDF" style="position: initial;" type="submit" class="btn btn-outline-primary"  target="_blank" name="id">
+         <button data-toggle="tooltip" data-placement="top" title="Exportar en PDF" style="position: initial;" type="submit" class="btn btn-outline-primary"  target="_blank" name="id">
             <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href=" ../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
             </svg>
@@ -88,43 +107,43 @@ if (!isset($_SESSION['signin'])>0) {
         </button>
     </form>
     <form method="POST" action="form_circulante1.php"  class="ml-2">
-     <button data-toggle="tooltip" data-placement="top" title="Nueva solicitud" style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
+     <button data-toggle="tooltip" data-placement="top" title="Nueva solicitud" style="position: initial;font-size: 13.5px;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
  </form>
 </div> 
 <?php } if ($tipo_usuario==2) {
-   ?>
-   <div id="x" style="position: initial;" class="btn-group mb-3 my-2  mx-2" role="group" aria-label="Basic outlined example">
-       <form method="POST" action=" ../../Plugin/PDF/Circulante/soli_circulante.php" id="ssas" target="_blank">
-           
-           <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-           
+ ?>
+ <div id="x" style="position: initial;" class="btn-group mb-3 my-2  mx-2" role="group" aria-label="Basic outlined example">
+     <form method="POST" action=" ../../Plugin/PDF/Circulante/soli_circulante.php" id="ssas" target="_blank">
+         
+         <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
+         
 
-           <button data-toggle="tooltip" data-placement="top" title="Imprimir" style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1">
+         <button data-toggle="tooltip" data-placement="top" title="Imprimir" style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1">
             <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href=" ../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
             </svg>
         </button>
     </form>
     <form class="mx-1" method="POST" action=" ../../Plugin/PDF/Circulante/pdf_soli_circulante.php" id="ssas" target="_blank">
-       <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-       <button data-toggle="tooltip" data-placement="top" title="Exportar en PDF" style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1" target="_blank">
+     <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
+     <button data-toggle="tooltip" data-placement="top" title="Exportar en PDF" style="position: initial;" type="submit" class="btn btn-outline-primary" name="id1" target="_blank">
         <svg class="bi" width="20" height="20" fill="currentColor">
             <use xlink:href=" ../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
         </svg>
     </button>
 </form>
 <form id="ssas" style="" method="POST" action="../../Plugin/Excel/Circulante/Excel.php" >
-   <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
-   <input type="hidden" name="columna" value="<?php echo $columna ?>">
-   <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
-   <button data-toggle="tooltip" data-placement="top" title="Exportar en Excel" type="submit" class="btn btn-outline-primary" name="circulante1">
+ <input type="hidden" name="idusuario" value="<?php echo $idusuario ?>">
+ <input type="hidden" name="columna" value="<?php echo $columna ?>">
+ <input type="hidden" name="tipo" value="<?php echo $tipo ?>">
+ <button data-toggle="tooltip" data-placement="top" title="Exportar en Excel" type="submit" class="btn btn-outline-primary" name="circulante1">
     <svg class="bi" width="20" height="20" fill="currentColor">
         <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-earmark-excel-fill"/>
     </svg>
 </button>
 </form>
 <form method="POST" action="form_circulante1.php" ¿ class="ml-2">
- <button data-toggle="tooltip" data-placement="top" title="Nueva solicitud" style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
+   <button data-toggle="tooltip" data-placement="top" title="Nueva solicitud" style="position: initial;font-size: 13.5px;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
 </form>
 </div>
 <?php } ?>
@@ -138,12 +157,12 @@ if (!isset($_SESSION['signin'])>0) {
     </tr>
 </thead>
 <tbody>
- 
+   
   
     <?php
     if ($tipo_usuario==1) {
-     $sql = "SELECT * FROM tb_circulante ORDER BY codCirculante DESC  ";
- }else{
+       $sql = "SELECT * FROM tb_circulante ORDER BY codCirculante DESC  ";
+   }else{
 
     $sql = "SELECT * FROM tb_circulante WHERE idusuario='$idusuario' ORDER BY codCirculante DESC  ";
 }
@@ -151,7 +170,7 @@ $result = mysqli_query($conn, $sql);
 while ($datos_sol = mysqli_fetch_array($result)){
     ?>
     <style type="text/css">
-       #td{
+     #td{
         display: none;
     }
     #ssas{

@@ -2,7 +2,7 @@
 <?php include ('../../Model/conexion.php');
 
 $tabla="";
-$query="SELECT cod,codProductos, categoria, catalogo, descripcion, unidad_medida, SUM(stock),Mes,Año, precio, fecha_registro FROM tb_productos  GROUP BY codProductos,precio HAVING COUNT(*) ";
+$query="SELECT cod,codProductos, categoria, catalogo, descripcion,LENGTH(descripcion), unidad_medida, SUM(stock),Mes,Año, precio, fecha_registro FROM tb_productos  GROUP BY codProductos,precio HAVING COUNT(*) ";
 
 $buscarAlumnos=$conn->query($query);
 if ($buscarAlumnos->num_rows > 0)
@@ -64,6 +64,14 @@ if ($buscarAlumnos->num_rows > 0)
     {
                 $categoria=$productos['categoria'];
                 $des=$productos['descripcion'];
+                $des1=$productos['LENGTH(descripcion)'];
+                $i=25;
+                if ($i>=$des1) {
+                    $des2=$des;
+                }else{
+                    $des2=substr($des, 0, 25)."...";
+                }
+                
                 if ($des=="") {
                     $des="DESCRIPTION NO DISPONIBLE";
                 }else{
@@ -86,7 +94,7 @@ if ($buscarAlumnos->num_rows > 0)
             <td  id="id" id="th" data-label="ID">'.$productos['cod'].'</td>
             <td id="th" data-label="Código">'.$productos['codProductos'].'</td>
             <td id="th" data-label="Código del Catálogo">'.$productos['catalogo'].'</td>
-           <td data-label="Descripción" data-toggle="tooltip" data-placement="right" title="'.$des.'" >'.substr($des, 0, 25)."...".'</td>
+           <td data-label="Descripción" data-toggle="tooltip" title="'.$des.'" >'.$des2.'</td>
             <td id="th" data-label="Unidad de Medida">'.$productos['unidad_medida'].'</td>
             <td '; if ($stock<=0) {$tabla.='style="background:red; color:white"';  } $tabla.=' id="th" data-label="Cantidad">'.$stock.'</td>
             <td id="th" data-label="Precio">'.$precio1.'</td>

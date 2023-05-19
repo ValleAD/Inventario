@@ -23,29 +23,41 @@ if (!isset($_SESSION['signin'])>0) {
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
     <style>
+        form{margin: 0;background: transparent;}
         table thead{
             background: linear-gradient(to right, #4A00E0, #8E2DE2); 
             color:white;
         }
-        form{
-            margin: 0%;
+               @media (min-width: 1028px){
+           #section{
+                margin: 5%6%6%1%;
+                width: 97%;
+            } 
         }
-
         @media (max-width: 800px){
-            #ssa{
+            #ver{
+                margin-top: 2%;
+            }
+            #section{
+                margin: -10%6%6%1%;
+                width: 97%;
+            }
+
+            th{
+                width: 25%;
+            }
+            #p{
+                margin-top: 5%;
                 margin-left: 7%;
-                margin-bottom: 5%;
             }
-            #x{
-                margin: 3%5%;
-            }
+
         }
     </style>
     <title>Ingresos</title>
 </head>
 <body style="max-width: 100%;">
-    <br><br><br><br>
-    <section style="background: rgba(255, 255, 255, 0.9); margin: 2%;border-radius: 15px; padding: 1%";>
+    <br><br><br>
+    <section id="section" style="background: rgba(255, 255, 255, 0.9);border-radius: 15px; padding: 1%";>
      <h1 style=" text-align: center;">Ingreso de Productos</h1><br>
      <form method="GET" style="background:transparent;">
         <div class="card">
@@ -809,7 +821,6 @@ else if($mostrar == "compra"){?>
 <div class="col-md-3">
     <div class="card">
         <div class="card-body">
-            <?php include '../../Include/Compra/compra.php';?>
 
                 <div  style="position: initial;"class="btn-group mb-3 my-3 mx-2" role="group" aria-label="Basic outlined example">
                     <form  method="POST" action="../../Plugin/Imprimir/Ingresos/reporte_ingreso.php" target="_blank" class="c">

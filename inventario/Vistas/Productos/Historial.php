@@ -19,10 +19,37 @@ if (!isset($_SESSION['signin'])>0) {
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Buscador al Producto</title>
+
+    <style type="text/css">
+                @media (min-width: 1028px){
+           #section{
+                margin: 5%6%6%1%;
+                width: 97%;
+            } 
+        }
+        @media (max-width: 800px){
+            #ver{
+                margin-top: 2%;
+            }
+            #section{
+                margin: -10%6%6%1%;
+                width: 97%;
+            }
+
+            th{
+                width: 25%;
+            }
+            #p{
+                margin-top: 5%;
+                margin-left: 7%;
+            }
+
+        }
+    </style>
 </head>
 <body>
   <br><br><br>  
-  <section class="mx-3"  style="background: rgba(255, 255, 255, 0.9);padding: 1%; border-radius: 15px;">
+  <section id="section" style="background: rgba(255, 255, 255, 0.9);padding: 1%; border-radius: 15px;">
     <h2  class="text-center">Buscador al Producto</h2>
     <br>
 

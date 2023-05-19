@@ -35,16 +35,30 @@ if (!isset($_SESSION['signin'])>0) {
         #div{margin: 0%}
         #section{background: whitesmoke;border-radius: 15px;margin: 1%;padding: 1%;}
         form{background: transparent;padding: 1%;}
+                @media (min-width: 1028px){
+           #section{
+                margin: 5%6%6%1%;
+                width: 97%;
+            } 
+        }
         @media (max-width: 800px){
-
-            .col-md-3{
+            #ver{
                 margin-top: 2%;
             }
-            #section{margin: -5%0%5%4%;width: 93%;}
-            form{padding: 1%;}
-            label{
-                margin-top: 3%;}}
-            </style>
+            #section{
+                margin: -10%6%6%1%;
+                width: 97%;
+            }
+
+            th{
+                width: 25%;
+            }
+            #p{
+                margin-top: 5%;
+                margin-left: 7%;
+            }
+
+        }            </style>
             <br><br><br>
             <?php
             $verificar =mysqli_query($conn, "SELECT nSolicitud FROM tb_compra ");

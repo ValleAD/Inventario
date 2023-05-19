@@ -35,15 +35,37 @@ if (!isset($_SESSION['signin'])>0) {
         #div{margin: 0%}
         section{background: whitesmoke;border-radius: 15px;margin: 1%;padding: .5%;}
         form{background: transparent;padding: 1%;}
+        @media (min-width: 1028px){
+           #section{
+                margin: 5%6%6%1%;
+                width: 97%;
+            } 
+             #section1{
+                margin: 5%6%6%1%;
+                width: 97%;
+            } 
+        }
         @media (max-width: 800px){
-
-            .col-md-3{
+            #ver{
                 margin-top: 2%;
             }
-            section{margin: -15%0%5%4%;width: 93%;}
-            form{padding: 1%;}
-            label{
-                margin-top: 3%;}}
+            #section{
+                margin: -10%6%6%1%;
+                width: 97%;
+            } #section1{
+                margin: -10%6%6%1%;
+                width: 97%;
+            }
+
+            th{
+                width: 25%;
+            }
+            #p{
+                margin-top: 5%;
+                margin-left: 7%;
+            }
+
+        }
             </style>
             <br><br><br>
             <section id="section" class="section">
@@ -463,7 +485,7 @@ if (!isset($_SESSION['signin'])>0) {
 </section>
 <?php  if(isset($_POST['solicitar'])){$cod=$_POST['bodega']?>
 <style type="text/css">#section{display: none;}</style>
-<section>
+<section id="section1">
     <form style="background: transparent;" method="POST" action="../../Controller/Circulante/añadir_circulante.php">
         <div class="card">
             <div class="card-body">

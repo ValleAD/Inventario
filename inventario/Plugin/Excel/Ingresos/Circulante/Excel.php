@@ -190,11 +190,11 @@ $final12 = "0.00";
 $final13 = "0.00";
 if (isset($_POST['circulante'])) {
       
-   $sql = "SELECT codCirculante, codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,tb_circulante,fecha_solicitud,estado FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante  ";
+   $sql = "SELECT codCirculante, codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,tb_circulante,fecha_solicitud,estado FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante GROUP by codigo ";
   }
 if (isset($_POST['circulante1'])) {$idusuario=$_POST['idusuario'];
     
-      $sql = "SELECT codCirculante, codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,tb_circulante,fecha_solicitud,estado FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante WHERE idusuario='$idusuario'  ";
+      $sql = "SELECT codCirculante, codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,tb_circulante,fecha_solicitud,estado FROM tb_circulante db JOIN detalle_circulante b ON db.codCirculante = b.tb_circulante WHERE idusuario='$idusuario' GROUP by codigo ";
 }
    $result = mysqli_query($conn, $sql);
 $n=0;

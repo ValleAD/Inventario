@@ -42,14 +42,30 @@ die();
         color: white;
         text-shadow: 1px 1px 5px black;
     }
- @media (max-width: 952px){
-   #form{
-        margin: -15%6%1%1%;
-        width: 98%;
-    }
-       section{
-        margin: -15%6%1%1%;
-        width: 98%;
+        @media (min-width: 1028px){
+           #section{
+                margin: 5%6%6%1%;
+                width: 97%;
+            } 
+        }
+        @media (max-width: 800px){
+            #ver{
+                margin-top: 2%;
+            }
+            #section{
+                margin: -10%6%6%1%;
+                width: 97%;
+            }
+
+            th{
+                width: 25%;
+            }
+            #p{
+                margin-top: 5%;
+                margin-left: 7%;
+            }
+
+        }
 </style>
 <br><br><br>
 <?php      
@@ -67,7 +83,7 @@ $result = mysqli_query($conn, $sql);
 ?>
 
 <style type="text/css">section{display: none;}</style>
-<form id="form" action="../../Controller/Dependencia/Desabilitar-dependencias.php" method="POST" style="background: transparent; ">
+<form id="section" action="../../Controller/Dependencia/Desabilitar-dependencias.php" method="POST" style="background: transparent; ">
    <div class="container-fluid" style="background: rgba(0, 0, 0, 0.5); margin: auto;padding-top: 1%; border-radius: 9px; color:#fff; font-weight: bold; margin: auto;">
   <h3 align="center">Actualizar Dependencias Habilitadas </h3>
         <div class="row">
@@ -103,7 +119,7 @@ $result = mysqli_query($conn, $sql);
 } 
 ?>
 
-    <section style="margin:1%;padding: 1%; border-radius: 5px; background: white; ">
+    <section id="section" style=" border-radius: 5px; background: white; ">
             <h2 class="text-center " >Dependencias Del Departamento</h2><br>
 <div class="card">
 <div class="card-body">
@@ -190,12 +206,20 @@ $result = mysqli_query($conn, $sql);
      <tbody>
     <?php
 
-    $sql = "SELECT * FROM selects_dependencia ";
+    $sql = "SELECT id,LENGTH(dependencia),dependencia,Habilitado FROM selects_dependencia ";
     $result = mysqli_query($conn, $sql);
     $n=0;
     while ($solicitudes = mysqli_fetch_array($result)){
         $n++;
-        $r=$n+0?>
+        $r=$n+0;
+         $des=$solicitudes['dependencia'];
+        $des1=$solicitudes['LENGTH(dependencia)'];
+        $i=25;
+        if ($i>=$des1) {
+            $des2=$des;
+        }else{
+            $des2=substr($des, 0, 25)."...";
+        }?>
         <style type="text/css">
      #td{
         display: none;
@@ -204,8 +228,7 @@ $result = mysqli_query($conn, $sql);
 </style>
         <tr>
             <td style="width: 10%;min-width: 100%;" data-label="#"><?php echo $r ?></td>
-            <td style="width: 30%;min-width: 100%;" data-label="Dependencia"><?php  echo $solicitudes['dependencia']; ?></td>
-
+            <td style="width: 30%;min-width: 100%;text-align: left;" data-label="Dependencia" data-toggle="popover" title="Descripción" data-trigger="hover" data-content="<?php echo $des ?>"><?php  echo $des2 ?></td>
             <td style="width: 60%;min-width: 100%;" data-label="Habilitado" align="center">
             <p <?php
                 if($solicitudes['Habilitado']=='Si') {

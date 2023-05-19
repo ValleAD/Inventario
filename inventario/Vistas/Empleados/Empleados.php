@@ -14,7 +14,7 @@ if (!isset($_SESSION['signin'])>0) {
 }
 ?>
 <?php 
-    include ('../../templates/menu1.php');?>
+include ('../../templates/menu1.php');?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -43,79 +43,81 @@ if (!isset($_SESSION['signin'])>0) {
         h2,h3{
             margin-bottom:  2%
         }
-        @media (max-width: 800px){
-            #Empleados{display: block;}
-            .table1{display: none;}
+        @media (min-width: 1028px){
+         #section{
+            margin: 5%6%6%1%;
+            width: 97%;
+        } 
+    }
+    @media (max-width: 800px){
+        #ver{
+            margin-top: 2%;
+        }
+        #section{
+            margin: -10%6%6%1%;
+            width: 97%;
+        }
+
+        th{
+            width: 25%;
+        }
+        #p{
+            margin-top: 5%;
+            margin-left: 7%;
+        }
+
+    }
+</style>
+<br><br><br>
+</style>
+<?php      
+
+if (isset($_POST['editar'])){       
+    $id = $_POST['id'];       
 
 
-            #form{
-                margin: -15%6%1%1%;
-                width: 98%;
-            }
-            section{
-                margin: 0%6%1%1%;
-                width: 98%;
-            }
-            #div{
-                padding: 2%;
-            }
-            #d{
-                margin-left: 22%;
-            }
-            #dh{
-                margin-left: 22%;
-            }
-        </style>
-        <br><br><br>
-    </style>
-    <?php      
 
-    if (isset($_POST['editar'])){       
-        $id = $_POST['id'];       
+    $sql = "SELECT * FROM tb_usuarios  WHERE  id = '$id'";
+    $result = mysqli_query($conn, $sql);
 
 
+    while ($productos = mysqli_fetch_array($result)){
+        ?>
+        <style type="text/css">section, h2{display: none;}</style>
+        <?php if ($tipo_usuario==2) {?>
+            <form id="section" action="../../Controller/Empleados/Desabilitar-Empleado.php" method="POST" style="background: transparent;  ">
+              <h3 align="center">Actualizar Informacion del Empleado</h3>
+              <div class="container-fluid" style="background: rgba(100, 100, 100, 0.6);  border-radius: 9px; color:#fff; font-weight: bold;">
+                <div class="row">
+                    <div class=" col-md-12" style="position: initial;"><p class="small mb-1"><font color="black"><b>Usuario que a Seleccionado:</b></font> <?php echo $productos['username']?></p>
+                       <input type="hidden" name="id" value="<?php  echo $productos['id']; ?>">
+                       <div class="row">
+                        <div class="col-md-6" style="position: initial">
 
-        $sql = "SELECT * FROM tb_usuarios  WHERE  id = '$id'";
-        $result = mysqli_query($conn, $sql);
-
-
-        while ($productos = mysqli_fetch_array($result)){
-            ?>
-            <style type="text/css">section, h2{display: none;}</style>
-            <?php if ($tipo_usuario==2) {?>
-                <form id="form" action="../../Controller/Empleados/Desabilitar-Empleado.php" method="POST" style="background: transparent;  ">
-                  <h3 align="center">Actualizar Informacion del Empleado</h3>
-                  <div class="container-fluid" style="background: rgba(100, 100, 100, 0.6);  border-radius: 9px; color:#fff; font-weight: bold;">
-                    <div class="row">
-                        <div class=" col-md-12" style="position: initial;"><p class="small mb-1"><font color="black"><b>Usuario que a Seleccionado:</b></font> <?php echo $productos['username']?></p>
-                         <input type="hidden" name="id" value="<?php  echo $productos['id']; ?>">
-                         <div class="row">
-                            <div class="col-md-6" style="position: initial">
-
-                               <label id="label" class="small mb-1">Nombre</label><br>
-                               <input  class="form-control" type="text"  name="Nombres"  required>
-                           </div>
-                           <div class="col-md-6" style="position: initial">
-                              <label id="label" class="small mb-1">Apellido</label><br>
-                              <input  class="form-control" type="text"  name="Apellidos" required >
-                          </div>
-                      </div>
-
+                         <label id="label" class="small mb-1">Nombre</label><br>
+                         <input  class="form-control" type="text"  name="Nombres"  required>
+                     </div>
+                     <div class="col-md-6" style="position: initial">
+                      <label id="label" class="small mb-1">Apellido</label><br>
+                      <input  class="form-control" type="text"  name="Apellidos" required >
                   </div>
               </div>
-              <hr>
-              <div class="row">
-                <div class="col-md-12" style="position: initial; margin: auto; margin-bottom: 2%;">
 
-                    <button type="submit" name="submit" class ="btn btn-primary" style="background:rgb(12, 139, 8); margin-right: 1%; border: none">Guardar Cambios</button>
-                    <a href="Empleados.php" class ="btn btn-primary" style="background:rgb(184, 8, 8); border: none">Cancelar</a>
-                </div>
-            </div>
+          </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-12" style="position: initial; margin: auto; margin-bottom: 2%;">
+
+            <button type="submit" name="submit" class ="btn btn-primary" style="background:rgb(12, 139, 8); margin-right: 1%; border: none">Guardar Cambios</button>
+            <a href="Empleados.php" class ="btn btn-primary" style="background:rgb(184, 8, 8); border: none">Cancelar</a>
         </div>
-    </form>
+    </div>
+</div>
+</form>
 <?php  } if ($tipo_usuario==1) {?>
 
-    <form id="form" action="../../Controller/Empleados/Desabilitar-Empleado.php" method="POST" style="background: transparent;  ">
+    <form id="section" action="../../Controller/Empleados/Desabilitar-Empleado.php" method="POST" style="background: transparent;  ">
         <div class="container" style="background: rgba(100, 100, 100, 0.6); border-radius: 9px; color:#fff; font-weight: bold;">
           <h3 align="center">Actualizar Informacion del Empleado</h3>
           <div class="row">
@@ -123,35 +125,35 @@ if (!isset($_SESSION['signin'])>0) {
                 <div class="row">
                     <div class="col-md-6" style="position: initial">
 
-                       <label id="label" class="small mb-1">Nombre (No es obligatorio)</label><br>
-                       <input  class="form-control" type="text"  name="Nombres" value="<?php echo $productos['lastname'] ?>">
-                   </div>
-                   <div class="col-md-6" style="position: initial">
-                      <label id="label" class="small mb-1">Apellido (No es obligatorio)</label><br>
-                      <input  class="form-control" type="text"  name="Apellidos" value="<?php echo $productos['firstname'] ?>">
-                  </div>
-                  <div class="col-md-6" style="position: initial">
-                      <input type="hidden" name="id" value="<?php  echo $productos['id']; ?>">
-                      <label id="label" class="small mb-1">Habilitado (Obligatorio) </label><br> 
-                      <select required class="form-control" name="Habilitado" id="categoria" style="cursor: pointer">
-                        <option value="">[Seleccione]</option>
-                        <option value="Si">Si, Podra Ingresar al Sistema</option>
-                        <option value="No">No, Se le Bloqueará el Acceso al Sistema</option>
-
-                    </select>
-                </div>
-                <div class="col-md-6" style="position: initial">
-                 <label id="label" class="small mb-1">Tipo de usuario</label><br>
-                 <select required class="form-control" name="tipo_usuario" id="categoria" style="cursor: pointer">
+                     <label id="label" class="small mb-1">Nombre (No es obligatorio)</label><br>
+                     <input  class="form-control" type="text"  name="Nombres" value="<?php echo $productos['lastname'] ?>">
+                 </div>
+                 <div class="col-md-6" style="position: initial">
+                  <label id="label" class="small mb-1">Apellido (No es obligatorio)</label><br>
+                  <input  class="form-control" type="text"  name="Apellidos" value="<?php echo $productos['firstname'] ?>">
+              </div>
+              <div class="col-md-6" style="position: initial">
+                  <input type="hidden" name="id" value="<?php  echo $productos['id']; ?>">
+                  <label id="label" class="small mb-1">Habilitado (Obligatorio) </label><br> 
+                  <select required class="form-control" name="Habilitado" id="categoria" style="cursor: pointer">
                     <option value="">[Seleccione]</option>
-                    <option value="1">Administrador</option>
-                    <option value="2">Cliente</option>
+                    <option value="Si">Si, Podra Ingresar al Sistema</option>
+                    <option value="No">No, Se le Bloqueará el Acceso al Sistema</option>
 
                 </select>
             </div>
+            <div class="col-md-6" style="position: initial">
+               <label id="label" class="small mb-1">Tipo de usuario</label><br>
+               <select required class="form-control" name="tipo_usuario" id="categoria" style="cursor: pointer">
+                <option value="">[Seleccione]</option>
+                <option value="1">Administrador</option>
+                <option value="2">Cliente</option>
 
+            </select>
         </div>
+
     </div>
+</div>
 </div>
 <hr>
 <div class="row">
@@ -181,29 +183,17 @@ if (!isset($_SESSION['signin'])>0) {
   }
 
 
-  #section{
-    margin: 2%;
-    padding:0%;
-    border-radius: 15px;
-    background: white;
-}
-@media (max-width: 800px){
-   #section{
-    margin: -15%6%6%7%;
-
-}
-}
 </style>
 <section id="section" class="mx-3 p-2" style="background-color:white; border-radius:5px;margin-bottom: 3%;"> 
-   <h2 class="text-center h2" >Empleados Del Sistema</h2>
+ <h2 class="text-center h2" >Empleados Del Sistema</h2>
 
-   <table width="100%" >
+ <table width="100%" >
     <td width="30%"><button class="btn btn-secondary" data-toggle="modal" data-target="#Usuarios" style="float: left; color: white;margin-top: 1%;">Nuevo Integrante</button>
-     <?php if ($tipo_usuario==1) {?>
-       <div style="position: initial;" class="btn-group mt-1 mx-2 " role="group" aria-label="Basic outlined example">
-         <form id="well" class="well c" method="POST" action="../../Plugin/Imprimir/Empleados/Empleados.php" target="_blank">
+       <?php if ($tipo_usuario==1) {?>
+         <div style="position: initial;" class="btn-group mt-1 mx-2 " role="group" aria-label="Basic outlined example">
+           <form id="well" class="well c" method="POST" action="../../Plugin/Imprimir/Empleados/Empleados.php" target="_blank">
 
-             <button data-toggle="tooltip" data-placement="top" title="Imprimir"style="position: initial;" type="submit" class="btn btn-outline-primary" name="Empleados">
+               <button data-toggle="tooltip" data-placement="top" title="Imprimir"style="position: initial;" type="submit" class="btn btn-outline-primary" name="Empleados">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                     <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
@@ -211,7 +201,7 @@ if (!isset($_SESSION['signin'])>0) {
         </form>
         <form id="well" class="well c" method="POST" action="../../Plugin/PDF/Empleados/pdf_Empledos.php" target="_blank">
 
-         <button  data-toggle="tooltip" data-placement="top" title="Exportar en PDF"style="position: initial;"type="submit" class="btn btn-outline-primary mx-1" name="user" target="_blank">
+           <button  data-toggle="tooltip" data-placement="top" title="Exportar en PDF"style="position: initial;"type="submit" class="btn btn-outline-primary mx-1" name="user" target="_blank">
             <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
             </svg>
@@ -231,9 +221,9 @@ if (!isset($_SESSION['signin'])>0) {
     $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){?>
         <div style="position: initial;" class="btn-group mt-1 mx-2 " role="group" aria-label="Basic outlined example">
-         <form id="well" class="well c" method="POST" action="../../Plugin/Imprimir/Empleados/Empleados.php" target="_blank">
-             <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos['username']?>" name="user1">
-             <button data-toggle="tooltip" data-placement="top" title="Imprimir"style="position: initial;" type="submit" class="btn btn-outline-primary" name="user2">
+           <form id="well" class="well c" method="POST" action="../../Plugin/Imprimir/Empleados/Empleados.php" target="_blank">
+               <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos['username']?>" name="user1">
+               <button data-toggle="tooltip" data-placement="top" title="Imprimir"style="position: initial;" type="submit" class="btn btn-outline-primary" name="user2">
                 <svg class="bi" width="20" height="20" fill="currentColor">
                     <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#printer"/>
                 </svg>
@@ -242,9 +232,9 @@ if (!isset($_SESSION['signin'])>0) {
     <?php } $sql = "SELECT * FROM tb_usuarios WHERE id='$idusuario' ORDER BY `id` ";
     $result = mysqli_query($conn, $sql);
     while ($productos = mysqli_fetch_array($result)){ ?>
-     <form id="well" class="well c" method="POST" action="../../Plugin/PDF/Empleados/pdf_Empledos.php" target="_blank">
-         <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos['username']?>" name="user1">               
-         <button  data-toggle="tooltip" data-placement="top" title="Exportar en PDF"style="position: initial;"type="submit" class="btn btn-outline-primary mx-1" name="user2" target="_blank">
+       <form id="well" class="well c" method="POST" action="../../Plugin/PDF/Empleados/pdf_Empledos.php" target="_blank">
+           <input type="hidden" readonly class="form-control"  type="text" value="<?php echo $productos['username']?>" name="user1">               
+           <button  data-toggle="tooltip" data-placement="top" title="Exportar en PDF"style="position: initial;"type="submit" class="btn btn-outline-primary mx-1" name="user2" target="_blank">
             <svg class="bi" width="20" height="20" fill="currentColor">
                 <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#file-pdf-fill"/>
             </svg>
@@ -295,25 +285,25 @@ if (!isset($_SESSION['signin'])>0) {
                 <form action="../../Controller/Empleados/añadirEmpleados.php" method="POST" autocomplete="off">
                   <div class="row">
                     <div class="col-md-6" style="position: initial">
-                       <label id="label" class="small mb-1">Nombre de usuario</label><br>
-                       <input  class="form-control" type="text" autocomplete="off"  name="usuario"  required>
-                   </div>
-                   <div class="col-md-6" style="position: initial">
-                      <label id="label" class="small mb-1">Nombre</label><br>
-                      <input pattern="[A-Za-z0-9_- ]{1,}" class="form-control" autocomplete="off" type="text"  name="nombre" required>
-                  </div>
+                     <label id="label" class="small mb-1">Nombre de usuario</label><br>
+                     <input  class="form-control" type="text" autocomplete="off"  name="usuario"  required>
+                 </div>
+                 <div class="col-md-6" style="position: initial">
+                  <label id="label" class="small mb-1">Nombre</label><br>
+                  <input pattern="[A-Za-z0-9_- ]{1,}" class="form-control" autocomplete="off" type="text"  name="nombre" required>
               </div>
-              <div class="row">
+          </div>
+          <div class="row">
 
-                <div class="col-md-6" style="position: initial">
-                 <label id="label" class="small mb-1">Apellido</label><br>
-                 <input pattern="[A-Za-z0-9- ]{1,}" class="form-control" type="text"  name="Apellido"  required>
+            <div class="col-md-6" style="position: initial">
+               <label id="label" class="small mb-1">Apellido</label><br>
+               <input pattern="[A-Za-z0-9- ]{1,}" class="form-control" type="text"  name="Apellido"  required>
 
 
 
 
-             </div>
-             <div class="col-md-6" style="position: initial">
+           </div>
+           <div class="col-md-6" style="position: initial">
               <label id="label" class="small mb-1">Establecimiento</label><br>
               <input class="form-control" readonly name="Establecimiento" value='Hospital Nacional Zacatecoluca PA "Santa Tereza"'>
           </select>
@@ -340,40 +330,40 @@ if (!isset($_SESSION['signin'])>0) {
 
         <div class="div d"> 
 
-           <?php  
-           $sql = "SELECT * FROM selects_departamento";
-           $result = mysqli_query($conn, $sql);
-           while ($productos = mysqli_fetch_array($result)){ ?>  
-             <!-- <input class="p2" required  id="<?php echo $productos['id'] ?>" type="radio" name="Unidad" value="<?php echo $productos['departamento'] ?>"> <label style="width: 100%;" id="label1" for="<?php echo $productos['id'] ?>" > <?php echo $productos['departamento'] ?></label><br> -->
+         <?php  
+         $sql = "SELECT * FROM selects_departamento";
+         $result = mysqli_query($conn, $sql);
+         while ($productos = mysqli_fetch_array($result)){ ?>  
+           <!-- <input class="p2" required  id="<?php echo $productos['id'] ?>" type="radio" name="Unidad" value="<?php echo $productos['departamento'] ?>"> <label style="width: 100%;" id="label1" for="<?php echo $productos['id'] ?>" > <?php echo $productos['departamento'] ?></label><br> -->
 
-             <div class="form-check form-check-inline w-75">
-                <input required class="form-check-input" type="radio" style="display:block;" name="Unidad" id="<?php echo $productos['id'] ?>" value="<?php echo $productos['departamento'] ?>">
-                <label class="form-check-label" for="<?php echo $productos['id'] ?>"><?php echo $productos['departamento'] ?></label>
-            </div>
-
-        <?php }?>
-    </div>
-
-    <br>
-    <p align="right" class="p">Mostrar todos
-        <svg class="bi" width="20" height="20" fill="currentColor">
-            <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
-        </svg></p></p>
-        <p align="right" class="p1">Ocultar
-            <svg class="bi" width="20" height="20" fill="currentColor">
-                <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
-            </svg></p></p>
+           <div class="form-check form-check-inline w-75">
+            <input required class="form-check-input" type="radio" style="display:block;" name="Unidad" id="<?php echo $productos['id'] ?>" value="<?php echo $productos['departamento'] ?>">
+            <label class="form-check-label" for="<?php echo $productos['id'] ?>"><?php echo $productos['departamento'] ?></label>
         </div>
-        <br>
-        <div class="col-md-12" style="position: initial">
-         <label id="label" class="small mb-1">Tipo de Usuarios (Roles De Usuario)</label>
-         <br>
-         <input required id="input" type="radio" name="tipo_usuario" value="1"> <label id="label1" for="input" > Admistrador</label>
-         <input required id="input1" type="radio" name="tipo_usuario" value="2"> <label id="label1" for="input1"> Cliente</label> 
 
-     </div>
- </div>
- <div>
+    <?php }?>
+</div>
+
+<br>
+<p align="right" class="p">Mostrar todos
+    <svg class="bi" width="20" height="20" fill="currentColor">
+        <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
+    </svg></p></p>
+    <p align="right" class="p1">Ocultar
+        <svg class="bi" width="20" height="20" fill="currentColor">
+            <use xlink:href="../../Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-up-fill"/>
+        </svg></p></p>
+    </div>
+    <br>
+    <div class="col-md-12" style="position: initial">
+       <label id="label" class="small mb-1">Tipo de Usuarios (Roles De Usuario)</label>
+       <br>
+       <input required id="input" type="radio" name="tipo_usuario" value="1"> <label id="label1" for="input" > Admistrador</label>
+       <input required id="input1" type="radio" name="tipo_usuario" value="2"> <label id="label1" for="input1"> Cliente</label> 
+
+   </div>
+</div>
+<div>
     <div class="form-group" style="margin-top: 7%;">
         <button type="submit" name="submit" class="btn btn-primary btn-block">Registrarse</button>
     </div>
@@ -393,7 +383,7 @@ if (!isset($_SESSION['signin'])>0) {
 </div>         
 <?php if ($tipo_usuario==1) {?>
 
-   <section id="tabla_resultado" >
+ <section id="tabla_resultado" >
     <!-- AQUI SE DESPLEGARA NUESTRA TABLA DE CONSULTA -->
 
 </section>
@@ -431,39 +421,39 @@ while ($solicitudes = mysqli_fetch_assoc($result)){
                             <td><p  class="card-text"><b>UNIDAD:</b> <?php echo $solicitudes['unidad']; ?></p>
                                 <p  class="card-text"><b>CUENTA:</b> <?php echo $u; ?></p>
                                 <div style="position: initial;" class="btn-group m-2 " role="group" aria-label="Basic outlined example">
-                                 <form style="margin: 0%;background: transparent;" method='POST' action="Empleados.php">             
-                                  <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">      
-                                  <button id="d" name='editar' class='btn btn-info swal2-styled.swal2-confirm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
-                              </form>
+                                   <form style="margin: 0%;background: transparent;" method='POST' action="Empleados.php">             
+                                      <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">      
+                                      <button id="d" name='editar' class='btn btn-info swal2-styled.swal2-confirm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
+                                  </form>
 
-                          </div></td>
-                      </tr>
-                  </table>
-                  <div id="Empleados">
-                    <p class="card-title"><b>USUARIO:</b> <?php echo $solicitudes['username'] ?> </p>
-                    <p class="card-text"><b>NOMBRE COMPLETO: </b><?php echo $solicitudes['firstname']," ",$solicitudes['lastname']; ?></p>
-                    <p class="card-text"><b>ESTABLECIMIENTO:</b> <?php echo $solicitudes['Establecimiento']; ?></p>
-                    <p  class="card-text"><b>UNIDAD:</b> <?php echo $solicitudes['unidad']; ?></p>
-                    <p  class="card-text"><b>CUENTA:</b> <?php echo $u; ?></p>
-                    <div style="position: initial;" class="btn-group  " role="group" aria-label="Basic outlined example">
-                     <form style="margin: 0%;background: transparent;" method='POST' action="">             
-                      <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">      
-                      <button id="d" name='editar' class='btn btn-info swal2-styled.swal2-confirm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
-                  </form>
+                              </div></td>
+                          </tr>
+                      </table>
+                      <div id="Empleados">
+                        <p class="card-title"><b>USUARIO:</b> <?php echo $solicitudes['username'] ?> </p>
+                        <p class="card-text"><b>NOMBRE COMPLETO: </b><?php echo $solicitudes['firstname']," ",$solicitudes['lastname']; ?></p>
+                        <p class="card-text"><b>ESTABLECIMIENTO:</b> <?php echo $solicitudes['Establecimiento']; ?></p>
+                        <p  class="card-text"><b>UNIDAD:</b> <?php echo $solicitudes['unidad']; ?></p>
+                        <p  class="card-text"><b>CUENTA:</b> <?php echo $u; ?></p>
+                        <div style="position: initial;" class="btn-group  " role="group" aria-label="Basic outlined example">
+                           <form style="margin: 0%;background: transparent;" method='POST' action="">             
+                              <input type='hidden' name='id' value="<?php  echo $solicitudes['id']; ?>">      
+                              <button id="d" name='editar' class='btn btn-info swal2-styled.swal2-confirm'  data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">Editar</button>             
+                          </form>
+
+                      </div>
+                  </div>  
+
+
+
 
               </div>
-          </div>  
+          </div>
 
+      <?php  } } ?> 
 
-
-
-      </div>
-  </div>
-
-<?php  } } ?> 
-
-</section>
-<script>
+  </section>
+  <script>
     $('.p1').hide();
     $('.p').click(function(){
         $(".div").removeClass("div");

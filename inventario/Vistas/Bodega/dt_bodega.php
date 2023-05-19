@@ -40,19 +40,30 @@ if (!isset($_SESSION['signin'])>0) {
       form{
         background: transparent;
     }
-    @media (max-width: 800px){
-     #section{
-        margin: -5%0%5%4%;
-        width: 93%;
-    }
-    form{
-      padding: 1%;
-  }
-  label{
-    margin-top: 3%;
-}
+        @media (min-width: 1028px){
+           #section{
+                margin: 5%6%6%1%;
+                width: 97%;
+            } 
+        }
+        @media (max-width: 800px){
+            #ver{
+                margin-top: 2%;
+            }
+            #section{
+                margin: -10%6%6%1%;
+                width: 97%;
+            }
 
-}
+            th{
+                width: 25%;
+            }
+            #p{
+                margin-top: 5%;
+                margin-left: 7%;
+            }
+
+        }
 </style>
 <br><br><br>
 <?php

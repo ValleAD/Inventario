@@ -1,9 +1,9 @@
 
-<link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/sweetalert2.min.css">
-<link rel="stylesheet" type="text/css" href="../../Plugin/bootstrap/css/bootstrap.css">
-<script src="../../Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
-<script src="../../Plugin/bootstrap/js/jquery-latest.js"></script>
-<script src="../../Plugin/bootstrap/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/sweetalert2.min.css">
+<link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
+<script src="Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
+<script src="Plugin/bootstrap/js/jquery-latest.js"></script>
+<script src="Plugin/bootstrap/js/bootstrap.min.js"></script>
 
 <?php $verificar1 =mysqli_query($conn, "SELECT id FROM tb_usuarios ");
 if (!mysqli_num_rows($verificar1)>0) {?>
@@ -20,7 +20,7 @@ if (!mysqli_num_rows($verificar1)>0) {?>
         La sessión nos se ha registrado vuelva al iniciar sessión
        </div>
        <div class="modal-footer">
-        <form method="POST" action="../../log/logout.php">
+        <form method="POST" action="log/logout.php">
            <button type="submit" class="btn btn-primary">Iniciar Sessión</button>
             
         </form>

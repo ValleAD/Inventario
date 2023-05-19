@@ -17,7 +17,6 @@ include ('Include/Empleados/Empleados1.php');
     <link rel="stylesheet" type="text/css" href="styles/estilo_men.css">
     <link rel="stylesheet" type="text/css" href="styles/estilos_tablas.css"> 
     <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/bootstrap.min.css.map">
     <link rel="stylesheet" type="text/css" href="Plugin/bootstrap/css/sweetalert2.min.css">
 
     <link rel="icon" type="image/png" sizes="32x32"  href="img/log.png">
@@ -73,12 +72,12 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
                             </svg></a>
                             <ul class="children">
-                             <li><a id="b" href="Vistas/Productos/vistaProductos.php">Ver Artículos</a></li>
-                             <?php if($tipo_usuario==1){ ?>
+                               <li><a id="b" href="Vistas/Productos/vistaProductos.php">Ver Artículos</a></li>
+                               <?php if($tipo_usuario==1){ ?>
                                 <li><a id="b" href="Vistas/Productos/regi_producto.php">Nuevo Artículo</a></li>
                             <?php } ?>
                             <li class="submenu1"><a  id="b" href="#">Reporte Ingresos
-                             <svg class="bi" width="20" height="20" fill="currentColor">
+                               <svg class="bi" width="20" height="20" fill="currentColor">
                                 <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#caret-down-fill"/>
                             </svg>
                         </a>
@@ -233,11 +232,11 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                         <p id="sn" style="color: #fff"><b>Nombre:</b> <?php echo $consulta['firstname'];?></p>
-                     </div>
-                 </div>
+                           <p id="sn" style="color: #fff"><b>Nombre:</b> <?php echo $consulta['firstname'];?></p>
+                       </div>
+                   </div>
 
-                 <div class="row">
+                   <div class="row">
                     <div class="col-md-12">
                         <p id="sn" style="color: #fff"><b>Apellidos:</b> <?php echo $consulta['lastname'];?></p>
                     </div>
@@ -267,7 +266,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 </style>
 </div>
 <div class="modal-footer">
-    <button data-toggle="modal" data-target="#Usuario_Contraseña" class="btn btn-info" onclick="return usuario()">Cambiar Usuario y Contraseña
+    <button data-toggle="modal" data-target="#Usuario_Contraseña" class="btn btn-info">Cambiar Usuario y Contraseña
         <svg class="bi" width="20" height="20" fill="currentColor">
             <use xlink:href="Plugin/bootstrap-icons-1.8.1/bootstrap-icons.svg#person-circle"/>
         </svg>
@@ -294,16 +293,16 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
           </div>
           <div class="modal-body">
             <p><b class="text-danger">NOTA IMPORTANTE:</b> Al Cambiar el Usuario va a tener que ingresar el nuevo Usuario y Contraseña</p>
-            <form action="log/logout_Empleado.php" method="POST" style="margin: 1%;background: transparent;">
-                <input class="form-control" type="hidden" name="usuario" value="<?php echo $consulta['username'] ?>">
+            <form id="cambio_Username" method="POST"  style="margin: 1%;background: transparent;">
+                <input class="form-control" type="hidden" name="usuario" id="usuario" value="<?php echo $consulta['id'] ?>">
                 <div class="form-group">
                     <label style="color:white;">Usuario Actual</label>
-                    <b><p style="stroke: white;"><?php echo $consulta['username'] ?></p></b>
                     <label>Nuevo Usuario</label>
-                    <input class="form-control"  required type="text" name="Nusuario">
+                    <input class="form-control"  required type="text" id="Nusuario" name="Nusuario" value="<?php echo $consulta['username'] ?>">
                     
                     <label>Nueva Contraseña</label>
-                    <input class="form-control" required  type="text" name="Npassword">
+                    <input class="form-control" required  type="password" name="Npassword" id="Npassword">
+                    <input style="color: white;" id="e"  onclick="myFuntion();" type="checkbox" name="id[]"> <label style="margin-top: 1.5%;color: white;"  id="h" for="e" ></label>
                 </div>
                 
             </div>
@@ -311,6 +310,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 
                 <button type="submit" id="Update" class="btn btn-danger" >Cambiar datos</button>
             </div>
+            <p id="respa1"></p>
         </form>
     </div>
 </div>
@@ -321,8 +321,6 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 <?php include ('loader.php') ?>
 <script src="Plugin/bootstrap/js/jquery-latest.js"></script>
 <script src="Plugin/bootstrap/js/bootstrap.min.js"></script>
-<script src="Plugin/bootstrap/js/bootstrap.js.map"></script>
-<script src="Plugin/bootstrap/js/bootstrap.min.js.map"></script>
 <script src="Plugin/bootstrap/js/sweetalert2.all.min.js"></script>
 <script src="Plugin/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="Plugin/bootstrap/js/popper.min.js"></script>
@@ -330,6 +328,33 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 
 
 <script type="text/javascript">
+    function myFuntion() {
+                        var show = document.getElementById('Npassword');
+                        if (show.type=='password') {
+                            show.type='text';
+                        }
+                        else{
+                            show.type='password';
+                        }
+
+                    }
+        $('#cambio_Username').submit(function(e) {
+        e.preventDefault();
+    var usuario=$.trim($('#usuario').val())
+    var Nusuario=$.trim($('#Nusuario').val())
+    var Npassword=$.trim($('#Npassword').val())
+
+        var dataen ='Nusuario='+Nusuario +'&Npassword='+Npassword + '&usuario='+usuario;
+        
+        $.ajax({
+            url : 'log/logout_Empleado.php',
+            type : 'POST',
+            data : dataen,
+            success:function(resp) {
+              $('#respa1').html(resp);
+          }
+      });
+    });
     $(function () {
       $('[data-toggle="tooltip"]').tooltip()
 
@@ -345,8 +370,8 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 
 
     $(".submenu1").click(function(p) {
-       p.stopPropagation();
-   });
+     p.stopPropagation();
+ });
     function main () {
 
 
@@ -389,8 +414,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
         $(this).children('.children').slideToggle();
     });
   }
-</script>
-<script type="text/javascript">
+
     function confirmaion1(e) {
         Swal.fire({
           icon: 'warning',
@@ -401,19 +425,19 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
           allowOutsideClick: false,
       }).then((resultado) =>{
         if (resultado.value) {
-         const Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-    })
+           const Toast = Swal.mixin({
+              toast: true,
+              position: 'top-end',
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
 
-         Toast.fire({
+           Toast.fire({
             icon: 'success',
             title: 'Cerrando Session',
         }).then((result) => {

@@ -49,7 +49,7 @@
         </button>
     <?php } ?>
 </form>
-<form method="POST" action="form_vale1.php" >
-   <button  data-toggle="tooltip" data-placement="top" title="Nueva solicitud" style="position: initial;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
+<form method="POST" action="form_almacen1.php" >
+   <button  data-toggle="tooltip" data-placement="top" title="Nueva solicitud" style="position: initial;font-size: 13.5px;" type="submit" class="btn btn-outline-primary" name="vale1" target="_blank">➕</button>
 </form>
 </div>    

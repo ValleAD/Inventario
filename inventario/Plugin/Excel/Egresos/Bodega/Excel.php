@@ -199,10 +199,10 @@ $final12 = "0.00";
 $final13 = "0.00";
 if (isset($_POST['bodega'])) {
 
-    $sql = "SELECT codBodega, codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,odt_bodega,departamento,usuario,fecha_registro,Mes,Año  FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega ";
+    $sql = "SELECT codBodega, codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,odt_bodega,departamento,usuario,fecha_registro,Mes,Año  FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega  GROUP by codigo";
 }
 if (isset($_POST['bodega1'])) {$idusuario=$_POST['idusuario'];
-$sql = "SELECT codBodega, codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,odt_bodega,departamento,usuario,fecha_registro,Mes,Año  FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega WHERE db.idusuario='$idusuario'";
+$sql = "SELECT codBodega, codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,odt_bodega,departamento,usuario,fecha_registro,Mes,Año  FROM tb_bodega db JOIN detalle_bodega b ON db.codBodega = b.odt_bodega WHERE db.idusuario='$idusuario' GROUP by codigo";
 }    $result = mysqli_query($conn, $sql);
 $n=0;
 while ($productos = mysqli_fetch_array($result)){

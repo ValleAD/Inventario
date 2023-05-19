@@ -303,16 +303,16 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
           </div>
           <div class="modal-body">
             <p><b class="text-danger">NOTA IMPORTANTE:</b> Al Cambiar el Usuario va a tener que ingresar el nuevo Usuario y Contraseña</p>
-            <form action="log/logout_Empleado.php" method="POST" style="margin: 1%;background: transparent;">
-                <input class="form-control" type="hidden" name="usuario" value="<?php echo $consulta['username'] ?>">
+            <form id="cambio_Username" method="POST"  style="margin: 1%;background: transparent;">
+                <input class="form-control" type="hidden" name="usuario" id="usuario" value="<?php echo $consulta['id'] ?>">
                 <div class="form-group">
                     <label style="color:white;">Usuario Actual</label>
-                    <b><p style="stroke: white;"><?php echo $consulta['username'] ?></p></b>
                     <label>Nuevo Usuario</label>
-                    <input class="form-control"  required type="text" name="Nusuario">
+                    <input class="form-control"  required type="text" id="Nusuario" name="Nusuario" value="<?php echo $consulta['username'] ?>">
                     
                     <label>Nueva Contraseña</label>
-                    <input class="form-control" required  type="text" name="Npassword">
+                    <input class="form-control" required  type="password" name="Npassword" id="Npassword">
+                    <input style="color: white;" id="e"  onclick="myFuntion();" type="checkbox" name="id[]"> <label style="margin-top: 1.5%;color: white;"  id="h" for="e" ></label>
                 </div>
                 
             </div>
@@ -320,6 +320,7 @@ background-size: 100% 100%,100%;background-repeat: no-repeat;background-position
 
                 <button type="submit" id="Update" class="btn btn-danger" >Cambiar datos</button>
             </div>
+            <p id="respa1"></p>
         </form>
     </div>
 </div>
@@ -346,10 +347,37 @@ include('../../Include/Modal/modal1.php') ?>
 <script src="../../Plugin/bootstrap/js/dataTables.colReorder.min.js"></script>
 <script>
     $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
+        function myFuntion() {
+                        var show = document.getElementById('Npassword');
+                        if (show.type=='password') {
+                            show.type='text';
+                        }
+                        else{
+                            show.type='password';
+                        }
 
-  })
-     $(function () {
+                    }
+        $('#cambio_Username').submit(function(e) {
+            e.preventDefault();
+            var usuario=$.trim($('#usuario').val())
+            var Nusuario=$.trim($('#Nusuario').val())
+            var Npassword=$.trim($('#Npassword').val())
+
+            var dataen ='Nusuario='+Nusuario +'&Npassword='+Npassword + '&usuario='+usuario;
+
+            $.ajax({
+                url : 'log/logout_Empleado.php',
+                type : 'POST',
+                data : dataen,
+                success:function(resp) {
+                  $('#respa1').html(resp);
+              }
+          });
+        });
+        $('[data-toggle="tooltip"]').tooltip()
+
+    })
+    $(function () {
       $('[data-toggle="popover"]').popover({animation:true})
 
   })
@@ -445,8 +473,6 @@ include('../../Include/Modal/modal1.php') ?>
 
 
     }
-</script>
-<script type="text/javascript">
     $(function () {
       $('[data-toggle="tooltip"]').tooltip()
   })

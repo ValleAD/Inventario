@@ -35,36 +35,30 @@ if (!isset($_SESSION['signin'])>0) {
             margin: 1%;
             padding: 1%;
         }
-        #buscar{
-            margin-bottom: 5%;
-            margin-left: 2.5%;
-            margin-top: 0.5%; 
-            background: rgb(5, 65, 114); 
-            color: #fff; margin-bottom: 2%; 
-            border: rgb(5, 65, 114);
+        @media (min-width: 1028px){
+           #section{
+                margin: 5%6%6%1%;
+                width: 97%;
+            } 
         }
-        #buscar:hover{
-            background: rgb(9, 100, 175);
-        } 
-        #buscar:active{
-            transform: translateY(5px);
-        } 
-        #buscar1{
-            width: 25%;
+        @media (max-width: 800px){
+            #ver{
+                margin-top: 2%;
+            }
+            #section{
+                margin: -10%6%6%1%;
+                width: 97%;
+            }
+
+            th{
+                width: 25%;
+            }
+            #p{
+                margin-top: 5%;
+                margin-left: 7%;
+            }
+
         }
-        @media (max-width: 952px){
-         section{
-            margin: -15%6%6%3%;
-            width: 95%;
-        }
-    }#buscar1{
-        width: 100%;
-        margin: 0;
-    }
-    label{
-        margin-top: 3%;
-    }
-}
 </style>
 <br><br><br>
 
@@ -81,7 +75,7 @@ if ($codigo=="") {
 }
 
 if (isset($_POST['solicitar'])){ ?>
-    <section >
+    <section id="section">
        <form style="background: transparent;" method="POST" action="../../Controller/Almacen/almacen.php">
         <div class="card">
             <div class="card-body">

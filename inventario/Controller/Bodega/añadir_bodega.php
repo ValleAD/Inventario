@@ -123,7 +123,7 @@ if ($query0) {
 
         </script>";
     }
-
+}
 
     ?>
     <script >

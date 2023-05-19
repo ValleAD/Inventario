@@ -33,17 +33,37 @@ if (!isset($_SESSION['signin'])>0) {
             display: none;
         }
         #div{margin: 0%}
-        section{background: whitesmoke;border-radius: 15px;margin: 1%;padding: .5%;}
-        form{background: transparent;padding: 1%;}
+        section{background: whitesmoke;border-radius: 15px;margin: 1%;padding: 1%;}
+               @media (min-width: 1028px){
+           #section{
+                margin: 5%6%6%1%;
+                width: 97%;
+            } #section1{
+                margin: 5%6%6%1%;
+                width: 97%;
+            } 
+        }
         @media (max-width: 800px){
-
-            .col-md-3{
+            #ver{
                 margin-top: 2%;
             }
-            section{margin: -15%0%5%4%;width: 93%;}
-            form{padding: 1%;}
-            label{
-                margin-top: 3%;}}
+            #section{
+                margin: -10%6%6%1%;
+                width: 97%;
+            }#section1{
+                margin: -10%6%6%1%;
+                width: 97%;
+            }
+
+            th{
+                width: 25%;
+            }
+            #p{
+                margin-top: 5%;
+                margin-left: 7%;
+            }
+
+        }
             </style>
             <br><br><br>
             <section id="section" class="section">
@@ -271,7 +291,7 @@ if (!isset($_SESSION['signin'])>0) {
 
                         </button>
                     </form>
-                    <form method="GET" action="../../Plugin/PDF/Compra/pdf_compra.php" target="_blank">
+                    <form method="GET" action="../../Plugin/PDF/Compra/pdf_compra.php" target="_blank" class="mx-1">
                        <input readonly class="form-control"  type="hidden" value="<?php echo $productos1['nSolicitud']?>" name="sol_compra">
 
                        <textarea style="display: none;" name="jus" ><?php echo $jus ?></textarea>
@@ -292,9 +312,9 @@ if (!isset($_SESSION['signin'])>0) {
                     </svg>
                 </button>
             </form>
-            <form class="ml-1" style="" method="POST" action="" style="margin: 0px;" >
+            <form class="ml-1" style="" method="POST" action=""  >
                 <input type="hidden" name="cod" value="<?php echo $productos1["nSolicitud"] ?>">
-                <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#new">➕</button>
+                <button type="button" class="btn btn-outline-primary " style="font-size: 13.5px;" data-toggle="modal" data-target="#new">➕</button>
             </form>
         </div>
         <hr>
@@ -536,7 +556,7 @@ if (!isset($_SESSION['signin'])>0) {
 </section>
 <?php  if(isset($_POST['solicitar'])){$cod=$_POST['bodega']?>
 <style type="text/css">#section{display: none;}</style>
-<section>
+<section id="section1">
  <form style="background: transparent;" method="POST" action="../../Controller/Compra/añadir_compra.php">
    <?php     $sql = "SELECT * FROM tb_compra WHERE nSolicitud = $cod";
    $result = mysqli_query($conn, $sql);

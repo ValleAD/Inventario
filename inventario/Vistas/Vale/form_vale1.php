@@ -55,31 +55,34 @@ if (!isset($_SESSION['signin'])>0) {
 .a{
     width: 25%;
 }
-@media (max-width: 952px){
- section{
-    margin: 5%6%6%3%;
-    padding: 2%;
-    width: 95%;
-}
-#form{
-    margin: -1%6%6%7%;
-    padding: 2%;
-}
-h1{
-    margin-top: -9%;
-}
-#div{
-    margin: 0%;
-    display: none;
-}
-.div{
-    display: block;
+        @media (min-width: 1028px){
+           #section{
+                margin: 5%6%6%1%;
+                width: 97%;
+            } 
+        }
+        @media (max-width: 800px){
+            #ver{
+                margin-top: 2%;
+            }
+            #section{
+                margin: -10%6%6%1%;
+                width: 97%;
+            }
 
-}
+            th{
+                width: 25%;
+            }
+            #p{
+                margin-top: 5%;
+                margin-left: 7%;
+            }
+
+        }
 </style>
 <br><br><br>       
 
-<section>
+<section id="section">
     <!-- <?php include ('../../Buscador_ajax/Cabezeras/cabezera.php') ?> -->
     <center><h1 style="margin-top:5px">Solicitudes Vale</h1></center><br>
     <form name="f1" id="frm-example" style="background: transparent;" method='POST' action="form_vale2.php">

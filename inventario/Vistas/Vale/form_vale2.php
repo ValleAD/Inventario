@@ -53,14 +53,29 @@ if (!isset($_SESSION['signin'])>0) {
             width: 25%;
         }
 
-        @media (max-width: 952px){
-           p{margin-top: 3%}
-           section{
-            margin: -5%6%6%3%;
-            width: 95%;
+        @media (min-width: 1028px){
+           #section{
+                margin: 5%6%6%1%;
+                width: 97%;
+            } 
         }
-        #tr{
-            margin-top: 2%;
+        @media (max-width: 800px){
+            #ver{
+                margin-top: 2%;
+            }
+            #section{
+                margin: -10%6%6%1%;
+                width: 97%;
+            }
+
+            th{
+                width: 25%;
+            }
+            #p{
+                margin-top: 5%;
+                margin-left: 7%;
+            }
+
         }
     }#buscar1{
         width: 100%;
@@ -84,7 +99,7 @@ if ($codigo=="") {
 }
 
 if (isset($_POST['solicitar'])){ ?>
-    <section >
+    <section id="section">
      <form style="background: transparent;" method="POST" action="../../Controller/Vale/añadir_vale.php">
         <div class="card">
             <div class="card-body">

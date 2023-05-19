@@ -49,7 +49,7 @@ echo"
         }).then((result) => {
           /* Read more about handling dismissals below */
           if (result.dismiss === Swal.DismissReason.timer) {
-           window.location.href='login.php';
+           window.location.href='signin.php';
          }
          })
  

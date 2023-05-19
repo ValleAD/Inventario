@@ -196,10 +196,10 @@ $final11 = "0.00";
 $final12 = "0.00";
 $final13 = "0.00";
 if (isset($_POST['vale'])) {
-    $sql = "SELECT codVale, codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,numero_vale,departamento,usuario,fecha_registro,Mes,Año FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale";
+    $sql = "SELECT codVale, codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,numero_vale,departamento,usuario,fecha_registro,Mes,Año FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale GROUP by codigo";
  }
 if (isset($_POST['vale1'])) {$idusuario=$_POST['idusuario'];
-$sql = "SELECT  codVale,codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,numero_vale,departamento,usuario,fecha_registro,Mes,Año FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE V.idusuario='$idusuario'";
+$sql = "SELECT  codVale,codigo,SUM(stock),SUM(cantidad_despachada),precio,descripcion,unidad_medida,idusuario,numero_vale,departamento,usuario,fecha_registro,Mes,Año FROM `detalle_vale` D JOIN `tb_vale` V ON D.numero_vale=V.CodVale WHERE V.idusuario='$idusuario' GROUP by codigo";
  }
 
   $result = mysqli_query($conn, $sql);

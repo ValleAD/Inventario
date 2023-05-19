@@ -52,19 +52,30 @@ if (!isset($_SESSION['signin'])>0) {
         #buscar1{
             width: 25%;
         }
-        @media (max-width: 952px){
-         section{
-            margin: -15%6%6%3%;
-            width: 95%;
+        @media (min-width: 1028px){
+           #section{
+                margin: 5%6%6%1%;
+                width: 97%;
+            } 
         }
-    }#buscar1{
-        width: 100%;
-        margin: 0;
-    }
-    label{
-        margin-top: 3%;
-    }
-}
+        @media (max-width: 800px){
+            #ver{
+                margin-top: 2%;
+            }
+            #section{
+                margin: -10%6%6%1%;
+                width: 97%;
+            }
+
+            th{
+                width: 25%;
+            }
+            #p{
+                margin-top: 5%;
+                margin-left: 7%;
+            }
+
+        }
 </style>
 <br><br><br>
 
@@ -82,7 +93,7 @@ if ($codigo=="") {
 }
 
 if (isset($_POST['solicitar'])){ ?>
-    <section >
+    <section id="section" class="bg-white">
        <form style="background: transparent;" method="POST" action="../../Controller/Compra/añadir_compra.php">
         <div class="card">
             <div class="card-body">

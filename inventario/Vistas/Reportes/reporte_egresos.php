@@ -32,21 +32,33 @@ if (!isset($_SESSION['signin'])>0) {
         #n{
             display: none;
         }
+              @media (min-width: 1028px){
+           #section{
+                margin: 5%6%6%1%;
+                width: 97%;
+            } 
+        }
         @media (max-width: 800px){
-            body{
-                background: black;
+            #ver{
+                margin-top: 2%;
             }
-            #ssa{
+            #section{
+                margin: -10%6%6%1%;
+                width: 97%;
+            }
+
+            th{
+                width: 25%;
+            }
+            #p{
+                margin-top: 5%;
                 margin-left: 7%;
-                margin-bottom: 5%;
             }
-            #x{
-                margin: 3%5%;
-            }
+
         }
     </style>
-    <br><br><br><br>
-    <section style="background: rgba(255, 255, 255, 0.9); margin: 2%;border-radius: 15px; padding: 1%";>
+    <br><br><br>
+    <section id="section" style="background: rgba(255, 255, 255, 0.9); border-radius: 15px; padding: 1%";>
        <h1 style="text-align: center;">Egresos de Productos</h1><br>
        <form method="GET" style="background:transparent;">
         <div class="card">

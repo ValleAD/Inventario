@@ -102,7 +102,7 @@
 
 
 }
-
+}
 
 if ($query1) {
     echo "<script>

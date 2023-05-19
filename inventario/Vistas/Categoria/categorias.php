@@ -29,13 +29,33 @@ die();
 <style>
     #form{margin: 2%;}
     #div{margin: 0%;}
-    section{padding: 1%;}
- @media (max-width: 952px){
-   #form{margin: -15%6%1%1%;width: 98%;}
-    h2{
-    margin-top: 35%;}
+    #section{padding: 1%}
+        @media (min-width: 1028px){
+           #section{
+                margin: 5%6%6%1%;
+                width: 97%;
+            } 
+        }
+        @media (max-width: 800px){
+            #ver{
+                margin-top: 2%;
+            }
+            #section{
+                margin: -10%6%6%1%;
+                width: 97%;
+            }
+
+            th{
+                width: 25%;
+            }
+            #p{
+                margin-top: 5%;
+                margin-left: 7%;
+            }
+
+        }
 </style>
-<br><br><br>
+<br><br>
 <?php      
 
 if (isset($_POST['editar'])){       
@@ -51,7 +71,7 @@ $result = mysqli_query($conn, $sql);
 ?>
 <style type="text/css">section{display: none;}</style>
 
-<form id="form" action="../../Controller/Categoria/Desabilitar-categorias.php" method="POST" style="background: transparent; ">
+<form id="section" action="../../Controller/Categoria/Desabilitar-categorias.php" method="POST" style="background: transparent; ">
     <div id="" class="container-fluid" style="background: rgba(0, 0, 0, 0.5);  border-radius: 15px; color:#fff; font-weight: bold;">
   <h3 align="center">Actualizar Categorias</h3>
         <div class="row">
@@ -85,7 +105,7 @@ $result = mysqli_query($conn, $sql);
   }
 } 
 ?><br>
-    <section style="margin:1%;background: rgba(255, 255, 255, 0.9);border-radius: 15px; position: initial; ">
+    <section id="section" style="background: rgba(255, 255, 255, 0.9);border-radius: 15px; position: initial; ">
 
         <h2 class="text-center ;" style="color:black;">Categorias</h2>
 
@@ -104,7 +124,7 @@ $result = mysqli_query($conn, $sql);
                 </button>
             </div>
               <div class="modal-body">
-                <form action="Controller/Categoria/añadir-categoria.php" method="POST" style="margin:0;background: transparent;">
+                <form action="../../Controller/Categoria/añadir-categoria.php" method="POST" style="margin:0;background: transparent;">
                 <label id="label">Nombre</label>              
             <input class="form-control" name="categoria" type="text" required>
                       
@@ -171,12 +191,20 @@ $result = mysqli_query($conn, $sql);
      </thead>
      <tbody>
     <?php
-    $sql = "SELECT * FROM selects_categoria ";
+    $sql = "SELECT id,LENGTH(categoria),categoria,Habilitado FROM selects_categoria ";
     $result = mysqli_query($conn, $sql);
     $n=0;
     while ($solicitudes = mysqli_fetch_array($result)){
         $n++;
         $r=$n+0;
+         $des=$solicitudes['categoria'];
+        $des1=$solicitudes['LENGTH(categoria)'];
+        $i=25;
+        if ($i>=$des1) {
+            $des2=$des;
+        }else{
+            $des2=substr($des, 0, 25)."...";
+        }
         ?>
         <style type="text/css">
      #td{
@@ -186,7 +214,7 @@ $result = mysqli_query($conn, $sql);
 </style>
         <tr>
             <td><?php echo $r ?></td>
-            <td style="width: 20%;min-width: 100%;" data-label="Categoria"><?php  echo $solicitudes['categoria']; ?></td>
+            <td style="width: 20%;min-width: 100%;text-align: left;" data-label="Categoria" data-toggle="popover" title="Descripción" data-trigger="hover" data-content="<?php echo $des ?>"><?php  echo $des2?></td>
 
  <td style="width: 50%;min-width: 100%;" data-label="Habilitado">
             <p <?php
