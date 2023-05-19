@@ -15,7 +15,6 @@
     require '../Model/conexion.php';
     
 //conversion
- $verificar_usuario =mysqli_query($conn, "SELECT * FROM tb_usuarios WHERE username ='$Nusuario' AND password='$Npassword'");
     $usuario =$_POST['usuario'];
     $Nusuario =$_POST['Nusuario'];
     $Npassword =$_POST['Npassword'];
